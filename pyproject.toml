@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "wcfoma"
+version = "0.1.0"
+description = "Wave-Coherent Field-Oriented Memory Architecture — simulation and experiment framework"
+readme = "readme.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "Mike Tierce", email = "mike@tierce.com"},
+]
+keywords = [
+    "wave coherence",
+    "field-oriented computing",
+    "analog memory",
+    "neuromorphic",
+    "zero-index metamaterials",
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Physics",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.11",
+    "matplotlib>=3.7",
+    "sympy>=1.12",
+]
+
+[project.optional-dependencies]
+dev = [
+    "jupyter>=1.0",
+    "jupyterlab>=4.0",
+    "ipykernel>=6.25",
+    "pytest>=7.0",
+    "pandas>=2.0",
+]
+
+[tool.setuptools.packages.find]
+include = ["simulations*", "experiments*", "analysis*"]

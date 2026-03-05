@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_metadata
+
+# Data outputs (keep structure, ignore generated data)
+data/results/*.csv
+data/results/*.json
+data/raw/
+data/lab_notes/
+data/media/
+
+# Figures (generated)
+analysis/figures/*.png
+analysis/figures/*.pdf
+
+# Environment
+.env
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
