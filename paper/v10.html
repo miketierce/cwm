@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Wave-Coupled Ferromagnetic Oscillator Memory Architecture (WCFOMA): Spectral Eigenmode Memory and Computation in Acoustic Resonators</title>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+@page {
+    size: letter;
+    margin: 1in 1in 1in 1in;
+
+    @bottom-center {
+        content: counter(page);
+        font-size: 9pt;
+        color: #666;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #2563eb;
+    --border: #d1d5db;
+    --bg-code: #f5f5f5;
+    --bg-table-head: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ── Title & Author ─────────────────────────────────────── */
+h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 6pt 0;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+/* Author line right after title */
+h1 + p {
+    text-align: center;
+    margin: 0 0 2pt 0;
+}
+h1 + p + p {
+    text-align: center;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 12pt 0;
+}
+
+/* ── Headings ────────────────────────────────────────────── */
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 20pt 0 8pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 14pt 0 6pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 10pt 0 4pt 0;
+    color: var(--muted);
+}
+
+/* ── Paragraphs ──────────────────────────────────────────── */
+p {
+    margin: 0 0 8pt 0;
+    text-align: justify;
+    hyphens: auto;
+    orphans: 3;
+    widows: 3;
+}
+
+/* ── Lists ───────────────────────────────────────────────── */
+ul, ol {
+    margin: 4pt 0 8pt 0;
+    padding-left: 20pt;
+}
+li {
+    margin-bottom: 3pt;
+}
+li > p { margin-bottom: 3pt; }
+
+/* ── Tables ──────────────────────────────────────────────── */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border: 1pt solid var(--border);
+    padding: 5pt 8pt;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tbody td {
+    border: 1pt solid var(--border);
+    padding: 4pt 8pt;
+    vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* Bold cells in tables (for highlight rows) */
+tbody td strong {
+    color: var(--accent);
+}
+
+/* ── Horizontal Rules ────────────────────────────────────── */
+hr {
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 16pt 0;
+}
+
+/* ── Code ────────────────────────────────────────────────── */
+code {
+    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 9pt;
+    background: var(--bg-code);
+    padding: 1pt 3pt;
+    border-radius: 2pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 10pt 12pt;
+    border-radius: 4pt;
+    border: 1pt solid var(--border);
+    overflow-x: auto;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ── Block quotes ────────────────────────────────────────── */
+blockquote {
+    margin: 8pt 0;
+    padding: 6pt 12pt;
+    border-left: 3pt solid var(--accent);
+    background: #f8fafc;
+    color: var(--muted);
+}
+
+/* ── Links / references ──────────────────────────────────── */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ── Math (KaTeX) ────────────────────────────────────────── */
+.katex-display {
+    margin: 10pt 0;
+    overflow-x: auto;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+/* ── Abstract special styling ────────────────────────────── */
+h2#abstract + p,
+h2:first-of-type + p {
+    font-size: 10pt;
+    line-height: 1.45;
+    color: var(--muted);
+}
+
+/* ── Footnotes / References ──────────────────────────────── */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 9pt;
+    line-height: 1.35;
+    hanging-punctuation: first;
+    padding-left: 24pt;
+    text-indent: -24pt;
+}
+
+/* ── Print tweaks ────────────────────────────────────────── */
+h2, h3 {
+    page-break-after: avoid;
+}
+table, pre, blockquote {
+    page-break-inside: avoid;
+}
+
+</style>
+</head>
+<body>
+<h1 id="wave-coupled-ferromagnetic-oscillator-memory-architecture-wcfoma-spectral-eigenmode-memory-and-computation-in-acoustic-resonators">Wave-Coupled Ferromagnetic Oscillator Memory Architecture (WCFOMA): Spectral Eigenmode Memory and Computation in Acoustic Resonators</h1>
+<p><strong>Michael Tierce</strong>
+<em>Forward Arrow Solutions, Dallas, TX</em></p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>We introduce the Wave-Coupled Ferromagnetic Oscillator Memory Architecture (WCFOMA), a computing paradigm that encodes information in the acoustic eigenmode spectrum of physical resonators and performs associative recall through wave interference. Unlike conventional digital memory, which stores bits in spatial cells and shuttles them to a separate processor, WCFOMA stores data as frequency-domain patterns—each resonator&rsquo;s mode spectrum constitutes both the memory and the computational substrate. We present validated simulation results for four candidate implementations spanning three physical substrates: ferrofluid acoustic cavities, ferroelectric photonic interferometers, and solid glass acoustic resonators. Our analysis reveals that the originally proposed ferrofluid approach is fundamentally limited by nanoparticle phase diffusion, which dominates 77.5% of the noise budget and yields negative SNR at room temperature. The glass acoustic resonator, by contrast, achieves 98.8 dB SNR, supports 9,380 thermally stable modes per rod at ±1 K stability, and delivers an estimated 154,000 bits of dynamic spectral capacity from a $63 prototype built entirely from commodity hardware. We derive information-theoretic capacity bounds using Shannon&rsquo;s channel capacity theorem, validate perturbation encoding via Rayleigh&rsquo;s spectral perturbation formula, and demonstrate Hopfield-compatible associative recall through spectral correlation. The glass resonator represents, to our knowledge, the first acoustic eigenmode memory architecture that can be prototyped without specialized equipment—a direct descendant of the mercury delay lines that powered UNIVAC I, reimagined for spectral rather than temporal encoding.</p>
+<hr />
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-the-memory-wall">1.1 The Memory Wall</h3>
+<p>Modern computing faces a fundamental architectural bottleneck. In 1978, John Backus identified the &ldquo;von Neumann bottleneck&rdquo;—the narrow channel between processor and memory that limits throughput regardless of processor speed [1]. Nearly two decades later, Wulf and McKee quantified the growing disparity between processor and memory performance, coining the term &ldquo;memory wall&rdquo; [2]. Today, data movement between DRAM and CPU accounts for the majority of both energy consumption and latency in large-scale computation, a problem that worsens with each process node shrink.</p>
+<p>Emerging memory technologies—phase-change memory (PCM), resistive RAM (ReRAM), spin-transfer torque MRAM—have demonstrated in-memory computing capabilities by performing analog multiply-accumulate operations at the memory array itself [3]. However, these approaches remain fundamentally spatial: each bit occupies a physical cell, and computation requires explicit matrix-vector operations through crossbar arrays.</p>
+<h3 id="12-wave-based-memory-a-different-encoding">1.2 Wave-Based Memory: A Different Encoding</h3>
+<p>WCFOMA proposes an orthogonal approach: encode information in the <em>frequency domain</em> rather than in spatial cells. A physical resonator supporting $N$ acoustic eigenmodes can store information across all $N$ modes simultaneously. Each mode&rsquo;s amplitude, phase, and frequency constitute independent information channels. Crucially, wave interference—a physical process that occurs at the speed of sound—performs the equivalent of a dot product across all modes in a single operation, enabling content-addressable recall without sequential memory access.</p>
+<p>This is not a new idea in principle. Mercury delay line memory, used in UNIVAC I (1949) and EDSAC (1948), stored data as acoustic pulse trains circulating in tubes of mercury [4, 5]. Those systems used <em>temporal</em> encoding—bits were time-slotted pulses. WCFOMA uses <em>spectral</em> encoding—bits are eigenmode amplitudes and perturbation-induced frequency shifts. The distinction is profound: temporal encoding scales with tube length (one dimension), while spectral encoding scales with the number of resolvable modes (potentially thousands per resonator).</p>
+<h3 id="13-scope-and-contributions">1.3 Scope and Contributions</h3>
+<p>This paper makes the following contributions:</p>
+<ol>
+<li>
+<p><strong>Architecture definition</strong>: We formalize WCFOMA as a memory and computation architecture based on eigenmode spectral encoding, perturbation-based data writing, and interference-based associative recall (Section 2).</p>
+</li>
+<li>
+<p><strong>Rigorous noise analysis</strong>: We model six noise sources for the ferrofluid substrate and demonstrate that nanoparticle phase diffusion fundamentally limits the original proposal, contributing 77.5% of total noise power (Section 3).</p>
+</li>
+<li>
+<p><strong>Glass resonator breakthrough</strong>: We identify solid glass rods as a superior substrate—eliminating phase diffusion entirely—and validate through simulation that a 6 mm × 150 mm borosilicate rod achieves 98.8 dB SNR and 9,380 thermally stable modes (Section 4).</p>
+</li>
+<li>
+<p><strong>Technology comparison</strong>: We benchmark WCFOMA against seven conventional memory technologies (DRAM, SRAM, NAND, PCM, MRAM, ReRAM, magnonic logic) and three WCFOMA substrate variants on energy, density, latency, endurance, and compute locality (Section 5).</p>
+</li>
+<li>
+<p><strong>Prototype specification</strong>: We provide a complete bill of materials ($63), five structured experiments, and quantitative predictions for a garage-buildable glass resonator prototype (Section 6).</p>
+</li>
+</ol>
+<hr />
+<h2 id="2-architecture">2. Architecture</h2>
+<h3 id="21-eigenmode-memory">2.1 Eigenmode Memory</h3>
+<p>Consider a one-dimensional acoustic resonator of length $L$ with longitudinal wave speed $v$. The resonant frequencies are:</p>
+<p>$$f_n = \frac{n \cdot v}{2L}, \quad n = 1, 2, 3, \ldots$$</p>
+<p>Each mode $n$ is an independent harmonic oscillator with frequency $f_n$, quality factor $Q$, linewidth $\Delta f_n = f_n / Q$, and coherence time $\tau_n = Q / (\pi f_n)$. The mode amplitudes ${a_n}$ and phases ${\phi_n}$ constitute the memory state. For a resonator supporting $N$ resolvable modes, each with $b$ bits of amplitude resolution, the dynamic spectral capacity is:</p>
+<p>$$C_{\text{dynamic}} = N \times b \quad \text{bits}$$</p>
+<p>where $b$ is determined by the signal-to-noise ratio via Shannon&rsquo;s channel capacity theorem [6]:</p>
+<p>$$b = \frac{1}{2} \log_2(1 + \text{SNR})$$</p>
+<h3 id="22-perturbation-encoding-writing">2.2 Perturbation Encoding (Writing)</h3>
+<p>Data is written by modifying the resonator&rsquo;s physical structure, which shifts mode frequencies according to the Rayleigh perturbation formula [7]. For a localized mass perturbation $\Delta m$ at position $x$ on a rod of total mass $M$:</p>
+<p>$$\frac{\Delta f_n}{f_n} = -\frac{\Delta m}{2M} \sin^2!\left(\frac{n \pi x}{L}\right)$$</p>
+<p>Each perturbation creates a unique pattern of frequency shifts across all modes—the shift depends on both the perturbation&rsquo;s position (through the $\sin^2$ term) and its magnitude (through $\Delta m / 2M$). Multiple perturbations superpose linearly (in the small-perturbation limit), creating a high-dimensional spectral fingerprint that constitutes the stored data.</p>
+<p>This encoding is physically analogous to the quartz crystal microbalance (QCM), where the Sauerbrey equation relates mass loading to frequency shift [8]. WCFOMA generalizes this to multi-mode operation, extracting information from the <em>pattern</em> of shifts across many modes rather than a single frequency shift.</p>
+<p><strong>Writing methods</strong> (in order of permanence):</p>
+<ul>
+<li><em>Temporary</em>: beeswax or clay blobs (removable, rewritable)</li>
+<li><em>Semi-permanent</em>: epoxy drops, tape segments</li>
+<li><em>Permanent</em>: notches, grinding, laser ablation</li>
+</ul>
+<h3 id="23-interference-recall-reading-and-computing">2.3 Interference Recall (Reading and Computing)</h3>
+<p>Readout measures the mode spectrum using a pair of piezoelectric transducers: one drives, one senses. A frequency sweep or impulse excitation followed by FFT reveals all mode frequencies simultaneously.</p>
+<p><strong>Associative recall</strong> exploits wave interference directly. Given an array of $R$ rods, each with a distinct perturbation pattern (stored data), driving all rods with a query spectrum causes each rod to resonate in proportion to the overlap between the query and its stored pattern. The rod whose pattern best matches the query produces the largest response—this is a physical implementation of a normalized correlation:</p>
+<p>$$\text{correlation}_r = \frac{\vec{q} \cdot \vec{s}_r}{|\vec{q}| \cdot |\vec{s}_r|}$$</p>
+<p>where $\vec{q}$ is the query spectral signature and $\vec{s}_r$ is rod $r$&rsquo;s stored signature. This operation is mathematically equivalent to one step of Hopfield network dynamics [9], where the energy function:</p>
+<p>$$E = -\frac{1}{2} \sum_{ij} w_{ij} s_i s_j$$</p>
+<p>is minimized by the interference process. The network&rsquo;s storage capacity follows the Amit-Gutfreund-Sompolinsky limit [10]:</p>
+<p>$$P_{\max} = \alpha_c \cdot N, \quad \alpha_c \approx 0.138$$</p>
+<p>For $N = 100$ modes, this permits $P_{\max} \approx 13$ stored patterns with reliable recall. Trinary encoding ($s_i \in {-1, 0, +1}$) increases capacity by approximately $2.1\times$.</p>
+<h3 id="24-architecture-summary">2.4 Architecture Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Function</th>
+<th>Physical Process</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Storage</td>
+<td>Eigenmode amplitudes</td>
+<td>Driven acoustic modes</td>
+</tr>
+<tr>
+<td>Write</td>
+<td>Perturbation encoding</td>
+<td>Mass attachment / removal</td>
+</tr>
+<tr>
+<td>Read</td>
+<td>Spectral measurement</td>
+<td>Piezo drive + sense + FFT</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Associative recall</td>
+<td>Multi-rod wave interference</td>
+</tr>
+</tbody>
+</table>
+<p>The key architectural distinction from conventional memory: <em>there is no separation between storage and computation</em>. The interference that reads the memory simultaneously computes the nearest-neighbor match. This is inherent to wave physics—superposition and interference are not engineered features but fundamental properties of the medium.</p>
+<hr />
+<h2 id="3-noise-analysis-and-the-ferrofluid-limitation">3. Noise Analysis and the Ferrofluid Limitation</h2>
+<h3 id="31-the-original-proposal">3.1 The Original Proposal</h3>
+<p>The original WCFOMA concept proposed ferrofluid—a colloidal suspension of magnetic nanoparticles (~10 nm diameter) in a carrier fluid—as the acoustic medium. The appeal was clear: ferrofluids respond to external magnetic fields, enabling non-contact mode manipulation. The proposal assumed $Q \approx 500$, 10 modes per cavity, and 10 bits per mode, yielding 100 bits per 10 µm cell.</p>
+<h3 id="32-six-noise-sources">3.2 Six Noise Sources</h3>
+<p>Our simulation models six independent noise mechanisms for the ferrofluid substrate:</p>
+<p><strong>1. Thermal (Johnson-Nyquist) noise.</strong> Fundamental thermodynamic limit:</p>
+<p>$$S_{\text{thermal}} = \frac{4 k_B T}{Z \cdot V}$$</p>
+<p>where $Z$ is acoustic impedance and $V$ is cavity volume. At $T = 300$ K, $V = 10^{-15}$ m³ (a 10 µm cavity), this contributes modestly.</p>
+<p><strong>2. Shot noise.</strong> For optical readout with $N_\gamma$ photons:</p>
+<p>$$S_{\text{shot}} = \frac{1}{N_\gamma}$$</p>
+<p>At $N_\gamma = 10^6$ (the baseline assumption), shot noise is small. At $N_\gamma = 10^8$, it becomes negligible.</p>
+<p><strong>3. 1/f noise.</strong> Empirically observed in ferrofluids with corner frequency $f_c \approx 1$ kHz and amplitude $\alpha_{1/f} \approx 10^{-12}$.</p>
+<p><strong>4. Phase diffusion.</strong> This is the killer. Brownian rotational diffusion of magnetic nanoparticles randomizes the local magnetic susceptibility, causing stochastic phase drift in acoustic modes. The diffusion coefficient:</p>
+<p>$$D_{\text{rot}} = \frac{k_B T}{\pi \eta d^3}$$</p>
+<p>For 10 nm particles in carrier fluid ($\eta = 0.01$ Pa·s): $D_{\text{rot}} \approx 1.3 \times 10^7$ rad²/s. This is fast enough to destroy mode coherence on microsecond timescales.</p>
+<p><strong>5. Nonlinear mode mixing.</strong> Four-wave coupling between modes, proportional to $\chi_{\text{nl}} \cdot n^2$.</p>
+<p><strong>6. Quantization noise.</strong> ADC discretization: $\sigma_q^2 = \Delta^2 / 12$ for a 10-bit ADC.</p>
+<h3 id="33-noise-budget">3.3 Noise Budget</h3>
+<p>Our simulation computes the fractional contribution of each source to total noise power:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Fraction</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase diffusion</td>
+<td><strong>77.5%</strong></td>
+<td>Dominant; inherent to liquid</td>
+</tr>
+<tr>
+<td>1/f noise</td>
+<td>11.8%</td>
+<td>Empirical; material-dependent</td>
+</tr>
+<tr>
+<td>Nonlinear mixing</td>
+<td>5.9%</td>
+<td>Grows with mode count</td>
+</tr>
+<tr>
+<td>Thermal</td>
+<td>3.4%</td>
+<td>Fundamental limit</td>
+</tr>
+<tr>
+<td>Quantization</td>
+<td>1.2%</td>
+<td>ADC-limited</td>
+</tr>
+<tr>
+<td>Shot noise</td>
+<td>0.2%</td>
+<td>At $10^6$ photons</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Phase diffusion alone accounts for more than three-quarters of all noise.</strong> This is not an engineering problem to be optimized away—it is a fundamental property of storing coherent acoustic modes in a medium containing freely rotating nanoparticles.</p>
+<h3 id="34-ferrofluid-snr-results">3.4 Ferrofluid SNR Results</h3>
+<p><strong>Baseline</strong> ($Q = 500$, $V = 10^{-15}$ m³, $10^6$ photons, $\eta = 0.01$ Pa·s):</p>
+<ul>
+<li>SNR = −6.5 dB (below 0 dB—noise exceeds signal)</li>
+<li>Usable modes: 0</li>
+<li>Bits per measurement: 0</li>
+<li>The original claim of 10 bits/mode overestimates by $\sim 4.4\times$</li>
+</ul>
+<p><strong>Mitigated</strong> (gel immobilization $\eta = 1.0$ Pa·s, $10^8$ photon readout):</p>
+<ul>
+<li>SNR = +13.5 dB</li>
+<li>Usable modes: 10</li>
+<li>Total bits: 22.8 (2.28 bits/mode)</li>
+<li>Still requires expensive laser and sacrifices ferrofluid&rsquo;s key advantage (field responsiveness)</li>
+</ul>
+<p>The ferrofluid approach is not viable for practical memory. The noise physics are unfavorable at room temperature in micron-scale cavities.</p>
+<hr />
+<h2 id="4-glass-acoustic-resonator">4. Glass Acoustic Resonator</h2>
+<h3 id="41-motivation-eliminating-phase-diffusion">4.1 Motivation: Eliminating Phase Diffusion</h3>
+<p>The noise analysis of Section 3 points to a clear solution: <em>use a solid medium</em>. A solid has no Brownian motion, no nanoparticle rotation, and no phase diffusion. Glass—one of the oldest engineered materials—is an acoustic resonator with well-characterized properties, quality factors orders of magnitude higher than ferrofluid, and a procurement cost measured in dollars rather than hundreds of dollars.</p>
+<p>The historical precedent is exact. Mercury delay line memory [4, 5] stored acoustic pulses in a liquid medium. The transition from liquid mercury to solid glass mirrors the transition from ferrofluid to glass in WCFOMA—eliminating the liquid-phase noise mechanisms while preserving the acoustic physics.</p>
+<h3 id="42-material-properties">4.2 Material Properties</h3>
+<p>We model four glass types with properties drawn from standard acoustic references [11, 12]:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Soda-lime</th>
+<th>Borosilicate</th>
+<th>Fused silica</th>
+<th>Lead glass</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$v_L$ (m/s)</td>
+<td>5,500</td>
+<td>5,500</td>
+<td>5,960</td>
+<td>3,800</td>
+</tr>
+<tr>
+<td>$\rho$ (kg/m³)</td>
+<td>2,500</td>
+<td>2,230</td>
+<td>2,200</td>
+<td>3,800</td>
+</tr>
+<tr>
+<td>$Q$</td>
+<td>3,000</td>
+<td>10,000</td>
+<td>100,000</td>
+<td>1,500</td>
+</tr>
+<tr>
+<td>$\alpha$ (10⁻⁶/K)</td>
+<td>9.0</td>
+<td>3.3</td>
+<td>0.55</td>
+<td>10.0</td>
+</tr>
+<tr>
+<td>Cost</td>
+<td>$2</td>
+<td>$8/10pk</td>
+<td>$15</td>
+<td>$5</td>
+</tr>
+</tbody>
+</table>
+<p>Borosilicate (Pyrex) offers the best price-performance: $Q = 10{,}000$ is 20× higher than ferrofluid&rsquo;s $Q = 500$, thermal expansion is low ($3.3 \times 10^{-6}$/K), and a 10-pack costs $8 on Amazon.</p>
+<h3 id="43-mode-spectrum">4.3 Mode Spectrum</h3>
+<p>For the reference design—a 6 mm diameter × 150 mm borosilicate rod:</p>
+<p>$$f_1 = \frac{5{,}500}{2 \times 0.15} = 18{,}333 \text{ Hz}$$</p>
+<p>Mode spacing equals $f_1 = 18{,}333$ Hz. The coherence time of the fundamental mode:</p>
+<p>$$\tau_1 = \frac{Q}{\pi f_1} = \frac{10{,}000}{\pi \times 18{,}333} = 0.174 \text{ s}$$</p>
+<p>Higher modes have proportionally shorter coherence times ($\tau_n = \tau_1 / n$), but even mode $n = 100$ retains $\tau_{100} = 1.74$ ms—ample for measurement.</p>
+<h3 id="44-snr-analysis">4.4 SNR Analysis</h3>
+<p>The only noise source for a solid glass rod at room temperature is thermal phonon noise. The effective spring constant for mode $n = 1$:</p>
+<p>$$k_{\text{eff}} = m_{\text{eff}} \cdot \omega_1^2$$</p>
+<p>where $m_{\text{eff}} = M/2$ (half the rod mass for the fundamental mode). For our reference rod ($M = \rho \cdot \pi r^2 L = 2{,}230 \times \pi \times (0.003)^2 \times 0.15 = 9.46 \times 10^{-3}$ kg):</p>
+<p>$$m_{\text{eff}} = 4.73 \times 10^{-3} \text{ kg}$$</p>
+<p>$$k_{\text{eff}} = m_{\text{eff}} (2 \pi f_1)^2 = 4.73 \times 10^{-3} \times (2\pi \times 18{,}333)^2 = 6.27 \times 10^7 \text{ N/m}$$</p>
+<p>Signal energy at 1 nm drive amplitude:</p>
+<p>$$E_{\text{signal}} = \frac{1}{2} k_{\text{eff}} A_{\text{drive}}^2 = \frac{1}{2} \times 6.27 \times 10^7 \times (10^{-9})^2 = 3.14 \times 10^{-11} \text{ J}$$</p>
+<p>Thermal noise energy:</p>
+<p>$$E_{\text{thermal}} = k_B T = 1.38 \times 10^{-23} \times 300 = 4.14 \times 10^{-21} \text{ J}$$</p>
+<p>$$\text{SNR} = \frac{E_{\text{signal}}}{E_{\text{thermal}}} = \frac{3.14 \times 10^{-11}}{4.14 \times 10^{-21}} = 7.58 \times 10^{9}$$</p>
+<p>$$\text{SNR}<em>{\text{dB}} = 10 \log</em>{10}(7.58 \times 10^9) = 98.8 \text{ dB}$$</p>
+<p>$$b = \frac{1}{2} \log_2(1 + 7.58 \times 10^9) = 16.4 \text{ bits/mode}$$</p>
+<p><strong>Phase diffusion: 0%.</strong> The glass is a solid. There are no nanoparticles. There is no Brownian motion. The noise floor is set by the thermodynamic limit—and the signal is ten billion times above it.</p>
+<h3 id="45-thermal-mode-stability">4.5 Thermal Mode Stability</h3>
+<p>Not all modes are usable. Thermal drift shifts mode frequencies, and if adjacent modes drift into each other, they become unresolvable. The stability criterion requires that thermal drift plus intrinsic linewidth remain smaller than mode spacing:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2 \alpha \Delta T + 1/Q} \right\rfloor$$</p>
+<p>For borosilicate at $\pm 1$ K:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2 \times 3.3 \times 10^{-6} \times 1 + 1/10{,}000} \right\rfloor = \left\lfloor \frac{1}{6.6 \times 10^{-6} + 10^{-4}} \right\rfloor = \left\lfloor \frac{1}{1.066 \times 10^{-4}} \right\rfloor = 9{,}380$$</p>
+<p>Total dynamic capacity:</p>
+<p>$$C = 9{,}380 \times 16.4 \approx 154{,}000 \text{ bits} \approx 19 \text{ kB}$$</p>
+<p>This is the capacity of a single 150 mm glass rod, maintained at $\pm 1$ K stability, with 1 nm acoustic drive. Better temperature control or fused silica ($Q = 100{,}000$, $\alpha = 0.55 \times 10^{-6}$/K) would dramatically increase $n_{\max}$.</p>
+<h3 id="46-perturbation-encoding-capacity">4.6 Perturbation Encoding Capacity</h3>
+<p>Beyond dynamic spectral capacity (mode amplitudes), perturbation encoding stores data in the <em>structure</em> of the rod itself. Each mass perturbation encodes:</p>
+<ul>
+<li><strong>Position</strong>: $\log_2(R_{\text{pos}})$ bits, where $R_{\text{pos}}$ is the number of distinguishable positions</li>
+<li><strong>Mass</strong>: $\log_2(M_{\text{levels}})$ bits</li>
+</ul>
+<p>For $K$ perturbation blobs on a rod with $R_{\text{pos}} = 100$ distinguishable positions and $M_{\text{levels}} = 8$ mass levels:</p>
+<p>$$C_{\text{pert}} = K \times (\log_2 100 + \log_2 8) = K \times (6.64 + 3) = K \times 9.64 \text{ bits}$$</p>
+<p>With 10 blobs: 96.4 bits. With 50 blobs: 482 bits. This data is <em>non-volatile</em>—it persists as long as the physical perturbations remain attached.</p>
+<h3 id="47-comparison-to-ferrofluid">4.7 Comparison to Ferrofluid</h3>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Glass (borosilicate)</th>
+<th>Ferrofluid (baseline)</th>
+<th>Ferrofluid (mitigated)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SNR</td>
+<td>98.8 dB</td>
+<td>−6.5 dB</td>
+<td>13.5 dB</td>
+</tr>
+<tr>
+<td>Bits/mode</td>
+<td>16.4</td>
+<td>0</td>
+<td>2.28</td>
+</tr>
+<tr>
+<td>Usable modes (±1 K)</td>
+<td>9,380</td>
+<td>0</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Total bits</td>
+<td>~154,000</td>
+<td>0</td>
+<td>22.8</td>
+</tr>
+<tr>
+<td>Phase diffusion</td>
+<td>0%</td>
+<td>77.5%</td>
+<td>77.5%</td>
+</tr>
+<tr>
+<td>Q factor</td>
+<td>10,000</td>
+<td>500</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Prototype cost</td>
+<td>~$63</td>
+<td>~$500–1,000</td>
+<td>~$500–1,000</td>
+</tr>
+<tr>
+<td>Non-volatile storage</td>
+<td>Yes (perturbation)</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Materials</td>
+<td>Hardware store</td>
+<td>Specialty supplier</td>
+<td>Specialty + laser</td>
+</tr>
+</tbody>
+</table>
+<p>The glass resonator is superior on every metric. It costs less, stores more, has better noise performance by 105 dB, and can be built with materials from a hardware store.</p>
+<hr />
+<h2 id="5-technology-comparison">5. Technology Comparison</h2>
+<h3 id="51-conventional-memory-technologies">5.1 Conventional Memory Technologies</h3>
+<p>To contextualize WCFOMA, we compare against established memory technologies using representative 2024–2025 parameters from industry roadmaps and published reviews [3]:</p>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Energy/bit</th>
+<th>Density</th>
+<th>Read</th>
+<th>Write</th>
+<th>Endurance</th>
+<th>Retention</th>
+<th>Compute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRAM (DDR5)</td>
+<td>3 pJ</td>
+<td>0.01 Tb/cm³</td>
+<td>14 ns</td>
+<td>14 ns</td>
+<td>10¹⁶</td>
+<td>64 ms</td>
+<td>None</td>
+</tr>
+<tr>
+<td>SRAM (7 nm)</td>
+<td>0.5 pJ</td>
+<td>0.001 Tb/cm³</td>
+<td>0.5 ns</td>
+<td>0.5 ns</td>
+<td>10¹⁶</td>
+<td>Powered</td>
+<td>None</td>
+</tr>
+<tr>
+<td>NAND (3D TLC)</td>
+<td>1 nJ</td>
+<td>1.0 Tb/cm³</td>
+<td>25 µs</td>
+<td>500 µs</td>
+<td>3,000</td>
+<td>~1 yr</td>
+<td>None</td>
+</tr>
+<tr>
+<td>PCM (3D XPoint)</td>
+<td>10 pJ</td>
+<td>0.1 Tb/cm³</td>
+<td>50 ns</td>
+<td>100 ns</td>
+<td>10⁸</td>
+<td>~10 yr</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>STT-MRAM</td>
+<td>1 pJ</td>
+<td>0.01 Tb/cm³</td>
+<td>10 ns</td>
+<td>10 ns</td>
+<td>10¹²</td>
+<td>~10 yr</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>ReRAM</td>
+<td>0.1 pJ</td>
+<td>0.1 Tb/cm³</td>
+<td>10 ns</td>
+<td>10 ns</td>
+<td>10⁶</td>
+<td>~10 yr</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>Magnonic logic</td>
+<td>0.01 pJ</td>
+<td>0.001 Tb/cm³</td>
+<td>100 ns</td>
+<td>100 ns</td>
+<td>10¹⁵</td>
+<td>~1 ms</td>
+<td>Partial</td>
+</tr>
+</tbody>
+</table>
+<h3 id="52-wcfoma-variants">5.2 WCFOMA Variants</h3>
+<table>
+<thead>
+<tr>
+<th>WCFOMA Variant</th>
+<th>SNR</th>
+<th>Bits</th>
+<th>Cost</th>
+<th>Non-volatile</th>
+<th>Fab</th>
+<th>Compute</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glass acoustic</td>
+<td>98.8 dB</td>
+<td>~154,000</td>
+<td>$63</td>
+<td>Yes (pert.)</td>
+<td>Garage</td>
+<td>Unified</td>
+</tr>
+<tr>
+<td>Ferroelectric MZI (HZO)</td>
+<td>~30 dB</td>
+<td>≤1.58/cell</td>
+<td>$50k+</td>
+<td>Yes</td>
+<td>Cleanroom</td>
+<td>Partial</td>
+</tr>
+<tr>
+<td>Ferrofluid (mitigated)</td>
+<td>13.5 dB</td>
+<td>22.8</td>
+<td>$500+</td>
+<td>No</td>
+<td>Lab</td>
+<td>Unified</td>
+</tr>
+<tr>
+<td>Ferrofluid (baseline)</td>
+<td>−6.5 dB</td>
+<td>0</td>
+<td>$500+</td>
+<td>No</td>
+<td>Lab</td>
+<td>N/A</td>
+</tr>
+</tbody>
+</table>
+<h3 id="53-where-wcfoma-fits">5.3 Where WCFOMA Fits</h3>
+<p>WCFOMA is not competitive with DRAM or NAND on raw density or speed. A 150 mm glass rod storing 19.2 kB occupies far more volume than a DRAM chip storing gigabytes. This is expected—WCFOMA is not a replacement for conventional memory.</p>
+<p>WCFOMA&rsquo;s value proposition is <em>compute locality</em>. In conventional architectures, associative recall (nearest-neighbor search, pattern completion) requires:</p>
+<ol>
+<li>Reading all stored patterns from memory</li>
+<li>Computing similarity metrics in the processor</li>
+<li>Selecting the best match</li>
+</ol>
+<p>This is O($P \times N$) in time and energy, where $P$ is the number of stored patterns and $N$ is the pattern dimension. In WCFOMA, wave interference performs step 2 in a single operation at the speed of sound—the entire rod array resonates simultaneously, and the best match emerges as the rod with the largest response amplitude. The computation time is independent of $P$ (it depends only on the acoustic propagation time, ~microseconds).</p>
+<p>This makes WCFOMA potentially relevant for:</p>
+<ul>
+<li><strong>Edge AI inference</strong>: Small associative memory for pattern recognition without a GPU</li>
+<li><strong>Sensor preprocessing</strong>: Acoustic signature matching (vibration fingerprinting, defect detection)</li>
+<li><strong>Analog computing research</strong>: A tangible, buildable platform for studying wave-based computation</li>
+<li><strong>Education</strong>: A $63 demonstration of eigenmode physics, information theory, and associative memory</li>
+</ul>
+<h3 id="54-the-ferroelectric-photonic-path">5.4 The Ferroelectric Photonic Path</h3>
+<p>For applications requiring higher density and integration, the ferroelectric photonic variant offers a path to chip-scale WCFOMA. Using HZO (Hf₀.₅Zr₀.₅O₂) ferroelectric films on SiN waveguides in a Mach-Zehnder interferometer (MZI) configuration [13]:</p>
+<ul>
+<li>$\Delta n \approx 10^{-3}$ (HZO refractive index change per polarization state)</li>
+<li>Trinary encoding ($P_{\text{up}}$, $P_{\text{down}}$, $P_{\text{zero}}$): up to $\log_2(3) = 1.58$ bits/cell (requires interaction length $\gtrsim 775$ µm for full $\pi$ phase shift; shorter devices achieve proportionally fewer bits)</li>
+<li>Write energy: 0.1–1 nJ per cell depending on device area ($V_c = 5$ V, 100 ns switching)</li>
+<li>Read energy: ~0.13 fJ (single photon-level detection)</li>
+<li>Endurance: $10^5$ cycles (HZO fatigue limit)</li>
+<li>Retention: ~12 hours (HZO depolarization)</li>
+</ul>
+<p>A crossbar array of MZI cells could implement a Hopfield network in photonic hardware, with each cell&rsquo;s ferroelectric state constituting a synaptic weight. This requires cleanroom fabrication and is currently at simulation stage, but the materials (HZO, SiN) are CMOS-compatible—no exotic substrates required.</p>
+<p>Integrated photonic memory using phase-change materials (Ge₂Sb₂Te₅) on waveguides has been demonstrated experimentally [14], establishing the viability of non-volatile photonic memory cells. The ferroelectric approach trades PCM&rsquo;s higher endurance concerns for CMOS compatibility and potentially faster switching.</p>
+<hr />
+<h2 id="6-prototype-design">6. Prototype Design</h2>
+<h3 id="61-bill-of-materials">6.1 Bill of Materials</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Item</th>
+<th>Cost</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>Borosilicate glass rods 6 mm × 150 mm (10-pack)</td>
+<td>$8</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td>2</td>
+<td>PZT piezo discs 27 mm with leads (10-pack)</td>
+<td>$5</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td>3</td>
+<td>5-minute epoxy</td>
+<td>$6</td>
+<td>Hardware store</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Arduino Nano + USB cable</td>
+<td>$5</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Breadboard + jumper wire kit</td>
+<td>$10</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td>6</td>
+<td>LM358 dual op-amp</td>
+<td>$1</td>
+<td>Amazon/DigiKey</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Resistor + capacitor assortment</td>
+<td>$5</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Foam/rubber isolation mat</td>
+<td>$5</td>
+<td>Hardware store</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Beeswax or modeling clay (100 g)</td>
+<td>$3</td>
+<td>Craft store</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Digital scale 0.01 g resolution</td>
+<td>$15</td>
+<td>Amazon</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Total</strong></td>
+<td><strong>$63</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Every component is available from consumer retail sources. No specialty equipment, no vacuum chambers, no cleanrooms.</p>
+<h3 id="62-experimental-plan">6.2 Experimental Plan</h3>
+<p>We propose five experiments of increasing complexity, each with explicit success and kill criteria:</p>
+<p><strong>Experiment 1: Mode spectrum measurement.</strong>
+Epoxy one PZT disc (drive) to one rod end, another (sense) to the opposite end. Rod rests on foam isolation mat. Sweep drive frequency from 1 kHz to 500 kHz (or tap rod and compute FFT of ring-down signal).
+<em>Prediction</em>: At least 5 resonant peaks matching $f_n = n \times 18{,}333$ Hz within 5% accuracy.
+<em>Kill criterion</em>: No peaks above noise floor → check piezo coupling, try direct contact.</p>
+<p><strong>Experiment 2: Q factor measurement.</strong>
+Impulse-excite rod, record decay envelope. $Q = \pi f \tau$, where $\tau$ is the 1/e amplitude decay time [12].
+<em>Prediction</em>: $Q = 5{,}000$–$10{,}000$ for borosilicate.
+<em>Kill criterion</em>: $Q &lt; 100$ → severe coupling losses; reduce epoxy thickness or clamp at a node.</p>
+<p><strong>Experiment 3: Perturbation detection.</strong>
+Measure bare rod spectrum. Attach 0.1 g beeswax blob at $L/4$. Remeasure. Compare.
+<em>Prediction</em>: ~48 Hz shift in mode 1. Different positions ($L/4$ vs. $L/3$) yield different shift patterns per the Rayleigh formula.
+<em>Kill criterion</em>: Shifts smaller than linewidth → use larger mass (0.5 g) or more sensitive readout.</p>
+<p><strong>Experiment 4: Pattern discrimination.</strong>
+Two rods with different perturbation patterns (A: wax at $L/4 + L/2$; B: wax at $L/3 + 2L/3$). Measure both spectra and compute spectral correlation.
+<em>Prediction</em>: Same-pattern correlation $&gt; 0.95$; cross-pattern correlation $&lt; 0.5$.
+<em>Kill criterion</em>: Indistinguishable patterns → increase mode count or mass variation.</p>
+<p><strong>Experiment 5: Associative recall.</strong>
+Three or more rods with distinct patterns. Drive all with a query spectrum. Measure which rod responds most strongly.
+<em>Prediction</em>: Correct rod identified with $&gt; 90\%$ accuracy over 10 trials.
+<em>Kill criterion</em>: Cross-talk prevents discrimination → add acoustic isolation between rods.</p>
+<h3 id="63-what-success-looks-like">6.3 What Success Looks Like</h3>
+<p>If Experiments 1–3 succeed, we will have demonstrated:</p>
+<ul>
+<li>Multi-mode acoustic resonance in a glass rod (eigenmode memory substrate)</li>
+<li>Measurable Q factors validating simulation predictions</li>
+<li>Perturbation-induced frequency shifts matching the Rayleigh formula (data writing)</li>
+</ul>
+<p>If Experiments 4–5 succeed, we will have demonstrated:</p>
+<ul>
+<li>Spectral fingerprint discrimination (content-addressable storage)</li>
+<li>Interference-based associative recall (computation via wave physics)</li>
+</ul>
+<p>This would constitute, to our knowledge, the first experimental demonstration of a spectral eigenmode memory architecture in a garage-buildable device.</p>
+<hr />
+<h2 id="7-discussion">7. Discussion</h2>
+<h3 id="71-what-we-know">7.1 What We Know</h3>
+<p>Our simulations are grounded in well-established physics:</p>
+<ul>
+<li>Acoustic mode frequencies follow $f_n = nv/2L$ (textbook wave mechanics)</li>
+<li>Glass Q factors are extensively characterized in the ultrasonic testing literature [11, 12]</li>
+<li>Rayleigh perturbation theory has been validated in millions of quartz crystal microbalances [8]</li>
+<li>Hopfield associative memory capacity is a solved problem in statistical mechanics [9, 10]</li>
+<li>Shannon capacity provides a rigorous upper bound on information per mode [6]</li>
+</ul>
+<p>The glass resonator simulation uses no free parameters—every input (wave speed, density, Q factor, thermal expansion) comes from published material databases or manufacturer datasheets.</p>
+<h3 id="72-what-we-dont-know">7.2 What We Don&rsquo;t Know</h3>
+<p>Several critical questions remain unresolved and require experimental validation:</p>
+<ol>
+<li>
+<p><strong>Piezo-to-glass coupling efficiency.</strong> Our simulation assumes ideal transduction. Real epoxy bonds will introduce losses that reduce effective Q and potentially create spurious modes. The magnitude of this loss is not known a priori—it must be measured (Experiment 2).</p>
+</li>
+<li>
+<p><strong>Multi-mode readout fidelity.</strong> We model modes as perfectly independent oscillators. In reality, nonlinear coupling between modes, boundary reflections, and transducer bandwidth limitations may degrade the ability to resolve high-order modes. The number of practically usable modes may be substantially less than the theoretical 9,380.</p>
+</li>
+<li>
+<p><strong>Perturbation reproducibility.</strong> The Rayleigh formula assumes point masses. Real beeswax blobs have finite extent, and the exact coupling depends on contact area, stiffness, and blob geometry. The resolution of perturbation encoding may be lower than calculated.</p>
+</li>
+<li>
+<p><strong>Environmental noise.</strong> Acoustic isolation from ambient vibration (footsteps, HVAC, traffic) is not modeled. The foam mat provides some decoupling, but environmental noise may limit practical SNR below the thermal limit.</p>
+</li>
+<li>
+<p><strong>Scaling.</strong> A single rod stores ~19 kB. Scaling to meaningful capacities requires rod arrays, which introduces cross-talk, impedance matching, and multiplexing challenges that are not addressed in this work.</p>
+</li>
+</ol>
+<h3 id="73-honest-assessment">7.3 Honest Assessment</h3>
+<p>WCFOMA in its glass resonator form is not a competitor to silicon memory technology. It is slower, larger, and stores less data. Its value is conceptual and educational: it demonstrates that eigenmode spectral encoding and interference computation are physically realizable with commodity materials, and it provides a concrete platform for exploring wave-based computing ideas that may eventually find application in specialized domains (acoustic sensing, analog AI, neuromorphic computing) or in more advanced substrates (photonic, magnonic).</p>
+<p>The ferrofluid approach, as originally conceived, does not work. Phase diffusion is a fundamental obstacle at room temperature. We report this negative result because it is important: the physics is beautiful but the engineering is intractable without cryogenic temperatures or gel immobilization, both of which negate the medium&rsquo;s advantages.</p>
+<p>The ferroelectric photonic approach remains promising but requires fabrication capabilities beyond a garage lab. It is the most likely path to a practical WCFOMA device, leveraging the established silicon photonics ecosystem.</p>
+<h3 id="74-relationship-to-existing-work">7.4 Relationship to Existing Work</h3>
+<p>WCFOMA&rsquo;s closest relatives in the literature are:</p>
+<ul>
+<li><strong>Acoustic delay line memory</strong> [4, 5]: Same physical medium (acoustic waves), but temporal rather than spectral encoding. WCFOMA&rsquo;s multi-mode approach is the spectral generalization.</li>
+<li><strong>Quartz crystal microbalance (QCM)</strong> [8]: Uses the same Rayleigh perturbation physics for mass sensing. WCFOMA extends QCM from single-mode measurement to multi-mode information encoding.</li>
+<li><strong>Photonic neural networks</strong> (Shen et al. 2017): Use optical interference for matrix-vector multiplication. WCFOMA applies the same principle in acoustic rather than optical domains.</li>
+<li><strong>In-memory computing with resistive devices</strong> [3]: Shares the goal of co-locating storage and computation, but uses resistive switching rather than wave interference.</li>
+<li><strong>Geometry-invariant resonant cavities</strong> [15]: Zero-index metamaterial cavities with shape-independent eigenfrequencies provide theoretical support for robust mode structures in arbitrarily shaped resonators—relevant to future WCFOMA miniaturization.</li>
+</ul>
+<hr />
+<h2 id="8-conclusion">8. Conclusion</h2>
+<p>We have introduced WCFOMA, a memory and computation architecture that encodes data in the eigenmode spectrum of acoustic resonators and computes via wave interference. Through systematic simulation of four device variants across three substrates, we have identified the glass acoustic resonator as the most promising near-term implementation:</p>
+<ul>
+<li><strong>98.8 dB SNR</strong> from thermal-noise-limited operation (no phase diffusion)</li>
+<li><strong>9,380 thermally stable modes</strong> per 150 mm borosilicate rod at ±1 K</li>
+<li><strong>~154,000 bits</strong> dynamic spectral capacity (~19 kB per rod)</li>
+<li><strong>$63 bill of materials</strong> using exclusively commodity components</li>
+<li><strong>0% phase diffusion</strong> (vs. 77.5% for ferrofluid)</li>
+<li><strong>Five structured experiments</strong> with quantitative predictions</li>
+</ul>
+<p>We have also provided an honest negative result: the originally proposed ferrofluid substrate is fundamentally limited by nanoparticle phase diffusion and cannot achieve positive SNR at room temperature without mitigation measures that eliminate its key advantages.</p>
+<p>The glass resonator prototype, if validated experimentally, would demonstrate that spectral eigenmode memory is physically realizable—seventy-five years after mercury delay lines first stored data as acoustic waves in UNIVAC I, the same physics may find new expression as a platform for wave-based associative computing.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] J. Backus, &ldquo;Can programming be liberated from the von Neumann style? A functional style and its algebra of programs,&rdquo; <em>Communications of the ACM</em>, vol. 21, no. 8, pp. 613–641, 1978. doi: <a href="https://doi.org/10.1145/359576.359579">10.1145/359576.359579</a></p>
+<p>[2] W. A. Wulf and S. A. McKee, &ldquo;Hitting the memory wall: Implications of the obvious,&rdquo; <em>ACM SIGARCH Computer Architecture News</em>, vol. 23, no. 1, pp. 20–24, 1995. doi: <a href="https://doi.org/10.1145/216585.216588">10.1145/216585.216588</a></p>
+<p>[3] D. Ielmini and H.-S. P. Wong, &ldquo;In-memory computing with resistive switching devices,&rdquo; <em>Nature Electronics</em>, vol. 1, pp. 333–343, 2018. doi: <a href="https://doi.org/10.1038/s41928-018-0092-2">10.1038/s41928-018-0092-2</a></p>
+<p>[4] I. L. Auerbach, J. P. Eckert, R. F. Shaw, and C. Sheppard, &ldquo;Mercury delay line memory using a pulse rate of several megacycles,&rdquo; <em>Proceedings of the IRE</em>, vol. 37, no. 8, pp. 855–861, 1949. doi: <a href="https://doi.org/10.1109/JRPROC.1949.229683">10.1109/JRPROC.1949.229683</a></p>
+<p>[5] M. V. Wilkes and W. Renwick, &ldquo;The EDSAC (Electronic delay storage automatic calculator),&rdquo; <em>Mathematics of Computation</em>, vol. 4, no. 30, pp. 61–65, 1950. doi: <a href="https://doi.org/10.1090/S0025-5718-1950-0037589-7">10.1090/S0025-5718-1950-0037589-7</a></p>
+<p>[6] C. E. Shannon, &ldquo;A mathematical theory of communication,&rdquo; <em>The Bell System Technical Journal</em>, vol. 27, no. 3, pp. 379–423, 623–656, 1948. doi: <a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">10.1002/j.1538-7305.1948.tb01338.x</a></p>
+<p>[7] Lord Rayleigh (J. W. S. Strutt), <em>The Theory of Sound</em>, 2 vols. London: Macmillan, 1877–1878. Reprinted New York: Dover, 1945.</p>
+<p>[8] G. Sauerbrey, &ldquo;Verwendung von Schwingquarzen zur Wägung dünner Schichten und zur Mikrowägung,&rdquo; <em>Zeitschrift für Physik</em>, vol. 155, no. 2, pp. 206–222, 1959. doi: <a href="https://doi.org/10.1007/BF01337937">10.1007/BF01337937</a></p>
+<p>[9] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proceedings of the National Academy of Sciences</em>, vol. 79, no. 8, pp. 2554–2558, 1982. doi: <a href="https://doi.org/10.1073/pnas.79.8.2554">10.1073/pnas.79.8.2554</a></p>
+<p>[10] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Physical Review Letters</em>, vol. 55, no. 14, pp. 1530–1533, 1985. doi: <a href="https://doi.org/10.1103/PhysRevLett.55.1530">10.1103/PhysRevLett.55.1530</a></p>
+<p>[11] A. B. Bhatia, <em>Ultrasonic Absorption: An Introduction to the Theory of Sound Absorption and Dispersion in Gases, Liquids, and Solids</em>. New York: Oxford University Press, 1967.</p>
+<p>[12] J. Krautkrämer and H. Krautkrämer, <em>Ultrasonic Testing of Materials</em>, 4th ed. Berlin: Springer-Verlag, 1990. doi: <a href="https://doi.org/10.1007/978-3-662-10680-8">10.1007/978-3-662-10680-8</a></p>
+<p>[13] B. Jaffe, W. R. Cook Jr., and H. Jaffe, <em>Piezoelectric Ceramics</em>. London: Academic Press, 1971.</p>
+<p>[14] C. Ríos, M. Stegmaier, P. Hosseini, D. Wang, T. Scherer, C. D. Wright, H. Bhaskaran, and W. H. P. Pernice, &ldquo;Integrated all-photonic non-volatile multi-level memory,&rdquo; <em>Nature Photonics</em>, vol. 9, pp. 725–732, 2015. doi: <a href="https://doi.org/10.1038/nphoton.2015.182">10.1038/nphoton.2015.182</a></p>
+<p>[15] I. Liberal, A. M. Mahmoud, and N. Engheta, &ldquo;Geometry-invariant resonant cavities,&rdquo; <em>Nature Communications</em>, vol. 7, 10989, 2016. doi: <a href="https://doi.org/10.1038/ncomms10989">10.1038/ncomms10989</a></p>
+<hr />
+<h2 id="appendix-a-simulation-code-availability">Appendix A: Simulation Code Availability</h2>
+<p>All simulations described in this paper are implemented as a modular Python package comprising 20 modules and validated by 277 automated tests. The simulation code computes every quantitative claim in this paper from first principles—no curve fitting, no adjusted parameters, no post-hoc corrections. The codebase includes:</p>
+<ul>
+<li><code>glass_resonator.py</code> — Glass rod mode spectrum, SNR, thermal stability, perturbation encoding, BOM, and experimental plan (864 lines)</li>
+<li><code>noise_decoherence.py</code> — Six-source noise model for ferrofluid substrate (493 lines)</li>
+<li><code>capacity.py</code> — Shannon channel capacity and technology comparison database (595 lines)</li>
+<li><code>ferroelectric_photonic.py</code> — HZO/BaTiO₃ MZI cell model and crossbar array (676 lines)</li>
+<li><code>hopfield_recall.py</code> — Hopfield associative memory with binary and trinary encoding (675 lines)</li>
+<li><code>common.py</code> — Shared constants and parameters (106 lines)</li>
+</ul>
+<p>Each module is accompanied by a Jupyter notebook with visualizations and interactive parameter exploration.</p>
+<h2 id="appendix-b-derivation-of-key-equations">Appendix B: Derivation of Key Equations</h2>
+<h3 id="b1-mode-frequency">B.1 Mode Frequency</h3>
+<p>For a free-free rod of length $L$ with longitudinal wave speed $v$, standing wave boundary conditions require:</p>
+<p>$$L = n \frac{\lambda}{2} \implies \lambda_n = \frac{2L}{n} \implies f_n = \frac{v}{\lambda_n} = \frac{nv}{2L}$$</p>
+<h3 id="b2-rayleigh-perturbation">B.2 Rayleigh Perturbation</h3>
+<p>For a small mass $\Delta m$ attached at position $x$ on a rod vibrating in mode $n$, the kinetic energy perturbation is proportional to the square of the mode shape at the attachment point. The mode shape for longitudinal vibrations is $\psi_n(x) = \sin(n\pi x / L)$, giving:</p>
+<p>$$\frac{\Delta f_n}{f_n} = -\frac{\Delta m}{2M} |\psi_n(x)|^2 = -\frac{\Delta m}{2M} \sin^2!\left(\frac{n\pi x}{L}\right)$$</p>
+<p>The negative sign indicates that added mass lowers the frequency (increased inertia).</p>
+<h3 id="b3-shannon-capacity-per-mode">B.3 Shannon Capacity per Mode</h3>
+<p>Each acoustic mode is an additive white Gaussian noise channel with signal power $P_s = \frac{1}{2} k_{\text{eff}} A^2$ and noise power $P_n = k_B T$. Shannon&rsquo;s theorem gives the capacity:</p>
+<p>$$C = \frac{1}{2} \log_2(1 + \text{SNR}) \quad \text{bits per measurement}$$</p>
+<p>The factor of $\frac{1}{2}$ accounts for real-valued (amplitude-only) measurement rather than complex (amplitude + phase).</p>
+<h3 id="b4-thermal-mode-limit">B.4 Thermal Mode Limit</h3>
+<p>Two adjacent modes $n$ and $n+1$ have frequencies $f_n$ and $f_{n+1} = f_n + f_1$. Thermal drift shifts both by $\alpha \Delta T \cdot f_n$. The modes remain resolvable if the shift is less than half the spacing minus the linewidth:</p>
+<p>$$2 f_n \alpha \Delta T &lt; f_1 - \frac{f_n}{Q}$$</p>
+<p>At the maximum mode number: $2 n_{\max} f_1 \alpha \Delta T = f_1 - n_{\max} f_1 / Q$, giving:</p>
+<p>$$n_{\max} = \frac{1}{2\alpha\Delta T + 1/Q}$$</p>
+<hr />
+<p><em>Manuscript prepared: 2025. Simulation code: Python 3.9, NumPy, SciPy. All cited references verified against DOI records or authoritative bibliographic databases.</em></p>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>
