@@ -17,3 +17,9 @@
 #   capacity          - Information-theoretic capacity & tech comparison
 #   meep_fdtd         - MIT Meep FDTD scaffolding
 #   common            - Shared parameters, constants, and utilities
+#
+# Phase 4 — Original-corpus-derived modules:
+#   hopfield_recall       - Hopfield/Ising associative recall (substrate-independent)
+#   ferroelectric_photonic - Ferroelectric MZI photonic cell model
+#   photothermal_gating   - Photothermal viscosity gating for ferrofluid
+#   forced_oscillation    - Forced-oscillation selective write/erase
