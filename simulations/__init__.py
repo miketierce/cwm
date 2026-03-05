@@ -23,3 +23,6 @@
 #   ferroelectric_photonic - Ferroelectric MZI photonic cell model
 #   photothermal_gating   - Photothermal viscosity gating for ferrofluid
 #   forced_oscillation    - Forced-oscillation selective write/erase
+#
+# Phase 5 — Glass acoustic resonator (garage-scale prototype):
+#   glass_resonator       - Glass rod eigenmode memory + perturbation encoding
