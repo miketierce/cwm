@@ -214,6 +214,62 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 - **Verdict: NOT A KILL** — architecture works under achievable conditions, but paper defaults need revision
 - 128 tests passing (102 + 26 new mitigation tests)
 
+##### Phase 3 Simulation: Information-Theoretic Capacity & Technology Benchmarking
+
+**Date:** 2026-03-04
+
+###### Shannon Capacity Analysis (notebook 10, `simulations/capacity.py`)
+
+- **Paper asserts "10 bits/mode" without derivation — Shannon says otherwise**
+- Applied $b = \frac{1}{2} \log_2(1 + \text{SNR})$ per mode, $C = B \log_2(1 + \text{SNR})$ per channel
+- Paper's 10 bits/mode requires SNR ≈ 60 dB — never stated or justified
+
+| Configuration                             | SNR (mode 1) | Bits/mode | Bits/cell | Paper overestimate |
+| ----------------------------------------- | ------------ | --------- | --------- | ------------------ |
+| Baseline (default)                        | −6.5 dB      | 0.1       | 1.5       | 68×                |
+| Mitigated (gel η×100 + 10⁸ ph)            | 13.5 dB      | 2.3       | 22.8      | 4.4×               |
+| Aggressive (gel η×1000 + 10⁹ ph + Q=1000) | 24 dB        | 3.9       | 39.1      | 2.6×               |
+
+###### Storage Density Reality Check
+
+- Paper claims 1–10 Tb/cm³
+- Mitigated: **0.023 Tb/cm³** (44–439× below paper's range)
+- Aggressive: **0.039 Tb/cm³** (26–256× below)
+- Even at Q=100+ with many modes, density is 10–100× below paper claims
+
+###### Timing & Bandwidth (first numbers — paper had NONE)
+
+- Write latency: 14 ns (acoustic propagation — competitive with DRAM)
+- Read latency: 1 µs (coherent integration time — comparable to Flash)
+- Cycle time: ~3.3 µs (dominated by ring-down)
+- Bandwidth: 45.5 Mb/s (mitigated) — respectable for non-volatile
+
+###### Technology Comparison
+
+| Technology           | Energy [pJ] | Density [Tb/cm³] | Read [ns] | Compute     |
+| -------------------- | ----------- | ---------------- | --------- | ----------- |
+| DRAM (DDR5)          | 3           | 0.01             | 14        | none        |
+| NAND Flash           | 1000        | 1.0              | 25,000    | none        |
+| PCM/3DXP             | 10          | 0.1              | 50        | partial     |
+| STT-MRAM             | 1           | 0.01             | 10        | partial     |
+| ReRAM                | 0.1         | 0.1              | 10        | partial     |
+| **WCFOMA mitigated** | **10**      | **0.023**        | **1000**  | **unified** |
+
+**WCFOMA sits between DRAM and PCM** in energy–density space.
+The paper's "10–100× improvement" claim is **NOT SUPPORTED** — competitive but not transformative.
+The unique "unified compute" locality may have niche value for in-memory computing.
+
+###### Updated Claims Scorecard (Phase 3)
+
+| Claim                 | Verdict          | Detail                                                    |
+| --------------------- | ---------------- | --------------------------------------------------------- |
+| 10 bits/mode          | ❌ OVERESTIMATE  | 2.3 b/mode mitigated (4.4×), 3.9 b/mode aggressive (2.6×) |
+| 1–10 Tb/cm³ density   | ❌ OVERESTIMATE  | 0.023 Tb/cm³ mitigated (44–439× below)                    |
+| "10–100× improvement" | ⚠️ NOT SUPPORTED | Competitive but no clear order-of-magnitude advantage     |
+| fJ per operation      | ❌ REFUTED       | ~10 pJ system-level (mitigated), physics-only ~fJ         |
+| No latency numbers    | ✅ GAP FILLED    | Write 14 ns, Read 1 µs, Cycle 3.3 µs                      |
+| No bandwidth analysis | ✅ GAP FILLED    | 45.5 Mb/s per cell (mitigated)                            |
+
 ---
 
 ## Phase 2: Benchtop Prototype A (2026-2027)
@@ -225,14 +281,27 @@ Build the macro-scale ferrofluid resonator (paper Section 4.1) and measure real 
 ### Hardware BOM (< $1,000)
 
 - Commercial ferrofluid (e.g., Ferrotec EFH series)
+- **Gel-immobilized nanoparticles** (η ≥ 100× baseline) — required for phase diffusion mitigation
 - Shear-thickening carrier fluid (cornstarch-based or commercial STF)
 - 3D-printed ZIM structures (Dirac-cone pillar arrays)
 - Cylindrical cavity (1-5 cm, machined or 3D-printed)
 - EM excitation coils (100-500 turns, 0.1-1 A)
+- **High-photon-count optical readout** (≥10⁸ photons/measurement) — required for shot noise mitigation
 - Faraday rotation readout (HeNe laser + polarizer + photodiode)
 - Inductive pickup coils (secondary readout)
 - Function generator + oscilloscope
 - Temperature-controlled enclosure (Peltier + PID)
+
+### Design Requirements from Simulation (Phase 2b + 3)
+
+| Parameter             | Minimum Viable                   | Rationale                         |
+| --------------------- | -------------------------------- | --------------------------------- |
+| Viscosity (effective) | η ≥ 1 Pa·s (100× baseline)       | Phase diffusion mitigation        |
+| Photon count          | ≥ 10⁸ per measurement            | Shot noise floor below signal     |
+| Cavity size           | 10–50 µm (or larger for bench)   | Density–SNR tradeoff              |
+| Energy budget         | ~10 pJ per access (system-level) | Honest framing; NOT fJ            |
+| Target bits/cell      | ~20–40 (not 100)                 | Shannon-limited at achievable SNR |
+| Target density        | ~0.02 Tb/cm³ (not 1–10)          | Realistic at mitigated parameters |
 
 ### Key Measurements
 

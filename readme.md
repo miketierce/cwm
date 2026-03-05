@@ -2,9 +2,9 @@
 
 **A falsification-first research project testing whether information can be stored, computed on, and secured as resonant wave configurations in physical media.**
 
-[![Status: Phase 2 Simulation](https://img.shields.io/badge/Status-Phase%202%20Simulation-blue)]()
-[![Claims: 7 Confirmed · 1 Plausible · 1 Refuted](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%201%20Refuted-orange)]()
-[![Tests: 128 Passing](https://img.shields.io/badge/Tests-128%20Passing-success)]()
+[![Status: Phase 3 Capacity Analysis](https://img.shields.io/badge/Status-Phase%203%20Capacity%20Analysis-blue)]()
+[![Claims: 7 Confirmed · 1 Plausible · 4 Overestimates](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%204%20Overestimates-orange)]()
+[![Tests: 155 Passing](https://img.shields.io/badge/Tests-155%20Passing-success)]()
 [![Paper: v9](<https://img.shields.io/badge/Paper-v9%20(Jan%202026)-green>)]()
 
 ## What Is This?
@@ -45,6 +45,7 @@ wcfoma/
 │   ├── coupled_physics.py      # Coupled acoustic/EM/thermal SVEA simulation
 │   ├── noise_decoherence.py    # 5-source noise budget & mode lifetime analysis
 │   ├── mitigations.py          # Phase diffusion mitigation analysis
+│   ├── capacity.py             # Shannon capacity & technology comparison
 │   └── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
 ├── experiments/                # Structured experiment runners
 │   ├── exp01_mode_persistence.py
@@ -65,7 +66,8 @@ wcfoma/
 │   ├── 06_ferrofluid_characterization.ipynb  # Ferrofluid material properties
 │   ├── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
 │   ├── 08_coupled_decoherence.ipynb   # Coupled physics & noise/decoherence analysis
-│   └── 09_mitigation_analysis.ipynb   # Phase diffusion mitigation strategies
+│   ├── 09_mitigation_analysis.ipynb   # Phase diffusion mitigation strategies
+│   └── 10_capacity_scaling_comparison.ipynb  # Shannon capacity, scaling laws, tech comparison
 ├── prototypes/                 # Hardware prototype documentation
 │   ├── prototype_a/            # Macro-scale ferrofluid resonator (< $1k)
 │   ├── prototype_b/            # Micro-scale fiber-integrated cells
@@ -77,12 +79,13 @@ wcfoma/
 │   ├── ROADMAP.md              # Phased research roadmap with kill criteria
 │   ├── CONTRIBUTING.md         # How to contribute
 │   └── PROTOCOLS.md            # Experiment protocols
-├── tests/                      # Unit & integration tests (128 passing)
+├── tests/                      # Unit & integration tests (155 passing)
 │   ├── test_simulations.py     # Phase 0 simulation tests (18)
 │   ├── test_phase1.py          # Phase 1a module tests (29)
 │   ├── test_phase1b.py         # Phase 1b module tests (23)
 │   ├── test_phase2.py          # Phase 2 coupled/noise tests (32)
-│   └── test_mitigations.py     # Phase 2b mitigation tests (26)
+│   ├── test_mitigations.py     # Phase 2b mitigation tests (26)
+│   └── test_capacity.py        # Phase 3 capacity/comparison tests (27)
 ├── requirements.txt
 ├── pyproject.toml
 └── readme.md
@@ -105,9 +108,9 @@ python -m experiments.exp03_dilatancy_tamper
 python -m experiments.exp04_thermal_stability
 ```
 
-## Current Status: Phase 2 Simulation
+## Current Status: Phase 3 Capacity Analysis
 
-Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Coupled multiphysics and noise modeling reveal a **critical risk**.
+Claims validation complete (7 confirmed, 1 plausible, 4 overestimates). Shannon information-theoretic analysis quantifies the gap between paper claims and physical reality.
 
 | Claim                      | Paper Value  | Simulated            | Status                    |
 | -------------------------- | ------------ | -------------------- | ------------------------- |
@@ -126,6 +129,8 @@ Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Coupled multip
 > **Key risk:** Ferrofluid Q factor remains unmeasured. Sensitivity analysis shows cell length L has the largest elasticity (−2.35). See [notebook 04](notebooks/04_sensitivity_analysis.ipynb) for the full risk assessment.
 
 > **🔴 CRITICAL (Phase 2):** Nanoparticle Brownian phase diffusion dominates the noise budget at **77.5%**, producing **SNR = −6.5 dB** and **0 reliable modes** at default micro-cell (10 µm)³ parameters. The paper does not model this noise source. **However, mitigation analysis (notebook 09) shows the architecture IS viable** with gel immobilization (η×100) + improved optical readout (≥10⁸ photons), achieving SNR > 13 dB and 10 reliable modes at ~10 pJ total energy. See [ROADMAP.md](docs/ROADMAP.md) for full analysis.
+
+> **📊 Phase 3 — Shannon Capacity (notebook 10):** The paper's "10 bits/mode" requires 60 dB SNR — never stated or justified. At mitigated SNR (13.5 dB), Shannon gives **2.3 bits/mode** (4.4× overestimate). Density drops from paper's 1–10 Tb/cm³ to **0.023 Tb/cm³** (44–439× below). WCFOMA sits between DRAM and PCM in energy–density space — competitive but NOT the "10–100× improvement" claimed. The "unified" compute locality remains the architecture's unique value proposition.
 
 ## Roadmap
 
