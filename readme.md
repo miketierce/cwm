@@ -2,9 +2,9 @@
 
 **A falsification-first research project testing whether information can be stored, computed on, and secured as resonant wave configurations in physical media.**
 
-[![Status: Phase 1 In Progress](https://img.shields.io/badge/Status-Phase%201%20In%20Progress-blue)]()
+[![Status: Phase 2 Simulation](https://img.shields.io/badge/Status-Phase%202%20Simulation-blue)]()
 [![Claims: 7 Confirmed · 1 Plausible · 1 Refuted](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%201%20Refuted-orange)]()
-[![Tests: 70 Passing](https://img.shields.io/badge/Tests-70%20Passing-success)]()
+[![Tests: 102 Passing](https://img.shields.io/badge/Tests-102%20Passing-success)]()
 [![Paper: v9](<https://img.shields.io/badge/Paper-v9%20(Jan%202026)-green>)]()
 
 ## What Is This?
@@ -42,6 +42,8 @@ wcfoma/
 │   ├── interference.py         # Multi-mode interference & associative recall
 │   ├── convergence.py          # Grid convergence study (Richardson extrapolation)
 │   ├── cmos_interface.py       # CMOS energy budget model (4 tech nodes)
+│   ├── coupled_physics.py      # Coupled acoustic/EM/thermal SVEA simulation
+│   ├── noise_decoherence.py    # 5-source noise budget & mode lifetime analysis
 │   └── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
 ├── experiments/                # Structured experiment runners
 │   ├── exp01_mode_persistence.py
@@ -60,7 +62,8 @@ wcfoma/
 │   ├── 04_sensitivity_analysis.ipynb # Parameter elasticity & risk assessment
 │   ├── 05_interference_recall.ipynb  # Multi-mode associative recall demo
 │   ├── 06_ferrofluid_characterization.ipynb  # Ferrofluid material properties
-│   └── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
+│   ├── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
+│   └── 08_coupled_decoherence.ipynb   # Coupled physics & noise/decoherence analysis
 ├── prototypes/                 # Hardware prototype documentation
 │   ├── prototype_a/            # Macro-scale ferrofluid resonator (< $1k)
 │   ├── prototype_b/            # Micro-scale fiber-integrated cells
@@ -72,10 +75,11 @@ wcfoma/
 │   ├── ROADMAP.md              # Phased research roadmap with kill criteria
 │   ├── CONTRIBUTING.md         # How to contribute
 │   └── PROTOCOLS.md            # Experiment protocols
-├── tests/                      # Unit & integration tests (70 passing)
-│   ├── test_simulations.py     # Phase 0 simulation tests
-│   ├── test_phase1.py          # Phase 1a module tests
-│   └── test_phase1b.py         # Phase 1b module tests
+├── tests/                      # Unit & integration tests (102 passing)
+│   ├── test_simulations.py     # Phase 0 simulation tests (18)
+│   ├── test_phase1.py          # Phase 1a module tests (29)
+│   ├── test_phase1b.py         # Phase 1b module tests (23)
+│   └── test_phase2.py          # Phase 2 coupled/noise tests (32)
 ├── requirements.txt
 ├── pyproject.toml
 └── readme.md
@@ -98,9 +102,9 @@ python -m experiments.exp03_dilatancy_tamper
 python -m experiments.exp04_thermal_stability
 ```
 
-## Current Status: Phase 1 In Progress
+## Current Status: Phase 2 Simulation
 
-Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Advanced simulation underway.
+Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Coupled multiphysics and noise modeling reveal a **critical risk**.
 
 | Claim                      | Paper Value  | Simulated            | Status                    |
 | -------------------------- | ------------ | -------------------- | ------------------------- |
@@ -117,6 +121,8 @@ Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Advanced simul
 > **Critical finding (Phase 1b):** The cavity physics IS fJ-scale (excitation = 2.6 fJ), but the CMOS readout interface — primarily the ADC at 1000 fJ — pushes total system energy to ~1.1 pJ. This is still 10-100× below DRAM, but the paper's "fJ" headline needs qualification. See [notebook 07](notebooks/07_convergence_energy_mc.ipynb) and [ROADMAP.md](docs/ROADMAP.md) for mitigation strategies.
 
 > **Key risk:** Ferrofluid Q factor remains unmeasured. Sensitivity analysis shows cell length L has the largest elasticity (−2.35). See [notebook 04](notebooks/04_sensitivity_analysis.ipynb) for the full risk assessment.
+
+> **🔴 CRITICAL (Phase 2):** Nanoparticle Brownian phase diffusion dominates the noise budget at **77.5%**, producing **SNR = −6.5 dB** and **0 reliable modes** at default micro-cell (10 µm)³ parameters. The paper does not model this noise source. This is the **#1 risk to the architecture** — it must be mitigated (gel immobilization, larger cavity, or higher excitation) before any experimental prototype makes sense. See [notebook 08](notebooks/08_coupled_decoherence.ipynb) and [ROADMAP.md](docs/ROADMAP.md) for analysis and mitigation strategies.
 
 ## Roadmap
 

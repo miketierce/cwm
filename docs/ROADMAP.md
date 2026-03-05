@@ -76,7 +76,7 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 | Task                      | Tool/Method                              | Success Metric                                | Status                                                    |
 | ------------------------- | ---------------------------------------- | --------------------------------------------- | --------------------------------------------------------- |
 | Full FDTD with Meep       | [MIT Meep](https://meep.readthedocs.io/) | Validate Q > 10³ in ferrofluid-like media     | 🟡 Scaffolded (`simulations/meep_fdtd.py`)                |
-| Multiphysics coupling     | COMSOL or custom                         | Shear + EM + thermal coupled correctly        | ⬜ Not started                                            |
+| Multiphysics coupling     | SVEA coupled-mode ODE                    | Shear + EM + thermal coupled correctly        | ✅ Done (`simulations/coupled_physics.py`, notebook 08)   |
 | Ferrofluid material model | Literature + fitting                     | Accurate dispersion relation v(ω, T, B)       | ✅ Done (`simulations/ferrofluid.py`, notebook 06)        |
 | Multi-mode interference   | Beam propagation method                  | Demonstrate associative recall in simulation  | ✅ Done (`simulations/interference.py`, notebook 05)      |
 | CMOS interface modeling   | Component-level energy budget            | Viable readout SNR at projected energy budget | ✅ Done (`simulations/cmos_interface.py`, notebook 07) ⚠️ |
@@ -152,8 +152,54 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 
 1. 🔴 Install Meep → resolve geometry invariance (PLAUSIBLE → CONFIRMED/REFUTED)
 2. 🔴 Address energy claim: prototype amortized ADC model or revise paper language
-3. 🟡 Multiphysics coupling (acoustic-EM-thermal)
-4. 🟡 Noise & decoherence model (mode lifetime under realistic conditions)
+
+#### Phase 2 Simulation Findings (Coupled Physics + Noise)
+
+**Date:** 2026-03-04
+
+##### ✅ Coupled Multiphysics (notebook 08, `simulations/coupled_physics.py`)
+
+- **SVEA (Slowly-Varying Envelope Approximation)** eliminates MHz/GHz stiffness
+- 5 acoustic + 3 EM modes, κ_ae = 10⁻³, 500 µs simulation
+- **95.1% energy retained** — excellent coherence
+- Acoustic → EM transfer: negligible (large acoustic-magnon detuning)
+- Thermal self-heating: 0.01 mK — completely negligible
+- Coupling strength scan: EM energy scales as κ², coherence unaffected
+- Thermal feedback: drift < 1% for ΔT up to ±50 K
+
+##### 🔴 CRITICAL: Phase Diffusion Noise — POTENTIAL KILL (notebook 08, `simulations/noise_decoherence.py`)
+
+- **Brownian motion of ferrofluid nanoparticles creates phase noise**
+- Noise budget at 70 MHz fundamental:
+  - Phase diffusion: **77.5%** ← dominant
+  - Shot noise: 22.5%
+  - Thermal/1/f/ADC: < 0.1% combined
+- **SNR = −6.5 dB at default micro-cell (10 µm)³** → 0 reliable modes
+- Even at Q = 10,000: still 0 reliable modes
+- **The paper does NOT model nanoparticle Brownian noise**
+- **This is the #1 risk to the entire architecture**
+
+##### Mitigations to Investigate
+
+1. **Gel-immobilized nanoparticles** — reduce Brownian diffusion by 10²-10⁴×
+2. **Larger cavity volume** — macro-cell (1 mm)³ has 10⁹× more particles, better averaging
+3. **Higher excitation energy** — sacrifice fJ claim for higher signal amplitude
+4. **Experimental calibration** — actual phase noise may be lower than model (model is conservative)
+5. **Ensemble readout** — average over many cells for noise reduction
+
+##### Phase 2 Kill Criteria Assessment
+
+| Check                   | Result  | Notes                          |
+| ----------------------- | ------- | ------------------------------ |
+| Coherence > 1 µs        | ✅ PASS | 500 µs at η=50                 |
+| Energy retained > 50%   | ✅ PASS | 95.1% at 500 µs                |
+| Mode crosstalk < 10%    | ❌ FAIL | Need mode-selective excitation |
+| SNR > 10 dB (all modes) | ❌ FAIL | −6.5 dB (phase diffusion)      |
+| BER < 1% (all modes)    | ❌ FAIL | 31.8% BER                      |
+| Lifetime > 1 µs         | ❌ FAIL | 0 µs (noise floor)             |
+| Reliable modes ≥ 5      | ❌ FAIL | 0 modes reliable               |
+
+**Overall: 2 PASS / 5 FAIL — Architecture at risk unless phase diffusion is mitigated**
 
 ---
 
