@@ -2,9 +2,9 @@
 
 **A falsification-first research project testing whether information can be stored, computed on, and secured as resonant wave configurations in physical media.**
 
-[![Status: Phase 0 Complete — Entering Phase 1](https://img.shields.io/badge/Status-Phase%200%20Complete%20→%20Phase%201-brightgreen)]()
-[![Claims: 8 Confirmed · 1 Plausible](https://img.shields.io/badge/Claims-8%20Confirmed%20·%201%20Plausible-blue)]()
-[![Tests: 47 Passing](https://img.shields.io/badge/Tests-47%20Passing-success)]()
+[![Status: Phase 1 In Progress](https://img.shields.io/badge/Status-Phase%201%20In%20Progress-blue)]()
+[![Claims: 7 Confirmed · 1 Plausible · 1 Refuted](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%201%20Refuted-orange)]()
+[![Tests: 70 Passing](https://img.shields.io/badge/Tests-70%20Passing-success)]()
 [![Paper: v9](<https://img.shields.io/badge/Paper-v9%20(Jan%202026)-green>)]()
 
 ## What Is This?
@@ -40,6 +40,8 @@ wcfoma/
 │   ├── sensitivity.py          # Parameter sensitivity sweeps & elasticity
 │   ├── ferrofluid.py           # Ferrofluid material model (Rosensweig)
 │   ├── interference.py         # Multi-mode interference & associative recall
+│   ├── convergence.py          # Grid convergence study (Richardson extrapolation)
+│   ├── cmos_interface.py       # CMOS energy budget model (4 tech nodes)
 │   └── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
 ├── experiments/                # Structured experiment runners
 │   ├── exp01_mode_persistence.py
@@ -57,7 +59,8 @@ wcfoma/
 │   ├── 03_thermal_analysis.ipynb     # Thermal drift sensitivity sweeps
 │   ├── 04_sensitivity_analysis.ipynb # Parameter elasticity & risk assessment
 │   ├── 05_interference_recall.ipynb  # Multi-mode associative recall demo
-│   └── 06_ferrofluid_characterization.ipynb  # Ferrofluid material properties
+│   ├── 06_ferrofluid_characterization.ipynb  # Ferrofluid material properties
+│   └── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
 ├── prototypes/                 # Hardware prototype documentation
 │   ├── prototype_a/            # Macro-scale ferrofluid resonator (< $1k)
 │   ├── prototype_b/            # Micro-scale fiber-integrated cells
@@ -69,9 +72,10 @@ wcfoma/
 │   ├── ROADMAP.md              # Phased research roadmap with kill criteria
 │   ├── CONTRIBUTING.md         # How to contribute
 │   └── PROTOCOLS.md            # Experiment protocols
-├── tests/                      # Unit & integration tests (47 passing)
+├── tests/                      # Unit & integration tests (70 passing)
 │   ├── test_simulations.py     # Phase 0 simulation tests
-│   └── test_phase1.py          # Phase 1 module tests
+│   ├── test_phase1.py          # Phase 1a module tests
+│   └── test_phase1b.py         # Phase 1b module tests
 ├── requirements.txt
 ├── pyproject.toml
 └── readme.md
@@ -94,23 +98,25 @@ python -m experiments.exp03_dilatancy_tamper
 python -m experiments.exp04_thermal_stability
 ```
 
-## Current Status: Phase 0 → Phase 1 Transition
+## Current Status: Phase 1 In Progress
 
-Claims validation complete (8 confirmed, 1 plausible). Proceeding to advanced simulation.
+Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Advanced simulation underway.
 
-| Claim                      | Paper Value  | Simulated       | Status       |
-| -------------------------- | ------------ | --------------- | ------------ |
-| ZIM coherence extension    | ~2×          | 2.00×           | ✅ Confirmed |
-| 1D frequency drift (γ=0.5) | ~33%         | 33.33%          | ✅ Confirmed |
-| 3D frequency drift (γ=0.3) | ~7%          | ~7%             | ✅ Confirmed |
-| Max modes without ZIM      | ~41          | 41              | ✅ Confirmed |
-| Max modes with ZIM         | ~322         | 322             | ✅ Confirmed |
-| Storage density (ZIM)      | ~3.22 Tb/cm³ | 3.22 Tb/cm³     | ✅ Confirmed |
-| Geometry invariance        | <1% shift    | 0% (analytical) | 🔶 Plausible |
-| Energy per operation       | fJ range     | 24.6 fJ         | ✅ Confirmed |
-| Tamper detection (γ shift) | measurable   | 50%→33% shift   | ✅ Confirmed |
+| Claim                      | Paper Value  | Simulated            | Status                    |
+| -------------------------- | ------------ | -------------------- | ------------------------- |
+| ZIM coherence extension    | ~2×          | 2.00×                | ✅ Confirmed              |
+| 1D frequency drift (γ=0.5) | ~33%         | 33.33%               | ✅ Confirmed              |
+| 3D frequency drift (γ=0.3) | ~7%          | ~7%                  | ✅ Confirmed              |
+| Max modes without ZIM      | ~41          | 41                   | ✅ Confirmed              |
+| Max modes with ZIM         | ~322         | 322                  | ✅ Confirmed              |
+| Storage density (ZIM)      | ~3.22 Tb/cm³ | 3.22 Tb/cm³          | ✅ Confirmed              |
+| Geometry invariance        | <1% shift    | 0% (analytical)      | 🔶 Plausible              |
+| Energy per operation       | fJ range     | **1114 fJ ≈ 1.1 pJ** | ⚠️ Refuted (system-level) |
+| Excitation > thermal       | E >> k_BT    | 100× k_BT            | ✅ Confirmed              |
 
-> **Key finding:** The highest-risk parameter is ferrofluid Q factor (unmeasured). Sensitivity analysis shows cell length L has the largest elasticity (−2.35). See [notebook 04](notebooks/04_sensitivity_analysis.ipynb) for the full risk assessment.
+> **Critical finding (Phase 1b):** The cavity physics IS fJ-scale (excitation = 2.6 fJ), but the CMOS readout interface — primarily the ADC at 1000 fJ — pushes total system energy to ~1.1 pJ. This is still 10-100× below DRAM, but the paper's "fJ" headline needs qualification. See [notebook 07](notebooks/07_convergence_energy_mc.ipynb) and [ROADMAP.md](docs/ROADMAP.md) for mitigation strategies.
+
+> **Key risk:** Ferrofluid Q factor remains unmeasured. Sensitivity analysis shows cell length L has the largest elasticity (−2.35). See [notebook 04](notebooks/04_sensitivity_analysis.ipynb) for the full risk assessment.
 
 ## Roadmap
 
