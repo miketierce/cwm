@@ -1,0 +1,6 @@
+# ZIM structure design files for 3D printing
+# Dirac-cone pillar arrays per Phys. Rev. Applied 24, 034043 (2025)
+#
+# TODO: Add STL/STEP files for:
+# - Pillar array (100-400 nm features for micro-scale)
+# - Scaled-up version for Prototype A (mm-scale analog)
