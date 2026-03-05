@@ -24,10 +24,37 @@ Reproduce and extend the paper's simulation claims. Determine whether the theore
 
 ### Deliverables
 
-- [ ] All five experiments pass/fail documented with data
-- [ ] Claims validation table completed
-- [ ] Sensitivity analysis for each key parameter
-- [ ] Decision: proceed to Phase 1 or identify blocking issues
+- [x] All five experiments pass/fail documented with data
+- [x] Claims validation table completed (8 CONFIRMED, 1 PLAUSIBLE, 0 REFUTED)
+- [x] Sensitivity analysis for each key parameter (notebook 04)
+- [x] Decision: **PROCEED to Phase 1** — see rationale below
+
+### Phase 0 Decision: PROCEED ✅
+
+**Date:** 2026-03-04
+
+**Results summary:**
+| Experiment | Result | Kill Criterion Met? |
+|---|---|---|
+| E01 Mode Persistence | τ matches theory within 1% | No — PASS |
+| E02 ZIM Damping | 2.0× coherence gain (theory) | No — PASS |
+| E03 Dilatancy Tamper | 33.3% drift at γ=0.5 | No — PASS |
+| E04 Thermal Stability | 322 modes with ZIM | No — PASS |
+| E05 Geometry Invariance | Analytically 0% (Mie); FD solver too coarse | Inconclusive — PLAUSIBLE |
+
+**0 of 5 kill criteria triggered.** (Threshold was ≥3 to abort.)
+
+**Sensitivity analysis key findings:**
+
+- 🔴 **Q factor** is the #1 risk — unknown in real ferrofluid. If Q < 100, storage density drops below viability.
+- 🔴 **α (thermal drift)** is the #2 risk — assumed 0.0022/K from literature.
+- 🟡 ZIM damping factor and η are medium risk but tolerant of 40% error.
+- 🟢 ΔT, γ, L are engineering parameters with low sensitivity.
+
+**Blocking issues for Phase 1:**
+
+- Geometry invariance needs Meep/COMSOL validation (FD solver ill-conditioned at ε → 0).
+- Ferrofluid Q factor has no direct literature measurement — this is the first Phase 1 priority.
 
 ### Kill → Pivot
 
@@ -46,14 +73,16 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 
 ### Work Items
 
-| Task                      | Tool/Method                              | Success Metric                                |
-| ------------------------- | ---------------------------------------- | --------------------------------------------- |
-| Full FDTD with Meep       | [MIT Meep](https://meep.readthedocs.io/) | Validate Q > 10³ in ferrofluid-like media     |
-| Multiphysics coupling     | COMSOL or custom                         | Shear + EM + thermal coupled correctly        |
-| Ferrofluid material model | Literature + fitting                     | Accurate dispersion relation v(ω, T, B)       |
-| Multi-mode interference   | Beam propagation method                  | Demonstrate associative recall in simulation  |
-| CMOS interface modeling   | SPICE + analog frontend                  | Viable readout SNR at projected energy budget |
-| Scale grid to N≥20        | HPC / GPU compute                        | Discretization error < 1%                     |
+| Task                      | Tool/Method                              | Success Metric                                | Status                                                           |
+| ------------------------- | ---------------------------------------- | --------------------------------------------- | ---------------------------------------------------------------- |
+| Full FDTD with Meep       | [MIT Meep](https://meep.readthedocs.io/) | Validate Q > 10³ in ferrofluid-like media     | 🟡 Scaffolded (`simulations/meep_fdtd.py`)                       |
+| Multiphysics coupling     | COMSOL or custom                         | Shear + EM + thermal coupled correctly        | ⬜ Not started                                                   |
+| Ferrofluid material model | Literature + fitting                     | Accurate dispersion relation v(ω, T, B)       | ✅ Done (`simulations/ferrofluid.py`, notebook 06)               |
+| Multi-mode interference   | Beam propagation method                  | Demonstrate associative recall in simulation  | ✅ Done (`simulations/interference.py`, notebook 05)             |
+| CMOS interface modeling   | SPICE + analog frontend                  | Viable readout SNR at projected energy budget | ⬜ Not started                                                   |
+| Scale grid to N≥20        | HPC / GPU compute                        | Discretization error < 1%                     | 🟡 FD convergence study built (`meep_fdtd.fd_convergence_study`) |
+| Sensitivity analysis      | Parameter sweeps                         | Identify high-risk assumptions                | ✅ Done (`simulations/sensitivity.py`, notebook 04)              |
+| Grid convergence          | FD + Meep comparison                     | Error < 1% at operating resolution            | 🟡 FD done, Meep pending                                         |
 
 ### Kill Criteria
 
