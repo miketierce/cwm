@@ -201,6 +201,19 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 
 **Overall: 2 PASS / 5 FAIL — Architecture at risk unless phase diffusion is mitigated**
 
+##### ✅ Mitigation Analysis (notebook 09, `simulations/mitigations.py`)
+
+- **Key insight: TWO independent noise barriers** — phase diffusion AND shot noise must both be addressed
+- **No single mitigation** (gel alone, more photons alone, larger cavity alone) reaches SNR > 10 dB
+- **Minimum viable configurations** (all achieve 10 modes):
+  1. Gel η×100 + 10⁸ photons at 10 µm → SNR 13.5 dB, ~10 pJ energy
+  2. 50 µm cavity + 10⁸ photons (no gel) → SNR 14.2 dB, ~10 pJ energy
+  3. Gel η×10 + 50 µm + 10⁸ photons → SNR 18.9 dB, ~10 pJ energy
+- **Viability map** shows clear L-shaped boundary in (viscosity × photon) space
+- **Energy implication**: minimum viable ≈ 10 pJ (still 10-100× below DRAM)
+- **Verdict: NOT A KILL** — architecture works under achievable conditions, but paper defaults need revision
+- 128 tests passing (102 + 26 new mitigation tests)
+
 ---
 
 ## Phase 2: Benchtop Prototype A (2026-2027)

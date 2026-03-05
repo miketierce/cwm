@@ -4,7 +4,7 @@
 
 [![Status: Phase 2 Simulation](https://img.shields.io/badge/Status-Phase%202%20Simulation-blue)]()
 [![Claims: 7 Confirmed · 1 Plausible · 1 Refuted](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%201%20Refuted-orange)]()
-[![Tests: 102 Passing](https://img.shields.io/badge/Tests-102%20Passing-success)]()
+[![Tests: 128 Passing](https://img.shields.io/badge/Tests-128%20Passing-success)]()
 [![Paper: v9](<https://img.shields.io/badge/Paper-v9%20(Jan%202026)-green>)]()
 
 ## What Is This?
@@ -44,6 +44,7 @@ wcfoma/
 │   ├── cmos_interface.py       # CMOS energy budget model (4 tech nodes)
 │   ├── coupled_physics.py      # Coupled acoustic/EM/thermal SVEA simulation
 │   ├── noise_decoherence.py    # 5-source noise budget & mode lifetime analysis
+│   ├── mitigations.py          # Phase diffusion mitigation analysis
 │   └── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
 ├── experiments/                # Structured experiment runners
 │   ├── exp01_mode_persistence.py
@@ -63,7 +64,8 @@ wcfoma/
 │   ├── 05_interference_recall.ipynb  # Multi-mode associative recall demo
 │   ├── 06_ferrofluid_characterization.ipynb  # Ferrofluid material properties
 │   ├── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
-│   └── 08_coupled_decoherence.ipynb   # Coupled physics & noise/decoherence analysis
+│   ├── 08_coupled_decoherence.ipynb   # Coupled physics & noise/decoherence analysis
+│   └── 09_mitigation_analysis.ipynb   # Phase diffusion mitigation strategies
 ├── prototypes/                 # Hardware prototype documentation
 │   ├── prototype_a/            # Macro-scale ferrofluid resonator (< $1k)
 │   ├── prototype_b/            # Micro-scale fiber-integrated cells
@@ -75,11 +77,12 @@ wcfoma/
 │   ├── ROADMAP.md              # Phased research roadmap with kill criteria
 │   ├── CONTRIBUTING.md         # How to contribute
 │   └── PROTOCOLS.md            # Experiment protocols
-├── tests/                      # Unit & integration tests (102 passing)
+├── tests/                      # Unit & integration tests (128 passing)
 │   ├── test_simulations.py     # Phase 0 simulation tests (18)
 │   ├── test_phase1.py          # Phase 1a module tests (29)
 │   ├── test_phase1b.py         # Phase 1b module tests (23)
-│   └── test_phase2.py          # Phase 2 coupled/noise tests (32)
+│   ├── test_phase2.py          # Phase 2 coupled/noise tests (32)
+│   └── test_mitigations.py     # Phase 2b mitigation tests (26)
 ├── requirements.txt
 ├── pyproject.toml
 └── readme.md
@@ -122,7 +125,7 @@ Claims validation complete (7 confirmed, 1 plausible, 1 refuted). Coupled multip
 
 > **Key risk:** Ferrofluid Q factor remains unmeasured. Sensitivity analysis shows cell length L has the largest elasticity (−2.35). See [notebook 04](notebooks/04_sensitivity_analysis.ipynb) for the full risk assessment.
 
-> **🔴 CRITICAL (Phase 2):** Nanoparticle Brownian phase diffusion dominates the noise budget at **77.5%**, producing **SNR = −6.5 dB** and **0 reliable modes** at default micro-cell (10 µm)³ parameters. The paper does not model this noise source. This is the **#1 risk to the architecture** — it must be mitigated (gel immobilization, larger cavity, or higher excitation) before any experimental prototype makes sense. See [notebook 08](notebooks/08_coupled_decoherence.ipynb) and [ROADMAP.md](docs/ROADMAP.md) for analysis and mitigation strategies.
+> **🔴 CRITICAL (Phase 2):** Nanoparticle Brownian phase diffusion dominates the noise budget at **77.5%**, producing **SNR = −6.5 dB** and **0 reliable modes** at default micro-cell (10 µm)³ parameters. The paper does not model this noise source. **However, mitigation analysis (notebook 09) shows the architecture IS viable** with gel immobilization (η×100) + improved optical readout (≥10⁸ photons), achieving SNR > 13 dB and 10 reliable modes at ~10 pJ total energy. See [ROADMAP.md](docs/ROADMAP.md) for full analysis.
 
 ## Roadmap
 

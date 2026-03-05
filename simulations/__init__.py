@@ -13,5 +13,6 @@
 #   cmos_interface    - CMOS energy budget model (4 tech nodes)
 #   coupled_physics   - Coupled multiphysics (acoustic/EM/thermal)
 #   noise_decoherence - Noise sources & decoherence analysis
+#   mitigations       - Phase diffusion mitigation analysis
 #   meep_fdtd         - MIT Meep FDTD scaffolding
 #   common            - Shared parameters, constants, and utilities
