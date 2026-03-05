@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="scaleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#dbeafe"/>
+      <stop offset="100%" stop-color="#fecaca"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="720" height="320" fill="white" rx="4"/>
+  <text x="360" y="26" text-anchor="middle" font-size="13" font-weight="700" fill="#1a1a1a">Figure 5 · Scaling: Same Mode Count, Exploding Density</text>
+
+  <!-- ═══ TOP: Visual size comparison ═══ -->
+  <text x="30" y="52" font-size="10" font-weight="700" fill="#1e40af">(a) Resonator Size Comparison (to scale within each box)</text>
+
+  <!-- 150 mm (macro) -->
+  <rect x="30" y="62" width="200" height="85" rx="4" fill="#f8fafc" stroke="#d1d5db" stroke-width="0.8"/>
+  <rect x="40" y="82" width="180" height="8" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
+  <text x="130" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">150 mm × 6 mm</text>
+  <text x="130" y="108" text-anchor="middle" font-size="7" fill="#374151">154,000 bits</text>
+  <text x="130" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#6b7280">0.04 Gbit/cm³</text>
+  <text x="130" y="140" text-anchor="middle" font-size="7" fill="#6b7280">Macro prototype</text>
+
+  <!-- 1 mm (MEMS) -->
+  <rect x="260" y="62" width="200" height="85" rx="4" fill="#f8fafc" stroke="#d1d5db" stroke-width="0.8"/>
+  <!-- Tiny rod - 1.2px wide (1mm / 150mm * 180px) -->
+  <rect x="359" y="86" width="2" height="1" rx="0.5" fill="#3b82f6"/>
+  <circle cx="360" cy="86" r="6" fill="none" stroke="#ef4444" stroke-width="0.8" stroke-dasharray="2,1"/>
+  <text x="370" y="83" font-size="6" fill="#ef4444">← actual size at this scale</text>
+  <text x="360" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">1 mm × 40 µm</text>
+  <text x="360" y="108" text-anchor="middle" font-size="7" fill="#374151">120,000 bits</text>
+  <text x="360" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">95.5 Gbit/cm³</text>
+  <text x="360" y="140" text-anchor="middle" font-size="7" fill="#166534">2,400× denser</text>
+
+  <!-- 0.5 mm (advanced MEMS) -->
+  <rect x="490" y="62" width="200" height="85" rx="4" fill="#f8fafc" stroke="#d1d5db" stroke-width="0.8"/>
+  <rect x="589" y="86" width="1" height="0.5" rx="0.25" fill="#3b82f6"/>
+  <circle cx="590" cy="86" r="6" fill="none" stroke="#ef4444" stroke-width="0.8" stroke-dasharray="2,1"/>
+  <text x="590" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">0.5 mm × 20 µm</text>
+  <text x="590" y="108" text-anchor="middle" font-size="7" fill="#374151">115,000 bits</text>
+  <text x="590" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">734 Gbit/cm³</text>
+  <text x="590" y="140" text-anchor="middle" font-size="7" fill="#166534">18,400× denser</text>
+
+  <!-- Arrow: shrink -->
+  <text x="243" y="103" text-anchor="middle" font-size="14" fill="#ef4444">→</text>
+  <text x="243" y="118" text-anchor="middle" font-size="6" fill="#ef4444">150×</text>
+  <text x="243" y="126" text-anchor="middle" font-size="6" fill="#ef4444">smaller</text>
+
+  <text x="473" y="103" text-anchor="middle" font-size="14" fill="#ef4444">→</text>
+  <text x="473" y="118" text-anchor="middle" font-size="6" fill="#ef4444">2×</text>
+  <text x="473" y="126" text-anchor="middle" font-size="6" fill="#ef4444">smaller</text>
+
+  <!-- ═══ BOTTOM: Log-scale density chart ═══ -->
+  <text x="30" y="175" font-size="10" font-weight="700" fill="#1e40af">(b) Storage Density vs. Resonator Length (log–log)</text>
+
+  <!-- Chart area -->
+  <rect x="80" y="185" width="580" height="115" fill="#fafafa" stroke="#d1d5db" stroke-width="0.8"/>
+
+  <!-- Y-axis labels (density) -->
+  <text x="75" y="295" text-anchor="end" font-size="6.5" fill="#6b7280">0.01</text>
+  <text x="75" y="266" text-anchor="end" font-size="6.5" fill="#6b7280">1</text>
+  <text x="75" y="237" text-anchor="end" font-size="6.5" fill="#6b7280">100</text>
+  <text x="75" y="208" text-anchor="end" font-size="6.5" fill="#6b7280">10,000</text>
+  <text x="75" y="195" text-anchor="end" font-size="6.5" fill="#6b7280">Gbit/cm³</text>
+
+  <!-- Y-axis gridlines -->
+  <line x1="80" y1="295" x2="660" y2="295" stroke="#e5e7eb" stroke-width="0.5"/>
+  <line x1="80" y1="266" x2="660" y2="266" stroke="#e5e7eb" stroke-width="0.5"/>
+  <line x1="80" y1="237" x2="660" y2="237" stroke="#e5e7eb" stroke-width="0.5"/>
+  <line x1="80" y1="208" x2="660" y2="208" stroke="#e5e7eb" stroke-width="0.5"/>
+
+  <!-- X-axis labels (length) -->
+  <text x="120" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">0.1 mm</text>
+  <text x="235" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">0.5 mm</text>
+  <text x="310" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">1 mm</text>
+  <text x="425" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">5 mm</text>
+  <text x="500" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">10 mm</text>
+  <text x="620" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">150 mm</text>
+
+  <!-- SEM density curve (approximate log-log positions) -->
+  <!-- Points: 0.1mm=83000, 0.2mm=10900, 0.5mm=734, 1mm=95.5, 2mm=12, 10mm=0.1, 150mm=0.04 -->
+  <path d="M120,194 L195,211 L235,229 L310,247 L385,257 L500,268 L620,290" fill="none" stroke="#2563eb" stroke-width="2.5"/>
+
+  <!-- Data points -->
+  <circle cx="120" cy="194" r="4" fill="#2563eb"/>
+  <circle cx="195" cy="211" r="4" fill="#2563eb"/>
+  <circle cx="235" cy="229" r="4" fill="#2563eb"/>
+  <circle cx="310" cy="247" r="4" fill="#2563eb"/>
+  <circle cx="385" cy="257" r="4" fill="#2563eb"/>
+  <circle cx="500" cy="268" r="4" fill="#2563eb"/>
+  <circle cx="620" cy="290" r="4" fill="#2563eb"/>
+
+  <!-- Technology threshold lines -->
+  <!-- NAND: 1000 Gbit/cm3 -->
+  <line x1="80" y1="222" x2="660" y2="222" stroke="#f59e0b" stroke-width="1.2" stroke-dasharray="6,3"/>
+  <text x="662" y="220" font-size="6.5" font-weight="600" fill="#92400e">NAND 3D</text>
+
+  <!-- PCM: 100 -->
+  <line x1="80" y1="237" x2="660" y2="237" stroke="#8b5cf6" stroke-width="1.2" stroke-dasharray="6,3"/>
+  <text x="662" y="235" font-size="6.5" font-weight="600" fill="#5b21b6">PCM</text>
+
+  <!-- DRAM: 10 -->
+  <line x1="80" y1="252" x2="660" y2="252" stroke="#ef4444" stroke-width="1.2" stroke-dasharray="6,3"/>
+  <text x="662" y="250" font-size="6.5" font-weight="600" fill="#dc2626">DRAM</text>
+
+  <!-- Crossover annotations -->
+  <circle cx="310" cy="247" r="7" fill="none" stroke="#ef4444" stroke-width="1.5"/>
+  <text x="318" y="258" font-size="6" fill="#dc2626">≈1 mm: passes PCM</text>
+
+  <circle cx="235" cy="229" r="7" fill="none" stroke="#f59e0b" stroke-width="1.5"/>
+  <text x="195" y="225" text-anchor="end" font-size="6" fill="#92400e">≈0.45 mm: passes NAND</text>
+
+  <!-- Label the curve -->
+  <text x="160" y="190" font-size="8" font-weight="700" fill="#2563eb">SEM density ∝ 1/L²</text>
+</svg>

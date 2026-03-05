@@ -22,13 +22,6 @@ CSS = r"""
 @page {
     size: letter;
     margin: 1in 1in 1in 1in;
-
-    @bottom-center {
-        content: counter(page);
-        font-size: 9pt;
-        color: #666;
-        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
 }
 
 :root {
@@ -213,6 +206,76 @@ a {
     font-size: 1.05em;
 }
 
+/* ── Display math: prevent orphaned equations ────────────── */
+.katex-display {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* ── Inline thumbnail figures ─────────────────────────────── */
+div.sem-thumb {
+    text-align: center;
+    margin: 12pt auto;
+    page-break-inside: avoid;
+}
+
+div.sem-thumb img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.sem-thumb p {
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-align: center;
+    max-width: 85%;
+    margin: 6pt auto 0 auto;
+    line-height: 1.35;
+}
+
+/* ── Landscape plate pages (end-of-doc gallery) ──────────── */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
+div.plate-page {
+    page: plate;
+    page-break-before: always;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 6.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    text-align: center;
+    max-width: 90%;
+    margin-top: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+
+/* ── Blank verso for duplex printing ─────────────────────── */
+div.blank-verso {
+    page-break-before: always;
+    page-break-after: always;
+    min-height: 1px;
+    visibility: hidden;
+}
+
 /* ── Abstract special styling ────────────────────────────── */
 h2#abstract + p,
 h2:first-of-type + p {
@@ -279,8 +342,37 @@ document.addEventListener("DOMContentLoaded", function() {{
 """
 
 
+def _protect_math(md_text: str):
+    """Extract LaTeX math from markdown so the parser cannot mangle it.
+
+    The markdown parser turns ``_x`` into ``<em>x</em>`` even inside
+    ``$...$`` blocks, destroying LaTeX subscripts.  We swap every math
+    span for an opaque placeholder, run markdown, then restore.
+    """
+    store = []
+
+    def _stash(m):
+        store.append(m.group(0))
+        return f"\x00MATH{len(store) - 1}\x00"
+
+    # Display math first (greedy across lines), then inline
+    text = re.sub(r"\$\$(.+?)\$\$", _stash, md_text, flags=re.DOTALL)
+    text = re.sub(r"(?<!\\)\$(?!\$)(.+?)(?<!\\)\$", _stash, text)
+    return text, store
+
+
+def _restore_math(html: str, store: list) -> str:
+    """Put the real LaTeX back into the HTML."""
+    for i, original in enumerate(store):
+        html = html.replace(f"\x00MATH{i}\x00", original)
+    return html
+
+
 def convert_md_to_html(md_text: str) -> str:
     """Convert markdown text to HTML body string."""
+    # Protect LaTeX from the markdown parser
+    protected, math_store = _protect_math(md_text)
+
     # pymdown-extensions for better table, formatting support
     extensions = [
         "tables",
@@ -297,7 +389,11 @@ def convert_md_to_html(md_text: str) -> str:
     }
 
     md = markdown.Markdown(extensions=extensions, extension_configs=extension_configs)
-    return md.convert(md_text)
+    html = md.convert(protected)
+
+    # Restore LaTeX
+    html = _restore_math(html, math_store)
+    return html
 
 
 def extract_title(md_text: str) -> str:
@@ -311,31 +407,59 @@ def build_html(md_path: Path) -> str:
     md_text = md_path.read_text(encoding="utf-8")
     title = extract_title(md_text)
     body = convert_md_to_html(md_text)
-    return HTML_TEMPLATE.format(title=title, css=CSS, body=body)
+    html = HTML_TEMPLATE.format(title=title, css=CSS, body=body)
+    # Convert relative image paths to absolute file:// URIs for Chromium
+    base_dir = md_path.resolve().parent
+    import urllib.parse
+    def resolve_img(match):
+        src = match.group(1)
+        if src.startswith(("http://", "https://", "data:", "file://")):
+            return match.group(0)
+        abs_path = (base_dir / src).resolve()
+        return match.group(0).replace(src, abs_path.as_uri())
+    html = re.sub(r'<img[^>]+src="([^"]+)"', resolve_img, html)
+    return html
 
 
-def html_to_pdf(html: str, pdf_path: Path) -> None:
-    """Render HTML to PDF using headless Chromium."""
-    with sync_playwright() as p:
-        browser = p.chromium.launch()
-        page = browser.new_page()
-        page.set_content(html, wait_until="networkidle")
-        # Give KaTeX a moment to render
-        page.wait_for_timeout(2000)
-        page.pdf(
-            path=str(pdf_path),
-            format="Letter",
-            margin={"top": "1in", "right": "1in", "bottom": "1in", "left": "1in"},
-            print_background=True,
-            display_header_footer=True,
-            header_template="<span></span>",
-            footer_template=(
-                '<div style="font-size:9pt; color:#666; width:100%; text-align:center;">'
-                '<span class="pageNumber"></span>'
-                "</div>"
-            ),
-        )
-        browser.close()
+def html_to_pdf(html: str, pdf_path: Path, md_path=None) -> None:
+    """Render HTML to PDF using headless Chromium.
+
+    Writes html to a temp file next to the markdown source so that
+    file:// image references resolve correctly via page.goto().
+    """
+    import tempfile
+
+    # Write HTML to a temp file in the same directory as the source
+    # so relative file:// paths resolve correctly.
+    base_dir = md_path.resolve().parent if md_path else Path.cwd()
+    tmp_fd, tmp_path = tempfile.mkstemp(suffix=".html", dir=str(base_dir))
+    try:
+        with open(tmp_fd, "w", encoding="utf-8") as f:
+            f.write(html)
+        file_url = Path(tmp_path).as_uri()
+
+        with sync_playwright() as p:
+            browser = p.chromium.launch()
+            page = browser.new_page()
+            page.goto(file_url, wait_until="networkidle")
+            # Give KaTeX a moment to render
+            page.wait_for_timeout(2000)
+            page.pdf(
+                path=str(pdf_path),
+                format="Letter",
+                margin={"top": "0.75in", "right": "1in", "bottom": "0.75in", "left": "1in"},
+                print_background=True,
+                display_header_footer=True,
+                header_template='<span style="font-size:1px;"></span>',
+                footer_template=(
+                    '<div style="font-size:9pt; color:#999; width:100%; text-align:center; margin:0; padding:0;">'
+                    '<span class="pageNumber"></span>'
+                    "</div>"
+                ),
+            )
+            browser.close()
+    finally:
+        Path(tmp_path).unlink(missing_ok=True)
 
 
 def main():
@@ -366,7 +490,7 @@ def main():
     print(f"HTML written to {html_path}")
 
     print(f"Rendering PDF (this takes a few seconds)...")
-    html_to_pdf(html, pdf_path)
+    html_to_pdf(html, pdf_path, md_path=md_path)
     print(f"PDF written to {pdf_path}")
 
 
