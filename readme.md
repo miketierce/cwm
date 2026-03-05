@@ -2,9 +2,10 @@
 
 **A falsification-first research project testing whether information can be stored, computed on, and secured as resonant wave configurations in physical media.**
 
-[![Status: Phase 3 Capacity Analysis](https://img.shields.io/badge/Status-Phase%203%20Capacity%20Analysis-blue)]()
+[![Status: Phase 4 Original Corpus Recovery](https://img.shields.io/badge/Status-Phase%204%20Corpus%20Recovery-blue)]()
 [![Claims: 7 Confirmed · 1 Plausible · 4 Overestimates](https://img.shields.io/badge/Claims-7%20Confirmed%20·%201%20Plausible%20·%204%20Overestimates-orange)]()
-[![Tests: 155 Passing](https://img.shields.io/badge/Tests-155%20Passing-success)]()
+[![Device Families: 3 Identified](https://img.shields.io/badge/Device%20Families-3%20Identified-blueviolet)]()
+[![Tests: 211 Passing](https://img.shields.io/badge/Tests-211%20Passing-success)]()
 [![Paper: v9](<https://img.shields.io/badge/Paper-v9%20(Jan%202026)-green>)]()
 
 ## What Is This?
@@ -19,6 +20,18 @@ WCFOMA proposes that if memory is physically a field, computation should operate
 
 The paper projects 10–100× energy efficiency improvements over von Neumann architectures for AI workloads, with Tb/cm³ storage densities. **This repo exists to rigorously test those claims.**
 
+### Three Device Families
+
+Phase 4 archaeology of the original research corpus (~140 files across 7 scales) revealed that WCFOMA spans **three distinct device families** — only the weakest was modeled in Phases 0–3:
+
+| Family                     | Substrate               | Write Mechanism                | Read Mechanism            | TRL | Density Potential       |
+| -------------------------- | ----------------------- | ------------------------------ | ------------------------- | --- | ----------------------- |
+| **Ferrofluid Acoustic**    | Nanoparticle suspension | Acoustic/magnetic excitation   | Optical (Faraday)         | 2–3 | 0.02 Tb/cm³ (mitigated) |
+| **Ferroelectric Photonic** | HZO/BaTiO₃ on SiN MZI   | Voltage pulse (coercive field) | Optical (interferometric) | 4–5 | 1–10 Tb/cm³             |
+| **Magnonic Spin-Wave**     | YIG thin film           | RF antenna excitation          | Inductive/BLS             | 3–4 | 0.1–1 Tb/cm³            |
+
+Phase 4 modules recover substrate-independent computation (Hopfield/Ising recall) and the most experimentally grounded variant (ferroelectric photonic), plus two mechanisms that attack the ferrofluid's core weakness (phase diffusion): photothermal viscosity gating and forced-oscillation selective write/erase.
+
 ## Project Philosophy
 
 > We're either going to disprove this or find something useful along the way.
@@ -31,7 +44,7 @@ Every claim in the paper is tagged as DEMONSTRATED, PROPOSED, PROJECTED, or SIMU
 wcfoma/
 ├── paper/                      # The paper and addenda
 │   └── v9.md                   # Canonical paper (do not modify)
-├── simulations/                # Core physics simulation modules
+├── simulations/                # Core physics simulation modules (19)
 │   ├── common.py               # Shared parameters, constants, utilities
 │   ├── resonator_1d.py         # 1D damped oscillator model
 │   ├── resonator_3d.py         # 3D FDTD wave solver
@@ -46,7 +59,11 @@ wcfoma/
 │   ├── noise_decoherence.py    # 5-source noise budget & mode lifetime analysis
 │   ├── mitigations.py          # Phase diffusion mitigation analysis
 │   ├── capacity.py             # Shannon capacity & technology comparison
-│   └── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
+│   ├── meep_fdtd.py            # MIT Meep FDTD scaffolding (Phase 1)
+│   ├── hopfield_recall.py      # Hopfield/Ising associative recall (Phase 4)
+│   ├── ferroelectric_photonic.py # Ferroelectric photonic MZI cell (Phase 4)
+│   ├── photothermal_gating.py  # Photothermal viscosity gating (Phase 4)
+│   └── forced_oscillation.py   # Forced-oscillation selective write/erase (Phase 4)
 ├── experiments/                # Structured experiment runners
 │   ├── exp01_mode_persistence.py
 │   ├── exp02_zim_damping.py
@@ -67,7 +84,8 @@ wcfoma/
 │   ├── 07_convergence_energy_mc.ipynb # Grid convergence, CMOS energy, MC tamper
 │   ├── 08_coupled_decoherence.ipynb   # Coupled physics & noise/decoherence analysis
 │   ├── 09_mitigation_analysis.ipynb   # Phase diffusion mitigation strategies
-│   └── 10_capacity_scaling_comparison.ipynb  # Shannon capacity, scaling laws, tech comparison
+│   ├── 10_capacity_scaling_comparison.ipynb  # Shannon capacity, scaling laws, tech comparison
+│   └── 11_phase4_original_corpus_recovery.ipynb  # Phase 4: 3 device families, Hopfield recall, ferroelectric photonic, photothermal gating, forced oscillation
 ├── prototypes/                 # Hardware prototype documentation
 │   ├── prototype_a/            # Macro-scale ferrofluid resonator (< $1k)
 │   ├── prototype_b/            # Micro-scale fiber-integrated cells
@@ -79,13 +97,14 @@ wcfoma/
 │   ├── ROADMAP.md              # Phased research roadmap with kill criteria
 │   ├── CONTRIBUTING.md         # How to contribute
 │   └── PROTOCOLS.md            # Experiment protocols
-├── tests/                      # Unit & integration tests (155 passing)
+├── tests/                      # Unit & integration tests (211 passing)
 │   ├── test_simulations.py     # Phase 0 simulation tests (18)
 │   ├── test_phase1.py          # Phase 1a module tests (29)
 │   ├── test_phase1b.py         # Phase 1b module tests (23)
 │   ├── test_phase2.py          # Phase 2 coupled/noise tests (32)
 │   ├── test_mitigations.py     # Phase 2b mitigation tests (26)
-│   └── test_capacity.py        # Phase 3 capacity/comparison tests (27)
+│   ├── test_capacity.py        # Phase 3 capacity/comparison tests (27)
+│   └── test_phase4.py          # Phase 4 corpus recovery tests (56)
 ├── requirements.txt
 ├── pyproject.toml
 └── readme.md
@@ -108,9 +127,20 @@ python -m experiments.exp03_dilatancy_tamper
 python -m experiments.exp04_thermal_stability
 ```
 
-## Current Status: Phase 3 Capacity Analysis
+## Current Status: Phase 4 Original Corpus Recovery
 
-Claims validation complete (7 confirmed, 1 plausible, 4 overestimates). Shannon information-theoretic analysis quantifies the gap between paper claims and physical reality.
+Phases 0–3 focused exclusively on the ferrofluid acoustic variant, identifying serious SNR limitations (phase diffusion dominant at 77.5%). Phase 4 performed an archaeology of the original research corpus (~140 files across 7 scales), discovering that WCFOMA spans **three distinct device families**. Four new simulation modules recover the most promising dropped ideas.
+
+### Phase 4 Modules
+
+| Module                      | What It Does                                                | Key Finding                                                                                                                               |
+| --------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `hopfield_recall.py`        | Substrate-independent Hopfield/Ising associative recall     | Binary/trinary networks, capacity α_c ≈ 0.138, optical interference recall — computation works regardless of which device family hosts it |
+| `ferroelectric_photonic.py` | HZO/BaTiO₃ ferroelectric on SiN Mach-Zehnder interferometer | 10⁵ endurance cycles, 10-year retention, >30 dB extinction — the most experimentally grounded WCFOMA variant (TRL 4–5)                    |
+| `photothermal_gating.py`    | Laser-driven viscosity gating via Arrhenius heating         | Directly attacks phase diffusion: η×10⁴ increase at ΔT=40K in agarose gel, spatial selectivity with 2× beam-waist confinement             |
+| `forced_oscillation.py`     | Frequency-selective mode addressing via forced oscillation  | Selective write with <1% cross-talk at Q≥50, multi-mode addressing, three erase strategies with energy budgets                            |
+
+### Claims Validation (Phases 0–3, unchanged)
 
 | Claim                      | Paper Value  | Simulated            | Status                    |
 | -------------------------- | ------------ | -------------------- | ------------------------- |
@@ -136,11 +166,14 @@ Claims validation complete (7 confirmed, 1 plausible, 4 overestimates). Shannon 
 
 See [docs/ROADMAP.md](docs/ROADMAP.md) for the full phased roadmap including kill criteria.
 
-- **Phase 0** (Now): Computational validation — reproduce and stress-test paper simulations
-- **Phase 1** (Mid 2026): Advanced simulation — Meep FDTD, multiphysics, realistic materials
-- **Phase 2** (2026-2027): Benchtop Prototype A — macro-scale ferrofluid resonator
-- **Phase 3** (2027-2028): Micro-scale arrays with fiber optic integration
-- **Phase 4** (2029+): Domain-specific AI accelerator (if warranted)
+- **Phase 0** (Complete): Computational validation — reproduce and stress-test paper simulations
+- **Phase 1** (Complete): Advanced simulation — multiphysics, realistic materials, convergence studies
+- **Phase 2** (Complete): Noise & decoherence — phase diffusion identified as dominant noise source (77.5%)
+- **Phase 3** (Complete): Shannon capacity — quantified gap between claims and reality (2.3 bits/mode mitigated)
+- **Phase 4** (Complete): Original corpus recovery — 3 device families, 4 new modules, substrate-independent computation
+- **Phase 5** (Next): Benchtop prototype — macro-scale ferrofluid resonator OR ferroelectric photonic MZI cell
+- **Phase 6** (Future): Micro-scale arrays with fiber optic integration
+- **Phase 7** (2029+): Domain-specific AI accelerator (if warranted)
 
 ## Contributing
 
