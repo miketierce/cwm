@@ -120,8 +120,9 @@ class TestModeSpectrum:
         from simulations.glass_resonator import RodGeometry, compute_mode_spectrum
         rod = RodGeometry(length=0.15, glass_type="borosilicate")
         spec = compute_mode_spectrum(rod, n_modes=10)
-        # f1 = v / (2L) = 5500 / 0.30 = 18333 Hz
-        assert spec.f_fundamental == pytest.approx(18333.3, rel=0.01)
+        # FEM-corrected: v_bar = √(E/ρ) = √(63e9/2230) ≈ 5315 m/s
+        # f1 = v_bar / (2L) = 5315.18 / 0.30 ≈ 17717 Hz
+        assert spec.f_fundamental == pytest.approx(17717.3, rel=0.01)
 
     def test_modes_are_harmonics(self):
         from simulations.glass_resonator import compute_mode_spectrum, RodGeometry

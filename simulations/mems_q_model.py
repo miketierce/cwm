@@ -239,7 +239,10 @@ def compute_Q_anchor(
     QComponentResult
     """
     # Acoustic impedances [Pa·s/m]
-    Z_rod = glass.density * glass.v_longitudinal
+    # Rod: 1D waveguide → use thin-bar speed v_bar = √(E/ρ)
+    # Substrate: 3D bulk medium → use bulk v_longitudinal
+    # (FEM-validated: see fem_validation.py §2)
+    Z_rod = glass.density * glass.v_bar
     Z_sub_props = SUBSTRATE_PROPERTIES.get(anchor.substrate_material,
                                            SUBSTRATE_PROPERTIES["silicon"])
     Z_sub = Z_sub_props["density"] * Z_sub_props["v_longitudinal"]
@@ -655,8 +658,8 @@ def compute_Q_budget(
     db = glass_database()
     glass = db[rod.glass_type]
 
-    # Mode frequency
-    f1 = glass.v_longitudinal / (2 * rod.length)
+    # Mode frequency (FEM-validated thin-bar speed)
+    f1 = glass.v_bar / (2 * rod.length)
     freq = mode_number * f1
 
     # Compute each loss mechanism

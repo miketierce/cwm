@@ -58,6 +58,26 @@ class GlassProperties:
     cost_note: str = ""
     source_note: str = ""
 
+    @property
+    def v_bar(self) -> float:
+        """Thin-bar longitudinal wave speed [m/s]: v_bar = √(E/ρ).
+
+        For a slender rod (d << λ), the lateral surface is free to
+        contract under Poisson coupling, reducing the effective stiffness
+        from the plane-strain modulus to Young's modulus.  The correct
+        wave speed is therefore √(E/ρ), NOT the bulk longitudinal
+        velocity √(E(1−ν)/((1+ν)(1−2ν)ρ)).
+
+        This was validated by the FEM module (fem_validation.py) which
+        showed the bulk v_longitudinal overestimates eigenfrequencies
+        by ~3–5% depending on Poisson's ratio.
+
+        The field v_longitudinal is retained in the database as the
+        experimentally measured bulk value, used for substrate impedance
+        calculations where the medium is effectively unbounded.
+        """
+        return float(np.sqrt(self.youngs_modulus / self.density))
+
 
 def glass_database() -> Dict[str, GlassProperties]:
     """
@@ -193,7 +213,10 @@ def compute_mode_spectrum(
     glass = db[rod.glass_type]
 
     mass = glass.density * rod.volume
-    f1 = glass.v_longitudinal / (2 * rod.length)
+    # FEM-validated: use thin-bar speed v_bar = √(E/ρ), not bulk v_longitudinal.
+    # See fem_validation.py §2 — v_bar matches FEM eigenvalues to <10 ppm;
+    # v_longitudinal overestimates by ~3.5% (Poisson correction).
+    f1 = glass.v_bar / (2 * rod.length)
     ns = np.arange(1, n_modes + 1)
     freqs = ns * f1
     linewidths = freqs / glass.Q_acoustic

@@ -852,7 +852,7 @@ def exp_actuator_q_penalty(
     conditions = OperatingConditions(temperature=300.0, pressure=0.1)
     surface = SurfaceProperties(defect_layer_thickness=5e-9, defect_layer_Q=100.0)
 
-    f1 = glass.v_longitudinal / (2 * rod_length)
+    f1 = glass.v_bar / (2 * rod_length)  # FEM-validated thin-bar speed
     mode_n = 1
 
     q_mat = compute_Q_material(glass)
@@ -963,7 +963,7 @@ def exp_writable_shell_q(
     conditions = OperatingConditions(temperature=300.0, pressure=0.1)
     surface_base = SurfaceProperties(defect_layer_thickness=5e-9, defect_layer_Q=100.0)
 
-    f1 = glass.v_longitudinal / (2 * rod_length)
+    f1 = glass.v_bar / (2 * rod_length)  # FEM-validated thin-bar speed
 
     q_mat = compute_Q_material(glass)
     q_anc = compute_Q_anchor(rod, glass, anchor, 1)

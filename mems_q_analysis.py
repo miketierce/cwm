@@ -154,7 +154,7 @@ for n, r in zip(modes, mode_results):
     q_anc = [c.Q_value for c in r.components if c.name == "Anchor loss"][0]
     # Compute frequency
     glass = DB["borosilicate"]
-    freq = n * glass.v_longitudinal / (2 * 1e-3)
+    freq = n * glass.v_bar / (2 * 1e-3)  # FEM-validated thin-bar speed
     print(f"  {n:8d}  {freq/1e6:12.3f}  {r.Q_total:10,.0f}  {q_anc:10,.0f}  {r.dominant_loss:>20s}")
 
 # ============================================================
