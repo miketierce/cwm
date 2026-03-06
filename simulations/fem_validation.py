@@ -128,6 +128,37 @@ class Mode2DInfo:
 
 
 @dataclass
+class DispersionCorrection:
+    """Pochhammer–Chree dispersion correction fitted from 2D FEM.
+
+    For a rod with finite aspect ratio, the eigenfrequencies deviate
+    from the 1D formula f_n = n·v_bar/(2L) because lateral Poisson
+    coupling stiffens the rod at shorter wavelengths.  The correction
+    has the form:
+
+        f_n = (n·v_bar/(2L)) × [1 + C₁·ξ + C₂·ξ²]
+
+    where ξ = (n·d/(2L))² is the Pochhammer–Chree dispersion parameter
+    (square of the ratio of rod diameter to half-wavelength).
+
+    The correction is positive (frequencies increase) because shorter
+    wavelengths approach the plane-strain regime where the effective
+    modulus exceeds Young's modulus E by a factor 1/(1−ν²).
+    """
+    C1: float                  # linear coefficient (FEM-fitted)
+    C2: float                  # quadratic coefficient (FEM-fitted)
+    poisson_ratio: float       # ν of the material
+    aspect_ratio: float        # L/d of the rod
+    n_modes_fitted: int        # number of clean longitudinal modes used
+    max_valid_mode: int        # highest mode where correction < 1%
+    rms_residual: float        # RMS of (fit − FEM) relative errors
+    max_residual: float        # max |fit − FEM| relative error
+    mode_numbers: np.ndarray   # mode numbers used in fit
+    fem_errors: np.ndarray     # (f_2D − f_1D)/f_1D from FEM
+    fitted_errors: np.ndarray  # C₁·ξ + C₂·ξ² at each mode
+
+
+@dataclass
 class FEMValidationReport:
     """Comprehensive FEM validation report."""
     eigenfrequency_1d: ValidationComparison
@@ -136,6 +167,7 @@ class FEMValidationReport:
     convergence: ConvergenceResult
     eigenfrequency_2d: Optional[ValidationComparison]
     mode_classification: Optional[List[Mode2DInfo]]
+    dispersion: Optional[DispersionCorrection]
     all_passed: bool
     summary: str
 
@@ -989,6 +1021,149 @@ def convergence_study(
 
 
 # ═══════════════════════════════════════════════════════════════════════════
+# Pochhammer–Chree Dispersion Correction
+# ═══════════════════════════════════════════════════════════════════════════
+
+def fit_dispersion_correction(
+    mode_info: List[Mode2DInfo],
+    rod_length: float,
+    rod_diameter: float,
+    E: float,
+    rho: float,
+    max_xi: float = 0.10,
+) -> DispersionCorrection:
+    """
+    Fit a Pochhammer–Chree dispersion correction from 2D FEM mode data.
+
+    The 1D bar formula f_n = n·v_bar/(2L) becomes increasingly inaccurate
+    at higher mode numbers because shorter wavelengths "see" the rod's
+    finite diameter.  The Poisson effect couples axial and lateral motion,
+    stiffening the response and raising frequencies above the 1D prediction.
+
+    This function extracts the longitudinal modes from a 2D FEM solve,
+    computes the relative error vs. 1D analytical, and fits a quadratic
+    correction in the Pochhammer–Chree dispersion parameter ξ = (nd/(2L))²:
+
+        f_n_corrected = (n·v_bar/(2L)) × [1 + C₁·ξ + C₂·ξ²]
+
+    Only modes with ξ < max_xi are used for fitting (to avoid the regime
+    where longitudinal-flexural mode coupling corrupts the data).
+
+    Parameters
+    ----------
+    mode_info : list of Mode2DInfo
+        Mode classification from classify_2d_modes().
+    rod_length : float
+        Rod length L [m].
+    rod_diameter : float
+        Rod diameter d [m].
+    E : float
+        Young's modulus [Pa].
+    rho : float
+        Density [kg/m³].
+    max_xi : float
+        Maximum ξ for fitting (modes above this are excluded).
+
+    Returns
+    -------
+    DispersionCorrection
+    """
+    v_bar = np.sqrt(E / rho)
+    L = rod_length
+    d = rod_diameter
+
+    # Extract clean longitudinal modes within the fitting range
+    long_modes = [m for m in mode_info if m.mode_type == "longitudinal"]
+
+    ns = []
+    errors = []
+    for m in long_modes:
+        n = m.matching_1d_mode
+        if n is None:
+            continue
+        xi = (n * d / (2 * L)) ** 2
+        if xi > max_xi:
+            continue
+        f_1d = n * v_bar / (2 * L)
+        err = (m.frequency_hz - f_1d) / f_1d
+        ns.append(n)
+        errors.append(err)
+
+    ns = np.array(ns, dtype=float)
+    errors = np.array(errors)
+    xi_arr = (ns * d / (2 * L)) ** 2
+
+    # Quadratic fit: error = C₁·ξ + C₂·ξ² (no constant term — zero at ξ=0)
+    A_mat = np.column_stack([xi_arr, xi_arr ** 2])
+    coeffs, _, _, _ = np.linalg.lstsq(A_mat, errors, rcond=None)
+    C1, C2 = float(coeffs[0]), float(coeffs[1])
+
+    fitted = C1 * xi_arr + C2 * xi_arr ** 2
+    residuals = errors - fitted
+    rms_resid = float(np.sqrt(np.mean(residuals ** 2)))
+    max_resid = float(np.max(np.abs(residuals)))
+
+    # Find highest mode where correction stays below 1%
+    aspect = L / d
+    max_valid = int(ns[-1])  # start from the last fitted mode
+    for test_n in range(int(ns[-1]) + 1, int(5 * aspect)):
+        xi_test = (test_n * d / (2 * L)) ** 2
+        corr = C1 * xi_test + C2 * xi_test ** 2
+        if corr > 0.01:  # 1% correction threshold
+            max_valid = test_n - 1
+            break
+    else:
+        max_valid = int(5 * aspect)
+
+    return DispersionCorrection(
+        C1=C1,
+        C2=C2,
+        poisson_ratio=0.0,  # filled by caller
+        aspect_ratio=L / d,
+        n_modes_fitted=len(ns),
+        max_valid_mode=max_valid,
+        rms_residual=rms_resid,
+        max_residual=max_resid,
+        mode_numbers=ns.astype(int),
+        fem_errors=errors,
+        fitted_errors=fitted,
+    )
+
+
+def dispersion_corrected_frequency(
+    n: int,
+    v_bar: float,
+    rod_length: float,
+    rod_diameter: float,
+    disp: DispersionCorrection,
+) -> float:
+    """
+    Return the dispersion-corrected eigenfrequency for mode n.
+
+    Parameters
+    ----------
+    n : int
+        Mode number (1, 2, 3, ...).
+    v_bar : float
+        Thin-bar wave speed √(E/ρ) [m/s].
+    rod_length : float
+        Rod length L [m].
+    rod_diameter : float
+        Rod diameter d [m].
+    disp : DispersionCorrection
+        Fitted dispersion model.
+
+    Returns
+    -------
+    f_corrected : float
+        Dispersion-corrected frequency [Hz].
+    """
+    f_1d = n * v_bar / (2.0 * rod_length)
+    xi = (n * rod_diameter / (2.0 * rod_length)) ** 2
+    return f_1d * (1.0 + disp.C1 * xi + disp.C2 * xi ** 2)
+
+
+# ═══════════════════════════════════════════════════════════════════════════
 # Comprehensive Validation Runner
 # ═══════════════════════════════════════════════════════════════════════════
 
@@ -1264,6 +1439,31 @@ def run_fem_validation(
         and (eigenfreq_2d is not None and eigenfreq_2d.validated)
     )
 
+    # ── 6. Pochhammer–Chree Dispersion Correction ────────────────────
+
+    disp_result = None
+    if mode_info is not None and len(long_modes) > 3:
+        if verbose:
+            print("\n━━━ 6. Pochhammer–Chree Dispersion Correction ━━━")
+
+        disp_result = fit_dispersion_correction(
+            mode_info, L, rod_diameter, E, rho, max_xi=0.10,
+        )
+        disp_result.poisson_ratio = nu
+
+        if verbose:
+            print(f"\n  Correction: f_n = (n·v_bar/2L) × [1 + C₁·ξ + C₂·ξ²]")
+            print(f"  where ξ = (n·d/(2L))²")
+            print(f"\n  C₁ = {disp_result.C1:.6f}")
+            print(f"  C₂ = {disp_result.C2:.4f}")
+            print(f"  Modes fitted: {disp_result.n_modes_fitted} "
+                  f"(n = {int(disp_result.mode_numbers[0])}–"
+                  f"{int(disp_result.mode_numbers[-1])})")
+            print(f"  RMS residual: {disp_result.rms_residual*100:.4f}%")
+            print(f"  Max residual: {disp_result.max_residual*100:.4f}%")
+            print(f"  Valid up to mode n ≈ {disp_result.max_valid_mode} "
+                  f"(correction < 1%)")
+
     summary_lines = [
         f"FEM Validation Summary for {glass.name}",
         f"  Rod: L={L*1e3:.2f} mm, d={rod_diameter*1e6:.0f} µm",
@@ -1279,6 +1479,11 @@ def run_fem_validation(
         summary_lines.append(
             f"  2D vs 1D (long. modes): max error = {eigenfreq_2d.max_relative_error:.2e}  "
             f"{'PASS' if eigenfreq_2d.validated else 'FAIL'}"
+        )
+    if disp_result is not None:
+        summary_lines.append(
+            f"  Dispersion correction:  C₁={disp_result.C1:.6f}, C₂={disp_result.C2:.4f}, "
+            f"RMS={disp_result.rms_residual*100:.4f}%"
         )
     summary = "\n".join(summary_lines)
 
@@ -1296,6 +1501,7 @@ def run_fem_validation(
         convergence=conv,
         eigenfrequency_2d=eigenfreq_2d,
         mode_classification=mode_info,
+        dispersion=disp_result,
         all_passed=all_passed,
         summary=summary,
     )
