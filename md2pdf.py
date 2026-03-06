@@ -99,7 +99,7 @@ h4 {
 p {
     margin: 0 0 8pt 0;
     text-align: justify;
-    hyphens: auto;
+    hyphens: none;
     orphans: 3;
     widows: 3;
 }
@@ -358,6 +358,9 @@ def _protect_math(md_text: str):
     # Display math first (greedy across lines), then inline
     text = re.sub(r"\$\$(.+?)\$\$", _stash, md_text, flags=re.DOTALL)
     text = re.sub(r"(?<!\\)\$(?!\$)(.+?)(?<!\\)\$", _stash, text)
+    # Now that real math is safely stashed, unescape literal \$ → HTML entity
+    # (bare $ would be grabbed by KaTeX auto-render on the client side)
+    text = text.replace(r"\$", "&#36;")
     return text, store
 
 

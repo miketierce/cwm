@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 380">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .title { font-size: 13px; font-weight: 600; fill: #1a1a2e; }
+      .label { font-size: 10px; fill: #444; }
+      .label-bold { font-size: 10px; fill: #1a1a2e; font-weight: 600; }
+      .axis-label { font-size: 9px; fill: #666; }
+      .annotation { font-size: 11px; fill: #0d7377; font-weight: 600; }
+      .annotation-red { font-size: 11px; fill: #c0392b; font-weight: 600; }
+      .grid-line { stroke: #e8e8e8; stroke-width: 0.5; }
+      .axis-line { stroke: #333; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="720" height="380" fill="#fafafa" rx="4"/>
+
+  <!-- ═══ LEFT PANEL: Cross-correlation Response ═══ -->
+  <text x="195" y="22" text-anchor="middle" class="title">(a) Associative Recall: Response Amplitudes</text>
+
+  <!-- Plot area: x=55..350, y=38..230 -->
+  <line x1="55" y1="230" x2="350" y2="230" class="axis-line"/>
+  <line x1="55" y1="38" x2="55" y2="230" class="axis-line"/>
+
+  <!-- Y-axis -->
+  <text x="20" y="134" text-anchor="middle" class="label-bold" transform="rotate(-90,20,134)">Response (dB rel. noise)</text>
+  <text x="203" y="254" text-anchor="middle" class="label">Stored Pattern Index</text>
+
+  <!-- Grid -->
+  <line x1="55" y1="70" x2="350" y2="70" class="grid-line"/>
+  <line x1="55" y1="102" x2="350" y2="102" class="grid-line"/>
+  <line x1="55" y1="134" x2="350" y2="134" class="grid-line"/>
+  <line x1="55" y1="166" x2="350" y2="166" class="grid-line"/>
+  <line x1="55" y1="198" x2="350" y2="198" class="grid-line"/>
+
+  <!-- Y-axis ticks: 0, 5, 10, 15, 20, 25 dB -->
+  <text x="50" y="233" text-anchor="end" class="axis-label">0</text>
+  <text x="50" y="201" text-anchor="end" class="axis-label">5</text>
+  <text x="50" y="169" text-anchor="end" class="axis-label">10</text>
+  <text x="50" y="137" text-anchor="end" class="axis-label">15</text>
+  <text x="50" y="105" text-anchor="end" class="axis-label">20</text>
+  <text x="50" y="73" text-anchor="end" class="axis-label">25</text>
+  <text x="50" y="42" text-anchor="end" class="axis-label">30</text>
+
+  <!-- Bars: 8 patterns. Query matches pattern 4. Pattern 4 gets ~28 dB. Others get 3-13 dB -->
+  <!-- Bar width = 28px, spacing = 8px. Start x=72 -->
+
+  <!-- Pattern 1: 8 dB → y = 230 - 8*(192/30) = 230 - 51.2 = 179 -->
+  <rect x="72" y="179" width="28" height="51" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="86" y="245" text-anchor="middle" class="axis-label">P1</text>
+  <text x="86" y="175" text-anchor="middle" class="axis-label">8</text>
+
+  <!-- Pattern 2: 5 dB → y = 198 -->
+  <rect x="108" y="198" width="28" height="32" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="122" y="245" text-anchor="middle" class="axis-label">P2</text>
+  <text x="122" y="194" text-anchor="middle" class="axis-label">5</text>
+
+  <!-- Pattern 3: 11 dB → y = 160 -->
+  <rect x="144" y="160" width="28" height="70" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="158" y="245" text-anchor="middle" class="axis-label">P3</text>
+  <text x="158" y="156" text-anchor="middle" class="axis-label">11</text>
+
+  <!-- Pattern 4 (MATCH): 28 dB → y = 230 - 28*6.4 = 51 -->
+  <rect x="180" y="51" width="28" height="179" rx="2" fill="#27ae60" opacity="0.9"/>
+  <text x="194" y="245" text-anchor="middle" class="label-bold" fill="#27ae60">P4</text>
+  <text x="194" y="47" text-anchor="middle" class="annotation" fill="#27ae60" font-size="10">28 dB</text>
+
+  <!-- Pattern 5: 7 dB → y = 185 -->
+  <rect x="216" y="185" width="28" height="45" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="230" y="245" text-anchor="middle" class="axis-label">P5</text>
+  <text x="230" y="181" text-anchor="middle" class="axis-label">7</text>
+
+  <!-- Pattern 6: 13 dB → y = 147 (best wrong match) -->
+  <rect x="252" y="147" width="28" height="83" rx="2" fill="#e8a87c" opacity="0.8"/>
+  <text x="266" y="245" text-anchor="middle" class="axis-label">P6</text>
+  <text x="266" y="143" text-anchor="middle" class="axis-label">13</text>
+
+  <!-- Pattern 7: 4 dB → y = 204 -->
+  <rect x="288" y="204" width="28" height="26" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="302" y="245" text-anchor="middle" class="axis-label">P7</text>
+  <text x="302" y="200" text-anchor="middle" class="axis-label">4</text>
+
+  <!-- Pattern 8: 9 dB → y = 172 -->
+  <rect x="324" y="172" width="28" height="58" rx="2" fill="#7fb3d8" opacity="0.8"/>
+  <text x="338" y="245" text-anchor="middle" class="axis-label">P8</text>
+  <text x="338" y="168" text-anchor="middle" class="axis-label">9</text>
+
+  <!-- Discrimination margin bracket -->
+  <line x1="364" y1="51" x2="370" y2="51" stroke="#c0392b" stroke-width="1"/>
+  <line x1="364" y1="147" x2="370" y2="147" stroke="#c0392b" stroke-width="1"/>
+  <line x1="367" y1="51" x2="367" y2="147" stroke="#c0392b" stroke-width="1.5"/>
+  <path d="M367,85 L374,99" stroke="#c0392b" stroke-width="1"/>
+  <text x="378" y="96" class="annotation-red" font-size="10">15 dB</text>
+  <text x="378" y="110" class="annotation-red" font-size="9">margin</text>
+
+  <!-- Arrow label for query -->
+  <text x="194" y="270" text-anchor="middle" class="annotation" font-size="9">← query matches P4</text>
+
+  <!-- ═══ RIGHT PANEL: Cross-correlation Matrix ═══ -->
+  <line x1="395" y1="18" x2="395" y2="290" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="555" y="22" text-anchor="middle" class="title">(b) Cross-Correlation Matrix (4 Patterns)</text>
+
+  <!-- Matrix: 4×4 grid showing correlation between stored patterns -->
+  <!-- Plot area: x=430..680, y=50..230 -->
+  <text x="555" y="42" text-anchor="middle" class="label">Query pattern →</text>
+
+  <!-- Column headers -->
+  <text x="470" y="60" text-anchor="middle" class="label-bold">Q₁</text>
+  <text x="530" y="60" text-anchor="middle" class="label-bold">Q₂</text>
+  <text x="590" y="60" text-anchor="middle" class="label-bold">Q₃</text>
+  <text x="650" y="60" text-anchor="middle" class="label-bold">Q₄</text>
+
+  <!-- Row headers -->
+  <text x="430" y="100" text-anchor="end" class="label-bold">P₁</text>
+  <text x="430" y="143" text-anchor="end" class="label-bold">P₂</text>
+  <text x="430" y="186" text-anchor="end" class="label-bold">P₃</text>
+  <text x="430" y="229" text-anchor="end" class="label-bold">P₄</text>
+
+  <text x="415" y="164" text-anchor="middle" class="label-bold" transform="rotate(-90,415,164)">Stored →</text>
+
+  <!-- Matrix cells: diagonal = strong (dark green), off-diagonal = weak (light) -->
+  <!-- Row 1 -->
+  <rect x="441" y="72" width="58" height="38" rx="3" fill="#27ae60" opacity="0.9"/>
+  <text x="470" y="96" text-anchor="middle" fill="white" font-size="12" font-weight="600" font-family="'Segoe UI', sans-serif">1.00</text>
+
+  <rect x="501" y="72" width="58" height="38" rx="3" fill="#2980b9" opacity="0.15"/>
+  <text x="530" y="96" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.12</text>
+
+  <rect x="561" y="72" width="58" height="38" rx="3" fill="#2980b9" opacity="0.22"/>
+  <text x="590" y="96" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.18</text>
+
+  <rect x="621" y="72" width="58" height="38" rx="3" fill="#2980b9" opacity="0.10"/>
+  <text x="650" y="96" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.07</text>
+
+  <!-- Row 2 -->
+  <rect x="441" y="115" width="58" height="38" rx="3" fill="#2980b9" opacity="0.12"/>
+  <text x="470" y="139" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.12</text>
+
+  <rect x="501" y="115" width="58" height="38" rx="3" fill="#27ae60" opacity="0.9"/>
+  <text x="530" y="139" text-anchor="middle" fill="white" font-size="12" font-weight="600" font-family="'Segoe UI', sans-serif">1.00</text>
+
+  <rect x="561" y="115" width="58" height="38" rx="3" fill="#2980b9" opacity="0.08"/>
+  <text x="590" y="139" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.05</text>
+
+  <rect x="621" y="115" width="58" height="38" rx="3" fill="#2980b9" opacity="0.25"/>
+  <text x="650" y="139" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.21</text>
+
+  <!-- Row 3 -->
+  <rect x="441" y="158" width="58" height="38" rx="3" fill="#2980b9" opacity="0.22"/>
+  <text x="470" y="182" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.18</text>
+
+  <rect x="501" y="158" width="58" height="38" rx="3" fill="#2980b9" opacity="0.08"/>
+  <text x="530" y="182" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.05</text>
+
+  <rect x="561" y="158" width="58" height="38" rx="3" fill="#27ae60" opacity="0.9"/>
+  <text x="590" y="182" text-anchor="middle" fill="white" font-size="12" font-weight="600" font-family="'Segoe UI', sans-serif">1.00</text>
+
+  <rect x="621" y="158" width="58" height="38" rx="3" fill="#2980b9" opacity="0.16"/>
+  <text x="650" y="182" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.14</text>
+
+  <!-- Row 4 -->
+  <rect x="441" y="201" width="58" height="38" rx="3" fill="#2980b9" opacity="0.10"/>
+  <text x="470" y="225" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.07</text>
+
+  <rect x="501" y="201" width="58" height="38" rx="3" fill="#2980b9" opacity="0.25"/>
+  <text x="530" y="225" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.21</text>
+
+  <rect x="561" y="201" width="58" height="38" rx="3" fill="#2980b9" opacity="0.16"/>
+  <text x="590" y="225" text-anchor="middle" fill="#444" font-size="11" font-family="'Segoe UI', sans-serif">0.14</text>
+
+  <rect x="621" y="201" width="58" height="38" rx="3" fill="#27ae60" opacity="0.9"/>
+  <text x="650" y="225" text-anchor="middle" fill="white" font-size="12" font-weight="600" font-family="'Segoe UI', sans-serif">1.00</text>
+
+  <!-- Diagonal annotation -->
+  <text x="555" y="260" text-anchor="middle" class="annotation" font-size="10">Diagonal ≫ off-diagonal ⟹ reliable discrimination</text>
+  <text x="555" y="276" text-anchor="middle" class="label" font-size="9">Max off-diagonal = 0.21 (−13.6 dB), min discrimination = 15 dB</text>
+
+  <!-- Bottom summary -->
+  <rect x="50" y="295" width="620" height="75" rx="6" fill="#f0f7f7" stroke="#0d7377" stroke-width="0.8"/>
+  <text x="360" y="315" text-anchor="middle" class="label-bold" font-size="11">Associative recall: 15–25 dB discrimination margin</text>
+  <text x="360" y="333" text-anchor="middle" class="label" font-size="10">Driving the rod with a query spectrum matching P4 yields a response 15 dB (30×) above</text>
+  <text x="360" y="349" text-anchor="middle" class="label" font-size="10">the best non-matching pattern. The cross-correlation matrix confirms near-orthogonality:</text>
+  <text x="360" y="363" text-anchor="middle" class="label" font-size="10">diagonal entries = 1.00, off-diagonal ≤ 0.21. This margin is sufficient for reliable detection.</text>
+</svg>

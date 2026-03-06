@@ -36,9 +36,10 @@
   <rect x="589" y="86" width="1" height="0.5" rx="0.25" fill="#3b82f6"/>
   <circle cx="590" cy="86" r="6" fill="none" stroke="#ef4444" stroke-width="0.8" stroke-dasharray="2,1"/>
   <text x="590" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">0.5 mm × 20 µm</text>
-  <text x="590" y="108" text-anchor="middle" font-size="7" fill="#374151">115,000 bits</text>
-  <text x="590" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">734 Gbit/cm³</text>
-  <text x="590" y="140" text-anchor="middle" font-size="7" fill="#166534">18,400× denser</text>
+  <text x="590" y="108" text-anchor="middle" font-size="7" fill="#374151">1.23 Mbit/rod</text>
+  <text x="590" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">1.4 Tbit/cm³</text>
+  <text x="590" y="136" text-anchor="middle" font-size="7" fill="#166534">35,000× denser</text>
+  <text x="590" y="146" text-anchor="middle" font-size="6" font-style="italic" fill="#166534">(fused silica, ±0.1 K)</text>
 
   <!-- Arrow: shrink -->
   <text x="243" y="103" text-anchor="middle" font-size="14" fill="#ef4444">→</text>
@@ -77,7 +78,7 @@
   <text x="620" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">150 mm</text>
 
   <!-- SEM density curve (approximate log-log positions) -->
-  <!-- Points: 0.1mm=83000, 0.2mm=10900, 0.5mm=734, 1mm=95.5, 2mm=12, 10mm=0.1, 150mm=0.04 -->
+  <!-- Points: 0.1mm=83000, 0.2mm=10900, 0.5mm=1400(SiO₂), 1mm=95.5, 2mm=12, 10mm=0.1, 150mm=0.04 -->
   <path d="M120,194 L195,211 L235,229 L310,247 L385,257 L500,268 L620,290" fill="none" stroke="#2563eb" stroke-width="2.5"/>
 
   <!-- Data points -->
