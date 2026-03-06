@@ -175,7 +175,7 @@
   <text x="450" y="34" class="annotation" font-size="10" fill="#8e44ad">~100% at degeneracy</text>
 
   <!-- Grey zone label for <10% -->
-  <text x="650" y="213" text-anchor="middle" class="axis-label" fill="#999">< 10%</text>
+  <text x="650" y="213" text-anchor="middle" class="axis-label" fill="#999">&lt; 10%</text>
 
   <!-- Bottom summary -->
   <rect x="50" y="310" width="620" height="78" rx="6" fill="#f0f7f7" stroke="#0d7377" stroke-width="0.8"/>

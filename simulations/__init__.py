@@ -26,3 +26,8 @@
 #
 # Phase 5 — Glass acoustic resonator (garage-scale prototype):
 #   glass_resonator       - Glass rod eigenmode memory + perturbation encoding
+#   mems_q_model          - 5-mechanism Q-factor prediction for MEMS resonators
+#   spare_mace            - SPARE/MACE occult-to-engineering hypothesis experiments
+#
+# Phase 6 — Rewritability (telescope → instrument):
+#   rewritability         - 7 experiments: virtual rewrite, binary sites, multi-shell

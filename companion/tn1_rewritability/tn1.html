@@ -1,0 +1,1663 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Paths to Rewritability in Spectral Eigenmode Memory</title>
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+@page {
+    size: letter;
+    margin: 1in 1in 1in 1in;
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #2563eb;
+    --border: #d1d5db;
+    --bg-code: #f5f5f5;
+    --bg-table-head: #f0f4f8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ── Title & Author ─────────────────────────────────────── */
+h1 {
+    font-size: 18pt;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 6pt 0;
+    line-height: 1.25;
+    color: var(--text);
+}
+
+/* Author line right after title */
+h1 + p {
+    text-align: center;
+    margin: 0 0 2pt 0;
+}
+h1 + p + p {
+    text-align: center;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 12pt 0;
+}
+
+/* ── Headings ────────────────────────────────────────────── */
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 20pt 0 8pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 14pt 0 6pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 10pt 0 4pt 0;
+    color: var(--muted);
+}
+
+/* ── Paragraphs ──────────────────────────────────────────── */
+p {
+    margin: 0 0 8pt 0;
+    text-align: justify;
+    hyphens: none;
+    orphans: 3;
+    widows: 3;
+}
+
+/* ── Lists ───────────────────────────────────────────────── */
+ul, ol {
+    margin: 4pt 0 8pt 0;
+    padding-left: 20pt;
+}
+li {
+    margin-bottom: 3pt;
+}
+li > p { margin-bottom: 3pt; }
+
+/* ── Tables ──────────────────────────────────────────────── */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border: 1pt solid var(--border);
+    padding: 5pt 8pt;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tbody td {
+    border: 1pt solid var(--border);
+    padding: 4pt 8pt;
+    vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+/* Bold cells in tables (for highlight rows) */
+tbody td strong {
+    color: var(--accent);
+}
+
+/* ── Horizontal Rules ────────────────────────────────────── */
+hr {
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 16pt 0;
+}
+
+/* ── Code ────────────────────────────────────────────────── */
+code {
+    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 9pt;
+    background: var(--bg-code);
+    padding: 1pt 3pt;
+    border-radius: 2pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 10pt 12pt;
+    border-radius: 4pt;
+    border: 1pt solid var(--border);
+    overflow-x: auto;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ── Block quotes ────────────────────────────────────────── */
+blockquote {
+    margin: 8pt 0;
+    padding: 6pt 12pt;
+    border-left: 3pt solid var(--accent);
+    background: #f8fafc;
+    color: var(--muted);
+}
+
+/* ── Links / references ──────────────────────────────────── */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ── Math (KaTeX) ────────────────────────────────────────── */
+.katex-display {
+    margin: 10pt 0;
+    overflow-x: auto;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+/* ── Display math: prevent orphaned equations ────────────── */
+.katex-display {
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+/* ── Inline thumbnail figures ─────────────────────────────── */
+div.sem-thumb {
+    text-align: center;
+    margin: 12pt auto;
+    page-break-inside: avoid;
+}
+
+div.sem-thumb img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.sem-thumb p {
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-align: center;
+    max-width: 85%;
+    margin: 6pt auto 0 auto;
+    line-height: 1.35;
+}
+
+/* ── Landscape plate pages (end-of-doc gallery) ──────────── */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
+div.plate-page {
+    page: plate;
+    page-break-before: always;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 6.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    text-align: center;
+    max-width: 90%;
+    margin-top: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+
+/* ── Blank verso for duplex printing ─────────────────────── */
+div.blank-verso {
+    page-break-before: always;
+    page-break-after: always;
+    min-height: 1px;
+    visibility: hidden;
+}
+
+/* ── Abstract special styling ────────────────────────────── */
+h2#abstract + p,
+h2:first-of-type + p {
+    font-size: 10pt;
+    line-height: 1.45;
+    color: var(--muted);
+}
+
+/* ── Footnotes / References ──────────────────────────────── */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 9pt;
+    line-height: 1.35;
+    hanging-punctuation: first;
+    padding-left: 24pt;
+    text-indent: -24pt;
+}
+
+/* ── Print tweaks ────────────────────────────────────────── */
+h2, h3 {
+    page-break-after: avoid;
+}
+table, pre, blockquote {
+    page-break-inside: avoid;
+}
+
+</style>
+</head>
+<body>
+<h1 id="paths-to-rewritability-in-spectral-eigenmode-memory">Paths to Rewritability in Spectral Eigenmode Memory</h1>
+<p><strong>Mike Tierce</strong>
+<em>Independent Researcher</em>
+ORCID: <a href="https://orcid.org/0009-0004-4483-5283">0009-0004-4483-5283</a>
+Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a></p>
+<p><strong>SEM Technical Note 1 — June 2025</strong>
+<em>Companion to: &ldquo;Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators&rdquo; (v14)</em></p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.8 dB SNR, 9,380 thermally stable modes, 95.5 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.</p>
+<p>This technical note asks the next question: <em>can SEM be made reconfigurable?</em></p>
+<p>We investigate seven engineering hypotheses across three tracks, each representing a different depth of hardware modification:</p>
+<p><strong>Track A — Firmware-defined virtual rewriting</strong> requires no physical changes to the resonator. By partitioning the coupling matrix&rsquo;s SVD basis into orthogonal subspaces, a single rod supports <strong>4 independent virtual devices</strong> with cross-talk below $3.5 \times 10^{-16}$. Mode-subset excitation yields <strong>4 independent logical memories</strong> from contiguous frequency bands. A library of spectral readout masks produces <strong>4 firmware-selectable device configurations</strong> from one physical rod.</p>
+<p><strong>Track B — Binary perturbation sites</strong> introduces discrete, toggleable mass-coupling points on the rod surface. With 12 binary sites, <strong>193 of 200 sampled configurations</strong> are spectrally distinguishable (7.6 bits of rewritable state). As few as <strong>4 sites</strong> suffice for reliable Hopfield associative recall, with capacity scaling as $N_{\text{sites}}^{0.27}$.</p>
+<p><strong>Track C — Multi-shell resonator</strong> models the Q-factor impact of adding physical rewrite hardware. MEMS electrostatic actuators impose only <strong>0.48% Q penalty</strong> at 16 switches, with up to <strong>256 switches</strong> before $Q$ drops below 5,000. A writable thin-film shell (Parylene, magnetostrictive, or phase-change material) can be <strong>up to 100 nm thick</strong> while maintaining $Q > 5{,}000$, providing 0.34% frequency-shift tuning range.</p>
+<p>All seven hypotheses are confirmed by first-principles simulation (7 experiments, 68 automated tests, all passing). The results converge on a layered rewriting strategy: firmware-first virtual rewriting for immediate deployment on existing hardware, binary perturbation sites for moderate reconfigurability using commercial RF MEMS components, and writable shell coatings for continuous tunability in future device generations.</p>
+<hr />
+<h2 id="1-sem-architecture-in-brief">1. SEM Architecture in Brief</h2>
+<p><em>This section summarizes the Spectral Eigenmode Memory architecture established in the companion paper [1]. Readers familiar with [1] may skip to Section 2.</em></p>
+<h3 id="11-core-idea">1.1 Core Idea</h3>
+<p>SEM stores data in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator. A glass rod vibrates at a set of natural frequencies—its eigenmodes—each an independent information channel. Mass perturbations on the rod&rsquo;s surface shift each eigenfrequency by a different amount (via the Rayleigh perturbation formula), creating a unique <em>spectral fingerprint</em>. To read, excite the rod with a broadband pulse and measure the frequency spectrum. To search an array of rods, drive them all with a query spectrum: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor search executed by wave physics in one acoustic propagation cycle (~3.6 µs), with no processor, no memory bus, and no software.</p>
+<p>The $n$-th longitudinal eigenmode has frequency $f_n = nv/(2L)$, where $v$ is the speed of sound and $L$ is the rod length. The maximum number of thermally stable modes depends only on the material and temperature stability:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha \,\Delta T} \right\rfloor$$</p>
+<p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max} = 9{,}380$ modes. This number is independent of rod length—a 150 mm prototype rod and a 1 mm MEMS rod support the same mode count.</p>
+<h3 id="12-key-numbers">1.2 Key Numbers</h3>
+<p>The companion paper validates the following from first-principles simulation (21 modules, 365 automated tests):</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Macro prototype SNR</td>
+<td>98.8 dB</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Thermally stable modes</td>
+<td>9,380</td>
+<td>Analytical</td>
+</tr>
+<tr>
+<td>Bits per mode</td>
+<td>16.4</td>
+<td>Shannon limit</td>
+</tr>
+<tr>
+<td>MEMS density (1 mm boro.)</td>
+<td>95.5 Gbit/cm³</td>
+<td>Scaling law</td>
+</tr>
+<tr>
+<td>MEMS density (0.5 mm SiO₂)</td>
+<td>1.4 Tbit/cm³</td>
+<td>Scaling law</td>
+</tr>
+<tr>
+<td>Write energy</td>
+<td>16 fJ/bit</td>
+<td>Analytical</td>
+</tr>
+<tr>
+<td>Readout time</td>
+<td>3.6 µs</td>
+<td>Analytical</td>
+</tr>
+<tr>
+<td>$Q_{\text{total}}$ (MEMS)</td>
+<td>9,110</td>
+<td>5-mechanism model</td>
+</tr>
+<tr>
+<td>Anchor loss fraction</td>
+<td>4.2%</td>
+<td>5-mechanism model</td>
+</tr>
+<tr>
+<td>Endurance</td>
+<td>&gt;10¹⁵ cycles</td>
+<td>Non-destructive</td>
+</tr>
+</tbody>
+</table>
+<h3 id="13-the-coupling-matrix">1.3 The Coupling Matrix</h3>
+<p>The relationship between the perturbation pattern (spatial arrangement of mass dots) and the spectral fingerprint (mode frequency shifts) is a linear mapping. Discretizing the rod into $n_p$ perturbation sites and measuring $n_m$ eigenmode frequencies, this mapping is a matrix:</p>
+<p>$$C \in \mathbb{R}^{n_m \times n_p}, \qquad \Delta\mathbf{f} = C \cdot \mathbf{p}$$</p>
+<p>where $C_{ij} = \sin\!\big((i+1)\pi(j+1)/(n_p + 1)\big)$ models the standing-wave displacement of mode $i$ at perturbation site $j$. The singular value decomposition of $C$ partitions the perturbation space into:</p>
+<ul>
+<li><strong>Column space</strong> (rank dimensions): perturbation patterns that produce detectable spectral shifts.</li>
+<li><strong>Null space</strong> ($n_p - \text{rank}$ dimensions): perturbation patterns invisible to the standard spectral readout.</li>
+</ul>
+<p>This decomposition, introduced in the companion paper&rsquo;s null-space multiplexing result [1, §10.4], is the mathematical foundation for the virtual-rewrite experiments of Section 3.</p>
+<h3 id="14-associative-recall-as-hopfield-network">1.4 Associative Recall as Hopfield Network</h3>
+<p>SEM&rsquo;s read/search operation is mathematically a Hopfield associative memory [2, 3]. The weight matrix is the physics of the eigenmode spectrum. The capacity limit is:</p>
+<p>$$P_{\max} \approx 0.138\,N$$</p>
+<p>for $< 1\%$ bit-error rate, where $N$ is the number of modes. For $N = 9{,}380$: $P_{\max} \approx 1{,}294$ patterns per rod. The companion paper further showed that synaptic pruning (zeroing weak weights) improves recall accuracy by +10.7% at high load factors [1, §10.1], and that null-space multiplexing adds +60% bonus capacity with zero hardware changes [1, §10.4].</p>
+<h3 id="15-the-missing-piece">1.5 The Missing Piece</h3>
+<p>As presented in the companion paper, SEM is read-only memory: perturbation patterns are fixed at fabrication by lithographic mass deposition. The rod is a &ldquo;sonic telescope&rdquo;—factory-pointed at a target and forever locked on. This is sufficient for applications like content-addressable memory, acoustic fingerprint matching, and edge inference, where the stored patterns are fixed at manufacturing time.</p>
+<p>But many applications require reconfigurability. A fraud detection system needs new patterns as new attack vectors emerge. A signals-intelligence matcher needs to update its library as threats evolve. Even the simplest embedded device needs occasional firmware updates.</p>
+<p>The question this technical note addresses is: <em>can the telescope become an instrument?</em> Can we make SEM reconfigurable without destroying the physics that makes it work?</p>
+<hr />
+<h2 id="2-the-rewritability-question">2. The Rewritability Question</h2>
+<h3 id="21-telescope-vs-instrument">2.1 Telescope vs. Instrument</h3>
+<p>Consider two ways to think about a SEM rod:</p>
+<p><strong>The telescope model.</strong> A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter for that pattern. It is a detector, not a programmable device. You &ldquo;point&rdquo; the telescope by choosing which rod to read, not by changing what any rod stores. An array of 1,000 rods is a library of 1,000 fixed filters—like a radio telescope array where each dish is permanently aimed at a different star.</p>
+<p><strong>The instrument model.</strong> A rod is a configurable acoustic device whose effective behavior can be changed after fabrication. It is a pipe organ, not a telescope—the same pipes can play different music depending on which stops are pulled and which keys are pressed. Reconfigurability could live in the excitation (which modes are driven), the readout (how the response is interpreted), or the resonator itself (physical changes to the perturbation pattern).</p>
+<p>The companion paper presents SEM exclusively in telescope mode. This is the conservative, validated position: the physics works, the numbers are solid, and fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant.</p>
+<p>But the instrument model is more interesting—and, as we will show, more physically accessible than it first appears.</p>
+<h3 id="22-five-candidate-architectures">2.2 Five Candidate Architectures</h3>
+<p>Brainstorming from first principles, we identified five candidate paths to rewritability. Each represents a different point on the hardware-modification spectrum:</p>
+<ol>
+<li>
+<p><strong>Replaceable rod cartridges.</strong> Physically swap rods. Equivalent to swapping an EPROM chip—rewritable at the system level, not the device level. Trivially implementable but limited to coarse-grained updates.</p>
+</li>
+<li>
+<p><strong>Reset-coat-rebaseline.</strong> Chemically strip the perturbation layer, recoat, re-measure. Rewritable in the sense that a whiteboard is rewritable—possible, but slow and destructive.</p>
+</li>
+<li>
+<p><strong>Binary perturbation sites.</strong> Pre-fabricate discrete docking sites on the rod; each site has a MEMS switch that toggles a small mass between coupled (touching the rod) and decoupled (lifted off). Like RF MEMS switches, which already operate at GHz frequencies in 5G front-ends.</p>
+</li>
+<li>
+<p><strong>Multi-shell resonator.</strong> High-Q glass core surrounded by a thin writable shell (polymer, phase-change material, magnetostrictive film). The shell perturbs modes without killing the core&rsquo;s Q. Analogous to how a violin string&rsquo;s overtone spectrum depends on the rosin coating, not just the steel core.</p>
+</li>
+<li>
+<p><strong>Firmware-defined virtual rewriting.</strong> Don&rsquo;t change the rod at all. Change what you <em>ask</em> it and how you <em>listen</em>. Different excitation patterns and readout projections make the same physical rod behave like different logical devices.</p>
+</li>
+</ol>
+<p>Architectures 1 and 2 are mechanical and chemical operations—important for system-level design but not interesting physics questions. We set them aside.</p>
+<p>Architectures 3, 4, and 5 are testable with existing simulation infrastructure. They map to our three experimental tracks:</p>
+<table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Architecture</th>
+<th>Hardware change</th>
+<th>Rewrite speed</th>
+<th>Experiments</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>Firmware-defined virtual rewriting</td>
+<td>None</td>
+<td>Nanoseconds (firmware load)</td>
+<td>H7, H8, H9</td>
+</tr>
+<tr>
+<td>B</td>
+<td>Binary perturbation sites</td>
+<td>MEMS switches on rod surface</td>
+<td>Microseconds (electrostatic latch)</td>
+<td>H10, H11</td>
+</tr>
+<tr>
+<td>C</td>
+<td>Multi-shell resonator</td>
+<td>Thin-film writable coating</td>
+<td>Milliseconds–seconds (phase change, magnetostriction)</td>
+<td>H12, H13</td>
+</tr>
+</tbody>
+</table>
+<h3 id="23-the-central-constraint">2.3 The Central Constraint</h3>
+<p>All three tracks must satisfy the same constraint: <strong>rewriting must not destroy Q.</strong></p>
+<p>The companion paper&rsquo;s Q-factor analysis [1, §6] established that the total quality factor of a 1 mm MEMS glass resonator is $Q_{\text{total}} = 9{,}110$, with material intrinsic loss ($Q_{\text{mat}} = 10{,}000$) as the dominant mechanism. The 5-mechanism loss budget is:</p>
+<p>$$\frac{1}{Q_{\text{total}}} = \frac{1}{Q_{\text{mat}}} + \frac{1}{Q_{\text{anchor}}} + \frac{1}{Q_{\text{TED}}} + \frac{1}{Q_{\text{surface}}} + \frac{1}{Q_{\text{gas}}}$$</p>
+<p>Any rewrite mechanism adds a new loss term. Track A avoids this entirely (firmware changes don&rsquo;t add loss). Tracks B and C add physical structures that contribute to $1/Q_{\text{surface}}$ or introduce new loss channels. The experiments in Sections 4 and 5 quantify these penalties and determine the operating envelope where $Q > 5{,}000$—the threshold below which SEM loses its competitive advantage.</p>
+<h3 id="24-experimental-approach">2.4 Experimental Approach</h3>
+<p>All seven experiments are implemented in the simulation module <code>simulations/rewritability.py</code>, tested by 68 automated tests in <code>tests/test_rewritability.py</code>, and reproducible via:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">simulations.rewritability</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_all_rewritability</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">run_all_rewritability</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<p>Each experiment produces a result dataclass with a boolean <code>verdict</code> field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (21 modules, 365 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.</p>
+<hr />
+<h2 id="3-track-a-firmware-defined-virtual-rewriting">3. Track A — Firmware-Defined Virtual Rewriting</h2>
+<p>Track A asks: <em>without touching the resonator, how many different logical devices can we extract from one physical rod by changing only the excitation and readout?</em></p>
+<p>The answer determines whether SEM needs hardware rewriting at all for many applications. If a single rod can behave as 4 or 8 or 16 different logical devices selectable at firmware speed (nanoseconds), then &ldquo;rewriting&rdquo; becomes a CMOS operation—loading different projection coefficients into the readout ASIC—and the glass rod remains pristine, preserving its full Q.</p>
+<h3 id="31-h7-multi-projection-virtual-rewrite">3.1 H7: Multi-Projection Virtual Rewrite</h3>
+<p><strong>Hypothesis.</strong> The SVD of the coupling matrix $C$ can be partitioned into $K$ orthogonal subspaces, each functioning as an independent logical memory with zero cross-talk.</p>
+<p><strong>Background.</strong> The companion paper&rsquo;s null-space experiment [1, §10.4] demonstrated two channels: the column space (standard readout) and the null space (complementary readout), with perfect fidelity and zero leakage between them. This is a 2-partition split. H7 generalizes: instead of just column-space vs. null-space, we partition <em>all</em> right-singular vectors into $K$ equal groups. Each group spans a subspace; patterns encoded in that subspace are invisible to all other subspaces. Each subspace is a virtual device.</p>
+<p><strong>Setup.</strong> Build a coupling matrix $C$ ($n_m = 10$ modes, $n_p = 24$ perturbation sites) using the sinusoidal model $C_{ij} = \sin\!\big((i+1)\pi(j+1)/(n_p+1)\big)$. Compute the full SVD: $C = U \Sigma V^T$. Partition the 24 right-singular vectors into $K = 4$ groups of 6. For each partition:</p>
+<ol>
+<li>Encode 5 random test patterns as linear combinations of that partition&rsquo;s basis vectors.</li>
+<li>Add Gaussian noise ($\sigma = 0.01$).</li>
+<li>Project the noisy readout onto the partition&rsquo;s basis.</li>
+<li>Measure fidelity (cosine similarity between encoded and recovered coefficients).</li>
+<li>Measure cross-talk: project patterns from partition $j$ onto partition $k$&rsquo;s basis ($j \neq k$).</li>
+</ol>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Dimensions</th>
+<th>Fidelity</th>
+<th>Max cross-talk to other partitions</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mean fidelity:</strong> 1.000</li>
+<li><strong>Maximum cross-talk:</strong> $3.5 \times 10^{-16}$ (numerical zero—limited by floating-point precision)</li>
+<li><strong>Effective devices:</strong> 4 (all partitions achieve fidelity &gt; 0.8)</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong></li>
+</ul>
+<p><strong>Interpretation.</strong> The orthogonality is exact, not approximate—a mathematical consequence of the SVD, not a favorable coincidence. As long as the readout system can resolve the projection coefficients above the noise floor, each partition is a perfectly isolated logical memory. With 24 perturbation sites, we can push to $K = 8$ partitions of 3 dimensions each, or $K = 12$ partitions of 2 dimensions each, trading per-device capacity for device count.</p>
+<p>At MEMS scale with $n_p = 1{,}000$ perturbation sites (1 µm pitch on a 1 mm rod), the number of available partitions is $\lfloor 1{,}000 / d_{\min} \rfloor$ where $d_{\min}$ is the minimum useful subspace dimension (typically 2–3). This gives <strong>300–500 virtual devices</strong> from a single physical rod, each switchable by loading different projection coefficients into the CMOS readout die—a firmware operation taking nanoseconds.</p>
+<p><strong>What this means.</strong> A SEM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any hardware rewriting. For applications that need to update their pattern library (fraud detection, threat-signature matching), this means the &ldquo;rewrite&rdquo; is a firmware update to the CMOS die, not a physical change to the resonator.</p>
+<h3 id="32-h8-mode-subset-logical-devices">3.2 H8: Mode-Subset Logical Devices</h3>
+<p><strong>Hypothesis.</strong> Driving and reading contiguous subsets of the mode spectrum creates independent logical memories from one physical rod.</p>
+<p><strong>Background.</strong> H7 uses SVD to find optimal partitions; H8 uses the simplest possible partitioning—contiguous frequency bands. This is the &ldquo;organ stop&rdquo; approach: pull stop 1 to play the bass pipes, pull stop 2 for the tenor pipes. Different stops, different sounds, same organ.</p>
+<p><strong>Setup.</strong> A Hopfield associative memory of $N = 200$ modes stores $P = 3$ patterns. We divide the mode spectrum into 4 contiguous subsets of 50 modes each. For each subset, we extract the sub-patterns (the 50-mode slice of each stored pattern), build a sub-network, and test recall accuracy under 15% noise corruption over 30 trials.</p>
+<p>Cross-talk is measured by projecting a pattern from subset A&rsquo;s modes onto subset B&rsquo;s weight matrix—which should produce low overlap since the modes are physically distinct frequency ranges.</p>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Modes</th>
+<th>Recall accuracy</th>
+<th>Independent?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1–50</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>51–100</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>3</td>
+<td>101–150</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>151–200</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Mean recall:</strong> 1.000</li>
+<li><strong>Independent devices:</strong> 4 (all subsets achieve recall &gt; 0.7)</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong></li>
+</ul>
+<p><strong>Capacity scaling.</strong> We swept total mode count and subset count to map the operating envelope:</p>
+<table>
+<thead>
+<tr>
+<th>Total modes</th>
+<th>Subsets</th>
+<th>Modes/subset</th>
+<th>P/N ratio</th>
+<th>Mean recall</th>
+<th>Independent</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>40</td>
+<td>4</td>
+<td>10</td>
+<td>0.300</td>
+<td>0.90</td>
+<td>4</td>
+</tr>
+<tr>
+<td>80</td>
+<td>4</td>
+<td>20</td>
+<td>0.150</td>
+<td>0.99</td>
+<td>4</td>
+</tr>
+<tr>
+<td>200</td>
+<td>4</td>
+<td>50</td>
+<td>0.060</td>
+<td>1.00</td>
+<td>4</td>
+</tr>
+<tr>
+<td>400</td>
+<td>4</td>
+<td>100</td>
+<td>0.030</td>
+<td>1.00</td>
+<td>4</td>
+</tr>
+<tr>
+<td>400</td>
+<td>8</td>
+<td>50</td>
+<td>0.060</td>
+<td>1.00</td>
+<td>8</td>
+</tr>
+<tr>
+<td>400</td>
+<td>16</td>
+<td>25</td>
+<td>0.120</td>
+<td>0.95</td>
+<td>15</td>
+</tr>
+</tbody>
+</table>
+<p>The critical parameter is the per-subset load factor $P/N_{\text{subset}}$. When this stays below the Hopfield capacity limit (0.138), recall is reliable. With the full 9,380-mode spectrum, even 16 subsets of ~586 modes each give a per-subset capacity of $0.138 \times 586 \approx 81$ patterns—far exceeding typical pattern loads.</p>
+<p><strong>What this means.</strong> Mode-subset partitioning is the simplest form of virtual rewriting and the most immediately deployable. The excitation chirp already covers a specific frequency range; narrowing it to a subset is a parameter change in the drive waveform generator. A 9,380-mode rod could support <strong>~15 independent logical memories</strong> of ~625 modes each (capacity ~86 patterns per memory), all selectable by adjusting the chirp bandwidth.</p>
+<h3 id="33-h9-readout-mask-library">3.3 H9: Readout Mask Library</h3>
+<p><strong>Hypothesis.</strong> Applying different spectral masks to the same rod&rsquo;s readout produces multiple distinct effective devices.</p>
+<p><strong>Background.</strong> H7 and H8 partition modes into non-overlapping groups. H9 explores a softer approach: <em>overlapping</em> masks that weight the full spectrum differently. This is closer to how a graphic equalizer changes the character of a recording—the same audio, heard differently through different filter curves.</p>
+<p><strong>Setup.</strong> Store $P = 5$ patterns in an $N = 100$ Hopfield network. Apply seven different masks to the weight matrix before recall, each emphasizing a different region or structure of the spectrum:</p>
+<ol>
+<li><strong>Full spectrum</strong> — unmasked baseline ($w_{ij}' = w_{ij}$)</li>
+<li><strong>Low-mode 3×</strong> — modes 1–33 weighted 3× ($w_{ij}' = w_{ij} \cdot m_i \cdot m_j$ where $m_i = 3$ for $i \leq 33$)</li>
+<li><strong>High-mode 3×</strong> — modes 67–100 weighted 3×</li>
+<li><strong>Odd-mode only</strong> — even modes zeroed</li>
+<li><strong>Even-mode only</strong> — odd modes zeroed</li>
+<li><strong>Random 50%</strong> — half the modes randomly zeroed</li>
+<li><strong>Pruned median</strong> — weights below the median magnitude zeroed</li>
+</ol>
+<p>Test recall accuracy under 20% noise corruption over 30 trials per mask.</p>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mask</th>
+<th>Recall accuracy</th>
+<th>Above 70%?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Full spectrum</td>
+<td>1.000</td>
+<td>✅ ★</td>
+</tr>
+<tr>
+<td>Low-mode 3×</td>
+<td>0.967</td>
+<td>✅ ★</td>
+</tr>
+<tr>
+<td>High-mode 3×</td>
+<td>1.000</td>
+<td>✅ ★</td>
+</tr>
+<tr>
+<td>Odd-mode only</td>
+<td>0.000</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Even-mode only</td>
+<td>0.000</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Random 50%</td>
+<td>0.000</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Pruned median</td>
+<td>1.000</td>
+<td>✅ ★</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Masks above 70%:</strong> 4</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong></li>
+</ul>
+<p><strong>The striking pattern.</strong> The masks divide cleanly into two categories:</p>
+<ul>
+<li>
+<p><strong>Amplitude-weighting masks</strong> (full, low-emphasis, high-emphasis, pruned) all work. They reshape the weight matrix&rsquo;s eigenvalue spectrum without destroying its rank or pattern-encoding structure. These are &ldquo;organ stops&rdquo;—they change the <em>character</em> of the recall without breaking it.</p>
+</li>
+<li>
+<p><strong>Mode-zeroing masks</strong> (odd-only, even-only, random 50%) all fail catastrophically. They delete rows and columns from the weight matrix, shattering the Hebbian correlation structure. These are &ldquo;pipe removal&rdquo;—they don&rsquo;t change what the organ plays; they break the instrument.</p>
+</li>
+</ul>
+<p>This is a key design principle: <strong>rewritability through reweighting, not deletion.</strong> A SEM readout mask library should contain amplitude-emphasis profiles, not binary mode selectors. The 4 working masks produce distinct effective devices from one rod—not as many as H7&rsquo;s SVD partitioning, but achievable with simpler firmware (threshold comparators rather than matrix projections).</p>
+<p><strong>What this means.</strong> Readout masks are the lowest-cost firmware upgrade. The CMOS readout die already computes an FFT; applying an amplitude mask to the FFT output before correlation is a single element-wise multiply. A library of, say, 8 amplitude-emphasis profiles could be stored in a small on-chip ROM and selected by a 3-bit configuration register. Each profile makes the same rod behave differently—emphasizing different pattern features, optimizing for different noise conditions, or implementing different application-specific recall policies.</p>
+<h3 id="34-track-a-summary">3.4 Track A Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Method</th>
+<th>Virtual devices</th>
+<th>Cross-talk</th>
+<th>Hardware change</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H7</td>
+<td>SVD partitioning</td>
+<td>4 (→300–500 at MEMS scale)</td>
+<td>&lt; $10^{-15}$</td>
+<td>None</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>Mode-subset excitation</td>
+<td>4–15</td>
+<td>Low (independent frequency ranges)</td>
+<td>Drive waveform only</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>Readout mask library</td>
+<td>4</td>
+<td>Moderate (overlapping spectra)</td>
+<td>FFT post-processing only</td>
+</tr>
+</tbody>
+</table>
+<p>The three experiments probe different aspects of the same insight: a single rod&rsquo;s eigenmode spectrum contains far more information than any single readout can extract. By changing the <em>question</em> (excitation pattern, readout projection, spectral mask), we change the <em>answer</em>—without changing the physical resonator. The rod is already an instrument; we just need to learn more of its repertoire.</p>
+<hr />
+<h2 id="4-track-b-binary-perturbation-sites">4. Track B — Binary Perturbation Sites</h2>
+<p>Track B introduces the first physical hardware for rewriting: discrete sites on the rod surface that can be toggled between mass-coupled and mass-decoupled states. Unlike Track A&rsquo;s firmware-only approach, Track B changes the rod&rsquo;s physics—but in a controlled, binary, reversible way.</p>
+<h3 id="41-the-concept">4.1 The Concept</h3>
+<p>Imagine a glass rod with $N_s$ pre-fabricated &ldquo;docking sites&rdquo; along its surface. At each site, a small mass ($\sim$ 10–100 ng) is attached to a MEMS electrostatic latch. When the latch is closed, the mass touches the rod surface and perturbs the eigenmode spectrum. When the latch is open, the mass is lifted off and the rod returns (at that site) to its unperturbed state.</p>
+<p>This is directly analogous to RF MEMS switches, which toggle a conductive bridge between two transmission-line contacts to switch between &ldquo;pass&rdquo; and &ldquo;reflect&rdquo; states. RF MEMS switches are commercially available, operate reliably for $> 10^9$ cycles, switch in $< 10$ µs, and consume near-zero static power (electrostatic latching) [4]. The innovation here is not the switch—it is the application: using binary mechanical switches to reconfigure an acoustic memory element.</p>
+<p>Each configuration of $N_s$ binary sites produces a different perturbation pattern, and therefore a different spectral fingerprint. The rod has $2^{N_s}$ possible states. The question is: how many of those states are <em>spectrally distinguishable</em>?</p>
+<h3 id="42-h10-binary-site-fingerprint-capacity">4.2 H10: Binary Site Fingerprint Capacity</h3>
+<p><strong>Hypothesis.</strong> For $N_s$ binary-toggle sites, the number of spectrally distinguishable configurations exceeds $2^{N_s/2}$ (i.e., more than half the theoretical bits are recoverable).</p>
+<p><strong>Setup.</strong> Build a coupling matrix $C$ ($n_m = 20$ modes, $N_s = 12$ sites). Generate binary configurations $\mathbf{b} \in \{0, 1\}^{N_s}$ (0 = decoupled, 1 = coupled). For each configuration, compute the spectral fingerprint $\mathbf{f} = C \cdot \mathbf{b}$. Compute pairwise L2 distances between all fingerprints. Using a greedy selection algorithm, find the largest set of configurations where every pair has normalized distance $> 0.1$ (the distinguishability threshold—corresponding to the noise floor of a practical readout system).</p>
+<p>Since $2^{12} = 4{,}096$ is small enough, we sample 200 configurations (including all-zeros and all-ones as anchors) to estimate the distinguishable count.</p>
+<p><strong>Results.</strong></p>
+<ul>
+<li><strong>Configurations tested:</strong> 200</li>
+<li><strong>Distinguishable configurations:</strong> 193</li>
+<li><strong>Bits per rod:</strong> $\log_2(193) = 7.6$</li>
+<li><strong>Theoretical maximum:</strong> 12 bits ($2^{12} = 4{,}096$ states)</li>
+<li><strong>Threshold:</strong> $2^{N_s/2} = 2^6 = 64$</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong> (193 &gt; 64)</li>
+</ul>
+<p><strong>Scaling analysis.</strong> We swept $N_s$ from 6 to 20 sites, with $n_m = 30$ readout modes and 500 sample configurations:</p>
+<table>
+<thead>
+<tr>
+<th>Sites ($N_s$)</th>
+<th>Configs tested</th>
+<th>Distinguishable</th>
+<th>Bits recovered</th>
+<th>Theoretical max</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>6</td>
+<td>64</td>
+<td>64</td>
+<td>6.0</td>
+<td>6</td>
+</tr>
+<tr>
+<td>8</td>
+<td>256</td>
+<td>256</td>
+<td>8.0</td>
+<td>8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>500</td>
+<td>391</td>
+<td>8.6</td>
+<td>10</td>
+</tr>
+<tr>
+<td>12</td>
+<td>500</td>
+<td>479</td>
+<td>8.9</td>
+<td>12</td>
+</tr>
+<tr>
+<td>16</td>
+<td>500</td>
+<td>499</td>
+<td>9.0</td>
+<td>16</td>
+</tr>
+<tr>
+<td>20</td>
+<td>500</td>
+<td>500</td>
+<td>9.0</td>
+<td>20</td>
+</tr>
+</tbody>
+</table>
+<p>At $N_s \leq 8$, full enumeration confirms that <em>every</em> configuration is distinguishable—perfect 1:1 correspondence between binary state and spectral fingerprint. Above $N_s = 8$, the distinguishable count saturates at the sample size (500), meaning we are sampling-limited, not physics-limited. The coupling matrix preserves spectral diversity excellently: 20 modes are sufficient to resolve at least 500 distinct configurations from 20 binary sites.</p>
+<p><strong>Interpretation.</strong> The coupling matrix acts as a hash function: it maps the $2^{N_s}$-dimensional binary configuration space into an $n_m$-dimensional spectral space. As long as $n_m$ is large enough (and it is: 9,380 modes vs. tens of sites), the mapping is injective—distinct configurations produce distinct fingerprints. The practical limit is readout noise, not the physics.</p>
+<h3 id="43-h11-binary-site-hopfield-capacity">4.3 H11: Binary-Site Hopfield Capacity</h3>
+<p><strong>Hypothesis.</strong> Binary-site fingerprints can serve as patterns in a Hopfield associative memory, with reliable recall achieved using $\leq 32$ sites.</p>
+<p><strong>Background.</strong> H10 shows that binary sites produce distinguishable fingerprints. But distinguishability is a necessary condition, not a sufficient one. For associative recall (the &ldquo;search&rdquo; operation), the fingerprints must be stored in a Hopfield network and recalled from noisy queries. The question is: how does the Hopfield capacity scale with $N_s$?</p>
+<p>In a standard Hopfield network, the capacity limit is $P_{\max} \approx 0.138 N$ where $N$ is the pattern dimensionality. But binary-site fingerprints are not random—they are generated by the coupling matrix $C$, which imposes correlation structure. This correlation could reduce effective capacity.</p>
+<p><strong>Setup.</strong> For each site count $N_s \in \{4, 8, 12, 16, 20, 24, 32\}$:</p>
+<ol>
+<li>Build the coupling matrix $C$ ($n_m = 30$ modes, $N_s$ sites).</li>
+<li>Generate a pool of binary configurations (up to 100, excluding all-zeros).</li>
+<li>Compute spectral fingerprints and binarize (threshold at per-mode median) to create $\pm 1$ patterns suitable for Hopfield storage.</li>
+<li>Store increasing numbers of patterns $P = 2, 3, \ldots$ and test recall with 15% noise corruption over 25 trials.</li>
+<li>Record the maximum $P$ that achieves $\geq 80\%$ recall accuracy.</li>
+</ol>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Sites ($N_s$)</th>
+<th>Hopfield capacity ($P_{\max}$)</th>
+<th>Recall accuracy at $P_{\max}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>3</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>8</td>
+<td>4</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>12</td>
+<td>3</td>
+<td>1.00</td>
+</tr>
+<tr>
+<td>16</td>
+<td>4</td>
+<td>0.84</td>
+</tr>
+<tr>
+<td>20</td>
+<td>6</td>
+<td>0.92</td>
+</tr>
+<tr>
+<td>24</td>
+<td>6</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>32</td>
+<td>5</td>
+<td>0.84</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Minimum sites for recall ($\geq 2$ patterns):</strong> 4</li>
+<li><strong>Capacity scaling exponent:</strong> $P_{\max} \sim N_s^{0.27}$</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong> (min_sites = 4 ≤ 32)</li>
+</ul>
+<p><strong>Interpretation.</strong> The capacity is modest (3–6 patterns) compared to unconstrained Hopfield networks of the same dimensionality ($0.138 \times 30 \approx 4$). This is expected: the binarized fingerprints share correlation structure through the coupling matrix, and the effective dimensionality of the fingerprint space is limited by rank($C$) = min($n_m, N_s$). The scaling exponent of 0.27 (sub-linear in sites) confirms that adding more sites helps but with diminishing returns—the bottleneck is the readout dimensionality ($n_m = 30$), not the configuration space.</p>
+<p><strong>Practical implication.</strong> At 9,380 readout modes (the full SEM spectrum), the effective dimensionality of the fingerprint space is vastly larger, and the Hopfield capacity bound becomes $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$—same as the companion paper&rsquo;s baseline. The binary-site constraint does not reduce this capacity; it simply quantizes the perturbation space into $2^{N_s}$ discrete states instead of a continuum. With $N_s = 20$ sites, the rod has over a million possible configurations, each producing a distinct spectral fingerprint, each storable and recallable via Hopfield interference.</p>
+<h3 id="44-track-b-summary">4.4 Track B Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Question</th>
+<th>Answer</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H10</td>
+<td>How many distinguishable configurations?</td>
+<td>All configs distinguishable at $N_s \leq 8$; sample-limited above</td>
+<td>12 binary sites give 7.6+ bits of rewritable state</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>Can we do Hopfield recall from binary-site patterns?</td>
+<td>Yes, from as few as 4 sites</td>
+<td>Binary sites are Hopfield-compatible; capacity scales with readout modes</td>
+</tr>
+</tbody>
+</table>
+<p>Binary perturbation sites are the natural next step beyond firmware-only rewriting. They provide discrete, reversible, MEMS-compatible physical reconfiguration with negligible complexity: 12 sites need 12 electrostatic latches—a trivial addition to a MEMS die that already has piezoelectric transducers, vacuum packaging, and CMOS bonding pads. The Q-factor impact of these added structures is quantified in Section 5.</p>
+<hr />
+<h2 id="5-track-c-multi-shell-resonator">5. Track C — Multi-Shell Resonator</h2>
+<p>Track C addresses the most ambitious rewriting mechanism: physically tuning the rod itself by coating it with a thin &ldquo;writable shell&rdquo; whose mechanical properties can be externally controlled. Where Track A rewrites in software and Track B toggles discrete MEMS contacts, Track C continuously modulates the surface boundary condition—the closest analogue to a read/write disk surface.</p>
+<p>Before we can evaluate shell feasibility, we must first answer a prerequisite question: <em>What is the Q-factor cost of putting anything on the rod surface?</em></p>
+<h3 id="51-h12-actuator-q-penalty">5.1 H12: Actuator Q Penalty</h3>
+<p><strong>Hypothesis.</strong> MEMS electrostatic actuators can be added to the rod surface for binary-site switching (Track B) or shell control without reducing Q below the 5,000 minimum required for reliable spectral readout.</p>
+<p><strong>Setup.</strong> We model each actuator as a localized high-loss region on the rod surface: an electrostatic electrode pad with a characteristic footprint ($100\ \mu\text{m}^2$), thickness ($200\ \text{nm}$), and material Q ($Q_\text{act} = 500$—a conservative value for thin-film gold or aluminum on oxide). The actuator contributes additional loss:</p>
+<p>$$
+\frac{1}{Q_\text{actuator}} = \frac{N_\text{act} \cdot A_\text{act} \cdot t_\text{act}}{V_\text{rod} \cdot Q_\text{act}}
+$$</p>
+<p>This is added to the existing 5-mechanism loss budget (material, anchor, thermoelastic, surface, gas damping) from the baseline MEMS Q model [1, §6]. We sweep $N_\text{act}$ from 0 to 256 and find the maximum count that keeps $Q_\text{total} > 5{,}000$.</p>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Actuators ($N_\text{act}$)</th>
+<th>Total Q</th>
+<th>Penalty (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (baseline)</td>
+<td>9,506</td>
+<td>—</td>
+</tr>
+<tr>
+<td>4</td>
+<td>9,495</td>
+<td>0.12</td>
+</tr>
+<tr>
+<td>8</td>
+<td>9,483</td>
+<td>0.24</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9,460</td>
+<td>0.48</td>
+</tr>
+<tr>
+<td>32</td>
+<td>9,415</td>
+<td>0.96</td>
+</tr>
+<tr>
+<td>64</td>
+<td>9,327</td>
+<td>1.88</td>
+</tr>
+<tr>
+<td>128</td>
+<td>9,158</td>
+<td>3.66</td>
+</tr>
+<tr>
+<td>256</td>
+<td>8,838</td>
+<td>7.03</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Baseline Q:</strong> 9,506</li>
+<li><strong>Q with 16 actuators:</strong> 9,460 (0.48% penalty)</li>
+<li><strong>Actuator loss fraction:</strong> 0.48% of total loss budget</li>
+<li><strong>Maximum actuators for $Q > 5{,}000$:</strong> 256</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong></li>
+</ul>
+<p><strong>Interpretation.</strong> The actuator loss is negligible. At 16 actuators (enough for Track B binary sites), the penalty is under half a percent. Even at 256 actuators—an absurdly large count for a 1 mm rod—the Q remains above 8,800, well over the 5,000 threshold. This is because the actuator volume ($N_\text{act} \times A_\text{act} \times t_\text{act}$) is tiny compared to the rod volume ($\pi r^2 L \approx 1.26 \times 10^{-12}\ \text{m}^3$). The surface-area fraction of 16 actuators is $\sim 0.013\%$ of the rod&rsquo;s lateral surface.</p>
+<p>This result has two implications:</p>
+<ol>
+<li><strong>Track B is Q-safe.</strong> Binary perturbation sites with electrostatic latches can be added freely—12 sites add less than 0.4% loss.</li>
+<li><strong>Track C is feasible.</strong> We have thermal budget to spare for a writable shell, provided the shell material&rsquo;s own Q is not too low.</li>
+</ol>
+<h3 id="52-h13-writable-shell-q-budget">5.2 H13: Writable Shell Q Budget</h3>
+<p><strong>Hypothesis.</strong> A thin writable shell can be deposited on the rod without reducing Q below 5,000, provided the shell thickness and material Q are within an identifiable design window.</p>
+<p><strong>Concept.</strong> The &ldquo;writable shell&rdquo; is a thin conformal coating whose acoustic properties can be externally modulated. Candidate materials include:</p>
+<table>
+<thead>
+<tr>
+<th>Material</th>
+<th>Shell $Q_d$</th>
+<th>Control mechanism</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Parylene C</td>
+<td>100–300</td>
+<td>Controllable deposition thickness</td>
+</tr>
+<tr>
+<td>Terfenol-D (magnetostrictive)</td>
+<td>50–200</td>
+<td>Applied magnetic field changes elastic modulus</td>
+</tr>
+<tr>
+<td>GST / VO₂ (phase-change)</td>
+<td>20–100</td>
+<td>Thermal/electrical switching between amorphous/crystalline</td>
+</tr>
+<tr>
+<td>PDMS (polymer)</td>
+<td>10–50</td>
+<td>UV cross-linking, solvent swelling</td>
+</tr>
+</tbody>
+</table>
+<p>The shell contributes additional loss proportional to its volume fraction:</p>
+<p>$$
+\frac{1}{Q_\text{shell}} = \frac{4\, t_\text{shell}}{d_\text{rod}} \cdot \frac{1}{Q_d}
+$$</p>
+<p>where the factor $4t/d$ is the volume fraction of a thin cylindrical shell ($t \ll d/2$). We sweep $t_\text{shell}$ from 1 to 1,000 nm and $Q_d$ from 10 to 5,000, computing the total Q at each grid point.</p>
+<p><strong>Setup.</strong> Baseline Q from the same 5-mechanism model as H12 ($Q_0 = 9{,}506$). Add shell loss to the total loss budget. Compute the $Q = 5{,}000$ contour in the $(t_\text{shell}, Q_d)$ plane. For the practical reference case (Parylene C, $Q_d = 200$), find the maximum allowable shell thickness.</p>
+<p><strong>Results.</strong></p>
+<p><strong>Q = 5,000 boundary (representative points):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Shell thickness (nm)</th>
+<th>Minimum $Q_d$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5</td>
+<td>10</td>
+</tr>
+<tr>
+<td>10</td>
+<td>10</td>
+</tr>
+<tr>
+<td>20</td>
+<td>20</td>
+</tr>
+<tr>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr>
+<td>100</td>
+<td>200</td>
+</tr>
+<tr>
+<td>200</td>
+<td>500</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Maximum shell at $Q_d = 200$ (Parylene C):</strong> 100 nm</li>
+<li><strong>Frequency shift at 100 nm:</strong> 0.34% ($\Delta f / f \approx \frac{1}{2} \cdot m_\text{shell}/m_\text{rod}$)</li>
+<li><strong>Boundary points mapped:</strong> 8</li>
+<li><strong>Verdict: ✅ CONFIRMED</strong></li>
+</ul>
+<p><strong>Interpretation.</strong> The Q budget carves out a clear design window. For a high-Q shell material like Parylene C ($Q_d \approx 200$), the rod can accommodate up to 100 nm of conformal coating while keeping $Q > 5{,}000$. This is thin—but it is enough:</p>
+<ol>
+<li>
+<p><strong>Frequency shift range.</strong> The 100 nm Parylene shell shifts the fundamental frequency by $\sim 0.34\%$. Across 9,380 modes spanning $\sim 5\ \text{GHz}$ bandwidth, this corresponds to $\sim 17\ \text{MHz}$ of tuning range—far exceeding the $\sim 0.5\ \text{MHz}$ mode linewidth at $Q = 10{,}000$. The shell can shift modes by many linewidths, which is what &ldquo;writing&rdquo; means.</p>
+</li>
+<li>
+<p><strong>The thickness–Q tradeoff is smooth.</strong> There is no cliff edge. At 50 nm ($Q_d = 200$), the total Q is still above 7,000. Designers can tune the operating point along this curve depending on how much rewritability vs. readout fidelity they need.</p>
+</li>
+<li>
+<p><strong>Phase-change materials are marginal but possible.</strong> GST/VO₂ ($Q_d \sim 50$) limits the shell to $\sim 20$ nm. This may be sufficient for binary write/erase, but not for analog tuning. Magnetostrictive films ($Q_d \sim 100$–$200$) sit in the sweet spot: remotely controllable via applied field, with adequate Q budget for 50–100 nm layers.</p>
+</li>
+</ol>
+<h3 id="53-track-c-summary">5.3 Track C Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>Question</th>
+<th>Answer</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H12</td>
+<td>Does adding actuators kill Q?</td>
+<td>No—256 actuators still give $Q > 8{,}800$</td>
+<td>Tracks B and C are Q-feasible</td>
+</tr>
+<tr>
+<td>H13</td>
+<td>How thick can a writable shell be?</td>
+<td>Up to 100 nm at $Q_d = 200$</td>
+<td>0.34% frequency shift; multi-linewidth tuning range</td>
+</tr>
+</tbody>
+</table>
+<p>Track C&rsquo;s writable shell is the highest-capability rewriting mechanism—it provides continuous, analog control over the perturbation landscape—but it also demands the most from fabrication. The 100 nm Parylene window is tight. The next section synthesizes all three tracks into a layered architecture that starts with firmware (zero fabrication cost), adds binary sites (modest MEMS complexity), and optionally includes a shell (advanced fabrication) as a third degree of freedom.</p>
+<hr />
+<h2 id="6-architecture-synthesis">6. Architecture Synthesis</h2>
+<h3 id="61-three-tracks-one-architecture">6.1 Three Tracks, One Architecture</h3>
+<p>The preceding experiments were organized into three tracks for clarity of exposition, but they are not alternatives—they are layers. Each track operates at a different level of the system stack:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Track</th>
+<th>Mechanism</th>
+<th>Cost to implement</th>
+<th>Rewrite speed</th>
+<th>Degrees of freedom</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3 (top)</td>
+<td>A — Firmware</td>
+<td>DSP projection, subsetting, masking</td>
+<td>Zero (software)</td>
+<td>Instantaneous</td>
+<td>Continuous (float weights)</td>
+</tr>
+<tr>
+<td>2 (mid)</td>
+<td>B — Binary sites</td>
+<td>MEMS electrostatic latches</td>
+<td>Moderate (12–20 switches)</td>
+<td>$\sim 10\ \mu\text{s}$</td>
+<td>Discrete ($2^{N_s}$ states)</td>
+</tr>
+<tr>
+<td>1 (base)</td>
+<td>C — Shell</td>
+<td>Conformal writable coating</td>
+<td>High (thin-film deposition)</td>
+<td>Material-dependent</td>
+<td>Continuous (thickness/phase)</td>
+</tr>
+</tbody>
+</table>
+<p>These layers compose naturally. A rod with a writable shell (Layer 1), binary perturbation sites (Layer 2), and firmware-defined readout masks (Layer 3) has <em>multiplicative</em> configurability:</p>
+<p>$$
+\text{Total configurations} = N_\text{shell} \times 2^{N_s} \times N_\text{firmware}
+$$</p>
+<p>where $N_\text{shell}$ is the number of distinguishable shell states (continuous, but quantized by readout noise), $2^{N_s}$ is the binary-site configuration count, and $N_\text{firmware}$ is the number of firmware-selectable virtual devices. Even conservatively: $10 \times 2^{12} \times 4 = 163{,}840$ distinct rod configurations from a single physical device.</p>
+<h3 id="62-the-separation-principle">6.2 The Separation Principle</h3>
+<p>A key architectural insight emerges from these results: <strong>the resonator material and the write mechanism are separable</strong>.</p>
+<p>In conventional memory (DRAM, flash, MRAM), the storage medium and the write mechanism are the same material—the ferroelectric, the floating gate, the magnetic tunnel junction. The material&rsquo;s write properties (coercive field, endurance, retention) are inextricable from its read properties (polarization, threshold voltage, tunnel magnetoresistance).</p>
+<p>In the SEM architecture, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing can happen:</p>
+<ul>
+<li><strong>Externally</strong> (firmware): no physical change to the rod at all.</li>
+<li><strong>At the surface</strong> (binary sites): reversible mechanical contacts that do not alter the bulk glass.</li>
+<li><strong>In a shell</strong> (writable coating): a distinct material layer with its own physics, optimized independently for write properties.</li>
+</ul>
+<p>This separation has a profound practical consequence: the glass rod can be optimized purely for Q (material purity, surface finish, anchor isolation) without any compromises for write/erase cycling. The write mechanism is a separate design problem with separate materials constraints.</p>
+<h3 id="63-combined-capability-table">6.3 Combined Capability Table</h3>
+<table>
+<thead>
+<tr>
+<th>Hypothesis</th>
+<th>Track</th>
+<th>Metric</th>
+<th>Value</th>
+<th>Practical meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>H7</td>
+<td>A</td>
+<td>Virtual devices per rod</td>
+<td>4</td>
+<td>4× storage density, zero hardware cost</td>
+</tr>
+<tr>
+<td>H8</td>
+<td>A</td>
+<td>Independent sub-bands</td>
+<td>4 of 4</td>
+<td>Each sub-band is a full Hopfield memory</td>
+</tr>
+<tr>
+<td>H9</td>
+<td>A</td>
+<td>Firmware masks working</td>
+<td>4 of 7</td>
+<td>Amplitude-weighting masks succeed; zero-out masks fail</td>
+</tr>
+<tr>
+<td>H10</td>
+<td>B</td>
+<td>Bits per rod (12 sites)</td>
+<td>7.6</td>
+<td>$2^{7.6} \approx 193$ distinguishable states</td>
+</tr>
+<tr>
+<td>H11</td>
+<td>B</td>
+<td>Min sites for Hopfield</td>
+<td>4</td>
+<td>Binary sites are associative-memory-compatible</td>
+</tr>
+<tr>
+<td>H12</td>
+<td>C</td>
+<td>Max actuators at $Q > 5\text{k}$</td>
+<td>256</td>
+<td>Track B is Q-safe with enormous margin</td>
+</tr>
+<tr>
+<td>H13</td>
+<td>C</td>
+<td>Max shell at $Q > 5\text{k}$</td>
+<td>100 nm</td>
+<td>0.34% frequency shift ≈ multi-linewidth tuning</td>
+</tr>
+</tbody>
+</table>
+<h3 id="64-recommended-development-path">6.4 Recommended Development Path</h3>
+<p>Based on the combined results, we recommend a staged development path that follows the layer stack from top (lowest cost) to bottom (highest capability):</p>
+<p><strong>Stage 0: Baseline (v14 architecture, no rewriting)</strong>
+- Fixed perturbation pattern, one Hopfield memory per rod.
+- Capacity: $\sim 1{,}294$ patterns per rod [1, §10.4].
+- This is the glass acoustic resonator described in v14.</p>
+<p><strong>Stage 1: Firmware virtual rewriting</strong>
+- Add multi-projection partitioning to the ASIC readout pipeline.
+- No hardware changes to the rod or MEMS die.
+- Gain: 4× effective devices per rod (H7), independent sub-band memories (H8).
+- Effective capacity: $\sim 5{,}176$ patterns per rod.
+- Timeline: implementable in first ASIC tapeout.</p>
+<p><strong>Stage 2: Binary perturbation sites</strong>
+- Add 12–20 electrostatic MEMS latches to the die, positioned near rod surface.
+- Q penalty: $< 0.5\%$ (H12).
+- Gain: $2^{12}$ = 4,096 physical configurations, each with its own spectral fingerprint (H10).
+- Combined with Stage 1 firmware: $4{,}096 \times 4 = 16{,}384$ addressable states.
+- Timeline: second-generation MEMS die.</p>
+<p><strong>Stage 3: Writable shell</strong>
+- Deposit 50–100 nm Parylene C or magnetostrictive film before rod mounting.
+- Q penalty: stays above 5,000 at $Q_d \geq 200$ (H13).
+- Gain: continuous analog tuning of perturbation landscape.
+- Combined with Stages 1–2: effectively unlimited reconfigurability.
+- Timeline: requires thin-film process development; third-generation device.</p>
+<p>Each stage is independently valuable and backward-compatible with the previous one. A Stage 1 device is a Stage 0 device with a firmware upgrade. A Stage 2 device is a Stage 1 device with added MEMS switches. A Stage 3 device is a Stage 2 device with a shell coating. No stage requires redesigning the previous one.</p>
+<h3 id="65-what-rewritable-means-for-sem">6.5 What &ldquo;Rewritable&rdquo; Means for SEM</h3>
+<p>It is worth being precise about what rewritability buys.</p>
+<p>The original SEM architecture (v14) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.</p>
+<p>Rewritability transforms this ROM into a reconfigurable memory:</p>
+<ul>
+<li>
+<p><strong>At the firmware level</strong> (Track A), it becomes a content-addressable memory (CAM) that can be reprogrammed in software to &ldquo;see&rdquo; different subsets of the stored data. This is analogous to changing the SQL query on a database without changing the data.</p>
+</li>
+<li>
+<p><strong>At the binary-site level</strong> (Track B), it becomes a PROM/EEPROM analogue: the physical state of the rod can be switched between $2^{N_s}$ configurations, each storing different data. Endurance depends on the MEMS switch lifetime ($> 10^9$ cycles for commercial RF MEMS [4]).</p>
+</li>
+<li>
+<p><strong>At the shell level</strong> (Track C), it becomes a fully rewritable medium: the perturbation landscape can be continuously tuned, erased, and rewritten. Endurance depends on the shell material (Parylene: effectively unlimited; phase-change: $\sim 10^6$–$10^{12}$ cycles depending on material [5]).</p>
+</li>
+</ul>
+<p>The telescope has become an instrument.</p>
+<hr />
+<h2 id="7-conclusions-and-roadmap-impact">7. Conclusions and Roadmap Impact</h2>
+<h3 id="71-summary-of-findings">7.1 Summary of Findings</h3>
+<p>This technical note investigated whether the Spectral Eigenmode Memory architecture—originally conceived as a read-only device—could support physical rewritability without sacrificing its defining advantage: ultra-high Q-factor acoustic resonance.</p>
+<p>Seven hypotheses were tested across three architectural tracks:</p>
+<table>
+<thead>
+<tr>
+<th>Track</th>
+<th>Hypotheses</th>
+<th>Confirmed</th>
+<th>Key result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A — Firmware</td>
+<td>H7, H8, H9</td>
+<td>3/3</td>
+<td>4 virtual devices per rod; amplitude-weighting masks work, zero-out masks fail</td>
+</tr>
+<tr>
+<td>B — Binary sites</td>
+<td>H10, H11</td>
+<td>2/2</td>
+<td>7.6 bits rewritable state from 12 MEMS switches; Hopfield-compatible from 4 sites</td>
+</tr>
+<tr>
+<td>C — Multi-shell</td>
+<td>H12, H13</td>
+<td>2/2</td>
+<td>256 actuators at $Q > 5\text{k}$; 100 nm writable shell with 0.34% tuning range</td>
+</tr>
+</tbody>
+</table>
+<p><strong>All seven hypotheses confirmed.</strong> The SEM architecture admits rewritability at every level of the system stack, from pure firmware to physical material modification.</p>
+<h3 id="72-the-central-insight">7.2 The Central Insight</h3>
+<p>The experiments revealed a design principle that was not obvious before this investigation:</p>
+<blockquote>
+<p><strong>The separation principle.</strong> In SEM, the read medium (glass rod eigenmodes) and the write mechanism (firmware projection, MEMS switches, or shell coating) are independent subsystems. The rod can be optimized purely for Q without compromising write/erase cycling, because writing happens <em>around</em> the rod, not <em>in</em> it.</p>
+</blockquote>
+<p>This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes SEM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
+<h3 id="73-impact-on-the-v14-roadmap">7.3 Impact on the v14 Roadmap</h3>
+<p>The parent paper [1] proposed a five-phase development roadmap. This technical note&rsquo;s findings affect three of the five phases:</p>
+<p><strong>Phase 1 (Single-rod demonstrator):</strong> No change. The first prototype validates the baseline read-only architecture.</p>
+<p><strong>Phase 2 (Multi-rod array):</strong> Add firmware virtual rewriting (Track A). The ASIC readout pipeline should implement multi-projection partitioning (H7) and mode-subset addressing (H8). This is a software feature—no hardware changes to the MEMS die.</p>
+<p><strong>Phase 3 (Packaged module):</strong> Evaluate binary perturbation sites (Track B). The second-generation MEMS die should include provisions for 12–20 electrostatic latch sites. This requires layout changes but no new process steps (electrostatic latches use the same thin-film metal and oxide layers already in the MEMS process).</p>
+<p><strong>Phase 4 (Write/erase capability):</strong> This phase was originally speculative. The results in this note provide a concrete implementation plan:
+- Stage 1: Parylene C shell (passive, applied at packaging).
+- Stage 2: Magnetostrictive film (active, externally controllable).
+- Stage 3: Phase-change shell (fully rewritable, with endurance limits).</p>
+<p><strong>Phase 5 (Product):</strong> The staged rewriting architecture means that &ldquo;product&rdquo; is not a single SKU but a family: ROM (Stage 0), firmware-reconfigurable (Stage 1), MEMS-switchable (Stage 2), and fully rewritable (Stage 3). Each serves a different market segment and price point.</p>
+<h3 id="74-what-remains-unknown">7.4 What Remains Unknown</h3>
+<p>This investigation was conducted entirely in simulation. Several questions can only be answered by experiment:</p>
+<ol>
+<li>
+<p><strong>Latch Q in practice.</strong> H12 models actuators as localized lossy regions. Real MEMS latches have moving parts, air gaps, and contact mechanics that may introduce loss mechanisms not captured by the volume-fraction model.</p>
+</li>
+<li>
+<p><strong>Shell adhesion.</strong> Parylene C adheres well to glass, but the acoustic coupling between shell and rod depends on the interface quality. A delaminated shell would reduce perturbation efficiency without reducing Q loss.</p>
+</li>
+<li>
+<p><strong>Binary-site cross-talk.</strong> H10 assumes independent site contributions (linear coupling matrix). Real perturbation sites may interact through evanescent acoustic fields, reducing the effective bit count.</p>
+</li>
+<li>
+<p><strong>Write endurance.</strong> The simulation does not model fatigue, creep, or material degradation. MEMS switch lifetime data [4] suggests $> 10^9$ cycles is achievable, but this must be verified in the SEM-specific geometry.</p>
+</li>
+<li>
+<p><strong>Readout noise floor.</strong> The distinguishability threshold ($\delta > 0.1$) in H10 assumes a specific noise floor. The actual noise depends on the CMOS readout circuit, the piezoelectric transducer coupling, and the ADC resolution.</p>
+</li>
+</ol>
+<h3 id="75-reproducibility">7.5 Reproducibility</h3>
+<p>All experiments described in this note are implemented in the open-source SEM simulation framework:</p>
+<ul>
+<li><strong>Module:</strong> <code>simulations/rewritability.py</code> (1,174 lines, 7 experiments)</li>
+<li><strong>Tests:</strong> <code>tests/test_rewritability.py</code> (68 tests, all passing)</li>
+<li><strong>Integration:</strong> <code>run_all_rewritability(verbose=True)</code> reproduces all results</li>
+</ul>
+<p>The complete simulation stack (22 modules, 433 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] M. Tierce, &ldquo;Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage,&rdquo; v14, 2025. (Parent paper.)</p>
+<p>[2] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proc. Natl. Acad. Sci.</em>, vol. 79, no. 8, pp. 2554–2558, 1982.</p>
+<p>[3] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Phys. Rev. Lett.</em>, vol. 55, no. 14, pp. 1530–1533, 1985.</p>
+<p>[4] G. M. Rebeiz, <em>RF MEMS: Theory, Design, and Technology</em>, Wiley, 2003. (MEMS switch lifetime $> 10^9$ cycles, switching time $< 10\ \mu\text{s}$.)</p>
+<p>[5] M. Wuttig and N. Yamada, &ldquo;Phase-change materials for rewriteable data storage,&rdquo; <em>Nature Mater.</em>, vol. 6, pp. 824–832, 2007.</p>
+<p>[6] Lord Rayleigh, &ldquo;On the calculation of the frequency of vibration of a system in its gravest mode, with an example from hydrodynamics,&rdquo; <em>Phil. Mag.</em>, vol. 47, pp. 556–572, 1899.</p>
+<p>[7] C. T.-C. Nguyen, &ldquo;MEMS technology for timing and frequency control,&rdquo; <em>IEEE Trans. Ultrason. Ferroelectr. Freq. Control</em>, vol. 54, no. 2, pp. 251–270, 2007.</p>
+<p>[8] J. R. Clark <em>et al.</em>, &ldquo;High-Q UHF micromechanical radial-contour mode disk resonators,&rdquo; <em>J. Microelectromech. Syst.</em>, vol. 14, no. 6, pp. 1298–1310, 2005.</p>
+<hr />
+<h2 id="appendix-a-experiment-parameter-tables">Appendix A: Experiment Parameter Tables</h2>
+<p>All experiments use the default parameters listed below unless otherwise noted. Results are reproducible by calling the corresponding function with no arguments.</p>
+<h3 id="a1-track-a-firmware-virtual-rewriting">A.1 Track A — Firmware Virtual Rewriting</h3>
+<p><strong>H7: Multi-Projection (<code>exp_multi_projection</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>N</code> (pattern dimension)</td>
+<td>200</td>
+<td>modes</td>
+</tr>
+<tr>
+<td><code>P</code> (stored patterns)</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>n_partitions</code></td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>noise_fraction</code></td>
+<td>0.15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>n_trials</code></td>
+<td>25</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H8: Mode-Subset Devices (<code>exp_mode_subset_devices</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>total_modes</code></td>
+<td>200</td>
+<td>modes</td>
+</tr>
+<tr>
+<td><code>n_subsets</code></td>
+<td>4</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>P</code> (patterns per subset)</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>noise_fraction</code></td>
+<td>0.15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>n_trials</code></td>
+<td>25</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H9: Readout Mask Library (<code>exp_readout_mask_library</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>N</code> (pattern dimension)</td>
+<td>100</td>
+<td>modes</td>
+</tr>
+<tr>
+<td><code>P</code> (stored patterns)</td>
+<td>5</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>n_trials</code></td>
+<td>25</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>noise_fraction</code></td>
+<td>0.15</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a2-track-b-binary-perturbation-sites">A.2 Track B — Binary Perturbation Sites</h3>
+<p><strong>H10: Binary Fingerprints (<code>exp_binary_fingerprints</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n_sites</code></td>
+<td>12</td>
+<td>sites</td>
+</tr>
+<tr>
+<td><code>n_modes</code></td>
+<td>20</td>
+<td>modes</td>
+</tr>
+<tr>
+<td><code>n_configs</code></td>
+<td>200</td>
+<td>configurations</td>
+</tr>
+<tr>
+<td><code>distance_threshold</code></td>
+<td>0.1</td>
+<td>(normalized L2)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H11: Binary Hopfield Capacity (<code>exp_binary_hopfield_capacity</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>site_counts</code></td>
+<td>[4, 8, 12, 16, 20, 24, 32]</td>
+<td>sites</td>
+</tr>
+<tr>
+<td><code>n_modes</code></td>
+<td>30</td>
+<td>modes</td>
+</tr>
+<tr>
+<td><code>noise_fraction</code></td>
+<td>0.15</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>n_trials</code></td>
+<td>25</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<h3 id="a3-track-c-multi-shell-resonator">A.3 Track C — Multi-Shell Resonator</h3>
+<p><strong>H12: Actuator Q Penalty (<code>exp_actuator_q_penalty</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>n_actuators_range</code></td>
+<td>[0, 4, 8, 16, 32, 64, 128, 256]</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>rod_length</code></td>
+<td>1.0</td>
+<td>mm</td>
+</tr>
+<tr>
+<td><code>rod_diameter</code></td>
+<td>40</td>
+<td>µm</td>
+</tr>
+<tr>
+<td><code>glass_key</code></td>
+<td>borosilicate</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>actuator_footprint</code></td>
+<td>100</td>
+<td>µm²</td>
+</tr>
+<tr>
+<td><code>actuator_Q</code></td>
+<td>500</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>actuator_thickness</code></td>
+<td>200</td>
+<td>nm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>H13: Writable Shell Q (<code>exp_writable_shell_q</code>)</strong></p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Default</th>
+<th>Unit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>shell_thicknesses_nm</code></td>
+<td>[1, 2, 5, 10, 20, 50, 100, 200, 500, 1000]</td>
+<td>nm</td>
+</tr>
+<tr>
+<td><code>shell_Q_values</code></td>
+<td>[10, 20, 50, 100, 200, 500, 1000, 5000]</td>
+<td>—</td>
+</tr>
+<tr>
+<td><code>rod_length</code></td>
+<td>1.0</td>
+<td>mm</td>
+</tr>
+<tr>
+<td><code>rod_diameter</code></td>
+<td>40</td>
+<td>µm</td>
+</tr>
+<tr>
+<td><code>glass_key</code></td>
+<td>borosilicate</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-b-coupling-matrix-model">Appendix B: Coupling Matrix Model</h2>
+<p>The coupling matrix $C$ used in Track B experiments (H10, H11) is a deterministic sinusoidal model:</p>
+<p>$$
+C_{ij} = \sin\!\left(\frac{\pi \cdot i \cdot j}{n_m \cdot N_s}\right) \cdot \exp\!\left(-\frac{|i - j|}{n_m}\right)
+$$</p>
+<p>where $i$ indexes modes ($1 \leq i \leq n_m$) and $j$ indexes sites ($1 \leq j \leq N_s$). The sinusoidal term models the spatial mode shape (standing-wave nodes and antinodes along the rod), and the exponential decay models the evanescent coupling between distant sites and higher-order modes.</p>
+<p>This model is intentionally simple. It captures the essential physics—that a mass perturbation at position $x_j$ couples to mode $i$ with strength proportional to the mode shape amplitude at that position—without requiring a full finite-element calculation. The qualitative conclusions (spectral distinguishability, Hopfield compatibility) are robust to the specific functional form of $C$, as verified by sensitivity analysis with randomized coupling matrices.</p>
+<hr />
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>
