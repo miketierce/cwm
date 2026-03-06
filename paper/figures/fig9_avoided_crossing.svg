@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 360">
+  <defs>
+    <style>
+      text { font-family: 'Segoe UI', system-ui, -apple-system, sans-serif; }
+      .title { font-size: 13px; font-weight: 600; fill: #1a1a2e; }
+      .label { font-size: 10px; fill: #444; }
+      .label-bold { font-size: 10.5px; fill: #1a1a2e; font-weight: 600; }
+      .axis-label { font-size: 9px; fill: #666; }
+      .annotation { font-size: 11px; fill: #0d7377; font-weight: 600; }
+    </style>
+    <marker id="arrowAC" markerWidth="6" markerHeight="4" refX="6" refY="2" orient="auto">
+      <polygon points="0,0 6,2 0,4" fill="#666"/>
+    </marker>
+  </defs>
+
+  <rect width="720" height="360" fill="#fafafa" rx="4"/>
+
+  <!-- Panel divider -->
+  <line x1="360" y1="30" x2="360" y2="340" stroke="#ddd" stroke-width="1" stroke-dasharray="4,4"/>
+
+  <!-- ═══ LEFT PANEL: Avoided Crossing Diagram ═══ -->
+  <text x="180" y="22" text-anchor="middle" class="title">(a) Avoided Crossing at Near-Degeneracy</text>
+
+  <!-- Axes -->
+  <line x1="50" y1="310" x2="340" y2="310" stroke="#333" stroke-width="1"/>
+  <line x1="50" y1="310" x2="50" y2="40" stroke="#333" stroke-width="1"/>
+
+  <text x="195" y="338" text-anchor="middle" class="label">Perturbation strength →</text>
+  <text x="30" y="175" text-anchor="middle" class="label" transform="rotate(-90, 30, 175)">Eigenfrequency</text>
+
+  <!-- Bare (uncoupled) modes — dashed, crossing -->
+  <path d="M 60,260 Q 195,165 330,80" fill="none" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <path d="M 60,100 Q 195,190 330,270" fill="none" stroke="#2980b9" stroke-width="1.5" stroke-dasharray="6,3" opacity="0.5"/>
+  <text x="338" y="78" class="axis-label" fill="#c0392b" opacity="0.6">f₁ (bare)</text>
+  <text x="338" y="272" class="axis-label" fill="#2980b9" opacity="0.6">f₂ (bare)</text>
+
+  <!-- Coupled (hybridised) modes — solid, avoiding -->
+  <path d="M 60,258 C 120,230 140,210 160,195 S 210,180 260,130 S 310,90 330,80" fill="none" stroke="#c0392b" stroke-width="2.5"/>
+  <path d="M 60,102 C 120,130 140,150 160,165 S 210,180 260,230 S 310,265 330,270" fill="none" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="338" y="88" class="axis-label" fill="#c0392b" font-weight="600">f₊ (hybrid)</text>
+  <text x="338" y="262" class="axis-label" fill="#2980b9" font-weight="600">f₋ (hybrid)</text>
+
+  <!-- Gap annotation at crossing point -->
+  <line x1="195" y1="164" x2="195" y2="195" stroke="#0d7377" stroke-width="2"/>
+  <line x1="189" y1="164" x2="201" y2="164" stroke="#0d7377" stroke-width="1.5"/>
+  <line x1="189" y1="195" x2="201" y2="195" stroke="#0d7377" stroke-width="1.5"/>
+  <text x="210" y="183" class="annotation">gap = 2κ</text>
+
+  <!-- Circle at crossing -->
+  <circle cx="195" cy="180" r="25" fill="#0d7377" opacity="0.08" stroke="#0d7377" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- Legend -->
+  <line x1="60" y1="48" x2="85" y2="48" stroke="#888" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="90" y="52" class="axis-label">Bare modes (would cross)</text>
+  <line x1="60" y1="62" x2="85" y2="62" stroke="#2980b9" stroke-width="2.5"/>
+  <text x="90" y="66" class="axis-label">Coupled modes (avoided crossing)</text>
+
+  <!-- ═══ RIGHT PANEL: Energy Exchange and Capacity ═══ -->
+  <text x="540" y="22" text-anchor="middle" class="title">(b) Energy Exchange and Capacity Gain</text>
+
+  <!-- Top: Energy exchange diagram -->
+  <text x="540" y="50" text-anchor="middle" class="label-bold">Hybridisation Depth vs. Detuning (Δf/f₀)</text>
+
+  <!-- Axes for hybridisation plot -->
+  <line x1="400" y1="200" x2="690" y2="200" stroke="#333" stroke-width="1"/>
+  <line x1="400" y1="200" x2="400" y2="62" stroke="#333" stroke-width="1"/>
+
+  <!-- Y-axis labels -->
+  <text x="395" y="204" text-anchor="end" class="axis-label">0%</text>
+  <text x="395" y="166" text-anchor="end" class="axis-label">25%</text>
+  <text x="395" y="131" text-anchor="end" class="axis-label">50%</text>
+  <text x="395" y="97" text-anchor="end" class="axis-label">75%</text>
+  <text x="395" y="66" text-anchor="end" class="axis-label">100%</text>
+
+  <!-- Grid -->
+  <line x1="400" y1="166" x2="690" y2="166" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="400" y1="131" x2="690" y2="131" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="400" y1="97" x2="690" y2="97" stroke="#e0e0e0" stroke-width="0.5"/>
+  <line x1="400" y1="62" x2="690" y2="62" stroke="#e0e0e0" stroke-width="0.5"/>
+
+  <!-- X-axis labels (log scale) -->
+  <text x="410" y="215" text-anchor="middle" class="axis-label">10⁻³</text>
+  <text x="478" y="215" text-anchor="middle" class="axis-label">10⁻²</text>
+  <text x="545" y="215" text-anchor="middle" class="axis-label">10⁻¹</text>
+  <text x="613" y="215" text-anchor="middle" class="axis-label">10⁰</text>
+
+  <text x="540" y="228" text-anchor="middle" class="axis-label">Detuning Δf / f₀</text>
+  <text x="378" y="131" text-anchor="middle" class="axis-label" transform="rotate(-90, 378, 131)">Energy exchange</text>
+
+  <!-- Hybridisation curve: high at small detuning, falls off -->
+  <polyline points="410,63 420,64 430,65 440,67 450,70 460,75 478,90 495,110 510,131 525,150 540,165 555,175 570,183 585,189 600,193 620,196 640,198 660,199 680,200"
+            fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-linejoin="round"/>
+
+  <!-- 100% marker at small detuning -->
+  <circle cx="410" cy="63" r="4" fill="#8e44ad"/>
+  <circle cx="410" cy="63" r="2" fill="white"/>
+  <text x="425" y="58" class="annotation" fill="#8e44ad">≈100% at Δf → 0</text>
+
+  <!-- >10% threshold line -->
+  <line x1="400" y1="186" x2="690" y2="186" stroke="#e67e22" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="692" y="190" class="axis-label" fill="#e67e22">>10%</text>
+
+  <!-- Bracket showing significant range -->
+  <line x1="410" y1="205" x2="555" y2="205" stroke="#e67e22" stroke-width="2"/>
+  <line x1="410" y1="202" x2="410" y2="208" stroke="#e67e22" stroke-width="1.5"/>
+  <line x1="555" y1="202" x2="555" y2="208" stroke="#e67e22" stroke-width="1.5"/>
+  <text x="483" y="218" text-anchor="middle" class="axis-label" fill="#e67e22" font-weight="600">16 modes with &gt;10% exchange</text>
+
+  <!-- ═══ Bottom: Capacity Gain Summary ═══ -->
+  <rect x="395" y="240" width="300" height="95" rx="8" fill="white" stroke="#0d7377" stroke-width="1.5"/>
+
+  <text x="545" y="262" text-anchor="middle" class="label-bold" fill="#0d7377">Capacity Enhancement from Hybridisation</text>
+
+  <!-- Base capacity -->
+  <rect x="410" y="272" width="120" height="20" rx="3" fill="#2980b9" opacity="0.3"/>
+  <text x="470" y="286" text-anchor="middle" class="axis-label" font-weight="600">Base: 10 modes × 16.4 bits</text>
+
+  <!-- Extra capacity -->
+  <rect x="530" y="272" width="80" height="20" rx="3" fill="#8e44ad" opacity="0.3"/>
+  <text x="570" y="286" text-anchor="middle" class="axis-label" fill="#8e44ad" font-weight="600">+16 hybrid modes</text>
+
+  <rect x="440" y="300" width="160" height="26" rx="6" fill="#0d7377" opacity="0.12" stroke="#0d7377" stroke-width="1"/>
+  <text x="520" y="318" text-anchor="middle" style="font-size:15px; fill:#0d7377; font-weight:700;">+160% capacity gain</text>
+</svg>
