@@ -202,6 +202,13 @@ body {
     font-size: 9.5pt;
 }
 
+.toc-page ol li.toc-sub {
+    font-size: 9.5pt;
+    color: var(--muted);
+    padding-left: 24pt;
+    line-height: 1.5;
+}
+
 .toc-page .toc-appendices {
     margin-top: 14pt;
 }
@@ -525,7 +532,95 @@ table, pre, blockquote {
 <p class="toc-part">Part I — Theory and Architecture</p>
 <ol>
 <li>1. <a href="#1-introduction">Introduction</a> <span class="toc-desc">— The memory wall; wave-based memory; summary of results</span></li>
+<li class="toc-sub">1.1 The Memory Wall</li>
+<li class="toc-sub">1.2 Wave-Based Memory</li>
+<li class="toc-sub">1.3 Summary of Results</li>
 <li>2. <a href="#2-architecture">Architecture</a> <span class="toc-desc">— Eigenmode encoding; perturbation write; interference recall</span></li>
+<li class="toc-sub">2.1 Eigenmode Encoding</li>
+<li class="toc-sub">2.2 Perturbation Encoding (Write)</li>
+<li class="toc-sub">2.3 Interference Recall (Read / Compute)</li>
+<li class="toc-sub">2.4 Architecture Summary</li>
+</ol>
+<p class="toc-part">Part II — Substrate and Prototype</p>
+<ol>
+<li>3. <a href="#3-substrate-selection">Substrate Selection</a> <span class="toc-desc">— Ferrofluid failure; glass physics</span></li>
+<li class="toc-sub">3.1 Ferrofluid: A Dead End Worth Explaining</li>
+<li class="toc-sub">3.2 Glass: Zero Phase Diffusion</li>
+<li>4. <a href="#4-macro-scale-prototype">Macro-Scale Prototype</a> <span class="toc-desc">— \$63 BOM; 98.5 dB SNR; Q = 10,000</span></li>
+<li class="toc-sub">4.1 The Experiment</li>
+<li class="toc-sub">4.2 Bill of Materials</li>
+<li class="toc-sub">4.3 Signal-to-Noise Ratio</li>
+<li class="toc-sub">4.4 Mode Spectrum</li>
+<li class="toc-sub">4.5 Perturbation Encoding Demonstration</li>
+<li class="toc-sub">4.6 Associative Recall</li>
+</ol>
+<p class="toc-part">Part III — Finite Element Validation</p>
+<ol>
+<li>5. <a href="#5-finite-element-validation">Finite Element Validation</a> <span class="toc-desc">— 1D/2D FEM eigenfrequencies; wave speed discovery; Pochhammer–Chree dispersion</span></li>
+<li class="toc-sub">5.1 Motivation</li>
+<li class="toc-sub">5.2 One-Dimensional FEM: Wave Speed Discovery</li>
+<li class="toc-sub">5.3 Rayleigh Perturbation Validation</li>
+<li class="toc-sub">5.4 Mesh Convergence</li>
+<li class="toc-sub">5.5 Two-Dimensional Plane-Stress FEM and Pochhammer–Chree Dispersion</li>
+</ol>
+<p class="toc-part">Part IV — MEMS Design and Scaling</p>
+<ol>
+<li>6. <a href="#6-scaling-laws">Scaling Laws</a> <span class="toc-desc">— SNR, mode count, density as functions of rod length</span></li>
+<li class="toc-sub">6.1 SNR Scales Linearly with Length</li>
+<li class="toc-sub">6.2 Mode Count Is Size-Independent</li>
+<li class="toc-sub">6.3 Density Scales as $1/L^2$</li>
+<li class="toc-sub">6.4 Crossover Points</li>
+<li>7. <a href="#7-mems-q-factor-analysis">MEMS Q-Factor Analysis</a> <span class="toc-desc">— Five-mechanism loss budget</span></li>
+<li class="toc-sub">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</li>
+<li class="toc-sub">7.2 Anchor Loss ($Q_{\text{anchor}}$)</li>
+<li class="toc-sub">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</li>
+<li class="toc-sub">7.4 Gas Damping ($Q_{\text{gas}}$)</li>
+<li class="toc-sub">7.5 Surface Loss ($Q_{\text{surface}}$)</li>
+<li class="toc-sub">7.6 Combined Q-Factor Budget</li>
+<li>8. <a href="#8-mems-device-specification">MEMS Device Specification</a> <span class="toc-desc">— Reference design; array architecture</span></li>
+<li class="toc-sub">8.1 Reference Design</li>
+<li class="toc-sub">8.2 Per-Rod Performance</li>
+<li class="toc-sub">8.3 Array Architecture</li>
+<li class="toc-sub">8.4 Energy Budget</li>
+<li>9. <a href="#9-fabrication-pathway">Fabrication Pathway</a> <span class="toc-desc">— Six-step MEMS process flow</span></li>
+<li class="toc-sub">9.1 Process Flow</li>
+<li class="toc-sub">9.2 Bill of Materials (MEMS, at volume)</li>
+<li class="toc-sub">9.3 Risk Assessment</li>
+</ol>
+<p class="toc-part">Part V — Advanced Techniques</p>
+<ol>
+<li>10. <a href="#10-technology-comparison">Technology Comparison</a> <span class="toc-desc">— Density, speed, energy benchmarks</span></li>
+<li class="toc-sub">10.1 Density, Speed, Energy</li>
+<li class="toc-sub">10.2 SEM's Unique Position</li>
+<li class="toc-sub">10.3 The Computation Advantage</li>
+<li class="toc-sub">10.4 What SEM Is Not</li>
+<li class="toc-sub">10.5 Disruption Scenarios</li>
+<li>11. <a href="#11-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall</a> <span class="toc-desc">— Pruning; Boolean ops; hybridization; null-space; polysemic readout</span></li>
+<li class="toc-sub">11.1 Synaptic Pruning for Associative Recall</li>
+<li class="toc-sub">11.2 In-Situ Boolean Computation</li>
+<li class="toc-sub">11.3 Mode Hybridization at Near-Degeneracy</li>
+<li class="toc-sub">11.4 Null-Space Multiplexing</li>
+<li class="toc-sub">11.5 Polysemic Readout: Multi-Channel Spectral Decoding</li>
+<li class="toc-sub">11.6 Combined Capacity Enhancement</li>
+<li>12. <a href="#12-paths-to-rewritability">Paths to Rewritability</a> <span class="toc-desc">— Firmware virtual rewriting; binary sites; writable shell; layered architecture</span></li>
+<li class="toc-sub">12.1 The Rewritability Question</li>
+<li class="toc-sub">12.2 Track A: Firmware-Defined Virtual Rewriting</li>
+<li class="toc-sub">12.3 Track B: Binary Perturbation Sites</li>
+<li class="toc-sub">12.4 Track C: Multi-Shell Resonator</li>
+<li class="toc-sub">12.5 Layered Architecture</li>
+</ol>
+<p class="toc-part">Part VI — Outlook</p>
+<ol>
+<li>13. <a href="#13-ultimate-limits">Ultimate Limits</a> <span class="toc-desc">— Fused silica; Tbit/cm³ arrays</span></li>
+<li class="toc-sub">13.1 Fused Silica</li>
+<li class="toc-sub">13.2 Fused Silica Array Performance</li>
+<li class="toc-sub">13.3 Q-Factor Model for Fused Silica</li>
+<li>14. <a href="#14-discussion">Discussion</a> <span class="toc-desc">— Validated vs. projected; IP; historical context</span></li>
+<li class="toc-sub">14.1 What Is Validated vs. Projected</li>
+<li class="toc-sub">14.2 Historical Context</li>
+<li class="toc-sub">14.3 Intellectual Property</li>
+<li>15. <a href="#15-roadmap">Roadmap</a> <span class="toc-desc">— Four-phase development plan</span></li>
+<li>16. <a href="#16-conclusion">Conclusion</a></li>
 </ol>
 <div class="toc-appendices">
 <p class="toc-part">Appendices</p>

@@ -217,6 +217,13 @@ body {
     font-size: 9.5pt;
 }
 
+.toc-page ol li.toc-sub {
+    font-size: 9.5pt;
+    color: var(--muted);
+    padding-left: 24pt;
+    line-height: 1.5;
+}
+
 .toc-page .toc-appendices {
     margin-top: 14pt;
 }
@@ -678,6 +685,15 @@ def build_toc_html(md_text):
             desc_span = ' <span class="toc-desc">\u2014 ' + desc + '</span>' if desc else ""
             parts.append(
                 '<li>' + num + '. <a href="#' + anchor + '">' + title + '</a>' + desc_span + '</li>'
+            )
+            continue
+
+        # Subsection entry: - 1.1 Title
+        sub_match = re.match(r"-\s*(\d+\.\d+)\s+(.+)", line)
+        if sub_match:
+            sub_num, sub_title = sub_match.groups()
+            parts.append(
+                '<li class="toc-sub">' + sub_num + ' ' + sub_title + '</li>'
             )
             continue
 
