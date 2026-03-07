@@ -1450,7 +1450,7 @@ table, pre, blockquote {
 <div class="part-heading">
   <p class="part-label">Part V</p>
   <p class="part-title">Advanced Techniques</p>
-  <p class="part-desc">Sections 10–11</p>
+  <p class="part-desc">Sections 10–12</p>
   <hr>
 </div>
 <h2 id="10-technology-comparison">10. Technology Comparison</h2>
@@ -1877,12 +1877,6 @@ table, pre, blockquote {
 </li>
 </ol>
 <p>Applied conservatively, these techniques could increase SEM&rsquo;s effective capacity from the baseline 95.1 Gbit/cm³ to <strong>150–200 Gbit/cm³</strong> while simultaneously improving recall accuracy and adding native Boolean computation. The upper-bound projections (polysemic readout + hybridization + null-space) suggest theoretical capacity approaching <strong>300+ Gbit/cm³</strong> from a 1 mm borosilicate rod—30× DRAM—with firmware optimizations alone.</p>
-<div class="part-heading">
-  <p class="part-label">Part VI</p>
-  <p class="part-title">Outlook</p>
-  <p class="part-desc">Sections 12–15</p>
-  <hr>
-</div>
 <h2 id="12-paths-to-rewritability">12. Paths to Rewritability</h2>
 <p>Everything presented in Sections 2–11 treats SEM as a read-only architecture: data is written once by lithographic mass perturbation and never changed. The device is a telescope—permanently pointed at one star. This section asks: <em>can the telescope become an instrument?</em></p>
 <p>We investigated seven engineering hypotheses across three architectural tracks, each representing a different depth of hardware modification. All seven are confirmed by first-principles simulation (7 experiments, 68 automated tests, all passing). Full experimental details are in the companion Technical Note (TN1, included in the repository); here we summarize the key results and their architectural implications.</p>
@@ -2055,6 +2049,12 @@ table, pre, blockquote {
 <p>These layers compose multiplicatively. A rod with a writable shell (Layer 1), binary sites (Layer 2), and firmware partitioning (Layer 3) provides $N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations—conservatively, $10 \times 2^{12} \times 4 = 163{,}840$ distinct states from a single physical device.</p>
 <p><strong>The separation principle.</strong> A key architectural insight emerges: in SEM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In SEM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod: in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes SEM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
 <p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Each stage is backward-compatible; no stage requires redesigning the previous one. The telescope has become an instrument.</p>
+<div class="part-heading">
+  <p class="part-label">Part VI</p>
+  <p class="part-title">Outlook</p>
+  <p class="part-desc">Sections 13–16</p>
+  <hr>
+</div>
 <h2 id="13-ultimate-limits">13. Ultimate Limits</h2>
 <h3 id="131-fused-silica">13.1 Fused Silica</h3>
 <p>Everything presented so far uses borosilicate glass—a conservative, inexpensive, widely available substrate. But borosilicate is not the best acoustic material; it is the most <em>convenient</em> one. Replacing it with fused silica (pure SiO₂) improves two critical parameters simultaneously:</p>
@@ -2597,7 +2597,7 @@ table, pre, blockquote {
     Typeset from Markdown source using Chromium PDF rendering.<br>
     Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
     All quantitative claims computed from first-principles simulation code<br>
-    (23 modules, 479 automated tests) with independent FEM validation.
+    (26 modules, 568 automated tests) with independent FEM validation.
   </p>
 </div>
 

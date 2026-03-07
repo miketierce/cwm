@@ -698,8 +698,8 @@ PARTS = [
     {"label": "Part II",  "title": "Substrate and Prototype",   "desc": "Sections 3\u20134",  "before_section": 3},
     {"label": "Part III", "title": "Finite Element Validation",  "desc": "Section 5",          "before_section": 5},
     {"label": "Part IV",  "title": "MEMS Design and Scaling",   "desc": "Sections 6\u20139",  "before_section": 6},
-    {"label": "Part V",   "title": "Advanced Techniques",       "desc": "Sections 10\u201311", "before_section": 10},
-    {"label": "Part VI",  "title": "Outlook",                   "desc": "Sections 12\u201315", "before_section": 12},
+    {"label": "Part V",   "title": "Advanced Techniques",       "desc": "Sections 10\u201312", "before_section": 10},
+    {"label": "Part VI",  "title": "Outlook",                   "desc": "Sections 13\u201316", "before_section": 13},
 ]
 
 
@@ -821,7 +821,7 @@ def build_colophon(info):
         '    Typeset from Markdown source using Chromium PDF rendering.<br>\n'
         '    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>\n'
         '    All quantitative claims computed from first-principles simulation code<br>\n'
-        '    (23 modules, 479 automated tests) with independent FEM validation.\n'
+        '    (26 modules, 568 automated tests) with independent FEM validation.\n'
         '  </p>\n'
         '</div>\n'
     )
