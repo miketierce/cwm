@@ -542,6 +542,7 @@ table, pre, blockquote {
 <p>The core physics is validated at macro scale. A prototype built from a &#36;63 borosilicate glass rod achieves <strong>98.5 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis, verified by 479 automated tests across 23 first-principles simulation modules—including independent finite element validation of every analytical formula—projects that a 1 mm MEMS resonator achieves <strong>95.1 Gbit/cm³</strong> storage density (10× DRAM), rising to <strong>1.4 Tbit/cm³</strong> in fused silica arrays (1.4× NAND Flash), with <strong>15 fJ/bit</strong> write energy (200× below DRAM) and <strong>native associative recall</strong> in 3.8 µs.</p>
 <p>A five-mechanism Q-factor model addresses the central question of MEMS viability—whether the quality factor that makes macro-scale resonance work survives miniaturization. It does: $Q_{\text{total}} = 9{,}097$, with anchor loss (the mechanism most sensitive to geometry) contributing only 4.4% of the loss budget. The dominant loss is the glass itself, not the MEMS structure. All eigenfrequency predictions are independently validated by finite element analysis (1D P2 bar elements, 2D constant-strain triangles) to 7 ppm agreement, and a Pochhammer–Chree dispersion correction quantifies the sub-1% frequency deviations at higher mode numbers.</p>
 <p>Beyond the core architecture, we present five advanced encoding techniques that require no hardware changes—only firmware-level signal processing on the CMOS readout die: <strong>(i)</strong> synaptic weight pruning improves associative recall accuracy by 10.7%; <strong>(ii)</strong> in-situ Boolean computation (XOR, AND, OR) from mode superposition at &gt;90% fidelity with 3× throughput; <strong>(iii)</strong> avoided-crossing mode hybridization creates bonus information channels yielding up to +160% capacity gain; <strong>(iv)</strong> null-space multiplexing recovers hidden degrees of freedom invisible to standard readout, adding +60% bonus capacity; and <strong>(v)</strong> polysemic readout—partitioning the mode spectrum into independent sub-channels—yields +297% capacity gain from a single physical inscription.</p>
+<p>We further demonstrate that SEM admits physical rewritability at three architectural levels: firmware-defined virtual rewriting (4+ independent logical memories per rod, zero hardware changes), binary perturbation sites using MEMS electrostatic latches (7.6 bits of rewritable state, &lt; 0.5% Q penalty), and writable thin-film shell coatings (100 nm at $Q > 5{,}000$). These layers compose multiplicatively—the read medium (glass rod) and write mechanism are separable, a property unique among memory technologies.</p>
 <p>The entire fabrication pathway uses established MEMS processes in volume production today: glass deep reactive ion etching, aluminium nitride thin-film piezoelectric transduction, wafer-level vacuum packaging, and CMOS flip-chip bonding. What remains is the MEMS demonstration itself—building the device and measuring it.</p>
 <hr />
 </div><div class="part-heading">
@@ -657,6 +658,21 @@ table, pre, blockquote {
 <td>Multi-channel spectral decoding from mode partitioning</td>
 </tr>
 <tr>
+<td>Virtual rewrite devices</td>
+<td>4+ per rod</td>
+<td>Firmware-only SVD partitioning, zero hardware changes</td>
+</tr>
+<tr>
+<td>Binary site rewrite</td>
+<td>7.6 bits/rod</td>
+<td>12 MEMS latches, &lt; 0.5% Q penalty</td>
+</tr>
+<tr>
+<td>Writable shell budget</td>
+<td>100 nm at Q &gt; 5k</td>
+<td>Parylene C; 0.34% frequency-shift tuning range</td>
+</tr>
+<tr>
 <td>Endurance</td>
 <td>&gt;10¹⁵ cycles</td>
 <td>Acoustic oscillation is non-destructive</td>
@@ -684,7 +700,7 @@ table, pre, blockquote {
 <p>Notice what is <em>not</em> in this formula: the rod length $L$. The mode count depends only on two material properties—the thermal expansion coefficient $\alpha$ and the quality factor $Q$—and the operating temperature range $\Delta T$. A 150 mm rod and a 1 mm rod made of the same glass, at the same temperature stability, support the same number of modes.</p>
 <p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K, $Q = 10{,}000$) at $\pm 1$ K:</p>
 <p>$$n_{\max} = \left\lfloor \frac{1}{2 \times 3.3 \times 10^{-6} \times 1 \;+\; 1/10{,}000} \right\rfloor = \left\lfloor \frac{1}{1.066 \times 10^{-4}} \right\rfloor = 9{,}380 \text{ modes}$$</p>
-<p>The dominant constraint is the linewidth term $1/Q = 10^{-4}$, which is 15$\times$ larger than the thermal term $2\alpha\Delta T = 6.6 \times 10^{-6}$. Improving $Q$—for example, by switching to fused silica ($Q = 100{,}000$)—directly increases the mode count (Section 12). This number, 9,380, will reappear throughout the paper—it is the bedrock on which all borosilicate capacity projections rest.</p>
+<p>The dominant constraint is the linewidth term $1/Q = 10^{-4}$, which is 15$\times$ larger than the thermal term $2\alpha\Delta T = 6.6 \times 10^{-6}$. Improving $Q$—for example, by switching to fused silica ($Q = 100{,}000$)—directly increases the mode count (Section 13). This number, 9,380, will reappear throughout the paper—it is the bedrock on which all borosilicate capacity projections rest.</p>
 <p><strong>Bits per mode.</strong> Each mode is an independent oscillator whose amplitude can be measured with a signal-to-noise ratio determined by the thermal noise floor. Shannon&rsquo;s channel capacity theorem [6] tells us the maximum information per measurement:</p>
 <p>$$b = \frac{1}{2}\log_2(1 + \text{SNR})$$</p>
 <p>At the measured SNR of 98.5 dB (which corresponds to a linear ratio of $7.07 \times 10^9$): $b = 16.4$ bits per mode. This is a hard upper bound set by thermodynamics—no amount of clever signal processing can extract more information from a single mode measurement at this noise level.</p>
@@ -995,7 +1011,7 @@ table, pre, blockquote {
 <p>This is the most counterintuitive and most important scaling result. The formula $n_{\max} = \lfloor 1/(2\alpha\Delta T + 1/Q) \rfloor$ contains no $L$. A 1 mm rod supports the same 9,380 modes as the 150 mm prototype.</p>
 <p>Why? Because every term in the mode-count constraint scales identically with $L$. The mode spacing is $\Delta f = v/(2L)$—smaller rods have wider spacing. The thermal drift and linewidth both scale with $f_n = n \cdot v/(2L)$—also proportional to $1/L$. When we require $n(2\alpha\Delta T + 1/Q) < 1$, the length has already cancelled. The maximum mode number depends only on material properties ($\alpha$, $Q$) and the thermal environment ($\Delta T$).</p>
 <p>Physically: a smaller rod has fewer modes per unit frequency (they are more widely spaced), but the usable frequency range is proportionally wider (because both drift and linewidth shrink relative to the spacing). These effects cancel exactly.</p>
-<h3 id="63-density-scales-as-math171">6.3 Density Scales as $1/L^2$</h3>
+<h3 id="63-density-scales-as-math172">6.3 Density Scales as $1/L^2$</h3>
 <p>Combining the two results above, we can derive how storage density scales with rod length. The total bits per rod is:</p>
 <p>$$B(L) = n_{\max} \cdot \frac{1}{2}\log_2\!\big(1 + c \cdot L\big)$$</p>
 <p>The volume of a single rod (with aspect ratio $\beta = L/d$) is:</p>
@@ -1047,11 +1063,11 @@ table, pre, blockquote {
 <p>The scaling analysis of Section 6 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.</p>
 <p>For SEM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
 <p>The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod&rsquo;s acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.</p>
-<h3 id="71-material-intrinsic-loss-math190">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
+<h3 id="71-material-intrinsic-loss-math191">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
 <p><strong>What it is.</strong> Even in a perfectly mounted, perfectly isolated resonator floating in a perfect vacuum, acoustic energy still decays. The reason is internal friction within the glass itself. As the rod vibrates—compressing and expanding along its length thousands of times per second—the atoms in the glass matrix do not respond instantaneously. The amorphous network has a distribution of relaxation times: some atomic rearrangements are fast (picoseconds), others are slow (nanoseconds). When the vibration period falls near one of these relaxation times, energy is absorbed and converted to heat. This is the acoustic analogue of hysteresis loss in a magnetic material: the material&rsquo;s response lags behind the driving force, and the lag dissipates energy.</p>
 <p><strong>How large it is.</strong> For borosilicate glass, the material quality factor $Q_{\text{mat}}$ ranges from 8,000 to 15,000 depending on the specific composition and thermal history of the glass. We use 10,000 as a conservative baseline [11, 12]. This means the glass itself converts 1/10,000 of the mode energy to heat per oscillation cycle.</p>
 <p><strong>Why it matters.</strong> Material loss sets the <em>ceiling</em> on the total $Q$: no matter how perfectly we design the tethers, eliminate gas damping, and polish the surface, the total $Q$ can never exceed $Q_{\text{mat}}$. For borosilicate, this ceiling is 10,000. For fused silica, it is 100,000—ten times higher, because fused silica&rsquo;s simpler amorphous structure has fewer internal relaxation pathways.</p>
-<h3 id="72-anchor-loss-math195">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
+<h3 id="72-anchor-loss-math196">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
 <p><strong>What it is.</strong> A MEMS resonator must be physically attached to something—it cannot float in space. In our design, the glass rod is suspended by thin tethers that connect it to the surrounding substrate (the silicon or glass frame of the MEMS die). These tethers are mechanical connections, and mechanical connections transmit vibration. When the rod vibrates, some of the acoustic energy travels down the tethers and into the substrate, where it propagates away and is eventually absorbed. This lost energy is &ldquo;anchor loss.&rdquo;</p>
 <p>An everyday analogy: hold a tuning fork in the air, and it rings for minutes. Press its base firmly against a wooden table, and it goes silent in seconds. The table is an acoustic drain—vibration energy flows from the fork through the contact point and into the table, where the much larger mass absorbs it. The MEMS tethers are the contact point; the substrate is the table.</p>
 <p><strong>How we minimize it.</strong> The anchor loss model [13, 17] gives:</p>
@@ -1076,18 +1092,18 @@ table, pre, blockquote {
 </ul>
 <p>For the reference design (1 mm × 40 µm rod, 2 µm × 2 µm × 20 µm tethers, 2 anchor points, with isolation trenches): $Q_{\text{anchor}} = 208{,}462$.</p>
 <p><strong>Why it matters.</strong> Anchor loss is the mechanism most sensitive to MEMS geometry—it depends on tether dimensions, attachment positions, and trench design. Many MEMS resonator designs are <em>dominated</em> by anchor loss, which has led to a widespread assumption that miniaturization kills $Q$. Our analysis shows the opposite: with properly designed tethers, anchor loss contributes only <strong>4.4% of the total loss budget</strong>. The bottleneck is the glass itself, not the suspension.</p>
-<h3 id="73-thermoelastic-damping-math213">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
+<h3 id="73-thermoelastic-damping-math214">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
 <p><strong>What it is.</strong> When a rod vibrates longitudinally, it alternately compresses and expands along its length. Compression raises the local temperature (adiabatic heating); expansion lowers it. These temperature variations set up thermal gradients across the rod&rsquo;s cross-section. Heat flows from hot regions to cold regions, and this heat flow is irreversible—it converts mechanical energy to thermal energy. This mechanism is called thermoelastic damping (TED), first analyzed by Zener in 1937 [19] and later refined by Lifshitz and Roukes for MEMS structures.</p>
 <p><strong>The Debye relaxation picture.</strong> TED is strongest when the vibration period matches the thermal relaxation time of the rod—the time it takes heat to diffuse across the cross-section. The thermal relaxation time is $\tau_D = d^2 / (\pi^2 \kappa)$, where $d$ is the rod diameter and $\kappa$ is the thermal diffusivity of the glass. When $\omega \tau_D \approx 1$ (vibration period ~ relaxation time), the temperature gradients have just enough time to partially equilibrate during each cycle, extracting maximum energy. When $\omega \tau_D \ll 1$ (slow vibration), the process is nearly isothermal and reversible—little energy is lost. When $\omega \tau_D \gg 1$ (fast vibration), the process is nearly adiabatic—temperature gradients don&rsquo;t have time to equilibrate, and again little energy is lost. Maximum damping occurs at the crossover.</p>
 <p><strong>For our design.</strong> Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 39{,}500{,}000$.</p>
 <p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for SEM than silicon.</p>
-<h3 id="74-gas-damping-math224">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
+<h3 id="74-gas-damping-math225">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
 <p><strong>What it is.</strong> A vibrating rod in a gas environment loses energy to the surrounding gas molecules. Each time a gas molecule strikes the rod&rsquo;s surface, it exchanges momentum and carries away a tiny amount of the rod&rsquo;s kinetic energy. At atmospheric pressure, the number of molecular collisions per second is enormous (roughly $10^{23}$ per cm² per second for air at 1 atm), and the cumulative energy loss can dominate all other mechanisms.</p>
 <p>At the molecular level, gas damping in MEMS devices operates in one of two regimes. At high pressure (mean free path much smaller than the rod-to-wall gap), the gas behaves as a viscous fluid, and damping follows the Navier-Stokes equations (&ldquo;squeeze-film damping&rdquo;). At low pressure (mean free path much larger than the gap), individual molecules bounce independently between the rod and the cavity walls (&ldquo;molecular-flow damping&rdquo; or &ldquo;free-molecular damping&rdquo;). MEMS vacuum packages operate in the low-pressure regime.</p>
 <p><strong>For our design.</strong> At the standard MEMS packaging pressure of 0.1 Pa (about one-millionth of atmospheric pressure), the mean free path of residual gas molecules is ~70 mm—orders of magnitude larger than the rod-to-wall gap. We are firmly in the free-molecular regime. The damping force is proportional to pressure: lower pressure means less damping.</p>
 <p>At 0.1 Pa: $Q_{\text{gas}} = 1.74 \times 10^8$. Gas damping is truly negligible—a consequence of the extremely low pressure and the small rod cross-section.</p>
 <p><strong>Why it matters.</strong> Gas damping is the one loss mechanism we can almost completely eliminate by engineering: evacuate the package. MEMS vacuum packaging at 0.01–0.1 Pa is a mature technology used in billions of MEMS gyroscopes, accelerometers, and oscillators. This is not a research challenge; it is a purchasing decision.</p>
-<h3 id="75-surface-loss-math227">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
+<h3 id="75-surface-loss-math228">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
 <p><strong>What it is.</strong> The surface of any real material is different from its bulk interior. For glass, the top few nanometers of surface are a damaged, hydrated, and/or reconstructed layer with different mechanical properties—higher internal friction, lower elastic modulus—compared to the pristine bulk glass beneath. This surface layer participates in the rod&rsquo;s vibration and contributes its own (higher) dissipation to the overall $Q$.</p>
 <p>The effect is analogous to painting a high-quality bell with a thick layer of rubber: the rubber is lossy, and even a thin coat degrades the ring. The thinner the coat relative to the bell&rsquo;s wall thickness, the less it matters.</p>
 <p><strong>The model.</strong> For a cylindrical rod with diameter $d$ and a surface defect layer of thickness $\delta$ having its own quality factor $Q_d$:</p>
@@ -1141,7 +1157,7 @@ table, pre, blockquote {
 </table>
 <p>The result is striking: <strong>material intrinsic loss accounts for 91.0% of all energy dissipation.</strong> The MEMS geometry—the tethers, the vacuum package, the surface—contributes less than 9% combined. In other words, the MEMS resonator preserves 91% of the bulk material&rsquo;s quality factor. Miniaturization does not destroy performance; it barely dents it.</p>
 <p><strong>Anchor loss—the mechanism that dominates many MEMS resonator designs—is only 4.4% of our budget.</strong> This is because we use thin, long tethers with isolation trenches, and because a longitudinal-mode rod is intrinsically well-isolated (the vibration is along the rod axis, while the tethers attach from the side, creating a geometric mismatch that reflects most energy back into the rod).</p>
-<p>The $Q_{\text{total}} = 9{,}097$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode SEM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 12.3.</p>
+<p>The $Q_{\text{total}} = 9{,}097$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode SEM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 13.3.</p>
 <div class="sem-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig4_q_budget.svg" alt="Figure 4: Q-factor loss budget"/>
 <p><strong>Figure 4.</strong> Q-factor loss budget for the reference 1 mm borosilicate design. Material intrinsic loss dominates; anchor loss is only 4.4%.</p>
@@ -1534,7 +1550,7 @@ table, pre, blockquote {
 <li>Hopfield-type associative recall</li>
 <li>Applications where search latency and energy dominate the system budget</li>
 </ul>
-<p>It is not suitable for random byte-addressable read/write (use DRAM), high-speed cache (use SRAM), or applications requiring &gt;10⁸ write cycles to the same physical location (perturbation patterns are fixed at fabrication, as in mask ROM).</p>
+<p>It is not suitable for random byte-addressable read/write (use DRAM) or high-speed cache (use SRAM). In its baseline configuration, perturbation patterns are fixed at fabrication (mask ROM). Section 12 presents three paths to reconfigurability—firmware-defined virtual rewriting, binary perturbation sites, and writable shell coatings—that progressively transform SEM from ROM to a reconfigurable instrument.</p>
 <h3 id="105-disruption-scenarios">10.5 Disruption Scenarios</h3>
 <p>We identify five scenarios where SEM&rsquo;s unique property combination creates strategic advantage:</p>
 <ol>
@@ -1554,7 +1570,7 @@ table, pre, blockquote {
 <p><strong>DNA sequence matching.</strong> Short-read alignment is a massive nearest-neighbor search. A SEM array could perform Smith-Waterman-equivalent scoring at acoustic speed, potentially replacing GPU clusters in sequencing pipelines.</p>
 </li>
 <li>
-<p><strong>Quantum-classical bridge.</strong> SEM delivers three properties—superposition, interference-based computation, and non-destructive parallel readout—usually cited as motivations for quantum computing, but achieves them classically via eigenmode orthogonality (Section 13.2). For applications where quantum advantage reduces to associative recall or nearest-neighbor search, a SEM module operating at 300 K may outperform a dilution-refrigerator quantum system at a fraction of the cost, complexity, and power budget.</p>
+<p><strong>Quantum-classical bridge.</strong> SEM delivers three properties—superposition, interference-based computation, and non-destructive parallel readout—usually cited as motivations for quantum computing, but achieves them classically via eigenmode orthogonality (Section 14.2). For applications where quantum advantage reduces to associative recall or nearest-neighbor search, a SEM module operating at 300 K may outperform a dilution-refrigerator quantum system at a fraction of the cost, complexity, and power budget.</p>
 </li>
 </ol>
 <hr />
@@ -1840,6 +1856,7 @@ table, pre, blockquote {
 <p><strong>Why this works.</strong> The mathematical reason is that $\sin^2(n\pi x)$ oscillates at spatial frequency $n$. Mode subset $\{1, \ldots, 10\}$ samples the perturbation at low spatial frequencies; subset $\{11, \ldots, 20\}$ at higher frequencies. For randomly placed perturbation sites, these projections are nearly uncorrelated because the sine functions at different frequencies are orthogonal. The same mechanism that makes eigenmode encoding work (orthogonal modes as independent information channels) extends to <em>subsets</em> of modes as independent <em>readout</em> channels.</p>
 <p><strong>What this means for SEM.</strong> Polysemic readout is implemented entirely in firmware: the readout ASIC computes the FFT as usual, then partitions the frequency bins into $C$ sub-bands and decodes each independently. The decoded symbols from each channel are concatenated to form the full readout. No hardware changes. No additional excitation cycles. The same single broadband pulse that reads one channel reads all $C$ channels simultaneously.</p>
 <p>At +297%, polysemic readout is the largest capacity enhancement discovered in this work—nearly 2× the gain from mode hybridization (+160%) and 5× the gain from null-space multiplexing (+60%). It suggests that SEM&rsquo;s information-theoretic capacity has been significantly underestimated by conventional single-channel analysis.</p>
+<p>Note that mode-subset partitioning also enables <em>virtual rewriting</em>: instead of reading all sub-bands to maximize capacity, different sub-bands can store different data and be addressed independently—making one physical rod behave as multiple logical devices switchable at firmware speed. This dual interpretation is developed in Section 12.2.</p>
 <h3 id="116-combined-capacity-enhancement">11.6 Combined Capacity Enhancement</h3>
 <p>The five techniques are not mutually exclusive. In a practical SEM device:</p>
 <ol>
@@ -1866,8 +1883,180 @@ table, pre, blockquote {
   <p class="part-desc">Sections 12–15</p>
   <hr>
 </div>
-<h2 id="12-ultimate-limits">12. Ultimate Limits</h2>
-<h3 id="121-fused-silica">12.1 Fused Silica</h3>
+<h2 id="12-paths-to-rewritability">12. Paths to Rewritability</h2>
+<p>Everything presented in Sections 2–11 treats SEM as a read-only architecture: data is written once by lithographic mass perturbation and never changed. The device is a telescope—permanently pointed at one star. This section asks: <em>can the telescope become an instrument?</em></p>
+<p>We investigated seven engineering hypotheses across three architectural tracks, each representing a different depth of hardware modification. All seven are confirmed by first-principles simulation (7 experiments, 68 automated tests, all passing). Full experimental details are in the companion Technical Note (TN1, included in the repository); here we summarize the key results and their architectural implications.</p>
+<h3 id="121-the-rewritability-question">12.1 The Rewritability Question</h3>
+<p>Consider two ways to think about a SEM rod:</p>
+<p><strong>The telescope model.</strong> A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter. You &ldquo;point&rdquo; the telescope by choosing which rod to read, not by changing what any rod stores. An array of 1,000 rods is a library of 1,000 fixed filters.</p>
+<p><strong>The instrument model.</strong> A rod is a configurable acoustic device whose effective behavior can be changed after fabrication—a pipe organ, not a telescope. Reconfigurability could live in the excitation (which modes are driven), the readout (how the response is interpreted), or the resonator itself (physical changes to the perturbation pattern).</p>
+<p>Both models have value. The telescope is the conservative, validated position: fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant. But the instrument is more interesting—and, as we show, more physically accessible than it first appears.</p>
+<p>All paths to rewritability must satisfy one constraint: <strong>rewriting must not destroy Q.</strong> The Q-factor analysis of Section 7 established $Q_{\text{total}} = 9{,}097$ for our reference design, with material intrinsic loss as the dominant mechanism. Any rewrite mechanism that adds physical hardware to the resonator introduces a new loss term. We quantify that penalty for each track.</p>
+<h3 id="122-track-a-firmware-defined-virtual-rewriting">12.2 Track A: Firmware-Defined Virtual Rewriting</h3>
+<p>Track A requires no physical changes to the resonator. Rewritability lives entirely in how we excite and listen to the same fixed rod—modifications to the CMOS readout die&rsquo;s firmware, executable at nanosecond speed.</p>
+<p><strong>H7: Multi-Projection Virtual Rewrite.</strong> The SVD of the coupling matrix $C$ (the same decomposition underlying null-space multiplexing, §11.4) can be partitioned into $K$ orthogonal subspaces, each functioning as an independent logical memory. We tested $K = 4$ partitions of a 24-perturbation-site coupling matrix:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Dimensions</th>
+<th>Fidelity</th>
+<th>Cross-talk to others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+</tbody>
+</table>
+<p>The orthogonality is exact—a mathematical consequence of the SVD, not a favorable coincidence. At MEMS scale with $n_p = 1{,}000$ perturbation sites, this scales to <strong>300–500 virtual devices</strong> per physical rod, each switchable by loading different projection coefficients into the readout ASIC. A SEM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any physical rewriting.</p>
+<p><strong>H8: Mode-Subset Logical Devices.</strong> The simplest form of virtual rewriting: drive and read contiguous subsets of the mode spectrum, each acting as an independent Hopfield memory. We divided a 200-mode rod into 4 subsets of 50 modes, stored 3 patterns, and tested recall under 15% noise:</p>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Modes</th>
+<th>Recall</th>
+<th>Independent?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1–50</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>51–100</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>3</td>
+<td>101–150</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>151–200</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>This is the same mode-partitioning mechanism described in §11.5 for polysemic capacity enhancement, viewed here through the lens of rewritability: instead of extracting more information from one inscription, we use the independent sub-bands to store <em>different</em> data and switch between them by adjusting the excitation chirp&rsquo;s frequency range. With the full 9,380-mode spectrum, even 16 subsets of ~586 modes each maintain reliable recall, giving <strong>~15 independent logical memories</strong> from one physical rod.</p>
+<p><strong>H9: Readout Mask Library.</strong> Applying different spectral amplitude masks to the same rod&rsquo;s FFT output produces multiple distinct effective devices. Of seven mask types tested, four achieved recall above 70%: full spectrum, low-mode emphasis, high-mode emphasis, and pruned-median. The key design principle: <strong>amplitude-weighting masks work; mode-zeroing masks fail.</strong> Rewritability through reweighting, not deletion—the same principle as synaptic pruning (§11.1), applied to device selection rather than recall optimization.</p>
+<p><strong>Track A Summary.</strong> Three complementary firmware mechanisms yield 4+ virtual devices per rod with zero hardware changes. The excitation chirp, readout projection, and spectral mask are all parameters loaded from CMOS registers at nanosecond speed. The rod is already an instrument; we simply need to learn more of its repertoire.</p>
+<h3 id="123-track-b-binary-perturbation-sites">12.3 Track B: Binary Perturbation Sites</h3>
+<p>Track B introduces the first physical hardware for rewriting: discrete sites on the rod surface that can be toggled between mass-coupled and mass-decoupled states—analogous to RF MEMS switches [22], which are commercially available, operate for $> 10^9$ cycles, switch in $< 10\ \mu$s, and consume near-zero static power via electrostatic latching.</p>
+<p><strong>H10: Binary Site Fingerprint Capacity.</strong> With 12 binary-toggle sites and 20 readout modes, <strong>193 of 200</strong> sampled configurations are spectrally distinguishable—yielding <strong>7.6 bits</strong> of rewritable state per rod. At $N_s \leq 8$ sites, full enumeration confirms <em>every</em> configuration produces a unique fingerprint. The coupling matrix acts as a physical hash function: distinct binary states map to distinct spectral signatures. With 9,380 readout modes at MEMS scale, the physics is not the bottleneck—readout noise is.</p>
+<p><strong>H11: Binary-Site Hopfield Capacity.</strong> Binary-site fingerprints serve as Hopfield associative memory patterns, with reliable recall achieved from as few as <strong>4 sites</strong> ($P_{\max} = 3$ patterns at 96% accuracy). Capacity scales as $P_{\max} \sim N_s^{0.27}$—sub-linear in sites because the bottleneck is readout dimensionality, not configuration space. At 9,380 readout modes, the binary-site constraint does not reduce the Hopfield capacity limit ($P_{\max} \approx 1{,}294$); it simply quantizes the perturbation space into $2^{N_s}$ discrete states instead of a continuum.</p>
+<h3 id="124-track-c-multi-shell-resonator">12.4 Track C: Multi-Shell Resonator</h3>
+<p>Track C models the Q-factor impact of adding physical rewrite hardware to the resonator surface—a prerequisite for both binary sites (Track B) and writable coatings.</p>
+<p><strong>H12: Actuator Q Penalty.</strong> MEMS electrostatic actuators (modeled as localized high-loss surface regions, $Q_{\text{act}} = 500$) impose negligible loss:</p>
+<table>
+<thead>
+<tr>
+<th>Actuators</th>
+<th>Total Q</th>
+<th>Penalty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9,506</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9,460</td>
+<td>0.48%</td>
+</tr>
+<tr>
+<td>64</td>
+<td>9,327</td>
+<td>1.88%</td>
+</tr>
+<tr>
+<td>256</td>
+<td>8,838</td>
+<td>7.03%</td>
+</tr>
+</tbody>
+</table>
+<p>Even 256 actuators—far more than any practical design requires—keep Q above 8,800. Track B&rsquo;s binary perturbation sites (12–20 latches) add less than 0.5% loss. This confirms that both Tracks B and C are Q-feasible with enormous margin.</p>
+<p><strong>H13: Writable Shell Q Budget.</strong> A conformal writable coating can be deposited on the rod surface. We swept shell thickness (1–1,000 nm) and shell material Q ($Q_d$ = 10–5,000) to map the $Q > 5{,}000$ operating envelope:</p>
+<ul>
+<li>At $Q_d = 200$ (Parylene C): maximum shell thickness <strong>100 nm</strong>, with 0.34% frequency-shift tuning range—enough to shift modes by many linewidths, which is what &ldquo;writing&rdquo; means.</li>
+<li>At $Q_d = 50$–$100$ (GST/VO₂ phase-change, magnetostrictive films): maximum shell 20–50 nm. Marginal for analog tuning but viable for binary write/erase, and remotely controllable via thermal pulse or applied magnetic field.</li>
+</ul>
+<h3 id="125-layered-architecture">12.5 Layered Architecture</h3>
+<p>The three tracks are not alternatives—they are layers of a single architecture:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Track</th>
+<th>Mechanism</th>
+<th>Hardware cost</th>
+<th>Rewrite speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3</td>
+<td>A: Firmware</td>
+<td>DSP projection, mode subsets</td>
+<td>None (software)</td>
+<td>Nanoseconds</td>
+</tr>
+<tr>
+<td>2</td>
+<td>B: Binary</td>
+<td>MEMS electrostatic latches</td>
+<td>12–20 switches</td>
+<td>~10 µs</td>
+</tr>
+<tr>
+<td>1</td>
+<td>C: Shell</td>
+<td>Conformal writable coating</td>
+<td>Thin-film deposition</td>
+<td>Material-dependent</td>
+</tr>
+</tbody>
+</table>
+<p>These layers compose multiplicatively. A rod with a writable shell (Layer 1), binary sites (Layer 2), and firmware partitioning (Layer 3) provides $N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations—conservatively, $10 \times 2^{12} \times 4 = 163{,}840$ distinct states from a single physical device.</p>
+<p><strong>The separation principle.</strong> A key architectural insight emerges: in SEM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In SEM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod: in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes SEM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
+<p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Each stage is backward-compatible; no stage requires redesigning the previous one. The telescope has become an instrument.</p>
+<h2 id="13-ultimate-limits">13. Ultimate Limits</h2>
+<h3 id="131-fused-silica">13.1 Fused Silica</h3>
 <p>Everything presented so far uses borosilicate glass—a conservative, inexpensive, widely available substrate. But borosilicate is not the best acoustic material; it is the most <em>convenient</em> one. Replacing it with fused silica (pure SiO₂) improves two critical parameters simultaneously:</p>
 <table>
 <thead>
@@ -1896,7 +2085,7 @@ table, pre, blockquote {
 <p>The Q improvement means sharper resonance peaks and better mode resolution. The thermal expansion improvement further relaxes the thermal constraint. Using the full formula:</p>
 <p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha\,\Delta T \;+\; 1/Q} \right\rfloor$$</p>
 <p>At $\pm 1$ K: $n_{\max} = \lfloor 1/(2 \times 0.55 \times 10^{-6} \times 1 + 1/100{,}000) \rfloor = 90{,}090$—nearly 10× more modes than borosilicate&rsquo;s 9,380, driven primarily by the 10× higher $Q$. In practice we would operate at $\pm 0.1$ K (achievable with a small thermoelectric cooler on the MEMS die), giving $n_{\max} = 98{,}911$ modes—over 10× more than borosilicate, at a temperature stability that is routinely achieved in precision MEMS oscillators.</p>
-<h3 id="122-fused-silica-array-performance">12.2 Fused Silica Array Performance</h3>
+<h3 id="132-fused-silica-array-performance">13.2 Fused Silica Array Performance</h3>
 <p>For 0.5 mm × 20 µm fused silica rods at $\pm 0.1$ K:</p>
 <table>
 <thead>
@@ -1949,7 +2138,7 @@ table, pre, blockquote {
 </table>
 <p><strong>This exceeds 3D NAND Flash</strong> (1,000 Gbit/cm³) while providing native associative computation—something no existing memory technology offers at any density.</p>
 <p>With null-space multiplexing (§11.4) applied to the fused silica design, the effective density could reach <strong>2+ Tbit/cm³</strong>, placing SEM in a density class currently occupied only by the most advanced 3D NAND.</p>
-<h3 id="123-q-factor-model-for-fused-silica">12.3 Q-Factor Model for Fused Silica</h3>
+<h3 id="133-q-factor-model-for-fused-silica">13.3 Q-Factor Model for Fused Silica</h3>
 <p>The Q-factor analysis of Section 7 extends directly to fused silica. The physics is the same; only the material parameters change. For 1 mm × 40 µm fused silica with 2 µm tethers, isolation trenches, 0.1 Pa:</p>
 <table>
 <thead>
@@ -1995,8 +2184,8 @@ table, pre, blockquote {
 <p>Two things change dramatically. First, anchor loss drops from 4.2% to 0.1%—essentially zero. This is because fused silica&rsquo;s much higher material $Q$ means the material loss dominates even more completely. Second, surface loss rises from 4.7% to 33.7% of the budget. This is not because surface loss gets worse in absolute terms (it doesn&rsquo;t—$Q_{\text{surface}}$ is the same 196,000), but because the material loss ceiling is 10× higher, so the <em>relative</em> contribution of surface loss increases.</p>
 <p>The implication: for fused silica designs, surface quality becomes the primary engineering target after material selection. Techniques such as thermal annealing (which heals the damaged amorphous surface layer), hydrofluoric acid etching (which removes it), or atomic layer deposition of a low-loss oxide coating could push $Q_{\text{surface}}$ above $10^6$, bringing $Q_{\text{total}}$ to ~90,000 or higher.</p>
 <hr />
-<h2 id="13-discussion">13. Discussion</h2>
-<h3 id="131-what-is-validated-vs-projected">13.1 What Is Validated vs. Projected</h3>
+<h2 id="14-discussion">14. Discussion</h2>
+<h3 id="141-what-is-validated-vs-projected">14.1 What Is Validated vs. Projected</h3>
 <p>We are explicit about the boundary between demonstrated physics and engineering projection:</p>
 <p><strong>Validated (macro prototype + established physics + FEM):</strong></p>
 <ul>
@@ -2014,6 +2203,9 @@ table, pre, blockquote {
 <li>Avoided-crossing hybridization in near-degenerate mode pairs</li>
 <li>Null-space encoding recovers hidden capacity with perfect fidelity</li>
 <li>Polysemic readout yields +297% capacity from mode-subset partitioning (4 independent channels, cross-correlation 0.003)</li>
+<li>Firmware-defined virtual rewriting: 4 independent logical memories per rod via SVD partitioning (cross-talk &lt; $10^{-15}$) and mode-subset excitation</li>
+<li>Binary perturbation sites: 193 of 200 configurations spectrally distinguishable at 12 sites (7.6 bits rewritable state)</li>
+<li>MEMS actuator Q penalty &lt; 0.5% at 16 switches; writable shell viable to 100 nm at $Q_d = 200$</li>
 <li>All above validated by 568 automated tests computing claims from first principles</li>
 </ul>
 <p><strong>Derived (mathematical consequence of validated physics):</strong></p>
@@ -2031,8 +2223,11 @@ table, pre, blockquote {
 <li>Refresh stability over extended operation</li>
 <li>Hybridization gain in real (non-idealized) mode spectra</li>
 <li>Practical null-space readout implementation</li>
+<li>Binary-site cross-talk from evanescent acoustic coupling between adjacent sites</li>
+<li>MEMS switch fatigue in the SEM-specific geometry (RF MEMS data suggests $> 10^9$ cycles)</li>
+<li>Shell adhesion quality and acoustic coupling at the glass–coating interface</li>
 </ul>
-<h3 id="132-historical-context">13.2 Historical Context</h3>
+<h3 id="142-historical-context">14.2 Historical Context</h3>
 <p>SEM&rsquo;s closest relatives in the literature are more instructive for their differences than their similarities:</p>
 <ul>
 <li>
@@ -2057,10 +2252,10 @@ table, pre, blockquote {
 <p><strong>Polysemic symbol systems:</strong> The polysemic readout technique (§11.5) draws on Scranton&rsquo;s analysis of Dogon cosmological symbols [21], where a single sacred symbol simultaneously encodes multiple independent layers of meaning depending on the interpretive frame. The SEM analogue—partitioning the eigenmode spectrum into independent sub-channels—produced the largest capacity enhancement discovered in this work (+297%). More broadly, the parallel between ancient polysemic encoding and spectral multiplexing suggests that efficient information encoding is a universal principle, independently discoverable through both millennia of human symbolic practice and modern physics simulation.</p>
 </li>
 </ul>
-<h3 id="133-intellectual-property">13.3 Intellectual Property</h3>
-<p>The core concepts—multi-mode spectral encoding, perturbation-based writing, interference-based associative recall in acoustic MEMS resonators—are, to our knowledge, novel in combination. The advanced techniques of Section 11—synaptic pruning applied to acoustic Hopfield recall, Boolean computation from mode superposition, hybridization-aware readout, null-space multiplexing, and polysemic multi-channel readout—further extend the novel design space. Individual elements (MEMS resonators, piezoelectric transducers, Rayleigh perturbation theory, Hopfield networks, SVD, avoided crossings) are well-established. The innovation is the architectural synthesis and the systematic exploitation of the eigenmode physics for both storage and computation.</p>
+<h3 id="143-intellectual-property">14.3 Intellectual Property</h3>
+<p>The core concepts—multi-mode spectral encoding, perturbation-based writing, interference-based associative recall in acoustic MEMS resonators—are, to our knowledge, novel in combination. The advanced techniques of Section 11—synaptic pruning applied to acoustic Hopfield recall, Boolean computation from mode superposition, hybridization-aware readout, null-space multiplexing, and polysemic multi-channel readout—further extend the novel design space. The layered rewritability architecture of Section 12—firmware-defined virtual rewriting, binary perturbation sites, and the read/write separation principle—adds a reconfigurability dimension absent from the initial read-only design. Individual elements (MEMS resonators, piezoelectric transducers, Rayleigh perturbation theory, Hopfield networks, SVD, avoided crossings, RF MEMS switches) are well-established. The innovation is the architectural synthesis and the systematic exploitation of the eigenmode physics for both storage and computation.</p>
 <hr />
-<h2 id="14-roadmap">14. Roadmap</h2>
+<h2 id="15-roadmap">15. Roadmap</h2>
 <h3 id="phase-1-mems-proof-of-concept-612-months">Phase 1: MEMS Proof-of-Concept (6–12 months)</h3>
 <ul>
 <li>Fabricate single borosilicate glass resonators at 1–5 mm</li>
@@ -2077,6 +2272,7 @@ table, pre, blockquote {
 <li>Implement synaptic pruning in readout firmware</li>
 <li>Validate in-situ Boolean computation on hardware</li>
 <li>Polysemic readout: verify independent sub-channel decoding on physical device</li>
+<li>Firmware virtual rewriting: multi-projection partitioning and mode-subset addressing in ASIC pipeline</li>
 <li>Cross-rod calibration protocol for heterogeneous substrate arrays</li>
 <li><strong>Go/no-go</strong>: Pattern discrimination $> 90\%$ accuracy in 10-rod array</li>
 </ul>
@@ -2088,17 +2284,20 @@ table, pre, blockquote {
 <li>$\pm 0.1$ K thermal stability characterization</li>
 <li>Hybridization-aware readout algorithm development</li>
 <li>Null-space multiplexing readout implementation</li>
+<li>Binary perturbation site evaluation: 12–20 electrostatic MEMS latches on second-generation die</li>
 <li><strong>Target</strong>: Demonstrated density $> 100$ Gbit/cm³</li>
 </ul>
 <h3 id="phase-4-product-development-3648-months">Phase 4: Product Development (36–48 months)</h3>
 <ul>
 <li>Full chip: resonator array + CMOS readout + on-chip FFT</li>
 <li>Advanced encoding firmware (pruning, Boolean, hybridization, null-space, polysemic readout)</li>
+<li>Writable shell coating evaluation: Parylene C and magnetostrictive thin films</li>
+<li>Product family: ROM (Stage 0), firmware-reconfigurable (Stage 1), MEMS-switchable (Stage 2), fully rewritable (Stage 3)</li>
 <li>Target: acoustic fingerprint matching, edge AI inference, content-addressable memory</li>
 <li>Reliability qualification, endurance testing</li>
 </ul>
 <hr />
-<h2 id="15-conclusion">15. Conclusion</h2>
+<h2 id="16-conclusion">16. Conclusion</h2>
 <p>Spectral Eigenmode Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod&rsquo;s natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.</p>
 <p>The physics is validated at macro scale with a &#36;63 prototype. The scaling laws are mathematical consequences of that physics. The MEMS loss mechanisms have been modeled and found manageable—the dominant loss is the glass material itself, not the MEMS geometry.</p>
 <p>The key results:</p>
@@ -2119,10 +2318,11 @@ table, pre, blockquote {
 <li><strong>+160% capacity potential</strong> from avoided-crossing mode hybridization</li>
 <li><strong>+60% bonus capacity</strong> via null-space multiplexing with complementary readout</li>
 <li><strong>+297% capacity gain</strong> via polysemic readout—partitioning modes into independent sub-channels, each decoding the same physical inscription through a different spectral frame</li>
+<li><strong>Rewritability at three levels</strong>: firmware-defined virtual rewriting (4+ logical devices/rod, zero hardware), binary MEMS sites (7.6 bits rewritable, &lt; 0.5% Q penalty), and writable shell coatings (100 nm at $Q > 5{,}000$)—the read medium and write mechanism are separable</li>
 <li><strong>&gt;10¹⁵ cycle endurance</strong> (acoustic oscillation is non-destructive)</li>
 <li><strong>Fabricable</strong> with established MEMS processes (glass DRIE, AlN thin-film piezo, CMOS integration)</li>
 </ul>
-<p>What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material&rsquo;s quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that SEM&rsquo;s computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity—led by polysemic readout, which nearly quadruples the information extractable from a single physical inscription.</p>
+<p>What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material&rsquo;s quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that SEM&rsquo;s computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity—led by polysemic readout, which nearly quadruples the information extractable from a single physical inscription. The layered rewritability architecture transforms SEM from mask ROM to a reconfigurable instrument, with the read medium and write mechanism cleanly separated—a property unique among memory technologies.</p>
 <p>Seventy-seven years after mercury delay lines first stored data as acoustic waves in UNIVAC I, the same physics finds new expression—not as temporal pulses in a tube of liquid metal, but as spectral eigenmodes in a chip-scale glass resonator, where every stored bit participates in computation and recall is a standing wave.</p>
 <h2 id="references">References</h2>
 <p>[1] J. Backus, &ldquo;Can programming be liberated from the von Neumann style? A functional style and its algebra of programs,&rdquo; <em>Communications of the ACM</em>, vol. 21, no. 8, pp. 613–641, 1978. doi: <a href="https://doi.org/10.1145/359576.359579">10.1145/359576.359579</a></p>
@@ -2145,6 +2345,8 @@ table, pre, blockquote {
 <p>[18] P. R. Bhatt, G. S. Tomko, and P. Bhatt, &ldquo;Synaptic pruning and the developing brain,&rdquo; in <em>Handbook of Developmental Neuroscience</em>. Academic Press, 2020. (Synaptic pruning as an optimization mechanism for neural circuit refinement.)</p>
 <p>[19] C. Zener, &ldquo;Internal friction in solids: I. Theory of internal friction in reeds,&rdquo; <em>Physical Review</em>, vol. 52, no. 3, pp. 230–235, 1937. doi: <a href="https://doi.org/10.1103/PhysRev.52.230">10.1103/PhysRev.52.230</a></p>
 <p>[20] J. von Neumann and E. P. Wigner, &ldquo;Über das Verhalten von Eigenwerten bei adiabatischen Prozessen,&rdquo; <em>Physikalische Zeitschrift</em>, vol. 30, pp. 467–470, 1929. (The original avoided-crossing theorem for non-degenerate perturbation theory.)</p>
+<p>[21] L. Scranton, <em>The Science of the Dogon: Decoding the African Mystery Tradition</em>. Rochester, VT: Inner Traditions, 2006. (Analysis of polysemic symbol encoding in Dogon cosmological tradition; see also <em>Sacred Symbols of the Dogon</em>, 2007.)</p>
+<p>[22] G. M. Rebeiz, <em>RF MEMS: Theory, Design, and Technology</em>. Hoboken, NJ: Wiley, 2003. doi: <a href="https://doi.org/10.1002/0471225282">10.1002/0471225282</a>. (Commercial RF MEMS switches: $> 10^9$ cycle endurance, $< 10\ \mu$s switching, near-zero static power.)</p>
 <hr />
 <h2 id="appendix-a-snr-and-density-scaling-derivation">Appendix A: SNR and Density Scaling Derivation</h2>
 <h3 id="a1-snr-as-a-function-of-length">A.1 SNR as a Function of Length</h3>
