@@ -31,3 +31,10 @@
 #
 # Phase 6 — Rewritability (telescope → instrument):
 #   rewritability         - 7 experiments: virtual rewrite, binary sites, multi-shell
+#
+# Phase 7 — Site optimization & semantic mapping:
+#   site_optimization     - Perturbation site placement, sensitivity matrix, layout optimizer
+#   semantic_mapping      - Meaning-to-perturbation projection, codebooks, similarity preservation
+#
+# Phase 7b — Scranton–Dogon polysemic encoding:
+#   scranton_dogon        - 6 experiments from Dogon cosmological symbol parallels
