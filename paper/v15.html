@@ -527,34 +527,6 @@ table, pre, blockquote {
 <li>1. <a href="#1-introduction">Introduction</a> <span class="toc-desc">— The memory wall; wave-based memory; summary of results</span></li>
 <li>2. <a href="#2-architecture">Architecture</a> <span class="toc-desc">— Eigenmode encoding; perturbation write; interference recall</span></li>
 </ol>
-<p class="toc-part">Part II — Substrate and Prototype</p>
-<ol>
-<li>3. <a href="#3-substrate-selection">Substrate Selection</a> <span class="toc-desc">— Ferrofluid failure; glass physics</span></li>
-<li>4. <a href="#4-macro-scale-prototype">Macro-Scale Prototype</a> <span class="toc-desc">— $63 BOM; 98.5 dB SNR; Q = 10,000</span></li>
-</ol>
-<p class="toc-part">Part III — Finite Element Validation</p>
-<ol>
-<li>5. <a href="#5-finite-element-validation">Finite Element Validation</a> <span class="toc-desc">— 1D/2D FEM eigenfrequencies; wave speed discovery; Pochhammer–Chree dispersion</span></li>
-</ol>
-<p class="toc-part">Part IV — MEMS Design and Scaling</p>
-<ol>
-<li>6. <a href="#6-scaling-laws">Scaling Laws</a> <span class="toc-desc">— SNR, mode count, density as functions of rod length</span></li>
-<li>7. <a href="#7-mems-q-factor-analysis">MEMS Q-Factor Analysis</a> <span class="toc-desc">— Five-mechanism loss budget</span></li>
-<li>8. <a href="#8-mems-device-specification">MEMS Device Specification</a> <span class="toc-desc">— Reference design; array architecture</span></li>
-<li>9. <a href="#9-fabrication-pathway">Fabrication Pathway</a> <span class="toc-desc">— Six-step MEMS process flow</span></li>
-</ol>
-<p class="toc-part">Part V — Advanced Techniques</p>
-<ol>
-<li>10. <a href="#10-technology-comparison">Technology Comparison</a> <span class="toc-desc">— Density, speed, energy benchmarks</span></li>
-<li>11. <a href="#11-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall</a> <span class="toc-desc">— Pruning; Boolean ops; hybridization; null-space</span></li>
-</ol>
-<p class="toc-part">Part VI — Outlook</p>
-<ol>
-<li>12. <a href="#12-ultimate-limits">Ultimate Limits</a> <span class="toc-desc">— Fused silica; Tbit/cm³ arrays</span></li>
-<li>13. <a href="#13-discussion">Discussion</a> <span class="toc-desc">— Validated vs. projected; IP; historical context</span></li>
-<li>14. <a href="#14-roadmap">Roadmap</a> <span class="toc-desc">— Four-phase development plan</span></li>
-<li>15. <a href="#15-conclusion">Conclusion</a></li>
-</ol>
 <div class="toc-appendices">
 <p class="toc-part">Appendices</p>
 <ol>
@@ -617,7 +589,7 @@ table, pre, blockquote {
 <tr>
 <td>Thermally stable modes</td>
 <td>9,380</td>
-<td>Borosilicate, $\pm 1$ K, size-independent</td>
+<td>Borosilicate, $Q = 10{,}000$, $\pm 1$ K, size-independent</td>
 </tr>
 <tr>
 <td>Bits per mode</td>
@@ -695,12 +667,19 @@ table, pre, blockquote {
 <h2 id="2-architecture">2. Architecture</h2>
 <h3 id="21-eigenmode-encoding">2.1 Eigenmode Encoding</h3>
 <p>The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For SEM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.</p>
-<p><strong>Mode count.</strong> A glass rod of length $L$ supports longitudinal eigenmodes at frequencies $f_n = nv_{\text{bar}}/(2L)$, where $v_{\text{bar}} = \sqrt{E/\rho}$ is the thin-bar wave speed and $n = 1, 2, 3, \ldots$ Not all of these modes are usable. The rod also expands and contracts thermally, and this thermal expansion shifts eigenfrequencies. If the thermal frequency shift of a mode exceeds the spacing between adjacent modes, those modes blur together and cannot be independently resolved.</p>
-<p>The thermal frequency shift for mode $n$ is $\Delta f_n^{\text{thermal}} = f_n \cdot \alpha \cdot \Delta T$, where $\alpha$ is the coefficient of thermal expansion and $\Delta T$ is the temperature range. The spacing between adjacent modes is constant: $\Delta f = v/(2L)$. Requiring the thermal shift to be less than the mode spacing gives:</p>
-<p>$$f_n \cdot \alpha \cdot \Delta T < \frac{v}{2L} \quad \Longrightarrow \quad n < \frac{1}{2\alpha \,\Delta T}$$</p>
-<p>The maximum number of thermally stable modes is therefore:</p>
-<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha \,\Delta T} \right\rfloor$$</p>
-<p>Notice what is <em>not</em> in this formula: the rod length $L$. The mode count depends only on the material&rsquo;s thermal expansion coefficient and the operating temperature range. A 150 mm rod and a 1 mm rod made of the same glass, operating at the same temperature stability, support the same number of modes. For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max} = \lfloor 1/(2 \times 3.3 \times 10^{-6} \times 1) \rfloor = 9{,}380$ modes. This number will reappear throughout the paper—it is the bedrock on which all capacity projections rest.</p>
+<p><strong>Mode count.</strong> A glass rod of length $L$ supports longitudinal eigenmodes at frequencies $f_n = nv_{\text{bar}}/(2L)$, where $v_{\text{bar}} = \sqrt{E/\rho}$ is the thin-bar wave speed and $n = 1, 2, 3, \ldots$ Not all of these modes are usable. Two physical effects limit the maximum resolvable mode number: <em>thermal drift</em> and <em>mode linewidth</em>.</p>
+<p>First, the rod expands and contracts thermally, shifting eigenfrequencies. The thermal frequency shift for mode $n$ is $\Delta f_n^{\text{thermal}} = f_n \cdot \alpha \cdot \Delta T$, where $\alpha$ is the coefficient of thermal expansion and $\Delta T$ is the temperature stability range. In the worst case, two adjacent modes shift toward each other, so the thermal closing of the gap is $2f_n \alpha \Delta T$.</p>
+<p>Second, each mode has a finite spectral linewidth $\delta f_n = f_n / Q$, where $Q$ is the acoustic quality factor. Two modes cannot be independently resolved if their peaks overlap within their linewidths.</p>
+<p>Combining both constraints: the total drift-plus-linewidth of mode $n$ must be less than the constant mode spacing $\Delta f = v/(2L)$:</p>
+<p>$$2 f_n \alpha \Delta T + \frac{f_n}{Q} < \frac{v}{2L}$$</p>
+<p>Since $f_n = n \cdot v/(2L)$, the length cancels:</p>
+<p>$$n\!\left(2\alpha\,\Delta T + \frac{1}{Q}\right) < 1$$</p>
+<p>The maximum number of resolvable, thermally stable modes is therefore:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha\,\Delta T \;+\; 1/Q} \right\rfloor$$</p>
+<p>Notice what is <em>not</em> in this formula: the rod length $L$. The mode count depends only on two material properties—the thermal expansion coefficient $\alpha$ and the quality factor $Q$—and the operating temperature range $\Delta T$. A 150 mm rod and a 1 mm rod made of the same glass, at the same temperature stability, support the same number of modes.</p>
+<p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K, $Q = 10{,}000$) at $\pm 1$ K:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2 \times 3.3 \times 10^{-6} \times 1 \;+\; 1/10{,}000} \right\rfloor = \left\lfloor \frac{1}{1.066 \times 10^{-4}} \right\rfloor = 9{,}380 \text{ modes}$$</p>
+<p>The dominant constraint is the linewidth term $1/Q = 10^{-4}$, which is 15$\times$ larger than the thermal term $2\alpha\Delta T = 6.6 \times 10^{-6}$. Improving $Q$—for example, by switching to fused silica ($Q = 100{,}000$)—directly increases the mode count (Section 12). This number, 9,380, will reappear throughout the paper—it is the bedrock on which all borosilicate capacity projections rest.</p>
 <p><strong>Bits per mode.</strong> Each mode is an independent oscillator whose amplitude can be measured with a signal-to-noise ratio determined by the thermal noise floor. Shannon&rsquo;s channel capacity theorem [6] tells us the maximum information per measurement:</p>
 <p>$$b = \frac{1}{2}\log_2(1 + \text{SNR})$$</p>
 <p>At the measured SNR of 98.5 dB (which corresponds to a linear ratio of $7.07 \times 10^9$): $b = 16.4$ bits per mode. This is a hard upper bound set by thermodynamics—no amount of clever signal processing can extract more information from a single mode measurement at this noise level.</p>
@@ -1008,10 +987,10 @@ table, pre, blockquote {
 <p>For a 1 mm rod: $\text{SNR} = 4.71 \times 10^{10} \times 10^{-3} = 4.71 \times 10^7$, or 76.7 dB. This gives $b = \frac{1}{2}\log_2(1 + 4.71 \times 10^7) = 12.7$ bits per mode. Reduced from 16.4 bits at macro scale, but still a substantial information capacity per mode.</p>
 <p>For a 0.5 mm rod: SNR $= 2.36 \times 10^7$ (73.7 dB), giving 12.2 bits/mode. The returns diminish slowly because information scales as the <em>logarithm</em> of SNR.</p>
 <h3 id="62-mode-count-is-size-independent">6.2 Mode Count Is Size-Independent</h3>
-<p>This is the most counterintuitive and most important scaling result. The formula $n_{\max} = \lfloor 1/(2\alpha\Delta T) \rfloor$ contains no $L$. A 1 mm rod supports the same 9,380 modes as the 150 mm prototype.</p>
-<p>Why? Because both the mode spacing and the thermal shift scale identically with $L$. The mode spacing is $\Delta f = v/(2L)$—smaller rods have wider spacing. The maximum usable frequency before thermal shifts cause mode overlap is $f_{\max} = v/(2L\cdot 2\alpha\Delta T)$—also proportional to $1/L$. The ratio $f_{\max}/\Delta f = 1/(2\alpha\Delta T) = n_{\max}$ is independent of $L$.</p>
-<p>Physically: a smaller rod has fewer modes per unit frequency (they are more widely spaced), but the usable frequency range is proportionally wider (because the thermal shift per mode is smaller relative to the spacing). These two effects cancel exactly.</p>
-<h3 id="63-density-scales-as-math152">6.3 Density Scales as $1/L^2$</h3>
+<p>This is the most counterintuitive and most important scaling result. The formula $n_{\max} = \lfloor 1/(2\alpha\Delta T + 1/Q) \rfloor$ contains no $L$. A 1 mm rod supports the same 9,380 modes as the 150 mm prototype.</p>
+<p>Why? Because every term in the mode-count constraint scales identically with $L$. The mode spacing is $\Delta f = v/(2L)$—smaller rods have wider spacing. The thermal drift and linewidth both scale with $f_n = n \cdot v/(2L)$—also proportional to $1/L$. When we require $n(2\alpha\Delta T + 1/Q) < 1$, the length has already cancelled. The maximum mode number depends only on material properties ($\alpha$, $Q$) and the thermal environment ($\Delta T$).</p>
+<p>Physically: a smaller rod has fewer modes per unit frequency (they are more widely spaced), but the usable frequency range is proportionally wider (because both drift and linewidth shrink relative to the spacing). These effects cancel exactly.</p>
+<h3 id="63-density-scales-as-math171">6.3 Density Scales as $1/L^2$</h3>
 <p>Combining the two results above, we can derive how storage density scales with rod length. The total bits per rod is:</p>
 <p>$$B(L) = n_{\max} \cdot \frac{1}{2}\log_2\!\big(1 + c \cdot L\big)$$</p>
 <p>The volume of a single rod (with aspect ratio $\beta = L/d$) is:</p>
@@ -1063,11 +1042,11 @@ table, pre, blockquote {
 <p>The scaling analysis of Section 6 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.</p>
 <p>For SEM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
 <p>The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod&rsquo;s acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.</p>
-<h3 id="71-material-intrinsic-loss-math171">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
+<h3 id="71-material-intrinsic-loss-math190">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
 <p><strong>What it is.</strong> Even in a perfectly mounted, perfectly isolated resonator floating in a perfect vacuum, acoustic energy still decays. The reason is internal friction within the glass itself. As the rod vibrates—compressing and expanding along its length thousands of times per second—the atoms in the glass matrix do not respond instantaneously. The amorphous network has a distribution of relaxation times: some atomic rearrangements are fast (picoseconds), others are slow (nanoseconds). When the vibration period falls near one of these relaxation times, energy is absorbed and converted to heat. This is the acoustic analogue of hysteresis loss in a magnetic material: the material&rsquo;s response lags behind the driving force, and the lag dissipates energy.</p>
 <p><strong>How large it is.</strong> For borosilicate glass, the material quality factor $Q_{\text{mat}}$ ranges from 8,000 to 15,000 depending on the specific composition and thermal history of the glass. We use 10,000 as a conservative baseline [11, 12]. This means the glass itself converts 1/10,000 of the mode energy to heat per oscillation cycle.</p>
 <p><strong>Why it matters.</strong> Material loss sets the <em>ceiling</em> on the total $Q$: no matter how perfectly we design the tethers, eliminate gas damping, and polish the surface, the total $Q$ can never exceed $Q_{\text{mat}}$. For borosilicate, this ceiling is 10,000. For fused silica, it is 100,000—ten times higher, because fused silica&rsquo;s simpler amorphous structure has fewer internal relaxation pathways.</p>
-<h3 id="72-anchor-loss-math176">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
+<h3 id="72-anchor-loss-math195">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
 <p><strong>What it is.</strong> A MEMS resonator must be physically attached to something—it cannot float in space. In our design, the glass rod is suspended by thin tethers that connect it to the surrounding substrate (the silicon or glass frame of the MEMS die). These tethers are mechanical connections, and mechanical connections transmit vibration. When the rod vibrates, some of the acoustic energy travels down the tethers and into the substrate, where it propagates away and is eventually absorbed. This lost energy is &ldquo;anchor loss.&rdquo;</p>
 <p>An everyday analogy: hold a tuning fork in the air, and it rings for minutes. Press its base firmly against a wooden table, and it goes silent in seconds. The table is an acoustic drain—vibration energy flows from the fork through the contact point and into the table, where the much larger mass absorbs it. The MEMS tethers are the contact point; the substrate is the table.</p>
 <p><strong>How we minimize it.</strong> The anchor loss model [13, 17] gives:</p>
@@ -1092,18 +1071,18 @@ table, pre, blockquote {
 </ul>
 <p>For the reference design (1 mm × 40 µm rod, 2 µm × 2 µm × 20 µm tethers, 2 anchor points, with isolation trenches): $Q_{\text{anchor}} = 208{,}462$.</p>
 <p><strong>Why it matters.</strong> Anchor loss is the mechanism most sensitive to MEMS geometry—it depends on tether dimensions, attachment positions, and trench design. Many MEMS resonator designs are <em>dominated</em> by anchor loss, which has led to a widespread assumption that miniaturization kills $Q$. Our analysis shows the opposite: with properly designed tethers, anchor loss contributes only <strong>4.4% of the total loss budget</strong>. The bottleneck is the glass itself, not the suspension.</p>
-<h3 id="73-thermoelastic-damping-math194">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
+<h3 id="73-thermoelastic-damping-math213">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
 <p><strong>What it is.</strong> When a rod vibrates longitudinally, it alternately compresses and expands along its length. Compression raises the local temperature (adiabatic heating); expansion lowers it. These temperature variations set up thermal gradients across the rod&rsquo;s cross-section. Heat flows from hot regions to cold regions, and this heat flow is irreversible—it converts mechanical energy to thermal energy. This mechanism is called thermoelastic damping (TED), first analyzed by Zener in 1937 [19] and later refined by Lifshitz and Roukes for MEMS structures.</p>
 <p><strong>The Debye relaxation picture.</strong> TED is strongest when the vibration period matches the thermal relaxation time of the rod—the time it takes heat to diffuse across the cross-section. The thermal relaxation time is $\tau_D = d^2 / (\pi^2 \kappa)$, where $d$ is the rod diameter and $\kappa$ is the thermal diffusivity of the glass. When $\omega \tau_D \approx 1$ (vibration period ~ relaxation time), the temperature gradients have just enough time to partially equilibrate during each cycle, extracting maximum energy. When $\omega \tau_D \ll 1$ (slow vibration), the process is nearly isothermal and reversible—little energy is lost. When $\omega \tau_D \gg 1$ (fast vibration), the process is nearly adiabatic—temperature gradients don&rsquo;t have time to equilibrate, and again little energy is lost. Maximum damping occurs at the crossover.</p>
 <p><strong>For our design.</strong> Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 39{,}500{,}000$.</p>
 <p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for SEM than silicon.</p>
-<h3 id="74-gas-damping-math205">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
+<h3 id="74-gas-damping-math224">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
 <p><strong>What it is.</strong> A vibrating rod in a gas environment loses energy to the surrounding gas molecules. Each time a gas molecule strikes the rod&rsquo;s surface, it exchanges momentum and carries away a tiny amount of the rod&rsquo;s kinetic energy. At atmospheric pressure, the number of molecular collisions per second is enormous (roughly $10^{23}$ per cm² per second for air at 1 atm), and the cumulative energy loss can dominate all other mechanisms.</p>
 <p>At the molecular level, gas damping in MEMS devices operates in one of two regimes. At high pressure (mean free path much smaller than the rod-to-wall gap), the gas behaves as a viscous fluid, and damping follows the Navier-Stokes equations (&ldquo;squeeze-film damping&rdquo;). At low pressure (mean free path much larger than the gap), individual molecules bounce independently between the rod and the cavity walls (&ldquo;molecular-flow damping&rdquo; or &ldquo;free-molecular damping&rdquo;). MEMS vacuum packages operate in the low-pressure regime.</p>
 <p><strong>For our design.</strong> At the standard MEMS packaging pressure of 0.1 Pa (about one-millionth of atmospheric pressure), the mean free path of residual gas molecules is ~70 mm—orders of magnitude larger than the rod-to-wall gap. We are firmly in the free-molecular regime. The damping force is proportional to pressure: lower pressure means less damping.</p>
 <p>At 0.1 Pa: $Q_{\text{gas}} = 1.74 \times 10^8$. Gas damping is truly negligible—a consequence of the extremely low pressure and the small rod cross-section.</p>
 <p><strong>Why it matters.</strong> Gas damping is the one loss mechanism we can almost completely eliminate by engineering: evacuate the package. MEMS vacuum packaging at 0.01–0.1 Pa is a mature technology used in billions of MEMS gyroscopes, accelerometers, and oscillators. This is not a research challenge; it is a purchasing decision.</p>
-<h3 id="75-surface-loss-math208">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
+<h3 id="75-surface-loss-math227">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
 <p><strong>What it is.</strong> The surface of any real material is different from its bulk interior. For glass, the top few nanometers of surface are a damaged, hydrated, and/or reconstructed layer with different mechanical properties—higher internal friction, lower elastic modulus—compared to the pristine bulk glass beneath. This surface layer participates in the rod&rsquo;s vibration and contributes its own (higher) dissipation to the overall $Q$.</p>
 <p>The effect is analogous to painting a high-quality bell with a thick layer of rubber: the rubber is lossy, and even a thin coat degrades the ring. The thinner the coat relative to the bell&rsquo;s wall thickness, the less it matters.</p>
 <p><strong>The model.</strong> For a cylindrical rod with diameter $d$ and a surface defect layer of thickness $\delta$ having its own quality factor $Q_d$:</p>
@@ -1862,8 +1841,9 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p>The Q improvement means sharper resonance peaks and better mode resolution. The thermal expansion improvement means more thermally stable modes: $n_{\max} = \lfloor 1/(2 \times 0.55 \times 10^{-6} \times \Delta T) \rfloor$.</p>
-<p>At $\pm 1$ K: $n_{\max} = 909{,}090$—nearly 100× more modes than borosilicate. This is a dramatic number, but in practice we would operate at $\pm 0.1$ K (achievable with a small thermoelectric cooler on the MEMS die), giving $n_{\max} = 98{,}911$ modes—over 10× more than borosilicate, at a temperature stability that is routinely achieved in precision MEMS oscillators.</p>
+<p>The Q improvement means sharper resonance peaks and better mode resolution. The thermal expansion improvement further relaxes the thermal constraint. Using the full formula:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha\,\Delta T \;+\; 1/Q} \right\rfloor$$</p>
+<p>At $\pm 1$ K: $n_{\max} = \lfloor 1/(2 \times 0.55 \times 10^{-6} \times 1 + 1/100{,}000) \rfloor = 90{,}090$—nearly 10× more modes than borosilicate&rsquo;s 9,380, driven primarily by the 10× higher $Q$. In practice we would operate at $\pm 0.1$ K (achievable with a small thermoelectric cooler on the MEMS die), giving $n_{\max} = 98{,}911$ modes—over 10× more than borosilicate, at a temperature stability that is routinely achieved in precision MEMS oscillators.</p>
 <h3 id="122-fused-silica-array-performance">12.2 Fused Silica Array Performance</h3>
 <p>For 0.5 mm × 20 µm fused silica rods at $\pm 0.1$ K:</p>
 <table>
