@@ -183,8 +183,8 @@ class TestNommoNaming:
 
     def test_naming_hypothesis(self):
         """With sufficient modes and noise, max-distance should win."""
-        r = exp_nommo_naming(K=8, n_modes=30, n_codewords=16,
-                              noise_sigma=0.05, n_trials=200,
+        r = exp_nommo_naming(K=8, n_modes=30, n_codewords=48,
+                              noise_sigma=1.0, n_trials=200,
                               rng=np.random.RandomState(42))
         # Optimised should have lower or equal BER
         assert r.optimised_ber <= r.random_ber + 0.05

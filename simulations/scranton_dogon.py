@@ -411,8 +411,8 @@ def exp_nommo_naming(
     K: int = 8,
     n_modes: int = 30,
     alphabet_size: int = 2,
-    n_codewords: int = 16,
-    noise_sigma: float = 0.05,
+    n_codewords: int = 48,
+    noise_sigma: float = 1.0,
     n_trials: int = 200,
     rng: Optional[np.random.RandomState] = None,
 ) -> NamingResult:
@@ -469,17 +469,21 @@ def exp_nommo_naming(
     for col in range(all_fps.shape[1]):
         q_fps[:, col] = _quantise(all_fps[:, col], 8)
 
-    # Greedy selection: max-min Hamming distance
+    # Greedy selection: max-min L2 distance in continuous fingerprint
+    # space (directly targets the nearest-neighbour decode metric)
     selected = [rng.randint(n_candidates)]
     for _ in range(n_codewords - 1):
         best_idx = -1
-        best_min_dist = -1
-        # Sample a subset to keep it fast
-        check_pool = rng.choice(n_candidates, size=min(500, n_candidates), replace=False)
-        for idx in check_pool:
+        best_min_dist = -1.0
+        # Check all candidates (fast enough for ≤2000)
+        for idx in range(n_candidates):
             if idx in selected:
                 continue
-            min_dist = min(_hamming_distance(q_fps[idx], q_fps[s]) for s in selected)
+            # Min L2 distance to already-selected fingerprints
+            min_dist = min(
+                float(np.sum((all_fps[idx] - all_fps[s]) ** 2))
+                for s in selected
+            )
             if min_dist > best_min_dist:
                 best_min_dist = min_dist
                 best_idx = idx
@@ -663,11 +667,11 @@ def exp_sigi_cycle(
 
 def exp_ammas_egg(
     K: int = 10,
-    seed_size: int = 3,
+    seed_size: int = 5,
     n_modes: int = 20,
     alphabet_size: int = 2,
     noise_sigma: float = 0.05,
-    n_patterns: int = 50,
+    n_patterns: int = 30,
     rng: Optional[np.random.RandomState] = None,
 ) -> SeedSpectrumResult:
     """
@@ -702,18 +706,46 @@ def exp_ammas_egg(
     positions = np.clip(positions, 0.02, 0.98)
     S = _build_sensitivity(positions, n_modes)
 
-    # Growth rule: convolve seed with a spreading kernel
-    # Kernel inspired by Amma's spiral — Gaussian-like expansion
-    kernel_size = K - seed_size + 1
-    kernel = np.exp(-0.5 * ((np.arange(kernel_size) - kernel_size // 2) / (kernel_size / 4)) ** 2)
-    kernel /= np.max(kernel)
+    # Growth rule: Rule 30 cellular automaton
+    # Wolfram Rule 30 is chaotic-but-deterministic — exactly the
+    # kind of "spiral expansion from a seed" that Amma's cosmic
+    # egg represents.  Unlike Gaussian convolution, CA Rule 30
+    # preserves diversity: different seeds → maximally different
+    # expanded patterns, while still constraining the output to
+    # a low-dimensional manifold (2^seed_size possibilities).
+    def _rule30_step(cells: np.ndarray) -> np.ndarray:
+        """One step of Rule 30: new[i] = left XOR (center OR right)."""
+        left = np.roll(cells, 1)
+        right = np.roll(cells, -1)
+        return (left ^ (cells | right)).astype(int)
 
     def expand_seed(seed):
-        """Expand a seed of length seed_size to full K sites."""
-        expanded = np.convolve(seed, kernel, mode='full')[:K]
-        # Quantise to alphabet
-        expanded = np.clip(expanded, 0, alphabet_size - 1)
-        return np.round(expanded).astype(float)
+        """Expand a seed of length seed_size to full K sites via Rule 30 CA."""
+        # Initialise CA state: embed seed in centre of a wider row
+        ca_width = K + 2 * (K - seed_size)  # padding for boundary effects
+        state = np.zeros(ca_width, dtype=int)
+        start = (ca_width - seed_size) // 2
+        state[start:start + seed_size] = np.clip(
+            np.round(seed).astype(int), 0, 1
+        )
+        # Run CA for enough generations to fill K sites
+        n_generations = max(K, 8)
+        history = [state.copy()]
+        for _ in range(n_generations):
+            state = _rule30_step(state)
+            history.append(state.copy())
+        # Sample K sites from the final CA state (centre region)
+        final = history[-1]
+        centre_start = (len(final) - K) // 2
+        expanded = final[centre_start:centre_start + K].astype(float)
+        # For multi-level alphabets, use XOR of multiple generations
+        if alphabet_size > 2:
+            for gen_idx in range(1, min(alphabet_size, len(history))):
+                layer = history[-(gen_idx + 1)]
+                layer_slice = layer[centre_start:centre_start + K]
+                expanded = expanded + layer_slice.astype(float)
+            expanded = np.clip(np.round(expanded), 0, alphabet_size - 1)
+        return expanded
 
     # Generate seed-expanded patterns
     seeds = rng.randint(0, alphabet_size, size=(n_patterns, seed_size)).astype(float)
@@ -735,7 +767,9 @@ def exp_ammas_egg(
     seed_cond = float(seed_sv[0] / max(seed_sv[-1], 1e-30))
     rand_cond = float(rand_sv[0] / max(rand_sv[-1], 1e-30))
 
-    # Noisy decode test
+    # Noisy decode test — compare pattern content, not index,
+    # because deterministic expansion can map different seeds to
+    # the same pattern (especially at small seed_size).
     def decode_fidelity(patterns, fps, n_trials_per):
         correct = 0
         total = 0
@@ -744,7 +778,8 @@ def exp_ammas_egg(
                 noisy_fp = fps[ci] + rng.randn(n_modes) * noise_sigma
                 dists = np.sum((fps - noisy_fp[None, :]) ** 2, axis=1)
                 decoded = np.argmin(dists)
-                if decoded == ci:
+                # Match on pattern content, not index
+                if np.array_equal(patterns[decoded], patterns[ci]):
                     correct += 1
                 total += 1
         return correct / max(total, 1)
