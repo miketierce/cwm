@@ -43,7 +43,7 @@
   <text x="55" y="268" font-size="7" fill="#6b7280">Q_gas = 180,000,000</text>
 
   <rect x="50" y="276" width="130" height="18" rx="2" fill="#f0fdf4" stroke="#86efac" stroke-width="1"/>
-  <text x="55" y="289" font-size="8" font-weight="700" fill="#166534">Q_total = 9,110</text>
+  <text x="55" y="289" font-size="8" font-weight="700" fill="#166534">Q_total = 9,097</text>
 
   <!-- ═══ RIGHT: COMPARISON ═══ -->
   <text x="400" y="52" font-size="10" font-weight="700" fill="#1e40af">(b) Design Scenarios — All Pass Q > 5,000</text>
@@ -64,7 +64,7 @@
   <!-- Scenario 1: Boro 5um -->
   <rect x="400" y="75" width="68" height="20" rx="3" fill="#93c5fd" stroke="#3b82f6" stroke-width="0.8"/>
   <text x="395" y="89" text-anchor="end" font-size="6.5" fill="#374151">Boro, 5 µm</text>
-  <text x="472" y="89" font-size="7" font-weight="600" fill="#1e40af">9,110 ✅</text>
+  <text x="472" y="89" font-size="7" font-weight="600" fill="#1e40af">9,097 ✅</text>
 
   <!-- Scenario 2: Boro 2um + iso -->
   <rect x="400" y="100" width="71" height="20" rx="3" fill="#93c5fd" stroke="#3b82f6" stroke-width="0.8"/>

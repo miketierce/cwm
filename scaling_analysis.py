@@ -4,12 +4,12 @@ import numpy as np
 K_B = 1.380649e-23
 T = 300.0
 
-# Borosilicate
-v = 5500.0; rho = 2230.0; Q = 10000.0; alpha = 3.3e-6
+# Borosilicate — v_bar = sqrt(E/rho), E=63 GPa, rho=2230 kg/m3
+v = 5315.2; rho = 2230.0; Q = 10000.0; alpha = 3.3e-6
 n_max_boro = int(1.0 / (2*alpha*1.0 + 1.0/Q))
 
-# Fused silica
-v_fs = 5960.0; rho_fs = 2200.0; Q_fs = 100000.0; alpha_fs = 0.55e-6
+# Fused silica — v_bar = sqrt(E/rho), E=72 GPa, rho=2200 kg/m3
+v_fs = 5720.0; rho_fs = 2200.0; Q_fs = 100000.0; alpha_fs = 0.55e-6
 n_max_fs_1K = int(1.0 / (2*alpha_fs*1.0 + 1.0/Q_fs))
 n_max_fs_01K = int(1.0 / (2*alpha_fs*0.1 + 1.0/Q_fs))
 

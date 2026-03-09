@@ -17,7 +17,7 @@
   <rect x="40" y="82" width="180" height="8" rx="4" fill="#93c5fd" stroke="#3b82f6" stroke-width="1"/>
   <text x="130" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">150 mm × 6 mm</text>
   <text x="130" y="108" text-anchor="middle" font-size="7" fill="#374151">154,000 bits</text>
-  <text x="130" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#6b7280">0.04 Gbit/cm³</text>
+  <text x="130" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#6b7280">0.04 Mbit/cm³</text>
   <text x="130" y="140" text-anchor="middle" font-size="7" fill="#6b7280">Macro prototype</text>
 
   <!-- 1 mm (MEMS) -->
@@ -28,8 +28,8 @@
   <text x="370" y="83" font-size="6" fill="#ef4444">← actual size at this scale</text>
   <text x="360" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">1 mm × 40 µm</text>
   <text x="360" y="108" text-anchor="middle" font-size="7" fill="#374151">120,000 bits</text>
-  <text x="360" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">95.5 Gbit/cm³</text>
-  <text x="360" y="140" text-anchor="middle" font-size="7" fill="#166534">2,400× denser</text>
+  <text x="360" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">95.1 Gbit/cm³</text>
+  <text x="360" y="140" text-anchor="middle" font-size="7" fill="#166534">9.5× DRAM (active vol.)</text>
 
   <!-- 0.5 mm (advanced MEMS) -->
   <rect x="490" y="62" width="200" height="85" rx="4" fill="#f8fafc" stroke="#d1d5db" stroke-width="0.8"/>
@@ -38,7 +38,7 @@
   <text x="590" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">0.5 mm × 20 µm</text>
   <text x="590" y="108" text-anchor="middle" font-size="7" fill="#374151">1.23 Mbit/rod</text>
   <text x="590" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">1.4 Tbit/cm³</text>
-  <text x="590" y="136" text-anchor="middle" font-size="7" fill="#166534">35,000× denser</text>
+  <text x="590" y="136" text-anchor="middle" font-size="7" fill="#166534">140× DRAM (active vol.)</text>
   <text x="590" y="146" text-anchor="middle" font-size="6" font-style="italic" fill="#166534">(fused silica, ±0.1 K)</text>
 
   <!-- Arrow: shrink -->
@@ -78,7 +78,7 @@
   <text x="620" y="310" text-anchor="middle" font-size="6.5" fill="#6b7280">150 mm</text>
 
   <!-- SEM density curve (approximate log-log positions) -->
-  <!-- Points: 0.1mm=83000, 0.2mm=10900, 0.5mm=1400(SiO₂), 1mm=95.5, 2mm=12, 10mm=0.1, 150mm=0.04 -->
+  <!-- Points: 0.1mm=83000, 0.2mm=10900, 0.5mm=1400(SiO₂), 1mm=95.1, 2mm=12, 10mm=0.1, 150mm=0.04 Mbit -->
   <path d="M120,194 L195,211 L235,229 L310,247 L385,257 L500,268 L620,290" fill="none" stroke="#2563eb" stroke-width="2.5"/>
 
   <!-- Data points -->
@@ -111,5 +111,5 @@
   <text x="195" y="225" text-anchor="end" font-size="6" fill="#92400e">≈0.45 mm: passes NAND</text>
 
   <!-- Label the curve -->
-  <text x="160" y="190" font-size="8" font-weight="700" fill="#2563eb">SEM density ∝ 1/L²</text>
+  <text x="160" y="190" font-size="8" font-weight="700" fill="#2563eb">SEM active density ∝ 1/L²</text>
 </svg>

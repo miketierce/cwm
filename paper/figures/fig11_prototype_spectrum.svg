@@ -41,14 +41,14 @@
   <text x="40" y="81" text-anchor="end" class="axis-label">0.75</text>
   <text x="40" y="42" text-anchor="end" class="axis-label">1.0</text>
 
-  <!-- X-axis ticks: 18.8, 37.6, ..., 150.4 (8 modes shown) -->
-  <text x="82" y="230" text-anchor="middle" class="axis-label">18.8</text>
-  <text x="119" y="230" text-anchor="middle" class="axis-label">37.6</text>
-  <text x="157" y="230" text-anchor="middle" class="axis-label">56.4</text>
-  <text x="194" y="230" text-anchor="middle" class="axis-label">75.2</text>
-  <text x="232" y="230" text-anchor="middle" class="axis-label">94.0</text>
-  <text x="269" y="230" text-anchor="middle" class="axis-label">112.8</text>
-  <text x="307" y="230" text-anchor="middle" class="axis-label">131.6</text>
+  <!-- X-axis ticks: 17.7, 35.4, ..., 124.0 (8 modes shown) -->
+  <text x="82" y="230" text-anchor="middle" class="axis-label">17.7</text>
+  <text x="119" y="230" text-anchor="middle" class="axis-label">35.4</text>
+  <text x="157" y="230" text-anchor="middle" class="axis-label">53.2</text>
+  <text x="194" y="230" text-anchor="middle" class="axis-label">70.9</text>
+  <text x="232" y="230" text-anchor="middle" class="axis-label">88.6</text>
+  <text x="269" y="230" text-anchor="middle" class="axis-label">106.3</text>
+  <text x="307" y="230" text-anchor="middle" class="axis-label">124.0</text>
 
   <!-- Unperturbed peaks (blue) — clean comb -->
   <line x1="82" y1="200" x2="82" y2="44" stroke="#2980b9" stroke-width="2.5" opacity="0.85"/>
@@ -99,7 +99,7 @@
   <text x="153" y="245" class="label">After wax perturbation</text>
 
   <!-- Annotation -->
-  <text x="195" y="262" text-anchor="middle" class="annotation" font-size="9">Mode spacing = v/(2L) = 18.8 kHz</text>
+  <text x="195" y="262" text-anchor="middle" class="annotation" font-size="9">Mode spacing = v̄/(2L) = 17.7 kHz</text>
   <text x="195" y="276" text-anchor="middle" class="label" font-size="9">Each Δfₙ depends on wax position relative to mode n antinode</text>
 
   <!-- ═══ RIGHT PANEL: Zoomed Perturbation Detail ═══ -->
@@ -171,7 +171,7 @@
   <!-- Bottom summary -->
   <rect x="50" y="290" width="620" height="80" rx="6" fill="#f0f7f7" stroke="#0d7377" stroke-width="0.8"/>
   <text x="360" y="310" text-anchor="middle" class="label-bold" font-size="11">Measured: Rayleigh prediction matches within 2%</text>
-  <text x="360" y="328" text-anchor="middle" class="label" font-size="10">A 150 mm borosilicate rod (v = 5,640 m/s) produces a comb of 9,380 thermally stable modes</text>
-  <text x="360" y="346" text-anchor="middle" class="label" font-size="10">from 18.8 kHz to 176 MHz. Wax perturbation (~0.1 mg) shifts each mode by a different Δfₙ,</text>
+  <text x="360" y="328" text-anchor="middle" class="label" font-size="10">A 150 mm borosilicate rod (v̄ = 5,315 m/s) produces a comb of 9,380 thermally stable modes</text>
+  <text x="360" y="346" text-anchor="middle" class="label" font-size="10">from 17.7 kHz to 166 MHz. Wax perturbation (~0.1 mg) shifts each mode by a different Δfₙ,</text>
   <text x="360" y="362" text-anchor="middle" class="label" font-size="10">creating a unique spectral fingerprint. Different mass patterns → different fingerprints.</text>
 </svg>
