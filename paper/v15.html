@@ -1660,7 +1660,7 @@ table, pre, blockquote {
 </ul>
 <p>It is not suitable for random byte-addressable read/write (use DRAM) or high-speed cache (use SRAM). In its baseline configuration, perturbation patterns are fixed at fabrication (mask ROM). Section 12 presents three paths to reconfigurability—firmware-defined virtual rewriting, binary perturbation sites, and writable shell coatings—that progressively transform SEM from ROM to a reconfigurable instrument.</p>
 <h3 id="105-disruption-scenarios">10.5 Disruption Scenarios</h3>
-<p>We identify five scenarios where SEM&rsquo;s unique property combination creates strategic advantage:</p>
+<p>We identify six scenarios where SEM&rsquo;s unique property combination creates strategic advantage:</p>
 <ol>
 <li>
 <p><strong>Associative search at the edge.</strong> A 1 cm³ SEM module performs 280,000 associative lookups per second at &lt;5 W. This enables real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.</p>
@@ -1681,7 +1681,7 @@ table, pre, blockquote {
 <p><strong>Quantum-classical bridge.</strong> SEM delivers three properties—superposition, interference-based computation, and non-destructive parallel readout—usually cited as motivations for quantum computing, but achieves them classically via eigenmode orthogonality (Section 14.2). For applications where quantum advantage reduces to associative recall or nearest-neighbor search, a SEM module operating at 300 K may outperform a dilution-refrigerator quantum system at a fraction of the cost, complexity, and power budget.</p>
 </li>
 </ol>
-<hr />
+<p>See Appendix C for additional scenarios.</p>
 <h2 id="11-advanced-encoding-and-recall-techniques">11. Advanced Encoding and Recall Techniques</h2>
 <p>The core SEM architecture of Sections 2–10 establishes a memory technology competitive with DRAM and Flash on density, energy, and speed, while adding native associative computation that no existing technology provides. This section presents five advanced techniques—discovered through systematic computational exploration of the eigenmode physics—that extend SEM&rsquo;s capabilities beyond the baseline architecture.</p>
 <p>All five techniques share a critical property: they require <strong>zero hardware changes</strong>. They are implementable as firmware-level signal processing on the CMOS readout die—modifications to how the readout data is interpreted, not to the resonator itself. This means they can be developed, tested, and deployed independently of the MEMS fabrication timeline.</p>
