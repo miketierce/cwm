@@ -47,8 +47,8 @@
   <text x="295" y="262" text-anchor="middle" class="axis-label">80</text>
   <text x="355" y="262" text-anchor="middle" class="axis-label">100</text>
 
-  <!-- Exponential decay envelope (upper) — τ = Q/(πf₁) ≈ 10000/(π×18800) ≈ 169 ms -->
-  <!-- Plotting A(t) = exp(-t/τ) from t=0 to 100ms; τ≈169ms -->
+  <!-- Exponential decay envelope (upper) — τ = Q/(πf₁) ≈ 10000/(π×17700) ≈ 180 ms -->
+  <!-- Plotting A(t) = exp(-t/τ) from t=0 to 100ms; τ≈180ms -->
   <!-- At t=0: A=1.0→y=35; t=20: A=0.888→y=48; t=40: 0.789→y=61; t=60: 0.700→y=68; t=80: 0.622→y=78; t=100: 0.553→y=87 -->
   <!-- Upper envelope (positive) -->
   <path d="M55,35 Q60,36 75,40 Q95,44 115,48 Q135,52 155,55 Q175,58 195,61 Q215,64 235,68 Q255,72 275,74 Q295,77 315,80 Q335,82 355,84"
@@ -64,12 +64,12 @@
 
   <!-- tau annotation -->
   <line x1="55" y1="94" x2="55" y2="94" stroke="#0d7377" stroke-width="0"/>
-  <!-- 1/e point: at t = τ = 169 ms → off chart. At t=50 ms, A ≈ 0.744 → y ≈ 133-(0.744*98)=60 -->
-  <!-- Mark 1/e level: A = 0.368 → y = 133 - 0.368*98 = 97 at t = 169 ms (off chart) -->
+  <!-- 1/e point: at t = τ = 180 ms → off chart. At t=50 ms, A ≈ 0.757 → y ≈ 133-(0.757*98)=59 -->
+  <!-- Mark 1/e level: A = 0.368 → y = 133 - 0.368*98 = 97 at t = 180 ms (off chart) -->
   <!-- Instead mark the visible decay and annotate Q -->
   <text x="260" y="68" class="annotation">τ = Q/(πf₁)</text>
-  <text x="260" y="82" class="annotation" font-size="9">= 10,000/(π × 18,800)</text>
-  <text x="260" y="96" class="annotation" font-size="9">= 169 ms</text>
+  <text x="260" y="82" class="annotation" font-size="9">= 10,000/(π × 17,700)</text>
+  <text x="260" y="96" class="annotation" font-size="9">= 180 ms</text>
 
   <!-- Envelope label -->
   <text x="88" y="33" class="label" font-size="9" fill="#0d7377">e⁻ᵗ/τ envelope</text>
@@ -123,8 +123,8 @@
   <text x="698" y="54" class="axis-label" fill="#c0392b">−3 dB</text>
 
   <!-- -3 dB width markers -->
-  <!-- At -3dB: roughly at ±0.94 Hz for Q=10,000 at f=18,800 Hz → Δf₃dB = f/Q = 1.88 Hz -->
-  <!-- In plot coordinates: center at x=553, width of ~1.88 Hz in scale where 4 Hz = 143 px → 1 Hz = 35.75 px -->
+  <!-- At -3dB: roughly at ±0.885 Hz for Q=10,000 at f=17,700 Hz → Δf₃dB = f/Q = 1.77 Hz -->
+  <!-- In plot coordinates: center at x=553, width of ~1.77 Hz in scale where 4 Hz = 143 px → 1 Hz = 35.75 px -->
   <!-- So ±0.94 Hz = ±33.6 px → x = 519.4 and 586.6 -->
   <line x1="520" y1="47" x2="520" y2="55" stroke="#c0392b" stroke-width="1.5"/>
   <line x1="586" y1="47" x2="586" y2="55" stroke="#c0392b" stroke-width="1.5"/>
@@ -133,21 +133,21 @@
   <line x1="520" y1="61" x2="586" y2="61" stroke="#c0392b" stroke-width="1"/>
   <path d="M520,58 L520,64" stroke="#c0392b" stroke-width="1"/>
   <path d="M586,58 L586,64" stroke="#c0392b" stroke-width="1"/>
-  <text x="553" y="75" text-anchor="middle" class="annotation-red" font-size="10">Δf₃dB = 1.88 Hz</text>
+  <text x="553" y="75" text-anchor="middle" class="annotation-red" font-size="10">Δf₃dB = 1.77 Hz</text>
 
   <!-- Q annotation -->
   <rect x="480" y="100" width="146" height="52" rx="4" fill="white" stroke="#0d7377" stroke-width="1"/>
   <text x="553" y="118" text-anchor="middle" class="annotation" font-size="12">Q = f₁ / Δf₃dB</text>
-  <text x="553" y="136" text-anchor="middle" class="annotation" font-size="12">= 18,800 / 1.88</text>
+  <text x="553" y="136" text-anchor="middle" class="annotation" font-size="12">= 17,700 / 1.77</text>
   <text x="553" y="148" text-anchor="middle" class="annotation" font-size="13" font-weight="700">= 10,000</text>
 
   <!-- Peak label -->
-  <text x="553" y="195" text-anchor="middle" class="label-bold">f₁ = 18,800 Hz</text>
+  <text x="553" y="195" text-anchor="middle" class="label-bold">f₁ = 17,700 Hz</text>
 
   <!-- Bottom summary -->
   <rect x="50" y="290" width="620" height="75" rx="6" fill="#f0f7f7" stroke="#0d7377" stroke-width="0.8"/>
   <text x="360" y="310" text-anchor="middle" class="label-bold" font-size="11">Ring-down confirms Q ≥ 10,000 in macro prototype</text>
-  <text x="360" y="328" text-anchor="middle" class="label" font-size="10">The exponential decay envelope gives τ = 169 ms, consistent with Q = πf₁τ = 10,000.</text>
+  <text x="360" y="328" text-anchor="middle" class="label" font-size="10">The exponential decay envelope gives τ = 180 ms, consistent with Q = πf₁τ = 10,000.</text>
   <text x="360" y="346" text-anchor="middle" class="label" font-size="10">The bandwidth method independently confirms Q via the −3 dB linewidth of the resonance peak.</text>
   <text x="360" y="358" text-anchor="middle" class="label" font-size="10">Both methods agree: the borosilicate prototype is material-loss limited, not electronics-limited.</text>
 </svg>

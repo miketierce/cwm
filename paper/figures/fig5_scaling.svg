@@ -38,7 +38,7 @@
   <text x="590" y="78" text-anchor="middle" font-size="8" font-weight="600" fill="#1e40af">0.5 mm × 20 µm</text>
   <text x="590" y="108" text-anchor="middle" font-size="7" fill="#374151">1.23 Mbit/rod</text>
   <text x="590" y="120" text-anchor="middle" font-size="8" font-weight="700" fill="#166534">1.4 Tbit/cm³</text>
-  <text x="590" y="136" text-anchor="middle" font-size="7" fill="#166534">140× DRAM (active vol.)</text>
+  <text x="590" y="136" text-anchor="middle" font-size="7" fill="#166534">1.4× NAND (packed array)</text>
   <text x="590" y="146" text-anchor="middle" font-size="6" font-style="italic" fill="#166534">(fused silica, ±0.1 K)</text>
 
   <!-- Arrow: shrink -->
