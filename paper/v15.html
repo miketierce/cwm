@@ -634,7 +634,7 @@ table, pre, blockquote {
 <p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
 <p>This paper describes a different encoding. Instead of charge or resistance, we store information in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator—the set of natural frequencies at which a glass rod vibrates. A mass perturbation applied to the rod&rsquo;s surface shifts each eigenmode frequency by a different amount, creating a unique spectral fingerprint. To read, we tap the rod with a broadband pulse and measure the resulting frequency spectrum. To search, we drive an array of rods with a query pattern: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor computation performed by wave interference in microseconds, with no processor, no memory bus, and no software.</p>
 <p>We call this architecture <strong>Spectral Eigenmode Memory (SEM)</strong>.</p>
-<p>The core physics is validated at macro scale. A prototype built from a &#36;63 borosilicate glass rod achieves <strong>98.5 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis, verified by 479 automated tests across 23 first-principles simulation modules—including independent finite element validation of every analytical formula—projects that a 1 mm MEMS resonator achieves <strong>95.1 Gbit/cm³</strong> storage density (10× DRAM), rising to <strong>1.4 Tbit/cm³</strong> in fused silica arrays (1.4× NAND Flash), with <strong>15 fJ/bit</strong> write energy (200× below DRAM) and <strong>native associative recall</strong> in 3.8 µs.</p>
+<p>The core physics is validated at macro scale. A prototype built from a &#36;63 borosilicate glass rod achieves <strong>98.5 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis, verified by 568 automated tests across 26 first-principles simulation modules—including independent finite element validation of every analytical formula—projects that a 1 mm MEMS resonator achieves <strong>95.1 Gbit/cm³</strong> within the active resonator volume, corresponding to <strong>17.0 Gbit/cm³</strong> in the reference packed-array architecture (1.7× DRAM). In fused silica arrays, the packed-array density rises to <strong>1.4 Tbit/cm³</strong> (1.4× NAND Flash). Write energy is <strong>15 fJ/bit</strong> (200× below DRAM), with <strong>native associative recall</strong> in 3.8 µs.</p>
 <p>A five-mechanism Q-factor model addresses the central question of MEMS viability—whether the quality factor that makes macro-scale resonance work survives miniaturization. It does: $Q_{\text{total}} = 9{,}097$, with anchor loss (the mechanism most sensitive to geometry) contributing only 4.4% of the loss budget. The dominant loss is the glass itself, not the MEMS structure. All eigenfrequency predictions are independently validated by finite element analysis (1D P2 bar elements, 2D constant-strain triangles) to 7 ppm agreement, and a Pochhammer–Chree dispersion correction quantifies the sub-1% frequency deviations at higher mode numbers.</p>
 <p>Beyond the core architecture, we present five advanced encoding techniques that require no hardware changes—only firmware-level signal processing on the CMOS readout die: <strong>(i)</strong> synaptic weight pruning improves associative recall accuracy by 10.7%; <strong>(ii)</strong> in-situ Boolean computation (XOR, AND, OR) from mode superposition at &gt;90% fidelity with 3× throughput; <strong>(iii)</strong> avoided-crossing mode hybridization creates bonus information channels yielding up to +160% capacity gain; <strong>(iv)</strong> null-space multiplexing recovers hidden degrees of freedom invisible to standard readout, adding +60% bonus capacity; and <strong>(v)</strong> polysemic readout—partitioning the mode spectrum into independent sub-channels—yields +297% capacity gain from a single physical inscription.</p>
 <p>We further demonstrate that SEM admits physical rewritability at three architectural levels: firmware-defined virtual rewriting (4+ independent logical memories per rod, zero hardware changes), binary perturbation sites using MEMS electrostatic latches (7.6 bits of rewritable state, &lt; 0.5% Q penalty), and writable thin-film shell coatings (100 nm at $Q > 5{,}000$). These layers compose multiplicatively—the read medium (glass rod) and write mechanism are separable, a property unique among memory technologies.</p>
@@ -668,6 +668,9 @@ table, pre, blockquote {
 <p>This is mathematically equivalent to a Hopfield associative memory network [9, 10], where the weight matrix is the physics of the resonator and recall is wave interference. The theoretical capacity scales as $P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [10], where $N$ is the number of modes.</p>
 <h3 id="13-summary-of-results">1.3 Summary of Results</h3>
 <p>This paper develops SEM from first principles to a complete MEMS device specification. The key results:</p>
+<blockquote>
+<p><strong>Density definitions used in this paper.</strong> <em>Active density:</em> bits divided by the physical volume of one resonator ($\pi r^2 L$). <em>Packed-array density:</em> bits divided by the volume of an idealized packed array at 2× diameter pitch and rod-length + 2.5$d$ layer clearance (where $d$ is the rod diameter). For the 1 mm borosilicate reference design ($d = 40$ µm), this gives 80 µm pitch and 1.1 mm layer spacing. <em>Package density:</em> bits divided by total packaged-device volume, including vacuum cavity, tethers, and substrate—not estimated here.</p>
+</blockquote>
 <table>
 <thead>
 <tr>
@@ -693,14 +696,19 @@ table, pre, blockquote {
 <td>Shannon limit at measured SNR</td>
 </tr>
 <tr>
-<td>MEMS density (1 mm boro.)</td>
+<td>Active density (1 mm boro.)</td>
 <td>95.1 Gbit/cm³</td>
-<td>10× DRAM</td>
+<td>Single-rod volume; 9.5× DRAM cell density</td>
 </tr>
 <tr>
-<td>MEMS density (0.5 mm SiO₂)</td>
+<td>Packed-array density (1 mm boro.)</td>
+<td>17.0 Gbit/cm³</td>
+<td>1.7× DRAM (80 µm pitch, 1.1 mm layers)</td>
+</tr>
+<tr>
+<td>Packed-array density (0.5 mm SiO₂)</td>
 <td>1.4 Tbit/cm³</td>
-<td>1.4× NAND Flash</td>
+<td>1.4× NAND Flash (fused silica, ±0.1 K)</td>
 </tr>
 <tr>
 <td>Write energy</td>
@@ -812,7 +820,7 @@ table, pre, blockquote {
 <p>At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making SEM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.</p>
 <p>The energy required to write one mode—meaning, to bring it to a measurable amplitude—is set by the thermal noise floor:</p>
 <p>$$E_{\text{write}} = k_B T \cdot \text{SNR}$$</p>
-<p>At 300 K and 98.5 dB SNR: $E_{\text{write}} = 4.14 \times 10^{-21} \times 7.07 \times 10^9 = 29.3$ fJ per mode, or $29.3 / 16.4 \approx 1.8$ fJ/bit. For comparison, DRAM write energy is ~3 pJ/bit—over 1,600× higher.</p>
+<p>At 300 K and 98.5 dB SNR (the macro prototype): $E_{\text{write}} = 4.14 \times 10^{-21} \times 7.07 \times 10^9 = 29.3$ pJ per mode, or $29.3 / 16.4 \approx 1.8$ pJ/bit. At MEMS scale (1 mm, 76.7 dB): $E_{\text{write}} = 195$ fJ per mode, or 15 fJ/bit—200× below DRAM&rsquo;s ~3 pJ/bit.</p>
 <h3 id="23-interference-recall-read-compute">2.3 Interference Recall (Read / Compute)</h3>
 <p>The read and compute operations in SEM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes SEM from in-memory computing approaches that still separate the storage medium from the compute mechanism.</p>
 <p><strong>Simple read.</strong> To read a single rod&rsquo;s stored data, drive it with a broadband pulse (a chirp sweeping through the mode frequency range, or a short impulse containing all frequencies). The rod rings at its eigenfrequencies. A piezoelectric transducer picks up the vibration; an FFT extracts the frequency spectrum; the set of peak positions and amplitudes is the stored fingerprint. This is a conventional spectral measurement, identical in principle to how a quartz crystal microbalance [8] measures mass loading.</p>
@@ -1106,7 +1114,7 @@ table, pre, blockquote {
 <p>This is the most counterintuitive and most important scaling result. The formula $n_{\max} = \lfloor 1/(2\alpha\Delta T + 1/Q) \rfloor$ contains no $L$. A 1 mm rod supports the same 9,380 modes as the 150 mm prototype.</p>
 <p>Why? Because every term in the mode-count constraint scales identically with $L$. The mode spacing is $\Delta f = v/(2L)$—smaller rods have wider spacing. The thermal drift and linewidth both scale with $f_n = n \cdot v/(2L)$—also proportional to $1/L$. When we require $n(2\alpha\Delta T + 1/Q) < 1$, the length has already cancelled. The maximum mode number depends only on material properties ($\alpha$, $Q$) and the thermal environment ($\Delta T$).</p>
 <p>Physically: a smaller rod has fewer modes per unit frequency (they are more widely spaced), but the usable frequency range is proportionally wider (because both drift and linewidth shrink relative to the spacing). These effects cancel exactly.</p>
-<h3 id="63-density-scales-as-math172">6.3 Density Scales as $1/L^2$</h3>
+<h3 id="63-density-scales-as-math177">6.3 Density Scales as $1/L^2$</h3>
 <p>Combining the two results above, we can derive how storage density scales with rod length. The total bits per rod is:</p>
 <p>$$B(L) = n_{\max} \cdot \frac{1}{2}\log_2\!\big(1 + c \cdot L\big)$$</p>
 <p>The volume of a single rod (with aspect ratio $\beta = L/d$) is:</p>
@@ -1148,21 +1156,21 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p>All three crossovers fall within standard MEMS fabrication range (0.1–5 mm features). The 1 mm reference design of this paper sits above the PCM crossover—at 95.1 Gbit/cm³, it is 10× DRAM and 1.5× PCM.</p>
+<p>All three crossovers fall within standard MEMS fabrication range (0.1–5 mm features). The 1 mm reference design of this paper sits above the PCM crossover—at 95.1 Gbit/cm³ active density (9.5× DRAM, 1.5× PCM). In the packed-array architecture of Section 8.3, the effective density is 17.0 Gbit/cm³ (1.7× DRAM).</p>
 <div class="sem-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Figure 5: Scaling from macro to MEMS"/>
-<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Gbit/cm³), the 1 mm borosilicate MEMS rod (95.1 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Mbit/cm³), the 1 mm borosilicate MEMS rod (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array (1.4 Tbit/cm³ active, 140× DRAM). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
 </div>
 <hr />
 <h2 id="7-mems-q-factor-analysis">7. MEMS Q-Factor Analysis</h2>
 <p>The scaling analysis of Section 6 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.</p>
 <p>For SEM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
 <p>The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod&rsquo;s acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.</p>
-<h3 id="71-material-intrinsic-loss-math191">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
+<h3 id="71-material-intrinsic-loss-math196">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
 <p><strong>What it is.</strong> Even in a perfectly mounted, perfectly isolated resonator floating in a perfect vacuum, acoustic energy still decays. The reason is internal friction within the glass itself. As the rod vibrates—compressing and expanding along its length thousands of times per second—the atoms in the glass matrix do not respond instantaneously. The amorphous network has a distribution of relaxation times: some atomic rearrangements are fast (picoseconds), others are slow (nanoseconds). When the vibration period falls near one of these relaxation times, energy is absorbed and converted to heat. This is the acoustic analogue of hysteresis loss in a magnetic material: the material&rsquo;s response lags behind the driving force, and the lag dissipates energy.</p>
 <p><strong>How large it is.</strong> For borosilicate glass, the material quality factor $Q_{\text{mat}}$ ranges from 8,000 to 15,000 depending on the specific composition and thermal history of the glass. We use 10,000 as a conservative baseline [11, 12]. This means the glass itself converts 1/10,000 of the mode energy to heat per oscillation cycle.</p>
 <p><strong>Why it matters.</strong> Material loss sets the <em>ceiling</em> on the total $Q$: no matter how perfectly we design the tethers, eliminate gas damping, and polish the surface, the total $Q$ can never exceed $Q_{\text{mat}}$. For borosilicate, this ceiling is 10,000. For fused silica, it is 100,000—ten times higher, because fused silica&rsquo;s simpler amorphous structure has fewer internal relaxation pathways.</p>
-<h3 id="72-anchor-loss-math196">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
+<h3 id="72-anchor-loss-math201">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
 <p><strong>What it is.</strong> A MEMS resonator must be physically attached to something—it cannot float in space. In our design, the glass rod is suspended by thin tethers that connect it to the surrounding substrate (the silicon or glass frame of the MEMS die). These tethers are mechanical connections, and mechanical connections transmit vibration. When the rod vibrates, some of the acoustic energy travels down the tethers and into the substrate, where it propagates away and is eventually absorbed. This lost energy is &ldquo;anchor loss.&rdquo;</p>
 <p>An everyday analogy: hold a tuning fork in the air, and it rings for minutes. Press its base firmly against a wooden table, and it goes silent in seconds. The table is an acoustic drain—vibration energy flows from the fork through the contact point and into the table, where the much larger mass absorbs it. The MEMS tethers are the contact point; the substrate is the table.</p>
 <p><strong>How we minimize it.</strong> The anchor loss model [13, 17] gives:</p>
@@ -1187,18 +1195,18 @@ table, pre, blockquote {
 </ul>
 <p>For the reference design (1 mm × 40 µm rod, 2 µm × 2 µm × 20 µm tethers, 2 anchor points, with isolation trenches): $Q_{\text{anchor}} = 208{,}462$.</p>
 <p><strong>Why it matters.</strong> Anchor loss is the mechanism most sensitive to MEMS geometry—it depends on tether dimensions, attachment positions, and trench design. Many MEMS resonator designs are <em>dominated</em> by anchor loss, which has led to a widespread assumption that miniaturization kills $Q$. Our analysis shows the opposite: with properly designed tethers, anchor loss contributes only <strong>4.4% of the total loss budget</strong>. The bottleneck is the glass itself, not the suspension.</p>
-<h3 id="73-thermoelastic-damping-math214">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
+<h3 id="73-thermoelastic-damping-math219">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
 <p><strong>What it is.</strong> When a rod vibrates longitudinally, it alternately compresses and expands along its length. Compression raises the local temperature (adiabatic heating); expansion lowers it. These temperature variations set up thermal gradients across the rod&rsquo;s cross-section. Heat flows from hot regions to cold regions, and this heat flow is irreversible—it converts mechanical energy to thermal energy. This mechanism is called thermoelastic damping (TED), first analyzed by Zener in 1937 [19] and later refined by Lifshitz and Roukes for MEMS structures.</p>
 <p><strong>The Debye relaxation picture.</strong> TED is strongest when the vibration period matches the thermal relaxation time of the rod—the time it takes heat to diffuse across the cross-section. The thermal relaxation time is $\tau_D = d^2 / (\pi^2 \kappa)$, where $d$ is the rod diameter and $\kappa$ is the thermal diffusivity of the glass. When $\omega \tau_D \approx 1$ (vibration period ~ relaxation time), the temperature gradients have just enough time to partially equilibrate during each cycle, extracting maximum energy. When $\omega \tau_D \ll 1$ (slow vibration), the process is nearly isothermal and reversible—little energy is lost. When $\omega \tau_D \gg 1$ (fast vibration), the process is nearly adiabatic—temperature gradients don&rsquo;t have time to equilibrate, and again little energy is lost. Maximum damping occurs at the crossover.</p>
 <p><strong>For our design.</strong> Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 39{,}500{,}000$.</p>
 <p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for SEM than silicon.</p>
-<h3 id="74-gas-damping-math225">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
+<h3 id="74-gas-damping-math230">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
 <p><strong>What it is.</strong> A vibrating rod in a gas environment loses energy to the surrounding gas molecules. Each time a gas molecule strikes the rod&rsquo;s surface, it exchanges momentum and carries away a tiny amount of the rod&rsquo;s kinetic energy. At atmospheric pressure, the number of molecular collisions per second is enormous (roughly $10^{23}$ per cm² per second for air at 1 atm), and the cumulative energy loss can dominate all other mechanisms.</p>
 <p>At the molecular level, gas damping in MEMS devices operates in one of two regimes. At high pressure (mean free path much smaller than the rod-to-wall gap), the gas behaves as a viscous fluid, and damping follows the Navier-Stokes equations (&ldquo;squeeze-film damping&rdquo;). At low pressure (mean free path much larger than the gap), individual molecules bounce independently between the rod and the cavity walls (&ldquo;molecular-flow damping&rdquo; or &ldquo;free-molecular damping&rdquo;). MEMS vacuum packages operate in the low-pressure regime.</p>
 <p><strong>For our design.</strong> At the standard MEMS packaging pressure of 0.1 Pa (about one-millionth of atmospheric pressure), the mean free path of residual gas molecules is ~70 mm—orders of magnitude larger than the rod-to-wall gap. We are firmly in the free-molecular regime. The damping force is proportional to pressure: lower pressure means less damping.</p>
 <p>At 0.1 Pa: $Q_{\text{gas}} = 1.74 \times 10^8$. Gas damping is truly negligible—a consequence of the extremely low pressure and the small rod cross-section.</p>
 <p><strong>Why it matters.</strong> Gas damping is the one loss mechanism we can almost completely eliminate by engineering: evacuate the package. MEMS vacuum packaging at 0.01–0.1 Pa is a mature technology used in billions of MEMS gyroscopes, accelerometers, and oscillators. This is not a research challenge; it is a purchasing decision.</p>
-<h3 id="75-surface-loss-math228">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
+<h3 id="75-surface-loss-math233">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
 <p><strong>What it is.</strong> The surface of any real material is different from its bulk interior. For glass, the top few nanometers of surface are a damaged, hydrated, and/or reconstructed layer with different mechanical properties—higher internal friction, lower elastic modulus—compared to the pristine bulk glass beneath. This surface layer participates in the rod&rsquo;s vibration and contributes its own (higher) dissipation to the overall $Q$.</p>
 <p>The effect is analogous to painting a high-quality bell with a thick layer of rubber: the rubber is lossy, and even a thin coat degrades the ring. The thinner the coat relative to the bell&rsquo;s wall thickness, the less it matters.</p>
 <p><strong>The model.</strong> For a cylindrical rod with diameter $d$ and a surface defect layer of thickness $\delta$ having its own quality factor $Q_d$:</p>
@@ -1345,7 +1353,7 @@ table, pre, blockquote {
 </tr>
 <tr>
 <td>Bits per rod</td>
-<td>~119,126 (1 mm at 12.7 b/mode)</td>
+<td>~119,500 (1 mm at 12.7 b/mode)</td>
 </tr>
 <tr>
 <td>Hopfield patterns</td>
@@ -1378,19 +1386,23 @@ table, pre, blockquote {
 </tr>
 <tr>
 <td>Layers per cm</td>
-<td>~9</td>
+<td>9.1</td>
 </tr>
 <tr>
 <td>Rods per cm³</td>
-<td>~140,000</td>
+<td>~142,000</td>
 </tr>
 <tr>
 <td><strong>Total capacity</strong></td>
-<td><strong>~119,000 bits/rod × 140,000 = 16.7 Gbit</strong></td>
+<td><strong>~119,500 bits/rod × 142,000 ≈ 17.0 Gbit</strong></td>
 </tr>
 <tr>
-<td><strong>Density</strong></td>
-<td><strong>95.1 Gbit/cm³</strong></td>
+<td><strong>Active density</strong></td>
+<td><strong>95.1 Gbit/cm³</strong> (single-rod volume)</td>
+</tr>
+<tr>
+<td><strong>Packed-array density</strong></td>
+<td><strong>17.0 Gbit/cm³</strong> (at 80 µm pitch, 1.1 mm layers)</td>
 </tr>
 </tbody>
 </table>
@@ -1406,13 +1418,13 @@ table, pre, blockquote {
 <tbody>
 <tr>
 <td>Write (1 mode)</td>
-<td>29.3 fJ</td>
-<td>$k_B T \times$ SNR</td>
+<td>195 fJ</td>
+<td>$k_B T \times$ SNR at 76.7 dB (1 mm rod)</td>
 </tr>
 <tr>
 <td>Write (per bit)</td>
-<td>1.8 fJ</td>
-<td>29.3 fJ / 16.4 b</td>
+<td>15.3 fJ</td>
+<td>195 fJ / 12.7 b per mode</td>
 </tr>
 <tr>
 <td>Write (per rod)</td>
@@ -1436,7 +1448,7 @@ table, pre, blockquote {
 <p>Every step in the SEM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between &ldquo;interesting physics demonstration&rdquo; and &ldquo;buildable device.&rdquo; No new materials, no new equipment, no new process chemistry.</p>
 <h3 id="91-process-flow">9.1 Process Flow</h3>
 <p><strong>Step 1 — Glass wafer preparation.</strong> Start with 200 mm Schott Borofloat 33 wafers (500 µm thick). These wafers are commercially available from Schott, Plan Optik, and others, and are already used in MEMS microfluidics, wafer-level packaging, and optical devices. The wafers are polished to optical flatness—important for subsequent lithography.</p>
-<p><strong>Step 2 — Deep reactive ion etch (DRIE).</strong> Etch the rod arrays into the glass wafer at 25:1 aspect ratio using SF₆/C₄F₈ chemistry (the Bosch process adapted for glass). This is the most geometrically demanding step: we need 40 µm wide, 1 mm deep trenches separating the rods, with 2 µm tether features connecting each rod to the frame. Glass DRIE at these dimensions has been demonstrated by Schott, Corning, and multiple MEMS foundries for microfluidic channels and through-glass vias. The 40 µm rod diameter and 2 µm tether dimensions are within current capability, though at the aggressive end—our risk assessment (Section 9.3) addresses this.</p>
+<p><strong>Step 2 — Deep reactive ion etch (DRIE).</strong> Etch the rod arrays into the glass wafer at 25:1 aspect ratio using SF₆/C₄F₈ chemistry (the Bosch process adapted for glass). The rods lie <strong>in-plane</strong> with the wafer surface: the 1 mm rod length runs laterally across the wafer, while the 40 µm rod diameter is defined by the etch depth into the 500 µm wafer. Multiple wafers are stacked to form the array described in Section 8.3. This is the most geometrically demanding step: we need 40 µm wide trenches etched to full wafer depth, with 2 µm tether features connecting each rod to the frame. Glass DRIE at these dimensions has been demonstrated by Schott, Corning, and multiple MEMS foundries for microfluidic channels and through-glass vias. The 40 µm rod diameter and 2 µm tether dimensions are within current capability, though at the aggressive end—our risk assessment (Section 9.3) addresses this.</p>
 <p><strong>Step 3 — Mass perturbation patterning.</strong> Deposit and pattern thin-film metal dots (Au, ~50 nm thick) at lithographically defined positions on each rod. This is a standard lift-off process: spin photoresist, expose through a mask, develop, deposit gold by evaporation, strip the resist. Each dot&rsquo;s position and mass determine the rod&rsquo;s spectral fingerprint—this step is the &ldquo;write&rdquo; operation, performed once at fabrication. Different masks encode different data.</p>
 <p><strong>Step 4 — AlN piezoelectric transducer.</strong> Sputter 500 nm of aluminium nitride (AlN) on each rod&rsquo;s end face, patterned with top and bottom electrodes. AlN thin-film piezoelectric transduction is in volume production for smartphone bulk acoustic wave (BAW/FBAR) filters—more than 10 billion units shipped as of 2024 [14, 15]. The process is mature, the supply chain is established, and the performance specifications are well-characterized.</p>
 <p><strong>Step 5 — Vacuum packaging.</strong> Seal the rod arrays in a wafer-level vacuum package at 0.1 Pa using glass frit bonding or Au-Sn eutectic bonding. This is the same packaging technology used in MEMS oscillators (SiTime—shipped &gt;2 billion units), MEMS gyroscopes (Bosch, STMicro), and MEMS accelerometers. Getter materials (typically Ti or Zr thin films) inside the package absorb residual outgassing to maintain vacuum over the device lifetime.</p>
@@ -1603,15 +1615,15 @@ table, pre, blockquote {
 <td>Partial†</td>
 </tr>
 <tr>
-<td><strong>SEM (1 mm)</strong></td>
-<td><strong>95.1</strong></td>
+<td><strong>SEM (1 mm)</strong>†† active / packed</td>
+<td><strong>95.1 / 17.0</strong></td>
 <td><strong>3.8 µs</strong></td>
 <td><strong>15 fJ/bit</strong></td>
 <td><strong>&gt;10¹⁵</strong></td>
 <td><strong>Native</strong></td>
 </tr>
 <tr>
-<td><strong>SEM (0.5 mm SiO₂)</strong></td>
+<td><strong>SEM (0.5 mm SiO₂)</strong>†† packed</td>
 <td><strong>1,394</strong></td>
 <td><strong>3.8 µs</strong></td>
 <td><strong>~8 fJ/bit</strong></td>
@@ -1621,6 +1633,7 @@ table, pre, blockquote {
 </tbody>
 </table>
 <p>† ReRAM crossbar arrays can perform matrix-vector multiply, but require explicit weight programming and are limited to linear operations.</p>
+<p>†† <em>Active density</em> uses single-rod volume; <em>packed-array density</em> uses the 80 µm pitch, 1.1 mm layer architecture of Section 8.3. See density definitions in Section 1.3.</p>
 <h3 id="102-sems-unique-position">10.2 SEM&rsquo;s Unique Position</h3>
 <p>Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. SEM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This is not a marketing distinction—it has concrete engineering consequences:</p>
 <ul>
@@ -2276,7 +2289,7 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p>Two things change dramatically. First, anchor loss drops from 4.2% to 0.1%—essentially zero. This is because fused silica&rsquo;s much higher material $Q$ means the material loss dominates even more completely. Second, surface loss rises from 4.7% to 33.7% of the budget. This is not because surface loss gets worse in absolute terms (it doesn&rsquo;t—$Q_{\text{surface}}$ is the same 196,000), but because the material loss ceiling is 10× higher, so the <em>relative</em> contribution of surface loss increases.</p>
+<p>Two things change dramatically. First, anchor loss drops from 4.4% to 0.1%—essentially zero. This is because fused silica&rsquo;s much higher material $Q$ means the material loss dominates even more completely. Second, surface loss rises from 4.7% to 33.7% of the budget. This is not because surface loss gets worse in absolute terms (it doesn&rsquo;t—$Q_{\text{surface}}$ is the same 196,000), but because the material loss ceiling is 10× higher, so the <em>relative</em> contribution of surface loss increases.</p>
 <p>The implication: for fused silica designs, surface quality becomes the primary engineering target after material selection. Techniques such as thermal annealing (which heals the damaged amorphous surface layer), hydrofluoric acid etching (which removes it), or atomic layer deposition of a low-loss oxide coating could push $Q_{\text{surface}}$ above $10^6$, bringing $Q_{\text{total}}$ to ~90,000 or higher.</p>
 <hr />
 <h2 id="14-discussion">14. Discussion</h2>
@@ -2399,8 +2412,8 @@ table, pre, blockquote {
 <ul>
 <li><strong>98.5 dB SNR</strong> from a &#36;63 macro-scale prototype (thermal-noise-limited, zero phase diffusion)</li>
 <li><strong>9,380 thermally stable modes</strong> per resonator, independent of size</li>
-<li><strong>95.1 Gbit/cm³</strong> from a 1 mm borosilicate MEMS rod (~10× DRAM)</li>
-<li><strong>1.4 Tbit/cm³</strong> from a packed fused silica array (1.4× NAND Flash)</li>
+<li><strong>95.1 Gbit/cm³</strong> active density from a 1 mm borosilicate MEMS rod; <strong>17.0 Gbit/cm³</strong> packed-array (1.7× DRAM)</li>
+<li><strong>1.4 Tbit/cm³</strong> packed-array density from fused silica arrays (1.4× NAND Flash)</li>
 <li><strong>15 fJ/bit</strong> write energy at 1 mm (200× lower than DRAM)</li>
 <li><strong>3.8 µs</strong> readout (comparable to Flash)</li>
 <li><strong>Native associative recall</strong> via wave interference ($O(1)$ nearest-neighbor search)</li>
@@ -2620,7 +2633,7 @@ table, pre, blockquote {
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
-<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Gbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array design (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ active, 140× DRAM). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>

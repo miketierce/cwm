@@ -893,8 +893,87 @@ def build_html(md_path):
     return html
 
 
+def _enforce_recto_starts(pdf_path):
+    """Post-process a PDF to ensure every section opens on a recto page.
+
+    Chromium's PDF renderer treats ``page-break-before: right`` as plain
+    ``always``, so sections may land on verso (even-numbered) pages.
+    This function scans the rendered PDF for section / Part headings,
+    and inserts a blank page before any that start on a verso page.
+
+    The algorithm processes sections front-to-back, accumulating an
+    insertion offset so that each fix doesn't break subsequent pages.
+    """
+    try:
+        from pypdf import PdfReader, PdfWriter
+    except ImportError:
+        print("  (pypdf not installed; skipping recto enforcement)")
+        return
+
+    reader = PdfReader(str(pdf_path))
+    n = len(reader.pages)
+
+    # --- Identify pages that should be recto (section starts) ---
+    section_re = re.compile(r"^\s*(\d+)\.\s+\w", re.MULTILINE)
+    part_re = re.compile(r"PART\s+[IVX]+\b")
+    abstract_re = re.compile(r"^\s*Abstract\b", re.MULTILINE)
+    appendix_re = re.compile(r"^\s*Appendix\s+[A-Z]", re.MULTILINE)
+
+    recto_pages = []  # 0-indexed pages that must be recto (odd in 1-based)
+    for i, page in enumerate(reader.pages):
+        text = (page.extract_text() or "").strip()
+        if not text:
+            continue
+        first_400 = text[:400]
+        if (section_re.match(first_400)
+                or part_re.search(first_400[:100])
+                or abstract_re.match(first_400)
+                or appendix_re.match(first_400)):
+            recto_pages.append(i)  # 0-indexed
+
+    if not recto_pages:
+        return
+
+    # --- Calculate which insertions are needed ---
+    # Process front-to-back; track cumulative offset from prior insertions.
+    insert_before = []  # 0-indexed positions (in the ORIGINAL pdf) to add blanks
+    offset = 0
+    for orig_idx in recto_pages:
+        adjusted = orig_idx + offset  # position after earlier insertions
+        page_num_1 = adjusted + 1     # 1-based page number
+        if page_num_1 % 2 == 0:       # verso (even 1-based = left page)
+            insert_before.append(orig_idx)
+            offset += 1
+
+    if not insert_before:
+        print("  ✓ All sections already start on recto pages")
+        return
+
+    # --- Build new PDF with blank pages inserted ---
+    writer = PdfWriter()
+
+    # Create a blank page matching the document's page size
+    sample = reader.pages[0]
+    page_w = float(sample.mediabox.width)
+    page_h = float(sample.mediabox.height)
+
+    insertions_done = 0
+    for i, page in enumerate(reader.pages):
+        if i in insert_before:
+            # Add a blank page before this one
+            writer.add_blank_page(width=page_w, height=page_h)
+            insertions_done += 1
+        writer.add_page(page)
+
+    with open(str(pdf_path), "wb") as f:
+        writer.write(f)
+
+    print(f"  ✓ Inserted {insertions_done} blank page(s) for recto starts "
+          f"({n} → {n + insertions_done} pages)")
+
+
 def html_to_pdf(html, pdf_path, md_path=None):
-    """Render HTML to PDF using headless Chromium."""
+    """Render HTML to PDF using headless Chromium, then enforce recto starts."""
     import tempfile
 
     base_dir = md_path.resolve().parent if md_path else Path.cwd()
@@ -932,6 +1011,9 @@ def html_to_pdf(html, pdf_path, md_path=None):
             browser.close()
     finally:
         Path(tmp_path).unlink(missing_ok=True)
+
+    # Post-process: insert blank pages so every section opens on recto
+    _enforce_recto_starts(pdf_path)
 
 
 def main():
