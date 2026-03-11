@@ -46,3 +46,8 @@
 # Phase 9a — Chladni-informed 2D plate eigenmode memory:
 #   chladni_plates        - 4 experiments: plate mode scaling, symmetry partition,
 #                           2D placement optimization, degeneracy splitting
+#
+# Phase 9b — Békésy cochlear eigenmode memory (1 confirmed, 3 killed):
+#   bekesy_cochlea        - 4 experiments: tapered mode density (killed), log-spacing
+#                           recall (killed), active Q-boosting (confirmed), cochlear
+#                           window (killed)

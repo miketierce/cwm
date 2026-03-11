@@ -29,11 +29,11 @@ survive integration into the paper without regressing existing tests.
 | **S2**  | Scranton / Dogon    | `scranton_dogon.py` | 62    | H7–H12: 6/6 confirmed  | ✅ Complete    |
 | **S3**  | Tesla               | `tesla_phase.py`    | 50    | H-T1–T4: 4/4 confirmed | ✅ Complete    |
 | **S4**  | Chladni             | `chladni_plates.py` | 69    | H-C1–C4: 4/4 confirmed | ✅ Complete    |
-| **S5**  | Békésy              | `bekesy_cochlea.py` | —     | H-B1–B4: 0/4 started   | ⬜ Not started |
+| **S5**  | Békésy              | `bekesy_cochlea.py` | 68    | H-B1–B4: 1/4 confirmed | ✅ Complete    |
 | **S6**  | Franklin (Rosalind) | `franklin_phase.py` | —     | H-F1–F4: 0/4 started   | ⬜ Not started |
 | **S7**  | Leibniz             | `leibniz_binary.py` | —     | H-L1–H-L4: 0/4 started | ⬜ Not started |
 
-**Running totals:** 30 modules · 749 tests · test count must only go up.
+**Running totals:** 31 modules · 817 tests · test count must only go up.
 
 ---
 
@@ -105,16 +105,16 @@ as Q-boosters), and noise rejection strategies may suggest better SEM designs.
 
 ### Implementation plan
 
-| Step | Task                                                                                                            | Artifact     | Status |
-| ---- | --------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
-| B-1  | Literature review: basilar membrane mechanics, tonotopic mapping, outer hair cell amplification, critical bands | Design notes | ⬜     |
-| B-2  | Implement `simulations/bekesy_cochlea.py` with 4 experiment functions                                           | Module       | ⬜     |
-| B-3  | Write `tests/test_bekesy_cochlea.py` — target ≥ 40 tests                                                        | Test file    | ⬜     |
-| B-4  | Run experiments, confirm or kill                                                                                | Results      | ⬜     |
-| B-5  | Update `simulations/__init__.py` (Phase 9b)                                                                     | Package      | ⬜     |
-| B-6  | Paper integration (if confirmed): §11 subsection + §14.2 bullet                                                 | Paper        | ⬜     |
-| B-7  | Full regression suite — must exceed prior count                                                                 | Regression   | ⬜     |
-| B-8  | Regenerate PDFs                                                                                                 | Deliverable  | ⬜     |
+| Step | Task                                                                                                            | Artifact     | Status                       |
+| ---- | --------------------------------------------------------------------------------------------------------------- | ------------ | ---------------------------- |
+| B-1  | Literature review: basilar membrane mechanics, tonotopic mapping, outer hair cell amplification, critical bands | Design notes | ✅ Done                      |
+| B-2  | Implement `simulations/bekesy_cochlea.py` with 4 experiment functions                                           | Module       | ✅ Done                      |
+| B-3  | Write `tests/test_bekesy_cochlea.py` — target ≥ 40 tests                                                        | Test file    | ✅ 68 tests                  |
+| B-4  | Run experiments, confirm or kill                                                                                | Results      | ✅ 1/4 confirmed, 3/4 killed |
+| B-5  | Update `simulations/__init__.py` (Phase 9b)                                                                     | Package      | ✅ Done                      |
+| B-6  | Paper integration: §11.9 subsection + §14.2 bullet + abstract (viii) + §11.6 item 8                             | Paper        | ✅ Done                      |
+| B-7  | Full regression suite — must exceed prior count                                                                 | Regression   | ✅ 817 pass, 31 s            |
+| B-8  | Regenerate PDFs                                                                                                 | Deliverable  | ✅ Done                      |
 
 ### External data sources
 

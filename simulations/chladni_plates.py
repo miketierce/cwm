@@ -56,6 +56,7 @@ References:
 
 from dataclasses import dataclass
 from typing import Optional, Tuple, List
+import warnings
 import numpy as np
 
 
@@ -211,12 +212,13 @@ def enumerate_plate_modes(n_max: int) -> List[Tuple[int, int]]:
     Returns sorted list of (n, m) tuples ordered by ascending
     eigenfrequency proxy (n² + m²).
     """
-    modes = []
-    for n in range(1, n_max + 1):
-        for m in range(1, n_max + 1):
-            modes.append((n, m))
-    modes.sort(key=lambda nm: nm[0] ** 2 + nm[1] ** 2)
-    return modes
+    ns = np.arange(1, n_max + 1)
+    nn, mm = np.meshgrid(ns, ns, indexing='ij')
+    nn_flat = nn.ravel()
+    mm_flat = mm.ravel()
+    freq_proxy = nn_flat ** 2 + mm_flat ** 2
+    order = np.argsort(freq_proxy)
+    return list(zip(nn_flat[order].tolist(), mm_flat[order].tolist()))
 
 
 def classify_symmetry(n: int, m: int) -> str:
@@ -375,29 +377,33 @@ def exp_plate_mode_count(
     #    constraint already baked into n_max formula)
     rod_mode_count = rod_n_max
 
-    # 2D plate: enumerate all (n,m) pairs
-    all_modes = enumerate_plate_modes(plate_nmax)
-    n_total_2d = len(all_modes)  # = n_max²
+    # 2D plate: count resolvable modes without materializing the full
+    # N×N frequency array (which can exceed available RAM for large N).
+    # Instead, we compute the smallest n²+m² above each threshold
+    # using vectorized numpy (O(K×N) where K ≈ count ≪ N²).
+    n_sq = np.arange(1, plate_nmax + 1, dtype=np.int64) ** 2
 
-    # Compute eigenfrequencies (use normalised units: D/ρh = 1, a=b=1)
-    # f_{nm} ∝ (n² + m²) for a square plate
-    freq_proxy = np.array([n ** 2 + m ** 2 for n, m in all_modes],
-                           dtype=float)
+    def _next_freq_above(threshold_val):
+        """Smallest n²+m² strictly > threshold_val, or None."""
+        remainder = threshold_val - n_sq
+        sqrt_rem = np.floor(np.sqrt(np.maximum(remainder, 0.0)))
+        m_min = np.where(remainder < 0, 1, sqrt_rem.astype(np.int64) + 1)
+        valid = (m_min >= 1) & (m_min <= plate_nmax)
+        if not np.any(valid):
+            return None
+        return int(np.min(n_sq[valid] + m_min[valid] ** 2))
 
-    # Sort by frequency
-    sort_idx = np.argsort(freq_proxy)
-    freq_sorted = freq_proxy[sort_idx]
-
-    # Apply resolvability filter: gap between adjacent sorted modes
-    # must exceed the linewidth ∝ f/Q
-    resolvable = [0]  # first mode always included
-    for i in range(1, len(freq_sorted)):
-        gap = freq_sorted[i] - freq_sorted[resolvable[-1]]
-        linewidth = freq_sorted[i] / Q
-        if gap > linewidth:
-            resolvable.append(i)
-
-    plate_mode_count = len(resolvable)
+    # Resolvability filter: freq[next] > freq[last] × Q/(Q − 1)
+    factor = Q / (Q - 1.0)
+    last_freq = float(n_sq[0] + n_sq[0])  # f_min = 1² + 1² = 2
+    plate_mode_count = 1
+    while True:
+        threshold = last_freq * factor
+        nf = _next_freq_above(threshold)
+        if nf is None:
+            break
+        last_freq = float(nf)
+        plate_mode_count += 1
     mode_ratio = plate_mode_count / max(rod_mode_count, 1)
 
     # Density gain: plate uses area a×b, rod uses length L
@@ -455,9 +461,10 @@ def exp_symmetry_partition(
         rng = np.random.RandomState(42)
 
     nmax = n_max_formula(alpha, delta_T, Q)
-    all_modes = enumerate_plate_modes(nmax)
-
-    # Cap modes if n_max is very large (for computational tractability)
+    # Cap enumeration at √n_modes_cap per axis when n_max is large,
+    # then take the lowest-frequency n_modes_cap modes.
+    enum_nmax = min(nmax, max(int(np.ceil(np.sqrt(n_modes_cap))) + 2, 20))
+    all_modes = enumerate_plate_modes(enum_nmax)
     if len(all_modes) > n_modes_cap:
         all_modes = all_modes[:n_modes_cap]
 
@@ -486,7 +493,9 @@ def exp_symmetry_partition(
         # Generate random perturbation patterns
         patterns = rng.rand(n_patterns, K)
         # Fingerprint = S_c @ pattern^T → (n_modes_class, n_patterns)
-        fp = S_c @ patterns.T  # (n_modes_class, n_patterns)
+        with warnings.catch_warnings():
+            warnings.simplefilter("ignore", RuntimeWarning)
+            fp = S_c @ patterns.T  # (n_modes_class, n_patterns)
         class_fingerprints[c] = fp.T  # (n_patterns, n_modes_class)
 
     # Compute cross-correlation between class fingerprint vectors
