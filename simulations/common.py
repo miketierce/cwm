@@ -10,6 +10,12 @@ from dataclasses import dataclass, field
 from typing import Optional
 
 # ---------------------------------------------------------------------------
+# Project-level counts (single source of truth for paper, PDFs, docs)
+# ---------------------------------------------------------------------------
+SIM_MODULE_COUNT = 30        # Number of simulation modules in simulations/
+TEST_COUNT = 749             # Total automated tests (pytest --collect-only -q)
+
+# ---------------------------------------------------------------------------
 # Physical constants
 # ---------------------------------------------------------------------------
 K_B = 1.380649e-23          # Boltzmann constant  (J/K)

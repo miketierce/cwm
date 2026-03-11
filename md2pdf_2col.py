@@ -31,6 +31,8 @@ from pathlib import Path
 import markdown
 from playwright.sync_api import sync_playwright
 
+from simulations.common import SIM_MODULE_COUNT, TEST_COUNT
+
 # ---------------------------------------------------------------------------
 # CSS — 2-column academic journal layout
 # ---------------------------------------------------------------------------
@@ -724,8 +726,8 @@ def build_colophon_2col(info):
         + info["author"]
         + "<br>\n"
         "  Typeset from Markdown source. Mathematics by KaTeX. "
-        "All claims from first-principles simulation (30 modules, "
-        "749 tests).</p>\n"
+        f"All claims from first-principles simulation ({SIM_MODULE_COUNT} modules, "
+        f"{TEST_COUNT} tests).</p>\n"
         "</div>\n"
     )
 
