@@ -40,6 +40,13 @@ dev = [
     "pytest>=7.0",
     "pandas>=2.0",
 ]
+pdf = [
+    "markdown>=3.4",
+    "playwright>=1.40",
+    "pypdf>=3.0",
+    # After installing, run: playwright install chromium
+]
+# FDTD (optional, conda-only): conda install -c conda-forge pymeep
 
 [tool.setuptools.packages.find]
 include = ["simulations*", "experiments*", "analysis*"]

@@ -300,10 +300,47 @@ Full plans are in `docs/SIDEBARS.md`. Recommended execution order: S5 → S6 →
 
 ---
 
-## 7. Environment Notes
+## 7. M4 Workstation Setup
 
-- **Python:** `.venv/bin/python`, Python 3.9.6 (verify on M4 — may need to recreate venv)
-- **Dependencies:** numpy, scipy, matplotlib, reportlab (for PDF gen)
+### Quick start (fresh machine)
+
+```bash
+# 1. Clone and enter repo
+git clone <repo-url> && cd wcfoma
+
+# 2. Create venv (requires Python ≥ 3.10 per pyproject.toml)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# 3. Install core + dev + pdf dependencies
+pip install -e ".[dev,pdf]"
+
+# 4. Download Chromium for Playwright (required for PDF generation)
+playwright install chromium
+
+# 5. Verify
+pytest --collect-only -q   # should show ≥ 749 tests
+python md2pdf.py           # should produce paper/v15.html → PDF
+```
+
+### Dependency map
+
+| Group        | Packages                                       | Purpose                                                    |
+| ------------ | ---------------------------------------------- | ---------------------------------------------------------- |
+| **Core**     | numpy, scipy, matplotlib, sympy                | Simulations, plotting                                      |
+| **Dev**      | pytest, jupyter, jupyterlab, ipykernel, pandas | Testing, notebooks                                         |
+| **PDF**      | markdown, playwright, pypdf                    | `md2pdf.py`, `md2pdf_2col.py`                              |
+| **Optional** | pymeep (conda-only)                            | `simulations/meep_fdtd.py` — FDTD validation, not required |
+
+### Notes
+
+- **Python version:** `pyproject.toml` requires `>=3.10`. The M2 machine used 3.9.6 — M4 should
+  have a newer system Python or install via `brew install python@3.12`.
+- **Playwright post-install:** `playwright install chromium` downloads ~150 MB headless browser.
+  Without it, `md2pdf.py` and `md2pdf_2col.py` will crash on the HTML→PDF conversion step.
+- **meep:** Only needed for `simulations/meep_fdtd.py` (optional FEM validation). The simulation
+  handles its absence gracefully (try/except). Install via conda if needed:
+  `conda install -c conda-forge pymeep`
 - **PDF converters:**
   - `md2pdf.py` — single-column book format, ~130 pages, 1121 lines
   - `md2pdf_2col.py` — 2-column academic format, ~22 pages
