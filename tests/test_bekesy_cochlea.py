@@ -311,7 +311,7 @@ class TestActiveQBoost:
     def test_passive_q_five_mechanism(self):
         """5-mechanism Q should combine as 1/Q = Σ(1/Q_i)."""
         r = exp_active_q_boost()
-        Q_inv = 1/10000 + 1/50000 + 1/200000 + 1/100000 + 1/500000
+        Q_inv = 1/10000 + 1/208462 + 1/39500000 + 1/196078 + 1/174000000
         assert r.Q_passive == pytest.approx(1.0 / Q_inv, rel=1e-6)
 
     def test_boost_ratio_matches_multiplier(self):
@@ -345,9 +345,9 @@ class TestActiveQBoost:
         assert r.mode_gain_from_boost > 0
 
     def test_n_max_passive_paper_value(self):
-        """Passive n_max should be ~6963 with default 5-mechanism Q."""
+        """Passive n_max should be ~8581 with default 5-mechanism Q (§7)."""
         r = exp_active_q_boost()
-        assert 6000 < r.n_max_passive < 8000
+        assert 8000 < r.n_max_passive < 10000
 
     def test_higher_multiplier_more_modes(self):
         r_2x = exp_active_q_boost(Q_target_multiplier=2.0)

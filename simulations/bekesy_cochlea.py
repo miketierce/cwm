@@ -565,10 +565,10 @@ def exp_log_spacing_recall(
 
 def exp_active_q_boost(
     Q_material: float = 10000.0,
-    Q_anchor: float = 50000.0,
-    Q_TED: float = 200000.0,
-    Q_surface: float = 100000.0,
-    Q_gas: float = 500000.0,
+    Q_anchor: float = 208462.0,
+    Q_TED: float = 39500000.0,
+    Q_surface: float = 196078.0,
+    Q_gas: float = 174000000.0,
     Q_target_multiplier: float = 2.0,
     f_fundamental: float = 2.68e6,
     n_modes_to_boost: int = 100,
