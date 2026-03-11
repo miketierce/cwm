@@ -33,7 +33,7 @@ survive integration into the paper without regressing existing tests.
 | **S6**  | Franklin (Rosalind) | `franklin_phase.py` | 69    | H-F1–F4: 0/4 confirmed | ✅ Complete    |
 | **S7**  | Leibniz             | `leibniz_binary.py` | —     | H-L1–H-L4: 0/4 started | ⬜ Not started |
 
-**Running totals:** 31 modules · 817 tests · test count must only go up.
+**Running totals:** 32 modules · 886 tests · test count must only go up.
 
 ---
 
