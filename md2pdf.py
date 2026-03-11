@@ -526,6 +526,49 @@ table, pre, blockquote {
 .colophon p {
     text-align: center;
 }
+
+/* -- Handwritten example entries (blue pen) -- */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 11pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* -- Printable worksheet pages -- */
+div.worksheet-plate {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 0.15in;
+}
+
+div.worksheet-plate h4 {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 10pt;
+    padding-bottom: 4pt;
+    border-bottom: 1pt solid var(--border);
+}
+
+div.worksheet-plate p.ws-inst {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 8pt;
+    font-style: italic;
+}
+
+div.worksheet-plate table {
+    width: 100%;
+    font-size: 10pt;
+}
+
+div.worksheet-plate td,
+div.worksheet-plate th {
+    padding: 5pt 6pt;
+}
 """
 
 
@@ -536,6 +579,9 @@ HTML_TEMPLATE = """<!DOCTYPE html>
 <head>
 <meta charset="utf-8">
 <title>{title}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
       crossorigin="anonymous">

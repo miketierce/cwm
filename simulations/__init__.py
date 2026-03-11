@@ -38,3 +38,7 @@
 #
 # Phase 7b — Scranton–Dogon polysemic encoding:
 #   scranton_dogon        - 6 experiments from Dogon cosmological symbol parallels
+#
+# Phase 8 — Tesla-informed phase-spectral encoding:
+#   tesla_phase           - 4 experiments: phase independence, phase-enhanced recall,
+#                           Q-multiplication energy asymmetry, scale invariance

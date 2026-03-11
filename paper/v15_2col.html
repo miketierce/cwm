@@ -5,7 +5,8 @@
 <title>Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap"
+      rel="stylesheet">
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
       crossorigin="anonymous">
@@ -17,387 +18,214 @@
         crossorigin="anonymous"></script>
 <style>
 
-/* -- Page geometry: duplex with binding gutter -- */
+/* ===== Page geometry ===== */
 @page {
     size: letter;
-    margin: 0.85in 0.85in 1in 1.15in;   /* top right bottom left(gutter) */
-}
-@page :left {
-    margin-left: 0.85in;
-    margin-right: 1.15in;
-}
-@page :right {
-    margin-left: 1.15in;
-    margin-right: 0.85in;
-}
-
-/* Named page for landscape plates */
-@page plate {
-    size: letter landscape;
-    margin: 0.5in;
+    margin: 0.65in 0.6in 0.75in 0.6in;
 }
 
 :root {
     --text: #1a1a1a;
-    --muted: #555;
-    --accent: #2563eb;
-    --border: #d1d5db;
-    --bg-code: #f5f5f5;
-    --bg-table-head: #f0f4f8;
-    --title-accent: #1e40af;
+    --muted: #444;
+    --accent: #1a3c7a;
+    --border: #bbb;
+    --bg-code: #f4f4f4;
+    --bg-table-head: #e8ecf1;
+    --col-gap: 0.28in;
 }
 
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
-    font-size: 11pt;
-    line-height: 1.55;
+    font-family: "Times New Roman", "Times", "Nimbus Roman", serif;
+    font-size: 9pt;
+    line-height: 1.38;
     color: var(--text);
-    max-width: 100%;
     margin: 0;
     padding: 0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
 
-/* === TITLE PAGE === */
-.title-page {
-    page-break-after: always;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
+/* ===== Title block — full width, single column ===== */
+.paper-header {
     text-align: center;
-    padding: 0 0.5in;
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 0.5pt solid var(--border);
 }
 
-.title-page .rule-top {
-    width: 3in;
-    border: none;
-    border-top: 2.5pt solid var(--title-accent);
-    margin: 0 auto 28pt auto;
-}
-
-.title-page .paper-title {
-    font-size: 22pt;
+.paper-header .paper-title {
+    font-size: 17pt;
     font-weight: 700;
-    line-height: 1.25;
-    color: var(--text);
+    line-height: 1.2;
     margin: 0 0 8pt 0;
-    max-width: 5.5in;
+    color: var(--text);
     display: block !important;
 }
 
-.title-page .rule-mid {
-    width: 1.5in;
-    border: none;
-    border-top: 1pt solid var(--border);
-    margin: 0 auto 28pt auto;
-}
-
-.title-page .author {
-    font-size: 14pt;
-    font-weight: 600;
-    margin: 0 0 4pt 0;
-    color: var(--text);
-}
-
-.title-page .affiliation {
+.paper-header .author-name {
     font-size: 11pt;
-    font-style: italic;
-    color: var(--muted);
-    margin: 0 0 6pt 0;
+    font-weight: 400;
+    margin: 0 0 2pt 0;
 }
 
-.title-page .orcid {
-    font-size: 9.5pt;
+.paper-header .author-affil {
+    font-size: 9pt;
+    font-style: italic;
     color: var(--muted);
     margin: 0 0 2pt 0;
 }
 
-.title-page .orcid a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.title-page .repo {
-    font-size: 9.5pt;
-    color: var(--muted);
-    margin: 0 0 32pt 0;
-}
-
-.title-page .repo a {
-    color: var(--accent);
-    text-decoration: none;
-}
-
-.title-page .version {
-    font-size: 11pt;
-    font-weight: 600;
+.paper-header .author-ids {
+    font-size: 8pt;
     color: var(--muted);
     margin: 0;
 }
 
-.title-page .rule-bottom {
-    width: 3in;
-    border: none;
-    border-top: 2.5pt solid var(--title-accent);
-    margin: 28pt auto 0 auto;
-}
-
-/* === BLANK VERSO === */
-.blank-verso {
-    page-break-before: always;
-    page-break-after: always;
-    min-height: 1px;
-    visibility: hidden;
-}
-
-/* === TABLE OF CONTENTS === */
-.toc-page {
-    page-break-before: right;
-    page-break-after: always;
-}
-
-.toc-page h2 {
-    font-size: 16pt;
-    text-align: center;
-    border-bottom: none;
-    margin-bottom: 18pt;
-    color: var(--text);
-}
-
-.toc-page .toc-part {
-    font-size: 10pt;
-    font-weight: 700;
-    color: var(--title-accent);
-    margin: 14pt 0 4pt 0;
-    letter-spacing: 0.5pt;
-    text-transform: uppercase;
-}
-
-.toc-page .toc-part:first-of-type {
-    margin-top: 0;
-}
-
-.toc-page ol {
-    list-style: none;
-    padding: 0;
-    margin: 0 0 4pt 0;
-}
-
-.toc-page ol li {
-    font-size: 10.5pt;
-    line-height: 1.7;
-    padding-left: 8pt;
-    margin: 0;
-}
-
-.toc-page ol li a {
-    color: var(--text);
+.paper-header .author-ids a {
+    color: var(--accent);
     text-decoration: none;
 }
 
-.toc-page ol li .toc-desc {
-    color: var(--muted);
-    font-size: 9.5pt;
-}
-
-.toc-page ol li.toc-sub {
-    font-size: 9.5pt;
-    color: var(--muted);
-    padding-left: 24pt;
-    line-height: 1.5;
-}
-
-.toc-page .toc-appendices {
-    margin-top: 14pt;
-}
-
-.toc-page .toc-appendices .toc-part {
-    margin-top: 0;
-}
-
-/* === ABSTRACT PAGE === */
-.abstract-page {
-    page-break-before: right;
-}
-
-.abstract-page h2 {
-    font-size: 16pt;
-    text-align: center;
-    border-bottom: none;
-    margin-bottom: 14pt;
-}
-
-.abstract-page p {
-    font-size: 10.5pt;
-    line-height: 1.5;
-    color: var(--muted);
+/* ===== Abstract — full width, indented, italic prefix ===== */
+.abstract-block {
+    margin: 0 0.3in 12pt 0.3in;
+    font-size: 8.5pt;
+    line-height: 1.35;
     text-align: justify;
 }
 
-/* === PART DIVIDERS === */
-.part-heading {
-    page-break-before: right;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 3in;
-    text-align: center;
-    margin-bottom: 0;
-    padding-top: 2in;
-}
-
-.part-heading .part-label {
-    font-size: 11pt;
+.abstract-block .abstract-label {
     font-weight: 700;
-    letter-spacing: 1.5pt;
-    text-transform: uppercase;
-    color: var(--title-accent);
-    margin: 0 0 8pt 0;
-}
-
-.part-heading .part-title {
-    font-size: 18pt;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0 0 6pt 0;
-}
-
-.part-heading .part-desc {
-    font-size: 10pt;
-    color: var(--muted);
     font-style: italic;
-    max-width: 4.5in;
-    margin: 0;
 }
 
-.part-heading hr {
-    width: 2in;
-    border: none;
-    border-top: 1.5pt solid var(--title-accent);
-    margin: 18pt auto 0 auto;
+/* ===== Two-column body ===== */
+.two-col {
+    column-count: 2;
+    column-gap: var(--col-gap);
+    column-rule: 0.25pt solid #ddd;
 }
 
-/* === BODY HEADINGS === */
-h1 {
-    display: none;
-}
+/* ===== Section headings ===== */
+/* h1 is hidden (title is in the header) */
+h1 { display: none; }
 
+/* Major sections (## N. Title) — span both columns */
 h2 {
-    font-size: 14pt;
+    column-span: all;
+    font-size: 10pt;
     font-weight: 700;
-    margin: 22pt 0 8pt 0;
-    padding-bottom: 3pt;
-    border-bottom: 1.5pt solid var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+    margin: 14pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--accent);
     color: var(--text);
-    page-break-before: right;
     page-break-after: avoid;
 }
 
-/* Suppress double page-break when h2 follows a Part divider or is inside a container */
-.part-heading + h2,
-.abstract-page h2,
-.toc-page h2 {
-    page-break-before: avoid;
-}
-
+/* Subsections (### N.N Title) — inside column */
 h3 {
-    font-size: 12pt;
+    font-size: 9.5pt;
     font-weight: 700;
-    margin: 14pt 0 6pt 0;
+    font-style: italic;
+    margin: 10pt 0 4pt 0;
     color: var(--text);
     page-break-after: avoid;
 }
 
 h4 {
-    font-size: 11pt;
+    font-size: 9pt;
     font-weight: 700;
-    margin: 10pt 0 4pt 0;
+    margin: 8pt 0 3pt 0;
     color: var(--muted);
+    page-break-after: avoid;
 }
 
-/* === BODY TEXT === */
+/* ===== Body text ===== */
 p {
-    margin: 0 0 8pt 0;
+    margin: 0 0 6pt 0;
     text-align: justify;
-    hyphens: none;
-    orphans: 3;
-    widows: 3;
+    hyphens: auto;
+    orphans: 2;
+    widows: 2;
 }
 
 ul, ol {
-    margin: 4pt 0 8pt 0;
-    padding-left: 20pt;
+    margin: 3pt 0 6pt 0;
+    padding-left: 14pt;
 }
-li {
-    margin-bottom: 3pt;
-}
-li > p { margin-bottom: 3pt; }
+li { margin-bottom: 2pt; }
+li > p { margin-bottom: 2pt; }
 
-/* -- Tables -- */
+/* ===== Tables ===== */
 table {
     border-collapse: collapse;
     width: 100%;
-    margin: 10pt 0;
-    font-size: 9.5pt;
-    line-height: 1.35;
-    page-break-inside: avoid;
+    margin: 8pt 0;
+    font-size: 8pt;
+    line-height: 1.25;
+    break-inside: avoid;
 }
 
 thead th {
     background: var(--bg-table-head);
-    border: 1pt solid var(--border);
-    padding: 5pt 8pt;
+    border-top: 1pt solid var(--text);
+    border-bottom: 1pt solid var(--text);
+    padding: 3pt 4pt;
     font-weight: 700;
     text-align: left;
-    white-space: nowrap;
+    font-size: 7.5pt;
 }
 
 tbody td {
-    border: 1pt solid var(--border);
-    padding: 4pt 8pt;
+    border-bottom: 0.25pt solid #ddd;
+    padding: 2.5pt 4pt;
     vertical-align: top;
 }
 
-tbody tr:nth-child(even) {
-    background: #fafafa;
+/* Bottom rule on last row */
+tbody tr:last-child td {
+    border-bottom: 1pt solid var(--text);
 }
 
 tbody td strong {
     color: var(--accent);
 }
 
-/* -- Horizontal Rules -- */
-hr {
-    border: none;
-    border-top: 1pt solid var(--border);
-    margin: 16pt 0;
+/* Wide tables that must span both columns */
+.wide-table {
+    column-span: all;
 }
 
-/* -- Code -- */
+/* ===== Horizontal rules ===== */
+hr {
+    border: none;
+    border-top: 0.25pt solid #ccc;
+    margin: 8pt 0;
+}
+
+/* ===== Code ===== */
 code {
-    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
-    font-size: 9pt;
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 7.5pt;
     background: var(--bg-code);
-    padding: 1pt 3pt;
-    border-radius: 2pt;
+    padding: 0.5pt 2pt;
+    border-radius: 1.5pt;
 }
 
 pre {
     background: var(--bg-code);
-    padding: 10pt 12pt;
-    border-radius: 4pt;
-    border: 1pt solid var(--border);
+    padding: 6pt 8pt;
+    border-radius: 2pt;
+    border: 0.25pt solid var(--border);
     overflow-x: auto;
-    font-size: 8.5pt;
-    line-height: 1.4;
-    margin: 8pt 0;
-    page-break-inside: avoid;
+    font-size: 7pt;
+    line-height: 1.3;
+    margin: 6pt 0;
+    break-inside: avoid;
 }
 
 pre code {
@@ -405,280 +233,200 @@ pre code {
     padding: 0;
 }
 
-/* -- Block quotes -- */
+/* ===== Block quotes ===== */
 blockquote {
-    margin: 8pt 0;
-    padding: 6pt 12pt;
-    border-left: 3pt solid var(--accent);
-    background: #f8fafc;
+    margin: 6pt 0;
+    padding: 4pt 8pt;
+    border-left: 2pt solid var(--accent);
+    background: #f5f7fa;
     color: var(--muted);
+    font-size: 8.5pt;
 }
 
-/* -- Links -- */
+blockquote p {
+    font-size: 8.5pt;
+}
+
+/* ===== Links ===== */
 a {
     color: var(--accent);
     text-decoration: none;
 }
 
-/* -- Math (KaTeX) -- */
+/* ===== Math (KaTeX) ===== */
 .katex-display {
-    margin: 10pt 0;
+    margin: 8pt 0;
     overflow-x: auto;
-    page-break-inside: avoid;
     break-inside: avoid;
 }
 
 .katex {
-    font-size: 1.05em;
+    font-size: 1.0em;
 }
 
-/* -- Inline thumbnail figures -- */
+/* ===== Figures — full width when inside plate-page, else in-column ===== */
 div.sem-thumb {
     text-align: center;
-    margin: 12pt auto;
-    page-break-inside: avoid;
+    margin: 8pt auto;
+    break-inside: avoid;
 }
 
 div.sem-thumb img {
-    max-width: 70%;
+    max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
 div.sem-thumb p {
-    font-size: 8.5pt;
+    font-size: 7.5pt;
     color: var(--muted);
-    text-align: center;
-    max-width: 85%;
-    margin: 6pt auto 0 auto;
-    line-height: 1.35;
+    text-align: justify;
+    margin: 4pt 0 0 0;
+    line-height: 1.25;
 }
 
-/* -- Landscape plate pages -- */
+/* Plate-page images: span full width, portrait orientation */
 div.plate-page {
-    page: plate;
-    page-break-before: always;
-    page-break-after: always;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100%;
-    padding: 0;
+    column-span: all;
+    text-align: center;
+    margin: 10pt 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
 }
 
 div.plate-page img {
     max-width: 100%;
-    max-height: 6.5in;
+    max-height: 4.5in;
     width: auto;
     height: auto;
 }
 
 div.plate-page p {
-    text-align: center;
-    max-width: 90%;
-    margin-top: 10pt;
-    font-size: 9.5pt;
-    line-height: 1.4;
-}
-
-/* -- Footnotes / References -- */
-h2#references ~ p,
-h2:last-of-type ~ p {
-    font-size: 9pt;
-    line-height: 1.35;
-    hanging-punctuation: first;
-    padding-left: 24pt;
-    text-indent: -24pt;
-}
-
-/* -- Print tweaks -- */
-h2, h3 {
-    page-break-after: avoid;
-}
-table, pre, blockquote {
-    page-break-inside: avoid;
-}
-
-/* -- Colophon page -- */
-.colophon {
-    page-break-before: right;
-    padding-top: 2in;
-    text-align: center;
+    font-size: 7.5pt;
     color: var(--muted);
-    font-size: 9pt;
-    line-height: 1.6;
+    text-align: justify;
+    max-width: 100%;
+    margin: 4pt auto 0 auto;
+    line-height: 1.25;
 }
 
-.colophon p {
-    text-align: center;
+/* Hide blank-verso pages entirely in 2-col layout */
+.blank-verso {
+    display: none;
 }
 
-/* -- Handwritten example entries (blue pen) -- */
-.ex {
-    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
-    color: #1a5fb4;
-    font-size: 11pt;
-    font-weight: 600;
-    font-style: normal;
-}
-
-/* -- Printable worksheet pages -- */
+/* ===== Worksheet plates — span both columns ===== */
 div.worksheet-plate {
+    column-span: all;
     page-break-before: always;
-    page-break-after: always;
     padding-top: 0.15in;
 }
 
 div.worksheet-plate h4 {
     text-align: center;
-    font-size: 13pt;
+    font-size: 10pt;
     font-weight: 700;
-    margin-bottom: 10pt;
-    padding-bottom: 4pt;
-    border-bottom: 1pt solid var(--border);
+    margin-bottom: 8pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.5pt solid var(--border);
+    text-transform: none;
+    font-style: normal;
 }
 
 div.worksheet-plate p.ws-inst {
-    font-size: 9pt;
+    font-size: 8pt;
     color: var(--muted);
     text-align: center;
-    margin-bottom: 8pt;
+    margin-bottom: 6pt;
     font-style: italic;
 }
 
 div.worksheet-plate table {
-    width: 100%;
-    font-size: 10pt;
+    font-size: 8.5pt;
 }
 
-div.worksheet-plate td,
-div.worksheet-plate th {
-    padding: 5pt 6pt;
+/* ===== Handwritten example entries (blue pen) ===== */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 9.5pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* ===== References ===== */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 7.5pt;
+    line-height: 1.25;
+    padding-left: 16pt;
+    text-indent: -16pt;
+}
+
+/* ===== Print tweaks ===== */
+h2, h3, h4 {
+    page-break-after: avoid;
+}
+table, pre, blockquote {
+    break-inside: avoid;
+}
+
+/* ===== Colophon ===== */
+.colophon-2col {
+    column-span: all;
+    text-align: center;
+    color: var(--muted);
+    font-size: 7.5pt;
+    line-height: 1.5;
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 0.5pt solid var(--border);
+}
+
+.colophon-2col p {
+    text-align: center;
+    font-size: 7.5pt;
+}
+
+/* ===== Part headings — converted to in-flow banners ===== */
+.part-banner {
+    column-span: all;
+    text-align: center;
+    padding: 10pt 0 6pt 0;
+    margin: 14pt 0 4pt 0;
+    border-top: 1.5pt solid var(--accent);
+    border-bottom: 0.5pt solid var(--border);
+}
+
+.part-banner .part-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 2pt 0;
+}
+
+.part-banner .part-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
 }
 
 </style>
 </head>
 <body>
-<div class="title-page">
-  <hr class="rule-top">
+<div class="paper-header">
   <h1 class="paper-title" style="display:block">Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</h1>
-  <hr class="rule-mid">
-  <p class="author">Mike Tierce</p>
-  <p class="affiliation">Independent Researcher</p>
-  <p class="orcid">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a></p>
-  <p class="repo"><a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a></p>
-  <p class="version">Version 15 — March 2026</p>
-  <hr class="rule-bottom">
+  <p class="author-name">Mike Tierce</p>
+  <p class="author-affil">Independent Researcher</p>
+  <p class="author-ids">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a> &nbsp;|&nbsp; <a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a> &nbsp;|&nbsp; Version 15 — March 2026</p>
 </div>
-<div class="blank-verso">&nbsp;</div>
-<div class="toc-page">
-<h2>Contents</h2>
-<p class="toc-part">Part I — Theory and Architecture</p>
-<ol>
-<li>1. <a href="#1-introduction">Introduction</a> <span class="toc-desc">— The memory wall; wave-based memory; summary of results</span></li>
-<li class="toc-sub">1.1 The Memory Wall</li>
-<li class="toc-sub">1.2 Wave-Based Memory</li>
-<li class="toc-sub">1.3 Summary of Results</li>
-<li>2. <a href="#2-architecture">Architecture</a> <span class="toc-desc">— Eigenmode encoding; perturbation write; interference recall</span></li>
-<li class="toc-sub">2.1 Eigenmode Encoding</li>
-<li class="toc-sub">2.2 Perturbation Encoding (Write)</li>
-<li class="toc-sub">2.3 Interference Recall (Read / Compute)</li>
-<li class="toc-sub">2.4 Architecture Summary</li>
-</ol>
-<p class="toc-part">Part II — Substrate and Prototype</p>
-<ol>
-<li>3. <a href="#3-substrate-selection">Substrate Selection</a> <span class="toc-desc">— Ferrofluid failure; glass physics</span></li>
-<li class="toc-sub">3.1 Ferrofluid: A Dead End Worth Explaining</li>
-<li class="toc-sub">3.2 Glass: Zero Phase Diffusion</li>
-<li>4. <a href="#4-macro-scale-prototype">Macro-Scale Prototype</a> <span class="toc-desc">— \$63 BOM; 98.5 dB SNR; Q = 10,000</span></li>
-<li class="toc-sub">4.1 The Experiment</li>
-<li class="toc-sub">4.2 Bill of Materials</li>
-<li class="toc-sub">4.3 Signal-to-Noise Ratio</li>
-<li class="toc-sub">4.4 Mode Spectrum</li>
-<li class="toc-sub">4.5 Perturbation Encoding Demonstration</li>
-<li class="toc-sub">4.6 Associative Recall</li>
-</ol>
-<p class="toc-part">Part III — Finite Element Validation</p>
-<ol>
-<li>5. <a href="#5-finite-element-validation">Finite Element Validation</a> <span class="toc-desc">— 1D/2D FEM eigenfrequencies; wave speed discovery; Pochhammer–Chree dispersion</span></li>
-<li class="toc-sub">5.1 Motivation</li>
-<li class="toc-sub">5.2 One-Dimensional FEM: Wave Speed Discovery</li>
-<li class="toc-sub">5.3 Rayleigh Perturbation Validation</li>
-<li class="toc-sub">5.4 Mesh Convergence</li>
-<li class="toc-sub">5.5 Two-Dimensional Plane-Stress FEM and Pochhammer–Chree Dispersion</li>
-</ol>
-<p class="toc-part">Part IV — MEMS Design and Scaling</p>
-<ol>
-<li>6. <a href="#6-scaling-laws">Scaling Laws</a> <span class="toc-desc">— SNR, mode count, density as functions of rod length</span></li>
-<li class="toc-sub">6.1 SNR Scales Linearly with Length</li>
-<li class="toc-sub">6.2 Mode Count Is Size-Independent</li>
-<li class="toc-sub">6.3 Density Scales as $1/L^2$</li>
-<li class="toc-sub">6.4 Crossover Points</li>
-<li>7. <a href="#7-mems-q-factor-analysis">MEMS Q-Factor Analysis</a> <span class="toc-desc">— Five-mechanism loss budget</span></li>
-<li class="toc-sub">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</li>
-<li class="toc-sub">7.2 Anchor Loss ($Q_{\text{anchor}}$)</li>
-<li class="toc-sub">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</li>
-<li class="toc-sub">7.4 Gas Damping ($Q_{\text{gas}}$)</li>
-<li class="toc-sub">7.5 Surface Loss ($Q_{\text{surface}}$)</li>
-<li class="toc-sub">7.6 Combined Q-Factor Budget</li>
-<li>8. <a href="#8-mems-device-specification">MEMS Device Specification</a> <span class="toc-desc">— Reference design; array architecture</span></li>
-<li class="toc-sub">8.1 Reference Design</li>
-<li class="toc-sub">8.2 Per-Rod Performance</li>
-<li class="toc-sub">8.3 Array Architecture</li>
-<li class="toc-sub">8.4 Energy Budget</li>
-<li>9. <a href="#9-fabrication-pathway">Fabrication Pathway</a> <span class="toc-desc">— Six-step MEMS process flow</span></li>
-<li class="toc-sub">9.1 Process Flow</li>
-<li class="toc-sub">9.2 Bill of Materials (MEMS, at volume)</li>
-<li class="toc-sub">9.3 Risk Assessment</li>
-</ol>
-<p class="toc-part">Part V — Advanced Techniques</p>
-<ol>
-<li>10. <a href="#10-technology-comparison">Technology Comparison</a> <span class="toc-desc">— Density, speed, energy benchmarks</span></li>
-<li class="toc-sub">10.1 Density, Speed, Energy</li>
-<li class="toc-sub">10.2 SEM's Unique Position</li>
-<li class="toc-sub">10.3 The Computation Advantage</li>
-<li class="toc-sub">10.4 What SEM Is Not</li>
-<li class="toc-sub">10.5 Disruption Scenarios</li>
-<li>11. <a href="#11-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall</a> <span class="toc-desc">— Pruning; Boolean ops; hybridization; null-space; polysemic readout; phase-spectral encoding</span></li>
-<li class="toc-sub">11.1 Synaptic Pruning for Associative Recall</li>
-<li class="toc-sub">11.2 In-Situ Boolean Computation</li>
-<li class="toc-sub">11.3 Mode Hybridization at Near-Degeneracy</li>
-<li class="toc-sub">11.4 Null-Space Multiplexing</li>
-<li class="toc-sub">11.5 Polysemic Readout: Multi-Channel Spectral Decoding</li>
-<li class="toc-sub">11.6 Combined Capacity Enhancement</li>
-<li class="toc-sub">11.7 Tesla-Informed Phase-Spectral Encoding</li>
-<li>12. <a href="#12-paths-to-rewritability">Paths to Rewritability</a> <span class="toc-desc">— Firmware virtual rewriting; binary sites; writable shell; layered architecture</span></li>
-<li class="toc-sub">12.1 The Rewritability Question</li>
-<li class="toc-sub">12.2 Track A: Firmware-Defined Virtual Rewriting</li>
-<li class="toc-sub">12.3 Track B: Binary Perturbation Sites</li>
-<li class="toc-sub">12.4 Track C: Multi-Shell Resonator</li>
-<li class="toc-sub">12.5 Layered Architecture</li>
-</ol>
-<p class="toc-part">Part VI — Outlook</p>
-<ol>
-<li>13. <a href="#13-ultimate-limits">Ultimate Limits</a> <span class="toc-desc">— Fused silica; Tbit/cm³ arrays</span></li>
-<li class="toc-sub">13.1 Fused Silica</li>
-<li class="toc-sub">13.2 Fused Silica Array Performance</li>
-<li class="toc-sub">13.3 Q-Factor Model for Fused Silica</li>
-<li>14. <a href="#14-discussion">Discussion</a> <span class="toc-desc">— Validated vs. projected; IP; historical context</span></li>
-<li class="toc-sub">14.1 What Is Validated vs. Projected</li>
-<li class="toc-sub">14.2 Historical Context</li>
-<li class="toc-sub">14.3 Intellectual Property</li>
-<li>15. <a href="#15-roadmap">Roadmap</a> <span class="toc-desc">— Four-phase development plan</span></li>
-<li>16. <a href="#16-conclusion">Conclusion</a></li>
-</ol>
-<div class="toc-appendices">
-<p class="toc-part">Appendices</p>
-<ol>
-<li>A. <a href="#appendix-a-snr-and-density-scaling-derivation">SNR and Density Scaling Derivation</a></li>
-<li>B. <a href="#appendix-b-q-factor-model-details">Q-Factor Model Details</a></li>
-<li>C. <a href="#appendix-c-industry-application-scenarios">Industry Application Scenarios</a></li>
-</ol>
-</div>
-</div><div class="abstract-page"><h2 id="abstract">Abstract</h2>
-<p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
+<div class="two-col">
+<div class="abstract-block">
+  <span class="abstract-label">Abstract&mdash;</span> <p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
 <p>This paper describes a different encoding. Instead of charge or resistance, we store information in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator—the set of natural frequencies at which a glass rod vibrates. A mass perturbation applied to the rod&rsquo;s surface shifts each eigenmode frequency by a different amount, creating a unique spectral fingerprint. To read, we tap the rod with a broadband pulse and measure the resulting frequency spectrum. To search, we drive an array of rods with a query pattern: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor computation performed by wave interference in microseconds, with no processor, no memory bus, and no software.</p>
 <p>We call this architecture <strong>Spectral Eigenmode Memory (SEM)</strong>.</p>
 <p>The core physics is validated at macro scale. A prototype built from a &#36;63 borosilicate glass rod achieves <strong>98.5 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis, verified by 680 automated tests across 29 first-principles simulation modules—including independent finite element validation of every analytical formula—projects that a 1 mm MEMS resonator achieves <strong>95.1 Gbit/cm³</strong> within the active resonator volume, corresponding to <strong>17.0 Gbit/cm³</strong> in the reference packed-array architecture (1.7× DRAM). In fused silica arrays, the packed-array density rises to <strong>1.4 Tbit/cm³</strong> (1.4× NAND Flash). Write energy is <strong>15 fJ/bit</strong> (200× below DRAM), with <strong>native associative recall</strong> in 3.8 µs.</p>
@@ -687,11 +435,10 @@ div.worksheet-plate th {
 <p>We further demonstrate that SEM admits physical rewritability at three architectural levels: firmware-defined virtual rewriting (4+ independent logical memories per rod, zero hardware changes), binary perturbation sites using MEMS electrostatic latches (7.6 bits of rewritable state, &lt; 0.5% Q penalty), and writable thin-film shell coatings (100 nm at $Q > 5{,}000$). These layers compose multiplicatively—the read medium (glass rod) and write mechanism are separable, a property unique among memory technologies.</p>
 <p>The entire fabrication pathway uses established MEMS processes in volume production today: glass deep reactive ion etching, aluminium nitride thin-film piezoelectric transduction, wafer-level vacuum packaging, and CMOS flip-chip bonding. What remains is the MEMS demonstration itself—building the device and measuring it.</p>
 <hr />
-</div><div class="part-heading">
+</div>
+<div class="part-banner">
   <p class="part-label">Part I</p>
   <p class="part-title">Theory and Architecture</p>
-  <p class="part-desc">Sections 1–2</p>
-  <hr>
 </div>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-the-memory-wall">1.1 The Memory Wall</h3>
@@ -950,11 +697,9 @@ div.worksheet-plate th {
 </tbody>
 </table>
 <hr />
-<div class="part-heading">
+<div class="part-banner">
   <p class="part-label">Part II</p>
   <p class="part-title">Substrate and Prototype</p>
-  <p class="part-desc">Sections 3–4</p>
-  <hr>
 </div>
 <h2 id="3-substrate-selection">3. Substrate Selection</h2>
 <h3 id="31-ferrofluid-a-dead-end-worth-explaining">3.1 Ferrofluid: A Dead End Worth Explaining</h3>
@@ -1052,11 +797,9 @@ div.worksheet-plate th {
 <p><strong>Figure 13.</strong> (a) Response amplitudes when querying for pattern P4 across an 8-pattern array. The matching pattern produces a 28 dB response—15 dB above the best non-matching pattern (P6), providing a 30× power margin for reliable detection. (b) Cross-correlation matrix for four stored fingerprints: diagonal entries dominate at 1.00, off-diagonal entries ≤ 0.21, confirming spectral orthogonality.</p>
 </div>
 <hr />
-<div class="part-heading">
+<div class="part-banner">
   <p class="part-label">Part III</p>
   <p class="part-title">Finite Element Validation</p>
-  <p class="part-desc">Section 5</p>
-  <hr>
 </div>
 <h2 id="5-finite-element-validation">5. Finite Element Validation</h2>
 <h3 id="51-motivation">5.1 Motivation</h3>
@@ -1164,11 +907,9 @@ div.worksheet-plate th {
 <p>At the highest fitted mode ($n = 15$), the dispersion correction is +0.29%—small but measurable. Above $n \approx 16$, longitudinal and flexural modes begin to couple (the mixed modes in the table above), and the clean longitudinal classification breaks down. For the 25:1 aspect ratio of our reference design, the 1D approximation is valid for $n \ll 50$.</p>
 <p><strong>Critical insight: dispersion does not affect perturbation encoding.</strong> The Rayleigh perturbation formula gives <em>relative</em> frequency shifts: $\Delta f_n / f_n$. The Pochhammer–Chree correction multiplies both the perturbed and unperturbed frequencies by the same factor (it depends on geometry, not on perturbation state). The correction cancels in the ratio. SEM&rsquo;s information encoding is therefore robust to dispersion—the spectral fingerprint is preserved exactly. Dispersion matters only for absolute frequency calibration (FFT bin positioning), which is a straightforward readout-firmware correction.</p>
 <hr />
-<div class="part-heading">
+<div class="part-banner">
   <p class="part-label">Part IV</p>
   <p class="part-title">MEMS Design and Scaling</p>
-  <p class="part-desc">Sections 6–9</p>
-  <hr>
 </div>
 <h2 id="6-scaling-laws">6. Scaling Laws</h2>
 <p>The macro prototype demonstrates the physics. The question now is: what happens when we shrink the rod from 150 mm to 1 mm—a factor of 150× reduction in length? Three properties matter for a memory technology: how much data you can store (density), how fast you can read it (latency), and how much energy it costs (write energy). We need to understand how each scales with rod length.</p>
@@ -1623,11 +1364,9 @@ div.worksheet-plate th {
 </div>
 
 <hr />
-<div class="part-heading">
+<div class="part-banner">
   <p class="part-label">Part V</p>
   <p class="part-title">Advanced Techniques</p>
-  <p class="part-desc">Sections 10–12</p>
-  <hr>
 </div>
 <h2 id="10-technology-comparison">10. Technology Comparison</h2>
 <h3 id="101-density-speed-energy">10.1 Density, Speed, Energy</h3>
@@ -2250,11 +1989,9 @@ div.worksheet-plate th {
 <p>These layers compose multiplicatively. A rod with a writable shell (Layer 1), binary sites (Layer 2), and firmware partitioning (Layer 3) provides $N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations—conservatively, $10 \times 2^{12} \times 4 = 163{,}840$ distinct states from a single physical device.</p>
 <p><strong>The separation principle.</strong> A key architectural insight emerges: in SEM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In SEM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod: in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes SEM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
 <p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become Franklin&rsquo;s armonica.</p>
-<div class="part-heading">
+<div class="part-banner">
   <p class="part-label">Part VI</p>
   <p class="part-title">Outlook</p>
-  <p class="part-desc">Sections 13–16</p>
-  <hr>
 </div>
 <h2 id="13-ultimate-limits">13. Ultimate Limits</h2>
 <h3 id="131-fused-silica">13.1 Fused Silica</h3>
@@ -4213,347 +3950,10 @@ div.worksheet-plate th {
 <p>Every data point matters. A middle school classroom measuring Q = 3,000 on a 200 mm rod constrains the same physics as a university lab measuring Q = 9,000 on a 150 mm rod—and the diversity of rod geometries and construction techniques is itself scientifically valuable. Unexpected results (low Q, spurious modes, anomalous thermal coefficients) are <em>especially</em> welcome: they reveal failure modes that improve the guide for the next experimenter.</p>
 <hr />
 <p><em>All quantitative claims computed from first-principles simulation code (29 modules, 680 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
-<hr />
-<h2 id="illustration-plates">Illustration Plates</h2>
-<p><em>The following pages present each figure at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet.</em></p>
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Plate 1: SEM Architecture"/>
-<p><strong>Figure 1.</strong> SEM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, SEM unifies storage and computation in the same physical process.</p>
+<hr /><div class="colophon-2col">
+  <p><em>Spectral Eigenmode Memory</em> &mdash; Version 15 — March 2026 &mdash; &copy; Mike Tierce<br>
+  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (28 modules, 630 tests).</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig2_mems_cross_section.svg" alt="Plate 2: MEMS Resonator Cross-Section"/>
-<p><strong>Figure 2.</strong> MEMS resonator at chip scale. <em>(a)</em> Cross-section of a single 1 mm × 40 µm glass resonator element showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic mass perturbations. <em>(b)</em> Scale comparison: the rod diameter (40 µm) is thinner than a human hair (70 µm). <em>(c)</em> Top-down view of a resonator array at 80 µm pitch on a CMOS readout die. <em>(d)</em> Chip integration stack: vacuum-sealed glass array flip-chip bonded to CMOS — identical to existing MEMS accelerometer packaging.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig3_eigenmode_encoding.svg" alt="Plate 3: Eigenmode Encoding"/>
-<p><strong>Figure 3.</strong> Eigenmode encoding. <em>(a)</em> Standing wave mode shapes for modes n = 1, 2, 3, … N within a glass rod — each mode is an independent information channel at a distinct frequency. <em>(b)</em> Perturbation effect: adding mass at a specific position shifts each mode frequency by a different amount (Rayleigh perturbation formula), creating a unique spectral fingerprint that encodes the perturbation's position and mass.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig4_q_budget.svg" alt="Plate 4: Q-Factor Loss Budget"/>
-<p><strong>Figure 4.</strong> MEMS Q-factor loss budget. <em>(a)</em> For the reference 1 mm borosilicate design, material intrinsic loss dominates at 91.0% — anchor loss is only 4.4% of the total budget. Q<sub>total</sub> = 9,097. <em>(b)</em> All four design scenarios (varying glass type, tether geometry, and vacuum level) clear the Q > 5,000 threshold for competitive operation, with fused silica designs exceeding Q = 50,000.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
-<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
-<p><strong>Figure 6.</strong> SEM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig7_weight_pruning.svg" alt="Plate 7: Synaptic Pruning for Associative Recall"/>
-<p><strong>Figure 7.</strong> Synaptic pruning optimization. <em>(a)</em> Weight matrix before and after pruning: entries below threshold θ are zeroed, removing inter-pattern crosstalk while preserving dominant pattern-encoding weights. <em>(b)</em> Recall accuracy vs. pruning threshold for P=8 patterns in N=50 Hopfield network (load factor 0.16). Optimal pruning at θ* = 0.055 achieves +10.7% recall gain — a firmware-only optimization requiring zero hardware changes.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
-<p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms SEM as a true compute-in-memory technology.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig9_avoided_crossing.svg" alt="Plate 9: Avoided Crossing and Mode Hybridization"/>
-<p><strong>Figure 9.</strong> Mode hybridization at near-degeneracy. <em>(a)</em> Avoided-crossing level diagram: when two eigenfrequencies approach each other under perturbation, off-diagonal coupling prevents crossing, creating a gap of 2κ and hybridized bonding/antibonding mode pairs. <em>(b)</em> Hybridization depth (energy exchange fraction) peaks at ≈100% for small detuning and remains above 10% for 16 of 20 tested detuning values, yielding an effective +160% capacity gain from a 10-mode base system.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig10_null_space.svg" alt="Plate 10: Null-Space Multiplexing"/>
-<p><strong>Figure 10.</strong> Null-space multiplexing for dual-channel encoding. The coupling matrix C (10 modes × 16 perturbation sites) has rank 10 and a 6-dimensional null space. Standard patterns are encoded in the column space and recovered by standard readout (fidelity 1.000). Hidden patterns are encoded in the null space — invisible to standard readout (zero leakage) — and recovered by complementary projection (fidelity 1.000). Combined capacity: 262 bits vs. 164 standard, a +60% bonus with zero hardware modification.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig11_prototype_spectrum.svg" alt="Plate 11: Prototype Eigenmode Spectrum"/>
-<p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg wax perturbation (red dashed), each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 barely shifts (wax near node). Measured shifts match Rayleigh predictions to within 2%.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig12_ringdown.svg" alt="Plate 12: Ring-down and Q Measurement"/>
-<p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the $25 USB oscilloscope is not the bottleneck.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig13_recall_discrimination.svg" alt="Plate 13: Associative Recall Discrimination"/>
-<p><strong>Figure 13.</strong> Associative recall demonstration. <em>(a)</em> Response amplitudes for an 8-pattern array when queried with the P4 spectrum: the matching pattern responds at 28 dB, 15 dB above the best non-matching pattern (P6 at 13 dB), providing a 30× power margin. <em>(b)</em> Cross-correlation matrix for four stored fingerprints confirms near-orthogonality: diagonal entries = 1.00, maximum off-diagonal = 0.21 (−13.6 dB). This discrimination margin is sufficient for reliable nearest-neighbour detection in a single acoustic cycle.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
-<p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). <em>(a)</em> Eigenfrequency diagram: uncoupled modes (dashed grey) would cross at zero detuning; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by minimum gap 2κ = 17 kHz. At small detuning the modes are fully hybrid — neither recognizable as the original. <em>(b)</em> Hybridization depth vs. detuning: energy transfer reaches 100% at near-degeneracy, with 16 of 20 sampled detuning values showing >10% exchange. Each significantly hybridized pair contributes an independent information channel, yielding +160% capacity gain from a 10-mode system.</p>
-</div>
-
-<hr />
-<h2 id="printable-worksheets">Printable Worksheets</h2>
-<p><em>The following pages present each experiment worksheet at full portrait scale for photocopying. Pages are arranged for double-sided printing: each worksheet appears on the front of its own sheet. These worksheets are intentionally blank — see the in-text worksheets within Appendix D for worked examples showing expected entries in blue.</em></p>
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.1 — Quality Factor Measurement</h4>
-<p class="ws-inst">Photocopy this page. Fill in one column per rod tested.</p>
-<table>
-<thead><tr><th style="width:40%">Parameter</th><th>Rod 1</th><th>Rod 2</th><th>Rod 3</th></tr></thead>
-<tbody>
-<tr><td>Date / Time</td><td></td><td></td><td></td></tr>
-<tr><td>Experimenter</td><td></td><td></td><td></td></tr>
-<tr><td>Room temperature (°C)</td><td></td><td></td><td></td></tr>
-<tr><td>Rod length L (mm)</td><td></td><td></td><td></td></tr>
-<tr><td>Rod diameter d (mm)</td><td></td><td></td><td></td></tr>
-<tr><td>Glue amount (tiny / small / medium)</td><td></td><td></td><td></td></tr>
-<tr><td>Measured f₁ (Hz)</td><td></td><td></td><td></td></tr>
-<tr><td>Predicted f₁ = 5,315/(2L) (Hz)</td><td></td><td></td><td></td></tr>
-<tr><td>Ring-down τ (ms)</td><td></td><td></td><td></td></tr>
-<tr><td><strong>Q (ring-down) = πf₁τ</strong></td><td></td><td></td><td></td></tr>
-<tr><td>−3 dB bandwidth Δf₃dB (Hz)</td><td></td><td></td><td></td></tr>
-<tr><td><strong>Q (bandwidth) = f₁/Δf₃dB</strong></td><td></td><td></td><td></td></tr>
-<tr><td>Two methods agree within 10%? (Y/N)</td><td></td><td></td><td></td></tr>
-<tr><td>Notes</td><td></td><td></td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.2 — Mode Spectrum Map</h4>
-<p class="ws-inst">Photocopy this page. Predicted frequencies are for a 150 mm rod — recalculate if your rod differs.</p>
-<table>
-<thead><tr><th>Mode <em>n</em></th><th>Predicted fₙ (Hz)</th><th>Measured fₙ (Hz)</th><th>Δf (Hz)</th><th>Amplitude (dB)</th><th>Confirmed?</th></tr></thead>
-<tbody>
-<tr><td>1</td><td>17,717</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>2</td><td>35,434</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>3</td><td>53,150</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>4</td><td>70,867</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>5</td><td>88,584</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>6</td><td>106,301</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>7</td><td>124,018</td><td></td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>Spurious 1</td><td>—</td><td></td><td>—</td><td></td><td>type: ___</td></tr>
-<tr><td>Spurious 2</td><td>—</td><td></td><td>—</td><td></td><td>type: ___</td></tr>
-<tr><td>Spurious 3</td><td>—</td><td></td><td>—</td><td></td><td>type: ___</td></tr>
-<tr><td><strong>Total confirmed:</strong></td><td></td><td></td><td></td><td></td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.3 — Thermal Stability Log</h4>
-<p class="ws-inst">Photocopy this page. Record temperature and frequency at each time point.</p>
-<table>
-<thead><tr><th>Time (min)</th><th>Temp (°C)</th><th>f₁ (Hz)</th><th>Δf from t=0 (Hz)</th><th>Environment</th></tr></thead>
-<tbody>
-<tr><td>0</td><td></td><td></td><td>0.0</td><td>Open / Insulated</td></tr>
-<tr><td>5</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td>10</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td>15</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td>20</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td>25</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td>30</td><td></td><td></td><td></td><td>Open / Insulated</td></tr>
-<tr><td><em>(perturbation applied)</em></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>32</td><td></td><td></td><td></td><td>Open</td></tr>
-<tr><td>34</td><td></td><td></td><td></td><td>Open</td></tr>
-<tr><td>36</td><td></td><td></td><td></td><td>Open</td></tr>
-<tr><td>38</td><td></td><td></td><td></td><td>Open</td></tr>
-<tr><td>40</td><td></td><td></td><td></td><td>Open</td></tr>
-<tr><td><strong>Measured Δf/ΔT:</strong></td><td></td><td><strong>___ Hz/°C</strong></td><td></td><td></td></tr>
-<tr><td><strong>Predicted (−0.9 Hz/°C):</strong></td><td></td><td></td><td></td><td></td></tr>
-<tr><td><strong>Recovery time:</strong></td><td></td><td><strong>___ min</strong></td><td></td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.4 — Perturbation Encoding Data</h4>
-<p class="ws-inst">Photocopy this page. Use one sheet per wax-placement trial.</p>
-<table>
-<thead><tr><th style="width:50%">Parameter</th><th>Value</th></tr></thead>
-<tbody>
-<tr><td><strong>Trial #</strong></td><td></td></tr>
-<tr><td><strong>Wax pellet mass δm (mg)</strong></td><td></td></tr>
-<tr><td><strong>Position x (mm from PZT end)</strong></td><td></td></tr>
-<tr><td><strong>Position x/L (fraction)</strong></td><td></td></tr>
-<tr><td><strong>Rod mass M (g)</strong></td><td></td></tr>
-<tr><td><strong>Rod length L (mm)</strong></td><td></td></tr>
-<tr><td><strong>Temperature (°C)</strong></td><td></td></tr>
-</tbody>
-</table>
-<br>
-<table>
-<thead><tr><th>Mode</th><th>fₙ before (Hz)</th><th>fₙ after (Hz)</th><th>Δfₙ (Hz)</th><th>Δfₙ/fₙ meas (ppm)</th><th>Δfₙ/fₙ pred (ppm)</th><th>Error %</th></tr></thead>
-<tbody>
-<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</tbody>
-</table>
-<br>
-<p><em>After removing wax:</em></p>
-<table>
-<thead><tr><th>Mode</th><th>fₙ recovered (Hz)</th><th>Δf from original (Hz)</th><th>Recovered ±0.5 Hz?</th></tr></thead>
-<tbody>
-<tr><td>1</td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>2</td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>3</td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>4</td><td></td><td></td><td>Y / N</td></tr>
-<tr><td>5</td><td></td><td></td><td>Y / N</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.5 — Associative Recall Discrimination</h4>
-<p class="ws-inst">Photocopy this page. Record matched and non-matched query responses.</p>
-<table>
-<thead><tr><th>Pattern stored on rod</th><th>Query driven</th><th>Peak response (dB)</th><th>Match?</th></tr></thead>
-<tbody>
-<tr><td>Pattern A</td><td>Query A (matching)</td><td></td><td>✓</td></tr>
-<tr><td>Pattern B</td><td>Query A (non-matching)</td><td></td><td>✗</td></tr>
-<tr><td>Pattern B</td><td>Query B (matching)</td><td></td><td>✓</td></tr>
-</tbody>
-</table>
-<br>
-<table>
-<thead><tr><th style="width:60%">Metric</th><th>Value</th></tr></thead>
-<tbody>
-<tr><td><strong>Discrimination margin (matched − non-matched):</strong></td><td>___ dB</td></tr>
-<tr><td><strong>Power ratio (10^(margin/10)):</strong></td><td>___×</td></tr>
-<tr><td><strong>Sufficient for reliable detection? (≥15 dB)</strong></td><td>Y / N</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.6 — CW Readout Comparison</h4>
-<p class="ws-inst">Photocopy this page. Compare impulse and continuous-wave readout performance.</p>
-<table>
-<thead><tr><th style="width:65%">Measurement</th><th>Value</th></tr></thead>
-<tbody>
-<tr><td>Impulse ring-down peak amplitude (mV)</td><td></td></tr>
-<tr><td>CW lock-in amplitude, 1 s (mV)</td><td></td></tr>
-<tr><td>CW lock-in amplitude, 10 s (mV)</td><td></td></tr>
-<tr><td><strong>Gain (1 s) (dB)</strong></td><td></td></tr>
-<tr><td><strong>Gain (10 s) (dB)</strong></td><td></td></tr>
-<tr><td>Expected gain (1 s): 7.5 dB — within ±3 dB?</td><td>Y / N</td></tr>
-<tr><td>Expected gain (10 s): 17.5 dB — within ±3 dB?</td><td>Y / N</td></tr>
-<tr><td>Wet-finger bowing: sustained oscillation?</td><td>Y / N</td></tr>
-<tr><td>Bowed frequency (Hz)</td><td></td></tr>
-<tr><td>Bowed duration (s)</td><td></td></tr>
-<tr><td>Notes on bowing technique</td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
-<p class="ws-inst">Photocopy this page. Record spectra for each water-drop pattern and verify full recovery.</p>
-<table>
-<thead><tr><th>Mode</th><th>f (Pat. 0)</th><th>f (Pat. 1: L/2)</th><th>Δf₁</th><th>f (Pat. 2: L/4)</th><th>Δf₂</th><th>f (Pat. 3: L/4+3L/4)</th><th>Δf₃</th></tr></thead>
-<tbody>
-<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-<tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
-</tbody>
-</table>
-<br>
-<table>
-<thead><tr><th style="width:70%">Verification</th><th>Result</th></tr></thead>
-<tbody>
-<tr><td>Pattern 0 recovered after erasing Pattern 1? (±0.5 Hz)</td><td>Y / N</td></tr>
-<tr><td>Pattern 0 recovered after erasing Pattern 2? (±0.5 Hz)</td><td>Y / N</td></tr>
-<tr><td>Pattern 1 and Pattern 2 spectrally distinguishable?</td><td>Y / N</td></tr>
-<tr><td>Pattern 3 distinct from both Pattern 1 and Pattern 2?</td><td>Y / N</td></tr>
-<tr><td><strong>Total distinct patterns written and read</strong></td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="worksheet-plate">
-<h4>Consolidated Experiment Log</h4>
-<p class="ws-inst">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
-<table>
-<thead><tr><th style="width:50%">Field</th><th>Entry</th></tr></thead>
-<tbody>
-<tr><td><strong>Experimenter name(s)</strong></td><td></td></tr>
-<tr><td><strong>Date</strong></td><td></td></tr>
-<tr><td><strong>School / Institution</strong></td><td></td></tr>
-<tr><td><strong>Rod serial #</strong></td><td></td></tr>
-<tr><td><strong>Rod length L (mm)</strong></td><td></td></tr>
-<tr><td><strong>Rod diameter d (mm)</strong></td><td></td></tr>
-<tr><td><strong>Rod mass M (g)</strong></td><td></td></tr>
-<tr><td><strong>PZT disc serial #</strong></td><td></td></tr>
-<tr><td><strong>PicoScope model &amp; serial</strong></td><td></td></tr>
-<tr><td><strong>Room temperature at start (°C)</strong></td><td></td></tr>
-<tr><td><strong>Relative humidity (%)</strong></td><td></td></tr>
-<tr><td><strong>Foam cradle material</strong></td><td></td></tr>
-<tr><td><strong>Thermal enclosure used? (Y/N)</strong></td><td></td></tr>
-<tr><td><strong>Experiments completed (circle)</strong></td><td>1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8</td></tr>
-<tr><td><strong>Best Q measured</strong></td><td></td></tr>
-<tr><td><strong>Number of confirmed longitudinal modes</strong></td><td></td></tr>
-<tr><td><strong>Best discrimination margin (dB)</strong></td><td></td></tr>
-<tr><td><strong>CW lock-in gain at 10 s (dB)</strong></td><td></td></tr>
-<tr><td><strong>Wet-finger bowing successful? (Y/N)</strong></td><td></td></tr>
-<tr><td><strong>Water-drop patterns written &amp; erased</strong></td><td></td></tr>
-<tr><td><strong>Anomalies or unexpected observations</strong></td><td></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="blank-verso">&nbsp;</div><div class="colophon">
-  <p><em>Spectral Eigenmode Memory</em></p>
-  <p>Version 15 — March 2026</p>
-  <p>&copy; Mike Tierce</p>
-  <p style="margin-top: 16pt; font-size: 8pt;">
-    Typeset from Markdown source using Chromium PDF rendering.<br>
-    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
-    All quantitative claims computed from first-principles simulation code<br>
-    (26 modules, 568 automated tests) with independent FEM validation.
-  </p>
 </div>
 
 <script>

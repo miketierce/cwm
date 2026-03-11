@@ -397,6 +397,26 @@ The paper's own citation audit (included at end of v9.md) identified issues:
 
 ---
 
+## Historical Sidebar Research
+
+Sidebars explore structural parallels between historical figures' work and SEM
+physics, generating testable engineering hypotheses. Each sidebar produces a
+simulation module, automated tests, and (if confirmed) paper integration.
+
+**Full tracker:** [`docs/SIDEBARS.md`](SIDEBARS.md)
+
+| Sidebar | Figure | Status |
+|---------|--------|--------|
+| S1 | Spare / Mace | ✅ Complete (6/6 confirmed) |
+| S2 | Scranton / Dogon | ✅ Complete (6/6 confirmed) |
+| S3 | Tesla | ✅ Complete (4/4 confirmed) |
+| S4 | Chladni — 2D plate eigenmodes | ⬜ Not started |
+| S5 | Békésy — cochlear eigenmode memory | ⬜ Not started |
+| S6 | Franklin (Rosalind) — phase retrieval | ⬜ Not started |
+| S7 | Leibniz — binary encoding / monadic compression | ⬜ Not started |
+
+---
+
 ## Open Questions Registry
 
 Track questions that need answers, ordered by impact on go/no-go decisions:
