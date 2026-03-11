@@ -51,3 +51,8 @@
 #   bekesy_cochlea        - 4 experiments: tapered mode density (killed), log-spacing
 #                           recall (killed), active Q-boosting (confirmed), cochlear
 #                           window (killed)
+#
+# Phase 9c — Franklin-informed phase retrieval (0 confirmed, 4 killed):
+#   franklin_phase        - 4 experiments: direct methods / tangent formula (killed),
+#                           Patterson function (killed), Gerchberg-Saxton / HIO (killed),
+#                           molecular replacement (killed)

@@ -30,7 +30,7 @@ survive integration into the paper without regressing existing tests.
 | **S3**  | Tesla               | `tesla_phase.py`    | 50    | H-T1–T4: 4/4 confirmed | ✅ Complete    |
 | **S4**  | Chladni             | `chladni_plates.py` | 69    | H-C1–C4: 4/4 confirmed | ✅ Complete    |
 | **S5**  | Békésy              | `bekesy_cochlea.py` | 68    | H-B1–B4: 1/4 confirmed | ✅ Complete    |
-| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | —     | H-F1–F4: 0/4 started   | ⬜ Not started |
+| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | 69    | H-F1–F4: 0/4 confirmed | ✅ Complete    |
 | **S7**  | Leibniz             | `leibniz_binary.py` | —     | H-L1–H-L4: 0/4 started | ⬜ Not started |
 
 **Running totals:** 31 modules · 817 tests · test count must only go up.
@@ -156,16 +156,27 @@ enable reconstruction of the perturbation pattern from readout data (the
 
 ### Implementation plan
 
-| Step | Task                                                                                           | Artifact     | Status |
-| ---- | ---------------------------------------------------------------------------------------------- | ------------ | ------ |
-| F-1  | Literature review: direct methods, Patterson function, Gerchberg-Saxton, molecular replacement | Design notes | ⬜     |
-| F-2  | Implement `simulations/franklin_phase.py` with 4 experiment functions                          | Module       | ⬜     |
-| F-3  | Write `tests/test_franklin_phase.py` — target ≥ 40 tests                                       | Test file    | ⬜     |
-| F-4  | Run experiments, confirm or kill                                                               | Results      | ⬜     |
-| F-5  | Update `simulations/__init__.py` (Phase 9c)                                                    | Package      | ⬜     |
-| F-6  | Paper integration (if confirmed): §11 subsection + §14.2 bullet                                | Paper        | ⬜     |
-| F-7  | Full regression suite                                                                          | Regression   | ⬜     |
-| F-8  | Regenerate PDFs                                                                                | Deliverable  | ⬜     |
+| Step | Task                                                                                           | Artifact     | Status            |
+| ---- | ---------------------------------------------------------------------------------------------- | ------------ | ----------------- |
+| F-1  | Literature review: direct methods, Patterson function, Gerchberg-Saxton, molecular replacement | Design notes | ✅                |
+| F-2  | Implement `simulations/franklin_phase.py` with 4 experiment functions                          | Module       | ✅                |
+| F-3  | Write `tests/test_franklin_phase.py` — target ≥ 40 tests                                       | Test file    | ✅ 69             |
+| F-4  | Run experiments, confirm or kill                                                               | Results      | ✅ 0/4            |
+| F-5  | Update `simulations/__init__.py` (Phase 9c)                                                    | Package      | ✅                |
+| F-6  | Paper integration (§11.10 + §14.2 + §11.6 item 9)                                              | Paper        | ✅                |
+| F-7  | Full regression suite                                                                          | Regression   | ✅ 886 pass, 31 s |
+| F-8  | Regenerate PDFs                                                                                | Deliverable  | ✅                |
+
+### Experiment results
+
+| ID       | Verdict    | Key metric                                                                  |
+| -------- | ---------- | --------------------------------------------------------------------------- |
+| **H-F1** | **KILLED** | Reconstruction 45.8% (<80%); DM recall 16%; phase error 86.1° (near-random) |
+| **H-F2** | **KILLED** | 0/15 inter-site distances recovered; Patterson peaks at wrong positions     |
+| **H-F3** | **KILLED** | Did not converge: 200 iterations, error 0.809 (threshold: <100 iterations)  |
+| **H-F4** | **KILLED** | MR recall 96.5% = amplitude-only 96.5% < complex 99.0%                      |
+
+**Root cause:** SEM's $\sin^2(n\pi x/L)$ sensitivity encoding is algebraically incompatible with the Fourier-based encoding ($e^{2\pi i n x}$) that crystallographic phase-retrieval algorithms require.
 
 ### External data sources
 
