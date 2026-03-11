@@ -56,3 +56,8 @@
 #   franklin_phase        - 4 experiments: direct methods / tangent formula (killed),
 #                           Patterson function (killed), Gerchberg-Saxton / HIO (killed),
 #                           molecular replacement (killed)
+#
+# Phase 9d — Leibniz-informed binary encoding (3 confirmed, 1 killed):
+#   leibniz_binary        - 4 experiments: binary quantisation of recall (confirmed),
+#                           Gray coding (killed), monadic reconstruction (confirmed),
+#                           hexagram codebook (confirmed)

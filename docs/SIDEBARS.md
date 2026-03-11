@@ -23,17 +23,17 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure              | Module              | Tests | Hypotheses             | Status         |
-| ------- | ------------------- | ------------------- | ----- | ---------------------- | -------------- |
-| **S1**  | Spare / Mace        | `spare_mace.py`     | 62    | H1–H6: 6/6 confirmed   | ✅ Complete    |
-| **S2**  | Scranton / Dogon    | `scranton_dogon.py` | 62    | H7–H12: 6/6 confirmed  | ✅ Complete    |
-| **S3**  | Tesla               | `tesla_phase.py`    | 50    | H-T1–T4: 4/4 confirmed | ✅ Complete    |
-| **S4**  | Chladni             | `chladni_plates.py` | 69    | H-C1–C4: 4/4 confirmed | ✅ Complete    |
-| **S5**  | Békésy              | `bekesy_cochlea.py` | 68    | H-B1–B4: 1/4 confirmed | ✅ Complete    |
-| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | 69    | H-F1–F4: 0/4 confirmed | ✅ Complete    |
-| **S7**  | Leibniz             | `leibniz_binary.py` | —     | H-L1–H-L4: 0/4 started | ⬜ Not started |
+| Sidebar | Figure              | Module              | Tests | Hypotheses               | Status      |
+| ------- | ------------------- | ------------------- | ----- | ------------------------ | ----------- |
+| **S1**  | Spare / Mace        | `spare_mace.py`     | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
+| **S2**  | Scranton / Dogon    | `scranton_dogon.py` | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
+| **S3**  | Tesla               | `tesla_phase.py`    | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
+| **S4**  | Chladni             | `chladni_plates.py` | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
+| **S5**  | Békésy              | `bekesy_cochlea.py` | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
+| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
+| **S7**  | Leibniz             | `leibniz_binary.py` | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
 
-**Running totals:** 32 modules · 886 tests · test count must only go up.
+**Running totals:** 33 modules · 959 tests · test count must only go up.
 
 ---
 
@@ -220,16 +220,27 @@ combinatorial codebook design.
 
 ### Implementation plan
 
-| Step | Task                                                                                                                 | Artifact     | Status |
-| ---- | -------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
-| L-1  | Literature review: binary vs continuous Hopfield, Gray codes, Reed-Solomon for analog systems, I Ching combinatorics | Design notes | ⬜     |
-| L-2  | Implement `simulations/leibniz_binary.py` with 4 experiment functions                                                | Module       | ⬜     |
-| L-3  | Write `tests/test_leibniz_binary.py` — target ≥ 40 tests                                                             | Test file    | ⬜     |
-| L-4  | Run experiments, confirm or kill                                                                                     | Results      | ⬜     |
-| L-5  | Update `simulations/__init__.py` (Phase 9d)                                                                          | Package      | ⬜     |
-| L-6  | Paper integration (if confirmed): §11 subsection + §14.2 bullet                                                      | Paper        | ⬜     |
-| L-7  | Full regression suite                                                                                                | Regression   | ⬜     |
-| L-8  | Regenerate PDFs                                                                                                      | Deliverable  | ⬜     |
+| Step | Task                                                                                                                 | Artifact     | Status                     |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
+| L-1  | Literature review: binary vs continuous Hopfield, Gray codes, Reed-Solomon for analog systems, I Ching combinatorics | Design notes | ✅                         |
+| L-2  | Implement `simulations/leibniz_binary.py` with 4 experiment functions                                                | Module       | ✅                         |
+| L-3  | Write `tests/test_leibniz_binary.py` — target ≥ 40 tests                                                             | Test file    | ✅ 73 tests                |
+| L-4  | Run experiments, confirm or kill                                                                                     | Results      | ✅ 3/4 confirmed, 1 killed |
+| L-5  | Update `simulations/__init__.py` (Phase 9d)                                                                          | Package      | ✅                         |
+| L-6  | Paper integration: §11.11 subsection + §14.2 bullet + abstract (x) + §11.6 item 10                                   | Paper        | ✅                         |
+| L-7  | Full regression suite                                                                                                | Regression   | ✅ 959 pass                |
+| L-8  | Regenerate PDFs                                                                                                      | Deliverable  | ✅                         |
+
+### Experiment results
+
+| ID       | Verdict       | Key metric                                                                                   |
+| -------- | ------------- | -------------------------------------------------------------------------------------------- |
+| **H-L1** | **CONFIRMED** | Binary Hamming recall 87.5% vs continuous L2 100%; retention 87.5% ≥ 70%                     |
+| **H-L2** | **KILLED**    | Same fingerprint set; improvement −8.4% (Gray ≈ natural); Gray is bijection → identical sets |
+| **H-L3** | **CONFIRMED** | Full 100%, half (N/2) 100%, quarter (N/4) 100%; min modes for ≥50% = K = 8                   |
+| **H-L4** | **CONFIRMED** | Hexagram error 0.513 < dense error 0.668; 6-site binary beats 3-site 4-level                 |
+
+**Root cause (H-L2 kill):** Gray code is a bijection on {0,…,n−1}, so natural and Gray codebooks enumerate the _same set_ of mass patterns — they just assign different symbol labels to the same codewords. Since the ML decoder operates in fingerprint space (L2 nearest-neighbour), the symbol-to-codeword mapping is invisible: both produce identical fingerprint sets and therefore identical average error rates.
 
 ### External data sources
 
