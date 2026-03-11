@@ -386,11 +386,11 @@ class TestDegeneracySplitting:
         assert r_strong.n_bonus_modes_2d >= r_weak.n_bonus_modes_2d
 
     def test_higher_Q_more_pairs_needed(self):
-        """Higher Q → narrower linewidth → some pairs may not resolve."""
+        """Higher Q → narrower linewidth → more pairs become resolvable."""
         r_low = exp_degeneracy_splitting(Q=1_000.0)
         r_high = exp_degeneracy_splitting(Q=100_000.0)
-        # Low Q (wide linewidth) should resolve as many or more
-        assert r_low.n_bonus_modes_2d >= r_high.n_bonus_modes_2d
+        # High Q (narrow linewidth) should resolve as many or more
+        assert r_high.n_bonus_modes_2d >= r_low.n_bonus_modes_2d
 
     def test_reproducible(self):
         r1 = exp_degeneracy_splitting(rng=np.random.RandomState(42))

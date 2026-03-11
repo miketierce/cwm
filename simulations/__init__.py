@@ -42,3 +42,7 @@
 # Phase 8 — Tesla-informed phase-spectral encoding:
 #   tesla_phase           - 4 experiments: phase independence, phase-enhanced recall,
 #                           Q-multiplication energy asymmetry, scale invariance
+#
+# Phase 9a — Chladni-informed 2D plate eigenmode memory:
+#   chladni_plates        - 4 experiments: plate mode scaling, symmetry partition,
+#                           2D placement optimization, degeneracy splitting
