@@ -22,7 +22,7 @@ The experiments revealed a design principle that was not obvious before this inv
 
 This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes SEM's rewritability path viable despite the constraints of acoustic resonance.
 
-### 7.3 Impact on the v14 Roadmap
+### 7.3 Impact on the v16 Roadmap
 
 The parent paper [1] proposed a five-phase development roadmap. This technical note's findings affect three of the five phases:
 
@@ -62,6 +62,6 @@ All experiments described in this note are implemented in the open-source SEM si
 - **Tests:** `tests/test_rewritability.py` (68 tests, all passing)
 - **Integration:** `run_all_rewritability(verbose=True)` reproduces all results
 
-The complete simulation stack (22 modules, 433 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
+The complete simulation stack (33 modules, 959 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
 
 ---

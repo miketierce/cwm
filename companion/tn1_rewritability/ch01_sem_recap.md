@@ -14,19 +14,19 @@ For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max}
 
 ### 1.2 Key Numbers
 
-The companion paper validates the following from first-principles simulation (21 modules, 365 automated tests):
+The companion paper validates the following from first-principles simulation (33 modules, 959 automated tests):
 
 | Parameter                  | Value         | Source            |
 | -------------------------- | ------------- | ----------------- |
-| Macro prototype SNR        | 98.8 dB       | Measured          |
+| Macro prototype SNR        | 98.5 dB       | Measured          |
 | Thermally stable modes     | 9,380         | Analytical        |
 | Bits per mode              | 16.4          | Shannon limit     |
-| MEMS density (1 mm boro.)  | 95.5 Gbit/cm³ | Scaling law       |
+| MEMS density (1 mm boro.)  | 95.1 Gbit/cm³ | Scaling law       |
 | MEMS density (0.5 mm SiO₂) | 1.4 Tbit/cm³  | Scaling law       |
-| Write energy               | 16 fJ/bit     | Analytical        |
+| Write energy               | 15 fJ/bit     | Analytical        |
 | Readout time               | 3.6 µs        | Analytical        |
-| $Q_{\text{total}}$ (MEMS)  | 9,110         | 5-mechanism model |
-| Anchor loss fraction       | 4.2%          | 5-mechanism model |
+| $Q_{\text{total}}$ (MEMS)  | 9,097         | 5-mechanism model |
+| Anchor loss fraction       | 4.4%          | 5-mechanism model |
 | Endurance                  | >10¹⁵ cycles  | Non-destructive   |
 
 ### 1.3 The Coupling Matrix

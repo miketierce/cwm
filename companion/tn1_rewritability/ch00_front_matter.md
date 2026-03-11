@@ -6,13 +6,13 @@ ORCID: [0009-0004-4483-5283](https://orcid.org/0009-0004-4483-5283)
 Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
 
 **SEM Technical Note 1 — June 2025**
-_Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v14)_
+_Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)_
 
 ---
 
 ## Abstract
 
-Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.8 dB SNR, 9,380 thermally stable modes, 95.5 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
+Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
 
 This technical note asks the next question: _can SEM be made reconfigurable?_
 

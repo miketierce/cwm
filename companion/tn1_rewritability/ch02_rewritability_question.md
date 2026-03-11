@@ -55,6 +55,6 @@ from simulations.rewritability import run_all_rewritability
 results = run_all_rewritability(verbose=True)
 ```
 
-Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (21 modules, 365 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
+Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (33 modules, 959 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
 
 ---

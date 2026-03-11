@@ -48,11 +48,11 @@ This separation has a profound practical consequence: the glass rod can be optim
 
 Based on the combined results, we recommend a staged development path that follows the layer stack from top (lowest cost) to bottom (highest capability):
 
-**Stage 0: Baseline (v14 architecture, no rewriting)**
+**Stage 0: Baseline (v16 architecture, no rewriting)**
 
 - Fixed perturbation pattern, one Hopfield memory per rod.
 - Capacity: $\sim 1{,}294$ patterns per rod [1, §10.4].
-- This is the glass acoustic resonator described in v14.
+- This is the glass acoustic resonator described in v16.
 
 **Stage 1: Firmware virtual rewriting**
 
@@ -84,7 +84,7 @@ Each stage is independently valuable and backward-compatible with the previous o
 
 It is worth being precise about what rewritability buys.
 
-The original SEM architecture (v14) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
+The original SEM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
 
 Rewritability transforms this ROM into a reconfigurable memory:
 

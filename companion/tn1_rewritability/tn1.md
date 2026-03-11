@@ -2,17 +2,17 @@
 
 **Mike Tierce**
 _Independent Researcher_
-ORCID: [0009-0004-4483-5283](https://orcid.org/0009-0004-4483-5283)
+ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
 
 **SEM Technical Note 1 — June 2025**
-_Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v14)_
+_Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)_
 
 ---
 
 ## Abstract
 
-Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.8 dB SNR, 9,380 thermally stable modes, 95.5 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
+Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
 
 This technical note asks the next question: _can SEM be made reconfigurable?_
 
@@ -44,19 +44,19 @@ For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max}
 
 ### 1.2 Key Numbers
 
-The companion paper validates the following from first-principles simulation (21 modules, 365 automated tests):
+The companion paper validates the following from first-principles simulation (33 modules, 959 automated tests):
 
 | Parameter                  | Value         | Source            |
 | -------------------------- | ------------- | ----------------- |
-| Macro prototype SNR        | 98.8 dB       | Measured          |
+| Macro prototype SNR        | 98.5 dB       | Measured          |
 | Thermally stable modes     | 9,380         | Analytical        |
 | Bits per mode              | 16.4          | Shannon limit     |
-| MEMS density (1 mm boro.)  | 95.5 Gbit/cm³ | Scaling law       |
+| MEMS density (1 mm boro.)  | 95.1 Gbit/cm³ | Scaling law       |
 | MEMS density (0.5 mm SiO₂) | 1.4 Tbit/cm³  | Scaling law       |
-| Write energy               | 16 fJ/bit     | Analytical        |
+| Write energy               | 15 fJ/bit     | Analytical        |
 | Readout time               | 3.6 µs        | Analytical        |
-| $Q_{\text{total}}$ (MEMS)  | 9,110         | 5-mechanism model |
-| Anchor loss fraction       | 4.2%          | 5-mechanism model |
+| $Q_{\text{total}}$ (MEMS)  | 9,097         | 5-mechanism model |
+| Anchor loss fraction       | 4.4%          | 5-mechanism model |
 | Endurance                  | >10¹⁵ cycles  | Non-destructive   |
 
 ### 1.3 The Coupling Matrix
@@ -147,7 +147,7 @@ from simulations.rewritability import run_all_rewritability
 results = run_all_rewritability(verbose=True)
 ```
 
-Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (21 modules, 365 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
+Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (33 modules, 959 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
 
 ---
 
@@ -529,11 +529,11 @@ This separation has a profound practical consequence: the glass rod can be optim
 
 Based on the combined results, we recommend a staged development path that follows the layer stack from top (lowest cost) to bottom (highest capability):
 
-**Stage 0: Baseline (v14 architecture, no rewriting)**
+**Stage 0: Baseline (v16 architecture, no rewriting)**
 
 - Fixed perturbation pattern, one Hopfield memory per rod.
 - Capacity: $\sim 1{,}294$ patterns per rod [1, §10.4].
-- This is the glass acoustic resonator described in v14.
+- This is the glass acoustic resonator described in v16.
 
 **Stage 1: Firmware virtual rewriting**
 
@@ -565,7 +565,7 @@ Each stage is independently valuable and backward-compatible with the previous o
 
 It is worth being precise about what rewritability buys.
 
-The original SEM architecture (v14) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
+The original SEM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
 
 Rewritability transforms this ROM into a reconfigurable memory:
 
@@ -603,7 +603,7 @@ The experiments revealed a design principle that was not obvious before this inv
 
 This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes SEM's rewritability path viable despite the constraints of acoustic resonance.
 
-### 7.3 Impact on the v14 Roadmap
+### 7.3 Impact on the v16 Roadmap
 
 The parent paper [1] proposed a five-phase development roadmap. This technical note's findings affect three of the five phases:
 
@@ -643,13 +643,13 @@ All experiments described in this note are implemented in the open-source SEM si
 - **Tests:** `tests/test_rewritability.py` (68 tests, all passing)
 - **Integration:** `run_all_rewritability(verbose=True)` reproduces all results
 
-The complete simulation stack (22 modules, 433 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
+The complete simulation stack (33 modules, 959 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
 
 ---
 
 ## References
 
-[1] M. Tierce, "Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage," v14, 2025. (Parent paper.)
+[1] M. Tierce, "Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage," v16, 2026. (Parent paper.)
 
 [2] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities," _Proc. Natl. Acad. Sci._, vol. 79, no. 8, pp. 2554–2558, 1982.
 

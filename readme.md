@@ -141,7 +141,7 @@ Phases 0–3 modeled the ferrofluid acoustic variant and found phase diffusion k
 | Metric             | Ferrofluid (baseline) | Ferrofluid (mitigated) | Glass Rod (borosilicate)  |
 | ------------------ | --------------------- | ---------------------- | ------------------------- |
 | Phase diffusion    | 77.5% of noise        | 77.5%                  | **0%** (solid)            |
-| SNR                | -6.5 dB               | 13.5 dB                | **98.8 dB**               |
+| SNR                | -6.5 dB               | 13.5 dB                | **98.5 dB**               |
 | Usable modes (±1K) | 0                     | 10                     | **9,380**                 |
 | Bits/mode          | 0                     | 2.28                   | **16.4**                  |
 | Q factor           | ~500 (assumed)        | ~500                   | **10,000** (measured)     |

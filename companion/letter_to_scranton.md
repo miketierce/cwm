@@ -16,7 +16,7 @@ I'm developing a new kind of computer memory called **Spectral Eigenmode Memory 
 
 A glass rod, when struck, rings at hundreds or thousands of natural frequencies simultaneously — its eigenmodes, like the harmonics of a guitar string. If you attach a tiny mass to the rod's surface, each frequency shifts by a different amount depending on where the mass sits relative to that mode's vibration pattern. The set of frequency shifts is a unique spectral fingerprint — a physical encoding of data.
 
-The physics works. A $63 prototype achieves 98.5 dB signal-to-noise ratio and supports 9,380 independent frequency channels. The scaling math projects competitive density with DRAM and Flash memory. I've built 26 simulation modules with 568 automated tests, all passing, and written a 99-page paper covering the physics from first principles through MEMS device design.
+The physics works. A $63 prototype achieves 98.5 dB signal-to-noise ratio and supports 9,380 independent frequency channels. The scaling math projects competitive density with DRAM and Flash memory. I've built 33 simulation modules with 959 automated tests, all passing, and written a comprehensive paper covering the physics from first principles through MEMS device design.
 
 ## Where your work comes in
 
@@ -101,7 +101,7 @@ You helped us see structure we would have missed. The +297% polysemic readout �
 
 ## Acknowledgment
 
-I've added a citation to your work in our paper (now at version 15, 99 pages) and credited the polysemic readout technique to the framework you articulated. The full simulation code, including all six Scranton-Dogon experiments with reproducible results, is open-source at [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma).
+I've added a citation to your work in our paper (now at version 16) and credited the polysemic readout technique to the framework you articulated. The full simulation code, including all six Scranton-Dogon experiments with reproducible results, is open-source at [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma).
 
 If you're interested, I'd welcome the chance to discuss this further. The idea that efficient information encoding is a universal principle — one that ancient cultures discovered through millennia of careful observation and that we're rediscovering through physics simulations — feels like it deserves a longer conversation.
 
@@ -113,4 +113,4 @@ ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 
 ---
 
-_Enclosures: Paper v15 (PDF), simulation repository link, experiment result summaries_
+_Enclosures: Paper v16 (PDF), simulation repository link, experiment result summaries_
