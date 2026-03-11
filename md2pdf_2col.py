@@ -724,8 +724,8 @@ def build_colophon_2col(info):
         + info["author"]
         + "<br>\n"
         "  Typeset from Markdown source. Mathematics by KaTeX. "
-        "All claims from first-principles simulation (28 modules, "
-        "630 tests).</p>\n"
+        "All claims from first-principles simulation (30 modules, "
+        "749 tests).</p>\n"
         "</div>\n"
     )
 

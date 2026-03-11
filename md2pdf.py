@@ -883,7 +883,7 @@ def build_colophon(info):
         '    Typeset from Markdown source using Chromium PDF rendering.<br>\n'
         '    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>\n'
         '    All quantitative claims computed from first-principles simulation code<br>\n'
-        '    (26 modules, 568 automated tests) with independent FEM validation.\n'
+        '    (30 modules, 749 automated tests) with independent FEM validation.\n'
         '  </p>\n'
         '</div>\n'
     )
