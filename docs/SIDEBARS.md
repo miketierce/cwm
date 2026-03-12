@@ -23,16 +23,19 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure              | Module                 | Tests | Hypotheses               | Status      |
-| ------- | ------------------- | ---------------------- | ----- | ------------------------ | ----------- |
-| **S1**  | Spare / Mace        | `spare_mace.py`        | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
-| **S2**  | Scranton / Dogon    | `scranton_dogon.py`    | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
-| **S3**  | Tesla               | `tesla_phase.py`       | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
-| **S4**  | Chladni             | `chladni_plates.py`    | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
-| **S5**  | Békésy              | `bekesy_cochlea.py`    | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
-| **S6**  | Franklin (Rosalind) | `franklin_phase.py`    | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
-| **S7**  | Leibniz             | `leibniz_binary.py`    | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
-| **S8**  | Gabor               | `gabor_holographic.py` | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
+| Sidebar | Figure               | Module                   | Tests | Hypotheses               | Status      |
+| ------- | -------------------- | ------------------------ | ----- | ------------------------ | ----------- |
+| **S1**  | Spare / Mace         | `spare_mace.py`          | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
+| **S2**  | Scranton / Dogon     | `scranton_dogon.py`      | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
+| **S3**  | Tesla                | `tesla_phase.py`         | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
+| **S4**  | Chladni              | `chladni_plates.py`      | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
+| **S5**  | Békésy               | `bekesy_cochlea.py`      | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
+| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`      | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
+| **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
+| **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
+| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | —     | H-Z1–Z4: 0/4 pending     | 🔄 Active   |
+| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | —     | H-K1–K4: 0/4 pending     | 📋 Planned  |
+| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | —     | H-Bt1–Bt4: 0/4 pending   | 📋 Planned  |
 
 **Running totals:** 34 modules · 1036+ tests · test count must only go up.
 
@@ -346,23 +349,39 @@ S6 (Franklin) ─── depends on S3 ───────┤
   └─ phase retrieval extends            │
      tesla_phase.py results             │
                                         │
-S7 (Leibniz) ─── depends on S1, S2 ───┘
-  └─ binary/combinatorial encoding
-     extends hopfield + semantic work
+S7 (Leibniz) ─── depends on S1, S2 ───┤
+  └─ binary/combinatorial encoding      │
+     extends hopfield + semantic work   │
+                                        │
+S8 (Gabor) ─── depends on S1–S7 ──────┤
+  └─ holographic structural props       │
+                                        │
+S9 (Zeeman) ─── depends on S1, S4 ────┤
+  └─ splitting extends avoided-crossing │
+     and degeneracy-splitting results   │
+                                        │
+S10 (Kepler) ─── depends on S2, S8 ───┤
+  └─ harmonic ratios extend polysemic   │
+     partitioning and bandwidth ceiling │
+                                        │
+S11 (Boltzmann) ─── depends on S5 ────┘
+  └─ timescale hierarchy extends
+     thermal + decoherence models
 ```
 
-**Recommended order: S4 → S5 → S6 → S7**
+**Completed order: S4 → S5 → S6 → S7 → S8 (all ✅)**
+**Next: S9 → S10 → S11**
 
-Rationale:
+Rationale (S9–S11):
 
-1. **S4 (Chladni)** opens a new device geometry (2D membranes) — the highest-value
-   scientific question because it could change the hardware roadmap.
-2. **S5 (Békésy)** extends geometry further (tapered cavities) and introduces
-   bio-inspired noise rejection — high value, independent of S4.
-3. **S6 (Franklin)** builds directly on S3 (Tesla) phase results and needs those
-   results stable before extending them with phase-retrieval algorithms.
-4. **S7 (Leibniz)** is the most "firmware-level" sidebar (binary quantization,
-   codebooks) and benefits from having all the physics sidebars stable first.
+1. **S9 (Zeeman)** is the highest-physics-value Scranton sidebar: it directly
+   extends S1 avoided-crossing and S4 degeneracy-splitting with new quantitative
+   predictions (g-factor analogy, selection rules, nonlinear regime). No new
+   mathematical framework needed — just perturbation theory extensions.
+2. **S10 (Kepler)** builds on S2 polysemic channel partitioning and S8 bandwidth
+   ceiling. Needs stable crosstalk and capacity results from prior sidebars.
+3. **S11 (Boltzmann)** is the most theoretical sidebar (partition functions,
+   timescale hierarchies). Benefits from all physics sidebars being stable first.
 
 ---
 
@@ -378,6 +397,13 @@ Some results from one sidebar may affect another. Track known interactions:
 | Binary quantization + pruning              | S7 × S1  | Leibniz's binarization is an extreme form of Spare/Mace's pruning                                           |
 | Tapered rod + Chladni sensitivity          | S5 × S4  | Non-uniform geometry appears in both; shared sensitivity-function math                                      |
 | Monadic reconstruction + polysemic readout | S7 × S2  | Each mode encoding the whole pattern (Leibniz) parallels each sub-channel encoding independently (Scranton) |
+| Splitting extends avoided crossing         | S9 × S1  | Zeeman g-factor analogy generalises spare_mace hybridisation depth into a predictive ratio                  |
+| Splitting extends 2D degeneracy            | S9 × S4  | Zeeman selection rules parallel Chladni's (n,m)/(m,n) structural degeneracy splitting                       |
+| Harmonic partitioning + polysemic          | S10 × S2 | Kepler's consonant grouping is an alternative to Scranton's uniform sub-channel split                       |
+| Consonance + bandwidth ceiling             | S10 × S8 | Kepler ratios may improve Gabor's bandwidth utilization η by reducing cross-channel leakage                 |
+| Timescale hierarchy + thermal drift        | S11 × S5 | Boltzmann's decade-spacing prediction extends Békésy's active Q-boosting timescale model                    |
+| Partition function + capacity weighting    | S11 × S8 | Boltzmann weighting provides a thermodynamic foundation for Gabor's bandwidth ceiling N_BW                  |
+| Cascade reddening + mode coupling          | S11 × S1 | Boltzmann energy cascade tests whether spare_mace coupling drives spectral reddening                        |
 
 ---
 
