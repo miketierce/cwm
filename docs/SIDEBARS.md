@@ -440,3 +440,190 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_tesla_phase.py` (50 tests)
 - **Paper:** §11.7, §14.2 bullet
 - **Key result:** Phase independence +84%, complex recall 12× margin, acoustic read ~free, scale invariance confirmed
+
+---
+
+## S9 — Zeeman Splitting (Scranton Observation 1): Perturbation-Induced Level Splitting
+
+### Core insight
+
+The Zeeman effect (1896) splits atomic spectral lines when an external magnetic
+field is applied: degenerate energy levels separate into distinct sub-levels,
+with splitting patterns governed by quantum numbers and selection rules. Laird
+Scranton's observation that "creational energetics" involves "the splitting of
+a thing into two things" maps directly onto SEM's mode hybridisation physics:
+when an external perturbation (mass loading) is applied to a cavity with
+near-degenerate eigenmode pairs, frequency splitting occurs analogous to the
+Zeeman effect. The spare_mace avoided-crossing experiment (§11.3) demonstrated
++160% capacity from hybridisation; the chladni degeneracy-splitting experiment
+(H-C4) showed 2D structural degeneracy. This sidebar extends both with
+quantitative predictions grounded in Zeeman physics: g-factor-like splitting
+ratios, selection rules that constrain which modes interact, nonlinear
+(quadratic) splitting at strong perturbation, and multi-site "field" geometry
+effects.
+
+### Hypotheses
+
+| ID       | Statement                                                                                                                                                                                                                                                                                                                 | Kill criterion                                                              | Builds on                                  |
+| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------- | ------------------------------------------ |
+| **H-Z1** | **Anomalous splitting ratio.** Perturbation-induced frequency splitting of near-degenerate mode pairs follows a ratio structure analogous to quantum Zeeman g-factors: $\Delta f / f_0 = g_{\text{eff}} \cdot \varepsilon$, where $g_{\text{eff}}$ depends on mode indices. Splitting is linear for $\varepsilon < 0.05$. | Splitting ratio deviates > 50% from linear prediction over weak-field range | §11.3 avoided crossing, spare_mace.py      |
+| **H-Z2** | **Selection-rule channel count.** Under single-site perturbation, only mode pairs satisfying a selection rule ($\|n - m\| \leq \Delta n_{\max}$) show significant splitting (> linewidth). This constrains usable split channels, analogous to the quantum rule $\Delta m_J = 0, \pm 1$.                                  | > 80% of ALL mode pairs split significantly (no selection rule observed)    | §11.3, noise_decoherence.py                |
+| **H-Z3** | **Quadratic Zeeman at strong perturbation.** At large perturbation ($\varepsilon > 0.1$), splitting deviates from linear: $\Delta f = g_{\text{eff}} \varepsilon + \alpha \varepsilon^2$. The quadratic coefficient $\alpha$ is predictable from the mode coupling matrix.                                                | Splitting remains linear ($R^2 > 0.99$) even at $\varepsilon = 0.3$         | spare_mace.py avoided crossing             |
+| **H-Z4** | **Multi-site field geometry.** The total number of resolvable split pairs scales with perturbation site count $K$ and spatial arrangement. $K$ optimally-placed sites resolve $\geq 2K$ split pairs, analogous to complex magnetic field geometries creating richer Zeeman patterns.                                      | Split-pair count $< K$ for optimally-placed sites                           | §7 site optimization, site_optimization.py |
+
+### Implementation plan
+
+| Step | Task                                                                                             | Artifact     | Status |
+| ---- | ------------------------------------------------------------------------------------------------ | ------------ | ------ |
+| Z-1  | Literature review: Zeeman effect, g-factors, selection rules ΔmJ, quadratic Zeeman, Paschen-Back | Design notes | ✅     |
+| Z-2  | Implement `simulations/zeeman_splitting.py` with 4 experiment functions + dataclass results      | Module       |        |
+| Z-3  | Write `tests/test_zeeman_splitting.py` — target ≥ 40 tests                                       | Test file    |        |
+| Z-4  | Run experiments, confirm or kill each hypothesis                                                 | Results      |        |
+| Z-5  | Update `simulations/__init__.py` (Phase 9f)                                                      | Package      |        |
+| Z-6  | Paper integration: §11.13 subsection + §14.2 historical bullet + §11.6 item 12                   | Paper        |        |
+| Z-7  | Full regression suite — must exceed 1036                                                         | Regression   |        |
+| Z-8  | Regenerate PDFs                                                                                  | Deliverable  |        |
+
+### External data sources (for validation, not curve-fitting)
+
+- Zeeman, P. "On the Influence of Magnetism on the Nature of the Light Emitted by a Substance" (Phil. Mag., 1897)
+- Condon, E. & Shortley, G. _The Theory of Atomic Spectra_ (Cambridge, 1935) — g-factor tables
+- NIST Atomic Spectra Database — measured Zeeman splitting patterns for alkali metals
+- Scranton, L. _The Science of the Dogon_ (2006) — creational splitting observations
+- Spare_mace avoided-crossing experiment results (§11.3, +160% capacity)
+- Chladni degeneracy-splitting results (H-C4, 2D structural degeneracy)
+
+### Key equations to validate
+
+- Linear Zeeman splitting: $\Delta f_{nm} = g_{\text{eff}}(n,m) \cdot \varepsilon \cdot f_0$
+- Effective g-factor: $g_{\text{eff}}(n,m) = 4 |\sin^2(n\pi x_p) - \sin^2(m\pi x_p)|$ (single-site perturbation)
+- Selection rule: significant splitting only when $|n - m| \leq \Delta n_{\max}(Q)$
+- Quadratic correction: $\Delta f = g_{\text{eff}} \varepsilon + \alpha_{nm} \varepsilon^2$, where $\alpha_{nm} \propto \kappa^2 / \delta f_0$
+- Multi-site splitting count: $N_{\text{split}}(K) \geq 2K$ for golden-ratio site placement
+
+### Cross-sidebar interactions
+
+| Interaction                              | Sidebars | Nature                                                                          |
+| ---------------------------------------- | -------- | ------------------------------------------------------------------------------- |
+| Splitting extends avoided crossing       | S9 × S1  | Zeeman g-factor generalises hybridisation depth into a predictive ratio         |
+| Splitting extends 2D degeneracy          | S9 × S4  | Selection rules parallel Chladni (n,m)/(m,n) structural splitting               |
+| Multi-site geometry uses site optimizer  | S9 × S7a | Optimal perturbation site placement feeds into multi-site Zeeman field geometry |
+| Resolvability uses decoherence criterion | S9 × S5  | Mode resolvability (splitting > linewidth) relies on Q-factor from Békésy H-B3  |
+
+---
+
+## S10 — Kepler Harmonic Resonance Ratios (Scranton Observation 2): Musical Consonance in Mode Spectra
+
+### Core insight
+
+Kepler's _Harmonices Mundi_ (1619) described planetary orbital ratios as musical
+consonances — harmonic relationships between oscillation frequencies that form
+small-integer ratios. SEM's eigenmode spectrum $f_n = nc/(2L)$ is inherently
+harmonic: all modes are exact integer multiples of the fundamental. Kepler's
+insight suggests that these harmonic relationships can be _exploited_: consonant
+mode pairs (simple ratios like 2:1, 3:2, 5:3) may provide superior sub-channel
+partitioning for polysemic readout, and the octave structure (factor-of-2
+redundancy) may enable error detection. Scranton's reference to "harmonic
+resonance" in creational energetics directly parallels Kepler's planetary music.
+
+### Hypotheses
+
+| ID       | Statement                                                                                                                                                                                                                                                                                | Kill criterion                                                         | Builds on                                      |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------- |
+| **H-K1** | **Diatonic partitioning.** Partitioning the eigenmode spectrum into consonant groups (based on simple integer frequency ratios: octaves 2:1, fifths 3:2, fourths 4:3) produces polysemic sub-channels with $\geq 30\%$ lower inter-channel crosstalk than uniformly-spaced partitioning. | Consonant partitioning crosstalk $\geq$ uniform partitioning crosstalk | §11.5 polysemic, scranton_dogon.py             |
+| **H-K2** | **Consonance-weighted recall.** Weighting recall contributions by the consonance of each mode pair (inversely proportional to ratio complexity: $w_{nm} = 1 / (n + m)$ for mode ratio $n:m$) improves noise tolerance by $\geq 15\%$ over uniform weighting.                             | Consonance weighting degrades recall accuracy vs. uniform weighting    | interference.py, hopfield_recall.py            |
+| **H-K3** | **Octave equivalence.** Modes separated by a factor of 2 in frequency carry partially redundant spatial information (same nodal structure at different scales). Octave-paired mode fingerprints correlate with $r > 0.5$; this redundancy enables single-error detection.                | Octave-pair correlation $< 0.3$                                        | §2.1 eigenmode encoding                        |
+| **H-K4** | **Harmonic series capacity scaling.** The information per additional mode decreases as $\sim 1/n$ for the $n$-th harmonic, so total capacity from $N$ harmonics scales as $\sim \ln(N)$. This matches Kepler's logarithmic perception and Békésy's cochlear frequency mapping.           | Capacity scales linearly with no diminishing returns                   | capacity.py, convergence.py, bekesy_cochlea.py |
+
+### Implementation plan
+
+| Step | Task                                                                                                          | Artifact     | Status |
+| ---- | ------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
+| K-1  | Literature review: Kepler Harmonices Mundi, musical consonance, ratio complexity, harmonic series convergence | Design notes |        |
+| K-2  | Implement `simulations/kepler_harmonic.py` with 4 experiment functions                                        | Module       |        |
+| K-3  | Write `tests/test_kepler_harmonic.py` — target ≥ 40 tests                                                     | Test file    |        |
+| K-4  | Run experiments, confirm or kill                                                                              | Results      |        |
+| K-5  | Update `simulations/__init__.py` (Phase 9g)                                                                   | Package      |        |
+| K-6  | Paper integration: §11.14 subsection + §14.2 bullet + §11.6 item 13                                           | Paper        |        |
+| K-7  | Full regression suite                                                                                         | Regression   |        |
+| K-8  | Regenerate PDFs                                                                                               | Deliverable  |        |
+
+### External data sources
+
+- Kepler, J. _Harmonices Mundi_ (1619) — planetary orbital ratio tables
+- Helmholtz, H. _On the Sensations of Tone_ (1863) — consonance and roughness theory
+- Plomp, R. & Levelt, W. "Tonal Consonance and Critical Bandwidth" (JASA, 1965)
+- Scranton, L. birthday observations on "harmonic resonance" in creational energetics
+- Musical interval frequency ratios (just intonation): unison 1:1, octave 2:1, fifth 3:2, fourth 4:3, major third 5:4, minor third 6:5
+
+### Key equations to validate
+
+- Consonance rating: $C(n, m) = 1 / (n + m)$ for reduced ratio $n:m$
+- Diatonic mode partitioning: assign mode $k$ to channel $j$ where $k/2^j$ is closest to a consonant ratio
+- Octave correlation: $r = \text{corr}(\text{fp}_n, \text{fp}_{2n})$ where fp is the sensitivity column
+- Capacity scaling: $\mathcal{C}(N) = \sum_{n=1}^N I_n \approx \sum_{n=1}^N c/n = c \cdot H_N \approx c \cdot \ln N$
+
+---
+
+## S11 — Boltzmann Timescale Hierarchy (Scranton Observation 3): Statistical Mechanics of Mode Populations
+
+### Core insight
+
+Boltzmann's statistical mechanics reveals that complex systems exhibit
+hierarchical timescales: fast microscopic fluctuations → intermediate
+relaxation → slow macroscopic equilibration. SEM's eigenmode system similarly
+spans timescales from fast acoustic oscillations ($\sim$ MHz) through mode
+ring-down ($\tau = Q / \pi f$, $\sim$ ms) to thermal drift ($\sim$ s).
+Scranton's observation about "nested timescales in creational processes" maps
+onto this hierarchy. Boltzmann's partition function $Z = \sum_n e^{-E_n/k_BT}$
+may provide a natural weighting scheme for mode contributions to capacity, and
+the timescale separation predicts optimal readout windows.
+
+### Hypotheses
+
+| ID        | Statement                                                                                                                                                                                                                                                                                                  | Kill criterion                                                     | Builds on                                    |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------- |
+| **H-Bt1** | **Decade spacing universality.** SEM's three characteristic timescales — oscillation period $T_{\text{osc}} = 1/f$, ring-down time $\tau = Q/(\pi f)$, and thermal drift period $T_{\text{th}}$ — are separated by approximately one decade each, a universal property predictable from $Q$ and $f$ alone. | Timescale ratios deviate $> 3\times$ from predicted decade spacing | §6 scaling, thermal.py, noise_decoherence.py |
+| **H-Bt2** | **Spectral reddening cascade.** Energy injected at high-frequency modes cascades to lower modes through nonlinear coupling, with the cascade spectrum following a power law $f^{-\beta}$ where $\beta \in [1, 2]$. This imposes a fundamental limit on high-mode information retention time.               | No measurable energy transfer between modes ($\beta < 0.5$)        | coupled_physics.py, noise_decoherence.py     |
+| **H-Bt3** | **Optimal readout window.** An optimal readout time $t^*$ exists after excitation, balancing mode establishment (needs $t > 1/\Delta f$) against decoherence ($\text{SNR} \propto e^{-t/\tau}$). The Boltzmann-optimal $t^* = \tau \cdot \ln(Q/\pi)$.                                                      | Readout accuracy is monotonic with time (no optimum exists)        | §8.4 readout, cw_readout.py                  |
+| **H-Bt4** | **Partition function capacity.** Weighting mode contributions by the Boltzmann factor $\exp(-h f_n / k_B T_{\text{eff}})$ (where $T_{\text{eff}}$ is an effective noise temperature) predicts usable capacity more accurately ($R^2 > 0.9$) than uniform weighting or $Q$-only weighting.                  | Boltzmann weighting $R^2 <$ $Q$-only weighting $R^2$               | capacity.py, thermal.py                      |
+
+### Implementation plan
+
+| Step | Task                                                                                                                 | Artifact     | Status |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
+| Bt-1 | Literature review: Boltzmann partition function, timescale separation, energy cascade, Kolmogorov turbulence analogy | Design notes |        |
+| Bt-2 | Implement `simulations/boltzmann_timescale.py` with 4 experiment functions                                           | Module       |        |
+| Bt-3 | Write `tests/test_boltzmann_timescale.py` — target ≥ 40 tests                                                        | Test file    |        |
+| Bt-4 | Run experiments, confirm or kill                                                                                     | Results      |        |
+| Bt-5 | Update `simulations/__init__.py` (Phase 9h)                                                                          | Package      |        |
+| Bt-6 | Paper integration: §11.15 subsection + §14.2 bullet + §11.6 item 14                                                  | Paper        |        |
+| Bt-7 | Full regression suite                                                                                                | Regression   |        |
+| Bt-8 | Regenerate PDFs                                                                                                      | Deliverable  |        |
+
+### External data sources
+
+- Boltzmann, L. "Weitere Studien über das Wärmegleichgewicht" (1872) — H-theorem, partition function
+- Kolmogorov, A. "The Local Structure of Turbulence" (1941) — energy cascade power law
+- Scranton, L. birthday observations on "nested timescales" in creational energetics
+- SEM thermal drift measurements: α ≈ 0.0022 /K (paper §5)
+- Q-factor database: MEMS resonators 500–50,000 (mems_q_model.py)
+- Mode lifetime measurements: τ = Q/(πf) from noise_decoherence.py experiments
+
+### Key equations to validate
+
+- Timescale hierarchy: $T_{\text{osc}} \ll \tau_{\text{ringdown}} \ll T_{\text{thermal}}$
+- Ring-down time: $\tau = Q / (\pi f)$
+- Cascade power law: $E(f) \propto f^{-\beta}$, $\beta \in [1, 2]$
+- Optimal readout: $t^* = \tau \cdot \ln(Q / \pi)$
+- Partition function: $Z = \sum_{n=1}^{N} \exp(-h f_n / k_B T_{\text{eff}})$
+- Boltzmann-weighted capacity: $\mathcal{C}_B = \sum_n p_n \cdot I_n$ where $p_n = e^{-hf_n/k_BT_{\text{eff}}} / Z$
+
+### Cross-sidebar interactions
+
+| Interaction                                | Sidebars | Nature                                                                       |
+| ------------------------------------------ | -------- | ---------------------------------------------------------------------------- |
+| Timescale maps onto active Q model         | S11 × S5 | Békésy's active Q-boosting shifts the ring-down timescale                    |
+| Partition function contextualises capacity | S11 × S8 | Boltzmann Z is a thermodynamic foundation for Gabor's bandwidth ceiling N_BW |
+| Cascade reddening tests mode coupling      | S11 × S1 | Energy cascade requires the coupling matrix from spare_mace                  |
+| Readout window uses CW readout model       | S11 × S3 | Optimal t\* balances Tesla's phase-spectral readout against decoherence      |
