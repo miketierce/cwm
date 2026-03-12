@@ -65,3 +65,7 @@
 # Phase 9e — Gabor holographic distributed memory:
 #   gabor_holographic     - 4 experiments: shift-tolerant recall, sub-aperture
 #                           degradation, bandwidth ceiling, crosstalk envelope
+#
+# Phase 9f — Zeeman perturbation-induced level splitting:
+#   zeeman_splitting      - 4 experiments: anomalous splitting ratio, selection-rule
+#                           channel count, quadratic Zeeman, multi-site field geometry

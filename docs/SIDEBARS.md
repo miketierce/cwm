@@ -33,12 +33,12 @@ survive integration into the paper without regressing existing tests.
 | **S6**  | Franklin (Rosalind)  | `franklin_phase.py`      | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
 | **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
 | **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
-| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | —     | H-Z1–Z4: 0/4 pending     | 🔄 Active   |
+| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed   | ✅ Complete |
 | **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | —     | H-K1–K4: 0/4 pending     | 📋 Planned  |
 | **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | —     | H-Bt1–Bt4: 0/4 pending   | 📋 Planned  |
 | **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | —     | H-ARF1–ARF4: 0/4 pending | 📋 Planned  |
 
-**Running totals:** 34 modules · 1036+ tests · test count must only go up.
+**Running totals:** 35 modules · 1111 tests · test count must only go up.
 
 ---
 
@@ -298,14 +298,14 @@ which depend on distributed wave encoding, not on the specific basis functions.
 
 | Step | Task                                                                                         | Artifact     | Status |
 | ---- | -------------------------------------------------------------------------------------------- | ------------ | ------ |
-| G-1  | Literature review: Gabor 1948/1969, van Heerden 1963, Kogelnik 1969, Psaltis & Brady 1990    | Design notes | ✅     |
-| G-2  | Implement `simulations/gabor_holographic.py` with 4 experiment functions + dataclass results | Module       |        |
-| G-3  | Write `tests/test_gabor_holographic.py` — target ≥ 40 tests                                  | Test file    |        |
-| G-4  | Run experiments, confirm or kill                                                             | Results      |        |
-| G-5  | Update `simulations/__init__.py` (Phase 9e)                                                  | Package      |        |
-| G-6  | Paper integration: §11.12 + §14.2 historical bullet                                          | Paper        |        |
-| G-7  | Full regression suite — must exceed 959                                                      | Regression   |        |
-| G-8  | Regenerate PDFs                                                                              | Deliverable  |        |
+| G-1  | Literature review: Gabor 1948/1969, van Heerden 1963, Kogelnik 1969, Psaltis & Brady 1990    | Design notes | ✅                          |
+| G-2  | Implement `simulations/gabor_holographic.py` with 4 experiment functions + dataclass results | Module       | ✅                          |
+| G-3  | Write `tests/test_gabor_holographic.py` — target ≥ 40 tests                                  | Test file    | ✅ 77 tests                 |
+| G-4  | Run experiments, confirm or kill                                                             | Results      | ✅ 1/4 confirmed, 3 killed  |
+| G-5  | Update `simulations/__init__.py` (Phase 9e)                                                  | Package      | ✅                          |
+| G-6  | Paper integration: §11.12 + §14.2 historical bullet                                          | Paper        | ✅                          |
+| G-7  | Full regression suite — must exceed 959                                                      | Regression   | ✅ 1036 pass                |
+| G-8  | Regenerate PDFs                                                                              | Deliverable  | ✅                          |
 
 ### External data sources (for validation, not curve-fitting)
 
@@ -375,8 +375,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 (all ✅)**
-**Next: S9 → S10 → S11 → S12**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 (all ✅)**
+**Next: S10 → S11 → S12**
 
 Rationale (S9–S12):
 
@@ -459,6 +459,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Paper:** §11.7, §14.2 bullet
 - **Key result:** Phase independence +84%, complex recall 12× margin, acoustic read ~free, scale invariance confirmed
 
+### S9 — Zeeman (Phase 9f)
+
+- **Module:** `simulations/zeeman_splitting.py` (~400 lines, 4 experiments)
+- **Tests:** `tests/test_zeeman_splitting.py` (75 tests)
+- **Paper:** §11.13, §14.2 bullet, §11.6 item 12
+- **Key result:** 4/4 confirmed — g-factor splitting ratio (R² = 1.0000), selection-rule channel constraints (55.2% significant), quadratic Zeeman nonlinearity (R² = 0.9998), multi-site geometry scaling (all K exceed 2K threshold)
+
 ---
 
 ## S9 — Zeeman Splitting (Scranton Observation 1): Perturbation-Induced Level Splitting
@@ -493,14 +500,23 @@ effects.
 
 | Step | Task                                                                                             | Artifact     | Status |
 | ---- | ------------------------------------------------------------------------------------------------ | ------------ | ------ |
-| Z-1  | Literature review: Zeeman effect, g-factors, selection rules ΔmJ, quadratic Zeeman, Paschen-Back | Design notes | ✅     |
-| Z-2  | Implement `simulations/zeeman_splitting.py` with 4 experiment functions + dataclass results      | Module       |        |
-| Z-3  | Write `tests/test_zeeman_splitting.py` — target ≥ 40 tests                                       | Test file    |        |
-| Z-4  | Run experiments, confirm or kill each hypothesis                                                 | Results      |        |
-| Z-5  | Update `simulations/__init__.py` (Phase 9f)                                                      | Package      |        |
-| Z-6  | Paper integration: §11.13 subsection + §14.2 historical bullet + §11.6 item 12                   | Paper        |        |
-| Z-7  | Full regression suite — must exceed 1036                                                         | Regression   |        |
-| Z-8  | Regenerate PDFs                                                                                  | Deliverable  |        |
+| Z-1  | Literature review: Zeeman effect, g-factors, selection rules ΔmJ, quadratic Zeeman, Paschen-Back | Design notes | ✅                          |
+| Z-2  | Implement `simulations/zeeman_splitting.py` with 4 experiment functions + dataclass results      | Module       | ✅                          |
+| Z-3  | Write `tests/test_zeeman_splitting.py` — target ≥ 40 tests                                       | Test file    | ✅ 75 tests                 |
+| Z-4  | Run experiments, confirm or kill each hypothesis                                                 | Results      | ✅ 4/4 confirmed            |
+| Z-5  | Update `simulations/__init__.py` (Phase 9f)                                                      | Package      | ✅                          |
+| Z-6  | Paper integration: §11.13 subsection + §14.2 historical bullet + §11.6 item 12                   | Paper        | ✅                          |
+| Z-7  | Full regression suite — must exceed 1036                                                         | Regression   | ✅ 1111 pass                |
+| Z-8  | Regenerate PDFs                                                                                  | Deliverable  | ✅                          |
+
+### Experiment results
+
+| ID       | Verdict       | Key metric                                                                                                                              |
+| -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| **H-Z1** | **CONFIRMED** | Mean linear R² = 1.0000 across all mode pairs; g_eff correlation with predicted = 1.0000                                               |
+| **H-Z2** | **CONFIRMED** | 240/435 pairs significant (55.2%); selection rule Δn_max = 28 constrains usable channels                                                |
+| **H-Z3** | **CONFIRMED** | Linear R² = 0.9735 (< 0.99 threshold), quadratic R² = 0.9998; |α| = 1.157 confirms nonlinear regime                                    |
+| **H-Z4** | **CONFIRMED** | All K = 1..10 exceed 2K threshold; best K = 1 ratio = 35.00×; multi-site geometry monotonically increases resolvable split pairs        |
 
 ### External data sources (for validation, not curve-fitting)
 
