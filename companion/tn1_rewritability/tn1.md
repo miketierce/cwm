@@ -44,7 +44,7 @@ For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max}
 
 ### 1.2 Key Numbers
 
-The companion paper validates the following from first-principles simulation (33 modules, 959 automated tests):
+The companion paper validates the following from first-principles simulation (34 modules, 1,036 automated tests):
 
 | Parameter                  | Value         | Source            |
 | -------------------------- | ------------- | ----------------- |
@@ -147,7 +147,7 @@ from simulations.rewritability import run_all_rewritability
 results = run_all_rewritability(verbose=True)
 ```
 
-Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (33 modules, 959 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
+Each experiment produces a result dataclass with a boolean `verdict` field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (34 modules, 1,036 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.
 
 ---
 
@@ -643,7 +643,7 @@ All experiments described in this note are implemented in the open-source SEM si
 - **Tests:** `tests/test_rewritability.py` (68 tests, all passing)
 - **Integration:** `run_all_rewritability(verbose=True)` reproduces all results
 
-The complete simulation stack (33 modules, 959 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
+The complete simulation stack (34 modules, 1,036 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
 
 ---
 

@@ -627,7 +627,7 @@ div.worksheet-plate th {
 <p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha \,\Delta T} \right\rfloor$$</p>
 <p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max} = 9{,}380$ modes. This number is independent of rod length—a 150 mm prototype rod and a 1 mm MEMS rod support the same mode count.</p>
 <h3 id="12-key-numbers">1.2 Key Numbers</h3>
-<p>The companion paper validates the following from first-principles simulation (33 modules, 959 automated tests):</p>
+<p>The companion paper validates the following from first-principles simulation (34 modules, 1,036 automated tests):</p>
 <table>
 <thead>
 <tr>
@@ -779,7 +779,7 @@ div.worksheet-plate th {
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">simulations.rewritability</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_all_rewritability</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">run_all_rewritability</span><span class="p">(</span><span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p>Each experiment produces a result dataclass with a boolean <code>verdict</code> field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (33 modules, 959 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.</p>
+<p>Each experiment produces a result dataclass with a boolean <code>verdict</code> field indicating whether the hypothesis is confirmed, along with all intermediate quantities needed to reproduce and extend the analysis. The experiments build on the existing simulation infrastructure (34 modules, 1,036 tests from the companion paper) and import directly from the Hopfield recall, interference, and Q-model modules.</p>
 <hr />
 <div class="part-heading">
   <p class="part-label">Part II</p>
@@ -1698,7 +1698,7 @@ $$</p>
 <li><strong>Tests:</strong> <code>tests/test_rewritability.py</code> (68 tests, all passing)</li>
 <li><strong>Integration:</strong> <code>run_all_rewritability(verbose=True)</code> reproduces all results</li>
 </ul>
-<p>The complete simulation stack (33 modules, 959 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.</p>
+<p>The complete simulation stack (34 modules, 1,036 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.</p>
 <hr />
 <h2 id="references">References</h2>
 <p>[1] M. Tierce, &ldquo;Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage,&rdquo; v16, 2026. (Parent paper.)</p>
@@ -1985,7 +1985,7 @@ $$</p>
     Typeset from Markdown source using Chromium PDF rendering.<br>
     Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
     All quantitative claims computed from first-principles simulation code<br>
-    (33 modules, 959 automated tests) with independent FEM validation.
+    (34 modules, 1036 automated tests) with independent FEM validation.
   </p>
 </div>
 

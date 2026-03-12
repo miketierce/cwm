@@ -16,7 +16,7 @@ I'm developing a new kind of computer memory called **Spectral Eigenmode Memory 
 
 A glass rod, when struck, rings at hundreds or thousands of natural frequencies simultaneously — its eigenmodes, like the harmonics of a guitar string. If you attach a tiny mass to the rod's surface, each frequency shifts by a different amount depending on where the mass sits relative to that mode's vibration pattern. The set of frequency shifts is a unique spectral fingerprint — a physical encoding of data.
 
-The physics works. A $63 prototype achieves 98.5 dB signal-to-noise ratio and supports 9,380 independent frequency channels. The scaling math projects competitive density with DRAM and Flash memory. I've built 33 simulation modules with 959 automated tests, all passing, and written a comprehensive paper covering the physics from first principles through MEMS device design.
+The physics works. A $63 prototype achieves 98.5 dB signal-to-noise ratio and supports 9,380 independent frequency channels. The scaling math projects competitive density with DRAM and Flash memory. I've built 34 simulation modules with 1,036 automated tests, all passing, and written a comprehensive paper covering the physics from first principles through MEMS device design.
 
 ## Where your work comes in
 

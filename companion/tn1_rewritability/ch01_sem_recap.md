@@ -14,7 +14,7 @@ For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max}
 
 ### 1.2 Key Numbers
 
-The companion paper validates the following from first-principles simulation (33 modules, 959 automated tests):
+The companion paper validates the following from first-principles simulation (34 modules, 1,036 automated tests):
 
 | Parameter                  | Value         | Source            |
 | -------------------------- | ------------- | ----------------- |

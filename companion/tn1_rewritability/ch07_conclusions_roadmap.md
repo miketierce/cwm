@@ -62,6 +62,6 @@ All experiments described in this note are implemented in the open-source SEM si
 - **Tests:** `tests/test_rewritability.py` (68 tests, all passing)
 - **Integration:** `run_all_rewritability(verbose=True)` reproduces all results
 
-The complete simulation stack (33 modules, 959 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
+The complete simulation stack (34 modules, 1,036 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.
 
 ---
