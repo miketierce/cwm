@@ -35,10 +35,10 @@ survive integration into the paper without regressing existing tests.
 | **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
 | **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed   | ✅ Complete |
 | **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | 74    | H-K1–K4: 2/4 confirmed   | ✅ Complete |
-| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | —     | H-Bt1–Bt4: 0/4 pending   | 📋 Planned  |
+| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | 96    | H-Bt1–Bt4: 1/4 confirmed | ✅ Complete |
 | **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | —     | H-ARF1–ARF4: 0/4 pending | 📋 Planned  |
 
-**Running totals:** 36 modules · 1185 tests · test count must only go up.
+**Running totals:** 36 modules · 1281 tests · test count must only go up.
 
 ---
 
@@ -375,8 +375,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 (all ✅)**
-**Next: S11 → S12**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 (all ✅)**
+**Next: S12**
 
 Rationale (S9–S12):
 
@@ -430,10 +430,13 @@ Some results from one sidebar may affect another. Track known interactions:
 _Record every hypothesis that fails its kill criterion. This is as scientifically
 valuable as confirmations — it maps the boundary of what the physics supports._
 
-| Hypothesis | Sidebar | Date       | Kill reason                                                                      | Insight gained                                                                                                                                |
-| ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                          |
-| **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio |
+| Hypothesis | Sidebar | Date       | Kill reason                                                                      | Insight gained                                                                                                                                      |
+| ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                                |
+| **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio       |
+| **H-Bt2**  | S11     | 2025-07-12 | 0% energy transfer between modes, β = 0.000 (threshold 0.5)                      | Nonlinear coupling χ ~ 10⁻⁶ is too weak by orders of magnitude; SEM modes are effectively isolated oscillators, not a coupled thermodynamic bath    |
+| **H-Bt3**  | S11     | 2025-07-12 | Readout accuracy monotonically decreasing, no optimum exists                     | At room temperature hf ≪ kBT for all MHz modes; Boltzmann weights collapse to uniform; optimal strategy is simply "measure as early as possible"    |
+| **H-Bt4**  | S11     | 2025-07-12 | R²_Boltzmann = 0.0001 < R²_Q-only = 1.0000 (Boltzmann < Q-only)                  | At 300 K, exp(−hf/kT) ≈ 1 for all modes; capacity is determined entirely by SNR ∝ Q/f; thermodynamic populations are irrelevant at SEM temperatures |
 
 ---
 
@@ -473,6 +476,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_kepler_harmonic.py` (74 tests)
 - **Paper:** §11.14, §14.2 bullet, §11.6 item 13
 - **Key result:** 2/4 confirmed — octave equivalence (mean r = 0.657, error detection 70.8%), harmonic capacity scaling (log R² = 0.675 vs linear R² = 0.298, C ≈ 1.055 ln N). 2/4 killed — diatonic partitioning (7.4% crosstalk reduction, threshold 30%), consonance-weighted recall (−10.4% accuracy, threshold +15%)
+
+### S11 — Boltzmann (Phase 9h)
+
+- **Module:** `simulations/boltzmann_timescale.py` (~530 lines, 4 experiments)
+- **Tests:** `tests/test_boltzmann_timescale.py` (96 tests)
+- **Paper:** §11.15, §11.6 item 14
+- **Key result:** 1/4 confirmed — decade-separated timescale universality (100% of 96 conditions satisfy T_osc ≪ τ ≪ T_th, mean τ/T_osc = 3,076, mean T_th/τ = 4,533,816). 3/4 killed — spectral reddening (0% energy transfer, β = 0.000), optimal readout window (monotonic decay, no optimum), partition-function capacity (R²_Boltzmann = 0.0001, R²_Q-only = 1.0000). Kill mechanism: at 300 K, hf ≪ kBT for all MHz modes → Boltzmann ≈ uniform.
 
 ---
 
@@ -641,16 +651,25 @@ the timescale separation predicts optimal readout windows.
 
 ### Implementation plan
 
-| Step | Task                                                                                                                 | Artifact     | Status |
-| ---- | -------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
-| Bt-1 | Literature review: Boltzmann partition function, timescale separation, energy cascade, Kolmogorov turbulence analogy | Design notes |        |
-| Bt-2 | Implement `simulations/boltzmann_timescale.py` with 4 experiment functions                                           | Module       |        |
-| Bt-3 | Write `tests/test_boltzmann_timescale.py` — target ≥ 40 tests                                                        | Test file    |        |
-| Bt-4 | Run experiments, confirm or kill                                                                                     | Results      |        |
-| Bt-5 | Update `simulations/__init__.py` (Phase 9h)                                                                          | Package      |        |
-| Bt-6 | Paper integration: §11.15 subsection + §14.2 bullet + §11.6 item 14                                                  | Paper        |        |
-| Bt-7 | Full regression suite                                                                                                | Regression   |        |
-| Bt-8 | Regenerate PDFs                                                                                                      | Deliverable  |        |
+| Step | Task                                                                                                                 | Artifact     | Status  |
+| ---- | -------------------------------------------------------------------------------------------------------------------- | ------------ | ------- |
+| Bt-1 | Literature review: Boltzmann partition function, timescale separation, energy cascade, Kolmogorov turbulence analogy | Design notes | ✅      |
+| Bt-2 | Implement `simulations/boltzmann_timescale.py` with 4 experiment functions                                           | Module       | ✅      |
+| Bt-3 | Write `tests/test_boltzmann_timescale.py` — target ≥ 40 tests                                                        | Test file    | ✅ 96   |
+| Bt-4 | Run experiments, confirm or kill                                                                                     | Results      | ✅ 1/4  |
+| Bt-5 | Update `simulations/__init__.py` (Phase 9h)                                                                          | Package      | ✅      |
+| Bt-6 | Paper integration: §11.15 subsection + §11.6 item 14                                                                 | Paper        | ✅      |
+| Bt-7 | Full regression suite                                                                                                | Regression   | ✅ 1281 |
+| Bt-8 | Regenerate PDFs                                                                                                      | Deliverable  | ✅      |
+
+### Experiment results
+
+| ID        | Verdict      | Key metric                                                                | Kill/confirm mechanism                                                   |
+| --------- | ------------ | ------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| **H-Bt1** | ✅ Confirmed | 100% decade-spaced (96/96), mean τ/T_osc = 3,076, mean T_th/τ = 4,533,816 | Universal property of high-Q glass acoustics; Q ≥ 10³ guarantees margins |
+| **H-Bt2** | ❌ Killed    | 0% energy transfer, β = 0.000 (threshold 0.5)                             | χ ~ 10⁻⁶ too weak; modes are isolated oscillators, not coupled bath      |
+| **H-Bt3** | ❌ Killed    | Monotonic decay from 1.000 → 0.000, no local maximum                      | hf ≪ kBT → Boltzmann = uniform; optimal strategy is "measure ASAP"       |
+| **H-Bt4** | ❌ Killed    | R²_Boltzmann = 0.0001, R²_Q-only = 1.0000                                 | At 300 K, exp(−hf/kT) ≈ 1; capacity governed by Q/f (mechanical SNR)     |
 
 ### External data sources
 

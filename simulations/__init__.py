@@ -74,3 +74,8 @@
 #   kepler_harmonic       - 4 experiments: diatonic partitioning (killed), consonance-
 #                           weighted recall (killed), octave equivalence (confirmed),
 #                           harmonic capacity scaling (confirmed)
+#
+# Phase 9h — Boltzmann timescale hierarchy & mode populations:
+#   boltzmann_timescale   - 4 experiments: decade spacing universality (confirmed),
+#                           spectral reddening cascade (killed), optimal readout
+#                           window (killed), partition function capacity (killed)
