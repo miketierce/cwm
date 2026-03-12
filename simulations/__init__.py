@@ -69,3 +69,8 @@
 # Phase 9f — Zeeman perturbation-induced level splitting:
 #   zeeman_splitting      - 4 experiments: anomalous splitting ratio, selection-rule
 #                           channel count, quadratic Zeeman, multi-site field geometry
+#
+# Phase 9g — Kepler harmonic resonance ratios:
+#   kepler_harmonic       - 4 experiments: diatonic partitioning (killed), consonance-
+#                           weighted recall (killed), octave equivalence (confirmed),
+#                           harmonic capacity scaling (confirmed)

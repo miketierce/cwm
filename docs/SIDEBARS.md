@@ -34,11 +34,11 @@ survive integration into the paper without regressing existing tests.
 | **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
 | **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
 | **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed   | ✅ Complete |
-| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | —     | H-K1–K4: 0/4 pending     | 📋 Planned  |
+| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | 74    | H-K1–K4: 2/4 confirmed   | ✅ Complete |
 | **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | —     | H-Bt1–Bt4: 0/4 pending   | 📋 Planned  |
 | **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | —     | H-ARF1–ARF4: 0/4 pending | 📋 Planned  |
 
-**Running totals:** 35 modules · 1111 tests · test count must only go up.
+**Running totals:** 36 modules · 1185 tests · test count must only go up.
 
 ---
 
@@ -375,8 +375,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 (all ✅)**
-**Next: S10 → S11 → S12**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 (all ✅)**
+**Next: S11 → S12**
 
 Rationale (S9–S12):
 
@@ -430,9 +430,10 @@ Some results from one sidebar may affect another. Track known interactions:
 _Record every hypothesis that fails its kill criterion. This is as scientifically
 valuable as confirmations — it maps the boundary of what the physics supports._
 
-| Hypothesis   | Sidebar | Date | Kill reason | Insight gained |
-| ------------ | ------- | ---- | ----------- | -------------- |
-| _(none yet)_ |         |      |             |                |
+| Hypothesis | Sidebar | Date       | Kill reason                                                                      | Insight gained                                                                                                                                |
+| ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                          |
+| **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio |
 
 ---
 
@@ -465,6 +466,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_zeeman_splitting.py` (75 tests)
 - **Paper:** §11.13, §14.2 bullet, §11.6 item 12
 - **Key result:** 4/4 confirmed — g-factor splitting ratio (R² = 1.0000), selection-rule channel constraints (55.2% significant), quadratic Zeeman nonlinearity (R² = 0.9998), multi-site geometry scaling (all K exceed 2K threshold)
+
+### S10 — Kepler (Phase 9g)
+
+- **Module:** `simulations/kepler_harmonic.py` (~700 lines, 4 experiments)
+- **Tests:** `tests/test_kepler_harmonic.py` (74 tests)
+- **Paper:** §11.14, §14.2 bullet, §11.6 item 13
+- **Key result:** 2/4 confirmed — octave equivalence (mean r = 0.657, error detection 70.8%), harmonic capacity scaling (log R² = 0.675 vs linear R² = 0.298, C ≈ 1.055 ln N). 2/4 killed — diatonic partitioning (7.4% crosstalk reduction, threshold 30%), consonance-weighted recall (−10.4% accuracy, threshold +15%)
 
 ---
 
@@ -571,16 +579,25 @@ resonance" in creational energetics directly parallels Kepler's planetary music.
 
 ### Implementation plan
 
-| Step | Task                                                                                                          | Artifact     | Status |
-| ---- | ------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
-| K-1  | Literature review: Kepler Harmonices Mundi, musical consonance, ratio complexity, harmonic series convergence | Design notes |        |
-| K-2  | Implement `simulations/kepler_harmonic.py` with 4 experiment functions                                        | Module       |        |
-| K-3  | Write `tests/test_kepler_harmonic.py` — target ≥ 40 tests                                                     | Test file    |        |
-| K-4  | Run experiments, confirm or kill                                                                              | Results      |        |
-| K-5  | Update `simulations/__init__.py` (Phase 9g)                                                                   | Package      |        |
-| K-6  | Paper integration: §11.14 subsection + §14.2 bullet + §11.6 item 13                                           | Paper        |        |
-| K-7  | Full regression suite                                                                                         | Regression   |        |
-| K-8  | Regenerate PDFs                                                                                               | Deliverable  |        |
+| Step | Task                                                                                                          | Artifact     | Status                       |
+| ---- | ------------------------------------------------------------------------------------------------------------- | ------------ | ---------------------------- |
+| K-1  | Literature review: Kepler Harmonices Mundi, musical consonance, ratio complexity, harmonic series convergence | Design notes | ✅                           |
+| K-2  | Implement `simulations/kepler_harmonic.py` with 4 experiment functions                                        | Module       | ✅                           |
+| K-3  | Write `tests/test_kepler_harmonic.py` — target ≥ 40 tests                                                     | Test file    | ✅ 74 tests                  |
+| K-4  | Run experiments, confirm or kill                                                                              | Results      | ✅ 2/4 confirmed, 2/4 killed |
+| K-5  | Update `simulations/__init__.py` (Phase 9g)                                                                   | Package      | ✅                           |
+| K-6  | Paper integration: §11.14 subsection + §14.2 bullet + §11.6 item 13                                           | Paper        | ✅                           |
+| K-7  | Full regression suite                                                                                         | Regression   | ✅ 1185 pass                 |
+| K-8  | Regenerate PDFs                                                                                               | Deliverable  | ✅                           |
+
+### Experiment results
+
+| ID       | Verdict       | Key metric                                                                                                                    |
+| -------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| **H-K1** | **KILLED**    | Consonant crosstalk 0.677 vs uniform 0.730 = 7.4% reduction (threshold ≥30%); sin² orthogonality trumps musical consonance    |
+| **H-K2** | **KILLED**    | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%); structured noise breaks Hopfield energy balance |
+| **H-K3** | **CONFIRMED** | Mean octave-pair correlation r = 0.657 > 0.5 (min 0.403, max 0.969); error detection rate 70.8%                               |
+| **H-K4** | **CONFIRMED** | Log R² = 0.675 > linear R² = 0.298; C ≈ 1.055 ln N + 2.97; marginal 1/n fit R² = 0.805; capacity saturates beyond ~16 modes   |
 
 ### External data sources
 
