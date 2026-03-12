@@ -23,22 +23,22 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure               | Module                   | Tests | Hypotheses               | Status      |
-| ------- | -------------------- | ------------------------ | ----- | ------------------------ | ----------- |
-| **S1**  | Spare / Mace         | `spare_mace.py`          | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
-| **S2**  | Scranton / Dogon     | `scranton_dogon.py`      | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
-| **S3**  | Tesla                | `tesla_phase.py`         | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
-| **S4**  | Chladni              | `chladni_plates.py`      | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
-| **S5**  | Békésy               | `bekesy_cochlea.py`      | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
-| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`      | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
-| **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
-| **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
-| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed   | ✅ Complete |
-| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | 74    | H-K1–K4: 2/4 confirmed   | ✅ Complete |
-| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | 96    | H-Bt1–Bt4: 1/4 confirmed | ✅ Complete |
-| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | —     | H-ARF1–ARF4: 0/4 pending | 📋 Planned  |
+| Sidebar | Figure               | Module                   | Tests | Hypotheses                 | Status      |
+| ------- | -------------------- | ------------------------ | ----- | -------------------------- | ----------- |
+| **S1**  | Spare / Mace         | `spare_mace.py`          | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
+| **S2**  | Scranton / Dogon     | `scranton_dogon.py`      | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
+| **S3**  | Tesla                | `tesla_phase.py`         | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
+| **S4**  | Chladni              | `chladni_plates.py`      | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
+| **S5**  | Békésy               | `bekesy_cochlea.py`      | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
+| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`      | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
+| **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
+| **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
+| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
+| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
+| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
+| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
 
-**Running totals:** 36 modules · 1281 tests · test count must only go up.
+**Running totals:** 37 modules · 1396 tests · test count must only go up.
 
 ---
 
@@ -375,8 +375,7 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 (all ✅)**
-**Next: S12**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 (all ✅)**
 
 Rationale (S9–S12):
 
@@ -430,13 +429,16 @@ Some results from one sidebar may affect another. Track known interactions:
 _Record every hypothesis that fails its kill criterion. This is as scientifically
 valuable as confirmations — it maps the boundary of what the physics supports._
 
-| Hypothesis | Sidebar | Date       | Kill reason                                                                      | Insight gained                                                                                                                                      |
-| ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                                |
-| **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio       |
-| **H-Bt2**  | S11     | 2025-07-12 | 0% energy transfer between modes, β = 0.000 (threshold 0.5)                      | Nonlinear coupling χ ~ 10⁻⁶ is too weak by orders of magnitude; SEM modes are effectively isolated oscillators, not a coupled thermodynamic bath    |
-| **H-Bt3**  | S11     | 2025-07-12 | Readout accuracy monotonically decreasing, no optimum exists                     | At room temperature hf ≪ kBT for all MHz modes; Boltzmann weights collapse to uniform; optimal strategy is simply "measure as early as possible"    |
-| **H-Bt4**  | S11     | 2025-07-12 | R²_Boltzmann = 0.0001 < R²_Q-only = 1.0000 (Boltzmann < Q-only)                  | At 300 K, exp(−hf/kT) ≈ 1 for all modes; capacity is determined entirely by SNR ∝ Q/f; thermodynamic populations are irrelevant at SEM temperatures |
+| Hypothesis | Sidebar | Date       | Kill reason                                                                      | Insight gained                                                                                                                                        |
+| ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                                  |
+| **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio         |
+| **H-Bt2**  | S11     | 2025-07-12 | 0% energy transfer between modes, β = 0.000 (threshold 0.5)                      | Nonlinear coupling χ ~ 10⁻⁶ is too weak by orders of magnitude; SEM modes are effectively isolated oscillators, not a coupled thermodynamic bath      |
+| **H-Bt3**  | S11     | 2025-07-12 | Readout accuracy monotonically decreasing, no optimum exists                     | At room temperature hf ≪ kBT for all MHz modes; Boltzmann weights collapse to uniform; optimal strategy is simply "measure as early as possible"      |
+| **H-Bt4**  | S11     | 2025-07-12 | R²_Boltzmann = 0.0001 < R²_Q-only = 1.0000 (Boltzmann < Q-only)                  | At 300 K, exp(−hf/kT) ≈ 1 for all modes; capacity is determined entirely by SNR ∝ Q/f; thermodynamic populations are irrelevant at SEM temperatures   |
+| **H-ARF1** | S12     | 2025-07-13 | Gor'kov placement −98.9% vs golden-ratio (cond 1.2×10¹⁵ vs 4.0)                  | Gradient-peak clustering produces near-singular sensitivity matrices; golden-ratio spacing enforces quasi-orthogonality that gradient-peak sites lack |
+| **H-ARF3** | S12     | 2025-07-13 | Bjerknes ratio 1.01× (threshold 2×)                                              | Phase-based coupling direction (attractive/repulsive) has no measurable effect on hybridisation splitting magnitude; coupling is geometry-dominated   |
+| **H-ARF4** | S12     | 2025-07-13 | Dual-axis entropy −13.7% (threshold +20%)                                        | Node sites have zero sin² amplitude → zero eigenfrequency shift → redundant with noise; complementary encoding requires non-zero baseline sensitivity |
 
 ---
 
@@ -483,6 +485,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_boltzmann_timescale.py` (96 tests)
 - **Paper:** §11.15, §11.6 item 14
 - **Key result:** 1/4 confirmed — decade-separated timescale universality (100% of 96 conditions satisfy T_osc ≪ τ ≪ T_th, mean τ/T_osc = 3,076, mean T_th/τ = 4,533,816). 3/4 killed — spectral reddening (0% energy transfer, β = 0.000), optimal readout window (monotonic decay, no optimum), partition-function capacity (R²_Boltzmann = 0.0001, R²_Q-only = 1.0000). Kill mechanism: at 300 K, hf ≪ kBT for all MHz modes → Boltzmann ≈ uniform.
+
+### S12 — Gor'kov (Phase 9i)
+
+- **Module:** `simulations/gorkov_radiation.py` (~980 lines, 4 experiments)
+- **Tests:** `tests/test_gorkov_radiation.py` (115 tests)
+- **Paper:** §11.16, §14.2 bullet, §11.6 item 15
+- **Key result:** 1/4 confirmed — acoustic contrast factor Φ(κ̃,ρ̃) perfectly predicts material ranking (Spearman ρ = 1.000, Pearson r = 1.000). 3/4 killed — Gor'kov placement (−98.9% vs golden-ratio, condition number 1.2×10¹⁵), Bjerknes hybridisation (ratio 1.01×, threshold 2×), dual-axis entropy (−13.7%, threshold +20%). Kill mechanism: gradient-peak sites cluster → near-singular matrix; node sites have zero sin² amplitude → zero signal.
 
 ---
 
@@ -742,16 +751,16 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 
 ### Implementation plan
 
-| Step  | Task                                                                                                                     | Artifact     | Status |
-| ----- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ------ |
-| ARF-1 | Literature review: Gor'kov 1962, Bruus 2012 review, King 1934, Yosioka & Kawasima 1955, Bjerknes forces, acoustophoresis | Design notes |        |
-| ARF-2 | Implement `simulations/gorkov_radiation.py` with 4 experiment functions + dataclass results                              | Module       |        |
-| ARF-3 | Write `tests/test_gorkov_radiation.py` — target ≥ 40 tests                                                               | Test file    |        |
-| ARF-4 | Run experiments, confirm or kill each hypothesis                                                                         | Results      |        |
-| ARF-5 | Update `simulations/__init__.py` (Phase 9i)                                                                              | Package      |        |
-| ARF-6 | Paper integration: §11.16 subsection + §14.2 historical bullet + §11.6 item 15                                           | Paper        |        |
-| ARF-7 | Full regression suite — must exceed prior count                                                                          | Regression   |        |
-| ARF-8 | Regenerate PDFs                                                                                                          | Deliverable  |        |
+| Step  | Task                                                                                                                     | Artifact     | Status  |
+| ----- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ------- |
+| ARF-1 | Literature review: Gor'kov 1962, Bruus 2012 review, King 1934, Yosioka & Kawasima 1955, Bjerknes forces, acoustophoresis | Design notes | ✅      |
+| ARF-2 | Implement `simulations/gorkov_radiation.py` with 4 experiment functions + dataclass results                              | Module       | ✅      |
+| ARF-3 | Write `tests/test_gorkov_radiation.py` — target ≥ 40 tests                                                               | Test file    | ✅ 115  |
+| ARF-4 | Run experiments, confirm or kill each hypothesis                                                                         | Results      | ✅ 1/4  |
+| ARF-5 | Update `simulations/__init__.py` (Phase 9i)                                                                              | Package      | ✅      |
+| ARF-6 | Paper integration: §11.16 subsection + §14.2 historical bullet + §11.6 item 15                                           | Paper        | ✅      |
+| ARF-7 | Full regression suite — must exceed prior count                                                                          | Regression   | ✅ 1396 |
+| ARF-8 | Regenerate PDFs                                                                                                          | Deliverable  | ✅      |
 
 ### External data sources (for validation, not curve-fitting)
 
@@ -782,3 +791,12 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 | Bjerknes force predicts hybridisation strength       | S12 × S9  | Bjerknes inter-site coupling parallels Zeeman multi-site field geometry (H-Z4)                 |
 | Contrast factor extends Boltzmann material weighting | S12 × S11 | Acoustic contrast $\Phi$ provides a physics-based alternative to Boltzmann partition weighting |
 | Bandwidth utilisation at optimal sites               | S12 × S8  | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio $\eta$ (H-G3)             |
+
+### Experiment results
+
+| ID         | Verdict      | Key metric                                                      | Kill/confirm mechanism                                                                       |
+| ---------- | ------------ | --------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| **H-ARF1** | ❌ Killed    | −98.9% vs golden-ratio (cond 1.2×10¹⁵ vs 4.0)                   | Gradient-peak sites cluster near mode-dependent positions → near-singular sensitivity matrix |
+| **H-ARF2** | ✅ Confirmed | Spearman ρ = 1.000, Pearson r = 1.000, perfect material ranking | Acoustic contrast Φ(κ̃,ρ̃) monotonically predicts eigenfrequency shift magnitude               |
+| **H-ARF3** | ❌ Killed    | Bjerknes ratio 1.01× (threshold 2×)                             | Phase-based coupling direction has no measurable effect on splitting; geometry dominates     |
+| **H-ARF4** | ❌ Killed    | Dual-axis entropy −13.7% (threshold +20%)                       | Node sites have zero sin² amplitude → zero shift signal → redundant noise, not complement    |

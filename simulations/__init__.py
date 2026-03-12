@@ -79,3 +79,8 @@
 #   boltzmann_timescale   - 4 experiments: decade spacing universality (confirmed),
 #                           spectral reddening cascade (killed), optimal readout
 #                           window (killed), partition function capacity (killed)
+#
+# Phase 9i — Gor'kov acoustic radiation force & optimal site placement:
+#   gorkov_radiation      - 4 experiments: Gor'kov-optimised placement (killed),
+#                           acoustic contrast factor (confirmed), Bjerknes
+#                           hybridisation (killed), dual-axis encoding (killed)

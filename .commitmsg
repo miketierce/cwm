@@ -1,0 +1,18 @@
+S12: Gor'kov acoustic radiation force sidebar (Phase 9i)
+
+New module: simulations/gorkov_radiation.py (~980 lines, 4 experiments)
+New tests: tests/test_gorkov_radiation.py (115 tests, all passing)
+
+Hypotheses (1/4 confirmed, 3/4 killed):
+  H-ARF1 KILLED  - Placement: -98.9% vs golden-ratio (cond 1.2e15 vs 4.0)
+  H-ARF2 CONFIRMED - Contrast factor: Spearman rho=1.000, Pearson r=1.000
+  H-ARF3 KILLED  - Bjerknes: ratio 1.01x (threshold 2x)
+  H-ARF4 KILLED  - Dual-axis: entropy -13.7% (threshold +20%)
+
+Paper v15.md: added S11.16, TOC entry, S11.6 item 15, S14.2 bullet
+Updated counts: 37 modules, 1396 tests (was 36/1281)
+SIDEBARS.md: S12 dashboard complete, killed log, experiment results
+PDFs regenerated: v15.pdf (138pp), v15_2col.pdf (26pp)
+
+Cumulative: 26 confirmed, 34 killed, 60 hypotheses (43.3%)
+Full regression: 1396/1396 passing
