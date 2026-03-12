@@ -23,17 +23,18 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure              | Module              | Tests | Hypotheses               | Status      |
-| ------- | ------------------- | ------------------- | ----- | ------------------------ | ----------- |
-| **S1**  | Spare / Mace        | `spare_mace.py`     | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
-| **S2**  | Scranton / Dogon    | `scranton_dogon.py` | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
-| **S3**  | Tesla               | `tesla_phase.py`    | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
-| **S4**  | Chladni             | `chladni_plates.py` | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
-| **S5**  | Békésy              | `bekesy_cochlea.py` | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
-| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
-| **S7**  | Leibniz             | `leibniz_binary.py` | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
+| Sidebar | Figure              | Module                 | Tests | Hypotheses               | Status      |
+| ------- | ------------------- | ---------------------- | ----- | ------------------------ | ----------- |
+| **S1**  | Spare / Mace        | `spare_mace.py`        | 62    | H1–H6: 6/6 confirmed     | ✅ Complete |
+| **S2**  | Scranton / Dogon    | `scranton_dogon.py`    | 62    | H7–H12: 6/6 confirmed    | ✅ Complete |
+| **S3**  | Tesla               | `tesla_phase.py`       | 50    | H-T1–T4: 4/4 confirmed   | ✅ Complete |
+| **S4**  | Chladni             | `chladni_plates.py`    | 69    | H-C1–C4: 4/4 confirmed   | ✅ Complete |
+| **S5**  | Békésy              | `bekesy_cochlea.py`    | 68    | H-B1–B4: 1/4 confirmed   | ✅ Complete |
+| **S6**  | Franklin (Rosalind) | `franklin_phase.py`    | 69    | H-F1–F4: 0/4 confirmed   | ✅ Complete |
+| **S7**  | Leibniz             | `leibniz_binary.py`    | 73    | H-L1–H-L4: 3/4 confirmed | ✅ Complete |
+| **S8**  | Gabor               | `gabor_holographic.py` | 77    | H-G1–G4: 1/4 confirmed   | ✅ Complete |
 
-**Running totals:** 33 modules · 959 tests · test count must only go up.
+**Running totals:** 34 modules · 1036+ tests · test count must only go up.
 
 ---
 
@@ -256,6 +257,77 @@ combinatorial codebook design.
 - Gray code Hamming distance: adjacent values differ by exactly 1 bit
 - Reed–Solomon minimum distance: $d = n - k + 1$ for $(n, k)$ code
 - Sparse code SNR advantage: $\text{SNR}_{\text{gain}} = 10 \log_{10}(N/K)$ dB for $K$-of-$N$ code
+
+---
+
+## S8 — Dennis Gabor (1900–1979, Nobel 1971): Holographic Distributed Memory
+
+### Core insight
+
+Gabor invented holography (1948) and proposed holographic associative memories
+(1969). When information is distributed across a medium via wave interference,
+the system acquires four structural properties: shift tolerance, graceful
+degradation under partial loss, a bandwidth-determined capacity ceiling, and
+a predictable crosstalk envelope between stored patterns. SEM already exhibits
+the first group of holographic properties (distributed encoding, interference
+recall, multiplexing). This sidebar tests whether the _quantitative_ predictions
+from holographic theory (Gabor, Kogelnik, Leith & Upatnieks) hold for SEM's
+sin²-based encoding.
+
+**Critical constraint — the Franklin kill (S6):** SEM's sin²(nπx/L) encoding
+is algebraically incompatible with Fourier-based phase-retrieval algorithms
+(4:0 kill in S6). **None of the hypotheses below use Fourier-phase-retrieval
+methods.** They test _structural_ properties of holographic systems — shift
+tolerance, degradation scaling, bandwidth utilization, and crosstalk envelopes —
+which depend on distributed wave encoding, not on the specific basis functions.
+
+### Hypotheses
+
+| ID       | Statement                                                                                                                                                                                                                                                                                                                         | Kill criterion                                                                                | Builds on                               |
+| -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
+| **H-G1** | **Shift-tolerant recall.** When the query pattern is spatially shifted by δ (all perturbation sites displaced), the recall score R(δ) tracks the autocorrelation of the sin²(nπx/L) sensitivity kernel. SEM should exhibit a measurable "shift-tolerance width" Δ_s ≈ L/(2n_max).                                                 | R(δ) shows no structure (flat/random), OR autocorrelation width deviates > 2× from prediction | §2.3 recall, hopfield_recall.py         |
+| **H-G2** | **Sub-aperture degradation curve.** Reconstruction accuracy from K of N modes follows a smooth, monotonically increasing function of K/N. Holographic aperture theory (Leith & Upatnieks 1964) predicts linear scaling: accuracy ∝ K/N.                                                                                           | Accuracy vs. K/N is non-monotonic OR best fit R² < 0.7                                        | §11.11 H-L3, leibniz_binary.py          |
+| **H-G3** | **Bandwidth utilization ceiling.** A bandwidth-limited capacity ceiling N_BW can be computed from total spectral range and per-mode linewidth. Each capacity-enhancing technique (polysemic, null-space, phase-spectral) should increase the utilization ratio η = P_eff / N_BW monotonically.                                    | η does NOT increase monotonically with added techniques                                       | §11.6 combined capacity                 |
+| **H-G4** | **Crosstalk selectivity envelope.** Kogelnik's (1969) coupled-wave theory predicts inter-hologram crosstalk follows sinc² as a function of spectral separation. Two SEM patterns in mode subsets with fractional overlap Ω should have crosstalk C(Ω) following a smooth envelope (sinc², Gaussian, or linear fit with R² ≥ 0.7). | Crosstalk vs. overlap has no smooth fit (R² < 0.7 for sinc², Gaussian, and linear)            | §11.5 polysemic (one data point: 0.003) |
+
+### Implementation plan
+
+| Step | Task                                                                                         | Artifact     | Status |
+| ---- | -------------------------------------------------------------------------------------------- | ------------ | ------ |
+| G-1  | Literature review: Gabor 1948/1969, van Heerden 1963, Kogelnik 1969, Psaltis & Brady 1990    | Design notes | ✅     |
+| G-2  | Implement `simulations/gabor_holographic.py` with 4 experiment functions + dataclass results | Module       |        |
+| G-3  | Write `tests/test_gabor_holographic.py` — target ≥ 40 tests                                  | Test file    |        |
+| G-4  | Run experiments, confirm or kill                                                             | Results      |        |
+| G-5  | Update `simulations/__init__.py` (Phase 9e)                                                  | Package      |        |
+| G-6  | Paper integration: §11.12 + §14.2 historical bullet                                          | Paper        |        |
+| G-7  | Full regression suite — must exceed 959                                                      | Regression   |        |
+| G-8  | Regenerate PDFs                                                                              | Deliverable  |        |
+
+### External data sources (for validation, not curve-fitting)
+
+- Gabor, D. "A New Microscopic Principle" (Nature, 1948) — original holography
+- Gabor, D. "Associative Holographic Memories" (IBM J. Res. Dev., 1969)
+- Van Heerden, P. "Theory of Optical Information Storage in Solids" (Appl. Opt., 1963)
+- Kogelnik, H. "Coupled Wave Theory for Thick Hologram Gratings" (Bell Syst. Tech. J., 1969)
+- Leith, E. & Upatnieks, J. "Wavefront Reconstruction with Diffused Illumination" (JOSA, 1964)
+- Psaltis, D. & Brady, D. "Optical Information Processing Based on Associative-Memory" (Appl. Opt., 1990)
+- Mok, F. "Angle-Multiplexed Storage of 5000 Holograms in LiNbO₃" (Opt. Lett., 1993) — M/#
+
+### Key equations to validate
+
+- Shift-tolerance kernel: $R(\delta) \propto \sum_{n} \int_0^L \sin^2(n\pi x/L)\,\sin^2(n\pi(x+\delta)/L)\,dx$
+- Sub-aperture SNR (holographic linear model): $\text{acc}(K) \propto K/N$
+- Holographic bandwidth: $N_{\text{BW}} = \sum_{n=1}^{N} Q_n$ (total Q-factor × mode count)
+- Kogelnik selectivity: $\eta(\Delta\nu) \propto \text{sinc}^2(\Delta\nu / \delta\nu)$
+
+### Cross-sidebar interactions
+
+| Interaction                                          | Sidebars  | Nature                                                                     |
+| ---------------------------------------------------- | --------- | -------------------------------------------------------------------------- |
+| Degradation curve extends monadic reconstruction     | S8 × S7   | H-G2 sweeps full K curve; H-L3 sampled at 3 points                         |
+| Crosstalk envelope validates polysemic orthogonality | S8 × S2   | H-G4 tests full overlap range; S2 measured disjoint-only (0.003)           |
+| Bandwidth ceiling contextualizes capacity gains      | S8 × S1–3 | H-G3 frames polysemic/null-space/phase as fractions of holographic ceiling |
+| Franklin kill constrains hypotheses                  | S8 × S6   | No Fourier-phase algorithms; structural properties only                    |
 
 ---
 

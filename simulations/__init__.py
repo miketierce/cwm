@@ -61,3 +61,7 @@
 #   leibniz_binary        - 4 experiments: binary quantisation of recall (confirmed),
 #                           Gray coding (killed), monadic reconstruction (confirmed),
 #                           hexagram codebook (confirmed)
+#
+# Phase 9e — Gabor holographic distributed memory:
+#   gabor_holographic     - 4 experiments: shift-tolerant recall, sub-aperture
+#                           degradation, bandwidth ceiling, crosstalk envelope
