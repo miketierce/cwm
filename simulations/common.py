@@ -12,7 +12,7 @@ from typing import Optional
 # ---------------------------------------------------------------------------
 # Project-level counts (single source of truth for paper, PDFs, docs)
 # ---------------------------------------------------------------------------
-SIM_MODULE_COUNT = 36        # Number of simulation modules in simulations/
+SIM_MODULE_COUNT = 37        # Number of simulation modules in simulations/
 TEST_COUNT = 1281            # Total automated tests (pytest --collect-only -q)
 
 # ---------------------------------------------------------------------------
