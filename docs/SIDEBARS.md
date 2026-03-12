@@ -296,16 +296,16 @@ which depend on distributed wave encoding, not on the specific basis functions.
 
 ### Implementation plan
 
-| Step | Task                                                                                         | Artifact     | Status |
-| ---- | -------------------------------------------------------------------------------------------- | ------------ | ------ |
-| G-1  | Literature review: Gabor 1948/1969, van Heerden 1963, Kogelnik 1969, Psaltis & Brady 1990    | Design notes | ✅                          |
-| G-2  | Implement `simulations/gabor_holographic.py` with 4 experiment functions + dataclass results | Module       | ✅                          |
-| G-3  | Write `tests/test_gabor_holographic.py` — target ≥ 40 tests                                  | Test file    | ✅ 77 tests                 |
-| G-4  | Run experiments, confirm or kill                                                             | Results      | ✅ 1/4 confirmed, 3 killed  |
-| G-5  | Update `simulations/__init__.py` (Phase 9e)                                                  | Package      | ✅                          |
-| G-6  | Paper integration: §11.12 + §14.2 historical bullet                                          | Paper        | ✅                          |
-| G-7  | Full regression suite — must exceed 959                                                      | Regression   | ✅ 1036 pass                |
-| G-8  | Regenerate PDFs                                                                              | Deliverable  | ✅                          |
+| Step | Task                                                                                         | Artifact     | Status                     |
+| ---- | -------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
+| G-1  | Literature review: Gabor 1948/1969, van Heerden 1963, Kogelnik 1969, Psaltis & Brady 1990    | Design notes | ✅                         |
+| G-2  | Implement `simulations/gabor_holographic.py` with 4 experiment functions + dataclass results | Module       | ✅                         |
+| G-3  | Write `tests/test_gabor_holographic.py` — target ≥ 40 tests                                  | Test file    | ✅ 77 tests                |
+| G-4  | Run experiments, confirm or kill                                                             | Results      | ✅ 1/4 confirmed, 3 killed |
+| G-5  | Update `simulations/__init__.py` (Phase 9e)                                                  | Package      | ✅                         |
+| G-6  | Paper integration: §11.12 + §14.2 historical bullet                                          | Paper        | ✅                         |
+| G-7  | Full regression suite — must exceed 959                                                      | Regression   | ✅ 1036 pass               |
+| G-8  | Regenerate PDFs                                                                              | Deliverable  | ✅                         |
 
 ### External data sources (for validation, not curve-fitting)
 
@@ -401,27 +401,27 @@ Rationale (S9–S12):
 
 Some results from one sidebar may affect another. Track known interactions:
 
-| Interaction                                | Sidebars | Nature                                                                                                      |
-| ------------------------------------------ | -------- | ----------------------------------------------------------------------------------------------------------- |
-| 2D plate phase encoding                    | S4 × S3  | Chladni plate modes have 2D phase structure; Tesla's phase independence (H-T1) may generalize               |
-| Cochlear windowing + polysemic readout     | S5 × S2  | Békésy's critical bands may optimize Scranton's sub-channel partitioning                                    |
-| Phase retrieval + phase encoding           | S6 × S3  | Franklin's algorithms directly extend Tesla's phase results                                                 |
-| Binary quantization + pruning              | S7 × S1  | Leibniz's binarization is an extreme form of Spare/Mace's pruning                                           |
-| Tapered rod + Chladni sensitivity          | S5 × S4  | Non-uniform geometry appears in both; shared sensitivity-function math                                      |
-| Monadic reconstruction + polysemic readout | S7 × S2  | Each mode encoding the whole pattern (Leibniz) parallels each sub-channel encoding independently (Scranton) |
-| Splitting extends avoided crossing         | S9 × S1  | Zeeman g-factor analogy generalises spare_mace hybridisation depth into a predictive ratio                  |
-| Splitting extends 2D degeneracy            | S9 × S4  | Zeeman selection rules parallel Chladni's (n,m)/(m,n) structural degeneracy splitting                       |
-| Harmonic partitioning + polysemic          | S10 × S2 | Kepler's consonant grouping is an alternative to Scranton's uniform sub-channel split                       |
-| Consonance + bandwidth ceiling             | S10 × S8 | Kepler ratios may improve Gabor's bandwidth utilization η by reducing cross-channel leakage                 |
-| Timescale hierarchy + thermal drift        | S11 × S5 | Boltzmann's decade-spacing prediction extends Békésy's active Q-boosting timescale model                    |
-| Partition function + capacity weighting    | S11 × S8 | Boltzmann weighting provides a thermodynamic foundation for Gabor's bandwidth ceiling N_BW                  |
-| Cascade reddening + mode coupling          | S11 × S1 | Boltzmann energy cascade tests whether spare_mace coupling drives spectral reddening                        |
-| Gor'kov placement vs golden-ratio          | S12 × S1 | Radiation-force maxima compete with/extend golden-ratio site optimization from spare_mace                   |
-| Radiation force = Chladni trapping         | S12 × S4 | Gor'kov force in 2D is the physical mechanism underlying Chladni's sand-at-nodal-lines observation          |
-| Phase encoding at gradient peaks           | S12 × S3 | Tesla phase encoding is strongest at sensitivity-gradient maxima — the same positions Gor'kov force peaks   |
-| Bjerknes ↔ Zeeman multi-site geometry      | S12 × S9 | Bjerknes inter-site coupling (H-ARF3) parallels Zeeman multi-site field geometry (H-Z4)                     |
-| Contrast factor vs partition weighting     | S12 × S11| Acoustic contrast Φ offers a physics-based alternative to Boltzmann partition-function weighting             |
-| Optimal placement + bandwidth utilisation  | S12 × S8 | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio η (H-G3)                               |
+| Interaction                                | Sidebars  | Nature                                                                                                      |
+| ------------------------------------------ | --------- | ----------------------------------------------------------------------------------------------------------- |
+| 2D plate phase encoding                    | S4 × S3   | Chladni plate modes have 2D phase structure; Tesla's phase independence (H-T1) may generalize               |
+| Cochlear windowing + polysemic readout     | S5 × S2   | Békésy's critical bands may optimize Scranton's sub-channel partitioning                                    |
+| Phase retrieval + phase encoding           | S6 × S3   | Franklin's algorithms directly extend Tesla's phase results                                                 |
+| Binary quantization + pruning              | S7 × S1   | Leibniz's binarization is an extreme form of Spare/Mace's pruning                                           |
+| Tapered rod + Chladni sensitivity          | S5 × S4   | Non-uniform geometry appears in both; shared sensitivity-function math                                      |
+| Monadic reconstruction + polysemic readout | S7 × S2   | Each mode encoding the whole pattern (Leibniz) parallels each sub-channel encoding independently (Scranton) |
+| Splitting extends avoided crossing         | S9 × S1   | Zeeman g-factor analogy generalises spare_mace hybridisation depth into a predictive ratio                  |
+| Splitting extends 2D degeneracy            | S9 × S4   | Zeeman selection rules parallel Chladni's (n,m)/(m,n) structural degeneracy splitting                       |
+| Harmonic partitioning + polysemic          | S10 × S2  | Kepler's consonant grouping is an alternative to Scranton's uniform sub-channel split                       |
+| Consonance + bandwidth ceiling             | S10 × S8  | Kepler ratios may improve Gabor's bandwidth utilization η by reducing cross-channel leakage                 |
+| Timescale hierarchy + thermal drift        | S11 × S5  | Boltzmann's decade-spacing prediction extends Békésy's active Q-boosting timescale model                    |
+| Partition function + capacity weighting    | S11 × S8  | Boltzmann weighting provides a thermodynamic foundation for Gabor's bandwidth ceiling N_BW                  |
+| Cascade reddening + mode coupling          | S11 × S1  | Boltzmann energy cascade tests whether spare_mace coupling drives spectral reddening                        |
+| Gor'kov placement vs golden-ratio          | S12 × S1  | Radiation-force maxima compete with/extend golden-ratio site optimization from spare_mace                   |
+| Radiation force = Chladni trapping         | S12 × S4  | Gor'kov force in 2D is the physical mechanism underlying Chladni's sand-at-nodal-lines observation          |
+| Phase encoding at gradient peaks           | S12 × S3  | Tesla phase encoding is strongest at sensitivity-gradient maxima — the same positions Gor'kov force peaks   |
+| Bjerknes ↔ Zeeman multi-site geometry      | S12 × S9  | Bjerknes inter-site coupling (H-ARF3) parallels Zeeman multi-site field geometry (H-Z4)                     |
+| Contrast factor vs partition weighting     | S12 × S11 | Acoustic contrast Φ offers a physics-based alternative to Boltzmann partition-function weighting            |
+| Optimal placement + bandwidth utilisation  | S12 × S8  | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio η (H-G3)                               |
 
 ---
 
@@ -498,25 +498,25 @@ effects.
 
 ### Implementation plan
 
-| Step | Task                                                                                             | Artifact     | Status |
-| ---- | ------------------------------------------------------------------------------------------------ | ------------ | ------ |
-| Z-1  | Literature review: Zeeman effect, g-factors, selection rules ΔmJ, quadratic Zeeman, Paschen-Back | Design notes | ✅                          |
-| Z-2  | Implement `simulations/zeeman_splitting.py` with 4 experiment functions + dataclass results      | Module       | ✅                          |
-| Z-3  | Write `tests/test_zeeman_splitting.py` — target ≥ 40 tests                                       | Test file    | ✅ 75 tests                 |
-| Z-4  | Run experiments, confirm or kill each hypothesis                                                 | Results      | ✅ 4/4 confirmed            |
-| Z-5  | Update `simulations/__init__.py` (Phase 9f)                                                      | Package      | ✅                          |
-| Z-6  | Paper integration: §11.13 subsection + §14.2 historical bullet + §11.6 item 12                   | Paper        | ✅                          |
-| Z-7  | Full regression suite — must exceed 1036                                                         | Regression   | ✅ 1111 pass                |
-| Z-8  | Regenerate PDFs                                                                                  | Deliverable  | ✅                          |
+| Step | Task                                                                                             | Artifact     | Status           |
+| ---- | ------------------------------------------------------------------------------------------------ | ------------ | ---------------- |
+| Z-1  | Literature review: Zeeman effect, g-factors, selection rules ΔmJ, quadratic Zeeman, Paschen-Back | Design notes | ✅               |
+| Z-2  | Implement `simulations/zeeman_splitting.py` with 4 experiment functions + dataclass results      | Module       | ✅               |
+| Z-3  | Write `tests/test_zeeman_splitting.py` — target ≥ 40 tests                                       | Test file    | ✅ 75 tests      |
+| Z-4  | Run experiments, confirm or kill each hypothesis                                                 | Results      | ✅ 4/4 confirmed |
+| Z-5  | Update `simulations/__init__.py` (Phase 9f)                                                      | Package      | ✅               |
+| Z-6  | Paper integration: §11.13 subsection + §14.2 historical bullet + §11.6 item 12                   | Paper        | ✅               |
+| Z-7  | Full regression suite — must exceed 1036                                                         | Regression   | ✅ 1111 pass     |
+| Z-8  | Regenerate PDFs                                                                                  | Deliverable  | ✅               |
 
 ### Experiment results
 
-| ID       | Verdict       | Key metric                                                                                                                              |
-| -------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| **H-Z1** | **CONFIRMED** | Mean linear R² = 1.0000 across all mode pairs; g_eff correlation with predicted = 1.0000                                               |
-| **H-Z2** | **CONFIRMED** | 240/435 pairs significant (55.2%); selection rule Δn_max = 28 constrains usable channels                                                |
-| **H-Z3** | **CONFIRMED** | Linear R² = 0.9735 (< 0.99 threshold), quadratic R² = 0.9998; |α| = 1.157 confirms nonlinear regime                                    |
-| **H-Z4** | **CONFIRMED** | All K = 1..10 exceed 2K threshold; best K = 1 ratio = 35.00×; multi-site geometry monotonically increases resolvable split pairs        |
+| ID       | Verdict       | Key metric                                                                                                                       |
+| -------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------- | --- | --------------------------------- |
+| **H-Z1** | **CONFIRMED** | Mean linear R² = 1.0000 across all mode pairs; g_eff correlation with predicted = 1.0000                                         |
+| **H-Z2** | **CONFIRMED** | 240/435 pairs significant (55.2%); selection rule Δn_max = 28 constrains usable channels                                         |
+| **H-Z3** | **CONFIRMED** | Linear R² = 0.9735 (< 0.99 threshold), quadratic R² = 0.9998;                                                                    | α   | = 1.157 confirms nonlinear regime |
+| **H-Z4** | **CONFIRMED** | All K = 1..10 exceed 2K threshold; best K = 1 ratio = 35.00×; multi-site geometry monotonically increases resolvable split pairs |
 
 ### External data sources (for validation, not curve-fitting)
 
@@ -697,25 +697,25 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 
 ### Hypotheses
 
-| ID         | Statement                                                                                                                                                                                                                                                                                                                                                                                                                           | Kill criterion                                                                            | Builds on                                      |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------- |
-| **H-ARF1** | **Gor'kov-optimised placement.** Placing perturbation sites at maxima of $\|\sin(2n\pi x/L)\|$ (gradient peaks of the sensitivity function) yields ≥ 10% higher fingerprint distinguishability than golden-ratio placement, because these locations maximise mode-dependent sensitivity variation — exactly as Gor'kov radiation forces maximise particle displacement at the same spatial positions.                                   | Gor'kov placement fingerprint distinguishability < golden-ratio placement                 | §7 site optimization, site_optimization.py     |
-| **H-ARF2** | **Acoustic contrast factor predicts materials.** The Gor'kov acoustic contrast factor $\Phi(\tilde\kappa, \tilde\rho) = \frac{5\tilde\rho - 2}{2\tilde\rho + 1} - \tilde\kappa$ predicts which perturbation material pairs produce the largest eigenfrequency shifts: high-$\Phi$ materials (dense, incompressible) create stronger perturbations. Ranking by $\Phi$ correlates $r > 0.7$ with ranking by measured frequency shift. | $\Phi$-ranking correlation with measured shift ranking $r < 0.5$                          | §5 materials, forced_oscillation.py            |
-| **H-ARF3** | **Bjerknes force predicts hybridisation coupling.** The secondary Bjerknes force between two nearby perturbation sites (inter-particle radiation force) is attractive when both are in-phase and repulsive when anti-phase. This predicts which site pairs produce the strongest avoided crossings in §11.3: Bjerknes-attractive pairs show $\geq 2\times$ the hybridisation splitting of Bjerknes-repulsive pairs.                    | Bjerknes-attractive pairs show $< 1.2\times$ the splitting of repulsive pairs             | §11.3 hybridisation, spare_mace.py             |
-| **H-ARF4** | **Dual-axis encoding.** Perturbation sites at $\sin^2$ nodes (zero sensitivity, maximum gradient) and antinodes (maximum sensitivity, zero gradient) encode complementary information: node sites are sensitive to mass-spring coupling (gradient-dominated), antinode sites to mass loading (amplitude-dominated). Using both axes increases fingerprint entropy by $\geq 20\%$ over single-axis (antinode-only) placement.            | Dual-axis entropy gain < 10% over antinode-only                                           | §2.1 eigenmode encoding, sensitivity functions |
+| ID         | Statement                                                                                                                                                                                                                                                                                                                                                                                                                           | Kill criterion                                                                | Builds on                                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ---------------------------------------------- |
+| **H-ARF1** | **Gor'kov-optimised placement.** Placing perturbation sites at maxima of $\|\sin(2n\pi x/L)\|$ (gradient peaks of the sensitivity function) yields ≥ 10% higher fingerprint distinguishability than golden-ratio placement, because these locations maximise mode-dependent sensitivity variation — exactly as Gor'kov radiation forces maximise particle displacement at the same spatial positions.                               | Gor'kov placement fingerprint distinguishability < golden-ratio placement     | §7 site optimization, site_optimization.py     |
+| **H-ARF2** | **Acoustic contrast factor predicts materials.** The Gor'kov acoustic contrast factor $\Phi(\tilde\kappa, \tilde\rho) = \frac{5\tilde\rho - 2}{2\tilde\rho + 1} - \tilde\kappa$ predicts which perturbation material pairs produce the largest eigenfrequency shifts: high-$\Phi$ materials (dense, incompressible) create stronger perturbations. Ranking by $\Phi$ correlates $r > 0.7$ with ranking by measured frequency shift. | $\Phi$-ranking correlation with measured shift ranking $r < 0.5$              | §5 materials, forced_oscillation.py            |
+| **H-ARF3** | **Bjerknes force predicts hybridisation coupling.** The secondary Bjerknes force between two nearby perturbation sites (inter-particle radiation force) is attractive when both are in-phase and repulsive when anti-phase. This predicts which site pairs produce the strongest avoided crossings in §11.3: Bjerknes-attractive pairs show $\geq 2\times$ the hybridisation splitting of Bjerknes-repulsive pairs.                 | Bjerknes-attractive pairs show $< 1.2\times$ the splitting of repulsive pairs | §11.3 hybridisation, spare_mace.py             |
+| **H-ARF4** | **Dual-axis encoding.** Perturbation sites at $\sin^2$ nodes (zero sensitivity, maximum gradient) and antinodes (maximum sensitivity, zero gradient) encode complementary information: node sites are sensitive to mass-spring coupling (gradient-dominated), antinode sites to mass loading (amplitude-dominated). Using both axes increases fingerprint entropy by $\geq 20\%$ over single-axis (antinode-only) placement.        | Dual-axis entropy gain < 10% over antinode-only                               | §2.1 eigenmode encoding, sensitivity functions |
 
 ### Implementation plan
 
-| Step  | Task                                                                                                                        | Artifact     | Status |
-| ----- | --------------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
-| ARF-1 | Literature review: Gor'kov 1962, Bruus 2012 review, King 1934, Yosioka & Kawasima 1955, Bjerknes forces, acoustophoresis   | Design notes |        |
-| ARF-2 | Implement `simulations/gorkov_radiation.py` with 4 experiment functions + dataclass results                                 | Module       |        |
-| ARF-3 | Write `tests/test_gorkov_radiation.py` — target ≥ 40 tests                                                                  | Test file    |        |
-| ARF-4 | Run experiments, confirm or kill each hypothesis                                                                            | Results      |        |
-| ARF-5 | Update `simulations/__init__.py` (Phase 9i)                                                                                 | Package      |        |
-| ARF-6 | Paper integration: §11.16 subsection + §14.2 historical bullet + §11.6 item 15                                              | Paper        |        |
-| ARF-7 | Full regression suite — must exceed prior count                                                                             | Regression   |        |
-| ARF-8 | Regenerate PDFs                                                                                                             | Deliverable  |        |
+| Step  | Task                                                                                                                     | Artifact     | Status |
+| ----- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ------ |
+| ARF-1 | Literature review: Gor'kov 1962, Bruus 2012 review, King 1934, Yosioka & Kawasima 1955, Bjerknes forces, acoustophoresis | Design notes |        |
+| ARF-2 | Implement `simulations/gorkov_radiation.py` with 4 experiment functions + dataclass results                              | Module       |        |
+| ARF-3 | Write `tests/test_gorkov_radiation.py` — target ≥ 40 tests                                                               | Test file    |        |
+| ARF-4 | Run experiments, confirm or kill each hypothesis                                                                         | Results      |        |
+| ARF-5 | Update `simulations/__init__.py` (Phase 9i)                                                                              | Package      |        |
+| ARF-6 | Paper integration: §11.16 subsection + §14.2 historical bullet + §11.6 item 15                                           | Paper        |        |
+| ARF-7 | Full regression suite — must exceed prior count                                                                          | Regression   |        |
+| ARF-8 | Regenerate PDFs                                                                                                          | Deliverable  |        |
 
 ### External data sources (for validation, not curve-fitting)
 
@@ -738,11 +738,11 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 
 ### Cross-sidebar interactions
 
-| Interaction                                              | Sidebars  | Nature                                                                                       |
-| -------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------- |
-| Gradient placement extends site optimisation             | S12 × S1  | Gor'kov $\sin(2kz)$ placement competes with/extends golden-ratio placement from spare_mace   |
-| Radiation force predicts Chladni trapping                | S12 × S4  | Gor'kov force in 2D is the mechanism underlying Chladni's sand-at-nodal-lines observation    |
-| Tesla phase at gradient peaks                            | S12 × S3  | Phase encoding (S3) is strongest where sensitivity gradient is maximum — the Gor'kov maxima  |
-| Bjerknes force predicts hybridisation strength           | S12 × S9  | Bjerknes inter-site coupling parallels Zeeman multi-site field geometry (H-Z4)               |
-| Contrast factor extends Boltzmann material weighting     | S12 × S11 | Acoustic contrast $\Phi$ provides a physics-based alternative to Boltzmann partition weighting |
-| Bandwidth utilisation at optimal sites                   | S12 × S8  | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio $\eta$ (H-G3)           |
+| Interaction                                          | Sidebars  | Nature                                                                                         |
+| ---------------------------------------------------- | --------- | ---------------------------------------------------------------------------------------------- |
+| Gradient placement extends site optimisation         | S12 × S1  | Gor'kov $\sin(2kz)$ placement competes with/extends golden-ratio placement from spare_mace     |
+| Radiation force predicts Chladni trapping            | S12 × S4  | Gor'kov force in 2D is the mechanism underlying Chladni's sand-at-nodal-lines observation      |
+| Tesla phase at gradient peaks                        | S12 × S3  | Phase encoding (S3) is strongest where sensitivity gradient is maximum — the Gor'kov maxima    |
+| Bjerknes force predicts hybridisation strength       | S12 × S9  | Bjerknes inter-site coupling parallels Zeeman multi-site field geometry (H-Z4)                 |
+| Contrast factor extends Boltzmann material weighting | S12 × S11 | Acoustic contrast $\Phi$ provides a physics-based alternative to Boltzmann partition weighting |
+| Bandwidth utilisation at optimal sites               | S12 × S8  | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio $\eta$ (H-G3)             |
