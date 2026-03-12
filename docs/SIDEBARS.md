@@ -36,6 +36,7 @@ survive integration into the paper without regressing existing tests.
 | **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | —     | H-Z1–Z4: 0/4 pending     | 🔄 Active   |
 | **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | —     | H-K1–K4: 0/4 pending     | 📋 Planned  |
 | **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | —     | H-Bt1–Bt4: 0/4 pending   | 📋 Planned  |
+| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | —     | H-ARF1–ARF4: 0/4 pending | 📋 Planned  |
 
 **Running totals:** 34 modules · 1036+ tests · test count must only go up.
 
@@ -364,15 +365,20 @@ S10 (Kepler) ─── depends on S2, S8 ───┤
   └─ harmonic ratios extend polysemic   │
      partitioning and bandwidth ceiling │
                                         │
-S11 (Boltzmann) ─── depends on S5 ────┘
-  └─ timescale hierarchy extends
-     thermal + decoherence models
+S11 (Boltzmann) ─── depends on S5 ────┤
+  └─ timescale hierarchy extends        │
+     thermal + decoherence models       │
+                                        │
+S12 (Gor'kov) ─── depends on S1, S4 ──┘
+  └─ radiation force placement extends
+     site optimization and Chladni
+     trapping; sin(2kz) identity
 ```
 
 **Completed order: S4 → S5 → S6 → S7 → S8 (all ✅)**
-**Next: S9 → S10 → S11**
+**Next: S9 → S10 → S11 → S12**
 
-Rationale (S9–S11):
+Rationale (S9–S12):
 
 1. **S9 (Zeeman)** is the highest-physics-value Scranton sidebar: it directly
    extends S1 avoided-crossing and S4 degeneracy-splitting with new quantitative
@@ -382,6 +388,12 @@ Rationale (S9–S11):
    ceiling. Needs stable crosstalk and capacity results from prior sidebars.
 3. **S11 (Boltzmann)** is the most theoretical sidebar (partition functions,
    timescale hierarchies). Benefits from all physics sidebars being stable first.
+4. **S12 (Gor'kov)** depends on S1 site optimization and S4 Chladni sensitivity
+   maps, but also benefits from Zeeman multi-site geometry (S9) being complete.
+   The $\sin(2kz)$ identity was discovered during S12 scoping — this is the
+   deepest mathematical connection between SEM and an external physics domain.
+   Execution after S9 allows Bjerknes force (H-ARF3) to test against Zeeman
+   splitting data (H-Z4).
 
 ---
 
@@ -404,6 +416,12 @@ Some results from one sidebar may affect another. Track known interactions:
 | Timescale hierarchy + thermal drift        | S11 × S5 | Boltzmann's decade-spacing prediction extends Békésy's active Q-boosting timescale model                    |
 | Partition function + capacity weighting    | S11 × S8 | Boltzmann weighting provides a thermodynamic foundation for Gabor's bandwidth ceiling N_BW                  |
 | Cascade reddening + mode coupling          | S11 × S1 | Boltzmann energy cascade tests whether spare_mace coupling drives spectral reddening                        |
+| Gor'kov placement vs golden-ratio          | S12 × S1 | Radiation-force maxima compete with/extend golden-ratio site optimization from spare_mace                   |
+| Radiation force = Chladni trapping         | S12 × S4 | Gor'kov force in 2D is the physical mechanism underlying Chladni's sand-at-nodal-lines observation          |
+| Phase encoding at gradient peaks           | S12 × S3 | Tesla phase encoding is strongest at sensitivity-gradient maxima — the same positions Gor'kov force peaks   |
+| Bjerknes ↔ Zeeman multi-site geometry      | S12 × S9 | Bjerknes inter-site coupling (H-ARF3) parallels Zeeman multi-site field geometry (H-Z4)                     |
+| Contrast factor vs partition weighting     | S12 × S11| Acoustic contrast Φ offers a physics-based alternative to Boltzmann partition-function weighting             |
+| Optimal placement + bandwidth utilisation  | S12 × S8 | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio η (H-G3)                               |
 
 ---
 
@@ -627,3 +645,88 @@ the timescale separation predicts optimal readout windows.
 | Partition function contextualises capacity | S11 × S8 | Boltzmann Z is a thermodynamic foundation for Gabor's bandwidth ceiling N_BW |
 | Cascade reddening tests mode coupling      | S11 × S1 | Energy cascade requires the coupling matrix from spare_mace                  |
 | Readout window uses CW readout model       | S11 × S3 | Optimal t\* balances Tesla's phase-spectral readout against decoherence      |
+
+---
+
+## S12 — Lev Gor'kov (1929–2016): Acoustic Radiation Force and Optimal Site Placement
+
+### Core insight
+
+Gor'kov's acoustic radiation force theory (1962) predicts where particles
+collect in a standing-wave field: the primary radiation force is
+$F_{\text{pr}} \propto \sin(2kz)$, driving objects to either pressure nodes or
+antinodes depending on an acoustic contrast factor $\Phi(\tilde\kappa, \tilde\rho)$
+that encodes material properties. SEM's eigenmode sensitivity function
+$\sin^2(n\pi x/L)$ has a spatial gradient:
+
+$$\frac{\partial}{\partial x}\sin^2\!\bigl(\tfrac{n\pi x}{L}\bigr) = \frac{n\pi}{L}\sin\!\bigl(\tfrac{2n\pi x}{L}\bigr)$$
+
+This is **mathematically identical** to the Gor'kov radiation-force spatial
+pattern $F_{\text{pr}} \propto \sin(2kz)$ with $k = n\pi/L$. The implication is
+profound: locations where perturbation sensitivity changes most rapidly
+(maximum gradient of $\sin^2$) correspond exactly to the positions where
+acoustic radiation forces are strongest. The standing-wave physics that governs
+SEM eigenmode encoding is the _same_ standing-wave physics that governs
+Gor'kov particle trapping.
+
+This sidebar tests whether Gor'kov-optimised site placement (at $\sin(2kz)$
+maxima/minima) outperforms golden-ratio placement, whether the acoustic
+contrast factor predicts optimal perturbation material pairings, whether
+Bjerknes inter-particle forces predict hybridisation coupling (§11.3), and
+whether node vs antinode placement enables dual-axis encoding.
+
+**Critical constraint — the Franklin kill (S6):** None of these hypotheses
+invoke Fourier-phase-retrieval methods. They test acoustic-force structural
+predictions applied to SEM's $\sin^2$ encoding framework.
+
+### Hypotheses
+
+| ID         | Statement                                                                                                                                                                                                                                                                                                                                                                                                                           | Kill criterion                                                                            | Builds on                                      |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ---------------------------------------------- |
+| **H-ARF1** | **Gor'kov-optimised placement.** Placing perturbation sites at maxima of $\|\sin(2n\pi x/L)\|$ (gradient peaks of the sensitivity function) yields ≥ 10% higher fingerprint distinguishability than golden-ratio placement, because these locations maximise mode-dependent sensitivity variation — exactly as Gor'kov radiation forces maximise particle displacement at the same spatial positions.                                   | Gor'kov placement fingerprint distinguishability < golden-ratio placement                 | §7 site optimization, site_optimization.py     |
+| **H-ARF2** | **Acoustic contrast factor predicts materials.** The Gor'kov acoustic contrast factor $\Phi(\tilde\kappa, \tilde\rho) = \frac{5\tilde\rho - 2}{2\tilde\rho + 1} - \tilde\kappa$ predicts which perturbation material pairs produce the largest eigenfrequency shifts: high-$\Phi$ materials (dense, incompressible) create stronger perturbations. Ranking by $\Phi$ correlates $r > 0.7$ with ranking by measured frequency shift. | $\Phi$-ranking correlation with measured shift ranking $r < 0.5$                          | §5 materials, forced_oscillation.py            |
+| **H-ARF3** | **Bjerknes force predicts hybridisation coupling.** The secondary Bjerknes force between two nearby perturbation sites (inter-particle radiation force) is attractive when both are in-phase and repulsive when anti-phase. This predicts which site pairs produce the strongest avoided crossings in §11.3: Bjerknes-attractive pairs show $\geq 2\times$ the hybridisation splitting of Bjerknes-repulsive pairs.                    | Bjerknes-attractive pairs show $< 1.2\times$ the splitting of repulsive pairs             | §11.3 hybridisation, spare_mace.py             |
+| **H-ARF4** | **Dual-axis encoding.** Perturbation sites at $\sin^2$ nodes (zero sensitivity, maximum gradient) and antinodes (maximum sensitivity, zero gradient) encode complementary information: node sites are sensitive to mass-spring coupling (gradient-dominated), antinode sites to mass loading (amplitude-dominated). Using both axes increases fingerprint entropy by $\geq 20\%$ over single-axis (antinode-only) placement.            | Dual-axis entropy gain < 10% over antinode-only                                           | §2.1 eigenmode encoding, sensitivity functions |
+
+### Implementation plan
+
+| Step  | Task                                                                                                                        | Artifact     | Status |
+| ----- | --------------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
+| ARF-1 | Literature review: Gor'kov 1962, Bruus 2012 review, King 1934, Yosioka & Kawasima 1955, Bjerknes forces, acoustophoresis   | Design notes |        |
+| ARF-2 | Implement `simulations/gorkov_radiation.py` with 4 experiment functions + dataclass results                                 | Module       |        |
+| ARF-3 | Write `tests/test_gorkov_radiation.py` — target ≥ 40 tests                                                                  | Test file    |        |
+| ARF-4 | Run experiments, confirm or kill each hypothesis                                                                            | Results      |        |
+| ARF-5 | Update `simulations/__init__.py` (Phase 9i)                                                                                 | Package      |        |
+| ARF-6 | Paper integration: §11.16 subsection + §14.2 historical bullet + §11.6 item 15                                              | Paper        |        |
+| ARF-7 | Full regression suite — must exceed prior count                                                                             | Regression   |        |
+| ARF-8 | Regenerate PDFs                                                                                                             | Deliverable  |        |
+
+### External data sources (for validation, not curve-fitting)
+
+- Gor'kov, L. P. "On the forces acting on a small particle in an acoustical field in an ideal fluid" (Soviet Physics — Doklady, 1962)
+- Bruus, H. "Acoustofluidics 7: The acoustic radiation force on small particles" (Lab Chip, 2012) — modern review
+- King, L. V. "On the acoustic radiation pressure on spheres" (Proc. R. Soc. Lond. A, 1934) — rigid sphere limit
+- Yosioka, K. & Kawasima, Y. "Acoustic radiation pressure on a compressible sphere" (Acustica, 1955) — contrast factor derivation
+- Settnes, M. & Bruus, H. "Forces acting on a small particle in an acoustical field" (Phys. Rev. E, 2012) — viscous corrections
+- Scranton, L. observations on standing-wave organisation in creational energetics
+- SEM site-optimization results (§7, golden-ratio baseline)
+
+### Key equations to validate
+
+- Gor'kov primary radiation force: $F_{\text{pr}} = 4\pi\,\Phi(\tilde\kappa, \tilde\rho)\,a^3\,k\,E_{\text{ac}}\sin(2kz)$
+- Acoustic contrast factor: $\Phi = \frac{5\tilde\rho - 2}{2\tilde\rho + 1} - \tilde\kappa$, where $\tilde\rho = \rho_p/\rho_f$, $\tilde\kappa = \kappa_p/\kappa_f$
+- Gradient identity: $\frac{\partial}{\partial x}\sin^2(n\pi x/L) = \frac{n\pi}{L}\sin(2n\pi x/L) \equiv F_{\text{pr}}$ spatial pattern
+- Secondary Bjerknes force: $F_B \propto -\frac{\partial}{\partial d}\langle V_1(t) V_2(t) \rangle$ (volume oscillations of two bodies)
+- Fingerprint entropy: $H = -\sum_i p_i \log_2 p_i$ over discretised fingerprint bins
+- Dual-axis sensitivity: node site $\propto |\partial\sin^2/\partial x|$, antinode site $\propto \sin^2$
+
+### Cross-sidebar interactions
+
+| Interaction                                              | Sidebars  | Nature                                                                                       |
+| -------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------- |
+| Gradient placement extends site optimisation             | S12 × S1  | Gor'kov $\sin(2kz)$ placement competes with/extends golden-ratio placement from spare_mace   |
+| Radiation force predicts Chladni trapping                | S12 × S4  | Gor'kov force in 2D is the mechanism underlying Chladni's sand-at-nodal-lines observation    |
+| Tesla phase at gradient peaks                            | S12 × S3  | Phase encoding (S3) is strongest where sensitivity gradient is maximum — the Gor'kov maxima  |
+| Bjerknes force predicts hybridisation strength           | S12 × S9  | Bjerknes inter-site coupling parallels Zeeman multi-site field geometry (H-Z4)               |
+| Contrast factor extends Boltzmann material weighting     | S12 × S11 | Acoustic contrast $\Phi$ provides a physics-based alternative to Boltzmann partition weighting |
+| Bandwidth utilisation at optimal sites                   | S12 × S8  | Gor'kov-placed sites may improve Gabor's bandwidth utilisation ratio $\eta$ (H-G3)           |
