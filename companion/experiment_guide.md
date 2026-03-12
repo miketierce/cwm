@@ -169,7 +169,11 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 > - After assembly, compare the full spectrum against the PZT-only spectrum. Any peak that appears in both is a PZT artifact, not a glass eigenmode.
 > - True glass-rod longitudinal modes are evenly spaced at $\Delta f = v_{\text{bar}}/(2L) \approx 17{,}700$ Hz. PZT resonances do _not_ follow this comb pattern. Any peak that falls off the comb by more than 1% is suspect.
 
-**Worksheet D.1 — Quality Factor Measurement**
+<div class="worksheet-header">
+<h4>Worksheet D.1 — Quality Factor Measurement</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rod. Record ring-down and bandwidth Q values for comparison.</p>
+</div>
 
 | Parameter                           | Rod 1                                         | Rod 2 | Rod 3 |
 | ----------------------------------- | --------------------------------------------- | ----- | ----- |
@@ -235,7 +239,11 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 > - **Software filter.** Export the FFT data (PicoScope can save .csv files) and discard all peaks more than ±500 Hz from the predicted comb frequencies.
 > - **Rotation test.** Rotate the rod 90° on the foam cradle and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod's cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.
 
-**Worksheet D.2 — Mode Spectrum Map**
+<div class="worksheet-header">
+<h4>Worksheet D.2 — Mode Spectrum Map</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rod. Log predicted vs. measured frequencies for all confirmed longitudinal modes.</p>
+</div>
 
 | Mode _n_                                | Predicted fₙ (Hz) | Measured fₙ (Hz)                | Δf = meas − pred (Hz)        | Amplitude (dB)              | Confirmed?                               |
 | --------------------------------------- | ----------------- | ------------------------------- | ---------------------------- | --------------------------- | ---------------------------------------- |
@@ -293,7 +301,11 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 > - **Bracket measurements.** Take a "before" spectrum immediately before applying wax, and an "after" spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.
 > - **Record temperature at every measurement point** so post-hoc correction is possible.
 
-**Worksheet D.3 — Thermal Stability Log**
+<div class="worksheet-header">
+<h4>Worksheet D.3 — Thermal Stability Log</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per thermal stability run. Track frequency drift vs. temperature over time.</p>
+</div>
 
 | Time (min)                            | Temp (°C)                                        | f₁ (Hz)                                  | Δf from t = 0 (Hz)           | Environment                       |
 | ------------------------------------- | ------------------------------------------------ | ---------------------------------------- | ---------------------------- | --------------------------------- |
@@ -360,9 +372,11 @@ The key insight is that _different modes shift by different amounts_ depending o
 > - **Verify linearity.** Measure mode amplitudes at 0.25 V, 0.50 V, and 1.00 V. Plot amplitude vs. drive voltage. The relationship should be linear (doubling voltage doubles response amplitude). If doubling drive voltage increases any mode's amplitude by more than 2.2× (exceeding the linear 2.0× by more than 10%), you have entered the non-linear regime—reduce the drive.
 > - **Listen for audible ringing.** If you can clearly hear the rod vibrating (a high-pitched whine), the amplitude is too high. Reduce AWG output until the sound is barely perceptible or inaudible.
 
-**Worksheet D.4 — Perturbation Encoding Data**
-
-_Copy this worksheet for each trial._
+<div class="worksheet-header">
+<h4>Worksheet D.4 — Perturbation Encoding Data</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per perturbation trial. Record before/after mode frequencies and compare to Rayleigh predictions.</p>
+</div>
 
 |                                  | Trial info                    |
 | -------------------------------- | ----------------------------- |
@@ -422,7 +436,11 @@ _After removing wax:_
 
 8. **Record results** in Worksheet D.5.
 
-**Worksheet D.5 — Associative Recall Discrimination**
+<div class="worksheet-header">
+<h4>Worksheet D.5 — Associative Recall Discrimination</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per discrimination test. Log response amplitudes for matched vs. unmatched query patterns.</p>
+</div>
 
 | Pattern stored on rod | Query driven           | Peak response (dB)          | Match? |
 | --------------------- | ---------------------- | --------------------------- | ------ |
@@ -490,7 +508,11 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 11. **Record results** in Worksheet D.6.
 
-**Worksheet D.6 — CW Readout Comparison**
+<div class="worksheet-header">
+<h4>Worksheet D.6 — CW Readout Comparison</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per CW session. Compare impulse ring-down vs. continuous-wave lock-in readout.</p>
+</div>
 
 | Measurement                                                           | Value                                                        |
 | --------------------------------------------------------------------- | ------------------------------------------------------------ |
@@ -542,7 +564,11 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 9. **Record results** in Worksheet D.7.
 
-**Worksheet D.7 — Rewritable Water-Drop Encoding**
+<div class="worksheet-header">
+<h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rewritability session. Track spectra across write / erase / rewrite cycles.</p>
+</div>
 
 | Mode _n_ | f (Pattern 0)                    | f (Pattern 1: $L/2$)             | Δf₁ (Hz)                      | f (Pattern 2: $L/4$)             | Δf₂ (Hz)                     | f (Pattern 3: $L/4 + 3L/4$)      | Δf₃ (Hz)                      |
 | -------- | -------------------------------- | -------------------------------- | ----------------------------- | -------------------------------- | ---------------------------- | -------------------------------- | ----------------------------- |
@@ -566,9 +592,11 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 ---
 
-### D.11 Consolidated Experiment Log
-
-_Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7._
+<div class="worksheet-header">
+<h4>D.11 — Consolidated Experiment Log</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
+</div>
 
 | Field                                      | Entry                                                            |
 | ------------------------------------------ | ---------------------------------------------------------------- |

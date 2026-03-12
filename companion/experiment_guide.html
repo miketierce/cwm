@@ -493,11 +493,42 @@ h2:last-of-type ~ p {
     text-indent: -24pt;
 }
 
+/* -- Worksheet header -- */
+.worksheet-header {
+    page-break-before: always;
+    border: 2pt solid var(--title-accent);
+    border-radius: 4pt;
+    padding: 10pt 14pt;
+    margin: 18pt 0 10pt 0;
+    background: var(--bg-table-head);
+    page-break-after: avoid;
+}
+
+.worksheet-header h4 {
+    margin: 0 0 2pt 0;
+    font-size: 13pt;
+    color: var(--title-accent);
+    border-bottom: none;
+}
+
+.worksheet-header .ws-project {
+    font-size: 8.5pt;
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+}
+
+.worksheet-header .ws-instruction {
+    font-size: 9pt;
+    color: var(--text);
+    margin: 4pt 0 0 0;
+}
+
 /* -- Print tweaks -- */
 h2, h3 {
     page-break-after: avoid;
 }
-table, pre, blockquote {
+table, pre {
     page-break-inside: avoid;
 }
 
@@ -925,7 +956,12 @@ div.worksheet-plate th {
 <li>True glass-rod longitudinal modes are evenly spaced at $\Delta f = v_{\text{bar}}/(2L) \approx 17{,}700$ Hz. PZT resonances do <em>not</em> follow this comb pattern. Any peak that falls off the comb by more than 1% is suspect.</li>
 </ul>
 </blockquote>
-<p><strong>Worksheet D.1 — Quality Factor Measurement</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.1 — Quality Factor Measurement</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rod. Record ring-down and bandwidth Q values for comparison.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1103,7 +1139,12 @@ div.worksheet-plate th {
 <li><strong>Rotation test.</strong> Rotate the rod 90° on the foam cradle and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod&rsquo;s cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.</li>
 </ul>
 </blockquote>
-<p><strong>Worksheet D.2 — Mode Spectrum Map</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.2 — Mode Spectrum Map</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rod. Log predicted vs. measured frequencies for all confirmed longitudinal modes.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1245,7 +1286,12 @@ div.worksheet-plate th {
 <li><strong>Record temperature at every measurement point</strong> so post-hoc correction is possible.</li>
 </ul>
 </blockquote>
-<p><strong>Worksheet D.3 — Thermal Stability Log</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.3 — Thermal Stability Log</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per thermal stability run. Track frequency drift vs. temperature over time.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1417,8 +1463,12 @@ div.worksheet-plate th {
 <li><strong>Listen for audible ringing.</strong> If you can clearly hear the rod vibrating (a high-pitched whine), the amplitude is too high. Reduce AWG output until the sound is barely perceptible or inaudible.</li>
 </ul>
 </blockquote>
-<p><strong>Worksheet D.4 — Perturbation Encoding Data</strong></p>
-<p><em>Copy this worksheet for each trial.</em></p>
+<div class="worksheet-header">
+<h4>Worksheet D.4 — Perturbation Encoding Data</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per perturbation trial. Record before/after mode frequencies and compare to Rayleigh predictions.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1593,7 +1643,12 @@ div.worksheet-plate th {
 <p><strong>Record results</strong> in Worksheet D.5.</p>
 </li>
 </ol>
-<p><strong>Worksheet D.5 — Associative Recall Discrimination</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.5 — Associative Recall Discrimination</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per discrimination test. Log response amplitudes for matched vs. unmatched query patterns.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1703,7 +1758,12 @@ div.worksheet-plate th {
 <p><strong>Record results</strong> in Worksheet D.6.</p>
 </li>
 </ol>
-<p><strong>Worksheet D.6 — CW Readout Comparison</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.6 — CW Readout Comparison</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per CW session. Compare impulse ring-down vs. continuous-wave lock-in readout.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1798,7 +1858,12 @@ div.worksheet-plate th {
 <p><strong>Record results</strong> in Worksheet D.7.</p>
 </li>
 </ol>
-<p><strong>Worksheet D.7 — Rewritable Water-Drop Encoding</strong></p>
+<div class="worksheet-header">
+<h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Print one copy per rewritability session. Track spectra across write / erase / rewrite cycles.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -1900,8 +1965,12 @@ div.worksheet-plate th {
 <p><strong>The Franklin insight.</strong> This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in §12.5: the rod is optimized for resonance quality (Q), and the &ldquo;write medium&rdquo; (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.</p>
 </blockquote>
 <hr />
-<h3 id="d11-consolidated-experiment-log">D.11 Consolidated Experiment Log</h3>
-<p><em>Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</em></p>
+<div class="worksheet-header">
+<h4>D.11 — Consolidated Experiment Log</h4>
+<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
+</div>
+
 <table>
 <thead>
 <tr>
@@ -2103,98 +2172,98 @@ div.worksheet-plate th {
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig1_architecture.svg" alt="Plate 1: SEM Architecture"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Plate 1: SEM Architecture"/>
 <p><strong>Figure 1.</strong> SEM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, SEM unifies storage and computation in the same physical process.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig2_mems_cross_section.svg" alt="Plate 2: MEMS Resonator Cross-Section"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig2_mems_cross_section.svg" alt="Plate 2: MEMS Resonator Cross-Section"/>
 <p><strong>Figure 2.</strong> MEMS resonator at chip scale. <em>(a)</em> Cross-section of a single 1 mm × 40 µm glass resonator element showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic mass perturbations. <em>(b)</em> Scale comparison: the rod diameter (40 µm) is thinner than a human hair (70 µm). <em>(c)</em> Top-down view of a resonator array at 80 µm pitch on a CMOS readout die. <em>(d)</em> Chip integration stack: vacuum-sealed glass array flip-chip bonded to CMOS — identical to existing MEMS accelerometer packaging.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig3_eigenmode_encoding.svg" alt="Plate 3: Eigenmode Encoding"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig3_eigenmode_encoding.svg" alt="Plate 3: Eigenmode Encoding"/>
 <p><strong>Figure 3.</strong> Eigenmode encoding. <em>(a)</em> Standing wave mode shapes for modes n = 1, 2, 3, … N within a glass rod — each mode is an independent information channel at a distinct frequency. <em>(b)</em> Perturbation effect: adding mass at a specific position shifts each mode frequency by a different amount (Rayleigh perturbation formula), creating a unique spectral fingerprint that encodes the perturbation's position and mass.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig4_q_budget.svg" alt="Plate 4: Q-Factor Loss Budget"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig4_q_budget.svg" alt="Plate 4: Q-Factor Loss Budget"/>
 <p><strong>Figure 4.</strong> MEMS Q-factor loss budget. <em>(a)</em> For the reference 1 mm borosilicate design, material intrinsic loss dominates at 91.0% — anchor loss is only 4.4% of the total budget. Q<sub>total</sub> = 9,097. <em>(b)</em> All four design scenarios (varying glass type, tether geometry, and vacuum level) clear the Q > 5,000 threshold for competitive operation, with fused silica designs exceeding Q = 50,000.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
 <p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
 <p><strong>Figure 6.</strong> SEM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig7_weight_pruning.svg" alt="Plate 7: Synaptic Pruning for Associative Recall"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig7_weight_pruning.svg" alt="Plate 7: Synaptic Pruning for Associative Recall"/>
 <p><strong>Figure 7.</strong> Synaptic pruning optimization. <em>(a)</em> Weight matrix before and after pruning: entries below threshold θ are zeroed, removing inter-pattern crosstalk while preserving dominant pattern-encoding weights. <em>(b)</em> Recall accuracy vs. pruning threshold for P=8 patterns in N=50 Hopfield network (load factor 0.16). Optimal pruning at θ* = 0.055 achieves +10.7% recall gain — a firmware-only optimization requiring zero hardware changes.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
 <p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms SEM as a true compute-in-memory technology.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig9_avoided_crossing.svg" alt="Plate 9: Avoided Crossing and Mode Hybridization"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig9_avoided_crossing.svg" alt="Plate 9: Avoided Crossing and Mode Hybridization"/>
 <p><strong>Figure 9.</strong> Mode hybridization at near-degeneracy. <em>(a)</em> Avoided-crossing level diagram: when two eigenfrequencies approach each other under perturbation, off-diagonal coupling prevents crossing, creating a gap of 2κ and hybridized bonding/antibonding mode pairs. <em>(b)</em> Hybridization depth (energy exchange fraction) peaks at ≈100% for small detuning and remains above 10% for 16 of 20 tested detuning values, yielding an effective +160% capacity gain from a 10-mode base system.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig10_null_space.svg" alt="Plate 10: Null-Space Multiplexing"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig10_null_space.svg" alt="Plate 10: Null-Space Multiplexing"/>
 <p><strong>Figure 10.</strong> Null-space multiplexing for dual-channel encoding. The coupling matrix C (10 modes × 16 perturbation sites) has rank 10 and a 6-dimensional null space. Standard patterns are encoded in the column space and recovered by standard readout (fidelity 1.000). Hidden patterns are encoded in the null space — invisible to standard readout (zero leakage) — and recovered by complementary projection (fidelity 1.000). Combined capacity: 262 bits vs. 164 standard, a +60% bonus with zero hardware modification.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig11_prototype_spectrum.svg" alt="Plate 11: Prototype Eigenmode Spectrum"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig11_prototype_spectrum.svg" alt="Plate 11: Prototype Eigenmode Spectrum"/>
 <p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg wax perturbation (red dashed), each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 barely shifts (wax near node). Measured shifts match Rayleigh predictions to within 2%.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig12_ringdown.svg" alt="Plate 12: Ring-down and Q Measurement"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig12_ringdown.svg" alt="Plate 12: Ring-down and Q Measurement"/>
 <p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the $25 USB oscilloscope is not the bottleneck.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig13_recall_discrimination.svg" alt="Plate 13: Associative Recall Discrimination"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig13_recall_discrimination.svg" alt="Plate 13: Associative Recall Discrimination"/>
 <p><strong>Figure 13.</strong> Associative recall demonstration. <em>(a)</em> Response amplitudes for an 8-pattern array when queried with the P4 spectrum: the matching pattern responds at 28 dB, 15 dB above the best non-matching pattern (P6 at 13 dB), providing a 30× power margin. <em>(b)</em> Cross-correlation matrix for four stored fingerprints confirms near-orthogonality: diagonal entries = 1.00, maximum off-diagonal = 0.21 (−13.6 dB). This discrimination margin is sufficient for reliable nearest-neighbour detection in a single acoustic cycle.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/companion/figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
 <p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). <em>(a)</em> Eigenfrequency diagram: uncoupled modes (dashed grey) would cross at zero detuning; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by minimum gap 2κ = 17 kHz. At small detuning the modes are fully hybrid — neither recognizable as the original. <em>(b)</em> Hybridization depth vs. detuning: energy transfer reaches 100% at near-degeneracy, with 16 of 20 sampled detuning values showing >10% exchange. Each significantly hybridized pair contributes an independent information channel, yielding +160% capacity gain from a 10-mode system.</p>
 </div>
 

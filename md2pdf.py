@@ -507,11 +507,42 @@ h2:last-of-type ~ p {
     text-indent: -24pt;
 }
 
+/* -- Worksheet header -- */
+.worksheet-header {
+    page-break-before: always;
+    border: 2pt solid var(--title-accent);
+    border-radius: 4pt;
+    padding: 10pt 14pt;
+    margin: 18pt 0 10pt 0;
+    background: var(--bg-table-head);
+    page-break-after: avoid;
+}
+
+.worksheet-header h4 {
+    margin: 0 0 2pt 0;
+    font-size: 13pt;
+    color: var(--title-accent);
+    border-bottom: none;
+}
+
+.worksheet-header .ws-project {
+    font-size: 8.5pt;
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+}
+
+.worksheet-header .ws-instruction {
+    font-size: 9pt;
+    color: var(--text);
+    margin: 4pt 0 0 0;
+}
+
 /* -- Print tweaks -- */
 h2, h3 {
     page-break-after: avoid;
 }
-table, pre, blockquote {
+table, pre {
     page-break-inside: avoid;
 }
 
