@@ -94,3 +94,8 @@
 #   shannon_capacity      - 4 experiments: waterfilling gain (killed),
 #                           Nyquist 2K minimum (confirmed), capacity
 #                           utilisation (confirmed), mutual information (killed)
+#
+# Phase 9l — Mathieu–Floquet parametric mode amplification:
+#   mathieu_parametric    - 4 experiments: parametric gain (confirmed),
+#                           mode selectivity (confirmed), stability boundary
+#                           (confirmed), parametric + CW readout (confirmed)

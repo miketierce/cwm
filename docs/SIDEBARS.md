@@ -41,11 +41,11 @@ survive integration into the paper without regressing existing tests.
 |         |                       |                            |       |                            |             |
 | **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
-| **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
+| **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | —     | H-CS1–CS4: 0/4 tested      | 📋 Proposed |
 
-**Running totals (completed):** 41 modules · 1635 tests · 64 hypotheses (41 confirmed, 23 killed)
-**Proposed (S16–S17):** 2 sidebars · 8 hypotheses · awaiting execution
+**Running totals (completed):** 42 modules · 1712 tests · 68 hypotheses (45 confirmed, 23 killed)
+**Proposed (S17):** 1 sidebar · 4 hypotheses · awaiting execution
 
 ---
 
@@ -382,8 +382,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 (all ✅)**
-**Proposed order: S16 → S17 (dependencies below)**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 → S16 (all ✅)**
+**Proposed order: S17 (dependencies below)**
 
 Rationale (S13–S16):
 
@@ -530,6 +530,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_shannon_capacity.py` (72 tests)
 - **Paper:** §11.18, §14.2 bullet, §11.6 item 17
 - **Key result:** 2/4 confirmed — Nyquist 2K minimum strict at finite SNR (10× error reduction K→2K, H-SN2), uniform allocation achieves 98.8% of waterfilling optimum (H-SN3). 2/4 killed — waterfilling gain only 1.2% (threshold 2%, H-SN1), full noise model places all modes below MI threshold (n_max = 0, H-SN4). Kill mechanism: SNR variation too modest for waterfilling advantage; five-source noise model is conservative.
+
+### S16 — Mathieu/Floquet (Phase 9l)
+
+- **Module:** `simulations/mathieu_parametric.py` (~350 lines, 4 experiments)
+- **Tests:** `tests/test_mathieu_parametric.py` (77 tests)
+- **Paper:** §11.19, §14.2 bullet, §11.6 item 18
+- **Key result:** 4/4 confirmed — parametric gain 12.0 dB at ε = 0.003 with 166× less power than Békésy feedback (H-PM1), neighbour-mode crosstalk 0.0004 dB at selectivity 133× (H-PM2), analytic stability boundary within 9.3% of numerical (H-PM3), parametric + CW compound improvement 12.0 dB (H-PM4). Strongest positive result since Zeeman (S9, also 4:0).
 
 ---
 
@@ -1140,13 +1147,22 @@ for a memory device that must be stable.
 
 #### Implementation plan
 
-| Step | Task                                                                                                                                          | Artifact     | Status     |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
-| PM-1 | Literature review: Mathieu equation, Floquet theory, MEMS parametric amplifiers (Rugar & Grütter 1991, Karabalin et al. 2009)                 | Design notes | ⬜ Planned |
-| PM-2 | Implement `simulations/mathieu_parametric.py` with 4 experiment functions: gain vs $\varepsilon$, selectivity, stability chart, CW+parametric | Module       | ⬜ Planned |
-| PM-3 | Write `tests/test_mathieu_parametric.py` — target $\geq$ 40 tests                                                                             | Test file    | ⬜ Planned |
-| PM-4 | Run experiments, confirm or kill                                                                                                              | Results      | ⬜ Planned |
-| PM-5 | Paper integration if warranted                                                                                                                | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                                          | Artifact     | Status      |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ----------- |
+| PM-1 | Literature review: Mathieu equation, Floquet theory, MEMS parametric amplifiers (Rugar & Grütter 1991, Karabalin et al. 2009)                 | Design notes | ✅ Complete |
+| PM-2 | Implement `simulations/mathieu_parametric.py` with 4 experiment functions: gain vs $\varepsilon$, selectivity, stability chart, CW+parametric | Module       | ✅ Complete |
+| PM-3 | Write `tests/test_mathieu_parametric.py` — 77 tests                                                                                           | Test file    | ✅ Complete |
+| PM-4 | Run experiments, confirm or kill                                                                                                              | Results      | ✅ Complete |
+| PM-5 | Paper integration: §11.19, §14.2 bullet, §11.6 item 18, counts updated                                                                        | Paper        | ✅ Complete |
+
+#### Experiment results
+
+| ID        | Verdict      | Key metric                                  | Kill/confirm mechanism                                                                            |
+| --------- | ------------ | ------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| **H-PM1** | ✅ Confirmed | Gain 12.0 dB at ε = 0.003 (threshold 10 dB) | G = 1/(1−εQ/2) = 4.0×; pump power 0.055 fW vs Békésy 9.1 fW (166× cheaper)                        |
+| **H-PM2** | ✅ Confirmed | Neighbour gain 0.0004 dB (threshold 1 dB)   | Tongue width 525 kHz vs FSR 70 MHz; selectivity ratio 133×; Lorentzian roll-off of Mathieu tongue |
+| **H-PM3** | ✅ Confirmed | Deviation 9.3% (threshold 20%)              | ε_predicted = 0.00400 vs ε_numerical = 0.00441; first-order Floquet theory is accurate            |
+| **H-PM4** | ✅ Confirmed | Improvement 12.0 dB (threshold 6 dB)        | Parametric G² compounds with CW averaging; CW 33.4 dB + parametric 12.0 dB = 45.5 dB              |
 
 #### External data sources
 
