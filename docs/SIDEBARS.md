@@ -43,9 +43,10 @@ survive integration into the paper without regressing existing tests.
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
+| **S18** | Gauge Geometry        | `gauge_geometry.py`        |       | H-GG1–GG5                  | 🔧 Active   |
 
 **Running totals (completed):** 43 modules · 1821 tests · 79 hypotheses (51 confirmed, 28 killed)
-**All 17 sidebars complete.**
+**S1–S17 complete. S18 in progress.**
 
 ---
 
@@ -1270,3 +1271,53 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 - **Paper:** v15.md §11.20, TOC entry, §11.6 item 19, §14.2 bullet
 - **Registration:** `__init__.py` Phase 9m, `common.py` 43/1821
 - **Commit:** pending
+
+---
+
+### S18 — Gauge Geometry: Fiber-Bundle Structure of the Sensitivity Matrix
+
+#### Historical figure / tradition
+
+**Yang–Mills gauge theory** and the fiber-bundle formalism developed by Yang & Mills (1954), Atiyah & Bott (1983), Donaldson (1983), and Uhlenbeck (1982). Eric Weinstein's Harvard dissertation (1992, under Raoul Bott) extended self-dual Yang–Mills equations beyond dimension four, demonstrating that gauge-geometric structures are not special to a single dimensionality — a principle directly relevant to SEM's dimensional tower (1D rod → 2D plate → 3D cavity). This sidebar tests whether the well-established mathematical toolkit of gauge theory (connections, curvature, holonomy, topological invariants) provides quantitative predictions for SEM's sensitivity-matrix physics.
+
+#### Relevance to SEM
+
+SEM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2(n\pi x/L)$ defines a map from **parameter space** (perturbation positions and masses) to **frequency space** (eigenmode shifts). In gauge-geometric language, this is a **connection on a fiber bundle**: the base manifold is the configuration space of perturbation positions, the fiber is the space of spectral fingerprints, and the sensitivity matrix is the connection form. The curvature of this connection, its holonomy around closed loops, and its topological invariants (rank, winding numbers) should produce testable predictions about inversion conditioning, information capacity, and dimensional scaling. If SEM's physics has genuine gauge-geometric structure, these predictions quantify it; if not, the analogy is decorative.
+
+#### Hypotheses
+
+| ID        | Hypothesis                                                       | Metric                                                              | Kill criterion                                                              |
+| --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| **H-GG1** | Curvature of sensitivity connection predicts conditioning        | Correlation of ‖F‖² (Yang-Mills functional) with κ(S)               | R² < 0.5 between curvature norm and condition number                        |
+| **H-GG2** | Information capacity is a gauge invariant                        | Capacity under mode permutation, SVD rotation, position translation | Capacity changes by > 1% under any gauge transformation                     |
+| **H-GG3** | 1D sensitivity formulas arise from 2D by dimensional reduction   | Exact recovery of 1D κ and capacity from 2D reduction               | Relative error > 5% between reduced 2D and direct 1D results                |
+| **H-GG4** | Rank of sensitivity matrix is a topological invariant            | Piecewise constancy of rank under smooth position deformation       | Rank changes at > 5% of tested positions (not just rational points)         |
+| **H-GG5** | Holonomy of sensitivity connection is non-trivial and predictive | Correlation of tr(H) with enclosed curvature (Ambrose-Singer)       | H = I always (trivial holonomy), or R² < 0.5 between holonomy and curvature |
+
+#### Implementation plan
+
+| Step | Task                                                                                            | Artifact     | Status      |
+| ---- | ----------------------------------------------------------------------------------------------- | ------------ | ----------- |
+| GG-1 | Literature review: gauge theory fundamentals, fiber bundles, connections, Yang-Mills functional | Design notes | ✅ Done     |
+| GG-2 | Implement `simulations/gauge_geometry.py` — 5 experiments (H-GG1–GG5)                           | Module       | 🔧 Active   |
+| GG-3 | Write `tests/test_gauge_geometry.py` — target ≥ 60 tests                                        | Test file    | Not started |
+| GG-4 | Run experiments, tune parameters until all 5 confirm or are honestly killed                     | Results      | Not started |
+| GG-5 | Integrate into paper v15.md (§11.21, TOC, §14.2)                                                | Paper        | Not started |
+
+#### Key equations to validate
+
+- Connection 1-form: $A_{nk}(x) = \sin^2(n\pi x_k / L)$ (the sensitivity matrix IS the connection)
+- Curvature tensor: $F_{nk,j} = \partial A_{nk} / \partial x_j = 2n\pi/L \cdot \sin(n\pi x_j/L) \cos(n\pi x_j/L)$
+- Yang-Mills functional: $\|F\|^2 = \sum_{n,k,j} F_{nk,j}^2$
+- Holonomy matrix: $H = \prod_i M_i$ where $M_i$ are transition matrices along a closed path
+- Dimensional reduction: $S^{1D}_{n}(x) = \int_0^b S^{2D}_{nm}(x,y)\,dy$
+
+#### Cross-sidebar interactions
+
+| Interaction                                                         | Sidebars  | Nature                                                                                      |
+| ------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------- |
+| Curvature reinterprets condition number from S13                    | S18 × S13 | Golden-ratio optimality may correspond to curvature minimisation (Yang-Mills minimum)       |
+| Gauge invariance formalises SVD rewriting freedom from §12          | S18 × §12 | Virtual rewriting partitions are gauge orbits of the sensitivity connection                 |
+| Dimensional reduction connects Chladni 2D to rod 1D                 | S18 × S4  | The 9.1× mode scaling factor should emerge from the reduction formula                       |
+| Topological rank invariant relates to Shannon capacity              | S18 × S15 | Shannon capacity may be expressible in terms of topological invariants (Chern class analog) |
+| Holonomy around rational positions relates to Weyl equidistribution | S18 × S13 | Rational positions are "topology-changing" points where rank drops (gauge singularities)    |
