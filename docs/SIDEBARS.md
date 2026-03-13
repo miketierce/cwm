@@ -1170,22 +1170,22 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 
 #### Hypotheses
 
-| ID       | Hypothesis                              | Metric                                  | Kill criterion                                                 |
-| -------- | --------------------------------------- | --------------------------------------- | -------------------------------------------------------------- |
-| **H-CS1** | Rational-position inversion degeneracy | Condition number of seismological inversion matrix | κ does NOT peak at rational fractions of loop length |
-| **H-CS2** | Multi-mode-family diagnostic independence | Cross-correlation between kink, sausage, longitudinal diagnostics | Cross-correlation > 0.3 (channels not independent) |
-| **H-CS3** | Logarithmic capacity ceiling           | Recoverable parameters vs. observed harmonic count | Does not follow $C \approx a \ln N + b$ |
-| **H-CS4** | Published P₁/2P₂ anomalies correlate with conditioning | Spearman ρ between period-ratio deviation and predicted κ | ρ < 0.5 or p > 0.05 |
+| ID        | Hypothesis                                             | Metric                                                            | Kill criterion                                       |
+| --------- | ------------------------------------------------------ | ----------------------------------------------------------------- | ---------------------------------------------------- |
+| **H-CS1** | Rational-position inversion degeneracy                 | Condition number of seismological inversion matrix                | κ does NOT peak at rational fractions of loop length |
+| **H-CS2** | Multi-mode-family diagnostic independence              | Cross-correlation between kink, sausage, longitudinal diagnostics | Cross-correlation > 0.3 (channels not independent)   |
+| **H-CS3** | Logarithmic capacity ceiling                           | Recoverable parameters vs. observed harmonic count                | Does not follow $C \approx a \ln N + b$              |
+| **H-CS4** | Published P₁/2P₂ anomalies correlate with conditioning | Spearman ρ between period-ratio deviation and predicted κ         | ρ < 0.5 or p > 0.05                                  |
 
 #### Implementation plan
 
-| Step | Task                                                                                                                     | Artifact     | Status     |
-| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs             | Design notes | ⬜ Planned |
-| CS-2 | Implement `simulations/coronal_seismology.py` — translate SEM sensitivity matrix to MHD eigenmode basis                   | Module       | ⬜ Planned |
-| CS-3 | Write `tests/test_coronal_seismology.py` — target ≥ 40 tests                                                             | Test file    | ⬜ Planned |
-| CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                                        | Results      | ⬜ Planned |
-| CS-5 | Companion paper draft if results warrant                                                                                 | Paper        | ⬜ Planned |
+| Step | Task                                                                                                         | Artifact     | Status     |
+| ---- | ------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
+| CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs | Design notes | ⬜ Planned |
+| CS-2 | Implement `simulations/coronal_seismology.py` — translate SEM sensitivity matrix to MHD eigenmode basis      | Module       | ⬜ Planned |
+| CS-3 | Write `tests/test_coronal_seismology.py` — target ≥ 40 tests                                                 | Test file    | ⬜ Planned |
+| CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                           | Results      | ⬜ Planned |
+| CS-5 | Companion paper draft if results warrant                                                                     | Paper        | ⬜ Planned |
 
 #### External data sources
 
@@ -1203,10 +1203,10 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 
 #### Cross-sidebar interactions
 
-| Interaction                                                     | Sidebars   | Nature                                                                                  |
-| --------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------- |
-| Rationality test transfers to plasma                            | S17 × S13  | The $\sin^2$ periodicity proof applies to any harmonic standing-wave system              |
-| Polysemic readout predicts multi-mode diagnostic independence   | S17 × S2   | Scranton's polysemic principle predicts kink/sausage/longitudinal channel independence   |
-| Logarithmic ceiling constrains seismological information content | S17 × S10  | Kepler's capacity ceiling applies to coronal harmonic spectra                            |
-| Fabry-Pérot finesse describes coronal loop cavity               | S17 × S14  | End-condition engineering = footpoint impedance mismatch in coronal loops                |
-| Gor'kov force analog: dusty plasma equilibria                   | S17 × S12  | Force-optimal positions in dusty plasma are information-degenerate (S12 prediction)      |
+| Interaction                                                      | Sidebars  | Nature                                                                                 |
+| ---------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------- |
+| Rationality test transfers to plasma                             | S17 × S13 | The $\sin^2$ periodicity proof applies to any harmonic standing-wave system            |
+| Polysemic readout predicts multi-mode diagnostic independence    | S17 × S2  | Scranton's polysemic principle predicts kink/sausage/longitudinal channel independence |
+| Logarithmic ceiling constrains seismological information content | S17 × S10 | Kepler's capacity ceiling applies to coronal harmonic spectra                          |
+| Fabry-Pérot finesse describes coronal loop cavity                | S17 × S14 | End-condition engineering = footpoint impedance mismatch in coronal loops              |
+| Gor'kov force analog: dusty plasma equilibria                    | S17 × S12 | Force-optimal positions in dusty plasma are information-degenerate (S12 prediction)    |
