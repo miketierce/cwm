@@ -39,12 +39,12 @@ survive integration into the paper without regressing existing tests.
 | **S12** | Gor'kov (Scranton)    | `gorkov_radiation.py`      | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
 | **S13** | Irrational Prediction | `irrational_prediction.py` | 77    | H-IR1–IR4: 4/4 confirmed   | ✅ Complete |
 |         |                       |                            |       |                            |             |
-| **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | —     | H-FP1–FP4: 0/4 tested      | 📋 Proposed |
+| **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
 
-**Running totals (completed):** 39 modules · 1473 tests · 56 hypotheses (37 confirmed, 19 killed)
-**Proposed (S14–S16):** 3 sidebars · 12 hypotheses · awaiting execution
+**Running totals (completed):** 40 modules · 1563 tests · 60 hypotheses (39 confirmed, 21 killed)
+**Proposed (S15–S16):** 2 sidebars · 8 hypotheses · awaiting execution
 
 ---
 
@@ -381,8 +381,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 (all ✅)**
-**Proposed order: S13 → S14 → S15 → S16 (dependencies below)**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 (all ✅)**
+**Proposed order: S15 → S16 (dependencies below)**
 
 Rationale (S13–S16):
 
@@ -458,6 +458,8 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 | **H-ARF1** | S12     | 2025-07-13 | Gor'kov placement −98.9% vs golden-ratio (cond 1.2×10¹⁵ vs 4.0)                  | Gradient-peak clustering produces near-singular sensitivity matrices; golden-ratio spacing enforces quasi-orthogonality that gradient-peak sites lack |
 | **H-ARF3** | S12     | 2025-07-13 | Bjerknes ratio 1.01× (threshold 2×)                                              | Phase-based coupling direction (attractive/repulsive) has no measurable effect on hybridisation splitting magnitude; coupling is geometry-dominated   |
 | **H-ARF4** | S12     | 2025-07-13 | Dual-axis entropy −13.7% (threshold +20%)                                        | Node sites have zero sin² amplitude → zero eigenfrequency shift → redundant with noise; complementary encoding requires non-zero baseline sensitivity |
+| **H-FP2**  | S14     | 2026-03-13 | Both R² = 0.9998, advantage ≈ 0 (indistinguishable at high finesse)              | At high finesse, Airy and Lorentzian are asymptotically identical near peaks; the distinction only matters at moderate finesse (F < 50)               |
+| **H-FP3**  | S14     | 2026-03-13 | Scanning SNR −13 dB vs impulse (time-division penalty exceeds lock-in gain)      | Sequential mode scanning divides measurement time by N; parallel broadband detection captures all modes simultaneously with higher net SNR            |
 
 ---
 
@@ -511,6 +513,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_gorkov_radiation.py` (115 tests)
 - **Paper:** §11.16, §14.2 bullet, §11.6 item 15
 - **Key result:** 1/4 confirmed — acoustic contrast factor Φ(κ̃,ρ̃) perfectly predicts material ranking (Spearman ρ = 1.000, Pearson r = 1.000). 3/4 killed — Gor'kov placement (−98.9% vs golden-ratio, condition number 1.2×10¹⁵), Bjerknes hybridisation (ratio 1.01×, threshold 2×), dual-axis entropy (−13.7%, threshold +20%). Kill mechanism: gradient-peak sites cluster → near-singular matrix; node sites have zero sin² amplitude → zero signal.
+
+### S14 — Fabry-Pérot (Phase 9j)
+
+- **Module:** `simulations/fabry_perot_cavity.py` (~500 lines, 4 experiments)
+- **Tests:** `tests/test_fabry_perot_cavity.py` (90 tests)
+- **Paper:** §11.17, §14.2 bullet, §11.6 item 16
+- **Key result:** 2/4 confirmed — finesse-Q equivalence within 5.1% via self-consistent R_eff (H-FP1), end-condition engineering gives 7,922× linewidth variation across 6 materials (H-FP4). 2/4 killed — Airy ≈ Lorentzian at high finesse (both R² = 0.9998, H-FP2), scanning readout −13 dB vs broadband impulse (time-division penalty, H-FP3). Kill mechanism: high-finesse limit makes Airy/Lorentzian indistinguishable; sequential scanning loses to parallel broadband detection.
 
 ---
 
@@ -949,13 +958,13 @@ engineering tools from the most mature branch of precision measurement.
 
 #### Implementation plan
 
-| Step | Task                                                                                                                        | Artifact     | Status     |
-| ---- | --------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
-| FP-1 | Literature review: Fabry-Pérot interferometry, acoustic etalons, Airy function, finesse–Q relationship in acoustic cavities | Design notes | ⬜ Planned |
-| FP-2 | Implement `simulations/fabry_perot_cavity.py` with 4 experiment functions                                                   | Module       | ⬜ Planned |
-| FP-3 | Write `tests/test_fabry_perot_cavity.py` — target $\geq$ 40 tests                                                           | Test file    | ⬜ Planned |
-| FP-4 | Run experiments, confirm or kill                                                                                            | Results      | ⬜ Planned |
-| FP-5 | Paper integration if warranted                                                                                              | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                        | Artifact     | Status |
+| ---- | --------------------------------------------------------------------------------------------------------------------------- | ------------ | ------ |
+| FP-1 | Literature review: Fabry-Pérot interferometry, acoustic etalons, Airy function, finesse–Q relationship in acoustic cavities | Design notes | ✅     |
+| FP-2 | Implement `simulations/fabry_perot_cavity.py` with 4 experiment functions                                                   | Module       | ✅     |
+| FP-3 | Write `tests/test_fabry_perot_cavity.py` — target $\geq$ 40 tests                                                           | Test file    | ✅ 90  |
+| FP-4 | Run experiments, confirm or kill                                                                                            | Results      | ✅ 2/4 |
+| FP-5 | Paper integration if warranted                                                                                              | Paper        | ✅     |
 
 #### External data sources
 
@@ -981,6 +990,15 @@ engineering tools from the most mature branch of precision measurement.
 | Scanning readout extends CW lock-in        | S14 × S3 | Tesla phase encoding measured via Fabry-Pérot scanning rather than broadband   |
 | Resolving power bounds mode discrimination | S14 × S9 | Zeeman splitting must exceed FP linewidth to be resolvable                     |
 | End-condition engineering affects anchor Q | S14 × S7 | Anchor loss model (§7.2) is the acoustic analogue of mirror reflectivity loss  |
+
+#### Experiment results
+
+| ID        | Verdict      | Key metric                              | Kill/confirm mechanism                                                                   |
+| --------- | ------------ | --------------------------------------- | ---------------------------------------------------------------------------------------- |
+| **H-FP1** | ✅ Confirmed | Fractional error 5.1% (threshold 25%)   | Self-consistent R_eff = 0.9997 gives F ≈ Q; multiple loss mechanisms limit Q below end-R |
+| **H-FP2** | ❌ Killed    | Both R² = 0.9998, advantage ≈ 0.000000  | High-finesse Airy ≈ Lorentzian to order (δν/FSR)⁴; indistinguishable in SEM regime       |
+| **H-FP3** | ❌ Killed    | Scanning −13 dB vs impulse              | Time-division penalty (t_dwell = T/N) exceeds lock-in gain; broadband captures all modes |
+| **H-FP4** | ✅ Confirmed | Linewidth ratio 7,922× (threshold 1.5×) | Glass/air R = 0.9999 to glass/steel R = 0.35; finesse from 2.9 to 22,816                 |
 
 ---
 

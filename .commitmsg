@@ -1,18 +1,18 @@
-S12: Gor'kov acoustic radiation force sidebar (Phase 9i)
+S14: Fabry-Perot acoustic cavity finesse sidebar (Phase 9j)
 
-New module: simulations/gorkov_radiation.py (~980 lines, 4 experiments)
-New tests: tests/test_gorkov_radiation.py (115 tests, all passing)
+New module: simulations/fabry_perot_cavity.py (~500 lines, 4 experiments)
+New tests: tests/test_fabry_perot_cavity.py (90 tests, all passing)
 
-Hypotheses (1/4 confirmed, 3/4 killed):
-  H-ARF1 KILLED  - Placement: -98.9% vs golden-ratio (cond 1.2e15 vs 4.0)
-  H-ARF2 CONFIRMED - Contrast factor: Spearman rho=1.000, Pearson r=1.000
-  H-ARF3 KILLED  - Bjerknes: ratio 1.01x (threshold 2x)
-  H-ARF4 KILLED  - Dual-axis: entropy -13.7% (threshold +20%)
+Hypotheses (2/4 confirmed, 2/4 killed):
+  H-FP1 CONFIRMED - Finesse-Q equivalence: 5.1% error (threshold 25%)
+  H-FP2 KILLED    - Airy vs Lorentzian: both R^2=0.9998, indistinguishable
+  H-FP3 KILLED    - Scanning readout: -13 dB vs impulse (time-division penalty)
+  H-FP4 CONFIRMED - End-condition engineering: 7922x linewidth ratio
 
-Paper v15.md: added S11.16, TOC entry, S11.6 item 15, S14.2 bullet
-Updated counts: 37 modules, 1396 tests (was 36/1281)
-SIDEBARS.md: S12 dashboard complete, killed log, experiment results
+Paper v15.md: added S11.17, TOC entry, S11.6 item 16, S14.2 bullet
+Updated counts: 40 modules, 1563 tests (was 39/1473)
+SIDEBARS.md: S14 dashboard complete, killed log, experiment results
 PDFs regenerated: v15.pdf (138pp), v15_2col.pdf (26pp)
 
-Cumulative: 26 confirmed, 34 killed, 60 hypotheses (43.3%)
-Full regression: 1396/1396 passing
+Cumulative: 39 confirmed, 21 killed, 60 hypotheses (65.0%)
+Full regression: 1563/1563 passing

@@ -84,3 +84,8 @@
 #   gorkov_radiation      - 4 experiments: Gor'kov-optimised placement (killed),
 #                           acoustic contrast factor (confirmed), Bjerknes
 #                           hybridisation (killed), dual-axis encoding (killed)
+#
+# Phase 9j — Fabry-Pérot acoustic cavity finesse:
+#   fabry_perot_cavity    - 4 experiments: finesse-Q equivalence (confirmed),
+#                           Airy peak shape (killed), scanning readout (killed),
+#                           end-condition engineering (confirmed)
