@@ -42,9 +42,10 @@ survive integration into the paper without regressing existing tests.
 | **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
+| **S17** | Coronal Seismology    | `coronal_seismology.py`    | —     | H-CS1–CS4: 0/4 tested      | 📋 Proposed |
 
 **Running totals (completed):** 40 modules · 1563 tests · 60 hypotheses (39 confirmed, 21 killed)
-**Proposed (S15–S16):** 2 sidebars · 8 hypotheses · awaiting execution
+**Proposed (S15–S17):** 3 sidebars · 12 hypotheses · awaiting execution
 
 ---
 
@@ -1154,3 +1155,58 @@ for a memory device that must be stable.
 | Stability boundaries constrain readout                | S16 × S14 | Fabry-Pérot scanning must stay below Mathieu instability threshold                   |
 | Mode-selective gain enhances Zeeman splitting readout | S16 × S9  | Parametric amplification of split mode pairs could improve splitting measurement SNR |
 | Pump power budget extends energy analysis             | S16 × S3  | Tesla phase readout energy budget gains a parametric amplification term              |
+
+---
+
+### S17 — Coronal Seismology: Astrophysical Validation of Standing-Wave Information Theory
+
+#### Historical figure
+
+**Solar coronal seismology** as a field, founded by Uchida (1970), Roberts, Edwin & Benz (1984), and Nakariakov et al. (1999). This sidebar differs from all preceding ones: instead of importing physics into SEM, it **exports SEM's mathematical predictions to the astrophysical system where the same eigenmode physics already operates at stellar scales**. Solar coronal loops are bounded plasma cavities with discrete MHD eigenmodes — the same sensitivity matrix, the same perturbation theory, the same eigenfrequency readout that SEM uses in glass.
+
+#### Relevance to SEM
+
+If SEM's results are truly substrate-independent (as the paper claims), they must hold in any bounded standing-wave cavity with harmonic eigenmodes. Coronal seismology is the most mature natural test case: decades of published eigenfrequency observations from SDO/AIA, TRACE, Hinode, and Parker Solar Probe. Validating SEM's predictions against nature — not against our own simulations — constitutes a qualitatively different class of evidence.
+
+#### Hypotheses
+
+| ID       | Hypothesis                              | Metric                                  | Kill criterion                                                 |
+| -------- | --------------------------------------- | --------------------------------------- | -------------------------------------------------------------- |
+| **H-CS1** | Rational-position inversion degeneracy | Condition number of seismological inversion matrix | κ does NOT peak at rational fractions of loop length |
+| **H-CS2** | Multi-mode-family diagnostic independence | Cross-correlation between kink, sausage, longitudinal diagnostics | Cross-correlation > 0.3 (channels not independent) |
+| **H-CS3** | Logarithmic capacity ceiling           | Recoverable parameters vs. observed harmonic count | Does not follow $C \approx a \ln N + b$ |
+| **H-CS4** | Published P₁/2P₂ anomalies correlate with conditioning | Spearman ρ between period-ratio deviation and predicted κ | ρ < 0.5 or p > 0.05 |
+
+#### Implementation plan
+
+| Step | Task                                                                                                                     | Artifact     | Status     |
+| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
+| CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs             | Design notes | ⬜ Planned |
+| CS-2 | Implement `simulations/coronal_seismology.py` — translate SEM sensitivity matrix to MHD eigenmode basis                   | Module       | ⬜ Planned |
+| CS-3 | Write `tests/test_coronal_seismology.py` — target ≥ 40 tests                                                             | Test file    | ⬜ Planned |
+| CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                                        | Results      | ⬜ Planned |
+| CS-5 | Companion paper draft if results warrant                                                                                 | Paper        | ⬜ Planned |
+
+#### External data sources
+
+- Nakariakov, V.M. & Verwichte, E. (2005), "Coronal Waves and Oscillations," Living Reviews in Solar Physics, 2(3)
+- Nakariakov, V.M. & Ofman, L. (2001), "Determination of the coronal magnetic field by coronal loop oscillations," A&A 372 L53
+- SDO/AIA EUV oscillation catalogs (publicly available)
+- Duckenfield et al. (2018), "Detection of the second harmonic of decay-less kink oscillations"
+
+#### Key equations to validate
+
+- MHD kink mode frequency: $\omega_K = \sqrt{2k_z^2 B^2 / \mu(\rho_i + \rho_e)}$
+- Sausage mode frequency: $\omega_S = \sqrt{k_z^2 B^2 / \mu\rho_e}$
+- Period ratio anomaly: $P_1/2P_2$ deviation from 1.0 reflects density stratification — SEM predicts this deviation correlates with sensitivity-matrix conditioning
+- SEM sensitivity matrix transferred to MHD: $S_{nk} = \sin^2(n\pi x_k / L)$ where $x_k$ are density perturbation positions along the coronal loop
+
+#### Cross-sidebar interactions
+
+| Interaction                                                     | Sidebars   | Nature                                                                                  |
+| --------------------------------------------------------------- | ---------- | --------------------------------------------------------------------------------------- |
+| Rationality test transfers to plasma                            | S17 × S13  | The $\sin^2$ periodicity proof applies to any harmonic standing-wave system              |
+| Polysemic readout predicts multi-mode diagnostic independence   | S17 × S2   | Scranton's polysemic principle predicts kink/sausage/longitudinal channel independence   |
+| Logarithmic ceiling constrains seismological information content | S17 × S10  | Kepler's capacity ceiling applies to coronal harmonic spectra                            |
+| Fabry-Pérot finesse describes coronal loop cavity               | S17 × S14  | End-condition engineering = footpoint impedance mismatch in coronal loops                |
+| Gor'kov force analog: dusty plasma equilibria                   | S17 × S12  | Force-optimal positions in dusty plasma are information-degenerate (S12 prediction)      |
