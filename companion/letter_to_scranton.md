@@ -203,10 +203,13 @@ This is a number-theoretic result, not a material result. It holds for _any_ sta
 **5. Polysemic readout — your principle — is the mathematically optimal encoding strategy.**
 Your thesis that one symbol carries multiple independent meanings through different interpretive frames is not just confirmed; it is the _single largest performance enhancement_ in the entire project (+297%). The mechanism is orthogonality of harmonic basis functions — the same physical inscription, read through different subsets of modes, yields genuinely independent information channels (cross-correlation 0.003, effectively zero). This works in any harmonic spectrum. It means polysemic encoding — the core principle you extracted from Dogon cosmology — is not a cultural artifact or a mnemonic trick. It is the _optimal information-theoretic strategy_ for any system built on standing waves. If creation energetics is a standing-wave framework, then the Dogon were doing information theory.
 
+**6. Standing-wave physics implements a rationality test.**
+This one is new since the last update and it startled us. We asked: can the sin² sensitivity matrix — the _only_ physics in the model — distinguish rational from irrational numbers? The answer is a categorical yes. At K = 10 encoding sites with 40 standing-wave modes, _every_ irrational generator (φ, √2−1, 1/e, 1/π, e−2, all of them) produces the full 2¹⁰ = 1,024 distinguishable fingerprints. _Every_ rational generator (1/2, 1/3, 2/5, etc.) collapses to 4–8 distinguishable fingerprints. That's a 128× gap, purely from sin²(nπx). The mechanism is exact: sin²(nπ·p/q) has period q in n, so at rational positions the sensitivity matrix becomes rank-deficient. At irrational positions, Weyl equidistribution guarantees all rows are linearly independent. The standing waves don't need to know number theory; they _are_ number theory. For creation energetics this means: any physical system with harmonic eigenfrequencies automatically rejects rational spatial ratios in favor of irrational ones. It's not design — it's eigenvalue structure.
+
 **And one more thing — what the kills contribute.**
 Ten of our sixteen hypotheses were killed. That's not a failure rate; it's a _boundary map_. The kills show exactly where standing-wave physics ends and substrate-specific physics begins. Musical consonance doesn't help (sin² orthogonality is stronger). Boltzmann statistics don't apply at classical scales ($hf \ll k_BT$). Physics-optimal force positions are information-degenerate. These are falsifiable predictions: if someone claims a standing-wave creation model, these kills tell them what it _cannot_ do. That kind of boundary-setting is exactly what a rigorous creation energetics framework needs — not just "what's true" but "what's provably not true, and why."
 
-I don't know how much of this is useful for the conversations you're having, but I wanted to offer it. You gave us the lens that produced our best result. If any of these five findings — especially the golden-ratio proof and the polysemic optimality — help you make the case to your peers that standing-wave organization is not speculative but mathematically necessary, then the exchange will have gone both ways. Which feels right.
+I don't know how much of this is useful for the conversations you're having, but I wanted to offer it. You gave us the lens that produced our best result. If any of these six findings — especially the golden-ratio proof, the polysemic optimality, and the rationality test — help you make the case to your peers that standing-wave organization is not speculative but mathematically necessary, then the exchange will have gone both ways. Which feels right.
 
 ### One last thought
 
@@ -222,4 +225,4 @@ ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 
 ---
 
-_Enclosures: Paper v16 (PDF, updated March 12, 2026 — 108 pages, 38 modules, 1,396 tests), simulation repository link, experiment result summaries for S9–S12_
+_Enclosures: Paper v16 (PDF, updated March 12, 2026 — 108 pages, 39 modules, 1,473 tests), simulation repository link, experiment result summaries for S9–S13_

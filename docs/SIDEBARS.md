@@ -23,28 +23,28 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure               | Module                    | Tests | Hypotheses                 | Status      |
-| ------- | -------------------- | ------------------------- | ----- | -------------------------- | ----------- |
-| **S1**  | Spare / Mace         | `spare_mace.py`           | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
-| **S2**  | Scranton / Dogon     | `scranton_dogon.py`       | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
-| **S3**  | Tesla                | `tesla_phase.py`          | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
-| **S4**  | Chladni              | `chladni_plates.py`       | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
-| **S5**  | Békésy               | `bekesy_cochlea.py`       | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
-| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`       | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
-| **S7**  | Leibniz              | `leibniz_binary.py`       | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
-| **S8**  | Gabor                | `gabor_holographic.py`    | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
-| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`     | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
-| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`      | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
-| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py`  | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
-| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`     | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
-|         |                      |                           |       |                            |             |
-| **S13** | Lord Rayleigh        | `rayleigh_variational.py` | —     | H-R1–R4: 0/4 tested        | 📋 Proposed |
-| **S14** | Fabry & Pérot        | `fabry_perot_cavity.py`   | —     | H-FP1–FP4: 0/4 tested      | 📋 Proposed |
-| **S15** | Shannon & Nyquist    | `shannon_capacity.py`     | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
-| **S16** | Mathieu & Floquet    | `mathieu_parametric.py`   | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
+| Sidebar | Figure                | Module                     | Tests | Hypotheses                 | Status      |
+| ------- | --------------------- | -------------------------- | ----- | -------------------------- | ----------- |
+| **S1**  | Spare / Mace          | `spare_mace.py`            | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
+| **S2**  | Scranton / Dogon      | `scranton_dogon.py`        | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
+| **S3**  | Tesla                 | `tesla_phase.py`           | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
+| **S4**  | Chladni               | `chladni_plates.py`        | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
+| **S5**  | Békésy                | `bekesy_cochlea.py`        | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
+| **S6**  | Franklin (Rosalind)   | `franklin_phase.py`        | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
+| **S7**  | Leibniz               | `leibniz_binary.py`        | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
+| **S8**  | Gabor                 | `gabor_holographic.py`     | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
+| **S9**  | Zeeman (Scranton)     | `zeeman_splitting.py`      | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
+| **S10** | Kepler (Scranton)     | `kepler_harmonic.py`       | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
+| **S11** | Boltzmann (Scranton)  | `boltzmann_timescale.py`   | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
+| **S12** | Gor'kov (Scranton)    | `gorkov_radiation.py`      | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
+| **S13** | Irrational Prediction | `irrational_prediction.py` | 77    | H-IR1–IR4: 4/4 confirmed   | ✅ Complete |
+|         |                       |                            |       |                            |             |
+| **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | —     | H-FP1–FP4: 0/4 tested      | 📋 Proposed |
+| **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
+| **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
 
-**Running totals (completed):** 38 modules · 1396 tests · 52 hypotheses (33 confirmed, 19 killed)
-**Proposed (S13–S16):** 4 sidebars · 16 hypotheses · awaiting execution
+**Running totals (completed):** 39 modules · 1473 tests · 56 hypotheses (37 confirmed, 19 killed)
+**Proposed (S14–S16):** 3 sidebars · 12 hypotheses · awaiting execution
 
 ---
 
