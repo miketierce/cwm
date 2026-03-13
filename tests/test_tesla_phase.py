@@ -3,7 +3,7 @@ Tests for Tesla-informed phase-spectral encoding experiments.
 
 Each test class exercises one of the four hypotheses derived from
 structural parallels between Nikola Tesla's resonant-cavity / polyphase /
-wireless energy transfer work and SEM eigenmode encoding.
+wireless energy transfer work and CWM eigenmode encoding.
 
 Tests verify that experiments run without error, that numerical results
 are physically plausible (sign, range, monotonicity), and that results

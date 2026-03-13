@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Spectral Eigenmode Memory: Acoustic Resonator Arrays with Competitive Storage Density and Integrated Associative Computation</title>
+<title>Coherent Wave Memory: Acoustic Resonator Arrays with Competitive Storage Density and Integrated Associative Computation</title>
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
       crossorigin="anonymous">
@@ -237,12 +237,12 @@ table, pre, blockquote {
 </style>
 </head>
 <body>
-<h1 id="spectral-eigenmode-memory-acoustic-resonator-arrays-with-competitive-storage-density-and-integrated-associative-computation">Spectral Eigenmode Memory: Acoustic Resonator Arrays with Competitive Storage Density and Integrated Associative Computation</h1>
+<h1 id="spectral-eigenmode-memory-acoustic-resonator-arrays-with-competitive-storage-density-and-integrated-associative-computation">Coherent Wave Memory: Acoustic Resonator Arrays with Competitive Storage Density and Integrated Associative Computation</h1>
 <p><strong>Michael Tierce</strong>
 <em>Forward Arrow Solutions, Dallas, TX</em></p>
 <hr />
 <h2 id="abstract">Abstract</h2>
-<p>We present a memory and computation architecture that encodes information in the acoustic eigenmode spectrum of solid glass resonators and performs associative recall through wave interference. Prior work established the theoretical foundation and validated the core physics with a $63 macro-scale prototype: a 150 mm borosilicate glass rod demonstrating 98.8 dB SNR, multi-mode resonance matching predicted frequencies, perturbation-induced frequency shifts consistent with Rayleigh theory, and spectral pattern discrimination via piezoelectric transduction. In this paper, we derive the scaling laws that govern spectral eigenmode memory at MEMS scale and show that storage density increases as $1/L^2$ with resonator length—a consequence of the mode count being size-independent (determined solely by material $Q$ and thermal expansion $\alpha$). For borosilicate glass at $\pm 1$ K thermal stability, the architecture supports 9,380 thermally stable modes at <em>any</em> resonator length, each carrying 11–16 bits depending on scale. At $L = 1$ mm (a standard MEMS dimension), a single 40 µm-diameter rod achieves 120,000 bits at 95 Gbit/cm³—nearly 10× DRAM density—with 16 fJ/bit write energy and 3.6 µs readout. A packed array of 0.5 mm fused silica resonators at $\pm 0.1$ K achieves 1.4 Tbit/cm³, exceeding 3D NAND Flash. Crucially, wave interference across the resonator array performs Hopfield-type associative recall in constant time—a physical dot product computed at the speed of sound—eliminating the von Neumann bottleneck for nearest-neighbor search. We present a complete MEMS device specification, fabrication pathway using established thin-film piezoelectric and glass micromachining processes, scaling analysis across five orders of magnitude, and a technology comparison showing that spectral eigenmode memory occupies a unique position: competitive density, ultra-low write energy, and native associative computation in a single substrate.</p>
+<p>We present a memory and computation architecture that encodes information in the acoustic eigenmode spectrum of solid glass resonators and performs associative recall through wave interference. Prior work established the theoretical foundation and validated the core physics with a $63 macro-scale prototype: a 150 mm borosilicate glass rod demonstrating 98.8 dB SNR, multi-mode resonance matching predicted frequencies, perturbation-induced frequency shifts consistent with Rayleigh theory, and spectral pattern discrimination via piezoelectric transduction. In this paper, we derive the scaling laws that govern coherent wave memory at MEMS scale and show that storage density increases as $1/L^2$ with resonator length—a consequence of the mode count being size-independent (determined solely by material $Q$ and thermal expansion $\alpha$). For borosilicate glass at $\pm 1$ K thermal stability, the architecture supports 9,380 thermally stable modes at <em>any</em> resonator length, each carrying 11–16 bits depending on scale. At $L = 1$ mm (a standard MEMS dimension), a single 40 µm-diameter rod achieves 120,000 bits at 95 Gbit/cm³—nearly 10× DRAM density—with 16 fJ/bit write energy and 3.6 µs readout. A packed array of 0.5 mm fused silica resonators at $\pm 0.1$ K achieves 1.4 Tbit/cm³, exceeding 3D NAND Flash. Crucially, wave interference across the resonator array performs Hopfield-type associative recall in constant time—a physical dot product computed at the speed of sound—eliminating the von Neumann bottleneck for nearest-neighbor search. We present a complete MEMS device specification, fabrication pathway using established thin-film piezoelectric and glass micromachining processes, scaling analysis across five orders of magnitude, and a technology comparison showing that coherent wave memory occupies a unique position: competitive density, ultra-low write energy, and native associative computation in a single substrate.</p>
 <hr />
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-from-prototype-to-architecture">1.1 From Prototype to Architecture</h3>
@@ -273,7 +273,7 @@ table, pre, blockquote {
 <p><strong>Scaling laws</strong>: We derive analytical expressions for density, energy, and latency as functions of resonator length, and validate them across five orders of magnitude (150 mm to 100 µm) (Section 3).</p>
 </li>
 <li>
-<p><strong>Competitive density</strong>: We identify the crossover points where spectral eigenmode memory exceeds DRAM (at $L = 2.1$ mm), PCM (at $L = 1.0$ mm), and 3D NAND Flash (at $L = 0.45$ mm) in storage density (Section 4).</p>
+<p><strong>Competitive density</strong>: We identify the crossover points where coherent wave memory exceeds DRAM (at $L = 2.1$ mm), PCM (at $L = 1.0$ mm), and 3D NAND Flash (at $L = 0.45$ mm) in storage density (Section 4).</p>
 </li>
 <li>
 <p><strong>MEMS device specification</strong>: We present a concrete design for a 1 mm × 40 µm borosilicate resonator array: 120,000 bits per rod, 95 Gbit/cm³, 16 fJ/bit write energy, 3.6 µs readout (Section 5).</p>
@@ -605,7 +605,7 @@ table, pre, blockquote {
 <hr />
 <h2 id="4-technology-comparison">4. Technology Comparison</h2>
 <h3 id="41-comprehensive-benchmark">4.1 Comprehensive Benchmark</h3>
-<p>Spectral eigenmode memory at MEMS scale compared to established technologies:</p>
+<p>coherent wave memory at MEMS scale compared to established technologies:</p>
 <table>
 <thead>
 <tr>
@@ -681,7 +681,7 @@ table, pre, blockquote {
 <td>Partial</td>
 </tr>
 <tr>
-<td><strong>SEM 1 mm</strong></td>
+<td><strong>CWM 1 mm</strong></td>
 <td><strong>16 fJ</strong></td>
 <td><strong>96 Gb/cm³</strong></td>
 <td><strong>3.6 µs</strong></td>
@@ -691,7 +691,7 @@ table, pre, blockquote {
 <td><strong>Unified</strong></td>
 </tr>
 <tr>
-<td><strong>SEM 0.5 mm</strong></td>
+<td><strong>CWM 0.5 mm</strong></td>
 <td><strong>8 fJ</strong></td>
 <td><strong>734 Gb/cm³</strong></td>
 <td><strong>1.8 µs</strong></td>
@@ -701,7 +701,7 @@ table, pre, blockquote {
 <td><strong>Unified</strong></td>
 </tr>
 <tr>
-<td><strong>SEM 0.1 mm</strong></td>
+<td><strong>CWM 0.1 mm</strong></td>
 <td><strong>1.9 fJ</strong></td>
 <td><strong>83 Tb/cm³</strong></td>
 <td><strong>0.36 µs</strong></td>
@@ -712,18 +712,18 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p>(SEM = Spectral Eigenmode Memory, borosilicate, $\pm 1$ K, 1 nm drive, 25:1 AR)</p>
+<p>(CWM = Coherent Wave Memory, borosilicate, $\pm 1$ K, 1 nm drive, 25:1 AR)</p>
 <h3 id="42-strengths">4.2 Strengths</h3>
 <p><strong>Energy</strong>: At 1 mm, 16 fJ/bit is <strong>190× lower than DRAM</strong> and <strong>60,000× lower than NAND</strong>. The energy advantage grows at smaller scales. This is a direct consequence of the physics: driving a nanogram-scale mechanical oscillator by 1 nm requires very little energy.</p>
 <p><strong>Density</strong>: At 0.5 mm, 734 Gbit/cm³ is competitive with 3D NAND (1,000 Gbit/cm³). The density advantage over DRAM persists across all MEMS-accessible scales.</p>
 <p><strong>Endurance</strong>: Acoustic oscillation is non-destructive—no phase transitions, no oxide breakdown, no electromigration. Theoretical endurance exceeds $10^{15}$ cycles, comparable to SRAM.</p>
-<p><strong>Compute locality</strong>: No other memory technology in this table offers <em>native</em> associative recall. ReRAM and PCM crossbars can perform matrix-vector multiplication, but this requires programming the crossbar with explicit weight matrices. In spectral eigenmode memory, the stored data <em>is</em> the weight matrix, and wave interference <em>is</em> the computation—there is no architectural separation between storage and compute.</p>
+<p><strong>Compute locality</strong>: No other memory technology in this table offers <em>native</em> associative recall. ReRAM and PCM crossbars can perform matrix-vector multiplication, but this requires programming the crossbar with explicit weight matrices. In coherent wave memory, the stored data <em>is</em> the weight matrix, and wave interference <em>is</em> the computation—there is no architectural separation between storage and compute.</p>
 <h3 id="43-weaknesses">4.3 Weaknesses</h3>
-<p><strong>Latency</strong>: Read/write at 3.6 µs (1 mm) is ~250× slower than DRAM (14 ns). This rules out spectral eigenmode memory as a direct DRAM replacement for general-purpose computing.</p>
+<p><strong>Latency</strong>: Read/write at 3.6 µs (1 mm) is ~250× slower than DRAM (14 ns). This rules out coherent wave memory as a direct DRAM replacement for general-purpose computing.</p>
 <p><strong>Retention</strong>: Dynamic mode amplitudes decay with the coherence time ($Q/\pi f$). At 1 mm, $\tau = 1.16$ ms. Continuous refresh is needed for dynamic data—similar to DRAM&rsquo;s 64 ms refresh, but 60× faster. Perturbation-encoded data (structural modifications) is non-volatile, but perturbation encoding has much lower bit density than dynamic spectral encoding.</p>
 <p><strong>Random access</strong>: Reading a single bit requires measuring the entire mode spectrum. There is no bit-level addressing—the minimum access granularity is the full spectral content of one resonator (~120,000 bits at 1 mm). This is analogous to Flash page reads, not DRAM byte reads.</p>
 <h3 id="44-where-it-fits">4.4 Where It Fits</h3>
-<p>Spectral eigenmode memory is not a general-purpose replacement for any existing technology. It occupies a unique niche: <strong>high-density, ultra-low-energy associative memory with native pattern-matching computation</strong>. Target applications:</p>
+<p>coherent wave memory is not a general-purpose replacement for any existing technology. It occupies a unique niche: <strong>high-density, ultra-low-energy associative memory with native pattern-matching computation</strong>. Target applications:</p>
 <ul>
 <li><strong>Associative lookup engines</strong>: Nearest-neighbor search, similarity matching, content-addressable memory. The constant-time interference-based recall is the key differentiator.</li>
 <li><strong>Edge AI inference</strong>: Small, low-power pattern recognition for sensor nodes. A 1 cm³ array of 1 mm resonators stores ~17 Gbit while performing associative recall at the speed of sound.</li>
@@ -865,7 +865,7 @@ table, pre, blockquote {
 <li><strong>50 perturbations</strong>: 700 bits non-volatile</li>
 </ul>
 <h3 id="54-readout-architecture">5.4 Readout Architecture</h3>
-<p>A MEMS spectral eigenmode memory chip requires:</p>
+<p>A MEMS coherent wave memory chip requires:</p>
 <ol>
 <li><strong>Multiplexed drive</strong>: A single waveform generator addresses rows of resonators via CMOS switches</li>
 <li><strong>Parallel sense</strong>: Each column has a sense amplifier reading the piezo output</li>
@@ -1107,7 +1107,7 @@ table, pre, blockquote {
 <td>No</td>
 </tr>
 <tr>
-<td><strong>Fused silica SEM array</strong></td>
+<td><strong>Fused silica CWM array</strong></td>
 <td><strong>1,394</strong></td>
 <td><strong>8 fJ</strong></td>
 <td><strong>Yes</strong></td>
@@ -1158,7 +1158,7 @@ table, pre, blockquote {
 </ul>
 <p>The architecture remains viable (and differentiated by the compute capability) even at significantly degraded $Q$. But the NAND-competitive densities require $Q \geq 10{,}000$, which is achievable in vacuum-packaged MEMS.</p>
 <h3 id="83-comparison-to-other-wave-based-computing">8.3 Comparison to Other Wave-Based Computing</h3>
-<p>Spectral eigenmode memory is related to several research threads:</p>
+<p>coherent wave memory is related to several research threads:</p>
 <ul>
 <li><strong>Photonic neural networks</strong> (Shen et al. 2017): Use optical interference for matrix-vector multiplication. WCFOMA applies the same principle in the acoustic domain, trading optical bandwidth for mechanical simplicity and CMOS-compatible integration.</li>
 <li><strong>Acoustic delay line memory</strong> [11, 12]: The historical ancestor. Mercury delay lines stored ~1,000 bits in temporal encoding; WCFOMA stores ~120,000 bits in spectral encoding from a resonator 1,000× smaller.</li>
@@ -1200,7 +1200,7 @@ table, pre, blockquote {
 </ul>
 <hr />
 <h2 id="10-conclusion">10. Conclusion</h2>
-<p>Spectral eigenmode memory, as validated by macro-scale prototype and analyzed by the scaling laws derived in this paper, is a viable memory architecture at MEMS scale. The fundamental physics is size-independent: a 1 mm glass rod supports the same 9,380 thermally stable modes as a 150 mm rod, each carrying 12.8 bits of information at 77 dB SNR. What changes with scale is density—which improves as $1/L^2$, crossing DRAM at 2.1 mm and NAND Flash at 0.45 mm.</p>
+<p>coherent wave memory, as validated by macro-scale prototype and analyzed by the scaling laws derived in this paper, is a viable memory architecture at MEMS scale. The fundamental physics is size-independent: a 1 mm glass rod supports the same 9,380 thermally stable modes as a 150 mm rod, each carrying 12.8 bits of information at 77 dB SNR. What changes with scale is density—which improves as $1/L^2$, crossing DRAM at 2.1 mm and NAND Flash at 0.45 mm.</p>
 <p>The key results:</p>
 <ul>
 <li><strong>96 Gbit/cm³</strong> from a single 1 mm borosilicate resonator (10× DRAM)</li>
@@ -1212,10 +1212,10 @@ table, pre, blockquote {
 <li><strong>Fabricable</strong> with established MEMS processes (glass DRIE, AlN thin-film piezo, CMOS integration)</li>
 </ul>
 <p>The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The fabrication pathway uses proven processes. What remains is the MEMS demonstration—and the question of whether anchor losses permit the $Q &gt; 5{,}000$ that makes this architecture sing.</p>
-<p>If they do, spectral eigenmode memory offers something no existing technology provides: a substrate where every stored bit participates in computation, where recall is a physical process rather than a programmatic one, and where the von Neumann bottleneck dissolves into a standing wave.</p>
+<p>If they do, coherent wave memory offers something no existing technology provides: a substrate where every stored bit participates in computation, where recall is a physical process rather than a programmatic one, and where the von Neumann bottleneck dissolves into a standing wave.</p>
 <hr />
 <h2 id="references">References</h2>
-<p>[1] M. Tierce, &ldquo;Wave-coupled ferromagnetic oscillator memory architecture (WCFOMA): Spectral eigenmode memory and computation in acoustic resonators,&rdquo; Forward Arrow Solutions, 2025. (v10: companion paper, macro-scale prototype validation)</p>
+<p>[1] M. Tierce, &ldquo;Wave-coupled ferromagnetic oscillator memory architecture (WCFOMA): coherent wave memory and computation in acoustic resonators,&rdquo; Forward Arrow Solutions, 2025. (v10: companion paper, macro-scale prototype validation)</p>
 <p>[2] C. E. Shannon, &ldquo;A mathematical theory of communication,&rdquo; <em>The Bell System Technical Journal</em>, vol. 27, no. 3, pp. 379–423, 623–656, 1948. doi: <a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">10.1002/j.1538-7305.1948.tb01338.x</a></p>
 <p>[3] Lord Rayleigh (J. W. S. Strutt), <em>The Theory of Sound</em>, 2 vols. London: Macmillan, 1877–1878. Reprinted New York: Dover, 1945.</p>
 <p>[4] G. Sauerbrey, &ldquo;Verwendung von Schwingquarzen zur Wägung dünner Schichten und zur Mikrowägung,&rdquo; <em>Zeitschrift für Physik</em>, vol. 155, no. 2, pp. 206–222, 1959. doi: <a href="https://doi.org/10.1007/BF01337937">10.1007/BF01337937</a></p>

@@ -2,7 +2,7 @@
 
 This sidebar tests whether gauge-geometric structures (connections,
 curvature, holonomy, topological invariants) provide quantitative
-predictions for SEM's sensitivity-matrix physics.
+predictions for CWM's sensitivity-matrix physics.
 
 The Rayleigh perturbation formula ∂f_n/∂m(x) ∝ sin²(nπx/L) defines a
 map from parameter space (perturbation positions) to frequency space
@@ -103,7 +103,7 @@ def _yang_mills_functional(positions: np.ndarray, n_modes: int) -> float:
     """‖F‖² = Σ F_{nk}² — the Yang–Mills action for the sensitivity connection.
 
     Minimising this is analogous to finding the 'flattest' connection,
-    which in SEM corresponds to the best-conditioned inversion.
+    which in CWM corresponds to the best-conditioned inversion.
     """
     F = _curvature_tensor(positions, n_modes)
     return float(np.sum(F ** 2))
@@ -360,7 +360,7 @@ def exp_gauge_invariance(
     """H-GG2 — Information capacity is a gauge invariant.
 
     In gauge theory, physical observables must be invariant under gauge
-    transformations.  For SEM, the natural gauge transformations are:
+    transformations.  For CWM, the natural gauge transformations are:
 
     (a) Mode permutation: relabel mode indices n → σ(n).
     (b) SVD basis rotation: rotate the singular-vector basis U → U·R.
@@ -471,7 +471,7 @@ def exp_dimensional_reduction(
 
     In gauge theory, dimensional reduction imposes symmetry (invariance
     under translation in one direction) to reduce d-dimensional equations
-    to (d-1)-dimensional ones.  For SEM:
+    to (d-1)-dimensional ones.  For CWM:
 
     2D plate: S^{2D}_{(n,m),(k_x,k_y)} = sin²(nπx_{k_x}) sin²(mπy_{k_y})
 
@@ -557,7 +557,7 @@ def exp_topological_rank(
 
     In gauge theory, topological invariants (Chern numbers, instanton
     charges) are integers that cannot change under smooth deformations.
-    SEM's sensitivity matrix rank is an integer.
+    CWM's sensitivity matrix rank is an integer.
 
     Test: sweep positions smoothly from one configuration to another
     and verify that rank(S) is piecewise constant, changing only at

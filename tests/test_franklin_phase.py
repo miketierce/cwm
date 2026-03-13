@@ -4,7 +4,7 @@ Tests for S6 — Franklin phase-retrieval experiments.
 Covers all four hypotheses (H-F1 through H-F4) with helper tests,
 experiment-level tests, and integration tests.  All four hypotheses
 are expected to be KILLED: crystallographic phase-retrieval algorithms
-do not transfer directly to SEM's sin²(nπx) encoding because it is
+do not transfer directly to CWM's sin²(nπx) encoding because it is
 fundamentally different from Fourier-based diffraction.
 
 Test count target: ≥ 40 tests.
@@ -242,7 +242,7 @@ class TestDirectMethods:
         assert result.phase_error_deg >= 0
 
     def test_verdict_is_kill(self, result):
-        """H-F1 KILLED: tangent formula does not transfer to SEM encoding."""
+        """H-F1 KILLED: tangent formula does not transfer to CWM encoding."""
         assert result.verdict is False
 
     def test_reconstruction_below_80(self, result):
@@ -288,7 +288,7 @@ class TestPattersonFunction:
         assert np.all(d[:-1] <= d[1:])
 
     def test_verdict_is_kill(self, result):
-        """H-F2 KILLED: Patterson function doesn't transfer to sin²-based SEM."""
+        """H-F2 KILLED: Patterson function doesn't transfer to sin²-based CWM."""
         assert result.verdict is False
 
     def test_fewer_than_K_recovered(self, result):

@@ -4,7 +4,7 @@
 
 ### 2.1 Eigenmode Encoding
 
-The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For SEM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.
+The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For CWM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.
 
 **Mode count.** A glass rod of length $L$ supports longitudinal eigenmodes at frequencies $f_n = nv/(2L)$, where $v$ is the speed of sound and $n = 1, 2, 3, \ldots$ Not all of these modes are usable. The rod also expands and contracts thermally, and this thermal expansion shifts eigenfrequencies. If the thermal frequency shift of a mode exceeds the spacing between adjacent modes, those modes blur together and cannot be independently resolved.
 
@@ -24,22 +24,22 @@ $$b = \frac{1}{2}\log_2(1 + \text{SNR})$$
 
 At the measured SNR of 98.8 dB (which corresponds to a linear ratio of $7.6 \times 10^9$): $b = 16.4$ bits per mode. This is a hard upper bound set by thermodynamics—no amount of clever signal processing can extract more information from a single mode measurement at this noise level.
 
-**Total capacity per rod.** With 9,380 modes at 16.4 bits each: $9{,}380 \times 16.4 = 153{,}832$ bits, or about 19 kilobytes per rod. At MEMS scale (1 mm rod, reduced SNR of 47 dB giving 7.8 bits/mode): $9{,}380 \times 7.8 = 73{,}164$ bits, or about 9 kilobytes per rod. These are modest numbers for a single rod—the power of SEM comes from dense arrays and from the fact that every rod simultaneously stores _and_ computes.
+**Total capacity per rod.** With 9,380 modes at 16.4 bits each: $9{,}380 \times 16.4 = 153{,}832$ bits, or about 19 kilobytes per rod. At MEMS scale (1 mm rod, reduced SNR of 47 dB giving 7.8 bits/mode): $9{,}380 \times 7.8 = 73{,}164$ bits, or about 9 kilobytes per rod. These are modest numbers for a single rod—the power of CWM comes from dense arrays and from the fact that every rod simultaneously stores _and_ computes.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig3_eigenmode_encoding.svg" alt="Figure 3: Eigenmode encoding and perturbation effect"/>
 <p><strong>Figure 3.</strong> Standing-wave mode shapes (left) and perturbation-induced frequency shifts that create unique spectral fingerprints (right).</p>
 </div>
 
 ### 2.2 Perturbation Encoding (Write)
 
-Writing data to a SEM rod means creating a spatial pattern of mass perturbations on its surface. Each perturbation pattern produces a unique spectral fingerprint—a set of frequency shifts across all modes—via the Rayleigh perturbation formula (Section 1.2).
+Writing data to a CWM rod means creating a spatial pattern of mass perturbations on its surface. Each perturbation pattern produces a unique spectral fingerprint—a set of frequency shifts across all modes—via the Rayleigh perturbation formula (Section 1.2).
 
 The physics of why this works is worth dwelling on. Consider a rod vibrating in mode $n = 3$. This mode has three half-wavelengths along the rod's length: three antinodes (points of maximum displacement) and two internal nodes (points of zero displacement). Now place a small mass at the position of the second antinode. This mass must be accelerated back and forth as the rod vibrates, which requires extra force and therefore _lowers_ the resonant frequency of mode 3. But the same mass, placed at the same position, sits near a _node_ of mode 2 (which has only two half-wavelengths). Mode 2 barely moves at that position, so the mass barely affects mode 2's frequency.
 
 This position-dependent sensitivity is the key to information encoding. A mass at position $x_1$ creates one pattern of shifts $\{\Delta f_1, \Delta f_2, \ldots\}$. A mass at position $x_2$ creates a different pattern. Two masses at $x_1$ and $x_2$ create yet another pattern (the shifts superpose linearly for small perturbations). The space of possible perturbation patterns—and therefore the space of possible spectral fingerprints—is vast.
 
-At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making SEM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.
+At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making CWM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.
 
 The energy required to write one mode—meaning, to bring it to a measurable amplitude—is set by the thermal noise floor:
 
@@ -49,7 +49,7 @@ At 300 K and 98.8 dB SNR: $E_{\text{write}} = 4.14 \times 10^{-21} \times 7.6 \t
 
 ### 2.3 Interference Recall (Read / Compute)
 
-The read and compute operations in SEM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes SEM from in-memory computing approaches that still separate the storage medium from the compute mechanism.
+The read and compute operations in CWM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes CWM from in-memory computing approaches that still separate the storage medium from the compute mechanism.
 
 **Simple read.** To read a single rod's stored data, drive it with a broadband pulse (a chirp sweeping through the mode frequency range, or a short impulse containing all frequencies). The rod rings at its eigenfrequencies. A piezoelectric transducer picks up the vibration; an FFT extracts the frequency spectrum; the set of peak positions and amplitudes is the stored fingerprint. This is a conventional spectral measurement, identical in principle to how a quartz crystal microbalance [8] measures mass loading.
 
@@ -71,9 +71,9 @@ $$P_{\max} \approx 0.138\,N$$
 
 For $N = 9{,}380$ modes: $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$ patterns per rod. (The more conservative Hopfield bound $P_{\max} \approx N/(2\ln N) \approx 512$ assumes zero error tolerance; the AGS bound allows a small error floor correctable by the synaptic pruning of Section 10.1.)
 
-<div class="sem-thumb">
-<img src="figures/fig1_architecture.svg" alt="Figure 1: SEM architecture overview"/>
-<p><strong>Figure 1.</strong> SEM architecture: eigenmode encoding (left), spectral fingerprinting (center), and array-wide associative recall via wave interference (right).</p>
+<div class="cwm-thumb">
+<img src="figures/fig1_architecture.svg" alt="Figure 1: CWM architecture overview"/>
+<p><strong>Figure 1.</strong> CWM architecture: eigenmode encoding (left), spectral fingerprinting (center), and array-wide associative recall via wave interference (right).</p>
 </div>
 
 ### 2.4 Architecture Summary

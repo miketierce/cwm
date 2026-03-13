@@ -48,7 +48,7 @@ def glass():
 
 @pytest.fixture
 def rod_params():
-    """Standard SEM reference rod parameters."""
+    """Standard CWM reference rod parameters."""
     return dict(
         length=1e-3,       # 1 mm
         diameter=40e-6,    # 40 µm
@@ -230,7 +230,7 @@ class TestEigenfrequencies1D:
         assert np.all(np.diff(res.frequencies_hz) > 0)
 
     def test_borosilicate_rod(self, glass, rod_params):
-        """Validate with real SEM parameters."""
+        """Validate with real CWM parameters."""
         E = glass.youngs_modulus
         rho = glass.density
         A = np.pi * (rod_params["diameter"] / 2) ** 2

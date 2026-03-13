@@ -3,7 +3,7 @@ S5 — Békésy Cochlear Eigenmode Memory: 4 hypotheses (1 confirmed, 3 killed).
 
 Tests for simulations/bekesy_cochlea.py.  This sidebar investigates whether
 cochlear parallels (tonotopic taper, log spacing, active Q-boosting, critical-
-band windowing) transfer to SEM.  Honest result: only active Q-boosting (H-B3)
+band windowing) transfer to CWM.  Honest result: only active Q-boosting (H-B3)
 survives; the other three are killed by clean physics arguments.
 """
 
@@ -241,7 +241,7 @@ class TestLogSpacingRecall:
     both linear and log spacing achieve perfect recall.  Under extreme stress
     (40+ patterns, high noise), the advantage is inconsistent — sometimes
     linear wins, sometimes log.  This kills the hypothesis that cochlear
-    log mapping transfers to SEM's associative recall.
+    log mapping transfers to CWM's associative recall.
     """
 
     def test_runs_without_error(self):
@@ -298,7 +298,7 @@ class TestLogSpacingRecall:
 class TestActiveQBoost:
     """H-B3: Active feedback raises effective Q above passive limit.
 
-    The cochlear outer hair cell analogy maps cleanly onto SEM: a feedback
+    The cochlear outer hair cell analogy maps cleanly onto CWM: a feedback
     circuit senses mode amplitude and injects compensating energy.  The
     power budget is femtowatts per mode (thermal equilibrium energy k_B·T
     per mode × ω × loss differential).  2× Q boost confirmed.
@@ -375,13 +375,13 @@ class TestActiveQBoost:
 # ═══════════════════════════════════════════════════════════════════════
 
 class TestCochlearWindow:
-    """H-B4: Cochlear window does NOT beat rectangular for SEM readout SNR.
+    """H-B4: Cochlear window does NOT beat rectangular for CWM readout SNR.
 
     The rectangular window preserves all signal energy (no tapering),
     which is optimal for SNR when spectral leakage between modes is not
     the dominant error source.  The cochlear window trades SNR for sidelobe
     suppression — a trade-off that only helps when modes are densely packed
-    near the resolution limit, which SEM's well-separated modes are not.
+    near the resolution limit, which CWM's well-separated modes are not.
     """
 
     def test_runs_without_error(self):

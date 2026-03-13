@@ -24,7 +24,7 @@ A key architectural insight emerges from these results: **the resonator material
 
 In conventional memory (DRAM, flash, MRAM), the storage medium and the write mechanism are the same material—the ferroelectric, the floating gate, the magnetic tunnel junction. The material's write properties (coercive field, endurance, retention) are inextricable from its read properties (polarization, threshold voltage, tunnel magnetoresistance).
 
-In the SEM architecture, the glass rod is the _read medium_ (its eigenmodes encode information), but it need not be the _write medium_. Writing can happen:
+In the CWM architecture, the glass rod is the _read medium_ (its eigenmodes encode information), but it need not be the _write medium_. Writing can happen:
 
 - **Externally** (firmware): no physical change to the rod at all.
 - **At the surface** (binary sites): reversible mechanical contacts that do not alter the bulk glass.
@@ -80,11 +80,11 @@ Based on the combined results, we recommend a staged development path that follo
 
 Each stage is independently valuable and backward-compatible with the previous one. A Stage 1 device is a Stage 0 device with a firmware upgrade. A Stage 2 device is a Stage 1 device with added MEMS switches. A Stage 3 device is a Stage 2 device with a shell coating. No stage requires redesigning the previous one.
 
-### 6.5 What "Rewritable" Means for SEM
+### 6.5 What "Rewritable" Means for CWM
 
 It is worth being precise about what rewritability buys.
 
-The original SEM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
+The original CWM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.
 
 Rewritability transforms this ROM into a reconfigurable memory:
 

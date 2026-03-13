@@ -3,7 +3,7 @@ Spare–Mace Informed Experiments for WCFOMA.
 
 Six testable engineering hypotheses derived from structural parallels
 between Austin Osman Spare / Stephen Mace's psychic-field mechanics
-and Spectral Eigenmode Memory (SEM) physics.
+and Coherent Wave Memory (CWM) physics.
 
 Parallel → Hypothesis → Experiment
 ═══════════════════════════════════════════════════════════════════════
@@ -161,7 +161,7 @@ def exp_alphabet_of_desire(
     Spare's Alphabet of Desire says every complex desire can be
     decomposed into a finite set of primal, orthogonal glyphs.
 
-    SEM analogue: decompose a data matrix into SVD components and
+    CWM analogue: decompose a data matrix into SVD components and
     encode each singular vector as an eigenmode pattern, rather than
     encoding raw data columns directly.
 
@@ -239,7 +239,7 @@ def exp_sigil_efficiency(
     Spare's sigils are maximally compressed glyphs — the fewest strokes
     that still fire the subconscious into recall.
 
-    SEM analogue: how sparse can a perturbation pattern be while still
+    CWM analogue: how sparse can a perturbation pattern be while still
     achieving reliable Hopfield recall?  Is there an optimum where
     information-per-active-site peaks?
 
@@ -329,7 +329,7 @@ def exp_forgetting_improves_recall(
     conscious mind's grip on the glyph creates interference that
     degrades recall from the deep field.
 
-    SEM analogue: after storing patterns, attenuate (zero out) weight
+    CWM analogue: after storing patterns, attenuate (zero out) weight
     matrix entries below a threshold before recall.  This is equivalent
     to pruning weak/noisy synapses — a form of controlled forgetting.
 
@@ -428,7 +428,7 @@ def exp_compute_in_memory(
     Spare/Mace's psychic field stores desire AND computes its
     manifestation on the same substrate — no separate processor.
 
-    SEM analogue: store two binary patterns as mode amplitudes;
+    CWM analogue: store two binary patterns as mode amplitudes;
     their superposition implicitly computes XOR, AND, OR.
     Read the result directly without a separate compute cycle.
 
@@ -558,7 +558,7 @@ def exp_avoided_crossing(
     tension between competing constraints.  Where two desires collide,
     a new entity is born.
 
-    SEM analogue: when two eigenmodes are nearly degenerate (Δf ≈ 0),
+    CWM analogue: when two eigenmodes are nearly degenerate (Δf ≈ 0),
     any perturbation (mass loading, boundary shift) hybridises them
     into bonding/antibonding pairs — classic avoided crossing.
 
@@ -662,7 +662,7 @@ def exp_null_space_encoding(
     and deny.  Mace: 'the null state is not empty — it is the field
     of all potentials'.
 
-    SEM analogue: the coupling matrix C (n_modes × n_perturbations)
+    CWM analogue: the coupling matrix C (n_modes × n_perturbations)
     maps perturbation patterns to mode-amplitude responses.  Its null
     space — perturbation patterns that produce zero mode response —
     is the 'Neither-Neither' of the system.
@@ -788,7 +788,7 @@ def run_all_spare_mace(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  SPARE–MACE INFORMED EXPERIMENTS FOR SEM")
+        print("  SPARE–MACE INFORMED EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # H1

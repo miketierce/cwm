@@ -1,20 +1,20 @@
-# Paths to Rewritability in Spectral Eigenmode Memory
+# Paths to Rewritability in Coherent Wave Memory
 
 **Mike Tierce**
 _Independent Researcher_
 ORCID: [0009-0004-4483-5283](https://orcid.org/0009-0004-4483-5283)
 Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
 
-**SEM Technical Note 1 — June 2025**
-_Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)_
+**CWM Technical Note 1 — June 2025**
+_Companion to: "Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)_
 
 ---
 
 ## Abstract
 
-Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
+Coherent Wave Memory (CWM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.
 
-This technical note asks the next question: _can SEM be made reconfigurable?_
+This technical note asks the next question: _can CWM be made reconfigurable?_
 
 We investigate seven engineering hypotheses across three tracks, each representing a different depth of hardware modification:
 

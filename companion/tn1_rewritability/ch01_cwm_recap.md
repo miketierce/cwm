@@ -1,10 +1,10 @@
-## 1. SEM Architecture in Brief
+## 1. CWM Architecture in Brief
 
-_This section summarizes the Spectral Eigenmode Memory architecture established in the companion paper [1]. Readers familiar with [1] may skip to Section 2._
+_This section summarizes the Coherent Wave Memory architecture established in the companion paper [1]. Readers familiar with [1] may skip to Section 2._
 
 ### 1.1 Core Idea
 
-SEM stores data in the _acoustic eigenmode spectrum_ of a solid glass resonator. A glass rod vibrates at a set of natural frequencies—its eigenmodes—each an independent information channel. Mass perturbations on the rod's surface shift each eigenfrequency by a different amount (via the Rayleigh perturbation formula), creating a unique _spectral fingerprint_. To read, excite the rod with a broadband pulse and measure the frequency spectrum. To search an array of rods, drive them all with a query spectrum: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor search executed by wave physics in one acoustic propagation cycle (~3.6 µs), with no processor, no memory bus, and no software.
+CWM stores data in the _acoustic eigenmode spectrum_ of a solid glass resonator. A glass rod vibrates at a set of natural frequencies—its eigenmodes—each an independent information channel. Mass perturbations on the rod's surface shift each eigenfrequency by a different amount (via the Rayleigh perturbation formula), creating a unique _spectral fingerprint_. To read, excite the rod with a broadband pulse and measure the frequency spectrum. To search an array of rods, drive them all with a query spectrum: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor search executed by wave physics in one acoustic propagation cycle (~3.6 µs), with no processor, no memory bus, and no software.
 
 The $n$-th longitudinal eigenmode has frequency $f_n = nv/(2L)$, where $v$ is the speed of sound and $L$ is the rod length. The maximum number of thermally stable modes depends only on the material and temperature stability:
 
@@ -44,7 +44,7 @@ This decomposition, introduced in the companion paper's null-space multiplexing 
 
 ### 1.4 Associative Recall as Hopfield Network
 
-SEM's read/search operation is mathematically a Hopfield associative memory [2, 3]. The weight matrix is the physics of the eigenmode spectrum. The capacity limit is:
+CWM's read/search operation is mathematically a Hopfield associative memory [2, 3]. The weight matrix is the physics of the eigenmode spectrum. The capacity limit is:
 
 $$P_{\max} \approx 0.138\,N$$
 
@@ -52,10 +52,10 @@ for $< 1\%$ bit-error rate, where $N$ is the number of modes. For $N = 9{,}380$:
 
 ### 1.5 The Missing Piece
 
-As presented in the companion paper, SEM is read-only memory: perturbation patterns are fixed at fabrication by lithographic mass deposition. The rod is a "sonic telescope"—factory-pointed at a target and forever locked on. This is sufficient for applications like content-addressable memory, acoustic fingerprint matching, and edge inference, where the stored patterns are fixed at manufacturing time.
+As presented in the companion paper, CWM is read-only memory: perturbation patterns are fixed at fabrication by lithographic mass deposition. The rod is a "sonic telescope"—factory-pointed at a target and forever locked on. This is sufficient for applications like content-addressable memory, acoustic fingerprint matching, and edge inference, where the stored patterns are fixed at manufacturing time.
 
 But many applications require reconfigurability. A fraud detection system needs new patterns as new attack vectors emerge. A signals-intelligence matcher needs to update its library as threats evolve. Even the simplest embedded device needs occasional firmware updates.
 
-The question this technical note addresses is: _can the telescope become an instrument?_ Can we make SEM reconfigurable without destroying the physics that makes it work?
+The question this technical note addresses is: _can the telescope become an instrument?_ Can we make CWM reconfigurable without destroying the physics that makes it work?
 
 ---

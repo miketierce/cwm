@@ -2,13 +2,13 @@
 
 ### 2.1 Telescope vs. Instrument
 
-Consider two ways to think about a SEM rod:
+Consider two ways to think about a CWM rod:
 
 **The telescope model.** A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter for that pattern. It is a detector, not a programmable device. You "point" the telescope by choosing which rod to read, not by changing what any rod stores. An array of 1,000 rods is a library of 1,000 fixed filters—like a radio telescope array where each dish is permanently aimed at a different star.
 
 **The instrument model.** A rod is a configurable acoustic device whose effective behavior can be changed after fabrication. It is a pipe organ, not a telescope—the same pipes can play different music depending on which stops are pulled and which keys are pressed. Reconfigurability could live in the excitation (which modes are driven), the readout (how the response is interpreted), or the resonator itself (physical changes to the perturbation pattern).
 
-The companion paper presents SEM exclusively in telescope mode. This is the conservative, validated position: the physics works, the numbers are solid, and fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant.
+The companion paper presents CWM exclusively in telescope mode. This is the conservative, validated position: the physics works, the numbers are solid, and fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant.
 
 But the instrument model is more interesting—and, as we will show, more physically accessible than it first appears.
 
@@ -44,7 +44,7 @@ The companion paper's Q-factor analysis [1, §6] established that the total qual
 
 $$\frac{1}{Q_{\text{total}}} = \frac{1}{Q_{\text{mat}}} + \frac{1}{Q_{\text{anchor}}} + \frac{1}{Q_{\text{TED}}} + \frac{1}{Q_{\text{surface}}} + \frac{1}{Q_{\text{gas}}}$$
 
-Any rewrite mechanism adds a new loss term. Track A avoids this entirely (firmware changes don't add loss). Tracks B and C add physical structures that contribute to $1/Q_{\text{surface}}$ or introduce new loss channels. The experiments in Sections 4 and 5 quantify these penalties and determine the operating envelope where $Q > 5{,}000$—the threshold below which SEM loses its competitive advantage.
+Any rewrite mechanism adds a new loss term. Track A avoids this entirely (firmware changes don't add loss). Tracks B and C add physical structures that contribute to $1/Q_{\text{surface}}$ or introduce new loss channels. The experiments in Sections 4 and 5 quantify these penalties and determine the operating envelope where $Q > 5{,}000$—the threshold below which CWM loses its competitive advantage.
 
 ### 2.4 Experimental Approach
 

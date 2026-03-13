@@ -3,7 +3,7 @@ Chladni-Informed 2D Plate Eigenmode Memory Experiments for WCFOMA.
 
 Four testable engineering hypotheses derived from structural parallels
 between Ernst Chladni's vibrating-plate experiments (1787) and Spectral
-Eigenmode Memory (SEM) physics.
+Eigenmode Memory (CWM) physics.
 
 Chladni's core insight: sprinkle sand on a vibrating plate and it
 migrates to the *nodal lines* — curves of zero displacement.  These
@@ -11,9 +11,9 @@ are the positions where a mass perturbation has zero effect on that
 mode's eigenfrequency.  The anti-nodal regions (maximum displacement)
 are where perturbations matter most.  Chladni figures are therefore
 *sensitivity maps* — the 2D generalisation of the 1D sensitivity
-function sin²(nπx/L) that drives SEM.
+function sin²(nπx/L) that drives CWM.
 
-Extending SEM from 1D rods to 2D plates could unlock quadratically
+Extending CWM from 1D rods to 2D plates could unlock quadratically
 more modes, because a rectangular plate has two independent mode
 indices (n, m), giving mode count ~ n_max².
 
@@ -802,7 +802,7 @@ def run_all_chladni(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  CHLADNI-INFORMED EXPERIMENTS FOR SEM")
+        print("  CHLADNI-INFORMED EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # H-C1: Plate Mode Count

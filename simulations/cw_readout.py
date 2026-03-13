@@ -1,5 +1,5 @@
 """
-CW vs Impulse Readout Simulation for Spectral Eigenmode Memory
+CW vs Impulse Readout Simulation for Coherent Wave Memory
 
 Models the signal-to-noise trade-off between two readout strategies:
 
@@ -49,7 +49,7 @@ ALPHA_SILICA = 0.55e-6       # CTE, fused silica (/K)
 
 @dataclass
 class GlassRodParams:
-    """Physical parameters for a SEM glass rod resonator."""
+    """Physical parameters for a CWM glass rod resonator."""
     L: float = 0.150            # Rod length (m)
     d: float = 6e-3             # Rod diameter (m)
     v_bar: float = V_BAR_BORO   # Thin-bar wave speed (m/s)

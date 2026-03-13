@@ -36,7 +36,7 @@ In a packed array (40 µm pitch, 0.55 mm layer spacing):
 
 **This exceeds 3D NAND Flash** (1,000 Gbit/cm³) while providing native associative computation—something no existing memory technology offers at any density.
 
-With null-space multiplexing (§10.4) applied to the fused silica design, the effective density could reach **2+ Tbit/cm³**, placing SEM in a density class currently occupied only by the most advanced 3D NAND.
+With null-space multiplexing (§10.4) applied to the fused silica design, the effective density could reach **2+ Tbit/cm³**, placing CWM in a density class currently occupied only by the most advanced 3D NAND.
 
 ### 11.3 Q-Factor Model for Fused Silica
 
@@ -94,17 +94,17 @@ We are explicit about the boundary between demonstrated physics and engineering 
 
 ### 12.2 Historical Context
 
-SEM's closest relatives in the literature are more instructive for their differences than their similarities:
+CWM's closest relatives in the literature are more instructive for their differences than their similarities:
 
-- **Mercury delay line memory** [4, 5]: The earliest electronic computers—UNIVAC I (1951), EDSAC (1949)—stored data as acoustic pulses in tubes of liquid mercury. A train of pulses (representing bits) entered one end of a mercury tube, propagated at the speed of sound, was detected at the other end, amplified, and re-injected. It was acoustic memory, but _temporal_ encoding: bits arrived one at a time, in sequence. SEM's spectral encoding is the frequency-domain generalization—all bits are present simultaneously as different modes, enabling parallel readout and parallel computation. A 1 mm SEM rod stores ~120,000 bits where a comparable mercury delay line stored ~1,000.
+- **Mercury delay line memory** [4, 5]: The earliest electronic computers—UNIVAC I (1951), EDSAC (1949)—stored data as acoustic pulses in tubes of liquid mercury. A train of pulses (representing bits) entered one end of a mercury tube, propagated at the speed of sound, was detected at the other end, amplified, and re-injected. It was acoustic memory, but _temporal_ encoding: bits arrived one at a time, in sequence. CWM's spectral encoding is the frequency-domain generalization—all bits are present simultaneously as different modes, enabling parallel readout and parallel computation. A 1 mm CWM rod stores ~120,000 bits where a comparable mercury delay line stored ~1,000.
 
-- **Quartz crystal microbalance (QCM)** [8]: The QCM measures mass deposited on a quartz crystal by tracking the frequency shift of a single resonant mode. The Sauerbrey equation (1959) is a special case of the Rayleigh perturbation formula for a uniform thin film. SEM extends the QCM concept from a single mode to thousands, and from measurement to information encoding.
+- **Quartz crystal microbalance (QCM)** [8]: The QCM measures mass deposited on a quartz crystal by tracking the frequency shift of a single resonant mode. The Sauerbrey equation (1959) is a special case of the Rayleigh perturbation formula for a uniform thin film. CWM extends the QCM concept from a single mode to thousands, and from measurement to information encoding.
 
-- **Photonic neural networks** (Shen et al. 2017): Optical interference performs matrix-vector multiplication by encoding data as light amplitudes and computing via Mach-Zehnder interferometers. SEM applies the same principle acoustically, trading optical bandwidth for mechanical simplicity and CMOS integration.
+- **Photonic neural networks** (Shen et al. 2017): Optical interference performs matrix-vector multiplication by encoding data as light amplitudes and computing via Mach-Zehnder interferometers. CWM applies the same principle acoustically, trading optical bandwidth for mechanical simplicity and CMOS integration.
 
-- **In-memory computing** [3]: ReRAM/PCM crossbar arrays co-locate storage and computation, but require explicit weight programming—you must write resistance values into each cell to define the computation. SEM's recall is implicit: the computation is defined by the rod's geometry, set once at fabrication. The advanced techniques of Section 10 further extend this: Boolean computation, hybridization-aware readout, and null-space projection all emerge from the physics without hardware modification.
+- **In-memory computing** [3]: ReRAM/PCM crossbar arrays co-locate storage and computation, but require explicit weight programming—you must write resistance values into each cell to define the computation. CWM's recall is implicit: the computation is defined by the rod's geometry, set once at fabrication. The advanced techniques of Section 10 further extend this: Boolean computation, hybridization-aware readout, and null-space projection all emerge from the physics without hardware modification.
 
-- **Biological synaptic pruning** [18]: The brain eliminates weak synapses during development, improving signal-to-noise ratio in neural circuits. Section 10.1 shows the same principle—thresholding weak weights improves recall—applies directly to SEM's acoustic Hopfield network.
+- **Biological synaptic pruning** [18]: The brain eliminates weak synapses during development, improving signal-to-noise ratio in neural circuits. Section 10.1 shows the same principle—thresholding weak weights improves recall—applies directly to CWM's acoustic Hopfield network.
 
 ### 12.3 Intellectual Property
 
@@ -152,7 +152,7 @@ The core concepts—multi-mode spectral encoding, perturbation-based writing, in
 
 ## 14. Conclusion
 
-Spectral Eigenmode Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod's natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.
+Coherent Wave Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod's natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.
 
 The physics is validated at macro scale with a \$63 prototype. The scaling laws are mathematical consequences of that physics. The MEMS loss mechanisms have been modeled and found manageable—the dominant loss is the glass material itself, not the MEMS geometry.
 
@@ -174,6 +174,6 @@ The key results:
 - **>10¹⁵ cycle endurance** (acoustic oscillation is non-destructive)
 - **Fabricable** with established MEMS processes (glass DRIE, AlN thin-film piezo, CMOS integration)
 
-What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material's quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that SEM's computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity.
+What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material's quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that CWM's computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity.
 
 Seventy-seven years after mercury delay lines first stored data as acoustic waves in UNIVAC I, the same physics finds new expression—not as temporal pulses in a tube of liquid metal, but as spectral eigenmodes in a chip-scale glass resonator, where every stored bit participates in computation and recall is a standing wave.

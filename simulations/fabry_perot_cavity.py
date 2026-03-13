@@ -2,16 +2,16 @@
 S14 — Fabry & Pérot: Acoustic Cavity Finesse and Mode Resolution
 =================================================================
 
-SEM's glass rod is an acoustic Fabry-Pérot etalon: a bounded cavity in
+CWM's glass rod is an acoustic Fabry-Pérot etalon: a bounded cavity in
 which standing waves form through repeated reflection at the rod ends.
 The analogy is exact — it IS the same wave physics in a different medium.
 
 The Fabry-Pérot interferometer's resolving power R = m * F (mode order
 times finesse) determines how many spectral features can be
-distinguished within the instrument's bandwidth.  For SEM, the finesse
+distinguished within the instrument's bandwidth.  For CWM, the finesse
 F = pi * sqrt(R_end) / (1 - R_end) connects end-reflection coefficient
 to mode linewidth: delta_f = FSR / F, where FSR = v / (2L) is the free
-spectral range (identical to SEM's mode spacing).
+spectral range (identical to CWM's mode spacing).
 
 This sidebar tests four hypotheses:
 
@@ -196,7 +196,7 @@ def _finesse(R: float) -> float:
 
 
 def _fsr(v_bar: float, L: float) -> float:
-    """Free spectral range = v / (2L).  Identical to SEM mode spacing."""
+    """Free spectral range = v / (2L).  Identical to CWM mode spacing."""
     return v_bar / (2.0 * L)
 
 

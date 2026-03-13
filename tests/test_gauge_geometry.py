@@ -592,7 +592,7 @@ class TestRunAllGauge:
 # ====================================================================
 
 class TestCrossPhysics:
-    """Consistency checks between gauge geometry and SEM physics."""
+    """Consistency checks between gauge geometry and CWM physics."""
 
     def test_golden_lower_curvature_than_random(self):
         """Golden positions should have moderate curvature."""

@@ -1,6 +1,6 @@
 ## References
 
-[1] M. Tierce, "Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage," v16, 2026. (Parent paper.)
+[1] M. Tierce, "Coherent Wave Memory: A Physically Grounded Architecture for Acoustic Data Storage," v16, 2026. (Parent paper.)
 
 [2] J. J. Hopfield, "Neural networks and physical systems with emergent collective computational abilities," _Proc. Natl. Acad. Sci._, vol. 79, no. 8, pp. 2554–2558, 1982.
 

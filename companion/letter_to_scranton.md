@@ -12,7 +12,7 @@ I hope this finds you well. I'm writing because your work — specifically _The 
 
 ## What I'm working on
 
-I'm developing a new kind of computer memory called **Spectral Eigenmode Memory (SEM)**. The core idea: instead of storing data as electrical charge (like every memory chip in your phone or laptop), I store it as _vibrations_ in a glass rod.
+I'm developing a new kind of computer memory called **Coherent Wave Memory (CWM)**. The core idea: instead of storing data as electrical charge (like every memory chip in your phone or laptop), I store it as _vibrations_ in a glass rod.
 
 A glass rod, when struck, rings at hundreds or thousands of natural frequencies simultaneously — its eigenmodes, like the harmonics of a guitar string. If you attach a tiny mass to the rod's surface, each frequency shifts by a different amount depending on where the mass sits relative to that mode's vibration pattern. The set of frequency shifts is a unique spectral fingerprint — a physical encoding of data.
 
@@ -93,7 +93,7 @@ We designed six experiments, each derived from a specific aspect of your Dogon r
 
 ## What this means
 
-I want to be precise about the claim I'm making. I am not saying the Dogon had spectral eigenmode memory, or that ancient symbol systems encode modern physics in any literal sense. What I am saying is this:
+I want to be precise about the claim I'm making. I am not saying the Dogon had coherent wave memory, or that ancient symbol systems encode modern physics in any literal sense. What I am saying is this:
 
 Your careful analysis of how the Dogon organized information — polysemic encoding, duality exploitation, maximum-distinctiveness naming, temporal-cycle multiplexing, seed-based expansion, and cross-system translation — describes **general principles of efficient information encoding** that apply to any physical medium. The Dogon applied these principles to symbolic knowledge transmission across millennia. We applied them to acoustic vibrations in glass. The principles are the same because the underlying information theory is universal.
 
@@ -168,9 +168,9 @@ This connects to the Fabry-Pérot cavity sidebar we've proposed (S14): the rod's
 
 You've mentioned plasma several times in our conversations, and I want to address it directly — because the connection is not metaphorical. It is mathematically exact.
 
-**Plasma is the natural medium where SEM's mathematics already operates at cosmic scales.** Our glass rod is a bounded cavity with discrete eigenmodes, where perturbations shift eigenfrequencies. But it is not unique. Any bounded resonant cavity with harmonic eigenmodes obeys the same $\sin^2$ sensitivity mathematics. And the most common bounded resonant cavities in the universe are made of plasma.
+**Plasma is the natural medium where CWM's mathematics already operates at cosmic scales.** Our glass rod is a bounded cavity with discrete eigenmodes, where perturbations shift eigenfrequencies. But it is not unique. Any bounded resonant cavity with harmonic eigenmodes obeys the same $\sin^2$ sensitivity mathematics. And the most common bounded resonant cavities in the universe are made of plasma.
 
-**Coronal seismology is SEM's cosmic twin.** A solar coronal loop is a magnetic flux tube filled with plasma, anchored at both ends in the photosphere. It supports discrete MHD eigenmodes — kink modes (the tube sways side to side), sausage modes (the tube breathes radially), longitudinal modes (compression waves run along its length), and torsional Alfvén modes (the tube twists). When a perturbation occurs — a solar flare, a coronal mass ejection, a density inhomogeneity — each eigenfrequency shifts by an amount that depends on the perturbation's position along the loop and the mode's spatial structure at that position. This is _precisely_ what SEM does: write perturbations, read eigenfrequency shifts. The field was theoretically predicted by Roberts et al. (1984) and first observed by Nakariakov et al. (1999), and it remains one of the primary diagnostic tools in solar physics today.
+**Coronal seismology is CWM's cosmic twin.** A solar coronal loop is a magnetic flux tube filled with plasma, anchored at both ends in the photosphere. It supports discrete MHD eigenmodes — kink modes (the tube sways side to side), sausage modes (the tube breathes radially), longitudinal modes (compression waves run along its length), and torsional Alfvén modes (the tube twists). When a perturbation occurs — a solar flare, a coronal mass ejection, a density inhomogeneity — each eigenfrequency shifts by an amount that depends on the perturbation's position along the loop and the mode's spatial structure at that position. This is _precisely_ what CWM does: write perturbations, read eigenfrequency shifts. The field was theoretically predicted by Roberts et al. (1984) and first observed by Nakariakov et al. (1999), and it remains one of the primary diagnostic tools in solar physics today.
 
 The glass rod and the coronal loop differ in substrate, scale, and temperature by many orders of magnitude. The mathematics is identical: eigenmode perturbation theory in a bounded resonant cavity.
 
@@ -192,9 +192,9 @@ Every result we've proved — the rationality test, the splitting formula, polys
 
 Stepping back, the complete research program reveals something I find remarkable. We've now tested 52 hypotheses drawn from ten historical figures spanning Tesla (1890s) through Gor'kov (1960s), plus your Dogon analysis and Spare's sigil work. The confirmations and kills sort themselves cleanly:
 
-**What transfers to SEM (confirmed):** Direct mathematical identities (Zeeman splitting ratios, Rayleigh perturbation, sin² sensitivity), structural properties (polysemic readout, golden-ratio placement, octave redundancy, timescale separation), and material predictions (Gor'kov contrast factor).
+**What transfers to CWM (confirmed):** Direct mathematical identities (Zeeman splitting ratios, Rayleigh perturbation, sin² sensitivity), structural properties (polysemic readout, golden-ratio placement, octave redundancy, timescale separation), and material predictions (Gor'kov contrast factor).
 
-**What doesn't transfer (killed):** Fourier phase retrieval (SEM uses sin², not Fourier — all four Franklin hypotheses killed), musical consonance as an organizing principle (sin² orthogonality is stronger), quantum statistical mechanics at room temperature ($hf \ll k_BT$), and any placement strategy that clusters sites at rational fractions.
+**What doesn't transfer (killed):** Fourier phase retrieval (CWM uses sin², not Fourier — all four Franklin hypotheses killed), musical consonance as an organizing principle (sin² orthogonality is stronger), quantum statistical mechanics at room temperature ($hf \ll k_BT$), and any placement strategy that clusters sites at rational fractions.
 
 Your six hypotheses (S2) were 6/6 — a perfect score. The reason, I now believe, is that you identified _information-encoding principles_ rather than _physics mechanisms_. Polysemic readout, maximum-distinctiveness naming, temporal multiplexing, seed-based expansion, cross-system translation — these are universal encoding strategies that work regardless of the physical substrate. The sidebars that failed (Franklin, portions of Boltzmann, portions of Gor'kov) were the ones that tried to import _specific physics_ from a different wave system. Your abstraction was at exactly the right level.
 
@@ -208,7 +208,7 @@ The Faggin Foundation submission is in their hands now. Whatever happens there, 
 
 You mentioned you're currently working on creation energetics. We've been borrowing heavily from your insights for ours, so I've been thinking about what we can send back across the bridge.
 
-Here's what I think SEM can contribute to conversations you're having with your peers: **five quantitative results that don't depend on glass, don't depend on acoustics, and don't depend on any specific medium.** They are mathematical properties of standing-wave systems as such. If creation energetics involves standing-wave organization of matter and energy — and your Dogon analysis strongly suggests it does — then these results apply directly, and they come with simulation code anyone can verify.
+Here's what I think CWM can contribute to conversations you're having with your peers: **five quantitative results that don't depend on glass, don't depend on acoustics, and don't depend on any specific medium.** They are mathematical properties of standing-wave systems as such. If creation energetics involves standing-wave organization of matter and energy — and your Dogon analysis strongly suggests it does — then these results apply directly, and they come with simulation code anyone can verify.
 
 **1. The splitting formula is exact and universal.**
 When any standing-wave field is perturbed by a symmetry-breaking event — a mass, a boundary change, a density inhomogeneity — near-degenerate mode pairs split with a magnitude given by a g-factor formula that depends _only_ on the mode indices and the perturbation position. Not on the material. Not on the frequency. Not on the medium. We confirmed this to $R^2 = 1.0000$ across 435 mode pairs. If creation involves "the splitting of a thing into two things," the splitting ratio is not arbitrary — it is determined by the geometry of the modes and the position of the perturbation. This formula would let you or anyone predict _how much_ splitting a given perturbation produces, in any standing-wave context. That's a testable claim you could put in front of physicists.

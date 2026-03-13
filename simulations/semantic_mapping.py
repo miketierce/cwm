@@ -1,5 +1,5 @@
 """
-Semantic Mapping for Spectral Eigenmode Memory.
+Semantic Mapping for Coherent Wave Memory.
 
 This module bridges the gap between abstract data and physical
 perturbation patterns on a glass rod. The hierarchy:

@@ -9,7 +9,7 @@ wave interference, the system acquires four structural properties:
 1. Shift tolerance (H-G1)
    When the query pattern is spatially shifted by δ (all perturbation
    sites displaced), the recall score R(δ) tracks the autocorrelation
-   of the sin²(nπx/L) sensitivity kernel.  SEM should exhibit a
+   of the sin²(nπx/L) sensitivity kernel.  CWM should exhibit a
    measurable shift-tolerance width Δ_s ≈ L/(2n_max).
 
 2. Sub-aperture degradation curve (H-G2)
@@ -25,11 +25,11 @@ wave interference, the system acquires four structural properties:
 
 4. Crosstalk selectivity envelope (H-G4)
    Kogelnik's (1969) coupled-wave theory predicts inter-hologram
-   crosstalk follows sinc² with spectral separation.  Two SEM patterns
+   crosstalk follows sinc² with spectral separation.  Two CWM patterns
    in mode subsets with fractional overlap Ω should have crosstalk
    C(Ω) following a smooth envelope (R² ≥ 0.7).
 
-**Critical constraint — the Franklin kill (S6):** SEM's sin²(nπx/L)
+**Critical constraint — the Franklin kill (S6):** CWM's sin²(nπx/L)
 encoding is algebraically incompatible with Fourier-based phase-retrieval
 algorithms (4:0 kill in S6).  None of the experiments below use
 Fourier-phase-retrieval methods.  They test _structural_ properties of
@@ -58,7 +58,7 @@ from typing import Optional, List, Tuple
 
 @dataclass
 class ShiftToleranceResult:
-    """H-G1 — Shift-tolerance of SEM recall."""
+    """H-G1 — Shift-tolerance of CWM recall."""
     n_modes: int                          # modes used
     n_sites: int                          # perturbation sites
     n_trials: int                         # independent patterns tested
@@ -316,7 +316,7 @@ def exp_shift_tolerance(
     seed: int = 42,
 ) -> ShiftToleranceResult:
     """
-    Test whether SEM recall under spatial shift tracks the predicted
+    Test whether CWM recall under spatial shift tracks the predicted
     autocorrelation of the sin²(nπx/L) sensitivity kernel.
 
     For each stored mass pattern, shift all perturbation sites by δ,

@@ -3,7 +3,7 @@ Tests for Chladni-informed 2D plate eigenmode memory experiments.
 
 Each test class exercises one of the four hypotheses derived from
 structural parallels between Ernst Chladni's vibrating-plate experiments
-(1787) and Spectral Eigenmode Memory (SEM) physics.
+(1787) and Coherent Wave Memory (CWM) physics.
 
 Tests verify that experiments run without error, that numerical results
 are physically plausible (sign, range, monotonicity), and that results

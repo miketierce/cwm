@@ -2,7 +2,7 @@
 
 Track A asks: _without touching the resonator, how many different logical devices can we extract from one physical rod by changing only the excitation and readout?_
 
-The answer determines whether SEM needs hardware rewriting at all for many applications. If a single rod can behave as 4 or 8 or 16 different logical devices selectable at firmware speed (nanoseconds), then "rewriting" becomes a CMOS operation—loading different projection coefficients into the readout ASIC—and the glass rod remains pristine, preserving its full Q.
+The answer determines whether CWM needs hardware rewriting at all for many applications. If a single rod can behave as 4 or 8 or 16 different logical devices selectable at firmware speed (nanoseconds), then "rewriting" becomes a CMOS operation—loading different projection coefficients into the readout ASIC—and the glass rod remains pristine, preserving its full Q.
 
 ### 3.1 H7: Multi-Projection Virtual Rewrite
 
@@ -36,7 +36,7 @@ The answer determines whether SEM needs hardware rewriting at all for many appli
 
 At MEMS scale with $n_p = 1{,}000$ perturbation sites (1 µm pitch on a 1 mm rod), the number of available partitions is $\lfloor 1{,}000 / d_{\min} \rfloor$ where $d_{\min}$ is the minimum useful subspace dimension (typically 2–3). This gives **300–500 virtual devices** from a single physical rod, each switchable by loading different projection coefficients into the CMOS readout die—a firmware operation taking nanoseconds.
 
-**What this means.** A SEM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any hardware rewriting. For applications that need to update their pattern library (fraud detection, threat-signature matching), this means the "rewrite" is a firmware update to the CMOS die, not a physical change to the resonator.
+**What this means.** A CWM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any hardware rewriting. For applications that need to update their pattern library (fraud detection, threat-signature matching), this means the "rewrite" is a firmware update to the CMOS die, not a physical change to the resonator.
 
 ### 3.2 H8: Mode-Subset Logical Devices
 
@@ -115,7 +115,7 @@ Test recall accuracy under 20% noise corruption over 30 trials per mask.
 
 - **Mode-zeroing masks** (odd-only, even-only, random 50%) all fail catastrophically. They delete rows and columns from the weight matrix, shattering the Hebbian correlation structure. These are "pipe removal"—they don't change what the organ plays; they break the instrument.
 
-This is a key design principle: **rewritability through reweighting, not deletion.** A SEM readout mask library should contain amplitude-emphasis profiles, not binary mode selectors. The 4 working masks produce distinct effective devices from one rod—not as many as H7's SVD partitioning, but achievable with simpler firmware (threshold comparators rather than matrix projections).
+This is a key design principle: **rewritability through reweighting, not deletion.** A CWM readout mask library should contain amplitude-emphasis profiles, not binary mode selectors. The 4 working masks produce distinct effective devices from one rod—not as many as H7's SVD partitioning, but achievable with simpler firmware (threshold comparators rather than matrix projections).
 
 **What this means.** Readout masks are the lowest-cost firmware upgrade. The CMOS readout die already computes an FFT; applying an amplitude mask to the FFT output before correlation is a single element-wise multiply. A library of, say, 8 amplitude-emphasis profiles could be stored in a small on-chip ROM and selected by a 3-bit configuration register. Each profile makes the same rod behave differently—emphasizing different pattern features, optimizing for different noise conditions, or implementing different application-specific recall policies.
 

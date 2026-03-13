@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Each sidebar explores parallels between a historical figure's work and SEM physics.
+Each sidebar explores parallels between a historical figure's work and CWM physics.
 The goal is **not** to claim ancestry — it is to identify **testable engineering
 hypotheses** that the parallel suggests, implement simulations, and either confirm
 or kill each hypothesis with quantitative evidence. Every sidebar must produce at
@@ -56,8 +56,8 @@ survive integration into the paper without regressing existing tests.
 
 Chladni's sand-on-plate experiments are **sensitivity maps**: sand collects
 at nodal lines (zero displacement = zero perturbation sensitivity). The
-SEM sensitivity function sin²(nπx/L) is the 1D version of what Chladni
-visualized in 2D. Extending SEM from rods to membranes could unlock
+CWM sensitivity function sin²(nπx/L) is the 1D version of what Chladni
+visualized in 2D. Extending CWM from rods to membranes could unlock
 quadratically more modes.
 
 ### Hypotheses
@@ -101,11 +101,11 @@ quadratically more modes.
 
 ### Core insight
 
-The cochlea is a **biological SEM device**: a tapered resonant cavity that maps
+The cochlea is a **biological CWM device**: a tapered resonant cavity that maps
 eigenfrequencies to spatial positions along the basilar membrane. Evolution has
 optimized eigenmode-based information encoding for ~200 million years. The
 cochlea's logarithmic frequency mapping, active amplification (outer hair cells
-as Q-boosters), and noise rejection strategies may suggest better SEM designs.
+as Q-boosters), and noise rejection strategies may suggest better CWM designs.
 
 ### Hypotheses
 
@@ -114,7 +114,7 @@ as Q-boosters), and noise rejection strategies may suggest better SEM designs.
 | **H-B1** | A tapered rod (continuously varying cross-section) achieves higher mode density than a uniform rod of the same length, because the local wave speed varies and modes compress toward the thin end — the cochlear "tonotopic" effect.                        | Tapered mode count ≤ uniform mode count          | §2.1, §6 scaling             |
 | **H-B2** | Logarithmic frequency spacing (cochlea-like) improves associative recall noise tolerance compared to the uniform linear spacing of a constant-cross-section rod, because log spacing allocates more resolution to low-frequency modes where SNR is highest. | Log-spaced recall accuracy ≤ linear-spaced       | §11 recall, interference.py  |
 | **H-B3** | Active Q-boosting — feeding energy into selected modes (analogous to outer hair cell motility) — can compensate for anchor loss at MEMS scale, raising effective Q above the passive limit predicted by the 5-mechanism model (§7).                         | Active Q_eff < 1.5× passive Q                    | §7 Q-factor, mems_q_model.py |
-| **H-B4** | The cochlea's critical-band masking (frequency-dependent noise rejection) maps onto an optimal **windowing function** for SEM's FFT readout that outperforms the rectangular window currently assumed.                                                      | Cochlear window SNR gain < 1 dB over rectangular | §8.4 readout, cw_readout.py  |
+| **H-B4** | The cochlea's critical-band masking (frequency-dependent noise rejection) maps onto an optimal **windowing function** for CWM's FFT readout that outperforms the rectangular window currently assumed.                                                      | Cochlear window SNR gain < 1 dB over rectangular | §8.4 readout, cw_readout.py  |
 
 ### Implementation plan
 
@@ -152,9 +152,9 @@ as Q-boosters), and noise rejection strategies may suggest better SEM designs.
 X-ray crystallography measures diffraction **intensities** (amplitudes squared)
 but loses **phases** — the "phase problem." Crystallographers spent decades
 developing algorithms to recover lost phase information from amplitude-only
-data. SEM's readout is also an FFT of the rod's response; the Tesla sidebar
+data. CWM's readout is also an FFT of the rod's response; the Tesla sidebar
 showed that phase carries independent information (§11.7). Franklin's domain
-offers phase-retrieval algorithms that may improve SEM's noise tolerance and
+offers phase-retrieval algorithms that may improve CWM's noise tolerance and
 enable reconstruction of the perturbation pattern from readout data (the
 **inverse problem**).
 
@@ -162,10 +162,10 @@ enable reconstruction of the perturbation pattern from readout data (the
 
 | ID       | Statement                                                                                                                                                                                                                                                                                                                                | Kill criterion                                            | Builds on                            |
 | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------- | ------------------------------------ |
-| **H-F1** | Applying crystallographic **direct methods** (Hauptman–Karle tangent formula) to SEM readout data recovers perturbation positions from amplitude-only spectra with ≥ 80% accuracy, even when phase information is unavailable.                                                                                                           | Reconstruction accuracy < 50%                             | §11.7 phase encoding, tesla_phase.py |
+| **H-F1** | Applying crystallographic **direct methods** (Hauptman–Karle tangent formula) to CWM readout data recovers perturbation positions from amplitude-only spectra with ≥ 80% accuracy, even when phase information is unavailable.                                                                                                           | Reconstruction accuracy < 50%                             | §11.7 phase encoding, tesla_phase.py |
 | **H-F2** | **Patterson function** analysis (autocorrelation of the spectrum) reveals inter-site distances without phase, enabling partial decoding of the perturbation pattern. The number of recoverable distance constraints scales as $K(K-1)/2$ for $K$ sites.                                                                                  | Fewer than $K$ independent distance constraints recovered | §7 site optimization                 |
 | **H-F3** | Iterative phase retrieval (Gerchberg–Saxton / hybrid input-output) converges to the correct perturbation pattern from amplitude-only FFT data within 100 iterations for patterns with ≤ 20 sites.                                                                                                                                        | Non-convergence or > 1000 iterations for trivial cases    | §11.7 H-T1, H-T2                     |
-| **H-F4** | The **molecular replacement** technique (using a known reference pattern to bootstrap phase estimates for an unknown pattern) maps onto SEM's associative recall: using stored patterns as "search models" to phase the readout. This produces measurably better recall accuracy than the current amplitude-only or complex dot product. | MR-recall accuracy ≤ complex recall (H-T2)                | §11.7 H-T2, interference.py          |
+| **H-F4** | The **molecular replacement** technique (using a known reference pattern to bootstrap phase estimates for an unknown pattern) maps onto CWM's associative recall: using stored patterns as "search models" to phase the readout. This produces measurably better recall accuracy than the current amplitude-only or complex dot product. | MR-recall accuracy ≤ complex recall (H-T2)                | §11.7 H-T2, interference.py          |
 
 ### Implementation plan
 
@@ -189,7 +189,7 @@ enable reconstruction of the perturbation pattern from readout data (the
 | **H-F3** | **KILLED** | Did not converge: 200 iterations, error 0.809 (threshold: <100 iterations)  |
 | **H-F4** | **KILLED** | MR recall 96.5% = amplitude-only 96.5% < complex 99.0%                      |
 
-**Root cause:** SEM's $\sin^2(n\pi x/L)$ sensitivity encoding is algebraically incompatible with the Fourier-based encoding ($e^{2\pi i n x}$) that crystallographic phase-retrieval algorithms require.
+**Root cause:** CWM's $\sin^2(n\pi x/L)$ sensitivity encoding is algebraically incompatible with the Fourier-based encoding ($e^{2\pi i n x}$) that crystallographic phase-retrieval algorithms require.
 
 ### External data sources
 
@@ -204,7 +204,7 @@ enable reconstruction of the perturbation pattern from readout data (the
 - Patterson function: $P(\mathbf{u}) = \sum_h |F_h|^2 e^{2\pi i \mathbf{h} \cdot \mathbf{u}}$
 - Tangent formula: $\tan \phi_h = \frac{\sum_k |E_k E_{h-k}| \sin(\phi_k + \phi_{h-k})}{\sum_k |E_k E_{h-k}| \cos(\phi_k + \phi_{h-k})}$
 - Gerchberg–Saxton iteration: alternating real-space and Fourier-space constraints
-- SEM-adapted molecular replacement merit function
+- CWM-adapted molecular replacement merit function
 
 ---
 
@@ -218,7 +218,7 @@ proposed that each indivisible "monad" reflects the entire universe from its
 own perspective — a philosophical eigenmode (each mode encodes the full cavity
 geometry). The I Ching connection extends the Dogon sidebar: another ancient
 civilization independently encoding information in compact combinatorial
-symbols. The binary-arithmetic connection asks whether SEM's continuous-valued
+symbols. The binary-arithmetic connection asks whether CWM's continuous-valued
 eigenmode encoding benefits from quantization, error correction, or
 combinatorial codebook design.
 
@@ -280,13 +280,13 @@ Gabor invented holography (1948) and proposed holographic associative memories
 (1969). When information is distributed across a medium via wave interference,
 the system acquires four structural properties: shift tolerance, graceful
 degradation under partial loss, a bandwidth-determined capacity ceiling, and
-a predictable crosstalk envelope between stored patterns. SEM already exhibits
+a predictable crosstalk envelope between stored patterns. CWM already exhibits
 the first group of holographic properties (distributed encoding, interference
 recall, multiplexing). This sidebar tests whether the _quantitative_ predictions
-from holographic theory (Gabor, Kogelnik, Leith & Upatnieks) hold for SEM's
+from holographic theory (Gabor, Kogelnik, Leith & Upatnieks) hold for CWM's
 sin²-based encoding.
 
-**Critical constraint — the Franklin kill (S6):** SEM's sin²(nπx/L) encoding
+**Critical constraint — the Franklin kill (S6):** CWM's sin²(nπx/L) encoding
 is algebraically incompatible with Fourier-based phase-retrieval algorithms
 (4:0 kill in S6). **None of the hypotheses below use Fourier-phase-retrieval
 methods.** They test _structural_ properties of holographic systems — shift
@@ -297,10 +297,10 @@ which depend on distributed wave encoding, not on the specific basis functions.
 
 | ID       | Statement                                                                                                                                                                                                                                                                                                                         | Kill criterion                                                                                | Builds on                               |
 | -------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------- |
-| **H-G1** | **Shift-tolerant recall.** When the query pattern is spatially shifted by δ (all perturbation sites displaced), the recall score R(δ) tracks the autocorrelation of the sin²(nπx/L) sensitivity kernel. SEM should exhibit a measurable "shift-tolerance width" Δ_s ≈ L/(2n_max).                                                 | R(δ) shows no structure (flat/random), OR autocorrelation width deviates > 2× from prediction | §2.3 recall, hopfield_recall.py         |
+| **H-G1** | **Shift-tolerant recall.** When the query pattern is spatially shifted by δ (all perturbation sites displaced), the recall score R(δ) tracks the autocorrelation of the sin²(nπx/L) sensitivity kernel. CWM should exhibit a measurable "shift-tolerance width" Δ_s ≈ L/(2n_max).                                                 | R(δ) shows no structure (flat/random), OR autocorrelation width deviates > 2× from prediction | §2.3 recall, hopfield_recall.py         |
 | **H-G2** | **Sub-aperture degradation curve.** Reconstruction accuracy from K of N modes follows a smooth, monotonically increasing function of K/N. Holographic aperture theory (Leith & Upatnieks 1964) predicts linear scaling: accuracy ∝ K/N.                                                                                           | Accuracy vs. K/N is non-monotonic OR best fit R² < 0.7                                        | §11.11 H-L3, leibniz_binary.py          |
 | **H-G3** | **Bandwidth utilization ceiling.** A bandwidth-limited capacity ceiling N_BW can be computed from total spectral range and per-mode linewidth. Each capacity-enhancing technique (polysemic, null-space, phase-spectral) should increase the utilization ratio η = P_eff / N_BW monotonically.                                    | η does NOT increase monotonically with added techniques                                       | §11.6 combined capacity                 |
-| **H-G4** | **Crosstalk selectivity envelope.** Kogelnik's (1969) coupled-wave theory predicts inter-hologram crosstalk follows sinc² as a function of spectral separation. Two SEM patterns in mode subsets with fractional overlap Ω should have crosstalk C(Ω) following a smooth envelope (sinc², Gaussian, or linear fit with R² ≥ 0.7). | Crosstalk vs. overlap has no smooth fit (R² < 0.7 for sinc², Gaussian, and linear)            | §11.5 polysemic (one data point: 0.003) |
+| **H-G4** | **Crosstalk selectivity envelope.** Kogelnik's (1969) coupled-wave theory predicts inter-hologram crosstalk follows sinc² as a function of spectral separation. Two CWM patterns in mode subsets with fractional overlap Ω should have crosstalk C(Ω) following a smooth envelope (sinc², Gaussian, or linear fit with R² ≥ 0.7). | Crosstalk vs. overlap has no smooth fit (R² < 0.7 for sinc², Gaussian, and linear)            | §11.5 polysemic (one data point: 0.003) |
 
 ### Implementation plan
 
@@ -410,7 +410,7 @@ Rationale (S9–S12):
 4. **S12 (Gor'kov)** depends on S1 site optimization and S4 Chladni sensitivity
    maps, but also benefits from Zeeman multi-site geometry (S9) being complete.
    The $\sin(2kz)$ identity was discovered during S12 scoping — this is the
-   deepest mathematical connection between SEM and an external physics domain.
+   deepest mathematical connection between CWM and an external physics domain.
    Execution after S9 allows Bjerknes force (H-ARF3) to test against Zeeman
    splitting data (H-Z4).
 
@@ -453,9 +453,9 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 | ---------- | ------- | ---------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **H-K1**   | S10     | 2025-07-11 | Consonant crosstalk 0.677 vs uniform 0.730 = only 7.4% reduction (threshold 30%) | sin² basis orthogonality trumps musical consonance — harmonic ratios govern perception, not encoding                                                  |
 | **H-K2**   | S10     | 2025-07-11 | Consonance-weighted recall 0.792 vs baseline 0.883 = −10.4% (threshold +15%)     | Consonance weighting injects structured noise into Hopfield energy landscape; mode-pair information content is independent of frequency ratio         |
-| **H-Bt2**  | S11     | 2025-07-12 | 0% energy transfer between modes, β = 0.000 (threshold 0.5)                      | Nonlinear coupling χ ~ 10⁻⁶ is too weak by orders of magnitude; SEM modes are effectively isolated oscillators, not a coupled thermodynamic bath      |
+| **H-Bt2**  | S11     | 2025-07-12 | 0% energy transfer between modes, β = 0.000 (threshold 0.5)                      | Nonlinear coupling χ ~ 10⁻⁶ is too weak by orders of magnitude; CWM modes are effectively isolated oscillators, not a coupled thermodynamic bath      |
 | **H-Bt3**  | S11     | 2025-07-12 | Readout accuracy monotonically decreasing, no optimum exists                     | At room temperature hf ≪ kBT for all MHz modes; Boltzmann weights collapse to uniform; optimal strategy is simply "measure as early as possible"      |
-| **H-Bt4**  | S11     | 2025-07-12 | R²_Boltzmann = 0.0001 < R²_Q-only = 1.0000 (Boltzmann < Q-only)                  | At 300 K, exp(−hf/kT) ≈ 1 for all modes; capacity is determined entirely by SNR ∝ Q/f; thermodynamic populations are irrelevant at SEM temperatures   |
+| **H-Bt4**  | S11     | 2025-07-12 | R²_Boltzmann = 0.0001 < R²_Q-only = 1.0000 (Boltzmann < Q-only)                  | At 300 K, exp(−hf/kT) ≈ 1 for all modes; capacity is determined entirely by SNR ∝ Q/f; thermodynamic populations are irrelevant at CWM temperatures   |
 | **H-ARF1** | S12     | 2025-07-13 | Gor'kov placement −98.9% vs golden-ratio (cond 1.2×10¹⁵ vs 4.0)                  | Gradient-peak clustering produces near-singular sensitivity matrices; golden-ratio spacing enforces quasi-orthogonality that gradient-peak sites lack |
 | **H-ARF3** | S12     | 2025-07-13 | Bjerknes ratio 1.01× (threshold 2×)                                              | Phase-based coupling direction (attractive/repulsive) has no measurable effect on hybridisation splitting magnitude; coupling is geometry-dominated   |
 | **H-ARF4** | S12     | 2025-07-13 | Dual-axis entropy −13.7% (threshold +20%)                                        | Node sites have zero sin² amplitude → zero eigenfrequency shift → redundant with noise; complementary encoding requires non-zero baseline sensitivity |
@@ -548,7 +548,7 @@ The Zeeman effect (1896) splits atomic spectral lines when an external magnetic
 field is applied: degenerate energy levels separate into distinct sub-levels,
 with splitting patterns governed by quantum numbers and selection rules. Laird
 Scranton's observation that "creational energetics" involves "the splitting of
-a thing into two things" maps directly onto SEM's mode hybridisation physics:
+a thing into two things" maps directly onto CWM's mode hybridisation physics:
 when an external perturbation (mass loading) is applied to a cavity with
 near-degenerate eigenmode pairs, frequency splitting occurs analogous to the
 Zeeman effect. The spare_mace avoided-crossing experiment (§11.3) demonstrated
@@ -624,7 +624,7 @@ effects.
 
 Kepler's _Harmonices Mundi_ (1619) described planetary orbital ratios as musical
 consonances — harmonic relationships between oscillation frequencies that form
-small-integer ratios. SEM's eigenmode spectrum $f_n = nc/(2L)$ is inherently
+small-integer ratios. CWM's eigenmode spectrum $f_n = nc/(2L)$ is inherently
 harmonic: all modes are exact integer multiples of the fundamental. Kepler's
 insight suggests that these harmonic relationships can be _exploited_: consonant
 mode pairs (simple ratios like 2:1, 3:2, 5:3) may provide superior sub-channel
@@ -686,7 +686,7 @@ resonance" in creational energetics directly parallels Kepler's planetary music.
 
 Boltzmann's statistical mechanics reveals that complex systems exhibit
 hierarchical timescales: fast microscopic fluctuations → intermediate
-relaxation → slow macroscopic equilibration. SEM's eigenmode system similarly
+relaxation → slow macroscopic equilibration. CWM's eigenmode system similarly
 spans timescales from fast acoustic oscillations ($\sim$ MHz) through mode
 ring-down ($\tau = Q / \pi f$, $\sim$ ms) to thermal drift ($\sim$ s).
 Scranton's observation about "nested timescales in creational processes" maps
@@ -698,7 +698,7 @@ the timescale separation predicts optimal readout windows.
 
 | ID        | Statement                                                                                                                                                                                                                                                                                                  | Kill criterion                                                     | Builds on                                    |
 | --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------ | -------------------------------------------- |
-| **H-Bt1** | **Decade spacing universality.** SEM's three characteristic timescales — oscillation period $T_{\text{osc}} = 1/f$, ring-down time $\tau = Q/(\pi f)$, and thermal drift period $T_{\text{th}}$ — are separated by approximately one decade each, a universal property predictable from $Q$ and $f$ alone. | Timescale ratios deviate $> 3\times$ from predicted decade spacing | §6 scaling, thermal.py, noise_decoherence.py |
+| **H-Bt1** | **Decade spacing universality.** CWM's three characteristic timescales — oscillation period $T_{\text{osc}} = 1/f$, ring-down time $\tau = Q/(\pi f)$, and thermal drift period $T_{\text{th}}$ — are separated by approximately one decade each, a universal property predictable from $Q$ and $f$ alone. | Timescale ratios deviate $> 3\times$ from predicted decade spacing | §6 scaling, thermal.py, noise_decoherence.py |
 | **H-Bt2** | **Spectral reddening cascade.** Energy injected at high-frequency modes cascades to lower modes through nonlinear coupling, with the cascade spectrum following a power law $f^{-\beta}$ where $\beta \in [1, 2]$. This imposes a fundamental limit on high-mode information retention time.               | No measurable energy transfer between modes ($\beta < 0.5$)        | coupled_physics.py, noise_decoherence.py     |
 | **H-Bt3** | **Optimal readout window.** An optimal readout time $t^*$ exists after excitation, balancing mode establishment (needs $t > 1/\Delta f$) against decoherence ($\text{SNR} \propto e^{-t/\tau}$). The Boltzmann-optimal $t^* = \tau \cdot \ln(Q/\pi)$.                                                      | Readout accuracy is monotonic with time (no optimum exists)        | §8.4 readout, cw_readout.py                  |
 | **H-Bt4** | **Partition function capacity.** Weighting mode contributions by the Boltzmann factor $\exp(-h f_n / k_B T_{\text{eff}})$ (where $T_{\text{eff}}$ is an effective noise temperature) predicts usable capacity more accurately ($R^2 > 0.9$) than uniform weighting or $Q$-only weighting.                  | Boltzmann weighting $R^2 <$ $Q$-only weighting $R^2$               | capacity.py, thermal.py                      |
@@ -730,7 +730,7 @@ the timescale separation predicts optimal readout windows.
 - Boltzmann, L. "Weitere Studien über das Wärmegleichgewicht" (1872) — H-theorem, partition function
 - Kolmogorov, A. "The Local Structure of Turbulence" (1941) — energy cascade power law
 - Scranton, L. birthday observations on "nested timescales" in creational energetics
-- SEM thermal drift measurements: α ≈ 0.0022 /K (paper §5)
+- CWM thermal drift measurements: α ≈ 0.0022 /K (paper §5)
 - Q-factor database: MEMS resonators 500–50,000 (mems_q_model.py)
 - Mode lifetime measurements: τ = Q/(πf) from noise_decoherence.py experiments
 
@@ -762,7 +762,7 @@ Gor'kov's acoustic radiation force theory (1962) predicts where particles
 collect in a standing-wave field: the primary radiation force is
 $F_{\text{pr}} \propto \sin(2kz)$, driving objects to either pressure nodes or
 antinodes depending on an acoustic contrast factor $\Phi(\tilde\kappa, \tilde\rho)$
-that encodes material properties. SEM's eigenmode sensitivity function
+that encodes material properties. CWM's eigenmode sensitivity function
 $\sin^2(n\pi x/L)$ has a spatial gradient:
 
 $$\frac{\partial}{\partial x}\sin^2\!\bigl(\tfrac{n\pi x}{L}\bigr) = \frac{n\pi}{L}\sin\!\bigl(\tfrac{2n\pi x}{L}\bigr)$$
@@ -772,7 +772,7 @@ pattern $F_{\text{pr}} \propto \sin(2kz)$ with $k = n\pi/L$. The implication is
 profound: locations where perturbation sensitivity changes most rapidly
 (maximum gradient of $\sin^2$) correspond exactly to the positions where
 acoustic radiation forces are strongest. The standing-wave physics that governs
-SEM eigenmode encoding is the _same_ standing-wave physics that governs
+CWM eigenmode encoding is the _same_ standing-wave physics that governs
 Gor'kov particle trapping.
 
 This sidebar tests whether Gor'kov-optimised site placement (at $\sin(2kz)$
@@ -783,7 +783,7 @@ whether node vs antinode placement enables dual-axis encoding.
 
 **Critical constraint — the Franklin kill (S6):** None of these hypotheses
 invoke Fourier-phase-retrieval methods. They test acoustic-force structural
-predictions applied to SEM's $\sin^2$ encoding framework.
+predictions applied to CWM's $\sin^2$ encoding framework.
 
 ### Hypotheses
 
@@ -815,7 +815,7 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 - Yosioka, K. & Kawasima, Y. "Acoustic radiation pressure on a compressible sphere" (Acustica, 1955) — contrast factor derivation
 - Settnes, M. & Bruus, H. "Forces acting on a small particle in an acoustical field" (Phys. Rev. E, 2012) — viscous corrections
 - Scranton, L. observations on standing-wave organisation in creational energetics
-- SEM site-optimization results (§7, golden-ratio baseline)
+- CWM site-optimization results (§7, golden-ratio baseline)
 
 ### Key equations to validate
 
@@ -852,7 +852,7 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 
 _The twelve planned sidebars (S1–S12) are complete. The following proposals
 emerged from a comprehensive review of the confirmed/killed patterns across all
-52 hypotheses and the unexplored physics surrounding the SEM architecture.
+52 hypotheses and the unexplored physics surrounding the CWM architecture.
 They target three strategic gaps: (a) fundamental limits the current model
 assumes but hasn't rigorously bounded, (b) practical readout mechanisms not yet
 explored, and (c) the information-theoretic ceiling that contextualizes all
@@ -939,24 +939,24 @@ whose first-order formula is already the paper's bedrock.
 
 #### Core insight
 
-SEM's glass rod is an acoustic **Fabry-Pérot etalon**: a bounded cavity in
+CWM's glass rod is an acoustic **Fabry-Pérot etalon**: a bounded cavity in
 which standing waves form through repeated reflection at the rod ends. The
 analogy is not metaphorical—it is the same wave physics in a different medium.
 
 The Fabry-Pérot interferometer's resolving power $\mathcal{R} = m \mathcal{F}$
 (mode order × finesse) determines how many spectral features can be
-distinguished within the instrument's bandwidth. For SEM, the finesse
+distinguished within the instrument's bandwidth. For CWM, the finesse
 $\mathcal{F} = \pi \sqrt{R_{\text{end}}} / (1 - R_{\text{end}})$ connects
 end-reflection coefficient to mode linewidth: $\delta f = \text{FSR} /
 \mathcal{F}$, where $\text{FSR} = v / (2L)$ is the free spectral range
-(identical to SEM's mode spacing). This provides an independent derivation
+(identical to CWM's mode spacing). This provides an independent derivation
 of $n_{\max}$ from interferometric principles.
 
 More practically: the Fabry-Pérot scanning technique—sweeping a narrow-band
 probe across the spectrum—is the interferometric analogue of CW lock-in readout
 (§8.4). Fabry-Pérot theory predicts optimal scanning rate, peak shape (Airy
 function vs. Lorentzian), and the trade-off between spectral resolution and
-measurement time. This connects SEM to the precision metrology community
+measurement time. This connects CWM to the precision metrology community
 (optical frequency combs, laser stabilisation, gravitational wave detection)
 where etalon physics has been refined for decades.
 
@@ -994,7 +994,7 @@ engineering tools from the most mature branch of precision measurement.
 #### Key equations to validate
 
 - Acoustic finesse: $\mathcal{F} = \frac{\pi \sqrt{R_{\text{end}}}}{1 - R_{\text{end}}}$
-- Free spectral range: $\text{FSR} = v_{\text{bar}} / (2L)$ (identical to SEM mode spacing)
+- Free spectral range: $\text{FSR} = v_{\text{bar}} / (2L)$ (identical to CWM mode spacing)
 - Mode linewidth: $\delta f = \text{FSR} / \mathcal{F} \equiv f_n / Q$ (consistency check)
 - Airy function: $I(\nu) = \frac{I_0}{1 + F \sin^2(\pi \nu / \text{FSR})}$ where $F = (2\mathcal{F}/\pi)^2$
 - Resolving power: $\mathcal{R} = m \mathcal{F}$ for mode order $m$
@@ -1013,7 +1013,7 @@ engineering tools from the most mature branch of precision measurement.
 | ID        | Verdict      | Key metric                              | Kill/confirm mechanism                                                                   |
 | --------- | ------------ | --------------------------------------- | ---------------------------------------------------------------------------------------- |
 | **H-FP1** | ✅ Confirmed | Fractional error 5.1% (threshold 25%)   | Self-consistent R_eff = 0.9997 gives F ≈ Q; multiple loss mechanisms limit Q below end-R |
-| **H-FP2** | ❌ Killed    | Both R² = 0.9998, advantage ≈ 0.000000  | High-finesse Airy ≈ Lorentzian to order (δν/FSR)⁴; indistinguishable in SEM regime       |
+| **H-FP2** | ❌ Killed    | Both R² = 0.9998, advantage ≈ 0.000000  | High-finesse Airy ≈ Lorentzian to order (δν/FSR)⁴; indistinguishable in CWM regime       |
 | **H-FP3** | ❌ Killed    | Scanning −13 dB vs impulse              | Time-division penalty (t_dwell = T/N) exceeds lock-in gain; broadband captures all modes |
 | **H-FP4** | ✅ Confirmed | Linewidth ratio 7,922× (threshold 1.5×) | Glass/air R = 0.9999 to glass/steel R = 0.35; finesse from 2.9 to 22,816                 |
 
@@ -1023,13 +1023,13 @@ engineering tools from the most mature branch of precision measurement.
 
 #### Core insight
 
-SEM is functionally a **multi-channel communication system**: $N$ independent
+CWM is functionally a **multi-channel communication system**: $N$ independent
 modes, each with mode-dependent SNR. The paper computes capacity as
 $\sum_n \frac{1}{2} \log_2(1 + \text{SNR}_n)$ using equal allocation — each
 mode is treated identically. But Shannon's waterfilling theorem proves this
 is suboptimal whenever modes have different noise levels.
 
-For SEM, mode-dependent noise arises from multiple sources: higher modes have
+For CWM, mode-dependent noise arises from multiple sources: higher modes have
 broader linewidths ($\delta f_n = f_n / Q \propto n$), thermal drift affects
 high modes more ($\Delta f_n^{\text{th}} = f_n \alpha \Delta T \propto n$),
 and readout transducer sensitivity varies with frequency. The waterfilling
@@ -1053,9 +1053,9 @@ to Gabor's bandwidth ceiling (S8 H-G3).
 
 | ID        | Statement                                                                                                                                                                                                                                                                                                                | Kill criterion                                                                         | Builds on                             |
 | --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------- |
-| **H-SN1** | **Waterfilling capacity gain.** Shannon's waterfilling algorithm, applied to SEM's mode-dependent SNR profile, improves total channel capacity by $\geq 5\%$ over uniform allocation, by concentrating readout power on low-$n$ (high-SNR) modes and cutting off modes above a noise-limited threshold $n_{\text{cut}}$. | Waterfilling gain $< 2\%$ (uniform allocation is near-optimal)                         | §4.3 SNR, Appendix A, capacity.py     |
+| **H-SN1** | **Waterfilling capacity gain.** Shannon's waterfilling algorithm, applied to CWM's mode-dependent SNR profile, improves total channel capacity by $\geq 5\%$ over uniform allocation, by concentrating readout power on low-$n$ (high-SNR) modes and cutting off modes above a noise-limited threshold $n_{\text{cut}}$. | Waterfilling gain $< 2\%$ (uniform allocation is near-optimal)                         | §4.3 SNR, Appendix A, capacity.py     |
 | **H-SN2** | **Nyquist mode minimum.** Faithful reconstruction of $K$ perturbation sites requires $\geq 2K$ measured modes (acoustic Nyquist rate), not the $K$ modes suggested by Leibniz H-L3. The discrepancy arises because H-L3 assumed noiseless readout; at realistic SNR, the $2K$ minimum is strict.                         | $K$ modes suffice even at SNR $< 40$ dB (Leibniz H-L3 holds in the noisy regime)       | S7 H-L3, hopfield_recall.py           |
-| **H-SN3** | **Capacity utilisation ratio.** SEM's current (uniform) capacity achieves $\geq 85\%$ of the Shannon limit for its SNR profile, confirming that the simple model in the paper is a close approximation despite being suboptimal.                                                                                         | Utilisation $< 70\%$ (significant room for improvement, undermining paper's claims)    | §1.3 capacity table, capacity.py      |
+| **H-SN3** | **Capacity utilisation ratio.** CWM's current (uniform) capacity achieves $\geq 85\%$ of the Shannon limit for its SNR profile, confirming that the simple model in the paper is a close approximation despite being suboptimal.                                                                                         | Utilisation $< 70\%$ (significant room for improvement, undermining paper's claims)    | §1.3 capacity table, capacity.py      |
 | **H-SN4** | **Mutual information per mode.** The mutual information $I(X_n; Y_n)$ between the stored pattern and readout for mode $n$ exceeds 0.5 bits/mode for $n \leq n_{\max}/2$ and falls below 0.1 bits/mode for $n > n_{\max}$, confirming that the $n_{\max}$ formula correctly identifies the usable mode range.             | $I(X_n; Y_n) > 0.5$ bits/mode persists beyond $n_{\max}$ (usable modes extend further) | §2.1 $n_{\max}$, noise_decoherence.py |
 
 #### Implementation plan
@@ -1124,7 +1124,7 @@ exponentially at rate $\gamma \propto \varepsilon \omega_n / (4Q)$.
 This is not speculative engineering — MEMS parametric amplifiers are
 commercially deployed in gyroscopes (Analog Devices ADXRS, ST
 Microelectronics), where parametric drive at $2\omega$ provides 10–30 dB of
-mode-selective gain. The mechanism maps directly onto SEM: a piezoelectric
+mode-selective gain. The mechanism maps directly onto CWM: a piezoelectric
 transducer modulating rod stress at $2f_n$ pumps energy into mode $n$ while
 leaving neighbouring modes unaffected.
 
@@ -1142,7 +1142,7 @@ for a memory device that must be stable.
 | --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------ |
 | **H-PM1** | **Parametric gain.** Modulating rod stress at $2f_n$ with depth $\varepsilon < 0.1$ amplifies mode $n$ by $\geq 10$ dB within the first Mathieu instability tongue, at a pump power comparable to Békésy's active Q-boosting (femtowatts per mode).                                       | Gain $< 3$ dB at $\varepsilon = 0.1$ (parametric mechanism too weak in acoustic regime) | S5 H-B3, bekesy_cochlea.py     |
 | **H-PM2** | **Mode selectivity.** Parametric drive at $2f_n$ produces $< 1$ dB gain at neighbouring modes $f_{n \pm 1}$, because the instability tongue width $\Delta\omega \propto \varepsilon \omega_n / (2Q)$ is narrower than the mode spacing $\text{FSR} = v/(2L)$ for $Q > 100$.               | Cross-mode gain $> 3$ dB at neighbouring modes (selectivity insufficient)               | §2.1 mode spacing              |
-| **H-PM3** | **Stability boundary prediction.** The Mathieu stability chart predicts the maximum safe modulation depth $\varepsilon_{\max}$ (onset of parametric oscillation) to within $\pm 20\%$ of numerically computed threshold for SEM rod parameters.                                           | Predicted $\varepsilon_{\max}$ deviates $> 50\%$ from numerical threshold               | noise_decoherence.py           |
+| **H-PM3** | **Stability boundary prediction.** The Mathieu stability chart predicts the maximum safe modulation depth $\varepsilon_{\max}$ (onset of parametric oscillation) to within $\pm 20\%$ of numerically computed threshold for CWM rod parameters.                                           | Predicted $\varepsilon_{\max}$ deviates $> 50\%$ from numerical threshold               | noise_decoherence.py           |
 | **H-PM4** | **Parametric + CW readout.** Combining parametric amplification of mode $n$ with CW lock-in readout at $f_n$ achieves $\geq 6$ dB better SNR than CW readout alone at equivalent total integration time, because the parametric pump coherently adds energy at the measurement frequency. | Combined SNR improvement $< 2$ dB over CW alone (pump noise dominates the gain)         | §8.4 CW readout, cw_readout.py |
 
 #### Implementation plan
@@ -1196,11 +1196,11 @@ for a memory device that must be stable.
 
 #### Historical figure
 
-**Solar coronal seismology** as a field, founded by Uchida (1970), Roberts, Edwin & Benz (1984), and Nakariakov et al. (1999). This sidebar differs from all preceding ones: instead of importing physics into SEM, it **exports SEM's mathematical predictions to the astrophysical system where the same eigenmode physics already operates at stellar scales**. Solar coronal loops are bounded plasma cavities with discrete MHD eigenmodes — the same sensitivity matrix, the same perturbation theory, the same eigenfrequency readout that SEM uses in glass.
+**Solar coronal seismology** as a field, founded by Uchida (1970), Roberts, Edwin & Benz (1984), and Nakariakov et al. (1999). This sidebar differs from all preceding ones: instead of importing physics into CWM, it **exports CWM's mathematical predictions to the astrophysical system where the same eigenmode physics already operates at stellar scales**. Solar coronal loops are bounded plasma cavities with discrete MHD eigenmodes — the same sensitivity matrix, the same perturbation theory, the same eigenfrequency readout that CWM uses in glass.
 
-#### Relevance to SEM
+#### Relevance to CWM
 
-If SEM's results are truly substrate-independent (as the paper claims), they must hold in any bounded standing-wave cavity with harmonic eigenmodes. Coronal seismology is the most mature natural test case: decades of published eigenfrequency observations from SDO/AIA, TRACE, Hinode, and Parker Solar Probe. Validating SEM's predictions against nature — not against our own simulations — constitutes a qualitatively different class of evidence.
+If CWM's results are truly substrate-independent (as the paper claims), they must hold in any bounded standing-wave cavity with harmonic eigenmodes. Coronal seismology is the most mature natural test case: decades of published eigenfrequency observations from SDO/AIA, TRACE, Hinode, and Parker Solar Probe. Validating CWM's predictions against nature — not against our own simulations — constitutes a qualitatively different class of evidence.
 
 #### Hypotheses
 
@@ -1235,8 +1235,8 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 
 - MHD kink mode frequency: $\omega_K = \sqrt{2k_z^2 B^2 / \mu(\rho_i + \rho_e)}$
 - Sausage mode frequency: $\omega_S = \sqrt{k_z^2 B^2 / \mu\rho_e}$
-- Period ratio anomaly: $P_1/2P_2$ deviation from 1.0 reflects density stratification — SEM predicts this deviation correlates with sensitivity-matrix conditioning
-- SEM sensitivity matrix transferred to MHD: $S_{nk} = \sin^2(n\pi x_k / L)$ where $x_k$ are density perturbation positions along the coronal loop
+- Period ratio anomaly: $P_1/2P_2$ deviation from 1.0 reflects density stratification — CWM predicts this deviation correlates with sensitivity-matrix conditioning
+- CWM sensitivity matrix transferred to MHD: $S_{nk} = \sin^2(n\pi x_k / L)$ where $x_k$ are density perturbation positions along the coronal loop
 
 #### Cross-sidebar interactions
 
@@ -1278,11 +1278,11 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 
 #### Historical figure / tradition
 
-**Yang–Mills gauge theory** and the fiber-bundle formalism developed by Yang & Mills (1954), Atiyah & Bott (1983), Donaldson (1983), and Uhlenbeck (1982). Eric Weinstein's Harvard dissertation (1992, under Raoul Bott) extended self-dual Yang–Mills equations beyond dimension four, demonstrating that gauge-geometric structures are not special to a single dimensionality — a principle directly relevant to SEM's dimensional tower (1D rod → 2D plate → 3D cavity). This sidebar tests whether the well-established mathematical toolkit of gauge theory (connections, curvature, holonomy, topological invariants) provides quantitative predictions for SEM's sensitivity-matrix physics.
+**Yang–Mills gauge theory** and the fiber-bundle formalism developed by Yang & Mills (1954), Atiyah & Bott (1983), Donaldson (1983), and Uhlenbeck (1982). Eric Weinstein's Harvard dissertation (1992, under Raoul Bott) extended self-dual Yang–Mills equations beyond dimension four, demonstrating that gauge-geometric structures are not special to a single dimensionality — a principle directly relevant to CWM's dimensional tower (1D rod → 2D plate → 3D cavity). This sidebar tests whether the well-established mathematical toolkit of gauge theory (connections, curvature, holonomy, topological invariants) provides quantitative predictions for CWM's sensitivity-matrix physics.
 
-#### Relevance to SEM
+#### Relevance to CWM
 
-SEM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2(n\pi x/L)$ defines a map from **parameter space** (perturbation positions and masses) to **frequency space** (eigenmode shifts). In gauge-geometric language, this is a **connection on a fiber bundle**: the base manifold is the configuration space of perturbation positions, the fiber is the space of spectral fingerprints, and the sensitivity matrix is the connection form. The curvature of this connection, its holonomy around closed loops, and its topological invariants (rank, winding numbers) should produce testable predictions about inversion conditioning, information capacity, and dimensional scaling. If SEM's physics has genuine gauge-geometric structure, these predictions quantify it; if not, the analogy is decorative.
+CWM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2(n\pi x/L)$ defines a map from **parameter space** (perturbation positions and masses) to **frequency space** (eigenmode shifts). In gauge-geometric language, this is a **connection on a fiber bundle**: the base manifold is the configuration space of perturbation positions, the fiber is the space of spectral fingerprints, and the sensitivity matrix is the connection form. The curvature of this connection, its holonomy around closed loops, and its topological invariants (rank, winding numbers) should produce testable predictions about inversion conditioning, information capacity, and dimensional scaling. If CWM's physics has genuine gauge-geometric structure, these predictions quantify it; if not, the analogy is decorative.
 
 #### Hypotheses
 

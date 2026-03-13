@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Paths to Rewritability in Spectral Eigenmode Memory</title>
+<title>Paths to Rewritability in Coherent Wave Memory</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
@@ -433,20 +433,20 @@ a {
 }
 
 /* -- Inline thumbnail figures -- */
-div.sem-thumb {
+div.cwm-thumb {
     text-align: center;
     margin: 12pt auto;
     page-break-inside: avoid;
 }
 
-div.sem-thumb img {
+div.cwm-thumb img {
     max-width: 70%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-div.sem-thumb p {
+div.cwm-thumb p {
     font-size: 8.5pt;
     color: var(--muted);
     text-align: center;
@@ -594,7 +594,7 @@ div.worksheet-plate th {
 <body>
 <div class="title-page">
   <hr class="rule-top">
-  <h1 class="paper-title" style="display:block">Paths to Rewritability in Spectral Eigenmode Memory</h1>
+  <h1 class="paper-title" style="display:block">Paths to Rewritability in Coherent Wave Memory</h1>
   <hr class="rule-mid">
   <p class="author">Mike Tierce</p>
   <p class="affiliation">Independent Researcher</p>
@@ -605,8 +605,8 @@ div.worksheet-plate th {
 </div>
 <div class="blank-verso">&nbsp;</div>
 <div class="abstract-page"><h2 id="abstract">Abstract</h2>
-<p>Spectral Eigenmode Memory (SEM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.</p>
-<p>This technical note asks the next question: <em>can SEM be made reconfigurable?</em></p>
+<p>Coherent Wave Memory (CWM) encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The companion paper [1] validates this architecture at macro scale (98.5 dB SNR, 9,380 thermally stable modes, 95.1 Gbit/cm³ projected MEMS density) and presents it as a read-only technology: data is written once by lithographic mass perturbation, read and searched by acoustic interference, and never altered.</p>
+<p>This technical note asks the next question: <em>can CWM be made reconfigurable?</em></p>
 <p>We investigate seven engineering hypotheses across three tracks, each representing a different depth of hardware modification:</p>
 <p><strong>Track A — Firmware-defined virtual rewriting</strong> requires no physical changes to the resonator. By partitioning the coupling matrix&rsquo;s SVD basis into orthogonal subspaces, a single rod supports <strong>4 independent virtual devices</strong> with cross-talk below $3.5 \times 10^{-16}$. Mode-subset excitation yields <strong>4 independent logical memories</strong> from contiguous frequency bands. A library of spectral readout masks produces <strong>4 firmware-selectable device configurations</strong> from one physical rod.</p>
 <p><strong>Track B — Binary perturbation sites</strong> introduces discrete, toggleable mass-coupling points on the rod surface. With 12 binary sites, <strong>193 of 200 sampled configurations</strong> are spectrally distinguishable (7.6 bits of rewritable state). As few as <strong>4 sites</strong> suffice for reliable Hopfield associative recall, with capacity scaling as $N_{\text{sites}}^{0.27}$.</p>
@@ -619,10 +619,10 @@ div.worksheet-plate th {
   <p class="part-desc">Sections 1–2</p>
   <hr>
 </div>
-<h2 id="1-sem-architecture-in-brief">1. SEM Architecture in Brief</h2>
-<p><em>This section summarizes the Spectral Eigenmode Memory architecture established in the companion paper [1]. Readers familiar with [1] may skip to Section 2.</em></p>
+<h2 id="1-cwm-architecture-in-brief">1. CWM Architecture in Brief</h2>
+<p><em>This section summarizes the Coherent Wave Memory architecture established in the companion paper [1]. Readers familiar with [1] may skip to Section 2.</em></p>
 <h3 id="11-core-idea">1.1 Core Idea</h3>
-<p>SEM stores data in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator. A glass rod vibrates at a set of natural frequencies—its eigenmodes—each an independent information channel. Mass perturbations on the rod&rsquo;s surface shift each eigenfrequency by a different amount (via the Rayleigh perturbation formula), creating a unique <em>spectral fingerprint</em>. To read, excite the rod with a broadband pulse and measure the frequency spectrum. To search an array of rods, drive them all with a query spectrum: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor search executed by wave physics in one acoustic propagation cycle (~3.6 µs), with no processor, no memory bus, and no software.</p>
+<p>CWM stores data in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator. A glass rod vibrates at a set of natural frequencies—its eigenmodes—each an independent information channel. Mass perturbations on the rod&rsquo;s surface shift each eigenfrequency by a different amount (via the Rayleigh perturbation formula), creating a unique <em>spectral fingerprint</em>. To read, excite the rod with a broadband pulse and measure the frequency spectrum. To search an array of rods, drive them all with a query spectrum: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor search executed by wave physics in one acoustic propagation cycle (~3.6 µs), with no processor, no memory bus, and no software.</p>
 <p>The $n$-th longitudinal eigenmode has frequency $f_n = nv/(2L)$, where $v$ is the speed of sound and $L$ is the rod length. The maximum number of thermally stable modes depends only on the material and temperature stability:</p>
 <p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha \,\Delta T} \right\rfloor$$</p>
 <p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K) at $\pm 1$ K: $n_{\max} = 9{,}380$ modes. This number is independent of rod length—a 150 mm prototype rod and a 1 mm MEMS rod support the same mode count.</p>
@@ -699,20 +699,20 @@ div.worksheet-plate th {
 </ul>
 <p>This decomposition, introduced in the companion paper&rsquo;s null-space multiplexing result [1, §10.4], is the mathematical foundation for the virtual-rewrite experiments of Section 3.</p>
 <h3 id="14-associative-recall-as-hopfield-network">1.4 Associative Recall as Hopfield Network</h3>
-<p>SEM&rsquo;s read/search operation is mathematically a Hopfield associative memory [2, 3]. The weight matrix is the physics of the eigenmode spectrum. The capacity limit is:</p>
+<p>CWM&rsquo;s read/search operation is mathematically a Hopfield associative memory [2, 3]. The weight matrix is the physics of the eigenmode spectrum. The capacity limit is:</p>
 <p>$$P_{\max} \approx 0.138\,N$$</p>
 <p>for $< 1\%$ bit-error rate, where $N$ is the number of modes. For $N = 9{,}380$: $P_{\max} \approx 1{,}294$ patterns per rod. The companion paper further showed that synaptic pruning (zeroing weak weights) improves recall accuracy by +10.7% at high load factors [1, §10.1], and that null-space multiplexing adds +60% bonus capacity with zero hardware changes [1, §10.4].</p>
 <h3 id="15-the-missing-piece">1.5 The Missing Piece</h3>
-<p>As presented in the companion paper, SEM is read-only memory: perturbation patterns are fixed at fabrication by lithographic mass deposition. The rod is a &ldquo;sonic telescope&rdquo;—factory-pointed at a target and forever locked on. This is sufficient for applications like content-addressable memory, acoustic fingerprint matching, and edge inference, where the stored patterns are fixed at manufacturing time.</p>
+<p>As presented in the companion paper, CWM is read-only memory: perturbation patterns are fixed at fabrication by lithographic mass deposition. The rod is a &ldquo;sonic telescope&rdquo;—factory-pointed at a target and forever locked on. This is sufficient for applications like content-addressable memory, acoustic fingerprint matching, and edge inference, where the stored patterns are fixed at manufacturing time.</p>
 <p>But many applications require reconfigurability. A fraud detection system needs new patterns as new attack vectors emerge. A signals-intelligence matcher needs to update its library as threats evolve. Even the simplest embedded device needs occasional firmware updates.</p>
-<p>The question this technical note addresses is: <em>can the telescope become an instrument?</em> Can we make SEM reconfigurable without destroying the physics that makes it work?</p>
+<p>The question this technical note addresses is: <em>can the telescope become an instrument?</em> Can we make CWM reconfigurable without destroying the physics that makes it work?</p>
 <hr />
 <h2 id="2-the-rewritability-question">2. The Rewritability Question</h2>
 <h3 id="21-telescope-vs-instrument">2.1 Telescope vs. Instrument</h3>
-<p>Consider two ways to think about a SEM rod:</p>
+<p>Consider two ways to think about a CWM rod:</p>
 <p><strong>The telescope model.</strong> A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter for that pattern. It is a detector, not a programmable device. You &ldquo;point&rdquo; the telescope by choosing which rod to read, not by changing what any rod stores. An array of 1,000 rods is a library of 1,000 fixed filters—like a radio telescope array where each dish is permanently aimed at a different star.</p>
 <p><strong>The instrument model.</strong> A rod is a configurable acoustic device whose effective behavior can be changed after fabrication. It is a pipe organ, not a telescope—the same pipes can play different music depending on which stops are pulled and which keys are pressed. Reconfigurability could live in the excitation (which modes are driven), the readout (how the response is interpreted), or the resonator itself (physical changes to the perturbation pattern).</p>
-<p>The companion paper presents SEM exclusively in telescope mode. This is the conservative, validated position: the physics works, the numbers are solid, and fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant.</p>
+<p>The companion paper presents CWM exclusively in telescope mode. This is the conservative, validated position: the physics works, the numbers are solid, and fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant.</p>
 <p>But the instrument model is more interesting—and, as we will show, more physically accessible than it first appears.</p>
 <h3 id="22-five-candidate-architectures">2.2 Five Candidate Architectures</h3>
 <p>Brainstorming from first principles, we identified five candidate paths to rewritability. Each represents a different point on the hardware-modification spectrum:</p>
@@ -773,7 +773,7 @@ div.worksheet-plate th {
 <p>All three tracks must satisfy the same constraint: <strong>rewriting must not destroy Q.</strong></p>
 <p>The companion paper&rsquo;s Q-factor analysis [1, §6] established that the total quality factor of a 1 mm MEMS glass resonator is $Q_{\text{total}} = 9{,}110$, with material intrinsic loss ($Q_{\text{mat}} = 10{,}000$) as the dominant mechanism. The 5-mechanism loss budget is:</p>
 <p>$$\frac{1}{Q_{\text{total}}} = \frac{1}{Q_{\text{mat}}} + \frac{1}{Q_{\text{anchor}}} + \frac{1}{Q_{\text{TED}}} + \frac{1}{Q_{\text{surface}}} + \frac{1}{Q_{\text{gas}}}$$</p>
-<p>Any rewrite mechanism adds a new loss term. Track A avoids this entirely (firmware changes don&rsquo;t add loss). Tracks B and C add physical structures that contribute to $1/Q_{\text{surface}}$ or introduce new loss channels. The experiments in Sections 4 and 5 quantify these penalties and determine the operating envelope where $Q > 5{,}000$—the threshold below which SEM loses its competitive advantage.</p>
+<p>Any rewrite mechanism adds a new loss term. Track A avoids this entirely (firmware changes don&rsquo;t add loss). Tracks B and C add physical structures that contribute to $1/Q_{\text{surface}}$ or introduce new loss channels. The experiments in Sections 4 and 5 quantify these penalties and determine the operating envelope where $Q > 5{,}000$—the threshold below which CWM loses its competitive advantage.</p>
 <h3 id="24-experimental-approach">2.4 Experimental Approach</h3>
 <p>All seven experiments are implemented in the simulation module <code>simulations/rewritability.py</code>, tested by 68 automated tests in <code>tests/test_rewritability.py</code>, and reproducible via:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">simulations.rewritability</span><span class="w"> </span><span class="kn">import</span> <span class="n">run_all_rewritability</span>
@@ -789,7 +789,7 @@ div.worksheet-plate th {
 </div>
 <h2 id="3-track-a-firmware-defined-virtual-rewriting">3. Track A — Firmware-Defined Virtual Rewriting</h2>
 <p>Track A asks: <em>without touching the resonator, how many different logical devices can we extract from one physical rod by changing only the excitation and readout?</em></p>
-<p>The answer determines whether SEM needs hardware rewriting at all for many applications. If a single rod can behave as 4 or 8 or 16 different logical devices selectable at firmware speed (nanoseconds), then &ldquo;rewriting&rdquo; becomes a CMOS operation—loading different projection coefficients into the readout ASIC—and the glass rod remains pristine, preserving its full Q.</p>
+<p>The answer determines whether CWM needs hardware rewriting at all for many applications. If a single rod can behave as 4 or 8 or 16 different logical devices selectable at firmware speed (nanoseconds), then &ldquo;rewriting&rdquo; becomes a CMOS operation—loading different projection coefficients into the readout ASIC—and the glass rod remains pristine, preserving its full Q.</p>
 <h3 id="31-h7-multi-projection-virtual-rewrite">3.1 H7: Multi-Projection Virtual Rewrite</h3>
 <p><strong>Hypothesis.</strong> The SVD of the coupling matrix $C$ can be partitioned into $K$ orthogonal subspaces, each functioning as an independent logical memory with zero cross-talk.</p>
 <p><strong>Background.</strong> The companion paper&rsquo;s null-space experiment [1, §10.4] demonstrated two channels: the column space (standard readout) and the null space (complementary readout), with perfect fidelity and zero leakage between them. This is a 2-partition split. H7 generalizes: instead of just column-space vs. null-space, we partition <em>all</em> right-singular vectors into $K$ equal groups. Each group spans a subspace; patterns encoded in that subspace are invisible to all other subspaces. Each subspace is a virtual device.</p>
@@ -846,7 +846,7 @@ div.worksheet-plate th {
 </ul>
 <p><strong>Interpretation.</strong> The orthogonality is exact, not approximate—a mathematical consequence of the SVD, not a favorable coincidence. As long as the readout system can resolve the projection coefficients above the noise floor, each partition is a perfectly isolated logical memory. With 24 perturbation sites, we can push to $K = 8$ partitions of 3 dimensions each, or $K = 12$ partitions of 2 dimensions each, trading per-device capacity for device count.</p>
 <p>At MEMS scale with $n_p = 1{,}000$ perturbation sites (1 µm pitch on a 1 mm rod), the number of available partitions is $\lfloor 1{,}000 / d_{\min} \rfloor$ where $d_{\min}$ is the minimum useful subspace dimension (typically 2–3). This gives <strong>300–500 virtual devices</strong> from a single physical rod, each switchable by loading different projection coefficients into the CMOS readout die—a firmware operation taking nanoseconds.</p>
-<p><strong>What this means.</strong> A SEM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any hardware rewriting. For applications that need to update their pattern library (fraud detection, threat-signature matching), this means the &ldquo;rewrite&rdquo; is a firmware update to the CMOS die, not a physical change to the resonator.</p>
+<p><strong>What this means.</strong> A CWM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any hardware rewriting. For applications that need to update their pattern library (fraud detection, threat-signature matching), this means the &ldquo;rewrite&rdquo; is a firmware update to the CMOS die, not a physical change to the resonator.</p>
 <h3 id="32-h8-mode-subset-logical-devices">3.2 H8: Mode-Subset Logical Devices</h3>
 <p><strong>Hypothesis.</strong> Driving and reading contiguous subsets of the mode spectrum creates independent logical memories from one physical rod.</p>
 <p><strong>Background.</strong> H7 uses SVD to find optimal partitions; H8 uses the simplest possible partitioning—contiguous frequency bands. This is the &ldquo;organ stop&rdquo; approach: pull stop 1 to play the bass pipes, pull stop 2 for the tenor pipes. Different stops, different sounds, same organ.</p>
@@ -1033,7 +1033,7 @@ div.worksheet-plate th {
 <p><strong>Mode-zeroing masks</strong> (odd-only, even-only, random 50%) all fail catastrophically. They delete rows and columns from the weight matrix, shattering the Hebbian correlation structure. These are &ldquo;pipe removal&rdquo;—they don&rsquo;t change what the organ plays; they break the instrument.</p>
 </li>
 </ul>
-<p>This is a key design principle: <strong>rewritability through reweighting, not deletion.</strong> A SEM readout mask library should contain amplitude-emphasis profiles, not binary mode selectors. The 4 working masks produce distinct effective devices from one rod—not as many as H7&rsquo;s SVD partitioning, but achievable with simpler firmware (threshold comparators rather than matrix projections).</p>
+<p>This is a key design principle: <strong>rewritability through reweighting, not deletion.</strong> A CWM readout mask library should contain amplitude-emphasis profiles, not binary mode selectors. The 4 working masks produce distinct effective devices from one rod—not as many as H7&rsquo;s SVD partitioning, but achievable with simpler firmware (threshold comparators rather than matrix projections).</p>
 <p><strong>What this means.</strong> Readout masks are the lowest-cost firmware upgrade. The CMOS readout die already computes an FFT; applying an amplitude mask to the FFT output before correlation is a single element-wise multiply. A library of, say, 8 amplitude-emphasis profiles could be stored in a small on-chip ROM and selected by a 3-bit configuration register. Each profile makes the same rod behave differently—emphasizing different pattern features, optimizing for different noise conditions, or implementing different application-specific recall policies.</p>
 <h3 id="34-track-a-summary">3.4 Track A Summary</h3>
 <table>
@@ -1214,7 +1214,7 @@ div.worksheet-plate th {
 <li><strong>Verdict: ✅ CONFIRMED</strong> (min_sites = 4 ≤ 32)</li>
 </ul>
 <p><strong>Interpretation.</strong> The capacity is modest (3–6 patterns) compared to unconstrained Hopfield networks of the same dimensionality ($0.138 \times 30 \approx 4$). This is expected: the binarized fingerprints share correlation structure through the coupling matrix, and the effective dimensionality of the fingerprint space is limited by rank($C$) = min($n_m, N_s$). The scaling exponent of 0.27 (sub-linear in sites) confirms that adding more sites helps but with diminishing returns—the bottleneck is the readout dimensionality ($n_m = 30$), not the configuration space.</p>
-<p><strong>Practical implication.</strong> At 9,380 readout modes (the full SEM spectrum), the effective dimensionality of the fingerprint space is vastly larger, and the Hopfield capacity bound becomes $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$—same as the companion paper&rsquo;s baseline. The binary-site constraint does not reduce this capacity; it simply quantizes the perturbation space into $2^{N_s}$ discrete states instead of a continuum. With $N_s = 20$ sites, the rod has over a million possible configurations, each producing a distinct spectral fingerprint, each storable and recallable via Hopfield interference.</p>
+<p><strong>Practical implication.</strong> At 9,380 readout modes (the full CWM spectrum), the effective dimensionality of the fingerprint space is vastly larger, and the Hopfield capacity bound becomes $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$—same as the companion paper&rsquo;s baseline. The binary-site constraint does not reduce this capacity; it simply quantizes the perturbation space into $2^{N_s}$ discrete states instead of a continuum. With $N_s = 20$ sites, the rod has over a million possible configurations, each producing a distinct spectral fingerprint, each storable and recallable via Hopfield interference.</p>
 <h3 id="44-track-b-summary">4.4 Track B Summary</h3>
 <table>
 <thead>
@@ -1499,7 +1499,7 @@ $$</p>
 <h3 id="62-the-separation-principle">6.2 The Separation Principle</h3>
 <p>A key architectural insight emerges from these results: <strong>the resonator material and the write mechanism are separable</strong>.</p>
 <p>In conventional memory (DRAM, flash, MRAM), the storage medium and the write mechanism are the same material—the ferroelectric, the floating gate, the magnetic tunnel junction. The material&rsquo;s write properties (coercive field, endurance, retention) are inextricable from its read properties (polarization, threshold voltage, tunnel magnetoresistance).</p>
-<p>In the SEM architecture, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing can happen:</p>
+<p>In the CWM architecture, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing can happen:</p>
 <ul>
 <li><strong>Externally</strong> (firmware): no physical change to the rod at all.</li>
 <li><strong>At the surface</strong> (binary sites): reversible mechanical contacts that do not alter the bulk glass.</li>
@@ -1602,9 +1602,9 @@ $$</p>
 <li>Timeline: requires thin-film process development; third-generation device.</li>
 </ul>
 <p>Each stage is independently valuable and backward-compatible with the previous one. A Stage 1 device is a Stage 0 device with a firmware upgrade. A Stage 2 device is a Stage 1 device with added MEMS switches. A Stage 3 device is a Stage 2 device with a shell coating. No stage requires redesigning the previous one.</p>
-<h3 id="65-what-rewritable-means-for-sem">6.5 What &ldquo;Rewritable&rdquo; Means for SEM</h3>
+<h3 id="65-what-rewritable-means-for-cwm">6.5 What &ldquo;Rewritable&rdquo; Means for CWM</h3>
 <p>It is worth being precise about what rewritability buys.</p>
-<p>The original SEM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.</p>
+<p>The original CWM architecture (v16) stores information in a fixed perturbation pattern. The perturbation is applied once during fabrication—metal dots, laser ablation marks, focused ion beam implants—and never changed. The device is a ROM: high density, high reliability, zero write energy, but static.</p>
 <p>Rewritability transforms this ROM into a reconfigurable memory:</p>
 <ul>
 <li>
@@ -1621,7 +1621,7 @@ $$</p>
 <hr />
 <h2 id="7-conclusions-and-roadmap-impact">7. Conclusions and Roadmap Impact</h2>
 <h3 id="71-summary-of-findings">7.1 Summary of Findings</h3>
-<p>This technical note investigated whether the Spectral Eigenmode Memory architecture—originally conceived as a read-only device—could support physical rewritability without sacrificing its defining advantage: ultra-high Q-factor acoustic resonance.</p>
+<p>This technical note investigated whether the Coherent Wave Memory architecture—originally conceived as a read-only device—could support physical rewritability without sacrificing its defining advantage: ultra-high Q-factor acoustic resonance.</p>
 <p>Seven hypotheses were tested across three architectural tracks:</p>
 <table>
 <thead>
@@ -1653,13 +1653,13 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<p><strong>All seven hypotheses confirmed.</strong> The SEM architecture admits rewritability at every level of the system stack, from pure firmware to physical material modification.</p>
+<p><strong>All seven hypotheses confirmed.</strong> The CWM architecture admits rewritability at every level of the system stack, from pure firmware to physical material modification.</p>
 <h3 id="72-the-central-insight">7.2 The Central Insight</h3>
 <p>The experiments revealed a design principle that was not obvious before this investigation:</p>
 <blockquote>
-<p><strong>The separation principle.</strong> In SEM, the read medium (glass rod eigenmodes) and the write mechanism (firmware projection, MEMS switches, or shell coating) are independent subsystems. The rod can be optimized purely for Q without compromising write/erase cycling, because writing happens <em>around</em> the rod, not <em>in</em> it.</p>
+<p><strong>The separation principle.</strong> In CWM, the read medium (glass rod eigenmodes) and the write mechanism (firmware projection, MEMS switches, or shell coating) are independent subsystems. The rod can be optimized purely for Q without compromising write/erase cycling, because writing happens <em>around</em> the rod, not <em>in</em> it.</p>
 </blockquote>
-<p>This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes SEM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
+<p>This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes CWM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
 <h3 id="73-impact-on-the-v16-roadmap">7.3 Impact on the v16 Roadmap</h3>
 <p>The parent paper [1] proposed a five-phase development roadmap. This technical note&rsquo;s findings affect three of the five phases:</p>
 <p><strong>Phase 1 (Single-rod demonstrator):</strong> No change. The first prototype validates the baseline read-only architecture.</p>
@@ -1685,14 +1685,14 @@ $$</p>
 <p><strong>Binary-site cross-talk.</strong> H10 assumes independent site contributions (linear coupling matrix). Real perturbation sites may interact through evanescent acoustic fields, reducing the effective bit count.</p>
 </li>
 <li>
-<p><strong>Write endurance.</strong> The simulation does not model fatigue, creep, or material degradation. MEMS switch lifetime data [4] suggests $> 10^9$ cycles is achievable, but this must be verified in the SEM-specific geometry.</p>
+<p><strong>Write endurance.</strong> The simulation does not model fatigue, creep, or material degradation. MEMS switch lifetime data [4] suggests $> 10^9$ cycles is achievable, but this must be verified in the CWM-specific geometry.</p>
 </li>
 <li>
 <p><strong>Readout noise floor.</strong> The distinguishability threshold ($\delta > 0.1$) in H10 assumes a specific noise floor. The actual noise depends on the CMOS readout circuit, the piezoelectric transducer coupling, and the ADC resolution.</p>
 </li>
 </ol>
 <h3 id="75-reproducibility">7.5 Reproducibility</h3>
-<p>All experiments described in this note are implemented in the open-source SEM simulation framework:</p>
+<p>All experiments described in this note are implemented in the open-source CWM simulation framework:</p>
 <ul>
 <li><strong>Module:</strong> <code>simulations/rewritability.py</code> (1,174 lines, 7 experiments)</li>
 <li><strong>Tests:</strong> <code>tests/test_rewritability.py</code> (68 tests, all passing)</li>
@@ -1701,7 +1701,7 @@ $$</p>
 <p>The complete simulation stack (34 modules, 1,036 tests) is available in the project repository. Every number in this paper is produced by running the corresponding experiment function with default parameters.</p>
 <hr />
 <h2 id="references">References</h2>
-<p>[1] M. Tierce, &ldquo;Spectral Eigenmode Memory: A Physically Grounded Architecture for Acoustic Data Storage,&rdquo; v16, 2026. (Parent paper.)</p>
+<p>[1] M. Tierce, &ldquo;Coherent Wave Memory: A Physically Grounded Architecture for Acoustic Data Storage,&rdquo; v16, 2026. (Parent paper.)</p>
 <p>[2] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proc. Natl. Acad. Sci.</em>, vol. 79, no. 8, pp. 2554–2558, 1982.</p>
 <p>[3] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Phys. Rev. Lett.</em>, vol. 55, no. 14, pp. 1530–1533, 1985.</p>
 <p>[4] G. M. Rebeiz, <em>RF MEMS: Theory, Design, and Technology</em>, Wiley, 2003. (MEMS switch lifetime $> 10^9$ cycles, switching time $< 10\ \mu\text{s}$.)</p>
@@ -1978,7 +1978,7 @@ $$</p>
 <p>where $i$ indexes modes ($1 \leq i \leq n_m$) and $j$ indexes sites ($1 \leq j \leq N_s$). The sinusoidal term models the spatial mode shape (standing-wave nodes and antinodes along the rod), and the exponential decay models the evanescent coupling between distant sites and higher-order modes.</p>
 <p>This model is intentionally simple. It captures the essential physics—that a mass perturbation at position $x_j$ couples to mode $i$ with strength proportional to the mode shape amplitude at that position—without requiring a full finite-element calculation. The qualitative conclusions (spectral distinguishability, Hopfield compatibility) are robust to the specific functional form of $C$, as verified by sensitivity analysis with randomized coupling matrices.</p>
 <hr /><div class="colophon">
-  <p><em>Spectral Eigenmode Memory</em></p>
+  <p><em>Coherent Wave Memory</em></p>
   <p>Version </p>
   <p>&copy; Mike Tierce</p>
   <p style="margin-top: 16pt; font-size: 8pt;">

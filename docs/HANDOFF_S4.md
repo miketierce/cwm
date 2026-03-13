@@ -164,7 +164,7 @@ Also update the test count in the paragraph below the table:
 ```
 
 The key insight: Chladni's sand-on-plate patterns are **sensitivity maps** — sand accumulates
-at nodal lines (zero displacement = zero perturbation sensitivity). The SEM sensitivity
+at nodal lines (zero displacement = zero perturbation sensitivity). The CWM sensitivity
 function sin²(nπx/L) is the 1D projection of what Chladni visualized in 2D. The 2D extension
 (§11.8) recovers 9.1× more modes, four independent symmetry channels, and a fundamentally
 different site-placement geometry. Connect: sand avoids antinodes → those are the high-
@@ -295,7 +295,7 @@ Full plans are in `docs/SIDEBARS.md`. Recommended execution order: S5 → S6 →
 | Sidebar | Figure              | Module              | Core insight                                                 |
 | ------- | ------------------- | ------------------- | ------------------------------------------------------------ |
 | **S5**  | Békésy              | `bekesy_cochlea.py` | Cochlear tonotopy as tapered-waveguide eigenmode memory      |
-| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | X-ray diffraction phase problem parallels SEM phase encoding |
+| **S6**  | Franklin (Rosalind) | `franklin_phase.py` | X-ray diffraction phase problem parallels CWM phase encoding |
 | **S7**  | Leibniz             | `leibniz_binary.py` | Binary arithmetic on eigenmode encoding                      |
 
 ---

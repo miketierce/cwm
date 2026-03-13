@@ -3,12 +3,12 @@ Tesla-Informed Phase-Spectral Encoding Experiments for WCFOMA.
 
 Four testable engineering hypotheses derived from structural parallels
 between Nikola Tesla's resonant-cavity / polyphase / wireless energy
-transfer work and Spectral Eigenmode Memory (SEM) physics.
+transfer work and Coherent Wave Memory (CWM) physics.
 
 Tesla's core insight: a resonant system stores energy, and a matched
 system extracts it selectively.  His radio-frequency selectivity
 (1893), polyphase AC multiplexing (1888), and Wardenclyffe standing-
-wave experiments (1901–1905) map directly onto SEM's eigenmode
+wave experiments (1901–1905) map directly onto CWM's eigenmode
 encoding, associative recall, and multi-channel readout.
 
 The central hypothesis tested here — that eigenmode *phase shifts*
@@ -40,7 +40,7 @@ Parallel → Hypothesis → Experiment
          energy asymmetry: E_read ≪ E_write.
 
 4. Earth-cavity eigenmode ↔ Scale-invariant resonant memory
-   H-T4: The mathematical structure of SEM (eigenmode encoding +
+   H-T4: The mathematical structure of CWM (eigenmode encoding +
          matched-filter recall) is identical at all cavity scales.
          A planetary-scale cavity (Schumann resonance, ~7.83 Hz)
          and a MEMS cavity (~MHz) obey the same n_max formula and
@@ -224,7 +224,7 @@ def exp_phase_independence(
     Tesla's polyphase AC insight: three wires carry three independent
     power channels because amplitude and phase are orthogonal.
 
-    SEM analogue: a mass perturbation at position x_k shifts mode n's
+    CWM analogue: a mass perturbation at position x_k shifts mode n's
     *frequency* by Δf_n ∝ -sin²(nπx_k) and shifts its *phase response*
     by Δφ_n ∝ sin(2nπx_k).  Since sin²(nπx) and sin(2nπx) are
     mathematically distinct functions, the frequency and phase
@@ -386,7 +386,7 @@ def exp_phase_recall(
     to others.  But frequency matching alone is coarse — Tesla's
     later patents added *phase* discrimination to reject interferers.
 
-    SEM analogue: standard associative recall computes the overlap
+    CWM analogue: standard associative recall computes the overlap
     R_j = Σ |A_n^(j)| · |Q_n| (amplitude-only dot product).
     Complex-valued recall uses R_j = |Σ A_n^(j)* · Q_n| where
     A and Q are complex (amplitude + phase).
@@ -519,7 +519,7 @@ def exp_energy_asymmetry(
 ) -> EnergyAsymmetryResult:
     """
     Tesla's magnifying transmitter exploits Q-multiplication: energy
-    stored at resonance is Q× the energy input per cycle.  For SEM,
+    stored at resonance is Q× the energy input per cycle.  For CWM,
     this means the acoustic field energy during readout is essentially
     free — it was deposited by a single thermal-scale impulse and
     maintained by the resonator's quality factor.
@@ -604,7 +604,7 @@ def exp_scale_invariance(
     The Schumann resonances (confirmed 1952) prove the Earth-ionosphere
     shell *does* have eigenmodes (~7.83 Hz fundamental).
 
-    SEM's n_max formula: n_max = floor(1 / (2α ΔT + 1/Q)) depends
+    CWM's n_max formula: n_max = floor(1 / (2α ΔT + 1/Q)) depends
     only on material properties (α, Q) and thermal stability (ΔT),
     not on cavity length L.  This predicts identical mode counts at
     every physical scale.
@@ -712,7 +712,7 @@ def run_all_tesla(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  TESLA-INFORMED EXPERIMENTS FOR SEM")
+        print("  TESLA-INFORMED EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # H-T1: Phase Independence

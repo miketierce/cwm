@@ -4,7 +4,7 @@
 
 The scaling analysis of Section 5 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.
 
-For SEM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.
+For CWM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.
 
 The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod's acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.
 
@@ -50,7 +50,7 @@ For the reference design (1 mm × 40 µm rod, 2 µm × 2 µm × 20 µm tethers, 
 
 **For our design.** Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 9{,}500{,}000$.
 
-**Why it matters.** TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for SEM than silicon.
+**Why it matters.** TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for CWM than silicon.
 
 ### 6.4 Gas Damping ($Q_{\text{gas}}$)
 
@@ -99,9 +99,9 @@ The result is striking: **material intrinsic loss accounts for 91.1% of all ener
 
 **Anchor loss—the mechanism that dominates many MEMS resonator designs—is only 4.2% of our budget.** This is because we use thin, long tethers with isolation trenches, and because a longitudinal-mode rod is intrinsically well-isolated (the vibration is along the rod axis, while the tethers attach from the side, creating a geometric mismatch that reflects most energy back into the rod).
 
-The $Q_{\text{total}} = 9{,}110$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode SEM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 11.3.
+The $Q_{\text{total}} = 9{,}110$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode CWM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 11.3.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig4_q_budget.svg" alt="Figure 4: Q-factor loss budget"/>
 <p><strong>Figure 4.</strong> Q-factor loss budget for the reference 1 mm borosilicate design. Material intrinsic loss dominates; anchor loss is only 4.2%.</p>
 </div>

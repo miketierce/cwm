@@ -44,21 +44,21 @@ For $cL \gg 1$ (which holds for all practical rod lengths above ~100 nm), $\log_
 
 $$\rho_{\text{bits}} \sim \frac{\log_2 L}{L^3} \approx \frac{1}{L^2} \quad \text{(effective scaling)}$$
 
-The key implication: **making rods smaller always increases density**, even though each rod stores fewer bits (because SNR drops with $L$). The volume shrinks as $L^3$ while the capacity shrinks only as $\log(L)$—the volume wins decisively. This is why SEM gets more competitive, not less, as it scales to MEMS dimensions.
+The key implication: **making rods smaller always increases density**, even though each rod stores fewer bits (because SNR drops with $L$). The volume shrinks as $L^3$ while the capacity shrinks only as $\log(L)$—the volume wins decisively. This is why CWM gets more competitive, not less, as it scales to MEMS dimensions.
 
 ### 5.4 Crossover Points
 
-We can now compute the rod lengths at which SEM matches the density of existing memory technologies:
+We can now compute the rod lengths at which CWM matches the density of existing memory technologies:
 
-| Crossover        | Rod length | SEM density    | Incumbent density |
+| Crossover        | Rod length | CWM density    | Incumbent density |
 | ---------------- | ---------- | -------------- | ----------------- |
-| SEM = DRAM       | 2.1 mm     | 10 Gbit/cm³    | 10 Gbit/cm³       |
-| SEM = PCM        | 1.0 mm     | 95 Gbit/cm³    | 64 Gbit/cm³       |
-| SEM = NAND Flash | 0.45 mm    | 1,000 Gbit/cm³ | 1,000 Gbit/cm³    |
+| CWM = DRAM       | 2.1 mm     | 10 Gbit/cm³    | 10 Gbit/cm³       |
+| CWM = PCM        | 1.0 mm     | 95 Gbit/cm³    | 64 Gbit/cm³       |
+| CWM = NAND Flash | 0.45 mm    | 1,000 Gbit/cm³ | 1,000 Gbit/cm³    |
 
 All three crossovers fall within standard MEMS fabrication range (0.1–5 mm features). The 1 mm reference design of this paper sits between the DRAM and Flash crossovers—at 95.5 Gbit/cm³, it is 10× DRAM and competitive with PCM.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig5_scaling.svg" alt="Figure 5: Scaling from macro to MEMS"/>
-<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Gbit/cm³), the 1 mm borosilicate MEMS rod (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing SEM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Gbit/cm³), the 1 mm borosilicate MEMS rod (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing CWM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
 </div>

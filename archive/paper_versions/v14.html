@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<title>Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</title>
+<title>Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</title>
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
       crossorigin="anonymous">
@@ -208,20 +208,20 @@ a {
 }
 
 /* ── Inline thumbnail figures ─────────────────────────────── */
-div.sem-thumb {
+div.cwm-thumb {
     text-align: center;
     margin: 12pt auto;
     page-break-inside: avoid;
 }
 
-div.sem-thumb img {
+div.cwm-thumb img {
     max-width: 70%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-div.sem-thumb p {
+div.cwm-thumb p {
     font-size: 8.5pt;
     color: var(--muted);
     text-align: center;
@@ -300,7 +300,7 @@ table, pre, blockquote {
 </style>
 </head>
 <body>
-<h1 id="spectral-eigenmode-memory-wave-based-storage-and-computation-in-acoustic-glass-resonators">Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</h1>
+<h1 id="spectral-eigenmode-memory-wave-based-storage-and-computation-in-acoustic-glass-resonators">Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</h1>
 <p><strong>Mike Tierce</strong>
 <em>Independent Researcher</em>
 ORCID: <a href="https://orcid.org/0009-0004-4483-5283">0009-0004-4483-5283</a>
@@ -310,7 +310,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <h2 id="abstract">Abstract</h2>
 <p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
 <p>This paper describes a different encoding. Instead of charge or resistance, we store information in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator—the set of natural frequencies at which a glass rod vibrates. A mass perturbation applied to the rod&rsquo;s surface shifts each eigenmode frequency by a different amount, creating a unique spectral fingerprint. To read, we tap the rod with a broadband pulse and measure the resulting frequency spectrum. To search, we drive an array of rods with a query pattern: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor computation performed by wave interference in microseconds, with no processor, no memory bus, and no software.</p>
-<p>We call this architecture <strong>Spectral Eigenmode Memory (SEM)</strong>.</p>
+<p>We call this architecture <strong>Coherent Wave Memory (CWM)</strong>.</p>
 <p>The core physics is validated at macro scale. A prototype built from a &#36;63 borosilicate glass rod achieves <strong>98.8 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis, verified by 365 automated tests across 21 first-principles simulation modules, projects that a 1 mm MEMS resonator achieves <strong>95.5 Gbit/cm³</strong> storage density (10× DRAM), rising to <strong>1.4 Tbit/cm³</strong> in fused silica arrays (1.4× NAND Flash), with <strong>16 fJ/bit</strong> write energy (190× below DRAM) and <strong>native associative recall</strong> in 3.6 µs.</p>
 <p>A five-mechanism Q-factor model addresses the central question of MEMS viability—whether the quality factor that makes macro-scale resonance work survives miniaturization. It does: $Q_{\text{total}} = 9{,}110$, with anchor loss (the mechanism most sensitive to geometry) contributing only 4.2% of the loss budget. The dominant loss is the glass itself, not the MEMS structure.</p>
 <p>Beyond the core architecture, we present four advanced encoding techniques that require no hardware changes—only firmware-level signal processing on the CMOS readout die: <strong>(i)</strong> synaptic weight pruning improves associative recall accuracy by 10.7%; <strong>(ii)</strong> in-situ Boolean computation (XOR, AND, OR) from mode superposition at &gt;90% fidelity with 3× throughput; <strong>(iii)</strong> avoided-crossing mode hybridization creates bonus information channels yielding up to +160% capacity gain; and <strong>(iv)</strong> null-space multiplexing recovers hidden degrees of freedom invisible to standard readout, adding +60% bonus capacity.</p>
@@ -331,12 +331,12 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>The key insight is in the $u_n^2(x)$ term. Each mode has a different spatial shape—a different pattern of nodes (zero displacement) and antinodes (maximum displacement). A mass placed at an antinode of mode 3 shifts mode 3 strongly but barely affects mode 7, whose antinode is elsewhere. A different mass at a different position creates a <em>different</em> pattern of shifts across all modes. The set of frequency shifts $\{\Delta f_1, \Delta f_2, \ldots, \Delta f_N\}$ is a unique spectral fingerprint for each mass perturbation pattern. Different data → different perturbation → different fingerprint.</p>
 <p><em>That is the write operation.</em> Data is encoded as a physical mass pattern; the rod&rsquo;s eigenmode spectrum is the stored representation.</p>
 <p><em>The read operation</em> is equally physical. Strike the rod with a broadband acoustic pulse—a chirp or an impulse containing energy at all mode frequencies. The rod rings at all of its shifted eigenfrequencies simultaneously. Measure the resulting vibration with a piezoelectric transducer and compute the frequency spectrum (via FFT). The spectrum <em>is</em> the stored data.</p>
-<p><em>The search operation</em> is where SEM becomes qualitatively different from conventional memory. Suppose we have an array of rods, each with a different stored perturbation pattern, and we want to find the rod whose stored pattern most closely matches a query. We drive all rods simultaneously with the query&rsquo;s spectral signature—exciting each frequency component with an amplitude proportional to the query&rsquo;s fingerprint at that frequency. Each rod responds with an amplitude proportional to the overlap (dot product) between its stored fingerprint and the query:</p>
+<p><em>The search operation</em> is where CWM becomes qualitatively different from conventional memory. Suppose we have an array of rods, each with a different stored perturbation pattern, and we want to find the rod whose stored pattern most closely matches a query. We drive all rods simultaneously with the query&rsquo;s spectral signature—exciting each frequency component with an amplitude proportional to the query&rsquo;s fingerprint at that frequency. Each rod responds with an amplitude proportional to the overlap (dot product) between its stored fingerprint and the query:</p>
 <p>$$R_j = \sum_{n=1}^{N} A_n^{(j)} Q_n$$</p>
 <p>The rod whose stored pattern best matches the query produces the largest response. This is a nearest-neighbor search executed by wave physics in a single acoustic propagation cycle (~3.6 µs)—with no processor, no memory bus, no algorithm. The physics <em>is</em> the computation.</p>
 <p>This is mathematically equivalent to a Hopfield associative memory network [9, 10], where the weight matrix is the physics of the resonator and recall is wave interference. The theoretical capacity scales as $P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [10], where $N$ is the number of modes.</p>
 <h3 id="13-summary-of-results">1.3 Summary of Results</h3>
-<p>This paper develops SEM from first principles to a complete MEMS device specification. The key results:</p>
+<p>This paper develops CWM from first principles to a complete MEMS device specification. The key results:</p>
 <table>
 <thead>
 <tr>
@@ -421,7 +421,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <h2 id="all-quantitative-claims-are-computed-from-first-principles-simulation-code-21-modules-365-automated-tests-all-passing-no-curve-fitting-no-adjusted-parameters-no-post-hoc-corrections">All quantitative claims are computed from first-principles simulation code (21 modules, 365 automated tests, all passing). No curve fitting, no adjusted parameters, no post-hoc corrections.</h2>
 <h2 id="2-architecture">2. Architecture</h2>
 <h3 id="21-eigenmode-encoding">2.1 Eigenmode Encoding</h3>
-<p>The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For SEM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.</p>
+<p>The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For CWM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.</p>
 <p><strong>Mode count.</strong> A glass rod of length $L$ supports longitudinal eigenmodes at frequencies $f_n = nv/(2L)$, where $v$ is the speed of sound and $n = 1, 2, 3, \ldots$ Not all of these modes are usable. The rod also expands and contracts thermally, and this thermal expansion shifts eigenfrequencies. If the thermal frequency shift of a mode exceeds the spacing between adjacent modes, those modes blur together and cannot be independently resolved.</p>
 <p>The thermal frequency shift for mode $n$ is $\Delta f_n^{\text{thermal}} = f_n \cdot \alpha \cdot \Delta T$, where $\alpha$ is the coefficient of thermal expansion and $\Delta T$ is the temperature range. The spacing between adjacent modes is constant: $\Delta f = v/(2L)$. Requiring the thermal shift to be less than the mode spacing gives:</p>
 <p>$$f_n \cdot \alpha \cdot \Delta T < \frac{v}{2L} \quad \Longrightarrow \quad n < \frac{1}{2\alpha \,\Delta T}$$</p>
@@ -431,22 +431,22 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>Bits per mode.</strong> Each mode is an independent oscillator whose amplitude can be measured with a signal-to-noise ratio determined by the thermal noise floor. Shannon&rsquo;s channel capacity theorem [6] tells us the maximum information per measurement:</p>
 <p>$$b = \frac{1}{2}\log_2(1 + \text{SNR})$$</p>
 <p>At the measured SNR of 98.8 dB (which corresponds to a linear ratio of $7.6 \times 10^9$): $b = 16.4$ bits per mode. This is a hard upper bound set by thermodynamics—no amount of clever signal processing can extract more information from a single mode measurement at this noise level.</p>
-<p><strong>Total capacity per rod.</strong> With 9,380 modes at 16.4 bits each: $9{,}380 \times 16.4 = 153{,}832$ bits, or about 19 kilobytes per rod. At MEMS scale (1 mm rod, reduced SNR of 47 dB giving 7.8 bits/mode): $9{,}380 \times 7.8 = 73{,}164$ bits, or about 9 kilobytes per rod. These are modest numbers for a single rod—the power of SEM comes from dense arrays and from the fact that every rod simultaneously stores <em>and</em> computes.</p>
-<div class="sem-thumb">
+<p><strong>Total capacity per rod.</strong> With 9,380 modes at 16.4 bits each: $9{,}380 \times 16.4 = 153{,}832$ bits, or about 19 kilobytes per rod. At MEMS scale (1 mm rod, reduced SNR of 47 dB giving 7.8 bits/mode): $9{,}380 \times 7.8 = 73{,}164$ bits, or about 9 kilobytes per rod. These are modest numbers for a single rod—the power of CWM comes from dense arrays and from the fact that every rod simultaneously stores <em>and</em> computes.</p>
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig3_eigenmode_encoding.svg" alt="Figure 3: Eigenmode encoding and perturbation effect"/>
 <p><strong>Figure 3.</strong> Standing-wave mode shapes (left) and perturbation-induced frequency shifts that create unique spectral fingerprints (right).</p>
 </div>
 
 <h3 id="22-perturbation-encoding-write">2.2 Perturbation Encoding (Write)</h3>
-<p>Writing data to a SEM rod means creating a spatial pattern of mass perturbations on its surface. Each perturbation pattern produces a unique spectral fingerprint—a set of frequency shifts across all modes—via the Rayleigh perturbation formula (Section 1.2).</p>
+<p>Writing data to a CWM rod means creating a spatial pattern of mass perturbations on its surface. Each perturbation pattern produces a unique spectral fingerprint—a set of frequency shifts across all modes—via the Rayleigh perturbation formula (Section 1.2).</p>
 <p>The physics of why this works is worth dwelling on. Consider a rod vibrating in mode $n = 3$. This mode has three half-wavelengths along the rod&rsquo;s length: three antinodes (points of maximum displacement) and two internal nodes (points of zero displacement). Now place a small mass at the position of the second antinode. This mass must be accelerated back and forth as the rod vibrates, which requires extra force and therefore <em>lowers</em> the resonant frequency of mode 3. But the same mass, placed at the same position, sits near a <em>node</em> of mode 2 (which has only two half-wavelengths). Mode 2 barely moves at that position, so the mass barely affects mode 2&rsquo;s frequency.</p>
 <p>This position-dependent sensitivity is the key to information encoding. A mass at position $x_1$ creates one pattern of shifts $\{\Delta f_1, \Delta f_2, \ldots\}$. A mass at position $x_2$ creates a different pattern. Two masses at $x_1$ and $x_2$ create yet another pattern (the shifts superpose linearly for small perturbations). The space of possible perturbation patterns—and therefore the space of possible spectral fingerprints—is vast.</p>
-<p>At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making SEM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.</p>
+<p>At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making CWM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.</p>
 <p>The energy required to write one mode—meaning, to bring it to a measurable amplitude—is set by the thermal noise floor:</p>
 <p>$$E_{\text{write}} = k_B T \cdot \text{SNR}$$</p>
 <p>At 300 K and 98.8 dB SNR: $E_{\text{write}} = 4.14 \times 10^{-21} \times 7.6 \times 10^9 = 31.4$ fJ per mode, or $31.4 / 16.4 \approx 1.9$ fJ/bit. For comparison, DRAM write energy is ~3 pJ/bit—over 1,500× higher.</p>
 <h3 id="23-interference-recall-read-compute">2.3 Interference Recall (Read / Compute)</h3>
-<p>The read and compute operations in SEM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes SEM from in-memory computing approaches that still separate the storage medium from the compute mechanism.</p>
+<p>The read and compute operations in CWM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes CWM from in-memory computing approaches that still separate the storage medium from the compute mechanism.</p>
 <p><strong>Simple read.</strong> To read a single rod&rsquo;s stored data, drive it with a broadband pulse (a chirp sweeping through the mode frequency range, or a short impulse containing all frequencies). The rod rings at its eigenfrequencies. A piezoelectric transducer picks up the vibration; an FFT extracts the frequency spectrum; the set of peak positions and amplitudes is the stored fingerprint. This is a conventional spectral measurement, identical in principle to how a quartz crystal microbalance [8] measures mass loading.</p>
 <p><strong>Associative recall.</strong> The more powerful operation is parallel search. Given an array of $M$ rods, each storing a different perturbation pattern, and a query pattern we wish to match:</p>
 <ol>
@@ -462,9 +462,9 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>Mathematically, this is a Hopfield associative memory [9]. The &ldquo;weight matrix&rdquo; is not programmed into a crossbar—it <em>is</em> the physics of each rod&rsquo;s eigenmode spectrum. The Amit–Gutfreund–Sompolinsky capacity limit [10] gives the maximum number of patterns that can be reliably recalled (at $< 1\%$ bit-error rate) from a single rod:</p>
 <p>$$P_{\max} \approx 0.138\,N$$</p>
 <p>For $N = 9{,}380$ modes: $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$ patterns per rod. (The more conservative Hopfield bound $P_{\max} \approx N/(2\ln N) \approx 512$ assumes zero error tolerance; the AGS bound allows a small error floor correctable by the synaptic pruning of Section 10.1.)</p>
-<div class="sem-thumb">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Figure 1: SEM architecture overview"/>
-<p><strong>Figure 1.</strong> SEM architecture: eigenmode encoding (left), spectral fingerprinting (center), and array-wide associative recall via wave interference (right).</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Figure 1: CWM architecture overview"/>
+<p><strong>Figure 1.</strong> CWM architecture: eigenmode encoding (left), spectral fingerprinting (center), and array-wide associative recall via wave interference (right).</p>
 </div>
 
 <h3 id="24-architecture-summary">2.4 Architecture Summary</h3>
@@ -511,12 +511,12 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </table>
 <h2 id="3-substrate-selection">3. Substrate Selection</h2>
 <h3 id="31-ferrofluid-a-dead-end-worth-explaining">3.1 Ferrofluid: A Dead End Worth Explaining</h3>
-<p>Our first choice of substrate was ferrofluid—a colloidal suspension of magnetite (Fe₃O₄) nanoparticles, typically 10 nm in diameter, coated with a surfactant and suspended in a carrier oil. Ferrofluids are remarkable materials: they are liquid, magnetically responsive, and reconfigurable. Apply a magnetic field and the fluid restructures itself, creating intricate spike patterns visible to the naked eye. The appeal for SEM was obvious—a reconfigurable acoustic medium would enable read-<em>write</em> memory, not just ROM. By reshaping the magnetic field, you could reprogram the perturbation pattern and therefore rewrite the stored data.</p>
+<p>Our first choice of substrate was ferrofluid—a colloidal suspension of magnetite (Fe₃O₄) nanoparticles, typically 10 nm in diameter, coated with a surfactant and suspended in a carrier oil. Ferrofluids are remarkable materials: they are liquid, magnetically responsive, and reconfigurable. Apply a magnetic field and the fluid restructures itself, creating intricate spike patterns visible to the naked eye. The appeal for CWM was obvious—a reconfigurable acoustic medium would enable read-<em>write</em> memory, not just ROM. By reshaping the magnetic field, you could reprogram the perturbation pattern and therefore rewrite the stored data.</p>
 <p>We built a detailed coupled-physics simulation of ferrofluid acoustics, modeling both the magnetization dynamics (Langevin alignment of nanoparticle magnetic moments in an applied field) and the acoustic propagation (pressure waves in the colloidal suspension). The simulation revealed a fatal problem.</p>
 <p><strong>The problem is Brownian rotation.</strong> Each magnetite nanoparticle is ~10 nm across and suspended in a liquid carrier. At room temperature, the thermal energy $k_B T$ is sufficient to randomly reorient a nanoparticle on a timescale of roughly one microsecond. This means the local magnetic structure—and therefore the local acoustic impedance—fluctuates randomly at the microsecond timescale. An acoustic wave propagating through the fluid encounters a medium whose properties are literally changing as the wave passes through it.</p>
-<p>Our simulation quantified this: <strong>77.5% phase diffusion per microsecond</strong>. An acoustic wavefront that begins with a well-defined phase relationship across all modes loses that coherence before completing a single propagation cycle. The eigenmode spectrum—the foundation of SEM&rsquo;s information encoding—dissolves into thermal noise before you can measure it.</p>
-<p>This is not an engineering problem that can be solved with better magnetic field design or lower temperature. It is a fundamental property of the colloidal phase: the nanoparticles are small enough to be in the Brownian regime, and no external field can suppress thermal rotation without freezing the fluid (which defeats the purpose of using a reconfigurable liquid). Ferrofluid is a dead end for spectral eigenmode memory.</p>
-<p>We present this failure explicitly because it illustrates an important design constraint: <strong>SEM requires a substrate with negligible phase diffusion over the readout timescale.</strong> This immediately rules out any liquid or colloidal medium, and any solid-state medium with significant acoustic attenuation at the operating frequencies.</p>
+<p>Our simulation quantified this: <strong>77.5% phase diffusion per microsecond</strong>. An acoustic wavefront that begins with a well-defined phase relationship across all modes loses that coherence before completing a single propagation cycle. The eigenmode spectrum—the foundation of CWM&rsquo;s information encoding—dissolves into thermal noise before you can measure it.</p>
+<p>This is not an engineering problem that can be solved with better magnetic field design or lower temperature. It is a fundamental property of the colloidal phase: the nanoparticles are small enough to be in the Brownian regime, and no external field can suppress thermal rotation without freezing the fluid (which defeats the purpose of using a reconfigurable liquid). Ferrofluid is a dead end for coherent wave memory.</p>
+<p>We present this failure explicitly because it illustrates an important design constraint: <strong>CWM requires a substrate with negligible phase diffusion over the readout timescale.</strong> This immediately rules out any liquid or colloidal medium, and any solid-state medium with significant acoustic attenuation at the operating frequencies.</p>
 <h3 id="32-glass-zero-phase-diffusion">3.2 Glass: Zero Phase Diffusion</h3>
 <p>Solid glass has the property we need. Acoustic waves in glass propagate with extraordinary fidelity: the material quality factor $Q_{\text{mat}}$ of borosilicate glass exceeds 10,000, and fused silica exceeds 100,000 [11, 12]. This means an acoustic wave can bounce back and forth inside a glass rod more than 10,000 times before its amplitude decays to $1/e$ of its initial value. Phase diffusion—the random scrambling that destroyed ferrofluid—is effectively zero.</p>
 <p>Why is glass so different from ferrofluid? Because the atoms in glass are locked in an amorphous but <em>rigid</em> network. There are no free-floating particles to reorient. The acoustic impedance at any point is set by the local density and elastic modulus of the glass matrix, both of which are stable on geological timescales at room temperature. The eigenmode spectrum of a glass rod is determined by its geometry—its length, diameter, and the spatial distribution of any mass perturbations on its surface—and that geometry is non-volatile. It persists without power, without refresh, without maintenance.</p>
@@ -583,7 +583,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>The rod supports longitudinal modes at $f_n = n \times 18{,}800$ Hz (fundamental at 18.8 kHz for $v = 5{,}640$ m/s, $L = 150$ mm). The 9,380 thermally stable modes span from 18.8 kHz to 176 MHz—from the low audible range to the VHF radio band. The mode spacing is constant at 18.8 kHz.</p>
 <p>At the macro scale, we can directly observe these modes as distinct peaks in the frequency spectrum. Driving the rod with a broadband chirp and recording the response reveals a clean comb of spectral peaks, each corresponding to one eigenmode. The peak positions match the predicted $f_n = nv/(2L)$ to within the frequency resolution of the measurement (~1 Hz at 1 second integration time).</p>
 <p>Figure 11 shows the measured frequency comb for the first seven modes before and after applying a wax perturbation. The unperturbed spectrum (blue) is a clean comb with constant spacing. After placing ~0.1 mg of wax near the third-mode antinode, each mode shifts by a different $\Delta f_n$—mode 3 shifts most (the wax sits at its displacement maximum), while mode 4 shifts negligibly (the wax sits near a node). The right panel zooms into modes 2–4 showing the Lorentzian peak shapes and individual shift magnitudes. These shifts match Rayleigh predictions to within 2%.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig11_prototype_spectrum.svg" alt="Figure 11: Prototype eigenmode spectrum before and after wax perturbation"/>
 <p><strong>Figure 11.</strong> (a) Eigenmode frequency comb of the 150 mm borosilicate prototype: unperturbed (blue solid) and after 0.1 mg wax perturbation (red dashed). Each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode. (b) Zoomed view of modes 2–4 showing Lorentzian peak profiles and the position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 shifts negligibly (wax near node).</p>
 </div>
@@ -592,7 +592,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>To test the write mechanism, we apply wax masses (~0.1 mg each) at measured positions along the rod. Each mass creates a localized perturbation that shifts mode frequencies according to the Rayleigh formula.</p>
 <p>The results confirm the theory: measured frequency shifts match Rayleigh predictions to within 2%. Different mass patterns produce clearly distinguishable spectral fingerprints—the basis of data encoding. Moving a single mass by just 1 mm along the rod produces a visibly different fingerprint, because the standing-wave amplitude at the new position is different for each mode.</p>
 <p>To quantify the quality factor of the prototype, we measure the ring-down time of the fundamental mode (Figure 12). After impulse excitation, the displacement amplitude decays exponentially with time constant $\tau = Q/(\pi f_1)$. The observed $\tau = 169$ ms at $f_1 = 18{,}800$ Hz gives $Q = \pi f_1 \tau = 10{,}000$. An independent measurement via the $-3$ dB bandwidth of the resonance peak ($\Delta f_{3\text{dB}} = 1.88$ Hz) confirms the same value: $Q = f_1/\Delta f_{3\text{dB}} = 10{,}000$. This is consistent with the material quality factor of borosilicate glass, confirming the prototype is material-loss-limited—the measurement electronics are not the bottleneck.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig12_ringdown.svg" alt="Figure 12: Ring-down trace and Q extraction"/>
 <p><strong>Figure 12.</strong> (a) Ring-down waveform of the fundamental mode (18.8 kHz) after impulse excitation. The exponential envelope decays with τ = 169 ms, corresponding to Q = 10,000. (b) Frequency-domain measurement: the −3 dB bandwidth of the Lorentzian resonance peak is 1.88 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited.</p>
 </div>
@@ -600,7 +600,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <h3 id="46-associative-recall">4.6 Associative Recall</h3>
 <p>To test the search mechanism, we drive the rod with a frequency pattern matching one stored perturbation configuration. The rod&rsquo;s response amplitude is 15–25 dB above its response to non-matching patterns. This discrimination margin—the gap between the correct match and the best wrong match—is the physical basis of associative recall. A 15 dB margin means the correct match produces 30× more power than the closest competitor, which is more than sufficient for reliable detection.</p>
 <p>Figure 13 illustrates this with eight stored patterns. When the query spectrum matches pattern P4, the rod responds at 28 dB above the noise floor—15 dB above the best non-matching pattern (P6 at 13 dB). The cross-correlation matrix in Figure 13(b) confirms near-orthogonality between stored fingerprints: diagonal entries are 1.00 (perfect self-correlation), while the maximum off-diagonal entry is 0.21 (−13.6 dB). This means each spectral fingerprint is sufficiently unique that wave-interference recall reliably identifies the correct match.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig13_recall_discrimination.svg" alt="Figure 13: Associative recall discrimination"/>
 <p><strong>Figure 13.</strong> (a) Response amplitudes when querying for pattern P4 across an 8-pattern array. The matching pattern produces a 28 dB response—15 dB above the best non-matching pattern (P6), providing a 30× power margin for reliable detection. (b) Cross-correlation matrix for four stored fingerprints: diagonal entries dominate at 1.00, off-diagonal entries ≤ 0.21, confirming spectral orthogonality.</p>
 </div>
@@ -627,33 +627,33 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>$$\rho_{\text{bits}} = \frac{B(L)}{V} = \frac{2\beta^2 n_{\max} \log_2(1 + cL)}{\pi L^3}$$</p>
 <p>For $cL \gg 1$ (which holds for all practical rod lengths above ~100 nm), $\log_2(1 + cL) \approx \log_2 c + \log_2 L$. The logarithm varies slowly, so the dominant scaling is:</p>
 <p>$$\rho_{\text{bits}} \sim \frac{\log_2 L}{L^3} \approx \frac{1}{L^2} \quad \text{(effective scaling)}$$</p>
-<p>The key implication: <strong>making rods smaller always increases density</strong>, even though each rod stores fewer bits (because SNR drops with $L$). The volume shrinks as $L^3$ while the capacity shrinks only as $\log(L)$—the volume wins decisively. This is why SEM gets more competitive, not less, as it scales to MEMS dimensions.</p>
+<p>The key implication: <strong>making rods smaller always increases density</strong>, even though each rod stores fewer bits (because SNR drops with $L$). The volume shrinks as $L^3$ while the capacity shrinks only as $\log(L)$—the volume wins decisively. This is why CWM gets more competitive, not less, as it scales to MEMS dimensions.</p>
 <h3 id="54-crossover-points">5.4 Crossover Points</h3>
-<p>We can now compute the rod lengths at which SEM matches the density of existing memory technologies:</p>
+<p>We can now compute the rod lengths at which CWM matches the density of existing memory technologies:</p>
 <table>
 <thead>
 <tr>
 <th>Crossover</th>
 <th>Rod length</th>
-<th>SEM density</th>
+<th>CWM density</th>
 <th>Incumbent density</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>SEM = DRAM</td>
+<td>CWM = DRAM</td>
 <td>2.1 mm</td>
 <td>10 Gbit/cm³</td>
 <td>10 Gbit/cm³</td>
 </tr>
 <tr>
-<td>SEM = PCM</td>
+<td>CWM = PCM</td>
 <td>1.0 mm</td>
 <td>95 Gbit/cm³</td>
 <td>64 Gbit/cm³</td>
 </tr>
 <tr>
-<td>SEM = NAND Flash</td>
+<td>CWM = NAND Flash</td>
 <td>0.45 mm</td>
 <td>1,000 Gbit/cm³</td>
 <td>1,000 Gbit/cm³</td>
@@ -661,14 +661,14 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>All three crossovers fall within standard MEMS fabrication range (0.1–5 mm features). The 1 mm reference design of this paper sits between the DRAM and Flash crossovers—at 95.5 Gbit/cm³, it is 10× DRAM and competitive with PCM.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Figure 5: Scaling from macro to MEMS"/>
-<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Gbit/cm³), the 1 mm borosilicate MEMS rod (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing SEM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Gbit/cm³), the 1 mm borosilicate MEMS rod (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing CWM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
 </div>
 <hr />
 <h2 id="6-mems-q-factor-analysis">6. MEMS Q-Factor Analysis</h2>
 <p>The scaling analysis of Section 5 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.</p>
-<p>For SEM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
+<p>For CWM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
 <p>The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod&rsquo;s acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.</p>
 <h3 id="61-material-intrinsic-loss-math139">6.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
 <p><strong>What it is.</strong> Even in a perfectly mounted, perfectly isolated resonator floating in a perfect vacuum, acoustic energy still decays. The reason is internal friction within the glass itself. As the rod vibrates—compressing and expanding along its length thousands of times per second—the atoms in the glass matrix do not respond instantaneously. The amorphous network has a distribution of relaxation times: some atomic rearrangements are fast (picoseconds), others are slow (nanoseconds). When the vibration period falls near one of these relaxation times, energy is absorbed and converted to heat. This is the acoustic analogue of hysteresis loss in a magnetic material: the material&rsquo;s response lags behind the driving force, and the lag dissipates energy.</p>
@@ -703,7 +703,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>What it is.</strong> When a rod vibrates longitudinally, it alternately compresses and expands along its length. Compression raises the local temperature (adiabatic heating); expansion lowers it. These temperature variations set up thermal gradients across the rod&rsquo;s cross-section. Heat flows from hot regions to cold regions, and this heat flow is irreversible—it converts mechanical energy to thermal energy. This mechanism is called thermoelastic damping (TED), first analyzed by Zener in 1937 [19] and later refined by Lifshitz and Roukes for MEMS structures.</p>
 <p><strong>The Debye relaxation picture.</strong> TED is strongest when the vibration period matches the thermal relaxation time of the rod—the time it takes heat to diffuse across the cross-section. The thermal relaxation time is $\tau_D = d^2 / (\pi^2 \kappa)$, where $d$ is the rod diameter and $\kappa$ is the thermal diffusivity of the glass. When $\omega \tau_D \approx 1$ (vibration period ~ relaxation time), the temperature gradients have just enough time to partially equilibrate during each cycle, extracting maximum energy. When $\omega \tau_D \ll 1$ (slow vibration), the process is nearly isothermal and reversible—little energy is lost. When $\omega \tau_D \gg 1$ (fast vibration), the process is nearly adiabatic—temperature gradients don&rsquo;t have time to equilibrate, and again little energy is lost. Maximum damping occurs at the crossover.</p>
 <p><strong>For our design.</strong> Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 9{,}500{,}000$.</p>
-<p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for SEM than silicon.</p>
+<p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for CWM than silicon.</p>
 <h3 id="64-gas-damping-math173">6.4 Gas Damping ($Q_{\text{gas}}$)</h3>
 <p><strong>What it is.</strong> A vibrating rod in a gas environment loses energy to the surrounding gas molecules. Each time a gas molecule strikes the rod&rsquo;s surface, it exchanges momentum and carries away a tiny amount of the rod&rsquo;s kinetic energy. At atmospheric pressure, the number of molecular collisions per second is enormous (roughly $10^{23}$ per cm² per second for air at 1 atm), and the cumulative energy loss can dominate all other mechanisms.</p>
 <p>At the molecular level, gas damping in MEMS devices operates in one of two regimes. At high pressure (mean free path much smaller than the rod-to-wall gap), the gas behaves as a viscous fluid, and damping follows the Navier-Stokes equations (&ldquo;squeeze-film damping&rdquo;). At low pressure (mean free path much larger than the gap), individual molecules bounce independently between the rod and the cavity walls (&ldquo;molecular-flow damping&rdquo; or &ldquo;free-molecular damping&rdquo;). MEMS vacuum packages operate in the low-pressure regime.</p>
@@ -764,15 +764,15 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </table>
 <p>The result is striking: <strong>material intrinsic loss accounts for 91.1% of all energy dissipation.</strong> The MEMS geometry—the tethers, the vacuum package, the surface—contributes less than 9% combined. In other words, the MEMS resonator preserves 91% of the bulk material&rsquo;s quality factor. Miniaturization does not destroy performance; it barely dents it.</p>
 <p><strong>Anchor loss—the mechanism that dominates many MEMS resonator designs—is only 4.2% of our budget.</strong> This is because we use thin, long tethers with isolation trenches, and because a longitudinal-mode rod is intrinsically well-isolated (the vibration is along the rod axis, while the tethers attach from the side, creating a geometric mismatch that reflects most energy back into the rod).</p>
-<p>The $Q_{\text{total}} = 9{,}110$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode SEM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 11.3.</p>
-<div class="sem-thumb">
+<p>The $Q_{\text{total}} = 9{,}110$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode CWM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 11.3.</p>
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig4_q_budget.svg" alt="Figure 4: Q-factor loss budget"/>
 <p><strong>Figure 4.</strong> Q-factor loss budget for the reference 1 mm borosilicate design. Material intrinsic loss dominates; anchor loss is only 4.2%.</p>
 </div>
 <hr />
 <h2 id="7-mems-device-specification">7. MEMS Device Specification</h2>
 <h3 id="71-reference-design">7.1 Reference Design</h3>
-<p>The following table defines the baseline MEMS SEM device. Every parameter is either derived from the scaling analysis (Sections 5–6) or chosen to match established MEMS fabrication capabilities.</p>
+<p>The following table defines the baseline MEMS CWM device. Every parameter is either derived from the scaling analysis (Sections 5–6) or chosen to match established MEMS fabrication capabilities.</p>
 <table>
 <thead>
 <tr>
@@ -945,7 +945,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </table>
 <hr />
 <h2 id="8-fabrication-pathway">8. Fabrication Pathway</h2>
-<p>Every step in the SEM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between &ldquo;interesting physics demonstration&rdquo; and &ldquo;buildable device.&rdquo; No new materials, no new equipment, no new process chemistry.</p>
+<p>Every step in the CWM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between &ldquo;interesting physics demonstration&rdquo; and &ldquo;buildable device.&rdquo; No new materials, no new equipment, no new process chemistry.</p>
 <h3 id="81-process-flow">8.1 Process Flow</h3>
 <p><strong>Step 1 — Glass wafer preparation.</strong> Start with 200 mm Schott Borofloat 33 wafers (500 µm thick). These wafers are commercially available from Schott, Plan Optik, and others, and are already used in MEMS microfluidics, wafer-level packaging, and optical devices. The wafers are polished to optical flatness—important for subsequent lithography.</p>
 <p><strong>Step 2 — Deep reactive ion etch (DRIE).</strong> Etch the rod arrays into the glass wafer at 25:1 aspect ratio using SF₆/C₄F₈ chemistry (the Bosch process adapted for glass). This is the most geometrically demanding step: we need 40 µm wide, 1 mm deep trenches separating the rods, with 2 µm tether features connecting each rod to the frame. Glass DRIE at these dimensions has been demonstrated by Schott, Corning, and multiple MEMS foundries for microfluidic channels and through-glass vias. The 40 µm rod diameter and 2 µm tether dimensions are within current capability, though at the aggressive end—our risk assessment (Section 8.3) addresses this.</p>
@@ -953,7 +953,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>Step 4 — AlN piezoelectric transducer.</strong> Sputter 500 nm of aluminium nitride (AlN) on each rod&rsquo;s end face, patterned with top and bottom electrodes. AlN thin-film piezoelectric transduction is in volume production for smartphone bulk acoustic wave (BAW/FBAR) filters—more than 10 billion units shipped as of 2024 [14, 15]. The process is mature, the supply chain is established, and the performance specifications are well-characterized.</p>
 <p><strong>Step 5 — Vacuum packaging.</strong> Seal the rod arrays in a wafer-level vacuum package at 0.1 Pa using glass frit bonding or Au-Sn eutectic bonding. This is the same packaging technology used in MEMS oscillators (SiTime—shipped &gt;2 billion units), MEMS gyroscopes (Bosch, STMicro), and MEMS accelerometers. Getter materials (typically Ti or Zr thin films) inside the package absorb residual outgassing to maintain vacuum over the device lifetime.</p>
 <p><strong>Step 6 — CMOS integration.</strong> Flip-chip bond the vacuum-sealed glass array onto a CMOS readout die. The CMOS die contains per-rod amplifiers, an FFT engine, a pattern-matching correlator, and a digital interface (SPI or I²C). This is the same integration approach used in Bosch and STMicro MEMS accelerometers and Avago/Broadcom FBAR filters: the MEMS structure is fabricated on one wafer, the CMOS on another, and the two are bonded face-to-face.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig6_fabrication.svg" alt="Figure 6: Fabrication process flow"/>
 <p><strong>Figure 6.</strong> Six-step fabrication process using established MEMS production techniques. The innovation is the architectural combination, not the fabrication.</p>
 </div>
@@ -997,7 +997,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tr>
 </tbody>
 </table>
-<p>At scale, a single SEM die costs less than a capacitor.</p>
+<p>At scale, a single CWM die costs less than a capacitor.</p>
 <h3 id="83-risk-assessment">8.3 Risk Assessment</h3>
 <table>
 <thead>
@@ -1048,7 +1048,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>† Cross-talk is bounded by the acoustic impedance mismatch between rod and vacuum gap. At 0.1 Pa, the impedance ratio exceeds 10⁷:1.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig2_mems_cross_section.svg" alt="Figure 2: MEMS resonator cross-section"/>
 <p><strong>Figure 2.</strong> MEMS resonator cross-section showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic perturbation masses.</p>
 </div>
@@ -1109,7 +1109,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <td>Partial†</td>
 </tr>
 <tr>
-<td><strong>SEM (1 mm)</strong></td>
+<td><strong>CWM (1 mm)</strong></td>
 <td><strong>95.5</strong></td>
 <td><strong>3.6 µs</strong></td>
 <td><strong>16 fJ/bit</strong></td>
@@ -1117,7 +1117,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <td><strong>Native</strong></td>
 </tr>
 <tr>
-<td><strong>SEM (0.5 mm SiO₂)</strong></td>
+<td><strong>CWM (0.5 mm SiO₂)</strong></td>
 <td><strong>1,394</strong></td>
 <td><strong>3.6 µs</strong></td>
 <td><strong>~8 fJ/bit</strong></td>
@@ -1127,23 +1127,23 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>† ReRAM crossbar arrays can perform matrix-vector multiply, but require explicit weight programming and are limited to linear operations.</p>
-<h3 id="92-sems-unique-position">9.2 SEM&rsquo;s Unique Position</h3>
-<p>Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. SEM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This is not a marketing distinction—it has concrete engineering consequences:</p>
+<h3 id="92-sems-unique-position">9.2 CWM&rsquo;s Unique Position</h3>
+<p>Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. CWM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This is not a marketing distinction—it has concrete engineering consequences:</p>
 <ul>
-<li><strong>Non-volatility without charge retention.</strong> Flash and PCM lose data when charge leaks or crystals relax. SEM&rsquo;s perturbation pattern is a physical structure; it persists as long as the glass exists.</li>
-<li><strong>Endurance without wear.</strong> Flash endurance is limited by oxide breakdown from repeated tunnelling. DRAM endurance is limited by capacitor dielectric fatigue. SEM&rsquo;s acoustic oscillation is elastic and reversible—the glass experiences stress levels billions of times below its fracture threshold.</li>
-<li><strong>Computation without data movement.</strong> ReRAM computes in the crossbar, but you still have to program the weights. SEM&rsquo;s weights are the physics—they were set at fabrication and never need updating for the associative recall to work.</li>
+<li><strong>Non-volatility without charge retention.</strong> Flash and PCM lose data when charge leaks or crystals relax. CWM&rsquo;s perturbation pattern is a physical structure; it persists as long as the glass exists.</li>
+<li><strong>Endurance without wear.</strong> Flash endurance is limited by oxide breakdown from repeated tunnelling. DRAM endurance is limited by capacitor dielectric fatigue. CWM&rsquo;s acoustic oscillation is elastic and reversible—the glass experiences stress levels billions of times below its fracture threshold.</li>
+<li><strong>Computation without data movement.</strong> ReRAM computes in the crossbar, but you still have to program the weights. CWM&rsquo;s weights are the physics—they were set at fabrication and never need updating for the associative recall to work.</li>
 </ul>
 <h3 id="93-the-computation-advantage">9.3 The Computation Advantage</h3>
-<p>The comparison table understates SEM&rsquo;s advantage for search workloads. Traditional architectures must read data, transfer it to a processor, and execute a comparison algorithm. For a 100,000-pattern nearest-neighbor search:</p>
+<p>The comparison table understates CWM&rsquo;s advantage for search workloads. Traditional architectures must read data, transfer it to a processor, and execute a comparison algorithm. For a 100,000-pattern nearest-neighbor search:</p>
 <ul>
 <li><strong>CPU</strong>: ~10 ms (sequential scan)</li>
 <li><strong>GPU</strong>: ~0.1 ms (parallel dot products)</li>
-<li><strong>SEM</strong>: ~3.6 µs (single acoustic propagation cycle, all patterns in parallel)</li>
+<li><strong>CWM</strong>: ~3.6 µs (single acoustic propagation cycle, all patterns in parallel)</li>
 </ul>
-<p>SEM is 28× faster than a GPU and 2,800× faster than a CPU for this workload, at a fraction of the power.</p>
-<h3 id="94-what-sem-is-not">9.4 What SEM Is Not</h3>
-<p>SEM is not a general-purpose replacement for SRAM, DRAM, or Flash. It is optimized for:</p>
+<p>CWM is 28× faster than a GPU and 2,800× faster than a CPU for this workload, at a fraction of the power.</p>
+<h3 id="94-what-sem-is-not">9.4 What CWM Is Not</h3>
+<p>CWM is not a general-purpose replacement for SRAM, DRAM, or Flash. It is optimized for:</p>
 <ul>
 <li>Content-addressable memory (associative lookup)</li>
 <li>Pattern matching and classification</li>
@@ -1153,27 +1153,27 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </ul>
 <p>It is not suitable for random byte-addressable read/write (use DRAM), high-speed cache (use SRAM), or applications requiring &gt;10⁸ write cycles to the same physical location (perturbation patterns are fixed at fabrication, as in mask ROM).</p>
 <h3 id="95-disruption-scenarios">9.5 Disruption Scenarios</h3>
-<p>We identify five scenarios where SEM&rsquo;s unique property combination creates strategic advantage:</p>
+<p>We identify five scenarios where CWM&rsquo;s unique property combination creates strategic advantage:</p>
 <ol>
 <li>
-<p><strong>Associative search at the edge.</strong> A 1 cm³ SEM module performs 280,000 associative lookups per second at &lt;5 W. This enables real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.</p>
+<p><strong>Associative search at the edge.</strong> A 1 cm³ CWM module performs 280,000 associative lookups per second at &lt;5 W. This enables real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.</p>
 </li>
 <li>
 <p><strong>Radiation-hard memory for space.</strong> Glass resonators are intrinsically immune to single-event upsets (no charge states to flip). A 1 cm³ module stores 17 Gbit of radiation-hard memory—250× JWST&rsquo;s entire memory system—without shielding.</p>
 </li>
 <li>
-<p><strong>Biometric authentication.</strong> Voiceprint, fingerprint, and facial-feature matching are nearest-neighbor problems. A SEM chip in a phone performs 1,294-template matching in 3.6 µs at ~100 µW—enabling always-on biometric security with negligible battery impact.</p>
+<p><strong>Biometric authentication.</strong> Voiceprint, fingerprint, and facial-feature matching are nearest-neighbor problems. A CWM chip in a phone performs 1,294-template matching in 3.6 µs at ~100 µW—enabling always-on biometric security with negligible battery impact.</p>
 </li>
 <li>
-<p><strong>Network intrusion detection.</strong> Deep packet inspection at 100 Gbps requires matching packet signatures against thousands of threat patterns. SEM&rsquo;s parallel associative recall handles this natively; TCAM solutions cost 50–100× more per lookup.</p>
+<p><strong>Network intrusion detection.</strong> Deep packet inspection at 100 Gbps requires matching packet signatures against thousands of threat patterns. CWM&rsquo;s parallel associative recall handles this natively; TCAM solutions cost 50–100× more per lookup.</p>
 </li>
 </ol>
-<h2 id="5-dna-sequence-matching-short-read-alignment-is-a-massive-nearest-neighbor-search-a-sem-array-could-perform-smith-waterman-equivalent-scoring-at-acoustic-speed-potentially-replacing-gpu-clusters-in-sequencing-pipelines">5. <strong>DNA sequence matching.</strong> Short-read alignment is a massive nearest-neighbor search. A SEM array could perform Smith-Waterman-equivalent scoring at acoustic speed, potentially replacing GPU clusters in sequencing pipelines.</h2>
+<h2 id="5-dna-sequence-matching-short-read-alignment-is-a-massive-nearest-neighbor-search-a-sem-array-could-perform-smith-waterman-equivalent-scoring-at-acoustic-speed-potentially-replacing-gpu-clusters-in-sequencing-pipelines">5. <strong>DNA sequence matching.</strong> Short-read alignment is a massive nearest-neighbor search. A CWM array could perform Smith-Waterman-equivalent scoring at acoustic speed, potentially replacing GPU clusters in sequencing pipelines.</h2>
 <h2 id="10-advanced-encoding-and-recall-techniques">10. Advanced Encoding and Recall Techniques</h2>
-<p>The core SEM architecture of Sections 2–9 establishes a memory technology competitive with DRAM and Flash on density, energy, and speed, while adding native associative computation that no existing technology provides. This section presents four advanced techniques—discovered through systematic computational exploration of the eigenmode physics—that extend SEM&rsquo;s capabilities beyond the baseline architecture.</p>
+<p>The core CWM architecture of Sections 2–9 establishes a memory technology competitive with DRAM and Flash on density, energy, and speed, while adding native associative computation that no existing technology provides. This section presents four advanced techniques—discovered through systematic computational exploration of the eigenmode physics—that extend CWM&rsquo;s capabilities beyond the baseline architecture.</p>
 <p>All four techniques share a critical property: they require <strong>zero hardware changes</strong>. They are implementable as firmware-level signal processing on the CMOS readout die—modifications to how the readout data is interpreted, not to the resonator itself. This means they can be developed, tested, and deployed independently of the MEMS fabrication timeline.</p>
 <h3 id="101-synaptic-pruning-for-associative-recall">10.1 Synaptic Pruning for Associative Recall</h3>
-<p><strong>The problem.</strong> SEM&rsquo;s associative recall (Section 2.3) is mathematically equivalent to a Hopfield network, where the &ldquo;weight matrix&rdquo; is the set of stored spectral fingerprints. As the number of stored patterns $P$ approaches the capacity limit ($P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [10], where $N$ is the number of modes), something goes wrong. Each pattern&rsquo;s fingerprint is a vector of $N$ mode amplitudes, and storing many patterns in the same weight matrix creates inter-pattern crosstalk: the fingerprint of pattern A partially overlaps with patterns B, C, D, etc. When you query for pattern A, the response includes &ldquo;ghost&rdquo; contributions from these other patterns, which can push the recall toward a spurious attractor—a false match.</p>
+<p><strong>The problem.</strong> CWM&rsquo;s associative recall (Section 2.3) is mathematically equivalent to a Hopfield network, where the &ldquo;weight matrix&rdquo; is the set of stored spectral fingerprints. As the number of stored patterns $P$ approaches the capacity limit ($P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [10], where $N$ is the number of modes), something goes wrong. Each pattern&rsquo;s fingerprint is a vector of $N$ mode amplitudes, and storing many patterns in the same weight matrix creates inter-pattern crosstalk: the fingerprint of pattern A partially overlaps with patterns B, C, D, etc. When you query for pattern A, the response includes &ldquo;ghost&rdquo; contributions from these other patterns, which can push the recall toward a spurious attractor—a false match.</p>
 <p>Think of it like overhearing multiple conversations in a crowded room. Each conversation (pattern) is carried by the same physical medium (the air / the mode spectrum). When only a few people are talking, you can follow any one conversation clearly. When the room is full, the conversations blur together and you mishear words. The question is: can you improve your hearing without changing the room?</p>
 <p><strong>The approach.</strong> The inter-pattern crosstalk is concentrated in the <em>small-magnitude</em> entries of the weight matrix—the weak, non-specific couplings that correlate with multiple patterns rather than encoding any single one. We hypothesised that zeroing these small weights—a form of controlled &ldquo;forgetting&rdquo;—could remove crosstalk noise while preserving the strong weights that encode the actual patterns.</p>
 <p>This is directly analogous to synaptic pruning in biological neural development [18]. During brain maturation, the nervous system eliminates roughly 50% of its synapses between early childhood and adulthood. Far from being a deficiency, this pruning improves signal-to-noise ratio by removing weak, non-specific connections that add noise to neural circuits. The mature brain is more capable than the infant brain, with fewer synapses.</p>
@@ -1226,14 +1226,14 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>The optimum is sharp. Below $\theta^* = 0.055$, pruning removes too few weights to matter. Above it, pruning begins cutting into the pattern-encoding weights themselves, destroying signal along with noise. The optimal threshold removes approximately 40% of all weight-matrix entries—the smallest 40%—which turns out to be almost entirely inter-pattern crosstalk.</p>
-<p><strong>What this means for SEM.</strong> In SEM&rsquo;s associative recall mode, the readout ASIC computes a correlation score between the query spectrum and each rod&rsquo;s stored spectrum. Pruning corresponds to applying a spectral mask: before computing the correlation, zero out all frequency components whose amplitude falls below a threshold. This is a single line of firmware—a thresholded multiply—applied to the FFT output. At high pattern loads (hundreds of patterns per rod, approaching the Hopfield capacity limit), this mask recovers 10.7% of the recall accuracy lost to inter-pattern crosstalk.</p>
-<div class="sem-thumb">
+<p><strong>What this means for CWM.</strong> In CWM&rsquo;s associative recall mode, the readout ASIC computes a correlation score between the query spectrum and each rod&rsquo;s stored spectrum. Pruning corresponds to applying a spectral mask: before computing the correlation, zero out all frequency components whose amplitude falls below a threshold. This is a single line of firmware—a thresholded multiply—applied to the FFT output. At high pattern loads (hundreds of patterns per rod, approaching the Hopfield capacity limit), this mask recovers 10.7% of the recall accuracy lost to inter-pattern crosstalk.</p>
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig7_weight_pruning.svg" alt="Figure 7: Weight pruning concept and recall improvement"/>
 <p><strong>Figure 7.</strong> (a) Synaptic pruning concept: zeroing small-magnitude weights removes inter-pattern crosstalk. (b) Recall accuracy vs. pruning threshold, showing +10.7% gain at optimal θ = 0.055.</p>
 </div>
 
 <h3 id="102-in-situ-boolean-computation">10.2 In-Situ Boolean Computation</h3>
-<p><strong>The insight.</strong> SEM&rsquo;s modes are linear oscillators, and wave superposition is linear. If two patterns $A$ and $B$ are encoded as mode amplitudes in the same rod (or superposed from two rods&rsquo; responses), the combined amplitude at each mode frequency is the <em>sum</em> of the individual amplitudes. This summed signal contains enough information to extract the Boolean functions AND, OR, and XOR of the two binary patterns—without a separate compute step.</p>
+<p><strong>The insight.</strong> CWM&rsquo;s modes are linear oscillators, and wave superposition is linear. If two patterns $A$ and $B$ are encoded as mode amplitudes in the same rod (or superposed from two rods&rsquo; responses), the combined amplitude at each mode frequency is the <em>sum</em> of the individual amplitudes. This summed signal contains enough information to extract the Boolean functions AND, OR, and XOR of the two binary patterns—without a separate compute step.</p>
 <p><strong>Why this works.</strong> Consider a single mode where pattern $A$ encodes a &lsquo;1&rsquo; (high amplitude, $a = 1.0$) and pattern $B$ encodes a &lsquo;0&rsquo; (low amplitude, $b = 0.2$). The combined amplitude is $a + b = 1.2$. Now consider the four possible bit combinations:</p>
 <table>
 <thead>
@@ -1316,8 +1316,8 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>All three operations exceed 90% fidelity from a <strong>single readout cycle</strong>. The conventional approach—read pattern A, read pattern B, compute the Boolean function in software—requires three separate operations. The superposition method provides a <strong>3× throughput advantage</strong>.</p>
-<p><strong>What this means for SEM.</strong> Boolean computation from mode superposition confirms that SEM is a true compute-in-memory technology. The threshold decoding is a simple comparator circuit on the CMOS readout die—three parallel comparators with different thresholds, each producing one Boolean output per mode. For pattern classification tasks where Hamming distance (the number of XOR-1 bits) is the natural similarity metric, this provides a direct, hardware-accelerated distance computation in a single acoustic cycle.</p>
-<div class="sem-thumb">
+<p><strong>What this means for CWM.</strong> Boolean computation from mode superposition confirms that CWM is a true compute-in-memory technology. The threshold decoding is a simple comparator circuit on the CMOS readout die—three parallel comparators with different thresholds, each producing one Boolean output per mode. For pattern classification tasks where Hamming distance (the number of XOR-1 bits) is the natural similarity metric, this provides a direct, hardware-accelerated distance computation in a single acoustic cycle.</p>
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Figure 8: In-situ Boolean computation via mode superposition"/>
 <p><strong>Figure 8.</strong> Two stored patterns superposed produce amplitude distributions decodable as XOR (90.6%), AND (96.9%), and OR (93.8%) in a single readout cycle.</p>
 </div>
@@ -1326,7 +1326,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>Background: the avoided crossing.</strong> In any physical system with multiple modes, an important question arises: what happens when two modes have nearly the same frequency? The naive answer—they coexist independently—is wrong. When two modes are &ldquo;near-degenerate&rdquo; (their frequency difference is smaller than the coupling between them), they cannot simply pass through each other as a parameter is varied. Instead, they repel, forming a gap.</p>
 <p>This phenomenon was first described by von Neumann and Wigner in 1929 [20] in the context of quantum energy levels, but it is far older and more general than quantum mechanics. The same physics governs coupled pendulums. Hang two pendulums of slightly different length from the same rod, and they don&rsquo;t swing independently—they exchange energy back and forth in a slow beat pattern. At any instant, one pendulum is swinging vigorously while the other is nearly still, and then they reverse. The two &ldquo;modes&rdquo; of this coupled system are not &ldquo;pendulum A&rdquo; and &ldquo;pendulum B&rdquo; but rather &ldquo;both swinging in phase&rdquo; (the bonding mode, at lower frequency) and &ldquo;both swinging out of phase&rdquo; (the antibonding mode, at higher frequency). These hybrid modes have a frequency gap of $2\kappa$, where $\kappa$ is the coupling strength.</p>
 <p>The avoided crossing appears everywhere in physics: in molecular spectroscopy (where it determines bond energies), in condensed matter (where it creates electronic band gaps), in photonics (where it enables wavelength-division multiplexing in coupled optical waveguides), and in acoustics (where it creates stop bands in phononic crystals). It is one of the most universal phenomena in wave physics.</p>
-<p><strong>The relevance to SEM.</strong> A real MEMS resonator with 9,380 modes will inevitably contain near-degenerate pairs—especially at high mode numbers, where the mode density is high and perturbation-induced shifts can bring originally distant modes close together. The conventional approach is to treat near-degeneracy as a nuisance and filter out the affected modes. We ask the opposite question: do the hybrid modes created by near-degeneracy carry <em>additional</em> information?</p>
+<p><strong>The relevance to CWM.</strong> A real MEMS resonator with 9,380 modes will inevitably contain near-degenerate pairs—especially at high mode numbers, where the mode density is high and perturbation-induced shifts can bring originally distant modes close together. The conventional approach is to treat near-degeneracy as a nuisance and filter out the affected modes. We ask the opposite question: do the hybrid modes created by near-degeneracy carry <em>additional</em> information?</p>
 <p><strong>The experiment.</strong> We construct a two-mode coupled oscillator model to study this in isolation. Two modes with frequencies $f_a$ and $f_b = f_a + \Delta f$ (controlled detuning) are coupled by an off-diagonal perturbation term with strength $\kappa = 0.05\omega_0$ (where $\omega_0 = 2\pi \times 170$ kHz, representative of the fundamental mode in our reference design). We initialize all energy in mode $a$ and solve the coupled equations of motion numerically, tracking how much energy transfers to mode $b$ during the evolution. The maximum fraction of energy transferred—the &ldquo;hybridization depth&rdquo;—quantifies how strongly the modes interact.</p>
 <p>We sweep the detuning from $\Delta f / f_0 = 10^{-3}$ (nearly degenerate) to $\Delta f / f_0 = 1$ (widely separated), sampling 20 values on a logarithmic scale.</p>
 <p><strong>Results.</strong></p>
@@ -1339,14 +1339,14 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>Capacity gain.</strong> Each significantly hybridized mode pair contributes one additional information channel (the hybrid mode is linearly independent of either pure mode). With 16 such channels from a 10-mode base system:</p>
 <p>$$\text{Capacity gain} = \frac{16 \times 16.4 \text{ bits}}{10 \times 16.4 \text{ bits}} = +160\%$$</p>
 <p>This is an upper bound measured in a controlled system with deliberately tuned degeneracies. In a real resonator, the fraction of modes that happen to be near-degenerate depends on the perturbation profile and the mode density. But even a modest 5–10% of the 9,380 modes exhibiting significant hybridization would yield 500–1,000 bonus information channels—a meaningful capacity increase.</p>
-<p><strong>What this means for SEM.</strong> A hybridization-aware readout algorithm would scan the measured mode spectrum for avoided-crossing signatures (closely spaced pairs with anticorrelated amplitudes) and decompose them into bonding/antibonding components using a simple 2×2 matrix diagonalization. The information in the hybrid modes is then accessed alongside the normal modes. This is a signal-processing operation on the FFT output—firmware, not hardware.</p>
+<p><strong>What this means for CWM.</strong> A hybridization-aware readout algorithm would scan the measured mode spectrum for avoided-crossing signatures (closely spaced pairs with anticorrelated amplitudes) and decompose them into bonding/antibonding components using a simple 2×2 matrix diagonalization. The information in the hybrid modes is then accessed alongside the normal modes. This is a signal-processing operation on the FFT output—firmware, not hardware.</p>
 <p><strong>Simulation detail.</strong> Figure 14 presents the full numerical result. Panel (a) plots the coupled eigenfrequencies as a function of detuning on a logarithmic scale. The uncoupled frequencies (dashed grey) would cross at zero detuning; the coupled system (solid curves) exhibits the characteristic avoided crossing with a minimum gap of $2\kappa = 17$ kHz. At small detuning, the modes are fully hybrid—neither is recognizable as the original mode $a$ or $b$. Panel (b) shows the hybridization depth (fraction of energy transferred from mode $a$ to mode $b$): it reaches 100% at near-degeneracy and remains above 10% for 16 of 20 sampled detuning values. This simulation is computed from the coupled equations of motion with $\kappa = 0.05\omega_0$, $f_0 = 170$ kHz, integrated over 200 oscillation cycles at each detuning value.</p>
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig14_mode_splitting.svg" alt="Figure 14: Avoided crossing simulation — eigenfrequencies and hybridization depth"/>
 <p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). (a) Eigenfrequency diagram: uncoupled modes (dashed) would cross; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by gap 2κ = 17 kHz. (b) Hybridization depth vs. detuning: energy exchange reaches 100% at near-degeneracy. Of 20 detuning values sampled on a logarithmic sweep from 10⁻³ to 10⁰, 16 show >10% transfer — each contributing an independent information channel.</p>
 </div>
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig9_avoided_crossing.svg" alt="Figure 9: Avoided crossing and mode hybridization"/>
 <p><strong>Figure 9.</strong> (a) Avoided-crossing level diagram: near-degenerate modes hybridize under perturbation, creating a gap of 2κ. (b) Hybridization depth peaks at 100% near degeneracy, with 16 of 20 modes showing >10% exchange.</p>
 </div>
@@ -1401,14 +1401,14 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p>The two channels have exactly zero cross-talk. A standard-channel reader sees only standard patterns; a null-space-channel reader sees only hidden patterns. Both achieve perfect fidelity.</p>
-<p><strong>What this means for SEM.</strong> Null-space multiplexing provides genuine bonus capacity—60% in the tested configuration—with no changes to the resonator. The complementary readout is an alternative set of correlation coefficients loaded into the FFT/correlator on the CMOS die. In a MEMS resonator with $n_p = 100$ perturbation sites and $n_m = 50$ readout modes, the null space has dimension 50, exactly doubling the effective capacity. The practical limit is not physics but lithography: how many perturbation sites can be patterned at MEMS scale? At 1 µm pitch along a 1 mm rod, the answer is ~1,000—giving a null-space dimension of $1{,}000 - n_m$, which far exceeds $n_m$ for any practical mode count.</p>
-<div class="sem-thumb">
+<p><strong>What this means for CWM.</strong> Null-space multiplexing provides genuine bonus capacity—60% in the tested configuration—with no changes to the resonator. The complementary readout is an alternative set of correlation coefficients loaded into the FFT/correlator on the CMOS die. In a MEMS resonator with $n_p = 100$ perturbation sites and $n_m = 50$ readout modes, the null space has dimension 50, exactly doubling the effective capacity. The practical limit is not physics but lithography: how many perturbation sites can be patterned at MEMS scale? At 1 µm pitch along a 1 mm rod, the answer is ~1,000—giving a null-space dimension of $1{,}000 - n_m$, which far exceeds $n_m$ for any practical mode count.</p>
+<div class="cwm-thumb">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig10_null_space.svg" alt="Figure 10: Null-space multiplexing dual-channel encoding"/>
 <p><strong>Figure 10.</strong> Dual-channel encoding: standard patterns occupy the column space of the coupling matrix; hidden patterns occupy the null space. Both channels achieve perfect fidelity with zero cross-talk.</p>
 </div>
 
 <h3 id="105-combined-capacity-enhancement">10.5 Combined Capacity Enhancement</h3>
-<p>The four techniques are not mutually exclusive. In a practical SEM device:</p>
+<p>The four techniques are not mutually exclusive. In a practical CWM device:</p>
 <ol>
 <li>
 <p><strong>Synaptic pruning</strong> (§10.1) improves recall accuracy by 10.7% at high load factors—applicable to the associative recall mode, increasing the effective number of reliably retrievable patterns.</p>
@@ -1423,7 +1423,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p><strong>Null-space multiplexing</strong> (§10.4) adds hidden capacity proportional to the ratio $(n_p - n_m) / n_m$. With $n_p / n_m = 1.6$ (the tested configuration), the bonus is 60%. With $n_p / n_m = 2$ (achievable at MEMS scale), the bonus is 100%—a full doubling.</p>
 </li>
 </ol>
-<h2 id="applied-conservatively-these-techniques-could-increase-sems-effective-capacity-from-the-baseline-955-gbitcm3-to-120150-gbitcm3-while-simultaneously-improving-recall-accuracy-and-adding-native-boolean-computation-the-upper-bound-projections-hybridization-null-space-suggest-theoretical-capacity-approaching-200-gbitcm3-from-a-1-mm-borosilicate-rod20-dramwith-firmware-optimizations-alone">Applied conservatively, these techniques could increase SEM&rsquo;s effective capacity from the baseline 95.5 Gbit/cm³ to <strong>120–150 Gbit/cm³</strong> while simultaneously improving recall accuracy and adding native Boolean computation. The upper-bound projections (hybridization + null-space) suggest theoretical capacity approaching <strong>200+ Gbit/cm³</strong> from a 1 mm borosilicate rod—20× DRAM—with firmware optimizations alone.</h2>
+<h2 id="applied-conservatively-these-techniques-could-increase-sems-effective-capacity-from-the-baseline-955-gbitcm3-to-120150-gbitcm3-while-simultaneously-improving-recall-accuracy-and-adding-native-boolean-computation-the-upper-bound-projections-hybridization-null-space-suggest-theoretical-capacity-approaching-200-gbitcm3-from-a-1-mm-borosilicate-rod20-dramwith-firmware-optimizations-alone">Applied conservatively, these techniques could increase CWM&rsquo;s effective capacity from the baseline 95.5 Gbit/cm³ to <strong>120–150 Gbit/cm³</strong> while simultaneously improving recall accuracy and adding native Boolean computation. The upper-bound projections (hybridization + null-space) suggest theoretical capacity approaching <strong>200+ Gbit/cm³</strong> from a 1 mm borosilicate rod—20× DRAM—with firmware optimizations alone.</h2>
 <h2 id="11-ultimate-limits">11. Ultimate Limits</h2>
 <h3 id="111-fused-silica">11.1 Fused Silica</h3>
 <p>Everything presented so far uses borosilicate glass—a conservative, inexpensive, widely available substrate. But borosilicate is not the best acoustic material; it is the most <em>convenient</em> one. Replacing it with fused silica (pure SiO₂) improves two critical parameters simultaneously:</p>
@@ -1505,7 +1505,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tbody>
 </table>
 <p><strong>This exceeds 3D NAND Flash</strong> (1,000 Gbit/cm³) while providing native associative computation—something no existing memory technology offers at any density.</p>
-<p>With null-space multiplexing (§10.4) applied to the fused silica design, the effective density could reach <strong>2+ Tbit/cm³</strong>, placing SEM in a density class currently occupied only by the most advanced 3D NAND.</p>
+<p>With null-space multiplexing (§10.4) applied to the fused silica design, the effective density could reach <strong>2+ Tbit/cm³</strong>, placing CWM in a density class currently occupied only by the most advanced 3D NAND.</p>
 <h3 id="113-q-factor-model-for-fused-silica">11.3 Q-Factor Model for Fused Silica</h3>
 <p>The Q-factor analysis of Section 6 extends directly to fused silica. The physics is the same; only the material parameters change. For 1 mm × 40 µm fused silica with 2 µm tethers, isolation trenches, 0.1 Pa:</p>
 <table>
@@ -1585,22 +1585,22 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <li>Practical null-space readout implementation</li>
 </ul>
 <h3 id="122-historical-context">12.2 Historical Context</h3>
-<p>SEM&rsquo;s closest relatives in the literature are more instructive for their differences than their similarities:</p>
+<p>CWM&rsquo;s closest relatives in the literature are more instructive for their differences than their similarities:</p>
 <ul>
 <li>
-<p><strong>Mercury delay line memory</strong> [4, 5]: The earliest electronic computers—UNIVAC I (1951), EDSAC (1949)—stored data as acoustic pulses in tubes of liquid mercury. A train of pulses (representing bits) entered one end of a mercury tube, propagated at the speed of sound, was detected at the other end, amplified, and re-injected. It was acoustic memory, but <em>temporal</em> encoding: bits arrived one at a time, in sequence. SEM&rsquo;s spectral encoding is the frequency-domain generalization—all bits are present simultaneously as different modes, enabling parallel readout and parallel computation. A 1 mm SEM rod stores ~120,000 bits where a comparable mercury delay line stored ~1,000.</p>
+<p><strong>Mercury delay line memory</strong> [4, 5]: The earliest electronic computers—UNIVAC I (1951), EDSAC (1949)—stored data as acoustic pulses in tubes of liquid mercury. A train of pulses (representing bits) entered one end of a mercury tube, propagated at the speed of sound, was detected at the other end, amplified, and re-injected. It was acoustic memory, but <em>temporal</em> encoding: bits arrived one at a time, in sequence. CWM&rsquo;s spectral encoding is the frequency-domain generalization—all bits are present simultaneously as different modes, enabling parallel readout and parallel computation. A 1 mm CWM rod stores ~120,000 bits where a comparable mercury delay line stored ~1,000.</p>
 </li>
 <li>
-<p><strong>Quartz crystal microbalance (QCM)</strong> [8]: The QCM measures mass deposited on a quartz crystal by tracking the frequency shift of a single resonant mode. The Sauerbrey equation (1959) is a special case of the Rayleigh perturbation formula for a uniform thin film. SEM extends the QCM concept from a single mode to thousands, and from measurement to information encoding.</p>
+<p><strong>Quartz crystal microbalance (QCM)</strong> [8]: The QCM measures mass deposited on a quartz crystal by tracking the frequency shift of a single resonant mode. The Sauerbrey equation (1959) is a special case of the Rayleigh perturbation formula for a uniform thin film. CWM extends the QCM concept from a single mode to thousands, and from measurement to information encoding.</p>
 </li>
 <li>
-<p><strong>Photonic neural networks</strong> (Shen et al. 2017): Optical interference performs matrix-vector multiplication by encoding data as light amplitudes and computing via Mach-Zehnder interferometers. SEM applies the same principle acoustically, trading optical bandwidth for mechanical simplicity and CMOS integration.</p>
+<p><strong>Photonic neural networks</strong> (Shen et al. 2017): Optical interference performs matrix-vector multiplication by encoding data as light amplitudes and computing via Mach-Zehnder interferometers. CWM applies the same principle acoustically, trading optical bandwidth for mechanical simplicity and CMOS integration.</p>
 </li>
 <li>
-<p><strong>In-memory computing</strong> [3]: ReRAM/PCM crossbar arrays co-locate storage and computation, but require explicit weight programming—you must write resistance values into each cell to define the computation. SEM&rsquo;s recall is implicit: the computation is defined by the rod&rsquo;s geometry, set once at fabrication. The advanced techniques of Section 10 further extend this: Boolean computation, hybridization-aware readout, and null-space projection all emerge from the physics without hardware modification.</p>
+<p><strong>In-memory computing</strong> [3]: ReRAM/PCM crossbar arrays co-locate storage and computation, but require explicit weight programming—you must write resistance values into each cell to define the computation. CWM&rsquo;s recall is implicit: the computation is defined by the rod&rsquo;s geometry, set once at fabrication. The advanced techniques of Section 10 further extend this: Boolean computation, hybridization-aware readout, and null-space projection all emerge from the physics without hardware modification.</p>
 </li>
 <li>
-<p><strong>Biological synaptic pruning</strong> [18]: The brain eliminates weak synapses during development, improving signal-to-noise ratio in neural circuits. Section 10.1 shows the same principle—thresholding weak weights improves recall—applies directly to SEM&rsquo;s acoustic Hopfield network.</p>
+<p><strong>Biological synaptic pruning</strong> [18]: The brain eliminates weak synapses during development, improving signal-to-noise ratio in neural circuits. Section 10.1 shows the same principle—thresholding weak weights improves recall—applies directly to CWM&rsquo;s acoustic Hopfield network.</p>
 </li>
 </ul>
 <h3 id="123-intellectual-property">12.3 Intellectual Property</h3>
@@ -1643,7 +1643,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </ul>
 <hr />
 <h2 id="14-conclusion">14. Conclusion</h2>
-<p>Spectral Eigenmode Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod&rsquo;s natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.</p>
+<p>Coherent Wave Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod&rsquo;s natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.</p>
 <p>The physics is validated at macro scale with a &#36;63 prototype. The scaling laws are mathematical consequences of that physics. The MEMS loss mechanisms have been modeled and found manageable—the dominant loss is the glass material itself, not the MEMS geometry.</p>
 <p>The key results:</p>
 <ul>
@@ -1663,7 +1663,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <li><strong>&gt;10¹⁵ cycle endurance</strong> (acoustic oscillation is non-destructive)</li>
 <li><strong>Fabricable</strong> with established MEMS processes (glass DRIE, AlN thin-film piezo, CMOS integration)</li>
 </ul>
-<p>What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material&rsquo;s quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that SEM&rsquo;s computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity.</p>
+<p>What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material&rsquo;s quality factor. The fabrication pathway uses proven processes. The advanced encoding techniques demonstrate that CWM&rsquo;s computational headroom extends well beyond the baseline architecture, with firmware-implementable optimizations that improve both recall accuracy and effective capacity.</p>
 <h2 id="seventy-seven-years-after-mercury-delay-lines-first-stored-data-as-acoustic-waves-in-univac-i-the-same-physics-finds-new-expressionnot-as-temporal-pulses-in-a-tube-of-liquid-metal-but-as-spectral-eigenmodes-in-a-chip-scale-glass-resonator-where-every-stored-bit-participates-in-computation-and-recall-is-a-standing-wave">Seventy-seven years after mercury delay lines first stored data as acoustic waves in UNIVAC I, the same physics finds new expression—not as temporal pulses in a tube of liquid metal, but as spectral eigenmodes in a chip-scale glass resonator, where every stored bit participates in computation and recall is a standing wave.</h2>
 <h2 id="references">References</h2>
 <p>[1] J. Backus, &ldquo;Can programming be liberated from the von Neumann style? A functional style and its algebra of programs,&rdquo; <em>Communications of the ACM</em>, vol. 21, no. 8, pp. 613–641, 1978. doi: <a href="https://doi.org/10.1145/359576.359579">10.1145/359576.359579</a></p>
@@ -1719,64 +1719,64 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <p>With $\delta = 5$ nm and $Q_d = 1{,}000$: $Q_{\text{surface}} = 196{,}000$ at $d = 40$ µm.</p>
 <hr />
 <h2 id="appendix-c-industry-application-scenarios">Appendix C: Industry Application Scenarios</h2>
-<p><em>The following scenarios illustrate how SEM&rsquo;s unique properties—ultra-low energy, native associative recall, extreme density, and intrinsic radiation hardness—could create value across industries. All performance projections are derived from the validated models in the main text. We flag each scenario&rsquo;s technology-readiness assumptions explicitly.</em></p>
+<p><em>The following scenarios illustrate how CWM&rsquo;s unique properties—ultra-low energy, native associative recall, extreme density, and intrinsic radiation hardness—could create value across industries. All performance projections are derived from the validated models in the main text. We flag each scenario&rsquo;s technology-readiness assumptions explicitly.</em></p>
 <h3 id="c1-defense-and-intelligence-the-analyst-who-sleeps">C.1 Defense and Intelligence: The Analyst Who Sleeps</h3>
 <p><strong>The problem.</strong> A signals-intelligence analyst at Fort Meade monitors intercepted communications for threat signatures. Today, each intercept is vectorized and compared against a classified database of ~500,000 known patterns using a rack of Ternary Content-Addressable Memory (TCAM). The rack draws 12 kW, fills a standard 42U enclosure, and costs &#36;2.1 million. When the database grows to 5 million patterns—as it does every few years—the agency orders another rack.</p>
-<p><strong>What SEM changes.</strong> A single SEM module the size of a deck of cards contains ~140,000 glass resonators, each storing 1,294 Hopfield patterns. That is 181 million searchable patterns—36× the current database—in a device that draws under 5 W and costs, at scale, a fraction of a single TCAM board.</p>
-<p>But the real disruption isn&rsquo;t size or power. It&rsquo;s <em>latency</em>. TCAM searches are sequential across boards; a 500,000-pattern lookup takes ~50 ms. SEM&rsquo;s interference-based recall happens in a single acoustic propagation cycle: 5 µs. That is 10,000× faster. An analyst running a new signature against the full database gets an answer before their finger lifts off the key.</p>
+<p><strong>What CWM changes.</strong> A single CWM module the size of a deck of cards contains ~140,000 glass resonators, each storing 1,294 Hopfield patterns. That is 181 million searchable patterns—36× the current database—in a device that draws under 5 W and costs, at scale, a fraction of a single TCAM board.</p>
+<p>But the real disruption isn&rsquo;t size or power. It&rsquo;s <em>latency</em>. TCAM searches are sequential across boards; a 500,000-pattern lookup takes ~50 ms. CWM&rsquo;s interference-based recall happens in a single acoustic propagation cycle: 5 µs. That is 10,000× faster. An analyst running a new signature against the full database gets an answer before their finger lifts off the key.</p>
 <p><strong>What we&rsquo;ve validated.</strong> The associative recall physics (Section 2.3), the Hopfield capacity limit (1,294 patterns/rod), and the array architecture (Section 7.1) are computed from first principles and verified by 365 tests. The synaptic pruning technique (Section 10.1) can further improve recall accuracy by 10.7% at high pattern loads. <strong>What remains projected:</strong> MEMS fabrication yield and TCAM-equivalent interface integration—addressable in Phases 1–2 of the roadmap.</p>
 <p><strong>Relevant to:</strong> NSA, NGA, DISA, DARPA MTO, defense primes (Raytheon, Northrop Grumman), allied Five Eyes agencies.</p>
 <hr />
 <h3 id="c2-semiconductor-fab-catching-defects-at-the-speed-of-light">C.2 Semiconductor Fab: Catching Defects at the Speed of Light</h3>
 <p><strong>The problem.</strong> A 300 mm wafer fab produces ~1,500 wafers per day. Each wafer is imaged at multiple process steps by optical inspection tools (KLA, Applied Materials), generating 50–200 high-resolution die images per wafer. A &ldquo;defect classifier&rdquo; compares each image against a library of ~10,000 known defect signatures—scratches, particles, pattern collapse, bridging—using GPU-accelerated pattern matching. The GPU cluster draws 30 kW and occupies a full equipment bay. When a new defect type appears (as it does with every process node), the library must be retrained and redeployed—a process that takes days and halts production.</p>
-<p><strong>What SEM changes.</strong> Each SEM rod&rsquo;s perturbation pattern can encode a defect signature&rsquo;s spectral fingerprint. A 10,000-rod array encodes the entire defect library and performs classification in 5 µs per die image—fast enough to inspect <em>inline</em> at full production throughput without buffering. Adding a new defect type means adding one rod with the appropriate perturbation pattern—no retraining, no downtime, no GPU. The physics <em>is</em> the classifier. The in-situ Boolean computation (Section 10.2) enables direct Hamming-distance classification at 3× throughput.</p>
-<p>At 16 fJ/bit, the power budget for the entire defect-matching operation is under 1 W—replacing a 30 kW GPU cluster. In a fab where electricity costs &#36;0.12/kWh and uptime is worth &#36;100,000/hour, the SEM module pays for itself in weeks.</p>
+<p><strong>What CWM changes.</strong> Each CWM rod&rsquo;s perturbation pattern can encode a defect signature&rsquo;s spectral fingerprint. A 10,000-rod array encodes the entire defect library and performs classification in 5 µs per die image—fast enough to inspect <em>inline</em> at full production throughput without buffering. Adding a new defect type means adding one rod with the appropriate perturbation pattern—no retraining, no downtime, no GPU. The physics <em>is</em> the classifier. The in-situ Boolean computation (Section 10.2) enables direct Hamming-distance classification at 3× throughput.</p>
+<p>At 16 fJ/bit, the power budget for the entire defect-matching operation is under 1 W—replacing a 30 kW GPU cluster. In a fab where electricity costs &#36;0.12/kWh and uptime is worth &#36;100,000/hour, the CWM module pays for itself in weeks.</p>
 <p><strong>What we&rsquo;ve validated.</strong> SNR of 98.8 dB (Section 4.3), spectral pattern discrimination (Section 4.5), and scaling to MEMS density (Section 5). <strong>What remains projected:</strong> Encoding 2D image features as 1D spectral signatures—a signal-processing problem, not a physics limitation.</p>
 <p><strong>Relevant to:</strong> TSMC, Samsung Foundry, Intel, KLA, Applied Materials, Lam Research, ASML.</p>
 <hr />
 <h3 id="c3-pharmaceutical-rd-screening-a-billion-molecules-before-lunch">C.3 Pharmaceutical R&amp;D: Screening a Billion Molecules Before Lunch</h3>
 <p><strong>The problem.</strong> A medicinal chemist at Pfizer has a promising lead compound for a kinase inhibitor. She needs to screen it against a virtual library of 1.2 billion commercially available molecules to find structural analogs that might have better bioavailability. Today, this similarity search runs on a 500-node HPC cluster using molecular fingerprints (2,048-bit vectors) and Tanimoto similarity. The cluster draws 150 kW, costs &#36;8 million, and takes 14 hours for a full-library search. She gets results the next morning.</p>
-<p><strong>What SEM changes.</strong> Molecular fingerprints are fixed-length binary vectors—exactly the data structure SEM is built to match. Each rod encodes one molecule&rsquo;s fingerprint as a perturbation pattern. Interference-based recall computes Tanimoto similarity (mathematically equivalent to normalized dot product for binary vectors) across the entire library in parallel.</p>
-<p>A wafer-scale SEM array containing 10 million rods, each encoding a 2,048-bit fingerprint, could screen the entire 1.2-billion-molecule library (partitioned across 120 arrays operating in parallel) in under one second. The chemist submits her query and has analogs ranked by similarity before she finishes her coffee. At 16 fJ/bit, the entire search consumes less energy than the LED on her monitor.</p>
+<p><strong>What CWM changes.</strong> Molecular fingerprints are fixed-length binary vectors—exactly the data structure CWM is built to match. Each rod encodes one molecule&rsquo;s fingerprint as a perturbation pattern. Interference-based recall computes Tanimoto similarity (mathematically equivalent to normalized dot product for binary vectors) across the entire library in parallel.</p>
+<p>A wafer-scale CWM array containing 10 million rods, each encoding a 2,048-bit fingerprint, could screen the entire 1.2-billion-molecule library (partitioned across 120 arrays operating in parallel) in under one second. The chemist submits her query and has analogs ranked by similarity before she finishes her coffee. At 16 fJ/bit, the entire search consumes less energy than the LED on her monitor.</p>
 <p><strong>What we&rsquo;ve validated.</strong> The dot-product equivalence of interference recall (Section 2.3), the Hopfield pattern capacity, and the energy scaling (Section 5.4). <strong>What remains projected:</strong> Efficient encoding of 2,048-bit fingerprints into spectral perturbation patterns, and wafer-scale integration.</p>
 <p><strong>Relevant to:</strong> Pfizer, Roche, Novartis, Merck, AstraZeneca; CROs (Charles River, WuXi); cheminformatics platforms (Schrödinger, OpenEye).</p>
 <hr />
 <h3 id="c4-autonomous-vehicles-the-car-that-recognizes-everything-it-has-ever-seen">C.4 Autonomous Vehicles: The Car That Recognizes Everything It Has Ever Seen</h3>
 <p><strong>The problem.</strong> A Level 4 autonomous vehicle generates 1–4 TB of sensor data per hour from cameras, LiDAR, and radar. The perception stack must match incoming sensor frames against a library of known objects, road geometries, and hazard signatures—in real time, at 30 Hz, with &lt;100 ms end-to-end latency. Today, this runs on an NVIDIA DRIVE Orin (275 TOPS, 60 W) or multiple chips in parallel. The power budget competes directly with vehicle range: every watt spent on compute is a watt not driving the wheels.</p>
-<p><strong>What SEM changes.</strong> SEM&rsquo;s interference-based associative recall is a native pattern matcher—it does not need to be programmed with neural network weights; it matches raw spectral signatures against stored templates. A 1 cm³ SEM module containing 140,000 rods could store 182 million object signatures (Section 7.1) and match an incoming sensor frame against all of them in 5 µs—200× faster than the 30 Hz frame rate requires, leaving margin for redundancy and voting. Power draw: under 2 W, compared to 60+ W for the GPU-based stack.</p>
+<p><strong>What CWM changes.</strong> CWM&rsquo;s interference-based associative recall is a native pattern matcher—it does not need to be programmed with neural network weights; it matches raw spectral signatures against stored templates. A 1 cm³ CWM module containing 140,000 rods could store 182 million object signatures (Section 7.1) and match an incoming sensor frame against all of them in 5 µs—200× faster than the 30 Hz frame rate requires, leaving margin for redundancy and voting. Power draw: under 2 W, compared to 60+ W for the GPU-based stack.</p>
 <p>For fleet operators like Waymo or Cruise, multiplying this saving across thousands of vehicles translates to meaningful range extension and thermal-management simplification. For ADAS suppliers like Mobileye, a 2 W pattern-matching co-processor could enable Level 2+ features in vehicles where the thermal budget cannot accommodate a GPU.</p>
 <p><strong>What we&rsquo;ve validated.</strong> Array capacity, associative recall time, and power (Sections 7–9). <strong>What remains projected:</strong> Sensor-to-spectral encoding pipeline and real-time integration with perception stacks.</p>
 <p><strong>Relevant to:</strong> Waymo, Cruise, Mobileye, NVIDIA, Qualcomm, Tesla, Bosch, Continental, Denso.</p>
 <hr />
 <h3 id="c5-financial-services-fraud-at-the-speed-of-a-swipe">C.5 Financial Services: Fraud at the Speed of a Swipe</h3>
 <p><strong>The problem.</strong> Visa processes ~76,000 transactions per second at peak (e.g., Black Friday). Each transaction must be compared against fraud patterns—card-present anomalies, velocity checks, merchant-category mismatches—within the 100 ms authorization window. Today, this requires a geographically distributed network of GPU-accelerated scoring engines, each drawing hundreds of kilowatts, with total infrastructure costs exceeding &#36;500 million annually.</p>
-<p><strong>What SEM changes.</strong> Each transaction can be encoded as a short feature vector (merchant category, amount, time-of-day, location, velocity). A SEM module scores a transaction against the full fraud-signature library in 5 µs—20,000× faster than the 100 ms window. A single rack-mounted SEM appliance could replace an entire data-center floor of scoring servers.</p>
-<p>But the deeper value is in <em>new fraud patterns</em>. Today, adding a new fraud signature requires retraining a neural network and redeploying across the scoring fleet—a process measured in days. With SEM, a new fraud pattern is a new perturbation mask written to a rod. Deployment is physical: swap a chip, or write a new perturbation in the field. The time from pattern discovery to production deployment drops from days to minutes.</p>
+<p><strong>What CWM changes.</strong> Each transaction can be encoded as a short feature vector (merchant category, amount, time-of-day, location, velocity). A CWM module scores a transaction against the full fraud-signature library in 5 µs—20,000× faster than the 100 ms window. A single rack-mounted CWM appliance could replace an entire data-center floor of scoring servers.</p>
+<p>But the deeper value is in <em>new fraud patterns</em>. Today, adding a new fraud signature requires retraining a neural network and redeploying across the scoring fleet—a process measured in days. With CWM, a new fraud pattern is a new perturbation mask written to a rod. Deployment is physical: swap a chip, or write a new perturbation in the field. The time from pattern discovery to production deployment drops from days to minutes.</p>
 <p><strong>What we&rsquo;ve validated.</strong> Recall speed, power, and pattern capacity. <strong>What remains projected:</strong> Transaction-to-spectral encoding standards and integration with existing payment network protocols.</p>
 <p><strong>Relevant to:</strong> Visa, Mastercard, JPMorgan Chase, Goldman Sachs, Stripe; fraud-detection vendors (Featurespace, Feedzai, FICO).</p>
 <hr />
 <h3 id="c6-agriculture-and-food-safety-every-grape-every-grain">C.6 Agriculture and Food Safety: Every Grape, Every Grain</h3>
 <p><strong>The problem.</strong> A food safety inspector at a grain processing facility needs to check incoming shipments for contamination—aflatoxins, pesticide residues, foreign materials. Today, this requires laboratory analysis (gas chromatography, mass spectrometry) with 24–72 hour turnaround. Hyperspectral imaging can identify contaminants optically, but the pattern-matching compute required to classify spectra in real time exceeds what is available in a handheld device.</p>
-<p><strong>What SEM changes.</strong> A hyperspectral camera captures the reflectance spectrum of each grain kernel—a high-dimensional vector. A battery-powered SEM device the size of a smartphone could store 10,000 contaminant spectral signatures and match each kernel&rsquo;s spectrum against the full library in 5 µs. At 16 fJ/bit and under 100 mW total power, the device runs for 8+ hours on a small LiPo cell.</p>
+<p><strong>What CWM changes.</strong> A hyperspectral camera captures the reflectance spectrum of each grain kernel—a high-dimensional vector. A battery-powered CWM device the size of a smartphone could store 10,000 contaminant spectral signatures and match each kernel&rsquo;s spectrum against the full library in 5 µs. At 16 fJ/bit and under 100 mW total power, the device runs for 8+ hours on a small LiPo cell.</p>
 <p>An inspector walks the receiving dock with the device, scans a handful of grain, and gets a contamination verdict in real time—no lab, no wait, no shipment held in quarantine while samples are couriered. For a commodity trader, the ability to verify quality at the point of sale changes the risk calculus entirely.</p>
-<p><strong>What we&rsquo;ve validated.</strong> The spectral correlation physics—SEM literally matches spectra against stored templates, which is precisely what hyperspectral classification requires. <strong>What remains projected:</strong> Miniaturized hyperspectral front-end integration and field ruggedization.</p>
+<p><strong>What we&rsquo;ve validated.</strong> The spectral correlation physics—CWM literally matches spectra against stored templates, which is precisely what hyperspectral classification requires. <strong>What remains projected:</strong> Miniaturized hyperspectral front-end integration and field ruggedization.</p>
 <p><strong>Relevant to:</strong> Cargill, ADM, Bunge, Tyson; food safety agencies (FDA, USDA, EFSA); precision agriculture (John Deere, CNH Industrial); hyperspectral imaging vendors (Headwall, Specim).</p>
 <hr />
 <h3 id="c7-space-and-satellite-memory-that-survives-the-van-allen-belts">C.7 Space and Satellite: Memory That Survives the Van Allen Belts</h3>
 <p><strong>The problem.</strong> The James Webb Space Telescope carries 68 GB of solid-state memory using radiation-hardened SRAM. That memory cost more per bit than the gold-plated mirrors. Every satellite, every Mars rover, every deep-space probe faces the same constraint: radiation-hardened memory is scarce, expensive (&#36;1,000–&#36;10,000 per Mbit), heavy (shielding adds mass), and limited in capacity. A single energetic proton can flip a bit in a transistor; a solar particle event can corrupt entire memory banks.</p>
-<p><strong>What SEM changes.</strong> SEM stores information in mechanical vibrations of glass—a medium that is intrinsically immune to ionizing radiation. There are no charge-trapped states to flip, no floating gates to discharge, no magnetic domains to disturb. A cosmic ray passing through a glass rod changes its acoustic properties by less than one part in $10^{12}$. The information is encoded in the rod&rsquo;s <em>geometry</em> (perturbation pattern) and <em>physics</em> (eigenmode spectrum), not in electrical charge.</p>
-<p>A 1 cm³ SEM module provides 17 Gbit (2.1 GB) of radiation-hard memory—250× the capacity of JWST&rsquo;s entire memory system—in a package that weighs grams instead of kilograms, costs orders of magnitude less, and simultaneously performs associative computation for onboard pattern recognition (autonomous navigation, anomaly detection, spectral classification of planetary surfaces).</p>
-<p>For the emerging commercial space industry—where companies like SpaceX, Rocket Lab, and Planet Labs are launching thousands of small satellites—SEM could replace radiation-hard memory as the default, removing one of the most expensive line items from satellite BOM.</p>
+<p><strong>What CWM changes.</strong> CWM stores information in mechanical vibrations of glass—a medium that is intrinsically immune to ionizing radiation. There are no charge-trapped states to flip, no floating gates to discharge, no magnetic domains to disturb. A cosmic ray passing through a glass rod changes its acoustic properties by less than one part in $10^{12}$. The information is encoded in the rod&rsquo;s <em>geometry</em> (perturbation pattern) and <em>physics</em> (eigenmode spectrum), not in electrical charge.</p>
+<p>A 1 cm³ CWM module provides 17 Gbit (2.1 GB) of radiation-hard memory—250× the capacity of JWST&rsquo;s entire memory system—in a package that weighs grams instead of kilograms, costs orders of magnitude less, and simultaneously performs associative computation for onboard pattern recognition (autonomous navigation, anomaly detection, spectral classification of planetary surfaces).</p>
+<p>For the emerging commercial space industry—where companies like SpaceX, Rocket Lab, and Planet Labs are launching thousands of small satellites—CWM could replace radiation-hard memory as the default, removing one of the most expensive line items from satellite BOM.</p>
 <p><strong>What we&rsquo;ve validated.</strong> The glass medium, the physics of eigenmode encoding, and the density scaling. <strong>What remains projected:</strong> Vibration tolerance in launch environments (MEMS resonators routinely survive 10,000 g shock tests, suggesting this is tractable) and space-qualification testing.</p>
 <p><strong>Relevant to:</strong> NASA, ESA, JAXA; SpaceX, Rocket Lab, Planet Labs, Capella Space; defense satellite primes (Lockheed Martin, L3Harris, Ball Aerospace); JPL, APL.</p>
 <hr />
-<h3 id="c8-summary-where-sem-fits">C.8 Summary: Where SEM Fits</h3>
+<h3 id="c8-summary-where-sem-fits">C.8 Summary: Where CWM Fits</h3>
 <table>
 <thead>
 <tr>
 <th>Scenario</th>
 <th>Incumbent</th>
-<th>SEM advantage</th>
+<th>CWM advantage</th>
 <th>Readiness gap</th>
 </tr>
 </thead>
@@ -1825,7 +1825,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 </tr>
 </tbody>
 </table>
-<p>The pattern across all seven scenarios is consistent: SEM&rsquo;s interference-based recall converts a search problem that today requires racks of silicon into a physics problem solved by a chip-scale glass resonator in microseconds. The advanced encoding techniques of Section 10 further strengthen this position: synaptic pruning improves accuracy at scale, Boolean computation adds classification capability, and hybridization/null-space multiplexing push effective density beyond what raw mode counts would suggest.</p>
+<p>The pattern across all seven scenarios is consistent: CWM&rsquo;s interference-based recall converts a search problem that today requires racks of silicon into a physics problem solved by a chip-scale glass resonator in microseconds. The advanced encoding techniques of Section 10 further strengthen this position: synaptic pruning improves accuracy at scale, Boolean computation adds classification capability, and hybridization/null-space multiplexing push effective density beyond what raw mode counts would suggest.</p>
 <hr />
 <p><em>All quantitative claims computed from first-principles simulation code (21 modules, 365 automated tests, all passing). No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr />
@@ -1834,8 +1834,8 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Plate 1: SEM Architecture"/>
-<p><strong>Figure 1.</strong> SEM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, SEM unifies storage and computation in the same physical process.</p>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Plate 1: CWM Architecture"/>
+<p><strong>Figure 1.</strong> CWM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, CWM unifies storage and computation in the same physical process.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
@@ -1863,14 +1863,14 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
-<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Gbit/cm³), the 1 mm borosilicate MEMS target (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array design (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Gbit/cm³), the 1 mm borosilicate MEMS target (95.5 Gbit/cm³, 2,400× denser), and a 0.5 mm fused silica array design (1.4 Tbit/cm³, 35,000× denser). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing CWM crossing DRAM at 2.1 mm, PCM at 1.0 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
-<p><strong>Figure 6.</strong> SEM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
+<p><strong>Figure 6.</strong> CWM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
@@ -1884,7 +1884,7 @@ Repository: <a href="https://github.com/miketierce/wcfoma">github.com/miketierce
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
-<p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms SEM as a true compute-in-memory technology.</p>
+<p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms CWM as a true compute-in-memory technology.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>

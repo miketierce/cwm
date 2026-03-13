@@ -2,7 +2,7 @@
 
 ### 7.1 Summary of Findings
 
-This technical note investigated whether the Spectral Eigenmode Memory architecture—originally conceived as a read-only device—could support physical rewritability without sacrificing its defining advantage: ultra-high Q-factor acoustic resonance.
+This technical note investigated whether the Coherent Wave Memory architecture—originally conceived as a read-only device—could support physical rewritability without sacrificing its defining advantage: ultra-high Q-factor acoustic resonance.
 
 Seven hypotheses were tested across three architectural tracks:
 
@@ -12,15 +12,15 @@ Seven hypotheses were tested across three architectural tracks:
 | B — Binary sites | H10, H11   | 2/2       | 7.6 bits rewritable state from 12 MEMS switches; Hopfield-compatible from 4 sites |
 | C — Multi-shell  | H12, H13   | 2/2       | 256 actuators at $Q > 5\text{k}$; 100 nm writable shell with 0.34% tuning range   |
 
-**All seven hypotheses confirmed.** The SEM architecture admits rewritability at every level of the system stack, from pure firmware to physical material modification.
+**All seven hypotheses confirmed.** The CWM architecture admits rewritability at every level of the system stack, from pure firmware to physical material modification.
 
 ### 7.2 The Central Insight
 
 The experiments revealed a design principle that was not obvious before this investigation:
 
-> **The separation principle.** In SEM, the read medium (glass rod eigenmodes) and the write mechanism (firmware projection, MEMS switches, or shell coating) are independent subsystems. The rod can be optimized purely for Q without compromising write/erase cycling, because writing happens _around_ the rod, not _in_ it.
+> **The separation principle.** In CWM, the read medium (glass rod eigenmodes) and the write mechanism (firmware projection, MEMS switches, or shell coating) are independent subsystems. The rod can be optimized purely for Q without compromising write/erase cycling, because writing happens _around_ the rod, not _in_ it.
 
-This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes SEM's rewritability path viable despite the constraints of acoustic resonance.
+This is fundamentally different from every other memory technology, where read and write are coupled through the same physical mechanism (charge trapping in flash, magnetization in MRAM, polarization in FeRAM). The separation principle is what makes CWM's rewritability path viable despite the constraints of acoustic resonance.
 
 ### 7.3 Impact on the v16 Roadmap
 
@@ -50,13 +50,13 @@ This investigation was conducted entirely in simulation. Several questions can o
 
 3. **Binary-site cross-talk.** H10 assumes independent site contributions (linear coupling matrix). Real perturbation sites may interact through evanescent acoustic fields, reducing the effective bit count.
 
-4. **Write endurance.** The simulation does not model fatigue, creep, or material degradation. MEMS switch lifetime data [4] suggests $> 10^9$ cycles is achievable, but this must be verified in the SEM-specific geometry.
+4. **Write endurance.** The simulation does not model fatigue, creep, or material degradation. MEMS switch lifetime data [4] suggests $> 10^9$ cycles is achievable, but this must be verified in the CWM-specific geometry.
 
 5. **Readout noise floor.** The distinguishability threshold ($\delta > 0.1$) in H10 assumes a specific noise floor. The actual noise depends on the CMOS readout circuit, the piezoelectric transducer coupling, and the ADC resolution.
 
 ### 7.5 Reproducibility
 
-All experiments described in this note are implemented in the open-source SEM simulation framework:
+All experiments described in this note are implemented in the open-source CWM simulation framework:
 
 - **Module:** `simulations/rewritability.py` (1,174 lines, 7 experiments)
 - **Tests:** `tests/test_rewritability.py` (68 tests, all passing)

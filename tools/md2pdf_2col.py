@@ -285,20 +285,20 @@ a {
 }
 
 /* ===== Figures — full width when inside plate-page, else in-column ===== */
-div.sem-thumb {
+div.cwm-thumb {
     text-align: center;
     margin: 8pt auto;
     break-inside: avoid;
 }
 
-div.sem-thumb img {
+div.cwm-thumb img {
     max-width: 100%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-div.sem-thumb p {
+div.cwm-thumb p {
     font-size: 7.5pt;
     color: var(--muted);
     text-align: justify;
@@ -720,7 +720,7 @@ def wrap_abstract_2col(html):
 def build_colophon_2col(info):
     return (
         '<div class="colophon-2col">\n'
-        "  <p><em>Spectral Eigenmode Memory</em> &mdash; Version "
+        "  <p><em>Coherent Wave Memory</em> &mdash; Version "
         + info["version"]
         + " &mdash; &copy; "
         + info["author"]
@@ -832,7 +832,7 @@ def html_to_pdf(html, pdf_path, md_path=None):
                     '<div style="font-size: 7.5pt; color: #999; width: 100%;'
                     " padding: 0 0.6in;"
                     ' display: flex; justify-content: space-between;">'
-                    "<span>SEM — Tierce 2026</span>"
+                    "<span>CWM — Tierce 2026</span>"
                     '<span class="pageNumber"></span>'
                     "</div>"
                 ),

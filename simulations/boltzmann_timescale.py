@@ -5,7 +5,7 @@ Mechanics of Mode Populations
 
 Boltzmann's statistical mechanics reveals that complex systems exhibit
 hierarchical timescales: fast microscopic fluctuations → intermediate
-relaxation → slow macroscopic equilibration.  SEM's eigenmode system
+relaxation → slow macroscopic equilibration.  CWM's eigenmode system
 spans timescales from fast acoustic oscillations (~MHz) through mode
 ring-down (τ = Q/(πf), ~µs–ms) to thermal drift (~s).  Scranton's
 observation about "nested timescales in creational processes" maps onto
@@ -18,7 +18,7 @@ timescale separation predicts optimal readout windows.
 Four testable hypotheses:
 
 1. Decade spacing universality (H-Bt1)
-   SEM's three characteristic timescales — oscillation period T_osc = 1/f,
+   CWM's three characteristic timescales — oscillation period T_osc = 1/f,
    ring-down time τ = Q/(πf), and thermal drift period T_th — are
    separated by approximately one decade each, a universal property
    predictable from Q and f alone.
@@ -64,7 +64,7 @@ H_PLANCK = 6.62607015e-34   # Planck constant (J·s)
 
 @dataclass
 class DecadeSpacingResult:
-    """H-Bt1 — Three SEM timescales separated by ~decade each."""
+    """H-Bt1 — Three CWM timescales separated by ~decade each."""
     n_conditions: int              # number of (Q, f) pairs tested
     Q_values: np.ndarray           # Q factors tested
     f_values: np.ndarray           # fundamental frequencies tested (Hz)
@@ -281,7 +281,7 @@ def exp_decade_spacing(
     dT_dt: float = 0.1,
     threshold_fraction: float = 0.70,
 ) -> DecadeSpacingResult:
-    """Test whether SEM timescales are universally decade-spaced.
+    """Test whether CWM timescales are universally decade-spaced.
 
     For each (Q, f) pair, compute three timescales:
       T_osc = 1/f              (oscillation period)

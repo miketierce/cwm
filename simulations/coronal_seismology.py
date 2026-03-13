@@ -1,9 +1,9 @@
 """S17 — Coronal Seismology: Astrophysical Validation of Standing-Wave Information Theory.
 
-This sidebar EXPORTS SEM predictions to solar coronal loops — bounded
+This sidebar EXPORTS CWM predictions to solar coronal loops — bounded
 plasma cavities with discrete MHD eigenmodes.  The same sin²(nπx/L)
 sensitivity matrix, perturbation theory, and eigenfrequency readout
-that SEM uses in glass applies to kink/sausage oscillations observed
+that CWM uses in glass applies to kink/sausage oscillations observed
 by SDO/AIA, TRACE, and Hinode.  Validation against astrophysical
 observations constitutes a qualitatively different class of evidence.
 
@@ -21,7 +21,7 @@ H-CS4  Published P₁/2P₂ anomalies correlate with conditioning — Spearman
 H-CS5  Footpoint impedance mismatch maps to Fabry–Pérot finesse — loop
        Q from damping matches finesse prediction within factor 2.
        Kill: ratio outside [0.5, 2.0].
-H-CS6  Density stratification sensitivity follows SEM perturbation
+H-CS6  Density stratification sensitivity follows CWM perturbation
        scaling — eigenfrequency shift δω/ω scales linearly for small ε.
        Kill: nonlinear for ε < 0.1.
 H-CS7  Irrational density-probe spacing maximises inversion accuracy —
@@ -437,7 +437,7 @@ def exp_rational_degeneracy(
     """H-CS1 — Rational-position inversion degeneracy.
 
     Compute κ(S) for density perturbation positions at rational fractions
-    of loop length (p/q with q ≤ 6) vs irrational Weyl positions.  SEM
+    of loop length (p/q with q ≤ 6) vs irrational Weyl positions.  CWM
     predicts κ peaks at rational fractions due to the periodicity of
     sin²(nπp/q) in n.
 
@@ -598,7 +598,7 @@ def exp_capacity_ceiling(
 
     For a coronal loop with N observable overtones, measure diagnostic
     information content (unique recoverable density profiles).
-    SEM predicts C ≈ a·ln(N) + b — each additional overtone provides
+    CWM predicts C ≈ a·ln(N) + b — each additional overtone provides
     diminishing returns.
 
     Confirm: log R² > linear R².
@@ -669,7 +669,7 @@ def exp_period_ratio_correlation(
 
     For each published coronal loop observation, the gravitational density
     stratification that produces its measured P₁/2P₂ ratio is associated
-    with a specific sensitivity-matrix condition number κ.  SEM predicts
+    with a specific sensitivity-matrix condition number κ.  CWM predicts
     that loops with larger P₁/2P₂ deviation from 1.0 have higher κ
     (worse conditioning).
 
@@ -760,7 +760,7 @@ def exp_footpoint_finesse(
 
     Coronal loop footpoints act as partial reflectors (chromospheric
     density jump).  The impedance mismatch sets an effective reflectivity
-    R ≈ (ρ_i − ρ_e)/(ρ_i + ρ_e).  SEM/S14 predicts Q = n·F/π where
+    R ≈ (ρ_i − ρ_e)/(ρ_i + ρ_e).  CWM/S14 predicts Q = n·F/π where
     F is the Fabry-Pérot finesse.
 
     Meanwhile, observed damping times give Q_obs = π·τ_d/P.  If the
@@ -809,11 +809,11 @@ def exp_perturbation_scaling(
     n_max: int = 10,
     seed: int = 42,
 ) -> PerturbationScalingResult:
-    """H-CS6 — Density stratification sensitivity follows SEM perturbation scaling.
+    """H-CS6 — Density stratification sensitivity follows CWM perturbation scaling.
 
     For small density perturbation amplitude ε, the eigenfrequency shift
     δω/ω should scale linearly with ε (first-order perturbation theory).
-    SEM uses this linear regime for encoding; if it fails in coronal
+    CWM uses this linear regime for encoding; if it fails in coronal
     loops, the analogy breaks down.
 
     Confirm: R² of linear fit > 0.99 for ε ∈ [0, 0.1].

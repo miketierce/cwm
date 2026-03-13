@@ -1,5 +1,5 @@
 """
-Perturbation Site Placement Optimization for SEM.
+Perturbation Site Placement Optimization for CWM.
 
 Given a glass rod with n_max resolvable eigenmodes, this module answers:
     1. Where should K discrete mass-perturbation sites be placed?

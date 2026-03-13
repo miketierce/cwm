@@ -9,7 +9,7 @@ Scranton's key insight: a single Dogon sacred symbol simultaneously
 encodes up to four distinct layers of meaning — physical, cosmological,
 biological, and social — readable depending on the interpretive frame
 applied by the observer.  This "polysemic encoding" principle maps
-directly onto multiplexed spectral readout in SEM.
+directly onto multiplexed spectral readout in CWM.
 
 Parallel → Hypothesis → Experiment
 ═══════════════════════════════════════════════════════════════════════
@@ -44,7 +44,7 @@ Parallel → Hypothesis → Experiment
    H12: The same perturbation alphabet applied to rods of different
         lengths/materials produces distinguishable fingerprints that
         can be cross-decoded, enabling a "Rosetta stone" calibration
-        protocol between heterogeneous SEM substrates.
+        protocol between heterogeneous CWM substrates.
 
 Each experiment returns a concise dataclass result with a boolean
 verdict and numerical evidence.
@@ -189,7 +189,7 @@ def exp_polysemic_readout(
     meanings depending on the interpretive frame (physical,
     cosmological, biological, social).
 
-    SEM analogue: a single perturbation pattern produces a spectral
+    CWM analogue: a single perturbation pattern produces a spectral
     fingerprint across all N modes.  Partition the N modes into C
     non-overlapping subsets ("interpretive frames").  Each subset's
     projection of the fingerprint is a different "meaning".
@@ -308,7 +308,7 @@ def exp_duality_encoding(
     the Nommo are hermaphroditic twins, the Eight Ancestors come in
     pairs.  Scranton: this duality principle pervades every symbol.
 
-    SEM physics: sin²(nπx) = sin²(nπ(1-x)) means sites at x and
+    CWM physics: sin²(nπx) = sin²(nπ(1-x)) means sites at x and
     1-x look identical to ALL modes.  This is the physical duality.
 
     But odd-mode sums vs even-mode sums break this symmetry!
@@ -421,7 +421,7 @@ def exp_nommo_naming(
     that conjures being.  Scranton: the symbol IS the thing it names,
     not an arbitrary label.
 
-    SEM analogue: the spectral fingerprint IS the identity of the
+    CWM analogue: the spectral fingerprint IS the identity of the
     stored data.  A "strong name" is a fingerprint maximally distant
     from all other fingerprints — resistant to confusion under noise.
 
@@ -566,7 +566,7 @@ def exp_sigi_cycle(
     each phase.  Scranton: the temporal structure itself encodes
     information, not just the events within it.
 
-    SEM analogue: each eigenmode decays as exp(-πf_n t / Q_n).
+    CWM analogue: each eigenmode decays as exp(-πf_n t / Q_n).
     Different modes decay at different rates, so a fingerprint
     evolves deterministically with time.  Reading the rod at
     different time windows after writing yields different
@@ -680,7 +680,7 @@ def exp_ammas_egg(
     Scranton: the universe grows from a compact vibrating seed
     into full complexity through deterministic expansion rules.
 
-    SEM analogue: instead of writing K independent perturbation
+    CWM analogue: instead of writing K independent perturbation
     values, write a compact seed of S < K values and expand it
     via a deterministic rule (e.g., cellular automaton, linear
     recurrence) to fill all K sites.  The seed constrains the
@@ -822,7 +822,7 @@ def exp_rosetta_stone(
     shared symbolic "alphabet" used by geographically separated
     cultures to encode identical knowledge about the universe.
 
-    SEM analogue: rods of different lengths have different eigenmode
+    CWM analogue: rods of different lengths have different eigenmode
     frequencies, so the SAME perturbation pattern produces different
     fingerprints on different rods.  But if we know both sensitivity
     matrices S_A and S_B, we can build a translation matrix T such
@@ -936,7 +936,7 @@ def run_all_scranton_dogon(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  SCRANTON–DOGON INFORMED EXPERIMENTS FOR SEM")
+        print("  SCRANTON–DOGON INFORMED EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # H7

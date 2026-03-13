@@ -699,7 +699,7 @@ class TestRunAllCoronal:
 # ====================================================================
 
 class TestCrossPhysics:
-    """Consistency checks between coronal and SEM physics."""
+    """Consistency checks between coronal and CWM physics."""
 
     def test_kink_faster_than_longitudinal(self):
         wk = _kink_frequency(1)

@@ -4,7 +4,7 @@ S10 — Johannes Kepler (1571–1630): Harmonic Resonance Ratios
 
 Kepler's *Harmonices Mundi* (1619) described planetary orbital ratios as
 musical consonances — harmonic relationships between oscillation frequencies
-that form small-integer ratios.  SEM's eigenmode spectrum f_n = n c/(2L) is
+that form small-integer ratios.  CWM's eigenmode spectrum f_n = n c/(2L) is
 inherently harmonic: all modes are exact integer multiples of the fundamental.
 
 Kepler's insight suggests these harmonic relationships can be *exploited*:

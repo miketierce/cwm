@@ -2,13 +2,13 @@
 S5 — Georg von Békésy (1899–1972, Nobel 1961): Cochlear Eigenmode Memory
 =========================================================================
 
-The cochlea is a **biological SEM device**: a tapered resonant cavity that
+The cochlea is a **biological CWM device**: a tapered resonant cavity that
 maps eigenfrequencies to spatial positions along the basilar membrane.
 Evolution has optimised eigenmode-based information encoding for ~200 Myr.
 
-**Historical parallel → SEM hypothesis → Experiment**
+**Historical parallel → CWM hypothesis → Experiment**
 
-| Parallel                 | SEM hypothesis          | Experiment |
+| Parallel                 | CWM hypothesis          | Experiment |
 |--------------------------|-------------------------|------------|
 | Tonotopic taper          | More modes via taper    | H-B1       |
 | Log frequency mapping    | Better recall at low-f  | H-B2       |
@@ -455,7 +455,7 @@ def exp_log_spacing_recall(
     The cochlea maps frequencies logarithmically (Greenwood function),
     allocating more resolution to low frequencies where SNR is highest.
     We compare associative recall accuracy under noise for:
-    - Linear spacing: f_n = n·f₀ (standard SEM)
+    - Linear spacing: f_n = n·f₀ (standard CWM)
     - Logarithmic spacing: f_n = f_low · (f_high/f_low)^((n-1)/(N-1))
 
     The frequency spacing affects the sensitivity matrix S, whose
@@ -585,7 +585,7 @@ def exp_active_q_boost(
     boosts local Q by a factor of ~10–100× (passive cochlea Q ≈ 5–10,
     active Q ≈ 100–1000).
 
-    The SEM analogue: a feedback circuit senses each mode's amplitude
+    The CWM analogue: a feedback circuit senses each mode's amplitude
     via the readout transducer and drives the write transducer at the
     same frequency with phase-locked gain, compensating the dominant
     loss mechanism (anchor loss in MEMS).
@@ -664,7 +664,7 @@ def exp_cochlear_window(
     cochlear_alpha: float = 3.0,
     rng: Optional[np.random.RandomState] = None,
 ) -> CochlearWindowResult:
-    """H-B4: Cochlear-inspired FFT window beats rectangular for SEM readout.
+    """H-B4: Cochlear-inspired FFT window beats rectangular for CWM readout.
 
     The cochlea performs frequency analysis with a frequency-dependent
     resolution: narrow bandwidth (high Q) at low frequencies, wider
@@ -676,8 +676,8 @@ def exp_cochlear_window(
     from the equivalent rectangular bandwidth (ERB) scale:
         ERB(f) = 24.7 · (4.37×10⁻³ · f + 1)
 
-    We compare three windows on a multi-mode SEM signal with noise:
-    1. Rectangular (current SEM assumption)
+    We compare three windows on a multi-mode CWM signal with noise:
+    1. Rectangular (current CWM assumption)
     2. Hann (standard DSP choice)
     3. Cochlear-inspired (ERB-matched asymmetric Gaussian)
 

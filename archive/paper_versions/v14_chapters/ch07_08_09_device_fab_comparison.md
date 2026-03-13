@@ -4,7 +4,7 @@
 
 ### 7.1 Reference Design
 
-The following table defines the baseline MEMS SEM device. Every parameter is either derived from the scaling analysis (Sections 5–6) or chosen to match established MEMS fabrication capabilities.
+The following table defines the baseline MEMS CWM device. Every parameter is either derived from the scaling analysis (Sections 5–6) or chosen to match established MEMS fabrication capabilities.
 
 | Parameter        | Value                              | Rationale                                        |
 | ---------------- | ---------------------------------- | ------------------------------------------------ |
@@ -59,7 +59,7 @@ At 80 µm pitch (2× rod diameter) and 1.1 mm layer spacing (rod length + 100 µ
 
 ## 8. Fabrication Pathway
 
-Every step in the SEM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between "interesting physics demonstration" and "buildable device." No new materials, no new equipment, no new process chemistry.
+Every step in the CWM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between "interesting physics demonstration" and "buildable device." No new materials, no new equipment, no new process chemistry.
 
 ### 8.1 Process Flow
 
@@ -75,7 +75,7 @@ Every step in the SEM fabrication process is borrowed from an existing MEMS prod
 
 **Step 6 — CMOS integration.** Flip-chip bond the vacuum-sealed glass array onto a CMOS readout die. The CMOS die contains per-rod amplifiers, an FFT engine, a pattern-matching correlator, and a digital interface (SPI or I²C). This is the same integration approach used in Bosch and STMicro MEMS accelerometers and Avago/Broadcom FBAR filters: the MEMS structure is fabricated on one wafer, the CMOS on another, and the two are bonded face-to-face.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig6_fabrication.svg" alt="Figure 6: Fabrication process flow"/>
 <p><strong>Figure 6.</strong> Six-step fabrication process using established MEMS production techniques. The innovation is the architectural combination, not the fabrication.</p>
 </div>
@@ -92,7 +92,7 @@ Every step in the SEM fabrication process is borrowed from an existing MEMS prod
 | Assembly + test                 | \$3/die        |
 | **Per die (10,000 dies/wafer)** | **~\$0.06**    |
 
-At scale, a single SEM die costs less than a capacitor.
+At scale, a single CWM die costs less than a capacitor.
 
 ### 8.3 Risk Assessment
 
@@ -107,7 +107,7 @@ At scale, a single SEM die costs less than a capacitor.
 
 † Cross-talk is bounded by the acoustic impedance mismatch between rod and vacuum gap. At 0.1 Pa, the impedance ratio exceeds 10⁷:1.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig2_mems_cross_section.svg" alt="Figure 2: MEMS resonator cross-section"/>
 <p><strong>Figure 2.</strong> MEMS resonator cross-section showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic perturbation masses.</p>
 </div>
@@ -125,32 +125,32 @@ At scale, a single SEM die costs less than a capacitor.
 | NAND Flash            | 1,000              | ~25 µs     | ~10 pJ/bit    | 10³–10⁵   | No           |
 | PCM                   | 64                 | ~100 ns    | ~10 pJ/bit    | 10⁸–10⁹   | No           |
 | ReRAM                 | 100                | ~10 ns     | ~1 pJ/bit     | 10⁶–10¹²  | Partial†     |
-| **SEM (1 mm)**        | **95.5**           | **3.6 µs** | **16 fJ/bit** | **>10¹⁵** | **Native**   |
-| **SEM (0.5 mm SiO₂)** | **1,394**          | **3.6 µs** | **~8 fJ/bit** | **>10¹⁵** | **Native**   |
+| **CWM (1 mm)**        | **95.5**           | **3.6 µs** | **16 fJ/bit** | **>10¹⁵** | **Native**   |
+| **CWM (0.5 mm SiO₂)** | **1,394**          | **3.6 µs** | **~8 fJ/bit** | **>10¹⁵** | **Native**   |
 
 † ReRAM crossbar arrays can perform matrix-vector multiply, but require explicit weight programming and are limited to linear operations.
 
-### 9.2 SEM's Unique Position
+### 9.2 CWM's Unique Position
 
-Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. SEM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This is not a marketing distinction—it has concrete engineering consequences:
+Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. CWM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This is not a marketing distinction—it has concrete engineering consequences:
 
-- **Non-volatility without charge retention.** Flash and PCM lose data when charge leaks or crystals relax. SEM's perturbation pattern is a physical structure; it persists as long as the glass exists.
-- **Endurance without wear.** Flash endurance is limited by oxide breakdown from repeated tunnelling. DRAM endurance is limited by capacitor dielectric fatigue. SEM's acoustic oscillation is elastic and reversible—the glass experiences stress levels billions of times below its fracture threshold.
-- **Computation without data movement.** ReRAM computes in the crossbar, but you still have to program the weights. SEM's weights are the physics—they were set at fabrication and never need updating for the associative recall to work.
+- **Non-volatility without charge retention.** Flash and PCM lose data when charge leaks or crystals relax. CWM's perturbation pattern is a physical structure; it persists as long as the glass exists.
+- **Endurance without wear.** Flash endurance is limited by oxide breakdown from repeated tunnelling. DRAM endurance is limited by capacitor dielectric fatigue. CWM's acoustic oscillation is elastic and reversible—the glass experiences stress levels billions of times below its fracture threshold.
+- **Computation without data movement.** ReRAM computes in the crossbar, but you still have to program the weights. CWM's weights are the physics—they were set at fabrication and never need updating for the associative recall to work.
 
 ### 9.3 The Computation Advantage
 
-The comparison table understates SEM's advantage for search workloads. Traditional architectures must read data, transfer it to a processor, and execute a comparison algorithm. For a 100,000-pattern nearest-neighbor search:
+The comparison table understates CWM's advantage for search workloads. Traditional architectures must read data, transfer it to a processor, and execute a comparison algorithm. For a 100,000-pattern nearest-neighbor search:
 
 - **CPU**: ~10 ms (sequential scan)
 - **GPU**: ~0.1 ms (parallel dot products)
-- **SEM**: ~3.6 µs (single acoustic propagation cycle, all patterns in parallel)
+- **CWM**: ~3.6 µs (single acoustic propagation cycle, all patterns in parallel)
 
-SEM is 28× faster than a GPU and 2,800× faster than a CPU for this workload, at a fraction of the power.
+CWM is 28× faster than a GPU and 2,800× faster than a CPU for this workload, at a fraction of the power.
 
-### 9.4 What SEM Is Not
+### 9.4 What CWM Is Not
 
-SEM is not a general-purpose replacement for SRAM, DRAM, or Flash. It is optimized for:
+CWM is not a general-purpose replacement for SRAM, DRAM, or Flash. It is optimized for:
 
 - Content-addressable memory (associative lookup)
 - Pattern matching and classification
@@ -162,14 +162,14 @@ It is not suitable for random byte-addressable read/write (use DRAM), high-speed
 
 ### 9.5 Disruption Scenarios
 
-We identify five scenarios where SEM's unique property combination creates strategic advantage:
+We identify five scenarios where CWM's unique property combination creates strategic advantage:
 
-1. **Associative search at the edge.** A 1 cm³ SEM module performs 280,000 associative lookups per second at <5 W. This enables real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.
+1. **Associative search at the edge.** A 1 cm³ CWM module performs 280,000 associative lookups per second at <5 W. This enables real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.
 
 2. **Radiation-hard memory for space.** Glass resonators are intrinsically immune to single-event upsets (no charge states to flip). A 1 cm³ module stores 17 Gbit of radiation-hard memory—250× JWST's entire memory system—without shielding.
 
-3. **Biometric authentication.** Voiceprint, fingerprint, and facial-feature matching are nearest-neighbor problems. A SEM chip in a phone performs 1,294-template matching in 3.6 µs at ~100 µW—enabling always-on biometric security with negligible battery impact.
+3. **Biometric authentication.** Voiceprint, fingerprint, and facial-feature matching are nearest-neighbor problems. A CWM chip in a phone performs 1,294-template matching in 3.6 µs at ~100 µW—enabling always-on biometric security with negligible battery impact.
 
-4. **Network intrusion detection.** Deep packet inspection at 100 Gbps requires matching packet signatures against thousands of threat patterns. SEM's parallel associative recall handles this natively; TCAM solutions cost 50–100× more per lookup.
+4. **Network intrusion detection.** Deep packet inspection at 100 Gbps requires matching packet signatures against thousands of threat patterns. CWM's parallel associative recall handles this natively; TCAM solutions cost 50–100× more per lookup.
 
-5. **DNA sequence matching.** Short-read alignment is a massive nearest-neighbor search. A SEM array could perform Smith-Waterman-equivalent scoring at acoustic speed, potentially replacing GPU clusters in sequencing pipelines.
+5. **DNA sequence matching.** Short-read alignment is a massive nearest-neighbor search. A CWM array could perform Smith-Waterman-equivalent scoring at acoustic speed, potentially replacing GPU clusters in sequencing pipelines.

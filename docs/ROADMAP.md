@@ -399,7 +399,7 @@ The paper's own citation audit (included at end of v9.md) identified issues:
 
 ## Historical Sidebar Research
 
-Sidebars explore structural parallels between historical figures' work and SEM
+Sidebars explore structural parallels between historical figures' work and CWM
 physics, generating testable engineering hypotheses. Each sidebar produces a
 simulation module, automated tests, and (if confirmed) paper integration.
 

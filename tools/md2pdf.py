@@ -447,20 +447,20 @@ a {
 }
 
 /* -- Inline thumbnail figures -- */
-div.sem-thumb {
+div.cwm-thumb {
     text-align: center;
     margin: 12pt auto;
     page-break-inside: avoid;
 }
 
-div.sem-thumb img {
+div.cwm-thumb img {
     max-width: 70%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
-div.sem-thumb p {
+div.cwm-thumb p {
     font-size: 8.5pt;
     color: var(--muted);
     text-align: center;
@@ -909,7 +909,7 @@ def wrap_abstract(html):
 def build_colophon(info):
     return (
         '<div class="colophon">\n'
-        '  <p><em>Spectral Eigenmode Memory</em></p>\n'
+        '  <p><em>Coherent Wave Memory</em></p>\n'
         '  <p>Version ' + info["version"] + '</p>\n'
         '  <p>&copy; ' + info["author"] + '</p>\n'
         '  <p style="margin-top: 16pt; font-size: 8pt;">\n'

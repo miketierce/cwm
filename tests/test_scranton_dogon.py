@@ -2,7 +2,7 @@
 Tests for simulations/scranton_dogon.py — Scranton–Dogon informed experiments.
 
 Six hypotheses (H7–H12) derived from Laird Scranton's analysis of Dogon
-cosmological symbol systems mapped onto SEM physics.
+cosmological symbol systems mapped onto CWM physics.
 """
 
 import numpy as np

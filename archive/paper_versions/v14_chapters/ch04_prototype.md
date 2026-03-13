@@ -49,7 +49,7 @@ At the macro scale, we can directly observe these modes as distinct peaks in the
 
 Figure 11 shows the measured frequency comb for the first seven modes before and after applying a wax perturbation. The unperturbed spectrum (blue) is a clean comb with constant spacing. After placing ~0.1 mg of wax near the third-mode antinode, each mode shifts by a different $\Delta f_n$—mode 3 shifts most (the wax sits at its displacement maximum), while mode 4 shifts negligibly (the wax sits near a node). The right panel zooms into modes 2–4 showing the Lorentzian peak shapes and individual shift magnitudes. These shifts match Rayleigh predictions to within 2%.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig11_prototype_spectrum.svg" alt="Figure 11: Prototype eigenmode spectrum before and after wax perturbation"/>
 <p><strong>Figure 11.</strong> (a) Eigenmode frequency comb of the 150 mm borosilicate prototype: unperturbed (blue solid) and after 0.1 mg wax perturbation (red dashed). Each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode. (b) Zoomed view of modes 2–4 showing Lorentzian peak profiles and the position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 shifts negligibly (wax near node).</p>
 </div>
@@ -62,7 +62,7 @@ The results confirm the theory: measured frequency shifts match Rayleigh predict
 
 To quantify the quality factor of the prototype, we measure the ring-down time of the fundamental mode (Figure 12). After impulse excitation, the displacement amplitude decays exponentially with time constant $\tau = Q/(\pi f_1)$. The observed $\tau = 169$ ms at $f_1 = 18{,}800$ Hz gives $Q = \pi f_1 \tau = 10{,}000$. An independent measurement via the $-3$ dB bandwidth of the resonance peak ($\Delta f_{3\text{dB}} = 1.88$ Hz) confirms the same value: $Q = f_1/\Delta f_{3\text{dB}} = 10{,}000$. This is consistent with the material quality factor of borosilicate glass, confirming the prototype is material-loss-limited—the measurement electronics are not the bottleneck.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig12_ringdown.svg" alt="Figure 12: Ring-down trace and Q extraction"/>
 <p><strong>Figure 12.</strong> (a) Ring-down waveform of the fundamental mode (18.8 kHz) after impulse excitation. The exponential envelope decays with τ = 169 ms, corresponding to Q = 10,000. (b) Frequency-domain measurement: the −3 dB bandwidth of the Lorentzian resonance peak is 1.88 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited.</p>
 </div>
@@ -73,7 +73,7 @@ To test the search mechanism, we drive the rod with a frequency pattern matching
 
 Figure 13 illustrates this with eight stored patterns. When the query spectrum matches pattern P4, the rod responds at 28 dB above the noise floor—15 dB above the best non-matching pattern (P6 at 13 dB). The cross-correlation matrix in Figure 13(b) confirms near-orthogonality between stored fingerprints: diagonal entries are 1.00 (perfect self-correlation), while the maximum off-diagonal entry is 0.21 (−13.6 dB). This means each spectral fingerprint is sufficiently unique that wave-interference recall reliably identifies the correct match.
 
-<div class="sem-thumb">
+<div class="cwm-thumb">
 <img src="figures/fig13_recall_discrimination.svg" alt="Figure 13: Associative recall discrimination"/>
 <p><strong>Figure 13.</strong> (a) Response amplitudes when querying for pattern P4 across an 8-pattern array. The matching pattern produces a 28 dB response—15 dB above the best non-matching pattern (P6), providing a 30× power margin for reliable detection. (b) Cross-correlation matrix for four stored fingerprints: diagonal entries dominate at 1.00, off-diagonal entries ≤ 0.21, confirming spectral orthogonality.</p>
 </div>

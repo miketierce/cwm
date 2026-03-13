@@ -11,7 +11,7 @@ algorithms to recover this lost phase information from amplitude-only data:
   • Iterative phase retrieval (Gerchberg–Saxton / HIO)
   • Molecular replacement (use a known model to bootstrap phases)
 
-SEM's readout is also an FFT of the rod's response.  The Tesla sidebar
+CWM's readout is also an FFT of the rod's response.  The Tesla sidebar
 (§11.7) showed that phase carries independent information — complex recall
 outperforms amplitude-only recall.  Franklin's domain asks: can we do even
 better?  Can we recover phase from amplitude-only data?  Can we reconstruct
@@ -169,7 +169,7 @@ def _tangent_formula_phases(amplitudes: np.ndarray, n_iter: int = 50,
         tan(φ_h) ≈ Σ_k |E_k||E_{h-k}| sin(φ_k + φ_{h-k})
                    / Σ_k |E_k||E_{h-k}| cos(φ_k + φ_{h-k})
 
-    where E_h are normalised structure factors.  In the SEM context,
+    where E_h are normalised structure factors.  In the CWM context,
     "reflections" are mode indices and amplitudes are |F_n|.
 
     We adapt this by treating mode indices as 1D "reciprocal lattice"
@@ -214,7 +214,7 @@ def exp_direct_methods(
 ) -> DirectMethodResult:
     """
     H-F1: Can crystallographic direct methods recover perturbation
-    positions from amplitude-only SEM spectra?
+    positions from amplitude-only CWM spectra?
 
     The tangent formula uses statistical relations among diffraction
     amplitudes to estimate phases.  We test whether this recovers
@@ -602,7 +602,7 @@ def exp_molecular_replacement(
     diffraction pattern, and uses the model's calculated phases combined
     with the observed amplitudes to build a starting electron density map.
 
-    SEM analogue: given an amplitude-only readout |F_n|, try each stored
+    CWM analogue: given an amplitude-only readout |F_n|, try each stored
     pattern as a phase model.  For stored pattern j, compute the model
     phases φ_n^(j), then form:
 
@@ -737,7 +737,7 @@ def run_all_franklin(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  FRANKLIN PHASE-RETRIEVAL EXPERIMENTS FOR SEM")
+        print("  FRANKLIN PHASE-RETRIEVAL EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # H-F1: Direct Methods

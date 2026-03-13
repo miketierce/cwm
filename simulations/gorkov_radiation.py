@@ -8,7 +8,7 @@ collect in a standing-wave field.  The primary radiation force is
 
     F_pr  ∝  sin(2kz)
 
-where k = nπ/L for the n-th eigenmode.  SEM's eigenmode sensitivity
+where k = nπ/L for the n-th eigenmode.  CWM's eigenmode sensitivity
 function sin²(nπx/L) has a spatial gradient
 
     ∂/∂x sin²(nπx/L) = (nπ/L) sin(2nπx/L)
@@ -146,7 +146,7 @@ def _acoustic_frequencies(n_modes: int, L: float = 1e-5,
 
 
 def _sensitivity(n: int, x: np.ndarray) -> np.ndarray:
-    """SEM eigenmode sensitivity: sin²(nπx) at normalised position x ∈ [0,1]."""
+    """CWM eigenmode sensitivity: sin²(nπx) at normalised position x ∈ [0,1]."""
     return np.sin(n * np.pi * x) ** 2
 
 

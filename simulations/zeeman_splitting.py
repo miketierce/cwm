@@ -7,7 +7,7 @@ external magnetic field.  The splitting magnitude depends on quantum numbers
 and a g-factor, and selection rules (ΔmJ = 0, ±1) constrain which transitions
 appear.  At strong fields the splitting becomes quadratic (Paschen-Back regime).
 
-SEM analogue: when an external perturbation (mass loading at position x_p)
+CWM analogue: when an external perturbation (mass loading at position x_p)
 is applied to a cavity with near-degenerate eigenmode pairs, frequency
 splitting occurs analogous to the Zeeman effect.  The spare_mace avoided-
 crossing experiment (§11.3) demonstrated +160% capacity from hybridisation;

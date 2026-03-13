@@ -1,17 +1,17 @@
-# SEM Macro-Scale Experiment Guide
+# CWM Macro-Scale Experiment Guide
 
 **Mike Tierce**
 _Independent Researcher_
 ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
 
-**Companion to: "Spectral Eigenmode Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)**
+**Companion to: "Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators" (v16)**
 
 ---
 
 ## About This Document
 
-This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Spectral Eigenmode Memory (SEM) prototype experiments described in Section 4 of the main paper.
+This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Coherent Wave Memory (CWM) prototype experiments described in Section 4 of the main paper.
 
 The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all eight experiments, and contribute publishable data within a single school week. See Section 4 of the main paper for the theoretical context behind each measurement.
 
@@ -23,7 +23,7 @@ _All quantitative claims in the main paper are computed from first-principles si
 
 _This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all eight experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement._
 
-**The glass harmonica connection.** Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of SEM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the _glass armonica_, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); and Experiment 8 demonstrates rewritable encoding with water drops (the armonica).
+**The glass harmonica connection.** Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the _glass armonica_, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); and Experiment 8 demonstrates rewritable encoding with water drops (the armonica).
 
 ### D.1 Complete Bill of Materials
 
@@ -171,7 +171,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 <div class="worksheet-header">
 <h4>Worksheet D.1 — Quality Factor Measurement</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per rod. Record ring-down and bandwidth Q values for comparison.</p>
 </div>
 
@@ -241,7 +241,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 <div class="worksheet-header">
 <h4>Worksheet D.2 — Mode Spectrum Map</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per rod. Log predicted vs. measured frequencies for all confirmed longitudinal modes.</p>
 </div>
 
@@ -303,7 +303,7 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 
 <div class="worksheet-header">
 <h4>Worksheet D.3 — Thermal Stability Log</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per thermal stability run. Track frequency drift vs. temperature over time.</p>
 </div>
 
@@ -374,7 +374,7 @@ The key insight is that _different modes shift by different amounts_ depending o
 
 <div class="worksheet-header">
 <h4>Worksheet D.4 — Perturbation Encoding Data</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per perturbation trial. Record before/after mode frequencies and compare to Rayleigh predictions.</p>
 </div>
 
@@ -412,7 +412,7 @@ _After removing wax:_
 
 ### D.8 Experiment 6 — Associative Recall Demonstration
 
-**Objective:** Show that the rod physically distinguishes between matching and non-matching query patterns—the basis of SEM's O(1) nearest-neighbor search.
+**Objective:** Show that the rod physically distinguishes between matching and non-matching query patterns—the basis of CWM's O(1) nearest-neighbor search.
 
 **Time:** 60 minutes.
 
@@ -438,7 +438,7 @@ _After removing wax:_
 
 <div class="worksheet-header">
 <h4>Worksheet D.5 — Associative Recall Discrimination</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per discrimination test. Log response amplitudes for matched vs. unmatched query patterns.</p>
 </div>
 
@@ -510,7 +510,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 <div class="worksheet-header">
 <h4>Worksheet D.6 — CW Readout Comparison</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per CW session. Compare impulse ring-down vs. continuous-wave lock-in readout.</p>
 </div>
 
@@ -530,7 +530,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 **Expected results.** The electronic CW gains should match predictions within ±3 dB (measurement noise, PZT coupling variability, and frequency drift all widen the tolerance). The wet-finger bowing should produce sustained oscillation at $f_1$ lasting as long as the finger maintains contact—typically 2–5 seconds per stroke. Students who have played a glass harp will find this immediately intuitive.
 
-> **Why this matters.** Experiments 1–6 demonstrate SEM as a _rung bell_—impulse excitation, finite-duration readout. This experiment demonstrates SEM as a _bowed string_—continuous excitation, arbitrarily long integration, progressively higher precision. The two-phase readout architecture proposed in §2.3 combines both: ring the bell (fast, broadband) to find the answer, then bow the string (slow, precise) to read it exactly.
+> **Why this matters.** Experiments 1–6 demonstrate CWM as a _rung bell_—impulse excitation, finite-duration readout. This experiment demonstrates CWM as a _bowed string_—continuous excitation, arbitrarily long integration, progressively higher precision. The two-phase readout architecture proposed in §2.3 combines both: ring the bell (fast, broadband) to find the answer, then bow the string (slow, precise) to read it exactly.
 
 ---
 
@@ -566,7 +566,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 <div class="worksheet-header">
 <h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Print one copy per rewritability session. Track spectra across write / erase / rewrite cycles.</p>
 </div>
 
@@ -594,7 +594,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 <div class="worksheet-header">
 <h4>D.11 — Consolidated Experiment Log</h4>
-<p class="ws-project">SEM Macro-Scale Experiment Guide · Spectral Eigenmode Memory</p>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
 </div>
 
@@ -648,7 +648,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 ### D.13 Contributing Your Data
 
-We invite all experimenters—students, teachers, hobbyists, and researchers—to submit completed worksheets and raw PicoScope data files to the project repository. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of SEM and accelerate the transition from macro prototype to MEMS fabrication.
+We invite all experimenters—students, teachers, hobbyists, and researchers—to submit completed worksheets and raw PicoScope data files to the project repository. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.
 
 **To contribute:**
 
@@ -672,8 +672,8 @@ _The following pages present each figure at full landscape scale for detailed ex
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig1_architecture.svg" alt="Plate 1: SEM Architecture"/>
-<p><strong>Figure 1.</strong> SEM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, SEM unifies storage and computation in the same physical process.</p>
+<img src="figures/fig1_architecture.svg" alt="Plate 1: CWM Architecture"/>
+<p><strong>Figure 1.</strong> CWM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, CWM unifies storage and computation in the same physical process.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
@@ -701,14 +701,14 @@ _The following pages present each figure at full landscape scale for detailed ex
 
 <div class="plate-page">
 <img src="figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
-<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing SEM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
+<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing CWM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
-<p><strong>Figure 6.</strong> SEM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
+<p><strong>Figure 6.</strong> CWM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
@@ -722,7 +722,7 @@ _The following pages present each figure at full landscape scale for detailed ex
 
 <div class="plate-page">
 <img src="figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
-<p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms SEM as a true compute-in-memory technology.</p>
+<p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms CWM as a true compute-in-memory technology.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>

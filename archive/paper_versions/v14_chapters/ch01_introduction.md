@@ -32,7 +32,7 @@ _That is the write operation._ Data is encoded as a physical mass pattern; the r
 
 _The read operation_ is equally physical. Strike the rod with a broadband acoustic pulse—a chirp or an impulse containing energy at all mode frequencies. The rod rings at all of its shifted eigenfrequencies simultaneously. Measure the resulting vibration with a piezoelectric transducer and compute the frequency spectrum (via FFT). The spectrum _is_ the stored data.
 
-_The search operation_ is where SEM becomes qualitatively different from conventional memory. Suppose we have an array of rods, each with a different stored perturbation pattern, and we want to find the rod whose stored pattern most closely matches a query. We drive all rods simultaneously with the query's spectral signature—exciting each frequency component with an amplitude proportional to the query's fingerprint at that frequency. Each rod responds with an amplitude proportional to the overlap (dot product) between its stored fingerprint and the query:
+_The search operation_ is where CWM becomes qualitatively different from conventional memory. Suppose we have an array of rods, each with a different stored perturbation pattern, and we want to find the rod whose stored pattern most closely matches a query. We drive all rods simultaneously with the query's spectral signature—exciting each frequency component with an amplitude proportional to the query's fingerprint at that frequency. Each rod responds with an amplitude proportional to the overlap (dot product) between its stored fingerprint and the query:
 
 $$R_j = \sum_{n=1}^{N} A_n^{(j)} Q_n$$
 
@@ -42,7 +42,7 @@ This is mathematically equivalent to a Hopfield associative memory network [9, 1
 
 ### 1.3 Summary of Results
 
-This paper develops SEM from first principles to a complete MEMS device specification. The key results:
+This paper develops CWM from first principles to a complete MEMS device specification. The key results:
 
 | Parameter                  | Value               | Context                                     |
 | -------------------------- | ------------------- | ------------------------------------------- |

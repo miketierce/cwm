@@ -8,12 +8,12 @@ proposed that each indivisible "monad" reflects the entire universe from its
 own perspective — a philosophical eigenmode (each mode encodes the full cavity
 geometry).
 
-This sidebar asks four questions about SEM encoding:
+This sidebar asks four questions about CWM encoding:
 
 1. Binary quantization (H-L1)
    Does binarising eigenmode readout retain associative recall accuracy?
    Hopfield networks are binary by design; the question is whether the
-   continuous SEM fingerprint can be coarsened to 1-bit per mode.
+   continuous CWM fingerprint can be coarsened to 1-bit per mode.
 
 2. Gray coding (H-L2)
    Does Gray code quantisation improve noise tolerance over natural binary?
@@ -109,7 +109,7 @@ class HexagramCodebookResult:
 
 
 # ═══════════════════════════════════════════════════════════════════════
-# Helpers (reuse SEM physics from other modules)
+# Helpers (reuse CWM physics from other modules)
 # ═══════════════════════════════════════════════════════════════════════
 
 def _golden_positions(K: int) -> np.ndarray:
@@ -204,9 +204,9 @@ def exp_binary_quantization(
     seed: int = 42,
 ) -> BinaryQuantizationResult:
     """
-    Test whether binarising SEM fingerprints retains recall accuracy.
+    Test whether binarising CWM fingerprints retains recall accuracy.
 
-    Continuous recall: store SEM spectral fingerprints (continuous floats),
+    Continuous recall: store CWM spectral fingerprints (continuous floats),
     recall via L2 nearest-neighbour in fingerprint space.
 
     Binary recall: binarise each fingerprint component to {-1, +1} via
@@ -231,7 +231,7 @@ def exp_binary_quantization(
         trial_seed = rng.randint(int(1e6))
         trial_rng = np.random.RandomState(trial_seed)
 
-        # Generate P random mass patterns and their SEM fingerprints
+        # Generate P random mass patterns and their CWM fingerprints
         mass_patterns = trial_rng.randint(1, 4, size=(P, K)).astype(float)
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", RuntimeWarning)
@@ -284,7 +284,7 @@ def exp_gray_coding(
     seed: int = 42,
 ) -> GrayCodingResult:
     """
-    Compare Gray code vs natural binary for SEM codeword decoding under noise.
+    Compare Gray code vs natural binary for CWM codeword decoding under noise.
 
     Both natural and Gray codebooks enumerate the same *set* of mass patterns
     (Gray code is a bijection on {0,...,n-1}), producing the same *set* of
@@ -447,7 +447,7 @@ def exp_hexagram_codebook(
     seed: int = 42,
 ) -> HexagramCodebookResult:
     """
-    Compare hexagram binary encoding vs dense multi-level encoding for SEM.
+    Compare hexagram binary encoding vs dense multi-level encoding for CWM.
 
     Both encode 64 symbols (6 bits of payload):
         Hexagram: 6 sites x 2 mass levels (binary: 0 or 1)

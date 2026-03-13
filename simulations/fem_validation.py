@@ -1,11 +1,11 @@
 """
-Finite Element Validation of SEM Analytical Models
+Finite Element Validation of CWM Analytical Models
 ===================================================
 
 Independent FEM validation of the eigenfrequency, perturbation, and
-Q-factor predictions used throughout the SEM simulation stack.
+Q-factor predictions used throughout the CWM simulation stack.
 
-**Why this module exists.**  The SEM analytical models use closed-form
+**Why this module exists.**  The CWM analytical models use closed-form
 formulas (f_n = nv/2L, Rayleigh perturbation, lumped Q budget).  These
 formulas make assumptions: 1D kinematics, small perturbations, additive
 loss mechanisms.  This module builds finite element models of the *same
@@ -1178,7 +1178,7 @@ def run_fem_validation(
     verbose: bool = True,
 ) -> FEMValidationReport:
     """
-    Run the complete FEM validation suite for the SEM reference geometry.
+    Run the complete FEM validation suite for the CWM reference geometry.
 
     Validates:
     1. 1D bar eigenfrequencies against f_n = n·v_bar/(2L)
@@ -1221,7 +1221,7 @@ def run_fem_validation(
 
     if verbose:
         print("=" * 70)
-        print("  FEM VALIDATION OF SEM ANALYTICAL MODELS")
+        print("  FEM VALIDATION OF CWM ANALYTICAL MODELS")
         print("=" * 70)
         print(f"\n  Material:  {glass.name}")
         print(f"  Rod:       L = {L*1e3:.2f} mm, d = {rod_diameter*1e6:.0f} µm")

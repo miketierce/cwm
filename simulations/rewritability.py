@@ -1,5 +1,5 @@
 """
-Rewritability Experiments for Spectral Eigenmode Memory.
+Rewritability Experiments for Coherent Wave Memory.
 
 Seven testable engineering hypotheses exploring paths from fixed-template
 "sonic telescope" toward configurable "instrument" behavior, without
@@ -1042,7 +1042,7 @@ def run_all_rewritability(verbose: bool = True) -> dict:
 
     if verbose:
         print("=" * 70)
-        print("  REWRITABILITY EXPERIMENTS FOR SEM")
+        print("  REWRITABILITY EXPERIMENTS FOR CWM")
         print("=" * 70)
 
     # ── Track A: Firmware Virtual Rewriting ───────────────────────────

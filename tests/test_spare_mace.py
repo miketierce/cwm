@@ -2,7 +2,7 @@
 Tests for Spare–Mace informed experiments.
 
 Each test exercises one of the six hypotheses derived from the
-Spare/Mace psychic-field ↔ SEM structural parallels.  The tests
+Spare/Mace psychic-field ↔ CWM structural parallels.  The tests
 verify that the experiments run without error and that the numerical
 results are physically plausible (sign, range, monotonicity), while
 the verdicts themselves may flip depending on parameters.
