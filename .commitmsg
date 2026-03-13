@@ -1,11 +1,16 @@
-S17 Coronal Seismology - astrophysical validation sidebar
+S18 Gauge Geometry — fiber-bundle structure of sensitivity matrix
 
-Sidebar S17 (Coronal Seismology):
-- coronal_seismology.py: 7 experiments (H-CS1..H-CS7), 6 confirmed 1 killed
-- test_coronal_seismology.py: 105 tests, all passing
-- Paper v15.md: S11.20, TOC, S11.6, S14.2
-- SIDEBARS.md: S17 complete
-- common.py: 43 modules, 1817 tests
-- Full regression: 1817 passed, 0 failed
+New module: simulations/gauge_geometry.py (5 experiments)
+New tests:  tests/test_gauge_geometry.py (88 tests, all passing)
 
-All 17 sidebars complete: 79 hypotheses (51 confirmed, 28 killed)
+Hypotheses (3 confirmed, 2 killed):
+  H-GG1  Curvature ↔ conditioning          → KILLED   (R² = 0.03)
+  H-GG2  Gauge invariance of capacity       → CONFIRMED (Δ = 0.0000%)
+  H-GG3  Dimensional reduction (2D → 1D)    → CONFIRMED (error < 10⁻¹⁰)
+  H-GG4  Topological rank invariant         → CONFIRMED (0.00% changes)
+  H-GG5  Holonomy non-trivial & predictive  → KILLED   (R² = 0.35)
+
+Cumulative: 44 modules · 1,909 tests · 84 hypotheses (54 confirmed, 30 killed)
+
+Updated: SIDEBARS.md dashboard, __init__.py (Phase 9n), common.py counts,
+paper v15.md (§11.21, §11.6 items 19–20, TOC, §14.2, counts), PDFs.

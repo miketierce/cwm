@@ -106,3 +106,9 @@
 #                           capacity ceiling (confirmed), P₁/2P₂ correlation
 #                           (killed), footpoint finesse (confirmed), perturbation
 #                           scaling (confirmed), optimal probe spacing (confirmed)
+#
+# Phase 9n — Gauge geometry: fiber-bundle structure of sensitivity matrix:
+#   gauge_geometry        - 5 experiments: curvature–conditioning correlation
+#                           (killed), gauge invariance of capacity (confirmed),
+#                           dimensional reduction 2D→1D (confirmed), topological
+#                           rank invariant (confirmed), holonomy (killed)

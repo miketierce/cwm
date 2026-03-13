@@ -43,10 +43,10 @@ survive integration into the paper without regressing existing tests.
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
-| **S18** | Gauge Geometry        | `gauge_geometry.py`        |       | H-GG1–GG5                  | 🔧 Active   |
+| **S18** | Gauge Geometry        | `gauge_geometry.py`        | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 43 modules · 1821 tests · 79 hypotheses (51 confirmed, 28 killed)
-**S1–S17 complete. S18 in progress.**
+**Running totals (completed):** 44 modules · 1909 tests · 84 hypotheses (54 confirmed, 30 killed)
+**S1–S18 complete.**
 
 ---
 
@@ -1296,13 +1296,27 @@ SEM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2
 
 #### Implementation plan
 
-| Step | Task                                                                                            | Artifact     | Status      |
-| ---- | ----------------------------------------------------------------------------------------------- | ------------ | ----------- |
-| GG-1 | Literature review: gauge theory fundamentals, fiber bundles, connections, Yang-Mills functional | Design notes | ✅ Done     |
-| GG-2 | Implement `simulations/gauge_geometry.py` — 5 experiments (H-GG1–GG5)                           | Module       | 🔧 Active   |
-| GG-3 | Write `tests/test_gauge_geometry.py` — target ≥ 60 tests                                        | Test file    | Not started |
-| GG-4 | Run experiments, tune parameters until all 5 confirm or are honestly killed                     | Results      | Not started |
-| GG-5 | Integrate into paper v15.md (§11.21, TOC, §14.2)                                                | Paper        | Not started |
+| Step | Task                                                                                            | Artifact     | Status  |
+| ---- | ----------------------------------------------------------------------------------------------- | ------------ | ------- |
+| GG-1 | Literature review: gauge theory fundamentals, fiber bundles, connections, Yang-Mills functional | Design notes | ✅ Done |
+| GG-2 | Implement `simulations/gauge_geometry.py` — 5 experiments (H-GG1–GG5)                           | Module       | ✅ Done |
+| GG-3 | Write `tests/test_gauge_geometry.py` — 88 tests                                                 | Test file    | ✅ Done |
+| GG-4 | Run experiments: 3 confirmed, 2 killed                                                          | Results      | ✅ Done |
+| GG-5 | Integrate into paper v15.md (§11.21, TOC, §14.2)                                                | Paper        | ✅ Done |
+
+#### Results
+
+| ID        | Verdict       | Key metric                                                       |
+| --------- | ------------- | ---------------------------------------------------------------- |
+| **H-GG1** | **KILLED**    | R² = 0.03 — curvature and conditioning are orthogonal functions  |
+| **H-GG2** | **CONFIRMED** | Permutation Δ = 0.0000%, rotation Δ = 0.0000% — exact invariance |
+| **H-GG3** | **CONFIRMED** | κ error = 0.0000%, capacity error = 0.0000% — exact reduction    |
+| **H-GG4** | **CONFIRMED** | 0.00% rank changes across 500 smooth positions                   |
+| **H-GG5** | **KILLED**    | Mean ‖H − I‖ = 1.66 (non-trivial), but R² = 0.35 < 0.5           |
+
+**Tally: 3 confirmed, 2 killed (3:2)**
+
+Commit: pending
 
 #### Key equations to validate
 
