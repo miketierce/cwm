@@ -42,9 +42,9 @@ survive integration into the paper without regressing existing tests.
 | **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
-| **S17** | Coronal Seismology    | `coronal_seismology.py`    | 105   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
+| **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 43 modules · 1817 tests · 79 hypotheses (51 confirmed, 28 killed)
+**Running totals (completed):** 43 modules · 1821 tests · 79 hypotheses (51 confirmed, 28 killed)
 **All 17 sidebars complete.**
 
 ---
@@ -1219,7 +1219,7 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 | ---- | ------------------------------------------------------------------------------------------------------------ | ------------ | ------- |
 | CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs | Design notes | ✅ Done |
 | CS-2 | Implement `simulations/coronal_seismology.py` — 7 experiments (H-CS1–CS7), MHD eigenmode basis               | Module       | ✅ Done |
-| CS-3 | Write `tests/test_coronal_seismology.py` — 105 tests                                                         | Test file    | ✅ Done |
+| CS-3 | Write `tests/test_coronal_seismology.py` — 109 tests                                                         | Test file    | ✅ Done |
 | CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                           | Results      | ✅ Done |
 | CS-5 | Integrate into paper v15.md (§11.20, TOC, §14.2)                                                             | Paper        | ✅ Done |
 
@@ -1254,19 +1254,19 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 | **H-CS1** | Rational-position inversion degeneracy    | κ_rational / κ_irrational ≈ 10¹³                    | ✅ CONFIRMED |
 | **H-CS2** | Multi-mode-family diagnostic independence | Mean cross-correlation = 0.29 (< 0.3)               | ✅ CONFIRMED |
 | **H-CS3** | Logarithmic capacity ceiling              | R²_log = 0.71 > R²_lin = 0.33                       | ✅ CONFIRMED |
-| **H-CS4** | Published P₁/2P₂ ↔ conditioning           | Spearman ρ = −0.056, p = 0.86                       | ❌ KILLED    |
+| **H-CS4** | Published P₁/2P₂ ↔ conditioning           | Spearman ρ = −0.238, p = 0.44                       | ❌ KILLED    |
 | **H-CS5** | Footpoint Fabry–Pérot finesse             | Q_finesse / Q_damping = 0.92                        | ✅ CONFIRMED |
 | **H-CS6** | Perturbation scaling linearity            | Linear R² = 0.9997                                  | ✅ CONFIRMED |
 | **H-CS7** | Irrational probe spacing supremacy        | Golden RMS = 0.020 vs equispaced 0.409 (20× better) | ✅ CONFIRMED |
 
 **Totals:** 6 confirmed, 1 killed out of 7 hypotheses.
 
-**H-CS4 kill reason:** No statistically significant correlation between published P₁/2P₂ period-ratio anomalies and predicted sensitivity-matrix condition number (ρ = −0.056, p = 0.86). The 12-observation dataset shows no evidence that global period-ratio deviation predicts local inversion conditioning.
+**H-CS4 kill reason:** Using a gravitational density profile ρ(z) ∝ exp(−ε·sin πz) that correctly models footpoint-heavy coronal stratification (producing P₁/2P₂ < 1.0 as observed), with per-loop harmonic counts N(L) scaling with loop length (2–4 overtones), no statistically significant correlation between P₁/2P₂ deviation and sensitivity-matrix condition number (ρ = −0.238, p = 0.44). The interaction between stratification strength ε and the independently varying harmonic count disrupts any monotonic ε → κ relationship.
 
 #### Completed reference
 
 - **Module:** `simulations/coronal_seismology.py` (~530 lines, 7 experiments)
-- **Tests:** `tests/test_coronal_seismology.py` (105 tests, all passing)
+- **Tests:** `tests/test_coronal_seismology.py` (109 tests, all passing)
 - **Paper:** v15.md §11.20, TOC entry, §11.6 item 19, §14.2 bullet
-- **Registration:** `__init__.py` Phase 9m, `common.py` 43/1817
+- **Registration:** `__init__.py` Phase 9m, `common.py` 43/1821
 - **Commit:** pending

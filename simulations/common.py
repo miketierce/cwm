@@ -13,7 +13,7 @@ from typing import Optional
 # Project-level counts (single source of truth for paper, PDFs, docs)
 # ---------------------------------------------------------------------------
 SIM_MODULE_COUNT = 43        # Number of simulation modules in simulations/
-TEST_COUNT = 1817            # Total automated tests (pytest --collect-only -q)
+TEST_COUNT = 1821            # Total automated tests (pytest --collect-only -q)
 
 # ---------------------------------------------------------------------------
 # Physical constants

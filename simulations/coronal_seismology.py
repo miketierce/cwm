@@ -209,6 +209,11 @@ def _stratified_density(z_norm: np.ndarray,
         return 1.0 + epsilon * np.sin(np.pi * z_norm)
     elif profile == "exponential":
         return np.exp(epsilon * (z_norm - 0.5))
+    elif profile == "gravity":
+        # Gravitational stratification: footpoint-heavy, apex-light.
+        # ρ(z) = exp(-ε·sin(πz)) → maximum at z=0,1 (footpoints),
+        # minimum at z=0.5 (apex).  Produces P₁/2P₂ < 1.0 as observed.
+        return np.exp(-epsilon * np.sin(np.pi * z_norm))
     return np.ones_like(z_norm)
 
 
@@ -367,6 +372,7 @@ class PeriodRatioCorrelationResult:
     n_observations: int
     period_ratios: np.ndarray
     predicted_kappas: np.ndarray
+    harmonic_counts: np.ndarray
     spearman_rho: float
     p_value: float
     verdict: bool
@@ -657,21 +663,27 @@ def exp_capacity_ceiling(
 
 def exp_period_ratio_correlation(
     K: int = 5,
-    n_modes: int = 20,
     seed: int = 42,
 ) -> PeriodRatioCorrelationResult:
     """H-CS4 — Published P₁/2P₂ anomalies correlate with conditioning.
 
-    For each published coronal loop observation, the density stratification
-    that produces its measured P₁/2P₂ ratio is associated with a specific
-    sensitivity-matrix condition number κ.  SEM predicts that loops with
-    larger P₁/2P₂ deviation from 1.0 have higher κ (worse conditioning).
+    For each published coronal loop observation, the gravitational density
+    stratification that produces its measured P₁/2P₂ ratio is associated
+    with a specific sensitivity-matrix condition number κ.  SEM predicts
+    that loops with larger P₁/2P₂ deviation from 1.0 have higher κ
+    (worse conditioning).
+
+    The gravitational profile ρ(z) ∝ exp(−ε·sin(πz)) correctly models
+    footpoint-heavy coronal density stratification, producing P₁/2P₂ < 1.0
+    as observed.  Per-loop harmonic count scales with loop length: longer
+    loops support more resolvable overtones.
 
     Procedure:
-    1. For each published (P1/2P2, L), compute the stratification ε that
-       produces the observed ratio via Rayleigh-Ritz.
-    2. Compute κ(S) for golden-ratio positions at those conditions.
-    3. Spearman-correlate |1 − P1/2P2| with κ.
+    1. For each published (P1/2P2, L), bisect for the stratification ε
+       (gravity profile) that produces the observed ratio.
+    2. Determine per-loop harmonic count N(L).
+    3. Compute κ(S) of the gravity-weighted sensitivity matrix at N(L).
+    4. Spearman-correlate |1 − P1/2P2| with κ.
 
     Confirm: ρ ≥ 0.5 AND p < 0.05.
     Kill: ρ < 0.5 OR p ≥ 0.05.
@@ -682,21 +694,21 @@ def exp_period_ratio_correlation(
     n_obs = len(_P1_OVER_2P2_DATA)
     ratios = np.zeros(n_obs)
     kappas = np.zeros(n_obs)
+    h_counts = np.zeros(n_obs, dtype=int)
 
     for i, (p_ratio, L_Mm, _ref) in enumerate(_P1_OVER_2P2_DATA):
         ratios[i] = p_ratio
         L = L_Mm * 1e6  # Mm → m
 
-        # Find stratification ε that produces this P1/2P2 deviation
-        # via bisection on _stratified_eigenfrequencies
-        deviation = abs(1.0 - p_ratio)
-
-        # Bisect to find ε ∈ [0, 1] that yields the target ratio
-        eps_lo, eps_hi = 0.0, 1.0
-        for _ in range(40):
+        # Bisect for ε ∈ [0, 10] using the gravitational density profile.
+        # The gravity profile produces P₁/2P₂ < 1.0 (matching observations)
+        # because footpoint-heavy density shifts the 1st overtone more than
+        # the fundamental.
+        eps_lo, eps_hi = 0.0, 10.0
+        for _ in range(60):
             eps_mid = (eps_lo + eps_hi) / 2.0
             freqs = _stratified_eigenfrequencies(
-                2, L, v_kink, eps_mid, "sinusoidal"
+                2, L, v_kink, eps_mid, "gravity"
             )
             ratio_mid = _period_ratio_from_freqs(freqs)
             if ratio_mid > p_ratio:
@@ -706,13 +718,17 @@ def exp_period_ratio_correlation(
 
         eps_found = (eps_lo + eps_hi) / 2.0
 
-        # Condition number of the stratified seismological inversion.
-        # The Jacobian M_nk = ∂ω_n/∂ρ_k ∝ sin²(nπz_k/L) / ρ(z_k)
-        # changes with stratification ε via the density denominator.
+        # Observable harmonics: longer loops support more resolvable
+        # overtones.  Base of 2 (fundamental + 1st overtone); each
+        # additional ~80 Mm beyond 100 Mm allows one more harmonic.
+        n_modes_loop = min(5, max(2, int(2 + (L_Mm - 100) / 80)))
+        h_counts[i] = n_modes_loop
+
+        # Stratification-weighted sensitivity matrix at per-loop N(L).
         positions = _golden_positions(K)
-        rho_weight = _stratified_density(positions, eps_found, "sinusoidal")
-        S_base = _sensitivity_matrix(positions, n_modes)
-        M = S_base / rho_weight[None, :]  # stratification-weighted Jacobian
+        rho_weight = _stratified_density(positions, eps_found, "gravity")
+        S_base = _sensitivity_matrix(positions, n_modes_loop)
+        M = S_base / rho_weight[None, :]  # gravity-weighted Jacobian
         sv = np.linalg.svd(M, compute_uv=False)
         tol = max(M.shape) * sv[0] * np.finfo(float).eps
         kappas[i] = sv[0] / max(sv[-1], tol)
@@ -728,6 +744,7 @@ def exp_period_ratio_correlation(
         n_observations=n_obs,
         period_ratios=ratios,
         predicted_kappas=kappas,
+        harmonic_counts=h_counts,
         spearman_rho=float(rho),
         p_value=float(p_val),
         verdict=verdict,

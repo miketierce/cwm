@@ -301,6 +301,19 @@ class TestStratifiedDensity:
         rho = _stratified_density(z, 0.3, "exponential")
         assert np.all(rho > 0)
 
+    def test_gravity_positive(self):
+        z = np.linspace(0, 1, 100)
+        rho = _stratified_density(z, 0.5, "gravity")
+        assert np.all(rho > 0)
+
+    def test_gravity_footpoint_heavy(self):
+        """Gravity profile has density max at footpoints, min at apex."""
+        z = np.linspace(0, 1, 200)
+        rho = _stratified_density(z, 1.0, "gravity")
+        # Footpoints (z=0, z=1) should have higher density than apex (z=0.5)
+        assert rho[0] > rho[100]
+        assert rho[-1] > rho[100]
+
 
 class TestStratifiedEigenfrequencies:
     """Rayleigh-Ritz eigenfrequencies for stratified loops."""
@@ -338,6 +351,13 @@ class TestPeriodRatio:
         freqs = _stratified_eigenfrequencies(2, L, v, 0.3, "sinusoidal")
         ratio = _period_ratio_from_freqs(freqs)
         assert abs(ratio - 1.0) > 0.01
+
+    def test_gravity_ratio_below_unity(self):
+        """Gravity profile produces P₁/2P₂ < 1.0 (matching observations)."""
+        v, L = 1e6, 1e8
+        freqs = _stratified_eigenfrequencies(2, L, v, 1.0, "gravity")
+        ratio = _period_ratio_from_freqs(freqs)
+        assert ratio < 1.0
 
 
 # ====================================================================
@@ -534,6 +554,11 @@ class TestExpPeriodRatioCorrelation:
         r = exp_period_ratio_correlation()
         assert np.all(r.predicted_kappas > 0)
 
+    def test_harmonic_counts_range(self):
+        r = exp_period_ratio_correlation()
+        assert np.all(r.harmonic_counts >= 2)
+        assert np.all(r.harmonic_counts <= 5)
+
     def test_deterministic(self):
         r1 = exp_period_ratio_correlation(seed=42)
         r2 = exp_period_ratio_correlation(seed=42)
@@ -690,7 +715,7 @@ class TestCrossPhysics:
         v, L = 1e6, 1e8
         dev = []
         for eps in [0.01, 0.1, 0.3]:
-            freqs = _stratified_eigenfrequencies(2, L, v, eps, "sinusoidal")
+            freqs = _stratified_eigenfrequencies(2, L, v, eps, "gravity")
             r = _period_ratio_from_freqs(freqs)
             dev.append(abs(1.0 - r))
         assert dev[1] > dev[0]
