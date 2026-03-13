@@ -23,22 +23,28 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure               | Module                   | Tests | Hypotheses                 | Status      |
-| ------- | -------------------- | ------------------------ | ----- | -------------------------- | ----------- |
-| **S1**  | Spare / Mace         | `spare_mace.py`          | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
-| **S2**  | Scranton / Dogon     | `scranton_dogon.py`      | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
-| **S3**  | Tesla                | `tesla_phase.py`         | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
-| **S4**  | Chladni              | `chladni_plates.py`      | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
-| **S5**  | Békésy               | `bekesy_cochlea.py`      | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
-| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`      | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
-| **S7**  | Leibniz              | `leibniz_binary.py`      | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
-| **S8**  | Gabor                | `gabor_holographic.py`   | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
-| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`    | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
-| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`     | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
-| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py` | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
-| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`    | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
+| Sidebar | Figure               | Module                    | Tests | Hypotheses                 | Status      |
+| ------- | -------------------- | ------------------------- | ----- | -------------------------- | ----------- |
+| **S1**  | Spare / Mace         | `spare_mace.py`           | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
+| **S2**  | Scranton / Dogon     | `scranton_dogon.py`       | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
+| **S3**  | Tesla                | `tesla_phase.py`          | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
+| **S4**  | Chladni              | `chladni_plates.py`       | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
+| **S5**  | Békésy               | `bekesy_cochlea.py`       | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
+| **S6**  | Franklin (Rosalind)  | `franklin_phase.py`       | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
+| **S7**  | Leibniz              | `leibniz_binary.py`       | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
+| **S8**  | Gabor                | `gabor_holographic.py`    | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
+| **S9**  | Zeeman (Scranton)    | `zeeman_splitting.py`     | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
+| **S10** | Kepler (Scranton)    | `kepler_harmonic.py`      | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
+| **S11** | Boltzmann (Scranton) | `boltzmann_timescale.py`  | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
+| **S12** | Gor'kov (Scranton)   | `gorkov_radiation.py`     | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
+|         |                      |                           |       |                            |             |
+| **S13** | Lord Rayleigh        | `rayleigh_variational.py` | —     | H-R1–R4: 0/4 tested        | 📋 Proposed |
+| **S14** | Fabry & Pérot        | `fabry_perot_cavity.py`   | —     | H-FP1–FP4: 0/4 tested      | 📋 Proposed |
+| **S15** | Shannon & Nyquist    | `shannon_capacity.py`     | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
+| **S16** | Mathieu & Floquet    | `mathieu_parametric.py`   | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
 
-**Running totals:** 38 modules · 1396 tests · test count must only go up.
+**Running totals (completed):** 38 modules · 1396 tests · 52 hypotheses (33 confirmed, 19 killed)
+**Proposed (S13–S16):** 4 sidebars · 16 hypotheses · awaiting execution
 
 ---
 
@@ -376,6 +382,19 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
 ```
 
 **Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 (all ✅)**
+**Proposed order: S13 → S14 → S15 → S16 (dependencies below)**
+
+Rationale (S13–S16):
+
+1. **S13 (Rayleigh)** is highest priority: quantifies second-order perturbation
+   error discovered by S9 Zeeman. Bounds every capacity claim in the paper.
+   No new physics framework — extends existing perturbation theory.
+2. **S14 (Fabry-Pérot)** formalises etalon physics the rod already exhibits.
+   Benefits from Rayleigh bounds (S13) constraining mode linewidth predictions.
+3. **S15 (Shannon)** requires stable capacity numbers from S13 bounds and
+   finesse model from S14 to compute meaningful utilisation ratios.
+4. **S16 (Mathieu-Floquet)** is the most experimental sidebar — parametric
+   amplification modifies Q and linewidth, so benefits from all prior sidebars.
 
 Rationale (S9–S12):
 
@@ -800,6 +819,7 @@ predictions applied to SEM's $\sin^2$ encoding framework.
 | **H-ARF2** | ✅ Confirmed | Spearman ρ = 1.000, Pearson r = 1.000, perfect material ranking | Acoustic contrast Φ(κ̃,ρ̃) monotonically predicts eigenfrequency shift magnitude               |
 | **H-ARF3** | ❌ Killed    | Bjerknes ratio 1.01× (threshold 2×)                             | Phase-based coupling direction has no measurable effect on splitting; geometry dominates     |
 | **H-ARF4** | ❌ Killed    | Dual-axis entropy −13.7% (threshold +20%)                       | Node sites have zero sin² amplitude → zero shift signal → redundant noise, not complement    |
+
 ---
 
 ## Proposed Future Sidebars
@@ -847,22 +867,22 @@ whose first-order formula is already the paper's bedrock.
 
 #### Hypotheses
 
-| ID       | Statement                                                                                                                                                                                                                                                                                  | Kill criterion                                                                                | Builds on                            |
-| -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------- | ------------------------------------ |
-| **H-R1** | **Second-order improvement.** Including the second-order Rayleigh perturbation correction $\Delta\omega^{(2)}_n \propto \sum_{m \neq n} |\langle u_m | \Delta m | u_n \rangle|^2 / (\omega_n^2 - \omega_m^2)$ reduces eigenfrequency prediction error by $\geq 10\%$ at $\varepsilon = 0.1$. | Improvement $< 3\%$ at $\varepsilon = 0.1$                                                     | §5.3 Rayleigh, S9 H-Z3              |
-| **H-R2** | **Variational bounds.** The Rayleigh-Ritz method with a 3-term trial function gives eigenfrequency bounds that are $\geq 20\%$ tighter than the first-order perturbation prediction for multi-site ($K \geq 3$) configurations.                                                            | Ritz bounds $\leq 5\%$ tighter than first-order                                                | §7 site optimization, spare_mace.py |
-| **H-R3** | **Nonlinear fingerprint bonus.** The second-order perturbation term creates mode-dependent nonlinear shifts that _increase_ fingerprint distinguishability at $\varepsilon > 0.05$ by $\geq 15\%$ compared to the linear-only model.                                                       | Distinguishability improvement $< 5\%$ or negative (nonlinearity hurts)                       | §2.2, site_optimization.py          |
-| **H-R4** | **Cross-mode coupling threshold.** Off-diagonal perturbation terms (coupling between modes $n$ and $m$) are negligible ($< 1\%$ of diagonal shift) below a threshold $\varepsilon_c$ that depends on mode spacing. For golden-ratio placement, $\varepsilon_c > 0.05$.                     | Cross-mode coupling $> 5\%$ of diagonal even at $\varepsilon = 0.01$ (no safe linear regime)  | S9 H-Z1, S9 H-Z2                    |
+| ID       | Statement                                                                                                                                                                                                                                                              | Kill criterion                                                                               | Builds on                           |
+| -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | ----------------------------------- | ----------- | -------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ---------------------- |
+| **H-R1** | **Second-order improvement.** Including the second-order Rayleigh perturbation correction $\Delta\omega^{(2)}_n \propto \sum_{m \neq n}                                                                                                                                | \langle u_m                                                                                  | \Delta m                            | u_n \rangle | ^2 / (\omega_n^2 - \omega_m^2)$ reduces eigenfrequency prediction error by $\geq 10\%$ at $\varepsilon = 0.1$. | Improvement $< 3\%$ at $\varepsilon = 0.1$ | §5.3 Rayleigh, S9 H-Z3 |
+| **H-R2** | **Variational bounds.** The Rayleigh-Ritz method with a 3-term trial function gives eigenfrequency bounds that are $\geq 20\%$ tighter than the first-order perturbation prediction for multi-site ($K \geq 3$) configurations.                                        | Ritz bounds $\leq 5\%$ tighter than first-order                                              | §7 site optimization, spare_mace.py |
+| **H-R3** | **Nonlinear fingerprint bonus.** The second-order perturbation term creates mode-dependent nonlinear shifts that _increase_ fingerprint distinguishability at $\varepsilon > 0.05$ by $\geq 15\%$ compared to the linear-only model.                                   | Distinguishability improvement $< 5\%$ or negative (nonlinearity hurts)                      | §2.2, site_optimization.py          |
+| **H-R4** | **Cross-mode coupling threshold.** Off-diagonal perturbation terms (coupling between modes $n$ and $m$) are negligible ($< 1\%$ of diagonal shift) below a threshold $\varepsilon_c$ that depends on mode spacing. For golden-ratio placement, $\varepsilon_c > 0.05$. | Cross-mode coupling $> 5\%$ of diagonal even at $\varepsilon = 0.01$ (no safe linear regime) | S9 H-Z1, S9 H-Z2                    |
 
 #### Implementation plan
 
-| Step | Task                                                                                                                                          | Artifact     | Status     |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
-| R-1  | Literature review: _Theory of Sound_ Ch. V–VI, Courant-Hilbert Vol. I §5, second-order perturbation theory for mechanical systems             | Design notes | ⬜ Planned |
+| Step | Task                                                                                                                                                                   | Artifact     | Status     |
+| ---- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
+| R-1  | Literature review: _Theory of Sound_ Ch. V–VI, Courant-Hilbert Vol. I §5, second-order perturbation theory for mechanical systems                                      | Design notes | ⬜ Planned |
 | R-2  | Implement `simulations/rayleigh_variational.py` with 4 experiment functions: second-order correction, Rayleigh-Ritz bounds, nonlinear fingerprint, cross-mode coupling | Module       | ⬜ Planned |
-| R-3  | Write `tests/test_rayleigh_variational.py` — target $\geq$ 40 tests                                                                           | Test file    | ⬜ Planned |
-| R-4  | Run experiments, confirm or kill                                                                                                              | Results      | ⬜ Planned |
-| R-5  | Paper integration if warranted                                                                                                                | Paper        | ⬜ Planned |
+| R-3  | Write `tests/test_rayleigh_variational.py` — target $\geq$ 40 tests                                                                                                    | Test file    | ⬜ Planned |
+| R-4  | Run experiments, confirm or kill                                                                                                                                       | Results      | ⬜ Planned |
+| R-5  | Paper integration if warranted                                                                                                                                         | Paper        | ⬜ Planned |
 
 #### External data sources
 
@@ -880,12 +900,12 @@ whose first-order formula is already the paper's bedrock.
 
 #### Cross-sidebar interactions
 
-| Interaction                                 | Sidebars  | Nature                                                                           |
-| ------------------------------------------- | --------- | -------------------------------------------------------------------------------- |
-| Quantifies quadratic regime discovered by   | S13 × S9  | Zeeman proved nonlinearity exists; Rayleigh quantifies its impact on fingerprints |
-| Tightens bounds used by site optimiser      | S13 × S1  | spare_mace site placement currently uses first-order model                        |
-| Error bounds for material ranking           | S13 × S12 | Gor'kov contrast factor prediction accuracy at higher perturbation strengths     |
-| Variational bounds contextualise capacity   | S13 × S8  | Gabor bandwidth ceiling gains a rigorous lower/upper bound from Rayleigh-Ritz    |
+| Interaction                               | Sidebars  | Nature                                                                            |
+| ----------------------------------------- | --------- | --------------------------------------------------------------------------------- |
+| Quantifies quadratic regime discovered by | S13 × S9  | Zeeman proved nonlinearity exists; Rayleigh quantifies its impact on fingerprints |
+| Tightens bounds used by site optimiser    | S13 × S1  | spare_mace site placement currently uses first-order model                        |
+| Error bounds for material ranking         | S13 × S12 | Gor'kov contrast factor prediction accuracy at higher perturbation strengths      |
+| Variational bounds contextualise capacity | S13 × S8  | Gabor bandwidth ceiling gains a rigorous lower/upper bound from Rayleigh-Ritz     |
 
 ---
 
@@ -920,22 +940,22 @@ engineering tools from the most mature branch of precision measurement.
 
 #### Hypotheses
 
-| ID        | Statement                                                                                                                                                                                                                                                                                          | Kill criterion                                                                                    | Builds on                        |
-| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | -------------------------------- |
-| **H-FP1** | **Finesse-Q equivalence.** The acoustic finesse $\mathcal{F}$ computed from rod-end reflection coefficients predicts the mode linewidth $\delta f = f_n / Q$ to within $\pm 10\%$, providing an independent consistency check on the Q-factor model.                                                | Finesse-predicted linewidth deviates $> 25\%$ from Q-based linewidth                              | §7 Q-factor, noise_decoherence.py |
-| **H-FP2** | **Airy peak shape.** Spectral peaks near rod-end mode orders follow the Airy function $I(\nu) \propto [1 + F \sin^2(\pi\nu / \text{FSR})]^{-1}$ more accurately than Lorentzian ($R^2_{\text{Airy}} > R^2_{\text{Lorentz}}$), with measurable asymmetry at high mode numbers due to dispersion.     | Both fits $R^2 > 0.98$ with $< 1\%$ difference (indistinguishable) or Lorentzian is strictly better | §5.5 dispersion, cw_readout.py   |
-| **H-FP3** | **Scanning readout enhancement.** Swept-frequency CW readout (Fabry-Pérot scanning) achieves $\geq 3$ dB better mode discrimination SNR than broadband impulse readout at equivalent total measurement time, because scanning concentrates energy in a narrow spectral window.                       | Scanning SNR $< 1$ dB improvement over broadband impulse                                          | §8.4 CW readout, cw_readout.py   |
-| **H-FP4** | **End-condition engineering.** Impedance-matching the rod ends (acoustic quarter-wave transformer) can tune the effective reflection coefficient $R_{\text{end}}$ from 0.99 (high Q, narrow peaks) to 0.5 (low Q, broad peaks), trading mode resolution for readout bandwidth by a factor $\geq 3\times$. | End-condition tuning produces $< 1.5\times$ linewidth variation                                    | §7.2 anchor loss                  |
+| ID        | Statement                                                                                                                                                                                                                                                                                                 | Kill criterion                                                                                      | Builds on                         |
+| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------- |
+| **H-FP1** | **Finesse-Q equivalence.** The acoustic finesse $\mathcal{F}$ computed from rod-end reflection coefficients predicts the mode linewidth $\delta f = f_n / Q$ to within $\pm 10\%$, providing an independent consistency check on the Q-factor model.                                                      | Finesse-predicted linewidth deviates $> 25\%$ from Q-based linewidth                                | §7 Q-factor, noise_decoherence.py |
+| **H-FP2** | **Airy peak shape.** Spectral peaks near rod-end mode orders follow the Airy function $I(\nu) \propto [1 + F \sin^2(\pi\nu / \text{FSR})]^{-1}$ more accurately than Lorentzian ($R^2_{\text{Airy}} > R^2_{\text{Lorentz}}$), with measurable asymmetry at high mode numbers due to dispersion.           | Both fits $R^2 > 0.98$ with $< 1\%$ difference (indistinguishable) or Lorentzian is strictly better | §5.5 dispersion, cw_readout.py    |
+| **H-FP3** | **Scanning readout enhancement.** Swept-frequency CW readout (Fabry-Pérot scanning) achieves $\geq 3$ dB better mode discrimination SNR than broadband impulse readout at equivalent total measurement time, because scanning concentrates energy in a narrow spectral window.                            | Scanning SNR $< 1$ dB improvement over broadband impulse                                            | §8.4 CW readout, cw_readout.py    |
+| **H-FP4** | **End-condition engineering.** Impedance-matching the rod ends (acoustic quarter-wave transformer) can tune the effective reflection coefficient $R_{\text{end}}$ from 0.99 (high Q, narrow peaks) to 0.5 (low Q, broad peaks), trading mode resolution for readout bandwidth by a factor $\geq 3\times$. | End-condition tuning produces $< 1.5\times$ linewidth variation                                     | §7.2 anchor loss                  |
 
 #### Implementation plan
 
-| Step  | Task                                                                                                                      | Artifact     | Status     |
-| ----- | ------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
-| FP-1  | Literature review: Fabry-Pérot interferometry, acoustic etalons, Airy function, finesse–Q relationship in acoustic cavities | Design notes | ⬜ Planned |
-| FP-2  | Implement `simulations/fabry_perot_cavity.py` with 4 experiment functions                                                 | Module       | ⬜ Planned |
-| FP-3  | Write `tests/test_fabry_perot_cavity.py` — target $\geq$ 40 tests                                                         | Test file    | ⬜ Planned |
-| FP-4  | Run experiments, confirm or kill                                                                                          | Results      | ⬜ Planned |
-| FP-5  | Paper integration if warranted                                                                                            | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                        | Artifact     | Status     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
+| FP-1 | Literature review: Fabry-Pérot interferometry, acoustic etalons, Airy function, finesse–Q relationship in acoustic cavities | Design notes | ⬜ Planned |
+| FP-2 | Implement `simulations/fabry_perot_cavity.py` with 4 experiment functions                                                   | Module       | ⬜ Planned |
+| FP-3 | Write `tests/test_fabry_perot_cavity.py` — target $\geq$ 40 tests                                                           | Test file    | ⬜ Planned |
+| FP-4 | Run experiments, confirm or kill                                                                                            | Results      | ⬜ Planned |
+| FP-5 | Paper integration if warranted                                                                                              | Paper        | ⬜ Planned |
 
 #### External data sources
 
@@ -955,12 +975,12 @@ engineering tools from the most mature branch of precision measurement.
 
 #### Cross-sidebar interactions
 
-| Interaction                                 | Sidebars  | Nature                                                                          |
-| ------------------------------------------- | --------- | ------------------------------------------------------------------------------- |
-| Linewidth connects to Q-factor model        | S14 × S5  | Békésy active Q-boosting changes finesse; FP theory predicts the new linewidth |
-| Scanning readout extends CW lock-in         | S14 × S3  | Tesla phase encoding measured via Fabry-Pérot scanning rather than broadband    |
-| Resolving power bounds mode discrimination  | S14 × S9  | Zeeman splitting must exceed FP linewidth to be resolvable                     |
-| End-condition engineering affects anchor Q   | S14 × S7  | Anchor loss model (§7.2) is the acoustic analogue of mirror reflectivity loss  |
+| Interaction                                | Sidebars | Nature                                                                         |
+| ------------------------------------------ | -------- | ------------------------------------------------------------------------------ |
+| Linewidth connects to Q-factor model       | S14 × S5 | Békésy active Q-boosting changes finesse; FP theory predicts the new linewidth |
+| Scanning readout extends CW lock-in        | S14 × S3 | Tesla phase encoding measured via Fabry-Pérot scanning rather than broadband   |
+| Resolving power bounds mode discrimination | S14 × S9 | Zeeman splitting must exceed FP linewidth to be resolvable                     |
+| End-condition engineering affects anchor Q | S14 × S7 | Anchor loss model (§7.2) is the acoustic analogue of mirror reflectivity loss  |
 
 ---
 
@@ -996,22 +1016,22 @@ to Gabor's bandwidth ceiling (S8 H-G3).
 
 #### Hypotheses
 
-| ID        | Statement                                                                                                                                                                                                                                                                                                          | Kill criterion                                                                           | Builds on                           |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------- | ----------------------------------- |
-| **H-SN1** | **Waterfilling capacity gain.** Shannon's waterfilling algorithm, applied to SEM's mode-dependent SNR profile, improves total channel capacity by $\geq 5\%$ over uniform allocation, by concentrating readout power on low-$n$ (high-SNR) modes and cutting off modes above a noise-limited threshold $n_{\text{cut}}$. | Waterfilling gain $< 2\%$ (uniform allocation is near-optimal)                            | §4.3 SNR, Appendix A, capacity.py   |
-| **H-SN2** | **Nyquist mode minimum.** Faithful reconstruction of $K$ perturbation sites requires $\geq 2K$ measured modes (acoustic Nyquist rate), not the $K$ modes suggested by Leibniz H-L3. The discrepancy arises because H-L3 assumed noiseless readout; at realistic SNR, the $2K$ minimum is strict.                      | $K$ modes suffice even at SNR $< 40$ dB (Leibniz H-L3 holds in the noisy regime)         | S7 H-L3, hopfield_recall.py         |
-| **H-SN3** | **Capacity utilisation ratio.** SEM's current (uniform) capacity achieves $\geq 85\%$ of the Shannon limit for its SNR profile, confirming that the simple model in the paper is a close approximation despite being suboptimal.                                                                                    | Utilisation $< 70\%$ (significant room for improvement, undermining paper's claims)       | §1.3 capacity table, capacity.py     |
-| **H-SN4** | **Mutual information per mode.** The mutual information $I(X_n; Y_n)$ between the stored pattern and readout for mode $n$ exceeds 0.5 bits/mode for $n \leq n_{\max}/2$ and falls below 0.1 bits/mode for $n > n_{\max}$, confirming that the $n_{\max}$ formula correctly identifies the usable mode range.          | $I(X_n; Y_n) > 0.5$ bits/mode persists beyond $n_{\max}$ (usable modes extend further) | §2.1 $n_{\max}$, noise_decoherence.py |
+| ID        | Statement                                                                                                                                                                                                                                                                                                                | Kill criterion                                                                         | Builds on                             |
+| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------- | ------------------------------------- |
+| **H-SN1** | **Waterfilling capacity gain.** Shannon's waterfilling algorithm, applied to SEM's mode-dependent SNR profile, improves total channel capacity by $\geq 5\%$ over uniform allocation, by concentrating readout power on low-$n$ (high-SNR) modes and cutting off modes above a noise-limited threshold $n_{\text{cut}}$. | Waterfilling gain $< 2\%$ (uniform allocation is near-optimal)                         | §4.3 SNR, Appendix A, capacity.py     |
+| **H-SN2** | **Nyquist mode minimum.** Faithful reconstruction of $K$ perturbation sites requires $\geq 2K$ measured modes (acoustic Nyquist rate), not the $K$ modes suggested by Leibniz H-L3. The discrepancy arises because H-L3 assumed noiseless readout; at realistic SNR, the $2K$ minimum is strict.                         | $K$ modes suffice even at SNR $< 40$ dB (Leibniz H-L3 holds in the noisy regime)       | S7 H-L3, hopfield_recall.py           |
+| **H-SN3** | **Capacity utilisation ratio.** SEM's current (uniform) capacity achieves $\geq 85\%$ of the Shannon limit for its SNR profile, confirming that the simple model in the paper is a close approximation despite being suboptimal.                                                                                         | Utilisation $< 70\%$ (significant room for improvement, undermining paper's claims)    | §1.3 capacity table, capacity.py      |
+| **H-SN4** | **Mutual information per mode.** The mutual information $I(X_n; Y_n)$ between the stored pattern and readout for mode $n$ exceeds 0.5 bits/mode for $n \leq n_{\max}/2$ and falls below 0.1 bits/mode for $n > n_{\max}$, confirming that the $n_{\max}$ formula correctly identifies the usable mode range.             | $I(X_n; Y_n) > 0.5$ bits/mode persists beyond $n_{\max}$ (usable modes extend further) | §2.1 $n_{\max}$, noise_decoherence.py |
 
 #### Implementation plan
 
-| Step  | Task                                                                                                                     | Artifact     | Status     |
-| ----- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| SN-1  | Literature review: Shannon channel capacity, waterfilling theorem, MIMO capacity, Nyquist rate for parametric estimation | Design notes | ⬜ Planned |
-| SN-2  | Implement `simulations/shannon_capacity.py` with 4 experiment functions                                                  | Module       | ⬜ Planned |
-| SN-3  | Write `tests/test_shannon_capacity.py` — target $\geq$ 40 tests                                                          | Test file    | ⬜ Planned |
-| SN-4  | Run experiments, confirm or kill                                                                                         | Results      | ⬜ Planned |
-| SN-5  | Paper integration if warranted                                                                                           | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                     | Artifact     | Status     |
+| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
+| SN-1 | Literature review: Shannon channel capacity, waterfilling theorem, MIMO capacity, Nyquist rate for parametric estimation | Design notes | ⬜ Planned |
+| SN-2 | Implement `simulations/shannon_capacity.py` with 4 experiment functions                                                  | Module       | ⬜ Planned |
+| SN-3 | Write `tests/test_shannon_capacity.py` — target $\geq$ 40 tests                                                          | Test file    | ⬜ Planned |
+| SN-4 | Run experiments, confirm or kill                                                                                         | Results      | ⬜ Planned |
+| SN-5 | Paper integration if warranted                                                                                           | Paper        | ⬜ Planned |
 
 #### External data sources
 
@@ -1031,12 +1051,12 @@ to Gabor's bandwidth ceiling (S8 H-G3).
 
 #### Cross-sidebar interactions
 
-| Interaction                                     | Sidebars   | Nature                                                                         |
-| ----------------------------------------------- | ---------- | ------------------------------------------------------------------------------ |
-| Waterfilling vs Boltzmann weighting              | S15 × S11  | S11 killed Boltzmann weighting; Shannon provides the correct optimal weighting |
-| Capacity utilisation contextualises Gabor ceiling | S15 × S8   | S8 H-G3 showed $\eta$ monotonic; Shannon quantifies absolute efficiency        |
-| Nyquist minimum extends monadic reconstruction  | S15 × S7   | Leibniz H-L3 showed $K$ modes suffice noiseless; Nyquist adds noise floor      |
-| Mode cutoff connects to Rayleigh bounds         | S15 × S13  | Rayleigh variational bounds predict which modes carry reliable information     |
+| Interaction                                       | Sidebars  | Nature                                                                         |
+| ------------------------------------------------- | --------- | ------------------------------------------------------------------------------ |
+| Waterfilling vs Boltzmann weighting               | S15 × S11 | S11 killed Boltzmann weighting; Shannon provides the correct optimal weighting |
+| Capacity utilisation contextualises Gabor ceiling | S15 × S8  | S8 H-G3 showed $\eta$ monotonic; Shannon quantifies absolute efficiency        |
+| Nyquist minimum extends monadic reconstruction    | S15 × S7  | Leibniz H-L3 showed $K$ modes suffice noiseless; Nyquist adds noise floor      |
+| Mode cutoff connects to Rayleigh bounds           | S15 × S13 | Rayleigh variational bounds predict which modes carry reliable information     |
 
 ---
 
@@ -1074,22 +1094,22 @@ for a memory device that must be stable.
 
 #### Hypotheses
 
-| ID        | Statement                                                                                                                                                                                                                                                                             | Kill criterion                                                                              | Builds on                          |
-| --------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ---------------------------------- |
-| **H-PM1** | **Parametric gain.** Modulating rod stress at $2f_n$ with depth $\varepsilon < 0.1$ amplifies mode $n$ by $\geq 10$ dB within the first Mathieu instability tongue, at a pump power comparable to Békésy's active Q-boosting (femtowatts per mode).                                    | Gain $< 3$ dB at $\varepsilon = 0.1$ (parametric mechanism too weak in acoustic regime)      | S5 H-B3, bekesy_cochlea.py        |
-| **H-PM2** | **Mode selectivity.** Parametric drive at $2f_n$ produces $< 1$ dB gain at neighbouring modes $f_{n \pm 1}$, because the instability tongue width $\Delta\omega \propto \varepsilon \omega_n / (2Q)$ is narrower than the mode spacing $\text{FSR} = v/(2L)$ for $Q > 100$.           | Cross-mode gain $> 3$ dB at neighbouring modes (selectivity insufficient)                    | §2.1 mode spacing                  |
-| **H-PM3** | **Stability boundary prediction.** The Mathieu stability chart predicts the maximum safe modulation depth $\varepsilon_{\max}$ (onset of parametric oscillation) to within $\pm 20\%$ of numerically computed threshold for SEM rod parameters.                                        | Predicted $\varepsilon_{\max}$ deviates $> 50\%$ from numerical threshold                    | noise_decoherence.py               |
-| **H-PM4** | **Parametric + CW readout.** Combining parametric amplification of mode $n$ with CW lock-in readout at $f_n$ achieves $\geq 6$ dB better SNR than CW readout alone at equivalent total integration time, because the parametric pump coherently adds energy at the measurement frequency. | Combined SNR improvement $< 2$ dB over CW alone (pump noise dominates the gain)             | §8.4 CW readout, cw_readout.py     |
+| ID        | Statement                                                                                                                                                                                                                                                                                 | Kill criterion                                                                          | Builds on                      |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- | ------------------------------ |
+| **H-PM1** | **Parametric gain.** Modulating rod stress at $2f_n$ with depth $\varepsilon < 0.1$ amplifies mode $n$ by $\geq 10$ dB within the first Mathieu instability tongue, at a pump power comparable to Békésy's active Q-boosting (femtowatts per mode).                                       | Gain $< 3$ dB at $\varepsilon = 0.1$ (parametric mechanism too weak in acoustic regime) | S5 H-B3, bekesy_cochlea.py     |
+| **H-PM2** | **Mode selectivity.** Parametric drive at $2f_n$ produces $< 1$ dB gain at neighbouring modes $f_{n \pm 1}$, because the instability tongue width $\Delta\omega \propto \varepsilon \omega_n / (2Q)$ is narrower than the mode spacing $\text{FSR} = v/(2L)$ for $Q > 100$.               | Cross-mode gain $> 3$ dB at neighbouring modes (selectivity insufficient)               | §2.1 mode spacing              |
+| **H-PM3** | **Stability boundary prediction.** The Mathieu stability chart predicts the maximum safe modulation depth $\varepsilon_{\max}$ (onset of parametric oscillation) to within $\pm 20\%$ of numerically computed threshold for SEM rod parameters.                                           | Predicted $\varepsilon_{\max}$ deviates $> 50\%$ from numerical threshold               | noise_decoherence.py           |
+| **H-PM4** | **Parametric + CW readout.** Combining parametric amplification of mode $n$ with CW lock-in readout at $f_n$ achieves $\geq 6$ dB better SNR than CW readout alone at equivalent total integration time, because the parametric pump coherently adds energy at the measurement frequency. | Combined SNR improvement $< 2$ dB over CW alone (pump noise dominates the gain)         | §8.4 CW readout, cw_readout.py |
 
 #### Implementation plan
 
-| Step  | Task                                                                                                                                      | Artifact     | Status     |
-| ----- | ----------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
-| PM-1  | Literature review: Mathieu equation, Floquet theory, MEMS parametric amplifiers (Rugar & Grütter 1991, Karabalin et al. 2009)             | Design notes | ⬜ Planned |
-| PM-2  | Implement `simulations/mathieu_parametric.py` with 4 experiment functions: gain vs $\varepsilon$, selectivity, stability chart, CW+parametric | Module       | ⬜ Planned |
-| PM-3  | Write `tests/test_mathieu_parametric.py` — target $\geq$ 40 tests                                                                         | Test file    | ⬜ Planned |
-| PM-4  | Run experiments, confirm or kill                                                                                                          | Results      | ⬜ Planned |
-| PM-5  | Paper integration if warranted                                                                                                            | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                                          | Artifact     | Status     |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | ---------- |
+| PM-1 | Literature review: Mathieu equation, Floquet theory, MEMS parametric amplifiers (Rugar & Grütter 1991, Karabalin et al. 2009)                 | Design notes | ⬜ Planned |
+| PM-2 | Implement `simulations/mathieu_parametric.py` with 4 experiment functions: gain vs $\varepsilon$, selectivity, stability chart, CW+parametric | Module       | ⬜ Planned |
+| PM-3 | Write `tests/test_mathieu_parametric.py` — target $\geq$ 40 tests                                                                             | Test file    | ⬜ Planned |
+| PM-4 | Run experiments, confirm or kill                                                                                                              | Results      | ⬜ Planned |
+| PM-5 | Paper integration if warranted                                                                                                                | Paper        | ⬜ Planned |
 
 #### External data sources
 
@@ -1110,9 +1130,9 @@ for a memory device that must be stable.
 
 #### Cross-sidebar interactions
 
-| Interaction                                          | Sidebars  | Nature                                                                               |
-| ---------------------------------------------------- | --------- | ------------------------------------------------------------------------------------ |
-| Parametric vs feedback amplification                 | S16 × S5  | Békésy used feedback; Mathieu uses open-loop pump — complementary mechanisms         |
-| Stability boundaries constrain readout               | S16 × S14 | Fabry-Pérot scanning must stay below Mathieu instability threshold                   |
+| Interaction                                           | Sidebars  | Nature                                                                               |
+| ----------------------------------------------------- | --------- | ------------------------------------------------------------------------------------ |
+| Parametric vs feedback amplification                  | S16 × S5  | Békésy used feedback; Mathieu uses open-loop pump — complementary mechanisms         |
+| Stability boundaries constrain readout                | S16 × S14 | Fabry-Pérot scanning must stay below Mathieu instability threshold                   |
 | Mode-selective gain enhances Zeeman splitting readout | S16 × S9  | Parametric amplification of split mode pairs could improve splitting measurement SNR |
-| Pump power budget extends energy analysis            | S16 × S3  | Tesla phase readout energy budget gains a parametric amplification term               |
+| Pump power budget extends energy analysis             | S16 × S3  | Tesla phase readout energy budget gains a parametric amplification term              |

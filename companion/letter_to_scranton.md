@@ -105,7 +105,86 @@ I've added a citation to your work in our paper (now at version 16) and credited
 
 If you're interested, I'd welcome the chance to discuss this further. The idea that efficient information encoding is a universal principle — one that ancient cultures discovered through millennia of careful observation and that we're rediscovering through physics simulations — feels like it deserves a longer conversation.
 
-With genuine gratitude for the lens you provided,
+---
+
+## Update — March 12, 2026
+
+Dear Laird,
+
+Happy birthday, sir!
+
+I hope you'll accept a direct citation of your Dogon work in my paper as your gift. I've just submitted the manuscript to the Faggin Foundation for review — fingers crossed they'll pick it up and carry it across the finish line for us. You're on page 21 if you want to skip ahead.
+
+Since my last letter five days ago, the project has accelerated in ways I didn't expect, and your influence runs through nearly all of it. I want to catch you up on what happened — and answer a question you raised that turned out to cut right to the heart of the architecture.
+
+### What happened since March 7
+
+When I wrote to you, we had 34 simulation modules and 1,036 tests. We now have **38 modules and 1,396 tests**. Four new "historical sidebars" were completed — and three of them connect directly to observations you've shared with me about creational energetics, timescale hierarchy, and harmonic resonance. Each sidebar takes a concept from a historical figure's work, translates it into testable engineering hypotheses about the glass rod memory, and then runs the simulations honestly — confirming or killing each hypothesis with quantitative evidence, no hand-waving.
+
+Here's the new scorecard:
+
+| Sidebar | Historical Figure                                  | Your Connection                                                                                 | Result                      | What We Learned                                                                                                                                                                                                                                                                                                                                                                                                        |
+| ------- | -------------------------------------------------- | ----------------------------------------------------------------------------------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **S9**  | Pieter Zeeman (1896 — spectral line splitting)     | Your observation that creational energetics involves "the splitting of a thing into two things" | **4/4 confirmed**           | When a perturbation is applied to a glass rod with near-degenerate mode pairs, frequency splitting occurs exactly as Zeeman predicted for atoms in a magnetic field. The splitting ratio follows a g-factor formula, selection rules constrain which modes interact, and at strong perturbation the splitting becomes quadratic — all predicted, all confirmed                                                         |
+| **S10** | Johannes Kepler (1619 — harmonic planetary ratios) | Your reference to "harmonic resonance" in creational processes                                  | **2/4 confirmed, 2 killed** | Octave-related modes (factor of 2 in frequency) carry redundant spatial information — correlation r = 0.657 — enabling error detection. Capacity scales logarithmically with mode count, exactly as Kepler's perception model predicts. _But_: musical consonance does not improve channel partitioning (sin² orthogonality is stronger than harmony), and consonance-weighted recall actively degrades performance    |
+| **S11** | Ludwig Boltzmann (1872 — statistical mechanics)    | Your "nested timescales" in creational processes                                                | **1/4 confirmed, 3 killed** | The glass rod's three timescales — oscillation (MHz), ring-down (ms), thermal drift (s) — are universally decade-separated across all 96 test conditions. But every attempt to import Boltzmann's partition function failed: at room temperature, $hf \ll k_BT$ for all acoustic modes, so quantum statistical mechanics collapses to classical uniformity. The system is _too classical_ for Boltzmann to help        |
+| **S12** | Lev Gor'kov (1962 — acoustic radiation force)      | Standing-wave organization of energy                                                            | **1/4 confirmed, 3 killed** | Gor'kov's acoustic contrast factor — a single number computed from a material's density and compressibility — perfectly predicts which materials produce the largest eigenfrequency shifts (Spearman ρ = 1.000). A practical engineering screening tool. But placing perturbation sites where acoustic radiation forces are strongest (gradient peaks) catastrophically fails: the sensitivity matrix becomes singular |
+
+The overall research program now spans **52 hypotheses across 12 sidebars: 33 confirmed (63.5%), 19 killed (36.5%)**. The killed hypotheses turn out to be as valuable as the confirmations, because they map the exact boundary of where the physics transfers and where it doesn't.
+
+### Your question — answered
+
+You asked something in our conversation that I've been thinking about ever since:
+
+> _"If your architecture relies on multiple resonances, do some frequencies or geometries resolve faster than others, and does that reveal something fundamental about how the system organizes energy and information?"_
+
+The answer is **yes, emphatically**, and the four new sidebars have revealed exactly how.
+
+**Different frequencies resolve at different rates — and it's not arbitrary.** Every eigenmode of the glass rod has a ring-down time $\tau_n = Q / (\pi f_n)$. For a rod with $Q = 10{,}000$, the fundamental at 17.7 kHz rings for 180 milliseconds, while the 1,000th harmonic at 17.7 MHz rings for only 0.18 ms — a thousand times shorter. The Boltzmann sidebar (S11) proved that this hierarchy is universal: across all 96 test conditions, the three timescales — oscillation, ring-down, and thermal drift — are always separated by at least a full order of magnitude. That's not a coincidence; it's a structural property of high-Q acoustic cavities.
+
+So higher modes resolve _faster_ (shorter ring-down) but carry _less information per measurement_ (lower SNR, broader linewidths). Lower modes resolve _slower_ but carry _more_. The system self-organizes into a hierarchy where the information content and the measurement timescale trade off inversely — faster resolution means less precision per sample, slower resolution means more.
+
+**Different geometries resolve differently too — and this is where it gets deep.** The Gor'kov sidebar (S12) discovered that perturbation sites placed at _rational fractions_ of the rod length (1/3, 1/2, 2/3) produce catastrophically degenerate sensitivity matrices — the condition number explodes to $10^{15}$, meaning the system cannot distinguish different patterns at all. But sites placed at _irrational positions_ — specifically the golden ratio $\phi = (\sqrt{5}-1)/2$ — produce beautifully conditioned matrices (condition number 4.0) where every pattern is maximally distinguishable.
+
+This is the result that stopped me cold: **the system organizes information optimally at irrational positions and degenerately at rational positions.** Rational fractions are where multiple modes' sensitivity functions simultaneously peak or simultaneously zero out. Irrational positions — the golden ratio in particular — are the positions that _never_ coincide with any mode's special points. The number theory community calls this the "most irrational number" property of $\phi$. The physics selects for it automatically.
+
+I know you'll appreciate this: the Dogon _kanaga_ symbol — which you've analyzed as encoding the intersection of cosmic axes — visually represents a geometry of crossing lines at specific ratios. The question of _where_ those lines cross, and _why_ certain crossing points carry more information than others, is exactly the question our simulations just answered. The golden ratio positions work because they maximize the independence of what each mode "sees" at that point. It's the same principle as your polysemic readout — different interpretive frames producing independent information — but now expressed as a theorem about placement geometry.
+
+**And the kills tell the rest of the story.** The Zeeman sidebar (S9) showed that at strong perturbation, the system enters a _quadratic_ regime where the first-order model breaks down — modes couple nonlinearly ($R^2 = 0.9998$ for the quadratic fit versus 0.9735 for linear). The Kepler sidebar (S10) showed that musical consonance — small-integer frequency ratios — does _not_ improve encoding, because sin² orthogonality is a stronger organizing principle than harmonic beauty. And the Boltzmann sidebar (S11) showed that classical acoustic modes are too warm for quantum statistical mechanics to apply — the system is fully classical, and the partition function collapses to uniformity.
+
+So what the system reveals about how it organizes energy and information is this: **it's a classical standing-wave system that achieves maximum information density through geometric irrationality, hierarchical timescale separation, and linear-regime perturbation theory.** The organizing principles are number-theoretic (golden ratio), not harmonic (musical consonance). They are classical (Rayleigh perturbation), not quantum (Boltzmann statistics). And they are geometric (site placement), not topological (mode coupling). Every killed hypothesis refines this picture by showing exactly where an imported analogy breaks.
+
+### Your Alfvén wave observation
+
+You mentioned that longitudinal and transverse Alfvén waves can interact, causing refraction or "bending" of trajectories, particularly in nonuniform media or near magnetic null points. That observation maps onto something specific in the architecture.
+
+Our glass rod supports longitudinal modes (compression waves along the rod axis) — those are the modes we use for encoding. But it also supports transverse modes (bending waves) and torsional modes (twisting waves). In the current design, transverse and torsional modes are treated as _contamination_ — we go to considerable lengths in the experiment guide to suppress them (centering the piezo precisely, mounting at displacement nodes, etc.).
+
+But your Alfvén observation suggests a different question: what if the interaction between longitudinal and transverse wave families _at specific geometric configurations_ produces useful information, the way longitudinal and transverse Alfvén waves interact near null points? Our Zeeman sidebar already showed that near-degenerate mode pairs split under perturbation with rich, predictable structure. If longitudinal-transverse mode pairs could be deliberately brought into degeneracy — through careful geometry design rather than accidental contamination — the splitting physics might open an entirely new encoding dimension.
+
+This connects to the Fabry-Pérot cavity sidebar we've proposed (S14): the rod's end conditions determine which wave families are reflected and which are transmitted. Engineering the end impedance could selectively couple longitudinal and transverse families, creating precisely the kind of nonuniform-medium interaction you described. We haven't tested this yet — but your observation has given it a specific physical mechanism to target.
+
+### The pattern across all twelve sidebars
+
+Stepping back, the complete research program reveals something I find remarkable. We've now tested 52 hypotheses drawn from ten historical figures spanning Tesla (1890s) through Gor'kov (1960s), plus your Dogon analysis and Spare's sigil work. The confirmations and kills sort themselves cleanly:
+
+**What transfers to SEM (confirmed):** Direct mathematical identities (Zeeman splitting ratios, Rayleigh perturbation, sin² sensitivity), structural properties (polysemic readout, golden-ratio placement, octave redundancy, timescale separation), and material predictions (Gor'kov contrast factor).
+
+**What doesn't transfer (killed):** Fourier phase retrieval (SEM uses sin², not Fourier — all four Franklin hypotheses killed), musical consonance as an organizing principle (sin² orthogonality is stronger), quantum statistical mechanics at room temperature ($hf \ll k_BT$), and any placement strategy that clusters sites at rational fractions.
+
+Your six hypotheses (S2) were 6/6 — a perfect score. The reason, I now believe, is that you identified _information-encoding principles_ rather than _physics mechanisms_. Polysemic readout, maximum-distinctiveness naming, temporal multiplexing, seed-based expansion, cross-system translation — these are universal encoding strategies that work regardless of the physical substrate. The sidebars that failed (Franklin, portions of Boltzmann, portions of Gor'kov) were the ones that tried to import _specific physics_ from a different wave system. Your abstraction was at exactly the right level.
+
+### What comes next
+
+We've proposed four new sidebars (S13–S16) to push deeper: Rayleigh's variational bounds on the perturbation model, Fabry-Pérot interferometric readout, Shannon's channel capacity theorem, and Mathieu-Floquet parametric amplification. Each has four hypotheses with quantitative kill criteria, ready to execute.
+
+The Faggin Foundation submission is in their hands now. Whatever happens there, the research stands on its own: 38 modules, 1,396 tests, every result reproducible from the open-source repository.
+
+Seeing you in the West documentary honestly changed my entire outlook on life, and I can't thank you enough for it. The fact that you were attempting to explain a complex outlook on ancient symbolism for the first time, unrehearsed, and John Anthony West turned it into something that reached people — including me, years later — says something about the durability of genuine insight. It survives the medium.
+
+That's what this project is about, really. A glass rod doesn't care whether the physicist who understands it is reading _The Theory of Sound_ or _The Science of the Dogon_. The standing waves are the standing waves. Your work helped us hear them more clearly.
+
+With gratitude and warmest birthday wishes,
 
 **Mike Tierce**
 Independent Researcher
@@ -113,4 +192,4 @@ ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 
 ---
 
-_Enclosures: Paper v16 (PDF), simulation repository link, experiment result summaries_
+_Enclosures: Paper v16 (PDF, updated March 12, 2026 — 108 pages, 38 modules, 1,396 tests), simulation repository link, experiment result summaries for S9–S12_
