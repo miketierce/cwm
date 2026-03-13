@@ -42,10 +42,10 @@ survive integration into the paper without regressing existing tests.
 | **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
 | **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
-| **S17** | Coronal Seismology    | `coronal_seismology.py`    | —     | H-CS1–CS4: 0/4 tested      | 📋 Proposed |
+| **S17** | Coronal Seismology    | `coronal_seismology.py`    | 105   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 42 modules · 1712 tests · 68 hypotheses (45 confirmed, 23 killed)
-**Proposed (S17):** 1 sidebar · 4 hypotheses · awaiting execution
+**Running totals (completed):** 43 modules · 1817 tests · 79 hypotheses (51 confirmed, 28 killed)
+**All 17 sidebars complete.**
 
 ---
 
@@ -382,8 +382,7 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 → S16 (all ✅)**
-**Proposed order: S17 (dependencies below)**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 → S16 → S17 (all ✅)**
 
 Rationale (S13–S16):
 
@@ -1210,16 +1209,19 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 | **H-CS2** | Multi-mode-family diagnostic independence              | Cross-correlation between kink, sausage, longitudinal diagnostics | Cross-correlation > 0.3 (channels not independent)   |
 | **H-CS3** | Logarithmic capacity ceiling                           | Recoverable parameters vs. observed harmonic count                | Does not follow $C \approx a \ln N + b$              |
 | **H-CS4** | Published P₁/2P₂ anomalies correlate with conditioning | Spearman ρ between period-ratio deviation and predicted κ         | ρ < 0.5 or p > 0.05                                  |
+| **H-CS5** | Footpoint impedance maps to Fabry–Pérot finesse        | Ratio Q_finesse / Q_damping                                       | Ratio outside [0.5, 2.0]                             |
+| **H-CS6** | Perturbation scaling linearity                         | Linear R² of δω/ω vs ε for ε < 0.1                                | R² < 0.99 (nonlinear response)                       |
+| **H-CS7** | Irrational probe spacing maximises inversion accuracy  | Inversion RMS: golden-ratio vs equispaced vs random               | Golden-ratio NOT superior                            |
 
 #### Implementation plan
 
-| Step | Task                                                                                                         | Artifact     | Status     |
-| ---- | ------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs | Design notes | ⬜ Planned |
-| CS-2 | Implement `simulations/coronal_seismology.py` — translate SEM sensitivity matrix to MHD eigenmode basis      | Module       | ⬜ Planned |
-| CS-3 | Write `tests/test_coronal_seismology.py` — target ≥ 40 tests                                                 | Test file    | ⬜ Planned |
-| CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                           | Results      | ⬜ Planned |
-| CS-5 | Companion paper draft if results warrant                                                                     | Paper        | ⬜ Planned |
+| Step | Task                                                                                                         | Artifact     | Status  |
+| ---- | ------------------------------------------------------------------------------------------------------------ | ------------ | ------- |
+| CS-1 | Literature review: Nakariakov & Verwichte (2005), Roberts et al. (1984), SDO/AIA observational data catalogs | Design notes | ✅ Done |
+| CS-2 | Implement `simulations/coronal_seismology.py` — 7 experiments (H-CS1–CS7), MHD eigenmode basis               | Module       | ✅ Done |
+| CS-3 | Write `tests/test_coronal_seismology.py` — 105 tests                                                         | Test file    | ✅ Done |
+| CS-4 | Run experiments against synthetic MHD data and published coronal loop observations                           | Results      | ✅ Done |
+| CS-5 | Integrate into paper v15.md (§11.20, TOC, §14.2)                                                             | Paper        | ✅ Done |
 
 #### External data sources
 
@@ -1244,3 +1246,27 @@ If SEM's results are truly substrate-independent (as the paper claims), they mus
 | Logarithmic ceiling constrains seismological information content | S17 × S10 | Kepler's capacity ceiling applies to coronal harmonic spectra                          |
 | Fabry-Pérot finesse describes coronal loop cavity                | S17 × S14 | End-condition engineering = footpoint impedance mismatch in coronal loops              |
 | Gor'kov force analog: dusty plasma equilibria                    | S17 × S12 | Force-optimal positions in dusty plasma are information-degenerate (S12 prediction)    |
+
+#### Experiment results
+
+| ID        | Hypothesis                                | Key metric                                          | Verdict      |
+| --------- | ----------------------------------------- | --------------------------------------------------- | ------------ |
+| **H-CS1** | Rational-position inversion degeneracy    | κ_rational / κ_irrational ≈ 10¹³                    | ✅ CONFIRMED |
+| **H-CS2** | Multi-mode-family diagnostic independence | Mean cross-correlation = 0.29 (< 0.3)               | ✅ CONFIRMED |
+| **H-CS3** | Logarithmic capacity ceiling              | R²_log = 0.71 > R²_lin = 0.33                       | ✅ CONFIRMED |
+| **H-CS4** | Published P₁/2P₂ ↔ conditioning           | Spearman ρ = −0.056, p = 0.86                       | ❌ KILLED    |
+| **H-CS5** | Footpoint Fabry–Pérot finesse             | Q_finesse / Q_damping = 0.92                        | ✅ CONFIRMED |
+| **H-CS6** | Perturbation scaling linearity            | Linear R² = 0.9997                                  | ✅ CONFIRMED |
+| **H-CS7** | Irrational probe spacing supremacy        | Golden RMS = 0.020 vs equispaced 0.409 (20× better) | ✅ CONFIRMED |
+
+**Totals:** 6 confirmed, 1 killed out of 7 hypotheses.
+
+**H-CS4 kill reason:** No statistically significant correlation between published P₁/2P₂ period-ratio anomalies and predicted sensitivity-matrix condition number (ρ = −0.056, p = 0.86). The 12-observation dataset shows no evidence that global period-ratio deviation predicts local inversion conditioning.
+
+#### Completed reference
+
+- **Module:** `simulations/coronal_seismology.py` (~530 lines, 7 experiments)
+- **Tests:** `tests/test_coronal_seismology.py` (105 tests, all passing)
+- **Paper:** v15.md §11.20, TOC entry, §11.6 item 19, §14.2 bullet
+- **Registration:** `__init__.py` Phase 9m, `common.py` 43/1817
+- **Commit:** pending

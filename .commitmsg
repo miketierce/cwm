@@ -1,17 +1,11 @@
-S16 Mathieu–Floquet parametric mode amplification (Phase 9l)
+S17 Coronal Seismology - astrophysical validation sidebar
 
-New module: simulations/mathieu_parametric.py (~350 lines, 4 experiments)
-  H-PM1 CONFIRMED – parametric gain 12.0 dB at ε = 0.003 (166× less power than Békésy)
-  H-PM2 CONFIRMED – neighbour-mode crosstalk 0.0004 dB (selectivity 133×)
-  H-PM3 CONFIRMED – analytic ε_min = 2/Q within 9.3% of numerical threshold
-  H-PM4 CONFIRMED – parametric + CW readout compound improvement 12.0 dB
+Sidebar S17 (Coronal Seismology):
+- coronal_seismology.py: 7 experiments (H-CS1..H-CS7), 6 confirmed 1 killed
+- test_coronal_seismology.py: 105 tests, all passing
+- Paper v15.md: S11.20, TOC, S11.6, S14.2
+- SIDEBARS.md: S17 complete
+- common.py: 43 modules, 1817 tests
+- Full regression: 1817 passed, 0 failed
 
-4:0 confirmation — strongest positive result since Zeeman (S9)
-
-Tests: tests/test_mathieu_parametric.py (77 tests, 13 classes)
-Registration: __init__.py Phase 9l, common.py 42 modules / 1 712 tests
-Paper: §11.19, §11.6 item 18, §14.2 bullet, counts → 42 / 1 712
-SIDEBARS: S16 ✅, running totals 42 modules · 1 712 tests · 68 hypotheses
-           (45 confirmed, 23 killed, 66.2 % confirmation)
-PDFs: v15.pdf (140 pp), v15_2col.pdf (27 pp)
-Full regression: 1 712 / 1 712 passing
+All 17 sidebars complete: 79 hypotheses (51 confirmed, 28 killed)

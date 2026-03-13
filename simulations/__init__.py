@@ -99,3 +99,10 @@
 #   mathieu_parametric    - 4 experiments: parametric gain (confirmed),
 #                           mode selectivity (confirmed), stability boundary
 #                           (confirmed), parametric + CW readout (confirmed)
+#
+# Phase 9m — Coronal seismology: astrophysical validation:
+#   coronal_seismology    - 7 experiments: rational-position degeneracy (confirmed),
+#                           mode-family independence (confirmed), logarithmic
+#                           capacity ceiling (confirmed), P₁/2P₂ correlation
+#                           (killed), footpoint finesse (confirmed), perturbation
+#                           scaling (confirmed), optimal probe spacing (confirmed)
