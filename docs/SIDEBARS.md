@@ -40,12 +40,12 @@ survive integration into the paper without regressing existing tests.
 | **S13** | Irrational Prediction | `irrational_prediction.py` | 77    | H-IR1–IR4: 4/4 confirmed   | ✅ Complete |
 |         |                       |                            |       |                            |             |
 | **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
-| **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | —     | H-SN1–SN4: 0/4 tested      | 📋 Proposed |
+| **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
 | **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | —     | H-PM1–PM4: 0/4 tested      | 📋 Proposed |
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | —     | H-CS1–CS4: 0/4 tested      | 📋 Proposed |
 
-**Running totals (completed):** 40 modules · 1563 tests · 60 hypotheses (39 confirmed, 21 killed)
-**Proposed (S15–S17):** 3 sidebars · 12 hypotheses · awaiting execution
+**Running totals (completed):** 41 modules · 1635 tests · 64 hypotheses (41 confirmed, 23 killed)
+**Proposed (S16–S17):** 2 sidebars · 8 hypotheses · awaiting execution
 
 ---
 
@@ -382,8 +382,8 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 (all ✅)**
-**Proposed order: S15 → S16 (dependencies below)**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 (all ✅)**
+**Proposed order: S16 → S17 (dependencies below)**
 
 Rationale (S13–S16):
 
@@ -461,6 +461,8 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 | **H-ARF4** | S12     | 2025-07-13 | Dual-axis entropy −13.7% (threshold +20%)                                        | Node sites have zero sin² amplitude → zero eigenfrequency shift → redundant with noise; complementary encoding requires non-zero baseline sensitivity |
 | **H-FP2**  | S14     | 2026-03-13 | Both R² = 0.9998, advantage ≈ 0 (indistinguishable at high finesse)              | At high finesse, Airy and Lorentzian are asymptotically identical near peaks; the distinction only matters at moderate finesse (F < 50)               |
 | **H-FP3**  | S14     | 2026-03-13 | Scanning SNR −13 dB vs impulse (time-division penalty exceeds lock-in gain)      | Sequential mode scanning divides measurement time by N; parallel broadband detection captures all modes simultaneously with higher net SNR            |
+| **H-SN1**  | S15     | 2026-03-13 | Waterfilling gain 1.2% (threshold 2%)                                            | Mode-dependent SNR variation is modest (SNR_n = SNR_0/n); uniform allocation is near-optimal because the waterfilling gain requires steeper SNR decay |
+| **H-SN4**  | S15     | 2026-03-13 | MI ≈ 0.15 bits/mode everywhere, n_max = 0 (all modes below 0 dB in full model)   | Full five-source noise model is conservative; n_max formula overestimates usable modes when shot/thermal/1f/phase/quantisation all included           |
 
 ---
 
@@ -521,6 +523,13 @@ valuable as confirmations — it maps the boundary of what the physics supports.
 - **Tests:** `tests/test_fabry_perot_cavity.py` (90 tests)
 - **Paper:** §11.17, §14.2 bullet, §11.6 item 16
 - **Key result:** 2/4 confirmed — finesse-Q equivalence within 5.1% via self-consistent R_eff (H-FP1), end-condition engineering gives 7,922× linewidth variation across 6 materials (H-FP4). 2/4 killed — Airy ≈ Lorentzian at high finesse (both R² = 0.9998, H-FP2), scanning readout −13 dB vs broadband impulse (time-division penalty, H-FP3). Kill mechanism: high-finesse limit makes Airy/Lorentzian indistinguishable; sequential scanning loses to parallel broadband detection.
+
+### S15 — Shannon/Nyquist (Phase 9k)
+
+- **Module:** `simulations/shannon_capacity.py` (~340 lines, 4 experiments)
+- **Tests:** `tests/test_shannon_capacity.py` (72 tests)
+- **Paper:** §11.18, §14.2 bullet, §11.6 item 17
+- **Key result:** 2/4 confirmed — Nyquist 2K minimum strict at finite SNR (10× error reduction K→2K, H-SN2), uniform allocation achieves 98.8% of waterfilling optimum (H-SN3). 2/4 killed — waterfilling gain only 1.2% (threshold 2%, H-SN1), full noise model places all modes below MI threshold (n_max = 0, H-SN4). Kill mechanism: SNR variation too modest for waterfilling advantage; five-source noise model is conservative.
 
 ---
 
@@ -1044,13 +1053,22 @@ to Gabor's bandwidth ceiling (S8 H-G3).
 
 #### Implementation plan
 
-| Step | Task                                                                                                                     | Artifact     | Status     |
-| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ---------- |
-| SN-1 | Literature review: Shannon channel capacity, waterfilling theorem, MIMO capacity, Nyquist rate for parametric estimation | Design notes | ⬜ Planned |
-| SN-2 | Implement `simulations/shannon_capacity.py` with 4 experiment functions                                                  | Module       | ⬜ Planned |
-| SN-3 | Write `tests/test_shannon_capacity.py` — target $\geq$ 40 tests                                                          | Test file    | ⬜ Planned |
-| SN-4 | Run experiments, confirm or kill                                                                                         | Results      | ⬜ Planned |
-| SN-5 | Paper integration if warranted                                                                                           | Paper        | ⬜ Planned |
+| Step | Task                                                                                                                     | Artifact     | Status      |
+| ---- | ------------------------------------------------------------------------------------------------------------------------ | ------------ | ----------- |
+| SN-1 | Literature review: Shannon channel capacity, waterfilling theorem, MIMO capacity, Nyquist rate for parametric estimation | Design notes | ✅ Complete |
+| SN-2 | Implement `simulations/shannon_capacity.py` with 4 experiment functions                                                  | Module       | ✅ Complete |
+| SN-3 | Write `tests/test_shannon_capacity.py` — 72 tests                                                                        | Test file    | ✅ Complete |
+| SN-4 | Run experiments, confirm or kill                                                                                         | Results      | ✅ Complete |
+| SN-5 | Paper integration: §11.18, §14.2 bullet, §11.6 item 17, counts updated                                                   | Paper        | ✅ Complete |
+
+#### Experiment results
+
+| ID        | Verdict      | Key metric                              | Kill/confirm mechanism                                                                    |
+| --------- | ------------ | --------------------------------------- | ----------------------------------------------------------------------------------------- |
+| **H-SN1** | ❌ Killed    | Waterfilling gain 1.2% (threshold 2%)   | Mode-dependent SNR variation too modest; uniform ≈ optimal at SNR_0/n with α=1            |
+| **H-SN2** | ✅ Confirmed | Error ratio K/2K = 10× (K=5)            | Aliasing from unmeasured modes K+1..2K dominates; Nyquist 2K minimum strict at finite SNR |
+| **H-SN3** | ✅ Confirmed | Utilisation η_C = 98.8% (threshold 85%) | Complement of H-SN1: small waterfilling gain ↔ high uniform utilisation                   |
+| **H-SN4** | ❌ Killed    | MI ≈ 0.15 bits/mode, n_max = 0          | Five-source noise model is conservative; all modes below 0 dB SNR at default parameters   |
 
 #### External data sources
 

@@ -89,3 +89,8 @@
 #   fabry_perot_cavity    - 4 experiments: finesse-Q equivalence (confirmed),
 #                           Airy peak shape (killed), scanning readout (killed),
 #                           end-condition engineering (confirmed)
+#
+# Phase 9k — Shannon–Nyquist channel capacity & optimal mode allocation:
+#   shannon_capacity      - 4 experiments: waterfilling gain (killed),
+#                           Nyquist 2K minimum (confirmed), capacity
+#                           utilisation (confirmed), mutual information (killed)

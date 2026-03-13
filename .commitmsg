@@ -1,18 +1,15 @@
-S14: Fabry-Perot acoustic cavity finesse sidebar (Phase 9j)
+S15 Shannon–Nyquist channel capacity (Phase 9k)
 
-New module: simulations/fabry_perot_cavity.py (~500 lines, 4 experiments)
-New tests: tests/test_fabry_perot_cavity.py (90 tests, all passing)
+New module: simulations/shannon_capacity.py (~340 lines, 4 experiments)
+  H-SN1 KILLED  – waterfilling gain 1.2 % (threshold 2 %)
+  H-SN2 CONFIRMED – Nyquist 2K minimum strict at finite SNR (10× error K→2K)
+  H-SN3 CONFIRMED – uniform utilisation η_C = 98.8 % (threshold 85 %)
+  H-SN4 KILLED  – MI ≈ 0.15 bits/mode, n_max = 0 (full noise model conservative)
 
-Hypotheses (2/4 confirmed, 2/4 killed):
-  H-FP1 CONFIRMED - Finesse-Q equivalence: 5.1% error (threshold 25%)
-  H-FP2 KILLED    - Airy vs Lorentzian: both R^2=0.9998, indistinguishable
-  H-FP3 KILLED    - Scanning readout: -13 dB vs impulse (time-division penalty)
-  H-FP4 CONFIRMED - End-condition engineering: 7922x linewidth ratio
-
-Paper v15.md: added S11.17, TOC entry, S11.6 item 16, S14.2 bullet
-Updated counts: 40 modules, 1563 tests (was 39/1473)
-SIDEBARS.md: S14 dashboard complete, killed log, experiment results
-PDFs regenerated: v15.pdf (138pp), v15_2col.pdf (26pp)
-
-Cumulative: 39 confirmed, 21 killed, 60 hypotheses (65.0%)
-Full regression: 1563/1563 passing
+Tests: tests/test_shannon_capacity.py (72 tests, 10 classes)
+Registration: __init__.py Phase 9k, common.py 41 modules / 1 635 tests
+Paper: §11.18, §11.6 item 17, §14.2 bullet, counts → 41 / 1 635
+SIDEBARS: S15 ✅, running totals 41 modules · 1 635 tests · 64 hypotheses
+           (41 confirmed, 23 killed, 64.1 % confirmation)
+PDFs: v15.pdf (140 pp), v15_2col.pdf (27 pp)
+Full regression: 1 635 / 1 635 passing
