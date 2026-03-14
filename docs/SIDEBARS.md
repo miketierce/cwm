@@ -45,7 +45,7 @@ survive integration into the paper without regressing existing tests.
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
 | **S18** | Gauge Geometry        | `gauge_geometry.py`        | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 44 modules · 1909 tests · 84 hypotheses (54 confirmed, 30 killed)
+**Running totals (completed):** 44 modules · 1910 tests · 84 hypotheses (54 confirmed, 30 killed)
 **S1–S18 complete.**
 
 ---
@@ -1286,13 +1286,13 @@ CWM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2
 
 #### Hypotheses
 
-| ID        | Hypothesis                                                       | Metric                                                              | Kill criterion                                                              |
-| --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| **H-GG1** | Curvature of sensitivity connection predicts conditioning        | Correlation of ‖F‖² (Yang-Mills functional) with κ(S)               | R² < 0.5 between curvature norm and condition number                        |
-| **H-GG2** | Information capacity is a gauge invariant                        | Capacity under mode permutation, SVD rotation, position translation | Capacity changes by > 1% under any gauge transformation                     |
-| **H-GG3** | 1D sensitivity formulas arise from 2D by dimensional reduction   | Exact recovery of 1D κ and capacity from 2D reduction               | Relative error > 5% between reduced 2D and direct 1D results                |
-| **H-GG4** | Rank of sensitivity matrix is a topological invariant            | Piecewise constancy of rank under smooth position deformation       | Rank changes at > 5% of tested positions (not just rational points)         |
-| **H-GG5** | Holonomy of sensitivity connection is non-trivial and predictive | Correlation of tr(H) with enclosed curvature (Ambrose-Singer)       | H = I always (trivial holonomy), or R² < 0.5 between holonomy and curvature |
+| ID        | Hypothesis                                                       | Metric                                                                   | Kill criterion                                                              |
+| --------- | ---------------------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------- |
+| **H-GG1** | Sensitivity Jacobian norm predicts conditioning                  | Correlation of ‖J‖² (Jacobian norm) with κ(S)                            | R² < 0.5 between Jacobian norm and condition number                         |
+| **H-GG2** | Information capacity is a gauge invariant                        | Capacity under mode permutation and SVD rotation (+ translation control) | Capacity changes by > 1% under permutation or rotation                      |
+| **H-GG3** | 1D sensitivity formulas arise from 2D by dimensional reduction   | Exact recovery of 1D κ and capacity from 2D reduction                    | Relative error > 5% between reduced 2D and direct 1D results                |
+| **H-GG4** | Rank of sensitivity matrix is a topological invariant            | Piecewise constancy of rank under smooth position deformation            | Rank changes at > 5% of tested positions (not just rational points)         |
+| **H-GG5** | Holonomy of sensitivity connection is non-trivial and predictive | Correlation of tr(H) with enclosed curvature (Ambrose-Singer)            | H = I always (trivial holonomy), or R² < 0.5 between holonomy and curvature |
 
 #### Implementation plan
 
@@ -1308,7 +1308,7 @@ CWM's Rayleigh perturbation formula $\partial f_n / \partial m(x) \propto \sin^2
 
 | ID        | Verdict       | Key metric                                                       |
 | --------- | ------------- | ---------------------------------------------------------------- |
-| **H-GG1** | **KILLED**    | R² = 0.03 — curvature and conditioning are orthogonal functions  |
+| **H-GG1** | **KILLED**    | R² = 0.03 — Jacobian and sensitivity are orthogonal functions    |
 | **H-GG2** | **CONFIRMED** | Permutation Δ = 0.0000%, rotation Δ = 0.0000% — exact invariance |
 | **H-GG3** | **CONFIRMED** | κ error = 0.0000%, capacity error = 0.0000% — exact reduction    |
 | **H-GG4** | **CONFIRMED** | 0.00% rank changes across 500 smooth positions                   |
@@ -1321,17 +1321,18 @@ Commit: pending
 #### Key equations to validate
 
 - Connection 1-form: $A_{nk}(x) = \sin^2(n\pi x_k / L)$ (the sensitivity matrix IS the connection)
-- Curvature tensor: $F_{nk,j} = \partial A_{nk} / \partial x_j = 2n\pi/L \cdot \sin(n\pi x_j/L) \cos(n\pi x_j/L)$
-- Yang-Mills functional: $\|F\|^2 = \sum_{n,k,j} F_{nk,j}^2$
-- Holonomy matrix: $H = \prod_i M_i$ where $M_i$ are transition matrices along a closed path
+- Sensitivity Jacobian: $J_{nk} = \partial S_{nk} / \partial x_k = n\pi \sin(2n\pi x_k/L)$
+- Inter-position gauge curvature: $F_{jk} = \partial_j A_k - \partial_k A_j = 0$ (separable → flat)
+- Jacobian norm: $\|J\|^2 = \sum_{n,k} J_{nk}^2$ (analogous to Yang-Mills functional)
+- Holonomy matrix: $H = \prod_i M_i$ where $M_i = S_{i+1}^+ S_i$ (pseudoinverse transport)
 - Dimensional reduction: $S^{1D}_{n}(x) = \int_0^b S^{2D}_{nm}(x,y)\,dy$
 
 #### Cross-sidebar interactions
 
-| Interaction                                                         | Sidebars  | Nature                                                                                      |
-| ------------------------------------------------------------------- | --------- | ------------------------------------------------------------------------------------------- |
-| Curvature reinterprets condition number from S13                    | S18 × S13 | Golden-ratio optimality may correspond to curvature minimisation (Yang-Mills minimum)       |
-| Gauge invariance formalises SVD rewriting freedom from §12          | S18 × §12 | Virtual rewriting partitions are gauge orbits of the sensitivity connection                 |
-| Dimensional reduction connects Chladni 2D to rod 1D                 | S18 × S4  | The 9.1× mode scaling factor should emerge from the reduction formula                       |
-| Topological rank invariant relates to Shannon capacity              | S18 × S15 | Shannon capacity may be expressible in terms of topological invariants (Chern class analog) |
-| Holonomy around rational positions relates to Weyl equidistribution | S18 × S13 | Rational positions are "topology-changing" points where rank drops (gauge singularities)    |
+| Interaction                                                         | Sidebars  | Nature                                                                                        |
+| ------------------------------------------------------------------- | --------- | --------------------------------------------------------------------------------------------- |
+| Curvature reinterprets condition number from S13                    | S18 × S13 | H-GG1 killed: Jacobian and sensitivity are orthogonal functions; curvature does NOT predict κ |
+| Gauge invariance formalises SVD rewriting freedom from §12          | S18 × §12 | Virtual rewriting partitions are gauge orbits of the sensitivity connection                   |
+| Dimensional reduction connects Chladni 2D to rod 1D                 | S18 × S4  | The 9.1× mode scaling factor should emerge from the reduction formula                         |
+| Topological rank invariant relates to Shannon capacity              | S18 × S15 | Shannon capacity may be expressible in terms of topological invariants (Chern class analog)   |
+| Holonomy around rational positions relates to Weyl equidistribution | S18 × S13 | Rational positions are "topology-changing" points where rank drops (gauge singularities)      |

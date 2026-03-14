@@ -73,6 +73,8 @@ def _sensitivity_matrix(positions: np.ndarray, n_modes: int) -> np.ndarray:
 def _condition_number(S: np.ndarray) -> float:
     """κ(S) = σ_max / σ_min via SVD."""
     sv = np.linalg.svd(S, compute_uv=False)
+    if len(sv) == 0 or sv[0] == 0:
+        return float('inf')
     tol = max(S.shape) * sv[0] * np.finfo(float).eps
     return sv[0] / max(sv[-1], tol)
 
@@ -82,15 +84,18 @@ def _condition_number(S: np.ndarray) -> float:
 # =========================================================================
 
 def _curvature_tensor(positions: np.ndarray, n_modes: int) -> np.ndarray:
-    """Compute the curvature tensor F[n, k] = ∂S[n,k]/∂x_k.
+    """Sensitivity Jacobian J[n, k] = ∂S[n,k]/∂x_k.
 
-    For the sensitivity connection A_{nk} = sin²(nπx_k), the curvature
-    (field strength) with respect to position variation is:
+    For the sensitivity matrix S_{nk} = sin²(nπx_k):
 
-        F_{nk} = dA_{nk}/dx_k = 2nπ sin(nπx_k) cos(nπx_k)
-                = nπ sin(2nπx_k)
+        J_{nk} = dS_{nk}/dx_k = nπ sin(2nπx_k)
 
-    This is the Jacobian of the connection form.
+    In the gauge-geometric analogy, this plays the role of curvature
+    along individual position coordinates.  Note that the inter-position
+    gauge curvature F_{jk} = ∂_j A_k − ∂_k A_j vanishes identically
+    because S_{nk} depends only on x_k (the connection is separable).
+    The non-trivial geometric content arises instead from the
+    pseudoinverse-based parallel transport (see _holonomy_matrix).
     """
     ns = np.arange(1, n_modes + 1, dtype=float)
     # F[n, k] = nπ sin(2nπx_k)
@@ -100,10 +105,13 @@ def _curvature_tensor(positions: np.ndarray, n_modes: int) -> np.ndarray:
 
 
 def _yang_mills_functional(positions: np.ndarray, n_modes: int) -> float:
-    """‖F‖² = Σ F_{nk}² — the Yang–Mills action for the sensitivity connection.
+    """‖J‖² = Σ J_{nk}² — squared Frobenius norm of the sensitivity Jacobian.
 
-    Minimising this is analogous to finding the 'flattest' connection,
-    which in CWM corresponds to the best-conditioned inversion.
+    By analogy with the Yang–Mills action ∫ tr(F∧*F), this measures the
+    total 'rate of change' of the sensitivity matrix with respect to
+    position perturbations.  Note: H-GG1 shows this does NOT predict
+    the condition number κ(S) — the Jacobian (sin(2nπx)) and the
+    sensitivity (sin²(nπx)) are orthogonal functions.
     """
     F = _curvature_tensor(positions, n_modes)
     return float(np.sum(F ** 2))

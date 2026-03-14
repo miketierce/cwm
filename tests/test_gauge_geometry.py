@@ -142,6 +142,11 @@ class TestConditionNumber:
         kappa = _condition_number(S)
         assert kappa > 1e10
 
+    def test_zero_matrix_returns_inf(self):
+        S = np.zeros((3, 2))
+        kappa = _condition_number(S)
+        assert kappa == float('inf')
+
 
 # ====================================================================
 # Curvature tensor
