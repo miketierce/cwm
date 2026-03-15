@@ -6,26 +6,26 @@ CWM encodes information in the acoustic eigenmode spectrum of solid glass resona
 
 ## Key Results
 
-| Metric | Value |
-|--------|-------|
-| Thermally stable modes | 9,380 (borosilicate, ±1 K) |
-| Capacity per rod (1 mm MEMS) | 15 KB (119,126 bits) |
-| Active density | 95.1 Gbit/cm³ (9.5× DRAM) |
-| Packed-array density (0.5 mm SiO₂) | 1.4 Tbit/cm³ (1.4× NAND Flash) |
-| Associative search latency | 3.8 µs (100k patterns in parallel) |
-| Write energy | 15 fJ/bit |
-| Endurance | >10¹⁵ cycles |
-| Macro prototype SNR | 98.5 dB |
+| Metric                             | Value                              |
+| ---------------------------------- | ---------------------------------- |
+| Thermally stable modes             | 9,380 (borosilicate, ±1 K)         |
+| Capacity per rod (1 mm MEMS)       | 15 KB (119,126 bits)               |
+| Active density                     | 95.1 Gbit/cm³ (9.5× DRAM)          |
+| Packed-array density (0.5 mm SiO₂) | 1.4 Tbit/cm³ (1.4× NAND Flash)     |
+| Associative search latency         | 3.8 µs (100k patterns in parallel) |
+| Write energy                       | 15 fJ/bit                          |
+| Endurance                          | >10¹⁵ cycles                       |
+| Macro prototype SNR                | 98.5 dB                            |
 
 ## Simulation Apparatus
 
 The research is backed by a falsification-first computational framework:
 
 - **44 simulation modules** in `simulations/`
-- **1,909 automated tests** in `tests/`
+- **1,910 automated tests** in `tests/`
 - **80 hypotheses tested**: 54 confirmed, 26 killed (67.5% confirmation rate)
 - **22 advanced encoding techniques** (§11 of the paper)
-- **16 historical/physical analogies** — Tesla, Chladni, Békésy, Franklin, Leibniz, Gabor, Zeeman, Kepler, Boltzmann, Gor’kov, Fabry–Pérot, Shannon–Nyquist, Mathieu–Floquet, Coronal Seismology, Gauge Geometry, Scranton–Dogon
+- **18 historical/physical analogies** — Spare–Mace, Scranton–Dogon, Tesla, Chladni, Békésy, Franklin, Leibniz, Gabor, Zeeman, Kepler, Boltzmann, Gor'kov, Weyl equidistribution, Fabry–Pérot, Shannon–Nyquist, Mathieu–Floquet, Coronal Seismology, Gauge Geometry
 
 Every “confirmed” result passes automated regression tests. Every “killed” result is preserved with its kill mechanism documented.
 
@@ -37,7 +37,7 @@ cwm/
 │   ├── v16.md          # 1,950 lines — the definitive CWM paper
 │   └── figures/
 ├── simulations/        # 44 physics simulation modules
-├── tests/              # 1,909 automated tests
+├── tests/              # 1,910 automated tests
 ├── experiments/        # Standalone experiment scripts (exp01–exp05)
 ├── notebooks/          # 12 Jupyter analysis notebooks
 ├── analysis/           # Plotting, comparison, and export tools
@@ -56,7 +56,7 @@ git clone https://github.com/miketierce/cwm.git
 cd cwm
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest tests/ -q          # run all 1,909 tests
+python -m pytest tests/ -q          # run all 1,910 tests
 ```
 
 ## The Glass Rod Breakthrough
@@ -67,7 +67,7 @@ Every fabrication step borrows from an existing MEMS production line: glass DRIE
 
 ## Honest Assessment
 
-CWM’s strongest claims — mode count, Q factor, Rayleigh perturbation encoding, associative recall — are validated by 1,909 tests against first-principles physics. The weakest link is the gap between simulation and silicon: no MEMS device exists yet. The paper is transparent about this, killing 26 of 80 hypotheses and documenting every failure mechanism.
+CWM’s strongest claims — mode count, Q factor, Rayleigh perturbation encoding, associative recall — are validated by 1,910 tests against first-principles physics. The weakest link is the gap between simulation and silicon: no MEMS device exists yet. The paper is transparent about this, killing 26 of 80 hypotheses and documenting every failure mechanism.
 
 ## Citation
 
@@ -77,7 +77,7 @@ CWM’s strongest claims — mode count, Q factor, Rayleigh perturbation encodin
              in Acoustic Glass Resonators},
   author  = {Tierce, William Michael},
   year    = {2026},
-  note    = {v16, 44 simulation modules, 1,909 automated tests,
+  note    = {v16, 44 simulation modules, 1,910 automated tests,
              80 hypotheses (54 confirmed, 26 killed)}
 }
 ```

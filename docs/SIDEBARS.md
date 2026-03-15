@@ -45,7 +45,7 @@ survive integration into the paper without regressing existing tests.
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
 | **S18** | Gauge Geometry        | `gauge_geometry.py`        | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 44 modules · 1910 tests · 84 hypotheses (54 confirmed, 30 killed)
+**Running totals (completed):** 44 modules · 1,910 tests · 80 hypotheses (54 confirmed, 26 killed)
 **S1–S18 complete.**
 
 ---
@@ -383,7 +383,7 @@ S12 (Gor'kov) ─── depends on S1, S4 ──┘
      trapping; sin(2kz) identity
 ```
 
-**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 → S16 → S17 (all ✅)**
+**Completed order: S4 → S5 → S6 → S7 → S8 → S9 → S10 → S11 → S12 → S13 → S14 → S15 → S16 → S17 → S18 (all ✅)**
 
 Rationale (S13–S16):
 
