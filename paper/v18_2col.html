@@ -633,6 +633,9 @@ table, pre, blockquote {
 </tbody>
 </table>
 <p>All quantitative claims are computed from first-principles simulation code (44 modules, 1,910 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections.</p>
+<blockquote>
+<p><strong>Validated vs. projected at a glance.</strong> The macro prototype, FEM eigenfrequency agreement, and Rayleigh perturbation checks are <em>measured or validated</em>. The mode count formula and scaling laws are <em>derived</em> (mathematical consequences of validated physics). All MEMS density, energy, latency, Q-budget, and advanced-technique figures are <em>projected or modeled</em> — they rest on sound physics but await fabrication of the first MEMS die. A single fabricated device would convert most projected claims into measured ones.</p>
+</blockquote>
 <h2 id="2-architecture">2. Architecture</h2>
 <h3 id="21-eigenmode-encoding">2.1 Eigenmode Encoding</h3>
 <p>The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For CWM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.</p>
@@ -2336,6 +2339,9 @@ table, pre, blockquote {
 <li>
 <p><strong>Non-destructive parallel readout:</strong> CWM&rsquo;s eigenmode orthogonality means driving at frequency $f_n$ couples exclusively to mode $n$ because $\int_0^L \sin(n\pi x/L)\sin(m\pi x/L)\,dx = 0$ for $n \neq m$. All modes are read simultaneously via FFT without disturbing any—a classical analogue of quantum non-demolition measurement, achieved at room temperature via the mathematical orthogonality of standing-wave modes.</p>
 </li>
+<li>
+<p><strong>Emerging wave-based alternatives.</strong> Several other research programs explore wave physics for computation or storage. Optomechanical systems couple optical cavities to mechanical resonators for quantum transduction and sensing [24], but target single-mode or few-mode operation rather than the thousands of parallel channels CWM exploits. Spin-wave (magnonic) logic [25] uses ferromagnetic media for wave-based Boolean computation at GHz frequencies; however, spin-wave propagation losses limit coherence lengths to tens of micrometres, constraining device scale. Phononic computing proposals [26] engineer acoustic bandgaps in periodic metamaterials for signal routing and filtering, but do not address multi-mode spectral encoding or associative recall. Piezoelectric acoustic resonator arrays [27] achieve Q &gt; 10,000 in aluminium nitride thin films at GHz frequencies, validating that high-Q MEMS acoustics is practical—though these devices store timing references, not data. CWM is distinct from all of these in its use of the <em>full eigenmode spectrum</em> of a single resonator as a parallel information channel, combined with perturbation encoding and interference-based associative recall.</p>
+</li>
 </ul>
 <p>Sixteen extended cross-domain investigations (§11.7) further contextualise CWM within established physical frameworks, testing 68 hypotheses across wave physics, information theory, and spectral analysis. Full treatment is in the companion volume [23].</p>
 <h3 id="143-intellectual-property">14.3 Intellectual Property</h3>
@@ -2424,6 +2430,10 @@ table, pre, blockquote {
 <p>[21] G. Ungerboeck, “Channel coding with multilevel/phase signals,” <em>IEEE Transactions on Information Theory</em>, vol. 28, no. 1, pp. 55–67, 1982. doi: <a href="https://doi.org/10.1109/TIT.1982.1056454">10.1109/TIT.1982.1056454</a>. (Multilevel signal encoding and spectral partitioning for independent channel decoding.)</p>
 <p>[22] G. M. Rebeiz, <em>RF MEMS: Theory, Design, and Technology</em>. Hoboken, NJ: Wiley, 2003. doi: <a href="https://doi.org/10.1002/0471225282">10.1002/0471225282</a>. (Commercial RF MEMS switches: $> 10^9$ cycle endurance, $< 10\ \mu$s switching, near-zero static power.)</p>
 <p>[23] M. Tierce, <em>Coherent Wave Memory: The Full Story</em>. Companion volume, 2026. Extended cross-domain investigations, application scenarios, and narrative treatment of the research methodology. Repository: <a href="https://github.com/miketierce/cwm-book">github.com/miketierce/cwm-book</a>.</p>
+<p>[24] M. Aspelmeyer, T. J. Kippenberg, and F. Marquardt, &ldquo;Cavity optomechanics,&rdquo; <em>Reviews of Modern Physics</em>, vol. 86, no. 4, pp. 1391–1452, 2014. doi: <a href="https://doi.org/10.1103/RevModPhys.86.1391">10.1103/RevModPhys.86.1391</a>. (Canonical review of optomechanical systems coupling optical and mechanical degrees of freedom.)</p>
+<p>[25] A. V. Chumak, P. Kabos, M. Wu, C. Abert, C. Adelmann, A. O. Adeyeye, <em>et al.</em>, &ldquo;Advances in magnetics: roadmap on spin-wave computing,&rdquo; <em>IEEE Transactions on Magnetics</em>, vol. 58, no. 6, 0800172, 2022. doi: <a href="https://doi.org/10.1109/TMAG.2022.3149664">10.1109/TMAG.2022.3149664</a>.</p>
+<p>[26] M. I. Hussein, M. J. Leamy, and M. Ruzzene, &ldquo;Dynamics of phononic materials and structures: historical origins, recent progress, and future outlook,&rdquo; <em>Applied Mechanics Reviews</em>, vol. 66, no. 4, 040802, 2014. doi: <a href="https://doi.org/10.1115/1.4026911">10.1115/1.4026911</a>.</p>
+<p>[27] G. Piazza, V. Felmetsger, P. Muralt, R. H. Olsson III, and R. Ruby, &ldquo;Piezoelectric aluminum nitride thin films for microelectromechanical systems,&rdquo; <em>MRS Bulletin</em>, vol. 37, no. 11, pp. 1051–1061, 2012. doi: <a href="https://doi.org/10.1557/mrs.2012.268">10.1557/mrs.2012.268</a>. (Review of AlN MEMS resonators demonstrating Q &gt; 10,000 at GHz frequencies.)</p>
 <hr />
 <h2 id="appendix-a-snr-and-density-scaling-derivation">Appendix A: SNR and Density Scaling Derivation</h2>
 <h3 id="a1-snr-as-a-function-of-length">A.1 SNR as a Function of Length</h3>
