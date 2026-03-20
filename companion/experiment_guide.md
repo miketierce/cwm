@@ -33,13 +33,13 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 | #   | Component                               | Specification                                                | Qty     | Est. Cost      | Amazon Link                                                               |
 | --- | --------------------------------------- | ------------------------------------------------------------ | ------- | -------------- | ------------------------------------------------------------------------- |
-| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3             | 15-pack | ~\$8           | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L)       |
-| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed   | 10-pack | ~\$9           | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT)           |
-| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads           | 15-pack | ~\$7           | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H)       |
-| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)           | 10-pack | ~\$6           | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2)              |
-| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software | 1       | ~\$25          | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M)                   |
-| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                 | 1       | ~\$5           | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y)    |
-| 7   | Inlay casting wax                       | Brown dental/jewelry sticky wax sticks, pliable at room temp | 1 box   | ~\$8           | [Brown Inlay Wax, 1 oz](https://www.amazon.com/dp/B0BDT8WK2J)             |
+| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3             | 15-pack | ~\$8           | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)       |
+| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed   | 10-pack | ~\$9           | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)           |
+| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads           | 15-pack | ~\$7           | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)       |
+| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)           | 10-pack | ~\$6           | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)              |
+| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software | 1       | ~\$25          | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                   |
+| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                 | 1       | ~\$5           | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20)    |
+| 7   | Inlay casting wax                       | Brown dental/jewelry sticky wax sticks, pliable at room temp | 1 box   | ~\$8           | [Brown Inlay Wax, 1 oz](https://www.amazon.com/dp/B0BDT8WK2J?tag=cwmt-20)             |
 | 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                         | 2       | ~\$10          | Included with PicoScope kit; extras available at any electronics supplier |
 |     | **Core subtotal**                       |                                                              |         | **~\$63–\$78** |                                                                           |
 
