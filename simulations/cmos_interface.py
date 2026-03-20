@@ -26,6 +26,7 @@ from .common import K_B, C_FERROFLUID
 # ---------------------------------------------------------------------------
 E_CHARGE = 1.602e-19           # Coulomb
 KT_ROOM = K_B * 300.0          # Thermal energy at room temperature (J)
+C_BORO_BAR = 5315.0            # Bar wave speed in borosilicate glass (m/s)
 
 # CMOS technology nodes — typical Cgate and fT
 TECH_NODES = {
@@ -60,6 +61,17 @@ class ADCParams:
     bits: int = 10                  # Resolution
     sample_rate: float = 100e6      # Samples/s
     energy_per_conversion: float = 1e-12  # J (1 pJ — state-of-art SAR ADC)
+
+
+@dataclass
+class FFTParams:
+    """On-chip FFT engine specification.
+
+    Models a radix-2 Cooley-Tukey FFT implemented in CMOS.
+    Each butterfly operation involves ~12 transistor switching events
+    (4 real multiplies + 6 real adds + 2 mux/routing for a complex MAC).
+    """
+    ops_per_butterfly: int = 12     # Transistor switchings per butterfly
 
 
 @dataclass
@@ -411,3 +423,297 @@ def energy_kill_check(budget: CellEnergyBudget) -> Dict[str, Tuple[str, bool]]:
     )
 
     return checks
+
+
+# ---------------------------------------------------------------------------
+# FFT energy model
+# ---------------------------------------------------------------------------
+def fft_energy(
+    n_points: int,
+    tech_node: str = "28nm",
+    fft_params: Optional[FFTParams] = None,
+) -> float:
+    """
+    Energy for an N-point radix-2 Cooley-Tukey FFT on CMOS.
+
+    The computation requires (N/2) × log₂(N) butterfly operations.
+    Each butterfly is a complex multiply-accumulate requiring
+    ~12 transistor switching events.
+
+    E_FFT = (N/2) × log₂(N) × ops_per_butterfly × C_gate × V_dd²
+
+    Calibration against published FFT ASICs:
+      28nm: published designs report 3–15 fJ/butterfly; model gives 6.8 fJ
+      The model uses a simple switching-energy formula that overpredicts
+      by ~5–10× at older nodes (180nm, 65nm) due to pipeline optimisations
+      not captured here.  At 28 nm and below the agreement is good.
+
+    Parameters
+    ----------
+    n_points : int
+        FFT length (should be power of 2).
+    tech_node : str
+        CMOS technology node key.
+    fft_params : FFTParams, optional
+        Override default butterfly cost model.
+
+    Returns
+    -------
+    float
+        Total FFT computation energy in Joules.
+    """
+    if fft_params is None:
+        fft_params = FFTParams()
+
+    tech = TECH_NODES.get(tech_node, TECH_NODES["28nm"])
+    C_gate = tech["C_gate"]
+    V_dd = tech["V_dd"]
+
+    E_butterfly = fft_params.ops_per_butterfly * C_gate * V_dd**2
+    n_butterflies = (n_points / 2) * np.log2(n_points)
+
+    return n_butterflies * E_butterfly
+
+
+# ---------------------------------------------------------------------------
+# Readout bandwidth and energy analysis
+# ---------------------------------------------------------------------------
+def readout_bandwidth_analysis(
+    cell_length: float = 1e-3,
+    c: float = C_BORO_BAR,
+    Q: float = 9097.0,
+    adc_sample_rate: float = 100e6,
+    n_cycles: int = 10,
+) -> Dict[str, float]:
+    """
+    Analyse how ADC bandwidth constrains the number of readable modes.
+
+    For a rod of length *cell_length* with bar wave speed *c*, the
+    fundamental frequency is f₁ = c / (2L).  Modes up to n < Q are
+    spectrally resolvable (linewidth < mode spacing).  The ADC Nyquist
+    limit further caps the readable count at ⌊f_s / (2 f₁)⌋.
+
+    Parameters
+    ----------
+    cell_length : float
+        Rod length (m).
+    c : float
+        Bar wave speed (m/s).  Default: borosilicate glass.
+    Q : float
+        Quality factor.
+    adc_sample_rate : float
+        ADC sample rate (S/s).
+    n_cycles : int
+        Number of mode-spacing periods to capture (sets freq resolution).
+
+    Returns
+    -------
+    dict
+        f1_hz, n_modes_max (Q-limited), n_modes_adc (Nyquist-limited),
+        n_modes_effective, n_samples, fft_size, readout_time_s,
+        adc_bandwidth_hz.
+    """
+    f1 = c / (2 * cell_length)
+
+    n_modes_max = int(Q)
+    n_modes_adc = int(adc_sample_rate / (2 * f1))
+    n_eff = min(n_modes_max, n_modes_adc)
+
+    readout_time = n_cycles / f1
+    n_samples = int(adc_sample_rate * readout_time)
+    fft_size = int(2 ** np.ceil(np.log2(max(n_samples, 2))))
+
+    return {
+        "f1_hz": f1,
+        "n_modes_max": n_modes_max,
+        "n_modes_adc": n_modes_adc,
+        "n_modes_effective": n_eff,
+        "n_samples": n_samples,
+        "fft_size": fft_size,
+        "readout_time_s": readout_time,
+        "adc_bandwidth_hz": n_eff * f1,
+    }
+
+
+def readout_energy_budget(
+    model: Optional[CMOSInterfaceModel] = None,
+    cell_length: float = 1e-3,
+    c: float = C_BORO_BAR,
+    Q: float = 9097.0,
+    n_cycles: int = 10,
+) -> Dict:
+    """
+    Detailed readout energy for both CWM read paths.
+
+    Path A — Simple read (broadband pulse + FFT):
+        E_read = E_adc + E_fft + E_amplifier
+
+    Path B — Associative recall (parallel drive, peak detect):
+        E_recall = E_excitation + E_peak_detect  (per rod)
+        No FFT required; match is determined by peak amplitude.
+
+    Parameters
+    ----------
+    model : CMOSInterfaceModel, optional
+        Interface specification (defaults used if None).  Only tech_node,
+        adc, and transducer params are taken from the model; cell_length,
+        c, and Q are specified separately to match the paper's MEMS rod.
+    cell_length : float
+        Rod length (m).  Default 1 mm (paper Section 8).
+    c : float
+        Bar wave speed for the glass rod (m/s).
+    Q : float
+        Quality factor.
+    n_cycles : int
+        Readout window in units of 1/f₁.
+
+    Returns
+    -------
+    dict
+        'simple_read', 'associative_recall', and 'bandwidth' sub-dicts.
+    """
+    if model is None:
+        model = CMOSInterfaceModel()
+
+    tech = TECH_NODES.get(model.tech_node, TECH_NODES["28nm"])
+
+    bw = readout_bandwidth_analysis(
+        cell_length=cell_length,
+        c=c,
+        Q=Q,
+        adc_sample_rate=model.adc.sample_rate,
+        n_cycles=n_cycles,
+    )
+
+    # --- Path A: Simple read ---
+    E_adc_total = bw["n_samples"] * model.adc.energy_per_conversion
+    E_fft = fft_energy(bw["fft_size"], model.tech_node)
+    E_amp = amplifier_energy(model.tech_node)
+
+    simple_read = {
+        "n_modes_read": bw["n_modes_effective"],
+        "n_adc_samples": bw["n_samples"],
+        "fft_size": bw["fft_size"],
+        "E_adc_J": E_adc_total,
+        "E_fft_J": E_fft,
+        "E_amplifier_J": E_amp,
+        "E_total_J": E_adc_total + E_fft + E_amp,
+    }
+
+    # --- Path B: Associative recall ---
+    E_excite, _ = excitation_energy(
+        cell_length, c, Q,
+        model.n_modes, model.T,
+    )
+    E_peak_adc = model.adc.energy_per_conversion   # 1 sample for peak
+    E_comparator = tech["C_gate"] * tech["V_dd"]**2  # ~1 gate switching
+
+    associative_recall = {
+        "E_excitation_J": E_excite,
+        "E_peak_detect_per_rod_J": E_peak_adc + E_comparator,
+        "E_total_per_rod_J": E_excite + E_peak_adc + E_comparator,
+    }
+
+    return {
+        "simple_read": simple_read,
+        "associative_recall": associative_recall,
+        "bandwidth": bw,
+    }
+
+
+def readout_sensitivity_analysis(
+    tech_nodes: Optional[list] = None,
+    fft_multipliers: Optional[list] = None,
+    model: Optional[CMOSInterfaceModel] = None,
+    c: float = C_BORO_BAR,
+) -> list:
+    """
+    Sweep FFT energy multipliers and tech nodes to demonstrate robustness.
+
+    Shows that even at 100× the modeled FFT cost, total read energy
+    remains competitive because the ADC—not the FFT—dominates.
+
+    Returns
+    -------
+    list of dict
+        Each entry: tech_node, fft_multiplier, E_fft_J, E_adc_J,
+        E_total_read_J, n_modes, fft_size.
+    """
+    if tech_nodes is None:
+        tech_nodes = ["180nm", "65nm", "28nm", "7nm"]
+    if fft_multipliers is None:
+        fft_multipliers = [1, 10, 100]
+    if model is None:
+        model = CMOSInterfaceModel()
+
+    results = []
+    for node in tech_nodes:
+        m = CMOSInterfaceModel(
+            tech_node=node,
+            transducer=model.transducer,
+            adc=model.adc,
+            cell_length=model.cell_length,
+            c_medium=model.c_medium,
+            Q=model.Q,
+            n_modes=model.n_modes,
+            T=model.T,
+        )
+        budget = readout_energy_budget(m, c=c)
+        base_fft = budget["simple_read"]["E_fft_J"]
+        base_adc = budget["simple_read"]["E_adc_J"]
+        base_amp = budget["simple_read"]["E_amplifier_J"]
+
+        for mult in fft_multipliers:
+            adjusted_total = base_adc + base_amp + base_fft * mult
+            results.append({
+                "tech_node": node,
+                "fft_multiplier": mult,
+                "E_fft_J": base_fft * mult,
+                "E_adc_J": base_adc,
+                "E_total_read_J": adjusted_total,
+                "n_modes": budget["simple_read"]["n_modes_read"],
+                "fft_size": budget["simple_read"]["fft_size"],
+            })
+
+    return results
+
+
+def format_readout_summary(budget: Dict) -> str:
+    """Pretty-print the readout energy budget from readout_energy_budget()."""
+    sr = budget["simple_read"]
+    ar = budget["associative_recall"]
+    bw = budget["bandwidth"]
+
+    lines = [
+        "=" * 65,
+        "CWM Readout Energy Budget (per rod, 1 mm borosilicate)",
+        "=" * 65,
+        "",
+        "Bandwidth Analysis:",
+        f"  Fundamental f1           {bw['f1_hz']/1e6:>10.3f} MHz",
+        f"  Modes (Q-limited)        {bw['n_modes_max']:>10d}",
+        f"  Modes (ADC Nyquist)      {bw['n_modes_adc']:>10d}",
+        f"  Modes (effective)        {bw['n_modes_effective']:>10d}",
+        f"  Readout window           {bw['readout_time_s']*1e6:>10.2f} us",
+        f"  ADC samples              {bw['n_samples']:>10d}",
+        f"  FFT size                 {bw['fft_size']:>10d}",
+        "",
+        "Path A - Simple Read (broadband FFT):",
+        f"  ADC energy               {sr['E_adc_J']*1e12:>10.3f} pJ"
+        f"  ({sr['n_adc_samples']} samples x 1 pJ)",
+        f"  FFT energy               {sr['E_fft_J']*1e15:>10.1f} fJ"
+        f"  ({sr['fft_size']}-pt radix-2)",
+        f"  Amplifier energy         {sr['E_amplifier_J']*1e15:>10.1f} fJ",
+        "-" * 65,
+        f"  Total simple read        {sr['E_total_J']*1e12:>10.3f} pJ"
+        f"  (ADC: {sr['E_adc_J']/sr['E_total_J']*100:.0f}%,"
+        f" FFT: {sr['E_fft_J']/sr['E_total_J']*100:.1f}%)",
+        "",
+        "Path B - Associative Recall (no FFT):",
+        f"  Excitation energy        {ar['E_excitation_J']*1e15:>10.1f} fJ",
+        f"  Peak detect / rod        {ar['E_peak_detect_per_rod_J']*1e12:>10.3f} pJ",
+        "-" * 65,
+        f"  Total per rod            {ar['E_total_per_rod_J']*1e12:>10.3f} pJ",
+        "=" * 65,
+    ]
+    return "\n".join(lines)

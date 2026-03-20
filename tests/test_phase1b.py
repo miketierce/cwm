@@ -154,6 +154,72 @@ class TestCMOSInterface:
         assert "Energy Budget" in s
         assert "fJ" in s
 
+    def test_fft_energy_positive_and_scales(self):
+        """FFT energy should be positive and scale with FFT size."""
+        from simulations.cmos_interface import fft_energy
+        E_512 = fft_energy(512, "28nm")
+        E_1024 = fft_energy(1024, "28nm")
+        assert E_512 > 0
+        assert E_1024 > E_512
+        # 1024-pt should be roughly 2.4× the 512-pt (N log N scaling)
+        ratio = E_1024 / E_512
+        assert 2.0 < ratio < 3.0
+
+    def test_fft_energy_scales_with_tech_node(self):
+        """Smaller nodes should have cheaper FFT."""
+        from simulations.cmos_interface import fft_energy
+        E_180 = fft_energy(512, "180nm")
+        E_28 = fft_energy(512, "28nm")
+        E_7 = fft_energy(512, "7nm")
+        assert E_180 > E_28 > E_7
+
+    def test_readout_bandwidth_1mm_rod(self):
+        """Bandwidth analysis for 1 mm borosilicate rod at 100 MS/s."""
+        from simulations.cmos_interface import readout_bandwidth_analysis
+        bw = readout_bandwidth_analysis(cell_length=1e-3, c=5315.0,
+                                        Q=9097.0, adc_sample_rate=100e6)
+        assert bw["n_modes_adc"] == 18
+        assert bw["n_modes_max"] == 9097
+        assert bw["n_modes_effective"] == 18
+        assert bw["fft_size"] == 512
+        assert abs(bw["f1_hz"] - 2.6575e6) / 2.6575e6 < 1e-3
+
+    def test_readout_energy_budget_separates_paths(self):
+        """Readout budget should have simple_read and associative_recall."""
+        from simulations.cmos_interface import readout_energy_budget
+        budget = readout_energy_budget()
+        assert "simple_read" in budget
+        assert "associative_recall" in budget
+        assert "bandwidth" in budget
+        sr = budget["simple_read"]
+        assert sr["E_fft_J"] > 0
+        assert sr["E_adc_J"] > sr["E_fft_J"]  # ADC dominates
+        ar = budget["associative_recall"]
+        # Associative recall per rod should be much cheaper than simple read
+        assert ar["E_total_per_rod_J"] < sr["E_total_J"]
+
+    def test_readout_sensitivity_analysis(self):
+        """Sensitivity sweep should produce correct number of results."""
+        from simulations.cmos_interface import readout_sensitivity_analysis
+        results = readout_sensitivity_analysis(
+            tech_nodes=["28nm", "7nm"], fft_multipliers=[1, 100],
+        )
+        assert len(results) == 4  # 2 nodes × 2 multipliers
+        # Even at 100× FFT cost, total should stay < 10 nJ
+        for r in results:
+            assert r["E_total_read_J"] < 10e-9
+
+    def test_format_readout_summary(self):
+        """Readable summary string should contain key sections."""
+        from simulations.cmos_interface import (
+            readout_energy_budget, format_readout_summary,
+        )
+        budget = readout_energy_budget()
+        s = format_readout_summary(budget)
+        assert "Simple Read" in s
+        assert "Associative Recall" in s
+        assert "Bandwidth Analysis" in s
+
 
 # ═══════════════════════════════════════════════════════════════════════════
 # Monte Carlo Tamper Detection
