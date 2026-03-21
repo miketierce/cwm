@@ -1,0 +1,205 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" width="612" height="792">
+  <!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { font-size: 14pt; font-weight: 700; fill: #1a1a1a; }
+    .subtitle { font-size: 10pt; fill: #444; }
+    .label { font-size: 8.5pt; fill: #1a1a1a; }
+    .dim { font-size: 7.5pt; fill: #c00; font-weight: 600; }
+    .note { font-size: 7pt; fill: #555; font-style: italic; }
+    .inst { font-size: 7.5pt; fill: #333; }
+    .cut-line { stroke: #333; stroke-width: 1.2; stroke-dasharray: 6,3; fill: none; }
+    .fold-line { stroke: #999; stroke-width: 0.8; stroke-dasharray: 2,2; fill: none; }
+    .dim-line { stroke: #c00; stroke-width: 0.6; fill: none; }
+    .dim-arrow { fill: #c00; stroke: none; }
+    .pinhole { fill: none; stroke: #c00; stroke-width: 1.5; }
+    .pinhole-opt { fill: none; stroke: #c00; stroke-width: 1; stroke-dasharray: 3,2; }
+    .crosshair { stroke: #c00; stroke-width: 0.5; stroke-dasharray: 2,1; }
+    .outline { fill: #fafaf5; stroke: #333; stroke-width: 1.2; }
+    .grid-line { stroke: #ddd; stroke-width: 0.5; }
+    .chamber { fill: none; stroke: #2a7fff; stroke-width: 0.6; stroke-dasharray: 3,2; }
+  </style>
+
+  <!-- Page title -->
+  <text x="306" y="36" text-anchor="middle" class="title">CWM Experiment Guide — Multi-Rod Grid Template</text>
+  <text x="306" y="52" text-anchor="middle" class="subtitle">Print at 100% (no scaling). Verify ruler below. Use this template for packed-array simulation.</text>
+
+  <!-- Calibration ruler -->
+  <g transform="translate(206, 62)">
+    <rect x="0" y="0" width="141.73" height="12" fill="none" stroke="#333" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="0" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="141.73" y1="0" x2="141.73" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="28.35" y1="0" x2="28.35" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="56.69" y1="0" x2="56.69" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="85.04" y1="0" x2="85.04" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="113.39" y1="0" x2="113.39" y2="8" stroke="#333" stroke-width="0.5"/>
+    <text x="0" y="24" class="label" text-anchor="middle">0</text>
+    <text x="28.35" y="24" class="label" text-anchor="middle">10</text>
+    <text x="56.69" y="24" class="label" text-anchor="middle">20</text>
+    <text x="85.04" y="24" class="label" text-anchor="middle">30</text>
+    <text x="113.39" y="24" class="label" text-anchor="middle">40</text>
+    <text x="141.73" y="24" class="label" text-anchor="middle">50 mm</text>
+  </g>
+
+  <!-- ================================================================== -->
+  <!-- 2×2 GRID DIVIDER (4 rods)                                          -->
+  <!-- Rod spacing: 25 mm center-to-center (70.87 pt)                    -->
+  <!-- Grid: 2 columns × 2 rows                                          -->
+  <!-- Divider face: ~170mm × 100mm (trim to cooler)                     -->
+  <!-- ================================================================== -->
+
+  <text x="56" y="108" class="label" font-weight="700">OPTION A: 2×2 Grid (4 rods) — 25 mm center-to-center spacing</text>
+  <text x="56" y="122" class="note">Trace onto cardboard. Cut TWO identical copies. Punch all 4 pinholes in both. Trim to fit your cooler.</text>
+
+  <g transform="translate(65, 136)">
+    <!-- Outer cut line: 170mm × 100mm = 481.89 × 283.46 pt -->
+    <rect x="0" y="0" width="481.89" height="283.46" class="cut-line" rx="2"/>
+
+    <!-- Grid center: x=240.94, y=141.73 -->
+    <!-- 2×2 grid, 25mm spacing: offsets = ±12.5mm = ±35.43 pt from center -->
+
+    <!-- Grid lines (light guides) -->
+    <line x1="205.51" y1="0" x2="205.51" y2="283.46" class="grid-line"/>
+    <line x1="276.38" y1="0" x2="276.38" y2="283.46" class="grid-line"/>
+    <line x1="0" y1="106.3" x2="481.89" y2="106.3" class="grid-line"/>
+    <line x1="0" y1="177.17" x2="481.89" y2="177.17" class="grid-line"/>
+
+    <!-- Pinholes: 2×2 grid -->
+    <!-- Row 1 (top): y = 141.73 - 35.43 = 106.3 -->
+    <!-- Row 2 (bottom): y = 141.73 + 35.43 = 177.17 -->
+    <!-- Col 1 (left): x = 240.94 - 35.43 = 205.51 -->
+    <!-- Col 2 (right): x = 240.94 + 35.43 = 276.38 -->
+
+    <!-- Pinhole (1,1) -->
+    <circle cx="205.51" cy="106.3" r="9.92" class="pinhole"/>
+    <line x1="190" y1="106.3" x2="221" y2="106.3" class="crosshair"/>
+    <line x1="205.51" y1="91" x2="205.51" y2="122" class="crosshair"/>
+    <text x="205.51" y="88" text-anchor="middle" class="dim">R1</text>
+
+    <!-- Pinhole (1,2) -->
+    <circle cx="276.38" cy="106.3" r="9.92" class="pinhole"/>
+    <line x1="261" y1="106.3" x2="292" y2="106.3" class="crosshair"/>
+    <line x1="276.38" y1="91" x2="276.38" y2="122" class="crosshair"/>
+    <text x="276.38" y="88" text-anchor="middle" class="dim">R2</text>
+
+    <!-- Pinhole (2,1) -->
+    <circle cx="205.51" cy="177.17" r="9.92" class="pinhole"/>
+    <line x1="190" y1="177.17" x2="221" y2="177.17" class="crosshair"/>
+    <line x1="205.51" y1="162" x2="205.51" y2="193" class="crosshair"/>
+    <text x="205.51" y="207" text-anchor="middle" class="dim">R3</text>
+
+    <!-- Pinhole (2,2) -->
+    <circle cx="276.38" cy="177.17" r="9.92" class="pinhole"/>
+    <line x1="261" y1="177.17" x2="292" y2="177.17" class="crosshair"/>
+    <line x1="276.38" y1="162" x2="276.38" y2="193" class="crosshair"/>
+    <text x="276.38" y="207" text-anchor="middle" class="dim">R4</text>
+
+    <!-- Spacing dimensions -->
+    <line x1="205.51" y1="72" x2="276.38" y2="72" class="dim-line"/>
+    <polygon points="205.51,72 211,75 211,69" class="dim-arrow"/>
+    <polygon points="276.38,72 271,75 271,69" class="dim-arrow"/>
+    <text x="240.94" y="68" text-anchor="middle" class="dim">25 mm</text>
+
+    <line x1="296" y1="106.3" x2="296" y2="177.17" class="dim-line"/>
+    <polygon points="296,106.3 299,112 293,112" class="dim-arrow"/>
+    <polygon points="296,177.17 299,171 293,171" class="dim-arrow"/>
+    <text x="310" y="145" text-anchor="start" class="dim">25 mm</text>
+
+    <!-- Chamber outlines (dashed blue) -->
+    <rect x="170" y="72" width="70.87" height="70.87" class="chamber"/>
+    <rect x="240.87" y="72" width="70.87" height="70.87" class="chamber"/>
+    <rect x="170" y="142.87" width="70.87" height="70.87" class="chamber"/>
+    <rect x="240.87" y="142.87" width="70.87" height="70.87" class="chamber"/>
+    <text x="330" y="230" class="note" fill="#2a7fff">blue dashed = acoustic isolation chambers</text>
+
+    <!-- PZT side label -->
+    <text x="8" y="141" text-anchor="start" class="label" fill="#2a7fff">← PZT side</text>
+  </g>
+
+  <!-- ================================================================== -->
+  <!-- 3×2 GRID DIVIDER (6 rods)                                          -->
+  <!-- ================================================================== -->
+
+  <text x="56" y="456" class="label" font-weight="700">OPTION B: 3×2 Grid (6 rods) — 25 mm center-to-center spacing</text>
+  <text x="56" y="470" class="note">For larger coolers. Cut TWO copies. Requires cooler interior width ≥ 100 mm.</text>
+
+  <g transform="translate(65, 484)">
+    <!-- Outer cut line: 170mm × 90mm = 481.89 × 255.12 pt -->
+    <rect x="0" y="0" width="481.89" height="255.12" class="cut-line" rx="2"/>
+
+    <!-- Grid center: x=240.94, y=127.56 -->
+    <!-- 3 cols × 2 rows, 25mm spacing -->
+    <!-- Col offsets from center: -25mm, 0, +25mm = -70.87, 0, +70.87 -->
+    <!-- Row offsets from center: -12.5mm, +12.5mm = -35.43, +35.43 -->
+
+    <!-- Grid lines -->
+    <line x1="170.08" y1="0" x2="170.08" y2="255.12" class="grid-line"/>
+    <line x1="240.94" y1="0" x2="240.94" y2="255.12" class="grid-line"/>
+    <line x1="311.81" y1="0" x2="311.81" y2="255.12" class="grid-line"/>
+    <line x1="0" y1="92.13" x2="481.89" y2="92.13" class="grid-line"/>
+    <line x1="0" y1="162.99" x2="481.89" y2="162.99" class="grid-line"/>
+
+    <!-- Row 1: y = 127.56 - 35.43 = 92.13 -->
+    <!-- Row 2: y = 127.56 + 35.43 = 162.99 -->
+    <!-- Col 1: x = 240.94 - 70.87 = 170.08 -->
+    <!-- Col 2: x = 240.94 -->
+    <!-- Col 3: x = 240.94 + 70.87 = 311.81 -->
+
+    <!-- 6 pinholes -->
+    <circle cx="170.08" cy="92.13" r="9.92" class="pinhole"/>
+    <line x1="155" y1="92.13" x2="186" y2="92.13" class="crosshair"/>
+    <line x1="170.08" y1="77" x2="170.08" y2="107" class="crosshair"/>
+    <text x="170.08" y="74" text-anchor="middle" class="dim">R1</text>
+
+    <circle cx="240.94" cy="92.13" r="9.92" class="pinhole"/>
+    <line x1="225" y1="92.13" x2="257" y2="92.13" class="crosshair"/>
+    <line x1="240.94" y1="77" x2="240.94" y2="107" class="crosshair"/>
+    <text x="240.94" y="74" text-anchor="middle" class="dim">R2</text>
+
+    <circle cx="311.81" cy="92.13" r="9.92" class="pinhole"/>
+    <line x1="296" y1="92.13" x2="327" y2="92.13" class="crosshair"/>
+    <line x1="311.81" y1="77" x2="311.81" y2="107" class="crosshair"/>
+    <text x="311.81" y="74" text-anchor="middle" class="dim">R3</text>
+
+    <circle cx="170.08" cy="162.99" r="9.92" class="pinhole"/>
+    <line x1="155" y1="162.99" x2="186" y2="162.99" class="crosshair"/>
+    <line x1="170.08" y1="148" x2="170.08" y2="178" class="crosshair"/>
+    <text x="170.08" y="192" text-anchor="middle" class="dim">R4</text>
+
+    <circle cx="240.94" cy="162.99" r="9.92" class="pinhole"/>
+    <line x1="225" y1="162.99" x2="257" y2="162.99" class="crosshair"/>
+    <line x1="240.94" y1="148" x2="240.94" y2="178" class="crosshair"/>
+    <text x="240.94" y="192" text-anchor="middle" class="dim">R5</text>
+
+    <circle cx="311.81" cy="162.99" r="9.92" class="pinhole"/>
+    <line x1="296" y1="162.99" x2="327" y2="162.99" class="crosshair"/>
+    <line x1="311.81" y1="148" x2="311.81" y2="178" class="crosshair"/>
+    <text x="311.81" y="192" text-anchor="middle" class="dim">R6</text>
+
+    <!-- Spacing dimensions -->
+    <line x1="170.08" y1="60" x2="240.94" y2="60" class="dim-line"/>
+    <polygon points="170.08,60 176,63 176,57" class="dim-arrow"/>
+    <polygon points="240.94,60 235,63 235,57" class="dim-arrow"/>
+    <text x="205.51" y="56" text-anchor="middle" class="dim">25 mm</text>
+
+    <line x1="240.94" y1="60" x2="311.81" y2="60" class="dim-line"/>
+    <polygon points="240.94,60 247,63 247,57" class="dim-arrow"/>
+    <polygon points="311.81,60 306,63 306,57" class="dim-arrow"/>
+    <text x="276.38" y="56" text-anchor="middle" class="dim">25 mm</text>
+
+    <!-- PZT side label -->
+    <text x="8" y="127" text-anchor="start" class="label" fill="#2a7fff">← PZT side</text>
+  </g>
+
+  <!-- ================================================================== -->
+  <!-- INSTRUCTIONS BOX                                                   -->
+  <!-- ================================================================== -->
+
+  <g transform="translate(56, 752)">
+    <text x="0" y="0" class="inst" font-weight="700">Instructions:</text>
+    <text x="0" y="12" class="inst">1. Print this page at 100% scale. Verify the calibration ruler.</text>
+    <text x="0" y="24" class="inst">2. Cut out the template along the dashed line. Tape it to cardboard and trace.</text>
+    <text x="250" y="12" class="inst">3. Punch pinholes at each ⊙ with a pushpin; enlarge to ~7 mm with a pencil tip.</text>
+    <text x="250" y="24" class="inst">4. Cut TWO dividers per template. Space them 75 mm apart inside the cooler.</text>
+  </g>
+</svg>

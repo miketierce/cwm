@@ -87,7 +87,11 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 1. **Clean the rod.** Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.
 
-2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using a pushpin or needle, punch a clean pinhole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture.
+2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using a pushpin or needle, punch a clean pinhole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
+
+> **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the cooler walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the cooler interior into isolated chambers for multi-rod array experiments—something foam cannot do.
+>
+> **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. If in doubt, start with a pushpin hole and gradually enlarge with a pencil tip until the rod passes freely. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
 3. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
@@ -768,6 +772,26 @@ _The following pages present each figure at full landscape scale for detailed ex
 <div class="plate-page">
 <img src="figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
 <p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). <em>(a)</em> Eigenfrequency diagram: uncoupled modes (dashed grey) would cross at zero detuning; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by minimum gap 2κ = 17 kHz. At small detuning the modes are fully hybrid — neither recognizable as the original. <em>(b)</em> Hybridization depth vs. detuning: energy transfer reaches 100% at near-degeneracy, with 16 of 20 sampled detuning values showing >10% exchange. Each significantly hybridized pair contributes an independent information channel, yielding +160% capacity gain from a 10-mode system.</p>
+</div>
+
+---
+
+## Printable Divider Templates
+
+_The following pages provide 1:1-scale templates for cutting and punching the cardboard dividers that support the glass rod inside the styrofoam cooler. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Each template includes crosshair pinhole targets — punch with a pushpin, then enlarge to ~7 mm diameter with a pencil tip._
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="plate-page">
+<img src="figures/template_single_rod.svg" alt="Template T.1: Single-Rod Divider"/>
+<p><strong>Template T.1 — Single-Rod Divider.</strong> Trace the dashed outline onto cardboard and cut to fit your cooler interior. Punch a 7 mm pinhole at the crosshair center. Cut TWO dividers and slot them into the cooler 75 mm apart. This places each support at $L/4$ and $3L/4$ for a 150 mm rod — the exact displacement nodes of mode 2. For different rod lengths, recalculate: support spacing = $L/2$, each support at $L/4$ from the nearer end.</p>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="plate-page">
+<img src="figures/template_multi_rod.svg" alt="Template T.2: Multi-Rod Grid Divider"/>
+<p><strong>Template T.2 — Multi-Rod Grid Divider.</strong> Two grid options for packed-array simulation: 2×2 (4 rods) and 3×2 (6 rods) with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays. Cut TWO copies of your chosen grid, maintaining identical pinhole positions. The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>
 </div>
 
 ---
