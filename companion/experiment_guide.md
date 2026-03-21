@@ -752,7 +752,7 @@ _The following pages present each figure at full landscape scale for detailed ex
 
 <div class="plate-page">
 <img src="figures/fig12_ringdown.svg" alt="Plate 12: Ring-down and Q Measurement"/>
-<p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the $25 USB oscilloscope is not the bottleneck.</p>
+<p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the USB oscilloscope is not the bottleneck.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>

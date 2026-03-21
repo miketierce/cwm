@@ -5,8 +5,7 @@
 <title>Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap"
-      rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
       crossorigin="anonymous">
@@ -18,214 +17,387 @@
         crossorigin="anonymous"></script>
 <style>
 
-/* ===== Page geometry ===== */
+/* -- Page geometry: duplex with binding gutter -- */
 @page {
     size: letter;
-    margin: 0.65in 0.6in 0.75in 0.6in;
+    margin: 0.85in 0.85in 1in 1.15in;   /* top right bottom left(gutter) */
+}
+@page :left {
+    margin-left: 0.85in;
+    margin-right: 1.15in;
+}
+@page :right {
+    margin-left: 1.15in;
+    margin-right: 0.85in;
+}
+
+/* Named page for landscape plates */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
 }
 
 :root {
     --text: #1a1a1a;
-    --muted: #444;
-    --accent: #1a3c7a;
-    --border: #bbb;
-    --bg-code: #f4f4f4;
-    --bg-table-head: #e8ecf1;
-    --col-gap: 0.28in;
+    --muted: #555;
+    --accent: #2563eb;
+    --border: #d1d5db;
+    --bg-code: #f5f5f5;
+    --bg-table-head: #f0f4f8;
+    --title-accent: #1e40af;
 }
 
 * { box-sizing: border-box; }
 
 body {
-    font-family: "Times New Roman", "Times", "Nimbus Roman", serif;
-    font-size: 9pt;
-    line-height: 1.38;
+    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
+    font-size: 11pt;
+    line-height: 1.55;
     color: var(--text);
+    max-width: 100%;
     margin: 0;
     padding: 0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
 }
 
-/* ===== Title block — full width, single column ===== */
-.paper-header {
+/* === TITLE PAGE === */
+.title-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
     text-align: center;
-    margin-bottom: 14pt;
-    padding-bottom: 8pt;
-    border-bottom: 0.5pt solid var(--border);
+    padding: 0 0.5in;
 }
 
-.paper-header .paper-title {
-    font-size: 17pt;
+.title-page .rule-top {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 0 auto 28pt auto;
+}
+
+.title-page .paper-title {
+    font-size: 22pt;
     font-weight: 700;
-    line-height: 1.2;
-    margin: 0 0 8pt 0;
+    line-height: 1.25;
     color: var(--text);
+    margin: 0 0 8pt 0;
+    max-width: 5.5in;
     display: block !important;
 }
 
-.paper-header .author-name {
-    font-size: 11pt;
-    font-weight: 400;
-    margin: 0 0 2pt 0;
+.title-page .rule-mid {
+    width: 1.5in;
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 0 auto 28pt auto;
 }
 
-.paper-header .author-affil {
-    font-size: 9pt;
+.title-page .author {
+    font-size: 14pt;
+    font-weight: 600;
+    margin: 0 0 4pt 0;
+    color: var(--text);
+}
+
+.title-page .affiliation {
+    font-size: 11pt;
     font-style: italic;
     color: var(--muted);
+    margin: 0 0 6pt 0;
+}
+
+.title-page .orcid {
+    font-size: 9.5pt;
+    color: var(--muted);
     margin: 0 0 2pt 0;
 }
 
-.paper-header .author-ids {
-    font-size: 8pt;
-    color: var(--muted);
-    margin: 0;
-}
-
-.paper-header .author-ids a {
+.title-page .orcid a {
     color: var(--accent);
     text-decoration: none;
 }
 
-/* ===== Abstract — full width, indented, italic prefix ===== */
-.abstract-block {
-    margin: 0 0.3in 12pt 0.3in;
-    font-size: 8.5pt;
-    line-height: 1.35;
+.title-page .repo {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin: 0 0 32pt 0;
+}
+
+.title-page .repo a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.title-page .version {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 0;
+}
+
+.title-page .rule-bottom {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 28pt auto 0 auto;
+}
+
+/* === BLANK VERSO === */
+.blank-verso {
+    page-break-before: always;
+    page-break-after: always;
+    min-height: 1px;
+    visibility: hidden;
+}
+
+/* === TABLE OF CONTENTS === */
+.toc-page {
+    page-break-before: right;
+    page-break-after: always;
+}
+
+.toc-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 18pt;
+    color: var(--text);
+}
+
+.toc-page .toc-part {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--title-accent);
+    margin: 14pt 0 4pt 0;
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+}
+
+.toc-page .toc-part:first-of-type {
+    margin-top: 0;
+}
+
+.toc-page ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4pt 0;
+}
+
+.toc-page ol li {
+    font-size: 10.5pt;
+    line-height: 1.7;
+    padding-left: 8pt;
+    margin: 0;
+}
+
+.toc-page ol li a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.toc-page ol li .toc-desc {
+    color: var(--muted);
+    font-size: 9.5pt;
+}
+
+.toc-page ol li.toc-sub {
+    font-size: 9.5pt;
+    color: var(--muted);
+    padding-left: 24pt;
+    line-height: 1.5;
+}
+
+.toc-page .toc-appendices {
+    margin-top: 14pt;
+}
+
+.toc-page .toc-appendices .toc-part {
+    margin-top: 0;
+}
+
+/* === ABSTRACT PAGE === */
+.abstract-page {
+    page-break-before: right;
+}
+
+.abstract-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 14pt;
+}
+
+.abstract-page p {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--muted);
     text-align: justify;
 }
 
-.abstract-block .abstract-label {
-    font-weight: 700;
-    font-style: italic;
+/* === PART DIVIDERS === */
+.part-heading {
+    page-break-before: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 3in;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 2in;
 }
 
-/* ===== Two-column body ===== */
-.two-col {
-    column-count: 2;
-    column-gap: var(--col-gap);
-    column-rule: 0.25pt solid #ddd;
-}
-
-/* ===== Section headings ===== */
-/* h1 is hidden (title is in the header) */
-h1 { display: none; }
-
-/* Major sections (## N. Title) — span both columns */
-h2 {
-    column-span: all;
-    font-size: 10pt;
+.part-heading .part-label {
+    font-size: 11pt;
     font-weight: 700;
+    letter-spacing: 1.5pt;
     text-transform: uppercase;
-    letter-spacing: 0.3pt;
-    margin: 14pt 0 6pt 0;
-    padding-bottom: 2pt;
-    border-bottom: 0.5pt solid var(--accent);
+    color: var(--title-accent);
+    margin: 0 0 8pt 0;
+}
+
+.part-heading .part-title {
+    font-size: 18pt;
+    font-weight: 700;
     color: var(--text);
+    margin: 0 0 6pt 0;
+}
+
+.part-heading .part-desc {
+    font-size: 10pt;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 4.5in;
+    margin: 0;
+}
+
+.part-heading hr {
+    width: 2in;
+    border: none;
+    border-top: 1.5pt solid var(--title-accent);
+    margin: 18pt auto 0 auto;
+}
+
+/* === BODY HEADINGS === */
+h1 {
+    display: none;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 22pt 0 8pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    color: var(--text);
+    page-break-before: right;
     page-break-after: avoid;
 }
 
-/* Subsections (### N.N Title) — inside column */
+/* Suppress double page-break when h2 follows a Part divider or is inside a container */
+.part-heading + h2,
+.abstract-page h2,
+.toc-page h2 {
+    page-break-before: avoid;
+}
+
 h3 {
-    font-size: 9.5pt;
+    font-size: 12pt;
     font-weight: 700;
-    font-style: italic;
-    margin: 10pt 0 4pt 0;
+    margin: 14pt 0 6pt 0;
     color: var(--text);
     page-break-after: avoid;
 }
 
 h4 {
-    font-size: 9pt;
+    font-size: 11pt;
     font-weight: 700;
-    margin: 8pt 0 3pt 0;
+    margin: 10pt 0 4pt 0;
     color: var(--muted);
-    page-break-after: avoid;
 }
 
-/* ===== Body text ===== */
+/* === BODY TEXT === */
 p {
-    margin: 0 0 6pt 0;
+    margin: 0 0 8pt 0;
     text-align: justify;
-    hyphens: auto;
-    orphans: 2;
-    widows: 2;
+    hyphens: none;
+    orphans: 3;
+    widows: 3;
 }
 
 ul, ol {
-    margin: 3pt 0 6pt 0;
-    padding-left: 14pt;
+    margin: 4pt 0 8pt 0;
+    padding-left: 20pt;
 }
-li { margin-bottom: 2pt; }
-li > p { margin-bottom: 2pt; }
+li {
+    margin-bottom: 3pt;
+}
+li > p { margin-bottom: 3pt; }
 
-/* ===== Tables ===== */
+/* -- Tables -- */
 table {
     border-collapse: collapse;
     width: 100%;
-    margin: 8pt 0;
-    font-size: 8pt;
-    line-height: 1.25;
-    break-inside: avoid;
+    margin: 10pt 0;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
 }
 
 thead th {
     background: var(--bg-table-head);
-    border-top: 1pt solid var(--text);
-    border-bottom: 1pt solid var(--text);
-    padding: 3pt 4pt;
+    border: 1pt solid var(--border);
+    padding: 5pt 8pt;
     font-weight: 700;
     text-align: left;
-    font-size: 7.5pt;
+    white-space: nowrap;
 }
 
 tbody td {
-    border-bottom: 0.25pt solid #ddd;
-    padding: 2.5pt 4pt;
+    border: 1pt solid var(--border);
+    padding: 4pt 8pt;
     vertical-align: top;
 }
 
-/* Bottom rule on last row */
-tbody tr:last-child td {
-    border-bottom: 1pt solid var(--text);
+tbody tr:nth-child(even) {
+    background: #fafafa;
 }
 
 tbody td strong {
     color: var(--accent);
 }
 
-/* Wide tables that must span both columns */
-.wide-table {
-    column-span: all;
-}
-
-/* ===== Horizontal rules ===== */
+/* -- Horizontal Rules -- */
 hr {
     border: none;
-    border-top: 0.25pt solid #ccc;
-    margin: 8pt 0;
+    border-top: 1pt solid var(--border);
+    margin: 16pt 0;
 }
 
-/* ===== Code ===== */
+/* -- Code -- */
 code {
-    font-family: "SF Mono", "Menlo", "Consolas", monospace;
-    font-size: 7.5pt;
+    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 9pt;
     background: var(--bg-code);
-    padding: 0.5pt 2pt;
-    border-radius: 1.5pt;
+    padding: 1pt 3pt;
+    border-radius: 2pt;
 }
 
 pre {
     background: var(--bg-code);
-    padding: 6pt 8pt;
-    border-radius: 2pt;
-    border: 0.25pt solid var(--border);
+    padding: 10pt 12pt;
+    border-radius: 4pt;
+    border: 1pt solid var(--border);
     overflow-x: auto;
-    font-size: 7pt;
-    line-height: 1.3;
-    margin: 6pt 0;
-    break-inside: avoid;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    margin: 8pt 0;
+    page-break-inside: avoid;
 }
 
 pre code {
@@ -233,200 +405,314 @@ pre code {
     padding: 0;
 }
 
-/* ===== Block quotes ===== */
+/* -- Block quotes -- */
 blockquote {
-    margin: 6pt 0;
-    padding: 4pt 8pt;
-    border-left: 2pt solid var(--accent);
-    background: #f5f7fa;
+    margin: 8pt 0;
+    padding: 6pt 12pt;
+    border-left: 3pt solid var(--accent);
+    background: #f8fafc;
     color: var(--muted);
-    font-size: 8.5pt;
 }
 
-blockquote p {
-    font-size: 8.5pt;
-}
-
-/* ===== Links ===== */
+/* -- Links -- */
 a {
     color: var(--accent);
     text-decoration: none;
 }
 
-/* ===== Math (KaTeX) ===== */
+/* -- Math (KaTeX) -- */
 .katex-display {
-    margin: 8pt 0;
+    margin: 10pt 0;
     overflow-x: auto;
+    page-break-inside: avoid;
     break-inside: avoid;
 }
 
 .katex {
-    font-size: 1.0em;
+    font-size: 1.05em;
 }
 
-/* ===== Figures — full width when inside plate-page, else in-column ===== */
+/* -- Inline thumbnail figures -- */
 div.cwm-thumb {
     text-align: center;
-    margin: 8pt auto;
-    break-inside: avoid;
+    margin: 12pt auto;
+    page-break-inside: avoid;
 }
 
 div.cwm-thumb img {
-    max-width: 100%;
+    max-width: 70%;
     height: auto;
     display: block;
     margin: 0 auto;
 }
 
 div.cwm-thumb p {
-    font-size: 7.5pt;
+    font-size: 8.5pt;
     color: var(--muted);
-    text-align: justify;
-    margin: 4pt 0 0 0;
-    line-height: 1.25;
+    text-align: center;
+    max-width: 85%;
+    margin: 6pt auto 0 auto;
+    line-height: 1.35;
 }
 
-/* Plate-page images: span full width, portrait orientation */
+/* -- Landscape plate pages -- */
 div.plate-page {
-    column-span: all;
-    text-align: center;
-    margin: 10pt 0;
-    break-inside: avoid;
-    page-break-inside: avoid;
+    page: plate;
+    page-break-before: always;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
 }
 
 div.plate-page img {
     max-width: 100%;
-    max-height: 4.5in;
+    max-height: 6.5in;
     width: auto;
     height: auto;
 }
 
 div.plate-page p {
-    font-size: 7.5pt;
-    color: var(--muted);
-    text-align: justify;
-    max-width: 100%;
-    margin: 4pt auto 0 auto;
-    line-height: 1.25;
+    text-align: center;
+    max-width: 90%;
+    margin-top: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.4;
 }
 
-/* Hide blank-verso pages entirely in 2-col layout */
-.blank-verso {
-    display: none;
+/* -- Footnotes / References -- */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 9pt;
+    line-height: 1.35;
+    hanging-punctuation: first;
+    padding-left: 24pt;
+    text-indent: -24pt;
 }
 
-/* ===== Worksheet plates — span both columns ===== */
-div.worksheet-plate {
-    column-span: all;
+/* -- Worksheet header -- */
+.worksheet-header {
     page-break-before: always;
+    border: 2pt solid var(--title-accent);
+    border-radius: 4pt;
+    padding: 10pt 14pt;
+    margin: 18pt 0 10pt 0;
+    background: var(--bg-table-head);
+    page-break-after: avoid;
+}
+
+.worksheet-header h4 {
+    margin: 0 0 2pt 0;
+    font-size: 13pt;
+    color: var(--title-accent);
+    border-bottom: none;
+}
+
+.worksheet-header .ws-project {
+    font-size: 8.5pt;
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+}
+
+.worksheet-header .ws-instruction {
+    font-size: 9pt;
+    color: var(--text);
+    margin: 4pt 0 0 0;
+}
+
+/* -- Print tweaks -- */
+h2, h3 {
+    page-break-after: avoid;
+}
+table, pre {
+    page-break-inside: avoid;
+}
+
+/* -- Colophon page -- */
+.colophon {
+    page-break-before: right;
+    padding-top: 2in;
+    text-align: center;
+    color: var(--muted);
+    font-size: 9pt;
+    line-height: 1.6;
+}
+
+.colophon p {
+    text-align: center;
+}
+
+/* -- Handwritten example entries (blue pen) -- */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 11pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* -- Printable worksheet pages -- */
+div.worksheet-plate {
+    page-break-before: always;
+    page-break-after: always;
     padding-top: 0.15in;
 }
 
 div.worksheet-plate h4 {
     text-align: center;
-    font-size: 10pt;
+    font-size: 13pt;
     font-weight: 700;
-    margin-bottom: 8pt;
-    padding-bottom: 3pt;
-    border-bottom: 0.5pt solid var(--border);
-    text-transform: none;
-    font-style: normal;
+    margin-bottom: 10pt;
+    padding-bottom: 4pt;
+    border-bottom: 1pt solid var(--border);
 }
 
 div.worksheet-plate p.ws-inst {
-    font-size: 8pt;
+    font-size: 9pt;
     color: var(--muted);
     text-align: center;
-    margin-bottom: 6pt;
+    margin-bottom: 8pt;
     font-style: italic;
 }
 
 div.worksheet-plate table {
-    font-size: 8.5pt;
+    width: 100%;
+    font-size: 10pt;
 }
 
-/* ===== Handwritten example entries (blue pen) ===== */
-.ex {
-    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
-    color: #1a5fb4;
-    font-size: 9.5pt;
-    font-weight: 600;
-    font-style: normal;
-}
-
-/* ===== References ===== */
-h2#references ~ p,
-h2:last-of-type ~ p {
-    font-size: 7.5pt;
-    line-height: 1.25;
-    padding-left: 16pt;
-    text-indent: -16pt;
-}
-
-/* ===== Print tweaks ===== */
-h2, h3, h4 {
-    page-break-after: avoid;
-}
-table, pre, blockquote {
-    break-inside: avoid;
-}
-
-/* ===== Colophon ===== */
-.colophon-2col {
-    column-span: all;
-    text-align: center;
-    color: var(--muted);
-    font-size: 7.5pt;
-    line-height: 1.5;
-    margin-top: 16pt;
-    padding-top: 8pt;
-    border-top: 0.5pt solid var(--border);
-}
-
-.colophon-2col p {
-    text-align: center;
-    font-size: 7.5pt;
-}
-
-/* ===== Part headings — converted to in-flow banners ===== */
-.part-banner {
-    column-span: all;
-    text-align: center;
-    padding: 10pt 0 6pt 0;
-    margin: 14pt 0 4pt 0;
-    border-top: 1.5pt solid var(--accent);
-    border-bottom: 0.5pt solid var(--border);
-}
-
-.part-banner .part-label {
-    font-size: 8pt;
-    font-weight: 700;
-    letter-spacing: 1pt;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin: 0 0 2pt 0;
-}
-
-.part-banner .part-title {
-    font-size: 11pt;
-    font-weight: 700;
-    color: var(--text);
-    margin: 0;
+div.worksheet-plate td,
+div.worksheet-plate th {
+    padding: 5pt 6pt;
 }
 
 </style>
 </head>
 <body>
-<div class="paper-header">
+<div class="title-page">
+  <hr class="rule-top">
   <h1 class="paper-title" style="display:block">Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</h1>
-  <p class="author-name">Mike Tierce</p>
-  <p class="author-affil">Independent Researcher</p>
-  <p class="author-ids">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a> &nbsp;|&nbsp; <a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a> &nbsp;|&nbsp; Version 18 — March 2026</p>
+  <hr class="rule-mid">
+  <p class="author">Mike Tierce</p>
+  <p class="affiliation">Independent Researcher</p>
+  <p class="orcid">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a></p>
+  <p class="repo"><a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a></p>
+  <p class="version">Version 18 — March 2026</p>
+  <hr class="rule-bottom">
 </div>
-<div class="two-col">
-<div class="abstract-block">
-  <span class="abstract-label">Abstract&mdash;</span> <p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
+<div class="blank-verso">&nbsp;</div>
+<div class="toc-page">
+<h2>Contents</h2>
+<p class="toc-part">Part I — Theory and Architecture</p>
+<ol>
+<li>1. <a href="#1-introduction">Introduction</a> <span class="toc-desc">— The memory wall; wave-based memory; summary of results</span></li>
+<li class="toc-sub">1.1 The Memory Wall</li>
+<li class="toc-sub">1.2 Wave-Based Memory</li>
+<li class="toc-sub">1.3 Summary of Results</li>
+<li>2. <a href="#2-architecture">Architecture</a> <span class="toc-desc">— Eigenmode encoding; perturbation write; interference recall</span></li>
+<li class="toc-sub">2.1 Eigenmode Encoding</li>
+<li class="toc-sub">2.2 Perturbation Encoding (Write)</li>
+<li class="toc-sub">2.3 Interference Recall (Read / Compute)</li>
+<li class="toc-sub">2.4 Architecture Summary</li>
+</ol>
+<p class="toc-part">Part II — Substrate and Prototype</p>
+<ol>
+<li>3. <a href="#3-substrate-selection">Substrate Selection</a> <span class="toc-desc">— Ferrofluid failure; glass physics</span></li>
+<li class="toc-sub">3.1 Ferrofluid: A Dead End Worth Explaining</li>
+<li class="toc-sub">3.2 Glass: Zero Phase Diffusion</li>
+<li>4. <a href="#4-macro-scale-prototype">Macro-Scale Prototype</a> <span class="toc-desc">— \$38 BOM; 98.5 dB SNR; Q = 10,000</span></li>
+<li class="toc-sub">4.1 The Experiment</li>
+<li class="toc-sub">4.2 Bill of Materials</li>
+<li class="toc-sub">4.3 Signal-to-Noise Ratio</li>
+<li class="toc-sub">4.4 Mode Spectrum</li>
+<li class="toc-sub">4.5 Perturbation Encoding Demonstration</li>
+<li class="toc-sub">4.6 Associative Recall</li>
+</ol>
+<p class="toc-part">Part III — Finite Element Validation</p>
+<ol>
+<li>5. <a href="#5-finite-element-validation">Finite Element Validation</a> <span class="toc-desc">— 1D/2D FEM eigenfrequencies; wave speed discovery; Pochhammer–Chree dispersion</span></li>
+<li class="toc-sub">5.1 Motivation</li>
+<li class="toc-sub">5.2 One-Dimensional FEM: Wave Speed Discovery</li>
+<li class="toc-sub">5.3 Rayleigh Perturbation Validation</li>
+<li class="toc-sub">5.4 Mesh Convergence</li>
+<li class="toc-sub">5.5 Two-Dimensional Plane-Stress FEM and Pochhammer–Chree Dispersion</li>
+</ol>
+<p class="toc-part">Part IV — MEMS Design and Scaling</p>
+<ol>
+<li>6. <a href="#6-scaling-laws">Scaling Laws</a> <span class="toc-desc">— SNR, mode count, density as functions of rod length</span></li>
+<li class="toc-sub">6.1 SNR Scales Linearly with Length</li>
+<li class="toc-sub">6.2 Mode Count Is Size-Independent</li>
+<li class="toc-sub">6.3 Density Scales as $1/L^2$</li>
+<li class="toc-sub">6.4 Crossover Points</li>
+<li>7. <a href="#7-mems-q-factor-analysis">MEMS Q-Factor Analysis</a> <span class="toc-desc">— Five-mechanism loss budget</span></li>
+<li class="toc-sub">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</li>
+<li class="toc-sub">7.2 Anchor Loss ($Q_{\text{anchor}}$)</li>
+<li class="toc-sub">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</li>
+<li class="toc-sub">7.4 Gas Damping ($Q_{\text{gas}}$)</li>
+<li class="toc-sub">7.5 Surface Loss ($Q_{\text{surface}}$)</li>
+<li class="toc-sub">7.6 Combined Q-Factor Budget</li>
+<li>8. <a href="#8-mems-device-specification">MEMS Device Specification</a> <span class="toc-desc">— Reference design; array architecture</span></li>
+<li class="toc-sub">8.1 Reference Design</li>
+<li class="toc-sub">8.2 Per-Rod Performance</li>
+<li class="toc-sub">8.3 Array Architecture</li>
+<li class="toc-sub">8.4 Energy Budget</li>
+<li>9. <a href="#9-fabrication-pathway">Fabrication Pathway</a> <span class="toc-desc">— Six-step MEMS process flow</span></li>
+<li class="toc-sub">9.1 Process Flow</li>
+<li class="toc-sub">9.2 Bill of Materials (MEMS, at volume)</li>
+<li class="toc-sub">9.3 Risk Assessment</li>
+</ol>
+<p class="toc-part">Part V — Advanced Techniques</p>
+<ol>
+<li>10. <a href="#10-technology-comparison">Technology Comparison</a> <span class="toc-desc">— Density, speed, energy benchmarks</span></li>
+<li class="toc-sub">10.1 Density, Speed, Energy</li>
+<li class="toc-sub">10.2 CWM's Architectural Distinction</li>
+<li class="toc-sub">10.3 The Computation Advantage</li>
+<li class="toc-sub">10.4 What CWM Is Not</li>
+<li class="toc-sub">10.5 Potential Application Scenarios</li>
+<li>11. <a href="#11-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall</a> <span class="toc-desc">— Modeled extensions: pruning; Boolean ops; hybridization; null-space; polysemic readout; cross-domain validation</span></li>
+<li class="toc-sub">11.1 Synaptic Pruning for Associative Recall</li>
+<li class="toc-sub">11.2 In-Situ Boolean Computation</li>
+<li class="toc-sub">11.3 Mode Hybridization at Near-Degeneracy</li>
+<li class="toc-sub">11.4 Null-Space Multiplexing</li>
+<li class="toc-sub">11.5 Polysemic Readout: Multi-Channel Spectral Decoding</li>
+<li class="toc-sub">11.6 Combined Capacity Enhancement</li>
+<li class="toc-sub">11.7 Cross-Domain Validation Summary</li>
+<li>12. <a href="#12-paths-to-rewritability">Paths to Rewritability</a> <span class="toc-desc">— Firmware virtual rewriting; binary sites; writable shell; layered architecture</span></li>
+<li class="toc-sub">12.1 The Rewritability Question</li>
+<li class="toc-sub">12.2 Track A: Firmware-Defined Virtual Rewriting</li>
+<li class="toc-sub">12.3 Track B: Binary Perturbation Sites</li>
+<li class="toc-sub">12.4 Track C: Multi-Shell Resonator</li>
+<li class="toc-sub">12.5 Layered Architecture</li>
+</ol>
+<p class="toc-part">Part VI — Outlook</p>
+<ol>
+<li>13. <a href="#13-ultimate-limits">Ultimate Limits</a> <span class="toc-desc">— Fused silica; Tbit/cm³ arrays</span></li>
+<li class="toc-sub">13.1 Fused Silica</li>
+<li class="toc-sub">13.2 Fused Silica Array Performance</li>
+<li class="toc-sub">13.3 Q-Factor Model for Fused Silica</li>
+<li>14. <a href="#14-discussion">Discussion</a> <span class="toc-desc">— Validated vs. projected; IP; historical context</span></li>
+<li class="toc-sub">14.1 What Is Validated vs. Projected</li>
+<li class="toc-sub">14.2 Related Work and Technology Context</li>
+<li class="toc-sub">14.3 Intellectual Property</li>
+<li>15. <a href="#15-roadmap">Roadmap</a> <span class="toc-desc">— Four-phase development plan</span></li>
+<li>16. <a href="#16-conclusion">Conclusion</a></li>
+</ol>
+<div class="toc-appendices">
+<p class="toc-part">Appendices</p>
+<ol>
+<li>A. <a href="#appendix-a-snr-and-density-scaling-derivation">SNR and Density Scaling Derivation</a></li>
+<li>B. <a href="#appendix-b-q-factor-model-details">Q-Factor Model Details</a></li>
+<li>C. <a href="#appendix-c-macro-scale-experiment-guide">Macro-Scale Experiment Guide</a></li>
+</ol>
+<p class="toc-part">Companion Documents</p>
+<ol>
+</ol>
+</div>
+</div><div class="abstract-page"><h2 id="abstract">Abstract</h2>
+<p>Every memory technology in production today—SRAM, DRAM, Flash, PCM, ReRAM—stores information as an electrical state: a charge on a capacitor, a resistance across a junction, electrons trapped on a floating gate. Reading means sensing that electrical state. Computing means moving it somewhere else and operating on it with logic gates. The separation between storage and computation—the von Neumann bottleneck—is not a software problem; it is baked into the physics of how we encode data.</p>
 <p>This paper describes a different encoding. Instead of charge or resistance, we store information in the <em>acoustic eigenmode spectrum</em> of a solid glass resonator—the set of natural frequencies at which a glass rod vibrates. A mass perturbation applied to the rod&rsquo;s surface shifts each eigenmode frequency by a different amount, creating a unique spectral fingerprint. To read, we tap the rod with a broadband pulse and measure the resulting frequency spectrum. To search, we drive an array of rods with a query pattern: the rod whose stored fingerprint best matches the query resonates most strongly—a nearest-neighbor computation performed by wave interference in microseconds, with no processor, no memory bus, and no software.</p>
 <p>We call this architecture <strong>Coherent Wave Memory (CWM)</strong>.</p>
 <p>The core physics is validated at macro scale. A prototype built from a &#36;38 borosilicate glass rod* achieves <strong>98.5 dB signal-to-noise ratio</strong> (thermal-noise-limited) and supports <strong>9,380 thermally stable eigenmodes</strong>—independent frequency channels that each carry 16.4 bits of information at the Shannon limit. Scaling analysis projects that a 1 mm MEMS resonator would achieve <strong>95.1 Gbit/cm³</strong> within the active resonator volume, corresponding to a projected <strong>17.0 Gbit/cm³</strong> in a packed-array architecture. In modeled fused silica arrays, the projected packed-array density rises to <strong>1.4 Tbit/cm³</strong>. Projected write energy is <strong>15 fJ/bit</strong>, with <strong>native associative recall</strong> in 3.8 µs.</p>
@@ -435,10 +721,11 @@ table, pre, blockquote {
 <p>* Core materials only (rod, piezo disc, epoxy, wax, cables). A complete kit including a USB oscilloscope with built-in waveform generator (PicoScope 2204A) brings the total to ~&#36;230; most teaching labs already own a suitable scope.</p>
 <p>The entire fabrication pathway uses established MEMS processes in volume production today: glass deep reactive ion etching, aluminium nitride thin-film piezoelectric transduction, wafer-level vacuum packaging, and CMOS flip-chip bonding. What remains is the MEMS demonstration itself—building the device and measuring it.</p>
 <hr />
-</div>
-<div class="part-banner">
+</div><div class="part-heading">
   <p class="part-label">Part I</p>
   <p class="part-title">Theory and Architecture</p>
+  <p class="part-desc">Sections 1–2</p>
+  <hr>
 </div>
 <h2 id="1-introduction">1. Introduction</h2>
 <h3 id="11-the-memory-wall">1.1 The Memory Wall</h3>
@@ -742,9 +1029,11 @@ table, pre, blockquote {
 </tbody>
 </table>
 <hr />
-<div class="part-banner">
+<div class="part-heading">
   <p class="part-label">Part II</p>
   <p class="part-title">Substrate and Prototype</p>
+  <p class="part-desc">Sections 3–4</p>
+  <hr>
 </div>
 <h2 id="3-substrate-selection">3. Substrate Selection</h2>
 <h3 id="31-ferrofluid-a-dead-end-worth-explaining">3.1 Ferrofluid: A Dead End Worth Explaining</h3>
@@ -843,9 +1132,11 @@ table, pre, blockquote {
 <p><strong>Figure 13.</strong> (a) Response amplitudes when querying for pattern P4 across an 8-pattern array. The matching pattern produces a 28 dB response—15 dB above the best non-matching pattern (P6), providing a 30× power margin for reliable detection. (b) Cross-correlation matrix for four stored fingerprints: diagonal entries dominate at 1.00, off-diagonal entries ≤ 0.21, confirming spectral orthogonality.</p>
 </div>
 <hr />
-<div class="part-banner">
+<div class="part-heading">
   <p class="part-label">Part III</p>
   <p class="part-title">Finite Element Validation</p>
+  <p class="part-desc">Section 5</p>
+  <hr>
 </div>
 <h2 id="5-finite-element-validation">5. Finite Element Validation</h2>
 <h3 id="51-motivation">5.1 Motivation</h3>
@@ -953,9 +1244,11 @@ table, pre, blockquote {
 <p>At the highest fitted mode ($n = 15$), the dispersion correction is +0.29%—small but measurable. Above $n \approx 16$, longitudinal and flexural modes begin to couple (the mixed modes in the table above), and the clean longitudinal classification breaks down. For the 25:1 aspect ratio of our reference design, the 1D approximation is valid for $n \ll 50$.</p>
 <p><strong>Critical insight: dispersion does not affect perturbation encoding.</strong> The Rayleigh perturbation formula gives <em>relative</em> frequency shifts: $\Delta f_n / f_n$. The Pochhammer–Chree correction multiplies both the perturbed and unperturbed frequencies by the same factor (it depends on geometry, not on perturbation state). The correction cancels in the ratio. CWM&rsquo;s information encoding is therefore robust to dispersion—the spectral fingerprint is preserved exactly. Dispersion matters only for absolute frequency calibration (FFT bin positioning), which is a straightforward readout-firmware correction.</p>
 <hr />
-<div class="part-banner">
+<div class="part-heading">
   <p class="part-label">Part IV</p>
   <p class="part-title">MEMS Design and Scaling</p>
+  <p class="part-desc">Sections 6–9</p>
+  <hr>
 </div>
 <h2 id="6-scaling-laws">6. Scaling Laws</h2>
 <p>The macro prototype demonstrates the physics. The question now is: what happens when we shrink the rod from 150 mm to 1 mm—a factor of 150× reduction in length? Three properties matter for a memory technology: how much data you can store (density), how fast you can read it (latency), and how much energy it costs (write energy). We need to understand how each scales with rod length.</p>
@@ -1442,9 +1735,11 @@ table, pre, blockquote {
 </div>
 
 <hr />
-<div class="part-banner">
+<div class="part-heading">
   <p class="part-label">Part V</p>
   <p class="part-title">Advanced Techniques</p>
+  <p class="part-desc">Sections 10–12</p>
+  <hr>
 </div>
 <h2 id="10-technology-comparison">10. Technology Comparison</h2>
 <h3 id="101-density-speed-energy">10.1 Density, Speed, Energy</h3>
@@ -2176,9 +2471,11 @@ table, pre, blockquote {
 <p>These layers compose multiplicatively. A rod with a writable shell (Layer 1), binary sites (Layer 2), and firmware partitioning (Layer 3) provides $N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations—conservatively, $10 \times 2^{12} \times 4 = 163{,}840$ distinct states from a single physical device.</p>
 <p><strong>The separation principle.</strong> A key architectural insight emerges: in CWM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In CWM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod: in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes CWM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
 <p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become a glass armonica.</p>
-<div class="part-banner">
+<div class="part-heading">
   <p class="part-label">Part VI</p>
   <p class="part-title">Outlook</p>
+  <p class="part-desc">Sections 13–16</p>
+  <hr>
 </div>
 <h2 id="13-ultimate-limits">13. Ultimate Limits</h2>
 <h3 id="131-fused-silica">13.1 Fused Silica</h3>
@@ -2504,10 +2801,16 @@ table, pre, blockquote {
 <h2 id="appendix-c-macro-scale-experiment-guide">Appendix C: Macro-Scale Experiment Guide</h2>
 <p>The complete experiment guide—step-by-step replication procedures for all eight macro-scale prototype experiments, a bill of materials with purchase links, failure-mode mitigations, full-scale illustration plates, and printable data worksheets—is provided as a companion document: <code>companion/experiment_guide.md</code> in the project repository. The guide is self-contained and designed so that a middle school science teacher with no acoustics background can build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement.</p>
 <hr />
-<p><em>All quantitative claims computed from first-principles simulation code (44 modules, 1,910 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma. Companion volume: github.com/miketierce/cwm-book.</em></p><div class="colophon-2col">
-  <p><em>Coherent Wave Memory</em> &mdash; Version 18 — March 2026 &mdash; &copy; Mike Tierce<br>
-  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (44 modules, 1910 tests).</p>
-</div>
+<p><em>All quantitative claims computed from first-principles simulation code (44 modules, 1,910 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma. Companion volume: github.com/miketierce/cwm-book.</em></p><div class="colophon">
+  <p><em>Coherent Wave Memory</em></p>
+  <p>Version 18 — March 2026</p>
+  <p>&copy; Mike Tierce</p>
+  <p style="margin-top: 16pt; font-size: 8pt;">
+    Typeset from Markdown source using Chromium PDF rendering.<br>
+    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
+    All quantitative claims computed from first-principles simulation code<br>
+    (44 modules, 1910 automated tests) with independent FEM validation.
+  </p>
 </div>
 
 <script>
