@@ -31,17 +31,18 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 **Table D.1: Core Components**
 
-| #   | Component                               | Specification                                                | Qty     | Est. Cost      | Amazon Link                                                               |
-| --- | --------------------------------------- | ------------------------------------------------------------ | ------- | -------------- | ------------------------------------------------------------------------- |
-| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3             | 15-pack | ~\$8           | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)       |
-| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed   | 10-pack | ~\$9           | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)           |
-| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads           | 15-pack | ~\$7           | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)       |
-| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)           | 10-pack | ~\$6           | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)              |
-| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software | 1       | ~\$25          | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                   |
-| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                 | 1       | ~\$5           | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20)    |
-| 7   | Inlay casting wax                       | Brown dental/jewelry sticky wax sticks, pliable at room temp | 1 box   | ~\$8           | [Brown Inlay Wax, 1 oz](https://www.amazon.com/dp/B0BDT8WK2J?tag=cwmt-20)             |
-| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                         | 2       | ~\$10          | Included with PicoScope kit; extras available at any electronics supplier |
-|     | **Core subtotal**                       |                                                              |         | **~\$63–\$78** |                                                                           |
+| #   | Component                               | Specification                                                | Qty     | Est. Cost      | Amazon Link                                                                        |
+| --- | --------------------------------------- | ------------------------------------------------------------ | ------- | -------------- | ---------------------------------------------------------------------------------- |
+| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3             | 15-pack | ~\$8           | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)    |
+| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed   | 10-pack | ~\$9           | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)        |
+| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads           | 15-pack | ~\$7           | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)    |
+| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)           | 10-pack | ~\$6           | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)           |
+| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software | 1       | ~\$192         | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
+| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                 | 1       | ~\$5           | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
+| 7   | Inlay casting wax                       | Brown dental/jewelry sticky wax sticks, pliable at room temp | 1 box   | ~\$8           | [Brown Inlay Wax, 1 oz](https://www.amazon.com/dp/B0BDT8WK2J?tag=cwmt-20)          |
+| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                         | 2       | ~\$10          | Included with PicoScope kit; extras available at any electronics supplier          |
+|     | **Core materials (without scope)**      |                                                              |         | **~\$38–\$53** |                                                                                    |
+|     | **Core materials (with PicoScope)**     |                                                              |         | **~\$230–\$245** |                                                                                  |
 
 **Table D.2: Mitigation and Measurement Accessories**
 
@@ -61,9 +62,10 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 | 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability) | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"      |
 | 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)          | —              | free             | Tap water                                       |
 |     | **Accessories subtotal**               |                                                |                | **~\$68**        |                                                 |
-|     | **Grand total**                        |                                                |                | **~\$131–\$146** |                                                 |
+|     | **Grand total (without scope)**        |                                                |                | **~\$106–\$121** |                                                 |
+|     | **Grand total (with PicoScope)**       |                                                |                | **~\$298–\$313** |                                                 |
 
-> **Budget note.** The PicoScope 2204A (\$25) is the single most important purchase—it provides both the waveform generator (transmit) and the digitizer (receive) in one USB device. If your school already owns an oscilloscope with FFT capability and a separate function generator, skip item 5 and reduce the total to ~\$40. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
+> **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
 ### D.2 Safety Notes
 
