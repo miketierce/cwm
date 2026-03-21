@@ -31,41 +31,41 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 **Table D.1: Core Components**
 
-| #   | Component                               | Specification                                                | Qty     | Est. Cost        | Amazon Link                                                                        |
-| --- | --------------------------------------- | ------------------------------------------------------------ | ------- | ---------------- | ---------------------------------------------------------------------------------- |
-| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3             | 15-pack | ~\$8             | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)    |
-| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed   | 10-pack | ~\$9             | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)        |
-| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads           | 15-pack | ~\$7             | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)    |
-| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)           | 10-pack | ~\$6             | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)           |
-| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
-| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                 | 1       | ~\$5             | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
-| 7   | Inlay casting wax                       | Brown dental/jewelry sticky wax sticks, pliable at room temp | 1 box   | ~\$8             | [Brown Inlay Wax, 1 oz](https://www.amazon.com/dp/B0BDT8WK2J?tag=cwmt-20)          |
-| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                         | 2       | ~\$10            | Included with PicoScope kit; extras available at any electronics supplier          |
-|     | **Core materials (without scope)**      |                                                              |         | **~\$38–\$53**   |                                                                                    |
-|     | **Core materials (with PicoScope)**     |                                                              |         | **~\$230–\$245** |                                                                                    |
+| #   | Component                               | Specification                                                     | Qty     | Est. Cost        | Amazon Link                                                                        |
+| --- | --------------------------------------- | ----------------------------------------------------------------- | ------- | ---------------- | ---------------------------------------------------------------------------------- |
+| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3                  | 15-pack | ~\$8             | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)    |
+| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed        | 10-pack | ~\$9             | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)        |
+| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads                | 15-pack | ~\$7             | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)    |
+| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)           |
+| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software      | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
+| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1       | ~\$5             | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
+| 7   | Moldable silicone putty earplugs        | Mack's Pillow Soft, moldable silicone putty (perturbation masses) | 1 pack  | ~\$9             | [Mack's Pillow Soft, 8 Pair](https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20)     |
+| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                              | 2       | ~\$10            | Included with PicoScope kit; extras available at any electronics supplier          |
+|     | **Core materials (without scope)**      |                                                                   |         | **~\$39–\$54**   |                                                                                    |
+|     | **Core materials (with PicoScope)**     |                                                                   |         | **~\$231–\$246** |                                                                                    |
 
 **Table D.2: Mitigation and Measurement Accessories**
 
-| #   | Component                              | Purpose (failure mode addressed)               | Qty            | Est. Cost        | Source                                          |
-| --- | -------------------------------------- | ---------------------------------------------- | -------------- | ---------------- | ----------------------------------------------- |
-| 9   | Craft foam sheets (EVA, 6 mm thick)    | Vibration-isolating cradle (FM 1: anchor loss) | 1 pack         | ~\$6             | Any craft store or Amazon                       |
-| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout |
-| 11  | Styrofoam cooler, small (~6-qt)        | Thermal enclosure (FM 3: drift isolation)      | 1              | ~\$5             | Grocery or hardware store                       |
-| 12  | Milligram precision scale (0.001 g)    | Weighing wax perturbation masses               | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"         |
-| 13  | Metric ruler, mm scale                 | Positioning masses along rod                   | 1              | ~\$3             | Any school supply                               |
-| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly            | 1 bottle       | ~\$4             | Any pharmacy                                    |
-| 15  | Safety glasses                         | Eye protection (glass rods can snap)           | 1 per person   | ~\$3             | Any hardware store                              |
-| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)            | 1 roll         | ~\$4             | Any hardware store                              |
-| 17  | Fine-tip permanent marker              | Marking positions on rod                       | 1              | ~\$2             | Any office supply                               |
-| 18  | Soft lint-free cloth                   | Handling and cleaning glass                    | several        | ~\$2             | Any store                                       |
-| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release         | 1 small bottle | ~\$3             | Any pharmacy                                    |
-| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability) | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"      |
-| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)          | —              | free             | Tap water                                       |
-|     | **Accessories subtotal**               |                                                |                | **~\$68**        |                                                 |
-|     | **Grand total (without scope)**        |                                                |                | **~\$106–\$121** |                                                 |
-|     | **Grand total (with PicoScope)**       |                                                |                | **~\$298–\$313** |                                                 |
+| #   | Component                              | Purpose (failure mode addressed)                    | Qty            | Est. Cost        | Source                                          |
+| --- | -------------------------------------- | --------------------------------------------------- | -------------- | ---------------- | ----------------------------------------------- |
+| 9   | Cardboard (from any box)               | Rod-support dividers for cooler (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                  |
+| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                     | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout |
+| 11  | Styrofoam cooler, small (~6-qt)        | Thermal enclosure (FM 3: drift isolation)           | 1              | ~\$5             | Grocery or hardware store                       |
+| 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                        | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"         |
+| 13  | Metric ruler, mm scale                 | Positioning masses along rod                        | 1              | ~\$3             | Any school supply                               |
+| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                 | 1 bottle       | ~\$4             | Any pharmacy                                    |
+| 15  | Safety glasses                         | Eye protection (glass rods can snap)                | 1 per person   | ~\$3             | Any hardware store                              |
+| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)                 | 1 roll         | ~\$4             | Any hardware store                              |
+| 17  | Fine-tip permanent marker              | Marking positions on rod                            | 1              | ~\$2             | Any office supply                               |
+| 18  | Soft lint-free cloth                   | Handling and cleaning glass                         | several        | ~\$2             | Any store                                       |
+| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release              | 1 small bottle | ~\$3             | Any pharmacy                                    |
+| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"      |
+| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                       |
+|     | **Accessories subtotal**               |                                                     |                | **~\$62**        |                                                 |
+|     | **Grand total (without scope)**        |                                                     |                | **~\$101–\$116** |                                                 |
+|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$293–\$308** |                                                 |
 
-> **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
+> **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$39. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
 ### D.2 Safety Notes
 
@@ -87,7 +87,7 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 1. **Clean the rod.** Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.
 
-2. **Build the foam cradle at the displacement nodes.** Cut two V-shaped notches in a strip of craft foam, spaced 75 mm apart, centered on the rod—this places each notch at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should rest horizontally in the notches with no hard contact. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7).
+2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using a pushpin or needle, punch a clean pinhole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture.
 
 3. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
@@ -95,7 +95,7 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 5. **Attach the PZT disc.** Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.
 
-6. **Cure.** Set the assembly aside on the foam cradle for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
+6. **Cure.** Set the assembly aside in the cooler mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
 
 7. **Connectivity check.** Connect the PZT leads to the PicoScope Channel A input via a BNC adapter or clip leads. Set the scope to AC coupling, 1 mV/div, 1 ms/div timebase. Gently tap the free end of the rod with a fingernail. You should see a decaying burst of oscillation on screen. If no signal appears: check wire connections, ensure the PZT is not cracked, and try a firmer tap.
 
@@ -120,14 +120,15 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 > | $n = 2$ | $L/4$ and $3L/4$         |
 > | $n = 3$ | $L/6$, $L/2$, and $5L/6$ |
 >
-> The recommended cradle positions at $L/4$ and $3L/4$ (step 2) are the exact nodes of mode 2, and they produce only 50% of peak displacement for mode 1—a good all-round compromise for multi-mode measurements.
+> The recommended support positions at $L/4$ and $3L/4$ (step 2) are the exact nodes of mode 2, and they produce only 50% of peak displacement for mode 1—a good all-round compromise for multi-mode measurements.
 >
 > If your Q values are lower than expected despite a clean PZT bond:
 >
-> - **Verify cradle positions.** Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker.
-> - **Try midpoint mounting.** For mode-1-only measurements, a single support at $L/2 = 75$ mm is the ideal node and will maximize Q for the fundamental. (This sacrifices mode 2, which has an antinode there.)
+> - **Verify support positions.** Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker before punching the pinholes.
+> - **Try midpoint mounting.** For mode-1-only measurements, a single divider at $L/2 = 75$ mm is the ideal node and will maximize Q for the fundamental. (This sacrifices mode 2, which has an antinode there.)
+> - **Check pinhole size.** The hole should be just large enough for the rod to pass through without binding. Too tight and the cardboard clamps the rod, draining energy. Too loose and the rod rattles.
 > - **Upgrade to fishing line.** Loop a thin monofilament line around the rod at the node position and tension it between two fixed posts. This gives near-zero contact area and mimics the knife-edge mounts used in precision metrology. Students who have played a glass harp will immediately feel the analogy: the taut line is the stem.
-> - **Diagnostic test.** Slide the foam cradle to the rod's center ($L/2$) and measure Q for mode 1. Then slide it to $L/4$ and remeasure. If Q changes by more than 20%, your foam is too stiff or making hard contact—switch to softer foam, adjust the V-notch depth, or use fishing line.
+> - **Diagnostic test.** Slide the rod so through the pinholes so one support is at the center ($L/2$) and measure Q for mode 1. Then reposition to $L/4$ and remeasure. If Q changes by more than 20%, your pinholes are too tight or making hard contact—enlarge them slightly or use fishing line.
 
 ---
 
@@ -137,11 +138,11 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, foam cradle.
+**Materials:** Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, cooler mount.
 
 **Procedure:**
 
-1. **Set up.** Place the resonator on the foam cradle on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.
+1. **Set up.** Place the resonator in the cooler mount on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.
 
 2. **Impulse excitation.** In the PicoScope software (PS7, free download), configure the AWG to output a single 1-cycle burst at 17,700 Hz with 0.5 V amplitude. Set Channel A to trigger on the rising edge. Set the timebase to 50 ms/div so the display shows ~500 ms of data.
 
@@ -194,7 +195,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 | Two methods agree within 10%? (Y/N) | <span class="ex">Y ✓</span>                   |       |       |
 | Notes                               | <span class="ex">Clean bond, thin glue</span> |       |       |
 
-**Expected results.** Q should fall in the range 1,000–10,000. Values near 10,000 indicate excellent construction (material-loss-limited). Values below 500 suggest excessive glue, poor PZT centering, or a hard contact point on the cradle—rebuild with corrections per the Failure Mode 1 mitigation above. A control rod with no PZT (tap-excited) should yield Q near 10,000, confirming the intrinsic glass value.
+**Expected results.** Q should fall in the range 1,000–10,000. Values near 10,000 indicate excellent construction (material-loss-limited). Values below 500 suggest excessive glue, poor PZT centering, or a hard contact point on the mount—rebuild with corrections per the Failure Mode 1 mitigation above. A control rod with no PZT (tap-excited) should yield Q near 10,000, confirming the intrinsic glass value.
 
 ---
 
@@ -204,7 +205,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator, PicoScope, BNC cable, foam cradle.
+**Materials:** Assembled resonator, PicoScope, BNC cable, cooler mount.
 
 **Procedure:**
 
@@ -239,7 +240,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 >
 > - **Verify centering.** If spurious peaks are within 10 dB of the longitudinal peaks, remove the PZT and re-glue with better centering (see Exp. 1, step 3).
 > - **Software filter.** Export the FFT data (PicoScope can save .csv files) and discard all peaks more than ±500 Hz from the predicted comb frequencies.
-> - **Rotation test.** Rotate the rod 90° on the foam cradle and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod's cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.
+> - **Rotation test.** Rotate the rod 90° in the cardboard pinholes and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod's cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.
 
 <div class="worksheet-header">
 <h4>Worksheet D.2 — Mode Spectrum Map</h4>
@@ -271,7 +272,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 **Time:** 90 minutes (mostly waiting for equilibration).
 
-**Materials:** Assembled resonator, PicoScope, digital thermometer, styrofoam cooler, foam cradle.
+**Materials:** Assembled resonator, PicoScope, digital thermometer, styrofoam cooler with cardboard dividers.
 
 **Background.** Borosilicate glass has a thermal expansion coefficient of ~3.3 × 10⁻⁶ /°C and a temperature coefficient of elastic modulus of ~−100 ppm/°C. The net frequency sensitivity is approximately:
 
@@ -281,11 +282,11 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 
 **Procedure:**
 
-1. **Open-air baseline.** Place the resonator on the foam cradle on a lab bench. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.
+1. **Open-air baseline.** Place the resonator in the cooler mount on a lab bench _with the lid off_. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.
 
 2. **Thermal perturbation.** Breathe warm air directly onto the rod for 10 seconds, or place a cup of warm water (~50 °C) 20 cm away. Resume recording f₁ and temperature every 2 minutes until the frequency returns to within 0.5 Hz of its initial value. Note the recovery time.
 
-3. **Insulated baseline.** Place the entire resonator assembly (foam cradle, rod, PZT, and thermometer probe) inside the styrofoam cooler. Thread the BNC cable and thermometer wire through a small notch cut in the cooler lid. Close the lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.
+3. **Insulated baseline.** The resonator is already mounted inside the cooler. Close the lid. Thread the BNC cable and thermometer wire through a small notch cut in the cooler lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.
 
 4. **Calculate the temperature coefficient.** Plot f₁ versus temperature for both the open-air and insulated datasets. The slope $\Delta f / \Delta T$ is your measured temperature coefficient. Compare to the predicted −0.9 Hz/°C.
 
@@ -293,14 +294,14 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 
 > **⚙️ Failure Mode 3 — Thermal Drift Swamping Perturbation Encoding**
 >
-> A 1 °C temperature change shifts modes by ~0.9 Hz—comparable to a small wax perturbation. If thermal drift is not controlled, perturbation signals drown in noise.
+> A 1 °C temperature change shifts modes by ~0.9 Hz—comparable to a small putty perturbation. If thermal drift is not controlled, perturbation signals drown in noise.
 >
 > Mitigations:
 >
 > - **Always use the styrofoam enclosure** for Experiments 5 and 6. This alone reduces drift by 10–50×.
 > - **Equilibrate 30 minutes** before starting perturbation experiments.
 > - **Use differential measurement.** Thermal drift shifts _all_ modes by the same fractional amount (−50 ppm/°C). A localized mass perturbation shifts each mode by a _different_ amount (proportional to $\sin^2(n\pi x/L)$). Track the _pattern_ of relative shifts, not absolute frequencies. This is your strongest discriminant.
-> - **Bracket measurements.** Take a "before" spectrum immediately before applying wax, and an "after" spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.
+> - **Bracket measurements.** Take a "before" spectrum immediately before applying putty, and an "after" spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.
 > - **Record temperature at every measurement point** so post-hoc correction is possible.
 
 <div class="worksheet-header">
@@ -328,17 +329,17 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 | **Predicted (−0.9 Hz/°C):**           |                                                  | <span class="ex">agrees within 6%</span> |                              |                                   |
 | **Recovery time after perturbation:** |                                                  | <span class="ex">**~8 min**</span>       |                              |                                   |
 
-**Expected results.** The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the styrofoam enclosure, drift should be \<0.5 Hz over 30 minutes, which is small enough to resolve wax perturbation shifts of 1–10 Hz.
+**Expected results.** The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the styrofoam enclosure, drift should be \<0.5 Hz over 30 minutes, which is small enough to resolve putty perturbation shifts of 1–10 Hz.
 
 ---
 
 ### D.7 Experiment 5 — Perturbation Encoding
 
-**Objective:** Write data to the rod by applying wax masses and verify that measured frequency shifts match Rayleigh perturbation theory.
+**Objective:** Write data to the rod by applying silicone putty masses and verify that measured frequency shifts match Rayleigh perturbation theory.
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator (inside styrofoam enclosure), PicoScope, wax, milligram scale, ruler, fine-tip marker.
+**Materials:** Assembled resonator (inside styrofoam enclosure), PicoScope, silicone putty, milligram scale, ruler, fine-tip marker.
 
 **Background.** The Rayleigh perturbation formula predicts that a small mass $\delta m$ placed at position $x$ along a rod of total mass $M$ and length $L$ shifts the $n$-th mode frequency by:
 
@@ -348,21 +349,21 @@ The key insight is that _different modes shift by different amounts_ depending o
 
 **Procedure:**
 
-1. **Prepare wax pellets.** Pinch off small pieces of inlay wax and roll them into balls approximately 1 mm in diameter. Weigh each on the milligram scale and record the mass (target: 0.05–0.5 mg). Prepare 3–5 pellets of varied sizes.
+1. **Prepare putty pellets.** Pinch off small pieces of silicone putty and roll them into balls approximately 1 mm in diameter. Weigh each on the milligram scale and record the mass (target: 0.05–0.5 mg). Prepare 3–5 pellets of varied sizes.
 
 2. **Mark positions.** Using the ruler and fine-tip marker, mark reference positions on the rod at 25%, 33%, 50%, 67%, and 75% of the rod length from the PZT end (i.e., at 37.5, 50.0, 75.0, 100.0, and 112.5 mm for a 150 mm rod).
 
 3. **Record the unperturbed spectrum.** Drive the rod with a chirp and capture the FFT. Record the frequencies of modes 1–5 in Worksheet D.4 under "Before."
 
-4. **Apply one wax pellet.** Press it onto the rod at a marked position $x$. The wax should adhere by its own stickiness—no glue needed. Record the pellet mass and position.
+4. **Apply one putty pellet.** Press it onto the rod at a marked position $x$. The putty should adhere by its own tackiness—no glue needed. Record the pellet mass and position.
 
 5. **Record the perturbed spectrum.** Immediately re-drive and capture the FFT. Record mode frequencies under "After." Calculate the shift $\Delta f_n$ for each mode.
 
 6. **Compare to theory.** Calculate the predicted $\Delta f_n / f_n$ for each mode using the Rayleigh formula above. Weigh the rod itself to get $M$ (typically ~6 g for a 150 mm × 6 mm borosilicate rod, density 2,230 kg/m³).
 
-7. **Repeat with different positions.** Move the wax to a different marked position and re-measure. The fingerprint should change: modes whose antinodes are near the new wax position shift most; modes with nodes near the wax barely shift.
+7. **Repeat with different positions.** Move the putty to a different marked position and re-measure. The fingerprint should change: modes whose antinodes are near the new putty position shift most; modes with nodes near the putty barely shift.
 
-8. **Verify reversibility.** Remove the wax with a fingernail and re-measure the spectrum. Frequencies should return to the unperturbed values within the thermal drift tolerance established in Experiment 4.
+8. **Verify reversibility.** Peel off the putty and re-measure the spectrum. Frequencies should return to the unperturbed values within the thermal drift tolerance established in Experiment 4.
 
 > **⚙️ Failure Mode 5 — Non-Linear Acoustic Coupling**
 >
@@ -383,7 +384,7 @@ The key insight is that _different modes shift by different amounts_ depending o
 |                                  | Trial info                    |
 | -------------------------------- | ----------------------------- |
 | **Trial #**                      | <span class="ex">1</span>     |
-| **Wax pellet mass δm (mg)**      | <span class="ex">0.8</span>   |
+| **Putty pellet mass δm (mg)**    | <span class="ex">0.8</span>   |
 | **Position x (mm from PZT end)** | <span class="ex">75.0</span>  |
 | **Position x/L (fraction)**      | <span class="ex">0.500</span> |
 | **Rod mass M (g)**               | <span class="ex">9.52</span>  |
@@ -398,7 +399,7 @@ The key insight is that _different modes shift by different amounts_ depending o
 | 4        | <span class="ex">70,775.3</span> | <span class="ex">70,775.2</span> | <span class="ex">−0.1</span> | <span class="ex">−1</span>  | <span class="ex">0</span>   | <span class="ex">—</span> |
 | 5        | <span class="ex">88,466.1</span> | <span class="ex">88,462.4</span> | <span class="ex">−3.7</span> | <span class="ex">−42</span> | <span class="ex">−42</span> | <span class="ex">1</span> |
 
-_After removing wax:_
+_After removing putty:_
 
 | Mode _n_ | fₙ recovered (Hz)                | Δf from original (Hz)        | Recovered within ±0.5 Hz? |
 | -------- | -------------------------------- | ---------------------------- | ------------------------- |
@@ -408,7 +409,7 @@ _After removing wax:_
 | 4        | <span class="ex">70,775.2</span> | <span class="ex">−0.1</span> | <span class="ex">Y</span> |
 | 5        | <span class="ex">88,466.0</span> | <span class="ex">−0.1</span> | <span class="ex">Y</span> |
 
-**Expected results.** Mode shifts should match Rayleigh predictions within 5%. The mode whose antinode is nearest the wax position will shift most; modes with nodes near the wax will barely shift. Frequencies should recover fully after wax removal. If the match is poor (\>10% error), verify that the wax mass is small compared to the rod mass ($\delta m / M \ll 1$) and that the temperature has not drifted during the measurement.
+**Expected results.** Mode shifts should match Rayleigh predictions within 5%. The mode whose antinode is nearest the putty position will shift most; modes with nodes near the putty will barely shift. Frequencies should recover fully after putty removal. If the match is poor (\>10% error), verify that the putty mass is small compared to the rod mass ($\delta m / M \ll 1$) and that the temperature has not drifted during the measurement.
 
 ---
 
@@ -418,17 +419,17 @@ _After removing wax:_
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator, PicoScope, wax, ruler, foam cradle, styrofoam enclosure.
+**Materials:** Assembled resonator, PicoScope, silicone putty, ruler, cooler mount, styrofoam enclosure.
 
 **Procedure:**
 
-1. **Create Pattern A.** Apply two wax pellets at the quarter-points of the rod: $x = L/4 = 37.5$ mm and $x = 3L/4 = 112.5$ mm. Record the resulting spectral fingerprint—the frequencies of modes 1–5 in their shifted positions.
+1. **Create Pattern A.** Apply two putty pellets at the quarter-points of the rod: $x = L/4 = 37.5$ mm and $x = 3L/4 = 112.5$ mm. Record the resulting spectral fingerprint—the frequencies of modes 1–5 in their shifted positions.
 
 2. **Build the query signal.** In the PicoScope AWG, create a multi-tone waveform composed of the five shifted frequencies from Pattern A's fingerprint. Set each tone to equal amplitude (0.1 V per tone). This is "Query A."
 
 3. **Measure the matched response.** Drive the rod with Query A. The rod contains Pattern A, so the query _matches_ the stored pattern. Record the peak response amplitude in dB from the FFT.
 
-4. **Create Pattern B.** Remove Pattern A's wax. Apply two pellets at the third-points: $x = L/3 = 50$ mm and $x = 2L/3 = 100$ mm. Record Pattern B's fingerprint.
+4. **Create Pattern B.** Remove Pattern A's putty. Apply two pellets at the third-points: $x = L/3 = 50$ mm and $x = 2L/3 = 100$ mm. Record Pattern B's fingerprint.
 
 5. **Drive with Query A (mismatched).** Replay Query A—the waveform built from Pattern A's frequencies. The rod now contains Pattern B, so the query does _not_ match. Record the peak response amplitude. It should be significantly lower than in step 3.
 
@@ -456,7 +457,7 @@ _After removing wax:_
 | **Power ratio (10^(margin/10)):**                  | <span class="ex">**126×**</span>  |
 | **Sufficient for reliable detection? (≥15 dB)**    | <span class="ex">Y ✓</span>       |
 
-**Expected results.** The discrimination margin should be 15–25 dB, meaning the matching pattern produces 30–300× more acoustic power than a non-matching pattern. If the margin is below 10 dB, check that (a) the two wax patterns are placed at genuinely different positions, (b) the drive amplitude is in the linear regime (≤0.5 V per tone), and (c) the query frequencies accurately match the stored pattern's measured frequencies.
+**Expected results.** The discrimination margin should be 15–25 dB, meaning the matching pattern produces 30–300× more acoustic power than a non-matching pattern. If the margin is below 10 dB, check that (a) the two putty patterns are placed at genuinely different positions, (b) the drive amplitude is in the linear regime (≤0.5 V per tone), and (c) the query frequencies accurately match the stored pattern's measured frequencies.
 
 ---
 
@@ -466,7 +467,7 @@ _After removing wax:_
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator, PicoScope, BNC cable, foam cradle, styrofoam enclosure, small bowl of water.
+**Materials:** Assembled resonator, PicoScope, BNC cable, cooler mount, styrofoam enclosure, small bowl of water.
 
 **Background.** Experiments 1–6 use impulse readout: strike the rod, listen to it ring down, measure the FFT. This is fast (one ringdown time $\tau \approx 180$ ms) but limited in SNR—the measurement window is fixed at $\tau$, and all the noise within the bandwidth $\sim 1/\tau$ contributes. An alternative is CW readout: drive the rod continuously at a single mode frequency and measure the steady-state response. A lock-in detection technique—multiplying the response by the drive signal and averaging—rejects all noise outside a narrow bandwidth $\sim 1/(2T_{\text{int}})$. The SNR gain over impulse is:
 
@@ -542,13 +543,13 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator, PicoScope, plastic transfer pipettes, water, foam cradle, styrofoam enclosure, ruler, fine-tip marker, digital thermometer.
+**Materials:** Assembled resonator, PicoScope, plastic transfer pipettes, water, cooler mount, styrofoam enclosure, ruler, fine-tip marker, digital thermometer.
 
-**Background.** In a glass harmonica, each bowl's pitch is set by its geometry—grind it to a specific diameter and thickness, and the frequency is fixed forever. But adding water to a bowl lowers its pitch by increasing the effective vibrating mass. The performer cannot change the glass, but _can_ change the water level. This is precisely the Rayleigh perturbation mechanism: water at position $x$ shifts mode $n$ by an amount proportional to $\sin^2(n\pi x/L)$. Unlike wax (Experiment 5), water evaporates—making the perturbation _rewritable_. This experiment demonstrates the harmonica-to-armonica transition: write a pattern with water, read the shifted spectrum, let it evaporate (erase), write a different pattern, and confirm the spectrum changes.
+**Background.** In a glass harmonica, each bowl's pitch is set by its geometry—grind it to a specific diameter and thickness, and the frequency is fixed forever. But adding water to a bowl lowers its pitch by increasing the effective vibrating mass. The performer cannot change the glass, but _can_ change the water level. This is precisely the Rayleigh perturbation mechanism: water at position $x$ shifts mode $n$ by an amount proportional to $\sin^2(n\pi x/L)$. Unlike putty (Experiment 5), water evaporates—making the perturbation _rewritable_. This experiment demonstrates the harmonica-to-armonica transition: write a pattern with water, read the shifted spectrum, let it evaporate (erase), write a different pattern, and confirm the spectrum changes.
 
 **Procedure:**
 
-1. **Prepare.** Place the resonator horizontally on the foam cradle inside the styrofoam enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.
+1. **Prepare.** Place the resonator horizontally in the cooler mount inside the styrofoam enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.
 
 2. **Record the unperturbed spectrum (Pattern 0).** Chirp the rod and record the FFT. Log frequencies of modes 1–5.
 
@@ -588,7 +589,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 | Pattern 3 is distinct from both Pattern 1 and Pattern 2?        | <span class="ex">Y ✓</span> |
 | **Total distinct patterns written and read in this experiment** | <span class="ex">3</span>   |
 
-**Expected results.** Water drops are lighter than wax pellets, so frequency shifts will be smaller—typically 0.2–2 Hz per mode, depending on drop volume. The thermal enclosure is essential here to keep drift below the perturbation signal. The key observation is that the three patterns produce three _different_ spectral fingerprints, and that erasing (removing water) fully recovers the baseline—demonstrating the write/read/erase cycle. If shifts are too small to resolve, use larger drops or a more sensitive frequency measurement (CW lock-in from Experiment 7 provides higher precision).
+**Expected results.** Water drops are lighter than putty pellets, so frequency shifts will be smaller—typically 0.2–2 Hz per mode, depending on drop volume. The thermal enclosure is essential here to keep drift below the perturbation signal. The key observation is that the three patterns produce three _different_ spectral fingerprints, and that erasing (removing water) fully recovers the baseline—demonstrating the write/read/erase cycle. If shifts are too small to resolve, use larger drops or a more sensitive frequency measurement (CW lock-in from Experiment 7 provides higher precision).
 
 > **The Franklin insight.** This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in §12.5: the rod is optimized for resonance quality (Q), and the "write medium" (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.
 
@@ -613,7 +614,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 | **PicoScope model & serial**               |                                                                  |
 | **Room temperature at start (°C)**         |                                                                  |
 | **Relative humidity (%)**                  |                                                                  |
-| **Foam cradle material**                   |                                                                  |
+| **Rod mount type**                         |                                                                  |
 | **Thermal enclosure used? (Y/N)**          |                                                                  |
 | **Experiments completed (circle)**         | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 |
 | **Best Q measured**                        |                                                                  |
@@ -628,23 +629,23 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 ### D.12 Troubleshooting Guide
 
-| Symptom                                            | Likely cause                                                           | Fix                                                                                                                         |
-| -------------------------------------------------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| No signal when tapping rod                         | Broken PZT lead or bad BNC connection                                  | Inspect and re-solder PZT leads; verify BNC cable continuity with a multimeter                                              |
-| Q \< 100                                           | Excessive glue (thick viscoelastic layer)                              | Remove PZT, clean end face, re-glue with a smaller drop; cure 24 hours                                                      |
-| Q \< 500                                           | PZT too large, or rod touching a hard surface                          | Ensure foam cradle has soft V-notches with no metal or plastic contact; try 5 mm PZT disc                                   |
-| Many peaks between expected modes                  | Off-center PZT exciting transverse modes                               | Remove PZT, re-glue centered using tape cross-hair; or filter FFT to comb frequencies only                                  |
-| f₁ much higher or lower than 17,700 Hz             | Rod length ≠ 150 mm                                                    | Recalculate: $f_1 = 5{,}315 / (2L)$. A 200 mm rod gives f₁ = 13,288 Hz; a 125 mm rod gives f₁ = 21,260 Hz                   |
-| Mode frequencies drifting over minutes             | Temperature fluctuation                                                | Use styrofoam enclosure; equilibrate 30 min; record temperature at each data point                                          |
-| Wax won't stick to rod                             | Surface too smooth, or wax too cold                                    | Warm wax between fingers for 30 s; lightly scuff rod surface with 400-grit sandpaper at the attachment point                |
-| FFT shows 60/120/180 Hz peaks                      | Electrical mains noise pickup                                          | Use shorter BNC cables; move away from power strips and monitors; ensure PicoScope is USB-powered (not near wall adapter)   |
-| Response identical for all query patterns          | Drive amplitude in non-linear regime                                   | Reduce AWG amplitude to ≤ 0.5 Vpp; verify linearity per Exp. 5 procedure                                                    |
-| A strong peak appears that is not on the mode comb | PZT self-resonance                                                     | Compare against bare-PZT spectrum (see Exp. 2 FM 4 mitigation); flag and exclude from analysis                              |
-| Rayleigh prediction error \> 10%                   | Wax mass too large relative to rod, or position measurement inaccurate | Use smaller wax (\<0.1 mg); measure position to ±0.5 mm; weigh rod precisely                                                |
-| CW lock-in gain much less than expected            | AWG frequency not precisely at mode peak; PZT coupling asymmetric      | Fine-tune AWG frequency in 0.1 Hz steps while watching lock-in amplitude; ensure firm PZT bond                              |
-| No sustained tone when bowing with wet finger      | Finger too dry, too wet, or pressure too light                         | Re-wet finger to a thin film; apply firm, steady pressure; move slowly (1–2 cm/s); try rosined cloth as alternative         |
-| Water drop slides off rod immediately              | Rod surface too smooth or tilted                                       | Ensure rod is perfectly horizontal; use smaller drops (~2 mm); lightly breathe on the surface to create a condensation film |
-| Water-drop frequency shifts too small to resolve   | Drop too small relative to rod mass                                    | Use larger drops (up to ~5 mm diameter); or use CW lock-in (Exp. 7) for higher frequency resolution                         |
+| Symptom                                            | Likely cause                                                             | Fix                                                                                                                         |
+| -------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| No signal when tapping rod                         | Broken PZT lead or bad BNC connection                                    | Inspect and re-solder PZT leads; verify BNC cable continuity with a multimeter                                              |
+| Q \< 100                                           | Excessive glue (thick viscoelastic layer)                                | Remove PZT, clean end face, re-glue with a smaller drop; cure 24 hours                                                      |
+| Q \< 500                                           | PZT too large, or rod touching a hard surface                            | Ensure cardboard pinholes are sized to the rod with no clamping; try 5 mm PZT disc                                          |
+| Many peaks between expected modes                  | Off-center PZT exciting transverse modes                                 | Remove PZT, re-glue centered using tape cross-hair; or filter FFT to comb frequencies only                                  |
+| f₁ much higher or lower than 17,700 Hz             | Rod length ≠ 150 mm                                                      | Recalculate: $f_1 = 5{,}315 / (2L)$. A 200 mm rod gives f₁ = 13,288 Hz; a 125 mm rod gives f₁ = 21,260 Hz                   |
+| Mode frequencies drifting over minutes             | Temperature fluctuation                                                  | Use styrofoam enclosure; equilibrate 30 min; record temperature at each data point                                          |
+| Putty won't stick to rod                           | Surface too smooth or too dry                                            | Knead putty between fingers for 10 s; clean rod with isopropyl alcohol to remove oils                                       |
+| FFT shows 60/120/180 Hz peaks                      | Electrical mains noise pickup                                            | Use shorter BNC cables; move away from power strips and monitors; ensure PicoScope is USB-powered (not near wall adapter)   |
+| Response identical for all query patterns          | Drive amplitude in non-linear regime                                     | Reduce AWG amplitude to ≤ 0.5 Vpp; verify linearity per Exp. 5 procedure                                                    |
+| A strong peak appears that is not on the mode comb | PZT self-resonance                                                       | Compare against bare-PZT spectrum (see Exp. 2 FM 4 mitigation); flag and exclude from analysis                              |
+| Rayleigh prediction error \> 10%                   | Putty mass too large relative to rod, or position measurement inaccurate | Use smaller putty (\<0.1 mg); measure position to ±0.5 mm; weigh rod precisely                                              |
+| CW lock-in gain much less than expected            | AWG frequency not precisely at mode peak; PZT coupling asymmetric        | Fine-tune AWG frequency in 0.1 Hz steps while watching lock-in amplitude; ensure firm PZT bond                              |
+| No sustained tone when bowing with wet finger      | Finger too dry, too wet, or pressure too light                           | Re-wet finger to a thin film; apply firm, steady pressure; move slowly (1–2 cm/s); try rosined cloth as alternative         |
+| Water drop slides off rod immediately              | Rod surface too smooth or tilted                                         | Ensure rod is perfectly horizontal; use smaller drops (~2 mm); lightly breathe on the surface to create a condensation film |
+| Water-drop frequency shifts too small to resolve   | Drop too small relative to rod mass                                      | Use larger drops (up to ~5 mm diameter); or use CW lock-in (Exp. 7) for higher frequency resolution                         |
 
 ---
 
@@ -745,7 +746,7 @@ _The following pages present each figure at full landscape scale for detailed ex
 
 <div class="plate-page">
 <img src="figures/fig11_prototype_spectrum.svg" alt="Plate 11: Prototype Eigenmode Spectrum"/>
-<p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg wax perturbation (red dashed), each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 barely shifts (wax near node). Measured shifts match Rayleigh predictions to within 2%.</p>
+<p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg putty perturbation (red dashed), each mode shifts by a different Δfₙ depending on the putty position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (putty at antinode); mode 4 barely shifts (putty near node). Measured shifts match Rayleigh predictions to within 2%.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
@@ -856,12 +857,12 @@ _The following pages present each experiment worksheet at full portrait scale fo
 
 <div class="worksheet-plate">
 <h4>Worksheet D.4 — Perturbation Encoding Data</h4>
-<p class="ws-inst">Photocopy this page. Use one sheet per wax-placement trial.</p>
+<p class="ws-inst">Photocopy this page. Use one sheet per putty-placement trial.</p>
 <table>
 <thead><tr><th style="width:50%">Parameter</th><th>Value</th></tr></thead>
 <tbody>
 <tr><td><strong>Trial #</strong></td><td></td></tr>
-<tr><td><strong>Wax pellet mass δm (mg)</strong></td><td></td></tr>
+<tr><td><strong>Putty pellet mass δm (mg)</strong></td><td></td></tr>
 <tr><td><strong>Position x (mm from PZT end)</strong></td><td></td></tr>
 <tr><td><strong>Position x/L (fraction)</strong></td><td></td></tr>
 <tr><td><strong>Rod mass M (g)</strong></td><td></td></tr>
@@ -881,7 +882,7 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 <br>
-<p><em>After removing wax:</em></p>
+<p><em>After removing putty:</em></p>
 <table>
 <thead><tr><th>Mode</th><th>fₙ recovered (Hz)</th><th>Δf from original (Hz)</th><th>Recovered ±0.5 Hz?</th></tr></thead>
 <tbody>
@@ -988,7 +989,7 @@ _The following pages present each experiment worksheet at full portrait scale fo
 <tr><td><strong>PicoScope model &amp; serial</strong></td><td></td></tr>
 <tr><td><strong>Room temperature at start (°C)</strong></td><td></td></tr>
 <tr><td><strong>Relative humidity (%)</strong></td><td></td></tr>
-<tr><td><strong>Foam cradle material</strong></td><td></td></tr>
+<tr><td><strong>Rod mount type</strong></td><td></td></tr>
 <tr><td><strong>Thermal enclosure used? (Y/N)</strong></td><td></td></tr>
 <tr><td><strong>Experiments completed (circle)</strong></td><td>1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8</td></tr>
 <tr><td><strong>Best Q measured</strong></td><td></td></tr>
