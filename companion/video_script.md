@@ -263,57 +263,57 @@ All we did was learn to read it.
 
 ### B-roll needed
 
-| Segment | Shot | Notes |
-| --- | --- | --- |
-| Cold open | Fingernail tap, extreme close-up | Capture audio even if inaudible — use waveform overlay |
-| Cold open | PicoScope FFT screen capture | Live recording, not mockup |
-| Assembly | Time-lapse: cleaning, gluing, curing | Label each step with time-stamp |
-| Assembly | Wine glass demo — ring vs. mute | Classic demo, 5 seconds |
-| Assembly | Cardboard divider cutting from template | Show printed template being traced |
-| Perturbation | Milligram scale weighing putty | Close-up of scale display |
-| Perturbation | Before/after FFT overlay | Split screen or toggle |
-| Discrimination | Two-rod setup, matched vs. unmatched | Response amplitude traces side by side |
-| Scaling | MEMS cross-section diagram | Paper figure or clean animation |
-| Closing | Rod in cooler, static shot, long hold | Contemplative. No movement. |
+| Segment        | Shot                                    | Notes                                                  |
+| -------------- | --------------------------------------- | ------------------------------------------------------ |
+| Cold open      | Fingernail tap, extreme close-up        | Capture audio even if inaudible — use waveform overlay |
+| Cold open      | PicoScope FFT screen capture            | Live recording, not mockup                             |
+| Assembly       | Time-lapse: cleaning, gluing, curing    | Label each step with time-stamp                        |
+| Assembly       | Wine glass demo — ring vs. mute         | Classic demo, 5 seconds                                |
+| Assembly       | Cardboard divider cutting from template | Show printed template being traced                     |
+| Perturbation   | Milligram scale weighing putty          | Close-up of scale display                              |
+| Perturbation   | Before/after FFT overlay                | Split screen or toggle                                 |
+| Discrimination | Two-rod setup, matched vs. unmatched    | Response amplitude traces side by side                 |
+| Scaling        | MEMS cross-section diagram              | Paper figure or clean animation                        |
+| Closing        | Rod in cooler, static shot, long hold   | Contemplative. No movement.                            |
 
 ### Key numbers to display on screen
 
-| Quantity | Value | Context |
-| --- | --- | --- |
-| Fundamental frequency | 17,717 Hz | First peak in FFT |
-| Mode spacing | 17,717 Hz | Constant — the frequency comb |
-| Quality factor | 10,000 | Ring-down measurement |
-| SNR | 98.5 dB | Thermal-noise-limited |
-| Bits per mode | 16.4 | Shannon limit |
-| Thermally stable modes | 9,380 | Across the rod's bandwidth |
-| Core BOM cost | ~$39 | Without oscilloscope |
-| Complete kit cost | ~$231 | With PicoScope 2204A |
-| Discrimination margin | 15–25 dB | Matched vs. non-matched response |
-| Rayleigh accuracy | < 2% error | Measured vs. predicted shifts |
-| Macro Q (borosilicate) | 10,000 | Material-loss-limited |
-| MEMS Q (modeled) | 9,097 | Five-mechanism loss budget |
-| MEMS density | 17.0 Gbit/cm³ | Packed-array, borosilicate |
-| Fused silica density | 1.4 Tbit/cm³ | Packed-array, projected |
-| Write energy | 15 fJ/bit | Projected |
-| Recall time | 3.8 µs | Acoustic transit |
+| Quantity               | Value         | Context                          |
+| ---------------------- | ------------- | -------------------------------- |
+| Fundamental frequency  | 17,717 Hz     | First peak in FFT                |
+| Mode spacing           | 17,717 Hz     | Constant — the frequency comb    |
+| Quality factor         | 10,000        | Ring-down measurement            |
+| SNR                    | 98.5 dB       | Thermal-noise-limited            |
+| Bits per mode          | 16.4          | Shannon limit                    |
+| Thermally stable modes | 9,380         | Across the rod's bandwidth       |
+| Core BOM cost          | ~$39          | Without oscilloscope             |
+| Complete kit cost      | ~$231         | With PicoScope 2204A             |
+| Discrimination margin  | 15–25 dB      | Matched vs. non-matched response |
+| Rayleigh accuracy      | < 2% error    | Measured vs. predicted shifts    |
+| Macro Q (borosilicate) | 10,000        | Material-loss-limited            |
+| MEMS Q (modeled)       | 9,097         | Five-mechanism loss budget       |
+| MEMS density           | 17.0 Gbit/cm³ | Packed-array, borosilicate       |
+| Fused silica density   | 1.4 Tbit/cm³  | Packed-array, projected          |
+| Write energy           | 15 fJ/bit     | Projected                        |
+| Recall time            | 3.8 µs        | Acoustic transit                 |
 
 ### Suggested chapter markers (for YouTube)
 
-| Timestamp | Title |
-| --- | --- |
-| 0:00 | Cold open — the glass rod rings |
-| 1:30 | The memory wall problem |
-| 4:00 | How eigenmodes store data |
-| 6:15 | Perturbation encoding — the write operation |
-| 7:30 | Associative recall — physics as computation |
-| 8:30 | Build it yourself — $39 parts list |
-| 10:00 | Assembly and first measurement |
-| 12:00 | The perturbation test |
-| 13:15 | The discrimination test |
-| 14:30 | Scaling to MEMS |
-| 16:00 | Native computation — why it's different |
-| 17:00 | The accessibility argument |
-| 17:30 | Closing |
+| Timestamp | Title                                       |
+| --------- | ------------------------------------------- |
+| 0:00      | Cold open — the glass rod rings             |
+| 1:30      | The memory wall problem                     |
+| 4:00      | How eigenmodes store data                   |
+| 6:15      | Perturbation encoding — the write operation |
+| 7:30      | Associative recall — physics as computation |
+| 8:30      | Build it yourself — $39 parts list          |
+| 10:00     | Assembly and first measurement              |
+| 12:00     | The perturbation test                       |
+| 13:15     | The discrimination test                     |
+| 14:30     | Scaling to MEMS                             |
+| 16:00     | Native computation — why it's different     |
+| 17:00     | The accessibility argument                  |
+| 17:30     | Closing                                     |
 
 ### Description box links
 

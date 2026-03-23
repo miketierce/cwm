@@ -23,7 +23,7 @@ _All quantitative claims in the main paper are computed from first-principles si
 
 _This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all eight experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement._
 
-**The glass harmonica connection.** Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the _glass armonica_, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); and Experiment 8 demonstrates rewritable encoding with water drops (the armonica).
+**The glass harmonica connection.** Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the _glass armonica_, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); Experiment 8 demonstrates rewritable encoding with water drops (the armonica); and Experiments 9–11 demonstrate packed-array operations—associative recall, nearest-neighbor search, and in-situ Boolean computation.
 
 ### D.1 Complete Bill of Materials
 
@@ -599,10 +599,206 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 ---
 
+### D.11 Experiment 9 — Packed-Array Associative Recall
+
+**Objective:** Show that a multi-rod array can identify a stored pattern from a noisy or partial query—the physical basis of CWM's content-addressable memory.
+
+**Time:** 90 minutes.
+
+**Materials:** 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, cooler mount with cardboard dividers (multi-rod template T.2), styrofoam enclosure, masking tape, fine-tip marker.
+
+**Background.** In Experiment 6 you demonstrated that a single rod distinguishes between matching and non-matching queries. This experiment scales the principle to a packed array: multiple rods, each storing a different perturbation pattern, are queried simultaneously. The rod whose stored fingerprint best matches the query produces the strongest acoustic response—a physical implementation of associative recall. The entire search completes in one acoustic propagation cycle (~3.8 µs at MEMS scale), regardless of how many rods are in the array.
+
+Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a "neuron," the perturbation-defined spectrum is its "weight vector," and the query is the input state. The rod with the highest inner product with the query wins—and that inner product is computed by wave interference, not by a processor.
+
+**Procedure:**
+
+1. **Build the array.** Assemble 3–4 rods, each with its PZT disc, into the multi-rod mount using cardboard dividers inside the styrofoam cooler. Label them Rod A, B, C, D. Equilibrate for 15 minutes.
+
+2. **Write distinct patterns.** Apply unique putty configurations to each rod:
+   - **Rod A:** Two pellets at $L/4$ (37.5 mm) and $3L/4$ (112.5 mm).
+   - **Rod B:** Two pellets at $L/3$ (50 mm) and $2L/3$ (100 mm).
+   - **Rod C:** One pellet at $L/2$ (75 mm).
+   - **Rod D (if using 4 rods):** Two pellets at $L/5$ (30 mm) and $4L/5$ (120 mm).
+
+3. **Record each fingerprint.** Chirp each rod individually and record the FFT peak frequencies for modes 1–5. These are the "stored patterns."
+
+4. **Build queries.** For each rod, create a multi-tone waveform from its five shifted mode frequencies (same procedure as Experiment 6, step 2). Label these Query A, B, C, D.
+
+5. **Parallel query test.** Drive _all_ rods simultaneously with Query A. Monitor the acoustic response of each rod via its own PZT transducer (use separate PicoScope channels, or measure each rod's response sequentially with the same channel while driving all rods). Record the peak response amplitude for each rod.
+
+6. **Record the discrimination matrix.** Repeat step 5 for Query B, Query C, and Query D. Fill in Worksheet D.8.
+
+7. **Verify correct identification.** For each query, the target rod (the one whose pattern matches the query) should produce the highest response. Check that all four diagonal entries in the discrimination matrix are the highest in their row.
+
+8. **Test with noisy queries.** Detune one of Query A's five frequencies by +5% to simulate a noisy or partial query. Drive all rods and check whether Rod A still wins (it should, because 4 of 5 frequencies still match). Increase the detuning and observe when recall fails.
+
 <div class="worksheet-header">
-<h4>D.11 — Consolidated Experiment Log</h4>
+<h4>Worksheet D.8 — Packed-Array Associative Recall</h4>
 <p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
-<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
+<p class="ws-instruction">Print one copy per array configuration. Log each rod's response amplitude (dB) when driven by each query pattern.</p>
+</div>
+
+| Query driven ↓ / Rod response → | Rod A (dB)                       | Rod B (dB)                       | Rod C (dB)                       | Rod D (dB)                       | Best match |
+| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | ---------- |
+| Query A                         | <span class="ex">**−22**</span>  | <span class="ex">−41</span>      | <span class="ex">−38</span>      | <span class="ex">−44</span>      | <span class="ex">Rod A ✓</span> |
+| Query B                         | <span class="ex">−40</span>      | <span class="ex">**−23**</span>  | <span class="ex">−39</span>      | <span class="ex">−43</span>      | <span class="ex">Rod B ✓</span> |
+| Query C                         | <span class="ex">−37</span>      | <span class="ex">−42</span>      | <span class="ex">**−21**</span>  | <span class="ex">−40</span>      | <span class="ex">Rod C ✓</span> |
+| Query D                         | <span class="ex">−43</span>      | <span class="ex">−39</span>      | <span class="ex">−41</span>      | <span class="ex">**−24**</span>  | <span class="ex">Rod D ✓</span> |
+
+| Metric                                             | Value                             |
+| -------------------------------------------------- | --------------------------------- |
+| **Mean diagonal (matched) amplitude (dB):**        | <span class="ex">**−22.5**</span> |
+| **Mean off-diagonal (mismatched) amplitude (dB):** | <span class="ex">−40.6</span>     |
+| **Mean discrimination margin (dB):**               | <span class="ex">**18.1**</span>  |
+| **All diagonal entries are row maxima? (Y/N)**      | <span class="ex">Y ✓</span>       |
+| **Noisy query (5% detune): correct recall? (Y/N)** | <span class="ex">Y ✓</span>       |
+
+**Expected results.** The discrimination matrix should show a clear diagonal: each query produces 15–25 dB more power at its target rod than at any other. If using only 2 PicoScope channels (one for the shared drive, one for readout), you can drive all rods via a Y-cable from the AWG and read each rod's response sequentially—the key physics is that the rod's resonant response depends only on whether its modes align with the drive frequencies, not on how many other rods are present.
+
+> **Why this works.** Each rod is a physical matched filter. The query contains frequencies $\{f_1', f_2', \ldots, f_5'\}$. If those frequencies match Rod A's resonances, Rod A rings loudly; Rod B's resonances are at different frequencies, so it barely responds. The ratio of matched-to-mismatched response is the discrimination margin. In a MEMS array with 9,380 modes per rod and 1,294 stored patterns, this same principle extends to massively parallel associative search in a single acoustic cycle.
+
+---
+
+### D.12 Experiment 10 — Nearest-Neighbor Search
+
+**Objective:** Demonstrate that the rod array naturally performs nearest-neighbor search: when the query is an interpolation between two stored patterns, the closest matching rod produces the strongest response, and the transition point occurs at the midpoint.
+
+**Time:** 60 minutes.
+
+**Materials:** Packed array from Experiment 9 (at least 2 patterned rods), PicoScope.
+
+**Background.** Nearest-neighbor search is the foundation of classification, recommendation, and similarity-based retrieval. In a conventional system, finding the closest match in a database of $M$ items requires $O(M)$ distance computations (or $O(\log M)$ with tree indexing). In a CWM array, it takes one acoustic propagation cycle regardless of $M$.
+
+The test: construct a query that sits "between" two stored patterns. At the exact midpoint, the query should be equidistant from both, and the best match should transition from one rod to the other.
+
+**Procedure:**
+
+1. **Select two rods.** Use Rod A and Rod B from Experiment 9, with their distinct putty patterns in place.
+
+2. **Build the endpoint queries.** You already have Query A (5 tones at Rod A's mode frequencies) and Query B (5 tones at Rod B's mode frequencies) from Experiment 9.
+
+3. **Create interpolated queries.** For each mode $n$ (1–5), compute a blended frequency:
+
+$$f_n(\alpha) = (1 - \alpha) \cdot f_n^{(A)} + \alpha \cdot f_n^{(B)}$$
+
+Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The first and last are just Query A and Query B.)
+
+4. **Drive and measure.** For each interpolated query, drive both rods simultaneously and record each rod's response amplitude.
+
+5. **Plot the crossover.** Plot Rod A's and Rod B's response as a function of $\alpha$. The curves should cross near $\alpha = 0.5$. Record the actual crossover point.
+
+6. **Record results** in Worksheet D.9.
+
+<div class="worksheet-header">
+<h4>Worksheet D.9 — Nearest-Neighbor Search Crossover</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Print one copy. Record response amplitudes across the interpolation sweep to verify crossover near α = 0.5.</p>
+</div>
+
+| α (interpolation) | Rod A response (dB)              | Rod B response (dB)              | Best match |
+| ------------------ | -------------------------------- | -------------------------------- | ---------- |
+| 0.00 (= Query A)  | <span class="ex">**−22**</span>  | <span class="ex">−41</span>      | <span class="ex">Rod A</span> |
+| 0.25               | <span class="ex">**−26**</span>  | <span class="ex">−35</span>      | <span class="ex">Rod A</span> |
+| 0.50               | <span class="ex">−31</span>      | <span class="ex">**−30**</span>  | <span class="ex">Rod B</span> |
+| 0.75               | <span class="ex">−37</span>      | <span class="ex">**−25**</span>  | <span class="ex">Rod B</span> |
+| 1.00 (= Query B)  | <span class="ex">−42</span>      | <span class="ex">**−23**</span>  | <span class="ex">Rod B</span> |
+
+| Metric                                          | Value                             |
+| ------------------------------------------------ | --------------------------------- |
+| **Crossover α (where best match switches A→B):** | <span class="ex">**0.50**</span>  |
+| **Expected crossover:**                          | 0.50                              |
+| **Crossover error |actual − expected|:**         | <span class="ex">0.00</span>      |
+
+**Expected results.** The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods' acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.
+
+> **O(1) scaling.** The key observation: you could add 100 more rods to the array, and the search would still take the same amount of time—one acoustic cycle. Each rod evaluates its own match score simultaneously and independently. This is why CWM claims O(1) nearest-neighbor search: the computation time is set by the speed of sound in glass, not by the number of candidates.
+
+---
+
+### D.13 Experiment 11 — In-Situ Boolean Computation via Mode Superposition
+
+**Objective:** Demonstrate that Boolean operations (AND, OR, XOR) can be computed in a single acoustic cycle by superposing two perturbation patterns' spectral responses and applying amplitude thresholds—zero additional hardware required.
+
+**Time:** 60 minutes.
+
+**Materials:** 2 assembled resonators with distinct perturbation patterns (from Experiment 9), PicoScope, BNC Y-adapter or alligator-clip junction.
+
+**Background.** CWM's modes are linear oscillators: when two signals are applied simultaneously, the resulting amplitude at each frequency is the _sum_ of the individual amplitudes. If Pattern A encodes bit "1" at mode 3 (high amplitude) and Pattern B encodes bit "0" at mode 3 (low amplitude), the combined amplitude at mode 3 is high + low = medium. The combined amplitudes across all modes fall into three natural clusters:
+
+| A bit | B bit | Combined level | AND | OR | XOR |
+| ----- | ----- | -------------- | --- | -- | --- |
+| 0     | 0     | Low            | 0   | 0  | 0   |
+| 0     | 1     | Medium         | 0   | 1  | 1   |
+| 1     | 0     | Medium         | 0   | 1  | 1   |
+| 1     | 1     | High           | 1   | 1  | 0   |
+
+- **AND** = high cluster only (both bits = 1)
+- **OR** = medium + high (at least one bit = 1)
+- **XOR** = medium cluster only (exactly one bit = 1)
+
+All three operations are computed from the same superposition—only the threshold changes. This is firmware, not hardware.
+
+**Procedure:**
+
+1. **Prepare two "binary-patterned" rods.** Using two rods from the packed array, define a coarse binary encoding across modes 1–5:
+   - **Rod A "binary pattern":** Place putty at positions that shift modes 1, 3, and 5 strongly (call these bits = 1) and leave modes 2 and 4 minimally affected (bits = 0). Record which modes shift and by how much.
+   - **Rod B "binary pattern":** Place putty at positions that shift modes 1, 2, and 4 (bits = 1) and leave modes 3 and 5 minimally affected (bits = 0).
+
+   The resulting binary representations are:
+   - Rod A: 1 0 1 0 1
+   - Rod B: 1 1 0 1 0
+
+2. **Measure individual spectra.** Chirp each rod separately. Record the peak amplitude at each mode frequency.
+
+3. **Superpose the responses.** Drive both rods simultaneously with a broadband chirp. On the PicoScope FFT, you will see peaks at all mode frequencies. At each mode, the combined amplitude reflects the sum of both rods' contributions.
+
+4. **Classify each mode.** For each mode 1–5, categorize the combined amplitude:
+   - **Low** (both rods' bits = 0): the weakest combined peaks.
+   - **Medium** (one rod's bit = 1, the other = 0): intermediate amplitude.
+   - **High** (both rods' bits = 1): the strongest combined peaks.
+
+5. **Extract Boolean results.** Apply the three threshold rules:
+   - **AND (Rod A ∧ Rod B):** Only modes where combined amplitude is in the "High" cluster → expected result: 1 0 0 0 0 (only mode 1).
+   - **OR (Rod A ∨ Rod B):** Modes in "Medium" or "High" cluster → expected result: 1 1 1 1 1 (all modes).
+   - **XOR (Rod A ⊕ Rod B):** Modes in "Medium" cluster only → expected result: 0 1 1 1 1 (modes 2–5).
+
+6. **Record results** in Worksheet D.10.
+
+<div class="worksheet-header">
+<h4>Worksheet D.10 — Boolean Computation via Mode Superposition</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Print one copy. Record individual and combined mode amplitudes, then extract Boolean operation results using threshold classification.</p>
+</div>
+
+| Mode _n_ | Rod A amp (dB) | A bit | Rod B amp (dB) | B bit | Combined amp (dB) | Cluster   | AND | OR | XOR |
+| -------- | -------------- | ----- | -------------- | ----- | ----------------- | --------- | --- | -- | --- |
+| 1        | <span class="ex">−24</span> | 1     | <span class="ex">−25</span> | 1     | <span class="ex">−18</span> | <span class="ex">High</span>   | <span class="ex">1</span> | <span class="ex">1</span> | <span class="ex">0</span> |
+| 2        | <span class="ex">−42</span> | 0     | <span class="ex">−26</span> | 1     | <span class="ex">−25</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
+| 3        | <span class="ex">−23</span> | 1     | <span class="ex">−40</span> | 0     | <span class="ex">−22</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
+| 4        | <span class="ex">−41</span> | 0     | <span class="ex">−24</span> | 1     | <span class="ex">−23</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
+| 5        | <span class="ex">−22</span> | 1     | <span class="ex">−43</span> | 0     | <span class="ex">−21</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
+
+| Verification                                                         | Result                      |
+| -------------------------------------------------------------------- | --------------------------- |
+| **AND computed correctly? (compare to truth table)**                 | <span class="ex">Y ✓</span> |
+| **OR computed correctly?**                                           | <span class="ex">Y ✓</span> |
+| **XOR computed correctly?**                                          | <span class="ex">Y ✓</span> |
+| **Number of modes used:**                                            | <span class="ex">5</span>   |
+| **Cluster separation (High − Medium gap in dB):**                   | <span class="ex">5 dB</span> |
+| **Cluster separation (Medium − Low gap in dB):**                    | <span class="ex">15 dB</span> |
+| **All three Boolean operations extracted from a single superposition?** | <span class="ex">Y ✓</span> |
+
+**Expected results.** With distinct perturbation patterns, the three amplitude clusters should be separated by ≥5 dB. AND is the most demanding (smallest cluster gap), while OR is the most forgiving. If cluster separation is too small, use larger putty masses to increase the amplitude contrast between "1" and "0" bits. The simulation in `exp08_boolean_compute.py` confirms ≥90% fidelity across all three operations at contrast ratios of 1.5:1 or better.
+
+> **One superposition, three answers.** The superposed spectrum is computed by physics in a single acoustic cycle. The Boolean operation is selected _afterwards_ in firmware—by choosing where to place the threshold. No new hardware, no new measurement, no extra time. This is what the paper means by "the physics _is_ the computation."
+
+---
+
+<div class="worksheet-header">
+<h4>D.14 — Consolidated Experiment Log</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.10.</p>
 </div>
 
 | Field                                      | Entry                                                            |
@@ -620,18 +816,21 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 | **Relative humidity (%)**                  |                                                                  |
 | **Rod mount type**                         |                                                                  |
 | **Thermal enclosure used? (Y/N)**          |                                                                  |
-| **Experiments completed (circle)**         | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 |
+| **Experiments completed (circle)**         | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 |
 | **Best Q measured**                        |                                                                  |
 | **Number of confirmed longitudinal modes** |                                                                  |
 | **Best discrimination margin (dB)**        |                                                                  |
 | **CW lock-in gain at 10 s (dB)**           |                                                                  |
 | **Wet-finger bowing successful? (Y/N)**    |                                                                  |
 | **Water-drop patterns written & erased**   |                                                                  |
+| **Array recall: all diagonals correct? (Y/N)** |                                                              |
+| **NN crossover α (expected 0.50):**        |                                                                  |
+| **Boolean ops all correct? (Y/N)**         |                                                                  |
 | **Anomalies or unexpected observations**   |                                                                  |
 
 ---
 
-### D.12 Troubleshooting Guide
+### D.15 Troubleshooting Guide
 
 | Symptom                                            | Likely cause                                                             | Fix                                                                                                                         |
 | -------------------------------------------------- | ------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
@@ -653,13 +852,13 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 ---
 
-### D.13 Contributing Your Data
+### D.16 Contributing Your Data
 
 We invite all experimenters—students, teachers, hobbyists, and researchers—to submit completed worksheets and raw PicoScope data files to the project repository. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.
 
 **To contribute:**
 
-1. Photograph or scan your completed Worksheets D.1–D.7 and the Experiment Log (D.11).
+1. Photograph or scan your completed Worksheets D.1–D.10 and the Experiment Log (D.14).
 2. Export raw PicoScope waveform files (.psdata or .csv) for each experiment.
 3. Submit via pull request to the project repository at [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma) in the `data/community/` directory. Include your Experiment Log as the commit message or PR description.
 4. Alternatively, email data files and scanned worksheets to the corresponding author.
@@ -998,7 +1197,7 @@ _The following pages present each experiment worksheet at full portrait scale fo
 
 <div class="worksheet-plate">
 <h4>Consolidated Experiment Log</h4>
-<p class="ws-inst">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
+<p class="ws-inst">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.10.</p>
 <table>
 <thead><tr><th style="width:50%">Field</th><th>Entry</th></tr></thead>
 <tbody>
