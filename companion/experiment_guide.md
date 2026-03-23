@@ -639,19 +639,19 @@ Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a 
 <p class="ws-instruction">Print one copy per array configuration. Log each rod's response amplitude (dB) when driven by each query pattern.</p>
 </div>
 
-| Query driven ↓ / Rod response → | Rod A (dB)                       | Rod B (dB)                       | Rod C (dB)                       | Rod D (dB)                       | Best match |
-| -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | -------------------------------- | ---------- |
-| Query A                         | <span class="ex">**−22**</span>  | <span class="ex">−41</span>      | <span class="ex">−38</span>      | <span class="ex">−44</span>      | <span class="ex">Rod A ✓</span> |
-| Query B                         | <span class="ex">−40</span>      | <span class="ex">**−23**</span>  | <span class="ex">−39</span>      | <span class="ex">−43</span>      | <span class="ex">Rod B ✓</span> |
-| Query C                         | <span class="ex">−37</span>      | <span class="ex">−42</span>      | <span class="ex">**−21**</span>  | <span class="ex">−40</span>      | <span class="ex">Rod C ✓</span> |
-| Query D                         | <span class="ex">−43</span>      | <span class="ex">−39</span>      | <span class="ex">−41</span>      | <span class="ex">**−24**</span>  | <span class="ex">Rod D ✓</span> |
+| Query driven ↓ / Rod response → | Rod A (dB)                      | Rod B (dB)                      | Rod C (dB)                      | Rod D (dB)                      | Best match                      |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| Query A                         | <span class="ex">**−22**</span> | <span class="ex">−41</span>     | <span class="ex">−38</span>     | <span class="ex">−44</span>     | <span class="ex">Rod A ✓</span> |
+| Query B                         | <span class="ex">−40</span>     | <span class="ex">**−23**</span> | <span class="ex">−39</span>     | <span class="ex">−43</span>     | <span class="ex">Rod B ✓</span> |
+| Query C                         | <span class="ex">−37</span>     | <span class="ex">−42</span>     | <span class="ex">**−21**</span> | <span class="ex">−40</span>     | <span class="ex">Rod C ✓</span> |
+| Query D                         | <span class="ex">−43</span>     | <span class="ex">−39</span>     | <span class="ex">−41</span>     | <span class="ex">**−24**</span> | <span class="ex">Rod D ✓</span> |
 
 | Metric                                             | Value                             |
 | -------------------------------------------------- | --------------------------------- |
 | **Mean diagonal (matched) amplitude (dB):**        | <span class="ex">**−22.5**</span> |
 | **Mean off-diagonal (mismatched) amplitude (dB):** | <span class="ex">−40.6</span>     |
 | **Mean discrimination margin (dB):**               | <span class="ex">**18.1**</span>  |
-| **All diagonal entries are row maxima? (Y/N)**      | <span class="ex">Y ✓</span>       |
+| **All diagonal entries are row maxima? (Y/N)**     | <span class="ex">Y ✓</span>       |
 | **Noisy query (5% detune): correct recall? (Y/N)** | <span class="ex">Y ✓</span>       |
 
 **Expected results.** The discrimination matrix should show a clear diagonal: each query produces 15–25 dB more power at its target rod than at any other. If using only 2 PicoScope channels (one for the shared drive, one for readout), you can drive all rods via a Y-cable from the AWG and read each rod's response sequentially—the key physics is that the rod's resonant response depends only on whether its modes align with the drive frequencies, not on how many other rods are present.
@@ -696,19 +696,19 @@ Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The firs
 <p class="ws-instruction">Print one copy. Record response amplitudes across the interpolation sweep to verify crossover near α = 0.5.</p>
 </div>
 
-| α (interpolation) | Rod A response (dB)              | Rod B response (dB)              | Best match |
-| ------------------ | -------------------------------- | -------------------------------- | ---------- |
-| 0.00 (= Query A)  | <span class="ex">**−22**</span>  | <span class="ex">−41</span>      | <span class="ex">Rod A</span> |
-| 0.25               | <span class="ex">**−26**</span>  | <span class="ex">−35</span>      | <span class="ex">Rod A</span> |
-| 0.50               | <span class="ex">−31</span>      | <span class="ex">**−30**</span>  | <span class="ex">Rod B</span> |
-| 0.75               | <span class="ex">−37</span>      | <span class="ex">**−25**</span>  | <span class="ex">Rod B</span> |
-| 1.00 (= Query B)  | <span class="ex">−42</span>      | <span class="ex">**−23**</span>  | <span class="ex">Rod B</span> |
+| α (interpolation) | Rod A response (dB)             | Rod B response (dB)             | Best match                    |
+| ----------------- | ------------------------------- | ------------------------------- | ----------------------------- |
+| 0.00 (= Query A)  | <span class="ex">**−22**</span> | <span class="ex">−41</span>     | <span class="ex">Rod A</span> |
+| 0.25              | <span class="ex">**−26**</span> | <span class="ex">−35</span>     | <span class="ex">Rod A</span> |
+| 0.50              | <span class="ex">−31</span>     | <span class="ex">**−30**</span> | <span class="ex">Rod B</span> |
+| 0.75              | <span class="ex">−37</span>     | <span class="ex">**−25**</span> | <span class="ex">Rod B</span> |
+| 1.00 (= Query B)  | <span class="ex">−42</span>     | <span class="ex">**−23**</span> | <span class="ex">Rod B</span> |
 
-| Metric                                          | Value                             |
-| ------------------------------------------------ | --------------------------------- |
-| **Crossover α (where best match switches A→B):** | <span class="ex">**0.50**</span>  |
-| **Expected crossover:**                          | 0.50                              |
-| **Crossover error |actual − expected|:**         | <span class="ex">0.00</span>      |
+| Metric                                           | Value                            |
+| ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
+| **Crossover α (where best match switches A→B):** | <span class="ex">**0.50**</span> |
+| **Expected crossover:**                          | 0.50                             |
+| \*\*Crossover error                              | actual − expected                | :\*\* | <span class="ex">0.00</span> |
 
 **Expected results.** The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods' acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.
 
@@ -726,12 +726,12 @@ Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The firs
 
 **Background.** CWM's modes are linear oscillators: when two signals are applied simultaneously, the resulting amplitude at each frequency is the _sum_ of the individual amplitudes. If Pattern A encodes bit "1" at mode 3 (high amplitude) and Pattern B encodes bit "0" at mode 3 (low amplitude), the combined amplitude at mode 3 is high + low = medium. The combined amplitudes across all modes fall into three natural clusters:
 
-| A bit | B bit | Combined level | AND | OR | XOR |
-| ----- | ----- | -------------- | --- | -- | --- |
-| 0     | 0     | Low            | 0   | 0  | 0   |
-| 0     | 1     | Medium         | 0   | 1  | 1   |
-| 1     | 0     | Medium         | 0   | 1  | 1   |
-| 1     | 1     | High           | 1   | 1  | 0   |
+| A bit | B bit | Combined level | AND | OR  | XOR |
+| ----- | ----- | -------------- | --- | --- | --- |
+| 0     | 0     | Low            | 0   | 0   | 0   |
+| 0     | 1     | Medium         | 0   | 1   | 1   |
+| 1     | 0     | Medium         | 0   | 1   | 1   |
+| 1     | 1     | High           | 1   | 1   | 0   |
 
 - **AND** = high cluster only (both bits = 1)
 - **OR** = medium + high (at least one bit = 1)
@@ -771,23 +771,23 @@ All three operations are computed from the same superposition—only the thresho
 <p class="ws-instruction">Print one copy. Record individual and combined mode amplitudes, then extract Boolean operation results using threshold classification.</p>
 </div>
 
-| Mode _n_ | Rod A amp (dB) | A bit | Rod B amp (dB) | B bit | Combined amp (dB) | Cluster   | AND | OR | XOR |
-| -------- | -------------- | ----- | -------------- | ----- | ----------------- | --------- | --- | -- | --- |
+| Mode _n_ | Rod A amp (dB)              | A bit | Rod B amp (dB)              | B bit | Combined amp (dB)           | Cluster                        | AND                       | OR                        | XOR                       |
+| -------- | --------------------------- | ----- | --------------------------- | ----- | --------------------------- | ------------------------------ | ------------------------- | ------------------------- | ------------------------- |
 | 1        | <span class="ex">−24</span> | 1     | <span class="ex">−25</span> | 1     | <span class="ex">−18</span> | <span class="ex">High</span>   | <span class="ex">1</span> | <span class="ex">1</span> | <span class="ex">0</span> |
 | 2        | <span class="ex">−42</span> | 0     | <span class="ex">−26</span> | 1     | <span class="ex">−25</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
 | 3        | <span class="ex">−23</span> | 1     | <span class="ex">−40</span> | 0     | <span class="ex">−22</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
 | 4        | <span class="ex">−41</span> | 0     | <span class="ex">−24</span> | 1     | <span class="ex">−23</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
 | 5        | <span class="ex">−22</span> | 1     | <span class="ex">−43</span> | 0     | <span class="ex">−21</span> | <span class="ex">Medium</span> | <span class="ex">0</span> | <span class="ex">1</span> | <span class="ex">1</span> |
 
-| Verification                                                         | Result                      |
-| -------------------------------------------------------------------- | --------------------------- |
-| **AND computed correctly? (compare to truth table)**                 | <span class="ex">Y ✓</span> |
-| **OR computed correctly?**                                           | <span class="ex">Y ✓</span> |
-| **XOR computed correctly?**                                          | <span class="ex">Y ✓</span> |
-| **Number of modes used:**                                            | <span class="ex">5</span>   |
-| **Cluster separation (High − Medium gap in dB):**                   | <span class="ex">5 dB</span> |
-| **Cluster separation (Medium − Low gap in dB):**                    | <span class="ex">15 dB</span> |
-| **All three Boolean operations extracted from a single superposition?** | <span class="ex">Y ✓</span> |
+| Verification                                                            | Result                        |
+| ----------------------------------------------------------------------- | ----------------------------- |
+| **AND computed correctly? (compare to truth table)**                    | <span class="ex">Y ✓</span>   |
+| **OR computed correctly?**                                              | <span class="ex">Y ✓</span>   |
+| **XOR computed correctly?**                                             | <span class="ex">Y ✓</span>   |
+| **Number of modes used:**                                               | <span class="ex">5</span>     |
+| **Cluster separation (High − Medium gap in dB):**                       | <span class="ex">5 dB</span>  |
+| **Cluster separation (Medium − Low gap in dB):**                        | <span class="ex">15 dB</span> |
+| **All three Boolean operations extracted from a single superposition?** | <span class="ex">Y ✓</span>   |
 
 **Expected results.** With distinct perturbation patterns, the three amplitude clusters should be separated by ≥5 dB. AND is the most demanding (smallest cluster gap), while OR is the most forgiving. If cluster separation is too small, use larger putty masses to increase the amplitude contrast between "1" and "0" bits. The simulation in `exp08_boolean_compute.py` confirms ≥90% fidelity across all three operations at contrast ratios of 1.5:1 or better.
 
@@ -801,32 +801,32 @@ All three operations are computed from the same superposition—only the thresho
 <p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.10.</p>
 </div>
 
-| Field                                      | Entry                                                            |
-| ------------------------------------------ | ---------------------------------------------------------------- |
-| **Experimenter name(s)**                   |                                                                  |
-| **Date**                                   |                                                                  |
-| **School / Institution**                   |                                                                  |
-| **Rod serial # (label each rod)**          |                                                                  |
-| **Rod length L (mm)**                      |                                                                  |
-| **Rod diameter d (mm)**                    |                                                                  |
-| **Rod mass M (g)**                         |                                                                  |
-| **PZT disc serial #**                      |                                                                  |
-| **PicoScope model & serial**               |                                                                  |
-| **Room temperature at start (°C)**         |                                                                  |
-| **Relative humidity (%)**                  |                                                                  |
-| **Rod mount type**                         |                                                                  |
-| **Thermal enclosure used? (Y/N)**          |                                                                  |
-| **Experiments completed (circle)**         | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 |
-| **Best Q measured**                        |                                                                  |
-| **Number of confirmed longitudinal modes** |                                                                  |
-| **Best discrimination margin (dB)**        |                                                                  |
-| **CW lock-in gain at 10 s (dB)**           |                                                                  |
-| **Wet-finger bowing successful? (Y/N)**    |                                                                  |
-| **Water-drop patterns written & erased**   |                                                                  |
-| **Array recall: all diagonals correct? (Y/N)** |                                                              |
-| **NN crossover α (expected 0.50):**        |                                                                  |
-| **Boolean ops all correct? (Y/N)**         |                                                                  |
-| **Anomalies or unexpected observations**   |                                                                  |
+| Field                                          | Entry                                                                                         |
+| ---------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| **Experimenter name(s)**                       |                                                                                               |
+| **Date**                                       |                                                                                               |
+| **School / Institution**                       |                                                                                               |
+| **Rod serial # (label each rod)**              |                                                                                               |
+| **Rod length L (mm)**                          |                                                                                               |
+| **Rod diameter d (mm)**                        |                                                                                               |
+| **Rod mass M (g)**                             |                                                                                               |
+| **PZT disc serial #**                          |                                                                                               |
+| **PicoScope model & serial**                   |                                                                                               |
+| **Room temperature at start (°C)**             |                                                                                               |
+| **Relative humidity (%)**                      |                                                                                               |
+| **Rod mount type**                             |                                                                                               |
+| **Thermal enclosure used? (Y/N)**              |                                                                                               |
+| **Experiments completed (circle)**             | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 |
+| **Best Q measured**                            |                                                                                               |
+| **Number of confirmed longitudinal modes**     |                                                                                               |
+| **Best discrimination margin (dB)**            |                                                                                               |
+| **CW lock-in gain at 10 s (dB)**               |                                                                                               |
+| **Wet-finger bowing successful? (Y/N)**        |                                                                                               |
+| **Water-drop patterns written & erased**       |                                                                                               |
+| **Array recall: all diagonals correct? (Y/N)** |                                                                                               |
+| **NN crossover α (expected 0.50):**            |                                                                                               |
+| **Boolean ops all correct? (Y/N)**             |                                                                                               |
+| **Anomalies or unexpected observations**       |                                                                                               |
 
 ---
 

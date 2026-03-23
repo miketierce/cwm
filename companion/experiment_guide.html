@@ -2193,28 +2193,11 @@ div.worksheet-plate th {
 </tr>
 </tbody>
 </table>
-<table>
-<thead>
-<tr>
-<th>Metric</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Crossover α (where best match switches A→B):</strong></td>
-<td><span class="ex"><strong>0.50</strong></span></td>
-</tr>
-<tr>
-<td><strong>Expected crossover:</strong></td>
-<td>0.50</td>
-</tr>
-<tr>
-<td>**Crossover error</td>
-<td>actual − expected</td>
-</tr>
-</tbody>
-</table>
+<p>| Metric                                           | Value                            |
+| ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
+| <strong>Crossover α (where best match switches A→B):</strong> | <span class="ex"><strong>0.50</strong></span> |
+| <strong>Expected crossover:</strong>                          | 0.50                             |
+| **Crossover error                              | actual − expected                | :** | <span class="ex">0.00</span> |</p>
 <p><strong>Expected results.</strong> The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods&rsquo; acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.</p>
 <blockquote>
 <p><strong>O(1) scaling.</strong> The key observation: you could add 100 more rods to the array, and the search would still take the same amount of time—one acoustic cycle. Each rod evaluates its own match score simultaneously and independently. This is why CWM claims O(1) nearest-neighbor search: the computation time is set by the speed of sound in glass, not by the number of candidates.</p>
