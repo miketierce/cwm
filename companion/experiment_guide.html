@@ -1701,6 +1701,9 @@ div.worksheet-plate th {
 <li>
 <p><strong>Build the query signal.</strong> In the PicoScope AWG, create a multi-tone waveform composed of the five shifted frequencies from Pattern A&rsquo;s fingerprint. Set each tone to equal amplitude (0.1 V per tone). This is &ldquo;Query A.&rdquo;</p>
 </li>
+</ol>
+<p><em>Software shortcut:</em> Run <code>python tools/awg_waveform.py --pattern A</code> from the repository root. This computes Pattern A&rsquo;s Rayleigh-shifted frequencies and exports a ready-to-import CSV file (<code>query_A.csv</code>). In PicoScope 7: Tools → Signal Generator → Wave Type → Arbitrary → Import → select the CSV → set Amplitude to the value printed by the script (~0.40 Vpp) and Sample Rate to 1 MS/s. For all four patterns at once, use <code>--all</code>. Run with <code>--help</code> for additional options (custom putty mass, rod length, number of modes).</p>
+<ol>
 <li>
 <p><strong>Measure the matched response.</strong> Drive the rod with Query A. The rod contains Pattern A, so the query <em>matches</em> the stored pattern. Record the peak response amplitude in dB from the FFT.</p>
 </li>
@@ -2068,6 +2071,9 @@ div.worksheet-plate th {
 <li>
 <p><strong>Build queries.</strong> For each rod, create a multi-tone waveform from its five shifted mode frequencies (same procedure as Experiment 6, step 2). Label these Query A, B, C, D.</p>
 </li>
+</ol>
+<p><em>Software shortcut:</em> <code>python tools/awg_waveform.py --all</code> generates all four query waveforms (CSV + WAV) in one step. Import each into the PicoScope AWG as described in Experiment 6.</p>
+<ol>
 <li>
 <p><strong>Parallel query test.</strong> Drive <em>all</em> rods simultaneously with Query A. Monitor the acoustic response of each rod via its own PZT transducer (use separate PicoScope channels, or measure each rod&rsquo;s response sequentially with the same channel while driving all rods). Record the peak response amplitude for each rod.</p>
 </li>

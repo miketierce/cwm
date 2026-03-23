@@ -431,6 +431,8 @@ _After removing putty:_
 
 2. **Build the query signal.** In the PicoScope AWG, create a multi-tone waveform composed of the five shifted frequencies from Pattern A's fingerprint. Set each tone to equal amplitude (0.1 V per tone). This is "Query A."
 
+   _Software shortcut:_ Run `python tools/awg_waveform.py --pattern A` from the repository root. This computes Pattern A's Rayleigh-shifted frequencies and exports a ready-to-import CSV file (`query_A.csv`). In PicoScope 7: Tools → Signal Generator → Wave Type → Arbitrary → Import → select the CSV → set Amplitude to the value printed by the script (~0.40 Vpp) and Sample Rate to 1 MS/s. For all four patterns at once, use `--all`. Run with `--help` for additional options (custom putty mass, rod length, number of modes).
+
 3. **Measure the matched response.** Drive the rod with Query A. The rod contains Pattern A, so the query _matches_ the stored pattern. Record the peak response amplitude in dB from the FFT.
 
 4. **Create Pattern B.** Remove Pattern A's putty. Apply two pellets at the third-points: $x = L/3 = 50$ mm and $x = 2L/3 = 100$ mm. Record Pattern B's fingerprint.
@@ -624,6 +626,8 @@ Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a 
 3. **Record each fingerprint.** Chirp each rod individually and record the FFT peak frequencies for modes 1–5. These are the "stored patterns."
 
 4. **Build queries.** For each rod, create a multi-tone waveform from its five shifted mode frequencies (same procedure as Experiment 6, step 2). Label these Query A, B, C, D.
+
+   _Software shortcut:_ `python tools/awg_waveform.py --all` generates all four query waveforms (CSV + WAV) in one step. Import each into the PicoScope AWG as described in Experiment 6.
 
 5. **Parallel query test.** Drive _all_ rods simultaneously with Query A. Monitor the acoustic response of each rod via its own PZT transducer (use separate PicoScope channels, or measure each rod's response sequentially with the same channel while driving all rods). Record the peak response amplitude for each rod.
 
