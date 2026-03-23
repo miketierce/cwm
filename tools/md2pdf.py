@@ -497,6 +497,60 @@ div.plate-page p {
     line-height: 1.4;
 }
 
+/* Named page for portrait templates — 1:1 scale, zero margin */
+@page template {
+    size: letter;
+    margin: 0;
+}
+
+div.template-page {
+    page: template;
+    page-break-before: always;
+    page-break-after: always;
+    width: 8.5in;
+    height: 11in;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+div.template-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Template instruction verso pages */
+div.template-instructions {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 1.5in;
+}
+
+div.template-instructions h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin-bottom: 14pt;
+    color: var(--text);
+}
+
+div.template-instructions p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+}
+
+div.template-instructions ol {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 12pt;
+    padding-left: 24pt;
+}
+
+div.template-instructions ol li {
+    margin-bottom: 6pt;
+}
+
 /* -- Footnotes / References -- */
 h2#references ~ p,
 h2:last-of-type ~ p {

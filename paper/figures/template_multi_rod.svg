@@ -191,15 +191,4 @@
     <text x="8" y="127" text-anchor="start" class="label" fill="#2a7fff">← PZT side</text>
   </g>
 
-  <!-- ================================================================== -->
-  <!-- INSTRUCTIONS BOX                                                   -->
-  <!-- ================================================================== -->
-
-  <g transform="translate(56, 752)">
-    <text x="0" y="0" class="inst" font-weight="700">Instructions:</text>
-    <text x="0" y="12" class="inst">1. Print this page at 100% scale. Verify the calibration ruler.</text>
-    <text x="0" y="24" class="inst">2. Cut out the template along the dashed line. Tape it to cardboard and trace.</text>
-    <text x="250" y="12" class="inst">3. Punch pinholes at each ⊙ with a pushpin; enlarge to ~7 mm with a pencil tip.</text>
-    <text x="250" y="24" class="inst">4. Cut TWO dividers per template. Space them 75 mm apart inside the cooler.</text>
-  </g>
 </svg>

@@ -134,9 +134,9 @@
   <!-- SPACING GUIDE (side view of cooler)                                 -->
   <!-- ================================================================== -->
 
-  <text x="56" y="718" class="label" font-weight="700">Side View — Divider Spacing (150 mm rod)</text>
+  <text x="56" y="690" class="label" font-weight="700">Side View — Divider Spacing (150 mm rod)</text>
 
-  <g transform="translate(80, 728)">
+  <g transform="translate(80, 700)">
     <!-- Cooler outline (side view) -->
     <rect x="0" y="0" width="425.2" height="42.52" class="cooler-ghost" rx="3"/>
     <!-- 150mm = 425.2 pt, H = 15mm = 42.52 pt -->

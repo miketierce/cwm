@@ -62,9 +62,7 @@
   <!-- ================================================================ -->
   <!-- INSTRUCTIONS                                                      -->
   <!-- ================================================================ -->
-  <text x="40" y="108" class="inst">① Place your 150 mm glass rod in the blue channel, flush against the left end-stop.</text>
-  <text x="40" y="120" class="inst">② Red ⊕ crosshairs mark exact putty placement positions. Transfer marks to the rod with a fine-tip pen.</text>
-  <text x="40" y="132" class="inst">③ Remove rod, knead a small putty pellet, and press it onto each marked position.</text>
+
 
   <!-- ================================================================ -->
   <!-- COMMON DEFINITIONS                                                -->
@@ -308,7 +306,4 @@
     </g>
   </g>
 
-  <!-- Footer -->
-  <text x="306" y="770" text-anchor="middle" class="note">CWM Experiment Guide · Template T.3 — Perturbation Placement Guide · github.com/miketierce/wcfoma</text>
-  <text x="306" y="782" text-anchor="middle" class="note">Rod spec: 6 mm dia × 150 mm borosilicate (PATIKIL B0D1NCM4R4). Perturbation mass: Mack's Pillow Soft silicone putty.</text>
 </svg>

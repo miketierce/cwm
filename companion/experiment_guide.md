@@ -977,27 +977,56 @@ _The following pages present each figure at full landscape scale for detailed ex
 
 ## Printable Divider Templates
 
-_The following pages provide 1:1-scale templates for cutting and punching the cardboard dividers that support the glass rod inside the styrofoam cooler. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Each template includes crosshair pinhole targets — punch with a pushpin, then enlarge to ~7 mm diameter with a pencil tip._
+_The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Instructions for each template appear on the reverse side of each sheet when printed double-sided._
 
 <div class="blank-verso">&nbsp;</div>
 
-<div class="plate-page">
+<div class="template-page">
 <img src="figures/template_single_rod.svg" alt="Template T.1: Single-Rod Divider"/>
-<p><strong>Template T.1 — Single-Rod Divider.</strong> Trace the dashed outline onto cardboard and cut to fit your cooler interior. Punch a 7 mm pinhole at the crosshair center. Cut TWO dividers and slot them into the cooler 75 mm apart. This places each support at $L/4$ and $3L/4$ for a 150 mm rod — the exact displacement nodes of mode 2. For different rod lengths, recalculate: support spacing = $L/2$, each support at $L/4$ from the nearer end.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
+<div class="template-instructions">
+<h3>Template T.1 — Single-Rod Divider Instructions</h3>
+<p>Trace the dashed outline onto cardboard and cut to fit your cooler interior. Cut <strong>TWO</strong> identical dividers and slot them into the cooler 75 mm apart. This places each support at L/4 and 3L/4 for a 150 mm rod — the exact displacement nodes of mode 2.</p>
+<ol>
+<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm with a physical ruler.</li>
+<li>Cut out the template along the dashed line. Tape it to cardboard and trace the outline.</li>
+<li>Punch a pinhole at each ⊙ crosshair with a pushpin, then enlarge to ~7 mm diameter with a pencil tip.</li>
+<li>Cut TWO identical dividers. Space them 75 mm apart inside the cooler.</li>
+</ol>
+<p>For different rod lengths, recalculate: support spacing = L/2, each support at L/4 from the nearer end.</p>
+</div>
 
-<div class="plate-page">
+<div class="template-page">
 <img src="figures/template_multi_rod.svg" alt="Template T.2: Multi-Rod Grid Divider"/>
-<p><strong>Template T.2 — Multi-Rod Grid Divider.</strong> Two grid options for packed-array simulation: 2×2 (4 rods) and 3×2 (6 rods) with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays. Cut TWO copies of your chosen grid, maintaining identical pinhole positions. The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
+<div class="template-instructions">
+<h3>Template T.2 — Multi-Rod Grid Divider Instructions</h3>
+<p>Two grid options for packed-array simulation: 2×2 (4 rods) and 3×2 (6 rods) with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<ol>
+<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
+<li>Cut out the template along the dashed line. Tape it to cardboard and trace.</li>
+<li>Punch pinholes at each ⊙ with a pushpin; enlarge to ~7 mm with a pencil tip.</li>
+<li>Cut TWO dividers per template. Space them 75 mm apart inside the cooler.</li>
+</ol>
+<p>The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>
+</div>
 
-<div class="plate-page">
+<div class="template-page">
 <img src="figures/template_perturbation_guide.svg" alt="Template T.3: Perturbation Placement Guide"/>
-<p><strong>Template T.3 — Perturbation Placement Guide.</strong> Lay the glass rod directly on the printed page, flush against the left end-stop, to transfer exact putty positions for each experiment pattern. Four patterns are provided: A (quarter-points, Experiments 5/9), B (third-points, Experiments 6/9), C (midpoint, Experiments 6/8/9), and D (fifth-points, Experiment 9). A combined reference ruler at the bottom shows all positions with color-coded markers. Print at 100% scale and verify the calibration ruler before use.</p>
+</div>
+
+<div class="template-instructions">
+<h3>Template T.3 — Perturbation Placement Guide Instructions</h3>
+<p>Lay the glass rod directly on the printed page, flush against the left end-stop, to transfer exact putty positions for each experiment pattern.</p>
+<ol>
+<li>Place your 150 mm glass rod in the blue channel, flush against the left end-stop.</li>
+<li>Red ⊕ crosshairs mark exact putty placement positions. Transfer marks to the rod with a fine-tip pen.</li>
+<li>Remove rod, knead a small putty pellet, and press it onto each marked position.</li>
+</ol>
+<p><strong>Patterns:</strong> A (quarter-points, Experiments 5/9), B (third-points, Experiments 6/9), C (midpoint, Experiments 6/8/9), D (fifth-points, Experiment 9). The combined reference ruler at the bottom shows all positions with color-coded markers.</p>
+<p><em>Rod spec: 6 mm dia × 150 mm borosilicate (PATIKIL B0D1NCM4R4). Perturbation mass: Mack's Pillow Soft silicone putty.</em></p>
 </div>
 
 ---
