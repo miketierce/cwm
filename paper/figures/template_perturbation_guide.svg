@@ -1,0 +1,314 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" width="612" height="792">
+  <!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+  <!-- 1 mm = 2.8346 pt -->
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { font-size: 13pt; font-weight: 700; fill: #1a1a1a; }
+    .subtitle { font-size: 9pt; fill: #444; }
+    .label { font-size: 8pt; fill: #1a1a1a; }
+    .label-bold { font-size: 8pt; fill: #1a1a1a; font-weight: 700; }
+    .dim { font-size: 7pt; fill: #c00; font-weight: 600; }
+    .note { font-size: 6.5pt; fill: #555; font-style: italic; }
+    .inst { font-size: 7pt; fill: #333; }
+    .rod-outline { fill: #e8f0ff; stroke: #2a7fff; stroke-width: 1.2; }
+    .rod-center { stroke: #2a7fff; stroke-width: 0.4; stroke-dasharray: 4,2; }
+    .putty-mark { fill: #ff4444; stroke: #cc0000; stroke-width: 1.5; }
+    .putty-ring { fill: none; stroke: #cc0000; stroke-width: 1.5; }
+    .putty-cross { stroke: #cc0000; stroke-width: 0.8; }
+    .tick { stroke: #333; stroke-width: 0.6; }
+    .tick-major { stroke: #333; stroke-width: 0.8; }
+    .ruler-bg { fill: #fafaf5; stroke: #333; stroke-width: 0.8; }
+    .pattern-bg { fill: #fafaf5; stroke: #ddd; stroke-width: 0.8; }
+    .dim-line { stroke: #c00; stroke-width: 0.5; }
+    .dim-arrow { fill: #c00; stroke: none; }
+    .guide-line { stroke: #cc0000; stroke-width: 0.5; stroke-dasharray: 2,2; }
+    .pzt-zone { fill: #2a7fff; fill-opacity: 0.15; stroke: #2a7fff; stroke-width: 0.8; }
+  </style>
+
+  <!-- ================================================================ -->
+  <!-- PAGE HEADER                                                       -->
+  <!-- ================================================================ -->
+  <text x="306" y="30" text-anchor="middle" class="title">Perturbation Placement Guide — 150 mm Rod (1:1 Scale)</text>
+  <text x="306" y="44" text-anchor="middle" class="subtitle">Print at 100% (no scaling). Lay your glass rod along each blue channel to mark putty positions.</text>
+  <text x="306" y="56" text-anchor="middle" class="note">Verify: the calibration ruler below should measure exactly 50 mm with a physical ruler.</text>
+
+  <!-- ================================================================ -->
+  <!-- CALIBRATION RULER (50 mm)                                         -->
+  <!-- 50 mm = 141.73 pt                                                -->
+  <!-- ================================================================ -->
+  <g transform="translate(235, 66)">
+    <rect x="0" y="0" width="141.73" height="10" class="ruler-bg"/>
+    <!-- 10mm major ticks -->
+    <line x1="0" y1="0" x2="0" y2="10" class="tick-major"/>
+    <line x1="28.35" y1="0" x2="28.35" y2="7" class="tick"/>
+    <line x1="56.69" y1="0" x2="56.69" y2="7" class="tick"/>
+    <line x1="85.04" y1="0" x2="85.04" y2="7" class="tick"/>
+    <line x1="113.39" y1="0" x2="113.39" y2="7" class="tick"/>
+    <line x1="141.73" y1="0" x2="141.73" y2="10" class="tick-major"/>
+    <!-- 5mm ticks -->
+    <line x1="14.17" y1="0" x2="14.17" y2="4" class="tick"/>
+    <line x1="42.52" y1="0" x2="42.52" y2="4" class="tick"/>
+    <line x1="70.87" y1="0" x2="70.87" y2="4" class="tick"/>
+    <line x1="99.21" y1="0" x2="99.21" y2="4" class="tick"/>
+    <line x1="127.56" y1="0" x2="127.56" y2="4" class="tick"/>
+    <text x="0" y="22" class="label" text-anchor="middle">0</text>
+    <text x="28.35" y="22" class="label" text-anchor="middle">10</text>
+    <text x="56.69" y="22" class="label" text-anchor="middle">20</text>
+    <text x="85.04" y="22" class="label" text-anchor="middle">30</text>
+    <text x="113.39" y="22" class="label" text-anchor="middle">40</text>
+    <text x="141.73" y="22" class="label" text-anchor="middle">50 mm</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- INSTRUCTIONS                                                      -->
+  <!-- ================================================================ -->
+  <text x="40" y="108" class="inst">① Place your 150 mm glass rod in the blue channel, flush against the left end-stop.</text>
+  <text x="40" y="120" class="inst">② Red ⊕ crosshairs mark exact putty placement positions. Transfer marks to the rod with a fine-tip pen.</text>
+  <text x="40" y="132" class="inst">③ Remove rod, knead a small putty pellet, and press it onto each marked position.</text>
+
+  <!-- ================================================================ -->
+  <!-- COMMON DEFINITIONS                                                -->
+  <!-- Rod: 150 mm = 425.20 pt long, 6 mm = 17.01 pt wide               -->
+  <!-- Left margin for rod start: x = 70 pt                             -->
+  <!-- Rod end: x = 70 + 425.20 = 495.20 pt                            -->
+  <!-- All perturbation positions measured from left end (PZT end)      -->
+  <!-- ================================================================ -->
+
+  <!-- ================================================================ -->
+  <!-- PATTERN A: L/4 + 3L/4 (Experiments 5, 9 — Rod A)                 -->
+  <!-- Positions: 37.5 mm = 106.30 pt, 112.5 mm = 318.90 pt            -->
+  <!-- ================================================================ -->
+  <g transform="translate(0, 150)">
+    <text x="40" y="0" class="label-bold">PATTERN A — Quarter-points: L/4 and 3L/4</text>
+    <text x="40" y="12" class="note">Experiments 5, 9 (Rod A). Two pellets at 37.5 mm and 112.5 mm from PZT end.</text>
+
+    <!-- Rod channel background -->
+    <rect x="66" y="20" width="433.20" height="25.01" rx="2" class="pattern-bg"/>
+
+    <!-- PZT zone at left end (5mm = 14.17pt) -->
+    <rect x="70" y="24" width="14.17" height="17.01" rx="1" class="pzt-zone"/>
+    <text x="77" y="52" text-anchor="middle" class="note" fill="#2a7fff">PZT</text>
+
+    <!-- Rod outline (1:1 scale) -->
+    <rect x="70" y="24" width="425.20" height="17.01" rx="8.5" class="rod-outline"/>
+
+    <!-- End-stop marks -->
+    <line x1="70" y1="18" x2="70" y2="48" stroke="#333" stroke-width="1.5"/>
+    <line x1="495.20" y1="18" x2="495.20" y2="48" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" class="dim">0 mm</text>
+    <text x="495.20" y="60" text-anchor="middle" class="dim">150 mm</text>
+
+    <!-- Perturbation mark 1: L/4 = 37.5 mm = 106.30 pt from left -->
+    <!-- Screen x = 70 + 106.30 = 176.30 -->
+    <circle cx="176.30" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="172.30" y1="32.5" x2="180.30" y2="32.5" class="putty-cross"/>
+    <line x1="176.30" y1="28.5" x2="176.30" y2="36.5" class="putty-cross"/>
+    <!-- Vertical guide line -->
+    <line x1="176.30" y1="18" x2="176.30" y2="24" class="guide-line"/>
+    <line x1="176.30" y1="41" x2="176.30" y2="48" class="guide-line"/>
+    <text x="176.30" y="14" text-anchor="middle" class="dim">37.5 mm</text>
+    <text x="176.30" y="68" text-anchor="middle" class="note">L/4</text>
+
+    <!-- Perturbation mark 2: 3L/4 = 112.5 mm = 318.90 pt from left -->
+    <!-- Screen x = 70 + 318.90 = 388.90 -->
+    <circle cx="388.90" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="384.90" y1="32.5" x2="392.90" y2="32.5" class="putty-cross"/>
+    <line x1="388.90" y1="28.5" x2="388.90" y2="36.5" class="putty-cross"/>
+    <line x1="388.90" y1="18" x2="388.90" y2="24" class="guide-line"/>
+    <line x1="388.90" y1="41" x2="388.90" y2="48" class="guide-line"/>
+    <text x="388.90" y="14" text-anchor="middle" class="dim">112.5 mm</text>
+    <text x="388.90" y="68" text-anchor="middle" class="note">3L/4</text>
+
+    <!-- Midpoint label -->
+    <text x="282.60" y="68" text-anchor="middle" class="note">← 75 mm between marks →</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN B: L/3 + 2L/3 (Experiment 6, 9 — Rod B)                  -->
+  <!-- Positions: 50 mm = 141.73 pt, 100 mm = 283.46 pt                -->
+  <!-- ================================================================ -->
+  <g transform="translate(0, 280)">
+    <text x="40" y="0" class="label-bold">PATTERN B — Third-points: L/3 and 2L/3</text>
+    <text x="40" y="12" class="note">Experiments 6, 9 (Rod B). Two pellets at 50 mm and 100 mm from PZT end.</text>
+
+    <rect x="66" y="20" width="433.20" height="25.01" rx="2" class="pattern-bg"/>
+    <rect x="70" y="24" width="14.17" height="17.01" rx="1" class="pzt-zone"/>
+    <text x="77" y="52" text-anchor="middle" class="note" fill="#2a7fff">PZT</text>
+    <rect x="70" y="24" width="425.20" height="17.01" rx="8.5" class="rod-outline"/>
+
+    <line x1="70" y1="18" x2="70" y2="48" stroke="#333" stroke-width="1.5"/>
+    <line x1="495.20" y1="18" x2="495.20" y2="48" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" class="dim">0 mm</text>
+    <text x="495.20" y="60" text-anchor="middle" class="dim">150 mm</text>
+
+    <!-- L/3 = 50 mm, x = 70 + 141.73 = 211.73 -->
+    <circle cx="211.73" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="207.73" y1="32.5" x2="215.73" y2="32.5" class="putty-cross"/>
+    <line x1="211.73" y1="28.5" x2="211.73" y2="36.5" class="putty-cross"/>
+    <line x1="211.73" y1="18" x2="211.73" y2="24" class="guide-line"/>
+    <line x1="211.73" y1="41" x2="211.73" y2="48" class="guide-line"/>
+    <text x="211.73" y="14" text-anchor="middle" class="dim">50 mm</text>
+    <text x="211.73" y="68" text-anchor="middle" class="note">L/3</text>
+
+    <!-- 2L/3 = 100 mm, x = 70 + 283.46 = 353.46 -->
+    <circle cx="353.46" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="349.46" y1="32.5" x2="357.46" y2="32.5" class="putty-cross"/>
+    <line x1="353.46" y1="28.5" x2="353.46" y2="36.5" class="putty-cross"/>
+    <line x1="353.46" y1="18" x2="353.46" y2="24" class="guide-line"/>
+    <line x1="353.46" y1="41" x2="353.46" y2="48" class="guide-line"/>
+    <text x="353.46" y="14" text-anchor="middle" class="dim">100 mm</text>
+    <text x="353.46" y="68" text-anchor="middle" class="note">2L/3</text>
+
+    <text x="282.60" y="68" text-anchor="middle" class="note">← 50 mm between marks →</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN C: L/2 (Experiment 6, 9 — Rod C / water drop target)      -->
+  <!-- Position: 75 mm = 212.60 pt                                      -->
+  <!-- ================================================================ -->
+  <g transform="translate(0, 410)">
+    <text x="40" y="0" class="label-bold">PATTERN C — Midpoint: L/2</text>
+    <text x="40" y="12" class="note">Experiments 6, 8, 9 (Rod C / water drop). One pellet or drop at 75 mm (exact center).</text>
+
+    <rect x="66" y="20" width="433.20" height="25.01" rx="2" class="pattern-bg"/>
+    <rect x="70" y="24" width="14.17" height="17.01" rx="1" class="pzt-zone"/>
+    <text x="77" y="52" text-anchor="middle" class="note" fill="#2a7fff">PZT</text>
+    <rect x="70" y="24" width="425.20" height="17.01" rx="8.5" class="rod-outline"/>
+
+    <line x1="70" y1="18" x2="70" y2="48" stroke="#333" stroke-width="1.5"/>
+    <line x1="495.20" y1="18" x2="495.20" y2="48" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" class="dim">0 mm</text>
+    <text x="495.20" y="60" text-anchor="middle" class="dim">150 mm</text>
+
+    <!-- L/2 = 75 mm, x = 70 + 212.60 = 282.60 -->
+    <circle cx="282.60" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="278.60" y1="32.5" x2="286.60" y2="32.5" class="putty-cross"/>
+    <line x1="282.60" y1="28.5" x2="282.60" y2="36.5" class="putty-cross"/>
+    <line x1="282.60" y1="18" x2="282.60" y2="24" class="guide-line"/>
+    <line x1="282.60" y1="41" x2="282.60" y2="48" class="guide-line"/>
+    <text x="282.60" y="14" text-anchor="middle" class="dim">75 mm</text>
+    <text x="282.60" y="68" text-anchor="middle" class="note">L/2 — mode 1 antinode (max shift for n=1)</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- PATTERN D: L/5 + 4L/5 (Experiment 9 — Rod D)                     -->
+  <!-- Positions: 30 mm = 85.04 pt, 120 mm = 340.15 pt                 -->
+  <!-- ================================================================ -->
+  <g transform="translate(0, 540)">
+    <text x="40" y="0" class="label-bold">PATTERN D — Fifth-points: L/5 and 4L/5</text>
+    <text x="40" y="12" class="note">Experiment 9 (Rod D). Two pellets at 30 mm and 120 mm from PZT end.</text>
+
+    <rect x="66" y="20" width="433.20" height="25.01" rx="2" class="pattern-bg"/>
+    <rect x="70" y="24" width="14.17" height="17.01" rx="1" class="pzt-zone"/>
+    <text x="77" y="52" text-anchor="middle" class="note" fill="#2a7fff">PZT</text>
+    <rect x="70" y="24" width="425.20" height="17.01" rx="8.5" class="rod-outline"/>
+
+    <line x1="70" y1="18" x2="70" y2="48" stroke="#333" stroke-width="1.5"/>
+    <line x1="495.20" y1="18" x2="495.20" y2="48" stroke="#333" stroke-width="1.5"/>
+    <text x="70" y="60" text-anchor="middle" class="dim">0 mm</text>
+    <text x="495.20" y="60" text-anchor="middle" class="dim">150 mm</text>
+
+    <!-- L/5 = 30 mm, x = 70 + 85.04 = 155.04 -->
+    <circle cx="155.04" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="151.04" y1="32.5" x2="159.04" y2="32.5" class="putty-cross"/>
+    <line x1="155.04" y1="28.5" x2="155.04" y2="36.5" class="putty-cross"/>
+    <line x1="155.04" y1="18" x2="155.04" y2="24" class="guide-line"/>
+    <line x1="155.04" y1="41" x2="155.04" y2="48" class="guide-line"/>
+    <text x="155.04" y="14" text-anchor="middle" class="dim">30 mm</text>
+    <text x="155.04" y="68" text-anchor="middle" class="note">L/5</text>
+
+    <!-- 4L/5 = 120 mm, x = 70 + 340.15 = 410.15 -->
+    <circle cx="410.15" cy="32.5" r="4" class="putty-ring"/>
+    <line x1="406.15" y1="32.5" x2="414.15" y2="32.5" class="putty-cross"/>
+    <line x1="410.15" y1="28.5" x2="410.15" y2="36.5" class="putty-cross"/>
+    <line x1="410.15" y1="18" x2="410.15" y2="24" class="guide-line"/>
+    <line x1="410.15" y1="41" x2="410.15" y2="48" class="guide-line"/>
+    <text x="410.15" y="14" text-anchor="middle" class="dim">120 mm</text>
+    <text x="410.15" y="68" text-anchor="middle" class="note">4L/5</text>
+
+    <text x="282.60" y="68" text-anchor="middle" class="note">← 90 mm between marks →</text>
+  </g>
+
+  <!-- ================================================================ -->
+  <!-- COMBINED REFERENCE RULER — full 150 mm with all positions marked  -->
+  <!-- ================================================================ -->
+  <g transform="translate(0, 660)">
+    <text x="40" y="0" class="label-bold">REFERENCE RULER — All perturbation positions (150 mm rod)</text>
+    <text x="40" y="12" class="note">All positions from Experiments 5–11 on a single ruler. Tick labels show position and fraction.</text>
+
+    <!-- Ruler bar -->
+    <rect x="70" y="22" width="425.20" height="14" rx="1" class="ruler-bg"/>
+
+    <!-- 10 mm major ticks along full length -->
+    <line x1="70" y1="22" x2="70" y2="42" class="tick-major"/>
+    <line x1="98.35" y1="22" x2="98.35" y2="36" class="tick"/>
+    <line x1="126.69" y1="22" x2="126.69" y2="36" class="tick"/>
+    <line x1="155.04" y1="22" x2="155.04" y2="36" class="tick"/>
+    <line x1="183.39" y1="22" x2="183.39" y2="36" class="tick"/>
+    <line x1="211.73" y1="22" x2="211.73" y2="36" class="tick"/>
+    <line x1="240.08" y1="22" x2="240.08" y2="36" class="tick"/>
+    <line x1="268.42" y1="22" x2="268.42" y2="36" class="tick"/>
+    <line x1="296.77" y1="22" x2="296.77" y2="36" class="tick"/>
+    <line x1="325.12" y1="22" x2="325.12" y2="36" class="tick"/>
+    <line x1="353.46" y1="22" x2="353.46" y2="36" class="tick"/>
+    <line x1="381.81" y1="22" x2="381.81" y2="36" class="tick"/>
+    <line x1="410.15" y1="22" x2="410.15" y2="36" class="tick"/>
+    <line x1="438.50" y1="22" x2="438.50" y2="36" class="tick"/>
+    <line x1="466.85" y1="22" x2="466.85" y2="36" class="tick"/>
+    <line x1="495.20" y1="22" x2="495.20" y2="42" class="tick-major"/>
+
+    <!-- mm labels every 30 mm -->
+    <text x="70" y="52" text-anchor="middle" class="label">0</text>
+    <text x="155.04" y="52" text-anchor="middle" class="label">30</text>
+    <text x="211.73" y="52" text-anchor="middle" class="label">50</text>
+    <text x="282.60" y="52" text-anchor="middle" class="label">75</text>
+    <text x="353.46" y="52" text-anchor="middle" class="label">100</text>
+    <text x="410.15" y="52" text-anchor="middle" class="label">120</text>
+    <text x="495.20" y="52" text-anchor="middle" class="label">150</text>
+
+    <!-- Perturbation position markers (colored triangles pointing down) -->
+    <!-- L/5 = 30mm -->
+    <polygon points="155.04,18 152,12 158,12" fill="#cc0000"/>
+    <text x="155.04" y="8" text-anchor="middle" class="dim">L/5</text>
+
+    <!-- L/4 = 37.5mm, x = 70 + 106.30 = 176.30 -->
+    <polygon points="176.30,18 173.3,12 179.3,12" fill="#e67700"/>
+    <text x="176.30" y="8" text-anchor="middle" class="dim" fill="#e67700">L/4</text>
+
+    <!-- L/3 = 50mm -->
+    <polygon points="211.73,18 208.73,12 214.73,12" fill="#2a7fff"/>
+    <text x="211.73" y="8" text-anchor="middle" class="dim" fill="#2a7fff">L/3</text>
+
+    <!-- L/2 = 75mm -->
+    <polygon points="282.60,18 279.6,12 285.6,12" fill="#22aa22"/>
+    <text x="282.60" y="8" text-anchor="middle" class="dim" fill="#22aa22">L/2</text>
+
+    <!-- 2L/3 = 100mm -->
+    <polygon points="353.46,18 350.46,12 356.46,12" fill="#2a7fff"/>
+    <text x="353.46" y="8" text-anchor="middle" class="dim" fill="#2a7fff">2L/3</text>
+
+    <!-- 3L/4 = 112.5mm, x = 70 + 318.90 = 388.90 -->
+    <polygon points="388.90,18 385.9,12 391.9,12" fill="#e67700"/>
+    <text x="388.90" y="8" text-anchor="middle" class="dim" fill="#e67700">3L/4</text>
+
+    <!-- 4L/5 = 120mm -->
+    <polygon points="410.15,18 407.15,12 413.15,12" fill="#cc0000"/>
+    <text x="410.15" y="8" text-anchor="middle" class="dim">4L/5</text>
+
+    <!-- Color legend -->
+    <g transform="translate(70, 62)">
+      <rect x="0" y="0" width="8" height="8" fill="#e67700"/>
+      <text x="12" y="8" class="note" fill="#333">Pattern A (L/4, 3L/4)</text>
+      <rect x="110" y="0" width="8" height="8" fill="#2a7fff"/>
+      <text x="122" y="8" class="note" fill="#333">Pattern B (L/3, 2L/3)</text>
+      <rect x="220" y="0" width="8" height="8" fill="#22aa22"/>
+      <text x="232" y="8" class="note" fill="#333">Pattern C (L/2)</text>
+      <rect x="300" y="0" width="8" height="8" fill="#cc0000"/>
+      <text x="312" y="8" class="note" fill="#333">Pattern D (L/5, 4L/5)</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="306" y="770" text-anchor="middle" class="note">CWM Experiment Guide · Template T.3 — Perturbation Placement Guide · github.com/miketierce/wcfoma</text>
+  <text x="306" y="782" text-anchor="middle" class="note">Rod spec: 6 mm dia × 150 mm borosilicate (PATIKIL B0D1NCM4R4). Perturbation mass: Mack's Pillow Soft silicone putty.</text>
+</svg>

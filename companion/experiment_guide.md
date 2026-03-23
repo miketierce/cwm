@@ -993,6 +993,13 @@ _The following pages provide 1:1-scale templates for cutting and punching the ca
 <p><strong>Template T.2 — Multi-Rod Grid Divider.</strong> Two grid options for packed-array simulation: 2×2 (4 rods) and 3×2 (6 rods) with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays. Cut TWO copies of your chosen grid, maintaining identical pinhole positions. The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>
 </div>
 
+<div class="blank-verso">&nbsp;</div>
+
+<div class="plate-page">
+<img src="figures/template_perturbation_guide.svg" alt="Template T.3: Perturbation Placement Guide"/>
+<p><strong>Template T.3 — Perturbation Placement Guide.</strong> Lay the glass rod directly on the printed page, flush against the left end-stop, to transfer exact putty positions for each experiment pattern. Four patterns are provided: A (quarter-points, Experiments 5/9), B (third-points, Experiments 6/9), C (midpoint, Experiments 6/8/9), and D (fifth-points, Experiment 9). A combined reference ruler at the bottom shows all positions with color-coded markers. Print at 100% scale and verify the calibration ruler before use.</p>
+</div>
+
 ---
 
 ## Printable Worksheets
