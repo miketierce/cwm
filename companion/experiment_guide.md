@@ -871,6 +871,97 @@ Every data point matters. A middle school classroom measuring Q = 3,000 on a 200
 
 ---
 
+### D.17 Software Tools
+
+The repository includes software tools that automate waveform generation and data processing for the experiments described in this guide. All tools run from the repository root and require only Python 3.10+ with the dependencies listed in `requirements.txt`.
+
+#### AWG Waveform Generator (`tools/awg_waveform.py`)
+
+Generates multi-tone query waveforms for the PicoScope 2204A's arbitrary waveform generator. The tool computes Rayleigh-shifted mode frequencies from first-principles physics (no manual frequency entry required) and exports ready-to-import files.
+
+**Prerequisites:**
+
+```bash
+git clone https://github.com/miketierce/cwm.git
+cd cwm
+pip install -r requirements.txt
+```
+
+**Basic usage:**
+
+```bash
+# Generate Query A (Pattern A: quarter-points L/4 + 3L/4)
+PYTHONPATH=. python tools/awg_waveform.py --pattern A
+
+# Generate all four query waveforms (A, B, C, D)
+PYTHONPATH=. python tools/awg_waveform.py --all
+
+# Custom putty mass and rod geometry
+PYTHONPATH=. python tools/awg_waveform.py --pattern A --mass 1.2 --rod-length 120
+
+# Specify output directory
+PYTHONPATH=. python tools/awg_waveform.py --all --output data/results/awg
+
+# Show all options
+PYTHONPATH=. python tools/awg_waveform.py --help
+```
+
+**Output files** (per pattern):
+
+| File | Format | Purpose |
+| --- | --- | --- |
+| `query_A.csv` | Single-column CSV, normalised ±1 | Import into PicoScope 7 → Signal Generator → Arbitrary → Import |
+| `query_A.wav` | 16-bit PCM WAV, 1 MS/s | Alternative import or use with picosdk Python wrappers |
+
+**Loading into PicoScope 7:**
+
+1. Open PicoScope 7 → **Tools → Signal Generator**.
+2. Set **Wave Type** → **Arbitrary**.
+3. Click **Import** → select the generated CSV file (e.g. `query_A.csv`).
+4. Set **Amplitude** to the value printed by the script (typically ~0.40 Vpp for 5 tones × 0.1 V).
+5. Set **Sample Rate** to **1 MS/s**.
+6. Click **Start**. The AWG now outputs the multi-tone query continuously.
+
+**Command-line options:**
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `--pattern`, `-p` | `A` | Named pattern: A (L/4+3L/4), B (L/3+2L/3), C (L/2), D (L/5+4L/5) |
+| `--all` | — | Generate waveforms for all four patterns |
+| `--modes`, `-m` | `5` | Number of modes in the query |
+| `--amplitude`, `-a` | `0.1` | Per-tone amplitude in volts |
+| `--mass` | `0.8` | Putty pellet mass in mg (per pellet) |
+| `--rod-length` | `150` | Rod length in mm |
+| `--rod-diameter` | `6` | Rod diameter in mm |
+| `--output`, `-o` | `.` | Output directory |
+
+**How it works:** The tool uses the Rayleigh perturbation formula ($\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x / L)$) to compute how each pattern's putty pellets shift the first $N$ mode frequencies. It then synthesises a composite waveform by summing equal-amplitude sinusoids at those shifted frequencies into an 8192-sample buffer at 1 MS/s — designed to loop seamlessly on the PicoScope 2204A's AWG.
+
+**Experiments that use this tool:**
+
+- **Experiment 6** (Associative Recall) — Step 2: build Query A.
+- **Experiment 9** (Packed-Array Recall) — Step 4: build Queries A–D.
+- **Experiment 10** (Nearest-Neighbor Search) — Step 2: build endpoint queries.
+
+#### PDF Builder (`tools/md2pdf.py`)
+
+Converts the experiment guide (or the main paper) from Markdown to a book-quality PDF via HTML + Chromium. Handles duplex pagination, landscape illustration plates, portrait 1:1-scale templates, and automatic recto-start enforcement.
+
+```bash
+# Build the experiment guide PDF
+PYTHONPATH=. python tools/md2pdf.py companion/experiment_guide.md
+
+# Build the paper
+PYTHONPATH=. python tools/md2pdf.py paper/v18.md
+
+# HTML-only (for debugging layout issues)
+PYTHONPATH=. python tools/md2pdf.py companion/experiment_guide.md --html-only
+```
+
+Requires: `playwright` (with Chromium installed via `playwright install chromium`), `markdown`, `pypdf`.
+
+---
+
 _All quantitative claims computed from first-principles simulation code (34 modules, 1,036 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma._
 
 ---

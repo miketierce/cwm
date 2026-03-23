@@ -45,7 +45,7 @@ cwm/
 ├── prototypes/         # Prototype designs (prototype_a, prototype_b, glass_rod)
 ├── data/               # Raw data and results
 ├── docs/               # SIDEBARS.md, ROADMAP.md, PROTOCOLS.md, CONTRIBUTING.md
-├── tools/              # md2pdf converters
+├── tools/              # AWG waveform generator, md2pdf converters
 └── archive/            # Old paper versions (v9–v15), original corpus, verification scripts
 ```
 
@@ -57,6 +57,34 @@ cd cwm
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
 python -m pytest tests/ -q          # run all 1,910 tests
+```
+
+## Tools
+
+### AWG Waveform Generator
+
+Generates multi-tone query waveforms for the PicoScope 2204A's arbitrary waveform generator. Computes Rayleigh-shifted mode frequencies from first principles and exports CSV and WAV files ready for import.
+
+```bash
+# Generate Query A (Pattern A: L/4 + 3L/4, 5 modes × 0.1 V)
+PYTHONPATH=. python tools/awg_waveform.py --pattern A
+
+# All four patterns at once
+PYTHONPATH=. python tools/awg_waveform.py --all --output data/results/awg
+
+# Custom rod geometry
+PYTHONPATH=. python tools/awg_waveform.py --pattern A --mass 1.2 --rod-length 120
+```
+
+Import the generated CSV into PicoScope 7: Tools → Signal Generator → Arbitrary → Import. Set amplitude to the value printed by the script (~0.40 Vpp) and sample rate to 1 MS/s. See Section D.17 of the Experiment Guide for full instructions.
+
+### PDF Builder
+
+Converts the experiment guide or paper from Markdown to a book-quality duplex PDF.
+
+```bash
+PYTHONPATH=. python tools/md2pdf.py companion/experiment_guide.md
+PYTHONPATH=. python tools/md2pdf.py paper/v18.md
 ```
 
 ## The Glass Rod Breakthrough

@@ -2695,6 +2695,134 @@ div.worksheet-plate th {
 </ol>
 <p>Every data point matters. A middle school classroom measuring Q = 3,000 on a 200 mm rod constrains the same physics as a university lab measuring Q = 9,000 on a 150 mm rod—and the diversity of rod geometries and construction techniques is itself scientifically valuable. Unexpected results (low Q, spurious modes, anomalous thermal coefficients) are <em>especially</em> welcome: they reveal failure modes that improve the guide for the next experimenter.</p>
 <hr />
+<h3 id="d17-software-tools">D.17 Software Tools</h3>
+<p>The repository includes software tools that automate waveform generation and data processing for the experiments described in this guide. All tools run from the repository root and require only Python 3.10+ with the dependencies listed in <code>requirements.txt</code>.</p>
+<h4 id="awg-waveform-generator-toolsawg_waveformpy">AWG Waveform Generator (<code>tools/awg_waveform.py</code>)</h4>
+<p>Generates multi-tone query waveforms for the PicoScope 2204A&rsquo;s arbitrary waveform generator. The tool computes Rayleigh-shifted mode frequencies from first-principles physics (no manual frequency entry required) and exports ready-to-import files.</p>
+<p><strong>Prerequisites:</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/miketierce/cwm.git
+<span class="nb">cd</span><span class="w"> </span>cwm
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p><strong>Basic usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate Query A (Pattern A: quarter-points L/4 + 3L/4)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--pattern<span class="w"> </span>A
+
+<span class="c1"># Generate all four query waveforms (A, B, C, D)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all
+
+<span class="c1"># Custom putty mass and rod geometry</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--pattern<span class="w"> </span>A<span class="w"> </span>--mass<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span>--rod-length<span class="w"> </span><span class="m">120</span>
+
+<span class="c1"># Specify output directory</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all<span class="w"> </span>--output<span class="w"> </span>data/results/awg
+
+<span class="c1"># Show all options</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--help
+</code></pre></div>
+<p><strong>Output files</strong> (per pattern):</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Format</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query_A.csv</code></td>
+<td>Single-column CSV, normalised ±1</td>
+<td>Import into PicoScope 7 → Signal Generator → Arbitrary → Import</td>
+</tr>
+<tr>
+<td><code>query_A.wav</code></td>
+<td>16-bit PCM WAV, 1 MS/s</td>
+<td>Alternative import or use with picosdk Python wrappers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Loading into PicoScope 7:</strong></p>
+<ol>
+<li>Open PicoScope 7 → <strong>Tools → Signal Generator</strong>.</li>
+<li>Set <strong>Wave Type</strong> → <strong>Arbitrary</strong>.</li>
+<li>Click <strong>Import</strong> → select the generated CSV file (e.g. <code>query_A.csv</code>).</li>
+<li>Set <strong>Amplitude</strong> to the value printed by the script (typically ~0.40 Vpp for 5 tones × 0.1 V).</li>
+<li>Set <strong>Sample Rate</strong> to <strong>1 MS/s</strong>.</li>
+<li>Click <strong>Start</strong>. The AWG now outputs the multi-tone query continuously.</li>
+</ol>
+<p><strong>Command-line options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pattern</code>, <code>-p</code></td>
+<td><code>A</code></td>
+<td>Named pattern: A (L/4+3L/4), B (L/3+2L/3), C (L/2), D (L/5+4L/5)</td>
+</tr>
+<tr>
+<td><code>--all</code></td>
+<td>—</td>
+<td>Generate waveforms for all four patterns</td>
+</tr>
+<tr>
+<td><code>--modes</code>, <code>-m</code></td>
+<td><code>5</code></td>
+<td>Number of modes in the query</td>
+</tr>
+<tr>
+<td><code>--amplitude</code>, <code>-a</code></td>
+<td><code>0.1</code></td>
+<td>Per-tone amplitude in volts</td>
+</tr>
+<tr>
+<td><code>--mass</code></td>
+<td><code>0.8</code></td>
+<td>Putty pellet mass in mg (per pellet)</td>
+</tr>
+<tr>
+<td><code>--rod-length</code></td>
+<td><code>150</code></td>
+<td>Rod length in mm</td>
+</tr>
+<tr>
+<td><code>--rod-diameter</code></td>
+<td><code>6</code></td>
+<td>Rod diameter in mm</td>
+</tr>
+<tr>
+<td><code>--output</code>, <code>-o</code></td>
+<td><code>.</code></td>
+<td>Output directory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How it works:</strong> The tool uses the Rayleigh perturbation formula ($\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x / L)$) to compute how each pattern&rsquo;s putty pellets shift the first $N$ mode frequencies. It then synthesises a composite waveform by summing equal-amplitude sinusoids at those shifted frequencies into an 8192-sample buffer at 1 MS/s — designed to loop seamlessly on the PicoScope 2204A&rsquo;s AWG.</p>
+<p><strong>Experiments that use this tool:</strong></p>
+<ul>
+<li><strong>Experiment 6</strong> (Associative Recall) — Step 2: build Query A.</li>
+<li><strong>Experiment 9</strong> (Packed-Array Recall) — Step 4: build Queries A–D.</li>
+<li><strong>Experiment 10</strong> (Nearest-Neighbor Search) — Step 2: build endpoint queries.</li>
+</ul>
+<h4 id="pdf-builder-toolsmd2pdfpy">PDF Builder (<code>tools/md2pdf.py</code>)</h4>
+<p>Converts the experiment guide (or the main paper) from Markdown to a book-quality PDF via HTML + Chromium. Handles duplex pagination, landscape illustration plates, portrait 1:1-scale templates, and automatic recto-start enforcement.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build the experiment guide PDF</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md
+
+<span class="c1"># Build the paper</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>paper/v18.md
+
+<span class="c1"># HTML-only (for debugging layout issues)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md<span class="w"> </span>--html-only
+</code></pre></div>
+<p>Requires: <code>playwright</code> (with Chromium installed via <code>playwright install chromium</code>), <code>markdown</code>, <code>pypdf</code>.</p>
+<hr />
 <p><em>All quantitative claims computed from first-principles simulation code (34 modules, 1,036 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr />
 <h2 id="illustration-plates">Illustration Plates</h2>
