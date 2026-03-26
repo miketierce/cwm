@@ -112,3 +112,8 @@
 #                           (killed), gauge invariance of capacity (confirmed),
 #                           dimensional reduction 2D→1D (confirmed), topological
 #                           rank invariant (confirmed), holonomy (killed)
+#
+# Phase 9o — Chiral phonon symmetry-breaking degeneracy splitting:
+#   chiral_phonon         - 4 experiments: L-T coupling gap (confirmed),
+#                           chiral splitting spectrum (confirmed), handedness
+#                           capacity (confirmed), thermal reversibility (killed)

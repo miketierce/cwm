@@ -46,25 +46,25 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 **Table D.2: Mitigation and Measurement Accessories**
 
-| #   | Component                              | Purpose (failure mode addressed)                    | Qty            | Est. Cost        | Source                                          |
-| --- | -------------------------------------- | --------------------------------------------------- | -------------- | ---------------- | ----------------------------------------------- |
-| 9   | Cardboard (from any box)               | Rod-support dividers for cooler (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                  |
-| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                     | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout |
-| 11  | Styrofoam cooler, small (~6-qt)        | Thermal enclosure (FM 3: drift isolation)           | 1              | ~\$5             | Grocery or hardware store                       |
-| 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                        | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"         |
-| 13  | Metric ruler, mm scale                 | Positioning masses along rod                        | 1              | ~\$3             | Any school supply                               |
-| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                 | 1 bottle       | ~\$4             | Any pharmacy                                    |
-| 15  | Safety glasses                         | Eye protection (glass rods can snap)                | 1 per person   | ~\$3             | Any hardware store                              |
-| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)                 | 1 roll         | ~\$4             | Any hardware store                              |
-| 17  | Fine-tip permanent marker              | Marking positions on rod                            | 1              | ~\$2             | Any office supply                               |
-| 18  | Soft lint-free cloth                   | Handling and cleaning glass                         | several        | ~\$2             | Any store                                       |
-| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release              | 1 small bottle | ~\$3             | Any pharmacy                                    |
-| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"      |
-| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                       |
-| 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20)         |
-|     | **Accessories subtotal**               |                                                     |                | **~\$72**        |                                                 |
-|     | **Grand total (without scope)**        |                                                     |                | **~\$111–\$126** |                                                 |
-|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$303–\$318** |                                                 |
+| #   | Component                              | Purpose (failure mode addressed)                    | Qty            | Est. Cost        | Source                                                                    |
+| --- | -------------------------------------- | --------------------------------------------------- | -------------- | ---------------- | ------------------------------------------------------------------------- |
+| 9   | Cardboard (from any box)               | Rod-support dividers for cooler (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                                            |
+| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                     | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout                           |
+| 11  | Styrofoam cooler, small (~6-qt)        | Thermal enclosure (FM 3: drift isolation)           | 1              | ~\$5             | Grocery or hardware store                                                 |
+| 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                        | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"                                   |
+| 13  | Metric ruler, mm scale                 | Positioning masses along rod                        | 1              | ~\$3             | Any school supply                                                         |
+| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                 | 1 bottle       | ~\$4             | Any pharmacy                                                              |
+| 15  | Safety glasses                         | Eye protection (glass rods can snap)                | 1 per person   | ~\$3             | Any hardware store                                                        |
+| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)                 | 1 roll         | ~\$4             | Any hardware store                                                        |
+| 17  | Fine-tip permanent marker              | Marking positions on rod                            | 1              | ~\$2             | Any office supply                                                         |
+| 18  | Soft lint-free cloth                   | Handling and cleaning glass                         | several        | ~\$2             | Any store                                                                 |
+| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release              | 1 small bottle | ~\$3             | Any pharmacy                                                              |
+| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"                                |
+| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                                                 |
+| 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20) |
+|     | **Accessories subtotal**               |                                                     |                | **~\$72**        |                                                                           |
+|     | **Grand total (without scope)**        |                                                     |                | **~\$111–\$126** |                                                                           |
+|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$303–\$318** |                                                                           |
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$39. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
