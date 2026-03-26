@@ -61,9 +61,10 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 | 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release              | 1 small bottle | ~\$3             | Any pharmacy                                    |
 | 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"      |
 | 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                       |
-|     | **Accessories subtotal**               |                                                     |                | **~\$62**        |                                                 |
-|     | **Grand total (without scope)**        |                                                     |                | **~\$101–\$116** |                                                 |
-|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$293–\$308** |                                                 |
+| 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20)         |
+|     | **Accessories subtotal**               |                                                     |                | **~\$72**        |                                                 |
+|     | **Grand total (without scope)**        |                                                     |                | **~\$111–\$126** |                                                 |
+|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$303–\$318** |                                                 |
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$39. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
@@ -87,11 +88,11 @@ The core BOM from Section 4.2 is expanded below with recommended quantities (ext
 
 1. **Clean the rod.** Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.
 
-2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using a pushpin or needle, punch a clean pinhole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
+2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
 
 > **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the cooler walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the cooler interior into isolated chambers for multi-rod array experiments—something foam cannot do.
 >
-> **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. If in doubt, start with a pushpin hole and gradually enlarge with a pencil tip until the rod passes freely. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
+> **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don't have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
 3. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
@@ -908,10 +909,10 @@ PYTHONPATH=. python tools/awg_waveform.py --help
 
 **Output files** (per pattern):
 
-| File | Format | Purpose |
-| --- | --- | --- |
+| File          | Format                           | Purpose                                                         |
+| ------------- | -------------------------------- | --------------------------------------------------------------- |
 | `query_A.csv` | Single-column CSV, normalised ±1 | Import into PicoScope 7 → Signal Generator → Arbitrary → Import |
-| `query_A.wav` | 16-bit PCM WAV, 1 MS/s | Alternative import or use with picosdk Python wrappers |
+| `query_A.wav` | 16-bit PCM WAV, 1 MS/s           | Alternative import or use with picosdk Python wrappers          |
 
 **Loading into PicoScope 7:**
 
@@ -924,16 +925,16 @@ PYTHONPATH=. python tools/awg_waveform.py --help
 
 **Command-line options:**
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `--pattern`, `-p` | `A` | Named pattern: A (L/4+3L/4), B (L/3+2L/3), C (L/2), D (L/5+4L/5) |
-| `--all` | — | Generate waveforms for all four patterns |
-| `--modes`, `-m` | `5` | Number of modes in the query |
-| `--amplitude`, `-a` | `0.1` | Per-tone amplitude in volts |
-| `--mass` | `0.8` | Putty pellet mass in mg (per pellet) |
-| `--rod-length` | `150` | Rod length in mm |
-| `--rod-diameter` | `6` | Rod diameter in mm |
-| `--output`, `-o` | `.` | Output directory |
+| Option              | Default | Description                                                      |
+| ------------------- | ------- | ---------------------------------------------------------------- |
+| `--pattern`, `-p`   | `A`     | Named pattern: A (L/4+3L/4), B (L/3+2L/3), C (L/2), D (L/5+4L/5) |
+| `--all`             | —       | Generate waveforms for all four patterns                         |
+| `--modes`, `-m`     | `5`     | Number of modes in the query                                     |
+| `--amplitude`, `-a` | `0.1`   | Per-tone amplitude in volts                                      |
+| `--mass`            | `0.8`   | Putty pellet mass in mg (per pellet)                             |
+| `--rod-length`      | `150`   | Rod length in mm                                                 |
+| `--rod-diameter`    | `6`     | Rod diameter in mm                                               |
+| `--output`, `-o`    | `.`     | Output directory                                                 |
 
 **How it works:** The tool uses the Rayleigh perturbation formula ($\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x / L)$) to compute how each pattern's putty pellets shift the first $N$ mode frequencies. It then synthesises a composite waveform by summing equal-amplitude sinusoids at those shifted frequencies into an 8192-sample buffer at 1 MS/s — designed to loop seamlessly on the PicoScope 2204A's AWG.
 
@@ -1086,7 +1087,7 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 <ol>
 <li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm with a physical ruler.</li>
 <li>Cut out the template along the dashed line. Tape it to cardboard and trace the outline.</li>
-<li>Punch a pinhole at each ⊙ crosshair with a pushpin, then enlarge to ~7 mm diameter with a pencil tip.</li>
+<li>Punch a 7 mm hole at each ⊙ crosshair using the hollow punch from the kit (item 22).</li>
 <li>Cut TWO identical dividers. Space them 75 mm apart inside the cooler.</li>
 </ol>
 <p>For different rod lengths, recalculate: support spacing = L/2, each support at L/4 from the nearer end.</p>
@@ -1102,7 +1103,7 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 <ol>
 <li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
 <li>Cut out the template along the dashed line. Tape it to cardboard and trace.</li>
-<li>Punch pinholes at each ⊙ with a pushpin; enlarge to ~7 mm with a pencil tip.</li>
+<li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22).</li>
 <li>Cut TWO dividers per template. Space them 75 mm apart inside the cooler.</li>
 </ol>
 <p>The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>

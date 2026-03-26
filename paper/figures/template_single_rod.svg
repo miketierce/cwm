@@ -99,7 +99,7 @@
 
     <!-- Label the pinhole -->
     <text x="240.94" y="200" text-anchor="middle" class="dim">⊙ 7 mm pinhole</text>
-    <text x="240.94" y="212" text-anchor="middle" class="note">(punch with pushpin, enlarge with pencil tip)</text>
+    <text x="240.94" y="212" text-anchor="middle" class="note">(use 7 mm hollow punch from kit)</text>
 
     <!-- Arrow indicating PZT protrudes this side -->
     <text x="8" y="170" text-anchor="start" class="label" fill="#2a7fff">← PZT this side</text>
