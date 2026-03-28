@@ -117,3 +117,9 @@
 #   chiral_phonon         - 4 experiments: L-T coupling gap (confirmed),
 #                           chiral splitting spectrum (confirmed), handedness
 #                           capacity (confirmed), thermal reversibility (killed)
+#
+# Phase 9p — Passive stone resonance (CWM without electricity):
+#   passive_stone         - 5 experiments: stone Q comparison (confirmed),
+#                           mode density in vessels (killed — small vessels),
+#                           sin²(nπx) universality (confirmed), Chladni
+#                           readout (confirmed), capacity scaling (confirmed)

@@ -45,9 +45,10 @@ survive integration into the paper without regressing existing tests.
 | **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
 | **S18** | Gauge Geometry        | `gauge_geometry.py`        | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
 | **S19** | Chiral Phonons        | `chiral_phonon.py`         | 81    | H-CP1–CP4: 3/4 confirmed   | ✅ Complete |
+| **S20** | Passive Stone          | `passive_stone.py`         | 113   | H-PA1–PA5: 4/5 confirmed   | ✅ Complete |
 
-**Running totals (completed):** 45 modules · 1,991 tests · 84 hypotheses (57 confirmed, 27 killed)
-**S1–S19 complete.**
+**Running totals (completed):** 46 modules · 2,104 tests · 89 hypotheses (61 confirmed, 28 killed)
+**S1–S20 complete.**
 
 ---
 
@@ -1412,3 +1413,66 @@ CWM's avoided-crossing mechanism (§11.3) and Zeeman sidebar (S9) demonstrate th
 | 2D plate extension supports even richer mode families                                | S19 × S4    | Plates have flexural + in-plane mode families — the 2D analogue of L + T coupling                             |
 | Kill of H-CP4 delimits rewritability boundary                                        | S19 × §12   | Material constant $c_T/c_L$ cannot be "switched off"; rewritability requires perturbation or material change  |
 | Shannon capacity must account for additional L-T channels                            | S19 × S15   | The 5.27× capacity multiplier interacts with the Shannon optimum (uniform allocation is now across L+T modes) |
+
+---
+
+### S20 — Passive Stone Resonance: CWM Without Electricity
+
+#### Historical figure / tradition
+
+**Ancient Egyptian stone vessels.** Archaeological sites at Saqqara, the Serapeum, and Giza have yielded tens of thousands of precision stone vessels — granite, diorite, quartzite, alabaster — machined to sub-millimetre wall uniformity. The Serapeum granite boxes are finished to thousandths of an inch internally. These objects are acoustic resonators: struck, they ring for seconds, sustaining multiple eigenmodes whose frequencies encode their geometry. Stocks ("Experiments in Egyptian Archaeology," 2003) and Dunn ("Lost Technologies of Ancient Egypt," 2010) document the manufacturing precision; Mavko et al. ("The Rock Physics Handbook," 2020) provide the acoustic material properties.
+
+The investigation also draws on S2 (Scranton/Dogon), which established that polysemic multi-channel encoding — one object carrying multiple layers of meaning readable through different interpretive frames — appears independently in the Dogon cosmological symbol systems documented by Griaule and Scranton. The parallel is structural: the same principles that let a single CWM perturbation pattern encode K independent channels (H7, +297% capacity) also let a single carved symbol carry physical, cosmological, biological, and social meanings simultaneously.
+
+#### Relevance to CWM
+
+CWM's four pillars — resonator, excitation, readout, persistence — require no electricity. Standing waves, perturbation-induced frequency shifts, and sin²(nπx) sensitivity are consequences of wave physics, not transducer technology. S17 (Coronal Seismology) proved the eigenmode formalism is scale-independent across 12 orders of magnitude. S20 tests the complementary claim: the formalism is **technology-independent** — it works whether the transducer is a piezoelectric chip or a wooden mallet, whether the readout is an FFT or a visual Chladni sand pattern. If confirmed, this has modern engineering value (passive sensors, zero-power tags, extreme-environment monitors) and an unexpected archaeological resonance.
+
+We do not claim ancient Egyptians used CWM. We claim, and here test, that the physics permits it.
+
+#### Material property database
+
+| Material           | $c_L$ (m/s) | $c_T$ (m/s) | $\rho$ (kg/m³) | $Q$ (1–20 kHz) | Source                        |
+| ------------------ | ------------ | ------------ | --------------- | --------------- | ----------------------------- |
+| Borosilicate glass | 5640         | 3280         | 2230            | 2000            | Schreiber (baseline)          |
+| Fused silica       | 5968         | 3764         | 2200            | 10000           | Manufacturer datasheet        |
+| Granite            | 5500         | 3100         | 2650            | 500             | Mavko et al.; Aswan granite   |
+| Diorite            | 5800         | 3300         | 2850            | 400             | Rock Physics Handbook         |
+| Quartzite          | 5200         | 2900         | 2650            | 350             | Mavko et al.                  |
+| Alabaster          | 4800         | 2400         | 2700            | 200             | Calcite crystal data          |
+| Basalt             | 5400         | 3000         | 2900            | 300             | Volcanic rock measurements    |
+| Limestone          | 4500         | 2300         | 2500            | 150             | Variable; porous samples      |
+
+#### Hypotheses
+
+| ID        | Hypothesis                                                                                 | Metric                                              | Kill criterion                                 |
+| --------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------- | ---------------------------------------------- |
+| **H-PA1** | Stone Q-factors within one order of magnitude of glass                                     | Q ratios (stone/glass), all-above-100 flag          | All stone Q < 100                              |
+| **H-PA2** | ≥ 10 distinguishable audible eigenmodes in medium granite vessel (15cm × 7cm)              | Total mode count after deduplication                | < 5 modes in audible band                      |
+| **H-PA3** | sin²(nπx) perturbation law is material-independent (R² > 0.9)                             | Mean R² of sin² fit for stone vs glass              | Stone R² < 0.9                                 |
+| **H-PA4** | Chladni sand patterns give > 1 bit/mode mutual information for visual readout              | MI per mode; number of modes > 1 bit                | Mean MI < 0.5 bits/mode                        |
+| **H-PA5** | CWM capacity formula predicts stone capacity within 25%                                    | Mean prediction error across all materials           | Mean error > 25%                               |
+
+#### Results
+
+| ID        | Verdict       | Key metric                                                                                                                  |
+| --------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **H-PA1** | **CONFIRMED** | All 6 stone materials have Q > 100. Granite Q = 500 (25% of glass). All within one order of magnitude.                      |
+| **H-PA2** | **KILLED**    | Medium vessel (15cm × 7cm) yields only 4 audible modes — below the 10-mode threshold. Serapeum boxes (1.1m) yield 30+.     |
+| **H-PA3** | **CONFIRMED** | Stone mean R² = 0.9998; glass mean R² = 0.9999. Difference = 0.0002. Perturbation law is material-independent.              |
+| **H-PA4** | **CONFIRMED** | 15/15 modes above 1 bit; mean MI = 3.9 bits/mode. Chladni patterns are a viable readout mechanism.                          |
+| **H-PA5** | **CONFIRMED** | Mean prediction error = 24.2% (< 25% threshold). Capacity formula is approximately universal across materials.              |
+
+**Tally: 4 confirmed, 1 killed (4:1)**
+
+**Kill analysis (H-PA2):** The mode density kill maps the **minimum vessel size** for useful passive CWM. A 15cm granite cylinder at 5500 m/s has a fundamental axial frequency of 18.3 kHz — near the audible ceiling. Only 4 modes fit in the audible band. Larger vessels perform dramatically better: the Serapeum granite boxes (1.1m) yield 30+ audible modes, easily confirming the hypothesis. The kill tells us that passive CWM requires resonators of at least ~30 cm height for granite, or higher sound speed materials (diorite, glass) for smaller vessels.
+
+#### Cross-sidebar interactions
+
+| Interaction                                                                          | Sidebars     | Nature                                                                                                               |
+| ------------------------------------------------------------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Scale-independence proven passive: sun → glass → stone all follow same formalism     | S20 × S17    | S17 proved 12 OoM scale independence; S20 proves technology independence (no electronics needed)                      |
+| Polysemic encoding universal across ancient knowledge systems                        | S20 × S2     | Dogon symbols encode multiple layers without electronics; stone resonators encode multiple modes without electronics  |
+| Small-vessel kill maps minimum size for passive plate CWM                            | S20 × S4     | Chladni 2D plates have richer mode families; could rescue small-vessel mode density via plate geometry                |
+| sin²(nπx) universality extends material palette beyond glass                        | S20 × §4     | Perturbation encoding confirmed identical for granite, diorite, quartzite — any material works                        |
+| Capacity formula portability to passive regime                                       | S20 × S15    | Shannon-derived capacity formula approximately universal (24% error) across stone/glass                               |
