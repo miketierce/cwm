@@ -23,32 +23,34 @@ survive integration into the paper without regressing existing tests.
 
 ## Progress Dashboard
 
-| Sidebar | Figure                | Module                     | Tests | Hypotheses                 | Status      |
-| ------- | --------------------- | -------------------------- | ----- | -------------------------- | ----------- |
-| **S1**  | Spare / Mace          | `spare_mace.py`            | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
-| **S2**  | Scranton / Dogon      | `scranton_dogon.py`        | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
-| **S3**  | Tesla                 | `tesla_phase.py`           | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
-| **S4**  | Chladni               | `chladni_plates.py`        | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
-| **S5**  | Békésy                | `bekesy_cochlea.py`        | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
-| **S6**  | Franklin (Rosalind)   | `franklin_phase.py`        | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
-| **S7**  | Leibniz               | `leibniz_binary.py`        | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
-| **S8**  | Gabor                 | `gabor_holographic.py`     | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
-| **S9**  | Zeeman (Scranton)     | `zeeman_splitting.py`      | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
-| **S10** | Kepler (Scranton)     | `kepler_harmonic.py`       | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
-| **S11** | Boltzmann (Scranton)  | `boltzmann_timescale.py`   | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
-| **S12** | Gor'kov (Scranton)    | `gorkov_radiation.py`      | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
-| **S13** | Irrational Prediction | `irrational_prediction.py` | 77    | H-IR1–IR4: 4/4 confirmed   | ✅ Complete |
-|         |                       |                            |       |                            |             |
-| **S14** | Fabry & Pérot         | `fabry_perot_cavity.py`    | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
-| **S15** | Shannon & Nyquist     | `shannon_capacity.py`      | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
-| **S16** | Mathieu & Floquet     | `mathieu_parametric.py`    | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
-| **S17** | Coronal Seismology    | `coronal_seismology.py`    | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
-| **S18** | Gauge Geometry        | `gauge_geometry.py`        | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
-| **S19** | Chiral Phonons        | `chiral_phonon.py`         | 81    | H-CP1–CP4: 3/4 confirmed   | ✅ Complete |
-| **S20** | Passive Stone          | `passive_stone.py`         | 113   | H-PA1–PA5: 4/5 confirmed   | ✅ Complete |
+| Sidebar | Figure                  | Module                       | Tests | Hypotheses                 | Status      |
+| ------- | ----------------------- | ---------------------------- | ----- | -------------------------- | ----------- |
+| **S1**  | Spare / Mace            | `spare_mace.py`              | 62    | H1–H6: 6/6 confirmed       | ✅ Complete |
+| **S2**  | Scranton / Dogon        | `scranton_dogon.py`          | 62    | H7–H12: 6/6 confirmed      | ✅ Complete |
+| **S3**  | Tesla                   | `tesla_phase.py`             | 50    | H-T1–T4: 4/4 confirmed     | ✅ Complete |
+| **S4**  | Chladni                 | `chladni_plates.py`          | 69    | H-C1–C4: 4/4 confirmed     | ✅ Complete |
+| **S5**  | Békésy                  | `bekesy_cochlea.py`          | 68    | H-B1–B4: 1/4 confirmed     | ✅ Complete |
+| **S6**  | Franklin (Rosalind)     | `franklin_phase.py`          | 69    | H-F1–F4: 0/4 confirmed     | ✅ Complete |
+| **S7**  | Leibniz                 | `leibniz_binary.py`          | 73    | H-L1–H-L4: 3/4 confirmed   | ✅ Complete |
+| **S8**  | Gabor                   | `gabor_holographic.py`       | 77    | H-G1–G4: 1/4 confirmed     | ✅ Complete |
+| **S9**  | Zeeman (Scranton)       | `zeeman_splitting.py`        | 75    | H-Z1–Z4: 4/4 confirmed     | ✅ Complete |
+| **S10** | Kepler (Scranton)       | `kepler_harmonic.py`         | 74    | H-K1–K4: 2/4 confirmed     | ✅ Complete |
+| **S11** | Boltzmann (Scranton)    | `boltzmann_timescale.py`     | 96    | H-Bt1–Bt4: 1/4 confirmed   | ✅ Complete |
+| **S12** | Gor'kov (Scranton)      | `gorkov_radiation.py`        | 115   | H-ARF1–ARF4: 1/4 confirmed | ✅ Complete |
+| **S13** | Irrational Prediction   | `irrational_prediction.py`   | 77    | H-IR1–IR4: 4/4 confirmed   | ✅ Complete |
+|         |                         |                              |       |                            |             |
+| **S14** | Fabry & Pérot           | `fabry_perot_cavity.py`      | 90    | H-FP1–FP4: 2/4 confirmed   | ✅ Complete |
+| **S15** | Shannon & Nyquist       | `shannon_capacity.py`        | 72    | H-SN1–SN4: 2/4 confirmed   | ✅ Complete |
+| **S16** | Mathieu & Floquet       | `mathieu_parametric.py`      | 77    | H-PM1–PM4: 4/4 confirmed   | ✅ Complete |
+| **S17** | Coronal Seismology      | `coronal_seismology.py`      | 109   | H-CS1–CS7: 6/7 confirmed   | ✅ Complete |
+| **S18** | Gauge Geometry          | `gauge_geometry.py`          | 88    | H-GG1–GG5: 3/5 confirmed   | ✅ Complete |
+| **S19** | Chiral Phonons          | `chiral_phonon.py`           | 81    | H-CP1–CP4: 3/4 confirmed   | ✅ Complete |
+| **S20** | Passive Stone           | `passive_stone.py`           | 113   | H-PA1–PA5: 4/5 confirmed   | ✅ Complete |
+| **S21** | Femtosecond Inscription | `femtosecond_inscription.py` | 66    | H-V1–V5: 3/5 confirmed     | ✅ Complete |
+| **S22** | Beads on a String       | `bead_string.py`             | 77    | H-B1–B5: 3/5 confirmed     | ✅ Complete |
 
-**Running totals (completed):** 46 modules · 2,104 tests · 89 hypotheses (61 confirmed, 28 killed)
-**S1–S20 complete.**
+**Running totals (completed):** 47 modules · 2,176 tests · 94 hypotheses (64 confirmed, 30 killed)
+**S1–S21 complete.**
 
 ---
 
@@ -1432,36 +1434,36 @@ We do not claim ancient Egyptians used CWM. We claim, and here test, that the ph
 
 #### Material property database
 
-| Material           | $c_L$ (m/s) | $c_T$ (m/s) | $\rho$ (kg/m³) | $Q$ (1–20 kHz) | Source                        |
-| ------------------ | ------------ | ------------ | --------------- | --------------- | ----------------------------- |
-| Borosilicate glass | 5640         | 3280         | 2230            | 2000            | Schreiber (baseline)          |
-| Fused silica       | 5968         | 3764         | 2200            | 10000           | Manufacturer datasheet        |
-| Granite            | 5500         | 3100         | 2650            | 500             | Mavko et al.; Aswan granite   |
-| Diorite            | 5800         | 3300         | 2850            | 400             | Rock Physics Handbook         |
-| Quartzite          | 5200         | 2900         | 2650            | 350             | Mavko et al.                  |
-| Alabaster          | 4800         | 2400         | 2700            | 200             | Calcite crystal data          |
-| Basalt             | 5400         | 3000         | 2900            | 300             | Volcanic rock measurements    |
-| Limestone          | 4500         | 2300         | 2500            | 150             | Variable; porous samples      |
+| Material           | $c_L$ (m/s) | $c_T$ (m/s) | $\rho$ (kg/m³) | $Q$ (1–20 kHz) | Source                      |
+| ------------------ | ----------- | ----------- | -------------- | -------------- | --------------------------- |
+| Borosilicate glass | 5640        | 3280        | 2230           | 2000           | Schreiber (baseline)        |
+| Fused silica       | 5968        | 3764        | 2200           | 10000          | Manufacturer datasheet      |
+| Granite            | 5500        | 3100        | 2650           | 500            | Mavko et al.; Aswan granite |
+| Diorite            | 5800        | 3300        | 2850           | 400            | Rock Physics Handbook       |
+| Quartzite          | 5200        | 2900        | 2650           | 350            | Mavko et al.                |
+| Alabaster          | 4800        | 2400        | 2700           | 200            | Calcite crystal data        |
+| Basalt             | 5400        | 3000        | 2900           | 300            | Volcanic rock measurements  |
+| Limestone          | 4500        | 2300        | 2500           | 150            | Variable; porous samples    |
 
 #### Hypotheses
 
-| ID        | Hypothesis                                                                                 | Metric                                              | Kill criterion                                 |
-| --------- | ------------------------------------------------------------------------------------------ | --------------------------------------------------- | ---------------------------------------------- |
-| **H-PA1** | Stone Q-factors within one order of magnitude of glass                                     | Q ratios (stone/glass), all-above-100 flag          | All stone Q < 100                              |
-| **H-PA2** | ≥ 10 distinguishable audible eigenmodes in medium granite vessel (15cm × 7cm)              | Total mode count after deduplication                | < 5 modes in audible band                      |
-| **H-PA3** | sin²(nπx) perturbation law is material-independent (R² > 0.9)                             | Mean R² of sin² fit for stone vs glass              | Stone R² < 0.9                                 |
-| **H-PA4** | Chladni sand patterns give > 1 bit/mode mutual information for visual readout              | MI per mode; number of modes > 1 bit                | Mean MI < 0.5 bits/mode                        |
-| **H-PA5** | CWM capacity formula predicts stone capacity within 25%                                    | Mean prediction error across all materials           | Mean error > 25%                               |
+| ID        | Hypothesis                                                                    | Metric                                     | Kill criterion            |
+| --------- | ----------------------------------------------------------------------------- | ------------------------------------------ | ------------------------- |
+| **H-PA1** | Stone Q-factors within one order of magnitude of glass                        | Q ratios (stone/glass), all-above-100 flag | All stone Q < 100         |
+| **H-PA2** | ≥ 10 distinguishable audible eigenmodes in medium granite vessel (15cm × 7cm) | Total mode count after deduplication       | < 5 modes in audible band |
+| **H-PA3** | sin²(nπx) perturbation law is material-independent (R² > 0.9)                 | Mean R² of sin² fit for stone vs glass     | Stone R² < 0.9            |
+| **H-PA4** | Chladni sand patterns give > 1 bit/mode mutual information for visual readout | MI per mode; number of modes > 1 bit       | Mean MI < 0.5 bits/mode   |
+| **H-PA5** | CWM capacity formula predicts stone capacity within 25%                       | Mean prediction error across all materials | Mean error > 25%          |
 
 #### Results
 
-| ID        | Verdict       | Key metric                                                                                                                  |
-| --------- | ------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **H-PA1** | **CONFIRMED** | All 6 stone materials have Q > 100. Granite Q = 500 (25% of glass). All within one order of magnitude.                      |
-| **H-PA2** | **KILLED**    | Medium vessel (15cm × 7cm) yields only 4 audible modes — below the 10-mode threshold. Serapeum boxes (1.1m) yield 30+.     |
-| **H-PA3** | **CONFIRMED** | Stone mean R² = 0.9998; glass mean R² = 0.9999. Difference = 0.0002. Perturbation law is material-independent.              |
-| **H-PA4** | **CONFIRMED** | 15/15 modes above 1 bit; mean MI = 3.9 bits/mode. Chladni patterns are a viable readout mechanism.                          |
-| **H-PA5** | **CONFIRMED** | Mean prediction error = 24.2% (< 25% threshold). Capacity formula is approximately universal across materials.              |
+| ID        | Verdict       | Key metric                                                                                                             |
+| --------- | ------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **H-PA1** | **CONFIRMED** | All 6 stone materials have Q > 100. Granite Q = 500 (25% of glass). All within one order of magnitude.                 |
+| **H-PA2** | **KILLED**    | Medium vessel (15cm × 7cm) yields only 4 audible modes — below the 10-mode threshold. Serapeum boxes (1.1m) yield 30+. |
+| **H-PA3** | **CONFIRMED** | Stone mean R² = 0.9998; glass mean R² = 0.9999. Difference = 0.0002. Perturbation law is material-independent.         |
+| **H-PA4** | **CONFIRMED** | 15/15 modes above 1 bit; mean MI = 3.9 bits/mode. Chladni patterns are a viable readout mechanism.                     |
+| **H-PA5** | **CONFIRMED** | Mean prediction error = 24.2% (< 25% threshold). Capacity formula is approximately universal across materials.         |
 
 **Tally: 4 confirmed, 1 killed (4:1)**
 
@@ -1469,10 +1471,10 @@ We do not claim ancient Egyptians used CWM. We claim, and here test, that the ph
 
 #### Cross-sidebar interactions
 
-| Interaction                                                                          | Sidebars     | Nature                                                                                                               |
-| ------------------------------------------------------------------------------------ | ------------ | -------------------------------------------------------------------------------------------------------------------- |
-| Scale-independence proven passive: sun → glass → stone all follow same formalism     | S20 × S17    | S17 proved 12 OoM scale independence; S20 proves technology independence (no electronics needed)                      |
-| Polysemic encoding universal across ancient knowledge systems                        | S20 × S2     | Dogon symbols encode multiple layers without electronics; stone resonators encode multiple modes without electronics  |
-| Small-vessel kill maps minimum size for passive plate CWM                            | S20 × S4     | Chladni 2D plates have richer mode families; could rescue small-vessel mode density via plate geometry                |
-| sin²(nπx) universality extends material palette beyond glass                        | S20 × §4     | Perturbation encoding confirmed identical for granite, diorite, quartzite — any material works                        |
-| Capacity formula portability to passive regime                                       | S20 × S15    | Shannon-derived capacity formula approximately universal (24% error) across stone/glass                               |
+| Interaction                                                                      | Sidebars  | Nature                                                                                                               |
+| -------------------------------------------------------------------------------- | --------- | -------------------------------------------------------------------------------------------------------------------- |
+| Scale-independence proven passive: sun → glass → stone all follow same formalism | S20 × S17 | S17 proved 12 OoM scale independence; S20 proves technology independence (no electronics needed)                     |
+| Polysemic encoding universal across ancient knowledge systems                    | S20 × S2  | Dogon symbols encode multiple layers without electronics; stone resonators encode multiple modes without electronics |
+| Small-vessel kill maps minimum size for passive plate CWM                        | S20 × S4  | Chladni 2D plates have richer mode families; could rescue small-vessel mode density via plate geometry               |
+| sin²(nπx) universality extends material palette beyond glass                     | S20 × §4  | Perturbation encoding confirmed identical for granite, diorite, quartzite — any material works                       |
+| Capacity formula portability to passive regime                                   | S20 × S15 | Shannon-derived capacity formula approximately universal (24% error) across stone/glass                              |

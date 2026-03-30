@@ -2218,10 +2218,10 @@ div.worksheet-plate th {
 <p><strong>Polysemic readout</strong> (§11.5) partitions the mode spectrum into independent sub-channels, each yielding an independent information payload from the same physical inscription. With 4 channels, the gain is +297%. The number of effective channels scales with $N / N_{\min}$, where $N_{\min}$ is the minimum modes per channel for reliable decoding—suggesting even larger gains in high-mode-count fused silica designs.</p>
 </li>
 </ol>
-<p>Seventeen additional cross-domain investigations extend these results through systematic hypothesis testing across wave physics, information theory, and astrophysical observation—summarised in §11.7 and developed fully in the companion volume [23]. The gain factors above should not be multiplied naively—inter-technique interactions, real-device noise, and practical readout constraints at $N = 9{,}380$ will reduce achievable gains. A conservative near-term estimate—applying polysemic sub-band partitioning alone—could increase effective packed-array density by 2–3× over the baseline.</p>
+<p>Twenty additional cross-domain investigations extend these results through systematic hypothesis testing across wave physics, information theory, and astrophysical observation—summarised in §11.7 and developed fully in the companion volume [23]. The gain factors above should not be multiplied naively—inter-technique interactions, real-device noise, and practical readout constraints at $N = 9{,}380$ will reduce achievable gains. A conservative near-term estimate—applying polysemic sub-band partitioning alone—could increase effective packed-array density by 2–3× over the baseline.</p>
 <h3 id="117-cross-domain-validation-summary">11.7 Cross-Domain Validation Summary</h3>
-<p>Beyond the six core techniques above, we conducted a systematic cross-domain validation program: seventeen independent investigations testing 72 quantitative hypotheses drawn from wave physics, information theory, and spectral analysis. The methodology follows a falsification-first protocol—each hypothesis is stated with explicit kill criteria <em>before</em> simulation, and every result (confirmed or killed) is reported. This approach is developed fully in the companion volume [23]; here we summarise the key findings.</p>
-<p>Each investigation is implemented as an independent simulation module with automated test suites (1,604 tests across 18 modules, all passing). The cumulative tally across all 89 hypotheses (including §§11.1–11.6) is <strong>61 confirmed and 28 killed</strong> (68.5% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
+<p>Beyond the six core techniques above, we conducted a systematic cross-domain validation program: twenty independent investigations testing 87 quantitative hypotheses drawn from wave physics, information theory, and spectral analysis. The methodology follows a falsification-first protocol—each hypothesis is stated with explicit kill criteria <em>before</em> simulation, and every result (confirmed or killed) is reported. This approach is developed fully in the companion volume [23]; here we summarise the key findings.</p>
+<p>Each investigation is implemented as an independent simulation module with automated test suites (1,747 tests across 20 modules, all passing). The cumulative tally across all 99 hypotheses (including §§11.1–11.6) is <strong>67 confirmed and 32 killed</strong> (67.7% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
 <table>
 <thead>
 <tr>
@@ -2360,19 +2360,33 @@ div.worksheet-plate th {
 <td>CWM physics material-independent; small-vessel mode density killed.</td>
 </tr>
 <tr>
+<td>Femtosecond volumetric inscription</td>
+<td><code>femtosecond_inscription.py</code></td>
+<td>5</td>
+<td>3 : 2</td>
+<td>sin² universality exact in bulk; radial Bessel encoding adds 5.1 bits.</td>
+</tr>
+<tr>
+<td>Beads-on-string waveguide</td>
+<td><code>bead_string.py</code></td>
+<td>5</td>
+<td>3 : 2</td>
+<td>Multi-level bead alphabet (4 materials); perturbation ceiling at $m/M \approx 0.08$.</td>
+</tr>
+<tr>
 <td><strong>Totals</strong></td>
-<td><strong>18 modules</strong></td>
-<td><strong>77</strong></td>
-<td><strong>45 : 32</strong></td>
-<td><strong>Combined with §§11.1–11.6: 61 confirmed, 28 killed (68.5%)</strong></td>
+<td><strong>20 modules</strong></td>
+<td><strong>87</strong></td>
+<td><strong>51 : 36</strong></td>
+<td><strong>Combined with §§11.1–11.6: 67 confirmed, 32 killed (67.7%)</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; and the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² &gt; 0.999 and prediction error &lt; 25%. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [23].</p>
+<p>The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² &gt; 0.999 and prediction error &lt; 25%; and the femtosecond volumetric inscription investigation confirms that the sin² sensitivity profile is mathematically identical for bulk density perturbations ($R^2 = 1.0$), while adding a radial Bessel-function encoding dimension (5.1 bits MI) inaccessible to surface-only techniques; and the beads-on-string investigation extends CWM&rsquo;s perturbation formalism to a transverse string waveguide with discrete faience beads, confirming a four-level material alphabet and establishing a perturbation validity ceiling at $m/M \approx 0.08$ beyond which exact transfer-matrix solutions are required. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [23].</p>
 <h2 id="12-paths-to-rewritability">12. Paths to Rewritability</h2>
 <p>Everything presented in Sections 2–11 treats CWM as a read-only architecture: data is written once by lithographic mass perturbation and never changed. The device is a glass harmonica—each glass bowl ground to a fixed pitch, beautiful but immutable. This section asks: <em>can we build an armonica?</em></p>
 <p>The glass harmonica is an ancient instrument of fixed-pitch bowls played by rubbing wet fingers on the rims. The glass armonica mounts the bowls on a rotating spindle so the performer can vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. The analogy to CWM is structural: both systems are arrays of glass resonators whose eigenfrequencies are determined by geometry, driven by continuous mechanical excitation, and read out by the resulting acoustic response.</p>
-<p>We investigated seven engineering hypotheses across three architectural tracks, each representing a different depth of hardware modification. All seven are confirmed by first-principles simulation (7 experiments, 68 automated tests, all passing). Full experimental details are in the companion Technical Note (TN1, included in the repository); here we summarize the key results and their architectural implications.</p>
+<p>We investigated twelve engineering hypotheses across four architectural tracks, each representing a different depth of hardware modification. All twelve are tested by first-principles simulation (12 experiments, 134 automated tests, all passing). Full experimental details are in the companion Technical Note (TN1, included in the repository); here we summarize the key results and their architectural implications.</p>
 <h3 id="121-the-rewritability-question">12.1 The Rewritability Question</h3>
 <p>Consider two ways to think about a CWM rod:</p>
 <p><strong>The harmonica model.</strong> A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter—a glass bowl ground to a specific pitch. You select which rod to read, not what any rod stores. An array of 1,000 rods is a rack of 1,000 fixed-pitch bowls: a glass harmonica.</p>
@@ -2503,8 +2517,17 @@ div.worksheet-plate th {
 <li>At $Q_d = 200$ (Parylene C): maximum shell thickness <strong>100 nm</strong>, with 0.34% frequency-shift tuning range—enough to shift modes by many linewidths, which is what &ldquo;writing&rdquo; means.</li>
 <li>At $Q_d = 50$–$100$ (GST/VO₂ phase-change, magnetostrictive films): maximum shell 20–50 nm. Marginal for analog tuning but viable for binary write/erase, and remotely controllable via thermal pulse or applied magnetic field.</li>
 </ul>
-<h3 id="125-layered-architecture">12.5 Layered Architecture</h3>
-<p>The three tracks are not alternatives—they are layers of a single architecture:</p>
+<h3 id="125-track-d-femtosecond-volumetric-inscription">12.5 Track D: Femtosecond Volumetric Inscription</h3>
+<p>Track D moves the perturbation mechanism <em>inside</em> the rod. Femtosecond laser writing—the same technique used for 5D optical data storage in fused silica—creates localised Type I refractive-index modifications that correspond to sub-percent density changes ($\Delta\rho/\rho \approx 0.5\%$) in focal volumes of order $10^{-17}$ m³. Each inscription site acts as a volumetric mass perturbation, shifting eigenmodes without breaking the surface or adding external hardware.</p>
+<p>We tested five hypotheses (5 experiments, 66 automated tests, all passing):</p>
+<p><strong>H-V1: Axial Sensitivity Universality.</strong> Volumetric inscription sites follow the same $\sin^2(n\pi x/L)$ sensitivity profile as surface perturbations. Confirmed—$R^2 = 1.0000$, the mathematical identity is exact because the perturbation Hamiltonian depends only on axial position, not on whether the mass change is at the surface or in the bulk.</p>
+<p><strong>H-V2: Shift Magnitude.</strong> A single Type I inscription produces a frequency shift exceeding 10× the resonance linewidth. Killed—a single site shifts by $\sim 10^{-8}$ relative, roughly $0.5\times$ one linewidth. Useful shifts require dense grids of $\sim 20{,}000$ inscription sites, which occupy only $\sim 10\%$ of the rod volume.</p>
+<p><strong>H-V3: Q Survival.</strong> Volumetric inscriptions preserve Q above 50% of the unperturbed value. Confirmed—Rayleigh scattering from Type I modifications is negligible ($d/\lambda \approx 5 \times 10^{-4}$). More than $2 \times 10^{12}$ sites would be required before scattering losses halve Q, far beyond any practical inscription density.</p>
+<p><strong>H-V4: Radial Encoding.</strong> Bessel-function radial placement ($J_0$ zeros) of inscription sites at multiple radial depths provides an independent encoding dimension. Confirmed—mutual information of 5.1 bits across 8 radial channels, giving a radial degree of freedom inaccessible to surface-only techniques.</p>
+<p><strong>H-V5: Capacity Gain.</strong> Volumetric inscription increases total capacity by $\geq 1.5\times$ over surface-only encoding. Killed—measured gain is $1.28\times$, below threshold. The radial dimension adds information but each volumetric site perturbs less strongly than a surface site, limiting net advantage.</p>
+<p>The two kills refine rather than block the architecture. Track D is not a replacement for surface perturbation—it is a complementary channel. Radial Bessel encoding adds a genuine new dimension (5.1 bits) that surface techniques cannot access, while axial sensitivity universality ($R^2 = 1.0$) means all existing perturbation theory carries over unchanged. The practical constraint is inscription density, not physics.</p>
+<h3 id="126-layered-architecture">12.6 Layered Architecture</h3>
+<p>The four tracks are not alternatives—they are layers of a single architecture:</p>
 <table>
 <thead>
 <tr>
@@ -2517,31 +2540,38 @@ div.worksheet-plate th {
 </thead>
 <tbody>
 <tr>
-<td>3</td>
+<td>4</td>
 <td>A: Firmware</td>
 <td>DSP projection, mode subsets</td>
 <td>None (software)</td>
 <td>Nanoseconds</td>
 </tr>
 <tr>
-<td>2</td>
+<td>3</td>
 <td>B: Binary</td>
 <td>MEMS electrostatic latches</td>
 <td>12–20 switches</td>
 <td>~10 µs</td>
 </tr>
 <tr>
-<td>1</td>
+<td>2</td>
 <td>C: Shell</td>
 <td>Conformal writable coating</td>
 <td>Thin-film deposition</td>
 <td>Material-dependent</td>
 </tr>
+<tr>
+<td>1</td>
+<td>D: Volume</td>
+<td>Femtosecond laser inscription</td>
+<td>Laser write station</td>
+<td>Permanent (ROM)</td>
+</tr>
 </tbody>
 </table>
-<p>These layers compose multiplicatively. A rod with a writable shell (Layer 1), binary sites (Layer 2), and firmware partitioning (Layer 3) provides $N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations—conservatively, $10 \times 2^{12} \times 4 = 163{,}840$ distinct states from a single physical device.</p>
-<p><strong>The separation principle.</strong> A key architectural insight emerges: in CWM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In CWM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod: in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes CWM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
-<p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become a glass armonica.</p>
+<p>These layers compose multiplicatively. A rod with volumetric inscriptions (Layer 1), a writable shell (Layer 2), binary sites (Layer 3), and firmware partitioning (Layer 4) provides $N_{\text{vol}} \times N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations.</p>
+<p><strong>The separation principle.</strong> A key architectural insight emerges: in CWM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In CWM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod—in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C)—or <em>inside</em> it (Track D, volumetric inscription). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes CWM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
+<p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Stage 4 (volumetric inscription) uses femtosecond laser writing to create permanent density perturbations in the rod interior, adding a radial encoding dimension (5.1 bits) inaccessible to surface techniques—fabrication-time programming with zero Q penalty. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become a glass armonica.</p>
 <div class="part-heading">
   <p class="part-label">Part VI</p>
   <p class="part-title">Outlook</p>
@@ -2881,7 +2911,7 @@ div.worksheet-plate th {
     Typeset from Markdown source using Chromium PDF rendering.<br>
     Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
     All quantitative claims computed from first-principles simulation code<br>
-    (45 modules, 1997 automated tests) with independent FEM validation.
+    (48 modules, 2253 automated tests) with independent FEM validation.
   </p>
 </div>
 
