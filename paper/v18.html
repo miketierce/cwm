@@ -2221,7 +2221,7 @@ div.worksheet-plate th {
 <p>Seventeen additional cross-domain investigations extend these results through systematic hypothesis testing across wave physics, information theory, and astrophysical observation—summarised in §11.7 and developed fully in the companion volume [23]. The gain factors above should not be multiplied naively—inter-technique interactions, real-device noise, and practical readout constraints at $N = 9{,}380$ will reduce achievable gains. A conservative near-term estimate—applying polysemic sub-band partitioning alone—could increase effective packed-array density by 2–3× over the baseline.</p>
 <h3 id="117-cross-domain-validation-summary">11.7 Cross-Domain Validation Summary</h3>
 <p>Beyond the six core techniques above, we conducted a systematic cross-domain validation program: seventeen independent investigations testing 72 quantitative hypotheses drawn from wave physics, information theory, and spectral analysis. The methodology follows a falsification-first protocol—each hypothesis is stated with explicit kill criteria <em>before</em> simulation, and every result (confirmed or killed) is reported. This approach is developed fully in the companion volume [23]; here we summarise the key findings.</p>
-<p>Each investigation is implemented as an independent simulation module with automated test suites (1,491 tests across 17 modules, all passing). The cumulative tally across all 84 hypotheses (including §§11.1–11.6) is <strong>57 confirmed and 27 killed</strong> (67.9% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
+<p>Each investigation is implemented as an independent simulation module with automated test suites (1,604 tests across 18 modules, all passing). The cumulative tally across all 89 hypotheses (including §§11.1–11.6) is <strong>61 confirmed and 28 killed</strong> (68.5% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
 <table>
 <thead>
 <tr>
@@ -2353,15 +2353,22 @@ div.worksheet-plate th {
 <td>+427% capacity from L-T mode coupling; thermal switch analogy killed.</td>
 </tr>
 <tr>
+<td>Passive stone resonance</td>
+<td><code>passive_stone.py</code></td>
+<td>5</td>
+<td>4 : 1</td>
+<td>CWM physics material-independent; small-vessel mode density killed.</td>
+</tr>
+<tr>
 <td><strong>Totals</strong></td>
-<td><strong>17 modules</strong></td>
-<td><strong>72</strong></td>
-<td><strong>41 : 31</strong></td>
-<td><strong>Combined with §§11.1–11.6: 57 confirmed, 27 killed (67.9%)</strong></td>
+<td><strong>18 modules</strong></td>
+<td><strong>77</strong></td>
+<td><strong>45 : 32</strong></td>
+<td><strong>Combined with §§11.1–11.6: 61 confirmed, 28 killed (68.5%)</strong></td>
 </tr>
 </tbody>
 </table>
-<p>The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; and the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [23].</p>
+<p>The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; and the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² &gt; 0.999 and prediction error &lt; 25%. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [23].</p>
 <h2 id="12-paths-to-rewritability">12. Paths to Rewritability</h2>
 <p>Everything presented in Sections 2–11 treats CWM as a read-only architecture: data is written once by lithographic mass perturbation and never changed. The device is a glass harmonica—each glass bowl ground to a fixed pitch, beautiful but immutable. This section asks: <em>can we build an armonica?</em></p>
 <p>The glass harmonica is an ancient instrument of fixed-pitch bowls played by rubbing wet fingers on the rims. The glass armonica mounts the bowls on a rotating spindle so the performer can vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. The analogy to CWM is structural: both systems are arrays of glass resonators whose eigenfrequencies are determined by geometry, driven by continuous mechanical excitation, and read out by the resulting acoustic response.</p>
