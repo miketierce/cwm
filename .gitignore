@@ -38,3 +38,17 @@ env/
 # OS
 .DS_Store
 Thumbs.db
+
+# Patent — sensitive / generated
+patent/filing_receipt_*.pdf
+patent/uploads/
+patent/resize_*.py
+patent/gen_micro_cert.py
+patent/verify_uploads.py
+
+# Firebase / secrets
+.firebaserc
+firebase-debug.log
+serviceAccount*.json
+*-credentials.json
+*.secret
