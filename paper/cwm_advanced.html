@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Advanced Encoding and Rewritability Techniques for Coherent Wave Memory</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+/* -- Page geometry: duplex with binding gutter -- */
+@page {
+    size: letter;
+    margin: 0.85in 0.85in 1in 1.15in;   /* top right bottom left(gutter) */
+}
+@page :left {
+    margin-left: 0.85in;
+    margin-right: 1.15in;
+}
+@page :right {
+    margin-left: 1.15in;
+    margin-right: 0.85in;
+}
+
+/* Named page for landscape plates */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #2563eb;
+    --border: #d1d5db;
+    --bg-code: #f5f5f5;
+    --bg-table-head: #f0f4f8;
+    --title-accent: #1e40af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* === TITLE PAGE === */
+.title-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 0 0.5in;
+}
+
+.title-page .rule-top {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 0 auto 28pt auto;
+}
+
+.title-page .paper-title {
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+    margin: 0 0 8pt 0;
+    max-width: 5.5in;
+    display: block !important;
+}
+
+.title-page .rule-mid {
+    width: 1.5in;
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 0 auto 28pt auto;
+}
+
+.title-page .author {
+    font-size: 14pt;
+    font-weight: 600;
+    margin: 0 0 4pt 0;
+    color: var(--text);
+}
+
+.title-page .affiliation {
+    font-size: 11pt;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 6pt 0;
+}
+
+.title-page .orcid {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin: 0 0 2pt 0;
+}
+
+.title-page .orcid a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.title-page .repo {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin: 0 0 32pt 0;
+}
+
+.title-page .repo a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.title-page .version {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 0;
+}
+
+.title-page .rule-bottom {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 28pt auto 0 auto;
+}
+
+/* === BLANK VERSO === */
+.blank-verso {
+    page-break-before: always;
+    page-break-after: always;
+    min-height: 1px;
+    visibility: hidden;
+}
+
+/* === TABLE OF CONTENTS === */
+.toc-page {
+    page-break-before: right;
+    page-break-after: always;
+}
+
+.toc-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 18pt;
+    color: var(--text);
+}
+
+.toc-page .toc-part {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--title-accent);
+    margin: 14pt 0 4pt 0;
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+}
+
+.toc-page .toc-part:first-of-type {
+    margin-top: 0;
+}
+
+.toc-page ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4pt 0;
+}
+
+.toc-page ol li {
+    font-size: 10.5pt;
+    line-height: 1.7;
+    padding-left: 8pt;
+    margin: 0;
+}
+
+.toc-page ol li a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.toc-page ol li .toc-desc {
+    color: var(--muted);
+    font-size: 9.5pt;
+}
+
+.toc-page ol li.toc-sub {
+    font-size: 9.5pt;
+    color: var(--muted);
+    padding-left: 24pt;
+    line-height: 1.5;
+}
+
+.toc-page .toc-appendices {
+    margin-top: 14pt;
+}
+
+.toc-page .toc-appendices .toc-part {
+    margin-top: 0;
+}
+
+/* === ABSTRACT PAGE === */
+.abstract-page {
+    page-break-before: right;
+}
+
+.abstract-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 14pt;
+}
+
+.abstract-page p {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--muted);
+    text-align: justify;
+}
+
+/* === PART DIVIDERS === */
+.part-heading {
+    page-break-before: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 3in;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 2in;
+}
+
+.part-heading .part-label {
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--title-accent);
+    margin: 0 0 8pt 0;
+}
+
+.part-heading .part-title {
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6pt 0;
+}
+
+.part-heading .part-desc {
+    font-size: 10pt;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 4.5in;
+    margin: 0;
+}
+
+.part-heading hr {
+    width: 2in;
+    border: none;
+    border-top: 1.5pt solid var(--title-accent);
+    margin: 18pt auto 0 auto;
+}
+
+/* === BODY HEADINGS === */
+h1 {
+    display: none;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 22pt 0 8pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    color: var(--text);
+    page-break-before: right;
+    page-break-after: avoid;
+}
+
+/* Suppress double page-break when h2 follows a Part divider or is inside a container */
+.part-heading + h2,
+.abstract-page h2,
+.toc-page h2 {
+    page-break-before: avoid;
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 14pt 0 6pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 10pt 0 4pt 0;
+    color: var(--muted);
+}
+
+/* === BODY TEXT === */
+p {
+    margin: 0 0 8pt 0;
+    text-align: justify;
+    hyphens: none;
+    orphans: 3;
+    widows: 3;
+}
+
+ul, ol {
+    margin: 4pt 0 8pt 0;
+    padding-left: 20pt;
+}
+li {
+    margin-bottom: 3pt;
+}
+li > p { margin-bottom: 3pt; }
+
+/* -- Tables -- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border: 1pt solid var(--border);
+    padding: 5pt 8pt;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tbody td {
+    border: 1pt solid var(--border);
+    padding: 4pt 8pt;
+    vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tbody td strong {
+    color: var(--accent);
+}
+
+/* -- Horizontal Rules -- */
+hr {
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 16pt 0;
+}
+
+/* -- Code -- */
+code {
+    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 9pt;
+    background: var(--bg-code);
+    padding: 1pt 3pt;
+    border-radius: 2pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 10pt 12pt;
+    border-radius: 4pt;
+    border: 1pt solid var(--border);
+    overflow-x: auto;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* -- Block quotes -- */
+blockquote {
+    margin: 8pt 0;
+    padding: 6pt 12pt;
+    border-left: 3pt solid var(--accent);
+    background: #f8fafc;
+    color: var(--muted);
+}
+
+/* -- Links -- */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* -- Math (KaTeX) -- */
+.katex-display {
+    margin: 10pt 0;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+/* -- Inline thumbnail figures -- */
+div.cwm-thumb {
+    text-align: center;
+    margin: 12pt auto;
+    page-break-inside: avoid;
+}
+
+div.cwm-thumb img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.cwm-thumb p {
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-align: center;
+    max-width: 85%;
+    margin: 6pt auto 0 auto;
+    line-height: 1.35;
+}
+
+/* -- Landscape plate pages -- */
+div.plate-page {
+    page: plate;
+    page-break-before: always;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 6.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    text-align: center;
+    max-width: 90%;
+    margin-top: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+
+/* Named page for portrait templates — 1:1 scale, zero margin */
+@page template {
+    size: letter;
+    margin: 0;
+}
+
+div.template-page {
+    page: template;
+    page-break-before: always;
+    page-break-after: always;
+    width: 8.5in;
+    height: 11in;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+div.template-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Template instruction verso pages */
+div.template-instructions {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 1.5in;
+}
+
+div.template-instructions h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin-bottom: 14pt;
+    color: var(--text);
+}
+
+div.template-instructions p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+}
+
+div.template-instructions ol {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 12pt;
+    padding-left: 24pt;
+}
+
+div.template-instructions ol li {
+    margin-bottom: 6pt;
+}
+
+/* -- Footnotes / References -- */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 9pt;
+    line-height: 1.35;
+    hanging-punctuation: first;
+    padding-left: 24pt;
+    text-indent: -24pt;
+}
+
+/* -- Worksheet header -- */
+.worksheet-header {
+    page-break-before: always;
+    border: 2pt solid var(--title-accent);
+    border-radius: 4pt;
+    padding: 10pt 14pt;
+    margin: 18pt 0 10pt 0;
+    background: var(--bg-table-head);
+    page-break-after: avoid;
+}
+
+.worksheet-header h4 {
+    margin: 0 0 2pt 0;
+    font-size: 13pt;
+    color: var(--title-accent);
+    border-bottom: none;
+}
+
+.worksheet-header .ws-project {
+    font-size: 8.5pt;
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+}
+
+.worksheet-header .ws-instruction {
+    font-size: 9pt;
+    color: var(--text);
+    margin: 4pt 0 0 0;
+}
+
+/* -- Print tweaks -- */
+h2, h3 {
+    page-break-after: avoid;
+}
+table, pre {
+    page-break-inside: avoid;
+}
+
+/* -- Colophon page -- */
+.colophon {
+    page-break-before: right;
+    padding-top: 2in;
+    text-align: center;
+    color: var(--muted);
+    font-size: 9pt;
+    line-height: 1.6;
+}
+
+.colophon p {
+    text-align: center;
+}
+
+/* -- Handwritten example entries (blue pen) -- */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 11pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* -- Printable worksheet pages -- */
+div.worksheet-plate {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 0.15in;
+}
+
+div.worksheet-plate h4 {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 10pt;
+    padding-bottom: 4pt;
+    border-bottom: 1pt solid var(--border);
+}
+
+div.worksheet-plate p.ws-inst {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 8pt;
+    font-style: italic;
+}
+
+div.worksheet-plate table {
+    width: 100%;
+    font-size: 10pt;
+}
+
+div.worksheet-plate td,
+div.worksheet-plate th {
+    padding: 5pt 6pt;
+}
+
+</style>
+</head>
+<body>
+<div class="title-page">
+  <hr class="rule-top">
+  <h1 class="paper-title" style="display:block">Advanced Encoding and Rewritability Techniques for Coherent Wave Memory</h1>
+  <hr class="rule-mid">
+  <p class="author">Mike Tierce</p>
+  <p class="affiliation">Independent Researcher</p>
+  <p class="orcid">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a></p>
+  <p class="repo"><a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a></p>
+  <p class="version">Version </p>
+  <hr class="rule-bottom">
+</div>
+<div class="blank-verso">&nbsp;</div>
+<div class="toc-page">
+<h2>Contents</h2>
+<li>1. <a href="#1-introduction">Introduction</a></li>
+<li>2. <a href="#2-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall Techniques</a></li>
+<li class="toc-sub">2.1 Synaptic Pruning for Associative Recall</li>
+<li class="toc-sub">2.2 In-Situ Boolean Computation</li>
+<li class="toc-sub">2.3 Mode Hybridization at Near-Degeneracy</li>
+<li class="toc-sub">2.4 Null-Space Multiplexing</li>
+<li class="toc-sub">2.5 Polysemic Readout: Multi-Channel Spectral Decoding</li>
+<li class="toc-sub">2.6 Combined Capacity Enhancement</li>
+<li class="toc-sub">2.7 Cross-Domain Validation Summary</li>
+<li>3. <a href="#3-paths-to-rewritability">Paths to Rewritability</a></li>
+<li class="toc-sub">3.1 The Rewritability Question</li>
+<li class="toc-sub">3.2 Track A: Firmware-Defined Virtual Rewriting</li>
+<li class="toc-sub">3.3 Track B: Binary Perturbation Sites</li>
+<li class="toc-sub">3.4 Track C: Multi-Shell Resonator</li>
+<li class="toc-sub">3.5 Track D: Femtosecond Volumetric Inscription</li>
+<li class="toc-sub">3.6 Layered Architecture</li>
+<li>4. <a href="#4-discussion">Discussion</a></li>
+<li>5. <a href="#5-conclusion">Conclusion</a></li>
+</div><div class="abstract-page"><h2 id="abstract">Abstract</h2>
+<p>Coherent Wave Memory (CWM) encodes information in the acoustic eigenmode spectrum of glass resonators and computes via wave interference [6]. This companion paper develops twenty-two modeled extensions to the baseline CWM architecture. Six firmware-level techniques—synaptic pruning (+10.7% recall accuracy), in-situ Boolean computation (&gt;90% fidelity), mode hybridization (+160% capacity), null-space multiplexing (+60%), polysemic readout (+297%), and phase-spectral encoding (+84% discriminability)—require zero hardware changes. Sixteen cross-domain investigations test 87 additional hypotheses across wave physics, information theory, and spectral analysis, confirming 51 and killing 36. Three paths to rewritability—firmware-defined virtual rewriting (4+ logical devices per rod), binary MEMS perturbation sites (7.6 bits, &lt;0.5% Q penalty), and writable shell coatings (100 nm at Q &gt; 5,000)—progressively transform CWM from read-only to fully reconfigurable. All extensions are simulated and validated by automated tests; none have been confirmed on hardware.</p>
+<hr />
+</div><h2 id="table-of-contents">Table of Contents</h2>
+<ol>
+<li><a href="#1-introduction">Introduction</a></li>
+<li><a href="#2-advanced-encoding-and-recall-techniques">Advanced Encoding and Recall Techniques</a></li>
+<li>2.1 Synaptic Pruning for Associative Recall</li>
+<li>2.2 In-Situ Boolean Computation</li>
+<li>2.3 Mode Hybridization at Near-Degeneracy</li>
+<li>2.4 Null-Space Multiplexing</li>
+<li>2.5 Polysemic Readout: Multi-Channel Spectral Decoding</li>
+<li>2.6 Combined Capacity Enhancement</li>
+<li>2.7 Cross-Domain Validation Summary</li>
+<li><a href="#3-paths-to-rewritability">Paths to Rewritability</a></li>
+<li>3.1 The Rewritability Question</li>
+<li>3.2 Track A: Firmware-Defined Virtual Rewriting</li>
+<li>3.3 Track B: Binary Perturbation Sites</li>
+<li>3.4 Track C: Multi-Shell Resonator</li>
+<li>3.5 Track D: Femtosecond Volumetric Inscription</li>
+<li>3.6 Layered Architecture</li>
+<li><a href="#4-discussion">Discussion</a></li>
+<li><a href="#5-conclusion">Conclusion</a></li>
+</ol>
+<div class="part-heading">
+  <p class="part-label">Part I</p>
+  <p class="part-title">Theory and Architecture</p>
+  <p class="part-desc">Sections 1–2</p>
+  <hr>
+</div>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Coherent Wave Memory (CWM) stores data in the eigenmode spectrum of solid glass resonators and performs nearest-neighbor search via acoustic wave interference in a single propagation cycle. The core architecture—eigenmode encoding, Rayleigh perturbation writing, and interference recall—is developed and validated at macro scale in the companion paper [6], which establishes a &#36;230 prototype (&#36;38 core materials) with 98.5 dB derived SNR, 9,380 thermally stable modes per resonator, and a five-mechanism MEMS Q-factor model predicting $Q_{\text{total}} = 9{,}097$. Full details on the architecture (eigenmode encoding, Shannon capacity, Hopfield associative recall), substrate selection, finite element validation, MEMS scaling laws, Q-factor analysis, device specification, and fabrication pathway are in [6].</p>
+<p>This paper extends the baseline architecture in two directions. First, Section 2 presents six firmware-implementable encoding and recall techniques that enhance capacity and functionality with zero hardware changes, followed by sixteen cross-domain investigations that systematically test the boundaries of eigenmode physics across wave mechanics, information theory, and spectral analysis. Second, Section 3 develops three hardware paths to rewritability—firmware-defined virtual rewriting, binary MEMS perturbation sites, and writable shell coatings—progressively transforming CWM from a glass harmonica (fixed pitch) to a glass armonica (reconfigurable).</p>
+<p>All extensions are modeled by simulation (48 modules total; 1,747 tests across 20 modules for cross-domain investigations alone) and await hardware validation on the MEMS prototype described in [6].</p>
+<hr />
+<h2 id="2-advanced-encoding-and-recall-techniques">2. Advanced Encoding and Recall Techniques</h2>
+<blockquote>
+<p><strong>Note.</strong> The techniques in this section are modeled extensions built on the core CWM formalism [6]. All results are from simulation; none have been validated on physical hardware.</p>
+</blockquote>
+<p>The core CWM architecture [6] establishes the fundamental device physics. This section presents twenty-two modeled extensions—discovered through systematic computational exploration of the eigenmode physics—that could extend CWM&rsquo;s capabilities beyond the baseline architecture if confirmed on hardware. The first six (§§2.1–2.6) require <strong>zero hardware changes</strong>: they would be implementable as firmware-level signal processing on the CMOS readout die. The remaining sixteen explore broader extensions through cross-domain physical and mathematical analysis. Section 2.7 summarises these investigations in tabular form; full details are available in the companion simulation modules and companion volume [5].</p>
+<h3 id="21-synaptic-pruning-for-associative-recall">2.1 Synaptic Pruning for Associative Recall</h3>
+<p><strong>The problem.</strong> CWM&rsquo;s associative recall [6, §2.3] is mathematically equivalent to a Hopfield network, where the &ldquo;weight matrix&rdquo; is the set of stored spectral fingerprints. As the number of stored patterns $P$ approaches the capacity limit ($P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [1], where $N$ is the number of modes), something goes wrong. Each pattern&rsquo;s fingerprint is a vector of $N$ mode amplitudes, and storing many patterns in the same weight matrix creates inter-pattern crosstalk: the fingerprint of pattern A partially overlaps with patterns B, C, D, etc. When you query for pattern A, the response includes &ldquo;ghost&rdquo; contributions from these other patterns, which can push the recall toward a spurious attractor—a false match.</p>
+<p>Think of it like overhearing multiple conversations in a crowded room. Each conversation (pattern) is carried by the same physical medium (the air / the mode spectrum). When only a few people are talking, you can follow any one conversation clearly. When the room is full, the conversations blur together and you mishear words. The question is: can you improve your hearing without changing the room?</p>
+<p><strong>The approach.</strong> The inter-pattern crosstalk is concentrated in the <em>small-magnitude</em> entries of the weight matrix—the weak, non-specific couplings that correlate with multiple patterns rather than encoding any single one. We hypothesised that zeroing these small weights—a form of controlled &ldquo;forgetting&rdquo;—could remove crosstalk noise while preserving the strong weights that encode the actual patterns.</p>
+<p>This is directly analogous to synaptic pruning in biological neural development [2]. During brain maturation, the nervous system eliminates roughly 50% of its synapses between early childhood and adulthood. Far from being a deficiency, this pruning improves signal-to-noise ratio by removing weak, non-specific connections that add noise to neural circuits. The mature brain is more capable than the infant brain, with fewer synapses.</p>
+<p><strong>The experiment.</strong> We store $P = 8$ binary patterns in an $N = 50$ Hopfield network (load factor $P/N = 0.16$, well within the overload regime where crosstalk matters) and measure recall accuracy under noisy queries (20% of bits randomly flipped). We then sweep a pruning threshold $\theta$: all weight-matrix entries with magnitude $|w_{ij}| < \theta$ are zeroed. For each threshold, we run 40 independent trials with random noise realizations and average the recall accuracy.</p>
+<p><strong>Results.</strong> Without pruning ($\theta = 0$): recall accuracy 0.700 (70.0%)—the network gets the right answer 70% of the time. With optimal pruning at $\theta^* = 0.055$ (corresponding to zeroing all weights below 5.5% of the maximum weight magnitude): <strong>0.775 (77.5%)</strong>, a gain of <strong>+10.7%</strong>.</p>
+<table>
+<thead>
+<tr>
+<th>Pruning threshold $\theta$</th>
+<th>Recall accuracy</th>
+<th>Change vs. baseline</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0 (no pruning)</td>
+<td>0.700</td>
+<td>—</td>
+</tr>
+<tr>
+<td>0.027</td>
+<td>0.725</td>
+<td>+3.6%</td>
+</tr>
+<tr>
+<td><strong>0.055</strong></td>
+<td><strong>0.775</strong></td>
+<td><strong>+10.7%</strong></td>
+</tr>
+<tr>
+<td>0.082</td>
+<td>0.750</td>
+<td>+7.1%</td>
+</tr>
+<tr>
+<td>0.110</td>
+<td>0.700</td>
+<td>0%</td>
+</tr>
+<tr>
+<td>0.190</td>
+<td>0.575</td>
+<td>−17.9%</td>
+</tr>
+<tr>
+<td>0.300</td>
+<td>0.475</td>
+<td>−32.1%</td>
+</tr>
+</tbody>
+</table>
+<p>The optimum is sharp. Below $\theta^* = 0.055$, pruning removes too few weights to matter. Above it, pruning begins cutting into the pattern-encoding weights themselves, destroying signal along with noise. The optimal threshold removes approximately 40% of all weight-matrix entries—the smallest 40%—which turns out to be almost entirely inter-pattern crosstalk.</p>
+<p><strong>What this means for CWM.</strong> In CWM&rsquo;s associative recall mode, the readout ASIC computes a correlation score between the query spectrum and each rod&rsquo;s stored spectrum. Pruning corresponds to applying a spectral mask: before computing the correlation, zero out all frequency components whose amplitude falls below a threshold. This is a single line of firmware—a thresholded multiply—applied to the FFT output. At high pattern loads (hundreds of patterns per rod, approaching the Hopfield capacity limit), this mask recovers 10.7% of the recall accuracy lost to inter-pattern crosstalk.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig7_weight_pruning.svg" alt="Figure 1: Weight pruning concept and recall improvement"/>
+<p><strong>Figure 1.</strong> (a) Synaptic pruning concept: zeroing small-magnitude weights removes inter-pattern crosstalk. (b) Recall accuracy vs. pruning threshold, showing +10.7% gain at optimal θ = 0.055.</p>
+</div>
+
+<h3 id="22-in-situ-boolean-computation">2.2 In-Situ Boolean Computation</h3>
+<p><strong>The insight.</strong> CWM&rsquo;s modes are linear oscillators, and wave superposition is linear. If two patterns $A$ and $B$ are encoded as mode amplitudes in the same rod (or superposed from two rods&rsquo; responses), the combined amplitude at each mode frequency is the <em>sum</em> of the individual amplitudes. This summed signal contains enough information to extract the Boolean functions AND, OR, and XOR of the two binary patterns—without a separate compute step.</p>
+<p><strong>Why this works.</strong> Consider a single mode where pattern $A$ encodes a &lsquo;1&rsquo; (high amplitude, $a = 1.0$) and pattern $B$ encodes a &lsquo;0&rsquo; (low amplitude, $b = 0.2$). The combined amplitude is $a + b = 1.2$. Now consider the four possible bit combinations:</p>
+<table>
+<thead>
+<tr>
+<th>$A$ bit</th>
+<th>$B$ bit</th>
+<th>Combined amplitude</th>
+<th>AND</th>
+<th>OR</th>
+<th>XOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>0.4</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>1.2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>1.2</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>2.0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>The combined amplitudes cluster into three groups: low (0.4), medium (1.2), and high (2.0). Each Boolean function corresponds to a different partitioning of these groups:</p>
+<ul>
+<li><strong>AND</strong>: only the high group (both bits = 1) → threshold at 70% of max</li>
+<li><strong>OR</strong>: medium and high groups (at least one bit = 1) → threshold at 30% of max</li>
+<li><strong>XOR</strong>: only the medium group (exactly one bit = 1) → band-pass between 30% and 75% of max</li>
+</ul>
+<p><strong>The experiment.</strong> We encode two random binary patterns $A$ and $B$ as mode amplitudes in a 32-mode system (high = 1.0, low = 0.2—the low value is non-zero to maintain mode excitation), evolve each pattern&rsquo;s wave representation through Q = 800 oscillation cycles, superpose the resulting signals, and decode the combined amplitudes using the three threshold rules above.</p>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Fidelity</th>
+<th>Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>XOR</td>
+<td>90.6%</td>
+<td>Band-pass: 30%–75% of max amplitude</td>
+</tr>
+<tr>
+<td>AND</td>
+<td>96.9%</td>
+<td>High-pass: &gt;70% of max amplitude</td>
+</tr>
+<tr>
+<td>OR</td>
+<td>93.8%</td>
+<td>Low-pass: &gt;30% of max amplitude</td>
+</tr>
+</tbody>
+</table>
+<p>All three operations exceed 90% fidelity from a <strong>single readout cycle</strong> under ideal simulation conditions (no phase noise, perfect frequency knowledge). Real-device fidelity will depend on readout SNR and mode-tracking accuracy; the threshold decoding is intrinsically robust to additive noise but sensitive to systematic frequency drift. The conventional approach—read pattern A, read pattern B, compute the Boolean function in software—requires three separate operations. The superposition method provides a <strong>3× throughput advantage</strong>.</p>
+<p><strong>What this means for CWM.</strong> Boolean computation from mode superposition confirms that CWM is a true compute-in-memory technology. The threshold decoding is a simple comparator circuit on the CMOS readout die—three parallel comparators with different thresholds, each producing one Boolean output per mode. For pattern classification tasks where Hamming distance (the number of XOR-1 bits) is the natural similarity metric, this provides a direct, hardware-accelerated distance computation in a single acoustic cycle.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Figure 2: In-situ Boolean computation via mode superposition"/>
+<p><strong>Figure 2.</strong> Two stored patterns superposed produce amplitude distributions decodable as XOR (90.6%), AND (96.9%), and OR (93.8%) in a single readout cycle.</p>
+</div>
+
+<h3 id="23-mode-hybridization-at-near-degeneracy">2.3 Mode Hybridization at Near-Degeneracy</h3>
+<p><strong>Background: the avoided crossing.</strong> In any physical system with multiple modes, an important question arises: what happens when two modes have nearly the same frequency? The naive answer—they coexist independently—is wrong. When two modes are &ldquo;near-degenerate&rdquo; (their frequency difference is smaller than the coupling between them), they cannot simply pass through each other as a parameter is varied. Instead, they repel, forming a gap.</p>
+<p>This phenomenon was first described by von Neumann and Wigner in 1929 [3] in the context of quantum energy levels, but it is far older and more general than quantum mechanics. The same physics governs coupled pendulums. Hang two pendulums of slightly different length from the same rod, and they don&rsquo;t swing independently—they exchange energy back and forth in a slow beat pattern. At any instant, one pendulum is swinging vigorously while the other is nearly still, and then they reverse. The two &ldquo;modes&rdquo; of this coupled system are not &ldquo;pendulum A&rdquo; and &ldquo;pendulum B&rdquo; but rather &ldquo;both swinging in phase&rdquo; (the bonding mode, at lower frequency) and &ldquo;both swinging out of phase&rdquo; (the antibonding mode, at higher frequency). These hybrid modes have a frequency gap of $2\kappa$, where $\kappa$ is the coupling strength.</p>
+<p>The avoided crossing appears everywhere in physics: in molecular spectroscopy (where it determines bond energies), in condensed matter (where it creates electronic band gaps), in photonics (where it enables wavelength-division multiplexing in coupled optical waveguides), and in acoustics (where it creates stop bands in phononic crystals). It is one of the most universal phenomena in wave physics.</p>
+<p><strong>The relevance to CWM.</strong> A real MEMS resonator with 9,380 modes will inevitably contain near-degenerate pairs—especially at high mode numbers, where the mode density is high and perturbation-induced shifts can bring originally distant modes close together. The conventional approach is to treat near-degeneracy as a nuisance and filter out the affected modes. We ask the opposite question: do the hybrid modes created by near-degeneracy carry <em>additional</em> information?</p>
+<p><strong>The experiment.</strong> We construct a two-mode coupled oscillator model to study this in isolation. Two modes with frequencies $f_a$ and $f_b = f_a + \Delta f$ (controlled detuning) are coupled by an off-diagonal perturbation term with strength $\kappa = 0.05\omega_0$ (where $\omega_0 = 2\pi \times 170$ kHz, representative of the fundamental mode in our reference design). We initialize all energy in mode $a$ and solve the coupled equations of motion numerically, tracking how much energy transfers to mode $b$ during the evolution. The maximum fraction of energy transferred—the &ldquo;hybridization depth&rdquo;—quantifies how strongly the modes interact.</p>
+<p>We sweep the detuning from $\Delta f / f_0 = 10^{-3}$ (nearly degenerate) to $\Delta f / f_0 = 1$ (widely separated), sampling 20 values on a logarithmic scale.</p>
+<p><strong>Results.</strong></p>
+<ul>
+<li>At small detuning ($\Delta f / f_0 < 0.01$): hybridization depth approaches <strong>100%</strong>—complete energy exchange. The two modes become fully hybrid: neither is recognizable as the original &ldquo;mode $a$&rdquo; or &ldquo;mode $b$.&rdquo; They are new, linearly independent modes (the bonding and antibonding pair) that carry independent information.</li>
+<li>At moderate detuning ($\Delta f / f_0 \sim 0.1$): hybridization depth 15–25%. Partial mixing; the modes are perturbed versions of the originals.</li>
+<li>At large detuning ($\Delta f / f_0 > 1$): hybridization depth &lt;1%. The modes are effectively independent, as in the non-degenerate case.</li>
+</ul>
+<p>Of 20 detuning values tested, <strong>16 showed hybridization depth exceeding 10%</strong>, meaning the hybrid modes carry genuinely new information not present in either original mode alone.</p>
+<p><strong>Capacity gain.</strong> Each significantly hybridized mode pair contributes one additional information channel (the hybrid mode is linearly independent of either pure mode). With 16 such channels from a 10-mode base system:</p>
+<p>$$\text{Capacity gain} = \frac{16 \times 16.4 \text{ bits}}{10 \times 16.4 \text{ bits}} = +160\%$$</p>
+<p>This is an upper bound measured in a controlled system with deliberately tuned degeneracies. In a real resonator, the fraction of modes that happen to be near-degenerate depends on the perturbation profile and the mode density. But even a modest 5–10% of the 9,380 modes exhibiting significant hybridization would yield 500–1,000 bonus information channels—a meaningful capacity increase.</p>
+<p><strong>What this means for CWM.</strong> A hybridization-aware readout algorithm would scan the measured mode spectrum for avoided-crossing signatures (closely spaced pairs with anticorrelated amplitudes) and decompose them into bonding/antibonding components using a simple 2×2 matrix diagonalization. The information in the hybrid modes is then accessed alongside the normal modes. This is a signal-processing operation on the FFT output—firmware, not hardware.</p>
+<p><strong>Simulation detail.</strong> Figure 3 presents the full numerical result. Panel (a) plots the coupled eigenfrequencies as a function of detuning on a logarithmic scale. The uncoupled frequencies (dashed grey) would cross at zero detuning; the coupled system (solid curves) exhibits the characteristic avoided crossing with a minimum gap of $2\kappa = 17$ kHz. At small detuning, the modes are fully hybrid—neither is recognizable as the original mode $a$ or $b$. Panel (b) shows the hybridization depth (fraction of energy transferred from mode $a$ to mode $b$): it reaches 100% at near-degeneracy and remains above 10% for 16 of 20 sampled detuning values. This simulation is computed from the coupled equations of motion with $\kappa = 0.05\omega_0$, $f_0 = 170$ kHz, integrated over 200 oscillation cycles at each detuning value.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig14_mode_splitting.svg" alt="Figure 3: Avoided crossing simulation — eigenfrequencies and hybridization depth"/>
+<p><strong>Figure 3.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). (a) Eigenfrequency diagram: uncoupled modes (dashed) would cross; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by gap 2κ = 17 kHz. (b) Hybridization depth vs. detuning: energy exchange reaches 100% at near-degeneracy. Of 20 detuning values sampled on a logarithmic sweep from 10⁻³ to 10⁰, 16 show >10% transfer — each contributing an independent information channel.</p>
+</div>
+
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig9_avoided_crossing.svg" alt="Figure 4: Avoided crossing and mode hybridization"/>
+<p><strong>Figure 4.</strong> (a) Avoided-crossing level diagram: near-degenerate modes hybridize under perturbation, creating a gap of 2κ. (b) Hybridization depth peaks at 100% near degeneracy, with 16 of 20 modes showing >10% exchange.</p>
+</div>
+
+<h3 id="24-null-space-multiplexing">2.4 Null-Space Multiplexing</h3>
+<p><strong>The setup.</strong> Consider the relationship between the perturbation pattern (the spatial arrangement of mass dots along the rod) and the spectral fingerprint (the set of mode frequency shifts). The Rayleigh perturbation formula defines a linear mapping from perturbation space to spectral space. If we discretize the rod into $n_p$ perturbation sites (positions where mass can be deposited) and measure $n_m$ eigenmode frequencies, this mapping is a matrix $C \in \mathbb{R}^{n_m \times n_p}$:</p>
+<p>$$\text{frequency shifts} = C \cdot \text{perturbation pattern}$$</p>
+<p>Each row of $C$ describes how the $n_p$ perturbation sites affect one mode. Each column describes how one perturbation site affects all $n_m$ modes.</p>
+<p><strong>The key observation.</strong> In any physical resonator, the number of spatial degrees of freedom (perturbation sites) exceeds the number of spectral degrees of freedom (resolvable modes). A 1 mm rod can be patterned with lithographic features at 1 µm pitch, giving $n_p \sim 1{,}000$ perturbation sites. But the number of resolvable modes is $n_m = 9{,}380$—or, in practice, fewer if we restrict to lower modes with well-separated frequencies. In any case, the coupling matrix $C$ has more columns than rows (or, at minimum, more columns than its rank). This means $C$ has a non-trivial <strong>null space</strong>: a subspace of perturbation patterns that produce <em>zero</em> mode frequency shifts.</p>
+<p>This sounds like a limitation—patterns in the null space are invisible to the standard spectral readout. But &ldquo;invisible&rdquo; is not the same as &ldquo;absent.&rdquo; The null-space patterns are physically present in the rod&rsquo;s mass distribution. They exist; we just can&rsquo;t see them with the standard measurement.</p>
+<p><strong>The trick: complementary readout.</strong> The null space of $C$ is the set of perturbation vectors $\mathbf{p}$ satisfying $C\mathbf{p} = \mathbf{0}$. If we compute the null-space basis vectors (via SVD of $C$), we can construct a <em>complementary</em> projection: instead of correlating the readout against the column-space basis (which detects standard patterns), we correlate against the null-space basis (which detects hidden patterns). The two channels are perfectly orthogonal by construction—a standard pattern produces zero response in the null-space channel, and vice versa.</p>
+<p><strong>The experiment.</strong> We construct a coupling matrix $C_{ij} = \sin\!\big((i+1)\pi(j+1)/(n_p + 1)\big)$ for $n_m = 10$ readout modes and $n_p = 16$ perturbation sites. SVD reveals rank$(C) = 10$ and a null-space dimension of $16 - 10 = 6$.</p>
+<p>We encode standard patterns as linear combinations of the column-space basis vectors and hidden patterns as linear combinations of the null-space basis vectors. We then verify three properties:</p>
+<ol>
+<li>Standard readout (projection onto column space) recovers standard patterns with perfect fidelity.</li>
+<li>Hidden patterns produce zero leakage into the standard readout channel.</li>
+<li>Complementary readout (projection onto null-space basis) recovers hidden patterns with perfect fidelity.</li>
+</ol>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Channel</th>
+<th>Encoding space</th>
+<th>Dimensions</th>
+<th>Fidelity</th>
+<th>Bits (at 16.4/dim)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Standard</td>
+<td>Column space</td>
+<td>10</td>
+<td>1.000</td>
+<td>164</td>
+</tr>
+<tr>
+<td>Hidden</td>
+<td>Null space</td>
+<td>6</td>
+<td>1.000</td>
+<td>98.4</td>
+</tr>
+<tr>
+<td><strong>Combined</strong></td>
+<td><strong>Full space</strong></td>
+<td><strong>16</strong></td>
+<td>—</td>
+<td><strong>262.4 (+60%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The two channels have exactly zero cross-talk. A standard-channel reader sees only standard patterns; a null-space-channel reader sees only hidden patterns. Both achieve perfect fidelity.</p>
+<p><strong>What this means for CWM.</strong> Null-space multiplexing provides genuine bonus capacity—60% in the tested configuration—with no changes to the resonator. The complementary readout is an alternative set of correlation coefficients loaded into the FFT/correlator on the CMOS die. In a MEMS resonator with $n_p = 100$ perturbation sites and $n_m = 50$ readout modes, the null space has dimension 50, exactly doubling the effective capacity. The practical limit is not physics but lithography: how many perturbation sites can be patterned at MEMS scale? At 1 µm pitch along a 1 mm rod, the answer is ~1,000—giving a null-space dimension of $1{,}000 - n_m$, which far exceeds $n_m$ for any practical mode count.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig10_null_space.svg" alt="Figure 5: Null-space multiplexing dual-channel encoding"/>
+<p><strong>Figure 5.</strong> Dual-channel encoding: standard patterns occupy the column space of the coupling matrix; hidden patterns occupy the null space. Both channels achieve perfect fidelity with zero cross-talk.</p>
+</div>
+
+<h3 id="25-polysemic-readout-multi-channel-spectral-decoding">2.5 Polysemic Readout: Multi-Channel Spectral Decoding</h3>
+<p><strong>Motivation: independent projections from a single inscription.</strong> A mass perturbation pattern creates a spectral fingerprint across all $N$ eigenmodes. Conventional readout treats this as a single $N$-dimensional vector and extracts $\log_2(\text{distinguishable fingerprints})$ bits. But the sensitivity matrix $S_{nk} = \sin^2(n\pi x_k / L)$ has a key property: mode subsets at different spatial frequencies sample <em>nearly independent projections</em> of the same perturbation pattern. Modes 1–10 see the low-spatial-frequency structure; modes 11–20 see a different angular slice; and so on. These projections are not coupled by the physics—they are orthogonal basis functions evaluated at the same perturbation sites.</p>
+<p>This is polysemic readout: one physical inscription, multiple independent readings through different spectral frames (mode subsets).</p>
+<p><strong>The experiment.</strong> We partition $N = 40$ modes into $C = 4$ subsets of 10 modes each. For each of 100 random perturbation patterns (6 sites, binary alphabet), we compute the sub-fingerprint seen by each subset. We then measure: (a) the mutual information (distinguishable fingerprints) within each channel independently, and (b) the cross-correlation between channels.</p>
+<p><strong>Results.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Channels</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Per-channel capacity</td>
+<td>5.5 bits (average)</td>
+</tr>
+<tr>
+<td>Total polysemic capacity</td>
+<td><strong>22.0 bits</strong></td>
+</tr>
+<tr>
+<td>Single-channel (all 40 modes)</td>
+<td>5.6 bits</td>
+</tr>
+<tr>
+<td>Cross-channel correlation</td>
+<td>0.003</td>
+</tr>
+<tr>
+<td><strong>Polysemic gain</strong></td>
+<td><strong>+297%</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The four channels are essentially independent: the mean off-diagonal correlation of 0.003 confirms that knowing one channel&rsquo;s readout tells you almost nothing about another&rsquo;s. The total information is the sum across channels—22.0 bits from a single physical inscription that would yield only 5.6 bits under conventional readout.</p>
+<p><strong>Why this works.</strong> The mathematical reason is that $\sin^2(n\pi x)$ oscillates at spatial frequency $n$. Mode subset $\{1, \ldots, 10\}$ samples the perturbation at low spatial frequencies; subset $\{11, \ldots, 20\}$ at higher frequencies. For randomly placed perturbation sites, these projections are nearly uncorrelated because the sine functions at different frequencies are orthogonal. The same mechanism that makes eigenmode encoding work (orthogonal modes as independent information channels) extends to <em>subsets</em> of modes as independent <em>readout</em> channels.</p>
+<p><strong>What this means for CWM.</strong> Polysemic readout is implemented entirely in firmware: the readout ASIC computes the FFT as usual, then partitions the frequency bins into $C$ <em>contiguous</em> sub-bands and decodes each independently. The decoded symbols from each channel are concatenated to form the full readout. No hardware changes. No additional excitation cycles. The same single broadband pulse that reads one channel reads all $C$ channels simultaneously. Contiguous assignment is essential: an interleaved scheme (every $C$-th mode) re-samples the same spatial-frequency content and yields near-unity cross-channel correlation, destroying polysemic independence.</p>
+<p>At +297%, polysemic readout is the largest capacity enhancement discovered in this work—nearly 2× the gain from mode hybridization (+160%) and 5× the gain from null-space multiplexing (+60%). It suggests that CWM&rsquo;s information-theoretic capacity has been significantly underestimated by conventional single-channel analysis.</p>
+<p>Note that mode-subset partitioning also enables <em>virtual rewriting</em>: instead of reading all sub-bands to maximize capacity, different sub-bands can store different data and be addressed independently—making one physical rod behave as multiple logical devices switchable at firmware speed. This dual interpretation is developed in Section 3.2.</p>
+<h3 id="26-combined-capacity-enhancement">2.6 Combined Capacity Enhancement</h3>
+<p>The twenty-two techniques are not mutually exclusive. In a practical CWM device:</p>
+<ol>
+<li>
+<p><strong>Synaptic pruning</strong> (§2.1) improves recall accuracy by 10.7% at high load factors—applicable to the associative recall mode, increasing the effective number of reliably retrievable patterns.</p>
+</li>
+<li>
+<p><strong>In-situ Boolean ops</strong> (§2.2) add a computational capability (XOR, AND, OR at &gt;90% fidelity) that requires no additional hardware and provides 3× throughput for classification workloads.</p>
+</li>
+<li>
+<p><strong>Mode hybridization</strong> (§2.3) creates bonus information channels from near-degenerate mode pairs. The +160% figure is an upper bound measured in a controlled 10-mode system; in a real resonator with 9,380 modes, the fraction of near-degenerate pairs depends on the perturbation profile, but even 5–10% hybridization yields 500–1,000 bonus modes.</p>
+</li>
+<li>
+<p><strong>Null-space multiplexing</strong> (§2.4) adds hidden capacity proportional to the ratio $(n_p - n_m) / n_m$. With $n_p / n_m = 1.6$ (the tested configuration), the bonus is 60%. With $n_p / n_m = 2$ (achievable at MEMS scale), the bonus is 100%—a full doubling.</p>
+</li>
+<li>
+<p><strong>Polysemic readout</strong> (§2.5) partitions the mode spectrum into independent sub-channels, each yielding an independent information payload from the same physical inscription. With 4 channels, the gain is +297%. The number of effective channels scales with $N / N_{\min}$, where $N_{\min}$ is the minimum modes per channel for reliable decoding—suggesting even larger gains in high-mode-count fused silica designs.</p>
+</li>
+</ol>
+<p>Twenty additional cross-domain investigations extend these results through systematic hypothesis testing across wave physics, information theory, and astrophysical observation—summarised in §2.7 and developed fully in the companion volume [5]. The gain factors above should not be multiplied naively—inter-technique interactions, real-device noise, and practical readout constraints at $N = 9{,}380$ will reduce achievable gains. A conservative near-term estimate—applying polysemic sub-band partitioning alone—could increase effective packed-array density by 2–3× over the baseline.</p>
+<h3 id="27-cross-domain-validation-summary">2.7 Cross-Domain Validation Summary</h3>
+<p>Beyond the six core techniques above, we conducted a systematic cross-domain validation program: twenty independent investigations testing 87 quantitative hypotheses drawn from wave physics, information theory, and spectral analysis. The methodology follows a falsification-first protocol—each hypothesis is stated with explicit kill criteria <em>before</em> simulation, and every result (confirmed or killed) is reported. This approach is developed fully in the companion volume [5]; here we summarise the key findings.</p>
+<p>Each investigation is implemented as an independent simulation module with automated test suites (1,747 tests across 20 modules, all passing). The cumulative tally across all 99 hypotheses (including §§2.1–2.6) is <strong>67 confirmed and 32 killed</strong> (67.7% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Module</th>
+<th>Hyp</th>
+<th>C : K</th>
+<th>Key result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Phase-spectral encoding</td>
+<td><code>tesla_phase.py</code></td>
+<td>4</td>
+<td>4 : 0</td>
+<td>+84% discriminability; phase orthogonal to frequency. Firmware-only.</td>
+</tr>
+<tr>
+<td>2D plate eigenmode extension</td>
+<td><code>chladni_plates.py</code></td>
+<td>4</td>
+<td>4 : 0</td>
+<td>9.1× mode count; 4 symmetry-family channels (+300% polysemic gain).</td>
+</tr>
+<tr>
+<td>Active Q-boosting</td>
+<td><code>bekesy_cochlea.py</code></td>
+<td>4</td>
+<td>1 : 3</td>
+<td>Q doubled at 0.004 fW/mode; +89% modes. Travelling-wave hypotheses killed.</td>
+</tr>
+<tr>
+<td>Crystallographic phase retrieval</td>
+<td><code>franklin_phase.py</code></td>
+<td>4</td>
+<td>0 : 4</td>
+<td>All-negative. sin² encoding incompatible with Fourier-based methods.</td>
+</tr>
+<tr>
+<td>Binary encoding / monadic compression</td>
+<td><code>leibniz_binary.py</code></td>
+<td>4</td>
+<td>3 : 1</td>
+<td>87.5% recall at 1 bit/mode; monadic reconstruction confirmed.</td>
+</tr>
+<tr>
+<td>Holographic distributed memory</td>
+<td><code>gabor_holographic.py</code></td>
+<td>4</td>
+<td>1 : 3</td>
+<td>Bandwidth-ceiling framework confirmed; CWM is finite-rank, not infinite-bandwidth.</td>
+</tr>
+<tr>
+<td>Perturbation-induced level splitting</td>
+<td><code>zeeman_splitting.py</code></td>
+<td>4</td>
+<td>4 : 0</td>
+<td>Effective g-factor exact ($R^2 = 1.0000$); selection rules confirmed.</td>
+</tr>
+<tr>
+<td>Harmonic resonance ratios</td>
+<td><code>kepler_harmonic.py</code></td>
+<td>4</td>
+<td>2 : 2</td>
+<td>Octave correlation confirmed; consonance weighting killed.</td>
+</tr>
+<tr>
+<td>Timescale hierarchy</td>
+<td><code>boltzmann_timescale.py</code></td>
+<td>4</td>
+<td>1 : 3</td>
+<td>CWM operates in classical Rayleigh–Jeans limit.</td>
+</tr>
+<tr>
+<td>Acoustic radiation force</td>
+<td><code>gorkov_radiation.py</code></td>
+<td>4</td>
+<td>1 : 3</td>
+<td>Contrast-factor ranking exact; gradient placement killed.</td>
+</tr>
+<tr>
+<td>Standing-wave rationality test</td>
+<td><code>irrational_prediction.py</code></td>
+<td>4</td>
+<td>4 : 0</td>
+<td>Any irrational placement optimal; $10^{13}\times$ condition-number gap.</td>
+</tr>
+<tr>
+<td>Acoustic cavity finesse</td>
+<td><code>fabry_perot_cavity.py</code></td>
+<td>4</td>
+<td>2 : 2</td>
+<td>Finesse–Q equivalence within 5.1%; 7,922× linewidth tunability.</td>
+</tr>
+<tr>
+<td>Channel capacity analysis</td>
+<td><code>shannon_capacity.py</code></td>
+<td>4</td>
+<td>2 : 2</td>
+<td>Uniform allocation achieves 98.8% of Shannon optimum.</td>
+</tr>
+<tr>
+<td>Parametric mode amplification</td>
+<td><code>mathieu_parametric.py</code></td>
+<td>4</td>
+<td>4 : 0</td>
+<td>12.0 dB gain at 166× less power than feedback.</td>
+</tr>
+<tr>
+<td>Astrophysical validation</td>
+<td><code>coronal_seismology.py</code></td>
+<td>7</td>
+<td>6 : 1</td>
+<td>Framework validated across 12 orders of magnitude in spatial scale.</td>
+</tr>
+<tr>
+<td>Gauge geometry</td>
+<td><code>gauge_geometry.py</code></td>
+<td>5</td>
+<td>3 : 2</td>
+<td>Shannon capacity is an exact gauge invariant; rank is topological.</td>
+</tr>
+<tr>
+<td>Chiral phonon splitting</td>
+<td><code>chiral_phonon.py</code></td>
+<td>4</td>
+<td>3 : 1</td>
+<td>+427% capacity from L-T mode coupling; thermal switch analogy killed.</td>
+</tr>
+<tr>
+<td>Passive stone resonance</td>
+<td><code>passive_stone.py</code></td>
+<td>5</td>
+<td>4 : 1</td>
+<td>CWM physics material-independent; small-vessel mode density killed.</td>
+</tr>
+<tr>
+<td>Femtosecond volumetric inscription</td>
+<td><code>femtosecond_inscription.py</code></td>
+<td>5</td>
+<td>3 : 2</td>
+<td>sin² universality exact in bulk; radial Bessel encoding adds 5.1 bits.</td>
+</tr>
+<tr>
+<td>Beads-on-string waveguide</td>
+<td><code>bead_string.py</code></td>
+<td>5</td>
+<td>3 : 2</td>
+<td>Multi-level bead alphabet (4 materials); perturbation ceiling at $m/M \approx 0.08$.</td>
+</tr>
+<tr>
+<td><strong>Totals</strong></td>
+<td><strong>20 modules</strong></td>
+<td><strong>87</strong></td>
+<td><strong>51 : 36</strong></td>
+<td><strong>Combined with §§2.1–2.6: 67 confirmed, 32 killed (67.7%)</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² &gt; 0.999 and prediction error &lt; 25%; and the femtosecond volumetric inscription investigation confirms that the sin² sensitivity profile is mathematically identical for bulk density perturbations ($R^2 = 1.0$), while adding a radial Bessel-function encoding dimension (5.1 bits MI) inaccessible to surface-only techniques; and the beads-on-string investigation extends CWM&rsquo;s perturbation formalism to a transverse string waveguide with discrete faience beads, confirming a four-level material alphabet and establishing a perturbation validity ceiling at $m/M \approx 0.08$ beyond which exact transfer-matrix solutions are required. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [5].</p>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part II</p>
+  <p class="part-title">Substrate and Prototype</p>
+  <p class="part-desc">Sections 3–4</p>
+  <hr>
+</div>
+<h2 id="3-paths-to-rewritability">3. Paths to Rewritability</h2>
+<p>Everything presented in [6] and Section 2 of this paper treats CWM as a read-only architecture: data is written once by lithographic mass perturbation and never changed. The device is a glass harmonica—each glass bowl ground to a fixed pitch, beautiful but immutable. This section asks: <em>can we build an armonica?</em></p>
+<p>The glass harmonica is an ancient instrument of fixed-pitch bowls played by rubbing wet fingers on the rims. The glass armonica mounts the bowls on a rotating spindle so the performer can vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. The analogy to CWM is structural: both systems are arrays of glass resonators whose eigenfrequencies are determined by geometry, driven by continuous mechanical excitation, and read out by the resulting acoustic response.</p>
+<p>We investigated twelve engineering hypotheses across four architectural tracks, each representing a different depth of hardware modification. All twelve are tested by first-principles simulation (12 experiments, 134 automated tests, all passing). Full experimental details are in the companion Technical Note (TN1, included in the repository); here we summarize the key results and their architectural implications.</p>
+<h3 id="31-the-rewritability-question">3.1 The Rewritability Question</h3>
+<p>Consider two ways to think about a CWM rod:</p>
+<p><strong>The harmonica model.</strong> A rod is manufactured with a fixed perturbation pattern and deployed as a matched filter—a glass bowl ground to a specific pitch. You select which rod to read, not what any rod stores. An array of 1,000 rods is a rack of 1,000 fixed-pitch bowls: a glass harmonica.</p>
+<p><strong>The armonica model.</strong> A rod is a configurable acoustic device whose effective behavior can be changed after fabrication. Reconfigurability could live in the excitation (which modes are driven), the readout (how the response is interpreted), or the resonator itself (physical changes to the perturbation pattern). The same glass, played differently—a mechanised armonica, where the performer reshapes the instrument&rsquo;s voice in real time.</p>
+<p>Both models have value. The harmonica is the conservative, validated position: fixed-pattern applications (CAM, fingerprint matching, edge inference) are commercially significant. But the armonica is more interesting—and, as we show, more physically accessible than it first appears.</p>
+<p>All paths to rewritability must satisfy one constraint: <strong>rewriting must not destroy Q.</strong> The Q-factor analysis [6, §7] established $Q_{\text{total}} = 9{,}097$ for our reference design, with material intrinsic loss as the dominant mechanism. Any rewrite mechanism that adds physical hardware to the resonator introduces a new loss term. We quantify that penalty for each track.</p>
+<h3 id="32-track-a-firmware-defined-virtual-rewriting">3.2 Track A: Firmware-Defined Virtual Rewriting</h3>
+<p>Track A requires no physical changes to the resonator. Rewritability lives entirely in how we excite and listen to the same fixed rod—modifications to the CMOS readout die&rsquo;s firmware, executable at nanosecond speed.</p>
+<p><strong>H7: Multi-Projection Virtual Rewrite.</strong> The SVD of the coupling matrix $C$ (the same decomposition underlying null-space multiplexing, §2.4) can be partitioned into $K$ orthogonal subspaces, each functioning as an independent logical memory. We tested $K = 4$ partitions of a 24-perturbation-site coupling matrix:</p>
+<table>
+<thead>
+<tr>
+<th>Partition</th>
+<th>Dimensions</th>
+<th>Fidelity</th>
+<th>Cross-talk to others</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>2</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+<tr>
+<td>4</td>
+<td>6</td>
+<td>1.000</td>
+<td>&lt; $10^{-15}$</td>
+</tr>
+</tbody>
+</table>
+<p>The orthogonality is exact—a mathematical consequence of the SVD, not a favorable coincidence. At MEMS scale with $n_p = 1{,}000$ perturbation sites, this scales to <strong>300–500 virtual devices</strong> per physical rod, each switchable by loading different projection coefficients into the readout ASIC. A CWM array with 1,000 physical rods and 100 virtual devices per rod effectively provides 100,000 logical devices—without any physical rewriting.</p>
+<p><strong>H8: Mode-Subset Logical Devices.</strong> The simplest form of virtual rewriting: drive and read contiguous subsets of the mode spectrum, each acting as an independent Hopfield memory. We divided a 200-mode rod into 4 subsets of 50 modes, stored 3 patterns, and tested recall under 15% noise:</p>
+<table>
+<thead>
+<tr>
+<th>Subset</th>
+<th>Modes</th>
+<th>Recall</th>
+<th>Independent?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1–50</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>2</td>
+<td>51–100</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>3</td>
+<td>101–150</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>4</td>
+<td>151–200</td>
+<td>1.000</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>This is the same mode-partitioning mechanism described in §2.5 for polysemic capacity enhancement, viewed here through the lens of rewritability: instead of extracting more information from one inscription, we use the independent sub-bands to store <em>different</em> data and switch between them by adjusting the excitation chirp&rsquo;s frequency range. With the full 9,380-mode spectrum, even 16 subsets of ~586 modes each maintain reliable recall, giving <strong>~15 independent logical memories</strong> from one physical rod.</p>
+<p><strong>H9: Readout Mask Library.</strong> Applying different spectral amplitude masks to the same rod&rsquo;s FFT output produces multiple distinct effective devices. Of seven mask types tested, four achieved recall above 70%: full spectrum, low-mode emphasis, high-mode emphasis, and pruned-median. The key design principle: <strong>amplitude-weighting masks work; mode-zeroing masks fail.</strong> Rewritability through reweighting, not deletion—the same principle as synaptic pruning (§2.1), applied to device selection rather than recall optimization.</p>
+<p><strong>Track A Summary.</strong> Three complementary firmware mechanisms yield 4+ virtual devices per rod with zero hardware changes. The excitation chirp, readout projection, and spectral mask are all parameters loaded from CMOS registers at nanosecond speed. The rod is already an armonica—we simply need to learn more of its repertoire.</p>
+<h3 id="33-track-b-binary-perturbation-sites">3.3 Track B: Binary Perturbation Sites</h3>
+<p>Track B introduces the first physical hardware for rewriting: discrete sites on the rod surface that can be toggled between mass-coupled and mass-decoupled states—analogous to RF MEMS switches [4], which are commercially available, operate for $> 10^9$ cycles, switch in $< 10\ \mu$s, and consume near-zero static power via electrostatic latching.</p>
+<p><strong>H10: Binary Site Fingerprint Capacity.</strong> With 12 binary-toggle sites and 20 readout modes, <strong>193 of 200</strong> sampled configurations are spectrally distinguishable—yielding <strong>7.6 bits</strong> of rewritable state per rod. At $N_s \leq 8$ sites, full enumeration confirms <em>every</em> configuration produces a unique fingerprint. The coupling matrix acts as a physical hash function: distinct binary states map to distinct spectral signatures. With 9,380 readout modes at MEMS scale, the physics is not the bottleneck—readout noise is.</p>
+<p><strong>H11: Binary-Site Hopfield Capacity.</strong> Binary-site fingerprints serve as Hopfield associative memory patterns, with reliable recall achieved from as few as <strong>4 sites</strong> ($P_{\max} = 3$ patterns at 96% accuracy). Capacity scales as $P_{\max} \sim N_s^{0.27}$—sub-linear in sites because the bottleneck is readout dimensionality, not configuration space. At 9,380 readout modes, the binary-site constraint does not reduce the Hopfield capacity limit ($P_{\max} \approx 1{,}294$); it simply quantizes the perturbation space into $2^{N_s}$ discrete states instead of a continuum.</p>
+<h3 id="34-track-c-multi-shell-resonator">3.4 Track C: Multi-Shell Resonator</h3>
+<p>Track C models the Q-factor impact of adding physical rewrite hardware to the resonator surface—a prerequisite for both binary sites (Track B) and writable coatings.</p>
+<p><strong>H12: Actuator Q Penalty.</strong> MEMS electrostatic actuators (modeled as localized high-loss surface regions, $Q_{\text{act}} = 500$) impose negligible loss:</p>
+<table>
+<thead>
+<tr>
+<th>Actuators</th>
+<th>Total Q</th>
+<th>Penalty</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>9,506</td>
+<td>—</td>
+</tr>
+<tr>
+<td>16</td>
+<td>9,460</td>
+<td>0.48%</td>
+</tr>
+<tr>
+<td>64</td>
+<td>9,327</td>
+<td>1.88%</td>
+</tr>
+<tr>
+<td>256</td>
+<td>8,838</td>
+<td>7.03%</td>
+</tr>
+</tbody>
+</table>
+<p>Even 256 actuators—far more than any practical design requires—keep Q above 8,800. Track B&rsquo;s binary perturbation sites (12–20 latches) add less than 0.5% loss. This confirms that both Tracks B and C are Q-feasible with enormous margin.</p>
+<p><strong>H13: Writable Shell Q Budget.</strong> A conformal writable coating can be deposited on the rod surface. We swept shell thickness (1–1,000 nm) and shell material Q ($Q_d$ = 10–5,000) to map the $Q > 5{,}000$ operating envelope:</p>
+<ul>
+<li>At $Q_d = 200$ (Parylene C): maximum shell thickness <strong>100 nm</strong>, with 0.34% frequency-shift tuning range—enough to shift modes by many linewidths, which is what &ldquo;writing&rdquo; means.</li>
+<li>At $Q_d = 50$–$100$ (GST/VO₂ phase-change, magnetostrictive films): maximum shell 20–50 nm. Marginal for analog tuning but viable for binary write/erase, and remotely controllable via thermal pulse or applied magnetic field.</li>
+</ul>
+<h3 id="35-track-d-femtosecond-volumetric-inscription">3.5 Track D: Femtosecond Volumetric Inscription</h3>
+<p>Track D moves the perturbation mechanism <em>inside</em> the rod. Femtosecond laser writing—the same technique used for 5D optical data storage in fused silica—creates localised Type I refractive-index modifications that correspond to sub-percent density changes ($\Delta\rho/\rho \approx 0.5\%$) in focal volumes of order $10^{-17}$ m³. Each inscription site acts as a volumetric mass perturbation, shifting eigenmodes without breaking the surface or adding external hardware.</p>
+<p>We tested five hypotheses (5 experiments, 66 automated tests, all passing):</p>
+<p><strong>H-V1: Axial Sensitivity Universality.</strong> Volumetric inscription sites follow the same $\sin^2(n\pi x/L)$ sensitivity profile as surface perturbations. Confirmed—$R^2 = 1.0000$, the mathematical identity is exact because the perturbation Hamiltonian depends only on axial position, not on whether the mass change is at the surface or in the bulk.</p>
+<p><strong>H-V2: Shift Magnitude.</strong> A single Type I inscription produces a frequency shift exceeding 10× the resonance linewidth. Killed—a single site shifts by $\sim 10^{-8}$ relative, roughly $0.5\times$ one linewidth. Useful shifts require dense grids of $\sim 20{,}000$ inscription sites, which occupy only $\sim 10\%$ of the rod volume.</p>
+<p><strong>H-V3: Q Survival.</strong> Volumetric inscriptions preserve Q above 50% of the unperturbed value. Confirmed—Rayleigh scattering from Type I modifications is negligible ($d/\lambda \approx 5 \times 10^{-4}$). More than $2 \times 10^{12}$ sites would be required before scattering losses halve Q, far beyond any practical inscription density.</p>
+<p><strong>H-V4: Radial Encoding.</strong> Bessel-function radial placement ($J_0$ zeros) of inscription sites at multiple radial depths provides an independent encoding dimension. Confirmed—mutual information of 5.1 bits across 8 radial channels, giving a radial degree of freedom inaccessible to surface-only techniques.</p>
+<p><strong>H-V5: Capacity Gain.</strong> Volumetric inscription increases total capacity by $\geq 1.5\times$ over surface-only encoding. Killed—measured gain is $1.28\times$, below threshold. The radial dimension adds information but each volumetric site perturbs less strongly than a surface site, limiting net advantage.</p>
+<p>The two kills refine rather than block the architecture. Track D is not a replacement for surface perturbation—it is a complementary channel. Radial Bessel encoding adds a genuine new dimension (5.1 bits) that surface techniques cannot access, while axial sensitivity universality ($R^2 = 1.0$) means all existing perturbation theory carries over unchanged. The practical constraint is inscription density, not physics.</p>
+<h3 id="36-layered-architecture">3.6 Layered Architecture</h3>
+<p>The four tracks are not alternatives—they are layers of a single architecture:</p>
+<table>
+<thead>
+<tr>
+<th>Layer</th>
+<th>Track</th>
+<th>Mechanism</th>
+<th>Hardware cost</th>
+<th>Rewrite speed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>4</td>
+<td>A: Firmware</td>
+<td>DSP projection, mode subsets</td>
+<td>None (software)</td>
+<td>Nanoseconds</td>
+</tr>
+<tr>
+<td>3</td>
+<td>B: Binary</td>
+<td>MEMS electrostatic latches</td>
+<td>12–20 switches</td>
+<td>~10 µs</td>
+</tr>
+<tr>
+<td>2</td>
+<td>C: Shell</td>
+<td>Conformal writable coating</td>
+<td>Thin-film deposition</td>
+<td>Material-dependent</td>
+</tr>
+<tr>
+<td>1</td>
+<td>D: Volume</td>
+<td>Femtosecond laser inscription</td>
+<td>Laser write station</td>
+<td>Permanent (ROM)</td>
+</tr>
+</tbody>
+</table>
+<p>These layers compose multiplicatively. A rod with volumetric inscriptions (Layer 1), a writable shell (Layer 2), binary sites (Layer 3), and firmware partitioning (Layer 4) provides $N_{\text{vol}} \times N_{\text{shell}} \times 2^{N_s} \times N_{\text{firmware}}$ configurations.</p>
+<p><strong>The separation principle.</strong> A key architectural insight emerges: in CWM, the read medium and the write mechanism are separable. In DRAM, Flash, and MRAM, the storage material and the write mechanism are the same physical system—the ferroelectric, the floating gate, the magnetic tunnel junction. Write properties (coercive field, endurance, retention) are inextricable from read properties. In CWM, the glass rod is the <em>read medium</em> (its eigenmodes encode information), but it need not be the <em>write medium</em>. Writing happens <em>around</em> the rod—in the firmware (Track A), at the surface contacts (Track B), or in a separate material layer (Track C)—or <em>inside</em> it (Track D, volumetric inscription). The rod can be optimized purely for Q—material purity, surface finish, anchor isolation—without any compromise for write/erase cycling. This separation is what makes CWM&rsquo;s rewritability path viable despite the constraints of acoustic resonance.</p>
+<p><strong>Development path.</strong> Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with &lt; 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Stage 4 (volumetric inscription) uses femtosecond laser writing to create permanent density perturbations in the rod interior, adding a radial encoding dimension (5.1 bits) inaccessible to surface techniques—fabrication-time programming with zero Q penalty. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become a glass armonica.</p>
+<h2 id="4-discussion">4. Discussion</h2>
+<h3 id="41-practical-implications">4.1 Practical Implications</h3>
+<p>The six core extensions of §§2.1–2.6 are immediately deployable on any CWM readout ASIC—they require only firmware changes to the signal processing pipeline. A conservative near-term estimate, applying polysemic sub-band partitioning alone, could increase effective packed-array density by 2–3× over the baseline 17.0 Gbit/cm³ reported in [6].</p>
+<p>The gain factors reported for each technique should not be multiplied naively. Inter-technique interactions, real-device noise, and practical readout constraints at $N = 9{,}380$ modes will reduce achievable gains relative to the small-scale simulations (typically 10–50 modes) used here.</p>
+<h3 id="42-falsification-record">4.2 Falsification Record</h3>
+<p>The simulation apparatus has tested 99 hypotheses across all CWM research (including the core architecture validated in [6]): 67 confirmed, 32 falsified—all preserved with full documentation of their failure mechanisms. The killed hypotheses are as scientifically valuable as the confirmations: they map the boundaries of each technique and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.</p>
+<h3 id="43-limitations">4.3 Limitations</h3>
+<p>All extensions in this paper are simulated at small scale (typically 10–50 modes). Whether the capacity gains (e.g., +297% polysemic, +160% hybridization) survive scaling to thousands of modes in a physical device with real noise, fabrication tolerances, and mode coupling is an open question. The cross-domain investigations (§2.7) explore established physical frameworks, but their quantitative transfer to CWM eigenmode systems requires experimental confirmation. The rewritability paths of Section 3 each carry specific engineering risks documented in their respective subsections.</p>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part III</p>
+  <p class="part-title">Finite Element Validation</p>
+  <p class="part-desc">Section 5</p>
+  <hr>
+</div>
+<h2 id="5-conclusion">5. Conclusion</h2>
+<p>Twenty-two modeled extensions and three rewritability paths demonstrate that the CWM eigenmode architecture supports a rich design space beyond the baseline read-only device described in [6].</p>
+<p>The firmware-only techniques (§§2.1–2.6) offer capacity and functionality gains deployable on day one of MEMS production: synaptic pruning improves associative recall (+10.7%), Boolean computation adds logic capability (&gt;90% fidelity), mode hybridization (+160%), null-space multiplexing (+60%), and polysemic readout (+297%) each exploit different facets of the eigenmode physics. The cross-domain validation (§2.7) maps the boundaries—51 confirmed hypotheses identify what transfers across 20 physical and mathematical frameworks; 36 killed hypotheses identify what does not.</p>
+<p>The rewritability tracks (Section 3) provide a staged development path from read-only ROM (Stage 0) through firmware-reconfigurable (Stage 1), MEMS-switchable (Stage 2), shell-writable (Stage 3), to volumetrically inscribed (Stage 4). Each stage is backward-compatible. The key architectural insight—separating the read medium (glass rod) from the write mechanism (firmware, surface, shell, or volumetric)—enables independent optimization of acoustic quality and write endurance.</p>
+<p>What remains is hardware. A single fabricated MEMS die with thin-film piezo readout would convert every projection in this paper into a measurement.</p>
+<hr />
+<p><em>Patent Pending — U.S. Provisional Application No. 64/023,264 (31 March 2026).</em></p>
+<p><em>All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing). Repository: github.com/miketierce/cwm. Companion volume: github.com/miketierce/cwm-book.</em></p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Physical Review Letters</em>, vol. 55, no. 14, pp. 1530–1533, 1985. doi: <a href="https://doi.org/10.1103/PhysRevLett.55.1530">10.1103/PhysRevLett.55.1530</a></p>
+<p>[2] P. R. Huttenlocher, &ldquo;Synaptic density in human frontal cortex — Developmental changes and effects of aging,&rdquo; <em>Brain Research</em>, vol. 163, no. 2, pp. 195–205, 1979. doi: <a href="https://doi.org/10.1016/0006-8993(79)90349-4">10.1016/0006-8993(79)90349-4</a>. (Foundational quantification of synaptic pruning during human brain development.)</p>
+<p>[3] J. von Neumann and E. P. Wigner, &ldquo;Über das Verhalten von Eigenwerten bei adiabatischen Prozessen,&rdquo; <em>Physikalische Zeitschrift</em>, vol. 30, pp. 467–470, 1929. (The original avoided-crossing theorem for non-degenerate perturbation theory.)</p>
+<p>[4] G. M. Rebeiz, <em>RF MEMS: Theory, Design, and Technology</em>. Hoboken, NJ: Wiley, 2003. doi: <a href="https://doi.org/10.1002/0471225282">10.1002/0471225282</a>. (Commercial RF MEMS switches: $> 10^9$ cycle endurance, $< 10\ \mu$s switching, near-zero static power.)</p>
+<p>[5] M. Tierce, <em>Coherent Wave Memory: The Full Story</em>. Companion volume, 2026. Extended cross-domain investigations, application scenarios, and narrative treatment of the research methodology. Repository: <a href="https://github.com/miketierce/cwm-book">github.com/miketierce/cwm-book</a>.</p>
+<p>[6] M. Tierce, &ldquo;Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators,&rdquo; companion paper, 2026. Repository: <a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a>.</p><div class="colophon">
+  <p><em>Coherent Wave Memory</em></p>
+  <p>Version </p>
+  <p>&copy; Mike Tierce</p>
+  <p style="margin-top: 16pt; font-size: 8pt;">
+    Typeset from Markdown source using Chromium PDF rendering.<br>
+    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
+    All quantitative claims computed from first-principles simulation code<br>
+    (48 modules, 2253 automated tests) with independent FEM validation.
+  </p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>

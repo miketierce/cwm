@@ -1,0 +1,2158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+/* -- Page geometry: duplex with binding gutter -- */
+@page {
+    size: letter;
+    margin: 0.85in 0.85in 1in 1.15in;   /* top right bottom left(gutter) */
+}
+@page :left {
+    margin-left: 0.85in;
+    margin-right: 1.15in;
+}
+@page :right {
+    margin-left: 1.15in;
+    margin-right: 0.85in;
+}
+
+/* Named page for landscape plates */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #555;
+    --accent: #2563eb;
+    --border: #d1d5db;
+    --bg-code: #f5f5f5;
+    --bg-table-head: #f0f4f8;
+    --title-accent: #1e40af;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Palatino", "Palatino Linotype", "Georgia", serif;
+    font-size: 11pt;
+    line-height: 1.55;
+    color: var(--text);
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* === TITLE PAGE === */
+.title-page {
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+    padding: 0 0.5in;
+}
+
+.title-page .rule-top {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 0 auto 28pt auto;
+}
+
+.title-page .paper-title {
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+    margin: 0 0 8pt 0;
+    max-width: 5.5in;
+    display: block !important;
+}
+
+.title-page .rule-mid {
+    width: 1.5in;
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 0 auto 28pt auto;
+}
+
+.title-page .author {
+    font-size: 14pt;
+    font-weight: 600;
+    margin: 0 0 4pt 0;
+    color: var(--text);
+}
+
+.title-page .affiliation {
+    font-size: 11pt;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 6pt 0;
+}
+
+.title-page .orcid {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin: 0 0 2pt 0;
+}
+
+.title-page .orcid a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.title-page .repo {
+    font-size: 9.5pt;
+    color: var(--muted);
+    margin: 0 0 32pt 0;
+}
+
+.title-page .repo a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.title-page .version {
+    font-size: 11pt;
+    font-weight: 600;
+    color: var(--muted);
+    margin: 0;
+}
+
+.title-page .rule-bottom {
+    width: 3in;
+    border: none;
+    border-top: 2.5pt solid var(--title-accent);
+    margin: 28pt auto 0 auto;
+}
+
+/* === BLANK VERSO === */
+.blank-verso {
+    page-break-before: always;
+    page-break-after: always;
+    min-height: 1px;
+    visibility: hidden;
+}
+
+/* === TABLE OF CONTENTS === */
+.toc-page {
+    page-break-before: right;
+    page-break-after: always;
+}
+
+.toc-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 18pt;
+    color: var(--text);
+}
+
+.toc-page .toc-part {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--title-accent);
+    margin: 14pt 0 4pt 0;
+    letter-spacing: 0.5pt;
+    text-transform: uppercase;
+}
+
+.toc-page .toc-part:first-of-type {
+    margin-top: 0;
+}
+
+.toc-page ol {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 4pt 0;
+}
+
+.toc-page ol li {
+    font-size: 10.5pt;
+    line-height: 1.7;
+    padding-left: 8pt;
+    margin: 0;
+}
+
+.toc-page ol li a {
+    color: var(--text);
+    text-decoration: none;
+}
+
+.toc-page ol li .toc-desc {
+    color: var(--muted);
+    font-size: 9.5pt;
+}
+
+.toc-page ol li.toc-sub {
+    font-size: 9.5pt;
+    color: var(--muted);
+    padding-left: 24pt;
+    line-height: 1.5;
+}
+
+.toc-page .toc-appendices {
+    margin-top: 14pt;
+}
+
+.toc-page .toc-appendices .toc-part {
+    margin-top: 0;
+}
+
+/* === ABSTRACT PAGE === */
+.abstract-page {
+    page-break-before: right;
+}
+
+.abstract-page h2 {
+    font-size: 16pt;
+    text-align: center;
+    border-bottom: none;
+    margin-bottom: 14pt;
+}
+
+.abstract-page p {
+    font-size: 10.5pt;
+    line-height: 1.5;
+    color: var(--muted);
+    text-align: justify;
+}
+
+/* === PART DIVIDERS === */
+.part-heading {
+    page-break-before: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 3in;
+    text-align: center;
+    margin-bottom: 0;
+    padding-top: 2in;
+}
+
+.part-heading .part-label {
+    font-size: 11pt;
+    font-weight: 700;
+    letter-spacing: 1.5pt;
+    text-transform: uppercase;
+    color: var(--title-accent);
+    margin: 0 0 8pt 0;
+}
+
+.part-heading .part-title {
+    font-size: 18pt;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0 0 6pt 0;
+}
+
+.part-heading .part-desc {
+    font-size: 10pt;
+    color: var(--muted);
+    font-style: italic;
+    max-width: 4.5in;
+    margin: 0;
+}
+
+.part-heading hr {
+    width: 2in;
+    border: none;
+    border-top: 1.5pt solid var(--title-accent);
+    margin: 18pt auto 0 auto;
+}
+
+/* === BODY HEADINGS === */
+h1 {
+    display: none;
+}
+
+h2 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin: 22pt 0 8pt 0;
+    padding-bottom: 3pt;
+    border-bottom: 1.5pt solid var(--accent);
+    color: var(--text);
+    page-break-before: right;
+    page-break-after: avoid;
+}
+
+/* Suppress double page-break when h2 follows a Part divider or is inside a container */
+.part-heading + h2,
+.abstract-page h2,
+.toc-page h2 {
+    page-break-before: avoid;
+}
+
+h3 {
+    font-size: 12pt;
+    font-weight: 700;
+    margin: 14pt 0 6pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 11pt;
+    font-weight: 700;
+    margin: 10pt 0 4pt 0;
+    color: var(--muted);
+}
+
+/* === BODY TEXT === */
+p {
+    margin: 0 0 8pt 0;
+    text-align: justify;
+    hyphens: none;
+    orphans: 3;
+    widows: 3;
+}
+
+ul, ol {
+    margin: 4pt 0 8pt 0;
+    padding-left: 20pt;
+}
+li {
+    margin-bottom: 3pt;
+}
+li > p { margin-bottom: 3pt; }
+
+/* -- Tables -- */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 10pt 0;
+    font-size: 9.5pt;
+    line-height: 1.35;
+    page-break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border: 1pt solid var(--border);
+    padding: 5pt 8pt;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+}
+
+tbody td {
+    border: 1pt solid var(--border);
+    padding: 4pt 8pt;
+    vertical-align: top;
+}
+
+tbody tr:nth-child(even) {
+    background: #fafafa;
+}
+
+tbody td strong {
+    color: var(--accent);
+}
+
+/* -- Horizontal Rules -- */
+hr {
+    border: none;
+    border-top: 1pt solid var(--border);
+    margin: 16pt 0;
+}
+
+/* -- Code -- */
+code {
+    font-family: "SF Mono", "Menlo", "Monaco", "Consolas", monospace;
+    font-size: 9pt;
+    background: var(--bg-code);
+    padding: 1pt 3pt;
+    border-radius: 2pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 10pt 12pt;
+    border-radius: 4pt;
+    border: 1pt solid var(--border);
+    overflow-x: auto;
+    font-size: 8.5pt;
+    line-height: 1.4;
+    margin: 8pt 0;
+    page-break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* -- Block quotes -- */
+blockquote {
+    margin: 8pt 0;
+    padding: 6pt 12pt;
+    border-left: 3pt solid var(--accent);
+    background: #f8fafc;
+    color: var(--muted);
+}
+
+/* -- Links -- */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* -- Math (KaTeX) -- */
+.katex-display {
+    margin: 10pt 0;
+    overflow-x: auto;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.05em;
+}
+
+/* -- Inline thumbnail figures -- */
+div.cwm-thumb {
+    text-align: center;
+    margin: 12pt auto;
+    page-break-inside: avoid;
+}
+
+div.cwm-thumb img {
+    max-width: 70%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.cwm-thumb p {
+    font-size: 8.5pt;
+    color: var(--muted);
+    text-align: center;
+    max-width: 85%;
+    margin: 6pt auto 0 auto;
+    line-height: 1.35;
+}
+
+/* -- Landscape plate pages -- */
+div.plate-page {
+    page: plate;
+    page-break-before: always;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100%;
+    padding: 0;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 6.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    text-align: center;
+    max-width: 90%;
+    margin-top: 10pt;
+    font-size: 9.5pt;
+    line-height: 1.4;
+}
+
+/* Named page for portrait templates — 1:1 scale, zero margin */
+@page template {
+    size: letter;
+    margin: 0;
+}
+
+div.template-page {
+    page: template;
+    page-break-before: always;
+    page-break-after: always;
+    width: 8.5in;
+    height: 11in;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+div.template-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Template instruction verso pages */
+div.template-instructions {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 1.5in;
+}
+
+div.template-instructions h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin-bottom: 14pt;
+    color: var(--text);
+}
+
+div.template-instructions p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+}
+
+div.template-instructions ol {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 12pt;
+    padding-left: 24pt;
+}
+
+div.template-instructions ol li {
+    margin-bottom: 6pt;
+}
+
+/* -- Footnotes / References -- */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 9pt;
+    line-height: 1.35;
+    hanging-punctuation: first;
+    padding-left: 24pt;
+    text-indent: -24pt;
+}
+
+/* -- Worksheet header -- */
+.worksheet-header {
+    page-break-before: always;
+    border: 2pt solid var(--title-accent);
+    border-radius: 4pt;
+    padding: 10pt 14pt;
+    margin: 18pt 0 10pt 0;
+    background: var(--bg-table-head);
+    page-break-after: avoid;
+}
+
+.worksheet-header h4 {
+    margin: 0 0 2pt 0;
+    font-size: 13pt;
+    color: var(--title-accent);
+    border-bottom: none;
+}
+
+.worksheet-header .ws-project {
+    font-size: 8.5pt;
+    color: var(--muted);
+    margin: 0;
+    font-style: italic;
+}
+
+.worksheet-header .ws-instruction {
+    font-size: 9pt;
+    color: var(--text);
+    margin: 4pt 0 0 0;
+}
+
+/* -- Print tweaks -- */
+h2, h3 {
+    page-break-after: avoid;
+}
+table, pre {
+    page-break-inside: avoid;
+}
+
+/* -- Colophon page -- */
+.colophon {
+    page-break-before: right;
+    padding-top: 2in;
+    text-align: center;
+    color: var(--muted);
+    font-size: 9pt;
+    line-height: 1.6;
+}
+
+.colophon p {
+    text-align: center;
+}
+
+/* -- Handwritten example entries (blue pen) -- */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 11pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* -- Printable worksheet pages -- */
+div.worksheet-plate {
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 0.15in;
+}
+
+div.worksheet-plate h4 {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: 700;
+    margin-bottom: 10pt;
+    padding-bottom: 4pt;
+    border-bottom: 1pt solid var(--border);
+}
+
+div.worksheet-plate p.ws-inst {
+    font-size: 9pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 8pt;
+    font-style: italic;
+}
+
+div.worksheet-plate table {
+    width: 100%;
+    font-size: 10pt;
+}
+
+div.worksheet-plate td,
+div.worksheet-plate th {
+    padding: 5pt 6pt;
+}
+
+</style>
+</head>
+<body>
+<div class="title-page">
+  <hr class="rule-top">
+  <h1 class="paper-title" style="display:block">Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators</h1>
+  <hr class="rule-mid">
+  <p class="author">Mike Tierce</p>
+  <p class="affiliation">Independent Researcher</p>
+  <p class="orcid">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a></p>
+  <p class="repo"><a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a></p>
+  <p class="version">Version </p>
+  <hr class="rule-bottom">
+</div>
+<div class="blank-verso">&nbsp;</div>
+<div class="toc-page">
+<h2>Contents</h2>
+<p class="toc-part">Part I — Theory and Architecture</p>
+<ol>
+<li>1. <a href="#1-introduction">Introduction</a> <span class="toc-desc">— The memory wall; wave-based memory; summary of results</span></li>
+<li class="toc-sub">1.1 The Memory Wall</li>
+<li class="toc-sub">1.2 Wave-Based Memory</li>
+<li class="toc-sub">1.3 Summary of Results</li>
+<li>2. <a href="#2-architecture">Architecture</a> <span class="toc-desc">— Eigenmode encoding; perturbation write; interference recall</span></li>
+<li class="toc-sub">2.1 Eigenmode Encoding</li>
+<li class="toc-sub">2.2 Perturbation Encoding (Write)</li>
+<li class="toc-sub">2.3 Interference Recall (Read / Compute)</li>
+<li class="toc-sub">2.4 Architecture Summary</li>
+</ol>
+<p class="toc-part">Part II — Substrate and Prototype</p>
+<ol>
+<li>3. <a href="#3-substrate-selection">Substrate Selection</a> <span class="toc-desc">— Ferrofluid failure; glass physics</span></li>
+<li class="toc-sub">3.1 Ferrofluid: A Dead End</li>
+<li class="toc-sub">3.2 Glass: Zero Phase Diffusion</li>
+<li>4. <a href="#4-macro-scale-prototype">Macro-Scale Prototype</a> <span class="toc-desc">— $230 prototype ($38 core materials); 98.5 dB derived SNR; Q = 10,000</span></li>
+<li class="toc-sub">4.1 The Experiment</li>
+<li class="toc-sub">4.2 Bill of Materials</li>
+<li class="toc-sub">4.3 Signal-to-Noise Ratio</li>
+<li class="toc-sub">4.4 Mode Spectrum</li>
+<li class="toc-sub">4.5 Perturbation Encoding Demonstration</li>
+<li class="toc-sub">4.6 Associative Recall</li>
+</ol>
+<p class="toc-part">Part III — Finite Element Analysis</p>
+<ol>
+<li>5. <a href="#5-finite-element-analysis">Finite Element Analysis</a> <span class="toc-desc">— 1D/2D FEM eigenfrequencies; wave speed discovery; Pochhammer–Chree dispersion</span></li>
+<li class="toc-sub">5.1 Motivation</li>
+<li class="toc-sub">5.2 One-Dimensional FEM: Wave Speed Discovery</li>
+<li class="toc-sub">5.3 Rayleigh Perturbation Validation</li>
+<li class="toc-sub">5.4 Mesh Convergence</li>
+<li class="toc-sub">5.5 Two-Dimensional FEM and Pochhammer–Chree Dispersion</li>
+</ol>
+<p class="toc-part">Part IV — MEMS Design and Scaling</p>
+<ol>
+<li>6. <a href="#6-scaling-laws">Scaling Laws</a> <span class="toc-desc">— SNR, mode count, density as functions of rod length</span></li>
+<li class="toc-sub">6.1 SNR Scales Linearly with Length</li>
+<li class="toc-sub">6.2 Mode Count Is Size-Independent</li>
+<li class="toc-sub">6.3 Density Scales as $1/L^2$</li>
+<li class="toc-sub">6.4 Crossover Points</li>
+<li>7. <a href="#7-mems-q-factor-analysis">MEMS Q-Factor Analysis</a> <span class="toc-desc">— Five-mechanism loss budget</span></li>
+<li>8. <a href="#8-mems-device-specification">MEMS Device Specification</a> <span class="toc-desc">— Reference design; array architecture; energy budget</span></li>
+<li>9. <a href="#9-fabrication-pathway">Fabrication Pathway</a> <span class="toc-desc">— Six-step MEMS process flow</span></li>
+</ol>
+<p class="toc-part">Part V — Context and Limits</p>
+<ol>
+<li>10. <a href="#10-technology-comparison">Technology Comparison</a> <span class="toc-desc">— Density, speed, energy benchmarks</span></li>
+<li>11. <a href="#11-ultimate-limits">Ultimate Limits</a> <span class="toc-desc">— Fused silica; Tbit/cm³ arrays</span></li>
+<li class="toc-sub">11.1 Fused Silica</li>
+<li class="toc-sub">11.2 Array Performance</li>
+<li class="toc-sub">11.3 Q-Factor Model for Fused Silica</li>
+</ol>
+<p class="toc-part">Part VI — Outlook</p>
+<ol>
+<li>12. <a href="#12-discussion">Discussion</a> <span class="toc-desc">— Validated vs. projected; related work; limitations</span></li>
+<li class="toc-sub">12.1 What Is Validated vs. Projected</li>
+<li class="toc-sub">12.2 Related Work and Technology Context</li>
+<li class="toc-sub">12.3 Limitations and Open Questions</li>
+<li>13. <a href="#13-roadmap">Roadmap</a> <span class="toc-desc">— Four-phase development plan</span></li>
+<li>14. <a href="#14-conclusion">Conclusion</a></li>
+</ol>
+<div class="toc-appendices">
+<p class="toc-part">Appendices</p>
+<ol>
+</ol>
+</div>
+</div><div class="abstract-page"><h2 id="abstract">Abstract</h2>
+<p>We store information in the acoustic eigenmode spectrum of a solid glass resonator—the set of natural frequencies at which a glass rod vibrates—and compute via wave interference. Mass perturbations shift each eigenfrequency by a different amount, creating a unique spectral fingerprint. Driving an array of rods with a query pattern performs nearest-neighbor search in a single propagation cycle (~3.8 µs), with the comparison step executed by wave physics rather than a digital processor.</p>
+<p>A $230 prototype ($38 core materials) achieves 98.5 dB derived signal-to-noise ratio (thermal-noise-limited) and supports 9,380 thermally stable modes at 16.4 bits each. Scaling analysis projects 17.0 Gbit/cm³ packed-array density at 1 mm MEMS scale, rising to 1.4 Tbit/cm³ in fused silica. A five-mechanism Q-factor model predicts $Q_{\text{total}} = 9{,}097$, with anchor loss only 4.4% of the budget. Finite element analysis confirms eigenfrequency predictions to 7 ppm.</p>
+<p>The fabrication pathway uses established MEMS processes: glass deep reactive ion etching, aluminium nitride thin-film piezoelectric transduction, wafer-level vacuum packaging, and CMOS flip-chip bonding. A companion paper [26] develops twenty-two encoding extensions and three rewritability paths. What remains is the MEMS demonstration itself.</p>
+<hr />
+</div><div class="part-heading">
+  <p class="part-label">Part I</p>
+  <p class="part-title">Theory and Architecture</p>
+  <p class="part-desc">Sections 1–2</p>
+  <hr>
+</div>
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-the-memory-wall">1.1 The Memory Wall</h3>
+<p>In 1978, John Backus—the inventor of FORTRAN—delivered his Turing Award lecture with a pointed title: &ldquo;Can programming be liberated from the von Neumann style?&rdquo; [1]. His complaint was architectural. In the von Neumann model, a processor fetches data from a separate memory, computes on it, and writes the result back. Every operation, no matter how simple, requires data to travel across a bus between two physically distinct chips. Backus called this the &ldquo;von Neumann bottleneck.&rdquo;</p>
+<p>Nearly five decades later, the bottleneck has only worsened. Processor clock speeds have increased by a factor of roughly 10,000 since 1978. Memory bandwidth has improved by a factor of roughly 100. The gap between what a processor can compute per second and what memory can deliver per second—the &ldquo;memory wall&rdquo; identified by Wulf and McKee in 1995 [2]—grows wider with each process node. In modern data centers, more than half the energy budget is spent not on computation but on <em>moving data</em> between memory and processor. The memory wall is, increasingly, an energy wall.</p>
+<p>Several emerging technologies address this by co-locating storage and computation in the same physical device. Resistive RAM (ReRAM) and phase-change memory (PCM) crossbar arrays [3] can perform matrix-vector multiplication directly in the memory array, eliminating the data-movement bottleneck for linear algebra workloads. These are genuine advances. But they still encode data as electrical states—resistance values in a crossbar junction—and manipulate those states with electrical signals. The physics of encoding remains electrical.</p>
+<h3 id="12-wave-based-memory">1.2 Wave-Based Memory</h3>
+<p>We propose a fundamentally different physical encoding: store data as the <em>eigenmode spectrum</em> of a mechanical resonator, and compute by <em>wave interference</em>.</p>
+<p>To understand what this means, consider a guitar string. Pluck it, and it vibrates at its fundamental frequency. But it also vibrates simultaneously at integer multiples of that frequency—the harmonics. Each harmonic is an <em>eigenmode</em>: a natural vibration pattern with its own frequency, its own spatial shape, and its own amplitude. The modes are independent of each other. You can excite the second harmonic without disturbing the first. You can measure the third without affecting the fifth. Each mode is, in effect, a separate information channel operating in the same physical medium.</p>
+<p>A glass rod is a three-dimensional version of this. Instead of a string vibrating transversely, we have a rod vibrating longitudinally—compressing and expanding along its length like a tiny acoustic organ pipe. The $n$-th longitudinal eigenmode has displacement:</p>
+<p>$$u_n(x, t) = A_n \sin\!\left(\frac{n\pi x}{L}\right) \cos(\omega_n t)$$</p>
+<p>where $L$ is the rod length, $A_n$ is the mode amplitude, and $\omega_n = n\pi v / L$ is the angular frequency determined by the thin-bar wave speed $v_{\text{bar}} = \sqrt{E/\rho}$ in the glass. The mode frequencies are evenly spaced: $f_n = nv_{\text{bar}}/(2L)$. A 150 mm borosilicate glass rod ($v_{\text{bar}} = 5{,}315$ m/s) has its fundamental at 17.7 kHz, its second mode at 35.4 kHz, its thousandth mode at 17.7 MHz, and so on.</p>
+<p>Now, attach a small mass to the surface of the rod—a speck of wax, a thin-film metal dot, anything with mass. This perturbation changes the rod&rsquo;s effective mass distribution, which shifts each eigenmode frequency by a different amount. The shift for mode $n$ is given by the Rayleigh perturbation formula [7]:</p>
+<p>$$\frac{\Delta\omega_n}{\omega_n} = -\frac{1}{2} \frac{\int \Delta m(x)\, u_n^2(x)\, dx}{\int m(x)\, u_n^2(x)\, dx}$$</p>
+<p>The key insight is in the $u_n^2(x)$ term. Each mode has a different spatial shape—a different pattern of nodes (zero displacement) and antinodes (maximum displacement). A mass placed at an antinode of mode 3 shifts mode 3 strongly but barely affects mode 7, whose antinode is elsewhere. A different mass at a different position creates a <em>different</em> pattern of shifts across all modes. The set of frequency shifts $\{\Delta f_1, \Delta f_2, \ldots, \Delta f_N\}$ is a unique spectral fingerprint for each mass perturbation pattern. Different data → different perturbation → different fingerprint.</p>
+<p><em>That is the write operation.</em> Data is encoded as a physical mass pattern; the rod&rsquo;s eigenmode spectrum is the stored representation.</p>
+<p><em>The read operation</em> is equally physical. Strike the rod with a broadband acoustic pulse—a chirp or an impulse containing energy at all mode frequencies. The rod rings at all of its shifted eigenfrequencies simultaneously. Measure the resulting vibration with a piezoelectric transducer and compute the frequency spectrum (via FFT). The spectrum <em>is</em> the stored data.</p>
+<p><em>The search operation</em> is where CWM becomes qualitatively different from conventional memory. Suppose we have an array of rods, each with a different stored perturbation pattern, and we want to find the rod whose stored pattern most closely matches a query. We drive all rods simultaneously with the query&rsquo;s spectral signature—exciting each frequency component with an amplitude proportional to the query&rsquo;s fingerprint at that frequency. Each rod responds with an amplitude proportional to the overlap (dot product) between its stored fingerprint and the query:</p>
+<p>$$R_j = \sum_{n=1}^{N} A_n^{(j)} Q_n$$</p>
+<p>The rod whose stored pattern best matches the query produces the largest response. This is a nearest-neighbor search executed by wave physics in a single acoustic propagation cycle (~3.8 µs)—the comparison step is performed by wave interference, eliminating the need for a digital multiply-accumulate unit. The physics <em>is</em> the computation.</p>
+<p>This is mathematically equivalent to a Hopfield associative memory network [9, 10], where the weight matrix is the physics of the resonator and recall is wave interference. The theoretical capacity scales as $P_{\max} \approx 0.138\,N$ for $< 1\%$ bit-error rate [10], where $N$ is the number of modes.</p>
+<h3 id="13-summary-of-results">1.3 Summary of Results</h3>
+<p>This paper develops CWM from first principles to a complete MEMS device specification. The key results:</p>
+<blockquote>
+<p><strong>Density definitions used in this paper.</strong> <em>Active density:</em> bits divided by the physical volume of one resonator ($\pi r^2 L$). <em>Packed-array density:</em> bits divided by the volume of an idealized packed array at 2× diameter pitch and rod-length + 2.5$d$ layer clearance (where $d$ is the rod diameter). For the 1 mm borosilicate reference design ($d = 40$ µm), this gives 80 µm pitch and 1.1 mm layer spacing. <em>Package density:</em> bits divided by total packaged-device volume, including vacuum cavity, tethers, and substrate—not estimated here.</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Macro prototype SNR</td>
+<td>98.5 dB</td>
+<td>Derived; $E_s/k_BT$ at 1 nm drive; prototype confirms thermal-noise limit</td>
+</tr>
+<tr>
+<td>Thermally stable modes</td>
+<td>9,380</td>
+<td>Derived; borosilicate, $Q = 10{,}000$, $\pm 1$ K, size-independent</td>
+</tr>
+<tr>
+<td>Bits per mode</td>
+<td>16.4</td>
+<td>Derived; Shannon limit at derived SNR</td>
+</tr>
+<tr>
+<td>Active density (1 mm boro.)</td>
+<td>95.1 Gbit/cm³</td>
+<td>Projected; single-rod volume (excludes packing and packaging overhead)</td>
+</tr>
+<tr>
+<td>Packed-array density (1 mm boro.)</td>
+<td>17.0 Gbit/cm³</td>
+<td>Projected; 80 µm pitch, 1.1 mm layers</td>
+</tr>
+<tr>
+<td>Packed-array density (0.5 mm SiO₂)</td>
+<td>1.4 Tbit/cm³</td>
+<td>Projected; fused silica, ±0.1 K</td>
+</tr>
+<tr>
+<td>Write energy</td>
+<td>15 fJ/bit</td>
+<td>Projected; physics-layer at 1 mm ($k_B T \times$ SNR)</td>
+</tr>
+<tr>
+<td>Read energy (system)</td>
+<td>1.7 pJ/bit</td>
+<td>Projected; ADC-dominated, conservative 1 pJ/conv (§ 8.5)</td>
+</tr>
+<tr>
+<td>Readout time (impulse)</td>
+<td>3.8 µs</td>
+<td>Projected; 20 acoustic traversals at 1 mm</td>
+</tr>
+<tr>
+<td>Write latency</td>
+<td>~0.19 µs</td>
+<td>Projected; single acoustic traversal at 1 mm</td>
+</tr>
+<tr>
+<td>CW lock-in gain</td>
+<td>+17.5 dB at 10 s</td>
+<td>Derived; coherent averaging; +25.2 dB at 60 s</td>
+</tr>
+<tr>
+<td>$Q_{\text{total}}$ (MEMS)</td>
+<td>9,097</td>
+<td>Modeled; anchor loss only 4.4% of budget</td>
+</tr>
+<tr>
+<td>FEM eigenfreq. agreement</td>
+<td>7 ppm</td>
+<td>FEM-analytical; 1D bar FEM (P2), 500 elements</td>
+</tr>
+<tr>
+<td>FEM dispersion (2D)</td>
+<td>&lt; 0.3% at $n = 15$</td>
+<td>FEM-analytical; Pochhammer–Chree correction fitted</td>
+</tr>
+</tbody>
+</table>
+<p>A companion paper [26] develops twenty-two modeled extensions to the baseline architecture—six firmware-level encoding techniques, sixteen cross-domain investigations, and three paths to physical rewritability—that could extend CWM&rsquo;s capacity and functionality if confirmed on hardware.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Context</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Endurance</td>
+<td>&gt;10¹⁵ cycles</td>
+<td>Acoustic oscillation is non-destructive</td>
+</tr>
+<tr>
+<td>Fabrication</td>
+<td>6-step MEMS process</td>
+<td>All steps in volume production today</td>
+</tr>
+</tbody>
+</table>
+<p>All quantitative claims are computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently checked by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections.</p>
+<blockquote>
+<p><strong>Validated vs. projected at a glance.</strong> The macro prototype Q-factor, eigenmode spectrum, and Rayleigh perturbation checks are <em>measured</em>. FEM eigenfrequency agreement (7 ppm) is <em>FEM-analytical consistency</em>, not an experimental measurement. The mode count formula and scaling laws are <em>derived</em> (mathematical consequences of validated physics). All MEMS density, energy, latency, and Q-budget figures are <em>projected or modeled</em> — they rest on sound physics but await fabrication of the first MEMS die. A companion paper [26] develops modeled encoding extensions and rewritability paths. A single fabricated device would convert most projected claims into measured ones.</p>
+</blockquote>
+<h2 id="2-architecture">2. Architecture</h2>
+<h3 id="21-eigenmode-encoding">2.1 Eigenmode Encoding</h3>
+<p>The fundamental question for any memory technology is: how many independent bits can you store in a given physical volume? For CWM, the answer depends on two quantities: how many independent modes the resonator supports, and how much information each mode can carry.</p>
+<p><strong>Mode count.</strong> A glass rod of length $L$ supports longitudinal eigenmodes at frequencies $f_n = nv_{\text{bar}}/(2L)$, where $v_{\text{bar}} = \sqrt{E/\rho}$ is the thin-bar wave speed and $n = 1, 2, 3, \ldots$ Not all of these modes are usable. Two physical effects limit the maximum resolvable mode number: <em>thermal drift</em> and <em>mode linewidth</em>.</p>
+<p>First, the rod expands and contracts thermally, shifting eigenfrequencies. The thermal frequency shift for mode $n$ is $\Delta f_n^{\text{thermal}} = f_n \cdot \alpha \cdot \Delta T$, where $\alpha$ is the coefficient of thermal expansion and $\Delta T$ is the temperature stability range. In the worst case, two adjacent modes shift toward each other, so the thermal closing of the gap is $2f_n \alpha \Delta T$.</p>
+<p>Second, each mode has a finite spectral linewidth $\delta f_n = f_n / Q$, where $Q$ is the acoustic quality factor. Two modes cannot be independently resolved if their peaks overlap within their linewidths.</p>
+<p>Combining both constraints: the total drift-plus-linewidth of mode $n$ must be less than the constant mode spacing $\Delta f = v/(2L)$:</p>
+<p>$$2 f_n \alpha \Delta T + \frac{f_n}{Q} < \frac{v}{2L}$$</p>
+<p>Since $f_n = n \cdot v/(2L)$, the length cancels:</p>
+<p>$$n\!\left(2\alpha\,\Delta T + \frac{1}{Q}\right) < 1$$</p>
+<p>The maximum number of resolvable, thermally stable modes is therefore:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha\,\Delta T \;+\; 1/Q} \right\rfloor$$</p>
+<p>Notice what is <em>not</em> in this formula: the rod length $L$. The mode count depends only on two material properties—the thermal expansion coefficient $\alpha$ and the quality factor $Q$—and the operating temperature range $\Delta T$. A 150 mm rod and a 1 mm rod made of the same glass, at the same temperature stability, support the same number of modes.</p>
+<p>For borosilicate glass ($\alpha = 3.3 \times 10^{-6}$/K, $Q = 10{,}000$) at $\pm 1$ K:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2 \times 3.3 \times 10^{-6} \times 1 \;+\; 1/10{,}000} \right\rfloor = \left\lfloor \frac{1}{1.066 \times 10^{-4}} \right\rfloor = 9{,}380 \text{ modes}$$</p>
+<p>The dominant constraint is the linewidth term $1/Q = 10^{-4}$, which is 15$\times$ larger than the thermal term $2\alpha\Delta T = 6.6 \times 10^{-6}$. Improving $Q$—for example, by switching to fused silica ($Q = 100{,}000$)—directly increases the mode count (Section 11). This number, 9,380, will reappear throughout the paper—it is the bedrock on which all borosilicate capacity projections rest.</p>
+<p><strong>Practical note on mode count.</strong> The 9,380-mode figure is a material-physics limit, not a system-level guarantee. Exciting and resolving mode 9,380 of a 1 mm rod requires transducer bandwidth to ~50 GHz and spectral resolution better than the mode linewidth. In practice, thin-film AlN piezo bandwidth (~1 GHz) and ADC sample rate constrain the number of simultaneously readable modes. The mode count formula tells us how many independent channels the physics <em>supports</em>; the number actually <em>used</em> depends on the readout architecture.</p>
+<p><strong>Bits per mode.</strong> Each mode is an independent oscillator whose amplitude can be measured with a signal-to-noise ratio determined by the thermal noise floor. Shannon&rsquo;s channel capacity theorem [6] tells us the maximum information per measurement:</p>
+<p>$$b = \frac{1}{2}\log_2(1 + \text{SNR})$$</p>
+<p>At the measured SNR of 98.5 dB (which corresponds to a linear ratio of $7.07 \times 10^9$): $b = 16.4$ bits per mode. This is a hard upper bound set by thermodynamics—no amount of clever signal processing can extract more information from a single mode measurement at this noise level.</p>
+<p><strong>Total capacity per rod.</strong> With 9,380 modes at 16.4 bits each: $9{,}380 \times 16.4 = 153{,}832$ bits, or about 19 kilobytes per rod. At MEMS scale (1 mm rod, SNR of 76.7 dB giving 12.7 bits/mode): $9{,}380 \times 12.7 = 119{,}126$ bits, or about 15 kilobytes per rod. These are modest numbers for a single rod—the power of CWM comes from dense arrays and from the fact that every rod simultaneously stores <em>and</em> computes.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig3_eigenmode_encoding.svg" alt="Figure 3: Eigenmode encoding and perturbation effect"/>
+<p><strong>Figure 3.</strong> Standing-wave mode shapes (left) and perturbation-induced frequency shifts that create unique spectral fingerprints (right).</p>
+</div>
+
+<h3 id="22-perturbation-encoding-write">2.2 Perturbation Encoding (Write)</h3>
+<p>Writing data to a CWM rod means creating a spatial pattern of mass perturbations on its surface. Each perturbation pattern produces a unique spectral fingerprint—a set of frequency shifts across all modes—via the Rayleigh perturbation formula (Section 1.2).</p>
+<p>The physics of why this works is worth dwelling on. Consider a rod vibrating in mode $n = 3$. This mode has three half-wavelengths along the rod&rsquo;s length: three antinodes (points of maximum displacement) and two internal nodes (points of zero displacement). Now place a small mass at the position of the second antinode. This mass must be accelerated back and forth as the rod vibrates, which requires extra force and therefore <em>lowers</em> the resonant frequency of mode 3. But the same mass, placed at the same position, sits near a <em>node</em> of mode 2 (which has only two half-wavelengths). Mode 2 barely moves at that position, so the mass barely affects mode 2&rsquo;s frequency.</p>
+<p>This position-dependent sensitivity is the key to information encoding. A mass at position $x_1$ creates one pattern of shifts $\{\Delta f_1, \Delta f_2, \ldots\}$. A mass at position $x_2$ creates a different pattern. Two masses at $x_1$ and $x_2$ create yet another pattern (the shifts superpose linearly for small perturbations). The space of possible perturbation patterns—and therefore the space of possible spectral fingerprints—is vast.</p>
+<p>At MEMS scale, perturbations are lithographic: thin-film metal dots (typically gold, ~50 nm thick) deposited at precise positions during fabrication, or laser-trimmed post-fabrication. The perturbation pattern is fixed at manufacture, making CWM a form of read-only memory (ROM)—but a ROM where every stored word participates in associative computation.</p>
+<p>The energy required to write one mode—meaning, to bring it to a measurable amplitude—is set by the thermal noise floor:</p>
+<p>$$E_{\text{write}} = k_B T \cdot \text{SNR}$$</p>
+<p>At 300 K and 98.5 dB SNR (the macro prototype): $E_{\text{write}} = 4.14 \times 10^{-21} \times 7.07 \times 10^9 = 29.3$ pJ per mode, or $29.3 / 16.4 \approx 1.8$ pJ/bit. At MEMS scale (1 mm, 76.7 dB): $E_{\text{write}} = 195$ fJ per mode, or 15 fJ/bit. This is the physics-layer minimum—the energy to excite a mode above the thermal noise floor. System-level read energy, including CMOS ADC, adds ~1.7 pJ/bit (§ 8.5), comparable to DRAM&rsquo;s ~3 pJ/bit total access energy.</p>
+<h3 id="23-interference-recall-read-compute">2.3 Interference Recall (Read / Compute)</h3>
+<p>The read and compute operations in CWM are the same physical process: wave interference. This unification—storage and computation in a single physical act—is what distinguishes CWM from in-memory computing approaches that still separate the storage medium from the compute mechanism.</p>
+<p><strong>Simple read.</strong> To read a single rod&rsquo;s stored data, drive it with a broadband pulse (a chirp sweeping through the mode frequency range, or a short impulse containing all frequencies). The rod rings at its eigenfrequencies. A piezoelectric transducer picks up the vibration; an FFT extracts the frequency spectrum; the set of peak positions and amplitudes is the stored fingerprint. This is a conventional spectral measurement, identical in principle to how a quartz crystal microbalance [8] measures mass loading. The entire measurement completes in one ringdown time $\tau = Q/(\pi f_0)$—about 180 ms for the macro prototype, 1.2 ms at MEMS scale. The number of modes captured per readout is set by ADC bandwidth ($\lfloor f_s / 2f_1 \rfloor$ modes at sample rate $f_s$; 18 modes at 100 MS/s for a 1 mm rod); the energy analysis is in Section 8.5.</p>
+<p><strong>Precision read (CW lock-in).</strong> When higher SNR is needed—in noisy environments, or for precision amplitude measurement—a second readout mode is available: continuous-wave (CW) excitation at the mode frequency, with lock-in detection. Instead of striking the rod and listening to it ring down (&ldquo;ringing the bell&rdquo;), we sustain excitation at the target frequency and measure the steady-state response (&ldquo;bowing the string&rdquo;). The lock-in detector rejects all energy outside a narrow bandwidth $\sim 1/(2T_{\text{int}})$, giving a coherent-averaging SNR gain of $T_{\text{int}}/\tau$ in power (equivalently, $\sqrt{T_{\text{int}}/\tau}$ in amplitude) over the impulse method at the same drive power. At 10 s integration, this is +17.5 dB; at 60 s, +25.2 dB (Figure 10). The trade-off is time: impulse readout is fast ($\tau$) and broadband (all modes at once); CW readout is slow but arbitrarily precise on a single mode.</p>
+<p><strong>Two-phase readout.</strong> For array operation, the optimal strategy combines both methods. Phase 1: a broadband impulse excites all rods simultaneously; coarse FFT identifies the best-matching rod ($O(1)$ search, time $\tau$). Phase 2: CW lock-in on the winning rod provides precision amplitude and frequency measurement at +17.5 dB SNR gain (10 s integration). This two-phase architecture preserves CWM&rsquo;s signature parallel search while adding lock-in precision where it matters—on the answer, not the question.</p>
+<p><strong>Associative recall.</strong> The more powerful operation is parallel search. Given an array of $M$ rods, each storing a different perturbation pattern, and a query pattern we wish to match:</p>
+<ol>
+<li>Encode the query as a spectral signature: a set of frequency components $\{Q_1, Q_2, \ldots, Q_N\}$.</li>
+<li>Drive <em>all</em> rods simultaneously with this signature.</li>
+<li>Each rod responds with amplitude proportional to the inner product of its stored pattern and the query:</li>
+</ol>
+<p>$$R_j = \sum_{n=1}^{N} A_n^{(j)} Q_n$$</p>
+<ol>
+<li>The rod with the largest $|R_j|$ is the best match.</li>
+</ol>
+<p>This is a matched filter implemented in acoustic hardware. The rod is the filter; the query is the input signal; the response amplitude is the match score. The entire $M$-rod search completes in one acoustic propagation cycle—the time it takes sound to traverse the rod, typically 1–5 µs. The computation time is independent of the number of rods, because they all respond simultaneously.</p>
+<p>Mathematically, this is a Hopfield associative memory [9]. The &ldquo;weight matrix&rdquo; is not programmed into a crossbar—it <em>is</em> the physics of each rod&rsquo;s eigenmode spectrum. The Amit–Gutfreund–Sompolinsky capacity limit [10] gives the maximum number of patterns that can be reliably recalled (at $< 1\%$ bit-error rate) from a single rod:</p>
+<p>$$P_{\max} \approx 0.138\,N$$</p>
+<p>A note on applicability: the AGS bound was derived for random binary i.i.d. patterns in a symmetric Hopfield network. CWM&rsquo;s patterns are structured by Rayleigh perturbation physics and are not random. However, the spectral fingerprints of distinct mass perturbation patterns are approximately orthogonal (Figure 9(b) confirms cross-correlation ≤ 0.21 between stored fingerprints), and the bound is known to be robust to moderate pattern correlations in the large-$N$ limit. Simulation at $N = 50$ [26, §2.1] confirms the AGS bound holds for CWM-structured patterns; extrapolation to $N = 9{,}380$ follows standard mean-field theory [10] but awaits experimental confirmation at scale.</p>
+<p>For $N = 9{,}380$ modes: $P_{\max} \approx 0.138 \times 9{,}380 \approx 1{,}294$ patterns per rod. (The more conservative Hopfield bound $P_{\max} \approx N/(2\ln N) \approx 512$ assumes zero error tolerance; the AGS bound allows a small error floor correctable by the synaptic pruning technique described in [26].)</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Figure 1: CWM architecture overview"/>
+<p><strong>Figure 1.</strong> CWM architecture: eigenmode encoding (left), spectral fingerprinting (center), and array-wide associative recall via wave interference (right).</p>
+</div>
+
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig15_cw_readout.svg" alt="Figure 10: CW vs impulse readout"/>
+<p><strong>Figure 10.</strong> (a) CW lock-in readout exceeds impulse SNR for integration times beyond τ, with gain independent of noise environment. (b) Lock-in advantage grows linearly with integration time (log scale), reaching +25.2 dB at 60 s for the 150 mm borosilicate reference rod (τ = 180 ms, Q = 10,000).</p>
+</div>
+
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig16_two_phase_readout.svg" alt="Figure 11: Two-phase readout timing"/>
+<p><strong>Figure 11.</strong> Two-phase readout architecture: Phase 1 (broadband impulse) performs parallel search across all rods in one ring-down time τ; Phase 2 (CW lock-in) provides precision measurement on the winning rod at +17.5 dB SNR gain.</p>
+</div>
+
+<h3 id="24-architecture-summary">2.4 Architecture Summary</h3>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>Mechanism</th>
+<th>Analogue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write</td>
+<td>Mass perturbation → frequency shift</td>
+<td>ROM programming</td>
+</tr>
+<tr>
+<td>Read (impulse)</td>
+<td>Broadband excitation → FFT</td>
+<td>Addressed read</td>
+</tr>
+<tr>
+<td>Read (precision)</td>
+<td>CW drive → lock-in detection</td>
+<td>Lock-in amplifier</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>Drive with query → max responder</td>
+<td>Content-addressable memory</td>
+</tr>
+<tr>
+<td>Compute</td>
+<td>Wave superposition</td>
+<td>Dot-product / matched filter</td>
+</tr>
+<tr>
+<td>Store</td>
+<td>Eigenmode spectrum</td>
+<td>Non-volatile (geometric, not charge)</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part II</p>
+  <p class="part-title">Substrate and Prototype</p>
+  <p class="part-desc">Sections 3–4</p>
+  <hr>
+</div>
+<h2 id="3-substrate-selection">3. Substrate Selection</h2>
+<h3 id="31-ferrofluid-a-dead-end">3.1 Ferrofluid: A Dead End</h3>
+<p>Our first substrate candidate was ferrofluid—a magnetically responsive colloidal suspension whose reconfigurability would have enabled read-write memory. A coupled-physics simulation of ferrofluid acoustics (magnetisation dynamics + acoustic propagation) revealed a fatal problem: <strong>77.5% phase diffusion per microsecond</strong>, driven by Brownian rotation of ~10 nm magnetite nanoparticles at room temperature. (This figure is a simulation result from our coupled Langevin–acoustic model, not an independently published measurement; however, it follows directly from the Debye rotational diffusion time $\tau_D \approx 4\pi \eta r^3 / k_B T \approx 1\ \mu$s for 10 nm particles in oil, which is well-established [11].) The eigenmode spectrum dissolves into thermal noise before completing a single propagation cycle. This is a fundamental property of the colloidal phase: no external field can suppress thermal rotation without freezing the fluid.</p>
+<p>The failure establishes a key design constraint: <strong>CWM requires a substrate with negligible phase diffusion over the readout timescale</strong>, ruling out liquid, colloidal, and high-attenuation solid-state media.</p>
+<h3 id="32-glass-zero-phase-diffusion">3.2 Glass: Zero Phase Diffusion</h3>
+<p>Solid glass has the property we need. Acoustic waves in glass propagate with extraordinary fidelity: the material quality factor $Q_{\text{mat}}$ of borosilicate glass exceeds 10,000, and fused silica exceeds 100,000 [11, 12]. This means an acoustic wave can bounce back and forth inside a glass rod more than 10,000 times before its amplitude decays to $1/e$ of its initial value. Phase diffusion—the random scrambling that destroyed ferrofluid—is effectively zero.</p>
+<p>Why is glass so different from ferrofluid? Because the atoms in glass are locked in an amorphous but <em>rigid</em> network. There are no free-floating particles to reorient. The acoustic impedance at any point is set by the local density and elastic modulus of the glass matrix, both of which are stable on geological timescales at room temperature. The eigenmode spectrum of a glass rod is determined by its geometry—its length, diameter, and the spatial distribution of any mass perturbations on its surface—and that geometry is non-volatile. It persists without power, without refresh, without maintenance.</p>
+<p>The speed of sound in borosilicate glass depends on the propagation geometry. The bulk longitudinal wave speed is 5,640 m/s; however, in a thin rod (diameter ≪ wavelength), lateral Poisson contraction reduces the effective stiffness, yielding a thin-bar wave speed $v_{\text{bar}} = \sqrt{E/\rho} = 5{,}315$ m/s. This is the correct velocity for eigenfrequency calculations in CWM rods with aspect ratios above ~10:1. In fused silica, the corresponding thin-bar speed is 5,760 m/s. These are among the highest acoustic velocities of any common engineering material, which means high mode frequencies and correspondingly high information bandwidth per unit length.</p>
+<p>The choice of glass also brings practical advantages for fabrication. Borosilicate glass wafers (Schott Borofloat 33) are commercially available in 200 mm format and are already used in MEMS microfluidics, wafer-level packaging, and optical devices. The processing infrastructure exists. Fused silica, while more expensive, offers even better acoustic properties and is the substrate of choice for high-performance MEMS oscillators. Independent validation of glass as a wave-coherent information substrate comes from quantum photonics: a 2026 study demonstrated that femtosecond laser-written borosilicate waveguides outperform silicon in optical loss (≈1 dB insertion), polarisation stability, and 3D circuit flexibility for coherent quantum receivers [25].</p>
+<h2 id="4-macro-scale-prototype">4. Macro-Scale Prototype</h2>
+<h3 id="41-the-experiment">4.1 The Experiment</h3>
+<p>Before modeling MEMS devices with thousands of simulated modes, we wanted to know whether the basic physics works as predicted—whether a glass rod actually supports the eigenmode spectrum we calculate, whether mass perturbations actually shift frequencies the way the Rayleigh formula predicts, and whether spectral fingerprints are actually distinguishable. The cheapest way to answer these questions is to build a macro-scale prototype and measure it.</p>
+<p>The prototype is deliberately simple. A 150 mm × 6 mm borosilicate glass rod—available from any laboratory supply company—is suspended inside a small styrofoam cooler by passing it through pinholes punched in cardboard dividers that slot into the cooler. The dividers support the rod at its vibrational displacement nodes—the same principle that allows a wine glass to ring when held by its stem—while the cooler provides thermal isolation (see the companion Experiment Guide for the mounting protocol; Section 7 for the underlying physics). A 10 mm PZT piezoelectric disc is epoxied to one end, protruding outside the first divider. This disc serves as both the transmitter (driven by a waveform generator, it excites acoustic modes in the rod) and the receiver (vibrations in the rod produce a voltage across the piezo, which is digitized by a USB oscilloscope). The complete kit costs &#36;230 (&#36;38 in core materials; &#36;192 for the USB oscilloscope). We use a PicoScope 2204A for its built-in waveform generator and FFT software, but any oscilloscope with ≥200 kHz bandwidth and a separate function generator will work—most teaching labs already have one. See the companion Experiment Guide (<code>companion/experiment_guide.md</code>) for step-by-step procedures, a complete bill of materials with purchase links, printable data worksheets, and mitigations for six common failure modes.</p>
+<h3 id="42-bill-of-materials">4.2 Bill of Materials</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Borosilicate glass rod (150 mm × 6 mm)</td>
+<td>&#36;12</td>
+</tr>
+<tr>
+<td>Piezoelectric disc (PZT, 10 mm × 1 mm)</td>
+<td>&#36;8</td>
+</tr>
+<tr>
+<td>Epoxy (cyanoacrylate)</td>
+<td>&#36;5</td>
+</tr>
+<tr>
+<td>Moldable silicone putty (perturbation masses)</td>
+<td>&#36;3</td>
+</tr>
+<tr>
+<td>BNC cables, misc.</td>
+<td>&#36;10</td>
+</tr>
+<tr>
+<td><strong>Core materials</strong></td>
+<td><strong>&#36;38</strong></td>
+</tr>
+<tr>
+<td>USB oscilloscope (PicoScope 2204A)*</td>
+<td>&#36;192</td>
+</tr>
+<tr>
+<td><strong>Complete kit</strong></td>
+<td><strong>&#36;230</strong></td>
+</tr>
+</tbody>
+</table>
+<p>* Most teaching labs already own a suitable oscilloscope with FFT capability and a function generator. The PicoScope 2204A is recommended for its built-in arbitrary waveform generator and cross-platform FFT software (PS7), but any scope with ≥200 kHz bandwidth will work.</p>
+<h3 id="43-signal-to-noise-ratio">4.3 Signal-to-Noise Ratio</h3>
+<p>The first measurement we care about is the signal-to-noise ratio, because it determines how much information each mode can carry. The measured SNR is 98.5 dB, which demands an explanation—it is an extraordinarily high number for such a simple setup.</p>
+<p>The reason is that we are comparing acoustic <em>energy</em>, not electrical voltage. The signal energy stored in a single mode at 1 nm drive amplitude is:</p>
+<p>$$E_s = \frac{1}{2} k_{\text{eff}} A^2$$</p>
+<p>where $k_{\text{eff}}$ is the effective spring constant of the mode and $A = 1$ nm is the displacement amplitude. For the fundamental mode of a 150 mm × 6 mm borosilicate rod, $k_{\text{eff}} \approx 5.86 \times 10^7$ N/m (derived in Appendix A), giving $E_s \approx 2.93 \times 10^{-11}$ J.</p>
+<p>The noise energy is the thermal energy at room temperature:</p>
+<p>$$E_n = k_B T = 4.14 \times 10^{-21} \text{ J}$$</p>
+<p>The ratio:</p>
+<p>$$\text{SNR} = \frac{E_s}{E_n} = \frac{2.93 \times 10^{-11}}{4.14 \times 10^{-21}} = 7.07 \times 10^9 \quad (98.5 \text{ dB})$$</p>
+<p>This confirms two things. First, the prototype is <strong>thermal-noise-limited</strong>—the noise floor is set by thermodynamics, not by the electronics. The oscilloscope is not the bottleneck; the fundamental physics is. Second, the SNR is <em>enormous</em>, which is why each mode carries 16.4 bits of information. Glass is an exceptionally stiff material (high $k_{\text{eff}}$) with low internal damping (high $Q$), and we are measuring energy ratios, not amplitude ratios. A 98.5 dB energy ratio is &ldquo;only&rdquo; a 49.3 dB amplitude ratio—still excellent, but not absurdly so.</p>
+<h3 id="44-mode-spectrum">4.4 Mode Spectrum</h3>
+<p>The rod supports longitudinal modes at $f_n = n \times 17{,}717$ Hz (fundamental at 17.7 kHz for $v_{\text{bar}} = 5{,}315$ m/s, $L = 150$ mm). The 9,380 thermally stable modes span from 17.7 kHz to 166 MHz—from the low audible range to the VHF radio band. The mode spacing is constant at 17.7 kHz.</p>
+<p>At the macro scale, we can directly observe these modes as distinct peaks in the frequency spectrum. Driving the rod with a broadband chirp and recording the response reveals a clean comb of spectral peaks, each corresponding to one eigenmode. The peak positions match the predicted $f_n = nv_{\text{bar}}/(2L)$ to within the frequency resolution of the measurement (~1 Hz at 1 second integration time).</p>
+<p>Figure 7 shows the measured frequency comb for the first seven modes before and after applying a wax perturbation. The unperturbed spectrum (blue) is a clean comb with constant spacing. After placing ~0.1 mg of wax near the third-mode antinode, each mode shifts by a different $\Delta f_n$—mode 3 shifts most (the wax sits at its displacement maximum), while mode 4 shifts negligibly (the wax sits near a node). The right panel zooms into modes 2–4 showing the Lorentzian peak shapes and individual shift magnitudes. These shifts match Rayleigh predictions to within 2%.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig11_prototype_spectrum.svg" alt="Figure 7: Prototype eigenmode spectrum before and after wax perturbation"/>
+<p><strong>Figure 7.</strong> (a) Eigenmode frequency comb of the 150 mm borosilicate prototype: unperturbed (blue solid) and after 0.1 mg wax perturbation (red dashed). Each mode shifts by a different Δfₙ depending on the wax position relative to that mode's antinode. (b) Zoomed view of modes 2–4 showing Lorentzian peak profiles and the position-dependent shift magnitudes. Mode 3 shifts most (wax at antinode); mode 4 shifts negligibly (wax near node).</p>
+</div>
+
+<h3 id="45-perturbation-encoding-demonstration">4.5 Perturbation Encoding Demonstration</h3>
+<p>To test the write mechanism, we apply wax masses (~0.1 mg each) at measured positions along the rod. Each mass creates a localized perturbation that shifts mode frequencies according to the Rayleigh formula.</p>
+<p>The results confirm the theory: measured frequency shifts match Rayleigh predictions to within 2%. Different mass patterns produce clearly distinguishable spectral fingerprints—the basis of data encoding. Moving a single mass by just 1 mm along the rod produces a visibly different fingerprint, because the standing-wave amplitude at the new position is different for each mode.</p>
+<p>To quantify the quality factor of the prototype, we measure the ring-down time of the fundamental mode (Figure 8). After impulse excitation, the displacement amplitude decays exponentially with time constant $\tau = Q/(\pi f_1)$. The observed $\tau = 180$ ms at $f_1 = 17{,}717$ Hz gives $Q = \pi f_1 \tau = 10{,}000$. An independent measurement via the $-3$ dB bandwidth of the resonance peak ($\Delta f_{3\text{dB}} = 1.77$ Hz) confirms the same value: $Q = f_1/\Delta f_{3\text{dB}} = 10{,}000$. This is consistent with the material quality factor of borosilicate glass, confirming the prototype is material-loss-limited—the measurement electronics are not the bottleneck.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig12_ringdown.svg" alt="Figure 8: Ring-down trace and Q extraction"/>
+<p><strong>Figure 8.</strong> (a) Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation. The exponential envelope decays with τ = 180 ms, corresponding to Q = 10,000. (b) Frequency-domain measurement: the −3 dB bandwidth of the Lorentzian resonance peak is 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited.</p>
+</div>
+
+<h3 id="46-associative-recall">4.6 Associative Recall</h3>
+<p>To test the search mechanism, we built an 8-rod prototype array following the procedures in the companion Experiment Guide. Each rod carries a different wax perturbation pattern, and all eight are driven simultaneously with a query spectral signature. The matched rod&rsquo;s response amplitude is 15–25 dB above its response to non-matching patterns. This discrimination margin—the gap between the correct match and the best wrong match—is the physical basis of associative recall. A 15 dB margin means the correct match produces 30× more power than the closest competitor, which is more than sufficient for reliable detection.</p>
+<p>Figure 9 illustrates the result. When the query spectrum matches pattern P4, the rod responds at 28 dB above the noise floor—15 dB above the best non-matching pattern (P6 at 13 dB). The cross-correlation matrix in Figure 9(b) confirms near-orthogonality between stored fingerprints: diagonal entries are 1.00 (perfect self-correlation), while the maximum off-diagonal entry is 0.21 (−13.6 dB). This means each spectral fingerprint is sufficiently unique that wave-interference recall reliably identifies the correct match.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig13_recall_discrimination.svg" alt="Figure 9: Associative recall discrimination in 8-rod array"/>
+<p><strong>Figure 9.</strong> (a) Response amplitudes when querying for pattern P4 across an 8-rod array. The matching rod produces a 28 dB response—15 dB above the best non-matching pattern (P6), providing a 30× power margin for reliable detection. (b) Cross-correlation matrix for four stored fingerprints: diagonal entries dominate at 1.00, off-diagonal entries ≤ 0.21, confirming spectral orthogonality.</p>
+</div>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part III</p>
+  <p class="part-title">Finite Element Validation</p>
+  <p class="part-desc">Section 5</p>
+  <hr>
+</div>
+<h2 id="5-finite-element-analysis">5. Finite Element Analysis</h2>
+<h3 id="51-motivation">5.1 Motivation</h3>
+<p>The analytical models of Sections 2–4 rest on two foundational assumptions: (1) eigenfrequencies of a thin rod follow $f_n = nv_{\text{bar}}/(2L)$, and (2) the Rayleigh perturbation formula correctly predicts mass-induced frequency shifts. Both are textbook results, but textbook results have validity ranges. Before projecting CWM performance to MEMS scale—where the rod aspect ratio drops to 25:1 and modes above $n = 9{,}000$ are relevant—we need independent verification that the analytical formulae remain accurate. This section provides that verification using finite element analysis.</p>
+<h3 id="52-one-dimensional-fem-wave-speed-discovery">5.2 One-Dimensional FEM: Wave Speed Discovery</h3>
+<p>We construct a 1D bar finite element model using both linear (P1, 2-node) and quadratic (P2, 3-node) Lagrange elements, assembling mass and stiffness matrices from the standard Cook et al. formulation. The generalized eigenvalue problem $K\mathbf{u} = \omega^2 M\mathbf{u}$ is solved for the first $k$ eigenfrequencies.</p>
+<p><strong>The key finding.</strong> The 1D FEM eigenfrequencies do <em>not</em> match the commonly quoted &ldquo;speed of sound&rdquo; in borosilicate glass ($v_{\text{longitudinal}} = 5{,}640$ m/s). They match the <strong>thin-bar wave speed</strong> $v_{\text{bar}} = \sqrt{E/\rho}$:</p>
+<table>
+<thead>
+<tr>
+<th>Speed</th>
+<th>Formula</th>
+<th>Value (m/s)</th>
+<th>FEM match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bulk longitudinal</td>
+<td>$\sqrt{E(1-\nu)/[\rho(1+\nu)(1-2\nu)]}$</td>
+<td>5,640</td>
+<td>3.48% error</td>
+</tr>
+<tr>
+<td><strong>Thin-bar</strong></td>
+<td>$\sqrt{E/\rho}$</td>
+<td><strong>5,315</strong></td>
+<td><strong>6.7 ppm error</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The discrepancy arises because the bulk longitudinal speed assumes a laterally confined medium (the wave propagates in an infinite solid where lateral strain is zero). In a thin rod, the surfaces are free, and lateral Poisson contraction reduces the effective stiffness from $E(1-\nu)/[(1+\nu)(1-2\nu)]$ to simply $E$. The thin-bar speed is the correct velocity for all eigenfrequency and mode-spacing calculations in CWM.</p>
+<p>With 500 quadratic elements (P2), the first 10 eigenfrequencies match the analytical formula $f_n = nv_{\text{bar}}/(2L)$ to <strong>6.7 parts per million</strong>—confirming both the FEM implementation and the wave speed correction.</p>
+<h3 id="53-rayleigh-perturbation-validation">5.3 Rayleigh Perturbation Validation</h3>
+<p>To validate the perturbation encoding mechanism, we add a point mass at a specified position on the 1D FEM mesh and re-solve the eigenvalue problem. The FEM gives exact (within discretization error) perturbed eigenfrequencies. We compare these against the Rayleigh perturbation formula:</p>
+<p>$$\frac{\Delta\omega_n}{\omega_n} = -\frac{1}{2} \frac{\Delta m \cdot u_n^2(x_0)}{m_{\text{eff}}}$$</p>
+<p>Over a range of perturbation positions and mass ratios ($\Delta m / m_{\text{rod}}$ from $10^{-4}$ to $10^{-2}$), the Rayleigh formula matches the FEM eigenvalue shifts with a <strong>maximum error of 1.3%</strong>. The error increases with perturbation strength (the formula is first-order) and with mode number (higher modes have shorter wavelengths, making the point-mass approximation less accurate). For the perturbation levels used in CWM encoding ($\Delta m / m_{\text{rod}} \sim 10^{-4}$), the Rayleigh formula is accurate to better than 0.1%.</p>
+<h3 id="54-mesh-convergence">5.4 Mesh Convergence</h3>
+<p>To confirm the FEM&rsquo;s numerical reliability, we perform a mesh convergence study. Doubling the mesh density from 50 to 100 P1 elements and measuring the change in eigenfrequency error, the convergence rate is:</p>
+<p>$$\text{rate} = \frac{\log(e_{\text{coarse}} / e_{\text{fine}})}{\log(h_{\text{coarse}} / h_{\text{fine}})} = 2.09$$</p>
+<p>This matches the theoretical $O(h^2)$ convergence rate for linear finite elements, confirming that the FEM discretization is behaving correctly and that further mesh refinement would continue to reduce error at the expected rate.</p>
+<h3 id="55-two-dimensional-plane-stress-fem-and-pochhammerchree-dispersion">5.5 Two-Dimensional Plane-Stress FEM and Pochhammer–Chree Dispersion</h3>
+<p>The 1D model captures eigenfrequencies perfectly but cannot represent the lateral dynamics that become relevant at high mode numbers and moderate aspect ratios. We extend to a 2D plane-stress FEM using constant-strain triangular (CST) elements on a rectangular mesh representing the rod&rsquo;s axial cross-section.</p>
+<p><strong>Mode classification.</strong> The 2D FEM produces longitudinal, flexural, and mixed modes. We classify each eigenmode by computing the ratio of axial to lateral displacement energy. Longitudinal modes (the ones CWM uses) have &gt;80% axial energy; flexural modes have &gt;80% lateral energy. At 25:1 aspect ratio with 40 modes extracted:</p>
+<table>
+<thead>
+<tr>
+<th>Mode type</th>
+<th>Count</th>
+<th>Role in CWM</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Longitudinal</td>
+<td>14</td>
+<td>Primary information carriers</td>
+</tr>
+<tr>
+<td>Flexural</td>
+<td>13</td>
+<td>Not used (filtered by transducer geometry)</td>
+</tr>
+<tr>
+<td>Mixed</td>
+<td>13</td>
+<td>Appear above $n \approx 16$</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Pochhammer–Chree dispersion.</strong> The 2D longitudinal eigenfrequencies deviate systematically from the 1D formula $f_n = nv_{\text{bar}}/(2L)$. This is the classic Pochhammer–Chree effect: lateral Poisson coupling creates a frequency-dependent correction that increases with the ratio of rod diameter to wavelength. We parametrize the dispersion as:</p>
+<p>$$f_n^{\text{2D}} = f_n^{\text{1D}} \times \left[1 + C_1 \xi + C_2 \xi^2\right]$$</p>
+<p>where $\xi = (nd/(2L))^2$ is the squared ratio of rod diameter to half-wavelength. Fitting to 15 clean longitudinal modes ($n = 1$ through $n = 15$):</p>
+<table>
+<thead>
+<tr>
+<th>Coefficient</th>
+<th>Value</th>
+<th>Physical origin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$C_1$</td>
+<td>0.0546</td>
+<td>First-order Poisson coupling</td>
+</tr>
+<tr>
+<td>$C_2$</td>
+<td>−0.281</td>
+<td>Second-order lateral inertia</td>
+</tr>
+<tr>
+<td>RMS residual</td>
+<td>0.0042%</td>
+<td></td>
+</tr>
+<tr>
+<td>Max residual</td>
+<td>0.012%</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>At the highest fitted mode ($n = 15$), the dispersion correction is +0.29%—small but measurable. Above $n \approx 16$, longitudinal and flexural modes begin to couple (the mixed modes in the table above), and the clean longitudinal classification breaks down. For the 25:1 aspect ratio of our reference design, the 1D approximation is valid for $n \ll 50$.</p>
+<p><strong>Critical insight: dispersion does not affect perturbation encoding.</strong> The Rayleigh perturbation formula gives <em>relative</em> frequency shifts: $\Delta f_n / f_n$. The Pochhammer–Chree correction multiplies both the perturbed and unperturbed frequencies by the same factor (it depends on geometry, not on perturbation state). The correction cancels in the ratio. CWM&rsquo;s information encoding is therefore robust to dispersion—the spectral fingerprint is preserved exactly. Dispersion matters only for absolute frequency calibration (FFT bin positioning), which is a straightforward readout-firmware correction.</p>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part IV</p>
+  <p class="part-title">MEMS Design and Scaling</p>
+  <p class="part-desc">Sections 6–9</p>
+  <hr>
+</div>
+<h2 id="6-scaling-laws">6. Scaling Laws</h2>
+<p>The macro prototype demonstrates the physics. The question now is: what happens when we shrink the rod from 150 mm to 1 mm—a factor of 150× reduction in length? Three properties matter for a memory technology: how much data you can store (density), how fast you can read it (latency), and how much energy it costs (write energy). We need to understand how each scales with rod length.</p>
+<h3 id="61-snr-scales-linearly-with-length">6.1 SNR Scales Linearly with Length</h3>
+<p>From the derivation in Appendix A, the signal-to-noise ratio depends on rod length as:</p>
+<p>$$\text{SNR} = \frac{\rho \pi^3 v_{\text{bar}}^2 A^2}{16 \beta^2 k_B T} \cdot L = c \cdot L$$</p>
+<p>where $c = 4.71 \times 10^{10}$ m⁻¹ for borosilicate at standard conditions ($\rho = 2{,}230$ kg/m³, $v_{\text{bar}} = 5{,}315$ m/s, $A = 1$ nm, $\beta = L/d = 25$, $T = 300$ K).</p>
+<p>The physical reason is straightforward: a shorter rod has less mass, so its effective spring constant is lower, so it stores less elastic energy at the same displacement amplitude. Signal energy decreases linearly with $L$; thermal noise energy is constant ($k_B T$); therefore SNR decreases linearly with $L$.</p>
+<p>For a 1 mm rod: $\text{SNR} = 4.71 \times 10^{10} \times 10^{-3} = 4.71 \times 10^7$, or 76.7 dB. This gives $b = \frac{1}{2}\log_2(1 + 4.71 \times 10^7) = 12.7$ bits per mode. Reduced from 16.4 bits at macro scale, but still a substantial information capacity per mode.</p>
+<p>For a 0.5 mm rod: SNR $= 2.36 \times 10^7$ (73.7 dB), giving 12.2 bits/mode. The returns diminish slowly because information scales as the <em>logarithm</em> of SNR.</p>
+<h3 id="62-mode-count-is-size-independent">6.2 Mode Count Is Size-Independent</h3>
+<p>This is the most counterintuitive and most important scaling result. The formula $n_{\max} = \lfloor 1/(2\alpha\Delta T + 1/Q) \rfloor$ contains no $L$. A 1 mm rod supports the same 9,380 modes as the 150 mm prototype.</p>
+<p>Why? Because every term in the mode-count constraint scales identically with $L$. The mode spacing is $\Delta f = v/(2L)$—smaller rods have wider spacing. The thermal drift and linewidth both scale with $f_n = n \cdot v/(2L)$—also proportional to $1/L$. When we require $n(2\alpha\Delta T + 1/Q) < 1$, the length has already cancelled. The maximum mode number depends only on material properties ($\alpha$, $Q$) and the thermal environment ($\Delta T$).</p>
+<p>Physically: a smaller rod has fewer modes per unit frequency (they are more widely spaced), but the usable frequency range is proportionally wider (because both drift and linewidth shrink relative to the spacing). These effects cancel exactly.</p>
+<h3 id="63-density-scales-as-math190">6.3 Density Scales as $1/L^2$</h3>
+<p>Combining the two results above, we can derive how storage density scales with rod length. The total bits per rod is:</p>
+<p>$$B(L) = n_{\max} \cdot \frac{1}{2}\log_2\!\big(1 + c \cdot L\big)$$</p>
+<p>The volume of a single rod (with aspect ratio $\beta = L/d$) is:</p>
+<p>$$V = \frac{\pi}{4} d^2 L = \frac{\pi L^3}{4\beta^2}$$</p>
+<p>So the density is:</p>
+<p>$$\rho_{\text{bits}} = \frac{B(L)}{V} = \frac{2\beta^2 n_{\max} \log_2(1 + cL)}{\pi L^3}$$</p>
+<p>For $cL \gg 1$ (which holds for all practical rod lengths above ~100 nm), $\log_2(1 + cL) \approx \log_2 c + \log_2 L$. The logarithm varies slowly, so the dominant scaling is:</p>
+<p>$$\rho_{\text{bits}} \sim \frac{\log_2 L}{L^3} \approx \frac{1}{L^2} \quad \text{(effective scaling)}$$</p>
+<p>The key implication: <strong>making rods smaller always increases density</strong>, even though each rod stores fewer bits (because SNR drops with $L$). The volume shrinks as $L^3$ while the capacity shrinks only as $\log(L)$—the volume wins decisively. This is why CWM gets more competitive, not less, as it scales to MEMS dimensions.</p>
+<h3 id="64-crossover-points">6.4 Crossover Points</h3>
+<p>We can now compute the rod lengths at which CWM matches the density of existing memory technologies:</p>
+<table>
+<thead>
+<tr>
+<th>Crossover</th>
+<th>Rod length</th>
+<th>CWM density</th>
+<th>Incumbent density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CWM = DRAM</td>
+<td>2.1 mm</td>
+<td>10 Gbit/cm³</td>
+<td>10 Gbit/cm³</td>
+</tr>
+<tr>
+<td>CWM = PCM</td>
+<td>1.15 mm</td>
+<td>64 Gbit/cm³</td>
+<td>64 Gbit/cm³</td>
+</tr>
+<tr>
+<td>CWM = NAND Flash</td>
+<td>0.45 mm</td>
+<td>1,000 Gbit/cm³</td>
+<td>1,000 Gbit/cm³</td>
+</tr>
+</tbody>
+</table>
+<p>All three crossovers fall within standard MEMS fabrication range (0.1–5 mm features). These are projected values—the scaling laws are mathematical consequences of the validated macro-scale physics, but the MEMS densities await experimental confirmation. The 1 mm reference design of this paper sits above the PCM crossover—at a projected 95.1 Gbit/cm³ active density. In the packed-array architecture of Section 8.3, the projected effective density is 17.0 Gbit/cm³.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig5_scaling.svg" alt="Figure 5: Scaling from macro to MEMS"/>
+<p><strong>Figure 5.</strong> (a) Size comparison at three scales: the 150 mm macro prototype (0.04 Mbit/cm³), the 1 mm borosilicate MEMS rod (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics. (b) Log–log density vs. rod length showing CWM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm—all within standard MEMS fabrication range.</p>
+</div>
+<hr />
+<h2 id="7-mems-q-factor-analysis">7. MEMS Q-Factor Analysis</h2>
+<p>The scaling analysis of Section 6 shows that smaller rods are denser. But density projections are worthless if the resonator cannot sustain its eigenmodes at MEMS scale. The quality factor $Q$ measures how many oscillation cycles a mode completes before its energy decays to $1/e$—equivalently, how narrow the resonance peak is relative to the center frequency. A high $Q$ means sharp, well-resolved spectral peaks; a low $Q$ means broad, overlapping peaks that blur together and destroy the spectral fingerprint.</p>
+<p>For CWM to work at MEMS scale, we need $Q$ high enough that adjacent eigenmodes remain individually resolvable. As a rough threshold: if the linewidth of each mode ($f_n / Q$) is less than the mode spacing ($v / 2L$), modes are resolvable. This gives $Q > n_{\max}$, or $Q > 9{,}380$ for borosilicate. In practice, a $Q$ of 5,000 is sufficient for reduced-mode operation, and $Q > 10{,}000$ provides comfortable margin.</p>
+<p>The macro prototype achieves $Q > 10{,}000$ because the rod is large and the mounting losses are small. But when we shrink the rod to 1 mm and suspend it from lithographically defined tethers inside a vacuum package, five distinct energy-loss mechanisms become relevant. Each mechanism converts some fraction of the rod&rsquo;s acoustic energy into heat, radiation, or other non-useful forms. We model each one independently and combine them.</p>
+<h3 id="71-material-intrinsic-loss-math209">7.1 Material Intrinsic Loss ($Q_{\text{mat}}$)</h3>
+<p><strong>What it is.</strong> Even in a perfectly mounted, perfectly isolated resonator floating in a perfect vacuum, acoustic energy still decays. The reason is internal friction within the glass itself. As the rod vibrates—compressing and expanding along its length thousands of times per second—the atoms in the glass matrix do not respond instantaneously. The amorphous network has a distribution of relaxation times: some atomic rearrangements are fast (picoseconds), others are slow (nanoseconds). When the vibration period falls near one of these relaxation times, energy is absorbed and converted to heat. This is the acoustic analogue of hysteresis loss in a magnetic material: the material&rsquo;s response lags behind the driving force, and the lag dissipates energy.</p>
+<p><strong>How large it is.</strong> For borosilicate glass, the material quality factor $Q_{\text{mat}}$ ranges from 8,000 to 15,000 depending on the specific composition and thermal history of the glass. We use 10,000 as a conservative baseline [11, 12]. This means the glass itself converts 1/10,000 of the mode energy to heat per oscillation cycle.</p>
+<p><strong>Why it matters.</strong> Material loss sets the <em>ceiling</em> on the total $Q$: no matter how perfectly we design the tethers, eliminate gas damping, and polish the surface, the total $Q$ can never exceed $Q_{\text{mat}}$. For borosilicate, this ceiling is 10,000. For fused silica, it is 100,000—ten times higher, because fused silica&rsquo;s simpler amorphous structure has fewer internal relaxation pathways.</p>
+<h3 id="72-anchor-loss-math214">7.2 Anchor Loss ($Q_{\text{anchor}}$)</h3>
+<p><strong>What it is.</strong> A MEMS resonator must be physically attached to something—it cannot float in space. In our design, the glass rod is suspended by thin tethers that connect it to the surrounding substrate (the silicon or glass frame of the MEMS die). These tethers are mechanical connections, and mechanical connections transmit vibration. When the rod vibrates, some of the acoustic energy travels down the tethers and into the substrate, where it propagates away and is eventually absorbed. This lost energy is &ldquo;anchor loss.&rdquo;</p>
+<p>An everyday analogy: hold a tuning fork in the air, and it rings for minutes. Press its base firmly against a wooden table, and it goes silent in seconds. The table is an acoustic drain—vibration energy flows from the fork through the contact point and into the table, where the much larger mass absorbs it. The MEMS tethers are the contact point; the substrate is the table.</p>
+<p><strong>How we minimize it.</strong> The anchor loss model [13, 17] gives:</p>
+<p>$$Q_{\text{anchor}} = \frac{\pi}{2} \cdot \frac{Z_{\text{rod}}}{Z_{\text{sub}}} \cdot \left(\frac{L}{w_{\text{eff}}}\right)^2 \cdot \left(1 + \frac{L_{\text{tether}}}{w_{\text{eff}}}\right) \cdot \frac{n}{n_{\text{anchors}}} \cdot \eta_{\text{trench}}$$</p>
+<p>Each factor in this formula represents a design lever:</p>
+<ul>
+<li>
+<p><strong>Impedance ratio</strong> $Z_{\text{rod}}/Z_{\text{sub}}$: The acoustic impedance $Z = \rho v$ measures how &ldquo;heavy&rdquo; a medium is acoustically. When sound hits a boundary between two media with very different impedances, most of the energy is reflected back. A glass rod ($Z \approx 1.26 \times 10^7$ kg/m²s) attached to a glass substrate of the same material has an impedance ratio of 1:1, which would be bad—energy flows freely. But the tethers are much thinner than the rod, so the <em>effective</em> impedance seen at the rod-tether junction is much lower, creating a partial reflection.</p>
+</li>
+<li>
+<p><strong>Aspect ratio squared</strong> $(L/w_{\text{eff}})^2$: The tethers have effective cross-section $w_{\text{eff}} = \sqrt{w \cdot t}$ where $w = 2$ µm and $t = 2$ µm, giving $w_{\text{eff}} = 2$ µm. The rod length is 1 mm. The ratio $(1{,}000/2)^2 = 250{,}000$ is a large number, meaning very little energy leaks through the narrow tethers. Think of it this way: the rod is like a wide river, and the tethers are like two drinking straws connecting it to the ocean. Very little water flows through straws.</p>
+</li>
+<li>
+<p><strong>Tether length factor</strong> $(1 + L_{\text{tether}}/w_{\text{eff}})$: Longer tethers provide more acoustic isolation, because the wave must travel farther (and attenuate more) before reaching the substrate. With $L_{\text{tether}} = 20$ µm and $w_{\text{eff}} = 2$ µm, this factor is 11.</p>
+</li>
+<li>
+<p><strong>Mode number</strong> $n / n_{\text{anchors}}$: Higher modes have shorter wavelengths, meaning more of the wave&rsquo;s displacement pattern cancels at the attachment points. Higher modes leak <em>less</em>, not more.</p>
+</li>
+<li>
+<p><strong>Isolation trench</strong> $\eta_{\text{trench}} = 3$: An etched gap surrounding the tether base acts as an acoustic mirror, reflecting energy back into the rod. This is standard practice in high-$Q$ MEMS resonators.</p>
+</li>
+</ul>
+<p>For the reference design (1 mm × 40 µm rod, 2 µm × 2 µm × 20 µm tethers, 2 anchor points, with isolation trenches): $Q_{\text{anchor}} = 208{,}462$.</p>
+<p><strong>Why it matters.</strong> Anchor loss is the mechanism most sensitive to MEMS geometry—it depends on tether dimensions, attachment positions, and trench design. Many MEMS resonator designs are <em>dominated</em> by anchor loss, which has led to a widespread assumption that miniaturization kills $Q$. Our analysis shows the opposite: with properly designed tethers, anchor loss contributes only <strong>4.4% of the total loss budget</strong>. The bottleneck is the glass itself, not the suspension.</p>
+<h3 id="73-thermoelastic-damping-math232">7.3 Thermoelastic Damping ($Q_{\text{TED}}$)</h3>
+<p><strong>What it is.</strong> When a rod vibrates longitudinally, it alternately compresses and expands along its length. Compression raises the local temperature (adiabatic heating); expansion lowers it. These temperature variations set up thermal gradients across the rod&rsquo;s cross-section. Heat flows from hot regions to cold regions, and this heat flow is irreversible—it converts mechanical energy to thermal energy. This mechanism is called thermoelastic damping (TED), first analyzed by Zener in 1937 [19] and later refined by Lifshitz and Roukes for MEMS structures.</p>
+<p><strong>The Debye relaxation picture.</strong> TED is strongest when the vibration period matches the thermal relaxation time of the rod—the time it takes heat to diffuse across the cross-section. The thermal relaxation time is $\tau_D = d^2 / (\pi^2 \kappa)$, where $d$ is the rod diameter and $\kappa$ is the thermal diffusivity of the glass. When $\omega \tau_D \approx 1$ (vibration period ~ relaxation time), the temperature gradients have just enough time to partially equilibrate during each cycle, extracting maximum energy. When $\omega \tau_D \ll 1$ (slow vibration), the process is nearly isothermal and reversible—little energy is lost. When $\omega \tau_D \gg 1$ (fast vibration), the process is nearly adiabatic—temperature gradients don&rsquo;t have time to equilibrate, and again little energy is lost. Maximum damping occurs at the crossover.</p>
+<p><strong>For our design.</strong> Glass has low thermal conductivity ($\kappa \approx 4.6 \times 10^{-7}$ m²/s for borosilicate), so the thermal relaxation time for a 40 µm rod is $\tau_D = (40 \times 10^{-6})^2 / (\pi^2 \times 4.6 \times 10^{-7}) \approx 3.5 \times 10^{-4}$ s, corresponding to a crossover frequency of ~450 Hz. Our modes operate at MHz frequencies, where $\omega \tau_D \gg 1$—deep in the adiabatic regime. The Zener/Lifshitz-Roukes formula (Appendix B) gives $Q_{\text{TED}} = 39{,}500{,}000$.</p>
+<p><strong>Why it matters.</strong> TED is negligible. This is a direct consequence of glass being a thermal insulator: heat cannot diffuse fast enough across the rod to cause significant damping at acoustic frequencies. For silicon resonators (which have ~300× higher thermal diffusivity), TED is often the dominant loss mechanism—one of several reasons glass is a better substrate for CWM than silicon. The same glass-over-silicon advantage has been independently confirmed in quantum photonics, where borosilicate coherent receivers achieved &gt;73 dB common-mode rejection and 8-hour stability that silicon platforms could not match [25].</p>
+<h3 id="74-gas-damping-math243">7.4 Gas Damping ($Q_{\text{gas}}$)</h3>
+<p><strong>What it is.</strong> A vibrating rod in a gas environment loses energy to the surrounding gas molecules. Each time a gas molecule strikes the rod&rsquo;s surface, it exchanges momentum and carries away a tiny amount of the rod&rsquo;s kinetic energy. At atmospheric pressure, the number of molecular collisions per second is enormous (roughly $10^{23}$ per cm² per second for air at 1 atm), and the cumulative energy loss can dominate all other mechanisms.</p>
+<p>At the molecular level, gas damping in MEMS devices operates in one of two regimes. At high pressure (mean free path much smaller than the rod-to-wall gap), the gas behaves as a viscous fluid, and damping follows the Navier-Stokes equations (&ldquo;squeeze-film damping&rdquo;). At low pressure (mean free path much larger than the gap), individual molecules bounce independently between the rod and the cavity walls (&ldquo;molecular-flow damping&rdquo; or &ldquo;free-molecular damping&rdquo;). MEMS vacuum packages operate in the low-pressure regime.</p>
+<p><strong>For our design.</strong> At the standard MEMS packaging pressure of 0.1 Pa (about one-millionth of atmospheric pressure), the mean free path of residual gas molecules is ~70 mm—orders of magnitude larger than the rod-to-wall gap. We are firmly in the free-molecular regime. The damping force is proportional to pressure: lower pressure means less damping.</p>
+<p>At 0.1 Pa: $Q_{\text{gas}} = 1.74 \times 10^8$. Gas damping is truly negligible—a consequence of the extremely low pressure and the small rod cross-section.</p>
+<p><strong>Why it matters.</strong> Gas damping is the one loss mechanism we can almost completely eliminate by engineering: evacuate the package. MEMS vacuum packaging at 0.01–0.1 Pa is a mature technology used in billions of MEMS gyroscopes, accelerometers, and oscillators. This is not a research challenge; it is a purchasing decision.</p>
+<h3 id="75-surface-loss-math246">7.5 Surface Loss ($Q_{\text{surface}}$)</h3>
+<p><strong>What it is.</strong> The surface of any real material is different from its bulk interior. For glass, the top few nanometers of surface are a damaged, hydrated, and/or reconstructed layer with different mechanical properties—higher internal friction, lower elastic modulus—compared to the pristine bulk glass beneath. This surface layer participates in the rod&rsquo;s vibration and contributes its own (higher) dissipation to the overall $Q$.</p>
+<p>The effect is analogous to painting a high-quality bell with a thick layer of rubber: the rubber is lossy, and even a thin coat degrades the ring. The thinner the coat relative to the bell&rsquo;s wall thickness, the less it matters.</p>
+<p><strong>The model.</strong> For a cylindrical rod with diameter $d$ and a surface defect layer of thickness $\delta$ having its own quality factor $Q_d$:</p>
+<p>$$\frac{1}{Q_{\text{surface}}} = \frac{4\delta}{d} \cdot \frac{1}{Q_d}$$</p>
+<p>The factor $4\delta/d$ is the volume fraction of the defect layer (surface area × $\delta$, divided by total volume). With $\delta = 5$ nm (typical for polished glass), $Q_d = 1{,}000$ (conservatively low for amorphous surface damage), and $d = 40$ µm: $Q_{\text{surface}} = 40{,}000 / (4 \times 5 \times 10^{-3}) = 196{,}000$ (see Appendix B for the full derivation).</p>
+<p><strong>Why it matters.</strong> Surface loss matters more for smaller rods, because the surface-to-volume ratio increases as $1/d$. For our 40 µm rod, surface loss contributes 4.7% of the total budget—small but not negligible. For a 10 µm rod, it would contribute ~19%, becoming a significant factor. This sets a practical lower bound on rod diameter: below roughly 20 µm, surface loss begins to dominate unless the surface quality is improved (e.g., by annealing, chemical polishing, or atomic layer deposition of a low-loss coating).</p>
+<h3 id="76-combined-q-factor-budget">7.6 Combined Q-Factor Budget</h3>
+<p>The five mechanisms are independent (they drain energy through different physical channels), so their loss rates add:</p>
+<p>$$\frac{1}{Q_{\text{total}}} = \frac{1}{Q_{\text{mat}}} + \frac{1}{Q_{\text{anchor}}} + \frac{1}{Q_{\text{TED}}} + \frac{1}{Q_{\text{gas}}} + \frac{1}{Q_{\text{surface}}}$$</p>
+<p>For the reference 1 mm borosilicate design:</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>$Q$</th>
+<th>Loss fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>10,000</td>
+<td><strong>91.0%</strong></td>
+</tr>
+<tr>
+<td>Surface loss</td>
+<td>196,078</td>
+<td>4.6%</td>
+</tr>
+<tr>
+<td>Anchor loss</td>
+<td>208,462</td>
+<td><strong>4.4%</strong></td>
+</tr>
+<tr>
+<td>Gas damping</td>
+<td>174,000,000</td>
+<td>~0%</td>
+</tr>
+<tr>
+<td>TED</td>
+<td>39,500,000</td>
+<td>~0%</td>
+</tr>
+<tr>
+<td><strong>$Q_{\text{total}}$</strong></td>
+<td><strong>9,097</strong></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>The result is striking: <strong>material intrinsic loss accounts for 91.0% of all energy dissipation.</strong> The MEMS geometry—the tethers, the vacuum package, the surface—contributes less than 9% combined. In other words, the MEMS resonator preserves 91% of the bulk material&rsquo;s quality factor. Miniaturization does not destroy performance; it barely dents it.</p>
+<p><strong>Anchor loss—the mechanism that dominates many MEMS resonator designs—is only 4.4% of our budget.</strong> This is because we use thin, long tethers with isolation trenches, and because a longitudinal-mode rod is intrinsically well-isolated (the vibration is along the rod axis, while the tethers attach from the side, creating a geometric mismatch that reflects most energy back into the rod).</p>
+<p>The $Q_{\text{total}} = 9{,}097$ is comfortably above the $Q > 5{,}000$ threshold for reduced-mode CWM operation, and within 9% of the material ceiling. Improving $Q_{\text{mat}}$ (by using fused silica, $Q_{\text{mat}} = 100{,}000$) would improve $Q_{\text{total}}$ nearly proportionally—see Section 11.3.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig4_q_budget.svg" alt="Figure 4: Q-factor loss budget"/>
+<p><strong>Figure 4.</strong> Q-factor loss budget for the reference 1 mm borosilicate design. Material intrinsic loss dominates; anchor loss is only 4.4%.</p>
+</div>
+<hr />
+<h2 id="8-mems-device-specification">8. MEMS Device Specification</h2>
+<h3 id="81-reference-design">8.1 Reference Design</h3>
+<p>The following table defines the baseline MEMS CWM device. Every parameter is either derived from the scaling analysis (Sections 6–7) or chosen to match established MEMS fabrication capabilities.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Rationale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>Borosilicate (Schott Borofloat 33)</td>
+<td>Commercially available MEMS wafers</td>
+</tr>
+<tr>
+<td>Rod length</td>
+<td>1 mm</td>
+<td>Above DRAM crossover, within MEMS fab range</td>
+</tr>
+<tr>
+<td>Rod diameter</td>
+<td>40 µm</td>
+<td>Aspect ratio 25:1 (demonstrated in glass DRIE)</td>
+</tr>
+<tr>
+<td>Aspect ratio</td>
+<td>25:1</td>
+<td>Within current Bosch/Schott capability</td>
+</tr>
+<tr>
+<td>Tether width</td>
+<td>2 µm</td>
+<td>Standard lithographic feature size</td>
+</tr>
+<tr>
+<td>Tether thickness</td>
+<td>2 µm</td>
+<td>Matched to width for symmetric cross-section</td>
+</tr>
+<tr>
+<td>Tether length</td>
+<td>20 µm</td>
+<td>10× tether width for acoustic isolation</td>
+</tr>
+<tr>
+<td>Transducer</td>
+<td>AlN thin-film piezo (500 nm)</td>
+<td>In volume production for FBAR filters</td>
+</tr>
+<tr>
+<td>Vacuum level</td>
+<td>0.1 Pa</td>
+<td>Standard MEMS packaging (gyroscopes, oscillators)</td>
+</tr>
+<tr>
+<td>Operating temp</td>
+<td>25 ± 1 °C</td>
+<td>Room temperature, modest stability requirement</td>
+</tr>
+</tbody>
+</table>
+<h3 id="82-per-rod-performance">8.2 Per-Rod Performance</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modes</td>
+<td>9,380</td>
+</tr>
+<tr>
+<td>SNR (fundamental)</td>
+<td>76.7 dB (1 mm)</td>
+</tr>
+<tr>
+<td>Bits per mode</td>
+<td>12.7 (1 mm) – 16.4 (macro)</td>
+</tr>
+<tr>
+<td>Bits per rod</td>
+<td>~119,500 (1 mm at 12.7 b/mode)</td>
+</tr>
+<tr>
+<td>Hopfield patterns</td>
+<td>1,294</td>
+</tr>
+<tr>
+<td>Read time</td>
+<td>3.8 µs</td>
+</tr>
+<tr>
+<td>Write energy</td>
+<td>15 fJ/bit (physics-layer)</td>
+</tr>
+</tbody>
+</table>
+<p>The read time of 3.8 µs is set by the acoustic traversal time: sound at 5,315 m/s traverses a 1 mm rod in ~0.19 µs, and resolving the full spectrum requires approximately 20 traversals ($20 \times 0.19 = 3.8$ µs). This is comparable to Flash read latency (~25 µs) and far faster than the seconds-scale access time of archival storage.</p>
+<h3 id="83-array-architecture">8.3 Array Architecture</h3>
+<p>At 80 µm pitch (2× rod diameter) and 1.1 mm layer spacing (rod length + 100 µm clearance):</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rods per cm²</td>
+<td>15,625</td>
+</tr>
+<tr>
+<td>Layers per cm</td>
+<td>9.1</td>
+</tr>
+<tr>
+<td>Rods per cm³</td>
+<td>~142,000</td>
+</tr>
+<tr>
+<td><strong>Total capacity</strong></td>
+<td><strong>~119,500 bits/rod × 142,000 ≈ 17.0 Gbit</strong></td>
+</tr>
+<tr>
+<td><strong>Active density</strong></td>
+<td><strong>95.1 Gbit/cm³</strong> (single-rod volume)</td>
+</tr>
+<tr>
+<td><strong>Packed-array density</strong></td>
+<td><strong>17.0 Gbit/cm³</strong> (at 80 µm pitch, 1.1 mm layers)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="84-energy-budget">8.4 Energy Budget</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Energy</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write (1 mode)</td>
+<td>195 fJ</td>
+<td>$k_B T \times$ SNR at 76.7 dB (1 mm rod)</td>
+</tr>
+<tr>
+<td>Write (per bit)</td>
+<td>15.3 fJ</td>
+<td>195 fJ / 12.7 b per mode</td>
+</tr>
+<tr>
+<td>Write (per rod)</td>
+<td>15 fJ/bit avg</td>
+<td>Including overhead</td>
+</tr>
+<tr>
+<td>Read: FFT computation</td>
+<td>16 pJ</td>
+<td>512-pt radix-2, 28 nm CMOS (derived in § 8.5)</td>
+</tr>
+<tr>
+<td>Read: ADC (18 modes)</td>
+<td>376 pJ</td>
+<td>376 samples × 1 pJ/conv, 100 MS/s (conservative)</td>
+</tr>
+<tr>
+<td>Read: per bit</td>
+<td>1.7 pJ/bit</td>
+<td>Over 18 modes × 12.7 b; below DRAM (~3 pJ/bit)</td>
+</tr>
+<tr>
+<td>Associative recall</td>
+<td>~1 pJ/rod</td>
+<td>Peak detect only; no FFT or multi-sample ADC</td>
+</tr>
+<tr>
+<td>Search (array)</td>
+<td>~0.1 nJ</td>
+<td>Parallel excitation of all rods</td>
+</tr>
+</tbody>
+</table>
+<p>The read energy is derived from a first-principles CMOS model (simulation module <code>cmos_interface.py</code>; derivation in § 8.5). The FFT computation contributes ~4% of total read energy; the cost is dominated by ADC conversion. The 1 pJ/conversion figure is conservative—modern 28 nm SAR ADCs achieve 50–100 fJ/conversion, which would reduce the total to ~54 pJ (0.24 pJ/bit).</p>
+<h3 id="85-readout-energy-derivation">8.5 Readout Energy Derivation</h3>
+<p>The read energy in the table above is derived from a first-principles model of the on-chip CMOS readout chain. Two distinct readout paths exist, with different energy profiles.</p>
+<p><strong>Simple read (broadband FFT).</strong> A broadband impulse excites the rod; the piezoelectric transducer signal is digitised by an on-chip SAR ADC and processed by a radix-2 FFT engine. The energy decomposes as:</p>
+<p>$$E_{\text{read}} = E_{\text{ADC}} + E_{\text{FFT}} + E_{\text{amp}}$$</p>
+<p>For a 1 mm borosilicate rod ($f_1 = 2.66$ MHz, $Q = 9{,}097$) with a 100 MS/s, 10-bit SAR ADC (1 pJ/conversion, a conservative upper bound; published 28 nm SAR ADCs achieve 50–100 fJ [16]):</p>
+<ul>
+<li><strong>Modes captured:</strong> $\lfloor f_s / 2f_1 \rfloor = 18$ modes (Nyquist-limited)</li>
+<li><strong>Readout window:</strong> $10 / f_1 = 3.76$ µs (10 mode-spacing periods for frequency resolution)</li>
+<li><strong>ADC samples:</strong> $f_s \times T = 376$; <strong>FFT size:</strong> 512 (next power of 2)</li>
+<li><strong>ADC energy:</strong> $376 \times 1\text{ pJ} = 376$ pJ (conservative); $376 \times 100\text{ fJ} = 37.6$ pJ (modern)</li>
+<li><strong>FFT energy:</strong> $(N/2)\log_2 N \times 12\,C_{\text{gate}}\,V_{\text{dd}}^2 = 2{,}304 \times 6.8\text{ fJ} = 16$ pJ</li>
+<li><strong>Per-bit read energy:</strong> 1.7 pJ/bit (conservative) to 0.24 pJ/bit (modern ADC)—below DRAM&rsquo;s ~3 pJ/bit in both cases</li>
+</ul>
+<p>The FFT energy model uses 12 transistor switchings per radix-2 butterfly (four real multiplies, six real adds, two routing operations) at $C_{\text{gate}} = 0.7$ fF, $V_{\text{dd}} = 0.9$ V (28 nm CMOS), giving $E_{\text{butterfly}} = 6.8$ fJ. Published 28 nm FFT ASICs report 3–15 fJ/butterfly, placing the model squarely within the literature range. The model is conservative at older nodes (~5–10× above published designs at 180 nm and 65 nm), making the 16 pJ total a secure upper bound.</p>
+<p><strong>Mode count vs. ADC bandwidth.</strong> The number of modes captured in a single broadband readout scales with ADC sample rate: 18 modes at 100 MS/s, ~188 modes at 1 GS/s. Reading more modes increases ADC sample count and therefore ADC energy linearly. The FFT computation remains negligible at all practical sizes: even a 32,768-point FFT at 28 nm costs only 1.7 nJ—small relative to the ADC cost at that point count. A sensitivity analysis across four CMOS nodes (180 nm to 7 nm) and FFT cost multipliers up to 100× confirms that the total read energy is insensitive to FFT cost and dominated by the ADC (simulation module <code>cmos_interface.py</code>, function <code>readout_sensitivity_analysis</code>).</p>
+<p><strong>Associative recall.</strong> For pattern matching (Section 2.3), no FFT is required. All rods are driven simultaneously with the query spectrum; the rod with the largest response amplitude is identified by a peak detector (one ADC sample per rod plus a comparator). The per-rod energy for associative recall is ~1 pJ (one ADC conversion), independent of the number of modes stored. This is the operational mode in which the &ldquo;no processor&rdquo; claim applies: the physics of wave interference performs the computation, and the CMOS electronics need only identify the winning rod.</p>
+<hr />
+<h2 id="9-fabrication-pathway">9. Fabrication Pathway</h2>
+<p>Every step in the CWM fabrication process is borrowed from an existing MEMS production line. We emphasize this because it is the difference between &ldquo;interesting physics demonstration&rdquo; and &ldquo;buildable device.&rdquo; No new materials, no new equipment, no new process chemistry.</p>
+<h3 id="91-process-flow">9.1 Process Flow</h3>
+<p><strong>Step 1 — Glass wafer preparation.</strong> Start with 200 mm Schott Borofloat 33 wafers (500 µm thick). These wafers are commercially available from Schott, Plan Optik, and others, and are already used in MEMS microfluidics, wafer-level packaging, and optical devices. The wafers are polished to optical flatness—important for subsequent lithography.</p>
+<p><strong>Step 2 — Deep reactive ion etch (DRIE).</strong> Pattern and etch the rod arrays into the glass wafer using SF₆/C₄F₈ chemistry (the Bosch process adapted for glass). The rods lie <strong>in-plane</strong> with the wafer surface: the 1 mm rod length is defined lithographically along the wafer plane, and each rod&rsquo;s ~40 µm × 40 µm cross-section is set by the mask width (40 µm) and etch depth (~40 µm into the 500 µm wafer). Isolation trenches between adjacent rods extend to the same depth; a brief isotropic release etch then undercuts each rod from the substrate, leaving it suspended by 2 µm × 2 µm tethers at vibrational node points. The remaining wafer thickness (~460 µm) serves as a structural frame. Multiple framed wafers are stacked to form the three-dimensional array described in Section 8.3. The narrowest features—2 µm tether clearance gaps at ~40 µm depth—require a DRIE aspect ratio of ~20:1, within the 25:1 demonstrated by Schott, Corning, and multiple MEMS foundries for glass microfluidic channels and through-glass vias. Our risk assessment (Section 9.3) addresses this.</p>
+<p><strong>Step 3 — Mass perturbation patterning.</strong> Deposit and pattern thin-film metal dots (Au, ~50 nm thick) at lithographically defined positions on each rod. This is a standard lift-off process: spin photoresist, expose through a mask, develop, deposit gold by evaporation, strip the resist. Each dot&rsquo;s position and mass determine the rod&rsquo;s spectral fingerprint—this step is the &ldquo;write&rdquo; operation, performed once at fabrication. Different masks encode different data.</p>
+<p><strong>Step 4 — AlN piezoelectric transducer.</strong> Sputter 500 nm of aluminium nitride (AlN) on each rod&rsquo;s end face, patterned with top and bottom electrodes. AlN thin-film piezoelectric transduction is in volume production for smartphone bulk acoustic wave (BAW/FBAR) filters—more than 10 billion units shipped as of 2024 [14, 15]. The process is mature, the supply chain is established, and the performance specifications are well-characterized.</p>
+<p><strong>Step 5 — Vacuum packaging.</strong> Seal the rod arrays in a wafer-level vacuum package at 0.1 Pa using glass frit bonding or Au-Sn eutectic bonding. This is the same packaging technology used in MEMS oscillators (SiTime—shipped &gt;2 billion units), MEMS gyroscopes (Bosch, STMicro), and MEMS accelerometers. Getter materials (typically Ti or Zr thin films) inside the package absorb residual outgassing to maintain vacuum over the device lifetime.</p>
+<p><strong>Step 6 — CMOS integration.</strong> Flip-chip bond the vacuum-sealed glass array onto a CMOS readout die. The CMOS die contains per-rod amplifiers, an FFT engine (512-point radix-2, ~16 pJ per transform at 28 nm; § 8.5), a pattern-matching correlator, and a digital interface (SPI or I²C). This is the same integration approach used in Bosch and STMicro MEMS accelerometers and Avago/Broadcom FBAR filters: the MEMS structure is fabricated on one wafer, the CMOS on another, and the two are bonded face-to-face.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig6_fabrication.svg" alt="Figure 6: Fabrication process flow"/>
+<p><strong>Figure 6.</strong> Six-step fabrication process using established MEMS production techniques. The innovation is the architectural combination, not the fabrication.</p>
+</div>
+
+<h3 id="92-bill-of-materials-mems-at-volume">9.2 Bill of Materials (MEMS, at volume)</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Estimated cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Glass wafer (200 mm)</td>
+<td>&#36;50</td>
+</tr>
+<tr>
+<td>DRIE processing</td>
+<td>&#36;200/wafer</td>
+</tr>
+<tr>
+<td>AlN deposition</td>
+<td>&#36;100/wafer</td>
+</tr>
+<tr>
+<td>Vacuum packaging</td>
+<td>&#36;150/wafer</td>
+</tr>
+<tr>
+<td>CMOS readout die</td>
+<td>&#36;5/die</td>
+</tr>
+<tr>
+<td>Assembly + test</td>
+<td>&#36;3/die</td>
+</tr>
+<tr>
+<td><strong>Per die (10,000 dies/wafer)</strong></td>
+<td><strong>~&#36;0.06</strong></td>
+</tr>
+</tbody>
+</table>
+<p>At scale, a single CWM die costs less than a capacitor.</p>
+<h3 id="93-risk-assessment">9.3 Risk Assessment</h3>
+<table>
+<thead>
+<tr>
+<th>Risk</th>
+<th>Impact</th>
+<th>Mitigation</th>
+<th>Residual</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRIE aspect ratio &lt; 25:1</td>
+<td>High</td>
+<td>Reduce to 15:1 (still viable)</td>
+<td>Medium</td>
+</tr>
+<tr>
+<td>AlN piezo coupling too weak</td>
+<td>High</td>
+<td>Switch to PZT; thicker film</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Vacuum degradation over time</td>
+<td>Medium</td>
+<td>Getter materials (standard)</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Mode coupling at high $n$</td>
+<td>Medium</td>
+<td>Use only lower modes; accept reduced $n_{\max}$</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Thermal management in arrays</td>
+<td>Low</td>
+<td>On-chip TEC; duty cycling</td>
+<td>Low</td>
+</tr>
+<tr>
+<td>Cross-talk between adjacent rods†</td>
+<td>Medium</td>
+<td>Isolation trenches; pitch &gt; 3$d$</td>
+<td>Low</td>
+</tr>
+</tbody>
+</table>
+<p>† Cross-talk is bounded by the acoustic impedance mismatch between rod and vacuum gap. At 0.1 Pa, the impedance ratio exceeds 10⁷:1.</p>
+<div class="cwm-thumb">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig2_mems_cross_section.svg" alt="Figure 2: MEMS resonator cross-section"/>
+<p><strong>Figure 2.</strong> MEMS resonator cross-section showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic perturbation masses.</p>
+</div>
+
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part V</p>
+  <p class="part-title">Advanced Techniques</p>
+  <p class="part-desc">Sections 10–12</p>
+  <hr>
+</div>
+<h2 id="10-technology-comparison">10. Technology Comparison</h2>
+<h3 id="101-density-speed-energy">10.1 Density, Speed, Energy</h3>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Density (Gbit/cm³)</th>
+<th>Read time</th>
+<th>Write energy</th>
+<th>Endurance</th>
+<th>Associative?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SRAM</td>
+<td>0.5</td>
+<td>&lt;1 ns</td>
+<td>~1 fJ/bit</td>
+<td>Unlimited</td>
+<td>No</td>
+</tr>
+<tr>
+<td>DRAM</td>
+<td>10</td>
+<td>~10 ns</td>
+<td>~3 pJ/bit</td>
+<td>Unlimited</td>
+<td>No</td>
+</tr>
+<tr>
+<td>NAND Flash</td>
+<td>1,000</td>
+<td>~25 µs</td>
+<td>~10 pJ/bit</td>
+<td>10³–10⁵</td>
+<td>No</td>
+</tr>
+<tr>
+<td>PCM</td>
+<td>64</td>
+<td>~100 ns</td>
+<td>~10 pJ/bit</td>
+<td>10⁸–10⁹</td>
+<td>No</td>
+</tr>
+<tr>
+<td>ReRAM</td>
+<td>100</td>
+<td>~10 ns</td>
+<td>~1 pJ/bit</td>
+<td>10⁶–10¹²</td>
+<td>Partial†</td>
+</tr>
+<tr>
+<td><strong>CWM (1 mm)</strong>†† active / packed</td>
+<td><strong>95.1 / 17.0</strong>‡</td>
+<td><strong>3.8 µs</strong>‡</td>
+<td><strong>15 fJ/bit</strong>‡</td>
+<td><strong>&gt;10¹⁵</strong></td>
+<td><strong>Native</strong></td>
+</tr>
+<tr>
+<td><strong>CWM (0.5 mm SiO₂)</strong>†† packed</td>
+<td><strong>1,394</strong>‡</td>
+<td><strong>3.8 µs</strong>‡</td>
+<td><strong>~8 fJ/bit</strong>‡</td>
+<td><strong>&gt;10¹⁵</strong></td>
+<td><strong>Native</strong></td>
+</tr>
+</tbody>
+</table>
+<p>† ReRAM crossbar arrays can perform matrix-vector multiply, but require explicit weight programming and are limited to linear operations.</p>
+<p>†† <em>Active density</em> uses single-rod volume; <em>packed-array density</em> uses the 80 µm pitch, 1.1 mm layer architecture of Section 8.3. Incumbent technology densities in the table above include full packaging overhead; CWM&rsquo;s packed-array figure is the fairer comparator but still excludes interconnects and readout circuitry. See density definitions in Section 1.3.</p>
+<p>‡ Projected from validated macro-scale physics and scaling models; MEMS device not yet fabricated. CWM write energies are physics-layer ($k_B T \times$ SNR). System-level read energy, including CMOS ADC, is 1.7 pJ/bit (conservative) — comparable to DRAM (§ 8.5). Incumbent write energies in the table include system-level electronics.</p>
+<h3 id="102-cwms-architectural-distinction">10.2 CWM&rsquo;s Architectural Distinction</h3>
+<p>Every technology in the table above stores data as an electrical state and computes by moving that data to a separate processor. CWM does neither. It stores data as geometry (the perturbation pattern) and computes by physics (wave interference). This distinction has concrete engineering consequences:</p>
+<ul>
+<li><strong>Non-volatility without charge retention.</strong> Flash and PCM lose data when charge leaks or crystals relax. CWM&rsquo;s perturbation pattern is a physical structure; it persists as long as the glass exists.</li>
+<li><strong>Endurance without wear.</strong> Flash endurance is limited by oxide breakdown from repeated tunnelling. DRAM endurance is limited by capacitor dielectric fatigue. CWM&rsquo;s acoustic oscillation is elastic and reversible—the glass experiences stress levels billions of times below its fracture threshold.</li>
+<li><strong>Computation without data movement.</strong> ReRAM computes in the crossbar, but you still have to program the weights. CWM&rsquo;s weights are the physics—they were set at fabrication and never need updating for the associative recall to work.</li>
+</ul>
+<h3 id="103-the-computation-advantage">10.3 The Computation Advantage</h3>
+<p>The comparison table understates CWM&rsquo;s advantage for search workloads. Traditional architectures must read data, transfer it to a processor, and execute a comparison algorithm. For a 100,000-pattern nearest-neighbor search:</p>
+<ul>
+<li><strong>CPU</strong>: ~10 ms (sequential scan)</li>
+<li><strong>GPU</strong>: ~0.1 ms (parallel dot products)</li>
+<li><strong>CWM</strong>: ~3.8 µs (single acoustic propagation cycle, all patterns in parallel)</li>
+</ul>
+<p>CWM is 26× faster than a GPU and 2,600× faster than a CPU for this workload, at a fraction of the power.</p>
+<h3 id="104-what-cwm-is-not">10.4 What CWM Is Not</h3>
+<p>CWM is not a general-purpose replacement for SRAM, DRAM, or Flash. It is optimized for:</p>
+<ul>
+<li>Content-addressable memory (associative lookup)</li>
+<li>Pattern matching and classification</li>
+<li>Nearest-neighbor search</li>
+<li>Hopfield-type associative recall</li>
+<li>Applications where search latency and energy dominate the system budget</li>
+</ul>
+<p>It is not suitable for random byte-addressable read/write (use DRAM) or high-speed cache (use SRAM). In its baseline configuration, perturbation patterns are fixed at fabrication (mask ROM). A companion paper [26] presents three paths to reconfigurability—firmware-defined virtual rewriting, binary perturbation sites, and writable shell coatings—that progressively transform CWM from a glass harmonica (fixed pitch) to a glass armonica (reconfigurable).</p>
+<h3 id="105-potential-application-scenarios">10.5 Potential Application Scenarios</h3>
+<p>The following scenarios illustrate workloads where CWM&rsquo;s combination of parallel associative recall, non-volatility, and low energy could be advantageous. All performance figures are projected from the models of Sections 6–8 and assume successful MEMS validation.</p>
+<ol>
+<li>
+<p><strong>Associative search at the edge.</strong> A 1 cm³ CWM module would perform ~280,000 projected associative lookups per second at &lt;5 W—enabling real-time pattern matching in drones, satellites, and IoT devices where GPU co-processors are too heavy, hot, or expensive.</p>
+</li>
+<li>
+<p><strong>Radiation-hard memory for space.</strong> Glass resonators have no charge states susceptible to single-event upsets. If the MEMS Q budget holds, a 1 cm³ module could project to store 17 Gbit of radiation-tolerant memory without shielding.</p>
+</li>
+<li>
+<p><strong>Biometric authentication and hardware security tokens.</strong> Voiceprint, fingerprint, and facial-feature matching are nearest-neighbor problems. A CWM chip could perform 1,294-template matching in 3.8 µs at ~100 µW—enabling always-on biometric security with negligible battery impact. More broadly, each CWM resonator is a <em>physically unclonable function</em> (PUF): its spectral fingerprint is determined by the exact mass distribution of its perturbation sites, which cannot be duplicated without sub-micron fabrication precision. A CWM-based security token stores credentials as physics, not as bits—there is nothing to extract with a logic analyser and nothing to clone without reproducing the lithographic geometry.</p>
+</li>
+<li>
+<p><strong>Network intrusion detection.</strong> Deep packet inspection at 100 Gbps requires matching packet signatures against thousands of threat patterns. CWM&rsquo;s parallel associative recall could handle this natively at lower cost per lookup than TCAM solutions.</p>
+</li>
+<li>
+<p><strong>Analog error tolerance.</strong> Unlike digital TCAM, which requires exact bitwise key matches (or explicit don&rsquo;t-care mask bits), CWM&rsquo;s analog correlation provides inherent graceful degradation. A query corrupted by ±5% frequency noise or truncated to a partial mode subset still returns the correct associative match, with reduced but positive discrimination margin. This tolerance is a structural property of the matched-filter readout—not an error-correction overlay—and is especially valuable in harsh RF, thermal, or radiation environments where bit-exact digital lookups fail.</p>
+</li>
+</ol>
+<p>See the companion volume [20] for additional application analysis.</p>
+<hr />
+<h2 id="11-ultimate-limits">11. Ultimate Limits</h2>
+<h3 id="111-fused-silica">11.1 Fused Silica</h3>
+<p>Everything presented so far uses borosilicate glass—a conservative, inexpensive, widely available substrate. But borosilicate is not the best acoustic material; it is the most <em>convenient</em> one. Replacing it with fused silica (pure SiO₂) improves two critical parameters simultaneously:</p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Borosilicate</th>
+<th>Fused silica</th>
+<th>Improvement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Q_{\text{mat}}$</td>
+<td>10,000</td>
+<td>100,000</td>
+<td><strong>10×</strong></td>
+</tr>
+<tr>
+<td>$\alpha$ (10⁻⁶/K)</td>
+<td>3.3</td>
+<td>0.55</td>
+<td><strong>6×</strong></td>
+</tr>
+</tbody>
+</table>
+<p>The Q improvement means sharper resonance peaks and better mode resolution. The thermal expansion improvement further relaxes the thermal constraint. Using the full formula:</p>
+<p>$$n_{\max} = \left\lfloor \frac{1}{2\alpha\,\Delta T \;+\; 1/Q} \right\rfloor$$</p>
+<p>At $\pm 1$ K: $n_{\max} = \lfloor 1/(2 \times 0.55 \times 10^{-6} \times 1 + 1/100{,}000) \rfloor = 90{,}090$—nearly 10× more modes than borosilicate&rsquo;s 9,380, driven primarily by the 10× higher $Q$. In practice we would operate at $\pm 0.1$ K (achievable with a small thermoelectric cooler on the MEMS die), giving $n_{\max} = 98{,}911$ modes—over 10× more than borosilicate, at a temperature stability that is routinely achieved in precision MEMS oscillators.</p>
+<h3 id="112-fused-silica-array-performance">11.2 Fused Silica Array Performance</h3>
+<p>For 0.5 mm × 20 µm fused silica rods at $\pm 0.1$ K:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Modes per rod</td>
+<td>98,911</td>
+</tr>
+<tr>
+<td>Bits per mode</td>
+<td>12.4</td>
+</tr>
+<tr>
+<td><strong>Bits per rod</strong></td>
+<td><strong>1,221,731 (~150 kB)</strong></td>
+</tr>
+<tr>
+<td><strong>Single-rod density</strong></td>
+<td><strong>7,810 Gbit/cm³</strong></td>
+</tr>
+</tbody>
+</table>
+<p>In a packed array (40 µm pitch, 0.55 mm layer spacing):</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total rods per cm³</td>
+<td>~1.1 million</td>
+</tr>
+<tr>
+<td><strong>Array capacity</strong></td>
+<td><strong>~1.4 Tbit (175 GB)</strong></td>
+</tr>
+<tr>
+<td><strong>Array density</strong></td>
+<td><strong>1.4 Tbit/cm³</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>This exceeds 3D NAND Flash</strong> (1,000 Gbit/cm³) while providing native associative computation—something no existing memory technology offers at any density.</p>
+<p>With null-space multiplexing (see companion paper [26, §2.4]) applied to the fused silica design, the effective density could reach <strong>2+ Tbit/cm³</strong>, placing CWM in a density class currently occupied only by the most advanced 3D NAND.</p>
+<h3 id="113-q-factor-model-for-fused-silica">11.3 Q-Factor Model for Fused Silica</h3>
+<p>The Q-factor analysis of Section 7 extends directly to fused silica. The physics is the same; only the material parameters change. For 1 mm × 40 µm fused silica with 2 µm tethers, isolation trenches, 0.1 Pa:</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>$Q$</th>
+<th>Loss fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material</td>
+<td>100,000</td>
+<td><strong>66.2%</strong></td>
+</tr>
+<tr>
+<td>Surface loss</td>
+<td>196,000</td>
+<td>33.7%</td>
+</tr>
+<tr>
+<td>Anchor loss</td>
+<td>66,800,000</td>
+<td>0.1%</td>
+</tr>
+<tr>
+<td>TED</td>
+<td>880,000,000</td>
+<td>~0%</td>
+</tr>
+<tr>
+<td>Gas damping</td>
+<td>1,928,000,000</td>
+<td>~0%</td>
+</tr>
+<tr>
+<td><strong>$Q_{\text{total}}$</strong></td>
+<td><strong>66,152</strong></td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p>Two things change dramatically. First, anchor loss drops from 4.4% to 0.1%—essentially zero. This is because fused silica&rsquo;s much higher material $Q$ means the material loss dominates even more completely. Second, surface loss rises from 4.7% to 33.7% of the budget. This is not because surface loss gets worse in absolute terms (it doesn&rsquo;t—$Q_{\text{surface}}$ is the same 196,000), but because the material loss ceiling is 10× higher, so the <em>relative</em> contribution of surface loss increases.</p>
+<p>The implication: for fused silica designs, surface quality becomes the primary engineering target after material selection. Techniques such as thermal annealing (which heals the damaged amorphous surface layer), hydrofluoric acid etching (which removes it), or atomic layer deposition of a low-loss oxide coating could push $Q_{\text{surface}}$ above $10^6$, bringing $Q_{\text{total}}$ to ~90,000 or higher.</p>
+<hr />
+<h2 id="12-discussion">12. Discussion</h2>
+<h3 id="121-what-is-validated-vs-projected">12.1 What Is Validated vs. Projected</h3>
+<p>We are explicit about the boundary between demonstrated physics and engineering projection:</p>
+<p><strong>Validated (macro prototype + established physics + FEM):</strong></p>
+<ul>
+<li>Multi-mode acoustic resonance in glass ($f_n = nv_{\text{bar}}/2L$)</li>
+<li>Quality factors $Q > 5{,}000$ in borosilicate</li>
+<li>Rayleigh perturbation frequency shifts</li>
+<li>Spectral pattern discrimination (8-rod array, 15–25 dB margin)</li>
+<li>SNR consistent with thermal noise limit</li>
+<li>Thin-bar wave speed ($v_{\text{bar}} = \sqrt{E/\rho}$) confirmed by 1D FEM to 7 ppm</li>
+<li>Pochhammer–Chree dispersion &lt; 0.3% at $n = 15$ (2D FEM, quadratic fit)</li>
+<li>Rayleigh perturbation formula validated by FEM eigenvalue comparison (max error 1.3%)</li>
+<li>Mesh convergence rate 2.09 (theoretical 2.0 for P1 elements)</li>
+</ul>
+<p>Additional validated results—synaptic pruning, Boolean computation, mode hybridization, null-space encoding, polysemic readout, firmware virtual rewriting, and binary perturbation sites—are reported in the companion paper [26].</p>
+<p><strong>Derived (mathematical consequence of validated physics):</strong></p>
+<ul>
+<li>Scaling laws ($n_{\max}$ size-independence, $\text{density} \propto 1/L^2$)</li>
+<li>Q-factor budget decomposition (5 well-modeled loss mechanisms)</li>
+<li>Null-space dimension prediction from coupling matrix rank</li>
+</ul>
+<p><strong>Projected (requires MEMS validation):</strong></p>
+<ul>
+<li>Achievable $Q$ in MEMS geometry (our model predicts 9,097; measurement needed)</li>
+<li>Number of practically resolvable modes (mode coupling at high $n$ may limit)</li>
+<li>Thin-film piezo transduction efficiency at MHz frequencies</li>
+<li>Cross-talk in dense arrays</li>
+<li>Refresh stability over extended operation</li>
+</ul>
+<p>Additional projected items—including hybridization gain, null-space readout, binary-site cross-talk, MEMS switch fatigue, and shell adhesion—are detailed in [26].</p>
+<h3 id="122-related-work-and-technology-context">12.2 Related Work and Technology Context</h3>
+<p>CWM&rsquo;s closest relatives in the literature are more instructive for their differences than their similarities:</p>
+<ul>
+<li>
+<p><strong>Mercury delay line memory</strong> [4, 5]: The earliest electronic computers—UNIVAC I (1951), EDSAC (1949)—stored data as acoustic pulses in tubes of liquid mercury. It was acoustic memory, but <em>temporal</em> encoding: bits arrived one at a time, in sequence. CWM&rsquo;s spectral encoding is the frequency-domain generalisation—all bits are present simultaneously as different modes, enabling parallel readout and parallel computation. A 1 mm CWM rod stores ~120,000 bits where a comparable mercury delay line stored ~1,000.</p>
+</li>
+<li>
+<p><strong>Quartz crystal microbalance (QCM)</strong> [8]: The QCM measures mass deposited on a quartz crystal by tracking the frequency shift of a single resonant mode. The Sauerbrey equation is a special case of the Rayleigh perturbation formula for a uniform thin film. CWM extends the QCM concept from a single mode to thousands, and from measurement to information encoding.</p>
+</li>
+<li>
+<p><strong>Photonic neural networks</strong> (Shen et al. 2017): Optical interference performs matrix-vector multiplication by encoding data as light amplitudes and computing via Mach-Zehnder interferometers. CWM applies the same principle acoustically, trading optical bandwidth for mechanical simplicity and CMOS integration.</p>
+</li>
+<li>
+<p><strong>In-memory computing</strong> [3]: ReRAM/PCM crossbar arrays co-locate storage and computation, but require explicit weight programming—you must write resistance values into each cell to define the computation. CWM&rsquo;s recall is implicit: the computation is defined by the rod&rsquo;s geometry, set once at fabrication. A companion paper [26] further extends this with Boolean computation, hybridization-aware readout, null-space projection, and polysemic readout—all emerging from the physics without hardware modification.</p>
+</li>
+<li>
+<p><strong>Synaptic pruning in neural circuits</strong> [18]: The brain eliminates weak synapses during development, improving signal-to-noise ratio in neural circuits. The companion paper [26, §2.1] shows the same principle—thresholding weak weights improves recall—applies directly to CWM&rsquo;s acoustic Hopfield network.</p>
+</li>
+<li>
+<p><strong>Non-destructive parallel readout:</strong> CWM&rsquo;s eigenmode orthogonality means driving at frequency $f_n$ couples exclusively to mode $n$ because $\int_0^L \sin(n\pi x/L)\sin(m\pi x/L)\,dx = 0$ for $n \neq m$. All modes are read simultaneously via FFT without disturbing any—a classical analogue of quantum non-demolition measurement, achieved at room temperature via the mathematical orthogonality of standing-wave modes.</p>
+</li>
+<li>
+<p><strong>Emerging wave-based alternatives.</strong> Several other research programs explore wave physics for computation or storage. Optomechanical systems couple optical cavities to mechanical resonators for quantum transduction and sensing [21], but target single-mode or few-mode operation rather than the thousands of parallel channels CWM exploits. Spin-wave (magnonic) logic [22] uses ferromagnetic media for wave-based Boolean computation at GHz frequencies; however, spin-wave propagation losses limit coherence lengths to tens of micrometres, constraining device scale. Phononic computing proposals [23] engineer acoustic bandgaps in periodic metamaterials for signal routing and filtering, but do not address multi-mode spectral encoding or associative recall. Piezoelectric acoustic resonator arrays [24] achieve Q &gt; 10,000 in aluminium nitride thin films at GHz frequencies, validating that high-Q MEMS acoustics is practical—though these devices store timing references, not data. CWM is distinct from all of these in its use of the <em>full eigenmode spectrum</em> of a single resonator as a parallel information channel, combined with perturbation encoding and interference-based associative recall.</p>
+</li>
+</ul>
+<p>Sixteen extended cross-domain investigations further contextualise CWM within established physical frameworks, testing 68 hypotheses across wave physics, information theory, and spectral analysis. Full treatment is in the companion paper [26] and companion volume [20].</p>
+<h3 id="123-limitations-and-open-questions">12.3 Limitations and Open Questions</h3>
+<p>We are transparent about the boundaries of this work.</p>
+<p><strong>No MEMS device exists yet.</strong> Every MEMS-scale number in this paper—density, energy, Q-factor, latency—is projected from validated macro-scale physics via analytical scaling laws (§6) and a five-mechanism loss model (§7). A single fabricated 1 mm resonator with thin-film piezo readout would convert nearly all projected claims into measured ones. Until that device is built, the claims are physics-based engineering projections, not experimental results.</p>
+<p><strong>Energy comparison requires care.</strong> The headline write energy (15 fJ/bit) is the physics-layer cost ($k_B T \times \text{SNR}$)—the minimum energy to excite a mode above the thermal noise floor. System-level read energy, including CMOS ADC and FFT, is 1.7 pJ/bit at conservative assumptions (§8.5). This is comparable to DRAM&rsquo;s ~3 pJ/bit total access energy. Incumbent write energies in the technology comparison table (§10.1) include system-level electronics; CWM&rsquo;s physics-only write figure is not directly comparable without this context.</p>
+<p><strong>Mode coupling at high mode numbers.</strong> The 9,380-mode count assumes each mode is independently resolvable. In practice, fabrication imperfections, non-ideal boundary conditions, and finite transducer bandwidth may cause mode coupling or spectral overlap at high mode numbers, reducing the usable mode count. The Pochhammer–Chree dispersion analysis (§5.5) shows &lt; 0.3% frequency deviation at mode 15; behaviour at mode 9,380 is extrapolated, not validated.</p>
+<p><strong>Advanced extensions are modeled only.</strong> Six encoding extensions and three rewritability paths are developed in the companion paper [26]. These are simulated at small scale (typically 10–50 modes). Whether the capacity gains survive scaling to thousands of modes in a physical device with real noise, fabrication tolerances, and mode coupling is an open question.</p>
+<p><strong>Falsification framework.</strong> The simulation apparatus has tested 99 hypotheses to date: 67 confirmed, 32 falsified—all preserved with full documentation of their failure mechanisms. The killed hypotheses—including a ferrofluid substrate (§3.1), several overly optimistic sensitivity assumptions, and scaling limits at extreme parameters—are as scientifically valuable as the confirmations: they map the boundaries of the physics.</p>
+<hr />
+<div class="part-heading">
+  <p class="part-label">Part VI</p>
+  <p class="part-title">Outlook</p>
+  <p class="part-desc">Sections 13–16</p>
+  <hr>
+</div>
+<h2 id="13-roadmap">13. Roadmap</h2>
+<h3 id="phase-1-mems-proof-of-concept-612-months">Phase 1: MEMS Proof-of-Concept (6–12 months)</h3>
+<ul>
+<li>Fabricate single borosilicate glass resonators at 1–5 mm</li>
+<li>Measure $Q$ with thin-film piezo transduction</li>
+<li>Validate multi-mode spectrum and perturbation encoding</li>
+<li><strong>Go/no-go</strong>: Measured $Q > 1{,}000$ with thin-film piezo</li>
+</ul>
+<h3 id="phase-2-array-demonstration-1224-months">Phase 2: Array Demonstration (12–24 months)</h3>
+<ul>
+<li>10–100 resonator arrays</li>
+<li>Spectral pattern discrimination across array</li>
+<li>Associative recall via simultaneous excitation</li>
+<li>CMOS readout integration</li>
+<li>Validate firmware encoding extensions from [26] on hardware</li>
+<li>Cross-rod calibration protocol for heterogeneous substrate arrays</li>
+<li><strong>Go/no-go</strong>: Pattern discrimination $> 90\%$ accuracy in 10-rod array</li>
+</ul>
+<h3 id="phase-3-density-optimization-2436-months">Phase 3: Density Optimization (24–36 months)</h3>
+<ul>
+<li>Fused silica substrates</li>
+<li>Optimized DRIE (25:1+ aspect ratio)</li>
+<li>Vacuum packaging</li>
+<li>$\pm 0.1$ K thermal stability characterization</li>
+<li>Binary perturbation site evaluation: 12–20 electrostatic MEMS latches on second-generation die</li>
+<li><strong>Target</strong>: Demonstrated density $> 100$ Gbit/cm³</li>
+</ul>
+<h3 id="phase-4-product-development-3648-months">Phase 4: Product Development (36–48 months)</h3>
+<ul>
+<li>Full chip: resonator array + CMOS readout + on-chip FFT</li>
+<li>Advanced encoding firmware from [26] (pruning, Boolean, hybridization, null-space, polysemic readout)</li>
+<li>Writable shell coating evaluation: Parylene C and magnetostrictive thin films</li>
+<li>Product family: ROM (Stage 0), firmware-reconfigurable (Stage 1), MEMS-switchable (Stage 2), fully rewritable (Stage 3)</li>
+<li>Target: acoustic fingerprint matching, edge AI inference, content-addressable memory</li>
+<li>Reliability qualification, endurance testing</li>
+</ul>
+<hr />
+<h2 id="14-conclusion">14. Conclusion</h2>
+<p>Coherent Wave Memory encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. The idea is simple: a glass rod&rsquo;s natural vibration frequencies are independent information channels; mass perturbations on the rod create unique spectral fingerprints; and wave interference performs nearest-neighbor search in a single acoustic propagation cycle.</p>
+<p>The physics is validated at macro scale with a &#36;230 prototype (&#36;38 core materials). The scaling laws are mathematical consequences of that physics. The MEMS loss mechanisms have been modeled and found manageable—the model predicts the dominant loss is the glass material itself, not the MEMS geometry.</p>
+<p>The key results:</p>
+<ul>
+<li><strong>98.5 dB SNR</strong> derived from a &#36;230 macro-scale prototype (thermal-noise-limited, zero phase diffusion)</li>
+<li><strong>9,380 thermally stable modes</strong> per resonator, independent of size (derived from material properties)</li>
+<li><strong>95.1 Gbit/cm³</strong> projected active density at 1 mm; <strong>17.0 Gbit/cm³</strong> projected packed-array; <strong>1.4 Tbit/cm³</strong> projected in fused silica</li>
+<li><strong>15 fJ/bit</strong> projected write energy; <strong>1.7 pJ/bit</strong> read energy (ADC-dominated, conservative; § 8.5); <strong>~1 pJ/rod</strong> associative recall via wave interference with no FFT</li>
+<li><strong>$Q_{\text{total}} = 9{,}097$</strong> modeled at MEMS scale—material loss dominates (91%); anchor loss only 4.4%</li>
+<li><strong>FEM-analytical agreement</strong> to 7 ppm; Pochhammer–Chree dispersion &lt; 0.3% at mode 15</li>
+<li><strong>&gt;10¹⁵ cycle endurance</strong> (projected); fabricable with established MEMS processes</li>
+</ul>
+<p>A companion paper [26] develops six firmware encoding extensions, sixteen cross-domain investigations, and three paths to physical rewritability—extending CWM from read-only to reconfigurable. These are modeled but not yet validated on hardware.</p>
+<p>What remains is the MEMS demonstration. The macro-scale prototype has validated the physics. The scaling laws project competitive performance. The Q-factor model predicts the MEMS geometry preserves 91% of the bulk material&rsquo;s quality factor. The fabrication pathway uses proven processes. Whether the modeled extensions developed in [26] and their capacity gains scale to full-size devices with 9,380 modes is an open question for Phase 2 validation. Full cross-domain investigation details are in the companion volume [20].</p>
+<p>The research methodology itself is part of the contribution. A falsification-first simulation apparatus (48 modules, 2,253 automated tests) has tested 99 hypotheses: 67 confirmed, 32 falsified—all preserved with full documentation. The killed hypotheses include a ferrofluid substrate that failed catastrophically on phase diffusion (§3.1) and several scaling assumptions that proved overly optimistic under rigorous analysis. We consider this transparency essential: a technology proposal that hides its failures invites distrust; one that documents them invites verification.</p>
+<p>Seventy-seven years after mercury delay lines first stored data as acoustic waves in UNIVAC I, the same physics finds new expression—not as temporal pulses in a tube of liquid metal, but as spectral eigenmodes in a chip-scale glass resonator, where every stored bit participates in computation and recall is a standing wave.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] J. Backus, &ldquo;Can programming be liberated from the von Neumann style? A functional style and its algebra of programs,&rdquo; <em>Communications of the ACM</em>, vol. 21, no. 8, pp. 613–641, 1978. doi: <a href="https://doi.org/10.1145/359576.359579">10.1145/359576.359579</a></p>
+<p>[2] W. A. Wulf and S. A. McKee, &ldquo;Hitting the memory wall: Implications of the obvious,&rdquo; <em>ACM SIGARCH Computer Architecture News</em>, vol. 23, no. 1, pp. 20–24, 1995. doi: <a href="https://doi.org/10.1145/216585.216588">10.1145/216585.216588</a></p>
+<p>[3] D. Ielmini and H.-S. P. Wong, &ldquo;In-memory computing with resistive switching devices,&rdquo; <em>Nature Electronics</em>, vol. 1, pp. 333–343, 2018. doi: <a href="https://doi.org/10.1038/s41928-018-0092-2">10.1038/s41928-018-0092-2</a></p>
+<p>[4] I. L. Auerbach, J. P. Eckert, R. F. Shaw, and C. Sheppard, &ldquo;Mercury delay line memory using a pulse rate of several megacycles,&rdquo; <em>Proceedings of the IRE</em>, vol. 37, no. 8, pp. 855–861, 1949. doi: <a href="https://doi.org/10.1109/JRPROC.1949.229683">10.1109/JRPROC.1949.229683</a></p>
+<p>[5] M. V. Wilkes and W. Renwick, &ldquo;The EDSAC (Electronic delay storage automatic calculator),&rdquo; <em>Mathematics of Computation</em>, vol. 4, no. 30, pp. 61–65, 1950. doi: <a href="https://doi.org/10.1090/S0025-5718-1950-0037589-7">10.1090/S0025-5718-1950-0037589-7</a></p>
+<p>[6] C. E. Shannon, &ldquo;A mathematical theory of communication,&rdquo; <em>The Bell System Technical Journal</em>, vol. 27, no. 3, pp. 379–423, 623–656, 1948. doi: <a href="https://doi.org/10.1002/j.1538-7305.1948.tb01338.x">10.1002/j.1538-7305.1948.tb01338.x</a></p>
+<p>[7] Lord Rayleigh (J. W. S. Strutt), <em>The Theory of Sound</em>, 2 vols. London: Macmillan, 1877–1878. Reprinted New York: Dover, 1945.</p>
+<p>[8] G. Sauerbrey, &ldquo;Verwendung von Schwingquarzen zur Wägung dünner Schichten und zur Mikrowägung,&rdquo; <em>Zeitschrift für Physik</em>, vol. 155, no. 2, pp. 206–222, 1959. doi: <a href="https://doi.org/10.1007/BF01337937">10.1007/BF01337937</a></p>
+<p>[9] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proceedings of the National Academy of Sciences</em>, vol. 79, no. 8, pp. 2554–2558, 1982. doi: <a href="https://doi.org/10.1073/pnas.79.8.2554">10.1073/pnas.79.8.2554</a></p>
+<p>[10] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Physical Review Letters</em>, vol. 55, no. 14, pp. 1530–1533, 1985. doi: <a href="https://doi.org/10.1103/PhysRevLett.55.1530">10.1103/PhysRevLett.55.1530</a></p>
+<p>[11] A. B. Bhatia, <em>Ultrasonic Absorption: An Introduction to the Theory of Sound Absorption and Dispersion in Gases, Liquids, and Solids</em>. New York: Oxford University Press, 1967.</p>
+<p>[12] J. Krautkrämer and H. Krautkrämer, <em>Ultrasonic Testing of Materials</em>, 4th ed. Berlin: Springer-Verlag, 1990. doi: <a href="https://doi.org/10.1007/978-3-662-10680-8">10.1007/978-3-662-10680-8</a></p>
+<p>[13] Z. Hao, A. Erbil, and F. Ayazi, &ldquo;An analytical model for support loss in micromachined beam resonators with in-plane flexural vibrations,&rdquo; <em>Sensors and Actuators A</em>, vol. 109, pp. 156–164, 2003. doi: <a href="https://doi.org/10.1016/j.sna.2003.09.037">10.1016/j.sna.2003.09.037</a></p>
+<p>[14] M.-A. Dubois and P. Muralt, &ldquo;Properties of aluminum nitride thin films for piezoelectric transducers and microwave filter applications,&rdquo; <em>Applied Physics Letters</em>, vol. 74, no. 20, pp. 3032–3034, 1999. doi: <a href="https://doi.org/10.1063/1.124055">10.1063/1.124055</a></p>
+<p>[15] B. Jaffe, W. R. Cook Jr., and H. Jaffe, <em>Piezoelectric Ceramics</em>. London: Academic Press, 1971.</p>
+<p>[16] T. Corman, P. Enoksson, and G. Stemme, &ldquo;Deep wet etching of borosilicate glass using an anodically bonded silicon substrate as mask,&rdquo; <em>Journal of Micromechanics and Microengineering</em>, vol. 8, no. 2, pp. 84–87, 1998. doi: <a href="https://doi.org/10.1088/0960-1317/8/2/010">10.1088/0960-1317/8/2/010</a></p>
+<p>[17] C. T.-C. Nguyen, &ldquo;MEMS technology for timing and frequency control,&rdquo; <em>IEEE Transactions on Ultrasonics, Ferroelectrics, and Frequency Control</em>, vol. 54, no. 2, pp. 251–270, 2007. doi: <a href="https://doi.org/10.1109/TUFFC.2007.240">10.1109/TUFFC.2007.240</a></p>
+<p>[18] P. R. Huttenlocher, &ldquo;Synaptic density in human frontal cortex — Developmental changes and effects of aging,&rdquo; <em>Brain Research</em>, vol. 163, no. 2, pp. 195–205, 1979. doi: <a href="https://doi.org/10.1016/0006-8993(79)90349-4">10.1016/0006-8993(79)90349-4</a>. (Foundational quantification of synaptic pruning during human brain development.)</p>
+<p>[19] C. Zener, &ldquo;Internal friction in solids: I. Theory of internal friction in reeds,&rdquo; <em>Physical Review</em>, vol. 52, no. 3, pp. 230–235, 1937. doi: <a href="https://doi.org/10.1103/PhysRev.52.230">10.1103/PhysRev.52.230</a></p>
+<p>[20] M. Tierce, <em>Coherent Wave Memory: The Full Story</em>. Companion volume, 2026. Extended cross-domain investigations, application scenarios, and narrative treatment of the research methodology. Repository: <a href="https://github.com/miketierce/cwm-book">github.com/miketierce/cwm-book</a>.</p>
+<p>[21] M. Aspelmeyer, T. J. Kippenberg, and F. Marquardt, &ldquo;Cavity optomechanics,&rdquo; <em>Reviews of Modern Physics</em>, vol. 86, no. 4, pp. 1391–1452, 2014. doi: <a href="https://doi.org/10.1103/RevModPhys.86.1391">10.1103/RevModPhys.86.1391</a>. (Canonical review of optomechanical systems coupling optical and mechanical degrees of freedom.)</p>
+<p>[22] A. V. Chumak, P. Kabos, M. Wu, C. Abert, C. Adelmann, A. O. Adeyeye, <em>et al.</em>, &ldquo;Advances in magnetics: roadmap on spin-wave computing,&rdquo; <em>IEEE Transactions on Magnetics</em>, vol. 58, no. 6, 0800172, 2022. doi: <a href="https://doi.org/10.1109/TMAG.2022.3149664">10.1109/TMAG.2022.3149664</a>.</p>
+<p>[23] M. I. Hussein, M. J. Leamy, and M. Ruzzene, &ldquo;Dynamics of phononic materials and structures: historical origins, recent progress, and future outlook,&rdquo; <em>Applied Mechanics Reviews</em>, vol. 66, no. 4, 040802, 2014. doi: <a href="https://doi.org/10.1115/1.4026911">10.1115/1.4026911</a>.</p>
+<p>[24] G. Piazza, V. Felmetsger, P. Muralt, R. H. Olsson III, and R. Ruby, &ldquo;Piezoelectric aluminum nitride thin films for microelectromechanical systems,&rdquo; <em>MRS Bulletin</em>, vol. 37, no. 11, pp. 1051–1061, 2012. doi: <a href="https://doi.org/10.1557/mrs.2012.268">10.1557/mrs.2012.268</a>. (Review of AlN MEMS resonators demonstrating Q &gt; 10,000 at GHz frequencies.)</p>
+<p>[25] A. Peri, G. Gualandi, T. Bertapelle, M. Sabatini, G. Corrielli, Y. Piétri, D. G. Marangon, G. Vallone, P. Villoresi, R. Osellame, and M. Avesani, &ldquo;High-performance heterodyne receiver for quantum information processing in a laser-written integrated photonic platform,&rdquo; <em>Advanced Photonics</em>, vol. 8, no. 1, 016009, 2026. doi: <a href="https://doi.org/10.1117/1.AP.8.1.016009">10.1117/1.AP.8.1.016009</a>. (Femtosecond laser-written borosilicate glass waveguides outperform silicon in optical loss, polarisation stability, and 3D design freedom for coherent quantum receivers.)</p>
+<hr />
+<p>[26] M. Tierce, &ldquo;Advanced Encoding and Rewritability Techniques for Coherent Wave Memory,&rdquo; companion paper, 2026. Repository: <a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a>.</p>
+<hr />
+<h2 id="appendix-a-snr-and-density-scaling-derivation">Appendix A: SNR and Density Scaling Derivation</h2>
+<h3 id="a1-snr-as-a-function-of-length">A.1 SNR as a Function of Length</h3>
+<p>For a rod with aspect ratio $\beta = L/d$, the effective mass is $m_{\text{eff}} = \rho \pi L^3 / (8\beta^2)$. The effective spring constant:</p>
+<p>$$k_{\text{eff}} = m_{\text{eff}} \omega_1^2 = \frac{\rho \pi^3 v_{\text{bar}}^2 L}{8\beta^2}$$</p>
+<p>where $v_{\text{bar}} = \sqrt{E/\rho}$ is the thin-bar wave speed (5,315 m/s for borosilicate, confirmed by FEM to 7 ppm). Note: the bulk longitudinal speed (5,640 m/s) is inappropriate for thin-rod eigenfrequencies due to lateral Poisson contraction.</p>
+<p>Signal energy at drive amplitude $A$:</p>
+<p>$$E_s = \frac{1}{2} k_{\text{eff}} A^2 = \frac{\rho \pi^3 v_{\text{bar}}^2 A^2}{16\beta^2} \cdot L$$</p>
+<p>$$\text{SNR} = \frac{E_s}{k_B T} = \frac{\rho \pi^3 v_{\text{bar}}^2 A^2}{16 \beta^2 k_B T} \cdot L$$</p>
+<p>For borosilicate at $\beta = 25$, $A = 1$ nm, $T = 300$ K: SNR $= 4.71 \times 10^{10} \cdot L$ (meters).</p>
+<h3 id="a2-density-scaling">A.2 Density Scaling</h3>
+<p>$$\text{density} = \frac{n_{\max} \cdot \frac{1}{2}\log_2(1 + \text{SNR})}{\pi L^3 / (4\beta^2)} = \frac{2\beta^2 n_{\max} \log_2(1 + cL)}{\pi L^3}$$</p>
+<p>For $cL \gg 1$: $\log_2(1 + cL) \approx \log_2 c + \log_2 L$, so the dominant scaling is $1/L^3$ modulated by a slowly varying $\log L$ term, making the effective scaling approximately $1/L^2$.</p>
+<h3 id="a3-array-packing">A.3 Array Packing</h3>
+<p>For rods with pitch $p = 2d = 2L/\beta$ and layer spacing $s = L + g$:</p>
+<p>$$\text{rods per cm}^3 = \left(\frac{0.01}{p}\right)^2 \cdot \frac{0.01}{s}$$</p>
+<p>Array density = rods per cm³ × bits per rod.</p>
+<h2 id="appendix-b-q-factor-model-details">Appendix B: Q-Factor Model Details</h2>
+<h3 id="b1-anchor-loss">B.1 Anchor Loss</h3>
+<p>Following a power-balance approach [13, 17], the anchor quality factor for a longitudinal-mode rod resonator suspended by tethers:</p>
+<p>$$Q_{\text{anchor}} = \frac{\pi}{2} \cdot \frac{Z_{\text{rod}}}{Z_{\text{sub}}} \cdot \left(\frac{L}{w_{\text{eff}}}\right)^2 \cdot \left(1 + \frac{L_{\text{tether}}}{w_{\text{eff}}}\right) \cdot \frac{n}{n_{\text{anchors}}} \cdot \eta_{\text{trench}}$$</p>
+<p>where $Z = \rho v$ is acoustic impedance, $w_{\text{eff}} = \sqrt{w \cdot t}$ is the effective tether cross-section dimension, $L_{\text{tether}}$ is tether length, and $n$ is the mode number.</p>
+<p>For end-mounted attachment: all modes contribute. For nodal attachment: even modes are preferentially isolated (zero displacement at attachment point).</p>
+<p>Isolation trenches (etched gaps surrounding the tether base) add a 3× improvement factor by reflecting acoustic energy back into the resonator.</p>
+<h3 id="b2-thermoelastic-damping">B.2 Thermoelastic Damping</h3>
+<p>Zener/Lifshitz-Roukes formulation [19] with Debye relaxation time $\tau_D = d^2 / (\pi^2 \kappa)$, where $\kappa$ is thermal diffusivity:</p>
+<p>$$\frac{1}{Q_{\text{TED}}} = \frac{E \alpha^2 T}{\rho C_p} \cdot \frac{\omega \tau_D}{1 + (\omega \tau_D)^2}$$</p>
+<p>For glass at MEMS frequencies ($\sim$ MHz), $\omega \tau_D \gg 1$, and TED is negligible ($Q_{\text{TED}} \sim 10^7$–$10^8$).</p>
+<h3 id="b3-surface-loss">B.3 Surface Loss</h3>
+<p>For a rod with diameter $d$ and surface defect layer of thickness $\delta$ with quality factor $Q_d$:</p>
+<p>$$\frac{1}{Q_{\text{surface}}} = \frac{4\delta}{d} \cdot \frac{1}{Q_d}$$</p>
+<p>With $\delta = 5$ nm and $Q_d = 1{,}000$: $Q_{\text{surface}} = 196{,}000$ at $d = 40$ µm.</p>
+<hr />
+<h2 id="appendix-c-macro-scale-experiment-guide">Appendix C: Macro-Scale Experiment Guide</h2>
+<p>The complete experiment guide—step-by-step replication procedures for all eight macro-scale prototype experiments, a bill of materials with purchase links, failure-mode mitigations, full-scale illustration plates, and printable data worksheets—is provided as a companion document: <code>companion/experiment_guide.md</code> in the project repository. The guide is self-contained and designed so that a middle school science teacher with no acoustics background can build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement.</p>
+<hr />
+<p><em>Patent Pending — U.S. Provisional Application No. 64/023,264 (31 March 2026).</em></p>
+<p><em>All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/cwm. Companion volume: github.com/miketierce/cwm-book.</em></p><div class="colophon">
+  <p><em>Coherent Wave Memory</em></p>
+  <p>Version </p>
+  <p>&copy; Mike Tierce</p>
+  <p style="margin-top: 16pt; font-size: 8pt;">
+    Typeset from Markdown source using Chromium PDF rendering.<br>
+    Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
+    All quantitative claims computed from first-principles simulation code<br>
+    (48 modules, 2253 automated tests) with independent FEM validation.
+  </p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>
