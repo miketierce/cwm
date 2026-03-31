@@ -1,8 +1,10 @@
-# WCFOMA Research Roadmap
+# CWM Research Roadmap
 
 ## Decision Framework: Disprove or Actualize
 
 This roadmap follows a **falsification-first** methodology. Each milestone includes explicit **kill criteria** — quantitative thresholds that, if not met, indicate the approach is unviable and should be abandoned or fundamentally rearchitected. Conversely, each milestone identifies **actualization signals** — results that validate continuing investment.
+
+> **Note on substrate evolution.** Early simulation work explored ferrofluid as a reconfigurable acoustic medium. Phase 1 coupled-physics simulations revealed a fundamental phase diffusion barrier (77.5% per µs from nanoparticle Brownian motion) that makes any colloidal or liquid substrate unviable for coherent spectral encoding. This kill is documented in the paper (§3.1) and in the archived findings below. All forward phases target the **solid glass** architecture described in the paper.
 
 ---
 
@@ -46,15 +48,14 @@ Reproduce and extend the paper's simulation claims. Determine whether the theore
 
 **Sensitivity analysis key findings:**
 
-- 🔴 **Q factor** is the #1 risk — unknown in real ferrofluid. If Q < 100, storage density drops below viability.
-- 🔴 **α (thermal drift)** is the #2 risk — assumed 0.0022/K from literature.
+- 🔴 **Q factor** is the #1 risk — the five-mechanism MEMS model (§7) predicts 9,097 but awaits measurement.
+- 🔴 **α (thermal drift)** is the #2 risk — assumed 3.3×10⁻⁶/K for borosilicate from literature.
 - 🟡 ZIM damping factor and η are medium risk but tolerant of 40% error.
 - 🟢 ΔT, γ, L are engineering parameters with low sensitivity.
 
-**Blocking issues for Phase 1:**
+**Blocking issues for Phase 2:**
 
 - Geometry invariance needs Meep/COMSOL validation (FD solver ill-conditioned at ε → 0).
-- Ferrofluid Q factor has no direct literature measurement — this is the first Phase 1 priority.
 
 ### Kill → Pivot
 
@@ -69,34 +70,30 @@ If ≥3 of 5 experiments fail kill criteria, the architecture's theoretical basi
 
 ### Goal
 
-Move beyond the paper's simplified models to realistic multiphysics simulation.
+Extend the paper's validated models with realistic multiphysics simulation and system-level analysis. Resolve remaining open simulation questions before hardware investment.
 
 ### Work Items
 
-| Task                      | Tool/Method                              | Success Metric                                | Status                                                    |
-| ------------------------- | ---------------------------------------- | --------------------------------------------- | --------------------------------------------------------- |
-| Full FDTD with Meep       | [MIT Meep](https://meep.readthedocs.io/) | Validate Q > 10³ in ferrofluid-like media     | 🟡 Scaffolded (`simulations/meep_fdtd.py`)                |
-| Multiphysics coupling     | SVEA coupled-mode ODE                    | Shear + EM + thermal coupled correctly        | ✅ Done (`simulations/coupled_physics.py`, notebook 08)   |
-| Ferrofluid material model | Literature + fitting                     | Accurate dispersion relation v(ω, T, B)       | ✅ Done (`simulations/ferrofluid.py`, notebook 06)        |
-| Multi-mode interference   | Beam propagation method                  | Demonstrate associative recall in simulation  | ✅ Done (`simulations/interference.py`, notebook 05)      |
-| CMOS interface modeling   | Component-level energy budget            | Viable readout SNR at projected energy budget | ✅ Done (`simulations/cmos_interface.py`, notebook 07) ⚠️ |
-| Scale grid to N≥20        | HPC / GPU compute                        | Discretization error < 1%                     | ✅ Converged at N≥10 (`simulations/convergence.py`)       |
-| Sensitivity analysis      | Parameter sweeps                         | Identify high-risk assumptions                | ✅ Done (`simulations/sensitivity.py`, notebook 04)       |
-| Grid convergence          | FD + Richardson extrapolation            | Error < 1% at operating resolution            | ✅ Done — 0.16% error at N≥10 (notebook 07)               |
-| Monte Carlo tamper        | Statistical validation                   | FPR < 10%, FNR < 5%                           | ✅ Done — FPR 4.7%, FNR 0% (exp03, notebook 07)           |
-| Claims auto-validation    | Programmatic pipeline                    | All claims auto-populated from experiments    | ✅ Done (`analysis/comparison.py`)                        |
+| Task                      | Tool/Method                              | Success Metric                                    | Status                                                    |
+| ------------------------- | ---------------------------------------- | ------------------------------------------------- | --------------------------------------------------------- |
+| Full FDTD with Meep       | [MIT Meep](https://meep.readthedocs.io/) | Validate geometry invariance claim                | 🟡 Scaffolded (`simulations/meep_fdtd.py`)                |
+| Multiphysics coupling     | SVEA coupled-mode ODE                    | Acoustic + thermal coupling modeled correctly     | ✅ Done (`simulations/coupled_physics.py`, notebook 08)   |
+| Multi-mode interference   | Beam propagation method                  | Demonstrate associative recall in simulation      | ✅ Done (`simulations/interference.py`, notebook 05)      |
+| CMOS interface modeling   | Component-level energy budget            | Viable readout SNR at projected energy budget     | ✅ Done (`simulations/cmos_interface.py`, notebook 07)    |
+| Grid convergence          | FD + Richardson extrapolation            | Discretization error < 1%                         | ✅ Converged at N≥10 (`simulations/convergence.py`)       |
+| Sensitivity analysis      | Parameter sweeps                         | Identify high-risk assumptions                    | ✅ Done (`simulations/sensitivity.py`, notebook 04)       |
+| Monte Carlo tamper        | Statistical validation                   | FPR < 10%, FNR < 5%                               | ✅ Done — FPR 4.7%, FNR 0% (exp03, notebook 07)           |
+| Claims auto-validation    | Programmatic pipeline                    | All claims auto-populated from experiments        | ✅ Done (`analysis/comparison.py`)                        |
 
 ### Kill Criteria
 
-- Realistic Q factor < 100 in ferrofluid media → mode lifetime insufficient
 - Multi-mode interference produces < 50% retrieval accuracy → computation model fails
-- Energy per operation exceeds pJ (enters DRAM territory) → no efficiency advantage
+- System-level energy per read exceeds 10 pJ → no advantage over DRAM
 
 ### Actualization Signals
 
-- Q > 500 in realistic media model → publish advanced simulation paper
-- Associative recall works at > 80% accuracy → file provisional patent on interference compute
-- Energy confirmed at fJ scale → begin prototype planning
+- Associative recall works at > 80% accuracy in simulation → core computation validated ✅
+- Energy budget transparent and competitive → proceed to MEMS fabrication ✅
 
 ### Phase 1 Findings to Date
 
@@ -108,11 +105,12 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 - Richardson extrapolation confirms 2nd-order convergence
 - N=10 is sufficient for all Phase 1 simulations; Meep needed only for ENZ-specific validation
 
-#### ⚠️ CMOS Energy Budget — CRITICAL FINDING (notebook 07, `simulations/cmos_interface.py`)
+#### ⚠️ CMOS Energy Budget — IMPORTANT FINDING (notebook 07, `simulations/cmos_interface.py`)
 
-- **Paper claims "fJ range" per operation — REFUTED at system level**
+- **Physics-layer write energy is truly fJ-scale** ✅
+- **System-level read energy is ~1.1 pJ** (ADC-dominated at 95% of total)
 - Component breakdown at 28nm:
-  - Excitation: 2.6 fJ (physics is truly fJ-scale ✅)
+  - Excitation: 2.6 fJ
   - Sensing: 0.5 fJ
   - Amplifier: 100 fJ
   - **ADC: 1000 fJ (95% of total)** ← bottleneck
@@ -120,12 +118,8 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
   - I/O: 1 fJ
   - **Total: 1114 fJ ≈ 1.1 pJ**
 - Technology scaling: 2060 fJ (180nm) → 1065 fJ (7nm) — still > 1 pJ at all nodes
-- **Implication:** The physics energy IS fJ-scale, but CMOS readout dominates. Options:
-  1. Amortize ADC over multi-mode batch reads (÷ N_modes)
-  2. Use time-interleaved or event-driven ADC architectures
-  3. Revise claim to "fJ per mode operation, pJ per cell access" (honest framing)
-  4. Analog readout without full ADC (Faraday rotation direct comparison)
-- **This does NOT kill the architecture** — 1 pJ is still 10-100× below DRAM refresh — but the "fJ" headline needs qualification
+- **This does NOT kill the architecture** — 1.1 pJ is still ~3× below DRAM's ~3 pJ/bit total access energy
+- **Resolution:** Paper v18 now clearly distinguishes physics-layer write energy (15 fJ/bit) from system-level read energy (1.7 pJ/bit including ADC) — see §1.3 summary table, §2.2, §8.4, §8.5, §10.1, and §14.4
 
 #### ✅ Monte Carlo Tamper Detection (notebook 07, `experiments/exp03`)
 
@@ -136,227 +130,142 @@ Move beyond the paper's simplified models to realistic multiphysics simulation.
 
 #### ✅ Previously Completed
 
-- Ferrofluid model: Q ≈ 21,500 at 1 MHz, all kill criteria pass (notebook 06)
 - Interference recall: 97.6% single-pattern fidelity, 50 patterns at 90% accuracy (notebook 05)
 - Sensitivity: cell length L highest elasticity (−2.35), Q factor #1 risk (notebook 04)
 
-#### Updated Claims Scorecard
+#### Updated Claims Scorecard (Solid Glass Architecture)
 
-| Status    | Count | Details                                                            |
-| --------- | ----- | ------------------------------------------------------------------ |
-| CONFIRMED | 7     | ZIM coherence, 1D/3D drift, modes ±ZIM, density, excitation energy |
-| PLAUSIBLE | 1     | Geometry invariance (needs Meep)                                   |
-| REFUTED   | 1     | System-level energy (1.1 pJ, not fJ)                               |
+| Status    | Count | Details                                                                     |
+| --------- | ----- | --------------------------------------------------------------------------- |
+| CONFIRMED | 8     | ZIM coherence, 1D/3D drift, modes ±ZIM, density scaling, excitation energy, interference recall, tamper detection, grid convergence |
+| PLAUSIBLE | 1     | Geometry invariance (needs Meep or COMSOL)                                  |
+| QUALIFIED | 1     | Energy: physics-layer fJ confirmed; system-level ~1 pJ (now documented in paper §8.5) |
 
 #### Remaining Phase 1 Priorities
 
 1. 🔴 Install Meep → resolve geometry invariance (PLAUSIBLE → CONFIRMED/REFUTED)
-2. 🔴 Address energy claim: prototype amortized ADC model or revise paper language
-
-#### Phase 2 Simulation Findings (Coupled Physics + Noise)
-
-**Date:** 2026-03-04
-
-##### ✅ Coupled Multiphysics (notebook 08, `simulations/coupled_physics.py`)
-
-- **SVEA (Slowly-Varying Envelope Approximation)** eliminates MHz/GHz stiffness
-- 5 acoustic + 3 EM modes, κ_ae = 10⁻³, 500 µs simulation
-- **95.1% energy retained** — excellent coherence
-- Acoustic → EM transfer: negligible (large acoustic-magnon detuning)
-- Thermal self-heating: 0.01 mK — completely negligible
-- Coupling strength scan: EM energy scales as κ², coherence unaffected
-- Thermal feedback: drift < 1% for ΔT up to ±50 K
-
-##### 🔴 CRITICAL: Phase Diffusion Noise — POTENTIAL KILL (notebook 08, `simulations/noise_decoherence.py`)
-
-- **Brownian motion of ferrofluid nanoparticles creates phase noise**
-- Noise budget at 70 MHz fundamental:
-  - Phase diffusion: **77.5%** ← dominant
-  - Shot noise: 22.5%
-  - Thermal/1/f/ADC: < 0.1% combined
-- **SNR = −6.5 dB at default micro-cell (10 µm)³** → 0 reliable modes
-- Even at Q = 10,000: still 0 reliable modes
-- **The paper does NOT model nanoparticle Brownian noise**
-- **This is the #1 risk to the entire architecture**
-
-##### Mitigations to Investigate
-
-1. **Gel-immobilized nanoparticles** — reduce Brownian diffusion by 10²-10⁴×
-2. **Larger cavity volume** — macro-cell (1 mm)³ has 10⁹× more particles, better averaging
-3. **Higher excitation energy** — sacrifice fJ claim for higher signal amplitude
-4. **Experimental calibration** — actual phase noise may be lower than model (model is conservative)
-5. **Ensemble readout** — average over many cells for noise reduction
-
-##### Phase 2 Kill Criteria Assessment
-
-| Check                   | Result  | Notes                          |
-| ----------------------- | ------- | ------------------------------ |
-| Coherence > 1 µs        | ✅ PASS | 500 µs at η=50                 |
-| Energy retained > 50%   | ✅ PASS | 95.1% at 500 µs                |
-| Mode crosstalk < 10%    | ❌ FAIL | Need mode-selective excitation |
-| SNR > 10 dB (all modes) | ❌ FAIL | −6.5 dB (phase diffusion)      |
-| BER < 1% (all modes)    | ❌ FAIL | 31.8% BER                      |
-| Lifetime > 1 µs         | ❌ FAIL | 0 µs (noise floor)             |
-| Reliable modes ≥ 5      | ❌ FAIL | 0 modes reliable               |
-
-**Overall: 2 PASS / 5 FAIL — Architecture at risk unless phase diffusion is mitigated**
-
-##### ✅ Mitigation Analysis (notebook 09, `simulations/mitigations.py`)
-
-- **Key insight: TWO independent noise barriers** — phase diffusion AND shot noise must both be addressed
-- **No single mitigation** (gel alone, more photons alone, larger cavity alone) reaches SNR > 10 dB
-- **Minimum viable configurations** (all achieve 10 modes):
-  1. Gel η×100 + 10⁸ photons at 10 µm → SNR 13.5 dB, ~10 pJ energy
-  2. 50 µm cavity + 10⁸ photons (no gel) → SNR 14.2 dB, ~10 pJ energy
-  3. Gel η×10 + 50 µm + 10⁸ photons → SNR 18.9 dB, ~10 pJ energy
-- **Viability map** shows clear L-shaped boundary in (viscosity × photon) space
-- **Energy implication**: minimum viable ≈ 10 pJ (still 10-100× below DRAM)
-- **Verdict: NOT A KILL** — architecture works under achievable conditions, but paper defaults need revision
-- 128 tests passing (102 + 26 new mitigation tests)
-
-##### Phase 3 Simulation: Information-Theoretic Capacity & Technology Benchmarking
-
-**Date:** 2026-03-04
-
-###### Shannon Capacity Analysis (notebook 10, `simulations/capacity.py`)
-
-- **Paper asserts "10 bits/mode" without derivation — Shannon says otherwise**
-- Applied $b = \frac{1}{2} \log_2(1 + \text{SNR})$ per mode, $C = B \log_2(1 + \text{SNR})$ per channel
-- Paper's 10 bits/mode requires SNR ≈ 60 dB — never stated or justified
-
-| Configuration                             | SNR (mode 1) | Bits/mode | Bits/cell | Paper overestimate |
-| ----------------------------------------- | ------------ | --------- | --------- | ------------------ |
-| Baseline (default)                        | −6.5 dB      | 0.1       | 1.5       | 68×                |
-| Mitigated (gel η×100 + 10⁸ ph)            | 13.5 dB      | 2.3       | 22.8      | 4.4×               |
-| Aggressive (gel η×1000 + 10⁹ ph + Q=1000) | 24 dB        | 3.9       | 39.1      | 2.6×               |
-
-###### Storage Density Reality Check
-
-- Paper claims 1–10 Tb/cm³
-- Mitigated: **0.023 Tb/cm³** (44–439× below paper's range)
-- Aggressive: **0.039 Tb/cm³** (26–256× below)
-- Even at Q=100+ with many modes, density is 10–100× below paper claims
-
-###### Timing & Bandwidth (first numbers — paper had NONE)
-
-- Write latency: 14 ns (acoustic propagation — competitive with DRAM)
-- Read latency: 1 µs (coherent integration time — comparable to Flash)
-- Cycle time: ~3.3 µs (dominated by ring-down)
-- Bandwidth: 45.5 Mb/s (mitigated) — respectable for non-volatile
-
-###### Technology Comparison
-
-| Technology           | Energy [pJ] | Density [Tb/cm³] | Read [ns] | Compute     |
-| -------------------- | ----------- | ---------------- | --------- | ----------- |
-| DRAM (DDR5)          | 3           | 0.01             | 14        | none        |
-| NAND Flash           | 1000        | 1.0              | 25,000    | none        |
-| PCM/3DXP             | 10          | 0.1              | 50        | partial     |
-| STT-MRAM             | 1           | 0.01             | 10        | partial     |
-| ReRAM                | 0.1         | 0.1              | 10        | partial     |
-| **WCFOMA mitigated** | **10**      | **0.023**        | **1000**  | **unified** |
-
-**WCFOMA sits between DRAM and PCM** in energy–density space.
-The paper's "10–100× improvement" claim is **NOT SUPPORTED** — competitive but not transformative.
-The unique "unified compute" locality may have niche value for in-memory computing.
-
-###### Updated Claims Scorecard (Phase 3)
-
-| Claim                 | Verdict          | Detail                                                    |
-| --------------------- | ---------------- | --------------------------------------------------------- |
-| 10 bits/mode          | ❌ OVERESTIMATE  | 2.3 b/mode mitigated (4.4×), 3.9 b/mode aggressive (2.6×) |
-| 1–10 Tb/cm³ density   | ❌ OVERESTIMATE  | 0.023 Tb/cm³ mitigated (44–439× below)                    |
-| "10–100× improvement" | ⚠️ NOT SUPPORTED | Competitive but no clear order-of-magnitude advantage     |
-| fJ per operation      | ❌ REFUTED       | ~10 pJ system-level (mitigated), physics-only ~fJ         |
-| No latency numbers    | ✅ GAP FILLED    | Write 14 ns, Read 1 µs, Cycle 3.3 µs                      |
-| No bandwidth analysis | ✅ GAP FILLED    | 45.5 Mb/s per cell (mitigated)                            |
 
 ---
 
-## Phase 2: Benchtop Prototype A (2026-2027)
+### Archived: Ferrofluid Substrate Investigation (KILLED)
+
+> The following findings document the ferrofluid exploration that led to the substrate kill in paper §3.1. They are preserved for scientific completeness. **These results apply to the ferrofluid variant only and do not apply to the solid glass architecture.**
+
+<details>
+<summary>Click to expand ferrofluid simulation findings</summary>
+
+#### Ferrofluid Model (notebook 06, `simulations/ferrofluid.py`)
+
+- Q ≈ 21,500 at 1 MHz in idealized model
+- All Phase 0 kill criteria passed under idealized conditions
+
+#### Coupled Multiphysics (notebook 08, `simulations/coupled_physics.py`)
+
+- SVEA coupled-mode simulation: 5 acoustic + 3 EM modes, 500 µs
+- 95.1% energy retained — excellent coherence in the coupled model
+- Thermal self-heating: 0.01 mK — negligible
+
+#### 🔴 KILL: Phase Diffusion Noise (notebook 08, `simulations/noise_decoherence.py`)
+
+- **Brownian motion of ferrofluid nanoparticles creates fatal phase noise**
+- Phase diffusion: **77.5%** of noise budget at 70 MHz
+- SNR = −6.5 dB at micro-cell (10 µm)³ → 0 reliable modes
+- **This is a fundamental property of the colloidal phase** — not an engineering problem
+
+#### Mitigation Analysis (notebook 09, `simulations/mitigations.py`)
+
+- Gel-immobilized nanoparticles + high photon count can recover ~10 modes at ~10 pJ
+- But this defeats the purpose: the appeal of ferrofluid was reconfigurability, and gel immobilization eliminates that
+
+#### Shannon Capacity — Ferrofluid Only (notebook 10, `simulations/capacity.py`)
+
+- At mitigated ferrofluid SNR (13.5 dB): 2.3 bits/mode, 0.023 Tb/cm³
+- At aggressive mitigation (24 dB): 3.9 bits/mode, 0.039 Tb/cm³
+- **These numbers do NOT apply to solid glass** — glass achieves 76.7 dB SNR at 1 mm (12.7 bits/mode)
+
+#### Ferrofluid Claims Scorecard
+
+| Claim                | Verdict (ferrofluid) | Detail                                          |
+| -------------------- | -------------------- | ----------------------------------------------- |
+| ~10 bits/mode        | ❌ OVERESTIMATE      | 2.3 b/mode mitigated (ferrofluid SNR too low)   |
+| ~1 Tb/cm³ density    | ❌ OVERESTIMATE      | 0.023 Tb/cm³ (ferrofluid noise-limited)          |
+| fJ per operation     | ❌ REFUTED           | ~10 pJ system-level in ferrofluid configuration  |
+| Reconfigurable media | ❌ KILLED            | Phase diffusion destroys coherence in any liquid |
+
+**Verdict: Ferrofluid is a dead end.** Solid glass eliminates phase diffusion entirely (§3.2).
+
+</details>
+
+---
+
+## Phase 2: MEMS Proof-of-Concept (2026–2027)
 
 ### Goal
 
-Build the macro-scale ferrofluid resonator (paper Section 4.1) and measure real physics.
-
-### Hardware BOM (< $1,000)
-
-- Commercial ferrofluid (e.g., Ferrotec EFH series)
-- **Gel-immobilized nanoparticles** (η ≥ 100× baseline) — required for phase diffusion mitigation
-- Shear-thickening carrier fluid (cornstarch-based or commercial STF)
-- 3D-printed ZIM structures (Dirac-cone pillar arrays)
-- Cylindrical cavity (1-5 cm, machined or 3D-printed)
-- EM excitation coils (100-500 turns, 0.1-1 A)
-- **High-photon-count optical readout** (≥10⁸ photons/measurement) — required for shot noise mitigation
-- Faraday rotation readout (HeNe laser + polarizer + photodiode)
-- Inductive pickup coils (secondary readout)
-- Function generator + oscilloscope
-- Temperature-controlled enclosure (Peltier + PID)
-
-### Design Requirements from Simulation (Phase 2b + 3)
-
-| Parameter             | Minimum Viable                   | Rationale                         |
-| --------------------- | -------------------------------- | --------------------------------- |
-| Viscosity (effective) | η ≥ 1 Pa·s (100× baseline)       | Phase diffusion mitigation        |
-| Photon count          | ≥ 10⁸ per measurement            | Shot noise floor below signal     |
-| Cavity size           | 10–50 µm (or larger for bench)   | Density–SNR tradeoff              |
-| Energy budget         | ~10 pJ per access (system-level) | Honest framing; NOT fJ            |
-| Target bits/cell      | ~20–40 (not 100)                 | Shannon-limited at achievable SNR |
-| Target density        | ~0.02 Tb/cm³ (not 1–10)          | Realistic at mitigated parameters |
+Fabricate a single borosilicate glass MEMS resonator (1–5 mm) with thin-film piezo transduction and validate the core physics at chip scale. This is the paper's §15 Phase 1.
 
 ### Key Measurements
 
-| Measurement                  | Expected Range | Kill Criterion           |
-| ---------------------------- | -------------- | ------------------------ |
-| Mode coherence time          | 1-100 µs       | < 100 ns                 |
-| Quality factor Q             | 100-1000       | < 10                     |
-| Write/read energy            | fJ-pJ          | > 100 pJ                 |
-| Mode count (distinguishable) | 5-50           | < 3                      |
-| Freq drift under shear       | 5-33%          | < 1% (no tamper signal)  |
-| Thermal sensitivity          | ±0.2%/K        | > ±2%/K (uncontrollable) |
+| Measurement                         | Expected (from model) | Kill Criterion               |
+| ----------------------------------- | --------------------- | ---------------------------- |
+| Quality factor $Q$                  | ~9,097 (modeled §7)   | < 1,000                      |
+| Thermally stable mode count         | 9,380 (derived §2.1)  | < 100 resolvable modes       |
+| SNR (fundamental, 1 mm)             | 76.7 dB (projected §6)| < 40 dB                      |
+| Perturbation frequency shift        | Per Rayleigh formula   | < 50% of predicted shift     |
+| Thin-film piezo transduction        | Efficient coupling     | No detectable signal         |
+| Cross-talk (adjacent rods, 80 µm)   | < 1% (modeled)        | > 10%                        |
+
+### Hardware
+
+- 1–5 mm borosilicate glass rods (diced from Schott Borofloat 33 wafers)
+- AlN thin-film piezoelectric transducers (sputtered or fabricated at MEMS foundry)
+- Vacuum packaging or bench-top vacuum chamber
+- Network analyser or oscilloscope + function generator for spectral measurements
+- Temperature-controlled stage (Peltier + PID, ±1 K)
 
 ### Kill → Pivot
 
-- If Q < 10: The ferrofluid medium cannot sustain resonances. Consider solid-state magnonic media instead.
-- If no modes detected: Excitation method fundamentally flawed. Revisit transducer design.
-- If write energy > 100 pJ: No advantage over DRAM. Abandon energy efficiency claims.
+- If measured $Q < 1{,}000$: Anchor loss or surface loss dominates; investigate alternative tether geometries or vacuum levels
+- If < 100 modes resolvable: Mode coupling at high $n$ destroys spectrum; consider lower-order encoding with fewer, wider-spaced modes
+- If piezo coupling fails: Try laser Doppler vibrometry as backup readout
 
 ### Actualization
 
-- If Q > 100 and ≥ 5 modes: First physical proof of concept. Publish, seek grant funding.
-- If dilatancy shielding confirmed: Security application may be independently valuable.
+- If $Q > 5{,}000$ and ≥ 1,000 modes: **Core claims validated at MEMS scale** — publish, seek grant funding
+- If perturbation encoding works at chip scale: **Priority date exercised** — convert provisional patent to non-provisional
 
 ---
 
-## Phase 3: Micro-Scale Arrays (2027-2028)
+## Phase 3: Array Demonstration (2027–2028)
 
 ### Goal
 
-Build Prototype B: 16-64 cell micro-scale arrays (10-100 µm cells) with fiber optic integration.
+Build a 10–100 resonator array with CMOS readout. Demonstrate parallel associative recall on hardware.
 
 ### Prerequisites
 
-- Phase 2 confirms viable physics
+- Phase 2 confirms $Q > 1{,}000$ and multi-mode spectrum in MEMS geometry
 - Fabrication partner identified (university cleanroom or MEMS foundry)
 
 ### Work Items
 
-- FIB/EBL fabrication of ZIM structures on fiber facets
-- Ferrofluid-infused micro-cavities
-- Optical excitation/readout through fiber
-- Multi-cell addressing and crosstalk characterization
-- Thermal sweep (±5 K) for drift validation
-- Optional: Rb vapor cell integration for quantum verification
+- Multi-rod array fabrication at 80 µm pitch
+- CMOS flip-chip readout IC (or off-chip ADC for initial demo)
+- Lithographic perturbation mass patterning (gold, ~50 nm)
+- Parallel excitation and per-rod amplitude measurement
+- Associative recall demo: store $N$ patterns, query, verify correct match
+- Thermal sweep (±1 K) for drift validation across array
 
 ### Kill Criteria
 
-- Cell-to-cell crosstalk > 10% → array scaling unviable
+- Rod-to-rod crosstalk > 10% → array architecture unviable
 - Fabrication yield < 50% → manufacturing cost prohibitive
-- Fiber coupling loss > 30% → readout SNR too low
+- Associative recall accuracy < 80% at ≥ 10 stored patterns → computation model fails
 
 ### Actualization
 
-- 16+ cell array operational → transformative demo; seek Series A / DARPA funding
-- Rb verification working → publish quantum-enhanced security paper
+- 10+ rod array with associative recall demonstrated → transformative demo; seek Series A / DARPA funding
+- Measured density matches projected → publish hardware validation paper
 
 ---
 
@@ -364,20 +273,20 @@ Build Prototype B: 16-64 cell micro-scale arrays (10-100 µm cells) with fiber o
 
 ### Goal
 
-If Phases 1-3 succeed, build a >1,000-cell prototype targeting a specific AI workload (e.g., similarity search, attention computation).
+If Phases 2–3 succeed, build a >1,000-rod prototype targeting a specific workload (e.g., similarity search, biometric matching, network intrusion detection).
 
 ### Requirements to Enter Phase 4
 
-- [ ] Phase 2 prototype achieves Q > 100, ≥ 10 modes, fJ energy
-- [ ] Phase 3 demonstrates ≥ 16 working cells in array
+- [ ] Phase 2 confirms Q > 1,000 and ≥ 1,000 resolvable modes
+- [ ] Phase 3 demonstrates ≥ 10 working rods with associative recall
 - [ ] Published, peer-reviewed paper with independent replication
 - [ ] Identified commercial application with willing early adopter
 
 ### Targets
 
-- 10-100× energy advantage over GPU for specific workload
-- Latency competitive with specialized ASIC
-- Integrated CMOS interface demonstrated
+- Energy advantage over GPU for associative search workloads
+- Latency competitive with TCAM for pattern matching
+- Integrated CMOS readout demonstrated
 
 ---
 
@@ -387,7 +296,7 @@ The paper's own citation audit (included at end of v9.md) identified issues:
 
 | Priority | Issue                             | Action                                                        |
 | -------- | --------------------------------- | ------------------------------------------------------------- |
-| HIGH     | Nat. Comm. 16, 3586 mismatch      | Replace with specific ferrofluid/magnonic Q measurement paper |
+| HIGH     | Nat. Comm. 16, 3586 mismatch      | Replace with specific glass acoustic Q measurement paper      |
 | HIGH     | J. Phys. D 55, 25301 unverifiable | Find/verify actual ZIM mode packing paper or replace          |
 | MEDIUM   | Adv. Materials incomplete         | Add specific article/DOI                                      |
 | MEDIUM   | Nat. Comp. Sci. vague             | Specify article                                               |
@@ -421,23 +330,23 @@ simulation module, automated tests, and (if confirmed) paper integration.
 
 Track questions that need answers, ordered by impact on go/no-go decisions:
 
-1. **What is the actual Q factor of resonant modes in commercial ferrofluid?**
-   No direct measurement found in literature. This is the #1 unknown.
+1. **What is the actual Q factor of a MEMS-scale borosilicate glass resonator with thin-film piezo?**
+   The five-mechanism model (§7) predicts 9,097. Material loss dominates at 91%. But the model has not been experimentally validated at chip scale. This is the #1 unknown.
 
-2. **Can multiple modes actually coexist without nonlinear coupling?**
-   Linear superposition assumed; ferrofluids are inherently nonlinear.
+2. **How many modes are practically resolvable at MEMS scale?**
+   The formula gives 9,380 modes, but mode coupling, transducer bandwidth, and fabrication imperfections may reduce this. The paper's FEM validates to mode 15; behaviour at mode 9,380 is extrapolated.
 
-3. **Is the ZIM damping reduction factor physically justified or assumed?**
-   The 0.5× factor is a simulation parameter, not derived from first principles.
+3. **Does thin-film AlN piezo coupling work across the full mode spectrum?**
+   FBAR filters validate AlN at single-mode GHz operation. Multi-mode broadband excitation/readout is untested.
 
-4. **Does dilatancy actually preserve internal wave structure?**
-   Paper assumes "buried" modes survive; could also destroy them.
+4. **What is the cross-talk between adjacent rods at 80 µm pitch?**
+   Acoustic isolation through vacuum should be good, but evanescent fields through tethers could couple rods.
 
-5. **What readout mechanism achieves fJ-level energy?**
-   Faraday rotation requires laser power that may exceed the fJ budget.
+5. **Do lithographic perturbation masses produce the predicted Rayleigh shifts?**
+   The perturbation formula is validated by FEM at 1.3% max error (§5.3). Real thin-film gold dots on real glass may differ.
 
-6. **Is room-temperature quantum verification noise-immune enough?**
-   90% fidelity is lab conditions; what about a vibrating edge device?
+6. **Can the advanced encoding extensions (§11) survive scaling from 10–50 modes to 9,380?**
+   Hybridization, null-space, and polysemic readout are validated in small simulations. Full-scale behaviour with real noise is unknown.
 
-7. **How does the mode spectrum change in a real 3D ferrofluid cavity?**
-   Viscosity, magnetization, and boundary effects all absent from current models.
+7. **What fabrication yield is achievable for glass MEMS resonator arrays?**
+   Each process step (glass DRIE, AlN deposition, vacuum packaging) is proven individually. The combination is untested.
