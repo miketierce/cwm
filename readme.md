@@ -21,11 +21,10 @@ CWM encodes information in the acoustic eigenmode spectrum of solid glass resona
 
 The research is backed by a falsification-first computational framework:
 
-- **44 simulation modules** in `simulations/`
-- **1,910 automated tests** in `tests/`
-- **80 hypotheses tested**: 54 confirmed, 26 killed (67.5% confirmation rate)
-- **22 advanced encoding techniques** (§11 of the paper)
-- **18 historical/physical analogies** — Spare–Mace, Scranton–Dogon, Tesla, Chladni, Békésy, Franklin, Leibniz, Gabor, Zeeman, Kepler, Boltzmann, Gor'kov, Weyl equidistribution, Fabry–Pérot, Shannon–Nyquist, Mathieu–Floquet, Coronal Seismology, Gauge Geometry
+- **48 simulation modules** in `simulations/`
+- **2,253 automated tests** in `tests/`
+- **99 hypotheses tested**: 67 confirmed, 32 killed (67.7% confirmation rate)
+- **22 sidebars** — advanced encoding techniques and cross-domain investigations (§11 of the paper)
 
 Every “confirmed” result passes automated regression tests. Every “killed” result is preserved with its kill mechanism documented.
 
@@ -33,11 +32,11 @@ Every “confirmed” result passes automated regression tests. Every “killed�
 
 ```
 cwm/
-├── paper/              # Canonical paper (v16) + figures
-│   ├── v16.md          # 1,950 lines — the definitive CWM paper
+├── paper/              # Canonical paper (v18) + figures
+│   ├── v18.md          # The definitive CWM paper
 │   └── figures/
-├── simulations/        # 44 physics simulation modules
-├── tests/              # 1,910 automated tests
+├── simulations/        # 48 physics simulation modules
+├── tests/              # 2,253 automated tests
 ├── experiments/        # Standalone experiment scripts (exp01–exp05)
 ├── notebooks/          # 12 Jupyter analysis notebooks
 ├── analysis/           # Plotting, comparison, and export tools
@@ -56,7 +55,7 @@ git clone https://github.com/miketierce/cwm.git
 cd cwm
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-python -m pytest tests/ -q          # run all 1,910 tests
+python -m pytest tests/ -q          # run all 2,253 tests
 ```
 
 ## Tools
@@ -95,7 +94,7 @@ Every fabrication step borrows from an existing MEMS production line: glass DRIE
 
 ## Honest Assessment
 
-CWM’s strongest claims — mode count, Q factor, Rayleigh perturbation encoding, associative recall — are validated by 1,910 tests against first-principles physics. The weakest link is the gap between simulation and silicon: no MEMS device exists yet. The paper is transparent about this, killing 26 of 80 hypotheses and documenting every failure mechanism.
+CWM's strongest claims — mode count, Q factor, Rayleigh perturbation encoding, associative recall — are validated by 2,253 tests against first-principles physics. The weakest link is the gap between simulation and silicon: no MEMS device exists yet. The paper is transparent about this, killing 32 of 99 hypotheses and documenting every failure mechanism.
 
 ## Citation
 
@@ -105,10 +104,15 @@ CWM’s strongest claims — mode count, Q factor, Rayleigh perturbation encodin
              in Acoustic Glass Resonators},
   author  = {Tierce, William Michael},
   year    = {2026},
-  note    = {v16, 44 simulation modules, 1,910 automated tests,
-             80 hypotheses (54 confirmed, 26 killed)}
+  note    = {v18, 48 simulation modules, 2,253 automated tests,
+             99 hypotheses (67 confirmed, 32 killed).
+             U.S. Provisional Patent Application No. 64/023,264}
 }
 ```
+
+## Patent
+
+U.S. Provisional Patent Application No. 64/023,264 — Filed 31 March 2026.
 
 ## License
 
