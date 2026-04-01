@@ -256,32 +256,31 @@ Beyond the six core techniques above, we conducted a systematic cross-domain val
 
 Each investigation is implemented as an independent simulation module with automated test suites (1,747 tests across 20 modules, all passing). The cumulative tally across all 99 hypotheses (including §§2.1–2.6) is **67 confirmed and 32 killed** (67.7% confirmation rate). The killed hypotheses are as scientifically valuable as the confirmations—they map the boundaries of each cross-domain analogy and identify which physical frameworks transfer to finite-rank eigenmode systems and which do not.
 
-| Technique                             | Module                       | Hyp    | C : K       | Key result                                                                           |
-| ------------------------------------- | ---------------------------- | ------ | ----------- | ------------------------------------------------------------------------------------ |
-| Phase-spectral encoding               | `tesla_phase.py`             | 4      | 4 : 0       | +84% discriminability; phase orthogonal to frequency. Firmware-only.                 |
-| 2D plate eigenmode extension          | `chladni_plates.py`          | 4      | 4 : 0       | 9.1× mode count; 4 symmetry-family channels (+300% polysemic gain).                  |
-| Active Q-boosting                     | `bekesy_cochlea.py`          | 4      | 1 : 3       | Q doubled at 0.004 fW/mode; +89% modes. Travelling-wave hypotheses killed.           |
-| Crystallographic phase retrieval      | `franklin_phase.py`          | 4      | 0 : 4       | All-negative. sin² encoding incompatible with Fourier-based methods.                 |
-| Binary encoding / monadic compression | `leibniz_binary.py`          | 4      | 3 : 1       | 87.5% recall at 1 bit/mode; monadic reconstruction confirmed.                        |
-| Holographic distributed memory        | `gabor_holographic.py`       | 4      | 1 : 3       | Bandwidth-ceiling framework confirmed; CWM is finite-rank, not infinite-bandwidth.   |
-| Perturbation-induced level splitting  | `zeeman_splitting.py`        | 4      | 4 : 0       | Effective g-factor exact ($R^2 = 1.0000$); selection rules confirmed.                |
-| Harmonic resonance ratios             | `kepler_harmonic.py`         | 4      | 2 : 2       | Octave correlation confirmed; consonance weighting killed.                           |
-| Timescale hierarchy                   | `boltzmann_timescale.py`     | 4      | 1 : 3       | CWM operates in classical Rayleigh–Jeans limit.                                      |
-| Acoustic radiation force              | `gorkov_radiation.py`        | 4      | 1 : 3       | Contrast-factor ranking exact; gradient placement killed.                            |
-| Standing-wave rationality test        | `irrational_prediction.py`   | 4      | 4 : 0       | Any irrational placement optimal; $10^{13}\times$ condition-number gap.              |
-| Acoustic cavity finesse               | `fabry_perot_cavity.py`      | 4      | 2 : 2       | Finesse–Q equivalence within 5.1%; 7,922× linewidth tunability.                      |
-| Channel capacity analysis             | `shannon_capacity.py`        | 4      | 2 : 2       | Uniform allocation achieves 98.8% of Shannon optimum.                                |
-| Parametric mode amplification         | `mathieu_parametric.py`      | 4      | 4 : 0       | 12.0 dB gain at 166× less power than feedback.                                       |
-| Astrophysical validation              | `coronal_seismology.py`      | 7      | 6 : 1       | Framework validated across 12 orders of magnitude in spatial scale.                  |
-| Gauge geometry                        | `gauge_geometry.py`          | 5      | 3 : 2       | Shannon capacity is an exact gauge invariant; rank is topological.                   |
-| Chiral phonon splitting               | `chiral_phonon.py`           | 4      | 3 : 1       | +427% capacity from L-T mode coupling; thermal switch analogy killed.                |
-| Passive stone resonance               | `passive_stone.py`           | 5      | 4 : 1       | CWM physics material-independent; small-vessel mode density killed.                  |
-| Femtosecond volumetric inscription    | `femtosecond_inscription.py` | 5      | 3 : 2       | sin² universality exact in bulk; radial Bessel encoding adds 5.1 bits.               |
-| Beads-on-string waveguide             | `bead_string.py`             | 5      | 3 : 2       | Multi-level bead alphabet (4 materials); perturbation ceiling at $m/M \approx 0.08$. |
-| **Totals**                            | **20 modules**               | **87** | **51 : 36** | **This table: 87 hyp (51 C, 36 K). Including §§2.1–2.6 (12 hyp): 99 total (67 C, 32 K; 67.7%)**  |
+| Technique                             | Module                       | Hyp    | C : K       | Key result                                                                                      |
+| ------------------------------------- | ---------------------------- | ------ | ----------- | ----------------------------------------------------------------------------------------------- |
+| Phase-spectral encoding               | `tesla_phase.py`             | 4      | 4 : 0       | +84% discriminability; phase orthogonal to frequency. Firmware-only.                            |
+| 2D plate eigenmode extension          | `chladni_plates.py`          | 4      | 4 : 0       | 9.1× mode count; 4 symmetry-family channels (+300% polysemic gain).                             |
+| Active Q-boosting                     | `bekesy_cochlea.py`          | 4      | 1 : 3       | Q doubled at 0.004 fW/mode; +89% modes. Travelling-wave hypotheses killed.                      |
+| Crystallographic phase retrieval      | `franklin_phase.py`          | 4      | 0 : 4       | All-negative. sin² encoding incompatible with Fourier-based methods.                            |
+| Binary encoding / monadic compression | `leibniz_binary.py`          | 4      | 3 : 1       | 87.5% recall at 1 bit/mode; monadic reconstruction confirmed.                                   |
+| Holographic distributed memory        | `gabor_holographic.py`       | 4      | 1 : 3       | Bandwidth-ceiling framework confirmed; CWM is finite-rank, not infinite-bandwidth.              |
+| Perturbation-induced level splitting  | `zeeman_splitting.py`        | 4      | 4 : 0       | Effective g-factor exact ($R^2 = 1.0000$); selection rules confirmed.                           |
+| Harmonic resonance ratios             | `kepler_harmonic.py`         | 4      | 2 : 2       | Octave correlation confirmed; consonance weighting killed.                                      |
+| Timescale hierarchy                   | `boltzmann_timescale.py`     | 4      | 1 : 3       | CWM operates in classical Rayleigh–Jeans limit.                                                 |
+| Acoustic radiation force              | `gorkov_radiation.py`        | 4      | 1 : 3       | Contrast-factor ranking exact; gradient placement killed.                                       |
+| Standing-wave rationality test        | `irrational_prediction.py`   | 4      | 4 : 0       | Any irrational placement optimal; $10^{13}\times$ condition-number gap.                         |
+| Acoustic cavity finesse               | `fabry_perot_cavity.py`      | 4      | 2 : 2       | Finesse–Q equivalence within 5.1%; 7,922× linewidth tunability.                                 |
+| Channel capacity analysis             | `shannon_capacity.py`        | 4      | 2 : 2       | Uniform allocation achieves 98.8% of Shannon optimum.                                           |
+| Parametric mode amplification         | `mathieu_parametric.py`      | 4      | 4 : 0       | 12.0 dB gain at 166× less power than feedback.                                                  |
+| Astrophysical validation              | `coronal_seismology.py`      | 7      | 6 : 1       | Framework validated across 12 orders of magnitude in spatial scale.                             |
+| Gauge geometry                        | `gauge_geometry.py`          | 5      | 3 : 2       | Shannon capacity is an exact gauge invariant; rank is topological.                              |
+| Chiral phonon splitting               | `chiral_phonon.py`           | 4      | 3 : 1       | +427% capacity from L-T mode coupling; thermal switch analogy killed.                           |
+| Passive stone resonance               | `passive_stone.py`           | 5      | 4 : 1       | CWM physics material-independent; small-vessel mode density killed.                             |
+| Femtosecond volumetric inscription    | `femtosecond_inscription.py` | 5      | 3 : 2       | sin² universality exact in bulk; radial Bessel encoding adds 5.1 bits.                          |
+| Beads-on-string waveguide             | `bead_string.py`             | 5      | 3 : 2       | Multi-level bead alphabet (4 materials); perturbation ceiling at $m/M \approx 0.08$.            |
+| **Totals**                            | **20 modules**               | **87** | **51 : 36** | **This table: 87 hyp (51 C, 36 K). Including §§2.1–2.6 (12 hyp): 99 total (67 C, 32 K; 67.7%)** |
 
 The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² > 0.999 and prediction error < 25%; and the femtosecond volumetric inscription investigation confirms that the sin² sensitivity profile is mathematically identical for bulk density perturbations ($R^2 = 1.0$), while adding a radial Bessel-function encoding dimension (5.1 bits MI) inaccessible to surface-only techniques; and the beads-on-string investigation extends CWM's perturbation formalism to a transverse string waveguide with discrete faience beads, confirming a four-level material alphabet and establishing a perturbation validity ceiling at $m/M \approx 0.08$ beyond which exact transfer-matrix solutions are required. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [5].
-
 
 ---
 
@@ -398,7 +397,6 @@ These layers compose multiplicatively. A rod with volumetric inscriptions (Layer
 
 **Development path.** Stage 0 (baseline ROM) deploys the validated read-only architecture. Stage 1 (firmware virtual rewriting) adds multi-projection partitioning and mode-subset addressing to the ASIC readout pipeline—a software upgrade, implementable in first tapeout. Stage 2 (binary sites) adds 12–20 electrostatic MEMS latches, providing $2^{12}$ physical configurations with < 0.5% Q penalty—second-generation MEMS die. Stage 3 (writable shell) deposits 50–100 nm Parylene C or magnetostrictive film, enabling continuous analog tuning—third-generation fabrication. Stage 4 (volumetric inscription) uses femtosecond laser writing to create permanent density perturbations in the rod interior, adding a radial encoding dimension (5.1 bits) inaccessible to surface techniques—fabrication-time programming with zero Q penalty. Each stage is backward-compatible; no stage requires redesigning the previous one. The glass harmonica has become a glass armonica.
 
-
 ## 4. Discussion
 
 ### 4.1 Practical Implications
@@ -439,7 +437,7 @@ _All quantitative claims computed from first-principles simulation code (48 modu
 
 [1] D. J. Amit, H. Gutfreund, and H. Sompolinsky, "Storing infinite numbers of patterns in a spin-glass model of neural networks," _Physical Review Letters_, vol. 55, no. 14, pp. 1530–1533, 1985. doi: [10.1103/PhysRevLett.55.1530](https://doi.org/10.1103/PhysRevLett.55.1530)
 
-[2] P. R. Huttenlocher, "Synaptic density in human frontal cortex — Developmental changes and effects of aging," _Brain Research_, vol. 163, no. 2, pp. 195–205, 1979. doi: [10.1016/0006-8993(79)90349-4](https://doi.org/10.1016/0006-8993(79)90349-4). (Foundational quantification of synaptic pruning during human brain development.)
+[2] P. R. Huttenlocher, "Synaptic density in human frontal cortex — Developmental changes and effects of aging," _Brain Research_, vol. 163, no. 2, pp. 195–205, 1979. doi: [10.1016/0006-8993(79)90349-4](<https://doi.org/10.1016/0006-8993(79)90349-4>). (Foundational quantification of synaptic pruning during human brain development.)
 
 [3] J. von Neumann and E. P. Wigner, "Über das Verhalten von Eigenwerten bei adiabatischen Prozessen," _Physikalische Zeitschrift_, vol. 30, pp. 467–470, 1929. (The original avoided-crossing theorem for non-degenerate perturbation theory.)
 

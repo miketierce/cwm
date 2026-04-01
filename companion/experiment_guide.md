@@ -6,6 +6,7 @@ ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
 
 **Companion to:**
+
 - **Paper I:** "Coherent Wave Memory: Wave-Based Storage and Computation in Acoustic Glass Resonators"
 - **Paper II:** "Advanced Encoding and Rewritability Techniques for Coherent Wave Memory"
 
@@ -40,9 +41,9 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 | 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads                | 15-pack | ~\$7             | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)    |
 | 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)           |
 | 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software      | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
-| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1–2     | ~\$5–\$10       | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
+| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1–2     | ~\$5–\$10        | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
 | 7   | Moldable silicone putty earplugs        | Mack's Pillow Soft, moldable silicone putty (perturbation masses) | 1 pack  | ~\$9             | [Mack's Pillow Soft, 8 Pair](https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20)     |
-| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                              | 2–4     | ~\$10–\$20      | Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)   |
+| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                              | 2–4     | ~\$10–\$20       | Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)   |
 |     | **Core materials (without scope)**      |                                                                   |         | **~\$38–\$54**   |                                                                                    |
 |     | **Core materials (with PicoScope)**     |                                                                   |         | **~\$230–\$246** |                                                                                    |
 
@@ -64,7 +65,8 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 | 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"                                |
 | 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                                                 |
 | 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20) |
-|     | **Accessories subtotal**               |                                                     |                | **~\$72**        |                                                                           |
+| 23  | Assorted sandpaper (120–3000 grit)     | *(Optional)* Lapping rounded rod ends flat for PZT bond | 1 pack     | ~\$7             | [3M Assorted Grit Sandpaper, 5-pack](https://www.amazon.com/gp/product/B001449TPS?tag=cwmt-20) |
+|     | **Accessories subtotal**               |                                                     |                | **~\$72–\$79**   |                                                                           |
 |     | **Grand total (without scope)**        |                                                     |                | **~\$111–\$126** |                                                                           |
 |     | **Grand total (with PicoScope)**       |                                                     |                | **~\$303–\$318** |                                                                           |
 
@@ -86,27 +88,29 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 **Time:** 30 minutes active + 24 hours glue cure.
 
-**Materials:** Items 1 or 2, 3 or 4, 6, 9, 16, 18 from the BOM.
+**Materials:** Items 1 or 2, 3 or 4, 6, 9, 16, 18 from the BOM. Optional: item 23 (sandpaper) if your rods have rounded ends on both sides.
 
 **Procedure:**
 
 1. **Clean the rod.** Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.
 
-2. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
+2. *(Optional)* **Lap one end flat.** If both ends of your rod are rounded (fire-polished), the PZT disc won't bond well to a convex surface. Place a sheet of 220-grit sandpaper on a flat surface (a glass plate, granite tile, or kitchen countertop works well). Hold the rod vertical and sand the end in a figure-8 pattern with light, even pressure and a few drops of water as lubricant. After 2–3 minutes the end should be visibly flat across the full 6 mm diameter. Finish with 400-grit for a smooth bond surface. Wipe clean with alcohol. If your rods already have one flat end, skip this step—use the flat end for the PZT.
+
+3. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
 
 > **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the cooler walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the cooler interior into isolated chambers for multi-rod array experiments—something foam cannot do.
 >
 > **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don't have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
-3. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
+4. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
-4. **Apply glue sparingly.** Place one tiny drop of cyanoacrylate—smaller than a pinhead, less than 0.5 mm in diameter—at the center of the cross-hair. _Less is more:_ excess glue adds mass and viscoelastic damping that destroys the quality factor (Failure Mode 1).
+5. **Apply glue sparingly.** Place one tiny drop of cyanoacrylate—smaller than a pinhead, less than 0.5 mm in diameter—at the center of the cross-hair. _Less is more:_ excess glue adds mass and viscoelastic damping that destroys the quality factor (Failure Mode 1).
 
-5. **Attach the PZT disc.** Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.
+6. **Attach the PZT disc.** Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.
 
-6. **Cure.** Set the assembly aside in the cooler mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
+7. **Cure.** Set the assembly aside in the cooler mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
 
-7. **Connectivity check.** Connect the PZT leads to the PicoScope Channel A input via a BNC adapter or clip leads. Set the scope to AC coupling, 1 mV/div, 1 ms/div timebase. Gently tap the free end of the rod with a fingernail. You should see a decaying burst of oscillation on screen. If no signal appears: check wire connections, ensure the PZT is not cracked, and try a firmer tap.
+8. **Connectivity check.** Connect the PZT leads to the PicoScope Channel A input via a BNC adapter or clip leads. Set the scope to AC coupling, 1 mV/div, 1 ms/div timebase. Gently tap the free end of the rod with a fingernail. You should see a decaying burst of oscillation on screen. If no signal appears: check wire connections, ensure the PZT is not cracked, and try a firmer tap.
 
 > **⚙️ Failure Mode 1 — PZT/Epoxy Boundary Damping (Low Q)**
 >
