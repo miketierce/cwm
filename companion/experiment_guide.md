@@ -3,7 +3,7 @@
 **Mike Tierce**
 _Independent Researcher_
 ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
-Repository: [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma)
+Repository: [github.com/miketierce/cwm](https://github.com/miketierce/cwm)
 
 **Companion to:**
 
@@ -18,7 +18,7 @@ This companion document contains the complete macro-scale experiment guide, full
 
 The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of Paper I for the theoretical context behind each measurement.
 
-_All quantitative claims are computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma._
+_All quantitative claims are computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/cwm._
 
 ---
 
@@ -82,7 +82,7 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 > | **Width** | 5″ / 127 mm | 5-column grid at 25 mm spacing + 12.5 mm margin each side |
 > | **Height** | 3″ / 76 mm | 2-row grid at 25 mm spacing + 25 mm margin top and bottom |
 >
-> The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—a Styrofoam fishing cooler, an insulated shipping box, or even a cardboard box lined with 1″ foam board.
+> The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—an insulated shipping box, a picnic cooler, or even a cardboard box lined with 1″ foam board.
 
 ### D.2 Safety Notes
 
@@ -1120,14 +1120,32 @@ Each band samples a different frequency range of the rod's response. Because the
 
 ### D.19 Contributing Your Data
 
-We invite all experimenters—students, teachers, hobbyists, and researchers—to submit completed worksheets and raw PicoScope data files to the project repository. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.
+We invite all experimenters—students, teachers, hobbyists, and researchers—to submit their results. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.
 
-**To contribute:**
+#### Option A: Submit Online (Recommended)
+
+The easiest way to contribute is through the CWM project website at [coherent-wave-memory.web.app/experiment](https://coherent-wave-memory.web.app/experiment). The site provides a guided submission form for each experiment:
+
+1. Navigate to **coherent-wave-memory.web.app/experiment** in any web browser.
+2. Select the experiment you completed from the experiment tabs at the top.
+3. Fill in the data fields (frequency measurements, Q values, temperature, etc.). Fields marked with an asterisk are required; all others are optional.
+4. Optionally add a nickname (e.g. "Ms. Rivera's 8th Grade"), location, and free-text notes about your setup or observations.
+5. Upload photos or short videos of your setup using the drag-and-drop upload area (up to 5 files, 20 MB each).
+6. Click **Submit Results**. Your data is saved anonymously and appears immediately in the **Community Results** section below the form, alongside submissions from other experimenters worldwide.
+
+No account is required. You can submit results for as many experiments as you like. The community results panel shows summary statistics (number of submissions, mean values) and individual result cards — a live, growing dataset that validates the physics across diverse setups.
+
+#### Option B: Submit via GitHub
+
+For advanced users who want to contribute raw data files:
 
 1. Photograph or scan your completed Worksheets D.1–D.13 and the Experiment Log (D.17).
 2. Export raw PicoScope waveform files (.psdata or .csv) for each experiment.
-3. Submit via pull request to the project repository at [github.com/miketierce/wcfoma](https://github.com/miketierce/wcfoma) in the `data/community/` directory. Include your Experiment Log as the commit message or PR description.
-4. Alternatively, email data files and scanned worksheets to the corresponding author.
+3. Submit via pull request to the project repository at [github.com/miketierce/cwm](https://github.com/miketierce/cwm) in the `data/community/` directory. Include your Experiment Log as the commit message or PR description.
+
+#### Option C: Email
+
+Alternatively, email data files and scanned worksheets to the corresponding author.
 
 Every data point matters. A middle school classroom measuring Q = 3,000 on a 200 mm rod constrains the same physics as a university lab measuring Q = 9,000 on a 150 mm rod—and the diversity of rod geometries and construction techniques is itself scientifically valuable. Unexpected results (low Q, spurious modes, anomalous thermal coefficients) are _especially_ welcome: they reveal failure modes that improve the guide for the next experimenter.
 
@@ -1144,8 +1162,8 @@ Generates multi-tone query waveforms for the PicoScope 2204A's arbitrary wavefor
 **Prerequisites:**
 
 ```bash
-git clone https://github.com/miketierce/wcfoma.git
-cd wcfoma
+git clone https://github.com/miketierce/cwm.git
+cd cwm
 pip install -r requirements.txt
 ```
 
@@ -1348,13 +1366,13 @@ Requires: `playwright` (with Chromium installed via `playwright install chromium
 
 ---
 
-_All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma._
+_All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/cwm._
 
 ---
 
 ## Illustration Plates
 
-_The following pages present each figure at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet._
+_The following pages present experiment-relevant figures at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet. For the complete set of all 16 figures (including MEMS design, scaling, and fabrication plates), see Paper I._
 
 <div class="blank-verso">&nbsp;</div>
 
@@ -1366,105 +1384,56 @@ _The following pages present each figure at full landscape scale for detailed ex
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig2_mems_cross_section.svg" alt="Plate 2: MEMS Resonator Cross-Section"/>
-<p><strong>Figure 2.</strong> MEMS resonator at chip scale. <em>(a)</em> Cross-section of a single 1 mm × 40 µm glass resonator element showing AlN piezo transducers, anchor tethers, vacuum cavity, and lithographic mass perturbations. <em>(b)</em> Scale comparison: the rod diameter (40 µm) is thinner than a human hair (70 µm). <em>(c)</em> Top-down view of a resonator array at 80 µm pitch on a CMOS readout die. <em>(d)</em> Chip integration stack: vacuum-sealed glass array flip-chip bonded to CMOS — identical to existing MEMS accelerometer packaging.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig3_eigenmode_encoding.svg" alt="Plate 3: Eigenmode Encoding"/>
+<img src="figures/fig3_eigenmode_encoding.svg" alt="Plate 2: Eigenmode Encoding"/>
 <p><strong>Figure 3.</strong> Eigenmode encoding. <em>(a)</em> Standing wave mode shapes for modes n = 1, 2, 3, … N within a glass rod — each mode is an independent information channel at a distinct frequency. <em>(b)</em> Perturbation effect: adding mass at a specific position shifts each mode frequency by a different amount (Rayleigh perturbation formula), creating a unique spectral fingerprint that encodes the perturbation's position and mass.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig4_q_budget.svg" alt="Plate 4: Q-Factor Loss Budget"/>
-<p><strong>Figure 4.</strong> MEMS Q-factor loss budget. <em>(a)</em> For the reference 1 mm borosilicate design, material intrinsic loss dominates at 91.0% — anchor loss is only 4.4% of the total budget. Q<sub>total</sub> = 9,097. <em>(b)</em> All four design scenarios (varying glass type, tether geometry, and vacuum level) clear the Q > 5,000 threshold for competitive operation, with fused silica designs exceeding Q = 50,000.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig5_scaling.svg" alt="Plate 5: Scaling and Crossovers"/>
-<p><strong>Figure 5.</strong> Scaling from macro to MEMS. <em>(a)</em> Size comparison of the 150 mm prototype rod (0.04 Mbit/cm³), the 1 mm borosilicate MEMS target (95.1 Gbit/cm³ active, 9.5× DRAM), and a 0.5 mm fused silica array design (1.4 Tbit/cm³ packed-array, 1.4× NAND Flash). All designs share the same thermally stable mode physics; density explodes because volume shrinks as L³ while capacity falls only as log L. <em>(b)</em> Log–log density plot showing CWM crossing DRAM at 2.1 mm, PCM at 1.15 mm, and NAND Flash at 0.45 mm — all within standard MEMS fabrication range.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig6_fabrication.svg" alt="Plate 6: Fabrication Process Flow"/>
-<p><strong>Figure 6.</strong> CWM fabrication process flow. Six steps — all using processes already in volume production. Glass DRIE is used in microfluidics (Schott Borofloat 33); AlN thin-film piezo is in billions of smartphone FBAR filters; MEMS vacuum packaging is standard for oscillators and gyroscopes (SiTime, Abracon); CMOS-MEMS flip-chip bonding is used in Bosch and STMicro accelerometers. The innovation is the architectural combination, not the fabrication.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig7_weight_pruning.svg" alt="Plate 7: Synaptic Pruning for Associative Recall"/>
+<img src="figures/fig7_weight_pruning.svg" alt="Plate 3: Synaptic Pruning for Associative Recall"/>
 <p><strong>Figure 7.</strong> Synaptic pruning optimization. <em>(a)</em> Weight matrix before and after pruning: entries below threshold θ are zeroed, removing inter-pattern crosstalk while preserving dominant pattern-encoding weights. <em>(b)</em> Recall accuracy vs. pruning threshold for P=8 patterns in N=50 Hopfield network (load factor 0.16). Optimal pruning at θ* = 0.055 achieves +10.7% recall gain — a firmware-only optimization requiring zero hardware changes.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig8_compute_in_memory.svg" alt="Plate 8: In-Situ Boolean Computation"/>
+<img src="figures/fig8_compute_in_memory.svg" alt="Plate 4: In-Situ Boolean Computation"/>
 <p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms CWM as a true compute-in-memory technology.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig9_avoided_crossing.svg" alt="Plate 9: Avoided Crossing and Mode Hybridization"/>
-<p><strong>Figure 9.</strong> Mode hybridization at near-degeneracy. <em>(a)</em> Avoided-crossing level diagram: when two eigenfrequencies approach each other under perturbation, off-diagonal coupling prevents crossing, creating a gap of 2κ and hybridized bonding/antibonding mode pairs. <em>(b)</em> Hybridization depth (energy exchange fraction) peaks at ≈100% for small detuning and remains above 10% for 16 of 20 tested detuning values, yielding an effective +160% capacity gain from a 10-mode base system.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig10_null_space.svg" alt="Plate 10: Null-Space Multiplexing"/>
-<p><strong>Figure 10.</strong> Null-space multiplexing for dual-channel encoding. The coupling matrix C (10 modes × 16 perturbation sites) has rank 10 and a 6-dimensional null space. Standard patterns are encoded in the column space and recovered by standard readout (fidelity 1.000). Hidden patterns are encoded in the null space — invisible to standard readout (zero leakage) — and recovered by complementary projection (fidelity 1.000). Combined capacity: 262 bits vs. 164 standard, a +60% bonus with zero hardware modification.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig11_prototype_spectrum.svg" alt="Plate 11: Prototype Eigenmode Spectrum"/>
+<img src="figures/fig11_prototype_spectrum.svg" alt="Plate 5: Prototype Eigenmode Spectrum"/>
 <p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg putty perturbation (red dashed), each mode shifts by a different Δfₙ depending on the putty position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (putty at antinode); mode 4 barely shifts (putty near node). Measured shifts match Rayleigh predictions to within 2%.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig12_ringdown.svg" alt="Plate 12: Ring-down and Q Measurement"/>
+<img src="figures/fig12_ringdown.svg" alt="Plate 6: Ring-down and Q Measurement"/>
 <p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the USB oscilloscope is not the bottleneck.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig13_recall_discrimination.svg" alt="Plate 13: Associative Recall Discrimination"/>
+<img src="figures/fig13_recall_discrimination.svg" alt="Plate 7: Associative Recall Discrimination"/>
 <p><strong>Figure 13.</strong> Associative recall demonstration. <em>(a)</em> Response amplitudes for an 8-pattern array when queried with the P4 spectrum: the matching pattern responds at 28 dB, 15 dB above the best non-matching pattern (P6 at 13 dB), providing a 30× power margin. <em>(b)</em> Cross-correlation matrix for four stored fingerprints confirms near-orthogonality: diagonal entries = 1.00, maximum off-diagonal = 0.21 (−13.6 dB). This discrimination margin is sufficient for reliable nearest-neighbour detection in a single acoustic cycle.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
-<p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). <em>(a)</em> Eigenfrequency diagram: uncoupled modes (dashed grey) would cross at zero detuning; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by minimum gap 2κ = 17 kHz. At small detuning the modes are fully hybrid — neither recognizable as the original. <em>(b)</em> Hybridization depth vs. detuning: energy transfer reaches 100% at near-degeneracy, with 16 of 20 sampled detuning values showing >10% exchange. Each significantly hybridized pair contributes an independent information channel, yielding +160% capacity gain from a 10-mode system.</p>
-</div>
-
-<div class="blank-verso">&nbsp;</div>
-
-<div class="plate-page">
-<img src="figures/fig15_cw_readout.svg" alt="Plate 15: Continuous-Wave Readout Gain"/>
+<img src="figures/fig15_cw_readout.svg" alt="Plate 8: Continuous-Wave Readout Gain"/>
 <p><strong>Figure 15.</strong> CW readout SNR gain vs. integration time. Lock-in detection at the mode frequency rejects all out-of-band noise, yielding gain = 10 log₁₀(T_int / τ). At 1 s: +7.5 dB; at 10 s: +17.5 dB; at 60 s: +25.2 dB over impulse ring-down. This is the electronic equivalent of a glass harmonica performer's sustained bow — continuous energy input builds the resonator to full amplitude.</p>
 </div>
 
 <div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
-<img src="figures/fig16_two_phase_readout.svg" alt="Plate 16: Two-Phase Readout Architecture"/>
+<img src="figures/fig16_two_phase_readout.svg" alt="Plate 9: Two-Phase Readout Architecture"/>
 <p><strong>Figure 16.</strong> Two-phase readout architecture. Phase 1 (broadband chirp) excites all modes simultaneously for rapid spectral fingerprinting. Phase 2 (narrowband CW lock-in) targets individual modes for high-precision frequency measurement. Combining both phases gives the best of both worlds: fast pattern identification followed by precision characterization — the same impulse-then-sustain strategy a glass harmonica performer uses intuitively.</p>
 </div>
 
