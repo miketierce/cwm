@@ -5,7 +5,7 @@ _Independent Researcher_
 ORCID: [0009-0004-3869-958X](https://orcid.org/0009-0004-3869-958X)
 Repository: [github.com/miketierce/cwm](https://github.com/miketierce/cwm)
 
-**March 2026**
+**April 2026**
 _U.S. Provisional Patent Application No. 64/023,264 — Filed 31 March 2026_
 
 ---
@@ -162,8 +162,8 @@ This is an upper bound measured in a controlled system with deliberately tuned d
 </div>
 
 <div class="cwm-thumb">
-<img src="figures/fig9_avoided_crossing.svg" alt="Figure 4: Avoided crossing and mode hybridization"/>
-<p><strong>Figure 4.</strong> (a) Avoided-crossing level diagram: near-degenerate modes hybridize under perturbation, creating a gap of 2κ. (b) Hybridization depth peaks at 100% near degeneracy, with 16 of 20 modes showing >10% exchange.</p>
+<img src="figures/fig9_avoided_crossing.svg" alt="Figure 4: Avoided crossing schematic and hybridization depth"/>
+<p><strong>Figure 4.</strong> Schematic view of the avoided-crossing mechanism. (a) Energy-level diagram showing how near-degenerate modes hybridize under coupling, creating a gap of 2κ between bonding and antibonding branches. (b) Summary of hybridization depth across all 20 detuning values, confirming 16 of 20 exceed the 10% threshold for information-carrying capacity. Compare with the full numerical simulation in Figure 3.</p>
 </div>
 
 ### 2.4 Null-Space Multiplexing
@@ -278,7 +278,7 @@ Each investigation is implemented as an independent simulation module with autom
 | Passive stone resonance               | `passive_stone.py`           | 5      | 4 : 1       | CWM physics material-independent; small-vessel mode density killed.                  |
 | Femtosecond volumetric inscription    | `femtosecond_inscription.py` | 5      | 3 : 2       | sin² universality exact in bulk; radial Bessel encoding adds 5.1 bits.               |
 | Beads-on-string waveguide             | `bead_string.py`             | 5      | 3 : 2       | Multi-level bead alphabet (4 materials); perturbation ceiling at $m/M \approx 0.08$. |
-| **Totals**                            | **20 modules**               | **87** | **51 : 36** | **Combined with §§2.1–2.6: 67 confirmed, 32 killed (67.7%)**                       |
+| **Totals**                            | **20 modules**               | **87** | **51 : 36** | **This table: 87 hyp (51 C, 36 K). Including §§2.1–2.6 (12 hyp): 99 total (67 C, 32 K; 67.7%)**  |
 
 The most significant modeled results: phase-spectral encoding and parametric amplification are firmware-implementable; 2D plate extension and active Q-boosting would multiply mode count as hardware modifications; the rationality test proves any irrational-generator placement is optimal; the coronal seismology investigation confirms substrate independence of the perturbation formalism across 12 orders of magnitude in spatial scale; the passive stone resonance investigation confirms material independence — the sin²(nπx) perturbation law and capacity formula hold for granite, diorite, and quartzite with R² > 0.999 and prediction error < 25%; and the femtosecond volumetric inscription investigation confirms that the sin² sensitivity profile is mathematically identical for bulk density perturbations ($R^2 = 1.0$), while adding a radial Bessel-function encoding dimension (5.1 bits MI) inaccessible to surface-only techniques; and the beads-on-string investigation extends CWM's perturbation formalism to a transverse string waveguide with discrete faience beads, confirming a four-level material alphabet and establishing a perturbation validity ceiling at $m/M \approx 0.08$ beyond which exact transfer-matrix solutions are required. Full per-hypothesis methodology, kill criteria, and numerical results are available in the simulation modules and companion volume [5].
 
