@@ -51,9 +51,9 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 | #   | Component                              | Purpose (failure mode addressed)                    | Qty            | Est. Cost        | Source                                                                    |
 | --- | -------------------------------------- | --------------------------------------------------- | -------------- | ---------------- | ------------------------------------------------------------------------- |
-| 9   | Cardboard (from any box)               | Rod-support dividers for cooler (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                                            |
+| 9   | Cardboard (from any box)               | Rod-support dividers for insulated box (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                                            |
 | 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                     | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout                           |
-| 11  | Styrofoam cooler, small (~6-qt)        | Thermal enclosure (FM 3: drift isolation)           | 1              | ~\$5             | Grocery or hardware store                                                 |
+| 11  | Insulated shipping box with foam liner | Thermal enclosure (FM 3: drift isolation); interior ≥ 7″ × 5.5″ × 6.5″ (see dimension guide below) | 1 | ~\$10 | [CH-BOX Small Insulated Box, 7.1″ × 6.2″ × 10″ outer](https://www.amazon.com/dp/B0BJ21YFNN?tag=cwmt-20) |
 | 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                        | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"                                   |
 | 13  | Metric ruler, mm scale                 | Positioning masses along rod                        | 1              | ~\$3             | Any school supply                                                         |
 | 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                 | 1 bottle       | ~\$4             | Any pharmacy                                                              |
@@ -66,13 +66,23 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 | 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                                                 |
 | 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20) |
 | 23  | Assorted sandpaper (120–3000 grit)     | *(Optional)* Lapping rounded rod ends flat for PZT bond | 1 pack     | ~\$7             | [3M Assorted Grit Sandpaper, 5-pack](https://www.amazon.com/gp/product/B001449TPS?tag=cwmt-20) |
-|     | **Accessories subtotal**               |                                                     |                | **~\$72–\$79**   |                                                                           |
-|     | **Grand total (without scope)**        |                                                     |                | **~\$111–\$126** |                                                                           |
-|     | **Grand total (with PicoScope)**       |                                                     |                | **~\$303–\$318** |                                                                           |
+|     | **Accessories subtotal**               |                                                     |                | **~$77–$84**   |                                                                           |
+|     | **Grand total (without scope)**        |                                                     |                | **~$116–$131** |                                                                           |
+|     | **Grand total (with PicoScope)**       |                                                     |                | **~$308–$323** |                                                                           |
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
 > **Computer requirement.** Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository's dependencies (`pip install -r requirements.txt`). The computer runs the analysis scripts and, for Experiments 12–14, the application tools (`cwm_vault.py`, `cwm_image_search.py`, `cwm_cam.py`). All tools include a simulation mode for testing without hardware.
+
+> **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 25 mm spacing). If sourcing your own box, use these minimum interior dimensions:
+>
+> | Axis | Minimum interior | Purpose |
+> | --- | --- | --- |
+> | **Length** (rod axis) | 7″ / 178 mm | 150 mm rod + 15 mm PZT/cable clearance + 13 mm free-end clearance |
+> | **Width** | 5″ / 127 mm | 5-column grid at 25 mm spacing + 12.5 mm margin each side |
+> | **Height** | 3″ / 76 mm | 2-row grid at 25 mm spacing + 25 mm margin top and bottom |
+>
+> The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—a Styrofoam fishing cooler, an insulated shipping box, or even a cardboard box lined with 1″ foam board.
 
 ### D.2 Safety Notes
 
@@ -96,9 +106,9 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 2. *(Optional)* **Lap one end flat.** If both ends of your rod are rounded (fire-polished), the PZT disc won't bond well to a convex surface. Place a sheet of 220-grit sandpaper on a flat surface (a glass plate, granite tile, or kitchen countertop works well). Hold the rod vertical and sand the end in a figure-8 pattern with light, even pressure and a few drops of water as lubricant. After 2–3 minutes the end should be visibly flat across the full 6 mm diameter. Finish with 400-grit for a smooth bond surface. Wipe clean with alcohol. If your rods already have one flat end, skip this step—use the flat end for the PZT.
 
-3. **Build the cardboard rod mount inside the cooler.** Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
+3. **Build the cardboard rod mount inside the insulated box.** Cut two rectangles of flat cardboard to 165 × 140 mm (6.5″ × 5.5″)—sized to slot snugly inside the insulated box (item 11). See Template T.1 at the end of this guide for a printable 1:1 cutting pattern. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height, centered on the cardboard—sized just large enough for the 6 mm rod to pass through with minimal contact. Drop both dividers into the box standing upright, spaced 75 mm apart—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod slides horizontally through the aligned pinholes and should hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude out one end of the box for easy cable connection. Cut a small notch in the box lid above the PZT end for BNC cable and thermometer wire routing. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
 
-> **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the cooler walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the cooler interior into isolated chambers for multi-rod array experiments—something foam cannot do.
+> **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the box walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the box interior into isolated chambers for multi-rod array experiments—something foam cannot do.
 >
 > **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don't have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
@@ -108,7 +118,7 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 6. **Attach the PZT disc.** Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.
 
-7. **Cure.** Set the assembly aside in the cooler mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
+7. **Cure.** Set the assembly aside in the insulated box mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
 
 8. **Connectivity check.** Connect the PZT leads to the PicoScope Channel A input via a BNC adapter or clip leads. Set the scope to AC coupling, 1 mV/div, 1 ms/div timebase. Gently tap the free end of the rod with a fingernail. You should see a decaying burst of oscillation on screen. If no signal appears: check wire connections, ensure the PZT is not cracked, and try a firmer tap.
 
@@ -151,11 +161,11 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, cooler mount.
+**Materials:** Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, insulated box mount.
 
 **Procedure:**
 
-1. **Set up.** Place the resonator in the cooler mount on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.
+1. **Set up.** Place the resonator in the insulated box mount on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.
 
 2. **Impulse excitation.** In the PicoScope software (PS7, free download), configure the AWG to output a single 1-cycle burst at 17,700 Hz with 0.5 V amplitude. Set Channel A to trigger on the rising edge. Set the timebase to 50 ms/div so the display shows ~500 ms of data.
 
@@ -218,7 +228,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator, PicoScope, BNC cable, cooler mount.
+**Materials:** Assembled resonator, PicoScope, BNC cable, insulated box mount.
 
 **Procedure:**
 
@@ -285,7 +295,7 @@ $$Q_{\text{bandwidth}} = \frac{f_1}{\Delta f_{3\text{dB}}}$$
 
 **Time:** 90 minutes (mostly waiting for equilibration).
 
-**Materials:** Assembled resonator, PicoScope, digital thermometer, styrofoam cooler with cardboard dividers.
+**Materials:** Assembled resonator, PicoScope, digital thermometer, insulated box with cardboard dividers.
 
 **Background.** Borosilicate glass has a thermal expansion coefficient of ~3.3 × 10⁻⁶ /°C and a temperature coefficient of elastic modulus of ~−100 ppm/°C. The net frequency sensitivity is approximately:
 
@@ -295,11 +305,11 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 
 **Procedure:**
 
-1. **Open-air baseline.** Place the resonator in the cooler mount on a lab bench _with the lid off_. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.
+1. **Open-air baseline.** Place the resonator in the insulated box mount on a lab bench _with the lid off_. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.
 
 2. **Thermal perturbation.** Breathe warm air directly onto the rod for 10 seconds, or place a cup of warm water (~50 °C) 20 cm away. Resume recording f₁ and temperature every 2 minutes until the frequency returns to within 0.5 Hz of its initial value. Note the recovery time.
 
-3. **Insulated baseline.** The resonator is already mounted inside the cooler. Close the lid. Thread the BNC cable and thermometer wire through a small notch cut in the cooler lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.
+3. **Insulated baseline.** The resonator is already mounted inside the insulated box. Close the lid. Thread the BNC cable and thermometer wire through a small notch cut in the lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.
 
 4. **Calculate the temperature coefficient.** Plot f₁ versus temperature for both the open-air and insulated datasets. The slope $\Delta f / \Delta T$ is your measured temperature coefficient. Compare to the predicted −0.9 Hz/°C.
 
@@ -311,7 +321,7 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 >
 > Mitigations:
 >
-> - **Always use the styrofoam enclosure** for Experiments 5 and 6. This alone reduces drift by 10–50×.
+> - **Always use the insulated enclosure** for Experiments 5 and 6. This alone reduces drift by 10–50×.
 > - **Equilibrate 30 minutes** before starting perturbation experiments.
 > - **Use differential measurement.** Thermal drift shifts _all_ modes by the same fractional amount (−50 ppm/°C). A localized mass perturbation shifts each mode by a _different_ amount (proportional to $\sin^2(n\pi x/L)$). Track the _pattern_ of relative shifts, not absolute frequencies. This is your strongest discriminant.
 > - **Bracket measurements.** Take a "before" spectrum immediately before applying putty, and an "after" spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.
@@ -342,7 +352,7 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 | **Predicted (−0.9 Hz/°C):**           |                                                  | <span class="ex">agrees within 6%</span> |                              |                                   |
 | **Recovery time after perturbation:** |                                                  | <span class="ex">**~8 min**</span>       |                              |                                   |
 
-**Expected results.** The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the styrofoam enclosure, drift should be \<0.5 Hz over 30 minutes, which is small enough to resolve putty perturbation shifts of 1–10 Hz.
+**Expected results.** The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the insulated enclosure, drift should be \<0.5 Hz over 30 minutes, which is small enough to resolve putty perturbation shifts of 1–10 Hz.
 
 ---
 
@@ -352,7 +362,7 @@ For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of tem
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator (inside styrofoam enclosure), PicoScope, silicone putty, milligram scale, ruler, fine-tip marker.
+**Materials:** Assembled resonator (inside insulated enclosure), PicoScope, silicone putty, milligram scale, ruler, fine-tip marker.
 
 **Background.** The Rayleigh perturbation formula predicts that a small mass $\delta m$ placed at position $x$ along a rod of total mass $M$ and length $L$ shifts the $n$-th mode frequency by:
 
@@ -432,7 +442,7 @@ _After removing putty:_
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator, PicoScope, silicone putty, ruler, cooler mount, styrofoam enclosure.
+**Materials:** Assembled resonator, PicoScope, silicone putty, ruler, insulated box mount, insulated enclosure.
 
 **Procedure:**
 
@@ -482,7 +492,7 @@ _After removing putty:_
 
 **Time:** 60 minutes.
 
-**Materials:** Assembled resonator, PicoScope, BNC cable, cooler mount, styrofoam enclosure, small bowl of water.
+**Materials:** Assembled resonator, PicoScope, BNC cable, insulated box mount, insulated enclosure, small bowl of water.
 
 **Background.** Experiments 1–6 use impulse readout: strike the rod, listen to it ring down, measure the FFT. This is fast (one ringdown time $\tau \approx 180$ ms) but limited in SNR—the measurement window is fixed at $\tau$, and all the noise within the bandwidth $\sim 1/\tau$ contributes. An alternative is CW readout: drive the rod continuously at a single mode frequency and measure the steady-state response. A lock-in detection technique—multiplying the response by the drive signal and averaging—rejects all noise outside a narrow bandwidth $\sim 1/(2T_{\text{int}})$. The SNR gain over impulse is:
 
@@ -558,13 +568,13 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 **Time:** 45 minutes.
 
-**Materials:** Assembled resonator, PicoScope, plastic transfer pipettes, water, cooler mount, styrofoam enclosure, ruler, fine-tip marker, digital thermometer.
+**Materials:** Assembled resonator, PicoScope, plastic transfer pipettes, water, insulated box mount, insulated enclosure, ruler, fine-tip marker, digital thermometer.
 
 **Background.** In a glass harmonica, each bowl's pitch is set by its geometry—grind it to a specific diameter and thickness, and the frequency is fixed forever. But adding water to a bowl lowers its pitch by increasing the effective vibrating mass. The performer cannot change the glass, but _can_ change the water level. This is precisely the Rayleigh perturbation mechanism: water at position $x$ shifts mode $n$ by an amount proportional to $\sin^2(n\pi x/L)$. Unlike putty (Experiment 5), water evaporates—making the perturbation _rewritable_. This experiment demonstrates the harmonica-to-armonica transition: write a pattern with water, read the shifted spectrum, let it evaporate (erase), write a different pattern, and confirm the spectrum changes.
 
 **Procedure:**
 
-1. **Prepare.** Place the resonator horizontally in the cooler mount inside the styrofoam enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.
+1. **Prepare.** Place the resonator horizontally in the insulated box mount inside the insulated enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.
 
 2. **Record the unperturbed spectrum (Pattern 0).** Chirp the rod and record the FFT. Log frequencies of modes 1–5.
 
@@ -616,7 +626,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 **Time:** 90 minutes.
 
-**Materials:** 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, cooler mount with cardboard dividers (multi-rod template T.2), styrofoam enclosure, masking tape, fine-tip marker.
+**Materials:** 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, insulated box with cardboard dividers (multi-rod template T.2), insulated enclosure, masking tape, fine-tip marker.
 
 **Background.** In Experiment 6 you demonstrated that a single rod distinguishes between matching and non-matching queries. This experiment scales the principle to a packed array: multiple rods, each storing a different perturbation pattern, are queried simultaneously. The rod whose stored fingerprint best matches the query produces the strongest acoustic response—a physical implementation of associative recall. The entire search completes in one acoustic propagation cycle (~3.8 µs at MEMS scale), regardless of how many rods are in the array.
 
@@ -624,7 +634,7 @@ Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a 
 
 **Procedure:**
 
-1. **Build the array.** Assemble 3–4 rods, each with its PZT disc, into the multi-rod mount using cardboard dividers inside the styrofoam cooler. Label them Rod A, B, C, D. Equilibrate for 15 minutes.
+1. **Build the array.** Assemble 3–4 rods, each with its PZT disc, into the multi-rod mount using cardboard dividers inside the insulated box. Label them Rod A, B, C, D. Equilibrate for 15 minutes.
 
 2. **Write distinct patterns.** Apply unique putty configurations to each rod:
    - **Rod A:** Two pellets at $L/4$ (37.5 mm) and $3L/4$ (112.5 mm).
@@ -829,7 +839,7 @@ Each band samples a different frequency range of the rod's response. Because the
 
 **Procedure:**
 
-1. **Prepare the packed array.** Assemble 4 rods, each with a unique putty pattern. Label them Rod 1 through Rod 4. Mount them in the styrofoam cooler using the packed-array template (T.2). Attach PZT discs to all rods; connect each PZT to the PicoScope via BNC (use one channel per rod, swapping cables between enrollment and verification steps if your PicoScope has only 2 channels).
+1. **Prepare the packed array.** Assemble 4 rods, each with a unique putty pattern. Label them Rod 1 through Rod 4. Mount them in the insulated box using the packed-array template (T.2). Attach PZT discs to all rods; connect each PZT to the PicoScope via BNC (use one channel per rod, swapping cables between enrollment and verification steps if your PicoScope has only 2 channels).
 
 2. **Enroll credentials.** Run the enrollment tool:
 
@@ -1095,7 +1105,7 @@ Each band samples a different frequency range of the rod's response. Because the
 | Q \< 500                                           | PZT too large, or rod touching a hard surface                            | Ensure cardboard pinholes are sized to the rod with no clamping; try 5 mm PZT disc                                          |
 | Many peaks between expected modes                  | Off-center PZT exciting transverse modes                                 | Remove PZT, re-glue centered using tape cross-hair; or filter FFT to comb frequencies only                                  |
 | f₁ much higher or lower than 17,700 Hz             | Rod length ≠ 150 mm                                                      | Recalculate: $f_1 = 5{,}315 / (2L)$. A 200 mm rod gives f₁ = 13,288 Hz; a 125 mm rod gives f₁ = 21,260 Hz                   |
-| Mode frequencies drifting over minutes             | Temperature fluctuation                                                  | Use styrofoam enclosure; equilibrate 30 min; record temperature at each data point                                          |
+| Mode frequencies drifting over minutes             | Temperature fluctuation                                                  | Use insulated enclosure; equilibrate 30 min; record temperature at each data point                                          |
 | Putty won't stick to rod                           | Surface too smooth or too dry                                            | Knead putty between fingers for 10 s; clean rod with isopropyl alcohol to remove oils                                       |
 | FFT shows 60/120/180 Hz peaks                      | Electrical mains noise pickup                                            | Use shorter BNC cables; move away from power strips and monitors; ensure PicoScope is USB-powered (not near wall adapter)   |
 | Response identical for all query patterns          | Drive amplitude in non-linear regime                                     | Reduce AWG amplitude to ≤ 0.5 Vpp; verify linearity per Exp. 5 procedure                                                    |
@@ -1472,13 +1482,14 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 
 <div class="template-instructions">
 <h3>Template T.1 — Single-Rod Divider Instructions</h3>
-<p>Trace the dashed outline onto cardboard and cut to fit your cooler interior. Cut <strong>TWO</strong> identical dividers and slot them into the cooler 75 mm apart. This places each support at L/4 and 3L/4 for a 150 mm rod — the exact displacement nodes of mode 2.</p>
+<p>Cut two rectangles of flat cardboard to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) — sized to slot snugly inside the CH-BOX insulated shipping box (item 11). If using a different enclosure, measure its interior cross-section and cut the cardboard to match. The dividers should fit firmly against all four walls with no gaps.</p>
 <ol>
 <li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm with a physical ruler.</li>
-<li>Cut out the template along the dashed line. Tape it to cardboard and trace the outline.</li>
-<li>Punch a 7 mm hole at each ⊙ crosshair using the hollow punch from the kit (item 22).</li>
-<li>Cut TWO identical dividers. Space them 75 mm apart inside the cooler.</li>
+<li>Cut out the template along the dashed line. Tape it to cardboard and trace the outline, including the ⊙ crosshair position.</li>
+<li>Punch a 7 mm hole at the ⊙ crosshair using the hollow punch from the kit (item 22). The hole should be centered in the rectangle so the rod passes through the middle of the box.</li>
+<li>Cut <strong>TWO</strong> identical dividers. Drop them into the box standing upright, spaced <strong>75 mm apart</strong>. This places each support at L/4 and 3L/4 for a 150 mm rod — the exact displacement nodes of mode 2. The rod slides horizontally through the aligned pinholes.</li>
 </ol>
+<p>The first divider should be positioned so the PZT disc and leads protrude out one end of the box for cable connection. Cut a small notch in the box lid above this end for BNC cable and thermometer wire routing.</p>
 <p>For different rod lengths, recalculate: support spacing = L/2, each support at L/4 from the nearer end.</p>
 </div>
 
@@ -1488,14 +1499,15 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 
 <div class="template-instructions">
 <h3>Template T.2 — Multi-Rod Grid Divider Instructions</h3>
-<p>Two grid options for packed-array simulation: 2×2 (4 rods) and 3×2 (6 rods) with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<p>Three grid options for packed-array experiments: 2×2 (4 rods), 3×2 (6 rods), or 5×2 (10 rods, for Experiment 12), all with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<p>Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). If using a different enclosure, cut the cardboard to match your box’s interior cross-section and center the pinhole grid accordingly.</p>
 <ol>
 <li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
-<li>Cut out the template along the dashed line. Tape it to cardboard and trace.</li>
-<li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22).</li>
-<li>Cut TWO dividers per template. Space them 75 mm apart inside the cooler.</li>
+<li>Cut out the template along the dashed line. Tape it to cardboard and trace, marking all ⊙ positions.</li>
+<li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22). All pinholes must be at the same height as the single-rod template so rods are interchangeable between mounts.</li>
+<li>Cut <strong>TWO</strong> dividers per grid option. Drop them into the box 75 mm apart. Slide rods through the aligned pinholes — each rod should pass through freely with no hard contact.</li>
 </ol>
-<p>The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments.</p>
+<p>The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments. For the 5×2 grid (10 rods), the pinhole pattern spans 100 mm × 25 mm, which fits comfortably within the 165 × 140 mm divider.</p>
 </div>
 
 <div class="template-page">
