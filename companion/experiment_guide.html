@@ -659,15 +659,15 @@ div.worksheet-plate th {
 </div>
 <div class="blank-verso">&nbsp;</div>
 <h2 id="about-this-document">About This Document</h2>
-<p>This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Coherent Wave Memory (CWM) prototype experiments described in Section 4 of the main paper.</p>
-<p>The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of the main paper for the theoretical context behind each measurement.</p>
-<p><em>All quantitative claims in the main paper are computed from first-principles simulation code (34 modules, 1,036 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
+<p>This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Coherent Wave Memory (CWM) prototype experiments described in Section 4 of Paper I.</p>
+<p>The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of Paper I for the theoretical context behind each measurement.</p>
+<p><em>All quantitative claims are computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr />
 <h2 id="appendix-d-macro-scale-experiment-guide">Appendix D: Macro-Scale Experiment Guide</h2>
-<p><em>This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement.</em></p>
+<p><em>This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4 of Paper I. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of Paper I for the theoretical context behind each measurement.</em></p>
 <p><strong>The glass harmonica connection.</strong> Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the <em>glass armonica</em>, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); Experiment 8 demonstrates rewritable encoding with water drops (the armonica); and Experiments 9–11 demonstrate packed-array operations—associative recall, nearest-neighbor search, and in-situ Boolean computation. Experiments 12–14 demonstrate real-world applications: a password vault, visual image search, and a content-addressable lookup table—each leveraging polysemic readout to multiply effective capacity by 4×.</p>
 <h3 id="d1-complete-bill-of-materials">D.1 Complete Bill of Materials</h3>
-<p>The core BOM from Section 4.2 is expanded below with recommended quantities (extras for breakage and controls), supplier links, and additional items needed for failure-mode mitigations. All prices are approximate as of 2026 and may vary.</p>
+<p>The core BOM from Paper I §4.2 is expanded below with recommended quantities (extras for breakage and controls), supplier links, and additional items needed for failure-mode mitigations. All prices are approximate as of 2026 and may vary.</p>
 <p><strong>Table D.1: Core Components</strong></p>
 <table>
 <thead>
@@ -725,8 +725,8 @@ div.worksheet-plate th {
 <td>6</td>
 <td>Cyanoacrylate glue (super glue)</td>
 <td>Medium viscosity, precision tip, gel formula</td>
-<td>1</td>
-<td>~&#36;5</td>
+<td>1–2</td>
+<td>~&#36;5–&#36;10</td>
 <td><a href="https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20">Loctite Ultra Gel Control, 4 g</a></td>
 </tr>
 <tr>
@@ -741,16 +741,16 @@ div.worksheet-plate th {
 <td>8</td>
 <td>BNC cables (male–male, 50 Ω)</td>
 <td>1 m length, for Picoscope connection</td>
-<td>2</td>
-<td>~&#36;10</td>
-<td>Included with PicoScope kit; extras available at any electronics supplier</td>
+<td>2–4</td>
+<td>~&#36;10–&#36;20</td>
+<td>Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>Core materials (without scope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;39–&#36;54</strong></td>
+<td><strong>~&#36;38–&#36;54</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -758,7 +758,7 @@ div.worksheet-plate th {
 <td><strong>Core materials (with PicoScope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;231–&#36;246</strong></td>
+<td><strong>~&#36;230–&#36;246</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -915,7 +915,8 @@ div.worksheet-plate th {
 </tbody>
 </table>
 <blockquote>
-<p><strong>Budget note.</strong> Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~&#36;39. For labs without a scope, we recommend the PicoScope 2204A (&#36;192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.</p>
+<p><strong>Budget note.</strong> Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~&#36;38. For labs without a scope, we recommend the PicoScope 2204A (&#36;192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.</p>
+<p><strong>Computer requirement.</strong> Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository&rsquo;s dependencies (<code>pip install -r requirements.txt</code>). The computer runs the analysis scripts and, for Experiments 12–14, the application tools (<code>cwm_vault.py</code>, <code>cwm_image_search.py</code>, <code>cwm_cam.py</code>). All tools include a simulation mode for testing without hardware.</p>
 </blockquote>
 <h3 id="d2-safety-notes">D.2 Safety Notes</h3>
 <p>⚠️ <strong>Glass hazard.</strong> Borosilicate rods can snap if bent or dropped. Always wear safety glasses when handling rods. Dispose of broken glass in a rigid sharps container, never a trash bag.</p>
@@ -1797,7 +1798,7 @@ div.worksheet-plate th {
 <p><strong>Materials:</strong> Assembled resonator, PicoScope, BNC cable, cooler mount, styrofoam enclosure, small bowl of water.</p>
 <p><strong>Background.</strong> Experiments 1–6 use impulse readout: strike the rod, listen to it ring down, measure the FFT. This is fast (one ringdown time $\tau \approx 180$ ms) but limited in SNR—the measurement window is fixed at $\tau$, and all the noise within the bandwidth $\sim 1/\tau$ contributes. An alternative is CW readout: drive the rod continuously at a single mode frequency and measure the steady-state response. A lock-in detection technique—multiplying the response by the drive signal and averaging—rejects all noise outside a narrow bandwidth $\sim 1/(2T_{\text{int}})$. The SNR gain over impulse is:</p>
 <p>$$\text{Gain (dB)} = 10\log_{10}\!\left(\frac{T_{\text{int}}}{\tau}\right)$$</p>
-<p>At $T_{\text{int}} = 1$ s: +7.5 dB. At $T_{\text{int}} = 10$ s: +17.5 dB. At $T_{\text{int}} = 60$ s: +25.2 dB (see Figure 15). This is the same physics that makes a glass harmonica so expressive: the performer&rsquo;s sustained finger contact provides continuous energy input, allowing the bowl to reach full amplitude and sustain it indefinitely—something a single tap cannot do.</p>
+<p>At $T_{\text{int}} = 1$ s: +7.5 dB. At $T_{\text{int}} = 10$ s: +17.5 dB. At $T_{\text{int}} = 60$ s: +25.2 dB (see Figure 15 in the Illustration Plates). This is the same physics that makes a glass harmonica so expressive: the performer&rsquo;s sustained finger contact provides continuous energy input, allowing the bowl to reach full amplitude and sustain it indefinitely—something a single tap cannot do.</p>
 <p><strong>Part A: Electronic CW Readout</strong></p>
 <ol>
 <li>
@@ -2050,7 +2051,7 @@ div.worksheet-plate th {
 </table>
 <p><strong>Expected results.</strong> Water drops are lighter than putty pellets, so frequency shifts will be smaller—typically 0.2–2 Hz per mode, depending on drop volume. The thermal enclosure is essential here to keep drift below the perturbation signal. The key observation is that the three patterns produce three <em>different</em> spectral fingerprints, and that erasing (removing water) fully recovers the baseline—demonstrating the write/read/erase cycle. If shifts are too small to resolve, use larger drops or a more sensitive frequency measurement (CW lock-in from Experiment 7 provides higher precision).</p>
 <blockquote>
-<p><strong>The Franklin insight.</strong> This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in §12.5: the rod is optimized for resonance quality (Q), and the &ldquo;write medium&rdquo; (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.</p>
+<p><strong>The Franklin insight.</strong> This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in Paper II §3: the rod is optimized for resonance quality (Q), and the &ldquo;write medium&rdquo; (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.</p>
 </blockquote>
 <hr />
 <h3 id="d11-experiment-9-packed-array-associative-recall">D.11 Experiment 9 — Packed-Array Associative Recall</h3>
@@ -2495,12 +2496,14 @@ div.worksheet-plate th {
 <p><strong>Objective:</strong> Demonstrate a hardware security device that stores and authenticates multiple passwords in parallel using a packed glass rod array, with polysemic readout quadrupling the effective password capacity. Your laptop replaces the CMOS readout ASIC, performing exactly the same FFT → correlation → decision logic that a production chip would execute at microsecond speed.</p>
 <p><strong>Time:</strong> 90 minutes (plus enrollment time for additional passwords).</p>
 <p><strong>Materials:</strong> 4–10 assembled resonators with distinct perturbation patterns, PicoScope 2204A, BNC cables, laptop with Python 3.10+.</p>
-<p><strong>Background.</strong> Each rod&rsquo;s spectral fingerprint is determined by the physical mass distribution of its putty perturbations—a pattern that cannot be copied without disassembling the rod. This is a <em>physically unclonable function</em> (PUF): the password is not stored digitally; it <em>is</em> the geometry of the glass. Polysemic readout (§11.5 of the paper) partitions the FFT mode spectrum into $C = 4$ independent subsets, each reading an orthogonal projection of the same perturbation. One physical rod stores four independent passwords.</p>
-<p><strong>How polysemic works at macro scale.</strong> Consider modes 1–20 of a single rod. Partition them into four contiguous spectral bands:
-- <strong>Channel 0:</strong> modes 1–5 (low-frequency band)
-- <strong>Channel 1:</strong> modes 6–10 (mid-low band)
-- <strong>Channel 2:</strong> modes 11–15 (mid-high band)
-- <strong>Channel 3:</strong> modes 16–20 (high-frequency band)</p>
+<p><strong>Background.</strong> Each rod&rsquo;s spectral fingerprint is determined by the physical mass distribution of its putty perturbations—a pattern that cannot be copied without disassembling the rod. This is a <em>physically unclonable function</em> (PUF): the password is not stored digitally; it <em>is</em> the geometry of the glass. Polysemic readout (Paper II §2.5) partitions the FFT mode spectrum into $C = 4$ independent subsets, each reading an orthogonal projection of the same perturbation. One physical rod stores four independent passwords.</p>
+<p><strong>How polysemic works at macro scale.</strong> Consider modes 1–20 of a single rod. Partition them into four contiguous spectral bands:</p>
+<ul>
+<li><strong>Channel 0:</strong> modes 1–5 (low-frequency band)</li>
+<li><strong>Channel 1:</strong> modes 6–10 (mid-low band)</li>
+<li><strong>Channel 2:</strong> modes 11–15 (mid-high band)</li>
+<li><strong>Channel 3:</strong> modes 16–20 (high-frequency band)</li>
+</ul>
 <p>Each band samples a different frequency range of the rod&rsquo;s response. Because the Rayleigh perturbation shift $\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x/L)$ oscillates differently across each band, the shift vectors are naturally orthogonal. Higher bands also experience stronger thermoelastic damping and different PZT coupling, further decorrelating the channels.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
@@ -2593,7 +2596,7 @@ div.worksheet-plate th {
 </table>
 <p><strong>Expected results.</strong> Correct-channel authentication should achieve correlation &gt; 0.90. Wrong-rod and wrong-channel correlations should be &lt; 0.20. The polysemic isolation (same rod, different channel) is the key demonstration—it proves that one physical rod genuinely stores four independent credentials, not four variations of the same one.</p>
 <blockquote>
-<p><strong>Why this matters.</strong> A CWM chip in a USB dongle could replace YubiKeys and FIDO tokens. The password isn&rsquo;t stored digitally anywhere—it&rsquo;s encoded as the physical mass distribution of the glass. There&rsquo;s nothing to extract with a logic analyser, nothing to clone without nanometre-precision lithography, and nothing to hack remotely. The 2026 Padua quantum receiver study [28] independently validated that glass-based devices offer superior stability and noise rejection for information processing—their photonic domain, our acoustic one, the same substrate advantage.</p>
+<p><strong>Why this matters.</strong> A CWM chip in a USB dongle could replace YubiKeys and FIDO tokens. The password isn&rsquo;t stored digitally anywhere—it&rsquo;s encoded as the physical mass distribution of the glass. There&rsquo;s nothing to extract with a logic analyser, nothing to clone without nanometre-precision lithography, and nothing to hack remotely. A 2026 study demonstrated that femtosecond laser-written borosilicate waveguides outperform silicon for coherent quantum receivers (Peri et al., <em>Advanced Photonics</em> 2026)—their photonic domain, our acoustic one, the same substrate advantage.</p>
 </blockquote>
 <hr />
 <h3 id="d15-experiment-13-acoustic-image-search-nearest-neighbor-visual-retrieval">D.15 Experiment 13 — Acoustic Image Search (Nearest-Neighbor Visual Retrieval)</h3>
@@ -2627,13 +2630,13 @@ div.worksheet-plate th {
 <span class="w">    </span>--image<span class="w"> </span>data/image_search/query/test_photo.jpg
 </code></pre></div>
 <p>The tool computes the query image&rsquo;s perceptual hash, generates the corresponding multi-tone query waveform, and—if running with PicoScope—drives the array and captures responses. In simulation mode (default, no hardware required), it computes the expected correlation against all enrolled fingerprints.</p>
-<p>Output:
-   <div class="highlight"><pre><span></span><code>Query: test_photo.jpg
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Query: test_photo.jpg
 Best match: library/corrosion_004.jpg (Rod 2, Channel 1)
 Correlation: 0.937
 Runner-up: library/corrosion_007.jpg (Rod 3, Channel 0) at 0.412
 Margin: 7.2 dB
-</code></pre></div></p>
+</code></pre></div>
 <ol>
 <li><strong>Run the ranked retrieval test.</strong> Query with each library image to verify self-retrieval:</li>
 </ol>
@@ -3070,8 +3073,8 @@ Lookup time: 42 ms (laptop) → 3.8 µs at MEMS scale
 <h4 id="awg-waveform-generator-toolsawg_waveformpy">AWG Waveform Generator (<code>tools/awg_waveform.py</code>)</h4>
 <p>Generates multi-tone query waveforms for the PicoScope 2204A&rsquo;s arbitrary waveform generator. The tool computes Rayleigh-shifted mode frequencies from first-principles physics (no manual frequency entry required) and exports ready-to-import files.</p>
 <p><strong>Prerequisites:</strong></p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/miketierce/cwm.git
-<span class="nb">cd</span><span class="w"> </span>cwm
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/miketierce/wcfoma.git
+<span class="nb">cd</span><span class="w"> </span>wcfoma
 pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
 </code></pre></div>
 <p><strong>Basic usage:</strong></p>
@@ -3380,14 +3383,14 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md
 
 <span class="c1"># Build the paper</span>
-<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>paper/v18.md
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>paper/cwm_core.md
 
 <span class="c1"># HTML-only (for debugging layout issues)</span>
 <span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md<span class="w"> </span>--html-only
 </code></pre></div>
 <p>Requires: <code>playwright</code> (with Chromium installed via <code>playwright install chromium</code>), <code>markdown</code>, <code>pypdf</code>.</p>
 <hr />
-<p><em>All quantitative claims computed from first-principles simulation code (45 modules, 1,997 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
+<p><em>All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr />
 <h2 id="illustration-plates">Illustration Plates</h2>
 <p><em>The following pages present each figure at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet.</em></p>
@@ -3487,6 +3490,20 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig14_mode_splitting.svg" alt="Plate 14: Avoided Crossing Simulation"/>
 <p><strong>Figure 14.</strong> Simulated avoided crossing for two coupled modes (κ = 0.05ω₀, f₀ = 170 kHz). <em>(a)</em> Eigenfrequency diagram: uncoupled modes (dashed grey) would cross at zero detuning; coupling creates bonding (f⁻, red) and antibonding (f⁺, blue) branches separated by minimum gap 2κ = 17 kHz. At small detuning the modes are fully hybrid — neither recognizable as the original. <em>(b)</em> Hybridization depth vs. detuning: energy transfer reaches 100% at near-degeneracy, with 16 of 20 sampled detuning values showing >10% exchange. Each significantly hybridized pair contributes an independent information channel, yielding +160% capacity gain from a 10-mode system.</p>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="plate-page">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig15_cw_readout.svg" alt="Plate 15: Continuous-Wave Readout Gain"/>
+<p><strong>Figure 15.</strong> CW readout SNR gain vs. integration time. Lock-in detection at the mode frequency rejects all out-of-band noise, yielding gain = 10 log₁₀(T_int / τ). At 1 s: +7.5 dB; at 10 s: +17.5 dB; at 60 s: +25.2 dB over impulse ring-down. This is the electronic equivalent of a glass harmonica performer's sustained bow — continuous energy input builds the resonator to full amplitude.</p>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="plate-page">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig16_two_phase_readout.svg" alt="Plate 16: Two-Phase Readout Architecture"/>
+<p><strong>Figure 16.</strong> Two-phase readout architecture. Phase 1 (broadband chirp) excites all modes simultaneously for rapid spectral fingerprinting. Phase 2 (narrowband CW lock-in) targets individual modes for high-precision frequency measurement. Combining both phases gives the best of both worlds: fast pattern identification followed by precision characterization — the same impulse-then-sustain strategy a glass harmonica performer uses intuitively.</p>
 </div>
 
 <hr />
@@ -3742,6 +3759,155 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
+<h4>Worksheet D.8 — Packed-Array Associative Recall</h4>
+<p class="ws-inst">Photocopy this page. Record query vs. rod responses for the full discrimination matrix.</p>
+<table>
+<thead><tr><th>Rod pattern</th><th>Query A (dB)</th><th>Query B (dB)</th><th>Query C (dB)</th><th>Query D (dB)</th></tr></thead>
+<tbody>
+<tr><td>Rod 1 (Pattern A)</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Rod 2 (Pattern B)</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Rod 3 (Pattern C)</td><td></td><td></td><td></td><td></td></tr>
+<tr><td>Rod 4 (Pattern D)</td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+<br>
+<table>
+<thead><tr><th style="width:60%">Metric</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><strong>All diagonal entries highest in row? (Y/N)</strong></td><td></td></tr>
+<tr><td><strong>Minimum discrimination margin (dB)</strong></td><td></td></tr>
+<tr><td><strong>Maximum off-diagonal correlation</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
+<h4>Worksheet D.9 — Nearest-Neighbor Search Crossover</h4>
+<p class="ws-inst">Photocopy this page. Record responses at each interpolation step.</p>
+<table>
+<thead><tr><th>α</th><th>Rod A response (dB)</th><th>Rod B response (dB)</th><th>Winner</th></tr></thead>
+<tbody>
+<tr><td>0.00</td><td></td><td></td><td></td></tr>
+<tr><td>0.10</td><td></td><td></td><td></td></tr>
+<tr><td>0.20</td><td></td><td></td><td></td></tr>
+<tr><td>0.30</td><td></td><td></td><td></td></tr>
+<tr><td>0.40</td><td></td><td></td><td></td></tr>
+<tr><td>0.50</td><td></td><td></td><td></td></tr>
+<tr><td>0.60</td><td></td><td></td><td></td></tr>
+<tr><td>0.70</td><td></td><td></td><td></td></tr>
+<tr><td>0.80</td><td></td><td></td><td></td></tr>
+<tr><td>0.90</td><td></td><td></td><td></td></tr>
+<tr><td>1.00</td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+<br>
+<table>
+<thead><tr><th style="width:60%">Metric</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><strong>Crossover α (expected 0.50)</strong></td><td></td></tr>
+<tr><td><strong>Margin at α = 0.00 (dB)</strong></td><td></td></tr>
+<tr><td><strong>Margin at α = 1.00 (dB)</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
+<h4>Worksheet D.10 — Boolean Computation via Mode Superposition</h4>
+<p class="ws-inst">Photocopy this page. Record decoded bits for each Boolean operation.</p>
+<table>
+<thead><tr><th>Mode</th><th>A amplitude</th><th>B amplitude</th><th>A+B amplitude</th><th>XOR bit</th><th>AND bit</th><th>OR bit</th></tr></thead>
+<tbody>
+<tr><td>1</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>2</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>3</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>4</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+<tr><td>5</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+</tbody>
+</table>
+<br>
+<table>
+<thead><tr><th style="width:60%">Metric</th><th>Value</th></tr></thead>
+<tbody>
+<tr><td><strong>XOR fidelity (%)</strong></td><td></td></tr>
+<tr><td><strong>AND fidelity (%)</strong></td><td></td></tr>
+<tr><td><strong>OR fidelity (%)</strong></td><td></td></tr>
+<tr><td><strong>All three > 90%? (Y/N)</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
+<h4>Worksheet D.11 — Acoustic Password Vault</h4>
+<p class="ws-inst">Photocopy this page. Record enrollment and verification results for polysemic vault.</p>
+<table>
+<thead><tr><th style="width:60%">Verification</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Number of rods enrolled</strong></td><td></td></tr>
+<tr><td><strong>Total credentials (rods × 4 channels)</strong></td><td></td></tr>
+<tr><td><strong>Correct authentications (out of N attempts)</strong></td><td></td></tr>
+<tr><td><strong>False accepts (wrong rod accepted)</strong></td><td></td></tr>
+<tr><td><strong>False accepts (wrong channel accepted)</strong></td><td></td></tr>
+<tr><td><strong>Discrimination margin (dB) at correct match</strong></td><td></td></tr>
+<tr><td><strong>Correlation at correct match (best)</strong></td><td></td></tr>
+<tr><td><strong>Correlation at wrong rod (worst)</strong></td><td></td></tr>
+<tr><td><strong>Correlation at wrong channel, same rod</strong></td><td></td></tr>
+<tr><td><strong>Noisy query still authenticated? (Y/N at ±2%)</strong></td><td></td></tr>
+<tr><td><strong>Rod-removal kills credential? (Y/N)</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
+<h4>Worksheet D.12 — Acoustic Image Search</h4>
+<p class="ws-inst">Photocopy this page. Record image library enrollment and retrieval results.</p>
+<table>
+<thead><tr><th style="width:60%">Verification</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Library size (images)</strong></td><td></td></tr>
+<tr><td><strong>Number of rods used</strong></td><td></td></tr>
+<tr><td><strong>Effective capacity (rods × 4 channels)</strong></td><td></td></tr>
+<tr><td><strong>Rank-1 self-retrieval accuracy (%)</strong></td><td></td></tr>
+<tr><td><strong>Mean discrimination margin (dB)</strong></td><td></td></tr>
+<tr><td><strong>Worst-case margin (dB)</strong></td><td></td></tr>
+<tr><td><strong>Number of confusion pairs (&lt;5 dB margin)</strong></td><td></td></tr>
+<tr><td><strong>Query time (per image)</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
+<h4>Worksheet D.13 — Acoustic CAM Lookup Table</h4>
+<p class="ws-inst">Photocopy this page. Record content-addressable memory lookup results.</p>
+<table>
+<thead><tr><th style="width:60%">Verification</th><th>Result</th></tr></thead>
+<tbody>
+<tr><td><strong>Table size (entries)</strong></td><td></td></tr>
+<tr><td><strong>Number of rods used</strong></td><td></td></tr>
+<tr><td><strong>Effective capacity (rods × 4 channels)</strong></td><td></td></tr>
+<tr><td><strong>Correct lookups (out of N attempts)</strong></td><td></td></tr>
+<tr><td><strong>Mean correlation at correct match</strong></td><td></td></tr>
+<tr><td><strong>Mean correlation at best wrong match</strong></td><td></td></tr>
+<tr><td><strong>Discrimination margin (dB)</strong></td><td></td></tr>
+<tr><td><strong>Noisy query correct? (Y/N at ±5%)</strong></td><td></td></tr>
+<tr><td><strong>Partial-key correct? (Y/N at 3 modes)</strong></td><td></td></tr>
+<tr><td><strong>Lookup time (ms, laptop)</strong></td><td></td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="blank-verso">&nbsp;</div>
+
+<div class="worksheet-plate">
 <h4>Consolidated Experiment Log</h4>
 <p class="ws-inst">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.13.</p>
 <table>
@@ -3786,7 +3952,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
     Typeset from Markdown source using Chromium PDF rendering.<br>
     Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
     All quantitative claims computed from first-principles simulation code<br>
-    (45 modules, 1997 automated tests) with independent FEM validation.
+    (48 modules, 2253 automated tests) with independent FEM validation.
   </p>
 </div>
 

@@ -1,0 +1,17 @@
+rod,channel,value
+1,0,192.168.1.1
+1,1,10.0.0.1
+1,2,dns.google (8.8.8.8)
+1,3,gateway.local
+2,0,THREAT:MIRAI
+2,1,THREAT:EMOTET
+2,2,THREAT:COBALT
+2,3,THREAT:LOCKBIT
+3,0,api.example.com
+3,1,cdn.example.com
+3,2,db.example.com
+3,3,auth.example.com
+4,0,ALLOW:SSH
+4,1,ALLOW:HTTPS
+4,2,DENY:TELNET
+4,3,DENY:FTP

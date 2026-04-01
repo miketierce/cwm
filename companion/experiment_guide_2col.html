@@ -426,15 +426,15 @@ table, pre, blockquote {
 </div>
 <div class="two-col">
 <h2 id="about-this-document">About This Document</h2>
-<p>This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Coherent Wave Memory (CWM) prototype experiments described in Section 4 of the main paper.</p>
-<p>The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all eight experiments, and contribute publishable data within a single school week. See Section 4 of the main paper for the theoretical context behind each measurement.</p>
-<p><em>All quantitative claims in the main paper are computed from first-principles simulation code (34 modules, 1,036 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
+<p>This companion document contains the complete macro-scale experiment guide, full-scale illustration plates, and printable data worksheets for reproducing the Coherent Wave Memory (CWM) prototype experiments described in Section 4 of Paper I.</p>
+<p>The guide is self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of Paper I for the theoretical context behind each measurement.</p>
+<p><em>All quantitative claims are computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr />
 <h2 id="appendix-d-macro-scale-experiment-guide">Appendix D: Macro-Scale Experiment Guide</h2>
-<p><em>This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all eight experiments, and contribute publishable data within a single school week. See Section 4 for the theoretical context behind each measurement.</em></p>
-<p><strong>The glass harmonica connection.</strong> Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the <em>glass armonica</em>, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); and Experiment 8 demonstrates rewritable encoding with water drops (the armonica).</p>
+<p><em>This appendix provides step-by-step instructions for replicating the macro-scale prototype experiments of Section 4 of Paper I. The guide is designed to be self-contained: every component is listed with a direct purchase link, every procedure is numbered for reproducibility, and every known failure mode includes a tested mitigation. A middle school science teacher with no acoustics background should be able to build the prototype, complete all experiments, and contribute publishable data within a single school week. See Section 4 of Paper I for the theoretical context behind each measurement.</em></p>
+<p><strong>The glass harmonica connection.</strong> Every experiment in this appendix is a direct descendant of a musical instrument that predates the transistor by centuries. A glass harmonica—tuned wineglasses played by rubbing a wet finger around the rim—demonstrates every principle of CWM in audible form: glass resonators with eigenfrequencies set by geometry, mass perturbation tuning via water level, continuous-wave excitation via stick-slip friction, and spectral readout by the human ear. In 1761, Benjamin Franklin attended a glass harmonica concert in London and built an improved version: the <em>glass armonica</em>, which mounted the bowls on a rotating spindle so a performer could vary finger pressure, position, and contact duration in real time. Same glass, same physics, same resonant modes—but now reconfigurable. This appendix walks the same path: Experiments 1–6 build and characterize a fixed resonator (the harmonica); Experiment 7 demonstrates continuous-wave precision readout (bowing vs. ringing); Experiment 8 demonstrates rewritable encoding with water drops (the armonica); and Experiments 9–11 demonstrate packed-array operations—associative recall, nearest-neighbor search, and in-situ Boolean computation. Experiments 12–14 demonstrate real-world applications: a password vault, visual image search, and a content-addressable lookup table—each leveraging polysemic readout to multiply effective capacity by 4×.</p>
 <h3 id="d1-complete-bill-of-materials">D.1 Complete Bill of Materials</h3>
-<p>The core BOM from Section 4.2 is expanded below with recommended quantities (extras for breakage and controls), supplier links, and additional items needed for failure-mode mitigations. All prices are approximate as of 2026 and may vary.</p>
+<p>The core BOM from Paper I §4.2 is expanded below with recommended quantities (extras for breakage and controls), supplier links, and additional items needed for failure-mode mitigations. All prices are approximate as of 2026 and may vary.</p>
 <p><strong>Table D.1: Core Components</strong></p>
 <table>
 <thead>
@@ -492,32 +492,32 @@ table, pre, blockquote {
 <td>6</td>
 <td>Cyanoacrylate glue (super glue)</td>
 <td>Medium viscosity, precision tip, gel formula</td>
-<td>1</td>
-<td>~&#36;5</td>
+<td>1–2</td>
+<td>~&#36;5–&#36;10</td>
 <td><a href="https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20">Loctite Ultra Gel Control, 4 g</a></td>
 </tr>
 <tr>
 <td>7</td>
-<td>Inlay casting wax</td>
-<td>Brown dental/jewelry sticky wax sticks, pliable at room temp</td>
-<td>1 box</td>
-<td>~&#36;8</td>
-<td><a href="https://www.amazon.com/dp/B0BDT8WK2J?tag=cwmt-20">Brown Inlay Wax, 1 oz</a></td>
+<td>Moldable silicone putty earplugs</td>
+<td>Mack&rsquo;s Pillow Soft, moldable silicone putty (perturbation masses)</td>
+<td>1 pack</td>
+<td>~&#36;9</td>
+<td><a href="https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20">Mack&rsquo;s Pillow Soft, 8 Pair</a></td>
 </tr>
 <tr>
 <td>8</td>
 <td>BNC cables (male–male, 50 Ω)</td>
 <td>1 m length, for Picoscope connection</td>
-<td>2</td>
-<td>~&#36;10</td>
-<td>Included with PicoScope kit; extras available at any electronics supplier</td>
+<td>2–4</td>
+<td>~&#36;10–&#36;20</td>
+<td>Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)</td>
 </tr>
 <tr>
 <td></td>
 <td><strong>Core materials (without scope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;38–&#36;53</strong></td>
+<td><strong>~&#36;38–&#36;54</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -525,7 +525,7 @@ table, pre, blockquote {
 <td><strong>Core materials (with PicoScope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;230–&#36;245</strong></td>
+<td><strong>~&#36;230–&#36;246</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -545,11 +545,11 @@ table, pre, blockquote {
 <tbody>
 <tr>
 <td>9</td>
-<td>Craft foam sheets (EVA, 6 mm thick)</td>
-<td>Vibration-isolating cradle (FM 1: anchor loss)</td>
-<td>1 pack</td>
-<td>~&#36;6</td>
-<td>Any craft store or Amazon</td>
+<td>Cardboard (from any box)</td>
+<td>Rod-support dividers for cooler (FM 1: anchor loss)</td>
+<td>2 pieces</td>
+<td>free</td>
+<td>Any shipping box or cereal box</td>
 </tr>
 <tr>
 <td>10</td>
@@ -570,7 +570,7 @@ table, pre, blockquote {
 <tr>
 <td>12</td>
 <td>Milligram precision scale (0.001 g)</td>
-<td>Weighing wax perturbation masses</td>
+<td>Weighing perturbation masses</td>
 <td>1</td>
 <td>~&#36;20</td>
 <td>Amazon search: &ldquo;milligram scale 0.001g&rdquo;</td>
@@ -648,11 +648,19 @@ table, pre, blockquote {
 <td>Tap water</td>
 </tr>
 <tr>
+<td>22</td>
+<td>Hollow punch set (5–13 mm)</td>
+<td>Clean 7 mm pinholes in cardboard dividers</td>
+<td>1 set</td>
+<td>~&#36;10</td>
+<td><a href="https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20">Jmuiiu 8 Pcs, 5–13 mm</a></td>
+</tr>
+<tr>
 <td></td>
 <td><strong>Accessories subtotal</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;68</strong></td>
+<td><strong>~&#36;72</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -660,7 +668,7 @@ table, pre, blockquote {
 <td><strong>Grand total (without scope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;106–&#36;121</strong></td>
+<td><strong>~&#36;111–&#36;126</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -668,13 +676,14 @@ table, pre, blockquote {
 <td><strong>Grand total (with PicoScope)</strong></td>
 <td></td>
 <td></td>
-<td><strong>~&#36;298–&#36;313</strong></td>
+<td><strong>~&#36;303–&#36;318</strong></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p><strong>Budget note.</strong> Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~&#36;38. For labs without a scope, we recommend the PicoScope 2204A (&#36;192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.</p>
+<p><strong>Computer requirement.</strong> Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository&rsquo;s dependencies (<code>pip install -r requirements.txt</code>). The computer runs the analysis scripts and, for Experiments 12–14, the application tools (<code>cwm_vault.py</code>, <code>cwm_image_search.py</code>, <code>cwm_cam.py</code>). All tools include a simulation mode for testing without hardware.</p>
 </blockquote>
 <h3 id="d2-safety-notes">D.2 Safety Notes</h3>
 <p>⚠️ <strong>Glass hazard.</strong> Borosilicate rods can snap if bent or dropped. Always wear safety glasses when handling rods. Dispose of broken glass in a rigid sharps container, never a trash bag.</p>
@@ -690,8 +699,14 @@ table, pre, blockquote {
 <p><strong>Clean the rod.</strong> Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.</p>
 </li>
 <li>
-<p><strong>Build the foam cradle at the displacement nodes.</strong> Cut two V-shaped notches in a strip of craft foam, spaced 75 mm apart, centered on the rod—this places each notch at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic &ldquo;stems&rdquo; of the rod. The rod should rest horizontally in the notches with no hard contact. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7).</p>
+<p><strong>Build the cardboard rod mount inside the cooler.</strong> Cut two rectangles of cardboard sized to slot snugly inside the styrofoam cooler. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height—sized just large enough for the 6 mm rod to pass through with minimal contact. Slot the dividers into the cooler spaced 75 mm apart, centered on the rod—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic &ldquo;stems&rdquo; of the rod. The rod should pass through the pinholes and hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude outside the cooler for easy connection. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.</p>
 </li>
+</ol>
+<blockquote>
+<p><strong>Why cardboard?</strong> The support material matters far less than the support <em>position</em>. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn&rsquo;t care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem&rsquo;s material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the cooler walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the cooler interior into isolated chambers for multi-rod array experiments—something foam cannot do.</p>
+<p><strong>One caution:</strong> if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you&rsquo;re trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don&rsquo;t have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.</p>
+</blockquote>
+<ol>
 <li>
 <p><strong>Center the PZT disc (critical).</strong> Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).</p>
 </li>
@@ -702,7 +717,7 @@ table, pre, blockquote {
 <p><strong>Attach the PZT disc.</strong> Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.</p>
 </li>
 <li>
-<p><strong>Cure.</strong> Set the assembly aside on the foam cradle for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.</p>
+<p><strong>Cure.</strong> Set the assembly aside in the cooler mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.</p>
 </li>
 <li>
 <p><strong>Connectivity check.</strong> Connect the PZT leads to the PicoScope Channel A input via a BNC adapter or clip leads. Set the scope to AC coupling, 1 mV/div, 1 ms/div timebase. Gently tap the free end of the rod with a fingernail. You should see a decaying burst of oscillation on screen. If no signal appears: check wire connections, ensure the PZT is not cracked, and try a firmer tap.</p>
@@ -742,24 +757,25 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p>The recommended cradle positions at $L/4$ and $3L/4$ (step 2) are the exact nodes of mode 2, and they produce only 50% of peak displacement for mode 1—a good all-round compromise for multi-mode measurements.</p>
+<p>The recommended support positions at $L/4$ and $3L/4$ (step 2) are the exact nodes of mode 2, and they produce only 50% of peak displacement for mode 1—a good all-round compromise for multi-mode measurements.</p>
 <p>If your Q values are lower than expected despite a clean PZT bond:</p>
 <ul>
-<li><strong>Verify cradle positions.</strong> Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker.</li>
-<li><strong>Try midpoint mounting.</strong> For mode-1-only measurements, a single support at $L/2 = 75$ mm is the ideal node and will maximize Q for the fundamental. (This sacrifices mode 2, which has an antinode there.)</li>
+<li><strong>Verify support positions.</strong> Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker before punching the pinholes.</li>
+<li><strong>Try midpoint mounting.</strong> For mode-1-only measurements, a single divider at $L/2 = 75$ mm is the ideal node and will maximize Q for the fundamental. (This sacrifices mode 2, which has an antinode there.)</li>
+<li><strong>Check pinhole size.</strong> The hole should be just large enough for the rod to pass through without binding. Too tight and the cardboard clamps the rod, draining energy. Too loose and the rod rattles.</li>
 <li><strong>Upgrade to fishing line.</strong> Loop a thin monofilament line around the rod at the node position and tension it between two fixed posts. This gives near-zero contact area and mimics the knife-edge mounts used in precision metrology. Students who have played a glass harp will immediately feel the analogy: the taut line is the stem.</li>
-<li><strong>Diagnostic test.</strong> Slide the foam cradle to the rod&rsquo;s center ($L/2$) and measure Q for mode 1. Then slide it to $L/4$ and remeasure. If Q changes by more than 20%, your foam is too stiff or making hard contact—switch to softer foam, adjust the V-notch depth, or use fishing line.</li>
+<li><strong>Diagnostic test.</strong> Slide the rod so through the pinholes so one support is at the center ($L/2$) and measure Q for mode 1. Then reposition to $L/4$ and remeasure. If Q changes by more than 20%, your pinholes are too tight or making hard contact—enlarge them slightly or use fishing line.</li>
 </ul>
 </blockquote>
 <hr />
 <h3 id="d4-experiment-2-measuring-the-quality-factor">D.4 Experiment 2 — Measuring the Quality Factor</h3>
 <p><strong>Objective:</strong> Determine Q via two independent methods (ring-down and bandwidth) and confirm the resonator is material-loss-limited.</p>
 <p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, foam cradle.</p>
+<p><strong>Materials:</strong> Assembled resonator from Exp. 1, PicoScope 2204A, BNC cable, cooler mount.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
-<p><strong>Set up.</strong> Place the resonator on the foam cradle on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.</p>
+<p><strong>Set up.</strong> Place the resonator in the cooler mount on a stable surface (no vibration from HVAC, foot traffic, etc.). Connect the PZT leads to both the PicoScope AWG output (waveform generator) and Channel A input. A BNC T-connector works, or simply share the two PZT leads between the AWG and scope clips.</p>
 </li>
 <li>
 <p><strong>Impulse excitation.</strong> In the PicoScope software (PS7, free download), configure the AWG to output a single 1-cycle burst at 17,700 Hz with 0.5 V amplitude. Set Channel A to trigger on the rising edge. Set the timebase to 50 ms/div so the display shows ~500 ms of data.</p>
@@ -895,12 +911,12 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong>Expected results.</strong> Q should fall in the range 1,000–10,000. Values near 10,000 indicate excellent construction (material-loss-limited). Values below 500 suggest excessive glue, poor PZT centering, or a hard contact point on the cradle—rebuild with corrections per the Failure Mode 1 mitigation above. A control rod with no PZT (tap-excited) should yield Q near 10,000, confirming the intrinsic glass value.</p>
+<p><strong>Expected results.</strong> Q should fall in the range 1,000–10,000. Values near 10,000 indicate excellent construction (material-loss-limited). Values below 500 suggest excessive glue, poor PZT centering, or a hard contact point on the mount—rebuild with corrections per the Failure Mode 1 mitigation above. A control rod with no PZT (tap-excited) should yield Q near 10,000, confirming the intrinsic glass value.</p>
 <hr />
 <h3 id="d5-experiment-3-mapping-the-mode-spectrum">D.5 Experiment 3 — Mapping the Mode Spectrum</h3>
 <p><strong>Objective:</strong> Identify the longitudinal eigenmode comb and distinguish real modes from transverse/torsional artifacts.</p>
 <p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator, PicoScope, BNC cable, foam cradle.</p>
+<p><strong>Materials:</strong> Assembled resonator, PicoScope, BNC cable, cooler mount.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
@@ -973,7 +989,7 @@ table, pre, blockquote {
 <ul>
 <li><strong>Verify centering.</strong> If spurious peaks are within 10 dB of the longitudinal peaks, remove the PZT and re-glue with better centering (see Exp. 1, step 3).</li>
 <li><strong>Software filter.</strong> Export the FFT data (PicoScope can save .csv files) and discard all peaks more than ±500 Hz from the predicted comb frequencies.</li>
-<li><strong>Rotation test.</strong> Rotate the rod 90° on the foam cradle and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod&rsquo;s cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.</li>
+<li><strong>Rotation test.</strong> Rotate the rod 90° in the cardboard pinholes and re-measure. Longitudinal modes (which depend only on length) will not shift. Transverse modes (which depend on the rod&rsquo;s cross-sectional geometry) will shift because the cross-section is never perfectly circular. Any peak that moves under rotation is not longitudinal.</li>
 </ul>
 </blockquote>
 <div class="worksheet-header">
@@ -1089,20 +1105,20 @@ table, pre, blockquote {
 <h3 id="d6-experiment-4-thermal-stability-characterization">D.6 Experiment 4 — Thermal Stability Characterization</h3>
 <p><strong>Objective:</strong> Quantify how room-temperature fluctuations shift mode frequencies, and establish a stable measurement protocol for perturbation experiments.</p>
 <p><strong>Time:</strong> 90 minutes (mostly waiting for equilibration).</p>
-<p><strong>Materials:</strong> Assembled resonator, PicoScope, digital thermometer, styrofoam cooler, foam cradle.</p>
+<p><strong>Materials:</strong> Assembled resonator, PicoScope, digital thermometer, styrofoam cooler with cardboard dividers.</p>
 <p><strong>Background.</strong> Borosilicate glass has a thermal expansion coefficient of ~3.3 × 10⁻⁶ /°C and a temperature coefficient of elastic modulus of ~−100 ppm/°C. The net frequency sensitivity is approximately:</p>
 <p>$$\frac{\Delta f}{f} \approx -50 \text{ ppm/°C}$$</p>
 <p>For $f_1 = 17{,}700$ Hz, this predicts $\Delta f \approx -0.9$ Hz per °C of temperature change.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
-<p><strong>Open-air baseline.</strong> Place the resonator on the foam cradle on a lab bench. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.</p>
+<p><strong>Open-air baseline.</strong> Place the resonator in the cooler mount on a lab bench <em>with the lid off</em>. Place the thermometer probe within 2 cm of the rod. Every 5 minutes for 30 minutes, record f₁ (using the bandwidth method from Exp. 2—a quick FFT snapshot) and the temperature. Do not touch the setup or breathe on it.</p>
 </li>
 <li>
 <p><strong>Thermal perturbation.</strong> Breathe warm air directly onto the rod for 10 seconds, or place a cup of warm water (~50 °C) 20 cm away. Resume recording f₁ and temperature every 2 minutes until the frequency returns to within 0.5 Hz of its initial value. Note the recovery time.</p>
 </li>
 <li>
-<p><strong>Insulated baseline.</strong> Place the entire resonator assembly (foam cradle, rod, PZT, and thermometer probe) inside the styrofoam cooler. Thread the BNC cable and thermometer wire through a small notch cut in the cooler lid. Close the lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.</p>
+<p><strong>Insulated baseline.</strong> The resonator is already mounted inside the cooler. Close the lid. Thread the BNC cable and thermometer wire through a small notch cut in the cooler lid. Repeat the 30-minute baseline: record f₁ and temperature every 5 minutes.</p>
 </li>
 <li>
 <p><strong>Calculate the temperature coefficient.</strong> Plot f₁ versus temperature for both the open-air and insulated datasets. The slope $\Delta f / \Delta T$ is your measured temperature coefficient. Compare to the predicted −0.9 Hz/°C.</p>
@@ -1113,13 +1129,13 @@ table, pre, blockquote {
 </ol>
 <blockquote>
 <p><strong>⚙️ Failure Mode 3 — Thermal Drift Swamping Perturbation Encoding</strong></p>
-<p>A 1 °C temperature change shifts modes by ~0.9 Hz—comparable to a small wax perturbation. If thermal drift is not controlled, perturbation signals drown in noise.</p>
+<p>A 1 °C temperature change shifts modes by ~0.9 Hz—comparable to a small putty perturbation. If thermal drift is not controlled, perturbation signals drown in noise.</p>
 <p>Mitigations:</p>
 <ul>
 <li><strong>Always use the styrofoam enclosure</strong> for Experiments 5 and 6. This alone reduces drift by 10–50×.</li>
 <li><strong>Equilibrate 30 minutes</strong> before starting perturbation experiments.</li>
 <li><strong>Use differential measurement.</strong> Thermal drift shifts <em>all</em> modes by the same fractional amount (−50 ppm/°C). A localized mass perturbation shifts each mode by a <em>different</em> amount (proportional to $\sin^2(n\pi x/L)$). Track the <em>pattern</em> of relative shifts, not absolute frequencies. This is your strongest discriminant.</li>
-<li><strong>Bracket measurements.</strong> Take a &ldquo;before&rdquo; spectrum immediately before applying wax, and an &ldquo;after&rdquo; spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.</li>
+<li><strong>Bracket measurements.</strong> Take a &ldquo;before&rdquo; spectrum immediately before applying putty, and an &ldquo;after&rdquo; spectrum within 60 seconds. Over such short intervals, thermal drift is negligible.</li>
 <li><strong>Record temperature at every measurement point</strong> so post-hoc correction is possible.</li>
 </ul>
 </blockquote>
@@ -1254,19 +1270,19 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong>Expected results.</strong> The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the styrofoam enclosure, drift should be \&lt;0.5 Hz over 30 minutes, which is small enough to resolve wax perturbation shifts of 1–10 Hz.</p>
+<p><strong>Expected results.</strong> The open-air drift rate will depend on your HVAC system—typically 0.5–5 Hz over 30 minutes. Inside the styrofoam enclosure, drift should be \&lt;0.5 Hz over 30 minutes, which is small enough to resolve putty perturbation shifts of 1–10 Hz.</p>
 <hr />
 <h3 id="d7-experiment-5-perturbation-encoding">D.7 Experiment 5 — Perturbation Encoding</h3>
-<p><strong>Objective:</strong> Write data to the rod by applying wax masses and verify that measured frequency shifts match Rayleigh perturbation theory.</p>
+<p><strong>Objective:</strong> Write data to the rod by applying silicone putty masses and verify that measured frequency shifts match Rayleigh perturbation theory.</p>
 <p><strong>Time:</strong> 60 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator (inside styrofoam enclosure), PicoScope, wax, milligram scale, ruler, fine-tip marker.</p>
+<p><strong>Materials:</strong> Assembled resonator (inside styrofoam enclosure), PicoScope, silicone putty, milligram scale, ruler, fine-tip marker.</p>
 <p><strong>Background.</strong> The Rayleigh perturbation formula predicts that a small mass $\delta m$ placed at position $x$ along a rod of total mass $M$ and length $L$ shifts the $n$-th mode frequency by:</p>
 <p>$$\frac{\Delta f_n}{f_n} = -\frac{\delta m}{2M} \sin^2\!\left(\frac{n \pi x}{L}\right)$$</p>
 <p>The key insight is that <em>different modes shift by different amounts</em> depending on where the mass sits relative to each mode&rsquo;s antinodes. This position-dependent pattern of shifts is the &ldquo;spectral fingerprint&rdquo;—the basis of data encoding.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
-<p><strong>Prepare wax pellets.</strong> Pinch off small pieces of inlay wax and roll them into balls approximately 1 mm in diameter. Weigh each on the milligram scale and record the mass (target: 0.05–0.5 mg). Prepare 3–5 pellets of varied sizes.</p>
+<p><strong>Prepare putty pellets.</strong> Pinch off small pieces of silicone putty and roll them into balls approximately 1 mm in diameter. Weigh each on the milligram scale and record the mass (target: 0.05–0.5 mg). Prepare 3–5 pellets of varied sizes.</p>
 </li>
 <li>
 <p><strong>Mark positions.</strong> Using the ruler and fine-tip marker, mark reference positions on the rod at 25%, 33%, 50%, 67%, and 75% of the rod length from the PZT end (i.e., at 37.5, 50.0, 75.0, 100.0, and 112.5 mm for a 150 mm rod).</p>
@@ -1275,7 +1291,7 @@ table, pre, blockquote {
 <p><strong>Record the unperturbed spectrum.</strong> Drive the rod with a chirp and capture the FFT. Record the frequencies of modes 1–5 in Worksheet D.4 under &ldquo;Before.&rdquo;</p>
 </li>
 <li>
-<p><strong>Apply one wax pellet.</strong> Press it onto the rod at a marked position $x$. The wax should adhere by its own stickiness—no glue needed. Record the pellet mass and position.</p>
+<p><strong>Apply one putty pellet.</strong> Press it onto the rod at a marked position $x$. The putty should adhere by its own tackiness—no glue needed. Record the pellet mass and position.</p>
 </li>
 <li>
 <p><strong>Record the perturbed spectrum.</strong> Immediately re-drive and capture the FFT. Record mode frequencies under &ldquo;After.&rdquo; Calculate the shift $\Delta f_n$ for each mode.</p>
@@ -1284,10 +1300,10 @@ table, pre, blockquote {
 <p><strong>Compare to theory.</strong> Calculate the predicted $\Delta f_n / f_n$ for each mode using the Rayleigh formula above. Weigh the rod itself to get $M$ (typically ~6 g for a 150 mm × 6 mm borosilicate rod, density 2,230 kg/m³).</p>
 </li>
 <li>
-<p><strong>Repeat with different positions.</strong> Move the wax to a different marked position and re-measure. The fingerprint should change: modes whose antinodes are near the new wax position shift most; modes with nodes near the wax barely shift.</p>
+<p><strong>Repeat with different positions.</strong> Move the putty to a different marked position and re-measure. The fingerprint should change: modes whose antinodes are near the new putty position shift most; modes with nodes near the putty barely shift.</p>
 </li>
 <li>
-<p><strong>Verify reversibility.</strong> Remove the wax with a fingernail and re-measure the spectrum. Frequencies should return to the unperturbed values within the thermal drift tolerance established in Experiment 4.</p>
+<p><strong>Verify reversibility.</strong> Peel off the putty and re-measure the spectrum. Frequencies should return to the unperturbed values within the thermal drift tolerance established in Experiment 4.</p>
 </li>
 </ol>
 <blockquote>
@@ -1319,7 +1335,7 @@ table, pre, blockquote {
 <td><span class="ex">1</span></td>
 </tr>
 <tr>
-<td><strong>Wax pellet mass δm (mg)</strong></td>
+<td><strong>Putty pellet mass δm (mg)</strong></td>
 <td><span class="ex">0.8</span></td>
 </tr>
 <tr>
@@ -1404,7 +1420,7 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><em>After removing wax:</em></p>
+<p><em>After removing putty:</em></p>
 <table>
 <thead>
 <tr>
@@ -1447,25 +1463,28 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong>Expected results.</strong> Mode shifts should match Rayleigh predictions within 5%. The mode whose antinode is nearest the wax position will shift most; modes with nodes near the wax will barely shift. Frequencies should recover fully after wax removal. If the match is poor (&gt;10% error), verify that the wax mass is small compared to the rod mass ($\delta m / M \ll 1$) and that the temperature has not drifted during the measurement.</p>
+<p><strong>Expected results.</strong> Mode shifts should match Rayleigh predictions within 5%. The mode whose antinode is nearest the putty position will shift most; modes with nodes near the putty will barely shift. Frequencies should recover fully after putty removal. If the match is poor (&gt;10% error), verify that the putty mass is small compared to the rod mass ($\delta m / M \ll 1$) and that the temperature has not drifted during the measurement.</p>
 <hr />
 <h3 id="d8-experiment-6-associative-recall-demonstration">D.8 Experiment 6 — Associative Recall Demonstration</h3>
 <p><strong>Objective:</strong> Show that the rod physically distinguishes between matching and non-matching query patterns—the basis of CWM&rsquo;s O(1) nearest-neighbor search.</p>
 <p><strong>Time:</strong> 60 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator, PicoScope, wax, ruler, foam cradle, styrofoam enclosure.</p>
+<p><strong>Materials:</strong> Assembled resonator, PicoScope, silicone putty, ruler, cooler mount, styrofoam enclosure.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
-<p><strong>Create Pattern A.</strong> Apply two wax pellets at the quarter-points of the rod: $x = L/4 = 37.5$ mm and $x = 3L/4 = 112.5$ mm. Record the resulting spectral fingerprint—the frequencies of modes 1–5 in their shifted positions.</p>
+<p><strong>Create Pattern A.</strong> Apply two putty pellets at the quarter-points of the rod: $x = L/4 = 37.5$ mm and $x = 3L/4 = 112.5$ mm. Record the resulting spectral fingerprint—the frequencies of modes 1–5 in their shifted positions.</p>
 </li>
 <li>
 <p><strong>Build the query signal.</strong> In the PicoScope AWG, create a multi-tone waveform composed of the five shifted frequencies from Pattern A&rsquo;s fingerprint. Set each tone to equal amplitude (0.1 V per tone). This is &ldquo;Query A.&rdquo;</p>
 </li>
+</ol>
+<p><em>Software shortcut:</em> Run <code>python tools/awg_waveform.py --pattern A</code> from the repository root. This computes Pattern A&rsquo;s Rayleigh-shifted frequencies and exports a ready-to-import CSV file (<code>query_A.csv</code>). In PicoScope 7: Tools → Signal Generator → Wave Type → Arbitrary → Import → select the CSV → set Amplitude to the value printed by the script (~0.40 Vpp) and Sample Rate to 1 MS/s. For all four patterns at once, use <code>--all</code>. Run with <code>--help</code> for additional options (custom putty mass, rod length, number of modes).</p>
+<ol>
 <li>
 <p><strong>Measure the matched response.</strong> Drive the rod with Query A. The rod contains Pattern A, so the query <em>matches</em> the stored pattern. Record the peak response amplitude in dB from the FFT.</p>
 </li>
 <li>
-<p><strong>Create Pattern B.</strong> Remove Pattern A&rsquo;s wax. Apply two pellets at the third-points: $x = L/3 = 50$ mm and $x = 2L/3 = 100$ mm. Record Pattern B&rsquo;s fingerprint.</p>
+<p><strong>Create Pattern B.</strong> Remove Pattern A&rsquo;s putty. Apply two pellets at the third-points: $x = L/3 = 50$ mm and $x = 2L/3 = 100$ mm. Record Pattern B&rsquo;s fingerprint.</p>
 </li>
 <li>
 <p><strong>Drive with Query A (mismatched).</strong> Replay Query A—the waveform built from Pattern A&rsquo;s frequencies. The rod now contains Pattern B, so the query does <em>not</em> match. Record the peak response amplitude. It should be significantly lower than in step 3.</p>
@@ -1538,15 +1557,15 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong>Expected results.</strong> The discrimination margin should be 15–25 dB, meaning the matching pattern produces 30–300× more acoustic power than a non-matching pattern. If the margin is below 10 dB, check that (a) the two wax patterns are placed at genuinely different positions, (b) the drive amplitude is in the linear regime (≤0.5 V per tone), and (c) the query frequencies accurately match the stored pattern&rsquo;s measured frequencies.</p>
+<p><strong>Expected results.</strong> The discrimination margin should be 15–25 dB, meaning the matching pattern produces 30–300× more acoustic power than a non-matching pattern. If the margin is below 10 dB, check that (a) the two putty patterns are placed at genuinely different positions, (b) the drive amplitude is in the linear regime (≤0.5 V per tone), and (c) the query frequencies accurately match the stored pattern&rsquo;s measured frequencies.</p>
 <hr />
 <h3 id="d9-experiment-7-cw-precision-readout-bowing-vs-ringing">D.9 Experiment 7 — CW Precision Readout (Bowing vs. Ringing)</h3>
 <p><strong>Objective:</strong> Demonstrate that continuous-wave (CW) excitation with lock-in detection yields higher SNR than impulse readout—and experience the difference physically by &ldquo;bowing&rdquo; the rod with a wet finger, just as a glass harmonica is played.</p>
 <p><strong>Time:</strong> 60 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator, PicoScope, BNC cable, foam cradle, styrofoam enclosure, small bowl of water.</p>
+<p><strong>Materials:</strong> Assembled resonator, PicoScope, BNC cable, cooler mount, styrofoam enclosure, small bowl of water.</p>
 <p><strong>Background.</strong> Experiments 1–6 use impulse readout: strike the rod, listen to it ring down, measure the FFT. This is fast (one ringdown time $\tau \approx 180$ ms) but limited in SNR—the measurement window is fixed at $\tau$, and all the noise within the bandwidth $\sim 1/\tau$ contributes. An alternative is CW readout: drive the rod continuously at a single mode frequency and measure the steady-state response. A lock-in detection technique—multiplying the response by the drive signal and averaging—rejects all noise outside a narrow bandwidth $\sim 1/(2T_{\text{int}})$. The SNR gain over impulse is:</p>
 <p>$$\text{Gain (dB)} = 10\log_{10}\!\left(\frac{T_{\text{int}}}{\tau}\right)$$</p>
-<p>At $T_{\text{int}} = 1$ s: +7.5 dB. At $T_{\text{int}} = 10$ s: +17.5 dB. At $T_{\text{int}} = 60$ s: +25.2 dB (see Figure 15). This is the same physics that makes a glass harmonica so expressive: the performer&rsquo;s sustained finger contact provides continuous energy input, allowing the bowl to reach full amplitude and sustain it indefinitely—something a single tap cannot do.</p>
+<p>At $T_{\text{int}} = 1$ s: +7.5 dB. At $T_{\text{int}} = 10$ s: +17.5 dB. At $T_{\text{int}} = 60$ s: +25.2 dB (see Figure 15 in the Illustration Plates). This is the same physics that makes a glass harmonica so expressive: the performer&rsquo;s sustained finger contact provides continuous energy input, allowing the bowl to reach full amplitude and sustain it indefinitely—something a single tap cannot do.</p>
 <p><strong>Part A: Electronic CW Readout</strong></p>
 <ol>
 <li>
@@ -1663,12 +1682,12 @@ table, pre, blockquote {
 <h3 id="d10-experiment-8-rewritable-encoding-with-water-drops">D.10 Experiment 8 — Rewritable Encoding with Water Drops</h3>
 <p><strong>Objective:</strong> Demonstrate rewritable spectral encoding using water drops as removable mass perturbations—the transition from glass harmonica (fixed tuning) to Franklin&rsquo;s armonica (reconfigurable).</p>
 <p><strong>Time:</strong> 45 minutes.</p>
-<p><strong>Materials:</strong> Assembled resonator, PicoScope, plastic transfer pipettes, water, foam cradle, styrofoam enclosure, ruler, fine-tip marker, digital thermometer.</p>
-<p><strong>Background.</strong> In a glass harmonica, each bowl&rsquo;s pitch is set by its geometry—grind it to a specific diameter and thickness, and the frequency is fixed forever. But adding water to a bowl lowers its pitch by increasing the effective vibrating mass. The performer cannot change the glass, but <em>can</em> change the water level. This is precisely the Rayleigh perturbation mechanism: water at position $x$ shifts mode $n$ by an amount proportional to $\sin^2(n\pi x/L)$. Unlike wax (Experiment 5), water evaporates—making the perturbation <em>rewritable</em>. This experiment demonstrates the harmonica-to-armonica transition: write a pattern with water, read the shifted spectrum, let it evaporate (erase), write a different pattern, and confirm the spectrum changes.</p>
+<p><strong>Materials:</strong> Assembled resonator, PicoScope, plastic transfer pipettes, water, cooler mount, styrofoam enclosure, ruler, fine-tip marker, digital thermometer.</p>
+<p><strong>Background.</strong> In a glass harmonica, each bowl&rsquo;s pitch is set by its geometry—grind it to a specific diameter and thickness, and the frequency is fixed forever. But adding water to a bowl lowers its pitch by increasing the effective vibrating mass. The performer cannot change the glass, but <em>can</em> change the water level. This is precisely the Rayleigh perturbation mechanism: water at position $x$ shifts mode $n$ by an amount proportional to $\sin^2(n\pi x/L)$. Unlike putty (Experiment 5), water evaporates—making the perturbation <em>rewritable</em>. This experiment demonstrates the harmonica-to-armonica transition: write a pattern with water, read the shifted spectrum, let it evaporate (erase), write a different pattern, and confirm the spectrum changes.</p>
 <p><strong>Procedure:</strong></p>
 <ol>
 <li>
-<p><strong>Prepare.</strong> Place the resonator horizontally on the foam cradle inside the styrofoam enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.</p>
+<p><strong>Prepare.</strong> Place the resonator horizontally in the cooler mount inside the styrofoam enclosure. Equilibrate for 15 minutes with the thermometer monitoring temperature. Ensure the rod surface is clean and dry.</p>
 </li>
 <li>
 <p><strong>Record the unperturbed spectrum (Pattern 0).</strong> Chirp the rod and record the FFT. Log frequencies of modes 1–5.</p>
@@ -1797,15 +1816,805 @@ table, pre, blockquote {
 </tr>
 </tbody>
 </table>
-<p><strong>Expected results.</strong> Water drops are lighter than wax pellets, so frequency shifts will be smaller—typically 0.2–2 Hz per mode, depending on drop volume. The thermal enclosure is essential here to keep drift below the perturbation signal. The key observation is that the three patterns produce three <em>different</em> spectral fingerprints, and that erasing (removing water) fully recovers the baseline—demonstrating the write/read/erase cycle. If shifts are too small to resolve, use larger drops or a more sensitive frequency measurement (CW lock-in from Experiment 7 provides higher precision).</p>
+<p><strong>Expected results.</strong> Water drops are lighter than putty pellets, so frequency shifts will be smaller—typically 0.2–2 Hz per mode, depending on drop volume. The thermal enclosure is essential here to keep drift below the perturbation signal. The key observation is that the three patterns produce three <em>different</em> spectral fingerprints, and that erasing (removing water) fully recovers the baseline—demonstrating the write/read/erase cycle. If shifts are too small to resolve, use larger drops or a more sensitive frequency measurement (CW lock-in from Experiment 7 provides higher precision).</p>
 <blockquote>
-<p><strong>The Franklin insight.</strong> This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in §12.5: the rod is optimized for resonance quality (Q), and the &ldquo;write medium&rdquo; (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.</p>
+<p><strong>The Franklin insight.</strong> This experiment turns the glass rod into a primitive armonica. The glass itself never changes—only the water does. You have just demonstrated the separation principle described in Paper II §3: the rod is optimized for resonance quality (Q), and the &ldquo;write medium&rdquo; (water) is a separate, removable layer. Franklin would recognize this immediately: same glass, different tuning, reconfigurable.</p>
+</blockquote>
+<hr />
+<h3 id="d11-experiment-9-packed-array-associative-recall">D.11 Experiment 9 — Packed-Array Associative Recall</h3>
+<p><strong>Objective:</strong> Show that a multi-rod array can identify a stored pattern from a noisy or partial query—the physical basis of CWM&rsquo;s content-addressable memory.</p>
+<p><strong>Time:</strong> 90 minutes.</p>
+<p><strong>Materials:</strong> 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, cooler mount with cardboard dividers (multi-rod template T.2), styrofoam enclosure, masking tape, fine-tip marker.</p>
+<p><strong>Background.</strong> In Experiment 6 you demonstrated that a single rod distinguishes between matching and non-matching queries. This experiment scales the principle to a packed array: multiple rods, each storing a different perturbation pattern, are queried simultaneously. The rod whose stored fingerprint best matches the query produces the strongest acoustic response—a physical implementation of associative recall. The entire search completes in one acoustic propagation cycle (~3.8 µs at MEMS scale), regardless of how many rods are in the array.</p>
+<p>Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a &ldquo;neuron,&rdquo; the perturbation-defined spectrum is its &ldquo;weight vector,&rdquo; and the query is the input state. The rod with the highest inner product with the query wins—and that inner product is computed by wave interference, not by a processor.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>
+<p><strong>Build the array.</strong> Assemble 3–4 rods, each with its PZT disc, into the multi-rod mount using cardboard dividers inside the styrofoam cooler. Label them Rod A, B, C, D. Equilibrate for 15 minutes.</p>
+</li>
+<li>
+<p><strong>Write distinct patterns.</strong> Apply unique putty configurations to each rod:</p>
+</li>
+<li><strong>Rod A:</strong> Two pellets at $L/4$ (37.5 mm) and $3L/4$ (112.5 mm).</li>
+<li><strong>Rod B:</strong> Two pellets at $L/3$ (50 mm) and $2L/3$ (100 mm).</li>
+<li><strong>Rod C:</strong> One pellet at $L/2$ (75 mm).</li>
+<li>
+<p><strong>Rod D (if using 4 rods):</strong> Two pellets at $L/5$ (30 mm) and $4L/5$ (120 mm).</p>
+</li>
+<li>
+<p><strong>Record each fingerprint.</strong> Chirp each rod individually and record the FFT peak frequencies for modes 1–5. These are the &ldquo;stored patterns.&rdquo;</p>
+</li>
+<li>
+<p><strong>Build queries.</strong> For each rod, create a multi-tone waveform from its five shifted mode frequencies (same procedure as Experiment 6, step 2). Label these Query A, B, C, D.</p>
+</li>
+</ol>
+<p><em>Software shortcut:</em> <code>python tools/awg_waveform.py --all</code> generates all four query waveforms (CSV + WAV) in one step. Import each into the PicoScope AWG as described in Experiment 6.</p>
+<ol>
+<li>
+<p><strong>Parallel query test.</strong> Drive <em>all</em> rods simultaneously with Query A. Monitor the acoustic response of each rod via its own PZT transducer (use separate PicoScope channels, or measure each rod&rsquo;s response sequentially with the same channel while driving all rods). Record the peak response amplitude for each rod.</p>
+</li>
+<li>
+<p><strong>Record the discrimination matrix.</strong> Repeat step 5 for Query B, Query C, and Query D. Fill in Worksheet D.8.</p>
+</li>
+<li>
+<p><strong>Verify correct identification.</strong> For each query, the target rod (the one whose pattern matches the query) should produce the highest response. Check that all four diagonal entries in the discrimination matrix are the highest in their row.</p>
+</li>
+<li>
+<p><strong>Test with noisy queries.</strong> Detune one of Query A&rsquo;s five frequencies by +5% to simulate a noisy or partial query. Drive all rods and check whether Rod A still wins (it should, because 4 of 5 frequencies still match). Increase the detuning and observe when recall fails.</p>
+</li>
+</ol>
+<div class="worksheet-header">
+<h4>Worksheet D.8 — Packed-Array Associative Recall</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Print one copy per array configuration. Log each rod's response amplitude (dB) when driven by each query pattern.</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Query driven ↓ / Rod response →</th>
+<th>Rod A (dB)</th>
+<th>Rod B (dB)</th>
+<th>Rod C (dB)</th>
+<th>Rod D (dB)</th>
+<th>Best match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Query A</td>
+<td><span class="ex"><strong>−22</strong></span></td>
+<td><span class="ex">−41</span></td>
+<td><span class="ex">−38</span></td>
+<td><span class="ex">−44</span></td>
+<td><span class="ex">Rod A ✓</span></td>
+</tr>
+<tr>
+<td>Query B</td>
+<td><span class="ex">−40</span></td>
+<td><span class="ex"><strong>−23</strong></span></td>
+<td><span class="ex">−39</span></td>
+<td><span class="ex">−43</span></td>
+<td><span class="ex">Rod B ✓</span></td>
+</tr>
+<tr>
+<td>Query C</td>
+<td><span class="ex">−37</span></td>
+<td><span class="ex">−42</span></td>
+<td><span class="ex"><strong>−21</strong></span></td>
+<td><span class="ex">−40</span></td>
+<td><span class="ex">Rod C ✓</span></td>
+</tr>
+<tr>
+<td>Query D</td>
+<td><span class="ex">−43</span></td>
+<td><span class="ex">−39</span></td>
+<td><span class="ex">−41</span></td>
+<td><span class="ex"><strong>−24</strong></span></td>
+<td><span class="ex">Rod D ✓</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Mean diagonal (matched) amplitude (dB):</strong></td>
+<td><span class="ex"><strong>−22.5</strong></span></td>
+</tr>
+<tr>
+<td><strong>Mean off-diagonal (mismatched) amplitude (dB):</strong></td>
+<td><span class="ex">−40.6</span></td>
+</tr>
+<tr>
+<td><strong>Mean discrimination margin (dB):</strong></td>
+<td><span class="ex"><strong>18.1</strong></span></td>
+</tr>
+<tr>
+<td><strong>All diagonal entries are row maxima? (Y/N)</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+<tr>
+<td><strong>Noisy query (5% detune): correct recall? (Y/N)</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected results.</strong> The discrimination matrix should show a clear diagonal: each query produces 15–25 dB more power at its target rod than at any other. If using only 2 PicoScope channels (one for the shared drive, one for readout), you can drive all rods via a Y-cable from the AWG and read each rod&rsquo;s response sequentially—the key physics is that the rod&rsquo;s resonant response depends only on whether its modes align with the drive frequencies, not on how many other rods are present.</p>
+<blockquote>
+<p><strong>Why this works.</strong> Each rod is a physical matched filter. The query contains frequencies $\{f_1', f_2', \ldots, f_5'\}$. If those frequencies match Rod A&rsquo;s resonances, Rod A rings loudly; Rod B&rsquo;s resonances are at different frequencies, so it barely responds. The ratio of matched-to-mismatched response is the discrimination margin. In a MEMS array with 9,380 modes per rod and 1,294 stored patterns, this same principle extends to massively parallel associative search in a single acoustic cycle.</p>
+</blockquote>
+<hr />
+<h3 id="d12-experiment-10-nearest-neighbor-search">D.12 Experiment 10 — Nearest-Neighbor Search</h3>
+<p><strong>Objective:</strong> Demonstrate that the rod array naturally performs nearest-neighbor search: when the query is an interpolation between two stored patterns, the closest matching rod produces the strongest response, and the transition point occurs at the midpoint.</p>
+<p><strong>Time:</strong> 60 minutes.</p>
+<p><strong>Materials:</strong> Packed array from Experiment 9 (at least 2 patterned rods), PicoScope.</p>
+<p><strong>Background.</strong> Nearest-neighbor search is the foundation of classification, recommendation, and similarity-based retrieval. In a conventional system, finding the closest match in a database of $M$ items requires $O(M)$ distance computations (or $O(\log M)$ with tree indexing). In a CWM array, it takes one acoustic propagation cycle regardless of $M$.</p>
+<p>The test: construct a query that sits &ldquo;between&rdquo; two stored patterns. At the exact midpoint, the query should be equidistant from both, and the best match should transition from one rod to the other.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>
+<p><strong>Select two rods.</strong> Use Rod A and Rod B from Experiment 9, with their distinct putty patterns in place.</p>
+</li>
+<li>
+<p><strong>Build the endpoint queries.</strong> You already have Query A (5 tones at Rod A&rsquo;s mode frequencies) and Query B (5 tones at Rod B&rsquo;s mode frequencies) from Experiment 9.</p>
+</li>
+<li>
+<p><strong>Create interpolated queries.</strong> For each mode $n$ (1–5), compute a blended frequency:</p>
+</li>
+</ol>
+<p>$$f_n(\alpha) = (1 - \alpha) \cdot f_n^{(A)} + \alpha \cdot f_n^{(B)}$$</p>
+<p>Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The first and last are just Query A and Query B.)</p>
+<ol>
+<li>
+<p><strong>Drive and measure.</strong> For each interpolated query, drive both rods simultaneously and record each rod&rsquo;s response amplitude.</p>
+</li>
+<li>
+<p><strong>Plot the crossover.</strong> Plot Rod A&rsquo;s and Rod B&rsquo;s response as a function of $\alpha$. The curves should cross near $\alpha = 0.5$. Record the actual crossover point.</p>
+</li>
+<li>
+<p><strong>Record results</strong> in Worksheet D.9.</p>
+</li>
+</ol>
+<div class="worksheet-header">
+<h4>Worksheet D.9 — Nearest-Neighbor Search Crossover</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Print one copy. Record response amplitudes across the interpolation sweep to verify crossover near α = 0.5.</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>α (interpolation)</th>
+<th>Rod A response (dB)</th>
+<th>Rod B response (dB)</th>
+<th>Best match</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.00 (= Query A)</td>
+<td><span class="ex"><strong>−22</strong></span></td>
+<td><span class="ex">−41</span></td>
+<td><span class="ex">Rod A</span></td>
+</tr>
+<tr>
+<td>0.25</td>
+<td><span class="ex"><strong>−26</strong></span></td>
+<td><span class="ex">−35</span></td>
+<td><span class="ex">Rod A</span></td>
+</tr>
+<tr>
+<td>0.50</td>
+<td><span class="ex">−31</span></td>
+<td><span class="ex"><strong>−30</strong></span></td>
+<td><span class="ex">Rod B</span></td>
+</tr>
+<tr>
+<td>0.75</td>
+<td><span class="ex">−37</span></td>
+<td><span class="ex"><strong>−25</strong></span></td>
+<td><span class="ex">Rod B</span></td>
+</tr>
+<tr>
+<td>1.00 (= Query B)</td>
+<td><span class="ex">−42</span></td>
+<td><span class="ex"><strong>−23</strong></span></td>
+<td><span class="ex">Rod B</span></td>
+</tr>
+</tbody>
+</table>
+<p>| Metric                                           | Value                            |
+| ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
+| <strong>Crossover α (where best match switches A→B):</strong> | <span class="ex"><strong>0.50</strong></span> |
+| <strong>Expected crossover:</strong>                          | 0.50                             |
+| **Crossover error                              | actual − expected                | :** | <span class="ex">0.00</span> |</p>
+<p><strong>Expected results.</strong> The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods&rsquo; acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.</p>
+<blockquote>
+<p><strong>O(1) scaling.</strong> The key observation: you could add 100 more rods to the array, and the search would still take the same amount of time—one acoustic cycle. Each rod evaluates its own match score simultaneously and independently. This is why CWM claims O(1) nearest-neighbor search: the computation time is set by the speed of sound in glass, not by the number of candidates.</p>
+</blockquote>
+<hr />
+<h3 id="d13-experiment-11-in-situ-boolean-computation-via-mode-superposition">D.13 Experiment 11 — In-Situ Boolean Computation via Mode Superposition</h3>
+<p><strong>Objective:</strong> Demonstrate that Boolean operations (AND, OR, XOR) can be computed in a single acoustic cycle by superposing two perturbation patterns&rsquo; spectral responses and applying amplitude thresholds—zero additional hardware required.</p>
+<p><strong>Time:</strong> 60 minutes.</p>
+<p><strong>Materials:</strong> 2 assembled resonators with distinct perturbation patterns (from Experiment 9), PicoScope, BNC Y-adapter or alligator-clip junction.</p>
+<p><strong>Background.</strong> CWM&rsquo;s modes are linear oscillators: when two signals are applied simultaneously, the resulting amplitude at each frequency is the <em>sum</em> of the individual amplitudes. If Pattern A encodes bit &ldquo;1&rdquo; at mode 3 (high amplitude) and Pattern B encodes bit &ldquo;0&rdquo; at mode 3 (low amplitude), the combined amplitude at mode 3 is high + low = medium. The combined amplitudes across all modes fall into three natural clusters:</p>
+<table>
+<thead>
+<tr>
+<th>A bit</th>
+<th>B bit</th>
+<th>Combined level</th>
+<th>AND</th>
+<th>OR</th>
+<th>XOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>0</td>
+<td>Low</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>Medium</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>Medium</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>High</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>AND</strong> = high cluster only (both bits = 1)</li>
+<li><strong>OR</strong> = medium + high (at least one bit = 1)</li>
+<li><strong>XOR</strong> = medium cluster only (exactly one bit = 1)</li>
+</ul>
+<p>All three operations are computed from the same superposition—only the threshold changes. This is firmware, not hardware.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li><strong>Prepare two &ldquo;binary-patterned&rdquo; rods.</strong> Using two rods from the packed array, define a coarse binary encoding across modes 1–5:</li>
+<li><strong>Rod A &ldquo;binary pattern&rdquo;:</strong> Place putty at positions that shift modes 1, 3, and 5 strongly (call these bits = 1) and leave modes 2 and 4 minimally affected (bits = 0). Record which modes shift and by how much.</li>
+<li><strong>Rod B &ldquo;binary pattern&rdquo;:</strong> Place putty at positions that shift modes 1, 2, and 4 (bits = 1) and leave modes 3 and 5 minimally affected (bits = 0).</li>
+</ol>
+<p>The resulting binary representations are:
+   - Rod A: 1 0 1 0 1
+   - Rod B: 1 1 0 1 0</p>
+<ol>
+<li>
+<p><strong>Measure individual spectra.</strong> Chirp each rod separately. Record the peak amplitude at each mode frequency.</p>
+</li>
+<li>
+<p><strong>Superpose the responses.</strong> Drive both rods simultaneously with a broadband chirp. On the PicoScope FFT, you will see peaks at all mode frequencies. At each mode, the combined amplitude reflects the sum of both rods&rsquo; contributions.</p>
+</li>
+<li>
+<p><strong>Classify each mode.</strong> For each mode 1–5, categorize the combined amplitude:</p>
+</li>
+<li><strong>Low</strong> (both rods&rsquo; bits = 0): the weakest combined peaks.</li>
+<li><strong>Medium</strong> (one rod&rsquo;s bit = 1, the other = 0): intermediate amplitude.</li>
+<li>
+<p><strong>High</strong> (both rods&rsquo; bits = 1): the strongest combined peaks.</p>
+</li>
+<li>
+<p><strong>Extract Boolean results.</strong> Apply the three threshold rules:</p>
+</li>
+<li><strong>AND (Rod A ∧ Rod B):</strong> Only modes where combined amplitude is in the &ldquo;High&rdquo; cluster → expected result: 1 0 0 0 0 (only mode 1).</li>
+<li><strong>OR (Rod A ∨ Rod B):</strong> Modes in &ldquo;Medium&rdquo; or &ldquo;High&rdquo; cluster → expected result: 1 1 1 1 1 (all modes).</li>
+<li>
+<p><strong>XOR (Rod A ⊕ Rod B):</strong> Modes in &ldquo;Medium&rdquo; cluster only → expected result: 0 1 1 1 1 (modes 2–5).</p>
+</li>
+<li>
+<p><strong>Record results</strong> in Worksheet D.10.</p>
+</li>
+</ol>
+<div class="worksheet-header">
+<h4>Worksheet D.10 — Boolean Computation via Mode Superposition</h4>
+<p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
+<p class="ws-instruction">Print one copy. Record individual and combined mode amplitudes, then extract Boolean operation results using threshold classification.</p>
+</div>
+
+<table>
+<thead>
+<tr>
+<th>Mode <em>n</em></th>
+<th>Rod A amp (dB)</th>
+<th>A bit</th>
+<th>Rod B amp (dB)</th>
+<th>B bit</th>
+<th>Combined amp (dB)</th>
+<th>Cluster</th>
+<th>AND</th>
+<th>OR</th>
+<th>XOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><span class="ex">−24</span></td>
+<td>1</td>
+<td><span class="ex">−25</span></td>
+<td>1</td>
+<td><span class="ex">−18</span></td>
+<td><span class="ex">High</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">0</span></td>
+</tr>
+<tr>
+<td>2</td>
+<td><span class="ex">−42</span></td>
+<td>0</td>
+<td><span class="ex">−26</span></td>
+<td>1</td>
+<td><span class="ex">−25</span></td>
+<td><span class="ex">Medium</span></td>
+<td><span class="ex">0</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">1</span></td>
+</tr>
+<tr>
+<td>3</td>
+<td><span class="ex">−23</span></td>
+<td>1</td>
+<td><span class="ex">−40</span></td>
+<td>0</td>
+<td><span class="ex">−22</span></td>
+<td><span class="ex">Medium</span></td>
+<td><span class="ex">0</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">1</span></td>
+</tr>
+<tr>
+<td>4</td>
+<td><span class="ex">−41</span></td>
+<td>0</td>
+<td><span class="ex">−24</span></td>
+<td>1</td>
+<td><span class="ex">−23</span></td>
+<td><span class="ex">Medium</span></td>
+<td><span class="ex">0</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">1</span></td>
+</tr>
+<tr>
+<td>5</td>
+<td><span class="ex">−22</span></td>
+<td>1</td>
+<td><span class="ex">−43</span></td>
+<td>0</td>
+<td><span class="ex">−21</span></td>
+<td><span class="ex">Medium</span></td>
+<td><span class="ex">0</span></td>
+<td><span class="ex">1</span></td>
+<td><span class="ex">1</span></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Verification</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AND computed correctly? (compare to truth table)</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+<tr>
+<td><strong>OR computed correctly?</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+<tr>
+<td><strong>XOR computed correctly?</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+<tr>
+<td><strong>Number of modes used:</strong></td>
+<td><span class="ex">5</span></td>
+</tr>
+<tr>
+<td><strong>Cluster separation (High − Medium gap in dB):</strong></td>
+<td><span class="ex">5 dB</span></td>
+</tr>
+<tr>
+<td><strong>Cluster separation (Medium − Low gap in dB):</strong></td>
+<td><span class="ex">15 dB</span></td>
+</tr>
+<tr>
+<td><strong>All three Boolean operations extracted from a single superposition?</strong></td>
+<td><span class="ex">Y ✓</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected results.</strong> With distinct perturbation patterns, the three amplitude clusters should be separated by ≥5 dB. AND is the most demanding (smallest cluster gap), while OR is the most forgiving. If cluster separation is too small, use larger putty masses to increase the amplitude contrast between &ldquo;1&rdquo; and &ldquo;0&rdquo; bits. The simulation in <code>exp08_boolean_compute.py</code> confirms ≥90% fidelity across all three operations at contrast ratios of 1.5:1 or better.</p>
+<blockquote>
+<p><strong>One superposition, three answers.</strong> The superposed spectrum is computed by physics in a single acoustic cycle. The Boolean operation is selected <em>afterwards</em> in firmware—by choosing where to place the threshold. No new hardware, no new measurement, no extra time. This is what the paper means by &ldquo;the physics <em>is</em> the computation.&rdquo;</p>
+</blockquote>
+<hr />
+<h3 id="d14-experiment-12-acoustic-password-vault-polysemic-packed-array">D.14 Experiment 12 — Acoustic Password Vault (Polysemic Packed Array)</h3>
+<p><strong>Objective:</strong> Demonstrate a hardware security device that stores and authenticates multiple passwords in parallel using a packed glass rod array, with polysemic readout quadrupling the effective password capacity. Your laptop replaces the CMOS readout ASIC, performing exactly the same FFT → correlation → decision logic that a production chip would execute at microsecond speed.</p>
+<p><strong>Time:</strong> 90 minutes (plus enrollment time for additional passwords).</p>
+<p><strong>Materials:</strong> 4–10 assembled resonators with distinct perturbation patterns, PicoScope 2204A, BNC cables, laptop with Python 3.10+.</p>
+<p><strong>Background.</strong> Each rod&rsquo;s spectral fingerprint is determined by the physical mass distribution of its putty perturbations—a pattern that cannot be copied without disassembling the rod. This is a <em>physically unclonable function</em> (PUF): the password is not stored digitally; it <em>is</em> the geometry of the glass. Polysemic readout (Paper II §2.5) partitions the FFT mode spectrum into $C = 4$ independent subsets, each reading an orthogonal projection of the same perturbation. One physical rod stores four independent passwords.</p>
+<p><strong>How polysemic works at macro scale.</strong> Consider modes 1–20 of a single rod. Partition them into four contiguous spectral bands:</p>
+<ul>
+<li><strong>Channel 0:</strong> modes 1–5 (low-frequency band)</li>
+<li><strong>Channel 1:</strong> modes 6–10 (mid-low band)</li>
+<li><strong>Channel 2:</strong> modes 11–15 (mid-high band)</li>
+<li><strong>Channel 3:</strong> modes 16–20 (high-frequency band)</li>
+</ul>
+<p>Each band samples a different frequency range of the rod&rsquo;s response. Because the Rayleigh perturbation shift $\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x/L)$ oscillates differently across each band, the shift vectors are naturally orthogonal. Higher bands also experience stronger thermoelastic damping and different PZT coupling, further decorrelating the channels.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>
+<p><strong>Prepare the packed array.</strong> Assemble 4 rods, each with a unique putty pattern. Label them Rod 1 through Rod 4. Mount them in the styrofoam cooler using the packed-array template (T.2). Attach PZT discs to all rods; connect each PZT to the PicoScope via BNC (use one channel per rod, swapping cables between enrollment and verification steps if your PicoScope has only 2 channels).</p>
+</li>
+<li>
+<p><strong>Enroll credentials.</strong> Run the enrollment tool:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>enroll<span class="w"> </span>--rod<span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<p>The tool drives a broadband chirp via the PicoScope AWG, captures the rod&rsquo;s response, computes the FFT across modes 1–20, and splits the spectrum into 4 polysemic channels. Each channel&rsquo;s amplitude vector is saved as a credential template. Repeat for all rods. This creates up to <strong>16 passwords</strong> (4 rods × 4 channels).</p>
+<ol>
+<li>
+<p><strong>Assign passwords to credentials.</strong> Each template gets a label (e.g., &ldquo;email&rdquo;, &ldquo;bank&rdquo;, &ldquo;laptop&rdquo;, &ldquo;VPN&rdquo;). The mapping is stored locally in <code>data/results/vault_db.json</code>.</p>
+</li>
+<li>
+<p><strong>Authenticate.</strong> To verify a password:</p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>verify<span class="w"> </span>--label<span class="w"> </span>email
+</code></pre></div>
+<p>The tool looks up which rod and channel the label maps to, drives the appropriate query waveform, captures the response, computes the FFT for that channel&rsquo;s mode subset, and correlates against the enrolled template. If the correlation exceeds the threshold (default 0.85), authentication succeeds.</p>
+<ol>
+<li><strong>Test attack scenarios:</strong></li>
+<li><strong>Wrong rod:</strong> Swap in a different rod. Correlation should drop below threshold.</li>
+<li><strong>Wrong channel:</strong> Query the correct rod but decode a different polysemic channel. Correlation should be near zero (polysemic isolation).</li>
+<li><strong>Rod removed:</strong> Physically remove a rod from the array. That credential ceases to exist—there is nothing to hack.</li>
+<li>
+<p><strong>Slightly detuned query:</strong> Add ±2% frequency noise to the query. Test whether the correlation margin holds (it should with 15–25 dB discrimination).</p>
+</li>
+<li>
+<p><strong>Record results</strong> in Worksheet D.11.</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Verification</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Number of rods enrolled:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Total credentials (rods × 4 channels):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Correct authentications (out of 16 attempts):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>False accepts (wrong rod accepted):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>False accepts (wrong channel accepted):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Discrimination margin (dB) at correct match:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Correlation at correct match (best):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Correlation at wrong rod (worst):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Correlation at wrong channel, same rod:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Noisy query still authenticated? (Y/N at ±2%):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Rod-removal kills credential? (Y/N):</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected results.</strong> Correct-channel authentication should achieve correlation &gt; 0.90. Wrong-rod and wrong-channel correlations should be &lt; 0.20. The polysemic isolation (same rod, different channel) is the key demonstration—it proves that one physical rod genuinely stores four independent credentials, not four variations of the same one.</p>
+<blockquote>
+<p><strong>Why this matters.</strong> A CWM chip in a USB dongle could replace YubiKeys and FIDO tokens. The password isn&rsquo;t stored digitally anywhere—it&rsquo;s encoded as the physical mass distribution of the glass. There&rsquo;s nothing to extract with a logic analyser, nothing to clone without nanometre-precision lithography, and nothing to hack remotely. A 2026 study demonstrated that femtosecond laser-written borosilicate waveguides outperform silicon for coherent quantum receivers (Peri et al., <em>Advanced Photonics</em> 2026)—their photonic domain, our acoustic one, the same substrate advantage.</p>
+</blockquote>
+<hr />
+<h3 id="d15-experiment-13-acoustic-image-search-nearest-neighbor-visual-retrieval">D.15 Experiment 13 — Acoustic Image Search (Nearest-Neighbor Visual Retrieval)</h3>
+<p><strong>Objective:</strong> Encode a library of images as spectral fingerprints across a packed rod array, then demonstrate that querying with a new image finds the closest visual match—in parallel, across all rods, in one acoustic cycle. This is the core operation behind edge AI vision systems (drone inspection, face recognition), demonstrated at macro scale.</p>
+<p><strong>Time:</strong> 90 minutes (plus image library preparation).</p>
+<p><strong>Materials:</strong> 4–10 assembled resonators with distinct perturbation patterns, PicoScope 2204A, laptop with Python 3.10+, a set of 16–40 reference images (provided as a sample library in <code>data/image_search/</code> or use your own).</p>
+<p><strong>Background.</strong> Every image can be reduced to a compact feature vector via a perceptual hash—a short numeric fingerprint that captures the image&rsquo;s visual essence. Two visually similar images produce similar hashes; two dissimilar images produce different hashes. The CWM image search tool maps each hash to a set of perturbation-shift targets, uses each rod&rsquo;s polysemic channels to store multiple image fingerprints, and finds the closest match by acoustic correlation.</p>
+<p><strong>How the mapping works.</strong> A perceptual hash reduces an image to a vector of $N$ values (typically 8–64 dimensions). The tool maps each hash dimension to a target frequency shift at one mode—larger hash values map to larger shifts. The resulting target vector becomes the &ldquo;ideal query&rdquo; for that image. At enrollment, we measure each rod&rsquo;s actual fingerprint across all polysemic channels and assign images to the rod/channel combination whose actual fingerprint most closely matches the image&rsquo;s target vector.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li>
+<p><strong>Prepare the image library.</strong> Place 16+ reference images in <code>data/image_search/library/</code> (JPEG or PNG). The tool accepts any images—corrosion patterns, faces, product photos, symbols—whatever your demonstration scenario requires.</p>
+</li>
+<li>
+<p><strong>Enroll the library:</strong></p>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span>enroll<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--library<span class="w"> </span>data/image_search/library/<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--rods<span class="w"> </span><span class="m">4</span><span class="w"> </span>--channels<span class="w"> </span><span class="m">4</span>
+</code></pre></div>
+<p>The tool:
+   - Computes a perceptual hash for each image (average hash, 64 bits)
+   - Measures each rod&rsquo;s spectral fingerprint across 4 polysemic channels (via PicoScope chirp-and-capture if <code>--live</code> flag is set, or from saved templates)
+   - Maps each image to the rod/channel with the best fingerprint match
+   - Stores the assignment in <code>data/results/image_db.json</code></p>
+<ol>
+<li><strong>Query with a new image:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span>query<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="w"> </span>data/image_search/query/test_photo.jpg
+</code></pre></div>
+<p>The tool computes the query image&rsquo;s perceptual hash, generates the corresponding multi-tone query waveform, and—if running with PicoScope—drives the array and captures responses. In simulation mode (default, no hardware required), it computes the expected correlation against all enrolled fingerprints.</p>
+<p>Output:</p>
+<div class="highlight"><pre><span></span><code>Query: test_photo.jpg
+Best match: library/corrosion_004.jpg (Rod 2, Channel 1)
+Correlation: 0.937
+Runner-up: library/corrosion_007.jpg (Rod 3, Channel 0) at 0.412
+Margin: 7.2 dB
+</code></pre></div>
+<ol>
+<li><strong>Run the ranked retrieval test.</strong> Query with each library image to verify self-retrieval:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span>--library<span class="w"> </span>data/image_search/library/
+</code></pre></div>
+<p>The tool queries each image against the full library and reports:
+   - <strong>Rank-1 accuracy</strong>: percentage of images that retrieve themselves as the top match
+   - <strong>Mean discrimination margin</strong> (dB)
+   - <strong>Confusion pairs</strong>: which images are hardest to distinguish</p>
+<ol>
+<li><strong>Record results</strong> in Worksheet D.12.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Verification</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Library size (images):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Number of rods used:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Effective capacity (rods × 4 channels):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Rank-1 self-retrieval accuracy (%):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Mean discrimination margin (dB):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Worst-case margin (dB):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Number of confusion pairs (&lt;5 dB margin):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Query time (per image):</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected results.</strong> With well-chosen images (visually distinct), rank-1 accuracy should be 100% for up to 16 images (4 rods × 4 polysemic channels). Discrimination margins of 10–20 dB are typical. Visually similar images (e.g., two photos of the same scene with different lighting) will show reduced margins—this is correct physics, not a failure.</p>
+<blockquote>
+<p><strong>O(1) visual search.</strong> Adding a hundred more rods to the array does not increase the search time—every rod evaluates its match in parallel. At MEMS scale, a 1 cm³ module would search 142,000 stored images in 3.8 µs. This experiment demonstrates that the physics works at macro scale; the MEMS chip scales the speed and density.</p>
+</blockquote>
+<hr />
+<h3 id="d16-experiment-14-acoustic-content-addressable-memory-cam-lookup-table">D.16 Experiment 14 — Acoustic Content-Addressable Memory (CAM Lookup Table)</h3>
+<p><strong>Objective:</strong> Demonstrate a content-addressable lookup table where acoustic queries retrieve stored key→value pairs by spectral correlation. This is the purest demonstration of CWM replacing TCAM/CAM hardware used in network routers, intrusion detection systems, and database accelerators.</p>
+<p><strong>Time:</strong> 60 minutes.</p>
+<p><strong>Materials:</strong> 4–10 assembled resonators, PicoScope 2204A, laptop with Python 3.10+.</p>
+<p><strong>Background.</strong> A content-addressable memory (CAM) is a lookup table that you search by <em>content</em> rather than by address. You present a key, and the CAM returns the matching value—in parallel, across all entries, in one cycle. Traditional CAMs use specialised SRAM circuits (TCAMs) that consume significant power. CWM performs the same operation acoustically: each rod/channel stores one key→value entry, and the query waveform acts as the key.</p>
+<p><strong>How it works.</strong> Each rod&rsquo;s perturbation pattern defines a spectral fingerprint—this is the &ldquo;key.&rdquo; The &ldquo;value&rdquo; is an arbitrary data payload associated with that fingerprint in a lookup table stored on the laptop. When a query waveform is driven into the array, the rod whose fingerprint best matches the query responds most strongly. The laptop identifies the winning rod/channel and returns the associated value.</p>
+<p><strong>Procedure:</strong></p>
+<ol>
+<li><strong>Define the lookup table.</strong> Create entries mapping keys to values. The keys are spectral fingerprints (determined by each rod&rsquo;s putty pattern); the values can be anything—DNS hostnames, routing prefixes, threat signatures, codebook entries.</li>
+</ol>
+<p>Example table (4 rods × 4 polysemic channels = 16 entries):</p>
+<table>
+<thead>
+<tr>
+<th>Rod</th>
+<th>Channel</th>
+<th>Key (fingerprint)</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>0</td>
+<td>auto-enrolled</td>
+<td>192.168.1.1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>1</td>
+<td>auto-enrolled</td>
+<td>10.0.0.1</td>
+</tr>
+<tr>
+<td>1</td>
+<td>2</td>
+<td>auto-enrolled</td>
+<td>dns.google (8.8.8.8)</td>
+</tr>
+<tr>
+<td>1</td>
+<td>3</td>
+<td>auto-enrolled</td>
+<td>gateway.local</td>
+</tr>
+<tr>
+<td>2</td>
+<td>0</td>
+<td>auto-enrolled</td>
+<td>THREAT:MIRAI</td>
+</tr>
+<tr>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+<td>&hellip;</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><strong>Enroll the table:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>enroll<span class="w"> </span>--rods<span class="w"> </span><span class="m">4</span><span class="w"> </span>--table<span class="w"> </span>data/cam/routing_table.csv
+</code></pre></div>
+<p>The tool chirps each rod, captures the full fingerprint across all polysemic channels, and associates each channel with a table row. The key is the measured fingerprint; the value is the user-provided data field.</p>
+<ol>
+<li><strong>Query by key:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>lookup<span class="w"> </span>--rod<span class="w"> </span><span class="m">2</span><span class="w"> </span>--channel<span class="w"> </span><span class="m">0</span>
+</code></pre></div>
+<p>Or, for a content-addressed search (present a query waveform and let the array find the match):</p>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A
+</code></pre></div>
+<p>The tool drives the query, captures all rod responses, identifies the winner by highest correlation, and returns the associated value:</p>
+<div class="highlight"><pre><span></span><code>Query matched: Rod 1, Channel 0 (correlation: 0.962)
+Value: 192.168.1.1
+Lookup time: 42 ms (laptop) → 3.8 µs at MEMS scale
+</code></pre></div>
+<ol>
+<li><strong>Test error tolerance.</strong> Corrupt the query by adding ±5% frequency noise:</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A<span class="w"> </span>--noise<span class="w"> </span><span class="m">0</span>.05
+</code></pre></div>
+<p>The correct entry should still win (demonstrating nearest-neighbor error correction).</p>
+<ol>
+<li><strong>Test partial-key lookup.</strong> Query with only a subset of mode frequencies (e.g., modes 1–3 out of 1–5):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A<span class="w"> </span>--modes<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p>With fewer modes the margin shrinks, but the correct entry should still be the top match.</p>
+<ol>
+<li><strong>Record results</strong> in Worksheet D.13.</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>Verification</th>
+<th>Result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Table size (entries):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Number of rods used:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Effective capacity (rods × 4 channels):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Correct lookups (out of N attempts):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Mean correlation at correct match:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Mean correlation at best wrong match:</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Discrimination margin (dB):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Noisy query correct? (Y/N at ±5%):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Partial-key correct? (Y/N at 3 modes):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Lookup time (ms, laptop):</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Expected results.</strong> With 4 rods × 4 channels = 16 CAM entries, all lookups should return the correct value. Noisy queries (±5%) should succeed with reduced margin. Partial-key queries (3 of 5 modes) should usually succeed but may fail for closely-spaced fingerprints. The key metric is the discrimination margin: ≥10 dB means reliable lookup; &lt;5 dB indicates the table is near capacity.</p>
+<blockquote>
+<p><strong>From laptop to line card.</strong> Your laptop performs the same FFT → correlate → lookup pipeline that a CMOS readout ASIC would execute. At MEMS scale, a 1 cm³ CWM CAM module would hold 142,000 × 4 = 568,000 entries and complete a full-table search in 3.8 µs at &lt; 5 W. Current TCAMs peak at ~64K entries per chip at 15+ W.</p>
 </blockquote>
 <hr />
 <div class="worksheet-header">
-<h4>D.11 — Consolidated Experiment Log</h4>
+<h4>D.17 — Consolidated Experiment Log</h4>
 <p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
-<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.7.</p>
+<p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.13.</p>
 </div>
 
 <table>
@@ -1861,7 +2670,7 @@ table, pre, blockquote {
 <td></td>
 </tr>
 <tr>
-<td><strong>Foam cradle material</strong></td>
+<td><strong>Rod mount type</strong></td>
 <td></td>
 </tr>
 <tr>
@@ -1870,7 +2679,7 @@ table, pre, blockquote {
 </tr>
 <tr>
 <td><strong>Experiments completed (circle)</strong></td>
-<td>1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8</td>
+<td>1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 &ensp; 12 &ensp; 13 &ensp; 14</td>
 </tr>
 <tr>
 <td><strong>Best Q measured</strong></td>
@@ -1897,13 +2706,37 @@ table, pre, blockquote {
 <td></td>
 </tr>
 <tr>
+<td><strong>Array recall: all diagonals correct? (Y/N)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>NN crossover α (expected 0.50):</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Boolean ops all correct? (Y/N)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Vault: all credentials verified? (Y/N)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>Image search rank-1 accuracy (%)</strong></td>
+<td></td>
+</tr>
+<tr>
+<td><strong>CAM lookup accuracy (%)</strong></td>
+<td></td>
+</tr>
+<tr>
 <td><strong>Anomalies or unexpected observations</strong></td>
 <td></td>
 </tr>
 </tbody>
 </table>
 <hr />
-<h3 id="d12-troubleshooting-guide">D.12 Troubleshooting Guide</h3>
+<h3 id="d18-troubleshooting-guide">D.18 Troubleshooting Guide</h3>
 <table>
 <thead>
 <tr>
@@ -1926,7 +2759,7 @@ table, pre, blockquote {
 <tr>
 <td>Q \&lt; 500</td>
 <td>PZT too large, or rod touching a hard surface</td>
-<td>Ensure foam cradle has soft V-notches with no metal or plastic contact; try 5 mm PZT disc</td>
+<td>Ensure cardboard pinholes are sized to the rod with no clamping; try 5 mm PZT disc</td>
 </tr>
 <tr>
 <td>Many peaks between expected modes</td>
@@ -1944,9 +2777,9 @@ table, pre, blockquote {
 <td>Use styrofoam enclosure; equilibrate 30 min; record temperature at each data point</td>
 </tr>
 <tr>
-<td>Wax won&rsquo;t stick to rod</td>
-<td>Surface too smooth, or wax too cold</td>
-<td>Warm wax between fingers for 30 s; lightly scuff rod surface with 400-grit sandpaper at the attachment point</td>
+<td>Putty won&rsquo;t stick to rod</td>
+<td>Surface too smooth or too dry</td>
+<td>Knead putty between fingers for 10 s; clean rod with isopropyl alcohol to remove oils</td>
 </tr>
 <tr>
 <td>FFT shows 60/120/180 Hz peaks</td>
@@ -1965,8 +2798,8 @@ table, pre, blockquote {
 </tr>
 <tr>
 <td>Rayleigh prediction error &gt; 10%</td>
-<td>Wax mass too large relative to rod, or position measurement inaccurate</td>
-<td>Use smaller wax (\&lt;0.1 mg); measure position to ±0.5 mm; weigh rod precisely</td>
+<td>Putty mass too large relative to rod, or position measurement inaccurate</td>
+<td>Use smaller putty (\&lt;0.1 mg); measure position to ±0.5 mm; weigh rod precisely</td>
 </tr>
 <tr>
 <td>CW lock-in gain much less than expected</td>
@@ -1991,21 +2824,343 @@ table, pre, blockquote {
 </tbody>
 </table>
 <hr />
-<h3 id="d13-contributing-your-data">D.13 Contributing Your Data</h3>
+<h3 id="d19-contributing-your-data">D.19 Contributing Your Data</h3>
 <p>We invite all experimenters—students, teachers, hobbyists, and researchers—to submit completed worksheets and raw PicoScope data files to the project repository. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.</p>
 <p><strong>To contribute:</strong></p>
 <ol>
-<li>Photograph or scan your completed Worksheets D.1–D.7 and the Experiment Log (D.11).</li>
+<li>Photograph or scan your completed Worksheets D.1–D.13 and the Experiment Log (D.17).</li>
 <li>Export raw PicoScope waveform files (.psdata or .csv) for each experiment.</li>
 <li>Submit via pull request to the project repository at <a href="https://github.com/miketierce/wcfoma">github.com/miketierce/wcfoma</a> in the <code>data/community/</code> directory. Include your Experiment Log as the commit message or PR description.</li>
 <li>Alternatively, email data files and scanned worksheets to the corresponding author.</li>
 </ol>
 <p>Every data point matters. A middle school classroom measuring Q = 3,000 on a 200 mm rod constrains the same physics as a university lab measuring Q = 9,000 on a 150 mm rod—and the diversity of rod geometries and construction techniques is itself scientifically valuable. Unexpected results (low Q, spurious modes, anomalous thermal coefficients) are <em>especially</em> welcome: they reveal failure modes that improve the guide for the next experimenter.</p>
 <hr />
-<p><em>All quantitative claims computed from first-principles simulation code (34 modules, 1,036 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
+<h3 id="d20-software-tools">D.20 Software Tools</h3>
+<p>The repository includes software tools that automate waveform generation and data processing for the experiments described in this guide. All tools run from the repository root and require only Python 3.10+ with the dependencies listed in <code>requirements.txt</code>.</p>
+<h4 id="awg-waveform-generator-toolsawg_waveformpy">AWG Waveform Generator (<code>tools/awg_waveform.py</code>)</h4>
+<p>Generates multi-tone query waveforms for the PicoScope 2204A&rsquo;s arbitrary waveform generator. The tool computes Rayleigh-shifted mode frequencies from first-principles physics (no manual frequency entry required) and exports ready-to-import files.</p>
+<p><strong>Prerequisites:</strong></p>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/miketierce/wcfoma.git
+<span class="nb">cd</span><span class="w"> </span>wcfoma
+pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>requirements.txt
+</code></pre></div>
+<p><strong>Basic usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Generate Query A (Pattern A: quarter-points L/4 + 3L/4)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--pattern<span class="w"> </span>A
+
+<span class="c1"># Generate all four query waveforms (A, B, C, D)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all
+
+<span class="c1"># Custom putty mass and rod geometry</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--pattern<span class="w"> </span>A<span class="w"> </span>--mass<span class="w"> </span><span class="m">1</span>.2<span class="w"> </span>--rod-length<span class="w"> </span><span class="m">120</span>
+
+<span class="c1"># Specify output directory</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all<span class="w"> </span>--output<span class="w"> </span>data/results/awg
+
+<span class="c1"># Show all options</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--help
+</code></pre></div>
+<p><strong>Output files</strong> (per pattern):</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Format</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>query_A.csv</code></td>
+<td>Single-column CSV, normalised ±1</td>
+<td>Import into PicoScope 7 → Signal Generator → Arbitrary → Import</td>
+</tr>
+<tr>
+<td><code>query_A.wav</code></td>
+<td>16-bit PCM WAV, 1 MS/s</td>
+<td>Alternative import or use with picosdk Python wrappers</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Loading into PicoScope 7:</strong></p>
+<ol>
+<li>Open PicoScope 7 → <strong>Tools → Signal Generator</strong>.</li>
+<li>Set <strong>Wave Type</strong> → <strong>Arbitrary</strong>.</li>
+<li>Click <strong>Import</strong> → select the generated CSV file (e.g. <code>query_A.csv</code>).</li>
+<li>Set <strong>Amplitude</strong> to the value printed by the script (typically ~0.40 Vpp for 5 tones × 0.1 V).</li>
+<li>Set <strong>Sample Rate</strong> to <strong>1 MS/s</strong>.</li>
+<li>Click <strong>Start</strong>. The AWG now outputs the multi-tone query continuously.</li>
+</ol>
+<p><strong>Command-line options:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--pattern</code>, <code>-p</code></td>
+<td><code>A</code></td>
+<td>Named pattern: A (L/4+3L/4), B (L/3+2L/3), C (L/2), D (L/5+4L/5)</td>
+</tr>
+<tr>
+<td><code>--all</code></td>
+<td>—</td>
+<td>Generate waveforms for all four patterns</td>
+</tr>
+<tr>
+<td><code>--modes</code>, <code>-m</code></td>
+<td><code>5</code></td>
+<td>Number of modes in the query</td>
+</tr>
+<tr>
+<td><code>--amplitude</code>, <code>-a</code></td>
+<td><code>0.1</code></td>
+<td>Per-tone amplitude in volts</td>
+</tr>
+<tr>
+<td><code>--mass</code></td>
+<td><code>0.8</code></td>
+<td>Putty pellet mass in mg (per pellet)</td>
+</tr>
+<tr>
+<td><code>--rod-length</code></td>
+<td><code>150</code></td>
+<td>Rod length in mm</td>
+</tr>
+<tr>
+<td><code>--rod-diameter</code></td>
+<td><code>6</code></td>
+<td>Rod diameter in mm</td>
+</tr>
+<tr>
+<td><code>--output</code>, <code>-o</code></td>
+<td><code>.</code></td>
+<td>Output directory</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How it works:</strong> The tool uses the Rayleigh perturbation formula ($\Delta f_n / f_n = -(\Delta m / 2M) \sin^2(n\pi x / L)$) to compute how each pattern&rsquo;s putty pellets shift the first $N$ mode frequencies. It then synthesises a composite waveform by summing equal-amplitude sinusoids at those shifted frequencies into an 8192-sample buffer at 1 MS/s — designed to loop seamlessly on the PicoScope 2204A&rsquo;s AWG.</p>
+<p><strong>Experiments that use this tool:</strong></p>
+<ul>
+<li><strong>Experiment 6</strong> (Associative Recall) — Step 2: build Query A.</li>
+<li><strong>Experiment 9</strong> (Packed-Array Recall) — Step 4: build Queries A–D.</li>
+<li><strong>Experiment 10</strong> (Nearest-Neighbor Search) — Step 2: build endpoint queries.</li>
+</ul>
+<h4 id="acoustic-password-vault-toolscwm_vaultpy">Acoustic Password Vault (<code>tools/cwm_vault.py</code>)</h4>
+<p>Enrolls glass rods as physically unclonable credentials and authenticates passwords via spectral correlation. Each rod stores 4 independent credentials via polysemic readout (contiguous spectral bands of 5 modes each).</p>
+<p><strong>Basic usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enroll a rod with named credential labels</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>enroll<span class="w"> </span>--rod<span class="w"> </span><span class="m">1</span><span class="w"> </span>--labels<span class="w"> </span>email<span class="w"> </span>bank<span class="w"> </span>laptop<span class="w"> </span>vpn
+
+<span class="c1"># Enroll all 4 rods</span>
+<span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="m">4</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<span class="w">  </span><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>enroll<span class="w"> </span>--rod<span class="w"> </span><span class="nv">$i</span>
+<span class="k">done</span>
+
+<span class="c1"># Verify a credential</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>verify<span class="w"> </span>--label<span class="w"> </span>email
+
+<span class="c1"># Verify with noise injection (attack test)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>verify<span class="w"> </span>--label<span class="w"> </span>email<span class="w"> </span>--noise<span class="w"> </span><span class="m">0</span>.05
+
+<span class="c1"># Show all enrolled credentials</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_vault.py<span class="w"> </span>status
+</code></pre></div>
+<p><strong>Command-line options (enroll):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--rod</code></td>
+<td>—</td>
+<td>Rod number (1–10), required</td>
+</tr>
+<tr>
+<td><code>--pattern</code></td>
+<td>auto</td>
+<td>Perturbation pattern (A/B/C/D); auto-cycles if omitted</td>
+</tr>
+<tr>
+<td><code>--labels</code></td>
+<td>auto</td>
+<td>Four space-separated credential labels</td>
+</tr>
+<tr>
+<td><code>--mass</code></td>
+<td><code>0.8</code></td>
+<td>Putty mass in mg per pellet</td>
+</tr>
+<tr>
+<td><code>--rod-length</code></td>
+<td><code>150</code></td>
+<td>Rod length in mm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Command-line options (verify):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--label</code></td>
+<td>—</td>
+<td>Credential label to verify, required</td>
+</tr>
+<tr>
+<td><code>--noise</code></td>
+<td><code>0</code></td>
+<td>Noise σ to inject (simulates drift or attack)</td>
+</tr>
+<tr>
+<td><code>--wrong-rod</code></td>
+<td>off</td>
+<td>Print wrong-rod correlation matrix</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Output files:</strong> <code>data/results/vault_db.json</code> — enrolled templates and label→rod/channel mappings.</p>
+<p><strong>Experiments that use this tool:</strong></p>
+<ul>
+<li><strong>Experiment 12</strong> (Acoustic Password Vault) — Steps 2–5.</li>
+</ul>
+<h4 id="acoustic-image-search-toolscwm_image_searchpy">Acoustic Image Search (<code>tools/cwm_image_search.py</code>)</h4>
+<p>Maps images to spectral fingerprints via perceptual hashing, then retrieves the closest visual match by correlating 64-bit hash vectors. Each rod/channel stores one image; the packed array searches all images in parallel.</p>
+<p><strong>Basic usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enroll an image library (simulation mode if no images present)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span>enroll<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--library<span class="w"> </span>data/image_search/library/<span class="w"> </span>--rods<span class="w"> </span><span class="m">4</span><span class="w"> </span>--channels<span class="w"> </span><span class="m">4</span>
+
+<span class="c1"># Query with a new image</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span>query<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--image<span class="w"> </span>data/image_search/query/test_photo.jpg
+
+<span class="c1"># Run self-retrieval accuracy test</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_image_search.py<span class="w"> </span><span class="nb">test</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--library<span class="w"> </span>data/image_search/library/
+</code></pre></div>
+<p><strong>Command-line options (enroll):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--library</code></td>
+<td>—</td>
+<td>Path to directory of JPEG/PNG images, required</td>
+</tr>
+<tr>
+<td><code>--rods</code></td>
+<td><code>4</code></td>
+<td>Number of rods in the array</td>
+</tr>
+<tr>
+<td><code>--channels</code></td>
+<td><code>4</code></td>
+<td>Polysemic channels per rod</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Output files:</strong> <code>data/results/image_db.json</code> — image→rod/channel assignments and hash vectors.</p>
+<p><strong>Experiments that use this tool:</strong></p>
+<ul>
+<li><strong>Experiment 13</strong> (Acoustic Image Search) — Steps 2–4.</li>
+</ul>
+<h4 id="acoustic-cam-lookup-table-toolscwm_campy">Acoustic CAM Lookup Table (<code>tools/cwm_cam.py</code>)</h4>
+<p>Demonstrates a content-addressable memory where spectral queries retrieve stored key→value pairs. Supports direct lookup, content-addressed search, noisy queries, and partial-key queries.</p>
+<p><strong>Basic usage:</strong></p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Enroll with demo values (4 rods × 4 channels = 16 entries)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>enroll<span class="w"> </span>--rods<span class="w"> </span><span class="m">4</span>
+
+<span class="c1"># Enroll from a CSV file (last column = value)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>enroll<span class="w"> </span>--rods<span class="w"> </span><span class="m">4</span><span class="w"> </span>--table<span class="w"> </span>data/cam/routing_table.csv
+
+<span class="c1"># Direct lookup by rod/channel</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>lookup<span class="w"> </span>--rod<span class="w"> </span><span class="m">1</span><span class="w"> </span>--channel<span class="w"> </span><span class="m">0</span>
+
+<span class="c1"># Content-addressed search by pattern</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A
+
+<span class="c1"># Search with noise (error tolerance test)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A<span class="w"> </span>--noise<span class="w"> </span><span class="m">0</span>.05
+
+<span class="c1"># Partial-key search (3 of 5 modes)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_cam.py<span class="w"> </span>search<span class="w"> </span>--query-pattern<span class="w"> </span>A<span class="w"> </span>--modes<span class="w"> </span><span class="m">3</span>
+</code></pre></div>
+<p><strong>Command-line options (search):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Option</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>--query-pattern</code></td>
+<td>—</td>
+<td>Named pattern (A/B/C/D), required</td>
+</tr>
+<tr>
+<td><code>--noise</code></td>
+<td><code>0</code></td>
+<td>Noise σ to inject into query</td>
+</tr>
+<tr>
+<td><code>--modes</code></td>
+<td><code>5</code></td>
+<td>Number of modes (partial-key if &lt; 5)</td>
+</tr>
+<tr>
+<td><code>--verbose</code></td>
+<td>off</td>
+<td>Print all entries ranked by correlation</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Output files:</strong> <code>data/results/cam_db.json</code> — enrolled fingerprints and key→value associations.</p>
+<p><strong>Experiments that use this tool:</strong></p>
+<ul>
+<li><strong>Experiment 14</strong> (Acoustic CAM) — Steps 2–5.</li>
+</ul>
+<h4 id="pdf-builder-toolsmd2pdfpy">PDF Builder (<code>tools/md2pdf.py</code>)</h4>
+<p>Converts the experiment guide (or the main paper) from Markdown to a book-quality PDF via HTML + Chromium. Handles duplex pagination, landscape illustration plates, portrait 1:1-scale templates, and automatic recto-start enforcement.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Build the experiment guide PDF</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md
+
+<span class="c1"># Build the paper</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>paper/cwm_core.md
+
+<span class="c1"># HTML-only (for debugging layout issues)</span>
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/md2pdf.py<span class="w"> </span>companion/experiment_guide.md<span class="w"> </span>--html-only
+</code></pre></div>
+<p>Requires: <code>playwright</code> (with Chromium installed via <code>playwright install chromium</code>), <code>markdown</code>, <code>pypdf</code>.</p>
+<hr />
+<p><em>All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/wcfoma.</em></p>
 <hr /><div class="colophon-2col">
   <p><em>Coherent Wave Memory</em> &mdash; Version  &mdash; &copy; Mike Tierce<br>
-  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (44 modules, 1910 tests).</p>
+  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (48 modules, 2253 tests).</p>
 </div>
 </div>
 
