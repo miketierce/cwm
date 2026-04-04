@@ -72,7 +72,7 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
-> **Computer requirement.** Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository's dependencies (`pip install -r requirements.txt`). The computer runs the analysis scripts and, for Experiments 12–14, the application tools (`cwm_vault.py`, `cwm_image_search.py`, `cwm_cam.py`). All tools include a simulation mode for testing without hardware.
+> **Computer requirement.** Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository's dependencies (`pip install -r requirements.txt`). The computer runs the analysis scripts and, for Experiments 12–14, the **CWM Lab** unified web interface (`tools/cwm_lab.py`). CWM Lab combines the password vault, image search, and content-addressable memory demos into a single browser-based UI with built-in face recognition, a hardware proof panel, and automatic PicoScope detection. It runs entirely locally—no internet required. The standalone CLI tools (`cwm_vault.py`, `cwm_image_search.py`, `cwm_cam.py`) remain available as alternatives. All tools include a simulation mode for testing without hardware.
 
 > **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 25 mm spacing). If sourcing your own box, use these minimum interior dimensions:
 >
@@ -843,8 +843,8 @@ Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The firs
 | Metric                                           | Value                            |
 | ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
 | **Crossover α (where best match switches A→B):** | <span class="ex">**0.50**</span> |
-| **Expected crossover:**                          | 0.50                             |
-| \*\*Crossover error                              | actual − expected                | :\*\* | <span class="ex">0.00</span> |
+| **Expected crossover:**                          | 0.50 |
+| **Crossover error (actual − expected):**          | <span class="ex">0.00</span> |
 
 **Expected results.** The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods' acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.
 
@@ -952,9 +952,23 @@ Each band samples a different frequency range of the rod's response. Because the
 
 **Procedure:**
 
+> **Recommended: CWM Lab web UI.** Experiments 12–14 are easiest to run through the CWM Lab unified interface, which provides a browser-based UI for all three demos (vault, image search, CAM). Start the server:
+>
+> ```bash
+> PYTHONPATH=. python tools/cwm_lab.py --port 8200
+> ```
+>
+> Then open **http://localhost:8200** in any browser. CWM Lab auto-detects whether a PicoScope is connected and switches between hardware measurement and Rayleigh simulation accordingly. The startup banner shows `Mode: HARDWARE (PicoScope 2204A)` or `Mode: SIMULATION (Rayleigh)`. No internet is required—everything runs locally.
+>
+> The CLI commands below are the equivalent terminal-only workflow for users who prefer command-line tools.
+
 1. **Prepare the packed array.** Assemble 4 rods, each with a unique putty pattern. Label them Rod 1 through Rod 4. Mount them in the insulated box using the packed-array template (T.2). Attach PZT discs to all rods; connect each PZT to the PicoScope via BNC (use one channel per rod, swapping cables between enrollment and verification steps if your PicoScope has only 2 channels).
 
-2. **Enroll credentials.** Run the enrollment tool:
+2. **Enroll credentials.**
+
+   **Via CWM Lab (recommended):** Open the browser UI at `http://localhost:8200`. Enter a username and passphrase, select a rod number and perturbation pattern, then click **Register**. CWM Lab drives the rod (or simulates it), computes the FFT across modes 1–20, splits the spectrum into 4 polysemic channels, and saves the channel fingerprint as the credential template. Repeat for additional users/rods. The UI shows each user's assigned rod, channel, and mode numbers.
+
+   **Via CLI (alternative):**
 
    ```bash
    PYTHONPATH=. python tools/cwm_vault.py enroll --rod 1
@@ -962,9 +976,13 @@ Each band samples a different frequency range of the rod's response. Because the
 
    The tool drives a broadband chirp via the PicoScope AWG, captures the rod's response, computes the FFT across modes 1–20, and splits the spectrum into 4 polysemic channels. Each channel's amplitude vector is saved as a credential template. Repeat for all rods. This creates up to **16 passwords** (4 rods × 4 channels).
 
-3. **Assign passwords to credentials.** Each template gets a label (e.g., "email", "bank", "laptop", "VPN"). The mapping is stored locally in `data/results/vault_db.json`.
+3. **Assign passwords to credentials.** In CWM Lab, credentials are assigned at registration (each username maps to a rod/channel). In the CLI workflow, each template gets a label (e.g., "email", "bank", "laptop", "VPN"). The mapping is stored locally in `data/results/vault_db.json` (CLI) or `data/results/lab/users.json` (CWM Lab).
 
-4. **Authenticate.** To verify a password:
+4. **Authenticate.**
+
+   **Via CWM Lab:** Enter the username and passphrase, then click **Authenticate**. The UI shows the Pearson correlation against the enrolled template, the pass/fail decision, the rod and channel used, and the discrimination margin. Optionally click **Hardware Proof Panel** to inspect the full spectral state (per-rod frequency tables, cross-correlation heatmaps, and the pipeline steps).
+
+   **Via CLI (alternative):**
 
    ```bash
    PYTHONPATH=. python tools/cwm_vault.py verify --label email
@@ -972,7 +990,7 @@ Each band samples a different frequency range of the rod's response. Because the
 
    The tool looks up which rod and channel the label maps to, drives the appropriate query waveform, captures the response, computes the FFT for that channel's mode subset, and correlates against the enrolled template. If the correlation exceeds the threshold (default 0.85), authentication succeeds.
 
-5. **Test attack scenarios:**
+5. **Test attack scenarios** (CWM Lab or CLI):
    - **Wrong rod:** Swap in a different rod. Correlation should drop below threshold.
    - **Wrong channel:** Query the correct rod but decode a different polysemic channel. Correlation should be near zero (polysemic isolation).
    - **Rod removed:** Physically remove a rod from the array. That credential ceases to exist—there is nothing to hack.
@@ -1014,9 +1032,13 @@ Each band samples a different frequency range of the rod's response. Because the
 
 **Procedure:**
 
-1. **Prepare the image library.** Place 16+ reference images in `data/image_search/library/` (JPEG or PNG). The tool accepts any images—corrosion patterns, faces, product photos, symbols—whatever your demonstration scenario requires.
+1. **Prepare the image library.** Collect 16+ reference images (JPEG or PNG). The tool accepts any images—corrosion patterns, faces, product photos, symbols—whatever your demonstration scenario requires. For the CLI workflow, place them in `data/image_search/library/`.
 
 2. **Enroll the library:**
+
+   **Via CWM Lab (recommended):** Open `http://localhost:8200`, register a user (if not already), then drag-and-drop images onto the upload area—or click to browse. Each image is perceptual-hashed (average hash, 64 bits), mapped to the best-matching rod/channel slot, and enrolled automatically. The UI shows the rod/channel assignment and remaining capacity.
+
+   **Via CLI (alternative):**
 
    ```bash
    PYTHONPATH=. python tools/cwm_image_search.py enroll \
@@ -1031,6 +1053,10 @@ Each band samples a different frequency range of the rod's response. Because the
    - Stores the assignment in `data/results/image_db.json`
 
 3. **Query with a new image:**
+
+   **Via CWM Lab (recommended):** Click the **Webcam Search** button to open a live camera feed and match faces or objects in real time. Or drag a query image onto the upload area—the UI displays the best match, correlation score, rod/channel assignment, and a thumbnail of the matched library image.
+
+   **Via CLI (alternative):**
 
    ```bash
    PYTHONPATH=. python tools/cwm_image_search.py query \
@@ -1107,6 +1133,10 @@ Each band samples a different frequency range of the rod's response. Because the
    | ... | ...     | ...               | ...                  |
 
 2. **Enroll the table:**
+
+   **Via CWM Lab (recommended):** The CWM Lab server automatically initialises all rod fingerprints at startup (4 rods × 4 channels = 16 slots). Each registered user occupies one slot, effectively creating a CAM entry where the _key_ is the spectral fingerprint and the _value_ is the user record. To enroll explicit key→value entries, use the CLI tool below.
+
+   **Via CLI (alternative):**
 
    ```bash
    PYTHONPATH=. python tools/cwm_cam.py enroll --rods 4 --table data/cam/routing_table.csv
@@ -1267,6 +1297,111 @@ Every data point matters. A middle school classroom measuring Q = 3,000 on a 200
 ### D.20 Software Tools
 
 The repository includes software tools that automate waveform generation and data processing for the experiments described in this guide. All tools run from the repository root and require only Python 3.10+ with the dependencies listed in `requirements.txt`.
+
+#### CWM Lab — Unified Experiment UI (`tools/cwm_lab.py` + `tools/cwm_lab.html`)
+
+**CWM Lab is the recommended interface for Experiments 12–14.** It provides a single browser-based UI that combines the password vault, image search, and content-addressable memory demos with built-in face recognition, a hardware proof panel, and automatic PicoScope detection. Everything runs locally—no internet required.
+
+**Quick start:**
+
+```bash
+git clone https://github.com/miketierce/cwm.git
+cd cwm
+pip install -r requirements.txt
+PYTHONPATH=. python tools/cwm_lab.py --port 8200
+```
+
+Then open **http://localhost:8200** in any browser.
+
+**Startup banner:**
+
+```
+CWM Lab running at http://localhost:8200
+  Mode:  SIMULATION (Rayleigh)       ← or HARDWARE (PicoScope 2204A)
+  Array: 4 rods × 4 channels = 16 slots
+  Data:  data/results/lab
+```
+
+CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If found, it uses real FFT-based spectral measurement; otherwise it falls back to deterministic Rayleigh perturbation simulation. The mode is displayed in the startup banner and in the browser's Hardware Proof Panel.
+
+**Features:**
+
+| Feature | Description |
+| --- | --- |
+| **Password vault** (Exp. 12) | Register users with a rod/pattern assignment; authenticate by spectral correlation. Each rod supports 4 polysemic channels = 4 independent credentials. |
+| **Image search** (Exp. 13) | Drag-and-drop images to enroll a library. Each image is perceptual-hashed (64-bit average hash) and assigned to the best-matching rod/channel. Query by uploading an image or using the live webcam. |
+| **Face recognition** | Enroll a face selfie during registration; authenticate by webcam face scan. Demonstrates CWM-backed biometric matching. |
+| **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state. |
+| **Hardware Proof Panel** | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics. |
+| **PicoScope auto-detect** | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations. |
+
+**Command-line options:**
+
+| Option | Default | Description |
+| --- | --- | --- |
+| `--port` | `8200` | HTTP server port |
+| `--rods` | `4` | Number of rods in the array |
+
+**API endpoints** (for programmatic use or testing):
+
+| Method | Path | Description |
+| --- | --- | --- |
+| `GET` | `/` | Serves the web UI (`cwm_lab.html`) |
+| `POST` | `/api/register` | Register a new user (username, passphrase, rod_id, pattern) |
+| `POST` | `/api/authenticate` | Authenticate (username, passphrase → correlation score) |
+| `POST` | `/api/enroll-image` | Enroll an image (username, name, image as base64) |
+| `POST` | `/api/query-image` | Query for nearest image match (username, image as base64) |
+| `POST` | `/api/enroll-face` | Enroll a face selfie (username, image as base64) |
+| `POST` | `/api/face-auth` | Authenticate via face scan (image as base64) |
+| `GET` | `/api/proof` | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
+| `GET` | `/api/users` | List registered users |
+| `GET` | `/api/faces` | List users with enrolled faces |
+| `GET` | `/api/library/{user}` | List a user's enrolled images |
+
+**Data files:** `data/results/lab/users.json` (user database), `data/results/lab/images_{user}.json` (per-user image libraries).
+
+**Experiments that use this tool:**
+
+- **Experiment 12** (Acoustic Password Vault) — Registration, authentication, and attack testing.
+- **Experiment 13** (Acoustic Image Search) — Image enrollment, query, webcam search, face recognition.
+- **Experiment 14** (Acoustic CAM) — Rod fingerprint inspection via the Proof Panel.
+
+#### PicoScope Hardware Driver (`tools/cwm_picoscope.py`)
+
+Drop-in hardware measurement module that replaces Rayleigh simulation with real PicoScope 2204A spectral measurements. Used automatically by CWM Lab when a PicoScope is detected.
+
+**Prerequisites:** Install the Pico Technology SDK from [picotech.com](https://www.picotech.com/downloads) and the Python wrapper:
+
+```bash
+pip install picosdk
+```
+
+**Standalone usage:**
+
+```bash
+# Check if a PicoScope is connected
+PYTHONPATH=. python tools/cwm_picoscope.py --check
+
+# Measure a rod's spectral fingerprint
+PYTHONPATH=. python tools/cwm_picoscope.py --measure --rod 1 --pattern A
+```
+
+**How it works:**
+
+1. Opens the PicoScope 2204A via USB (`picosdk.ps2000a`)
+2. Configures Channel A at ±500 mV DC coupling for PZT readout
+3. Loads the pre-generated AWG waveform for the selected pattern (`data/results/awg/query_{A,B,C,D}.csv`)
+4. Drives the AWG at 2 Vpp, waits 50 ms for settling
+5. Captures 8192 samples at 1 MS/s, averaged over 4 acquisitions for SNR
+6. Applies a Hanning window, computes the FFT (`numpy.fft.rfft`)
+7. Finds the 20 peak frequencies nearest to each expected mode (with parabolic interpolation for sub-bin accuracy)
+8. Subtracts the Rayleigh-predicted baseline → frequency shifts = fingerprint
+
+The returned dict (`{perturbed_hz, shift_hz, fingerprint}`) is format-identical to the simulation path, so all downstream logic (channel extraction, correlation, auth, image search, proof panel) works unchanged.
+
+**Experiments that use this tool:**
+
+- All experiments that use CWM Lab or the CLI tools, when a PicoScope is connected.
 
 #### AWG Waveform Generator (`tools/awg_waveform.py`)
 

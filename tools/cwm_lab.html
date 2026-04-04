@@ -1,0 +1,1964 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>CWM Lab — Auth &amp; Image Search</title>
+		<style>
+			:root {
+				--bg: #0f1729;
+				--bg2: #1a2744;
+				--bg3: #243357;
+				--accent: #3b82f6;
+				--accent2: #60a5fa;
+				--green: #22c55e;
+				--red: #ef4444;
+				--yellow: #eab308;
+				--text: #e2e8f0;
+				--muted: #94a3b8;
+				--border: #334155;
+				--radius: 12px;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font-family:
+					-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+				background: var(--bg);
+				color: var(--text);
+				min-height: 100vh;
+			}
+			.container {
+				max-width: 1100px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+
+			/* Header */
+			header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				padding: 16px 0;
+				border-bottom: 1px solid var(--border);
+				margin-bottom: 24px;
+			}
+			header h1 {
+				font-size: 20px;
+				font-weight: 700;
+			}
+			header h1 span {
+				color: var(--accent2);
+			}
+			.user-badge {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+				background: var(--bg2);
+				padding: 8px 16px;
+				border-radius: 8px;
+				font-size: 13px;
+				border: 1px solid var(--border);
+			}
+			.user-badge .dot {
+				width: 8px;
+				height: 8px;
+				border-radius: 50%;
+			}
+			.user-badge .dot.on {
+				background: var(--green);
+			}
+			.user-badge .dot.off {
+				background: var(--muted);
+			}
+			.btn-logout {
+				background: none;
+				border: 1px solid var(--border);
+				color: var(--muted);
+				padding: 6px 12px;
+				border-radius: 6px;
+				cursor: pointer;
+				font-size: 12px;
+			}
+			.btn-logout:hover {
+				border-color: var(--red);
+				color: var(--red);
+			}
+
+			/* Auth screen */
+			.auth-screen {
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				min-height: 80vh;
+				gap: 32px;
+			}
+			.auth-card {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 40px;
+				width: 100%;
+				max-width: 440px;
+				text-align: center;
+			}
+			.auth-card h2 {
+				font-size: 24px;
+				margin-bottom: 8px;
+			}
+			.auth-card p {
+				color: var(--muted);
+				font-size: 14px;
+				margin-bottom: 24px;
+				line-height: 1.5;
+			}
+			.auth-card input {
+				width: 100%;
+				padding: 12px 16px;
+				background: var(--bg);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				color: var(--text);
+				font-size: 15px;
+				margin-bottom: 12px;
+				outline: none;
+			}
+			.auth-card input:focus {
+				border-color: var(--accent);
+			}
+			.btn {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				gap: 8px;
+				padding: 12px 24px;
+				border-radius: 8px;
+				font-size: 14px;
+				font-weight: 600;
+				cursor: pointer;
+				border: none;
+				transition: all 0.15s;
+			}
+			.btn-primary {
+				background: var(--accent);
+				color: white;
+				width: 100%;
+			}
+			.btn-primary:hover {
+				background: var(--accent2);
+			}
+			.btn-secondary {
+				background: transparent;
+				color: var(--accent2);
+				border: 1px solid var(--border);
+			}
+			.btn-secondary:hover {
+				border-color: var(--accent);
+			}
+			.btn:disabled {
+				opacity: 0.5;
+				cursor: not-allowed;
+			}
+			.auth-result {
+				margin-top: 16px;
+				padding: 16px;
+				border-radius: 8px;
+				font-size: 13px;
+				text-align: left;
+				line-height: 1.6;
+			}
+			.auth-result.pass {
+				background: #052e16;
+				border: 1px solid #166534;
+			}
+			.auth-result.fail {
+				background: #450a0a;
+				border: 1px solid #991b1b;
+			}
+			.auth-btns {
+				display: flex;
+				gap: 12px;
+				margin-top: 12px;
+			}
+			.auth-btns .btn {
+				flex: 1;
+			}
+
+			/* Main app layout */
+			.app {
+				display: grid;
+				grid-template-columns: 300px 1fr;
+				gap: 20px;
+			}
+			@media (max-width: 768px) {
+				.app {
+					grid-template-columns: 1fr;
+				}
+			}
+
+			/* Sidebar */
+			.sidebar {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 20px;
+			}
+			.sidebar h3 {
+				font-size: 14px;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				margin-bottom: 12px;
+			}
+			.rod-grid {
+				display: grid;
+				grid-template-columns: repeat(4, 1fr);
+				gap: 6px;
+				margin-bottom: 20px;
+			}
+			.rod-slot {
+				aspect-ratio: 1;
+				border-radius: 6px;
+				border: 1px solid var(--border);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 10px;
+				color: var(--muted);
+				overflow: hidden;
+				position: relative;
+			}
+			.rod-slot.filled {
+				border-color: var(--accent);
+			}
+			.rod-slot img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				border-radius: 5px;
+			}
+			.rod-slot .slot-label {
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: rgba(0, 0, 0, 0.7);
+				font-size: 8px;
+				padding: 2px;
+				text-align: center;
+				color: var(--muted);
+			}
+			.slot-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+			}
+			.capacity {
+				font-size: 12px;
+				color: var(--muted);
+			}
+			.image-list {
+				display: flex;
+				flex-direction: column;
+				gap: 6px;
+			}
+			.image-item {
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				padding: 8px;
+				background: var(--bg3);
+				border-radius: 8px;
+				font-size: 12px;
+			}
+			.image-item img {
+				width: 36px;
+				height: 36px;
+				border-radius: 4px;
+				object-fit: cover;
+			}
+			.image-item .info {
+				flex: 1;
+				min-width: 0;
+			}
+			.image-item .info .name {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+			.image-item .info .meta {
+				color: var(--muted);
+				font-size: 10px;
+			}
+			.image-item .del-btn {
+				background: none;
+				border: none;
+				color: var(--muted);
+				cursor: pointer;
+				font-size: 14px;
+				padding: 4px;
+			}
+			.image-item .del-btn:hover {
+				color: var(--red);
+			}
+
+			/* Main panel */
+			.main-panel {
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+			}
+
+			/* Upload area */
+			.upload-zone {
+				background: var(--bg2);
+				border: 2px dashed var(--border);
+				border-radius: var(--radius);
+				padding: 40px 20px;
+				text-align: center;
+				cursor: pointer;
+				transition: all 0.2s;
+			}
+			.upload-zone:hover,
+			.upload-zone.drag {
+				border-color: var(--accent);
+				background: var(--bg3);
+			}
+			.upload-zone h3 {
+				margin-bottom: 8px;
+			}
+			.upload-zone p {
+				color: var(--muted);
+				font-size: 13px;
+			}
+			.upload-zone input {
+				display: none;
+			}
+
+			/* Camera */
+			.camera-panel {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 20px;
+				overflow: hidden;
+			}
+			.camera-panel h3 {
+				margin-bottom: 12px;
+			}
+			.camera-container {
+				display: flex;
+				gap: 16px;
+				flex-wrap: wrap;
+			}
+			.camera-feed {
+				position: relative;
+				flex: 1;
+				min-width: 280px;
+				border-radius: 8px;
+				overflow: hidden;
+				background: #000;
+			}
+			.camera-feed video {
+				width: 100%;
+				display: block;
+				border-radius: 8px;
+			}
+			.camera-feed canvas {
+				display: none;
+			}
+			.camera-controls {
+				display: flex;
+				gap: 8px;
+				margin-top: 12px;
+			}
+			.match-result {
+				flex: 1;
+				min-width: 200px;
+				background: var(--bg3);
+				border-radius: 8px;
+				padding: 16px;
+			}
+			.match-result h4 {
+				font-size: 13px;
+				color: var(--muted);
+				margin-bottom: 8px;
+			}
+			.match-card {
+				text-align: center;
+				padding: 12px;
+			}
+			.match-card img {
+				width: 120px;
+				height: 120px;
+				object-fit: cover;
+				border-radius: 8px;
+				border: 2px solid var(--green);
+				margin-bottom: 8px;
+			}
+			.match-card .match-name {
+				font-weight: 600;
+				font-size: 14px;
+			}
+			.match-card .match-meta {
+				color: var(--muted);
+				font-size: 12px;
+				margin-top: 4px;
+			}
+			.match-card .match-score {
+				display: inline-block;
+				margin-top: 8px;
+				padding: 4px 12px;
+				border-radius: 20px;
+				font-size: 12px;
+				font-weight: 600;
+			}
+			.match-card .match-score.high {
+				background: #052e16;
+				color: var(--green);
+			}
+			.match-card .match-score.med {
+				background: #422006;
+				color: var(--yellow);
+			}
+			.match-card .match-score.low {
+				background: #450a0a;
+				color: var(--red);
+			}
+
+			/* Auth detail */
+			.auth-detail {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 20px;
+			}
+			.auth-detail h3 {
+				margin-bottom: 12px;
+			}
+			.detail-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+				gap: 12px;
+			}
+			.detail-item {
+				background: var(--bg3);
+				border-radius: 8px;
+				padding: 12px;
+				text-align: center;
+			}
+			.detail-item .label {
+				font-size: 10px;
+				color: var(--muted);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				margin-bottom: 4px;
+			}
+			.detail-item .value {
+				font-size: 20px;
+				font-weight: 700;
+			}
+			.detail-item .value.green {
+				color: var(--green);
+			}
+			.detail-item .value.blue {
+				color: var(--accent2);
+			}
+
+			.no-images {
+				color: var(--muted);
+				font-size: 13px;
+				text-align: center;
+				padding: 20px;
+			}
+
+			/* Status bar */
+			.statusbar {
+				margin-top: 20px;
+				padding: 12px 16px;
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: 8px;
+				font-size: 11px;
+				color: var(--muted);
+				display: flex;
+				justify-content: space-between;
+			}
+
+			/* Face enrollment */
+			.face-enroll {
+				margin-top: 20px;
+				padding: 20px;
+				background: var(--bg3);
+				border-radius: 8px;
+				text-align: center;
+			}
+			.face-enroll h4 {
+				margin-bottom: 8px;
+				font-size: 14px;
+			}
+			.face-enroll p {
+				color: var(--muted);
+				font-size: 12px;
+				margin-bottom: 12px;
+				line-height: 1.5;
+			}
+			.face-enroll video {
+				width: 240px;
+				height: 180px;
+				border-radius: 8px;
+				object-fit: cover;
+				background: #000;
+				display: block;
+				margin: 0 auto 12px;
+			}
+			.face-enroll canvas {
+				display: none;
+			}
+			.face-enroll .preview {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				object-fit: cover;
+				border: 3px solid var(--green);
+				margin: 0 auto 12px;
+				display: block;
+			}
+			.face-btns {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+			}
+
+			/* Face login */
+			.divider {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				margin: 20px 0;
+				color: var(--muted);
+				font-size: 12px;
+			}
+			.divider::before,
+			.divider::after {
+				content: '';
+				flex: 1;
+				height: 1px;
+				background: var(--border);
+			}
+			.face-login-zone {
+				background: var(--bg3);
+				border-radius: 8px;
+				padding: 16px;
+				text-align: center;
+			}
+			.face-login-zone video {
+				width: 200px;
+				height: 150px;
+				border-radius: 8px;
+				object-fit: cover;
+				background: #000;
+				display: block;
+				margin: 0 auto 12px;
+			}
+			.face-login-zone canvas {
+				display: none;
+			}
+			.face-match-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 8px;
+				margin-top: 8px;
+				padding: 8px 16px;
+				border-radius: 20px;
+				font-size: 13px;
+				font-weight: 600;
+			}
+			.face-match-badge.pass {
+				background: #052e16;
+				color: var(--green);
+			}
+			.face-match-badge.fail {
+				background: #450a0a;
+				color: var(--red);
+			}
+			.face-match-badge img {
+				width: 28px;
+				height: 28px;
+				border-radius: 50%;
+				object-fit: cover;
+			}
+
+			/* Face indicator in header */
+			.face-badge {
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+				padding: 4px 10px;
+				border-radius: 12px;
+				font-size: 11px;
+			}
+			.face-badge.enrolled {
+				background: #052e16;
+				color: var(--green);
+			}
+			.face-badge.none {
+				background: var(--bg3);
+				color: var(--muted);
+			}
+
+			/* Proof panel */
+			.proof-toggle {
+				margin-top: 20px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				cursor: pointer;
+				color: var(--muted);
+				font-size: 12px;
+				padding: 8px 0;
+				user-select: none;
+			}
+			.proof-toggle:hover {
+				color: var(--accent2);
+			}
+			.proof-toggle .arrow {
+				transition: transform 0.2s;
+				font-size: 10px;
+			}
+			.proof-toggle .arrow.open {
+				transform: rotate(90deg);
+			}
+			.proof-panel {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 20px;
+				margin-top: 8px;
+				display: none;
+			}
+			.proof-panel.open {
+				display: block;
+			}
+			.proof-panel h3 {
+				margin-bottom: 16px;
+				font-size: 16px;
+			}
+			.proof-section {
+				margin-bottom: 24px;
+			}
+			.proof-section h4 {
+				font-size: 13px;
+				color: var(--accent2);
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				margin-bottom: 10px;
+				border-bottom: 1px solid var(--border);
+				padding-bottom: 6px;
+			}
+			.spectrum-row {
+				display: flex;
+				align-items: flex-end;
+				gap: 2px;
+				height: 80px;
+				margin-bottom: 4px;
+				padding: 4px 0;
+			}
+			.spectrum-bar {
+				flex: 1;
+				min-width: 0;
+				border-radius: 2px 2px 0 0;
+				position: relative;
+				transition: background 0.2s;
+			}
+			.spectrum-bar:hover {
+				opacity: 0.8;
+			}
+			.spectrum-labels {
+				display: flex;
+				gap: 2px;
+				font-size: 7px;
+				color: var(--muted);
+			}
+			.spectrum-labels span {
+				flex: 1;
+				text-align: center;
+				min-width: 0;
+			}
+			.rod-spectrum-card {
+				background: var(--bg3);
+				border-radius: 8px;
+				padding: 12px;
+				margin-bottom: 8px;
+			}
+			.rod-spectrum-card .rod-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 8px;
+				font-size: 12px;
+			}
+			.rod-spectrum-card .rod-header .rod-title {
+				font-weight: 600;
+			}
+			.rod-spectrum-card .rod-header .rod-meta {
+				color: var(--muted);
+				font-size: 10px;
+			}
+			.xcorr-table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 11px;
+			}
+			.xcorr-table th,
+			.xcorr-table td {
+				padding: 6px 8px;
+				text-align: center;
+				border: 1px solid var(--border);
+			}
+			.xcorr-table th {
+				background: var(--bg3);
+				color: var(--muted);
+				font-weight: 600;
+			}
+			.xcorr-cell {
+				font-weight: 600;
+				font-variant-numeric: tabular-nums;
+			}
+			.pipeline-step {
+				display: flex;
+				gap: 10px;
+				margin-bottom: 6px;
+				font-size: 12px;
+				line-height: 1.5;
+			}
+			.pipeline-step .step-num {
+				flex-shrink: 0;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: var(--accent);
+				color: white;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 10px;
+				font-weight: 700;
+			}
+			.pipeline-step .step-text {
+				color: var(--text);
+			}
+			.callout {
+				background: #1e293b;
+				border-left: 3px solid var(--yellow);
+				padding: 12px 16px;
+				border-radius: 0 8px 8px 0;
+				margin-top: 12px;
+				font-size: 12px;
+				line-height: 1.6;
+				color: var(--text);
+			}
+			.callout strong {
+				color: var(--yellow);
+			}
+			.freq-table {
+				width: 100%;
+				border-collapse: collapse;
+				font-size: 10px;
+				margin-top: 8px;
+				font-variant-numeric: tabular-nums;
+			}
+			.freq-table th,
+			.freq-table td {
+				padding: 3px 5px;
+				text-align: right;
+				border: 1px solid var(--border);
+			}
+			.freq-table th {
+				background: var(--bg3);
+				color: var(--muted);
+				text-align: center;
+			}
+			.ch-highlight-0 {
+				background: rgba(59, 130, 246, 0.15);
+			}
+			.ch-highlight-1 {
+				background: rgba(34, 197, 94, 0.15);
+			}
+			.ch-highlight-2 {
+				background: rgba(234, 179, 8, 0.15);
+			}
+			.ch-highlight-3 {
+				background: rgba(239, 68, 68, 0.15);
+			}
+		</style>
+	</head>
+	<body>
+		<div
+			class="container"
+			id="app">
+			<!-- Auth Screen -->
+			<div
+				class="auth-screen"
+				id="authScreen">
+				<div>
+					<h1 style="font-size: 32px; text-align: center; margin-bottom: 8px">
+						<span style="color: var(--accent2)">CWM</span> Lab
+					</h1>
+					<p style="color: var(--muted); text-align: center; font-size: 14px">
+						Coherent Wave Memory — Auth &amp; Image Search Experiment
+					</p>
+				</div>
+				<div class="auth-card">
+					<h2>Authenticate</h2>
+					<p>
+						Each user is a spectral fingerprint on a glass rod. Register to
+						claim a unique rod/channel slot, then authenticate via acoustic
+						correlation.
+					</p>
+					<input
+						type="text"
+						id="authUsername"
+						placeholder="Enter a username"
+						autocomplete="off"
+						onkeydown="if (event.key === 'Enter') authenticate()" />
+					<div class="auth-btns">
+						<button
+							class="btn btn-primary"
+							onclick="authenticate()"
+							id="btnAuth">
+							Sign In
+						</button>
+						<button
+							class="btn btn-secondary"
+							onclick="register()"
+							id="btnRegister">
+							Register
+						</button>
+					</div>
+					<div id="authResult"></div>
+
+					<!-- Face selfie enrollment (shown after registration) -->
+					<div
+						class="face-enroll"
+						id="faceEnrollZone"
+						style="display: none">
+						<h4>📸 Enroll Your Face</h4>
+						<p>
+							Take a selfie so CWM can recognise you next time.<br />
+							Your face photo is hashed into the same spectral fingerprint
+							space.
+						</p>
+						<video
+							id="enrollVideo"
+							autoplay
+							playsinline
+							muted></video>
+						<canvas id="enrollCanvas"></canvas>
+						<img
+							id="enrollPreview"
+							class="preview"
+							style="display: none" />
+						<div class="face-btns">
+							<button
+								class="btn btn-secondary"
+								onclick="startEnrollCamera()"
+								id="btnEnrollCam">
+								Start Camera
+							</button>
+							<button
+								class="btn btn-primary"
+								onclick="captureAndEnrollFace()"
+								id="btnEnrollCapture"
+								disabled>
+								Capture
+							</button>
+							<button
+								class="btn btn-secondary"
+								onclick="skipFaceEnroll()"
+								id="btnEnrollSkip">
+								Skip
+							</button>
+						</div>
+					</div>
+
+					<!-- Face login -->
+					<div class="divider">or</div>
+					<div
+						class="face-login-zone"
+						id="faceLoginZone">
+						<p style="color: var(--muted); font-size: 12px; margin-bottom: 8px">
+							Sign in with your face — CWM matches your face hash against
+							enrolled users.
+						</p>
+						<video
+							id="faceLoginVideo"
+							autoplay
+							playsinline
+							muted></video>
+						<canvas id="faceLoginCanvas"></canvas>
+						<div class="face-btns">
+							<button
+								class="btn btn-secondary"
+								onclick="startFaceLogin()"
+								id="btnFaceLogin">
+								Face Login
+							</button>
+							<button
+								class="btn btn-primary"
+								onclick="doFaceAuth()"
+								id="btnFaceAuth"
+								disabled>
+								Scan &amp; Authenticate
+							</button>
+						</div>
+						<div id="faceLoginResult"></div>
+					</div>
+				</div>
+				<div
+					style="
+						color: var(--muted);
+						font-size: 12px;
+						text-align: center;
+						max-width: 400px;
+						line-height: 1.5;
+					">
+					<strong>How it works:</strong> Each username is a polysemic channel on
+					a glass rod. Authentication correlates the rod's live spectral
+					fingerprint against the enrolled template. Correlation ≥ 0.85 = pass.
+					Different users on the same rod are isolated by mode subsets.
+				</div>
+			</div>
+
+			<!-- App Screen (hidden until auth) -->
+			<div
+				id="appScreen"
+				style="display: none">
+				<header>
+					<h1><span>CWM</span> Lab</h1>
+					<div class="user-badge">
+						<div class="dot on"></div>
+						<span id="currentUser">—</span>
+						<span
+							style="color: var(--muted); font-size: 11px"
+							id="userSlot"></span>
+						<span
+							class="face-badge none"
+							id="faceBadge"
+							>No face</span
+						>
+						<button
+							class="btn-logout"
+							onclick="logout()">
+							Sign Out
+						</button>
+					</div>
+				</header>
+
+				<div class="app">
+					<!-- Sidebar: rod array + image list -->
+					<div class="sidebar">
+						<div class="slot-header">
+							<h3>Rod Array</h3>
+							<span
+								class="capacity"
+								id="capacityLabel"
+								>0 / 16</span
+							>
+						</div>
+						<div
+							class="rod-grid"
+							id="rodGrid"></div>
+
+						<h3 style="margin-top: 16px">Your Library</h3>
+						<div
+							class="image-list"
+							id="imageList">
+							<div class="no-images">No images enrolled yet.</div>
+						</div>
+					</div>
+
+					<!-- Main panel -->
+					<div class="main-panel">
+						<!-- Auth detail -->
+						<div class="auth-detail">
+							<h3>Authentication Detail</h3>
+							<div
+								class="detail-grid"
+								id="authDetail"></div>
+						</div>
+
+						<!-- Upload -->
+						<div
+							class="upload-zone"
+							id="uploadZone"
+							ondragover="
+								event.preventDefault()
+								this.classList.add('drag')
+							"
+							ondragleave="this.classList.remove('drag')"
+							ondrop="handleDrop(event)">
+							<h3>Upload Images to Your Library</h3>
+							<p>
+								Drag &amp; drop images here, or click to browse.<br />
+								Each image is hashed and assigned to the best-matching
+								rod/channel slot.
+							</p>
+							<input
+								type="file"
+								id="fileInput"
+								accept="image/*"
+								multiple
+								onchange="handleFiles(this.files)" />
+						</div>
+
+						<!-- Camera -->
+						<div class="camera-panel">
+							<h3>Live Search — Webcam</h3>
+							<div class="camera-container">
+								<div class="camera-feed">
+									<video
+										id="cameraVideo"
+										autoplay
+										playsinline
+										muted></video>
+									<canvas id="cameraCanvas"></canvas>
+									<div class="camera-controls">
+										<button
+											class="btn btn-secondary"
+											onclick="startCamera()"
+											id="btnCamera">
+											Start Camera
+										</button>
+										<button
+											class="btn btn-primary"
+											onclick="captureAndSearch()"
+											id="btnCapture"
+											disabled>
+											Capture &amp; Search
+										</button>
+										<button
+											class="btn btn-secondary"
+											onclick="toggleAutoSearch()"
+											id="btnAuto">
+											Auto: Off
+										</button>
+									</div>
+								</div>
+								<div
+									class="match-result"
+									id="matchResult">
+									<h4>Best Match</h4>
+									<div
+										class="no-images"
+										id="matchPlaceholder">
+										Point your camera at an image and click Capture to search.
+									</div>
+									<div
+										class="match-card"
+										id="matchCard"
+										style="display: none"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Proof Panel -->
+				<div
+					class="proof-toggle"
+					onclick="toggleProof()">
+					<span
+						class="arrow"
+						id="proofArrow"
+						>▶</span
+					>
+					<strong>Hardware Proof Panel</strong> — Show CWM physics internals for
+					skeptic verification
+				</div>
+				<div
+					class="proof-panel"
+					id="proofPanel">
+					<h3>CWM Hardware Proof — Full Physics Transparency</h3>
+					<div id="proofContent">
+						<div class="no-images">Loading proof data…</div>
+					</div>
+				</div>
+
+				<div class="statusbar">
+					<span id="statusText">Ready</span>
+					<span id="statusMode">CWM Lab v1.0 · 20 modes × 4 channels</span>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			const API = ''
+			let currentUser = null
+			let authData = null
+			let autoSearchInterval = null
+			let cameraStream = null
+
+			// ── Auth ──────────────────────────────────────────────────────────────
+			// register() is defined below with face enrollment integration
+
+			async function authenticate() {
+				const username = document.getElementById('authUsername').value.trim()
+				if (!username) return
+				setAuthLoading(true)
+				try {
+					const res = await fetch(API + '/api/authenticate', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({username}),
+					})
+					const data = await res.json()
+					if (data.authenticated) {
+						authData = data
+						currentUser = username
+						showAuthResult(
+							'pass',
+							`<strong>Authenticated ✓</strong> Correlation: ${data.correlation} (threshold: ${data.threshold})<br>` +
+								`Margin: ${data.margin_db} dB vs "${data.best_wrong_user}"<br>` +
+								`<em>Entering lab in 1 second…</em>`,
+						)
+						setTimeout(() => enterApp(), 1000)
+					} else {
+						showAuthResult(
+							'fail',
+							`<strong>Authentication failed.</strong> ${data.error || ''}<br>` +
+								(data.correlation !== undefined
+									? `Correlation: ${data.correlation} (need ≥ ${data.threshold})`
+									: 'User not found. Register first.'),
+						)
+					}
+				} catch (e) {
+					showAuthResult('fail', 'Server error: ' + e.message)
+				}
+				setAuthLoading(false)
+			}
+
+			function showAuthResult(type, html) {
+				const el = document.getElementById('authResult')
+				el.className = 'auth-result ' + type
+				el.innerHTML = html
+				el.style.display = 'block'
+			}
+
+			function setAuthLoading(loading) {
+				document.getElementById('btnAuth').disabled = loading
+				document.getElementById('btnRegister').disabled = loading
+			}
+
+			function enterApp() {
+				document.getElementById('authScreen').style.display = 'none'
+				document.getElementById('appScreen').style.display = 'block'
+				document.getElementById('currentUser').textContent = currentUser
+				document.getElementById('userSlot').textContent =
+					`Rod ${authData.rod}, Ch ${authData.channel} (Pattern ${authData.pattern})`
+				renderAuthDetail()
+				loadLibrary()
+			}
+
+			function logout() {
+				if (autoSearchInterval) {
+					clearInterval(autoSearchInterval)
+					autoSearchInterval = null
+				}
+				if (cameraStream) {
+					cameraStream.getTracks().forEach((t) => t.stop())
+					cameraStream = null
+				}
+				currentUser = null
+				authData = null
+				document.getElementById('appScreen').style.display = 'none'
+				document.getElementById('authScreen').style.display = 'flex'
+				document.getElementById('authResult').style.display = 'none'
+				document.getElementById('authUsername').value = ''
+			}
+
+			function renderAuthDetail() {
+				if (!authData) return
+				const items = [
+					{label: 'Correlation', value: authData.correlation, cls: 'green'},
+					{label: 'Threshold', value: authData.threshold, cls: ''},
+					{label: 'Margin', value: authData.margin_db + ' dB', cls: 'blue'},
+					{label: 'Rod', value: authData.rod, cls: ''},
+					{label: 'Channel', value: authData.channel, cls: ''},
+					{label: 'Modes', value: authData.modes.join(', '), cls: 'blue'},
+				]
+				document.getElementById('authDetail').innerHTML = items
+					.map(
+						(i) =>
+							`<div class="detail-item"><div class="label">${i.label}</div><div class="value ${i.cls}">${i.value}</div></div>`,
+					)
+					.join('')
+			}
+
+			// ── Library ──────────────────────────────────────────────────────────
+			async function loadLibrary() {
+				try {
+					const res = await fetch(
+						API + `/api/library/${encodeURIComponent(currentUser)}`,
+					)
+					const data = await res.json()
+					renderRodGrid(data)
+					renderImageList(data.images)
+					document.getElementById('capacityLabel').textContent =
+						`${data.total} / ${data.capacity}`
+					setStatus(
+						`Library loaded: ${data.total} images across ${data.n_rods} rods`,
+					)
+				} catch (e) {
+					setStatus('Error loading library: ' + e.message)
+				}
+			}
+
+			function renderRodGrid(data) {
+				const grid = document.getElementById('rodGrid')
+				const capacity = data.capacity
+				const n_rods = data.n_rods
+				const slots = {}
+				for (const img of data.images) {
+					slots[`${img.rod}:${img.channel}`] = img
+				}
+				let html = ''
+				for (let r = 1; r <= n_rods; r++) {
+					for (let c = 0; c < 4; c++) {
+						const key = `${r}:${c}`
+						const img = slots[key]
+						if (img && img.thumbnail) {
+							html += `<div class="rod-slot filled" title="${img.name} — Rod ${r} Ch ${c}">
+          <img src="data:image/jpeg;base64,${img.thumbnail}" alt="${img.name}">
+          <div class="slot-label">R${r}C${c}</div>
+        </div>`
+						} else {
+							html += `<div class="rod-slot" title="Rod ${r} Ch ${c} — empty">R${r}C${c}</div>`
+						}
+					}
+				}
+				grid.innerHTML = html
+			}
+
+			function renderImageList(images) {
+				const list = document.getElementById('imageList')
+				if (!images || images.length === 0) {
+					list.innerHTML =
+						'<div class="no-images">No images enrolled yet.</div>'
+					return
+				}
+				list.innerHTML = images
+					.map(
+						(img) => `
+    <div class="image-item">
+      ${
+				img.thumbnail
+					? `<img src="data:image/jpeg;base64,${img.thumbnail}" alt="${img.name}">`
+					: '<div style="width:36px;height:36px;background:var(--bg3);border-radius:4px"></div>'
+			}
+      <div class="info">
+        <div class="name">${img.name}</div>
+        <div class="meta">Rod ${img.rod} Ch ${img.channel} · score ${img.score}</div>
+      </div>
+      <button class="del-btn" onclick="deleteImage('${img.name.replace(/'/g, "\\'")}')" title="Remove">✕</button>
+    </div>
+  `,
+					)
+					.join('')
+			}
+
+			// ── Upload ───────────────────────────────────────────────────────────
+			document.getElementById('uploadZone').addEventListener('click', () => {
+				document.getElementById('fileInput').click()
+			})
+
+			function handleDrop(e) {
+				e.preventDefault()
+				document.getElementById('uploadZone').classList.remove('drag')
+				handleFiles(e.dataTransfer.files)
+			}
+
+			async function handleFiles(files) {
+				for (const file of files) {
+					if (!file.type.startsWith('image/')) continue
+					setStatus(`Enrolling ${file.name}…`)
+					const b64 = await fileToBase64(file)
+					try {
+						const res = await fetch(API + '/api/enroll-image', {
+							method: 'POST',
+							headers: {'Content-Type': 'application/json'},
+							body: JSON.stringify({
+								username: currentUser,
+								name: file.name,
+								image: b64,
+							}),
+						})
+						const data = await res.json()
+						if (data.ok) {
+							setStatus(
+								`Enrolled "${file.name}" → Rod ${data.rod} Ch ${data.channel} (score: ${data.score})`,
+							)
+						} else {
+							setStatus(`Error: ${data.error}`)
+						}
+					} catch (e) {
+						setStatus('Upload error: ' + e.message)
+					}
+				}
+				loadLibrary()
+			}
+
+			async function deleteImage(name) {
+				try {
+					await fetch(API + '/api/delete-image', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({username: currentUser, name}),
+					})
+					loadLibrary()
+					setStatus(`Removed "${name}"`)
+				} catch (e) {
+					setStatus('Delete error: ' + e.message)
+				}
+			}
+
+			function fileToBase64(file) {
+				return new Promise((resolve, reject) => {
+					const reader = new FileReader()
+					reader.onload = () => resolve(reader.result)
+					reader.onerror = reject
+					reader.readAsDataURL(file)
+				})
+			}
+
+			// ── Camera ───────────────────────────────────────────────────────────
+			async function startCamera() {
+				try {
+					cameraStream = await navigator.mediaDevices.getUserMedia({
+						video: {
+							facingMode: 'environment',
+							width: {ideal: 640},
+							height: {ideal: 480},
+						},
+					})
+					const video = document.getElementById('cameraVideo')
+					video.srcObject = cameraStream
+					document.getElementById('btnCapture').disabled = false
+					document.getElementById('btnCamera').textContent = 'Stop Camera'
+					document.getElementById('btnCamera').onclick = stopCamera
+					setStatus('Camera active — point at an image and click Capture')
+				} catch (e) {
+					setStatus('Camera error: ' + e.message)
+				}
+			}
+
+			function stopCamera() {
+				if (cameraStream) {
+					cameraStream.getTracks().forEach((t) => t.stop())
+					cameraStream = null
+				}
+				if (autoSearchInterval) {
+					clearInterval(autoSearchInterval)
+					autoSearchInterval = null
+				}
+				document.getElementById('cameraVideo').srcObject = null
+				document.getElementById('btnCapture').disabled = true
+				document.getElementById('btnCamera').textContent = 'Start Camera'
+				document.getElementById('btnCamera').onclick = startCamera
+				document.getElementById('btnAuto').textContent = 'Auto: Off'
+			}
+
+			async function captureAndSearch() {
+				const video = document.getElementById('cameraVideo')
+				const canvas = document.getElementById('cameraCanvas')
+				canvas.width = video.videoWidth
+				canvas.height = video.videoHeight
+				const ctx = canvas.getContext('2d')
+				ctx.drawImage(video, 0, 0)
+				const b64 = canvas.toDataURL('image/jpeg', 0.8)
+
+				setStatus('Searching…')
+				try {
+					const res = await fetch(API + '/api/query-image', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({username: currentUser, image: b64}),
+					})
+					const data = await res.json()
+					if (data.error) {
+						setStatus('Search: ' + data.error)
+						return
+					}
+					renderMatch(data)
+					setStatus(
+						`Match: "${data.match.name}" — ${data.match.correlation} corr, ${data.margin_db} dB margin`,
+					)
+				} catch (e) {
+					setStatus('Search error: ' + e.message)
+				}
+			}
+
+			function renderMatch(data) {
+				document.getElementById('matchPlaceholder').style.display = 'none'
+				const card = document.getElementById('matchCard')
+				card.style.display = 'block'
+				const m = data.match
+				const scoreClass =
+					m.correlation > 0.9 ? 'high' : m.correlation > 0.7 ? 'med' : 'low'
+				card.innerHTML = `
+    ${
+			m.thumbnail
+				? `<img src="data:image/jpeg;base64,${m.thumbnail}" alt="${m.name}">`
+				: '<div style="width:120px;height:120px;background:var(--bg);border-radius:8px;margin:0 auto 8px"></div>'
+		}
+    <div class="match-name">${m.name}</div>
+    <div class="match-meta">Rod ${m.rod} · Channel ${m.channel}</div>
+    <div class="match-score ${scoreClass}">${m.correlation} corr · ${data.margin_db} dB</div>
+    <div style="margin-top:12px;font-size:11px;color:var(--muted)">
+      ${data.all_results
+				.slice(1, 4)
+				.map((r) => `${r.name}: ${r.correlation}`)
+				.join(' · ')}
+    </div>
+  `
+			}
+
+			function toggleAutoSearch() {
+				const btn = document.getElementById('btnAuto')
+				if (autoSearchInterval) {
+					clearInterval(autoSearchInterval)
+					autoSearchInterval = null
+					btn.textContent = 'Auto: Off'
+				} else {
+					autoSearchInterval = setInterval(captureAndSearch, 2000)
+					btn.textContent = 'Auto: On (2s)'
+					captureAndSearch()
+				}
+			}
+
+			// ── Util ─────────────────────────────────────────────────────────────
+			function setStatus(msg) {
+				document.getElementById('statusText').textContent = msg
+			}
+
+			// ── Face Enrollment (during registration) ───────────────────────────
+			let enrollStream = null
+			let pendingRegisterUsername = null
+
+			async function register() {
+				const username = document.getElementById('authUsername').value.trim()
+				if (!username) return
+				setAuthLoading(true)
+				try {
+					const res = await fetch(API + '/api/register', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({username}),
+					})
+					const data = await res.json()
+					if (data.ok) {
+						pendingRegisterUsername = username
+						showAuthResult(
+							'pass',
+							`<strong>Registered!</strong> ${username} → Rod ${data.rod}, Channel ${data.channel} (Pattern ${data.pattern})<br>` +
+								`Modes: ${data.modes.join(', ')}<br>` +
+								`<em>Now enroll your face below, or skip to sign in.</em>`,
+						)
+						// Show face enrollment panel
+						document.getElementById('faceEnrollZone').style.display = 'block'
+					} else {
+						showAuthResult('fail', data.error)
+					}
+				} catch (e) {
+					showAuthResult('fail', 'Server error: ' + e.message)
+				}
+				setAuthLoading(false)
+			}
+
+			async function startEnrollCamera() {
+				try {
+					enrollStream = await navigator.mediaDevices.getUserMedia({
+						video: {
+							facingMode: 'user',
+							width: {ideal: 320},
+							height: {ideal: 240},
+						},
+					})
+					document.getElementById('enrollVideo').srcObject = enrollStream
+					document.getElementById('btnEnrollCapture').disabled = false
+					document.getElementById('btnEnrollCam').textContent = 'Retake'
+					document.getElementById('enrollPreview').style.display = 'none'
+				} catch (e) {
+					showAuthResult('fail', 'Camera error: ' + e.message)
+				}
+			}
+
+			async function captureAndEnrollFace() {
+				const video = document.getElementById('enrollVideo')
+				const canvas = document.getElementById('enrollCanvas')
+				canvas.width = video.videoWidth
+				canvas.height = video.videoHeight
+				canvas.getContext('2d').drawImage(video, 0, 0)
+				const b64 = canvas.toDataURL('image/jpeg', 0.8)
+
+				// Show preview
+				document.getElementById('enrollPreview').src = b64
+				document.getElementById('enrollPreview').style.display = 'block'
+
+				// Stop camera
+				if (enrollStream) {
+					enrollStream.getTracks().forEach((t) => t.stop())
+					enrollStream = null
+				}
+				document.getElementById('enrollVideo').srcObject = null
+
+				// Enroll
+				const username = pendingRegisterUsername
+				if (!username) return
+
+				try {
+					const res = await fetch(API + '/api/enroll-face', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({username, image: b64}),
+					})
+					const data = await res.json()
+					if (data.ok) {
+						showAuthResult(
+							'pass',
+							`<strong>Face enrolled!</strong> ${username}'s face → Rod ${data.rod}, Ch ${data.channel} (score: ${data.score})<br>` +
+								`<em>${data.total_faces} face(s) in database. Click Sign In to authenticate.</em>`,
+						)
+						document.getElementById('btnEnrollCapture').textContent =
+							'✓ Enrolled'
+						document.getElementById('btnEnrollCapture').disabled = true
+						document.getElementById('btnEnrollCam').style.display = 'none'
+						document.getElementById('btnEnrollSkip').textContent = 'Sign In →'
+					} else {
+						showAuthResult('fail', data.error)
+					}
+				} catch (e) {
+					showAuthResult('fail', 'Face enroll error: ' + e.message)
+				}
+			}
+
+			function skipFaceEnroll() {
+				if (enrollStream) {
+					enrollStream.getTracks().forEach((t) => t.stop())
+					enrollStream = null
+				}
+				document.getElementById('faceEnrollZone').style.display = 'none'
+				pendingRegisterUsername = null
+			}
+
+			// ── Face Login ───────────────────────────────────────────────────────
+			let faceLoginStream = null
+
+			async function startFaceLogin() {
+				try {
+					faceLoginStream = await navigator.mediaDevices.getUserMedia({
+						video: {
+							facingMode: 'user',
+							width: {ideal: 320},
+							height: {ideal: 240},
+						},
+					})
+					document.getElementById('faceLoginVideo').srcObject = faceLoginStream
+					document.getElementById('btnFaceAuth').disabled = false
+					document.getElementById('btnFaceLogin').textContent = 'Stop Camera'
+					document.getElementById('btnFaceLogin').onclick = stopFaceLogin
+				} catch (e) {
+					document.getElementById('faceLoginResult').innerHTML =
+						'<div style="color:var(--red);font-size:12px;margin-top:8px">Camera error: ' +
+						e.message +
+						'</div>'
+				}
+			}
+
+			function stopFaceLogin() {
+				if (faceLoginStream) {
+					faceLoginStream.getTracks().forEach((t) => t.stop())
+					faceLoginStream = null
+				}
+				document.getElementById('faceLoginVideo').srcObject = null
+				document.getElementById('btnFaceAuth').disabled = true
+				document.getElementById('btnFaceLogin').textContent = 'Face Login'
+				document.getElementById('btnFaceLogin').onclick = startFaceLogin
+				document.getElementById('faceLoginResult').innerHTML = ''
+			}
+
+			async function doFaceAuth() {
+				const video = document.getElementById('faceLoginVideo')
+				const canvas = document.getElementById('faceLoginCanvas')
+				canvas.width = video.videoWidth
+				canvas.height = video.videoHeight
+				canvas.getContext('2d').drawImage(video, 0, 0)
+				const b64 = canvas.toDataURL('image/jpeg', 0.8)
+
+				document.getElementById('btnFaceAuth').disabled = true
+				document.getElementById('btnFaceAuth').textContent = 'Scanning…'
+
+				try {
+					const res = await fetch(API + '/api/face-auth', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({image: b64}),
+					})
+					const data = await res.json()
+					const resultEl = document.getElementById('faceLoginResult')
+
+					if (data.authenticated && data.face_match) {
+						const m = data.face_match
+						const thumb = m.thumbnail
+							? `<img src="data:image/jpeg;base64,${m.thumbnail}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:middle">`
+							: ''
+						resultEl.innerHTML =
+							`<div class="face-match-badge pass">${thumb} ${m.username} — ${m.correlation} corr, ${data.margin_db} dB</div>` +
+							`<div style="color:var(--green);font-size:12px;margin-top:6px">Face verified! Signing in…</div>`
+
+						// Stop camera and sign in
+						stopFaceLogin()
+
+						// Set username and authenticate via vault too
+						authData = data.vault_auth || {
+							authenticated: true,
+							username: m.username,
+							correlation: m.correlation,
+							threshold: 0.85,
+							margin_db: data.margin_db,
+							rod: m.rod,
+							channel: m.channel,
+							best_wrong_user: '—',
+							best_wrong_corr: 0,
+							modes: [],
+							pattern: '?',
+							face_auth: true,
+						}
+						authData.face_corr = m.correlation
+						authData.face_margin_db = data.margin_db
+						currentUser = m.username
+						setTimeout(() => enterApp(), 1000)
+					} else if (data.face_match) {
+						const m = data.face_match
+						const thumb = m.thumbnail
+							? `<img src="data:image/jpeg;base64,${m.thumbnail}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:middle">`
+							: ''
+						resultEl.innerHTML =
+							`<div class="face-match-badge fail">${thumb} Best: ${m.username} — ${m.correlation} corr</div>` +
+							`<div style="color:var(--red);font-size:12px;margin-top:6px">Below threshold (${0.85}). Try again or use password.</div>`
+					} else {
+						resultEl.innerHTML = `<div style="color:var(--red);font-size:12px;margin-top:8px">${data.error || 'No match found.'}</div>`
+					}
+				} catch (e) {
+					document.getElementById('faceLoginResult').innerHTML =
+						`<div style="color:var(--red);font-size:12px;margin-top:8px">Error: ${e.message}</div>`
+				}
+
+				document.getElementById('btnFaceAuth').disabled = false
+				document.getElementById('btnFaceAuth').textContent =
+					'Scan & Authenticate'
+			}
+
+			// ── Face badge in header ─────────────────────────────────────────────
+			async function updateFaceBadge() {
+				try {
+					const res = await fetch(API + '/api/faces')
+					const data = await res.json()
+					const badge = document.getElementById('faceBadge')
+					const myFace = data.faces.find((f) => f.username === currentUser)
+					if (myFace) {
+						badge.className = 'face-badge enrolled'
+						badge.innerHTML = myFace.thumbnail
+							? `<img src="data:image/jpeg;base64,${myFace.thumbnail}" style="width:20px;height:20px;border-radius:50%;object-fit:cover"> Face ✓`
+							: 'Face ✓'
+					} else {
+						badge.className = 'face-badge none'
+						badge.textContent = 'No face'
+					}
+				} catch (e) {}
+			}
+
+			// Patch enterApp to also update face badge and show face auth if used
+			const _origEnterApp = enterApp
+			enterApp = function () {
+				_origEnterApp()
+				updateFaceBadge()
+
+				// If authenticated via face, add face detail to auth panel
+				if (authData && authData.face_corr !== undefined) {
+					const grid = document.getElementById('authDetail')
+					grid.innerHTML +=
+						`<div class="detail-item"><div class="label">Face Corr</div><div class="value green">${authData.face_corr}</div></div>` +
+						`<div class="detail-item"><div class="label">Face Margin</div><div class="value blue">${authData.face_margin_db} dB</div></div>`
+				}
+			}
+
+			// Patch logout to clean up face camera streams
+			const _origLogout = logout
+			logout = function () {
+				if (enrollStream) {
+					enrollStream.getTracks().forEach((t) => t.stop())
+					enrollStream = null
+				}
+				if (faceLoginStream) {
+					faceLoginStream.getTracks().forEach((t) => t.stop())
+					faceLoginStream = null
+				}
+				_origLogout()
+				// Reset face UI
+				document.getElementById('faceEnrollZone').style.display = 'none'
+				document.getElementById('faceLoginResult').innerHTML = ''
+				document.getElementById('btnFaceLogin').textContent = 'Face Login'
+				document.getElementById('btnFaceLogin').onclick = startFaceLogin
+				document.getElementById('btnFaceAuth').disabled = true
+			}
+
+			// ── Proof Panel ──────────────────────────────────────────────────────
+			let proofOpen = false
+			let proofLoaded = false
+
+			function toggleProof() {
+				proofOpen = !proofOpen
+				document
+					.getElementById('proofPanel')
+					.classList.toggle('open', proofOpen)
+				document
+					.getElementById('proofArrow')
+					.classList.toggle('open', proofOpen)
+				if (proofOpen && !proofLoaded) loadProof()
+			}
+
+			async function loadProof() {
+				try {
+					const res = await fetch(API + '/api/proof')
+					const data = await res.json()
+					renderProof(data)
+					proofLoaded = true
+				} catch (e) {
+					document.getElementById('proofContent').innerHTML =
+						`<div style="color:var(--red)">Error loading proof: ${e.message}</div>`
+				}
+			}
+
+			// Refresh proof when entering app
+			const _origEnterApp2 = enterApp
+			enterApp = function () {
+				_origEnterApp2()
+				proofLoaded = false
+				if (proofOpen) loadProof()
+			}
+
+			const CH_COLORS = ['#3b82f6', '#22c55e', '#eab308', '#ef4444']
+
+			function renderProof(data) {
+				let html = ''
+
+				// ── Hardware status banner ────────────────────────────────
+				const hw = data.hardware_connected
+				const hwClass = hw ? 'pass' : 'fail'
+				const hwIcon = hw ? '🟢' : '🟡'
+				const hwLabel = hw
+					? 'HARDWARE MODE — PicoScope 2204A Connected'
+					: 'SIMULATION MODE — No PicoScope Detected'
+				html += `<div class="auth-result ${hwClass}" style="margin-bottom:20px;text-align:center;font-size:14px">
+					${hwIcon} <strong>${hwLabel}</strong><br>
+					<span style="font-size:12px">Measurement source: ${data.measurement_source}</span>
+				</div>`
+
+				// Update statusbar
+				document.getElementById('statusMode').textContent =
+					(hw ? '🟢 HARDWARE' : '🟡 SIMULATION') +
+					` · ${data.n_modes} modes × ${data.n_channels} ch × ${data.rods.length} rods`
+
+				// ── Pipeline explanation ──────────────────────────────────
+				html += `<div class="proof-section">
+					<h4>⚡ Why This Isn't Trivial — The CWM Pipeline</h4>`
+
+				const vaultSteps = data.pipeline.vault_auth
+				for (let i = 1; i <= 8; i++) {
+					const step = vaultSteps['step_' + i]
+					if (step)
+						html += `<div class="pipeline-step"><div class="step-num">${i}</div><div class="step-text">${step}</div></div>`
+				}
+				html += `<div style="margin-top:8px;font-size:11px;color:var(--muted)">Physics source: <code>${vaultSteps.physics_source}</code></div>`
+
+				const hw = data.pipeline.why_hardware_matters
+				html += `<div class="callout">
+					<strong>Simulation vs. Real Hardware:</strong> ${hw.simulation_vs_real}<br><br>
+					<strong>What changes with PicoScope:</strong> ${hw.what_changes_with_picoscope}<br><br>
+					<strong>Clonability:</strong> ${hw.clonability}
+				</div></div>`
+
+				// ── Rod spectra ───────────────────────────────────────────
+				html += `<div class="proof-section"><h4>🔬 Rod Spectral Fingerprints (Rayleigh Perturbation)</h4>`
+
+				for (const rod of data.rods) {
+					const shifts = rod.shift_hz
+					const maxShift = Math.max(...shifts.map(Math.abs))
+
+					html += `<div class="rod-spectrum-card">
+						<div class="rod-header">
+							<span class="rod-title">Rod ${rod.rod_id} — Pattern ${rod.pattern}
+								[${rod.nominal_positions.map((p) => (p * 100).toFixed(0) + '%L').join(', ')}]</span>
+							<span class="rod-meta">
+								Jittered: [${rod.jittered_positions.map((p) => (p * 100).toFixed(1) + '%').join(', ')}]
+								· Putty: ${rod.putty_mass_mg.toFixed(2)} mg
+							</span>
+						</div>
+						<div class="spectrum-row">`
+
+					for (let m = 0; m < shifts.length; m++) {
+						const ch = Math.floor(m / data.modes_per_channel)
+						const h = maxShift > 0 ? (Math.abs(shifts[m]) / maxShift) * 100 : 0
+						const color = CH_COLORS[ch]
+						const dir = shifts[m] >= 0 ? 'up' : 'down'
+						html += `<div class="spectrum-bar" style="height:${Math.max(h, 2)}%;background:${color}"
+							title="Mode ${m + 1}: ${shifts[m].toFixed(4)} Hz (Ch ${ch})"></div>`
+					}
+
+					html += `</div><div class="spectrum-labels">`
+					for (let m = 0; m < shifts.length; m++) {
+						html += `<span>${m + 1}</span>`
+					}
+					html += `</div>`
+
+					// Frequency table
+					html += `<details style="margin-top:6px"><summary style="font-size:10px;color:var(--muted);cursor:pointer">
+						Show mode frequencies</summary>
+						<table class="freq-table"><tr><th>Mode</th><th>Unperturbed (Hz)</th><th>Perturbed (Hz)</th><th>Shift (Hz)</th><th>Channel</th></tr>`
+					for (let m = 0; m < shifts.length; m++) {
+						const ch = Math.floor(m / data.modes_per_channel)
+						html += `<tr class="ch-highlight-${ch}">
+							<td style="text-align:center">${m + 1}</td>
+							<td>${rod.unperturbed_hz[m].toFixed(2)}</td>
+							<td>${rod.perturbed_hz[m].toFixed(2)}</td>
+							<td style="font-weight:600">${rod.shift_hz[m].toFixed(4)}</td>
+							<td style="text-align:center;color:${CH_COLORS[ch]}">Ch ${ch}</td>
+						</tr>`
+					}
+					html += `</table></details></div>`
+				}
+				html += `</div>`
+
+				// ── Rod cross-correlation ─────────────────────────────────
+				const rodIds = Object.keys(data.rod_cross_correlation)
+				if (rodIds.length > 0) {
+					html += `<div class="proof-section"><h4>📊 Rod Cross-Correlation Matrix</h4>
+						<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
+							Diagonal = 1.0 (self). Off-diagonal should be low — proves rods are spectrally distinct.
+						</p>
+						<table class="xcorr-table"><tr><th></th>`
+					for (const rid of rodIds)
+						html += `<th>${rid.replace('rod_', 'R')}</th>`
+					html += `</tr>`
+					for (const r1 of rodIds) {
+						html += `<tr><th>${r1.replace('rod_', 'R')}</th>`
+						for (const r2 of rodIds) {
+							const v = data.rod_cross_correlation[r1][r2]
+							const color = xcorrColor(v)
+							html += `<td class="xcorr-cell" style="color:${color}">${v.toFixed(3)}</td>`
+						}
+						html += `</tr>`
+					}
+					html += `</table></div>`
+				}
+
+				// ── User cross-correlation ────────────────────────────────
+				const userNames = Object.keys(data.user_cross_correlation)
+				if (userNames.length > 1) {
+					html += `<div class="proof-section"><h4>👤 User Cross-Correlation</h4>
+						<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
+							Self-correlation = 1.0. Cross-user values must stay below ${data.correlation_threshold} or auth would cross-accept.
+						</p>
+						<table class="xcorr-table"><tr><th></th>`
+					for (const u of userNames) html += `<th>${u}</th>`
+					html += `</tr>`
+					for (const u1 of userNames) {
+						html += `<tr><th>${u1}</th>`
+						for (const u2 of userNames) {
+							const v = data.user_cross_correlation[u1][u2]
+							const color = xcorrColor(v)
+							html += `<td class="xcorr-cell" style="color:${color}">${v.toFixed(3)}</td>`
+						}
+						html += `</tr>`
+					}
+					html += `</table></div>`
+				}
+
+				// ── Face cross-correlation ────────────────────────────────
+				const faceNames = Object.keys(data.face_cross_correlation)
+				if (faceNames.length > 1) {
+					html += `<div class="proof-section"><h4>📸 Face Hash Cross-Correlation</h4>
+						<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
+							64-bit perceptual hash correlation. Self = 1.0. Low off-diagonal = different faces are distinguishable.
+						</p>
+						<table class="xcorr-table"><tr><th></th>`
+					for (const f of faceNames) html += `<th>${f}</th>`
+					html += `</tr>`
+					for (const f1 of faceNames) {
+						html += `<tr><th>${f1}</th>`
+						for (const f2 of faceNames) {
+							const v = data.face_cross_correlation[f1][f2]
+							const color = xcorrColor(v)
+							html += `<td class="xcorr-cell" style="color:${color}">${v.toFixed(3)}</td>`
+						}
+						html += `</tr>`
+					}
+					html += `</table></div>`
+				}
+
+				// ── User slot map ─────────────────────────────────────────
+				if (data.users.length > 0) {
+					html += `<div class="proof-section"><h4>🗂 User → Rod/Channel Slot Map</h4>
+						<table class="xcorr-table">
+						<tr><th>User</th><th>Rod</th><th>Ch</th><th>Pattern</th><th>Modes</th><th>Template (5-D)</th><th>Face?</th></tr>`
+					for (const u of data.users) {
+						html += `<tr>
+							<td style="font-weight:600">${u.username}</td>
+							<td>${u.rod}</td>
+							<td style="color:${CH_COLORS[u.channel]}">${u.channel}</td>
+							<td>${u.pattern}</td>
+							<td>${u.modes.join(', ')}</td>
+							<td style="font-size:9px;font-variant-numeric:tabular-nums">[${u.template.map((v) => v.toFixed(4)).join(', ')}]</td>
+							<td>${u.has_face ? '✓' : '—'}</td>
+						</tr>`
+					}
+					html += `</table></div>`
+				}
+
+				// ── Face pipeline ─────────────────────────────────────────
+				html += `<div class="proof-section"><h4>📸 Face Recognition Pipeline</h4>`
+				const faceSteps = data.pipeline.face_auth
+				for (let i = 1; i <= 8; i++) {
+					const step = faceSteps['step_' + i]
+					if (step)
+						html += `<div class="pipeline-step"><div class="step-num">${i}</div><div class="step-text">${step}</div></div>`
+				}
+				html += `<div class="callout"><strong>Key:</strong> ${faceSteps.key_point}</div></div>`
+
+				// ── Raw JSON dump ──────────────────────────────────────────
+				html += `<div class="proof-section"><h4>🔗 Raw API Response</h4>
+					<details><summary style="font-size:11px;color:var(--muted);cursor:pointer">
+						GET /api/proof — click to expand full JSON (${JSON.stringify(data).length.toLocaleString()} bytes)</summary>
+					<pre style="font-size:9px;color:var(--muted);overflow-x:auto;max-height:400px;background:var(--bg);padding:12px;border-radius:8px;margin-top:8px;white-space:pre-wrap">${JSON.stringify(data, null, 2)}</pre>
+					</details></div>`
+
+				document.getElementById('proofContent').innerHTML = html
+			}
+
+			function xcorrColor(v) {
+				if (v >= 0.95) return '#22c55e' // self-match green
+				if (v >= 0.85) return '#eab308' // danger zone yellow
+				if (v >= 0.5) return '#f97316' // moderate orange
+				return '#94a3b8' // low = muted (good)
+			}
+		</script>
+	</body>
+</html>
