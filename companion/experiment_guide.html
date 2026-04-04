@@ -958,6 +958,231 @@ div.worksheet-plate th {
 <p>⚠️ <strong>Glass hazard.</strong> Borosilicate rods can snap if bent or dropped. Always wear safety glasses when handling rods. Dispose of broken glass in a rigid sharps container, never a trash bag.</p>
 <p>⚠️ <strong>Cyanoacrylate (super glue).</strong> Bonds skin instantly. Keep acetone (nail polish remover) on hand to dissolve accidental skin bonds. Work in a ventilated area. Supervise younger students closely during the gluing step.</p>
 <p>⚠️ <strong>Hearing.</strong> The fundamental mode (17.7 kHz) is near the upper limit of human hearing. Some students may hear a faint whine during high-amplitude excitation. This is harmless at the drive levels used here (\&lt;1 V), but if anyone reports discomfort, reduce the AWG amplitude to 0.1 V.</p>
+<h3 id="d2a-picoscope-quick-start-guide">D.2a PicoScope Quick-Start Guide</h3>
+<p>This section walks you through setting up the PicoScope 2204A from unboxing to first measurement. If you are using a different oscilloscope and function generator, adapt these steps to your equipment — the key parameters (frequencies, amplitudes, FFT settings) are the same.</p>
+<h4 id="step-1-install-ps7">Step 1: Install PS7</h4>
+<p>Download PicoScope 7 (PS7) from <a href="https://www.picotech.com/downloads">picotech.com/downloads</a>. It is free, requires no license key, and runs on Windows, macOS, and Linux. Install and launch PS7 before plugging in the hardware.</p>
+<h4 id="step-2-connect-the-hardware">Step 2: Connect the Hardware</h4>
+<ol>
+<li>Plug the PicoScope 2204A into any USB port on your computer. PS7 should detect it automatically — you will see &ldquo;PicoScope 2204A&rdquo; in the bottom status bar.</li>
+<li>Connect a BNC cable from <strong>Channel A</strong> to your transmit/receive PZT disc. For Experiments 1–8 (single rod), a single BNC cable carries both the AWG drive signal and the received signal using a <strong>BNC T-connector</strong>: one arm to the AWG output, one arm to Channel A input, and the stem to the PZT leads. The PicoScope kit includes a T-connector; if not, any 50 Ω BNC T-adapter works.</li>
+<li>Set the probe attenuation to <strong>1×</strong> in PS7 (click the Channel A label → Probe → 1:1). Do not use a 10× oscilloscope probe — the PZT connects directly via BNC.</li>
+</ol>
+<h4 id="step-3-default-channel-settings">Step 3: Default Channel Settings</h4>
+<p>Use these settings for Channel A at the start of every experiment, then adjust per the experiment table below:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+<th>Where in PS7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Coupling</strong></td>
+<td>AC</td>
+<td>Click Channel A label → Coupling → AC</td>
+</tr>
+<tr>
+<td><strong>Range</strong></td>
+<td>±200 mV</td>
+<td>Click Channel A label → Range → 200 mV</td>
+</tr>
+<tr>
+<td><strong>Probe</strong></td>
+<td>1×</td>
+<td>Click Channel A label → Probe → 1:1</td>
+</tr>
+<tr>
+<td><strong>Bandwidth</strong></td>
+<td>Full</td>
+<td>Leave at default (no bandwidth limit)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Why AC coupling?</strong> The PZT generates a small DC offset when stressed by the glue bond. AC coupling blocks this offset and shows only the acoustic signal.</p>
+</blockquote>
+<h4 id="step-4-awg-signal-generator-basics">Step 4: AWG (Signal Generator) Basics</h4>
+<p>Open the signal generator panel: <strong>Tools → Signal Generator</strong> (or click the waveform icon in the toolbar). Key controls:</p>
+<table>
+<thead>
+<tr>
+<th>Control</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Wave Type</strong></td>
+<td>Sine, Square, Triangle, or <strong>Arbitrary</strong> (for imported CSV files)</td>
+</tr>
+<tr>
+<td><strong>Frequency</strong></td>
+<td>Set the drive frequency (e.g. 17700 Hz for the fundamental mode)</td>
+</tr>
+<tr>
+<td><strong>Amplitude</strong></td>
+<td>Peak-to-peak voltage. Start at <strong>0.5 Vpp</strong> for most experiments. Never exceed 2.0 Vpp.</td>
+</tr>
+<tr>
+<td><strong>Sweep</strong></td>
+<td>For frequency sweeps (chirps): enable Sweep, set Start/Stop frequencies and Sweep Time</td>
+</tr>
+<tr>
+<td><strong>Trigger</strong></td>
+<td>For burst mode: Trigger Source → &ldquo;Scope&rdquo; or &ldquo;Manual&rdquo;, Shots = 1, Cycles = 1</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-5-fft-spectrum-view">Step 5: FFT / Spectrum View</h4>
+<p>Many experiments require a frequency-domain view. To enable it:</p>
+<ol>
+<li>Click the <strong>Spectrum</strong> tab at the top of the main view (next to the Scope tab), or go to <strong>View → Spectrum</strong>.</li>
+<li>Set the FFT window to <strong>Hanning</strong> (click the spectrum settings gear → Window → Hanning). This gives the best frequency resolution for narrow peaks.</li>
+<li>Set the number of bins to <strong>≥ 16,384</strong> (spectrum settings → Bins). More bins = finer frequency resolution. For a 500 kS/s sample rate, 16,384 bins gives ~0.03 Hz per bin — more than enough to resolve the ~1.77 Hz linewidth of the rod.</li>
+<li>The x-axis shows frequency (Hz), the y-axis shows amplitude (dBV or linear mV). Click the y-axis label to toggle between them.</li>
+</ol>
+<h4 id="step-6-exporting-data">Step 6: Exporting Data</h4>
+<p>To save a waveform or spectrum as a CSV file for later analysis:</p>
+<ol>
+<li><strong>File → Save As</strong> (or Ctrl+S / Cmd+S).</li>
+<li>Choose <strong>CSV</strong> format.</li>
+<li>For spectrum data, make sure you are on the Spectrum tab when saving — PS7 saves whichever view is active.</li>
+<li>Saved files go into your chosen folder. The repository analysis scripts expect <code>.csv</code> files in <code>data/raw/</code>.</li>
+</ol>
+<h4 id="picoscope-settings-quick-reference">PicoScope Settings Quick Reference</h4>
+<p>The table below gives recommended PS7 settings for each experiment type. Set the AWG first, then configure the channel and trigger.</p>
+<p><strong>Table D.2a: PicoScope Settings by Experiment</strong></p>
+<table>
+<thead>
+<tr>
+<th>Experiment</th>
+<th>AWG Mode</th>
+<th>AWG Freq / Sweep</th>
+<th>AWG Amp</th>
+<th>Ch A Range</th>
+<th>Timebase</th>
+<th>Trigger</th>
+<th>View</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Exp 1</strong> Tap test</td>
+<td>OFF</td>
+<td>—</td>
+<td>—</td>
+<td>±50 mV</td>
+<td>1 ms/div</td>
+<td>Ch A, 5 mV rising, Auto</td>
+<td>Scope</td>
+</tr>
+<tr>
+<td><strong>Exp 2a</strong> Ring-down</td>
+<td>Sine, Triggered: 1 shot, 1 cycle</td>
+<td>17,700 Hz</td>
+<td>0.5 Vpp</td>
+<td>±500 mV</td>
+<td>50 ms/div</td>
+<td>Ch A, 50 mV rising, <strong>Single</strong></td>
+<td>Scope</td>
+</tr>
+<tr>
+<td><strong>Exp 2b</strong> Bandwidth</td>
+<td>Sweep: 17,000 → 18,500 Hz, 2 s</td>
+<td>—</td>
+<td>0.2 Vpp</td>
+<td>±200 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>Exp 3</strong> Mode comb</td>
+<td>Sweep: 1,000 → 200,000 Hz, 1 s</td>
+<td>—</td>
+<td>0.5 Vpp</td>
+<td>±500 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>Exp 4</strong> Thermal</td>
+<td>Same as Exp 3 (quick snapshot)</td>
+<td>—</td>
+<td>0.5 Vpp</td>
+<td>±500 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>Exp 5</strong> Perturbation</td>
+<td>Same as Exp 3</td>
+<td>—</td>
+<td>0.5 Vpp</td>
+<td>±500 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>Exp 6</strong> Recall</td>
+<td>Arbitrary → import <code>query_X.csv</code></td>
+<td>1 MS/s</td>
+<td>0.4 Vpp</td>
+<td>±200 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>Exp 7</strong> CW readout</td>
+<td>Sine, Continuous</td>
+<td>Measured f₁ ± 0.1 Hz</td>
+<td>0.2 Vpp</td>
+<td>±200 mV</td>
+<td>100 ms/div</td>
+<td>Auto (free-run)</td>
+<td>Scope</td>
+</tr>
+<tr>
+<td><strong>Exps 8–14</strong></td>
+<td>Per experiment instructions</td>
+<td>—</td>
+<td>Per exp</td>
+<td>±200 mV</td>
+<td>—</td>
+<td>Auto</td>
+<td>Spectrum</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Note on ±500 mV range.</strong> When using a BNC T-connector, the AWG output feeds directly into Channel A — so the channel &ldquo;sees&rdquo; the full drive voltage. Use ±500 mV for 0.5 Vpp drive to prevent clipping. For lower-amplitude experiments (0.2 Vpp), ±200 mV is sufficient.</p>
+</blockquote>
+<h4 id="importing-awg-waveforms-experiments-6-914">Importing AWG Waveforms (Experiments 6, 9–14)</h4>
+<p>The repository includes pre-computed multi-tone query waveforms for the packed-array experiments. To load them into PS7:</p>
+<ol>
+<li>Navigate to <code>data/results/awg/</code> in the repository. You will find <code>query_A.csv</code>, <code>query_B.csv</code>, <code>query_C.csv</code>, and <code>query_D.csv</code>.</li>
+<li>In PS7: <strong>Tools → Signal Generator → Wave Type → Arbitrary → Import</strong>.</li>
+<li>Select the desired CSV file. PS7 loads the normalized waveform (±1 values).</li>
+<li>Set <strong>Amplitude</strong> to ~0.40 Vpp and <strong>Sample Rate</strong> to 1 MS/s.</li>
+<li>Set <strong>Mode</strong> to Continuous, then click <strong>Start</strong>.</li>
+</ol>
+<p>To regenerate waveforms with custom parameters (different putty mass, rod length, etc.):</p>
+<div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all
+</code></pre></div>
+<h4 id="multi-rod-setup-experiments-914">Multi-Rod Setup (Experiments 9–14)</h4>
+<p>For experiments using 2+ rods:</p>
+<ul>
+<li><strong>Channel A</strong> connects to the drive PZT (transmitter rod).</li>
+<li><strong>Channel B</strong> connects to a second rod&rsquo;s PZT (receiver rod). Configure Channel B identically to Channel A (AC coupling, same range, 1× probe).</li>
+<li>For arrays with more than 2 rods, swap the Channel B BNC cable between rods and capture one at a time. Record which rod is connected for each measurement.</li>
+</ul>
 <h3 id="d3-experiment-1-building-the-resonator">D.3 Experiment 1 — Building the Resonator</h3>
 <p><strong>Objective:</strong> Assemble a functioning glass-rod acoustic resonator and verify electrical connectivity.</p>
 <p><strong>Time:</strong> 30 minutes active + 24 hours glue cure.</p>

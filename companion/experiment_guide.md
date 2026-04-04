@@ -92,6 +92,107 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 ⚠️ **Hearing.** The fundamental mode (17.7 kHz) is near the upper limit of human hearing. Some students may hear a faint whine during high-amplitude excitation. This is harmless at the drive levels used here (\<1 V), but if anyone reports discomfort, reduce the AWG amplitude to 0.1 V.
 
+### D.2a PicoScope Quick-Start Guide
+
+This section walks you through setting up the PicoScope 2204A from unboxing to first measurement. If you are using a different oscilloscope and function generator, adapt these steps to your equipment — the key parameters (frequencies, amplitudes, FFT settings) are the same.
+
+#### Step 1: Install PS7
+
+Download PicoScope 7 (PS7) from [picotech.com/downloads](https://www.picotech.com/downloads). It is free, requires no license key, and runs on Windows, macOS, and Linux. Install and launch PS7 before plugging in the hardware.
+
+#### Step 2: Connect the Hardware
+
+1. Plug the PicoScope 2204A into any USB port on your computer. PS7 should detect it automatically — you will see "PicoScope 2204A" in the bottom status bar.
+2. Connect a BNC cable from **Channel A** to your transmit/receive PZT disc. For Experiments 1–8 (single rod), a single BNC cable carries both the AWG drive signal and the received signal using a **BNC T-connector**: one arm to the AWG output, one arm to Channel A input, and the stem to the PZT leads. The PicoScope kit includes a T-connector; if not, any 50 Ω BNC T-adapter works.
+3. Set the probe attenuation to **1×** in PS7 (click the Channel A label → Probe → 1:1). Do not use a 10× oscilloscope probe — the PZT connects directly via BNC.
+
+#### Step 3: Default Channel Settings
+
+Use these settings for Channel A at the start of every experiment, then adjust per the experiment table below:
+
+| Setting | Value | Where in PS7 |
+|---------|-------|-------------|
+| **Coupling** | AC | Click Channel A label → Coupling → AC |
+| **Range** | ±200 mV | Click Channel A label → Range → 200 mV |
+| **Probe** | 1× | Click Channel A label → Probe → 1:1 |
+| **Bandwidth** | Full | Leave at default (no bandwidth limit) |
+
+> **Why AC coupling?** The PZT generates a small DC offset when stressed by the glue bond. AC coupling blocks this offset and shows only the acoustic signal.
+
+#### Step 4: AWG (Signal Generator) Basics
+
+Open the signal generator panel: **Tools → Signal Generator** (or click the waveform icon in the toolbar). Key controls:
+
+| Control | What it does |
+|---------|--------------|
+| **Wave Type** | Sine, Square, Triangle, or **Arbitrary** (for imported CSV files) |
+| **Frequency** | Set the drive frequency (e.g. 17700 Hz for the fundamental mode) |
+| **Amplitude** | Peak-to-peak voltage. Start at **0.5 Vpp** for most experiments. Never exceed 2.0 Vpp. |
+| **Sweep** | For frequency sweeps (chirps): enable Sweep, set Start/Stop frequencies and Sweep Time |
+| **Trigger** | For burst mode: Trigger Source → "Scope" or "Manual", Shots = 1, Cycles = 1 |
+
+#### Step 5: FFT / Spectrum View
+
+Many experiments require a frequency-domain view. To enable it:
+
+1. Click the **Spectrum** tab at the top of the main view (next to the Scope tab), or go to **View → Spectrum**.
+2. Set the FFT window to **Hanning** (click the spectrum settings gear → Window → Hanning). This gives the best frequency resolution for narrow peaks.
+3. Set the number of bins to **≥ 16,384** (spectrum settings → Bins). More bins = finer frequency resolution. For a 500 kS/s sample rate, 16,384 bins gives ~0.03 Hz per bin — more than enough to resolve the ~1.77 Hz linewidth of the rod.
+4. The x-axis shows frequency (Hz), the y-axis shows amplitude (dBV or linear mV). Click the y-axis label to toggle between them.
+
+#### Step 6: Exporting Data
+
+To save a waveform or spectrum as a CSV file for later analysis:
+
+1. **File → Save As** (or Ctrl+S / Cmd+S).
+2. Choose **CSV** format.
+3. For spectrum data, make sure you are on the Spectrum tab when saving — PS7 saves whichever view is active.
+4. Saved files go into your chosen folder. The repository analysis scripts expect `.csv` files in `data/raw/`.
+
+#### PicoScope Settings Quick Reference
+
+The table below gives recommended PS7 settings for each experiment type. Set the AWG first, then configure the channel and trigger.
+
+**Table D.2a: PicoScope Settings by Experiment**
+
+| Experiment | AWG Mode | AWG Freq / Sweep | AWG Amp | Ch A Range | Timebase | Trigger | View |
+|-----------|----------|-------------------|---------|------------|----------|---------|------|
+| **Exp 1** Tap test | OFF | — | — | ±50 mV | 1 ms/div | Ch A, 5 mV rising, Auto | Scope |
+| **Exp 2a** Ring-down | Sine, Triggered: 1 shot, 1 cycle | 17,700 Hz | 0.5 Vpp | ±500 mV | 50 ms/div | Ch A, 50 mV rising, **Single** | Scope |
+| **Exp 2b** Bandwidth | Sweep: 17,000 → 18,500 Hz, 2 s | — | 0.2 Vpp | ±200 mV | — | Auto | Spectrum |
+| **Exp 3** Mode comb | Sweep: 1,000 → 200,000 Hz, 1 s | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
+| **Exp 4** Thermal | Same as Exp 3 (quick snapshot) | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
+| **Exp 5** Perturbation | Same as Exp 3 | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
+| **Exp 6** Recall | Arbitrary → import `query_X.csv` | 1 MS/s | 0.4 Vpp | ±200 mV | — | Auto | Spectrum |
+| **Exp 7** CW readout | Sine, Continuous | Measured f₁ ± 0.1 Hz | 0.2 Vpp | ±200 mV | 100 ms/div | Auto (free-run) | Scope |
+| **Exps 8–14** | Per experiment instructions | — | Per exp | ±200 mV | — | Auto | Spectrum |
+
+> **Note on ±500 mV range.** When using a BNC T-connector, the AWG output feeds directly into Channel A — so the channel "sees" the full drive voltage. Use ±500 mV for 0.5 Vpp drive to prevent clipping. For lower-amplitude experiments (0.2 Vpp), ±200 mV is sufficient.
+
+#### Importing AWG Waveforms (Experiments 6, 9–14)
+
+The repository includes pre-computed multi-tone query waveforms for the packed-array experiments. To load them into PS7:
+
+1. Navigate to `data/results/awg/` in the repository. You will find `query_A.csv`, `query_B.csv`, `query_C.csv`, and `query_D.csv`.
+2. In PS7: **Tools → Signal Generator → Wave Type → Arbitrary → Import**.
+3. Select the desired CSV file. PS7 loads the normalized waveform (±1 values).
+4. Set **Amplitude** to ~0.40 Vpp and **Sample Rate** to 1 MS/s.
+5. Set **Mode** to Continuous, then click **Start**.
+
+To regenerate waveforms with custom parameters (different putty mass, rod length, etc.):
+
+```bash
+PYTHONPATH=. python tools/awg_waveform.py --all
+```
+
+#### Multi-Rod Setup (Experiments 9–14)
+
+For experiments using 2+ rods:
+
+- **Channel A** connects to the drive PZT (transmitter rod).
+- **Channel B** connects to a second rod's PZT (receiver rod). Configure Channel B identically to Channel A (AC coupling, same range, 1× probe).
+- For arrays with more than 2 rods, swap the Channel B BNC cable between rods and capture one at a time. Record which rod is connected for each measurement.
+
 ### D.3 Experiment 1 — Building the Resonator
 
 **Objective:** Assemble a functioning glass-rod acoustic resonator and verify electrical connectivity.
