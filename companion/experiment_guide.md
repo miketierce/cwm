@@ -187,11 +187,23 @@ PYTHONPATH=. python tools/awg_waveform.py --all
 
 #### Multi-Rod Setup (Experiments 9–14)
 
-For experiments using 2+ rods:
+The packed-array experiments drive **all rods simultaneously** and read the **aggregate response** — this is the physical parallel search that defines CWM. You do not need a separate scope channel per rod.
 
-- **Channel A** connects to the drive PZT (transmitter rod).
-- **Channel B** connects to a second rod's PZT (receiver rod). Configure Channel B identically to Channel A (AC coupling, same range, 1× probe).
-- For arrays with more than 2 rods, swap the Channel B BNC cable between rods and capture one at a time. Record which rod is connected for each measurement.
+**Parallel wiring (primary topology):**
+
+1. Twist or solder all PZT "hot" leads (red wires) together. Do the same for all ground leads (black wires). A small terminal strip or screw-terminal block keeps this tidy.
+2. Connect the bundled leads to a single BNC cable. Use a BNC T-connector so the bundle connects to both the AWG output and Channel A input — the same topology as single-rod experiments, just with more PZTs on the wire.
+3. When you drive a query waveform, every rod receives it. The rod whose stored pattern best matches resonates most strongly, dominating the aggregate signal on Channel A. Off-resonance rods contribute negligible amplitude. This is associative recall happening in the physics.
+
+> **Electrical note.** Each PZT is ~28 nF. Ten in parallel = 280 nF (impedance ~32 Ω at 17.7 kHz). The AWG's 600 Ω output drives this easily. The parallel capacitance does not degrade signal quality — it is equivalent to a single larger transducer.
+
+**Per-rod diagnostic (optional):**
+
+To verify which rod is responding (useful the first time through Experiment 9), you can temporarily connect **Channel B** to a single rod's PZT while Channel A reads the aggregate:
+
+- **Channel A:** All PZTs in parallel (aggregate response via T-connector + AWG).
+- **Channel B:** One rod's PZT only (individual response). Configure identically to Channel A (AC coupling, same range, 1× probe).
+- Swap the Channel B cable between rods to confirm the matching rod dominates.
 
 ### D.3 Experiment 1 — Building the Resonator
 
@@ -749,7 +761,7 @@ Mathematically, this is equivalent to a Hopfield network (§2.3): each rod is a 
 
    _Software shortcut:_ `python tools/awg_waveform.py --all` generates all four query waveforms (CSV + WAV) in one step. Import each into the PicoScope AWG as described in Experiment 6.
 
-5. **Parallel query test.** Drive _all_ rods simultaneously with Query A. Monitor the acoustic response of each rod via its own PZT transducer (use separate PicoScope channels, or measure each rod's response sequentially with the same channel while driving all rods). Record the peak response amplitude for each rod.
+5. **Parallel query test.** Wire all rods' PZTs in parallel (see "Multi-Rod Setup" in Section D.2a) and drive the array with Query A. The aggregate FFT on Channel A shows the combined response — the matching rod's peaks will dominate. Record the peak response amplitude. To verify which rod is responding, optionally connect Channel B to individual rods one at a time while driving all rods on the parallel bus.
 
 6. **Record the discrimination matrix.** Repeat step 5 for Query B, Query C, and Query D. Fill in Worksheet D.8.
 
