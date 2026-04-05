@@ -578,25 +578,59 @@ def _enroll_face(username: str, image_bytes: bytes) -> dict:
 
 
 def _authenticate_face(image_bytes: bytes) -> dict:
-    """Authenticate by matching a webcam face against all enrolled faces."""
+    """Authenticate by converting the face image to a spectral query and
+    correlating against the rod fingerprint — the same physics pipeline
+    used for image search and vault auth.
+
+    Flow: webcam frame → perceptual hash → target vector →
+          correlate against every enrolled face's rod/channel fingerprint →
+          best spectral match = authenticated identity.
+    """
     face_db = _load_faces()
+    users_db = _load_users()
+    _ensure_rods(users_db)
 
     if not face_db.get("faces"):
         return {"authenticated": False, "error": "No faces enrolled yet."}
 
     query_hash = _average_hash_from_bytes(image_bytes)
+    query_target = _hash_to_target_vector(query_hash)
 
     results = []
     for uname, fdata in face_db["faces"].items():
+        rod_id = str(fdata["rod"])
+        channel = fdata["channel"]
+
+        # Get the rod's live spectral fingerprint (re-measured or from DB)
+        rod_data = face_db.get("rods", {}).get(rod_id) or users_db.get("rods", {}).get(rod_id)
+        if not rod_data:
+            continue
+
+        # Re-measure the rod (same as vault auth — fresh capture)
+        fp = _compute_rod_fingerprint(
+            pattern_name=rod_data["pattern"],
+            rod_id=int(rod_id),
+        )
+        measured_ch = _extract_channel(fp["fingerprint"], channel)
+
+        # Correlate the face-derived target against the rod's spectral channel
+        spectral_corr = _correlate(query_target, measured_ch)
+
+        # Also compute face-to-face hash similarity for display
         enrolled_hash = np.array(fdata["hash"])
-        corr = _correlate(query_hash, enrolled_hash)
+        face_corr = _correlate(query_hash, enrolled_hash)
+
         results.append({
             "username": uname,
-            "correlation": round(corr, 4),
-            "rod": fdata["rod"],
-            "channel": fdata["channel"],
+            "correlation": round(spectral_corr, 4),  # rod spectral auth
+            "face_similarity": round(face_corr, 4),   # visual similarity
+            "rod": rod_id,
+            "channel": channel,
             "thumbnail": fdata.get("thumbnail", ""),
         })
+
+    if not results:
+        return {"authenticated": False, "error": "No valid rod data for enrolled faces."}
 
     results.sort(key=lambda x: -x["correlation"])
 
@@ -610,13 +644,8 @@ def _authenticate_face(image_bytes: bytes) -> dict:
     else:
         margin = float("inf") if best["correlation"] > 0 else 0.0
 
-    # For face auth, use the same threshold as vault
+    # Auth requires spectral correlation above threshold — same physics gate as vault
     passed = best["correlation"] >= CORRELATION_THRESHOLD
-
-    # If face matched, also run the vault auth for the matched user
-    vault_result = None
-    if passed:
-        vault_result = _authenticate_user(best["username"])
 
     return {
         "authenticated": passed,
@@ -624,7 +653,6 @@ def _authenticate_face(image_bytes: bytes) -> dict:
         "margin_db": round(margin, 1),
         "all_results": results[:5],
         "total_faces": len(results),
-        "vault_auth": vault_result,
     }
 
 
@@ -792,11 +820,12 @@ def _build_proof() -> dict:
             "step_2": "Pillow: convert to 8×8 grayscale → 64 pixel values",
             "step_3": "Average hash: pixel > mean → 64-bit binary vector",
             "step_4": "Compress 64 bits → 5-D target vector (group means, L2-normalised)",
-            "step_5": "Correlate 5-D target against channel fingerprints (from Rayleigh physics)",
-            "step_6": "Greedy slot assignment: highest-correlating rod/channel",
-            "step_7": "Face query: 64-bit Pearson correlation against all enrolled face hashes",
-            "step_8": f"Pass if correlation ≥ {CORRELATION_THRESHOLD}",
-            "key_point": "Face hash discrimination depends on rod spectral geometry — without distinct rod fingerprints, channels would be indistinguishable",
+            "step_5": "For each enrolled face: re-measure their assigned rod (PicoScope or Rayleigh)",
+            "step_6": "Extract the face's channel from the 20-mode fingerprint → 5-D spectral vector",
+            "step_7": "Correlate face-derived target against rod channel spectral vector",
+            "step_8": f"Pass if spectral correlation ≥ {CORRELATION_THRESHOLD}",
+            "key_point": "The face image is just the addressing key — authentication is gated by rod "
+                         "spectral physics. No rod → no auth, even if the face matches perfectly.",
         },
         "why_hardware_matters": {
             "simulation_vs_real": "In simulation, rod fingerprints are deterministic from Rayleigh theory. "

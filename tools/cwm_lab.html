@@ -1619,15 +1619,18 @@
 						const thumb = m.thumbnail
 							? `<img src="data:image/jpeg;base64,${m.thumbnail}" style="width:28px;height:28px;border-radius:50%;object-fit:cover;vertical-align:middle">`
 							: ''
+						const faceSim =
+							m.face_similarity !== undefined
+								? ` (face: ${m.face_similarity})`
+								: ''
 						resultEl.innerHTML =
-							`<div class="face-match-badge pass">${thumb} ${m.username} — ${m.correlation} corr, ${data.margin_db} dB</div>` +
-							`<div style="color:var(--green);font-size:12px;margin-top:6px">Face verified! Signing in…</div>`
+							`<div class="face-match-badge pass">${thumb} ${m.username} — spectral ${m.correlation} corr, ${data.margin_db} dB${faceSim}</div>` +
+							`<div style="color:var(--green);font-size:12px;margin-top:6px">Face → Spectral auth passed! Signing in…</div>`
 
 						// Stop camera and sign in
 						stopFaceLogin()
 
-						// Set username and authenticate via vault too
-						authData = data.vault_auth || {
+						authData = {
 							authenticated: true,
 							username: m.username,
 							correlation: m.correlation,
@@ -1641,7 +1644,7 @@
 							pattern: '?',
 							face_auth: true,
 						}
-						authData.face_corr = m.correlation
+						authData.face_corr = m.face_similarity || m.correlation
 						authData.face_margin_db = data.margin_db
 						currentUser = m.username
 						setTimeout(() => enterApp(), 1000)
