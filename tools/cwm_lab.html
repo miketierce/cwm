@@ -1789,11 +1789,11 @@
 				}
 				html += `<div style="margin-top:8px;font-size:11px;color:var(--muted)">Physics source: <code>${vaultSteps.physics_source}</code></div>`
 
-				const hw = data.pipeline.why_hardware_matters
+				const hwMatters = data.pipeline.why_hardware_matters
 				html += `<div class="callout">
-					<strong>Simulation vs. Real Hardware:</strong> ${hw.simulation_vs_real}<br><br>
-					<strong>What changes with PicoScope:</strong> ${hw.what_changes_with_picoscope}<br><br>
-					<strong>Clonability:</strong> ${hw.clonability}
+					<strong>Simulation vs. Real Hardware:</strong> ${hwMatters.simulation_vs_real}<br><br>
+					<strong>What changes with PicoScope:</strong> ${hwMatters.what_changes_with_picoscope}<br><br>
+					<strong>Clonability:</strong> ${hwMatters.clonability}
 				</div></div>`
 
 				// ── Rod spectra ───────────────────────────────────────────
