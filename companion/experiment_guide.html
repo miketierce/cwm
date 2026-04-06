@@ -1189,6 +1189,120 @@ div.worksheet-plate th {
 <p>To regenerate waveforms with custom parameters (different putty mass, rod length, etc.):</p>
 <div class="highlight"><pre><span></span><code><span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/awg_waveform.py<span class="w"> </span>--all
 </code></pre></div>
+<h3 id="d2b-cwm-lab-experiment-wizard">D.2b CWM Lab Experiment Wizard</h3>
+<p>The <strong>Experiment Wizard</strong> inside CWM Lab automates PicoScope configuration, waveform capture, spectral analysis, and community result submission from one browser panel. It eliminates the need to manually set PicoScope 7 parameters — every setting from Table D.2a is pre-loaded and applied with one click.</p>
+<h4 id="starting-the-wizard">Starting the Wizard</h4>
+<ol>
+<li><strong>Launch CWM Lab</strong> (if not already running):</li>
+</ol>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/path/to/cwm
+<span class="nb">source</span><span class="w"> </span>.venv/bin/activate
+<span class="nv">PYTHONPATH</span><span class="o">=</span>.<span class="w"> </span>python<span class="w"> </span>tools/cwm_lab.py<span class="w"> </span>--port<span class="w"> </span><span class="m">8200</span>
+</code></pre></div>
+<ol>
+<li>Open <strong>http://localhost:8200</strong> in any browser.</li>
+<li>The <strong>🔬 Experiments</strong> tab opens by default showing the Experiment Wizard with scope status, preset selector, and capture controls.</li>
+</ol>
+<p>If a PicoScope 2204A is connected via USB, the status strip shows <strong>🟢 PicoScope Connected</strong>. Otherwise it shows <strong>🟡 No PicoScope — Simulation mode</strong>, and captures will use synthetic data computed from Rayleigh perturbation theory.</p>
+<h4 id="step-1-select-an-experiment">Step 1 — Select an Experiment</h4>
+<p>Choose a preset from the dropdown. Each preset corresponds to a PicoScope configuration from Table D.2a:</p>
+<table>
+<thead>
+<tr>
+<th>Preset</th>
+<th>Experiment</th>
+<th>AWG Mode</th>
+<th>View</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>exp01</strong></td>
+<td>Exp 1 – Mode Persistence (Tap)</td>
+<td>OFF</td>
+<td>Scope + Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp02a</strong></td>
+<td>Exp 2a – Ring-Down Decay</td>
+<td>Sine (1 shot)</td>
+<td>Scope + Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp02b</strong></td>
+<td>Exp 2b – Bandwidth / SNR</td>
+<td>Sweep 17–18.5 kHz</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp03</strong></td>
+<td>Exp 3 – Mode Comb</td>
+<td>Sweep 1–200 kHz</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp04</strong></td>
+<td>Exp 4 – Thermal Stability</td>
+<td>Sweep 1–200 kHz</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp05</strong></td>
+<td>Exp 5 – Perturbation</td>
+<td>Sweep 1–200 kHz</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp06</strong></td>
+<td>Exp 6 – Recall (Arbitrary)</td>
+<td>Load CSV</td>
+<td>Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp07</strong></td>
+<td>Exp 7 – CW Readout</td>
+<td>Sine (continuous)</td>
+<td>Scope + Spectrum</td>
+</tr>
+<tr>
+<td><strong>exp_generic</strong></td>
+<td>Exps 8–14</td>
+<td>Sweep 1–200 kHz</td>
+<td>Spectrum</td>
+</tr>
+</tbody>
+</table>
+<h4 id="step-2-configure">Step 2 — Configure</h4>
+<p>Click <strong>Configure</strong>. The wizard opens the PicoScope handle and applies all settings automatically:</p>
+<ul>
+<li>Channel A voltage range and coupling</li>
+<li>Trigger source, threshold, direction, and auto-trigger delay</li>
+<li>AWG waveform type, frequency, amplitude, and shot count</li>
+</ul>
+<p>A summary strip confirms the active configuration: experiment name, AWG mode, voltage range, and whether hardware or simulation is active.</p>
+<h4 id="step-3-capture">Step 3 — Capture</h4>
+<p>Click <strong>Capture</strong>. The wizard runs a block capture (3,968 samples at 1 MS/s for the ps2000 2204A), averages if configured, then computes the FFT and detects spectral peaks. Results appear immediately:</p>
+<ul>
+<li><strong>Waveform canvas</strong> — time-domain voltage vs. time (µs)</li>
+<li><strong>Spectrum canvas</strong> — FFT magnitude (dB) vs. frequency (kHz) with peak markers and noise floor</li>
+<li><strong>Peak table</strong> — detected peaks sorted by frequency, with SNR and resolution metadata</li>
+</ul>
+<p>You can click <strong>Capture</strong> again to re-acquire without reconfiguring. This is useful for Experiments 4 (thermal — capture at different temperatures) and 5 (perturbation — capture before and after adding mass).</p>
+<h4 id="step-4-export-to-community-firebase">Step 4 — Export to Community Firebase</h4>
+<p>After capturing, the <strong>Export to Community</strong> section appears. To contribute your results to the shared CWM research database:</p>
+<ol>
+<li><strong>Select the target experiment</strong> from the dropdown (e.g. &ldquo;Exp 1 – Mode Persistence&rdquo;).</li>
+<li><strong>Fill in rod details</strong> — material (default: Borosilicate glass), length (mm), diameter (mm). Captured peak frequencies are auto-populated into the submission.</li>
+<li>Optionally add a <strong>nickname</strong>, <strong>location</strong>, and <strong>notes</strong> describing your setup.</li>
+<li>Click <strong>🚀 Export to Community Firebase</strong>.</li>
+</ol>
+<p>The wizard authenticates anonymously with the CWM Firebase project, then submits your results through the server-validated endpoint. The data appears in the community aggregation at <a href="https://coherent-wave-memory.web.app">coherent-wave-memory.web.app</a>. Rate-limited to 5 submissions per minute.</p>
+<blockquote>
+<p><strong>No account required.</strong> Export uses Firebase anonymous authentication — you do not need a Google account or any credentials. Each session gets a unique anonymous UID for rate limiting and attribution.</p>
+<p><strong>Offline mode.</strong> If the internet is unavailable, the capture data is still saved locally in <code>data/results/lab/captures/</code> as JSON files. You can export later when connectivity returns.</p>
+</blockquote>
+<h4 id="closing-the-scope">Closing the Scope</h4>
+<p>Click <strong>Close Scope</strong> when finished to release the PicoScope handle. This is important if you want to switch to PicoScope 7 software, or if another application needs USB access to the device. The wizard automatically closes the scope when the CWM Lab server shuts down.</p>
 <h4 id="multi-rod-setup-experiments-914">Multi-Rod Setup (Experiments 9–14)</h4>
 <p>The packed-array experiments drive <strong>all rods simultaneously</strong> and read the <strong>aggregate response</strong> — this is the physical parallel search that defines CWM. You do not need a separate scope channel per rod.</p>
 <p><strong>Parallel wiring (primary topology):</strong></p>
@@ -2550,11 +2664,28 @@ div.worksheet-plate th {
 </tr>
 </tbody>
 </table>
-<p>| Metric                                           | Value                            |
-| ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
-| <strong>Crossover α (where best match switches A→B):</strong> | <span class="ex"><strong>0.50</strong></span> |
-| <strong>Expected crossover:</strong>                          | 0.50 |
-| <strong>Crossover error (actual − expected):</strong>          | <span class="ex">0.00</span> |</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Crossover α (where best match switches A→B):</strong></td>
+<td><span class="ex"><strong>0.50</strong></span></td>
+</tr>
+<tr>
+<td><strong>Expected crossover:</strong></td>
+<td>0.50</td>
+</tr>
+<tr>
+<td><strong>Crossover error (actual − expected):</strong></td>
+<td><span class="ex">0.00</span></td>
+</tr>
+</tbody>
+</table>
 <p><strong>Expected results.</strong> The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods&rsquo; acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.</p>
 <blockquote>
 <p><strong>O(1) scaling.</strong> The key observation: you could add 100 more rods to the array, and the search would still take the same amount of time—one acoustic cycle. Each rod evaluates its own match score simultaneously and independently. This is why CWM claims O(1) nearest-neighbor search: the computation time is set by the speed of sound in glass, not by the number of candidates.</p>
@@ -3364,8 +3495,16 @@ Lookup time: 42 ms (laptop) → 3.8 µs at MEMS scale
 <hr />
 <h3 id="d19-contributing-your-data">D.19 Contributing Your Data</h3>
 <p>We invite all experimenters—students, teachers, hobbyists, and researchers—to submit their results. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.</p>
-<h4 id="option-a-submit-online-recommended">Option A: Submit Online (Recommended)</h4>
-<p>The easiest way to contribute is through the CWM project website at <a href="https://coherent-wave-memory.web.app/experiment">coherent-wave-memory.web.app/experiment</a>. The site provides a guided submission form for each experiment:</p>
+<h4 id="option-a-submit-via-cwm-lab-experiment-wizard-recommended">Option A: Submit via CWM Lab Experiment Wizard (Recommended)</h4>
+<p>If you are using CWM Lab with the Experiment Wizard (§D.2b), you can export results directly from the capture interface:</p>
+<ol>
+<li>Open the Experiment Wizard and capture your data (see §D.2b for the full walkthrough).</li>
+<li>In the <strong>Export to Community</strong> section, select the target experiment, fill in rod details and optional metadata.</li>
+<li>Click <strong>🚀 Export to Community Firebase</strong>. The wizard authenticates anonymously and submits your results through the server-validated endpoint. No account required.</li>
+</ol>
+<p>Captured peaks, SNR, and noise floor values are auto-populated from the most recent capture. The data appears immediately at <a href="https://coherent-wave-memory.web.app">coherent-wave-memory.web.app</a>.</p>
+<h4 id="option-b-submit-online">Option B: Submit Online</h4>
+<p>You can also contribute through the CWM project website at <a href="https://coherent-wave-memory.web.app/experiment">coherent-wave-memory.web.app/experiment</a>. The site provides a guided submission form for each experiment:</p>
 <ol>
 <li>Navigate to <strong>coherent-wave-memory.web.app/experiment</strong> in any web browser.</li>
 <li>Select the experiment you completed from the experiment tabs at the top.</li>
@@ -3375,14 +3514,14 @@ Lookup time: 42 ms (laptop) → 3.8 µs at MEMS scale
 <li>Click <strong>Submit Results</strong>. Your data is saved anonymously and appears immediately in the <strong>Community Results</strong> section below the form, alongside submissions from other experimenters worldwide.</li>
 </ol>
 <p>No account is required. You can submit results for as many experiments as you like. The community results panel shows summary statistics (number of submissions, mean values) and individual result cards — a live, growing dataset that validates the physics across diverse setups.</p>
-<h4 id="option-b-submit-via-github">Option B: Submit via GitHub</h4>
+<h4 id="option-c-submit-via-github">Option C: Submit via GitHub</h4>
 <p>For advanced users who want to contribute raw data files:</p>
 <ol>
 <li>Photograph or scan your completed Worksheets D.1–D.13 and the Experiment Log (D.17).</li>
 <li>Export raw PicoScope waveform files (.psdata or .csv) for each experiment.</li>
 <li>Submit via pull request to the project repository at <a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a> in the <code>data/community/</code> directory. Include your Experiment Log as the commit message or PR description.</li>
 </ol>
-<h4 id="option-c-email">Option C: Email</h4>
+<h4 id="option-d-email">Option D: Email</h4>
 <p>Alternatively, email data files and scanned worksheets to the corresponding author.</p>
 <p>Every data point matters. A middle school classroom measuring Q = 3,000 on a 200 mm rod constrains the same physics as a university lab measuring Q = 9,000 on a 150 mm rod—and the diversity of rod geometries and construction techniques is itself scientifically valuable. Unexpected results (low Q, spurious modes, anomalous thermal coefficients) are <em>especially</em> welcome: they reveal failure modes that improve the guide for the next experimenter.</p>
 <hr />
@@ -3436,6 +3575,18 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <tr>
 <td><strong>PicoScope auto-detect</strong></td>
 <td>If <code>picosdk</code> is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations.</td>
+</tr>
+<tr>
+<td><strong>Experiment Wizard</strong> (Exps. 1–14)</td>
+<td>One-click PicoScope configuration from Table D.2a presets. Captures waveform + FFT spectrum, detects peaks, computes SNR, and exports results to the community Firebase database. See §D.2b.</td>
+</tr>
+<tr>
+<td><strong>CIM Demo</strong> (💻 tab)</td>
+<td>Compute-in-memory playground: store 16-bit patterns as eigenmode amplitudes, run Hopfield associative recall with adjustable noise, Boolean logic (AND/OR/XOR via superposition), and inner-product operations — all computed by wave-interference physics.</td>
+</tr>
+<tr>
+<td><strong>Quantum Bridge</strong> (⚛️ tab)</td>
+<td>Five interactive demos mapping quantum-computing capabilities to CWM classical equivalents: (1) classical superposition, (2) non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) room-temperature coherence vs qubit decoherence, (5) eigenmode orthogonality matrix. Runs on real hardware or simulation.</td>
 </tr>
 </tbody>
 </table>
@@ -3526,9 +3677,49 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <td><code>/api/library/{user}</code></td>
 <td>List a user&rsquo;s enrolled images</td>
 </tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/scope/status</code></td>
+<td>PicoScope connection status, driver, current config</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><code>/api/scope/presets</code></td>
+<td>Experiment wizard preset definitions (Table D.2a)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/scope/configure</code></td>
+<td>Configure scope for an experiment (<code>preset_id</code>, optional <code>pattern_name</code>)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/scope/capture</code></td>
+<td>Block capture + FFT spectrum + peak detection</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/scope/close</code></td>
+<td>Release PicoScope handle</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/scope/export</code></td>
+<td>Submit results to community Firebase (<code>experiment_id</code>, <code>data</code>, metadata)</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/qcb/multi-capture</code></td>
+<td>N consecutive captures for QND readout stability tests</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><code>/api/qcb/parallel-search</code></td>
+<td>Parallel matched-filter search across all rods and patterns</td>
+</tr>
 </tbody>
 </table>
-<p><strong>Data files:</strong> <code>data/results/lab/users.json</code> (user database), <code>data/results/lab/images_{user}.json</code> (per-user image libraries).</p>
+<p><strong>Data files:</strong> <code>data/results/lab/users.json</code> (user database), <code>data/results/lab/images_{user}.json</code> (per-user image libraries), <code>data/results/lab/captures/</code> (saved experiment captures).</p>
 <p><strong>Experiments that use this tool:</strong></p>
 <ul>
 <li><strong>Experiment 12</strong> (Acoustic Password Vault) — Registration, authentication, and attack testing.</li>

@@ -185,6 +185,80 @@ To regenerate waveforms with custom parameters (different putty mass, rod length
 PYTHONPATH=. python tools/awg_waveform.py --all
 ```
 
+### D.2b CWM Lab Experiment Wizard
+
+The **Experiment Wizard** inside CWM Lab automates PicoScope configuration, waveform capture, spectral analysis, and community result submission from one browser panel. It eliminates the need to manually set PicoScope 7 parameters — every setting from Table D.2a is pre-loaded and applied with one click.
+
+#### Starting the Wizard
+
+1. **Launch CWM Lab** (if not already running):
+
+```bash
+cd /path/to/cwm
+source .venv/bin/activate
+PYTHONPATH=. python tools/cwm_lab.py --port 8200
+```
+
+2. Open **http://localhost:8200** in any browser.
+3. The **🔬 Experiments** tab opens by default showing the Experiment Wizard with scope status, preset selector, and capture controls.
+
+If a PicoScope 2204A is connected via USB, the status strip shows **🟢 PicoScope Connected**. Otherwise it shows **🟡 No PicoScope — Simulation mode**, and captures will use synthetic data computed from Rayleigh perturbation theory.
+
+#### Step 1 — Select an Experiment
+
+Choose a preset from the dropdown. Each preset corresponds to a PicoScope configuration from Table D.2a:
+
+| Preset          | Experiment                     | AWG Mode          | View             |
+| --------------- | ------------------------------ | ----------------- | ---------------- |
+| **exp01**       | Exp 1 – Mode Persistence (Tap) | OFF               | Scope + Spectrum |
+| **exp02a**      | Exp 2a – Ring-Down Decay       | Sine (1 shot)     | Scope + Spectrum |
+| **exp02b**      | Exp 2b – Bandwidth / SNR       | Sweep 17–18.5 kHz | Spectrum         |
+| **exp03**       | Exp 3 – Mode Comb              | Sweep 1–200 kHz   | Spectrum         |
+| **exp04**       | Exp 4 – Thermal Stability      | Sweep 1–200 kHz   | Spectrum         |
+| **exp05**       | Exp 5 – Perturbation           | Sweep 1–200 kHz   | Spectrum         |
+| **exp06**       | Exp 6 – Recall (Arbitrary)     | Load CSV          | Spectrum         |
+| **exp07**       | Exp 7 – CW Readout             | Sine (continuous) | Scope + Spectrum |
+| **exp_generic** | Exps 8–14                      | Sweep 1–200 kHz   | Spectrum         |
+
+#### Step 2 — Configure
+
+Click **Configure**. The wizard opens the PicoScope handle and applies all settings automatically:
+
+- Channel A voltage range and coupling
+- Trigger source, threshold, direction, and auto-trigger delay
+- AWG waveform type, frequency, amplitude, and shot count
+
+A summary strip confirms the active configuration: experiment name, AWG mode, voltage range, and whether hardware or simulation is active.
+
+#### Step 3 — Capture
+
+Click **Capture**. The wizard runs a block capture (3,968 samples at 1 MS/s for the ps2000 2204A), averages if configured, then computes the FFT and detects spectral peaks. Results appear immediately:
+
+- **Waveform canvas** — time-domain voltage vs. time (µs)
+- **Spectrum canvas** — FFT magnitude (dB) vs. frequency (kHz) with peak markers and noise floor
+- **Peak table** — detected peaks sorted by frequency, with SNR and resolution metadata
+
+You can click **Capture** again to re-acquire without reconfiguring. This is useful for Experiments 4 (thermal — capture at different temperatures) and 5 (perturbation — capture before and after adding mass).
+
+#### Step 4 — Export to Community Firebase
+
+After capturing, the **Export to Community** section appears. To contribute your results to the shared CWM research database:
+
+1. **Select the target experiment** from the dropdown (e.g. "Exp 1 – Mode Persistence").
+2. **Fill in rod details** — material (default: Borosilicate glass), length (mm), diameter (mm). Captured peak frequencies are auto-populated into the submission.
+3. Optionally add a **nickname**, **location**, and **notes** describing your setup.
+4. Click **🚀 Export to Community Firebase**.
+
+The wizard authenticates anonymously with the CWM Firebase project, then submits your results through the server-validated endpoint. The data appears in the community aggregation at [coherent-wave-memory.web.app](https://coherent-wave-memory.web.app). Rate-limited to 5 submissions per minute.
+
+> **No account required.** Export uses Firebase anonymous authentication — you do not need a Google account or any credentials. Each session gets a unique anonymous UID for rate limiting and attribution.
+
+> **Offline mode.** If the internet is unavailable, the capture data is still saved locally in `data/results/lab/captures/` as JSON files. You can export later when connectivity returns.
+
+#### Closing the Scope
+
+Click **Close Scope** when finished to release the PicoScope handle. This is important if you want to switch to PicoScope 7 software, or if another application needs USB access to the device. The wizard automatically closes the scope when the CWM Lab server shuts down.
+
 #### Multi-Rod Setup (Experiments 9–14)
 
 The packed-array experiments drive **all rods simultaneously** and read the **aggregate response** — this is the physical parallel search that defines CWM. You do not need a separate scope channel per rod.
@@ -1265,9 +1339,19 @@ Each band samples a different frequency range of the rod's response. Because the
 
 We invite all experimenters—students, teachers, hobbyists, and researchers—to submit their results. Community data from diverse rod lengths, diameters, glass types, and environments will strengthen the empirical foundation of CWM and accelerate the transition from macro prototype to MEMS fabrication.
 
-#### Option A: Submit Online (Recommended)
+#### Option A: Submit via CWM Lab Experiment Wizard (Recommended)
 
-The easiest way to contribute is through the CWM project website at [coherent-wave-memory.web.app/experiment](https://coherent-wave-memory.web.app/experiment). The site provides a guided submission form for each experiment:
+If you are using CWM Lab with the Experiment Wizard (§D.2b), you can export results directly from the capture interface:
+
+1. Open the Experiment Wizard and capture your data (see §D.2b for the full walkthrough).
+2. In the **Export to Community** section, select the target experiment, fill in rod details and optional metadata.
+3. Click **🚀 Export to Community Firebase**. The wizard authenticates anonymously and submits your results through the server-validated endpoint. No account required.
+
+Captured peaks, SNR, and noise floor values are auto-populated from the most recent capture. The data appears immediately at [coherent-wave-memory.web.app](https://coherent-wave-memory.web.app).
+
+#### Option B: Submit Online
+
+You can also contribute through the CWM project website at [coherent-wave-memory.web.app/experiment](https://coherent-wave-memory.web.app/experiment). The site provides a guided submission form for each experiment:
 
 1. Navigate to **coherent-wave-memory.web.app/experiment** in any web browser.
 2. Select the experiment you completed from the experiment tabs at the top.
@@ -1278,7 +1362,7 @@ The easiest way to contribute is through the CWM project website at [coherent-wa
 
 No account is required. You can submit results for as many experiments as you like. The community results panel shows summary statistics (number of submissions, mean values) and individual result cards — a live, growing dataset that validates the physics across diverse setups.
 
-#### Option B: Submit via GitHub
+#### Option C: Submit via GitHub
 
 For advanced users who want to contribute raw data files:
 
@@ -1286,7 +1370,7 @@ For advanced users who want to contribute raw data files:
 2. Export raw PicoScope waveform files (.psdata or .csv) for each experiment.
 3. Submit via pull request to the project repository at [github.com/miketierce/cwm](https://github.com/miketierce/cwm) in the `data/community/` directory. Include your Experiment Log as the commit message or PR description.
 
-#### Option C: Email
+#### Option D: Email
 
 Alternatively, email data files and scanned worksheets to the corresponding author.
 
@@ -1334,6 +1418,9 @@ CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If
 | **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state.          |
 | **Hardware Proof Panel**                 | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics.                |
 | **PicoScope auto-detect**                | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations.            |
+| **Experiment Wizard** (Exps. 1–14)       | One-click PicoScope configuration from Table D.2a presets. Captures waveform + FFT spectrum, detects peaks, computes SNR, and exports results to the community Firebase database. See §D.2b.         |
+| **CIM Demo** (💻 tab)                    | Compute-in-memory playground: store 16-bit patterns as eigenmode amplitudes, run Hopfield associative recall with adjustable noise, Boolean logic (AND/OR/XOR via superposition), and inner-product operations — all computed by wave-interference physics. |
+| **Quantum Bridge** (⚛️ tab)              | Five interactive demos mapping quantum-computing capabilities to CWM classical equivalents: (1) classical superposition, (2) non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) room-temperature coherence vs qubit decoherence, (5) eigenmode orthogonality matrix. Runs on real hardware or simulation. |
 
 **Command-line options:**
 
@@ -1344,21 +1431,29 @@ CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If
 
 **API endpoints** (for programmatic use or testing):
 
-| Method | Path                  | Description                                                                    |
-| ------ | --------------------- | ------------------------------------------------------------------------------ |
-| `GET`  | `/`                   | Serves the web UI (`cwm_lab.html`)                                             |
-| `POST` | `/api/register`       | Register a new user (username, passphrase, rod_id, pattern)                    |
-| `POST` | `/api/authenticate`   | Authenticate (username, passphrase → correlation score)                        |
-| `POST` | `/api/enroll-image`   | Enroll an image (username, name, image as base64)                              |
-| `POST` | `/api/query-image`    | Query for nearest image match (username, image as base64)                      |
-| `POST` | `/api/enroll-face`    | Enroll a face selfie (username, image as base64)                               |
-| `POST` | `/api/face-auth`      | Authenticate via face scan (image as base64)                                   |
-| `GET`  | `/api/proof`          | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
-| `GET`  | `/api/users`          | List registered users                                                          |
-| `GET`  | `/api/faces`          | List users with enrolled faces                                                 |
-| `GET`  | `/api/library/{user}` | List a user's enrolled images                                                  |
+| Method | Path                   | Description                                                                    |
+| ------ | ---------------------- | ------------------------------------------------------------------------------ |
+| `GET`  | `/`                    | Serves the web UI (`cwm_lab.html`)                                             |
+| `POST` | `/api/register`        | Register a new user (username, passphrase, rod_id, pattern)                    |
+| `POST` | `/api/authenticate`    | Authenticate (username, passphrase → correlation score)                        |
+| `POST` | `/api/enroll-image`    | Enroll an image (username, name, image as base64)                              |
+| `POST` | `/api/query-image`     | Query for nearest image match (username, image as base64)                      |
+| `POST` | `/api/enroll-face`     | Enroll a face selfie (username, image as base64)                               |
+| `POST` | `/api/face-auth`       | Authenticate via face scan (image as base64)                                   |
+| `GET`  | `/api/proof`           | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
+| `GET`  | `/api/users`           | List registered users                                                          |
+| `GET`  | `/api/faces`           | List users with enrolled faces                                                 |
+| `GET`  | `/api/library/{user}`  | List a user's enrolled images                                                  |
+| `GET`  | `/api/scope/status`    | PicoScope connection status, driver, current config                            |
+| `GET`  | `/api/scope/presets`   | Experiment wizard preset definitions (Table D.2a)                              |
+| `POST` | `/api/scope/configure` | Configure scope for an experiment (`preset_id`, optional `pattern_name`)       |
+| `POST` | `/api/scope/capture`   | Block capture + FFT spectrum + peak detection                                  |
+| `POST` | `/api/scope/close`     | Release PicoScope handle                                                       |
+| `POST` | `/api/scope/export`    | Submit results to community Firebase (`experiment_id`, `data`, metadata)       |
+| `POST` | `/api/qcb/multi-capture`   | N consecutive captures for QND readout stability tests                     |
+| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods and patterns                |
 
-**Data files:** `data/results/lab/users.json` (user database), `data/results/lab/images_{user}.json` (per-user image libraries).
+**Data files:** `data/results/lab/users.json` (user database), `data/results/lab/images_{user}.json` (per-user image libraries), `data/results/lab/captures/` (saved experiment captures).
 
 **Experiments that use this tool:**
 

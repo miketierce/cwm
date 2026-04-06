@@ -48,9 +48,20 @@ CORRELATION_THRESHOLD = 0.85
 
 # Hardware detection — set once at startup
 HARDWARE_AVAILABLE = False
+SCOPE_FUNCTIONS_AVAILABLE = False
 try:
-    from tools.cwm_picoscope import check_hardware, measure_rod_fingerprint
+    from tools.cwm_picoscope import (
+        check_hardware, measure_rod_fingerprint,
+        get_experiment_presets as _get_experiment_presets,
+        get_scope_status as _get_scope_status,
+        configure_scope as _configure_scope,
+        capture_block as _capture_block,
+        compute_spectrum as _compute_spectrum,
+        close_scope as _close_scope,
+        is_scope_busy,
+    )
     HARDWARE_AVAILABLE = check_hardware()
+    SCOPE_FUNCTIONS_AVAILABLE = True
 except (ImportError, OSError):
     pass
 
@@ -80,7 +91,14 @@ def _compute_rod_fingerprint(
     rod_id: int = 1,
 ) -> dict:
     # ── Hardware path: real PicoScope measurement ─────────────────────
-    if HARDWARE_AVAILABLE:
+    # Skip hardware if the wizard has the scope handle open
+    hw_ok = HARDWARE_AVAILABLE
+    if hw_ok and SCOPE_FUNCTIONS_AVAILABLE:
+        try:
+            hw_ok = not is_scope_busy()
+        except Exception:
+            pass
+    if hw_ok:
         return measure_rod_fingerprint(
             rod_id=rod_id,
             pattern_name=pattern_name,
@@ -886,6 +904,122 @@ def _sanitize_for_json(data):
     return data
 
 
+# ── Scope / Experiment Wizard helpers ─────────────────────────────────────
+
+FIREBASE_API_KEY = "AIzaSyCxlNaRNwwOim4-bSYL7MrRuQmDBznlga0"
+CWM_SITE_URL = "https://coherent-wave-memory.web.app"
+
+_capture_counter = 0
+
+
+def _scope_status_safe() -> dict:
+    """Return scope status, handling the case where the module is unavailable."""
+    if SCOPE_FUNCTIONS_AVAILABLE:
+        return _get_scope_status()
+    return {
+        "hardware_available": False,
+        "scope_open": False,
+        "driver": None,
+        "config": None,
+    }
+
+
+def _scope_presets_safe() -> dict:
+    if SCOPE_FUNCTIONS_AVAILABLE:
+        return _get_experiment_presets()
+    return {}
+
+
+def _save_capture(capture: dict, spectrum: dict):
+    """Persist the latest capture to disk for record-keeping."""
+    global _capture_counter
+    _capture_counter += 1
+    cap_dir = DATA_DIR / "captures"
+    cap_dir.mkdir(parents=True, exist_ok=True)
+    fname = cap_dir / f"capture_{_capture_counter:04d}.json"
+    payload = {
+        "capture_id": _capture_counter,
+        "n_samples": capture.get("n_samples"),
+        "sample_rate": capture.get("sample_rate"),
+        "range_mv": capture.get("range_mv"),
+        "simulated": capture.get("simulated", False),
+        "peaks": spectrum.get("peaks", []),
+        "snr_db": spectrum.get("snr_db"),
+        "noise_floor_db": spectrum.get("noise_floor_db"),
+    }
+    fname.write_text(json.dumps(payload, indent=2))
+
+
+def _export_to_firebase(data: dict) -> dict:
+    """Export experiment results to the community CWM Firebase project.
+
+    Uses the Firebase Identity Toolkit REST API for anonymous auth,
+    then POSTs to the cwm-site server-validated endpoint.
+    """
+    import urllib.request
+    import urllib.error
+
+    experiment_id = data.get("experiment_id")
+    fields = data.get("data", {})
+    nickname = data.get("nickname", "")
+    location = data.get("location", "")
+    notes = data.get("notes", "")
+
+    if not experiment_id:
+        return {"error": "experiment_id is required.", "status": 400}
+    if not fields:
+        return {"error": "data fields are required.", "status": 400}
+
+    # Step 1: anonymous auth via Firebase REST API
+    try:
+        auth_url = (
+            "https://identitytoolkit.googleapis.com/v1/accounts:signUp"
+            f"?key={FIREBASE_API_KEY}"
+        )
+        auth_req = urllib.request.Request(
+            auth_url,
+            data=json.dumps({"returnSecureToken": True}).encode(),
+            headers={"Content-Type": "application/json"},
+        )
+        auth_resp = json.loads(
+            urllib.request.urlopen(auth_req, timeout=10).read()
+        )
+        id_token = auth_resp["idToken"]
+    except Exception as e:
+        return {"error": f"Firebase auth failed: {e}", "status": 401}
+
+    # Step 2: submit to cwm-site validated endpoint
+    try:
+        submit_url = f"{CWM_SITE_URL}/api/submit-experiment"
+        payload = {
+            "experimentId": experiment_id,
+            "data": fields,
+            "nickname": nickname or None,
+            "location": location or None,
+            "notes": notes or None,
+        }
+        submit_req = urllib.request.Request(
+            submit_url,
+            data=json.dumps(payload).encode(),
+            headers={
+                "Content-Type": "application/json",
+                "Authorization": f"Bearer {id_token}",
+            },
+        )
+        resp_bytes = urllib.request.urlopen(submit_req, timeout=15).read()
+        submit_resp = json.loads(resp_bytes)
+        return {
+            "ok": True,
+            "submission_id": submit_resp.get("id"),
+            "message": "Results submitted to community database!",
+        }
+    except urllib.error.HTTPError as e:
+        error_body = e.read().decode() if e.fp else str(e)
+        return {"error": f"Submission failed: {error_body}", "status": e.code}
+    except Exception as e:
+        return {"error": f"Submission failed: {e}", "status": 500}
+
+
 class LabHandler(SimpleHTTPRequestHandler):
     """Handle API routes and serve the frontend."""
 
@@ -903,6 +1037,10 @@ class LabHandler(SimpleHTTPRequestHandler):
             self._json_response(_get_faces())
         elif path == "/api/proof":
             self._json_response(_build_proof())
+        elif path == "/api/scope/status":
+            self._json_response(_scope_status_safe())
+        elif path == "/api/scope/presets":
+            self._json_response(_scope_presets_safe())
         elif path.startswith("/api/library/"):
             username = path.split("/api/library/", 1)[1]
             if username:
@@ -1034,6 +1172,116 @@ class LabHandler(SimpleHTTPRequestHandler):
                 image_bytes = base64.b64decode(image_b64)
                 result = _authenticate_face(image_bytes)
                 self._json_response(result)
+
+            # ── Scope / Experiment Wizard routes ──────────────
+            elif path == "/api/scope/configure":
+                data = json.loads(body)
+                preset_id = str(data.get("preset_id", "exp03")).strip()
+                pattern_name = str(data.get("pattern_name", "A")).strip()
+                awg_freq = data.get("awg_freq_hz")
+                if SCOPE_FUNCTIONS_AVAILABLE:
+                    result = _configure_scope(
+                        preset_id,
+                        pattern_name=pattern_name,
+                        awg_freq_hz=float(awg_freq) if awg_freq else None,
+                    )
+                    self._json_response(result)
+                else:
+                    self._json_response(
+                        {"error": "Scope module not available."}, 503
+                    )
+
+            elif path == "/api/scope/capture":
+                if SCOPE_FUNCTIONS_AVAILABLE:
+                    capture = _capture_block()
+                    if "error" in capture:
+                        self._json_response(capture, 400)
+                    else:
+                        spectrum = _compute_spectrum(
+                            capture["voltage_mv"], capture["sample_rate"]
+                        )
+                        # Save capture to data dir
+                        _save_capture(capture, spectrum)
+                        self._json_response(
+                            {**capture, "spectrum": spectrum}
+                        )
+                else:
+                    self._json_response(
+                        {"error": "Scope module not available."}, 503
+                    )
+
+            elif path == "/api/scope/close":
+                if SCOPE_FUNCTIONS_AVAILABLE:
+                    self._json_response(_close_scope())
+                else:
+                    self._json_response({"ok": True})
+
+            elif path == "/api/scope/export":
+                data = json.loads(body)
+                result = _export_to_firebase(data)
+                status = 200 if result.get("ok") else result.pop("status", 500)
+                self._json_response(result, status)
+
+            # ── Quantum-Classical Bridge routes ───────────────
+            elif path == "/api/qcb/multi-capture":
+                data = json.loads(body)
+                count = min(int(data.get("count", 5)), 20)
+                if not SCOPE_FUNCTIONS_AVAILABLE:
+                    self._json_response(
+                        {"error": "Scope module not available."}, 503
+                    )
+                    return
+                captures = []
+                for i in range(count):
+                    cap = _capture_block()
+                    if "error" in cap:
+                        self._json_response(cap, 400)
+                        return
+                    spec = _compute_spectrum(
+                        cap["voltage_mv"], cap["sample_rate"]
+                    )
+                    captures.append({
+                        "index": i,
+                        "voltage_mv": cap["voltage_mv"][:200],  # truncate for transport
+                        "sample_rate": cap["sample_rate"],
+                        "n_samples": cap["n_samples"],
+                        "spectrum": spec,
+                    })
+                self._json_response({"ok": True, "captures": captures, "count": count})
+
+            elif path == "/api/qcb/parallel-search":
+                db = _load_users()
+                patterns = ["A", "B", "C", "D"]
+                results = []
+                t0 = __import__("time").time()
+                for rod_id in range(1, min(N_RODS_DEFAULT + 1, 5)):
+                    for pidx, pname in enumerate(patterns):
+                        fp = _compute_rod_fingerprint(
+                            pname, rod_id=rod_id
+                        )
+                        results.append({
+                            "rod": rod_id,
+                            "pattern": pname,
+                            "fingerprint": fp.get("fingerprint", [])[:N_MODES],
+                        })
+                elapsed_ms = (__import__("time").time() - t0) * 1000
+                # Correlate all against a random query (first pattern)
+                if results:
+                    query = np.array(results[0]["fingerprint"])
+                    for r in results:
+                        fp = np.array(r["fingerprint"])
+                        if len(query) == len(fp) and len(fp) > 0:
+                            r["correlation"] = float(np.corrcoef(query, fp)[0, 1])
+                        else:
+                            r["correlation"] = 0.0
+                self._json_response({
+                    "ok": True,
+                    "query_pattern": results[0]["pattern"] if results else "A",
+                    "query_rod": 1,
+                    "results": results,
+                    "elapsed_ms": round(elapsed_ms, 2),
+                    "n_rods": N_RODS_DEFAULT,
+                })
 
             else:
                 self.send_error(404)

@@ -44,9 +44,51 @@ cwm/
 ├── prototypes/         # Prototype designs (prototype_a, prototype_b, glass_rod)
 ├── data/               # Raw data and results
 ├── docs/               # SIDEBARS.md, ROADMAP.md, PROTOCOLS.md, CONTRIBUTING.md
-├── tools/              # AWG waveform generator, md2pdf converters
+├── tools/              # CWM Lab, PicoScope driver, AWG generator, md2pdf converters
 └── archive/            # Old paper versions (v9–v15), original corpus, verification scripts
 ```
+
+## CWM Lab
+
+An interactive browser-based experiment platform that connects to a PicoScope 2204A and a 4-rod glass array. Falls back to deterministic Rayleigh simulation when no hardware is attached.
+
+### Quick Launch
+
+```bash
+source .venv/bin/activate
+PYTHONPATH=. python tools/cwm_lab.py --port 8200
+# open http://localhost:8200
+```
+
+### Tabs
+
+| Tab | What It Does |
+|-----|-------------|
+| **🔬 Experiments** | Wizard for all 14 experiments. Select a preset from Table D.2a, configure the PicoScope with one click, capture waveform + FFT spectrum, detect peaks, and export results to the community Firebase database. |
+| **💻 CIM Demo** | Compute-in-memory playground. Store 16-bit patterns as eigenmode amplitudes, run associative recall (Hopfield), Boolean logic (AND / OR / XOR via superposition), and inner-product operations — all computed by wave-interference physics. |
+| **⚛️ Quantum Bridge** | Five interactive demos mapping quantum-computing capabilities to their CWM classical equivalents: (1) Classical superposition, (2) Non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) Room-temperature coherence vs qubit decoherence, (5) Eigenmode orthogonality matrix. Runs on real PicoScope hardware or simulation. |
+| **🔐 Auth Demo** | Password vault (Exp 12), image search (Exp 13), face recognition, and content-addressable memory (Exp 14) — demonstrating CWM as a biometric and security substrate. |
+
+### API Endpoints
+
+| Method | Path | Description |
+|--------|------|-------------|
+| `GET` | `/` | Web UI |
+| `GET` | `/api/scope/status` | PicoScope connection status |
+| `GET` | `/api/scope/presets` | Experiment preset definitions (Table D.2a) |
+| `POST` | `/api/scope/configure` | Configure scope for an experiment |
+| `POST` | `/api/scope/capture` | Block capture + FFT + peak detection |
+| `POST` | `/api/scope/close` | Release PicoScope handle |
+| `POST` | `/api/scope/export` | Submit results to community Firebase |
+| `POST` | `/api/qcb/multi-capture` | N consecutive captures for QND stability tests |
+| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods |
+| `POST` | `/api/register` | Register a user |
+| `POST` | `/api/authenticate` | Authenticate by spectral correlation |
+| `POST` | `/api/enroll-image` | Enroll an image |
+| `POST` | `/api/query-image` | Query for nearest image match |
+| `POST` | `/api/enroll-face` | Enroll a face selfie |
+| `POST` | `/api/face-auth` | Authenticate via face scan |
+| `GET` | `/api/proof` | Full physics state (rod spectra, cross-correlations) |
 
 ## Quick Start
 
