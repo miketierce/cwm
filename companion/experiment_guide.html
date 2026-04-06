@@ -31,12 +31,6 @@
     margin-right: 0.85in;
 }
 
-/* Named page for landscape plates */
-@page plate {
-    size: letter landscape;
-    margin: 0.5in;
-}
-
 :root {
     --text: #1a1a1a;
     --muted: #555;
@@ -456,6 +450,11 @@ div.cwm-thumb p {
 }
 
 /* -- Landscape plate pages -- */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
 div.plate-page {
     page: plate;
     page-break-before: always;
@@ -473,6 +472,8 @@ div.plate-page img {
     max-height: 6.5in;
     width: auto;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 div.plate-page p {
@@ -483,7 +484,7 @@ div.plate-page p {
     line-height: 1.4;
 }
 
-/* Named page for portrait templates — 1:1 scale, zero margin */
+/* Named page for portrait templates — 1:1 physical scale, zero margin */
 @page template {
     size: letter;
     margin: 0;
@@ -507,10 +508,16 @@ div.template-page img {
 }
 
 /* Template instruction verso pages */
+@page template-inst {
+    size: letter;
+    margin: 1in;
+}
+
 div.template-instructions {
+    page: template-inst;
     page-break-before: always;
     page-break-after: always;
-    padding-top: 1.5in;
+    padding-top: 0.5in;
 }
 
 div.template-instructions h3 {
@@ -610,7 +617,13 @@ table, pre {
 }
 
 /* -- Printable worksheet pages -- */
+@page worksheet {
+    size: letter;
+    margin: 0.75in;
+}
+
 div.worksheet-plate {
+    page: worksheet;
     page-break-before: always;
     page-break-after: always;
     padding-top: 0.15in;
@@ -3873,64 +3886,46 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <p><em>All quantitative claims computed from first-principles simulation code (48 modules, 2,253 automated tests, all passing) and independently validated by finite element analysis. No curve fitting, no adjusted parameters, no post-hoc corrections. Repository: github.com/miketierce/cwm.</em></p>
 <hr />
 <h2 id="illustration-plates">Illustration Plates</h2>
-<p><em>The following pages present experiment-relevant figures at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet. For the complete set of all 16 figures (including MEMS design, scaling, and fabrication plates), see Paper I.</em></p>
-<div class="blank-verso">&nbsp;</div>
-
+<p><em>The following pages present experiment-relevant figures at full landscape scale for detailed examination. For the complete set of all 16 figures (including MEMS design, scaling, and fabrication plates), see Paper I.</em></p>
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig1_architecture.svg" alt="Plate 1: CWM Architecture"/>
 <p><strong>Figure 1.</strong> CWM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, CWM unifies storage and computation in the same physical process.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig3_eigenmode_encoding.svg" alt="Plate 2: Eigenmode Encoding"/>
 <p><strong>Figure 3.</strong> Eigenmode encoding. <em>(a)</em> Standing wave mode shapes for modes n = 1, 2, 3, … N within a glass rod — each mode is an independent information channel at a distinct frequency. <em>(b)</em> Perturbation effect: adding mass at a specific position shifts each mode frequency by a different amount (Rayleigh perturbation formula), creating a unique spectral fingerprint that encodes the perturbation's position and mass.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig7_weight_pruning.svg" alt="Plate 3: Synaptic Pruning for Associative Recall"/>
 <p><strong>Figure 7.</strong> Synaptic pruning optimization. <em>(a)</em> Weight matrix before and after pruning: entries below threshold θ are zeroed, removing inter-pattern crosstalk while preserving dominant pattern-encoding weights. <em>(b)</em> Recall accuracy vs. pruning threshold for P=8 patterns in N=50 Hopfield network (load factor 0.16). Optimal pruning at θ* = 0.055 achieves +10.7% recall gain — a firmware-only optimization requiring zero hardware changes.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig8_compute_in_memory.svg" alt="Plate 4: In-Situ Boolean Computation"/>
 <p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms CWM as a true compute-in-memory technology.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig11_prototype_spectrum.svg" alt="Plate 5: Prototype Eigenmode Spectrum"/>
 <p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg putty perturbation (red dashed), each mode shifts by a different Δfₙ depending on the putty position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (putty at antinode); mode 4 barely shifts (putty near node). Measured shifts match Rayleigh predictions to within 2%.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig12_ringdown.svg" alt="Plate 6: Ring-down and Q Measurement"/>
 <p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the USB oscilloscope is not the bottleneck.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig13_recall_discrimination.svg" alt="Plate 7: Associative Recall Discrimination"/>
 <p><strong>Figure 13.</strong> Associative recall demonstration. <em>(a)</em> Response amplitudes for an 8-pattern array when queried with the P4 spectrum: the matching pattern responds at 28 dB, 15 dB above the best non-matching pattern (P6 at 13 dB), providing a 30× power margin. <em>(b)</em> Cross-correlation matrix for four stored fingerprints confirms near-orthogonality: diagonal entries = 1.00, maximum off-diagonal = 0.21 (−13.6 dB). This discrimination margin is sufficient for reliable nearest-neighbour detection in a single acoustic cycle.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig15_cw_readout.svg" alt="Plate 8: Continuous-Wave Readout Gain"/>
 <p><strong>Figure 15.</strong> CW readout SNR gain vs. integration time. Lock-in detection at the mode frequency rejects all out-of-band noise, yielding gain = 10 log₁₀(T_int / τ). At 1 s: +7.5 dB; at 10 s: +17.5 dB; at 60 s: +25.2 dB over impulse ring-down. This is the electronic equivalent of a glass harmonica performer's sustained bow — continuous energy input builds the resonator to full amplitude.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/fig16_two_phase_readout.svg" alt="Plate 9: Two-Phase Readout Architecture"/>
@@ -3939,9 +3934,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 
 <hr />
 <h2 id="printable-divider-templates">Printable Divider Templates</h2>
-<p><em>The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Instructions for each template appear on the reverse side of each sheet when printed double-sided.</em></p>
-<div class="blank-verso">&nbsp;</div>
-
+<p><em>The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Assembly instructions follow each set of templates.</em></p>
 <div class="template-page">
 <img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_single_rod.svg" alt="Template T.1: Single-Rod Divider"/>
 </div>
@@ -3960,15 +3953,23 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </div>
 
 <div class="template-page">
-<img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_multi_rod.svg" alt="Template T.2: Multi-Rod Grid Divider"/>
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_multi_rod_2x2.svg" alt="Template T.2A: 2×2 Grid Divider (4 rods)"/>
+</div>
+
+<div class="template-page">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_multi_rod_3x2.svg" alt="Template T.2B: 3×2 Grid Divider (6 rods)"/>
+</div>
+
+<div class="template-page">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_multi_rod_5x2.svg" alt="Template T.2C: 5×2 Grid Divider (10 rods)"/>
 </div>
 
 <div class="template-instructions">
-<h3>Template T.2 — Multi-Rod Grid Divider Instructions</h3>
-<p>Three grid options for packed-array experiments: 2×2 (4 rods), 3×2 (6 rods), or 5×2 (10 rods, for Experiment 12), all with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<h3>Templates T.2A / T.2B / T.2C — Multi-Rod Grid Divider Instructions</h3>
+<p>The three preceding templates provide 1:1-scale pinhole patterns for packed-array experiments: 2×2 (4 rods, Experiments 9–11), 3×2 (6 rods), or 5×2 (10 rods, Experiment 12). All use 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
 <p>Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). If using a different enclosure, cut the cardboard to match your box’s interior cross-section and center the pinhole grid accordingly.</p>
 <ol>
-<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
+<li>Print the template page for your chosen grid at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
 <li>Cut out the template along the dashed line. Tape it to cardboard and trace, marking all ⊙ positions.</li>
 <li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22). All pinholes must be at the same height as the single-rod template so rods are interchangeable between mounts.</li>
 <li>Cut <strong>TWO</strong> dividers per grid option. Drop them into the box 75 mm apart. Slide rods through the aligned pinholes — each rod should pass through freely with no hard contact.</li>
@@ -3994,9 +3995,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 
 <hr />
 <h2 id="printable-worksheets">Printable Worksheets</h2>
-<p><em>The following pages present each experiment worksheet at full portrait scale for photocopying. Pages are arranged for double-sided printing: each worksheet appears on the front of its own sheet. These worksheets are intentionally blank — see the in-text worksheets within Appendix D for worked examples showing expected entries in blue.</em></p>
-<div class="blank-verso">&nbsp;</div>
-
+<p><em>The following pages present each experiment worksheet at full portrait scale for photocopying. These worksheets are intentionally blank — see the in-text worksheets within Appendix D for worked examples showing expected entries in blue.</em></p>
 <div class="worksheet-plate">
 <h4>Worksheet D.1 — Quality Factor Measurement</h4>
 <p class="ws-inst">Photocopy this page. Fill in one column per rod tested.</p>
@@ -4021,8 +4020,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.2 — Mode Spectrum Map</h4>
 <p class="ws-inst">Photocopy this page. Predicted frequencies are for a 150 mm rod — recalculate if your rod differs.</p>
@@ -4043,8 +4040,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.3 — Thermal Stability Log</h4>
@@ -4071,8 +4066,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.4 — Perturbation Encoding Data</h4>
@@ -4114,8 +4107,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.5 — Associative Recall Discrimination</h4>
 <p class="ws-inst">Photocopy this page. Record matched and non-matched query responses.</p>
@@ -4138,8 +4129,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.6 — CW Readout Comparison</h4>
 <p class="ws-inst">Photocopy this page. Compare impulse and continuous-wave readout performance.</p>
@@ -4160,8 +4149,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
@@ -4189,8 +4176,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.8 — Packed-Array Associative Recall</h4>
 <p class="ws-inst">Photocopy this page. Record query vs. rod responses for the full discrimination matrix.</p>
@@ -4213,8 +4198,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.9 — Nearest-Neighbor Search Crossover</h4>
@@ -4246,8 +4229,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.10 — Boolean Computation via Mode Superposition</h4>
 <p class="ws-inst">Photocopy this page. Record decoded bits for each Boolean operation.</p>
@@ -4273,8 +4254,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.11 — Acoustic Password Vault</h4>
 <p class="ws-inst">Photocopy this page. Record enrollment and verification results for polysemic vault.</p>
@@ -4296,8 +4275,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.12 — Acoustic Image Search</h4>
 <p class="ws-inst">Photocopy this page. Record image library enrollment and retrieval results.</p>
@@ -4315,8 +4292,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.13 — Acoustic CAM Lookup Table</h4>
@@ -4337,8 +4312,6 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Consolidated Experiment Log</h4>
@@ -4375,9 +4348,7 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 <tr><td><strong>Anomalies or unexpected observations</strong></td><td></td></tr>
 </tbody>
 </table>
-</div>
-
-<div class="blank-verso">&nbsp;</div><div class="colophon">
+</div><div class="colophon">
   <p><em>Coherent Wave Memory</em></p>
   <p>Version </p>
   <p>&copy; Mike Tierce</p>

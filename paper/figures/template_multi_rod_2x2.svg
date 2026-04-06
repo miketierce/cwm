@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" width="8.5in" height="11in">
+  <!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+  <!-- Option A: 2×2 Grid (4 rods) -->
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { font-size: 13pt; font-weight: 700; fill: #1a1a1a; }
+    .subtitle { font-size: 9.5pt; fill: #444; }
+    .label { font-size: 8.5pt; fill: #1a1a1a; }
+    .dim { font-size: 7.5pt; fill: #c00; font-weight: 600; }
+    .note { font-size: 7pt; fill: #555; font-style: italic; }
+    .cut-line { stroke: #333; stroke-width: 1.2; stroke-dasharray: 6,3; fill: none; }
+    .dim-line { stroke: #c00; stroke-width: 0.6; fill: none; }
+    .dim-arrow { fill: #c00; stroke: none; }
+    .pinhole { fill: none; stroke: #c00; stroke-width: 1.5; }
+    .crosshair { stroke: #c00; stroke-width: 0.5; stroke-dasharray: 2,1; }
+    .chamber { fill: none; stroke: #2a7fff; stroke-width: 0.6; stroke-dasharray: 3,2; }
+  </style>
+
+  <!-- Page title -->
+  <text x="306" y="32" text-anchor="middle" class="title">Template T.2A — Multi-Rod Grid Divider: 2×2 (4 rods)</text>
+  <text x="306" y="46" text-anchor="middle" class="subtitle">Print at 100% (no scaling) on US Letter paper. Verify the ruler below measures exactly 50 mm.</text>
+
+  <!-- Calibration ruler -->
+  <g transform="translate(206, 56)">
+    <rect x="0" y="0" width="141.73" height="12" fill="none" stroke="#333" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="0" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="141.73" y1="0" x2="141.73" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="28.35" y1="0" x2="28.35" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="56.69" y1="0" x2="56.69" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="85.04" y1="0" x2="85.04" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="113.39" y1="0" x2="113.39" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="14.17" y1="0" x2="14.17" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="42.52" y1="0" x2="42.52" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="70.87" y1="0" x2="70.87" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="99.21" y1="0" x2="99.21" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="127.56" y1="0" x2="127.56" y2="5" stroke="#333" stroke-width="0.3"/>
+    <text x="0" y="24" class="label" text-anchor="middle">0</text>
+    <text x="28.35" y="24" class="label" text-anchor="middle">10</text>
+    <text x="56.69" y="24" class="label" text-anchor="middle">20</text>
+    <text x="85.04" y="24" class="label" text-anchor="middle">30</text>
+    <text x="113.39" y="24" class="label" text-anchor="middle">40</text>
+    <text x="141.73" y="24" class="label" text-anchor="middle">50 mm</text>
+  </g>
+
+  <!-- ================================================================== -->
+  <!-- 2×2 GRID at 1:1 SCALE                                              -->
+  <!-- Divider: 165mm × 140mm = 467.72 × 396.85 pt                       -->
+  <!-- Centered on page: x = (612-467.72)/2 = 72.14                       -->
+  <!-- y offset = 110 (after title + ruler)                                -->
+  <!-- 25mm = 70.87pt between centers                                      -->
+  <!-- Grid center = divider center: 233.86, 198.43                        -->
+  <!-- Offsets: ±12.5mm = ±35.44pt from center                            -->
+  <!-- ================================================================== -->
+
+  <text x="72" y="104" class="label" font-weight="700">2×2 GRID DIVIDER — cut 165 mm × 140 mm (6.5″ × 5.5″)</text>
+  <text x="72" y="116" class="note">For Experiments 9–11. Cut TWO identical dividers. Punch 4 holes at 7 mm Ø.</text>
+
+  <g transform="translate(72, 128)">
+    <!-- Outer cut line — 1:1 scale -->
+    <rect x="0" y="0" width="467.72" height="396.85" class="cut-line" rx="2"/>
+
+    <!-- Dimension: width -->
+    <line x1="0" y1="-12" x2="467.72" y2="-12" class="dim-line"/>
+    <line x1="0" y1="-18" x2="0" y2="-6" class="dim-line"/>
+    <line x1="467.72" y1="-18" x2="467.72" y2="-6" class="dim-line"/>
+    <text x="233.86" y="-16" text-anchor="middle" class="dim">165 mm (6.5″)</text>
+
+    <!-- Dimension: height -->
+    <line x1="-12" y1="0" x2="-12" y2="396.85" class="dim-line"/>
+    <line x1="-18" y1="0" x2="-6" y2="0" class="dim-line"/>
+    <line x1="-18" y1="396.85" x2="-6" y2="396.85" class="dim-line"/>
+    <text x="-24" y="198.43" text-anchor="middle" class="dim" transform="rotate(-90, -24, 198.43)">140 mm (5.5″)</text>
+
+    <!-- Center crosshairs -->
+    <line x1="0" y1="198.43" x2="467.72" y2="198.43" stroke="#eee" stroke-width="0.4"/>
+    <line x1="233.86" y1="0" x2="233.86" y2="396.85" stroke="#eee" stroke-width="0.4"/>
+
+    <!-- Pinholes: 2×2 grid, 25mm spacing, centered -->
+    <!-- Row 1: y = 198.43 - 35.44 = 162.99 -->
+    <!-- Row 2: y = 198.43 + 35.44 = 233.87 -->
+    <!-- Col 1: x = 233.86 - 35.44 = 198.42 -->
+    <!-- Col 2: x = 233.86 + 35.44 = 269.30 -->
+
+    <!-- R1 -->
+    <circle cx="198.42" cy="162.99" r="9.92" class="pinhole"/>
+    <line x1="183" y1="162.99" x2="214" y2="162.99" class="crosshair"/>
+    <line x1="198.42" y1="148" x2="198.42" y2="178" class="crosshair"/>
+    <text x="198.42" y="145" text-anchor="middle" class="dim">R1</text>
+
+    <!-- R2 -->
+    <circle cx="269.30" cy="162.99" r="9.92" class="pinhole"/>
+    <line x1="254" y1="162.99" x2="285" y2="162.99" class="crosshair"/>
+    <line x1="269.30" y1="148" x2="269.30" y2="178" class="crosshair"/>
+    <text x="269.30" y="145" text-anchor="middle" class="dim">R2</text>
+
+    <!-- R3 -->
+    <circle cx="198.42" cy="233.87" r="9.92" class="pinhole"/>
+    <line x1="183" y1="233.87" x2="214" y2="233.87" class="crosshair"/>
+    <line x1="198.42" y1="219" x2="198.42" y2="249" class="crosshair"/>
+    <text x="198.42" y="262" text-anchor="middle" class="dim">R3</text>
+
+    <!-- R4 -->
+    <circle cx="269.30" cy="233.87" r="9.92" class="pinhole"/>
+    <line x1="254" y1="233.87" x2="285" y2="233.87" class="crosshair"/>
+    <line x1="269.30" y1="219" x2="269.30" y2="249" class="crosshair"/>
+    <text x="269.30" y="262" text-anchor="middle" class="dim">R4</text>
+
+    <!-- Spacing dimensions -->
+    <line x1="198.42" y1="136" x2="269.30" y2="136" class="dim-line"/>
+    <polygon points="198.42,136 204,133 204,139" class="dim-arrow"/>
+    <polygon points="269.30,136 263.7,133 263.7,139" class="dim-arrow"/>
+    <text x="233.86" y="132" text-anchor="middle" class="dim">25 mm</text>
+
+    <line x1="280" y1="162.99" x2="280" y2="233.87" class="dim-line"/>
+    <polygon points="280,162.99 277,168.6 283,168.6" class="dim-arrow"/>
+    <polygon points="280,233.87 277,228.3 283,228.3" class="dim-arrow"/>
+    <text x="292" y="200" text-anchor="start" class="dim">25 mm</text>
+
+    <!-- Acoustic isolation chambers -->
+    <rect x="163" y="127.55" width="70.87" height="70.87" class="chamber"/>
+    <rect x="233.86" y="127.55" width="70.87" height="70.87" class="chamber"/>
+    <rect x="163" y="198.43" width="70.87" height="70.87" class="chamber"/>
+    <rect x="233.86" y="198.43" width="70.87" height="70.87" class="chamber"/>
+
+    <!-- PZT side label -->
+    <text x="8" y="198" text-anchor="start" class="label" fill="#2a7fff">← PZT this side</text>
+
+    <!-- Pinhole spec -->
+    <text x="233.86" y="290" text-anchor="middle" class="dim">All pinholes: 7 mm Ø (hollow punch, item 22)</text>
+
+    <!-- Cut instruction -->
+    <text x="6" y="16" class="note">✂ cut along dashed line</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="306" y="740" text-anchor="middle" class="note">Template T.2A — CWM Macro-Scale Experiment Guide — github.com/miketierce/cwm</text>
+  <text x="306" y="752" text-anchor="middle" class="note">1:1 scale. Cut TWO identical dividers per experiment. Space 75 mm apart inside CH-BOX. Blue dashes = acoustic chamber boundaries.</text>
+</svg>

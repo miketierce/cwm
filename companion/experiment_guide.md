@@ -49,26 +49,26 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 **Table D.2: Mitigation and Measurement Accessories**
 
-| #   | Component                              | Purpose (failure mode addressed)                    | Qty            | Est. Cost        | Source                                                                    |
-| --- | -------------------------------------- | --------------------------------------------------- | -------------- | ---------------- | ------------------------------------------------------------------------- |
-| 9   | Cardboard (from any box)               | Rod-support dividers for insulated box (FM 1: anchor loss) | 2 pieces       | free             | Any shipping box or cereal box                                            |
-| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                     | 1              | ~\$12            | Any kitchen/lab thermometer with 0.1 °C readout                           |
-| 11  | Insulated shipping box with foam liner | Thermal enclosure (FM 3: drift isolation); interior ≥ 7″ × 5.5″ × 6.5″ (see dimension guide below) | 1 | ~\$10 | [CH-BOX Small Insulated Box, 7.1″ × 6.2″ × 10″ outer](https://www.amazon.com/dp/B0BJ21YFNN?tag=cwmt-20) |
-| 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                        | 1              | ~\$20            | Amazon search: "milligram scale 0.001g"                                   |
-| 13  | Metric ruler, mm scale                 | Positioning masses along rod                        | 1              | ~\$3             | Any school supply                                                         |
-| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                 | 1 bottle       | ~\$4             | Any pharmacy                                                              |
-| 15  | Safety glasses                         | Eye protection (glass rods can snap)                | 1 per person   | ~\$3             | Any hardware store                                                        |
-| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)                 | 1 roll         | ~\$4             | Any hardware store                                                        |
-| 17  | Fine-tip permanent marker              | Marking positions on rod                            | 1              | ~\$2             | Any office supply                                                         |
-| 18  | Soft lint-free cloth                   | Handling and cleaning glass                         | several        | ~\$2             | Any store                                                                 |
-| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release              | 1 small bottle | ~\$3             | Any pharmacy                                                              |
-| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)      | 1 pack         | ~\$4             | Amazon search: "plastic transfer pipettes"                                |
-| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)               | —              | free             | Tap water                                                                 |
-| 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers           | 1 set          | ~\$10            | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20) |
-| 23  | Assorted sandpaper (120–3000 grit)     | *(Optional)* Lapping rounded rod ends flat for PZT bond | 1 pack     | ~\$7             | [3M Assorted Grit Sandpaper, 5-pack](https://www.amazon.com/gp/product/B001449TPS?tag=cwmt-20) |
-|     | **Accessories subtotal**               |                                                     |                | **~$77–$84**   |                                                                           |
-|     | **Grand total (without scope)**        |                                                     |                | **~$116–$131** |                                                                           |
-|     | **Grand total (with PicoScope)**       |                                                     |                | **~$308–$323** |                                                                           |
+| #   | Component                              | Purpose (failure mode addressed)                                                                   | Qty            | Est. Cost      | Source                                                                                                  |
+| --- | -------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------- | -------------- | ------------------------------------------------------------------------------------------------------- |
+| 9   | Cardboard (from any box)               | Rod-support dividers for insulated box (FM 1: anchor loss)                                         | 2 pieces       | free           | Any shipping box or cereal box                                                                          |
+| 10  | Digital thermometer, 0.1 °C resolution | Thermal drift monitoring (FM 3)                                                                    | 1              | ~\$12          | Any kitchen/lab thermometer with 0.1 °C readout                                                         |
+| 11  | Insulated shipping box with foam liner | Thermal enclosure (FM 3: drift isolation); interior ≥ 7″ × 5.5″ × 6.5″ (see dimension guide below) | 1              | ~\$10          | [CH-BOX Small Insulated Box, 7.1″ × 6.2″ × 10″ outer](https://www.amazon.com/dp/B0BJ21YFNN?tag=cwmt-20) |
+| 12  | Milligram precision scale (0.001 g)    | Weighing perturbation masses                                                                       | 1              | ~\$20          | Amazon search: "milligram scale 0.001g"                                                                 |
+| 13  | Metric ruler, mm scale                 | Positioning masses along rod                                                                       | 1              | ~\$3           | Any school supply                                                                                       |
+| 14  | Isopropyl alcohol, 91 %+               | Cleaning glass rods before assembly                                                                | 1 bottle       | ~\$4           | Any pharmacy                                                                                            |
+| 15  | Safety glasses                         | Eye protection (glass rods can snap)                                                               | 1 per person   | ~\$3           | Any hardware store                                                                                      |
+| 16  | Masking tape                           | PZT alignment jig (FM 2: centering)                                                                | 1 roll         | ~\$4           | Any hardware store                                                                                      |
+| 17  | Fine-tip permanent marker              | Marking positions on rod                                                                           | 1              | ~\$2           | Any office supply                                                                                       |
+| 18  | Soft lint-free cloth                   | Handling and cleaning glass                                                                        | several        | ~\$2           | Any store                                                                                               |
+| 19  | Acetone (nail polish remover)          | Emergency super-glue skin-bond release                                                             | 1 small bottle | ~\$3           | Any pharmacy                                                                                            |
+| 20  | Plastic transfer pipettes (3 mL)       | Placing water drops for Exp. 8 (rewritability)                                                     | 1 pack         | ~\$4           | Amazon search: "plastic transfer pipettes"                                                              |
+| 21  | Small bowl of water                    | CW excitation via wet finger (Exp. 7)                                                              | —              | free           | Tap water                                                                                               |
+| 22  | Hollow punch set (5–13 mm)             | Clean 7 mm pinholes in cardboard dividers                                                          | 1 set          | ~\$10          | [Jmuiiu 8 Pcs, 5–13 mm](https://www.amazon.com/dp/B0C6JSMSS8?tag=cwmt-20)                               |
+| 23  | Assorted sandpaper (120–3000 grit)     | _(Optional)_ Lapping rounded rod ends flat for PZT bond                                            | 1 pack         | ~\$7           | [3M Assorted Grit Sandpaper, 5-pack](https://www.amazon.com/gp/product/B001449TPS?tag=cwmt-20)          |
+|     | **Accessories subtotal**               |                                                                                                    |                | **~$77–$84**   |                                                                                                         |
+|     | **Grand total (without scope)**        |                                                                                                    |                | **~$116–$131** |                                                                                                         |
+|     | **Grand total (with PicoScope)**       |                                                                                                    |                | **~$308–$323** |                                                                                                         |
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
@@ -76,11 +76,11 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 > **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 25 mm spacing). If sourcing your own box, use these minimum interior dimensions:
 >
-> | Axis | Minimum interior | Purpose |
-> | --- | --- | --- |
-> | **Length** (rod axis) | 7″ / 178 mm | 150 mm rod + 15 mm PZT/cable clearance + 13 mm free-end clearance |
-> | **Width** | 5″ / 127 mm | 5-column grid at 25 mm spacing + 12.5 mm margin each side |
-> | **Height** | 3″ / 76 mm | 2-row grid at 25 mm spacing + 25 mm margin top and bottom |
+> | Axis                  | Minimum interior | Purpose                                                           |
+> | --------------------- | ---------------- | ----------------------------------------------------------------- |
+> | **Length** (rod axis) | 7″ / 178 mm      | 150 mm rod + 15 mm PZT/cable clearance + 13 mm free-end clearance |
+> | **Width**             | 5″ / 127 mm      | 5-column grid at 25 mm spacing + 12.5 mm margin each side         |
+> | **Height**            | 3″ / 76 mm       | 2-row grid at 25 mm spacing + 25 mm margin top and bottom         |
 >
 > The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—an insulated shipping box, a picnic cooler, or even a cardboard box lined with 1″ foam board.
 
@@ -110,12 +110,12 @@ Download PicoScope 7 (PS7) from [picotech.com/downloads](https://www.picotech.co
 
 Use these settings for Channel A at the start of every experiment, then adjust per the experiment table below:
 
-| Setting | Value | Where in PS7 |
-|---------|-------|-------------|
-| **Coupling** | AC | Click Channel A label → Coupling → AC |
-| **Range** | ±200 mV | Click Channel A label → Range → 200 mV |
-| **Probe** | 1× | Click Channel A label → Probe → 1:1 |
-| **Bandwidth** | Full | Leave at default (no bandwidth limit) |
+| Setting       | Value   | Where in PS7                           |
+| ------------- | ------- | -------------------------------------- |
+| **Coupling**  | AC      | Click Channel A label → Coupling → AC  |
+| **Range**     | ±200 mV | Click Channel A label → Range → 200 mV |
+| **Probe**     | 1×      | Click Channel A label → Probe → 1:1    |
+| **Bandwidth** | Full    | Leave at default (no bandwidth limit)  |
 
 > **Why AC coupling?** The PZT generates a small DC offset when stressed by the glue bond. AC coupling blocks this offset and shows only the acoustic signal.
 
@@ -123,13 +123,13 @@ Use these settings for Channel A at the start of every experiment, then adjust p
 
 Open the signal generator panel: **Tools → Signal Generator** (or click the waveform icon in the toolbar). Key controls:
 
-| Control | What it does |
-|---------|--------------|
-| **Wave Type** | Sine, Square, Triangle, or **Arbitrary** (for imported CSV files) |
-| **Frequency** | Set the drive frequency (e.g. 17700 Hz for the fundamental mode) |
+| Control       | What it does                                                                           |
+| ------------- | -------------------------------------------------------------------------------------- |
+| **Wave Type** | Sine, Square, Triangle, or **Arbitrary** (for imported CSV files)                      |
+| **Frequency** | Set the drive frequency (e.g. 17700 Hz for the fundamental mode)                       |
 | **Amplitude** | Peak-to-peak voltage. Start at **0.5 Vpp** for most experiments. Never exceed 2.0 Vpp. |
-| **Sweep** | For frequency sweeps (chirps): enable Sweep, set Start/Stop frequencies and Sweep Time |
-| **Trigger** | For burst mode: Trigger Source → "Scope" or "Manual", Shots = 1, Cycles = 1 |
+| **Sweep**     | For frequency sweeps (chirps): enable Sweep, set Start/Stop frequencies and Sweep Time |
+| **Trigger**   | For burst mode: Trigger Source → "Scope" or "Manual", Shots = 1, Cycles = 1            |
 
 #### Step 5: FFT / Spectrum View
 
@@ -155,17 +155,17 @@ The table below gives recommended PS7 settings for each experiment type. Set the
 
 **Table D.2a: PicoScope Settings by Experiment**
 
-| Experiment | AWG Mode | AWG Freq / Sweep | AWG Amp | Ch A Range | Timebase | Trigger | View |
-|-----------|----------|-------------------|---------|------------|----------|---------|------|
-| **Exp 1** Tap test | OFF | — | — | ±50 mV | 1 ms/div | Ch A, 5 mV rising, Auto | Scope |
-| **Exp 2a** Ring-down | Sine, Triggered: 1 shot, 1 cycle | 17,700 Hz | 0.5 Vpp | ±500 mV | 50 ms/div | Ch A, 50 mV rising, **Single** | Scope |
-| **Exp 2b** Bandwidth | Sweep: 17,000 → 18,500 Hz, 2 s | — | 0.2 Vpp | ±200 mV | — | Auto | Spectrum |
-| **Exp 3** Mode comb | Sweep: 1,000 → 200,000 Hz, 1 s | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
-| **Exp 4** Thermal | Same as Exp 3 (quick snapshot) | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
-| **Exp 5** Perturbation | Same as Exp 3 | — | 0.5 Vpp | ±500 mV | — | Auto | Spectrum |
-| **Exp 6** Recall | Arbitrary → import `query_X.csv` | 1 MS/s | 0.4 Vpp | ±200 mV | — | Auto | Spectrum |
-| **Exp 7** CW readout | Sine, Continuous | Measured f₁ ± 0.1 Hz | 0.2 Vpp | ±200 mV | 100 ms/div | Auto (free-run) | Scope |
-| **Exps 8–14** | Per experiment instructions | — | Per exp | ±200 mV | — | Auto | Spectrum |
+| Experiment             | AWG Mode                         | AWG Freq / Sweep     | AWG Amp | Ch A Range | Timebase   | Trigger                        | View     |
+| ---------------------- | -------------------------------- | -------------------- | ------- | ---------- | ---------- | ------------------------------ | -------- |
+| **Exp 1** Tap test     | OFF                              | —                    | —       | ±50 mV     | 1 ms/div   | Ch A, 5 mV rising, Auto        | Scope    |
+| **Exp 2a** Ring-down   | Sine, Triggered: 1 shot, 1 cycle | 17,700 Hz            | 0.5 Vpp | ±500 mV    | 50 ms/div  | Ch A, 50 mV rising, **Single** | Scope    |
+| **Exp 2b** Bandwidth   | Sweep: 17,000 → 18,500 Hz, 2 s   | —                    | 0.2 Vpp | ±200 mV    | —          | Auto                           | Spectrum |
+| **Exp 3** Mode comb    | Sweep: 1,000 → 200,000 Hz, 1 s   | —                    | 0.5 Vpp | ±500 mV    | —          | Auto                           | Spectrum |
+| **Exp 4** Thermal      | Same as Exp 3 (quick snapshot)   | —                    | 0.5 Vpp | ±500 mV    | —          | Auto                           | Spectrum |
+| **Exp 5** Perturbation | Same as Exp 3                    | —                    | 0.5 Vpp | ±500 mV    | —          | Auto                           | Spectrum |
+| **Exp 6** Recall       | Arbitrary → import `query_X.csv` | 1 MS/s               | 0.4 Vpp | ±200 mV    | —          | Auto                           | Spectrum |
+| **Exp 7** CW readout   | Sine, Continuous                 | Measured f₁ ± 0.1 Hz | 0.2 Vpp | ±200 mV    | 100 ms/div | Auto (free-run)                | Scope    |
+| **Exps 8–14**          | Per experiment instructions      | —                    | Per exp | ±200 mV    | —          | Auto                           | Spectrum |
 
 > **Note on ±500 mV range.** When using a BNC T-connector, the AWG output feeds directly into Channel A — so the channel "sees" the full drive voltage. Use ±500 mV for 0.5 Vpp drive to prevent clipping. For lower-amplitude experiments (0.2 Vpp), ±200 mV is sufficient.
 
@@ -217,7 +217,7 @@ To verify which rod is responding (useful the first time through Experiment 9), 
 
 1. **Clean the rod.** Wipe one glass rod with isopropyl alcohol and a soft cloth. Allow 2 minutes to dry completely. Finger oils dampen vibrations measurably.
 
-2. *(Optional)* **Lap one end flat.** If both ends of your rod are rounded (fire-polished), the PZT disc won't bond well to a convex surface. Place a sheet of 220-grit sandpaper on a flat surface (a glass plate, granite tile, or kitchen countertop works well). Hold the rod vertical and sand the end in a figure-8 pattern with light, even pressure and a few drops of water as lubricant. After 2–3 minutes the end should be visibly flat across the full 6 mm diameter. Finish with 400-grit for a smooth bond surface. Wipe clean with alcohol. If your rods already have one flat end, skip this step—use the flat end for the PZT.
+2. _(Optional)_ **Lap one end flat.** If both ends of your rod are rounded (fire-polished), the PZT disc won't bond well to a convex surface. Place a sheet of 220-grit sandpaper on a flat surface (a glass plate, granite tile, or kitchen countertop works well). Hold the rod vertical and sand the end in a figure-8 pattern with light, even pressure and a few drops of water as lubricant. After 2–3 minutes the end should be visibly flat across the full 6 mm diameter. Finish with 400-grit for a smooth bond surface. Wipe clean with alcohol. If your rods already have one flat end, skip this step—use the flat end for the PZT.
 
 3. **Build the cardboard rod mount inside the insulated box.** Cut two rectangles of flat cardboard to 165 × 140 mm (6.5″ × 5.5″)—sized to slot snugly inside the insulated box (item 11). See Template T.1 at the end of this guide for a printable 1:1 cutting pattern. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height, centered on the cardboard—sized just large enough for the 6 mm rod to pass through with minimal contact. Drop both dividers into the box standing upright, spaced 75 mm apart—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod slides horizontally through the aligned pinholes and should hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude out one end of the box for easy cable connection. Cut a small notch in the box lid above the PZT end for BNC cable and thermometer wire routing. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
 
@@ -841,10 +841,10 @@ Build 5 interpolated queries at $\alpha = 0.0, 0.25, 0.50, 0.75, 1.0$. (The firs
 | 1.00 (= Query B)  | <span class="ex">−42</span>     | <span class="ex">**−23**</span> | <span class="ex">Rod B</span> |
 
 | Metric                                           | Value                            |
-| ------------------------------------------------ | -------------------------------- | ----- | ---------------------------- |
+| ------------------------------------------------ | -------------------------------- |
 | **Crossover α (where best match switches A→B):** | <span class="ex">**0.50**</span> |
-| **Expected crossover:**                          | 0.50 |
-| **Crossover error (actual − expected):**          | <span class="ex">0.00</span> |
+| **Expected crossover:**                          | 0.50                             |
+| **Crossover error (actual − expected):**         | <span class="ex">0.00</span>     |
 
 **Expected results.** The crossover should occur near $\alpha = 0.5$ (within ±0.15). At the crossover, both rods respond at roughly equal amplitude. Away from the crossover, the nearer rod dominates by 10–20 dB. This demonstrates that the rods' acoustic responses naturally rank by similarity to the query—exactly the behavior needed for nearest-neighbor search.
 
@@ -1326,37 +1326,37 @@ CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If
 
 **Features:**
 
-| Feature | Description |
-| --- | --- |
-| **Password vault** (Exp. 12) | Register users with a rod/pattern assignment; authenticate by spectral correlation. Each rod supports 4 polysemic channels = 4 independent credentials. |
-| **Image search** (Exp. 13) | Drag-and-drop images to enroll a library. Each image is perceptual-hashed (64-bit average hash) and assigned to the best-matching rod/channel. Query by uploading an image or using the live webcam. |
-| **Face recognition** | Enroll a face selfie during registration; authenticate by webcam face scan. Demonstrates CWM-backed biometric matching. |
-| **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state. |
-| **Hardware Proof Panel** | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics. |
-| **PicoScope auto-detect** | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations. |
+| Feature                                  | Description                                                                                                                                                                                          |
+| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Password vault** (Exp. 12)             | Register users with a rod/pattern assignment; authenticate by spectral correlation. Each rod supports 4 polysemic channels = 4 independent credentials.                                              |
+| **Image search** (Exp. 13)               | Drag-and-drop images to enroll a library. Each image is perceptual-hashed (64-bit average hash) and assigned to the best-matching rod/channel. Query by uploading an image or using the live webcam. |
+| **Face recognition**                     | Enroll a face selfie during registration; authenticate by webcam face scan. Demonstrates CWM-backed biometric matching.                                                                              |
+| **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state.          |
+| **Hardware Proof Panel**                 | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics.                |
+| **PicoScope auto-detect**                | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations.            |
 
 **Command-line options:**
 
-| Option | Default | Description |
-| --- | --- | --- |
-| `--port` | `8200` | HTTP server port |
-| `--rods` | `4` | Number of rods in the array |
+| Option   | Default | Description                 |
+| -------- | ------- | --------------------------- |
+| `--port` | `8200`  | HTTP server port            |
+| `--rods` | `4`     | Number of rods in the array |
 
 **API endpoints** (for programmatic use or testing):
 
-| Method | Path | Description |
-| --- | --- | --- |
-| `GET` | `/` | Serves the web UI (`cwm_lab.html`) |
-| `POST` | `/api/register` | Register a new user (username, passphrase, rod_id, pattern) |
-| `POST` | `/api/authenticate` | Authenticate (username, passphrase → correlation score) |
-| `POST` | `/api/enroll-image` | Enroll an image (username, name, image as base64) |
-| `POST` | `/api/query-image` | Query for nearest image match (username, image as base64) |
-| `POST` | `/api/enroll-face` | Enroll a face selfie (username, image as base64) |
-| `POST` | `/api/face-auth` | Authenticate via face scan (image as base64) |
-| `GET` | `/api/proof` | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
-| `GET` | `/api/users` | List registered users |
-| `GET` | `/api/faces` | List users with enrolled faces |
-| `GET` | `/api/library/{user}` | List a user's enrolled images |
+| Method | Path                  | Description                                                                    |
+| ------ | --------------------- | ------------------------------------------------------------------------------ |
+| `GET`  | `/`                   | Serves the web UI (`cwm_lab.html`)                                             |
+| `POST` | `/api/register`       | Register a new user (username, passphrase, rod_id, pattern)                    |
+| `POST` | `/api/authenticate`   | Authenticate (username, passphrase → correlation score)                        |
+| `POST` | `/api/enroll-image`   | Enroll an image (username, name, image as base64)                              |
+| `POST` | `/api/query-image`    | Query for nearest image match (username, image as base64)                      |
+| `POST` | `/api/enroll-face`    | Enroll a face selfie (username, image as base64)                               |
+| `POST` | `/api/face-auth`      | Authenticate via face scan (image as base64)                                   |
+| `GET`  | `/api/proof`          | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
+| `GET`  | `/api/users`          | List registered users                                                          |
+| `GET`  | `/api/faces`          | List users with enrolled faces                                                 |
+| `GET`  | `/api/library/{user}` | List a user's enrolled images                                                  |
 
 **Data files:** `data/results/lab/users.json` (user database), `data/results/lab/images_{user}.json` (per-user image libraries).
 
@@ -1620,65 +1620,47 @@ _All quantitative claims computed from first-principles simulation code (48 modu
 
 ## Illustration Plates
 
-_The following pages present experiment-relevant figures at full landscape scale for detailed examination. Pages are arranged for double-sided printing: each illustration appears on the front of its own sheet. For the complete set of all 16 figures (including MEMS design, scaling, and fabrication plates), see Paper I._
-
-<div class="blank-verso">&nbsp;</div>
+_The following pages present experiment-relevant figures at full landscape scale for detailed examination. For the complete set of all 16 figures (including MEMS design, scaling, and fabrication plates), see Paper I._
 
 <div class="plate-page">
 <img src="figures/fig1_architecture.svg" alt="Plate 1: CWM Architecture"/>
 <p><strong>Figure 1.</strong> CWM architecture overview. <em>Left:</em> A glass resonator stores data as mass perturbations that shift eigenmode frequencies. <em>Center:</em> The spectral domain shows mode peaks before (solid) and after (dashed) perturbation — each pattern is a unique spectral fingerprint. <em>Right:</em> Driving an array with a query spectrum, the best-matching rod produces the largest response — a physical O(1) nearest-neighbor search. <em>Bottom:</em> Unlike von Neumann architectures, CWM unifies storage and computation in the same physical process.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="figures/fig3_eigenmode_encoding.svg" alt="Plate 2: Eigenmode Encoding"/>
 <p><strong>Figure 3.</strong> Eigenmode encoding. <em>(a)</em> Standing wave mode shapes for modes n = 1, 2, 3, … N within a glass rod — each mode is an independent information channel at a distinct frequency. <em>(b)</em> Perturbation effect: adding mass at a specific position shifts each mode frequency by a different amount (Rayleigh perturbation formula), creating a unique spectral fingerprint that encodes the perturbation's position and mass.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="figures/fig7_weight_pruning.svg" alt="Plate 3: Synaptic Pruning for Associative Recall"/>
 <p><strong>Figure 7.</strong> Synaptic pruning optimization. <em>(a)</em> Weight matrix before and after pruning: entries below threshold θ are zeroed, removing inter-pattern crosstalk while preserving dominant pattern-encoding weights. <em>(b)</em> Recall accuracy vs. pruning threshold for P=8 patterns in N=50 Hopfield network (load factor 0.16). Optimal pruning at θ* = 0.055 achieves +10.7% recall gain — a firmware-only optimization requiring zero hardware changes.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="figures/fig8_compute_in_memory.svg" alt="Plate 4: In-Situ Boolean Computation"/>
 <p><strong>Figure 8.</strong> In-situ Boolean computation via mode superposition. Two stored patterns (A, B) are superposed; the combined amplitude distribution is decoded into XOR (90.6% fidelity), AND (96.9%), and OR (93.8%) using amplitude thresholds — all from a single readout cycle. This provides 3× throughput vs. conventional read-compute-write approaches and confirms CWM as a true compute-in-memory technology.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="figures/fig11_prototype_spectrum.svg" alt="Plate 5: Prototype Eigenmode Spectrum"/>
 <p><strong>Figure 11.</strong> Eigenmode frequency comb of the 150 mm borosilicate prototype. <em>(a)</em> Unperturbed spectrum (blue solid) shows a clean comb at 17.7 kHz spacing. After 0.1 mg putty perturbation (red dashed), each mode shifts by a different Δfₙ depending on the putty position relative to that mode's antinode — the spectral fingerprint of the perturbation. <em>(b)</em> Zoomed view of modes 2–4 showing Lorentzian peak profiles and position-dependent shift magnitudes. Mode 3 shifts most (putty at antinode); mode 4 barely shifts (putty near node). Measured shifts match Rayleigh predictions to within 2%.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="figures/fig12_ringdown.svg" alt="Plate 6: Ring-down and Q Measurement"/>
 <p><strong>Figure 12.</strong> Q-factor measurement of the macro prototype. <em>(a)</em> Ring-down waveform of the fundamental mode (17.7 kHz) after impulse excitation: the exponential envelope decays with τ = 180 ms, giving Q = πf₁τ = 10,000. <em>(b)</em> Bandwidth method: the −3 dB linewidth of the Lorentzian resonance peak is Δf₃dB = 1.77 Hz, independently confirming Q = f₁/Δf₃dB = 10,000. Both methods agree that the prototype is material-loss-limited, not electronics-limited — the USB oscilloscope is not the bottleneck.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="figures/fig13_recall_discrimination.svg" alt="Plate 7: Associative Recall Discrimination"/>
 <p><strong>Figure 13.</strong> Associative recall demonstration. <em>(a)</em> Response amplitudes for an 8-pattern array when queried with the P4 spectrum: the matching pattern responds at 28 dB, 15 dB above the best non-matching pattern (P6 at 13 dB), providing a 30× power margin. <em>(b)</em> Cross-correlation matrix for four stored fingerprints confirms near-orthogonality: diagonal entries = 1.00, maximum off-diagonal = 0.21 (−13.6 dB). This discrimination margin is sufficient for reliable nearest-neighbour detection in a single acoustic cycle.</p>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="plate-page">
 <img src="figures/fig15_cw_readout.svg" alt="Plate 8: Continuous-Wave Readout Gain"/>
 <p><strong>Figure 15.</strong> CW readout SNR gain vs. integration time. Lock-in detection at the mode frequency rejects all out-of-band noise, yielding gain = 10 log₁₀(T_int / τ). At 1 s: +7.5 dB; at 10 s: +17.5 dB; at 60 s: +25.2 dB over impulse ring-down. This is the electronic equivalent of a glass harmonica performer's sustained bow — continuous energy input builds the resonator to full amplitude.</p>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="plate-page">
 <img src="figures/fig16_two_phase_readout.svg" alt="Plate 9: Two-Phase Readout Architecture"/>
@@ -1689,9 +1671,7 @@ _The following pages present experiment-relevant figures at full landscape scale
 
 ## Printable Divider Templates
 
-_The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Instructions for each template appear on the reverse side of each sheet when printed double-sided._
-
-<div class="blank-verso">&nbsp;</div>
+_The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to-page) and verify the calibration ruler before tracing. Assembly instructions follow each set of templates._
 
 <div class="template-page">
 <img src="figures/template_single_rod.svg" alt="Template T.1: Single-Rod Divider"/>
@@ -1711,15 +1691,23 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 </div>
 
 <div class="template-page">
-<img src="figures/template_multi_rod.svg" alt="Template T.2: Multi-Rod Grid Divider"/>
+<img src="figures/template_multi_rod_2x2.svg" alt="Template T.2A: 2×2 Grid Divider (4 rods)"/>
+</div>
+
+<div class="template-page">
+<img src="figures/template_multi_rod_3x2.svg" alt="Template T.2B: 3×2 Grid Divider (6 rods)"/>
+</div>
+
+<div class="template-page">
+<img src="figures/template_multi_rod_5x2.svg" alt="Template T.2C: 5×2 Grid Divider (10 rods)"/>
 </div>
 
 <div class="template-instructions">
-<h3>Template T.2 — Multi-Rod Grid Divider Instructions</h3>
-<p>Three grid options for packed-array experiments: 2×2 (4 rods), 3×2 (6 rods), or 5×2 (10 rods, for Experiment 12), all with 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<h3>Templates T.2A / T.2B / T.2C — Multi-Rod Grid Divider Instructions</h3>
+<p>The three preceding templates provide 1:1-scale pinhole patterns for packed-array experiments: 2×2 (4 rods, Experiments 9–11), 3×2 (6 rods), or 5×2 (10 rods, Experiment 12). All use 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
 <p>Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). If using a different enclosure, cut the cardboard to match your box’s interior cross-section and center the pinhole grid accordingly.</p>
 <ol>
-<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
+<li>Print the template page for your chosen grid at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
 <li>Cut out the template along the dashed line. Tape it to cardboard and trace, marking all ⊙ positions.</li>
 <li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22). All pinholes must be at the same height as the single-rod template so rods are interchangeable between mounts.</li>
 <li>Cut <strong>TWO</strong> dividers per grid option. Drop them into the box 75 mm apart. Slide rods through the aligned pinholes — each rod should pass through freely with no hard contact.</li>
@@ -1747,9 +1735,7 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 
 ## Printable Worksheets
 
-_The following pages present each experiment worksheet at full portrait scale for photocopying. Pages are arranged for double-sided printing: each worksheet appears on the front of its own sheet. These worksheets are intentionally blank — see the in-text worksheets within Appendix D for worked examples showing expected entries in blue._
-
-<div class="blank-verso">&nbsp;</div>
+_The following pages present each experiment worksheet at full portrait scale for photocopying. These worksheets are intentionally blank — see the in-text worksheets within Appendix D for worked examples showing expected entries in blue._
 
 <div class="worksheet-plate">
 <h4>Worksheet D.1 — Quality Factor Measurement</h4>
@@ -1775,8 +1761,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.2 — Mode Spectrum Map</h4>
 <p class="ws-inst">Photocopy this page. Predicted frequencies are for a 150 mm rod — recalculate if your rod differs.</p>
@@ -1797,8 +1781,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.3 — Thermal Stability Log</h4>
@@ -1825,8 +1807,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.4 — Perturbation Encoding Data</h4>
@@ -1868,8 +1848,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.5 — Associative Recall Discrimination</h4>
 <p class="ws-inst">Photocopy this page. Record matched and non-matched query responses.</p>
@@ -1892,8 +1870,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.6 — CW Readout Comparison</h4>
 <p class="ws-inst">Photocopy this page. Compare impulse and continuous-wave readout performance.</p>
@@ -1914,8 +1890,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.7 — Rewritable Water-Drop Encoding</h4>
@@ -1943,8 +1917,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.8 — Packed-Array Associative Recall</h4>
 <p class="ws-inst">Photocopy this page. Record query vs. rod responses for the full discrimination matrix.</p>
@@ -1967,8 +1939,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.9 — Nearest-Neighbor Search Crossover</h4>
@@ -2000,8 +1970,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.10 — Boolean Computation via Mode Superposition</h4>
 <p class="ws-inst">Photocopy this page. Record decoded bits for each Boolean operation.</p>
@@ -2027,8 +1995,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.11 — Acoustic Password Vault</h4>
 <p class="ws-inst">Photocopy this page. Record enrollment and verification results for polysemic vault.</p>
@@ -2050,8 +2016,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </table>
 </div>
 
-<div class="blank-verso">&nbsp;</div>
-
 <div class="worksheet-plate">
 <h4>Worksheet D.12 — Acoustic Image Search</h4>
 <p class="ws-inst">Photocopy this page. Record image library enrollment and retrieval results.</p>
@@ -2069,8 +2033,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Worksheet D.13 — Acoustic CAM Lookup Table</h4>
@@ -2091,8 +2053,6 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>
 
 <div class="worksheet-plate">
 <h4>Consolidated Experiment Log</h4>
@@ -2130,5 +2090,3 @@ _The following pages present each experiment worksheet at full portrait scale fo
 </tbody>
 </table>
 </div>
-
-<div class="blank-verso">&nbsp;</div>

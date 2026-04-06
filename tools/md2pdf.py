@@ -19,6 +19,7 @@ Usage:
 """
 
 import argparse
+import os
 import re
 import sys
 from pathlib import Path
@@ -43,12 +44,6 @@ CSS = """
 @page :right {
     margin-left: 1.15in;
     margin-right: 0.85in;
-}
-
-/* Named page for landscape plates */
-@page plate {
-    size: letter landscape;
-    margin: 0.5in;
 }
 
 :root {
@@ -470,6 +465,11 @@ div.cwm-thumb p {
 }
 
 /* -- Landscape plate pages -- */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
 div.plate-page {
     page: plate;
     page-break-before: always;
@@ -487,6 +487,8 @@ div.plate-page img {
     max-height: 6.5in;
     width: auto;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 div.plate-page p {
@@ -497,7 +499,7 @@ div.plate-page p {
     line-height: 1.4;
 }
 
-/* Named page for portrait templates — 1:1 scale, zero margin */
+/* Named page for portrait templates — 1:1 physical scale, zero margin */
 @page template {
     size: letter;
     margin: 0;
@@ -521,10 +523,16 @@ div.template-page img {
 }
 
 /* Template instruction verso pages */
+@page template-inst {
+    size: letter;
+    margin: 1in;
+}
+
 div.template-instructions {
+    page: template-inst;
     page-break-before: always;
     page-break-after: always;
-    padding-top: 1.5in;
+    padding-top: 0.5in;
 }
 
 div.template-instructions h3 {
@@ -624,7 +632,13 @@ table, pre {
 }
 
 /* -- Printable worksheet pages -- */
+@page worksheet {
+    size: letter;
+    margin: 0.75in;
+}
+
 div.worksheet-plate {
+    page: worksheet;
     page-break-before: always;
     page-break-after: always;
     padding-top: 0.15in;
@@ -1105,6 +1119,110 @@ def _enforce_recto_starts(pdf_path):
           f"({n} → {n + insertions_done} pages)")
 
 
+def _splice_template_pages(pdf_path, base_dir):
+    """Re-render template pages at zero margins for 1:1 physical scale.
+
+    Chromium's headless PDF renderer does not honour CSS named-page margin
+    overrides (``@page template { margin: 0 }``), so template pages inherit
+    the default gutter margins and print at ~77 % scale.  This function
+    re-renders each template SVG in a minimal zero-margin HTML document and
+    splices the correctly-scaled pages into the final PDF.
+    """
+    try:
+        from pypdf import PdfReader, PdfWriter
+    except ImportError:
+        print("  (pypdf not installed; skipping template splice)")
+        return
+
+    reader = PdfReader(str(pdf_path))
+
+    # Identify template pages by looking for SVG title text
+    template_markers = {
+        "Cardboard Divider Template (Single Rod)": "template_single_rod.svg",
+        "Multi-Rod Grid Divider: 2": "template_multi_rod_2x2.svg",
+        "Multi-Rod Grid Divider: 3": "template_multi_rod_3x2.svg",
+        "Multi-Rod Grid Divider: 5": "template_multi_rod_5x2.svg",
+        "Perturbation Placement Guide": "template_perturbation_guide.svg",
+    }
+
+    pages_to_replace = {}  # page_index -> svg_filename
+    for i, page in enumerate(reader.pages):
+        text = (page.extract_text() or "")[:300]
+        for marker, svg_file in template_markers.items():
+            if marker in text:
+                pages_to_replace[i] = svg_file
+                break
+
+    if not pages_to_replace:
+        print("  (no template pages found for splice)")
+        return
+
+    # Render each unique SVG as a 1-page zero-margin PDF
+    import tempfile
+    svg_pdfs = {}  # svg_filename -> PdfReader
+    with sync_playwright() as p:
+        browser = p.chromium.launch()
+        for svg_file in set(pages_to_replace.values()):
+            svg_abs = (base_dir / "figures" / svg_file).resolve()
+            if not svg_abs.exists():
+                print(f"  WARNING: {svg_abs} not found, skipping")
+                continue
+            tpl_html = (
+                '<!DOCTYPE html><html><head><style>'
+                '@page { size: letter; margin: 0; }'
+                '* { margin: 0; padding: 0; }'
+                'img { width: 8.5in; height: 11in; display: block; }'
+                '</style></head><body>'
+                f'<img src="{svg_abs.as_uri()}"/>'
+                '</body></html>'
+            )
+            fd, tmp_html = tempfile.mkstemp(suffix=".html", dir=str(base_dir))
+            fd2, tmp_pdf = tempfile.mkstemp(suffix=".pdf", dir=str(base_dir))
+            os.close(fd2)
+            try:
+                with open(fd, "w", encoding="utf-8") as fh:
+                    fh.write(tpl_html)
+                pg = browser.new_page()
+                pg.goto(Path(tmp_html).as_uri(), wait_until="networkidle")
+                pg.wait_for_timeout(500)
+                pg.pdf(
+                    path=tmp_pdf,
+                    format="Letter",
+                    margin={"top": "0", "right": "0", "bottom": "0", "left": "0"},
+                    prefer_css_page_size=True,
+                    print_background=True,
+                )
+                pg.close()
+                svg_pdfs[svg_file] = PdfReader(tmp_pdf)
+            finally:
+                Path(tmp_html).unlink(missing_ok=True)
+        browser.close()
+
+    # Rebuild the PDF, swapping template pages
+    writer = PdfWriter()
+    replaced = 0
+    for i, page in enumerate(reader.pages):
+        if i in pages_to_replace:
+            svg_file = pages_to_replace[i]
+            if svg_file in svg_pdfs:
+                writer.add_page(svg_pdfs[svg_file].pages[0])
+                replaced += 1
+                continue
+        writer.add_page(page)
+
+    with open(str(pdf_path), "wb") as f:
+        writer.write(f)
+
+    # Clean up temp PDFs
+    for svg_file, rdr in svg_pdfs.items():
+        try:
+            Path(rdr.stream.name).unlink(missing_ok=True)
+        except Exception:
+            pass
+
+    print(f"  ✓ Spliced {replaced} template page(s) at 1:1 scale")
+
+
 def html_to_pdf(html, pdf_path, md_path=None):
     """Render HTML to PDF using headless Chromium, then enforce recto starts."""
     import tempfile
@@ -1130,6 +1248,7 @@ def html_to_pdf(html, pdf_path, md_path=None):
                     "bottom": "1in",
                     "left": "1.15in",
                 },
+                prefer_css_page_size=True,
                 print_background=True,
                 display_header_footer=True,
                 header_template='<span style="font-size:1px;color:transparent;">.</span>',
@@ -1147,6 +1266,9 @@ def html_to_pdf(html, pdf_path, md_path=None):
 
     # Post-process: insert blank pages so every section opens on recto
     _enforce_recto_starts(pdf_path)
+
+    # Post-process: splice template pages rendered at 1:1 zero-margin scale
+    _splice_template_pages(pdf_path, base_dir)
 
 
 def main():
