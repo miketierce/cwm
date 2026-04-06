@@ -713,18 +713,18 @@ div.worksheet-plate th {
 <tr>
 <td>3</td>
 <td>Piezoelectric discs with leads</td>
-<td>10 mm dia, PZT ceramic, pre-soldered 4″ wire leads</td>
+<td>25 mm dia, PZT ceramic, pre-soldered 4″ wire leads</td>
 <td>15-pack</td>
 <td>~&#36;7</td>
-<td><a href="https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20">E-outstanding 15 PCS, 10 mm</a></td>
+<td><a href="https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20">E-outstanding 15 PCS</a> (labelled 10 mm; actual 25 mm)</td>
 </tr>
 <tr>
 <td>4</td>
 <td>Piezoelectric discs (alt.)</td>
-<td>10 mm dia, PZT, bare discs (solder leads yourself)</td>
+<td>25 mm dia, PZT, bare discs (solder leads yourself)</td>
 <td>10-pack</td>
 <td>~&#36;6</td>
-<td><a href="https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20">uxcell 10 Pcs, 10 mm</a></td>
+<td><a href="https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20">uxcell 10 Pcs</a> (labelled 10 mm; actual 25 mm)</td>
 </tr>
 <tr>
 <td>5</td>
@@ -1343,13 +1343,13 @@ div.worksheet-plate th {
 </blockquote>
 <ol>
 <li>
-<p><strong>Center the PZT disc (critical).</strong> Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).</p>
+<p><strong>Center the PZT disc (critical).</strong> Use the centering guide from Template T.4: cut out one 25 mm paper disc, lay it on the rod end, and align the blue circle with the rod edge. The red crosshair marks exact center. Alternatively, cut two small strips of masking tape (~12 mm each) and adhere them in a cross-hair pattern centered on the flat end face of the rod. The 25 mm PZT disc will overhang the 6 mm rod by 9.5 mm on each side—this is normal and does not affect performance. Only the 6 mm contact area couples acoustic energy. An off-center bond excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).</p>
 </li>
 <li>
 <p><strong>Apply glue sparingly.</strong> Place one tiny drop of cyanoacrylate—smaller than a pinhead, less than 0.5 mm in diameter—at the center of the cross-hair. <em>Less is more:</em> excess glue adds mass and viscoelastic damping that destroys the quality factor (Failure Mode 1).</p>
 </li>
 <li>
-<p><strong>Attach the PZT disc.</strong> Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.</p>
+<p><strong>Attach the PZT disc.</strong> Press the flat face of the 25 mm PZT disc onto the glued spot, centering the rod within the disc so the overhang is uniform all around (~9.5 mm). Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips (or paper guide).</p>
 </li>
 <li>
 <p><strong>Cure.</strong> Set the assembly aside in the insulated box mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.</p>
@@ -4182,6 +4182,25 @@ pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </s
 </ol>
 <p><strong>Patterns:</strong> A (quarter-points, Experiments 5/9), B (third-points, Experiments 6/9), C (midpoint, Experiments 6/8/9), D (fifth-points, Experiment 9). The combined reference ruler at the bottom shows all positions with color-coded markers.</p>
 <p><em>Rod spec: 6 mm dia × 150 mm borosilicate (PATIKIL B0D1NCM4R4). Perturbation mass: Mack's Pillow Soft silicone putty.</em></p>
+</div>
+
+<div class="template-page">
+<img src="file:///Users/Mike/Code/wcfoma/paper/figures/template_pzt_centering.svg" alt="Template T.4: PZT Disc Centering Guide"/>
+</div>
+
+<div class="template-instructions">
+<h3>Template T.4 — PZT Disc Centering Guide Instructions</h3>
+<p>This page provides 12 cut-out centering guides at 1:1 scale. Each guide shows the exact center of the 10 mm PZT disc and the 6 mm rod end, making it easy to align the disc on the rod before gluing.</p>
+<ol>
+<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm with a physical ruler.</li>
+<li>Cut out one centering guide along the <strong>grey dashed circle</strong> (the 10 mm PZT disc outline).</li>
+<li>Lay the paper disc on the flat end of your glass rod. Align the <strong>blue circle</strong> (6 mm rod outline) with the rod's edge — the red crosshair and center dot mark the exact center of the rod face.</li>
+<li>Place one tiny drop of cyanoacrylate (<strong>&lt; 0.5 mm diameter</strong>) on the red center dot.</li>
+<li>Remove the paper guide. Press the PZT disc face-down onto the rod end, centering it so 2 mm of PZT overhangs the rod uniformly all around.</li>
+<li>Hold firm, even pressure for 30 seconds. Cure 24 hours before use.</li>
+</ol>
+<p>Accurate centering ensures that the PZT drives <strong>only longitudinal modes</strong>. An off-center disc excites transverse and torsional modes that pollute the measured spectrum — see Failure Mode 2 in Experiment 1 for diagnostics and mitigation.</p>
+<p>6 guides per sheet (25 mm discs): enough for a full class kit with spares. Reprint as needed.</p>
 </div>
 
 <hr />

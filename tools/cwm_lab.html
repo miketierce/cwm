@@ -1120,14 +1120,23 @@
 
 			/* ── Quantum-Classical Bridge ──────────────────────────────── */
 			.qcb-intro {
-				background: linear-gradient(135deg, rgba(34,211,238,0.08), rgba(167,139,250,0.08));
+				background: linear-gradient(
+					135deg,
+					rgba(34, 211, 238, 0.08),
+					rgba(167, 139, 250, 0.08)
+				);
 				border: 1px solid var(--border);
 				border-radius: var(--radius);
 				padding: 20px 24px;
 				margin-bottom: 20px;
 			}
-			.qcb-intro h3 { margin: 0 0 8px; font-size: 18px; }
-			.qcb-intro h3 span { color: var(--accent2); }
+			.qcb-intro h3 {
+				margin: 0 0 8px;
+				font-size: 18px;
+			}
+			.qcb-intro h3 span {
+				color: var(--accent2);
+			}
 			.qcb-demos {
 				display: flex;
 				flex-direction: column;
@@ -1149,29 +1158,51 @@
 				border-bottom: 1px solid transparent;
 				transition: background 0.15s;
 			}
-			.qcb-demo-header:hover { background: var(--bg3); }
-			.qcb-demo-header.open { border-bottom-color: var(--border); }
+			.qcb-demo-header:hover {
+				background: var(--bg3);
+			}
+			.qcb-demo-header.open {
+				border-bottom-color: var(--border);
+			}
 			.qcb-demo-num {
-				width: 28px; height: 28px;
+				width: 28px;
+				height: 28px;
 				border-radius: 50%;
 				background: var(--accent2);
 				color: var(--bg);
-				display: flex; align-items: center; justify-content: center;
-				font-size: 13px; font-weight: 700;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 13px;
+				font-weight: 700;
 				flex-shrink: 0;
 			}
-			.qcb-demo-title { font-weight: 600; font-size: 14px; flex: 1; }
-			.qcb-demo-tag {
-				font-size: 10px; padding: 3px 8px;
-				border-radius: 10px; font-weight: 600;
+			.qcb-demo-title {
+				font-weight: 600;
+				font-size: 14px;
+				flex: 1;
 			}
-			.qcb-tag-quantum { background: rgba(167,139,250,0.2); color: #a78bfa; }
-			.qcb-tag-cwm { background: rgba(34,211,238,0.2); color: #22d3ee; }
+			.qcb-demo-tag {
+				font-size: 10px;
+				padding: 3px 8px;
+				border-radius: 10px;
+				font-weight: 600;
+			}
+			.qcb-tag-quantum {
+				background: rgba(167, 139, 250, 0.2);
+				color: #a78bfa;
+			}
+			.qcb-tag-cwm {
+				background: rgba(34, 211, 238, 0.2);
+				color: #22d3ee;
+			}
 			.qcb-demo-body {
 				padding: 0 18px;
 				max-height: 0;
 				overflow: hidden;
-				transition: max-height 0.3s ease, padding 0.3s ease;
+				transition:
+					max-height 0.3s ease,
+					padding 0.3s ease;
 			}
 			.qcb-demo-body.open {
 				max-height: 2000px;
@@ -1183,7 +1214,10 @@
 				line-height: 1.6;
 				margin-bottom: 14px;
 			}
-			.qcb-explanation em { color: var(--accent2); font-style: normal; }
+			.qcb-explanation em {
+				color: var(--accent2);
+				font-style: normal;
+			}
 			.qcb-comparison {
 				display: grid;
 				grid-template-columns: 1fr 1fr;
@@ -1191,7 +1225,9 @@
 				margin-bottom: 14px;
 			}
 			@media (max-width: 700px) {
-				.qcb-comparison { grid-template-columns: 1fr; }
+				.qcb-comparison {
+					grid-template-columns: 1fr;
+				}
 			}
 			.qcb-col {
 				background: var(--bg);
@@ -1204,8 +1240,12 @@
 				letter-spacing: 0.5px;
 				margin: 0 0 8px;
 			}
-			.qcb-col-quantum h5 { color: #a78bfa; }
-			.qcb-col-cwm h5 { color: #22d3ee; }
+			.qcb-col-quantum h5 {
+				color: #a78bfa;
+			}
+			.qcb-col-cwm h5 {
+				color: #22d3ee;
+			}
 			.qcb-live-area {
 				background: var(--bg);
 				border-radius: 8px;
@@ -1224,8 +1264,14 @@
 				padding: 6px 0;
 				font-size: 12px;
 			}
-			.qcb-metric-label { color: var(--muted); min-width: 140px; }
-			.qcb-metric-val { font-weight: 600; font-family: 'JetBrains Mono', monospace; }
+			.qcb-metric-label {
+				color: var(--muted);
+				min-width: 140px;
+			}
+			.qcb-metric-val {
+				font-weight: 600;
+				font-family: 'JetBrains Mono', monospace;
+			}
 			.qcb-run-btn {
 				margin-top: 10px;
 				padding: 10px 20px;
@@ -1759,262 +1805,505 @@
 			</div>
 
 			<!-- ═══════════ TAB 3: QUANTUM-CLASSICAL BRIDGE ═══════════ -->
-			<div class="tab-content" id="sectionQCB">
+			<div
+				class="tab-content"
+				id="sectionQCB">
 				<div class="qcb-intro">
 					<h3>⚛️ <span>Quantum-Classical Bridge</span></h3>
-					<p style="font-size:13px;color:var(--muted);line-height:1.6;margin:0">
-						CWM delivers three properties usually cited as motivations for quantum computing —
-						<em style="color:#a78bfa">superposition</em>, <em style="color:#a78bfa">interference-based computation</em>,
-						and <em style="color:#a78bfa">non-destructive parallel readout</em> — but achieves them
-						<em style="color:#22d3ee">classically via eigenmode orthogonality at room temperature</em>.
-						No cryogenics. No decoherence. No error correction.
-						Each demo below runs on your real PicoScope hardware (or in simulation).
+					<p
+						style="
+							font-size: 13px;
+							color: var(--muted);
+							line-height: 1.6;
+							margin: 0;
+						">
+						CWM delivers three properties usually cited as motivations for
+						quantum computing —
+						<em style="color: #a78bfa">superposition</em>,
+						<em style="color: #a78bfa">interference-based computation</em>, and
+						<em style="color: #a78bfa">non-destructive parallel readout</em> —
+						but achieves them
+						<em style="color: #22d3ee"
+							>classically via eigenmode orthogonality at room temperature</em
+						>. No cryogenics. No decoherence. No error correction. Each demo
+						below runs on your real PicoScope hardware (or in simulation).
 					</p>
 				</div>
 
 				<div class="qcb-demos">
 					<!-- Demo 1: Superposition -->
 					<div class="qcb-demo">
-						<div class="qcb-demo-header" onclick="qcbToggle(1)">
+						<div
+							class="qcb-demo-header"
+							onclick="qcbToggle(1)">
 							<div class="qcb-demo-num">1</div>
-							<div class="qcb-demo-title">Classical Superposition — Many Channels, One Rod</div>
-							<span class="qcb-demo-tag qcb-tag-quantum">Qubit Superposition</span>
+							<div class="qcb-demo-title">
+								Classical Superposition — Many Channels, One Rod
+							</div>
+							<span class="qcb-demo-tag qcb-tag-quantum"
+								>Qubit Superposition</span
+							>
 							<span class="qcb-demo-tag qcb-tag-cwm">CWM Eigenmodes</span>
-							<span class="arrow" id="qcbArrow1">▶</span>
+							<span
+								class="arrow"
+								id="qcbArrow1"
+								>▶</span
+							>
 						</div>
-						<div class="qcb-demo-body" id="qcbBody1">
+						<div
+							class="qcb-demo-body"
+							id="qcbBody1">
 							<div class="qcb-explanation">
-								A quantum computer uses qubit superposition to hold multiple states simultaneously.
-								CWM does the same thing classically: a single glass rod vibrates in <em>N independent eigenmodes at once</em>.
-								Each mode carries its own amplitude — the rod is literally in all states simultaneously.
-								The mathematical basis is identical: orthogonal basis functions that don't interfere.
+								A quantum computer uses qubit superposition to hold multiple
+								states simultaneously. CWM does the same thing classically: a
+								single glass rod vibrates in
+								<em>N independent eigenmodes at once</em>. Each mode carries its
+								own amplitude — the rod is literally in all states
+								simultaneously. The mathematical basis is identical: orthogonal
+								basis functions that don't interfere.
 							</div>
 							<div class="qcb-comparison">
 								<div class="qcb-col qcb-col-quantum">
 									<h5>Quantum</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										|ψ⟩ = α₁|1⟩ + α₂|2⟩ + … + αₙ|N⟩<br>
-										Requires millikelvin cooling<br>
-										Coherence time: ~100 µs (superconducting)<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										|ψ⟩ = α₁|1⟩ + α₂|2⟩ + … + αₙ|N⟩<br />
+										Requires millikelvin cooling<br />
+										Coherence time: ~100 µs (superconducting)<br />
 										Measurement collapses superposition
 									</div>
 								</div>
 								<div class="qcb-col qcb-col-cwm">
 									<h5>CWM (Your Hardware)</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										u(x,t) = Σ Aₙ sin(nπx/L) cos(2πfₙt)<br>
-										Operates at 300 K (room temperature)<br>
-										Ring-down Q > 10,000 (seconds of coherence)<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										u(x,t) = Σ Aₙ sin(nπx/L) cos(2πfₙt)<br />
+										Operates at 300 K (room temperature)<br />
+										Ring-down Q > 10,000 (seconds of coherence)<br />
 										FFT readout preserves all modes
 									</div>
 								</div>
 							</div>
 							<div class="qcb-live-area">
 								<h5>🔬 Live Demo — Tap the rod, see all modes at once</h5>
-								<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
-									A single impulse excites ALL eigenmodes simultaneously. The FFT reveals every mode's amplitude
-									without destroying any of them — classical superposition in action.
+								<p
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 8px;
+									">
+									A single impulse excites ALL eigenmodes simultaneously. The
+									FFT reveals every mode's amplitude without destroying any of
+									them — classical superposition in action.
 								</p>
-								<button class="btn btn-primary qcb-run-btn" onclick="qcbRunSuperposition()" id="btnQcb1">
+								<button
+									class="btn btn-primary qcb-run-btn"
+									onclick="qcbRunSuperposition()"
+									id="btnQcb1">
 									⚡ Capture Superposition
 								</button>
-								<canvas id="qcbSuperCanvas" width="1200" height="280" style="width:100%;border-radius:6px;margin-top:10px;display:none"></canvas>
-								<div id="qcbSuperResult" style="margin-top:8px;font-size:12px"></div>
+								<canvas
+									id="qcbSuperCanvas"
+									width="1200"
+									height="280"
+									style="
+										width: 100%;
+										border-radius: 6px;
+										margin-top: 10px;
+										display: none;
+									"></canvas>
+								<div
+									id="qcbSuperResult"
+									style="margin-top: 8px; font-size: 12px"></div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Demo 2: Non-Destructive Readout (QND) -->
 					<div class="qcb-demo">
-						<div class="qcb-demo-header" onclick="qcbToggle(2)">
+						<div
+							class="qcb-demo-header"
+							onclick="qcbToggle(2)">
 							<div class="qcb-demo-num">2</div>
-							<div class="qcb-demo-title">Non-Destructive Readout — Measure Without Disturbing</div>
+							<div class="qcb-demo-title">
+								Non-Destructive Readout — Measure Without Disturbing
+							</div>
 							<span class="qcb-demo-tag qcb-tag-quantum">QND Measurement</span>
-							<span class="qcb-demo-tag qcb-tag-cwm">Eigenmode Orthogonality</span>
-							<span class="arrow" id="qcbArrow2">▶</span>
+							<span class="qcb-demo-tag qcb-tag-cwm"
+								>Eigenmode Orthogonality</span
+							>
+							<span
+								class="arrow"
+								id="qcbArrow2"
+								>▶</span
+							>
 						</div>
-						<div class="qcb-demo-body" id="qcbBody2">
+						<div
+							class="qcb-demo-body"
+							id="qcbBody2">
 							<div class="qcb-explanation">
-								In quantum systems, measurement generally disturbs the state — the "measurement problem" that drives
-								error-correction overhead. CWM's eigenmode orthogonality provides a classical analogue of
-								<em>quantum non-demolition readout</em>: driving at frequency fₙ couples <em>exclusively</em> to mode n because
-								∫₀ᴸ sin(nπx/L)·sin(mπx/L) dx = 0 for n ≠ m. This isn't approximate — it's a mathematical identity.
+								In quantum systems, measurement generally disturbs the state —
+								the "measurement problem" that drives error-correction overhead.
+								CWM's eigenmode orthogonality provides a classical analogue of
+								<em>quantum non-demolition readout</em>: driving at frequency fₙ
+								couples <em>exclusively</em> to mode n because ∫₀ᴸ
+								sin(nπx/L)·sin(mπx/L) dx = 0 for n ≠ m. This isn't approximate —
+								it's a mathematical identity.
 							</div>
 							<div class="qcb-comparison">
 								<div class="qcb-col qcb-col-quantum">
 									<h5>Quantum</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										Measurement collapses |ψ⟩ to one eigenstate<br>
-										Requires error-correcting codes (surface code etc.)<br>
-										~1,000 physical qubits per logical qubit<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										Measurement collapses |ψ⟩ to one eigenstate<br />
+										Requires error-correcting codes (surface code etc.)<br />
+										~1,000 physical qubits per logical qubit<br />
 										Read once, state destroyed
 									</div>
 								</div>
 								<div class="qcb-col qcb-col-cwm">
 									<h5>CWM (Your Hardware)</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										FFT reads ALL modes simultaneously<br>
-										No error correction needed<br>
-										1 rod = 1 rod (no overhead)<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										FFT reads ALL modes simultaneously<br />
+										No error correction needed<br />
+										1 rod = 1 rod (no overhead)<br />
 										Read repeatedly, state unchanged
 									</div>
 								</div>
 							</div>
 							<div class="qcb-live-area">
 								<h5>🔬 Live Demo — Repeated readout stability</h5>
-								<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
-									Configure, then capture the spectrum multiple times in succession. Each readout should show
-									the same eigenmode amplitudes — proving the measurement doesn't disturb the superposition.
-									The correlation between consecutive reads quantifies QND fidelity.
+								<p
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 8px;
+									">
+									Configure, then capture the spectrum multiple times in
+									succession. Each readout should show the same eigenmode
+									amplitudes — proving the measurement doesn't disturb the
+									superposition. The correlation between consecutive reads
+									quantifies QND fidelity.
 								</p>
-								<div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-									<label style="font-size:12px;color:var(--muted)">Reads:</label>
-									<select id="qcbQndCount" style="width:60px;padding:4px 8px;background:var(--bg2);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:12px">
+								<div
+									style="
+										display: flex;
+										gap: 8px;
+										align-items: center;
+										flex-wrap: wrap;
+									">
+									<label style="font-size: 12px; color: var(--muted)"
+										>Reads:</label
+									>
+									<select
+										id="qcbQndCount"
+										style="
+											width: 60px;
+											padding: 4px 8px;
+											background: var(--bg2);
+											border: 1px solid var(--border);
+											border-radius: 4px;
+											color: var(--text);
+											font-size: 12px;
+										">
 										<option value="3">3</option>
-										<option value="5" selected>5</option>
+										<option
+											value="5"
+											selected>
+											5
+										</option>
 										<option value="10">10</option>
 									</select>
-									<button class="btn btn-primary qcb-run-btn" onclick="qcbRunQND()" id="btnQcb2" style="margin-top:0">
+									<button
+										class="btn btn-primary qcb-run-btn"
+										onclick="qcbRunQND()"
+										id="btnQcb2"
+										style="margin-top: 0">
 										⚡ Run QND Test
 									</button>
 								</div>
-								<canvas id="qcbQndCanvas" width="1200" height="300" style="width:100%;border-radius:6px;margin-top:10px;display:none"></canvas>
-								<div id="qcbQndResult" style="margin-top:8px;font-size:12px"></div>
+								<canvas
+									id="qcbQndCanvas"
+									width="1200"
+									height="300"
+									style="
+										width: 100%;
+										border-radius: 6px;
+										margin-top: 10px;
+										display: none;
+									"></canvas>
+								<div
+									id="qcbQndResult"
+									style="margin-top: 8px; font-size: 12px"></div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Demo 3: O(1) Parallel Search -->
 					<div class="qcb-demo">
-						<div class="qcb-demo-header" onclick="qcbToggle(3)">
+						<div
+							class="qcb-demo-header"
+							onclick="qcbToggle(3)">
 							<div class="qcb-demo-num">3</div>
-							<div class="qcb-demo-title">O(1) Parallel Search — All Patterns at Once</div>
-							<span class="qcb-demo-tag qcb-tag-quantum">Grover's Algorithm O(√N)</span>
-							<span class="qcb-demo-tag qcb-tag-cwm">Wave-Interference O(1)</span>
-							<span class="arrow" id="qcbArrow3">▶</span>
+							<div class="qcb-demo-title">
+								O(1) Parallel Search — All Patterns at Once
+							</div>
+							<span class="qcb-demo-tag qcb-tag-quantum"
+								>Grover's Algorithm O(√N)</span
+							>
+							<span class="qcb-demo-tag qcb-tag-cwm"
+								>Wave-Interference O(1)</span
+							>
+							<span
+								class="arrow"
+								id="qcbArrow3"
+								>▶</span
+							>
 						</div>
-						<div class="qcb-demo-body" id="qcbBody3">
+						<div
+							class="qcb-demo-body"
+							id="qcbBody3">
 							<div class="qcb-explanation">
-								Grover's algorithm searches N items in O(√N) operations — a quadratic quantum speedup.
-								CWM searches in <em>O(1)</em>: drive all rods with a query, every rod computes its dot product
-								via wave interference in a single acoustic propagation cycle (~3.8 µs).
-								The computation time is <em>independent of the number of patterns</em>.
+								Grover's algorithm searches N items in O(√N) operations — a
+								quadratic quantum speedup. CWM searches in <em>O(1)</em>: drive
+								all rods with a query, every rod computes its dot product via
+								wave interference in a single acoustic propagation cycle (~3.8
+								µs). The computation time is
+								<em>independent of the number of patterns</em>.
 							</div>
 							<div class="qcb-comparison">
 								<div class="qcb-col qcb-col-quantum">
 									<h5>Quantum (Grover)</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										100k items → √100,000 ≈ 316 iterations<br>
-										Each iteration ≈ 1 µs (gate time)<br>
-										Total: ~316 µs + overhead<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										100k items → √100,000 ≈ 316 iterations<br />
+										Each iteration ≈ 1 µs (gate time)<br />
+										Total: ~316 µs + overhead<br />
 										Requires coherent qubit register
 									</div>
 								</div>
 								<div class="qcb-col qcb-col-cwm">
 									<h5>CWM (Your 4-Rod Array)</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										All rods driven simultaneously<br>
-										Single acoustic cycle: 3.8 µs<br>
-										Independent of pattern count<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										All rods driven simultaneously<br />
+										Single acoustic cycle: 3.8 µs<br />
+										Independent of pattern count<br />
 										Works at room temperature
 									</div>
 								</div>
 							</div>
 							<div class="qcb-live-area">
 								<h5>🔬 Live Demo — Parallel matched-filter search</h5>
-								<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
-									Register patterns across all 4 rods, then query. The response amplitudes from all rods
-									arrive simultaneously — the winner has the highest correlation. Times shown are real wall-clock.
+								<p
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 8px;
+									">
+									Register patterns across all 4 rods, then query. The response
+									amplitudes from all rods arrive simultaneously — the winner
+									has the highest correlation. Times shown are real wall-clock.
 								</p>
-								<button class="btn btn-primary qcb-run-btn" onclick="qcbRunSearch()" id="btnQcb3">
+								<button
+									class="btn btn-primary qcb-run-btn"
+									onclick="qcbRunSearch()"
+									id="btnQcb3">
 									⚡ Run Parallel Search
 								</button>
-								<div id="qcbSearchResult" style="margin-top:10px;font-size:12px"></div>
+								<div
+									id="qcbSearchResult"
+									style="margin-top: 10px; font-size: 12px"></div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Demo 4: Room-Temperature Stability -->
 					<div class="qcb-demo">
-						<div class="qcb-demo-header" onclick="qcbToggle(4)">
+						<div
+							class="qcb-demo-header"
+							onclick="qcbToggle(4)">
 							<div class="qcb-demo-num">4</div>
-							<div class="qcb-demo-title">Room-Temperature Coherence — No Decoherence Anxiety</div>
-							<span class="qcb-demo-tag qcb-tag-quantum">Decoherence ~100 µs</span>
+							<div class="qcb-demo-title">
+								Room-Temperature Coherence — No Decoherence Anxiety
+							</div>
+							<span class="qcb-demo-tag qcb-tag-quantum"
+								>Decoherence ~100 µs</span
+							>
 							<span class="qcb-demo-tag qcb-tag-cwm">Ring-Down Q > 10,000</span>
-							<span class="arrow" id="qcbArrow4">▶</span>
+							<span
+								class="arrow"
+								id="qcbArrow4"
+								>▶</span
+							>
 						</div>
-						<div class="qcb-demo-body" id="qcbBody4">
+						<div
+							class="qcb-demo-body"
+							id="qcbBody4">
 							<div class="qcb-explanation">
-								Quantum computers require dilution refrigerators at ~15 mK because quantum coherence decays in
-								microseconds at room temperature. CWM operates at 300 K because <em>hf ≪ k<sub>B</sub>T</em> — the system lives
-								deep in the classical Rayleigh-Jeans limit. The Q factor of glass rods determines information
-								lifetime: Q > 10,000 for borosilicate, > 100,000 for fused silica. This translates to seconds
-								of usable ring-down — <em>10⁷× longer</em> than superconducting qubit coherence.
+								Quantum computers require dilution refrigerators at ~15 mK
+								because quantum coherence decays in microseconds at room
+								temperature. CWM operates at 300 K because
+								<em>hf ≪ k<sub>B</sub>T</em> — the system lives deep in the
+								classical Rayleigh-Jeans limit. The Q factor of glass rods
+								determines information lifetime: Q > 10,000 for borosilicate, >
+								100,000 for fused silica. This translates to seconds of usable
+								ring-down — <em>10⁷× longer</em> than superconducting qubit
+								coherence.
 							</div>
 							<div class="qcb-comparison">
 								<div class="qcb-col qcb-col-quantum">
 									<h5>Quantum</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										Temperature: 15 mK (dilution fridge)<br>
-										Coherence: ~100 µs (state-of-art)<br>
-										Power: ~25 kW (refrigeration)<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										Temperature: 15 mK (dilution fridge)<br />
+										Coherence: ~100 µs (state-of-art)<br />
+										Power: ~25 kW (refrigeration)<br />
 										Cost: $10M+ per system
 									</div>
 								</div>
 								<div class="qcb-col qcb-col-cwm">
 									<h5>CWM (Your Hardware)</h5>
-									<div style="font-size:12px;color:var(--muted);line-height:1.6">
-										Temperature: 300 K (room temp)<br>
-										Ring-down: seconds (Q > 10,000)<br>
-										Power: ~50 mW (PicoScope + rod)<br>
+									<div
+										style="
+											font-size: 12px;
+											color: var(--muted);
+											line-height: 1.6;
+										">
+										Temperature: 300 K (room temp)<br />
+										Ring-down: seconds (Q > 10,000)<br />
+										Power: ~50 mW (PicoScope + rod)<br />
 										Cost: ~$100 (lab prototype)
 									</div>
 								</div>
 							</div>
 							<div class="qcb-live-area">
 								<h5>🔬 Live Demo — Ring-down coherence measurement</h5>
-								<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
-									Excite the rod and capture the ring-down envelope. The exponential decay rate gives the Q factor directly:
-									Q = π·f·τ where τ is the e-folding decay time. Compare this to quantum coherence times.
+								<p
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 8px;
+									">
+									Excite the rod and capture the ring-down envelope. The
+									exponential decay rate gives the Q factor directly: Q = π·f·τ
+									where τ is the e-folding decay time. Compare this to quantum
+									coherence times.
 								</p>
-								<button class="btn btn-primary qcb-run-btn" onclick="qcbRunCoherence()" id="btnQcb4">
+								<button
+									class="btn btn-primary qcb-run-btn"
+									onclick="qcbRunCoherence()"
+									id="btnQcb4">
 									⚡ Measure Ring-Down
 								</button>
-								<canvas id="qcbCoherenceCanvas" width="1200" height="250" style="width:100%;border-radius:6px;margin-top:10px;display:none"></canvas>
-								<div id="qcbCoherenceResult" style="margin-top:8px;font-size:12px"></div>
+								<canvas
+									id="qcbCoherenceCanvas"
+									width="1200"
+									height="250"
+									style="
+										width: 100%;
+										border-radius: 6px;
+										margin-top: 10px;
+										display: none;
+									"></canvas>
+								<div
+									id="qcbCoherenceResult"
+									style="margin-top: 8px; font-size: 12px"></div>
 							</div>
 						</div>
 					</div>
 
 					<!-- Demo 5: Eigenmode Orthogonality Proof -->
 					<div class="qcb-demo">
-						<div class="qcb-demo-header" onclick="qcbToggle(5)">
+						<div
+							class="qcb-demo-header"
+							onclick="qcbToggle(5)">
 							<div class="qcb-demo-num">5</div>
-							<div class="qcb-demo-title">Eigenmode Orthogonality — The Identity That Makes It Work</div>
+							<div class="qcb-demo-title">
+								Eigenmode Orthogonality — The Identity That Makes It Work
+							</div>
 							<span class="qcb-demo-tag qcb-tag-quantum">⟨n|m⟩ = δₙₘ</span>
 							<span class="qcb-demo-tag qcb-tag-cwm">∫ sin·sin dx = 0</span>
-							<span class="arrow" id="qcbArrow5">▶</span>
+							<span
+								class="arrow"
+								id="qcbArrow5"
+								>▶</span
+							>
 						</div>
-						<div class="qcb-demo-body" id="qcbBody5">
+						<div
+							class="qcb-demo-body"
+							id="qcbBody5">
 							<div class="qcb-explanation">
-								Quantum orthogonality (⟨n|m⟩ = δₙₘ) and CWM eigenmode orthogonality
-								(∫₀ᴸ sin(nπx/L)·sin(mπx/L) dx = 0) are <em>the same mathematical structure</em>.
-								This is why CWM can deliver quantum-like capabilities: the physics of standing waves in glass
-								satisfies the same orthogonality relations as quantum energy eigenstates.
-								This demo computes the cross-mode coupling matrix from your real hardware data.
+								Quantum orthogonality (⟨n|m⟩ = δₙₘ) and CWM eigenmode
+								orthogonality (∫₀ᴸ sin(nπx/L)·sin(mπx/L) dx = 0) are
+								<em>the same mathematical structure</em>. This is why CWM can
+								deliver quantum-like capabilities: the physics of standing waves
+								in glass satisfies the same orthogonality relations as quantum
+								energy eigenstates. This demo computes the cross-mode coupling
+								matrix from your real hardware data.
 							</div>
 							<div class="qcb-live-area">
 								<h5>🔬 Live Demo — Cross-mode coupling matrix</h5>
-								<p style="font-size:11px;color:var(--muted);margin-bottom:8px">
-									Capture the spectrum, then compute the mode-to-mode cross-correlation matrix.
-									A perfect system shows an identity matrix (diagonal = 1, off-diagonal = 0).
-									Real hardware shows how close your rod comes to perfect orthogonality.
+								<p
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 8px;
+									">
+									Capture the spectrum, then compute the mode-to-mode
+									cross-correlation matrix. A perfect system shows an identity
+									matrix (diagonal = 1, off-diagonal = 0). Real hardware shows
+									how close your rod comes to perfect orthogonality.
 								</p>
-								<button class="btn btn-primary qcb-run-btn" onclick="qcbRunOrthogonality()" id="btnQcb5">
+								<button
+									class="btn btn-primary qcb-run-btn"
+									onclick="qcbRunOrthogonality()"
+									id="btnQcb5">
 									⚡ Compute Orthogonality Matrix
 								</button>
-								<canvas id="qcbOrthoCanvas" width="600" height="600" style="width:100%;max-width:500px;border-radius:6px;margin-top:10px;display:none"></canvas>
-								<div id="qcbOrthoResult" style="margin-top:8px;font-size:12px"></div>
+								<canvas
+									id="qcbOrthoCanvas"
+									width="600"
+									height="600"
+									style="
+										width: 100%;
+										max-width: 500px;
+										border-radius: 6px;
+										margin-top: 10px;
+										display: none;
+									"></canvas>
+								<div
+									id="qcbOrthoResult"
+									style="margin-top: 8px; font-size: 12px"></div>
 							</div>
 						</div>
 					</div>
@@ -4278,38 +4567,54 @@
 				btn.disabled = true
 				btn.textContent = 'Configuring…'
 				const result = document.getElementById('qcbSuperResult')
-				result.innerHTML = '<span style="color:var(--muted)">Configuring scope for impulse capture…</span>'
+				result.innerHTML =
+					'<span style="color:var(--muted)">Configuring scope for impulse capture…</span>'
 
 				try {
 					// Configure for tap mode (exp01 — no AWG, impulse only)
 					let res = await fetch(API + '/api/scope/configure', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'})
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'}),
 					})
 					let cfg = await res.json()
-					if (cfg.error) { result.innerHTML = `<span style="color:#f87171">Error: ${cfg.error}</span>`; return }
+					if (cfg.error) {
+						result.innerHTML = `<span style="color:#f87171">Error: ${cfg.error}</span>`
+						return
+					}
 
 					btn.textContent = 'Capturing…'
-					result.innerHTML = '<span style="color:var(--muted)">Capturing — tap the rod now (or wait for simulation)…</span>'
+					result.innerHTML =
+						'<span style="color:var(--muted)">Capturing — tap the rod now (or wait for simulation)…</span>'
 
-					res = await fetch(API + '/api/scope/capture', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'})
+					res = await fetch(API + '/api/scope/capture', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: '{}',
+					})
 					const data = await res.json()
-					if (data.error) { result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`; return }
+					if (data.error) {
+						result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`
+						return
+					}
 
 					// Draw combined view: waveform on left, spectrum on right
 					const canvas = document.getElementById('qcbSuperCanvas')
 					canvas.style.display = 'block'
 					const ctx = canvas.getContext('2d')
-					const W = canvas.width, H = canvas.height
+					const W = canvas.width,
+						H = canvas.height
 					ctx.clearRect(0, 0, W, H)
-					ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+					ctx.fillStyle = '#0f172a'
+					ctx.fillRect(0, 0, W, H)
 
 					const halfW = W / 2 - 10
 					// Waveform (left half)
 					const wave = data.voltage_mv || []
 					if (wave.length > 0) {
 						const wMax = Math.max(...wave.map(Math.abs)) || 1
-						ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 1
+						ctx.strokeStyle = '#22d3ee'
+						ctx.lineWidth = 1
 						ctx.beginPath()
 						for (let i = 0; i < wave.length; i++) {
 							const x = 20 + (i / wave.length) * (halfW - 30)
@@ -4318,7 +4623,8 @@
 						}
 						ctx.stroke()
 					}
-					ctx.fillStyle = '#475569'; ctx.font = '11px Inter, sans-serif'
+					ctx.fillStyle = '#475569'
+					ctx.font = '11px Inter, sans-serif'
 					ctx.fillText('Time Domain (all modes superposed)', 20, 16)
 
 					// Spectrum (right half)
@@ -4326,9 +4632,11 @@
 					const mag = spec.magnitude_db || []
 					const freq = spec.freq_hz || []
 					if (mag.length > 0) {
-						const mMax = Math.max(...mag), mMin = Math.min(...mag)
+						const mMax = Math.max(...mag),
+							mMin = Math.min(...mag)
 						const range = mMax - mMin || 1
-						ctx.strokeStyle = '#a78bfa'; ctx.lineWidth = 1
+						ctx.strokeStyle = '#a78bfa'
+						ctx.lineWidth = 1
 						ctx.beginPath()
 						for (let i = 0; i < mag.length && i < freq.length; i++) {
 							const x = halfW + 30 + (i / mag.length) * (halfW - 30)
@@ -4340,34 +4648,45 @@
 						// Mark peaks
 						const peaks = spec.peaks || []
 						ctx.fillStyle = '#facc15'
-						peaks.slice(0, 20).forEach(p => {
-							const fi = freq.findIndex(f => f >= p.freq_hz)
+						peaks.slice(0, 20).forEach((p) => {
+							const fi = freq.findIndex((f) => f >= p.freq_hz)
 							if (fi >= 0) {
 								const x = halfW + 30 + (fi / mag.length) * (halfW - 30)
 								const y = H - 30 - ((mag[fi] - mMin) / range) * (H - 50)
-								ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI * 2); ctx.fill()
+								ctx.beginPath()
+								ctx.arc(x, y, 3, 0, Math.PI * 2)
+								ctx.fill()
 							}
 						})
 					}
 					ctx.fillStyle = '#475569'
-					ctx.fillText('Frequency Domain (individual modes revealed)', halfW + 30, 16)
+					ctx.fillText(
+						'Frequency Domain (individual modes revealed)',
+						halfW + 30,
+						16,
+					)
 
 					// Dividing line
-					ctx.strokeStyle = '#334155'; ctx.lineWidth = 1
-					ctx.beginPath(); ctx.moveTo(halfW + 10, 10); ctx.lineTo(halfW + 10, H - 10); ctx.stroke()
+					ctx.strokeStyle = '#334155'
+					ctx.lineWidth = 1
+					ctx.beginPath()
+					ctx.moveTo(halfW + 10, 10)
+					ctx.lineTo(halfW + 10, H - 10)
+					ctx.stroke()
 
-					const peaks = (data.spectrum?.peaks || [])
+					const peaks = data.spectrum?.peaks || []
 					const nPeaks = peaks.length
 					const snr = data.spectrum?.snr_db || 0
 					result.innerHTML =
 						`<span style="color:#22c55e">✓ Classical superposition captured</span> — ` +
 						`<strong>${nPeaks} eigenmodes</strong> coexisting simultaneously in one rod. ` +
-						`SNR: ${snr.toFixed(1)} dB. ${data.n_samples || '?'} samples at ${((data.sample_rate || 0)/1e6).toFixed(1)} MS/s. ` +
+						`SNR: ${snr.toFixed(1)} dB. ${data.n_samples || '?'} samples at ${((data.sample_rate || 0) / 1e6).toFixed(1)} MS/s. ` +
 						`<span style="color:var(--muted)">Each peak is an independent information channel — the classical analog of qubit superposition.</span>`
 				} catch (e) {
 					result.innerHTML = `<span style="color:#f87171">Error: ${e.message}</span>`
 				} finally {
-					btn.disabled = false; btn.textContent = '⚡ Capture Superposition'
+					btn.disabled = false
+					btn.textContent = '⚡ Capture Superposition'
 				}
 			}
 
@@ -4375,74 +4694,126 @@
 			async function qcbRunQND() {
 				const btn = document.getElementById('btnQcb2')
 				const count = parseInt(document.getElementById('qcbQndCount').value)
-				btn.disabled = true; btn.textContent = 'Running…'
+				btn.disabled = true
+				btn.textContent = 'Running…'
 				const result = document.getElementById('qcbQndResult')
 				result.innerHTML = `<span style="color:var(--muted)">Configuring scope then capturing ${count} consecutive reads…</span>`
 
 				try {
 					// Configure first
 					await fetch(API + '/api/scope/configure', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'})
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'}),
 					})
 
 					// Multi-capture
 					const res = await fetch(API + '/api/qcb/multi-capture', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: JSON.stringify({count})
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({count}),
 					})
 					const data = await res.json()
-					if (data.error) { result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`; return }
+					if (data.error) {
+						result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`
+						return
+					}
 
 					const captures = data.captures || []
-					if (captures.length < 2) { result.innerHTML = 'Need at least 2 captures'; return }
+					if (captures.length < 2) {
+						result.innerHTML = 'Need at least 2 captures'
+						return
+					}
 
 					// Extract peak frequency vectors from each capture
-					const peakVecs = captures.map(c => {
+					const peakVecs = captures.map((c) => {
 						const peaks = (c.spectrum?.peaks || []).slice(0, 20)
-						return peaks.map(p => p.freq_hz)
+						return peaks.map((p) => p.freq_hz)
 					})
 
 					// Compute pairwise correlations of magnitude spectra
-					const magVecs = captures.map(c => c.spectrum?.magnitude_db || [])
+					const magVecs = captures.map((c) => c.spectrum?.magnitude_db || [])
 					const correlations = []
 					for (let i = 1; i < magVecs.length; i++) {
-						const a = magVecs[0], b = magVecs[i]
+						const a = magVecs[0],
+							b = magVecs[i]
 						const len = Math.min(a.length, b.length)
-						if (len === 0) { correlations.push(0); continue }
-						let sumA=0, sumB=0
-						for (let j = 0; j < len; j++) { sumA += a[j]; sumB += b[j] }
-						const mA = sumA/len, mB = sumB/len
-						let num=0, dA=0, dB=0
-						for (let j = 0; j < len; j++) {
-							const da = a[j]-mA, db = b[j]-mB
-							num += da*db; dA += da*da; dB += db*db
+						if (len === 0) {
+							correlations.push(0)
+							continue
 						}
-						correlations.push(Math.sqrt(dA*dB) > 0 ? num/Math.sqrt(dA*dB) : 0)
+						let sumA = 0,
+							sumB = 0
+						for (let j = 0; j < len; j++) {
+							sumA += a[j]
+							sumB += b[j]
+						}
+						const mA = sumA / len,
+							mB = sumB / len
+						let num = 0,
+							dA = 0,
+							dB = 0
+						for (let j = 0; j < len; j++) {
+							const da = a[j] - mA,
+								db = b[j] - mB
+							num += da * db
+							dA += da * da
+							dB += db * db
+						}
+						correlations.push(
+							Math.sqrt(dA * dB) > 0 ? num / Math.sqrt(dA * dB) : 0,
+						)
 					}
 
 					// Draw overlay of all spectra
 					const canvas = document.getElementById('qcbQndCanvas')
 					canvas.style.display = 'block'
 					const ctx = canvas.getContext('2d')
-					const W = canvas.width, Hc = canvas.height
-					ctx.clearRect(0, 0, W, Hc); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, Hc)
+					const W = canvas.width,
+						Hc = canvas.height
+					ctx.clearRect(0, 0, W, Hc)
+					ctx.fillStyle = '#0f172a'
+					ctx.fillRect(0, 0, W, Hc)
 
-					const margin = {l:50, r:20, t:30, b:30}
-					const pW = W - margin.l - margin.r, pH = Hc - margin.t - margin.b
-					const colors = ['#22d3ee','#a78bfa','#34d399','#fb923c','#f472b6','#facc15','#60a5fa','#f87171','#818cf8','#4ade80']
+					const margin = {l: 50, r: 20, t: 30, b: 30}
+					const pW = W - margin.l - margin.r,
+						pH = Hc - margin.t - margin.b
+					const colors = [
+						'#22d3ee',
+						'#a78bfa',
+						'#34d399',
+						'#fb923c',
+						'#f472b6',
+						'#facc15',
+						'#60a5fa',
+						'#f87171',
+						'#818cf8',
+						'#4ade80',
+					]
 
 					// Find global range
-					let gMin = Infinity, gMax = -Infinity
-					magVecs.forEach(m => { m.forEach(v => { if (v < gMin) gMin = v; if (v > gMax) gMax = v }) })
+					let gMin = Infinity,
+						gMax = -Infinity
+					magVecs.forEach((m) => {
+						m.forEach((v) => {
+							if (v < gMin) gMin = v
+							if (v > gMax) gMax = v
+						})
+					})
 					const gRange = gMax - gMin || 1
 
-					ctx.fillStyle = '#475569'; ctx.font = '11px Inter, sans-serif'
-					ctx.fillText(`${captures.length} consecutive FFT readouts overlaid — identical = non-destructive`, margin.l, 16)
+					ctx.fillStyle = '#475569'
+					ctx.font = '11px Inter, sans-serif'
+					ctx.fillText(
+						`${captures.length} consecutive FFT readouts overlaid — identical = non-destructive`,
+						margin.l,
+						16,
+					)
 
 					magVecs.forEach((m, ci) => {
 						ctx.strokeStyle = colors[ci % colors.length]
-						ctx.globalAlpha = 0.7; ctx.lineWidth = 1
+						ctx.globalAlpha = 0.7
+						ctx.lineWidth = 1
 						ctx.beginPath()
 						for (let i = 0; i < m.length; i++) {
 							const x = margin.l + (i / m.length) * pW
@@ -4457,12 +4828,15 @@
 					captures.forEach((c, i) => {
 						ctx.fillStyle = colors[i % colors.length]
 						ctx.fillRect(margin.l + i * 70, Hc - 14, 8, 8)
-						ctx.fillText(`Read ${i+1}`, margin.l + i * 70 + 12, Hc - 6)
+						ctx.fillText(`Read ${i + 1}`, margin.l + i * 70 + 12, Hc - 6)
 					})
 
-					const avgCorr = correlations.reduce((a,b)=>a+b, 0) / correlations.length
+					const avgCorr =
+						correlations.reduce((a, b) => a + b, 0) / correlations.length
 					const minCorr = Math.min(...correlations)
-					const corrStr = correlations.map((c,i) => `R${i+1}→R1: ${c.toFixed(4)}`).join(', ')
+					const corrStr = correlations
+						.map((c, i) => `R${i + 1}→R1: ${c.toFixed(4)}`)
+						.join(', ')
 
 					result.innerHTML =
 						`<span style="color:#22c55e">✓ QND readout verified</span> — ` +
@@ -4473,41 +4847,57 @@
 				} catch (e) {
 					result.innerHTML = `<span style="color:#f87171">Error: ${e.message}</span>`
 				} finally {
-					btn.disabled = false; btn.textContent = '⚡ Run QND Test'
+					btn.disabled = false
+					btn.textContent = '⚡ Run QND Test'
 				}
 			}
 
 			// ── Demo 3: Parallel Search ──────────────────────────────────────────
 			async function qcbRunSearch() {
 				const btn = document.getElementById('btnQcb3')
-				btn.disabled = true; btn.textContent = 'Searching…'
+				btn.disabled = true
+				btn.textContent = 'Searching…'
 				const result = document.getElementById('qcbSearchResult')
-				result.innerHTML = '<span style="color:var(--muted)">Computing fingerprints across all rods and patterns…</span>'
+				result.innerHTML =
+					'<span style="color:var(--muted)">Computing fingerprints across all rods and patterns…</span>'
 
 				try {
 					const res = await fetch(API + '/api/qcb/parallel-search', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: '{}'
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: '{}',
 					})
 					const data = await res.json()
-					if (data.error) { result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`; return }
+					if (data.error) {
+						result.innerHTML = `<span style="color:#f87171">Error: ${data.error}</span>`
+						return
+					}
 
 					const items = data.results || []
-					items.sort((a,b) => b.correlation - a.correlation)
+					items.sort((a, b) => b.correlation - a.correlation)
 
-					const rows = items.map((r, i) => {
-						const pct = Math.max(0, r.correlation * 100)
-						const isQuery = (r.rod === data.query_rod && r.pattern === data.query_pattern)
-						const color = isQuery ? '#22c55e' : (r.correlation > 0.85 ? '#eab308' : '#475569')
-						const badge = isQuery ? ' <span style="color:#22c55e;font-size:10px">← QUERY</span>' : ''
-						return `<div class="cim-result-bar">
+					const rows = items
+						.map((r, i) => {
+							const pct = Math.max(0, r.correlation * 100)
+							const isQuery =
+								r.rod === data.query_rod && r.pattern === data.query_pattern
+							const color = isQuery
+								? '#22c55e'
+								: r.correlation > 0.85
+									? '#eab308'
+									: '#475569'
+							const badge = isQuery
+								? ' <span style="color:#22c55e;font-size:10px">← QUERY</span>'
+								: ''
+							return `<div class="cim-result-bar">
 							<span style="min-width:100px">Rod ${r.rod} / ${r.pattern}${badge}</span>
 							<div class="cim-bar-track">
 								<div class="cim-bar-fill" style="width:${pct}%;background:${color}"></div>
 							</div>
 							<span class="cim-bar-val">${r.correlation.toFixed(4)}</span>
 						</div>`
-					}).join('')
+						})
+						.join('')
 
 					const elapsed = data.elapsed_ms || 0
 					result.innerHTML =
@@ -4522,32 +4912,47 @@
 				} catch (e) {
 					result.innerHTML = `<span style="color:#f87171">Error: ${e.message}</span>`
 				} finally {
-					btn.disabled = false; btn.textContent = '⚡ Run Parallel Search'
+					btn.disabled = false
+					btn.textContent = '⚡ Run Parallel Search'
 				}
 			}
 
 			// ── Demo 4: Ring-Down Coherence ──────────────────────────────────────
 			async function qcbRunCoherence() {
 				const btn = document.getElementById('btnQcb4')
-				btn.disabled = true; btn.textContent = 'Capturing…'
+				btn.disabled = true
+				btn.textContent = 'Capturing…'
 				const result = document.getElementById('qcbCoherenceResult')
-				result.innerHTML = '<span style="color:var(--muted)">Configuring for ring-down capture (exp03 damping preset)…</span>'
+				result.innerHTML =
+					'<span style="color:var(--muted)">Configuring for ring-down capture (exp03 damping preset)…</span>'
 
 				try {
 					// Use exp03 (dilatancy/damping) preset — long timebase
 					let res = await fetch(API + '/api/scope/configure', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: JSON.stringify({preset_id: 'exp03', pattern_name: 'A'})
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({preset_id: 'exp03', pattern_name: 'A'}),
 					})
 					let cfg = await res.json()
-					if (cfg.error) { result.innerHTML = `<span style="color:#f87171">${cfg.error}</span>`; return }
+					if (cfg.error) {
+						result.innerHTML = `<span style="color:#f87171">${cfg.error}</span>`
+						return
+					}
 
 					btn.textContent = 'Measuring…'
-					result.innerHTML = '<span style="color:var(--muted)">Capturing ring-down envelope…</span>'
+					result.innerHTML =
+						'<span style="color:var(--muted)">Capturing ring-down envelope…</span>'
 
-					res = await fetch(API + '/api/scope/capture', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'})
+					res = await fetch(API + '/api/scope/capture', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: '{}',
+					})
 					const data = await res.json()
-					if (data.error) { result.innerHTML = `<span style="color:#f87171">${data.error}</span>`; return }
+					if (data.error) {
+						result.innerHTML = `<span style="color:#f87171">${data.error}</span>`
+						return
+					}
 
 					const wave = data.voltage_mv || []
 					const sr = data.sample_rate || 1e6
@@ -4555,7 +4960,11 @@
 					// Compute envelope via Hilbert-like approach (running RMS)
 					const windowSize = Math.max(10, Math.floor(wave.length / 100))
 					const envelope = []
-					for (let i = 0; i < wave.length - windowSize; i += Math.max(1, Math.floor(windowSize/2))) {
+					for (
+						let i = 0;
+						i < wave.length - windowSize;
+						i += Math.max(1, Math.floor(windowSize / 2))
+					) {
 						let sum = 0
 						for (let j = i; j < i + windowSize; j++) sum += wave[j] * wave[j]
 						envelope.push(Math.sqrt(sum / windowSize))
@@ -4567,9 +4976,9 @@
 					const peakVal = decayPortion[0] || 1
 
 					// Estimate tau (e-folding time)
-					let tauIdx = decayPortion.findIndex(v => v < peakVal / Math.E)
-					if (tauIdx <= 0) tauIdx = decayPortion.length  // didn't decay enough
-					const tauSamples = tauIdx * Math.max(1, Math.floor(windowSize/2))
+					let tauIdx = decayPortion.findIndex((v) => v < peakVal / Math.E)
+					if (tauIdx <= 0) tauIdx = decayPortion.length // didn't decay enough
+					const tauSamples = tauIdx * Math.max(1, Math.floor(windowSize / 2))
 					const tauSeconds = tauSamples / sr
 
 					// Estimate Q from dominant frequency
@@ -4582,30 +4991,38 @@
 					const canvas = document.getElementById('qcbCoherenceCanvas')
 					canvas.style.display = 'block'
 					const ctx = canvas.getContext('2d')
-					const W = canvas.width, H = canvas.height
-					ctx.clearRect(0, 0, W, H); ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+					const W = canvas.width,
+						H = canvas.height
+					ctx.clearRect(0, 0, W, H)
+					ctx.fillStyle = '#0f172a'
+					ctx.fillRect(0, 0, W, H)
 
-					const margin = {l:50, r:20, t:24, b:30}
-					const pW = W - margin.l - margin.r, pH = H - margin.t - margin.b
+					const margin = {l: 50, r: 20, t: 24, b: 30}
+					const pW = W - margin.l - margin.r,
+						pH = H - margin.t - margin.b
 
 					// Wave (faint)
 					if (wave.length > 0) {
 						const wMax = Math.max(...wave.map(Math.abs)) || 1
-						ctx.strokeStyle = '#22d3ee'; ctx.lineWidth = 0.5; ctx.globalAlpha = 0.3
+						ctx.strokeStyle = '#22d3ee'
+						ctx.lineWidth = 0.5
+						ctx.globalAlpha = 0.3
 						ctx.beginPath()
 						const step = Math.max(1, Math.floor(wave.length / pW))
 						for (let i = 0; i < wave.length; i += step) {
 							const x = margin.l + (i / wave.length) * pW
-							const y = margin.t + pH/2 - (wave[i] / wMax) * (pH/2 - 4)
+							const y = margin.t + pH / 2 - (wave[i] / wMax) * (pH / 2 - 4)
 							i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y)
 						}
-						ctx.stroke(); ctx.globalAlpha = 1.0
+						ctx.stroke()
+						ctx.globalAlpha = 1.0
 					}
 
 					// Envelope (bright)
 					if (envelope.length > 1) {
 						const eMax = Math.max(...envelope) || 1
-						ctx.strokeStyle = '#facc15'; ctx.lineWidth = 2
+						ctx.strokeStyle = '#facc15'
+						ctx.lineWidth = 2
 						ctx.beginPath()
 						for (let i = 0; i < envelope.length; i++) {
 							const x = margin.l + (i / envelope.length) * pW
@@ -4616,26 +5033,38 @@
 
 						// Tau marker
 						if (tauIdx < decayPortion.length) {
-							const tauX = margin.l + ((peakIdx + tauIdx) / envelope.length) * pW
-							ctx.strokeStyle = '#f87171'; ctx.lineWidth = 1; ctx.setLineDash([4,4])
-							ctx.beginPath(); ctx.moveTo(tauX, margin.t); ctx.lineTo(tauX, margin.t + pH); ctx.stroke()
+							const tauX =
+								margin.l + ((peakIdx + tauIdx) / envelope.length) * pW
+							ctx.strokeStyle = '#f87171'
+							ctx.lineWidth = 1
+							ctx.setLineDash([4, 4])
+							ctx.beginPath()
+							ctx.moveTo(tauX, margin.t)
+							ctx.lineTo(tauX, margin.t + pH)
+							ctx.stroke()
 							ctx.setLineDash([])
-							ctx.fillStyle = '#f87171'; ctx.font = '11px JetBrains Mono, monospace'
+							ctx.fillStyle = '#f87171'
+							ctx.font = '11px JetBrains Mono, monospace'
 							ctx.fillText('τ = 1/e', tauX + 4, margin.t + 14)
 						}
 					}
 
-					ctx.fillStyle = '#475569'; ctx.font = '11px Inter, sans-serif'
-					ctx.fillText('Ring-down envelope (yellow) over raw waveform (cyan)', margin.l, 14)
+					ctx.fillStyle = '#475569'
+					ctx.font = '11px Inter, sans-serif'
+					ctx.fillText(
+						'Ring-down envelope (yellow) over raw waveform (cyan)',
+						margin.l,
+						14,
+					)
 
-					const quantumCoherence = 100  // µs, typical superconducting qubit
+					const quantumCoherence = 100 // µs, typical superconducting qubit
 					const cwmCoherenceUs = tauSeconds * 1e6
 					const ratio = cwmCoherenceUs / quantumCoherence
 
 					result.innerHTML =
 						`<span style="color:#22c55e">✓ Ring-down coherence measured</span><br>` +
 						`<div class="qcb-metric"><span class="qcb-metric-label">Dominant frequency:</span><span class="qcb-metric-val">${f1.toFixed(0)} Hz</span></div>` +
-						`<div class="qcb-metric"><span class="qcb-metric-label">Decay time τ:</span><span class="qcb-metric-val">${(tauSeconds*1000).toFixed(2)} ms</span></div>` +
+						`<div class="qcb-metric"><span class="qcb-metric-label">Decay time τ:</span><span class="qcb-metric-val">${(tauSeconds * 1000).toFixed(2)} ms</span></div>` +
 						`<div class="qcb-metric"><span class="qcb-metric-label">Estimated Q:</span><span class="qcb-metric-val" style="color:#22d3ee">${Q.toFixed(0)}</span></div>` +
 						`<div class="qcb-metric"><span class="qcb-metric-label">CWM coherence:</span><span class="qcb-metric-val">${cwmCoherenceUs.toFixed(0)} µs</span></div>` +
 						`<div class="qcb-metric"><span class="qcb-metric-label">Quantum (SC qubit):</span><span class="qcb-metric-val" style="color:#a78bfa">~${quantumCoherence} µs</span></div>` +
@@ -4644,27 +5073,38 @@
 				} catch (e) {
 					result.innerHTML = `<span style="color:#f87171">Error: ${e.message}</span>`
 				} finally {
-					btn.disabled = false; btn.textContent = '⚡ Measure Ring-Down'
+					btn.disabled = false
+					btn.textContent = '⚡ Measure Ring-Down'
 				}
 			}
 
 			// ── Demo 5: Orthogonality Matrix ─────────────────────────────────────
 			async function qcbRunOrthogonality() {
 				const btn = document.getElementById('btnQcb5')
-				btn.disabled = true; btn.textContent = 'Computing…'
+				btn.disabled = true
+				btn.textContent = 'Computing…'
 				const result = document.getElementById('qcbOrthoResult')
-				result.innerHTML = '<span style="color:var(--muted)">Capturing spectrum and computing cross-mode coupling…</span>'
+				result.innerHTML =
+					'<span style="color:var(--muted)">Capturing spectrum and computing cross-mode coupling…</span>'
 
 				try {
 					// Configure for broadband capture
 					await fetch(API + '/api/scope/configure', {
-						method: 'POST', headers: {'Content-Type': 'application/json'},
-						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'})
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({preset_id: 'exp01', pattern_name: 'A'}),
 					})
 
-					const res = await fetch(API + '/api/scope/capture', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: '{}'})
+					const res = await fetch(API + '/api/scope/capture', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: '{}',
+					})
 					const data = await res.json()
-					if (data.error) { result.innerHTML = `<span style="color:#f87171">${data.error}</span>`; return }
+					if (data.error) {
+						result.innerHTML = `<span style="color:#f87171">${data.error}</span>`
+						return
+					}
 
 					const spec = data.spectrum || {}
 					const mag = spec.magnitude_db || []
@@ -4673,16 +5113,21 @@
 					const N = peaks.length
 
 					if (N < 3) {
-						result.innerHTML = '<span style="color:#eab308">Not enough peaks detected. Try tapping the rod harder.</span>'
+						result.innerHTML =
+							'<span style="color:#eab308">Not enough peaks detected. Try tapping the rod harder.</span>'
 						return
 					}
 
 					// Build mode vectors — for each peak, extract a window of the spectrum around it
-					const windowBins = 15  // ±15 bins around each peak
-					const modeVecs = peaks.map(p => {
-						const centerIdx = freq.findIndex(f => f >= p.freq_hz)
+					const windowBins = 15 // ±15 bins around each peak
+					const modeVecs = peaks.map((p) => {
+						const centerIdx = freq.findIndex((f) => f >= p.freq_hz)
 						const vec = []
-						for (let j = centerIdx - windowBins; j <= centerIdx + windowBins; j++) {
+						for (
+							let j = centerIdx - windowBins;
+							j <= centerIdx + windowBins;
+							j++
+						) {
 							vec.push(j >= 0 && j < mag.length ? mag[j] : -100)
 						}
 						return vec
@@ -4693,16 +5138,27 @@
 					for (let i = 0; i < N; i++) {
 						const row = []
 						for (let j = 0; j < N; j++) {
-							const a = modeVecs[i], b = modeVecs[j]
-							let sumA=0, sumB=0
-							for (let k=0;k<a.length;k++){sumA+=a[k];sumB+=b[k]}
-							const mA=sumA/a.length, mB=sumB/b.length
-							let num=0, dA=0, dB=0
-							for (let k=0;k<a.length;k++){
-								const da=a[k]-mA, db=b[k]-mB
-								num+=da*db; dA+=da*da; dB+=db*db
+							const a = modeVecs[i],
+								b = modeVecs[j]
+							let sumA = 0,
+								sumB = 0
+							for (let k = 0; k < a.length; k++) {
+								sumA += a[k]
+								sumB += b[k]
 							}
-							row.push(Math.sqrt(dA*dB) > 0 ? num/Math.sqrt(dA*dB) : 0)
+							const mA = sumA / a.length,
+								mB = sumB / b.length
+							let num = 0,
+								dA = 0,
+								dB = 0
+							for (let k = 0; k < a.length; k++) {
+								const da = a[k] - mA,
+									db = b[k] - mB
+								num += da * db
+								dA += da * da
+								dB += db * db
+							}
+							row.push(Math.sqrt(dA * dB) > 0 ? num / Math.sqrt(dA * dB) : 0)
 						}
 						matrix.push(row)
 					}
@@ -4711,14 +5167,16 @@
 					const canvas = document.getElementById('qcbOrthoCanvas')
 					canvas.style.display = 'block'
 					const ctx = canvas.getContext('2d')
-					const W = canvas.width, H = canvas.height
+					const W = canvas.width,
+						H = canvas.height
 					ctx.clearRect(0, 0, W, H)
 
 					const margin = {l: 50, t: 50, r: 60, b: 30}
 					const cellW = (W - margin.l - margin.r) / N
 					const cellH = (H - margin.t - margin.b) / N
 
-					ctx.fillStyle = '#0f172a'; ctx.fillRect(0, 0, W, H)
+					ctx.fillStyle = '#0f172a'
+					ctx.fillRect(0, 0, W, H)
 
 					// Cells
 					for (let i = 0; i < N; i++) {
@@ -4732,53 +5190,86 @@
 							} else {
 								// Off-diagonal: red intensity (should be near 0)
 								const r = Math.floor(absV * 255)
-								ctx.fillStyle = `rgb(${r}, ${Math.floor(30 - absV*20)}, ${Math.floor(50 - absV*40)})`
+								ctx.fillStyle = `rgb(${r}, ${Math.floor(30 - absV * 20)}, ${Math.floor(50 - absV * 40)})`
 							}
-							ctx.fillRect(margin.l + j * cellW, margin.t + i * cellH, cellW - 1, cellH - 1)
+							ctx.fillRect(
+								margin.l + j * cellW,
+								margin.t + i * cellH,
+								cellW - 1,
+								cellH - 1,
+							)
 
 							// Value text
 							ctx.fillStyle = absV > 0.5 ? '#fff' : '#94a3b8'
-							ctx.font = `${Math.min(11, cellW/3)}px JetBrains Mono, monospace`
+							ctx.font = `${Math.min(11, cellW / 3)}px JetBrains Mono, monospace`
 							ctx.textAlign = 'center'
-							ctx.fillText(v.toFixed(2), margin.l + j * cellW + cellW/2, margin.t + i * cellH + cellH/2 + 4)
+							ctx.fillText(
+								v.toFixed(2),
+								margin.l + j * cellW + cellW / 2,
+								margin.t + i * cellH + cellH / 2 + 4,
+							)
 						}
 					}
 
 					// Labels
-					ctx.fillStyle = '#94a3b8'; ctx.font = '10px JetBrains Mono, monospace'
+					ctx.fillStyle = '#94a3b8'
+					ctx.font = '10px JetBrains Mono, monospace'
 					for (let i = 0; i < N; i++) {
 						const f = peaks[i].freq_hz
-						const label = f >= 1000 ? `${(f/1000).toFixed(1)}k` : `${f.toFixed(0)}`
+						const label =
+							f >= 1000 ? `${(f / 1000).toFixed(1)}k` : `${f.toFixed(0)}`
 						ctx.textAlign = 'right'
-						ctx.fillText(`f${i+1}`, margin.l - 6, margin.t + i * cellH + cellH/2 + 4)
+						ctx.fillText(
+							`f${i + 1}`,
+							margin.l - 6,
+							margin.t + i * cellH + cellH / 2 + 4,
+						)
 						ctx.textAlign = 'center'
-						ctx.fillText(`f${i+1}`, margin.l + i * cellW + cellW/2, margin.t - 8)
+						ctx.fillText(
+							`f${i + 1}`,
+							margin.l + i * cellW + cellW / 2,
+							margin.t - 8,
+						)
 					}
 
 					// Title
-					ctx.fillStyle = '#475569'; ctx.font = '11px Inter, sans-serif'; ctx.textAlign = 'left'
-					ctx.fillText(`Mode Cross-Correlation Matrix (${N}×${N})`, margin.l, 16)
+					ctx.fillStyle = '#475569'
+					ctx.font = '11px Inter, sans-serif'
+					ctx.textAlign = 'left'
+					ctx.fillText(
+						`Mode Cross-Correlation Matrix (${N}×${N})`,
+						margin.l,
+						16,
+					)
 
 					// Color legend
-					const legX = W - margin.r + 10, legY = margin.t, legH = H - margin.t - margin.b
+					const legX = W - margin.r + 10,
+						legY = margin.t,
+						legH = H - margin.t - margin.b
 					for (let y = 0; y < legH; y++) {
 						const v = 1 - y / legH
 						const r = Math.floor(v * 255)
 						ctx.fillStyle = `rgb(${r}, ${Math.floor(30)}, 50)`
 						ctx.fillRect(legX, legY + y, 15, 1)
 					}
-					ctx.fillStyle = '#94a3b8'; ctx.font = '9px JetBrains Mono'
+					ctx.fillStyle = '#94a3b8'
+					ctx.font = '9px JetBrains Mono'
 					ctx.textAlign = 'left'
 					ctx.fillText('1.0', legX + 18, legY + 8)
-					ctx.fillText('0.5', legX + 18, legY + legH/2 + 3)
+					ctx.fillText('0.5', legX + 18, legY + legH / 2 + 3)
 					ctx.fillText('0.0', legX + 18, legY + legH - 2)
 
 					// Statistics
-					let offDiagSum = 0, offDiagCount = 0, diagSum = 0
+					let offDiagSum = 0,
+						offDiagCount = 0,
+						diagSum = 0
 					for (let i = 0; i < N; i++) {
 						diagSum += matrix[i][i]
 						for (let j = 0; j < N; j++) {
-							if (i !== j) { offDiagSum += Math.abs(matrix[i][j]); offDiagCount++ }
+							if (i !== j) {
+								offDiagSum += Math.abs(matrix[i][j])
+								offDiagCount++
+							}
 						}
 					}
 					const avgDiag = diagSum / N
@@ -4796,7 +5287,8 @@
 				} catch (e) {
 					result.innerHTML = `<span style="color:#f87171">Error: ${e.message}</span>`
 				} finally {
-					btn.disabled = false; btn.textContent = '⚡ Compute Orthogonality Matrix'
+					btn.disabled = false
+					btn.textContent = '⚡ Compute Orthogonality Matrix'
 				}
 			}
 		</script>

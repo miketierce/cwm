@@ -38,8 +38,8 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 | --- | --------------------------------------- | ----------------------------------------------------------------- | ------- | ---------------- | ---------------------------------------------------------------------------------- |
 | 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3                  | 15-pack | ~\$8             | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)    |
 | 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed        | 10-pack | ~\$9             | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)        |
-| 3   | Piezoelectric discs with leads          | 10 mm dia, PZT ceramic, pre-soldered 4″ wire leads                | 15-pack | ~\$7             | [E-outstanding 15 PCS, 10 mm](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20)    |
-| 4   | Piezoelectric discs (alt.)              | 10 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs, 10 mm](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)           |
+| 3   | Piezoelectric discs with leads          | 25 mm dia, PZT ceramic, pre-soldered 4″ wire leads                | 15-pack | ~\$7             | [E-outstanding 15 PCS](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20) (labelled 10 mm; actual 25 mm) |
+| 4   | Piezoelectric discs (alt.)              | 25 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20) (labelled 10 mm; actual 25 mm)       |
 | 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software      | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
 | 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1–2     | ~\$5–\$10        | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
 | 7   | Moldable silicone putty earplugs        | Mack's Pillow Soft, moldable silicone putty (perturbation masses) | 1 pack  | ~\$9             | [Mack's Pillow Soft, 8 Pair](https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20)     |
@@ -299,11 +299,11 @@ To verify which rod is responding (useful the first time through Experiment 9), 
 >
 > **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don't have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
-4. **Center the PZT disc (critical).** Cut two small strips of masking tape (~12 mm each). Adhere them in a cross-hair pattern centered on the flat end face of the rod. The intersection marks the center of the 6 mm face—this is where the PZT must go. An off-center disc excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
+4. **Center the PZT disc (critical).** Use the centering guide from Template T.4: cut out one 25 mm paper disc, lay it on the rod end, and align the blue circle with the rod edge. The red crosshair marks exact center. Alternatively, cut two small strips of masking tape (~12 mm each) and adhere them in a cross-hair pattern centered on the flat end face of the rod. The 25 mm PZT disc will overhang the 6 mm rod by 9.5 mm on each side—this is normal and does not affect performance. Only the 6 mm contact area couples acoustic energy. An off-center bond excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
 5. **Apply glue sparingly.** Place one tiny drop of cyanoacrylate—smaller than a pinhead, less than 0.5 mm in diameter—at the center of the cross-hair. _Less is more:_ excess glue adds mass and viscoelastic damping that destroys the quality factor (Failure Mode 1).
 
-6. **Attach the PZT disc.** Press the flat face of the PZT disc onto the glued spot, centering it on the cross-hair. Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips.
+6. **Attach the PZT disc.** Press the flat face of the 25 mm PZT disc onto the glued spot, centering the rod within the disc so the overhang is uniform all around (~9.5 mm). Hold firm, even pressure for 30 seconds. Gently peel away the tape cross-hair strips (or paper guide).
 
 7. **Cure.** Set the assembly aside in the insulated box mount for a full 24 hours. Cyanoacrylate reaches full bond strength overnight; rushing produces a weak, lossy joint.
 
@@ -1410,16 +1410,16 @@ CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If
 
 **Features:**
 
-| Feature                                  | Description                                                                                                                                                                                          |
-| ---------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Password vault** (Exp. 12)             | Register users with a rod/pattern assignment; authenticate by spectral correlation. Each rod supports 4 polysemic channels = 4 independent credentials.                                              |
-| **Image search** (Exp. 13)               | Drag-and-drop images to enroll a library. Each image is perceptual-hashed (64-bit average hash) and assigned to the best-matching rod/channel. Query by uploading an image or using the live webcam. |
-| **Face recognition**                     | Enroll a face selfie during registration; authenticate by webcam face scan. Demonstrates CWM-backed biometric matching.                                                                              |
-| **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state.          |
-| **Hardware Proof Panel**                 | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics.                |
-| **PicoScope auto-detect**                | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations.            |
-| **Experiment Wizard** (Exps. 1–14)       | One-click PicoScope configuration from Table D.2a presets. Captures waveform + FFT spectrum, detects peaks, computes SNR, and exports results to the community Firebase database. See §D.2b.         |
-| **CIM Demo** (💻 tab)                    | Compute-in-memory playground: store 16-bit patterns as eigenmode amplitudes, run Hopfield associative recall with adjustable noise, Boolean logic (AND/OR/XOR via superposition), and inner-product operations — all computed by wave-interference physics. |
+| Feature                                  | Description                                                                                                                                                                                                                                                                                                                 |
+| ---------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Password vault** (Exp. 12)             | Register users with a rod/pattern assignment; authenticate by spectral correlation. Each rod supports 4 polysemic channels = 4 independent credentials.                                                                                                                                                                     |
+| **Image search** (Exp. 13)               | Drag-and-drop images to enroll a library. Each image is perceptual-hashed (64-bit average hash) and assigned to the best-matching rod/channel. Query by uploading an image or using the live webcam.                                                                                                                        |
+| **Face recognition**                     | Enroll a face selfie during registration; authenticate by webcam face scan. Demonstrates CWM-backed biometric matching.                                                                                                                                                                                                     |
+| **Content-addressable memory** (Exp. 14) | All rod fingerprints are pre-computed at startup. Each registered user is a CAM entry (key = spectral fingerprint, value = user record). The proof panel shows the full lookup table state.                                                                                                                                 |
+| **Hardware Proof Panel**                 | Collapsible panel showing per-rod spectra (bar charts), rod cross-correlation matrix (heatmap), user cross-correlation, pipeline steps, and raw JSON—proving the physics to skeptics.                                                                                                                                       |
+| **PicoScope auto-detect**                | If `picosdk` is installed and a PicoScope 2204A is connected, all measurements switch to real hardware. Otherwise, Rayleigh simulation is used with deterministic jittered perturbations.                                                                                                                                   |
+| **Experiment Wizard** (Exps. 1–14)       | One-click PicoScope configuration from Table D.2a presets. Captures waveform + FFT spectrum, detects peaks, computes SNR, and exports results to the community Firebase database. See §D.2b.                                                                                                                                |
+| **CIM Demo** (💻 tab)                    | Compute-in-memory playground: store 16-bit patterns as eigenmode amplitudes, run Hopfield associative recall with adjustable noise, Boolean logic (AND/OR/XOR via superposition), and inner-product operations — all computed by wave-interference physics.                                                                 |
 | **Quantum Bridge** (⚛️ tab)              | Five interactive demos mapping quantum-computing capabilities to CWM classical equivalents: (1) classical superposition, (2) non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) room-temperature coherence vs qubit decoherence, (5) eigenmode orthogonality matrix. Runs on real hardware or simulation. |
 
 **Command-line options:**
@@ -1431,27 +1431,27 @@ CWM Lab automatically detects whether a PicoScope 2204A is connected via USB. If
 
 **API endpoints** (for programmatic use or testing):
 
-| Method | Path                   | Description                                                                    |
-| ------ | ---------------------- | ------------------------------------------------------------------------------ |
-| `GET`  | `/`                    | Serves the web UI (`cwm_lab.html`)                                             |
-| `POST` | `/api/register`        | Register a new user (username, passphrase, rod_id, pattern)                    |
-| `POST` | `/api/authenticate`    | Authenticate (username, passphrase → correlation score)                        |
-| `POST` | `/api/enroll-image`    | Enroll an image (username, name, image as base64)                              |
-| `POST` | `/api/query-image`     | Query for nearest image match (username, image as base64)                      |
-| `POST` | `/api/enroll-face`     | Enroll a face selfie (username, image as base64)                               |
-| `POST` | `/api/face-auth`       | Authenticate via face scan (image as base64)                                   |
-| `GET`  | `/api/proof`           | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
-| `GET`  | `/api/users`           | List registered users                                                          |
-| `GET`  | `/api/faces`           | List users with enrolled faces                                                 |
-| `GET`  | `/api/library/{user}`  | List a user's enrolled images                                                  |
-| `GET`  | `/api/scope/status`    | PicoScope connection status, driver, current config                            |
-| `GET`  | `/api/scope/presets`   | Experiment wizard preset definitions (Table D.2a)                              |
-| `POST` | `/api/scope/configure` | Configure scope for an experiment (`preset_id`, optional `pattern_name`)       |
-| `POST` | `/api/scope/capture`   | Block capture + FFT spectrum + peak detection                                  |
-| `POST` | `/api/scope/close`     | Release PicoScope handle                                                       |
-| `POST` | `/api/scope/export`    | Submit results to community Firebase (`experiment_id`, `data`, metadata)       |
-| `POST` | `/api/qcb/multi-capture`   | N consecutive captures for QND readout stability tests                     |
-| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods and patterns                |
+| Method | Path                       | Description                                                                    |
+| ------ | -------------------------- | ------------------------------------------------------------------------------ |
+| `GET`  | `/`                        | Serves the web UI (`cwm_lab.html`)                                             |
+| `POST` | `/api/register`            | Register a new user (username, passphrase, rod_id, pattern)                    |
+| `POST` | `/api/authenticate`        | Authenticate (username, passphrase → correlation score)                        |
+| `POST` | `/api/enroll-image`        | Enroll an image (username, name, image as base64)                              |
+| `POST` | `/api/query-image`         | Query for nearest image match (username, image as base64)                      |
+| `POST` | `/api/enroll-face`         | Enroll a face selfie (username, image as base64)                               |
+| `POST` | `/api/face-auth`           | Authenticate via face scan (image as base64)                                   |
+| `GET`  | `/api/proof`               | Full physics state: rod spectra, cross-correlations, pipeline, hardware status |
+| `GET`  | `/api/users`               | List registered users                                                          |
+| `GET`  | `/api/faces`               | List users with enrolled faces                                                 |
+| `GET`  | `/api/library/{user}`      | List a user's enrolled images                                                  |
+| `GET`  | `/api/scope/status`        | PicoScope connection status, driver, current config                            |
+| `GET`  | `/api/scope/presets`       | Experiment wizard preset definitions (Table D.2a)                              |
+| `POST` | `/api/scope/configure`     | Configure scope for an experiment (`preset_id`, optional `pattern_name`)       |
+| `POST` | `/api/scope/capture`       | Block capture + FFT spectrum + peak detection                                  |
+| `POST` | `/api/scope/close`         | Release PicoScope handle                                                       |
+| `POST` | `/api/scope/export`        | Submit results to community Firebase (`experiment_id`, `data`, metadata)       |
+| `POST` | `/api/qcb/multi-capture`   | N consecutive captures for QND readout stability tests                         |
+| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods and patterns                    |
 
 **Data files:** `data/results/lab/users.json` (user database), `data/results/lab/images_{user}.json` (per-user image libraries), `data/results/lab/captures/` (saved experiment captures).
 
@@ -1824,6 +1824,25 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 </ol>
 <p><strong>Patterns:</strong> A (quarter-points, Experiments 5/9), B (third-points, Experiments 6/9), C (midpoint, Experiments 6/8/9), D (fifth-points, Experiment 9). The combined reference ruler at the bottom shows all positions with color-coded markers.</p>
 <p><em>Rod spec: 6 mm dia × 150 mm borosilicate (PATIKIL B0D1NCM4R4). Perturbation mass: Mack's Pillow Soft silicone putty.</em></p>
+</div>
+
+<div class="template-page">
+<img src="figures/template_pzt_centering.svg" alt="Template T.4: PZT Disc Centering Guide"/>
+</div>
+
+<div class="template-instructions">
+<h3>Template T.4 — PZT Disc Centering Guide Instructions</h3>
+<p>This page provides 12 cut-out centering guides at 1:1 scale. Each guide shows the exact center of the 10 mm PZT disc and the 6 mm rod end, making it easy to align the disc on the rod before gluing.</p>
+<ol>
+<li>Print the facing template page at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm with a physical ruler.</li>
+<li>Cut out one centering guide along the <strong>grey dashed circle</strong> (the 10 mm PZT disc outline).</li>
+<li>Lay the paper disc on the flat end of your glass rod. Align the <strong>blue circle</strong> (6 mm rod outline) with the rod's edge — the red crosshair and center dot mark the exact center of the rod face.</li>
+<li>Place one tiny drop of cyanoacrylate (<strong>&lt; 0.5 mm diameter</strong>) on the red center dot.</li>
+<li>Remove the paper guide. Press the PZT disc face-down onto the rod end, centering it so 2 mm of PZT overhangs the rod uniformly all around.</li>
+<li>Hold firm, even pressure for 30 seconds. Cure 24 hours before use.</li>
+</ol>
+<p>Accurate centering ensures that the PZT drives <strong>only longitudinal modes</strong>. An off-center disc excites transverse and torsional modes that pollute the measured spectrum — see Failure Mode 2 in Experiment 1 for diagnostics and mitigation.</p>
+<p>6 guides per sheet (25 mm discs): enough for a full class kit with spares. Reprint as needed.</p>
 </div>
 
 ---

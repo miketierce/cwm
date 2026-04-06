@@ -1143,6 +1143,7 @@ def _splice_template_pages(pdf_path, base_dir):
         "Multi-Rod Grid Divider: 3": "template_multi_rod_3x2.svg",
         "Multi-Rod Grid Divider: 5": "template_multi_rod_5x2.svg",
         "Perturbation Placement Guide": "template_perturbation_guide.svg",
+        "PZT Centering Template": "template_pzt_centering.svg",
     }
 
     pages_to_replace = {}  # page_index -> svg_filename
