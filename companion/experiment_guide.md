@@ -74,13 +74,13 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 > **Computer requirement.** Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository's dependencies (`pip install -r requirements.txt`). The computer runs the analysis scripts and, for Experiments 12–14, the **CWM Lab** unified web interface (`tools/cwm_lab.py`). CWM Lab combines the password vault, image search, and content-addressable memory demos into a single browser-based UI with built-in face recognition, a hardware proof panel, and automatic PicoScope detection. It runs entirely locally—no internet required. The standalone CLI tools (`cwm_vault.py`, `cwm_image_search.py`, `cwm_cam.py`) remain available as alternatives. All tools include a simulation mode for testing without hardware.
 
-> **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 25 mm spacing). If sourcing your own box, use these minimum interior dimensions:
+> **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 30 mm spacing, required for 25 mm PZT disc clearance). If sourcing your own box, use these minimum interior dimensions:
 >
 > | Axis                  | Minimum interior | Purpose                                                           |
 > | --------------------- | ---------------- | ----------------------------------------------------------------- |
 > | **Length** (rod axis) | 7″ / 178 mm      | 150 mm rod + 15 mm PZT/cable clearance + 13 mm free-end clearance |
-> | **Width**             | 5″ / 127 mm      | 5-column grid at 25 mm spacing + 12.5 mm margin each side         |
-> | **Height**            | 3″ / 76 mm       | 2-row grid at 25 mm spacing + 25 mm margin top and bottom         |
+> | **Width**             | 6″ / 152 mm      | 5-column grid at 30 mm spacing + 12.5 mm margin each side         |
+> | **Height**            | 3.5″ / 89 mm     | 2-row grid at 30 mm spacing + 15 mm margin top and bottom         |
 >
 > The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—an insulated shipping box, a picnic cooler, or even a cardboard box lined with 1″ foam board.
 
@@ -1799,7 +1799,7 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 
 <div class="template-instructions">
 <h3>Templates T.2A / T.2B / T.2C — Multi-Rod Grid Divider Instructions</h3>
-<p>The three preceding templates provide 1:1-scale pinhole patterns for packed-array experiments: 2×2 (4 rods, Experiments 9–11), 3×2 (6 rods), or 5×2 (10 rods, Experiment 12). All use 25 mm center-to-center spacing. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<p>The three preceding templates provide 1:1-scale pinhole patterns for packed-array experiments: 2×2 (4 rods, Experiments 9–11), 3×2 (6 rods), or 5×2 (10 rods, Experiment 12). All use 30 mm center-to-center spacing — this provides 5 mm clearance between adjacent 25 mm PZT discs. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
 <p>Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). If using a different enclosure, cut the cardboard to match your box’s interior cross-section and center the pinhole grid accordingly.</p>
 <ol>
 <li>Print the template page for your chosen grid at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
@@ -1807,7 +1807,7 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 <li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22). All pinholes must be at the same height as the single-rod template so rods are interchangeable between mounts.</li>
 <li>Cut <strong>TWO</strong> dividers per grid option. Drop them into the box 75 mm apart. Slide rods through the aligned pinholes — each rod should pass through freely with no hard contact.</li>
 </ol>
-<p>The 25 mm spacing provides 4× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments. For the 5×2 grid (10 rods), the pinhole pattern spans 100 mm × 25 mm, which fits comfortably within the 165 × 140 mm divider.</p>
+<p>The 30 mm spacing provides 5× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments, with 5 mm clearance between 25 mm PZT disc edges. For the 5×2 grid (10 rods), the pinhole pattern spans 120 mm × 30 mm, which fits within the 165 × 140 mm divider with 22.5 mm margins.</p>
 </div>
 
 <div class="template-page">

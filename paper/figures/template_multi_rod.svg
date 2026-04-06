@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606 784" width="8.5in" height="11in">
-  <!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+  <!-- US Letter. Print at 100% scale. -->
+  <!-- Overview page: all three grid options at ~55% scale -->
   <style>
     text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
     .title { font-size: 14pt; font-weight: 700; fill: #1a1a1a; }
@@ -18,8 +19,8 @@
   </style>
 
   <!-- Page title -->
-  <text x="306" y="36" text-anchor="middle" class="title">CWM Experiment Guide — Multi-Rod Grid Template</text>
-  <text x="306" y="52" text-anchor="middle" class="subtitle">Print at 100% (no scaling). Verify ruler. Divider: 165 × 140 mm for CH-BOX (item 11).</text>
+  <text x="303" y="36" text-anchor="middle" class="title">CWM Experiment Guide — Multi-Rod Grid Template</text>
+  <text x="303" y="52" text-anchor="middle" class="subtitle">Print at 100% (no scaling). Verify ruler. Divider: 165 × 140 mm for CH-BOX (item 11). 30 mm rod spacing.</text>
 
   <!-- Calibration ruler -->
   <g transform="translate(206, 62)">
@@ -39,66 +40,66 @@
   </g>
 
   <!-- ================================================================== -->
-  <!-- OPTION A: 2×2 GRID (4 rods) — for Experiments 9-11                 -->
-  <!-- Divider: 165mm × 140mm. Grid centered.                            -->
-  <!-- 25mm spacing = 70.87 pt between centers                           -->
-  <!-- Grid span: 25mm wide × 25mm tall                                  -->
-  <!-- Center of divider: x=233.86, y=198.43 (in divider coords)        -->
+  <!-- All schematics at 55% scale                                        -->
+  <!-- 30 mm at 55% = 16.5 mm = 46.77 pt between centres                 -->
+  <!-- 15 mm at 55% = 8.25 mm = 23.39 pt (half-spacing offset)          -->
+  <!-- Divider at 55%: 165×0.55=90.75mm=257.24pt, 140×0.55=77mm=218.27pt -->
+  <!-- Divider centre: 128.62, 109.14                                     -->
+  <!-- ================================================================== -->
+
+  <!-- ================================================================== -->
+  <!-- OPTION A: 2×2 GRID (4 rods) — Experiments 9–11                    -->
+  <!-- Col offsets: ±15mm×0.55 = ±23.39pt from centre 128.62             -->
+  <!--   Col 1: 105.23   Col 2: 152.01                                   -->
+  <!-- Row offsets: ±15mm×0.55 = ±23.39pt from centre 109.14             -->
+  <!--   Row 1: 85.75    Row 2: 132.53                                   -->
   <!-- ================================================================== -->
 
   <text x="56" y="108" class="label" font-weight="700">OPTION A: 2×2 Grid (4 rods) — Experiments 9–11</text>
   <text x="56" y="122" class="note">Cut 165 × 140 mm. Punch 4 holes. Cut TWO identical dividers, space 75 mm apart in box.</text>
 
-  <!-- Scale divider to fit half page: show at ~65% scale for 2×2 -->
-  <!-- Actual 165mm=467.72pt too wide for half-page panel, so we show a schematic -->
   <g transform="translate(56, 134)">
-    <!-- Divider outline at ~55% scale: 165×0.55=90.75mm=257.24pt, 140×0.55=77mm=218.27pt -->
     <rect x="0" y="0" width="257.24" height="218.27" class="cut-line" rx="2"/>
 
     <!-- Dims -->
     <text x="128.62" y="-6" text-anchor="middle" class="dim">165 mm</text>
     <text x="267" y="109.14" text-anchor="start" class="dim" transform="rotate(90, 267, 109.14)">140 mm</text>
 
-    <!-- Grid center: 128.62, 109.14 -->
-    <!-- 25mm at 55% = 13.75mm = 38.98pt between centers -->
-    <!-- Offsets: ±12.5mm×0.55 = ±6.875mm = ±19.49pt -->
+    <!-- Pinholes -->
+    <circle cx="105.23" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="105.23" y="78" text-anchor="middle" class="dim">R1</text>
 
-    <!-- Row 1: y = 109.14 - 19.49 = 89.65 -->
-    <!-- Row 2: y = 109.14 + 19.49 = 128.63 -->
-    <!-- Col 1: x = 128.62 - 19.49 = 109.13 -->
-    <!-- Col 2: x = 128.62 + 19.49 = 148.11 -->
+    <circle cx="152.01" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="152.01" y="78" text-anchor="middle" class="dim">R2</text>
 
-    <circle cx="109.13" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="109.13" y="82" text-anchor="middle" class="dim">R1</text>
+    <circle cx="105.23" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="105.23" y="147" text-anchor="middle" class="dim">R3</text>
 
-    <circle cx="148.11" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="148.11" y="82" text-anchor="middle" class="dim">R2</text>
-
-    <circle cx="109.13" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="109.13" y="143" text-anchor="middle" class="dim">R3</text>
-
-    <circle cx="148.11" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="148.11" y="143" text-anchor="middle" class="dim">R4</text>
+    <circle cx="152.01" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="152.01" y="147" text-anchor="middle" class="dim">R4</text>
 
     <!-- Spacing labels -->
-    <line x1="109.13" y1="75" x2="148.11" y2="75" class="dim-line"/>
-    <text x="128.62" y="72" text-anchor="middle" class="dim">25 mm</text>
+    <line x1="105.23" y1="71" x2="152.01" y2="71" class="dim-line"/>
+    <text x="128.62" y="68" text-anchor="middle" class="dim">30 mm</text>
 
-    <line x1="155" y1="89.65" x2="155" y2="128.63" class="dim-line"/>
-    <text x="164" y="112" text-anchor="start" class="dim">25 mm</text>
+    <line x1="159" y1="85.75" x2="159" y2="132.53" class="dim-line"/>
+    <text x="168" y="112" text-anchor="start" class="dim">30 mm</text>
 
     <!-- PZT side -->
     <text x="4" y="109" text-anchor="start" class="label" fill="#2a7fff">← PZT</text>
 
-    <!-- Chamber outlines -->
-    <rect x="89.64" y="70.16" width="38.98" height="38.98" class="chamber"/>
-    <rect x="128.62" y="70.16" width="38.98" height="38.98" class="chamber"/>
-    <rect x="89.64" y="109.14" width="38.98" height="38.98" class="chamber"/>
-    <rect x="128.62" y="109.14" width="38.98" height="38.98" class="chamber"/>
+    <!-- Chamber outlines (30 mm at 55% = 46.77pt) -->
+    <rect x="81.84" y="62.36" width="46.77" height="46.77" class="chamber"/>
+    <rect x="128.62" y="62.36" width="46.77" height="46.77" class="chamber"/>
+    <rect x="81.84" y="109.14" width="46.77" height="46.77" class="chamber"/>
+    <rect x="128.62" y="109.14" width="46.77" height="46.77" class="chamber"/>
   </g>
 
   <!-- ================================================================== -->
-  <!-- OPTION B: 3×2 GRID (6 rods) — for larger experiments               -->
+  <!-- OPTION B: 3×2 GRID (6 rods)                                       -->
+  <!-- Col offsets: −30, 0, +30 mm × 0.55 = −46.77, 0, +46.77 pt       -->
+  <!--   Col 1: 81.85   Col 2: 128.62   Col 3: 175.39                   -->
+  <!-- Rows: same as Option A                                             -->
   <!-- ================================================================== -->
 
   <text x="336" y="108" class="label" font-weight="700">OPTION B: 3×2 Grid (6 rods)</text>
@@ -108,91 +109,91 @@
     <rect x="0" y="0" width="257.24" height="218.27" class="cut-line" rx="2"/>
     <text x="128.62" y="-6" text-anchor="middle" class="dim">165 mm</text>
 
-    <!-- 3 cols × 2 rows at 55% scale -->
-    <!-- Col offsets from center: -25mm, 0, +25mm → -38.98, 0, +38.98 -->
-    <!-- Col 1: 128.62-38.98=89.64, Col 2: 128.62, Col 3: 128.62+38.98=167.60 -->
-    <!-- Row 1: 109.14-19.49=89.65, Row 2: 109.14+19.49=128.63 -->
+    <circle cx="81.85" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="81.85" y="78" text-anchor="middle" class="dim">R1</text>
 
-    <circle cx="89.64" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="89.64" y="82" text-anchor="middle" class="dim">R1</text>
+    <circle cx="128.62" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="128.62" y="78" text-anchor="middle" class="dim">R2</text>
 
-    <circle cx="128.62" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="128.62" y="82" text-anchor="middle" class="dim">R2</text>
+    <circle cx="175.39" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="175.39" y="78" text-anchor="middle" class="dim">R3</text>
 
-    <circle cx="167.60" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="167.60" y="82" text-anchor="middle" class="dim">R3</text>
+    <circle cx="81.85" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="81.85" y="147" text-anchor="middle" class="dim">R4</text>
 
-    <circle cx="89.64" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="89.64" y="143" text-anchor="middle" class="dim">R4</text>
+    <circle cx="128.62" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="128.62" y="147" text-anchor="middle" class="dim">R5</text>
 
-    <circle cx="128.62" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="128.62" y="143" text-anchor="middle" class="dim">R5</text>
+    <circle cx="175.39" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="175.39" y="147" text-anchor="middle" class="dim">R6</text>
 
-    <circle cx="167.60" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="167.60" y="143" text-anchor="middle" class="dim">R6</text>
+    <!-- Spacing -->
+    <line x1="81.85" y1="71" x2="128.62" y2="71" class="dim-line"/>
+    <text x="105.23" y="68" text-anchor="middle" class="dim">30</text>
+    <line x1="128.62" y1="71" x2="175.39" y2="71" class="dim-line"/>
+    <text x="152.01" y="68" text-anchor="middle" class="dim">30 mm</text>
 
     <!-- PZT side -->
     <text x="4" y="109" text-anchor="start" class="label" fill="#2a7fff">← PZT</text>
   </g>
 
   <!-- ================================================================== -->
-  <!-- OPTION C: 5×2 GRID (10 rods) — for Experiment 12 (password vault)  -->
-  <!-- Grid span: 4×25mm=100mm wide × 25mm tall                          -->
-  <!-- At 55%: 55mm=155.91pt wide × 13.75mm=38.98pt tall                 -->
+  <!-- OPTION C: 5×2 GRID (10 rods) — Experiment 12                      -->
+  <!-- Col offsets: −60, −30, 0, +30, +60 mm × 0.55                     -->
+  <!--   = −93.54, −46.77, 0, +46.77, +93.54 pt from centre 128.62      -->
+  <!--   Col 1: 35.08  Col 2: 81.85  Col 3: 128.62  Col 4: 175.39  Col 5: 222.16 -->
+  <!-- Grid span: 120mm×0.55 = 66mm = 187.09pt                          -->
   <!-- ================================================================== -->
 
   <text x="56" y="380" class="label" font-weight="700">OPTION C: 5×2 Grid (10 rods) — Experiment 12 (max capacity)</text>
-  <text x="56" y="394" class="note">Same 165 × 140 mm divider. Grid spans 100 × 25 mm — fits comfortably with 32.5 mm margins on each side.</text>
+  <text x="56" y="394" class="note">Same 165 × 140 mm divider. Grid spans 120 × 30 mm — fits with 22.5 mm margins on each side.</text>
 
   <g transform="translate(56, 406)">
     <rect x="0" y="0" width="257.24" height="218.27" class="cut-line" rx="2"/>
     <text x="128.62" y="-6" text-anchor="middle" class="dim">165 mm</text>
     <text x="267" y="109.14" text-anchor="start" class="dim" transform="rotate(90, 267, 109.14)">140 mm</text>
 
-    <!-- 5 cols × 2 rows at 55% scale -->
-    <!-- Col offsets: -50, -25, 0, +25, +50 mm → ×0.55 = -27.5, -13.75, 0, +13.75, +27.5mm -->
-    <!-- In pt (×2.835): -77.96, -38.98, 0, +38.98, +77.96 from center 128.62 -->
-    <!-- Col 1: 50.66, Col 2: 89.64, Col 3: 128.62, Col 4: 167.60, Col 5: 206.58 -->
+    <!-- Row 1 -->
+    <circle cx="35.08" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="35.08" y="78" text-anchor="middle" class="dim">R1</text>
 
-    <circle cx="50.66" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="50.66" y="82" text-anchor="middle" class="dim">R1</text>
+    <circle cx="81.85" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="81.85" y="78" text-anchor="middle" class="dim">R2</text>
 
-    <circle cx="89.64" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="89.64" y="82" text-anchor="middle" class="dim">R2</text>
+    <circle cx="128.62" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="128.62" y="78" text-anchor="middle" class="dim">R3</text>
 
-    <circle cx="128.62" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="128.62" y="82" text-anchor="middle" class="dim">R3</text>
+    <circle cx="175.39" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="175.39" y="78" text-anchor="middle" class="dim">R4</text>
 
-    <circle cx="167.60" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="167.60" y="82" text-anchor="middle" class="dim">R4</text>
+    <circle cx="222.16" cy="85.75" r="5.46" class="pinhole"/>
+    <text x="222.16" y="78" text-anchor="middle" class="dim">R5</text>
 
-    <circle cx="206.58" cy="89.65" r="5.46" class="pinhole"/>
-    <text x="206.58" y="82" text-anchor="middle" class="dim">R5</text>
+    <!-- Row 2 -->
+    <circle cx="35.08" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="35.08" y="147" text-anchor="middle" class="dim">R6</text>
 
-    <circle cx="50.66" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="50.66" y="143" text-anchor="middle" class="dim">R6</text>
+    <circle cx="81.85" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="81.85" y="147" text-anchor="middle" class="dim">R7</text>
 
-    <circle cx="89.64" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="89.64" y="143" text-anchor="middle" class="dim">R7</text>
+    <circle cx="128.62" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="128.62" y="147" text-anchor="middle" class="dim">R8</text>
 
-    <circle cx="128.62" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="128.62" y="143" text-anchor="middle" class="dim">R8</text>
+    <circle cx="175.39" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="175.39" y="147" text-anchor="middle" class="dim">R9</text>
 
-    <circle cx="167.60" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="167.60" y="143" text-anchor="middle" class="dim">R9</text>
-
-    <circle cx="206.58" cy="128.63" r="5.46" class="pinhole"/>
-    <text x="206.58" y="143" text-anchor="middle" class="dim">R10</text>
+    <circle cx="222.16" cy="132.53" r="5.46" class="pinhole"/>
+    <text x="222.16" y="147" text-anchor="middle" class="dim">R10</text>
 
     <!-- Spacing labels -->
-    <line x1="50.66" y1="75" x2="89.64" y2="75" class="dim-line"/>
-    <text x="70.15" y="72" text-anchor="middle" class="dim">25</text>
-    <line x1="89.64" y1="75" x2="128.62" y2="75" class="dim-line"/>
-    <text x="109.13" y="72" text-anchor="middle" class="dim">25</text>
-    <line x1="128.62" y1="75" x2="167.60" y2="75" class="dim-line"/>
-    <text x="148.11" y="72" text-anchor="middle" class="dim">25</text>
-    <line x1="167.60" y1="75" x2="206.58" y2="75" class="dim-line"/>
-    <text x="187.09" y="72" text-anchor="middle" class="dim">25 mm</text>
+    <line x1="35.08" y1="71" x2="81.85" y2="71" class="dim-line"/>
+    <text x="58.47" y="68" text-anchor="middle" class="dim">30</text>
+    <line x1="81.85" y1="71" x2="128.62" y2="71" class="dim-line"/>
+    <text x="105.23" y="68" text-anchor="middle" class="dim">30</text>
+    <line x1="128.62" y1="71" x2="175.39" y2="71" class="dim-line"/>
+    <text x="152.01" y="68" text-anchor="middle" class="dim">30</text>
+    <line x1="175.39" y1="71" x2="222.16" y2="71" class="dim-line"/>
+    <text x="198.78" y="68" text-anchor="middle" class="dim">30 mm</text>
 
     <!-- PZT side -->
     <text x="4" y="109" text-anchor="start" class="label" fill="#2a7fff">← PZT</text>
@@ -215,13 +216,14 @@
     <text x="0" y="132" class="note">4. Drop both dividers into box 75 mm apart.</text>
     <text x="10" y="144" class="note">Rods slide horizontally through aligned holes.</text>
     <text x="0" y="162" class="note">5. PZT ends face the same end of the box.</text>
-    <text x="10" y="174" class="note">Notch the lid for cable routing.</text>
-    <text x="0" y="198" class="note" fill="#2a7fff">Blue dashed lines = acoustic isolation chambers</text>
-    <text x="0" y="210" class="note">25 mm spacing = 4× rod diameter — sufficient</text>
-    <text x="0" y="222" class="note">acoustic isolation at experimental power levels.</text>
+    <text x="10" y="174" class="note">25 mm discs overhang rod by 9.5 mm —</text>
+    <text x="10" y="186" class="note">30 mm spacing ensures 5 mm clearance.</text>
+    <text x="0" y="210" class="note" fill="#2a7fff">Blue dashed lines = acoustic isolation chambers</text>
+    <text x="0" y="222" class="note">30 mm spacing = 5× rod diameter — sufficient</text>
+    <text x="0" y="234" class="note">acoustic isolation at experimental power levels.</text>
   </g>
 
   <!-- Footer -->
-  <text x="306" y="750" text-anchor="middle" class="note">Template T.2 — CWM Macro-Scale Experiment Guide — github.com/miketierce/wcfoma</text>
-  <text x="306" y="762" text-anchor="middle" class="note">All grids use 25 mm center-to-center rod spacing. Scale drawings shown at ~55% — use ruler dimensions to mark cardboard.</text>
+  <text x="303" y="750" text-anchor="middle" class="note">Template T.2 — CWM Macro-Scale Experiment Guide — github.com/miketierce/cwm</text>
+  <text x="303" y="762" text-anchor="middle" class="note">All grids use 30 mm centre-to-centre rod spacing (5 mm clearance for 25 mm PZT discs). Scale drawings at ~55% — use rulers to mark cardboard.</text>
 </svg>
