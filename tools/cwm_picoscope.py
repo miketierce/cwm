@@ -47,7 +47,7 @@ N_SAMPLES = 8192          # capture buffer
 AWG_BUFFER = 8192         # AWG output buffer
 VOLTAGE_RANGE_MV = 500    # ±500 mV
 SETTLE_MS = 50            # wait after AWG starts before capture
-AVERAGES = 4              # number of captures to average for SNR
+AVERAGES = 16              # number of captures to average for SNR
 
 # Baseline unperturbed frequencies (computed once from rod geometry)
 _baseline_cache: dict = {}
@@ -310,6 +310,7 @@ def measure_rod_fingerprint(
     pattern_name: str = "A",
     rod_length_mm: float = 150.0,
     rod_diameter_mm: float = 6.0,
+    reference_hz=None,
 ) -> dict:
     """
     Measure a real rod's spectral fingerprint via PicoScope.
@@ -319,6 +320,14 @@ def measure_rod_fingerprint(
 
     Dispatches to the correct driver API (ps2000a or ps2000) based on
     what check_hardware() detected.
+
+    Args:
+        reference_hz: If provided (list/array of N_MODES frequencies),
+            search for peaks around these values instead of the theoretical
+            baseline. Use this during authentication so the search centres
+            on the enrolled frequencies, not the theoretical baseline.
+            Window is ±2% when reference_hz is None (enrollment),
+            ±1.5% when reference_hz is provided (authentication).
     """
     global _driver_api
     if _driver_api is None:
@@ -338,12 +347,19 @@ def measure_rod_fingerprint(
     magnitude = np.abs(spectrum)
     freq_axis = np.fft.rfftfreq(len(averaged), d=1.0 / SAMPLE_RATE)
 
+    # Choose search centres and window fraction
+    if reference_hz is not None:
+        search_centers = np.array(reference_hz, dtype=float)
+        window_frac = 0.015   # ±1.5% around enrolled frequency
+    else:
+        search_centers = baseline
+        window_frac = 0.020   # ±2% around theoretical baseline (was 0.5%)
+
     # Find the peak frequency nearest each expected mode
     perturbed_hz = np.zeros(N_MODES)
-    for i, f_expected in enumerate(baseline):
-        # Search window: ±0.5% around expected frequency
-        window = f_expected * 0.005
-        mask = (freq_axis >= f_expected - window) & (freq_axis <= f_expected + window)
+    for i, f_center in enumerate(search_centers[:N_MODES]):
+        window = f_center * window_frac
+        mask = (freq_axis >= f_center - window) & (freq_axis <= f_center + window)
         if np.any(mask):
             idx_in_window = np.where(mask)[0]
             best = idx_in_window[np.argmax(magnitude[mask])]
@@ -360,7 +376,8 @@ def measure_rod_fingerprint(
             else:
                 perturbed_hz[i] = freq_axis[best]
         else:
-            perturbed_hz[i] = f_expected  # fallback: no shift detected
+            # Fallback: no peak found in window, use search centre
+            perturbed_hz[i] = f_center
 
     shift_hz = perturbed_hz - baseline
 

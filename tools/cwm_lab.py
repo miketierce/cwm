@@ -89,6 +89,7 @@ def _compute_rod_fingerprint(
     rod_diameter_mm: float = 6.0,
     putty_mass_mg: float = 0.8,
     rod_id: int = 1,
+    reference_hz=None,
 ) -> dict:
     # ── Hardware path: real PicoScope measurement ─────────────────────
     # Skip hardware if the wizard has the scope handle open
@@ -104,6 +105,7 @@ def _compute_rod_fingerprint(
             pattern_name=pattern_name,
             rod_length_mm=rod_length_mm,
             rod_diameter_mm=rod_diameter_mm,
+            reference_hz=reference_hz,
         )
 
     # ── Simulation path: Rayleigh perturbation theory ─────────────────
@@ -367,7 +369,16 @@ def _register_user(username: str, rod_id: int, channel: int) -> dict:
 
 
 def _authenticate_user(username: str) -> dict:
-    """Authenticate by re-measuring the rod and correlating."""
+    """Authenticate by re-measuring the rod and comparing to enrolled fingerprint.
+
+    Uses a two-stage approach:
+    1. Measure with search centres on the enrolled perturbed_hz (not theoretical
+       baseline), so we find the same peaks as enrollment even if the mode
+       frequencies have drifted slightly between sessions.
+    2. Compare using RMS distance between live and enrolled perturbed_hz
+       (normalised by enrolled values) rather than correlating the noisy
+       shift_hz.  The user passes if their rod is the closest match.
+    """
     db = _load_users()
     _ensure_rods(db)
 
@@ -379,57 +390,66 @@ def _authenticate_user(username: str) -> dict:
     if not rod_data:
         return {"authenticated": False, "error": "Rod data missing."}
 
-    # Simulate fresh measurement with slight noise
+    enrolled_hz = np.array(rod_data["perturbed_hz"])
+
+    # Measure with peaks searched around enrolled frequencies
     fp = _compute_rod_fingerprint(
         pattern_name=rod_data["pattern"],
         rod_id=user["rod"],
+        reference_hz=enrolled_hz,
     )
-    measured_full = np.array(fp["fingerprint"])
+    live_hz = np.array(fp["perturbed_hz"])
 
-    # Full-rod correlation
-    enrolled_full = np.array(rod_data["fingerprint"])
-    corr = _correlate(measured_full, enrolled_full)
+    # ── Primary metric: normalised RMS distance from enrolled ────────
+    # Use fractional deviation so high and low modes contribute equally.
+    # Same rod in similar conditions → small fractional deviations.
+    # Wrong rod → large systematic offsets in most modes.
+    frac_dev = (live_hz - enrolled_hz) / enrolled_hz  # ~0 for matching rod
+    rms_self = float(np.sqrt(np.mean(frac_dev ** 2)))
 
-    # Channel-level check
-    template = np.array(user["template"])
-    measured_ch = _extract_channel(fp["fingerprint"], user["channel"])
-    ch_corr = _correlate(measured_ch, template)
-
-    # Cross-user discrimination
-    wrong_corrs = []
-    for other_user, other_data in db["users"].items():
-        if other_user == username:
+    # Compare against every other rod's enrolled fingerprint
+    rms_others = {}
+    for rod_key, rod_info in db["rods"].items():
+        if int(rod_key) == user["rod"]:
             continue
-        if other_data["rod"] == user["rod"]:
-            other_template = np.array(other_data["template"])
-            wrong_corrs.append(
-                (_correlate(measured_ch, other_template), other_user)
-            )
-        else:
-            other_rod = db["rods"].get(str(other_data["rod"]))
-            if other_rod:
-                other_fp = np.array(other_rod["fingerprint"])
-                wrong_corrs.append(
-                    (_correlate(measured_full, other_fp), other_user)
-                )
+        other_enrolled = rod_info.get("perturbed_hz")
+        if not other_enrolled:
+            continue
+        other_hz = np.array(other_enrolled)
+        frac_other = (live_hz - other_hz) / other_hz
+        rms_others[rod_key] = float(np.sqrt(np.mean(frac_other ** 2)))
 
-    best_wrong = max(wrong_corrs, key=lambda x: x[0]) if wrong_corrs else (0.0, "—")
-    if corr > 0 and best_wrong[0] > 0:
-        margin_db = 20 * np.log10(corr / max(abs(best_wrong[0]), 1e-30))
-    else:
-        margin_db = float("inf") if corr > 0 else 0.0
+    best_wrong_rod = min(rms_others, key=rms_others.get) if rms_others else None
+    best_wrong_rms = rms_others[best_wrong_rod] if best_wrong_rod else float("inf")
 
-    passed = corr >= CORRELATION_THRESHOLD
+    # Margin: how much closer is the live measurement to own rod vs closest wrong rod
+    margin = best_wrong_rms - rms_self   # positive = own rod is closer = good
+    margin_db = 20 * np.log10(best_wrong_rms / max(rms_self, 1e-9)) if rms_self > 1e-9 else 0.0
+
+    # Also compute legacy correlation for display
+    enrolled_fp = np.array(rod_data["fingerprint"])
+    live_fp = np.array(fp["fingerprint"])
+    corr = _correlate(live_fp, enrolled_fp)
+
+    # Pass if own-rod RMS is less than 2.5% AND closer than nearest wrong rod
+    RMS_THRESHOLD = 0.025   # 2.5% fractional deviation
+    passed = (rms_self < RMS_THRESHOLD) and (margin > 0)
 
     return {
         "authenticated": passed,
         "username": username,
-        "correlation": round(corr, 4),
-        "channel_correlation": round(ch_corr, 4),
-        "threshold": CORRELATION_THRESHOLD,
-        "best_wrong_user": best_wrong[1],
-        "best_wrong_corr": round(best_wrong[0], 4),
+        "rms_self": round(rms_self * 100, 4),       # as % for display
+        "rms_best_wrong": round(best_wrong_rms * 100, 4),
+        "margin_pct": round(margin * 100, 4),
         "margin_db": round(margin_db, 1),
+        "best_wrong_rod": best_wrong_rod or "—",
+        "rms_threshold_pct": RMS_THRESHOLD * 100,
+        # Legacy fields kept for UI compatibility
+        "correlation": round(corr, 4),
+        "channel_correlation": round(corr, 4),
+        "threshold": CORRELATION_THRESHOLD,
+        "best_wrong_user": f"rod{best_wrong_rod}" if best_wrong_rod else "—",
+        "best_wrong_corr": round(1.0 - best_wrong_rms, 4),
         "rod": user["rod"],
         "channel": user["channel"],
         "pattern": user.get("rod_pattern", "?"),

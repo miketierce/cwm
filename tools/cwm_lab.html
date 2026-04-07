@@ -3055,18 +3055,21 @@
 						currentUser = username
 						showAuthResult(
 							'pass',
-							`<strong>Authenticated ✓</strong> Correlation: ${data.correlation} (threshold: ${data.threshold})<br>` +
-								`Margin: ${data.margin_db} dB vs "${data.best_wrong_user}"<br>` +
-								`<em>Entering lab in 1 second…</em>`,
+							`<strong>Authenticated ✓</strong><br>` +
+							(data.rms_self !== undefined
+								? `Spectral deviation: ${data.rms_self.toFixed(3)}% (threshold ${data.rms_threshold_pct}%) · Margin ${data.margin_db} dB vs rod ${data.best_wrong_rod}`
+								: `Correlation: ${data.correlation} (threshold: ${data.threshold}) · Margin: ${data.margin_db} dB`) +
+							`<br><em>Entering lab in 1 second…</em>`,
 						)
 						setTimeout(() => enterApp(), 1000)
 					} else {
 						showAuthResult(
 							'fail',
 							`<strong>Authentication failed.</strong> ${data.error || ''}<br>` +
-								(data.correlation !== undefined
-									? `Correlation: ${data.correlation} (need ≥ ${data.threshold})`
-									: 'User not found. Register first.'),
+							(data.rms_self !== undefined
+								? `Spectral deviation: ${data.rms_self.toFixed(3)}% (need < ${data.rms_threshold_pct}%)` +
+								  (data.margin_pct !== undefined ? ` · Margin vs wrong rod: ${data.margin_pct > 0 ? '+' : ''}${data.margin_pct.toFixed(3)}%` : '')
+								: `Correlation: ${data.correlation} (need ≥ ${data.threshold})`),
 						)
 					}
 				} catch (e) {
