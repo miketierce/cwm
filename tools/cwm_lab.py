@@ -1108,7 +1108,6 @@ class LabHandler(SimpleHTTPRequestHandler):
             self._json_response(_get_rod_status())
         elif path.startswith("/api/user-rod"):
             # GET /api/user-rod?username=...
-            from urllib.parse import urlparse, parse_qs
             qs = parse_qs(urlparse(self.path).query)
             username = qs.get("username", [""])[0].strip()
             if not username:
