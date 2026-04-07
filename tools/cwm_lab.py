@@ -248,7 +248,11 @@ def _ensure_rods(db: dict, n_rods: int = N_RODS_DEFAULT):
 
 
 def _enroll_single_rod(rod_id: int, pattern_name=None) -> dict:
-    """Measure one rod via PicoScope and save its fingerprint."""
+    """Measure one rod via PicoScope and save its fingerprint.
+
+    Bypasses is_scope_busy() — enrollment explicitly owns the scope.
+    Closes any wizard-held handle first so the scope is free.
+    """
     db = _load_users()
     _ensure_rods(db)
 
@@ -259,11 +263,35 @@ def _enroll_single_rod(rod_id: int, pattern_name=None) -> dict:
     if pattern_name is None:
         pattern_name = db["rods"][rod_key].get("pattern", "A")
 
-    fp = _compute_rod_fingerprint(pattern_name=pattern_name, rod_id=rod_id)
+    # Close any wizard-held scope handle so the scope is free
+    if SCOPE_FUNCTIONS_AVAILABLE:
+        try:
+            _close_scope()
+        except Exception:
+            pass
+
+    # Attempt hardware measurement directly, bypassing is_scope_busy()
+    fp = None
+    hw_error = None
+    if HARDWARE_AVAILABLE and SCOPE_FUNCTIONS_AVAILABLE:
+        try:
+            fp = measure_rod_fingerprint(
+                rod_id=rod_id,
+                pattern_name=pattern_name,
+            )
+        except Exception as e:
+            hw_error = str(e)
+
+    # Fall back to simulation only if hardware is genuinely unavailable
+    if fp is None:
+        fp = _compute_rod_fingerprint(pattern_name=pattern_name, rod_id=rod_id)
+        fp["simulated"] = True
+        fp["hw_error"] = hw_error
     db["rods"][rod_key]["fingerprint"] = fp["fingerprint"]
     db["rods"][rod_key]["perturbed_hz"] = fp["perturbed_hz"]
     db["rods"][rod_key]["pattern"] = pattern_name
     db["rods"][rod_key]["enrolled"] = True
+    db["rods"][rod_key]["hw_enrolled"] = not fp.get("simulated", False)
     _save_users(db)
 
     return {
@@ -273,6 +301,8 @@ def _enroll_single_rod(rod_id: int, pattern_name=None) -> dict:
         "perturbed_hz": fp["perturbed_hz"],
         "fingerprint": fp["fingerprint"],
         "enrolled": True,
+        "simulated": fp.get("simulated", False),
+        "hw_error": fp.get("hw_error"),
     }
 
 

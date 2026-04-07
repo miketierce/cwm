@@ -2449,7 +2449,10 @@
 					<h2>🔬 Rod Enrollment Wizard</h2>
 					<p class="subtitle">
 						Before registering users, each rod in the array must be individually
-						enrolled so CWM Lab can capture its unique spectral fingerprint.
+						enrolled so CWM Lab can capture its unique spectral fingerprint.<br>
+						<span style="color:var(--accent2); font-size:12px">
+							⚠️ Do not use the Experiments tab while enrolling — it holds the scope open.
+						</span>
 					</p>
 
 					<div class="enroll-progress" id="enrollProgress"></div>
@@ -2939,12 +2942,26 @@
 							const top5 = data.perturbed_hz
 								? data.perturbed_hz.slice(0, 5).map(f => f.toFixed(1) + ' Hz').join(', ')
 								: 'N/A'
-							resultEl.innerHTML = `<div class="enroll-result success">
-								✓ Rod ${rodId} enrolled (Pattern ${data.pattern})<br>
-								<span style="font-size:11px">First 5 modes: ${top5}</span>
-							</div>`
+							if (data.simulated) {
+								resultEl.innerHTML = `<div class="enroll-result error">
+									⚠️ Rod ${rodId} enrolled using <strong>simulation</strong> (PicoScope was busy).<br>
+									<span style="font-size:11px">${data.hw_error || 'Scope was held open by another tab'}</span><br>
+									<span style="font-size:11px; color:var(--accent2)">
+										Click "Re-enroll" to retry with hardware.
+									</span>
+								</div>
+								<button class="btn btn-secondary" style="margin-top:6px; font-size:12px"
+									onclick="reEnrollRod(${rodId})">Re-enroll Rod ${rodId}</button>`
+								// Don't advance — leave on this step
+								renderEnrollWizard()
+							} else {
+								resultEl.innerHTML = `<div class="enroll-result success">
+									✓ Rod ${rodId} enrolled via <strong>PicoScope hardware</strong> (Pattern ${data.pattern})<br>
+									<span style="font-size:11px">First 5 modes: ${top5}</span>
+								</div>`
+								renderEnrollWizard()
+							}
 						}
-						renderEnrollWizard()
 					} else {
 						if (resultEl) resultEl.innerHTML = `<div class="enroll-result error">${data.error}</div>`
 					}
@@ -2953,6 +2970,13 @@
 				}
 				btn.textContent = 'Enroll This Rod'
 				btn.disabled = false
+			}
+
+			async function reEnrollRod(rodId) {
+				// Force re-enrollment of a rod that ended up in simulation
+				enrollState.currentRod = rodId
+				enrollState.rods[String(rodId)].enrolled = false
+				renderEnrollWizard()
 			}
 
 			async function skipToSimulation() {
