@@ -217,18 +217,83 @@ N_RODS_DEFAULT = 4
 
 
 def _ensure_rods(db: dict, n_rods: int = N_RODS_DEFAULT):
-    """Ensure rod fingerprints are computed and cached."""
+    """Ensure rod fingerprints are computed and cached.
+
+    In HARDWARE mode, this only creates the rods dict structure — actual
+    fingerprints are captured one-at-a-time via /api/enroll-rod so the user
+    can swap cables between measurements.  In SIMULATION mode, all rods are
+    auto-enrolled immediately (no physical wiring needed).
+    """
     if db.get("rods"):
         return
     db["rods"] = {}
     for rod_idx in range(1, n_rods + 1):
         pattern = PATTERN_CYCLE[(rod_idx - 1) % len(PATTERN_CYCLE)]
-        fp = _compute_rod_fingerprint(pattern_name=pattern, rod_id=rod_idx)
-        db["rods"][str(rod_idx)] = {
-            "pattern": pattern,
-            "fingerprint": fp["fingerprint"],
-            "perturbed_hz": fp["perturbed_hz"],
+        if HARDWARE_AVAILABLE:
+            # Placeholder — real fingerprint captured via enroll-rod wizard
+            db["rods"][str(rod_idx)] = {
+                "pattern": pattern,
+                "fingerprint": None,
+                "perturbed_hz": None,
+                "enrolled": False,
+            }
+        else:
+            fp = _compute_rod_fingerprint(pattern_name=pattern, rod_id=rod_idx)
+            db["rods"][str(rod_idx)] = {
+                "pattern": pattern,
+                "fingerprint": fp["fingerprint"],
+                "perturbed_hz": fp["perturbed_hz"],
+                "enrolled": True,
+            }
+
+
+def _enroll_single_rod(rod_id: int, pattern_name=None) -> dict:
+    """Measure one rod via PicoScope and save its fingerprint."""
+    db = _load_users()
+    _ensure_rods(db)
+
+    rod_key = str(rod_id)
+    if rod_key not in db["rods"]:
+        return {"error": f"Rod {rod_id} does not exist in the array."}
+
+    if pattern_name is None:
+        pattern_name = db["rods"][rod_key].get("pattern", "A")
+
+    fp = _compute_rod_fingerprint(pattern_name=pattern_name, rod_id=rod_id)
+    db["rods"][rod_key]["fingerprint"] = fp["fingerprint"]
+    db["rods"][rod_key]["perturbed_hz"] = fp["perturbed_hz"]
+    db["rods"][rod_key]["pattern"] = pattern_name
+    db["rods"][rod_key]["enrolled"] = True
+    _save_users(db)
+
+    return {
+        "ok": True,
+        "rod_id": rod_id,
+        "pattern": pattern_name,
+        "perturbed_hz": fp["perturbed_hz"],
+        "fingerprint": fp["fingerprint"],
+        "enrolled": True,
+    }
+
+
+def _get_rod_status() -> dict:
+    """Return enrollment status for every rod."""
+    db = _load_users()
+    _ensure_rods(db)
+    _save_users(db)
+    rods = {}
+    for rod_key, rod_data in db.get("rods", {}).items():
+        rods[rod_key] = {
+            "pattern": rod_data.get("pattern"),
+            "enrolled": rod_data.get("enrolled", False),
         }
+    all_enrolled = all(r["enrolled"] for r in rods.values())
+    return {
+        "rods": rods,
+        "all_enrolled": all_enrolled,
+        "hardware": HARDWARE_AVAILABLE,
+        "n_rods": len(rods),
+    }
 
 
 # ── Auth (CWM Vault) ─────────────────────────────────────────────────────
@@ -1039,6 +1104,8 @@ class LabHandler(SimpleHTTPRequestHandler):
             self._json_response(_build_proof())
         elif path == "/api/scope/status":
             self._json_response(_scope_status_safe())
+        elif path == "/api/rod-status":
+            self._json_response(_get_rod_status())
         elif path == "/api/scope/presets":
             self._json_response(_scope_presets_safe())
         elif path.startswith("/api/library/"):
@@ -1071,6 +1138,17 @@ class LabHandler(SimpleHTTPRequestHandler):
                 # Auto-assign next available slot
                 db = _load_users()
                 _ensure_rods(db)
+                # Block registration if any rod is not yet enrolled
+                unenrolled = [
+                    k for k, v in db["rods"].items()
+                    if not v.get("enrolled", False)
+                ]
+                if unenrolled:
+                    self._json_response(
+                        {"error": "Rods not enrolled yet. Complete the Rod Enrollment Wizard first.",
+                         "unenrolled": sorted(unenrolled, key=int)}, 400
+                    )
+                    return
                 used = set()
                 for u, ud in db["users"].items():
                     used.add((ud["rod"], ud["channel"]))
@@ -1098,6 +1176,29 @@ class LabHandler(SimpleHTTPRequestHandler):
                     return
                 result = _authenticate_user(username)
                 self._json_response(result)
+
+            elif path == "/api/enroll-rod":
+                data = json.loads(body)
+                rod_id = int(data.get("rod_id", 0))
+                pattern_name = data.get("pattern")
+                if rod_id < 1:
+                    self._json_response({"error": "Invalid rod_id."}, 400)
+                    return
+                result = _enroll_single_rod(rod_id, pattern_name)
+                self._json_response(
+                    result, 200 if result.get("ok") else 400
+                )
+
+            elif path == "/api/reset-rods":
+                # Clear all rod data and re-initialize with simulation
+                global HARDWARE_AVAILABLE
+                db = _load_users()
+                db["rods"] = {}
+                db["users"] = {}
+                HARDWARE_AVAILABLE = False  # force simulation mode
+                _ensure_rods(db, N_RODS_DEFAULT)
+                _save_users(db)
+                self._json_response({"ok": True, "message": "Reset to simulation mode."})
 
             elif path == "/api/enroll-image":
                 # Expect multipart-like JSON with base64 image
@@ -1340,11 +1441,16 @@ def main():
     _ensure_rods(db, args.rods)
     _save_users(db)
 
+    hw_enrolled = sum(1 for r in db.get("rods", {}).values() if r.get("enrolled"))
+    total_rods = len(db.get("rods", {}))
+
     server = HTTPServer(("127.0.0.1", args.port), LabHandler)
     mode = "HARDWARE (PicoScope 2204A)" if HARDWARE_AVAILABLE else "SIMULATION (Rayleigh)"
     print(f"CWM Lab running at http://localhost:{args.port}")
     print(f"  Mode:  {mode}")
     print(f"  Array: {args.rods} rods × {N_CHANNELS} channels = {args.rods * N_CHANNELS} slots")
+    if HARDWARE_AVAILABLE and hw_enrolled < total_rods:
+        print(f"  Rods enrolled: {hw_enrolled}/{total_rods} — complete enrollment in the browser")
     print(f"  Data:  {DATA_DIR}")
     print(f"  Press Ctrl+C to stop.\n")
 

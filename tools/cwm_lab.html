@@ -1278,6 +1278,135 @@
 				font-size: 12px;
 				width: auto;
 			}
+
+			/* ── Rod Enrollment Wizard ─────────────────────────── */
+			.enroll-wizard {
+				max-width: 520px;
+				margin: 0 auto;
+				padding: 20px;
+			}
+			.enroll-wizard h2 {
+				font-size: 22px;
+				text-align: center;
+				margin-bottom: 4px;
+			}
+			.enroll-wizard .subtitle {
+				color: var(--muted);
+				text-align: center;
+				font-size: 13px;
+				margin-bottom: 20px;
+			}
+			.enroll-step {
+				background: var(--bg2);
+				border: 1px solid var(--border);
+				border-radius: var(--radius);
+				padding: 20px;
+				margin-bottom: 16px;
+			}
+			.enroll-step.active {
+				border-color: var(--accent2);
+				box-shadow: 0 0 0 1px var(--accent2);
+			}
+			.enroll-step.done {
+				border-color: var(--green);
+				opacity: 0.75;
+			}
+			.enroll-step h3 {
+				font-size: 15px;
+				margin-bottom: 8px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+			.enroll-step h3 .step-num {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 26px;
+				height: 26px;
+				border-radius: 50%;
+				background: var(--bg3);
+				font-size: 12px;
+				font-weight: 700;
+				flex-shrink: 0;
+			}
+			.enroll-step.active h3 .step-num {
+				background: var(--accent2);
+				color: #000;
+			}
+			.enroll-step.done h3 .step-num {
+				background: var(--green);
+				color: #000;
+			}
+			.enroll-step .instructions {
+				font-size: 13px;
+				color: var(--muted);
+				line-height: 1.6;
+				margin-bottom: 12px;
+			}
+			.enroll-step .instructions ol {
+				margin: 8px 0 0 20px;
+				padding: 0;
+			}
+			.enroll-step .instructions li {
+				margin-bottom: 6px;
+			}
+			.enroll-step .instructions code {
+				background: var(--bg3);
+				padding: 1px 5px;
+				border-radius: 3px;
+				font-size: 12px;
+			}
+			.enroll-step .wire-diagram {
+				background: #0d1117;
+				border: 1px solid var(--border);
+				border-radius: 6px;
+				padding: 12px 16px;
+				font-family: 'JetBrains Mono', monospace;
+				font-size: 11px;
+				color: var(--muted);
+				line-height: 1.5;
+				margin: 10px 0;
+				white-space: pre;
+				overflow-x: auto;
+			}
+			.enroll-step .enroll-result {
+				margin-top: 12px;
+				padding: 10px;
+				border-radius: 6px;
+				font-size: 12px;
+			}
+			.enroll-step .enroll-result.success {
+				background: #052e16;
+				color: var(--green);
+				border: 1px solid #16a34a33;
+			}
+			.enroll-step .enroll-result.error {
+				background: #2a0a0a;
+				color: #f87171;
+				border: 1px solid #f8717133;
+			}
+			.enroll-progress {
+				display: flex;
+				gap: 8px;
+				justify-content: center;
+				margin-bottom: 16px;
+			}
+			.enroll-progress .pip {
+				width: 12px;
+				height: 12px;
+				border-radius: 50%;
+				background: var(--bg3);
+				border: 2px solid var(--border);
+			}
+			.enroll-progress .pip.done {
+				background: var(--green);
+				border-color: var(--green);
+			}
+			.enroll-progress .pip.active {
+				background: var(--accent2);
+				border-color: var(--accent2);
+			}
 		</style>
 	</head>
 	<body>
@@ -2314,6 +2443,30 @@
 			<div
 				class="tab-content"
 				id="sectionAuth">
+
+				<!-- ── Rod Enrollment Wizard ── -->
+				<div id="enrollWizard" class="enroll-wizard" style="display:none">
+					<h2>🔬 Rod Enrollment Wizard</h2>
+					<p class="subtitle">
+						Before registering users, each rod in the array must be individually
+						enrolled so CWM Lab can capture its unique spectral fingerprint.
+					</p>
+
+					<div class="enroll-progress" id="enrollProgress"></div>
+
+					<div id="enrollSteps"></div>
+
+					<div style="text-align:center; margin-top:12px">
+						<button class="btn btn-primary" id="enrollBtn" onclick="enrollCurrentRod()" disabled>
+							Enroll This Rod
+						</button>
+						<button class="btn btn-secondary" style="margin-left:8px" onclick="skipToSimulation()">
+							Use Simulation Instead
+						</button>
+					</div>
+					<div id="enrollWizardMsg" style="margin-top:12px; text-align:center; font-size:13px; color:var(--muted)"></div>
+				</div>
+
 				<!-- Auth Screen -->
 				<div
 					class="auth-screen"
@@ -2620,6 +2773,193 @@
 			let authData = null
 			let autoSearchInterval = null
 			let cameraStream = null
+
+			// ── Rod Enrollment Wizard ─────────────────────────────────────────────
+			let enrollState = { rods: {}, currentRod: 0, totalRods: 0, hardware: false }
+
+			const PUTTY_DESCRIPTIONS = {
+				'A': 'Two pellets at L/4 (37.5 mm) and 3L/4 (112.5 mm)',
+				'B': 'Two pellets at L/3 (50 mm) and 2L/3 (100 mm)',
+				'C': 'One pellet at L/2 (75 mm, rod midpoint)',
+				'D': 'Two pellets at L/5 (30 mm) and 4L/5 (120 mm)',
+			}
+
+			async function checkEnrollmentStatus() {
+				try {
+					const res = await fetch(API + '/api/rod-status')
+					const data = await res.json()
+					enrollState.rods = data.rods
+					enrollState.hardware = data.hardware
+					enrollState.totalRods = data.n_rods
+
+					if (data.all_enrolled) {
+						document.getElementById('enrollWizard').style.display = 'none'
+						document.getElementById('authScreen').style.display = ''
+						return
+					}
+					// Show wizard, hide auth screen
+					document.getElementById('enrollWizard').style.display = ''
+					document.getElementById('authScreen').style.display = 'none'
+					renderEnrollWizard()
+				} catch(e) {
+					console.error('Enrollment check failed:', e)
+				}
+			}
+
+			function renderEnrollWizard() {
+				const rods = enrollState.rods
+				const rodKeys = Object.keys(rods).sort((a,b) => +a - +b)
+				const total = rodKeys.length
+
+				// Progress pips
+				const progressEl = document.getElementById('enrollProgress')
+				progressEl.innerHTML = rodKeys.map(k => {
+					const r = rods[k]
+					const cls = r.enrolled ? 'pip done' : (enrollState.currentRod === +k ? 'pip active' : 'pip')
+					return `<div class="${cls}" title="Rod ${k}"></div>`
+				}).join('')
+
+				// Find first unenrolled rod
+				let nextRod = 0
+				for (const k of rodKeys) {
+					if (!rods[k].enrolled) { nextRod = +k; break }
+				}
+				enrollState.currentRod = nextRod
+
+				// Build step cards
+				const stepsEl = document.getElementById('enrollSteps')
+				stepsEl.innerHTML = ''
+
+				for (const k of rodKeys) {
+					const rod = rods[k]
+					const rodNum = +k
+					const isActive = rodNum === nextRod
+					const isDone = rod.enrolled
+					const pattern = rod.pattern || 'A'
+
+					const div = document.createElement('div')
+					div.className = 'enroll-step' + (isDone ? ' done' : (isActive ? ' active' : ''))
+					div.id = `enrollStep${k}`
+
+					if (isDone) {
+						div.innerHTML = `
+							<h3><span class="step-num">✓</span> Rod ${k} — Pattern ${pattern}</h3>
+							<div class="enroll-result success">Enrolled successfully.</div>
+						`
+					} else if (isActive) {
+						const puttyDesc = PUTTY_DESCRIPTIONS[pattern] || `Pattern ${pattern}`
+						const prevRodLabel = rodNum > 1 ? `Rod ${rodNum - 1}` : 'the parallel bundle'
+						div.innerHTML = `
+							<h3><span class="step-num">${k}</span> Rod ${k} — Pattern ${pattern}</h3>
+							<div class="instructions">
+								<strong>Putty placement:</strong> ${puttyDesc}
+								<ol>
+									<li><strong>Disconnect</strong> the BNC cable or alligator clips from ${prevRodLabel}.</li>
+									<li><strong>Locate Rod ${k}'s PZT disc</strong> — it's the 25 mm disc glued to the end of Rod ${k}, protruding from the box.</li>
+									<li><strong>Clip onto the solder pads</strong> on the PZT disc face:
+										<ul style="margin-top:4px">
+											<li>🔴 <strong>Red (hot)</strong> alligator clip → <strong>BNC centre pin</strong></li>
+											<li>⚫ <strong>Black (ground)</strong> alligator clip → <strong>BNC shield</strong></li>
+										</ul>
+										Clip directly onto the solder joints where the leads attach to the ceramic disc — these are the most accessible contact points.
+									</li>
+									<li><strong>Verify</strong> that ONLY Rod ${k} is connected. All other rods should be disconnected from the scope.</li>
+								</ol>
+								<div class="wire-diagram">PicoScope 2204A
+┌──────────────────┐
+│  AWG OUT ─── BNC T-connector ─┐
+│  Ch A IN ─── BNC T-connector ─┤
+└──────────────────┘             │
+                            ┌────┘
+                     Alligator clips
+                    🔴 Red  → centre pin
+                    ⚫ Black → shield
+                            │
+                    ┌───────┴───────┐
+                    │  Rod ${k} PZT   │
+                    │  (only this   │
+                    │   rod wired)  │
+                    └───────────────┘</div>
+							</div>
+							<p style="font-size:12px; color:var(--accent2)">
+								When Rod ${k} is connected and ready, click <strong>Enroll This Rod</strong> below.
+							</p>
+							<div id="enrollResult${k}"></div>
+						`
+					} else {
+						div.innerHTML = `
+							<h3><span class="step-num">${k}</span> Rod ${k} — Pattern ${rod.pattern || '?'}</h3>
+							<div class="instructions" style="color:var(--muted); font-size:12px">Waiting…</div>
+						`
+					}
+					stepsEl.appendChild(div)
+				}
+
+				// Enable/disable button
+				document.getElementById('enrollBtn').disabled = !nextRod
+				if (!nextRod) {
+					document.getElementById('enrollWizardMsg').innerHTML =
+						'<span style="color:var(--green)">✓ All rods enrolled! Proceeding to authentication…</span>'
+					setTimeout(() => {
+						document.getElementById('enrollWizard').style.display = 'none'
+						document.getElementById('authScreen').style.display = ''
+					}, 1500)
+				}
+			}
+
+			async function enrollCurrentRod() {
+				const rodId = enrollState.currentRod
+				if (!rodId) return
+				const btn = document.getElementById('enrollBtn')
+				btn.disabled = true
+				btn.textContent = 'Measuring…'
+
+				const resultEl = document.getElementById(`enrollResult${rodId}`)
+				if (resultEl) resultEl.innerHTML = '<em style="color:var(--accent2)">Driving chirp and capturing FFT — hold still…</em>'
+
+				try {
+					const res = await fetch(API + '/api/enroll-rod', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({ rod_id: rodId }),
+					})
+					const data = await res.json()
+					if (data.ok) {
+						enrollState.rods[String(rodId)].enrolled = true
+						if (resultEl) {
+							const top5 = data.perturbed_hz
+								? data.perturbed_hz.slice(0, 5).map(f => f.toFixed(1) + ' Hz').join(', ')
+								: 'N/A'
+							resultEl.innerHTML = `<div class="enroll-result success">
+								✓ Rod ${rodId} enrolled (Pattern ${data.pattern})<br>
+								<span style="font-size:11px">First 5 modes: ${top5}</span>
+							</div>`
+						}
+						renderEnrollWizard()
+					} else {
+						if (resultEl) resultEl.innerHTML = `<div class="enroll-result error">${data.error}</div>`
+					}
+				} catch(e) {
+					if (resultEl) resultEl.innerHTML = `<div class="enroll-result error">Error: ${e.message}</div>`
+				}
+				btn.textContent = 'Enroll This Rod'
+				btn.disabled = false
+			}
+
+			async function skipToSimulation() {
+				if (!confirm('This will clear all rod data and use Rayleigh simulation instead of PicoScope hardware. Continue?')) return
+				try {
+					await fetch(API + '/api/reset-rods', { method: 'POST' })
+					// Temporarily override hardware flag and reload
+					document.getElementById('enrollWizard').style.display = 'none'
+					document.getElementById('authScreen').style.display = ''
+					document.getElementById('enrollWizardMsg').innerHTML = ''
+					// Force re-init with simulation by reloading
+					location.reload()
+				} catch(e) {
+					alert('Error: ' + e.message)
+				}
+			}
 
 			// ── Auth ──────────────────────────────────────────────────────────────
 			// register() is defined below with face enrollment integration
@@ -2988,6 +3328,9 @@
 						)
 						// Show face enrollment panel
 						document.getElementById('faceEnrollZone').style.display = 'block'
+					} else if (data.unenrolled) {
+						showAuthResult('fail', data.error + ' Switching to enrollment wizard…')
+						setTimeout(() => checkEnrollmentStatus(), 1000)
 					} else {
 						showAuthResult('fail', data.error)
 					}
@@ -3257,6 +3600,7 @@
 				document.getElementById(sectionId).classList.add('active')
 				if (tab === 'cim' && !cimInitialized) cimInit()
 				if (tab === 'qcb' && !qcbInitialized) qcbInit()
+				if (tab === 'auth') checkEnrollmentStatus()
 			}
 
 			// ── Experiment Wizard ─────────────────────────────────────────────────
