@@ -2484,20 +2484,29 @@
 					<div class="auth-card">
 						<h2>Authenticate</h2>
 						<p>
-							Each user is a spectral fingerprint on a glass rod. Register to
-							claim a unique rod/channel slot, then authenticate via acoustic
-							correlation.
+							Each user is a spectral fingerprint on a glass rod.
+							Your <strong>physical rod is your password</strong> — you must
+							present it to the scope to sign in.
 						</p>
 						<input
 							type="text"
 							id="authUsername"
 							placeholder="Enter a username"
 							autocomplete="off"
-							onkeydown="if (event.key === 'Enter') authenticate()" />
+							oninput="clearRodHint()"
+							onkeydown="if (event.key === 'Enter') lookupRodThenAuth()" />
+
+						<!-- Rod wiring hint — shown after username lookup -->
+						<div id="rodHint" style="display:none; margin: 12px 0; padding: 12px 14px;
+							background: #0d1a2a; border: 1px solid var(--accent2);
+							border-radius: 6px; font-size: 13px; line-height: 1.6">
+							<div id="rodHintText"></div>
+						</div>
+
 						<div class="auth-btns">
 							<button
 								class="btn btn-primary"
-								onclick="authenticate()"
+								onclick="lookupRodThenAuth()"
 								id="btnAuth">
 								Sign In
 							</button>
@@ -2963,6 +2972,48 @@
 
 			// ── Auth ──────────────────────────────────────────────────────────────
 			// register() is defined below with face enrollment integration
+
+			function clearRodHint() {
+				document.getElementById('rodHint').style.display = 'none'
+			}
+
+			async function lookupRodThenAuth() {
+				const username = document.getElementById('authUsername').value.trim()
+				if (!username) return
+
+				const hintEl = document.getElementById('rodHint')
+				const hintText = document.getElementById('rodHintText')
+
+				// Look up which rod this user is on
+				let rodInfo = null
+				try {
+					const r = await fetch(API + `/api/user-rod?username=${encodeURIComponent(username)}`)
+					rodInfo = await r.json()
+				} catch(e) { /* proceed anyway */ }
+
+				if (rodInfo && rodInfo.found && rodInfo.hardware) {
+					// Show wiring instruction, then require a second click to actually measure
+					const already = hintEl.style.display !== 'none'
+					if (!already) {
+						hintText.innerHTML =
+							`🔌 <strong>${username}</strong> is on <strong>Rod ${rodInfo.rod}</strong> (Pattern ${rodInfo.pattern}).<br>` +
+							`<br>` +
+							`Before measuring:<br>` +
+							`<ol style="margin: 6px 0 0 18px; padding: 0; line-height: 1.8">` +
+							`<li>Disconnect all rods from the scope</li>` +
+							`<li>Connect <strong>only Rod ${rodInfo.rod}</strong> — red clip to BNC centre, black to shield</li>` +
+							`<li>Plug BNC into PicoScope <strong>Channel A</strong></li>` +
+							`<li>Click <strong>Sign In</strong> again to measure</li>` +
+							`</ol>`
+						hintEl.style.display = 'block'
+						return  // wait for second click
+					}
+					// Second click — proceed to measure
+				}
+
+				// Either simulation mode, user not found, or second click in hardware — measure now
+				await authenticate()
+			}
 
 			async function authenticate() {
 				const username = document.getElementById('authUsername').value.trim()

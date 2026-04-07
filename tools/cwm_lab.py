@@ -1106,6 +1106,28 @@ class LabHandler(SimpleHTTPRequestHandler):
             self._json_response(_scope_status_safe())
         elif path == "/api/rod-status":
             self._json_response(_get_rod_status())
+        elif path.startswith("/api/user-rod"):
+            # GET /api/user-rod?username=...
+            from urllib.parse import urlparse, parse_qs
+            qs = parse_qs(urlparse(self.path).query)
+            username = qs.get("username", [""])[0].strip()
+            if not username:
+                self._json_response({"error": "username required"}, 400)
+            else:
+                db = _load_users()
+                if username not in db.get("users", {}):
+                    self._json_response({"found": False})
+                else:
+                    u = db["users"][username]
+                    rod_key = str(u["rod"])
+                    rod_data = db["rods"].get(rod_key, {})
+                    self._json_response({
+                        "found": True,
+                        "rod": u["rod"],
+                        "channel": u["channel"],
+                        "pattern": rod_data.get("pattern", "?"),
+                        "hardware": HARDWARE_AVAILABLE,
+                    })
         elif path == "/api/scope/presets":
             self._json_response(_scope_presets_safe())
         elif path.startswith("/api/library/"):
