@@ -14,3 +14,6 @@ markdown>=3.4
 playwright>=1.40
 pypdf>=3.0
 # After installing playwright, run: playwright install chromium
+
+# Relay multiplexer (relay_mux.py)
+pyserial>=3.5

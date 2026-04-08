@@ -14,17 +14,23 @@ Algorithm:
   4. Score each rod using weighted sum of (ratio - 1) for ratios > 1,
      emphasizing high-frequency peaks (>3 kHz) where feedthrough is
      lower and resonance ratios are larger
-  5. Winner = rod with highest score; Rod on Ch B (disabled) will always
-     score lowest, providing channel discrimination
+  5. Winner = rod with highest score
+
+Relay Mux Mode (--mux):
+  When the relay multiplexer is connected, the identifier switches each
+  rod's sense PZT onto Ch A individually via the Arduino-controlled relay
+  module.  This eliminates signal blending from other rods and dramatically
+  improves discrimination margins.
 
 Limitations:
   - Only works with Ch A (Ch B breaks ps2000 on macOS ARM64)
-  - Takes ~2 minutes for 4 rods (40 frequencies × 0.2s settle × 12 avgs)
-  - Marginal discrimination for rods with many overlapping peaks (Rod 4)
+  - Takes ~75s for 4 rods without mux; ~90s with mux (relay switching overhead)
   - Not a replacement for tap mode; a proof-of-concept for autonomous excitation
 
 Usage:
   python tools/awg_stepped_dwell_id.py [--users path/to/users.json]
+  python tools/awg_stepped_dwell_id.py --mux              # with relay multiplexer
+  python tools/awg_stepped_dwell_id.py --mux --port /dev/cu.usbserial-1410
 """
 from __future__ import annotations
 
@@ -42,6 +48,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from cwm_picoscope import TIMEBASE, N_SAMPLES, SAMPLE_RATE, AWG_DRIVE_UVPP
 from picosdk.ps2000 import ps2000
+
+# Optional relay mux (only needed with --mux)
+try:
+    from relay_mux import RelayMux
+except ImportError:
+    RelayMux = None
 
 # ── Configuration ─────────────────────────────────────────────────────────
 
@@ -232,8 +244,16 @@ def _score_rod(ratios: list[float], freqs: list[float],
 # ── Main identification ──────────────────────────────────────────────────
 
 def identify(users_path: Path = DEFAULT_USERS,
-             verbose: bool = True) -> dict:
+             verbose: bool = True,
+             mux: Optional["RelayMux"] = None) -> dict:
     """Run stepped-dwell AWG identification on all enrolled rods.
+
+    Args:
+        users_path: Path to users.json enrollment database.
+        verbose: Print progress and results.
+        mux: Optional RelayMux instance for per-rod relay isolation.
+             If provided, each rod is measured with only its relay active.
+             If None, all rods share Ch A (Topology A blended mode).
 
     Returns:
       {
@@ -241,6 +261,7 @@ def identify(users_path: Path = DEFAULT_USERS,
         "ranked": [{rod_id, score, n_contributing, ratios, ...}, ...],
         "baseline_points": int,
         "duration_s": float,
+        "mux_mode": bool,
       }
     """
     with open(users_path) as f:
@@ -261,6 +282,10 @@ def identify(users_path: Path = DEFAULT_USERS,
     if verbose:
         print("=" * 65)
         print("  AWG STEPPED-DWELL IDENTIFICATION")
+        if mux is not None:
+            print(f"  (RELAY MUX MODE — per-rod isolation via {mux.port})")
+        else:
+            print("  (SHARED MODE — all rods on Ch A)")
         print("=" * 65)
         print(f"  Enrolled rods: {list(enrolled.keys())}")
         for rid, peaks in enrolled.items():
@@ -283,6 +308,17 @@ def identify(users_path: Path = DEFAULT_USERS,
         # Phase 2: On-resonance measurement for each rod
         rod_results = {}
         for rid, peaks in enrolled.items():
+            rod_num = int(rid)  # rod ID as integer for relay selection
+
+            # If mux is available, switch to this rod's relay
+            if mux is not None:
+                if verbose:
+                    print(f"  Switching to relay {rod_num}...", end="", flush=True)
+                mux.select(rod_num)
+                time.sleep(0.05)  # brief settle after relay switch
+                if verbose:
+                    print(" ok")
+
             if verbose:
                 print(f"Phase 2: Rod {rid} ({len(peaks)} peaks)...",
                       end="", flush=True)
@@ -313,6 +349,12 @@ def identify(users_path: Path = DEFAULT_USERS,
             }
 
     finally:
+        # Turn off relay mux if used
+        if mux is not None:
+            try:
+                mux.off()
+            except Exception:
+                pass
         _close_scope(handle)
 
     duration = time.time() - t_start
@@ -326,6 +368,7 @@ def identify(users_path: Path = DEFAULT_USERS,
         "ranked": ranked,
         "baseline_points": len(off_freqs),
         "duration_s": round(duration, 1),
+        "mux_mode": mux is not None,
     }
 
     if verbose:
@@ -387,9 +430,36 @@ def main():
         "--json", action="store_true",
         help="Output result as JSON"
     )
+    parser.add_argument(
+        "--mux", action="store_true",
+        help="Use relay multiplexer for per-rod isolation (requires Arduino)"
+    )
+    parser.add_argument(
+        "--port", type=str, default=None,
+        help="Serial port for relay mux (default: auto-detect CH340)"
+    )
     args = parser.parse_args()
 
-    result = identify(users_path=args.users, verbose=not args.quiet)
+    mux = None
+    if args.mux:
+        if RelayMux is None:
+            print("ERROR: relay_mux module not available. "
+                  "Ensure relay_mux.py is in tools/ and pyserial is installed.")
+            sys.exit(1)
+        mux = RelayMux(port=args.port)
+        mux.open()
+        if not args.quiet:
+            print(f"Relay mux connected on {mux.port}")
+
+    try:
+        result = identify(
+            users_path=args.users,
+            verbose=not args.quiet,
+            mux=mux,
+        )
+    finally:
+        if mux is not None:
+            mux.close()
 
     if args.json:
         print(json.dumps(result, indent=2))
