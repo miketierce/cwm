@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  CWM Plate PZT Bonding Jig — Print at 100% scale (no fit-to-page)
+  Cut along solid lines. Fold along dashed lines.
+  Place glass plate in the long slot, PZT disc in the round notch.
+
+  Designed for: 100 × 100 × 1 mm fused-quartz plate
+  PZT: 10 mm diameter, 0.3 mm thick disc
+  Drive PZT: 22 mm from left corner (bottom edge)
+  Sense PZT: 45 mm from left corner (top edge)
+
+  IMPORTANT: Print this page at EXACTLY 100% scale.
+  Verify with the 50 mm calibration bar before cutting.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" width="200mm" height="260mm" viewBox="0 0 200 260">
+  <style>
+    .cut { stroke: #000; stroke-width: 0.3; fill: none; }
+    .fold { stroke: #000; stroke-width: 0.2; fill: none; stroke-dasharray: 2,1; }
+    .label { font-family: 'Courier New', monospace; font-size: 2.5px; fill: #333; }
+    .title { font-family: 'Helvetica Neue', sans-serif; font-size: 4px; fill: #000; font-weight: bold; }
+    .note { font-family: 'Helvetica Neue', sans-serif; font-size: 2.2px; fill: #555; }
+    .dim { font-family: 'Courier New', monospace; font-size: 2px; fill: #888; }
+    .slot { stroke: #c00; stroke-width: 0.3; fill: #fee; }
+    .pzt-slot { stroke: #00c; stroke-width: 0.3; fill: #eef; }
+    .cal { stroke: #000; stroke-width: 0.4; fill: none; }
+    .arrow { stroke: #666; stroke-width: 0.15; fill: none; marker-end: url(#arrowhead); }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="3" markerHeight="2" refX="3" refY="1" orient="auto">
+      <path d="M0,0 L3,1 L0,2 Z" fill="#666" />
+    </marker>
+  </defs>
+
+  <!-- ============================================================ -->
+  <!-- CALIBRATION BAR -->
+  <!-- ============================================================ -->
+  <text x="20" y="12" class="title">CWM Plate PZT Bonding Jig</text>
+  <text x="20" y="16" class="note">Print at 100% — verify with calibration bar below</text>
+
+  <line x1="20" y1="20" x2="70" y2="20" class="cal" />
+  <line x1="20" y1="18" x2="20" y2="22" class="cal" />
+  <line x1="70" y1="18" x2="70" y2="22" class="cal" />
+  <text x="38" y="25" class="label" text-anchor="middle">50 mm</text>
+
+  <!-- 10 mm ticks -->
+  <line x1="30" y1="19" x2="30" y2="21" class="cal" />
+  <line x1="40" y1="19" x2="40" y2="21" class="cal" />
+  <line x1="50" y1="19" x2="50" y2="21" class="cal" />
+  <line x1="60" y1="19" x2="60" y2="21" class="cal" />
+
+  <!-- ============================================================ -->
+  <!-- JIG A: DRIVE PZT — bottom edge, 22 mm from left corner      -->
+  <!-- ============================================================ -->
+  <text x="20" y="38" class="title">JIG A — Drive PZT (bottom edge, 22 mm from left corner)</text>
+  <text x="20" y="42" class="note">Cut solid lines. Score &amp; fold dashed lines upward to make an L-shaped cradle.</text>
+
+  <!-- Main jig body: 130 × 30 mm (extra 15mm each side of plate) -->
+  <rect x="35" y="48" width="130" height="30" class="cut" />
+
+  <!-- Fold line — the L-bend at 15mm from top -->
+  <line x1="35" y1="63" x2="165" y2="63" class="fold" />
+  <text x="168" y="64" class="dim">fold ↑</text>
+
+  <!-- Glass plate slot: 100mm long × 1.5mm wide, centered -->
+  <!-- Plate starts at x=50 (15mm margin from jig edge) -->
+  <rect x="50" y="62.25" width="100" height="1.5" class="slot" />
+  <text x="100" y="60" class="label" text-anchor="middle">glass plate slot (100 × 1.5 mm)</text>
+
+  <!-- Plate outline (dashed, for reference) -->
+  <rect x="50" y="48" width="100" height="14.25" class="fold" />
+  <text x="100" y="56" class="dim" text-anchor="middle">plate sits here (100 × 100 mm, only edge shown)</text>
+
+  <!-- Drive PZT notch: semicircle at 22mm from plate left edge -->
+  <!-- Plate left edge is at x=50, so PZT center at x=50+22=72 -->
+  <circle cx="72" cy="63.75" r="5.5" class="pzt-slot" />
+  <text x="72" y="71" class="label" text-anchor="middle">PZT ⌀10mm</text>
+
+  <!-- Dimension: 22mm from left corner of plate -->
+  <line x1="50" y1="75" x2="72" y2="75" class="arrow" />
+  <text x="61" y="78" class="label" text-anchor="middle">22 mm</text>
+  <line x1="50" y1="73" x2="50" y2="77" stroke="#666" stroke-width="0.15" />
+
+  <!-- Dimension: plate width -->
+  <line x1="50" y1="82" x2="150" y2="82" class="arrow" />
+  <text x="100" y="85" class="label" text-anchor="middle">100 mm (plate width)</text>
+  <line x1="50" y1="80" x2="50" y2="84" stroke="#666" stroke-width="0.15" />
+  <line x1="150" y1="80" x2="150" y2="84" stroke="#666" stroke-width="0.15" />
+
+  <text x="20" y="92" class="note">Instructions: (1) Cut out jig. (2) Cut the red glass slot with hobby knife.</text>
+  <text x="20" y="95" class="note">(3) Cut the blue PZT circle. (4) Fold along dashed line to make L-bracket.</text>
+  <text x="20" y="98" class="note">(5) Insert plate edge into red slot. (6) Apply CA glue to PZT edge.</text>
+  <text x="20" y="101" class="note">(7) Press PZT into blue notch — disc face perpendicular to plate face.</text>
+  <text x="20" y="104" class="note">(8) Hold 30 sec. Let cure 5 min. Remove jig by tearing cardboard away.</text>
+
+  <!-- ============================================================ -->
+  <!-- JIG B: SENSE PZT — top edge, 45 mm from left corner         -->
+  <!-- ============================================================ -->
+  <text x="20" y="118" class="title">JIG B — Sense PZT (top edge, 45 mm from left corner)</text>
+  <text x="20" y="122" class="note">Same procedure. Flip plate over so TOP edge faces down into the jig.</text>
+
+  <!-- Main jig body -->
+  <rect x="35" y="128" width="130" height="30" class="cut" />
+
+  <!-- Fold line -->
+  <line x1="35" y1="143" x2="165" y2="143" class="fold" />
+  <text x="168" y="144" class="dim">fold ↑</text>
+
+  <!-- Glass plate slot -->
+  <rect x="50" y="142.25" width="100" height="1.5" class="slot" />
+  <text x="100" y="140" class="label" text-anchor="middle">glass plate slot (100 × 1.5 mm)</text>
+
+  <!-- Plate outline (dashed) -->
+  <rect x="50" y="128" width="100" height="14.25" class="fold" />
+  <text x="100" y="136" class="dim" text-anchor="middle">plate (top edge down, flipped)</text>
+
+  <!-- Sense PZT notch: 45mm from plate left edge -->
+  <!-- Note: when plate is flipped, left corner stays left -->
+  <circle cx="95" cy="143.75" r="5.5" class="pzt-slot" />
+  <text x="95" y="151" class="label" text-anchor="middle">PZT ⌀10mm</text>
+
+  <!-- Dimension: 45mm from left corner -->
+  <line x1="50" y1="155" x2="95" y2="155" class="arrow" />
+  <text x="72.5" y="158" class="label" text-anchor="middle">45 mm</text>
+  <line x1="50" y1="153" x2="50" y2="157" stroke="#666" stroke-width="0.15" />
+
+  <!-- Dimension: plate width -->
+  <line x1="50" y1="162" x2="150" y2="162" class="arrow" />
+  <text x="100" y="165" class="label" text-anchor="middle">100 mm (plate width)</text>
+  <line x1="50" y1="160" x2="50" y2="164" stroke="#666" stroke-width="0.15" />
+  <line x1="150" y1="160" x2="150" y2="164" stroke="#666" stroke-width="0.15" />
+
+  <!-- ============================================================ -->
+  <!-- REFERENCE DIAGRAM: Completed plate with both PZTs            -->
+  <!-- ============================================================ -->
+  <text x="20" y="180" class="title">Reference — Completed Plate (top view)</text>
+
+  <!-- Plate outline -->
+  <rect x="50" y="186" width="100" height="100" stroke="#000" stroke-width="0.4" fill="#f0f8ff" />
+
+  <!-- Corner labels -->
+  <text x="48" y="185" class="dim" text-anchor="end">left</text>
+  <text x="152" y="185" class="dim">right</text>
+
+  <!-- Drive PZT: bottom edge, 22mm from left -->
+  <circle cx="72" cy="286" r="5" stroke="#00c" stroke-width="0.4" fill="#ddf" />
+  <text x="72" y="294" class="label" text-anchor="middle">DRIVE</text>
+  <text x="72" y="297" class="dim" text-anchor="middle">22 mm from left</text>
+
+  <!-- Sense PZT: top edge, 45mm from left -->
+  <circle cx="95" cy="186" r="5" stroke="#c00" stroke-width="0.4" fill="#fdd" />
+  <text x="95" y="183" class="label" text-anchor="middle">SENSE</text>
+  <text x="95" y="180" class="dim" text-anchor="middle">45 mm from left</text>
+
+  <!-- Dimension lines on plate -->
+  <!-- Drive: 22mm from left -->
+  <line x1="50" y1="290" x2="72" y2="290" stroke="#00c" stroke-width="0.2" stroke-dasharray="1,0.5" />
+  <text x="61" y="293" class="dim" text-anchor="middle" fill="#00c">22</text>
+
+  <!-- Sense: 45mm from left -->
+  <line x1="50" y1="183" x2="95" y2="183" stroke="#c00" stroke-width="0.2" stroke-dasharray="1,0.5" />
+  <text x="72.5" y="183" class="dim" text-anchor="middle" fill="#c00">45</text>
+
+  <!-- Support pad positions (22mm inset from corners) -->
+  <rect x="68" y="204" width="4" height="4" fill="#9c9" stroke="#696" stroke-width="0.2" />
+  <rect x="128" y="204" width="4" height="4" fill="#9c9" stroke="#696" stroke-width="0.2" />
+  <rect x="68" y="264" width="4" height="4" fill="#9c9" stroke="#696" stroke-width="0.2" />
+  <rect x="128" y="264" width="4" height="4" fill="#9c9" stroke="#696" stroke-width="0.2" />
+  <text x="155" y="208" class="dim">support pads</text>
+  <text x="155" y="211" class="dim">(22mm inset)</text>
+
+  <!-- Mode coverage note -->
+  <text x="20" y="302" class="note">PZT placement: drive at 22 mm, sense at 45 mm → 52/52 modes detected (100% coverage).</text>
+  <text x="20" y="305" class="note">Worst-case coupling: 0.309 (no dead spots). Previous center+a/3 placement only covered 38%.</text>
+  <text x="20" y="308" class="note">Support pads at 22 mm inset from each corner → near nodal points of the (1,1) mode.</text>
+</svg>

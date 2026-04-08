@@ -92,12 +92,18 @@ For the Chladni plate experiments, replace rods with a fused-quartz glass plate.
 | #   | Component                    | Specification                                           | Qty    | Est. Cost   | Amazon Link                                                                      |
 | --- | ---------------------------- | ------------------------------------------------------- | ------ | ----------- | -------------------------------------------------------------------------------- |
 | 31  | Fused-quartz plate (primary) | 100 × 100 × 1 mm, Lab UV-Vis grade, both faces polished | 1      | ~\$16       | [Optical Glass, Square Quartz](https://www.amazon.com/dp/B0DWZTGBK8?tag=cwmt-20) |
+| 31b | Fused-quartz 5-pack          | 100 × 100 × 1 mm × 5 plates (\$13.80 ea)               | 1 pack | ~\$69       | [Yiqihighgo 5-pack](https://www.amazon.com/dp/B0DX1RJB94?tag=cwmt-20)            |
 | 32  | Fused-quartz plate (budget)  | 50 × 50 × 1 mm, industrial grade                        | 1      | ~\$13       | [Optical Glass, 50×50×1mm](https://www.amazon.com/dp/B0F1YVNTMD?tag=cwmt-20)     |
 | 33  | Fused-quartz slide (test)    | 75 × 25 × 1 mm, microscope slide format                 | 1      | ~\$10       | [MUHWA Fused Quartz Slide](https://www.amazon.com/dp/B07ZYT3DJ6?tag=cwmt-20)     |
-| 34  | Foam / felt corner pads      | Small adhesive pads, ~10 mm, for plate corner supports  | 1 pack | ~\$4        | Amazon search: "small self adhesive felt pads 10mm"                              |
-|     | **Plate kit subtotal**       | _(pick one plate + pads)_                               |        | **~$17–20** |                                                                                  |
+| 34  | Foam base-ten cubes          | 10 × 10 × 10 mm foam cubes (131 pcs); used as plate support pads and cassette spacers | 1 set | ~\$19 | [Simply Magic Base Ten Blocks](https://www.amazon.com/dp/B088CT2SCR?tag=cwmt-20) |
+| 35  | PZT discs (10 mm bare)       | 10 mm ⌀, 0.3 mm thick, brass+ceramic, pre-wired        | 10 pcs | ~\$6        | [uxcell 10 mm piezo discs](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20)     |
+|     | **Plate kit subtotal**       | _(1 plate + cubes + PZTs)_                              |        | **~$41**    |                                                                                  |
 
-> **Which plate to buy?** Start with the 100 × 100 × 1 mm fused-quartz plate (#31) — it has the most modes (52 below 20 kHz) and a $16 price point. If budget is tight, the 50 × 50 mm plate (#32) at $13 still gives 11 modes and demonstrates the 2D principle. The microscope slide (#33) is a cheap test piece for practicing edge PZT bonding before committing to the larger plate. You DO NOT need to buy all three — any one will work for Experiments 15–16.
+> **Which plate to buy?** Start with the 100 × 100 × 1 mm fused-quartz plate (#31) — it has the most modes (52 below 20 kHz) and a $16 price point. For multi-plate experiments or array work, the 5-pack (#31b) at $69 ($13.80/plate) gives you 5 plates — enough for 1 practice plate, 3 experiments, and 1 spare. If budget is tight, the 50 × 50 mm plate (#32) at $13 still gives 11 modes and demonstrates the 2D principle. The microscope slide (#33) is a cheap test piece for practicing edge PZT bonding before committing to the larger plate.
+>
+> **Foam base-ten cubes (#34).** The math-manipulative set contains 100 unit cubes (10 × 10 × 10 mm), 20 rods (10 × 10 × 100 mm), 10 flats (100 × 100 × 10 mm), and 1 large cube. The unit cubes serve as plate support pads and cassette shelf spacers. The flats can line the bottom of the insulated box for vibration isolation. The rods can serve as optional edge guides. One set covers all plate experiments with cubes to spare.
+>
+> **PZT discs (#35).** The 10 mm bare discs are the correct size for edge-coupling to 1 mm plate edges. The 25 mm pre-leaded discs from the rod BOM are too large for edge mounting (parasitic resonance at 1,637 Hz falls in-band). Use the 10 mm discs for all plate experiments.
 
 > **Why fused quartz?** Fused quartz (SiO₂) has 10× the quality factor ($Q = 100{,}000$) and 6× lower thermal expansion ($\alpha = 0.55$ ppm/K) compared to the borosilicate glass used for rods ($Q = 10{,}000$, $\alpha = 3.3$ ppm/K). This means sharper resonance peaks, more resolvable modes, and greater thermal stability — exactly the properties that matter for CWM encoding.
 
@@ -1401,11 +1407,12 @@ Each band samples a different frequency range of the rod's response. Because the
 | Item               | Specification                      | Source (ASIN)    |
 | ------------------ | ---------------------------------- | ---------------- |
 | Fused-quartz plate | 100 × 100 × 1 mm, Lab UV-Vis grade | B0DWZTGBK8 ($16) |
-| PZT discs × 2      | 10 mm with leads (from core BOM)   | B08R581G3H       |
+| PZT discs × 2      | 10 mm bare, 0.3 mm thick           | B07RK2V1P2 ($6/10) |
 | Cyanoacrylate      | Thin-viscosity (from core BOM)     | B0DT14TGDY       |
-| Foam pads × 4      | Small adhesive felt/foam, ~10 mm   | —                |
+| Foam cubes × 4     | 10 × 10 × 10 mm (from base-ten set #34) | B088CT2SCR ($19) |
 | PicoScope 2204A    | (from core BOM)                    | B00GZMRZ3M       |
 | BNC cables × 2     | (from core BOM)                    | B07RGPHFR3       |
+| Cardboard scraps   | For bonding jigs and cassette walls | (free)           |
 
 _Cheaper alternatives:_ 50 × 50 × 1 mm industrial-grade plate (B0F1YVNTMD, $13) gives 11 modes; MUHWA fused-quartz microscope slide 75 × 25 × 1 mm (B07ZYT3DJ6, $10) gives 7 modes — useful as a quick first test of edge bonding.
 
@@ -1416,32 +1423,85 @@ Fused quartz also has 10× the material $Q$ of borosilicate glass ($Q_\text{mat}
 **Edge-coupled PZT topology.** Gluing the PZT disc to the 1 mm plate edge rather than the flat face:
 
 ```
-    Drive PZT (10 mm disc, centered on edge)
+    Drive PZT (10 mm disc, 22 mm from left corner)
     ↓
-    ┌──────────P──────────┐
-    │                     │
-    │    × putty (x,y)    │  100 × 100 × 1 mm fused quartz
-    │                     │
-    └──────────P──────────┘
-               ↑
-    Sense PZT (opposite edge, at a/3 = 33 mm from corner)
-
-    [○] foam pad at each corner
+    ┌──────P───────────────┐  ← bottom edge
+    │                      │
+    │   ■            ■     │  support pads (22 mm inset)
+    │                      │  100 × 100 × 1 mm fused quartz
+    │   ■            ■     │  support pads (22 mm inset)
+    │                      │
+    └───────────P──────────┘  ← top edge
+                ↑
+    Sense PZT (opposite edge, 45 mm from left corner)
 ```
 
+- **Drive PZT position:** 22 mm from the left corner along the bottom edge.
+- **Sense PZT position:** 45 mm from the left corner along the top edge (opposite edge).
 - **Contact area:** ~1 mm × 8 mm chord of the 10 mm disc = ~8 mm².
 - **Mass loading:** ~0.5 g on a 22 g plate = 2% (vs 26% for the rod).
 - **Advantage:** Edge position breaks all symmetries → excites all four mode families (SS, SA, AS, AA). The flat face remains clear for putty placement and visual inspection.
+- **Support pads:** 4 × foam cubes placed at 22 mm inset from each corner — near the nodal points of the fundamental (1,1) mode.
+
+> **Why 22 mm + 45 mm and not center + center?** We ran a computational sweep of all possible PZT positions along opposite edges. Each mode $(n,m)$ couples to a PZT at position $x$ via $\sin(n\pi x/a)$. A mode is detected only if both drive AND sense have nonzero coupling. Results:
+>
+> | Placement                    | Modes detected | Coverage |
+> | ---------------------------- | -------------- | -------- |
+> | Center (50 mm) + Center      | 28 / 52        | 54%      |
+> | Center (50 mm) + a/3 (33 mm) | 20 / 52        | 38%      |
+> | **22 mm + 45 mm (optimal)**  | **52 / 52**    | **100%** |
+>
+> Center placement zeros out $\sin(n\pi/2)$ for all even-$n$ modes — that kills half the spectrum. The 22 + 45 mm pair avoids all integer-ratio positions and achieves a worst-case coupling of 0.309 (no dead spots anywhere). This is the placement used below.
+
+**Bonding jig.** To achieve exact PZT placement, print the bonding jig template at 100% scale on card stock or heavy paper, or trace it onto cardboard:
+
+1. Open `/companion/figures/plate_bonding_jig.svg` and print at exactly 100% scale. Verify the 50 mm calibration bar with a ruler.
+2. Cut out Jig A (drive). Cut the red glass slot (100 mm × 1.5 mm) and the blue PZT circle (11 mm ⌀) with a hobby knife.
+3. Score and fold along the dashed line to make an L-shaped cradle — the vertical part holds the plate upright, the horizontal part positions the PZT.
+4. Repeat for Jig B (sense).
+
+Alternatively, make a simple cardboard jig by hand:
+
+```
+    Cardboard strip (~130 × 30 mm)
+    ┌──────────────────────────────────────┐
+    │         ┊                            │ ↑
+    │    ┊    ┊    ° PZT hole (11mm)       │ 15 mm
+    │    ┊slot┊    at 22mm from left tick  │ (fold up)
+    ├────┊────┊────────────────────────────┤ fold line
+    │    ┊    ┊                            │ ↑
+    │    ↑    ↑                            │ 15 mm
+    │  left  right                         │ (base)
+    │  edge  edge                          │
+    │  tick  tick                          │
+    │  (15mm)(115mm from left jig edge)    │
+    └──────────────────────────────────────┘
+    
+    Slot: 100mm between ticks, 1.5mm wide, cut with hobby knife
+    PZT hole: 11mm circle centered at (15 + 22) = 37mm from left jig edge
+```
 
 **Procedure:**
 
 1. **Clean the plate.** Wipe with 91% isopropyl alcohol. Handle by edges only.
 
-2. **Bond drive PZT.** Apply a thin line of cyanoacrylate along the bottom edge at the center (50 mm from each corner). Press the PZT disc so its face is perpendicular to the plate face, with 1 mm of the disc contacting the glass edge. The disc will extend ~4.5 mm below the plate on each side. Hold for 30 seconds; let cure for 5 minutes.
+2. **Bond drive PZT using Jig A.** Insert the bottom edge of the plate into the glass slot on Jig A. Apply a thin bead of cyanoacrylate to the 1 mm edge of the plate at the PZT notch. Press the 10 mm PZT disc into the blue PZT hole so its face is perpendicular to the plate face, with ~1 mm of the disc contacting the glass edge. The disc extends ~4.5 mm above and below the plate. Hold for 30 seconds; let cure for 5 minutes.
 
-3. **Bond sense PZT.** Repeat on the opposite (top) edge at **a/3 = 33 mm** from the left corner. This asymmetric placement maximizes the number of excited modes (38/52 vs 28/52 at center). Offset the sense PZT from the drive to break symmetry.
+3. **Bond sense PZT using Jig B.** Remove the plate from Jig A. Flip it so the top edge faces down. Insert the top edge into Jig B's glass slot. Bond the sense PZT at the 45 mm mark using the same technique. Cure for 5 minutes.
 
-4. **Mount on foam pads.** Place four small foam or felt pads in a square pattern and rest the plate on its corners. The foam should be soft enough that it doesn't clamp the plate — you want minimal contact at the nodal-like corners. Place inside styrofoam cooler if available.
+4. **Mount on foam-cube pads.** Place four 10 mm foam cubes in a square pattern, each positioned **22 mm inset from the plate corners** (not at the corners themselves). This places the supports near the nodal lines of the fundamental (1,1) bending mode, minimizing support-induced damping by ~30× compared to corner placement. Place the assembly inside the insulated box if available.
+
+   ```
+       ┌──────────────────────────┐
+       │                          │
+       │      ■            ■      │  ← 22 mm from each corner
+       │                          │
+       │                          │
+       │                          │
+       │      ■            ■      │
+       │                          │
+       └──────────────────────────┘
+   ```
 
 5. **Connect PicoScope.**
    - Ch A → Sense PZT (BNC → alligator clips → PZT leads).
@@ -1503,6 +1563,123 @@ Fused quartz also has 10× the material $Q$ of borosilicate glass ($Q_\text{mat}
 | (1,5)      | 6,879          | (5,1)           |
 
 > **Why fused quartz?** Borosilicate stirring rods work for the 1D experiments. But for the 2D plate extension, fused quartz's 10× higher $Q$ and 6× lower thermal expansion translate to sharper, more stable peaks. This is the same material used in MEMS resonators and gravitational-wave detector optics.
+
+#### Building the Plate Cassette Package
+
+For multi-plate experiments (5-pack) or overnight thermal soak runs, build a cassette that holds up to 5 plates inside a CH-BOX insulated shipping box (B0BJ21YFNN, interior 165 × 140 × 229 mm). The cassette uses foam base-ten cubes (#34) glued to cardboard walls, with removable cardboard shelves. Each plate sits on foam cubes at optimal inset positions with PZTs hanging free in air.
+
+**Materials:**
+
+| Item | Specification | Qty |
+| ---- | ------------- | --- |
+| Cardboard walls | ~120 × 110 mm, cut from any box | 2 |
+| Cardboard shelves | ~120 × 105 mm, cut flat | 5 |
+| Cardboard base strip | ~120 × 30 mm (connects walls into U) | 1 |
+| Foam unit cubes (10 mm) | From base-ten set #34 | 30 (20 cleats + 10 spare) |
+| White glue or hot glue | For cubes-to-cardboard | — |
+
+**Assembly:**
+
+1. **Cut two walls** from cardboard: 120 mm wide × 110 mm tall. These are the left and right sides of the cassette.
+
+2. **Mark shelf cleat positions.** On the inside face of each wall, mark horizontal lines at:
+   - 10 mm from bottom (shelf 1 cleats)
+   - 32 mm from bottom (shelf 2 cleats)
+   - 54 mm from bottom (shelf 3 cleats)
+   - 76 mm from bottom (shelf 4 cleats)
+   - 98 mm from bottom (shelf 5 cleats)
+
+   The shelf pitch is 22 mm (10 mm cleat cube + 1 mm cardboard shelf + 10 mm support cube + 1 mm plate).
+
+3. **Glue wall cleats.** At each marked line, glue one foam cube to each wall. These cubes support the cardboard shelves. Total: 10 cubes per wall = 20 cubes.
+
+   ```
+       Wall (inside face)
+       ┌────────────────────────┐  ← top
+       │                        │
+       │  ■                     │  ← shelf 5 cleat (98 mm)
+       │                        │
+       │  ■                     │  ← shelf 4 cleat (76 mm)
+       │                        │
+       │  ■                     │  ← shelf 3 cleat (54 mm)
+       │                        │
+       │  ■                     │  ← shelf 2 cleat (32 mm)
+       │                        │
+       │  ■                     │  ← shelf 1 cleat (10 mm)
+       │                        │
+       └────────────────────────┘  ← bottom
+       ■ = foam cube glued to wall
+   ```
+
+4. **Connect walls with base strip.** Glue or tape the 120 × 30 mm base strip between the two walls at the bottom to form a U-shaped channel. The walls should be ~105 mm apart (inside face to inside face) to give 2.5 mm clearance around a 100 mm plate.
+
+5. **Prepare shelves.** Cut 5 cardboard rectangles (~120 × 105 mm). On each shelf, glue 2 foam cubes as plate support pads at optimal positions:
+
+   - Each cube placed **22 mm inset** from where the plate corners will sit.
+   - Front cube: 22 mm from front edge and 22 mm from left edge of the shelf.
+   - Rear cube: 22 mm from rear edge and 22 mm from right edge of the shelf.
+
+   This places the support pads near the nodal lines of the (1,1) mode, minimizing support-induced damping.
+
+   ```
+       Cardboard shelf (top view)
+       ┌────────────────────────────────┐
+       │                                │
+       │      ■                  ■      │  ← foam cubes (22 mm inset)
+       │                                │
+       │           [plate will           │
+       │            sit here]            │
+       │                                │
+       │      ■                  ■      │
+       │                                │
+       └────────────────────────────────┘
+   ```
+
+6. **Load plates.** Slide each shelf onto its pair of wall cleats. Place a plate on each shelf — the plate rests only on the 4 support cubes. PZT discs protrude horizontally from the plate edges and hang free in the 22 mm gap between shelves. Route wires upward and out the top of the cassette.
+
+   ```
+       Cross-section (front view)
+       
+       ║                               ║  ← cardboard wall
+       ║                               ║
+       ■══════════════════════════════■  ← shelf on cleats
+       ║     ■                ■      ║  ← support cubes on shelf
+       ║     ┊────────────────┊      ║  ← plate (1 mm)
+       ║   ● │                │ ●    ║  ← PZTs hang free
+       ║     ┊────────────────┊      ║
+       ║                             ║  ← 9 mm air gap
+       ■══════════════════════════════■  ← next shelf
+       ║     ■                ■      ║
+       ║     ┊────────────────┊      ║
+       ...
+       
+       ■ on wall = cleat cube (structural)
+       ■ on shelf = support cube (acoustic, at 22 mm inset)
+       ═ = cardboard shelf resting on cleat cubes
+       ● = PZT disc (edge-mounted, free-floating)
+   ```
+
+7. **Insert into CH-BOX.** Place the loaded cassette into the foil-lined bag inside the box. The cassette is ~120 × 105 × 110 mm; the box interior is 165 × 140 × 229 mm, leaving ~120 mm of dead air above the cassette as a thermal buffer. Fold the foil bag flap over the wire bundle. Close the box.
+
+**Stack height budget:**
+
+| Component | mm | × |
+| --------- | -- | - |
+| Wall cleat cube | 10 | 5 |
+| Cardboard shelf | 1 | 5 |
+| Support cube on shelf | 10 | 5 |
+| Glass plate | 1 | 5 |
+| **Total cassette height** | **110 mm** | |
+| CH-BOX interior height | 229 mm | |
+| **Dead air thermal buffer** | **119 mm** | |
+
+**Key design features:**
+
+- **Free-free BCs preserved.** Each plate contacts foam at only 4 inset points (~10 mm² each). Foam stiffness ratio: ~0.001× plate stiffness.
+- **PZTs free.** Cardboard shelves and cubes are at corners; PZTs are at edge positions (22 mm, 45 mm). They never overlap and nothing touches the PZTs.
+- **Acoustic isolation.** 22 mm air gap between plates. Round-trip air→glass coupling loss: ~200 dB. Zero crosstalk.
+- **Thermal uniformity.** All plates share the same environment. Equilibration time: ~30 min in closed box.
+- **Removable plates.** Shelves are drop-in; plates lift out. No disassembly needed to access any plate.
 
 ---
 
