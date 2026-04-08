@@ -85,19 +85,35 @@ For per-rod readout with 4–8 rods, the relay multiplexer kit adds a second PZT
 | 30  | Extra PZT discs with leads (10 mm) | Second PZT per rod (drive end); 15-pack                           | 1 pack | ~\$7      | [E-outstanding 15 PCS](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20) |
 |     | **Relay kit subtotal**             |                                                                   |        | **~$52**  |                                                                          |
 
+**Table D.4: 2D Plate Extension (Experiments 15–16)**
+
+For the Chladni plate experiments, replace rods with a fused-quartz glass plate. The plate reuses your existing PZT discs, BNC cables, and PicoScope from the core BOM. All items below are add-ons.
+
+| #   | Component                    | Specification                                           | Qty    | Est. Cost   | Amazon Link                                                                      |
+| --- | ---------------------------- | ------------------------------------------------------- | ------ | ----------- | -------------------------------------------------------------------------------- |
+| 31  | Fused-quartz plate (primary) | 100 × 100 × 1 mm, Lab UV-Vis grade, both faces polished | 1      | ~\$16       | [Optical Glass, Square Quartz](https://www.amazon.com/dp/B0DWZTGBK8?tag=cwmt-20) |
+| 32  | Fused-quartz plate (budget)  | 50 × 50 × 1 mm, industrial grade                        | 1      | ~\$13       | [Optical Glass, 50×50×1mm](https://www.amazon.com/dp/B0F1YVNTMD?tag=cwmt-20)     |
+| 33  | Fused-quartz slide (test)    | 75 × 25 × 1 mm, microscope slide format                 | 1      | ~\$10       | [MUHWA Fused Quartz Slide](https://www.amazon.com/dp/B07ZYT3DJ6?tag=cwmt-20)     |
+| 34  | Foam / felt corner pads      | Small adhesive pads, ~10 mm, for plate corner supports  | 1 pack | ~\$4        | Amazon search: "small self adhesive felt pads 10mm"                              |
+|     | **Plate kit subtotal**       | _(pick one plate + pads)_                               |        | **~$17–20** |                                                                                  |
+
+> **Which plate to buy?** Start with the 100 × 100 × 1 mm fused-quartz plate (#31) — it has the most modes (52 below 20 kHz) and a $16 price point. If budget is tight, the 50 × 50 mm plate (#32) at $13 still gives 11 modes and demonstrates the 2D principle. The microscope slide (#33) is a cheap test piece for practicing edge PZT bonding before committing to the larger plate. You DO NOT need to buy all three — any one will work for Experiments 15–16.
+
+> **Why fused quartz?** Fused quartz (SiO₂) has 10× the quality factor ($Q = 100{,}000$) and 6× lower thermal expansion ($\alpha = 0.55$ ppm/K) compared to the borosilicate glass used for rods ($Q = 10{,}000$, $\alpha = 3.3$ ppm/K). This means sharper resonance peaks, more resolvable modes, and greater thermal stability — exactly the properties that matter for CWM encoding.
+
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
 > **Computer requirement.** Experiments 6 and 9–14 require a laptop or desktop computer with Python 3.10+ and the repository's dependencies (`pip install -r requirements.txt`). The computer runs the analysis scripts and, for Experiments 12–14, the **CWM Lab** unified web interface (`tools/cwm_lab.py`). CWM Lab combines the password vault, image search, and content-addressable memory demos into a single browser-based UI with built-in face recognition, a hardware proof panel, and automatic PicoScope detection. It runs entirely locally—no internet required. The standalone CLI tools (`cwm_vault.py`, `cwm_image_search.py`, `cwm_cam.py`) remain available as alternatives. All tools include a simulation mode for testing without hardware.
 
-> **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on one end, and wide enough for a multi-rod grid (up to 5×2 = 10 rods at 30 mm spacing, required for 25 mm PZT disc clearance). If sourcing your own box, use these minimum interior dimensions:
+> **Enclosure dimension guide.** The insulated box must be large enough to hold 150 mm glass rods horizontally with room for PZT leads and BNC cables on both ends (Topology B), and wide enough for a single-row array of rods at 30 mm spacing. If sourcing your own box, use these minimum interior dimensions:
 >
-> | Axis                  | Minimum interior | Purpose                                                           |
-> | --------------------- | ---------------- | ----------------------------------------------------------------- |
-> | **Length** (rod axis) | 7″ / 178 mm      | 150 mm rod + 15 mm PZT/cable clearance + 13 mm free-end clearance |
-> | **Width**             | 6″ / 152 mm      | 5-column grid at 30 mm spacing + 12.5 mm margin each side         |
-> | **Height**            | 3.5″ / 89 mm     | 2-row grid at 30 mm spacing + 15 mm margin top and bottom         |
+> | Axis                  | Minimum interior | Purpose                                                          |
+> | --------------------- | ---------------- | ---------------------------------------------------------------- |
+> | **Length** (rod axis) | 8″ / 203 mm      | 150 mm rod + 15 mm PZT/cable clearance each end + 11.5 mm margin |
+> | **Width**             | 6″ / 152 mm      | 4 rods at 30 mm spacing + 22.5 mm margin each side (fits CH-BOX) |
+> | **Height**            | 3″ / 76 mm       | Single-row: rod diameter + notch depth + clearance above         |
 >
-> The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which exceeds all minimums and comfortably fits a 5×2 grid of 10 rods. Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—an insulated shipping box, a picnic cooler, or even a cardboard box lined with 1″ foam board.
+> The recommended CH-BOX (item 11) has interior dimensions of 9″ × 6.5″ × 5.5″ (228 × 165 × 140 mm), which comfortably fits a single row of 4 rods at 30 mm spacing (Template T.2A). For 6 rods, use 25 mm spacing (Template T.2B — still fits CH-BOX). For 8 rods at 25 mm spacing you need a wider enclosure (min 225 mm interior width). Orient the rods along the 9″ dimension. Any insulated container meeting these minimums will work—an insulated shipping box, a picnic cooler, or even a cardboard box lined with 1″ foam board.
 
 ### D.2 Safety Notes
 
@@ -392,11 +408,11 @@ To verify which rod is responding (useful the first time through Experiment 9), 
 
 2. _(Optional)_ **Lap one end flat.** If both ends of your rod are rounded (fire-polished), the PZT disc won't bond well to a convex surface. Place a sheet of 220-grit sandpaper on a flat surface (a glass plate, granite tile, or kitchen countertop works well). Hold the rod vertical and sand the end in a figure-8 pattern with light, even pressure and a few drops of water as lubricant. After 2–3 minutes the end should be visibly flat across the full 6 mm diameter. Finish with 400-grit for a smooth bond surface. Wipe clean with alcohol. If your rods already have one flat end, skip this step—use the flat end for the PZT.
 
-3. **Build the cardboard rod mount inside the insulated box.** Cut two rectangles of flat cardboard to 165 × 140 mm (6.5″ × 5.5″)—sized to slot snugly inside the insulated box (item 11). See Template T.1 at the end of this guide for a printable 1:1 cutting pattern. Using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height, centered on the cardboard—sized just large enough for the 6 mm rod to pass through with minimal contact. Drop both dividers into the box standing upright, spaced 75 mm apart—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. The rod slides horizontally through the aligned pinholes and should hang freely with no hard clamping. Position the first divider so that the PZT disc and its leads protrude out one end of the box for easy cable connection. Cut a small notch in the box lid above the PZT end for BNC cable and thermometer wire routing. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7). For multi-rod experiments, punch a grid of pinholes in the dividers to create isolated chambers for each rod—simulating a packed-array architecture. Printable pinhole templates are provided at the end of this guide (Templates T.1 and T.2); print at 100% scale, trace onto your cardboard, and punch.
+3. **Build the cardboard rod mount inside the insulated box.** Cut two rectangles of flat cardboard to 165 × 140 mm (6.5″ × 5.5″)—sized to slot snugly inside the insulated box (item 11). See Template T.1 at the end of this guide for a printable 1:1 cutting pattern. For **single-rod experiments (Topology A):** using the 7 mm hollow punch from the kit (item 22), punch a clean hole through each rectangle at the same height, centered on the cardboard—sized just large enough for the 6 mm rod to pass through with minimal contact. The rod slides horizontally through the aligned pinholes and should hang freely with no hard clamping. For **multi-rod or Topology B experiments:** cut U-shaped notches (7 mm wide × 10 mm deep) from the top edge of each divider instead of punching pinholes. This lets you drop rods in from above—essential when PZTs are glued to both ends and putty has been applied, making it impossible to slide rods through holes. Printable notch templates are provided at the end of this guide (Templates T.2A/B/C). Drop both dividers into the box standing upright, spaced 75 mm apart—this places each support at $L/4$ and $3L/4$ from one end (37.5 mm and 112.5 mm for a 150 mm rod). These positions are the exact displacement nodes of the second longitudinal mode—the acoustic "stems" of the rod. Position the first divider so that the PZT disc and its leads protrude out one end of the box for easy cable connection. Cut a small notch in the box lid above the PZT end for BNC cable and thermometer wire routing. A wine glass rings because you hold it by the stem, a vibrational node where energy cannot escape; the same physics governs your rod mount (see Failure Mode 6 and Section 7).
 
 > **Why cardboard?** The support material matters far less than the support _position_. At a true displacement node, the rod surface has zero displacement—no energy can transfer to the support regardless of what the support is made of. This is the same reason a wine glass doesn't care whether its stem is crystal, ceramic, or plastic: the stem is at a node, so the resonance is indifferent to the stem's material properties. The acoustic impedance mismatch between glass ($Z \approx 1.2 \times 10^7$ Pa·s/m) and cardboard ($Z \approx 10^4$–$10^5$ Pa·s/m) means that even at positions with residual displacement, ~99.9% of acoustic energy is reflected at the glass–cardboard interface rather than transmitted. The contact area is just a thin ring around the pinhole edge—much less than a foam V-notch cradle—further limiting energy transfer. In practice, cardboard pinholes at the correct nodal positions yield Q values within 5% of foam cradles, while offering three advantages: (1) the dividers slot into the box walls, providing rigid, repeatable positioning without tape or rubber bands; (2) they are free; and (3) they naturally partition the box interior into isolated chambers for multi-rod array experiments—something foam cannot do.
 >
-> **One caution:** if the pinhole is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. The hole should be just loose enough that the rod slides through with a gentle push. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. If you don't have a punch set, a pushpin hole gradually enlarged with a pencil tip also works. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
+> **One caution:** if the pinhole or notch is too tight, it clamps the rod and creates exactly the hard-contact damping you're trying to avoid. Pinholes and notches should be just loose enough that the rod passes through or drops in with no binding. The 7 mm hollow punch (item 22) produces a clean hole 1 mm larger than the rod—ideal clearance. For U-notches, use scissors or a craft knife to cut a 7 mm wide slot from the top edge to 10 mm depth; a semicircular bottom is ideal but a flat-bottomed slot works too. See the Diagnostic Test in Failure Mode 6 below for a quantitative check.
 
 4. **Center the PZT disc (critical).** Use the centering guide from Template T.4: cut out one 25 mm paper disc, lay it on the rod end, and align the blue circle with the rod edge. The red crosshair marks exact center. Alternatively, cut two small strips of masking tape (~12 mm each) and adhere them in a cross-hair pattern centered on the flat end face of the rod. The 25 mm PZT disc will overhang the 6 mm rod by 9.5 mm on each side—this is normal and does not affect performance. Only the 6 mm contact area couples acoustic energy. An off-center bond excites transverse and torsional modes that pollute the spectrum (Failure Mode 2).
 
@@ -433,11 +449,11 @@ To verify which rod is responding (useful the first time through Experiment 9), 
 >
 > If your Q values are lower than expected despite a clean PZT bond:
 >
-> - **Verify support positions.** Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker before punching the pinholes.
+> - **Verify support positions.** Measure from one end: 37.5 mm and 112.5 mm for a 150 mm rod. Mark the positions with a fine-tip marker before cutting notches or punching pinholes.
 > - **Try midpoint mounting.** For mode-1-only measurements, a single divider at $L/2 = 75$ mm is the ideal node and will maximize Q for the fundamental. (This sacrifices mode 2, which has an antinode there.)
-> - **Check pinhole size.** The hole should be just large enough for the rod to pass through without binding. Too tight and the cardboard clamps the rod, draining energy. Too loose and the rod rattles.
+> - **Check notch/pinhole size.** The slot or hole should be just large enough for the rod to sit in without binding. Too tight and the cardboard clamps the rod, draining energy. Too loose and the rod rattles.
 > - **Upgrade to fishing line.** Loop a thin monofilament line around the rod at the node position and tension it between two fixed posts. This gives near-zero contact area and mimics the knife-edge mounts used in precision metrology. Students who have played a glass harp will immediately feel the analogy: the taut line is the stem.
-> - **Diagnostic test.** Slide the rod so through the pinholes so one support is at the center ($L/2$) and measure Q for mode 1. Then reposition to $L/4$ and remeasure. If Q changes by more than 20%, your pinholes are too tight or making hard contact—enlarge them slightly or use fishing line.
+> - **Diagnostic test.** Place the rod so one support is at the center ($L/2$) and measure Q for mode 1. Then reposition to $L/4$ and remeasure. If Q changes by more than 20%, your notches are too tight or making hard contact—widen them slightly or use fishing line.
 
 ---
 
@@ -912,7 +928,7 @@ This part requires no electronics—just your hands and ears (plus the PZT to re
 
 **Time:** 90 minutes.
 
-**Materials:** 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, insulated box with cardboard dividers (multi-rod template T.2), insulated enclosure, masking tape, fine-tip marker.
+**Materials:** 3–4 assembled resonators (from Experiment 1), PicoScope, silicone putty, ruler, insulated box with cardboard dividers (single-row template T.2A), insulated enclosure, masking tape, fine-tip marker.
 
 **Background.** In Experiment 6 you demonstrated that a single rod distinguishes between matching and non-matching queries. This experiment scales the principle to a packed array: multiple rods, each storing a different perturbation pattern, are queried simultaneously. The rod whose stored fingerprint best matches the query produces the strongest acoustic response—a physical implementation of associative recall. The entire search completes in one acoustic propagation cycle (~3.8 µs at MEMS scale), regardless of how many rods are in the array.
 
@@ -1374,41 +1390,212 @@ Each band samples a different frequency range of the rod's response. Because the
 
 ---
 
+### D.16a Experiment 15 — 2D Plate Mode Survey (Chladni Extension)
+
+**Objective:** Measure the bending-mode spectrum of a fused-quartz plate with edge-coupled PZTs and confirm the predicted 9–11× mode-count gain over the 1D rod baseline.
+
+**Time:** 60–90 minutes (including PZT bonding cure time).
+
+**Materials:**
+
+| Item               | Specification                      | Source (ASIN)    |
+| ------------------ | ---------------------------------- | ---------------- |
+| Fused-quartz plate | 100 × 100 × 1 mm, Lab UV-Vis grade | B0DWZTGBK8 ($16) |
+| PZT discs × 2      | 10 mm with leads (from core BOM)   | B08R581G3H       |
+| Cyanoacrylate      | Thin-viscosity (from core BOM)     | B0DT14TGDY       |
+| Foam pads × 4      | Small adhesive felt/foam, ~10 mm   | —                |
+| PicoScope 2204A    | (from core BOM)                    | B00GZMRZ3M       |
+| BNC cables × 2     | (from core BOM)                    | B07RGPHFR3       |
+
+_Cheaper alternatives:_ 50 × 50 × 1 mm industrial-grade plate (B0F1YVNTMD, $13) gives 11 modes; MUHWA fused-quartz microscope slide 75 × 25 × 1 mm (B07ZYT3DJ6, $10) gives 7 modes — useful as a quick first test of edge bonding.
+
+**Background.** The 1D rod supports only ~5 bending modes below 20 kHz. A 2D plate supports $(n,m)$ mode pairs: $f_{nm} = \frac{\pi}{2}\sqrt{\frac{D}{\rho h}}\left[\left(\frac{n}{a}\right)^2 + \left(\frac{m}{b}\right)^2\right]$, where $D = Eh^3/12(1-\nu^2)$ is the flexural rigidity. For a 100 × 100 × 1 mm fused-quartz plate, this yields ~52 bending modes below 20 kHz — a 10.8× gain.
+
+Fused quartz also has 10× the material $Q$ of borosilicate glass ($Q_\text{mat} = 100{,}000$ vs $10{,}000$) and 6× lower thermal expansion ($\alpha = 0.55$ ppm/K vs $3.3$ ppm/K), meaning each mode is sharper and more thermally stable.
+
+**Edge-coupled PZT topology.** Gluing the PZT disc to the 1 mm plate edge rather than the flat face:
+
+```
+    Drive PZT (10 mm disc, centered on edge)
+    ↓
+    ┌──────────P──────────┐
+    │                     │
+    │    × putty (x,y)    │  100 × 100 × 1 mm fused quartz
+    │                     │
+    └──────────P──────────┘
+               ↑
+    Sense PZT (opposite edge, at a/3 = 33 mm from corner)
+
+    [○] foam pad at each corner
+```
+
+- **Contact area:** ~1 mm × 8 mm chord of the 10 mm disc = ~8 mm².
+- **Mass loading:** ~0.5 g on a 22 g plate = 2% (vs 26% for the rod).
+- **Advantage:** Edge position breaks all symmetries → excites all four mode families (SS, SA, AS, AA). The flat face remains clear for putty placement and visual inspection.
+
+**Procedure:**
+
+1. **Clean the plate.** Wipe with 91% isopropyl alcohol. Handle by edges only.
+
+2. **Bond drive PZT.** Apply a thin line of cyanoacrylate along the bottom edge at the center (50 mm from each corner). Press the PZT disc so its face is perpendicular to the plate face, with 1 mm of the disc contacting the glass edge. The disc will extend ~4.5 mm below the plate on each side. Hold for 30 seconds; let cure for 5 minutes.
+
+3. **Bond sense PZT.** Repeat on the opposite (top) edge at **a/3 = 33 mm** from the left corner. This asymmetric placement maximizes the number of excited modes (38/52 vs 28/52 at center). Offset the sense PZT from the drive to break symmetry.
+
+4. **Mount on foam pads.** Place four small foam or felt pads in a square pattern and rest the plate on its corners. The foam should be soft enough that it doesn't clamp the plate — you want minimal contact at the nodal-like corners. Place inside styrofoam cooler if available.
+
+5. **Connect PicoScope.**
+   - Ch A → Sense PZT (BNC → alligator clips → PZT leads).
+   - AWG out → Drive PZT (BNC → alligator clips → PZT leads).
+
+6. **Capture bare-plate tap spectrum.**
+
+   ```bash
+   PYTHONPATH=. python tools/cwm_picoscope.py capture --label plate_bare
+   ```
+
+   Gently flick the plate edge with a fingernail (not near a PZT). Record the FFT. Count visible peaks above the noise floor.
+
+7. **Run AWG frequency sweep** (if using stepped-dwell identifier):
+
+   ```bash
+   PYTHONPATH=. python tools/awg_stepped_dwell_id.py --plate-mode
+   ```
+
+   The script sweeps from 400 Hz to 20 kHz, dwelling at each resonance. Record the mode list and SNR for each peak.
+
+8. **Measure Q factor.** Tap once and record the time-domain waveform. Measure the −60 dB decay time $t_{60}$. Compute $Q = \pi f t_{60}$.
+
+9. **Record results** in the worksheet below.
+
+| Measurement                                | Value |
+| ------------------------------------------ | ----- |
+| **Plate dimensions (a × b × h mm):**       |       |
+| **Plate material:**                        |       |
+| **PZT mounting (edge/face):**              |       |
+| **Drive PZT position (mm from corner):**   |       |
+| **Sense PZT position (mm from corner):**   |       |
+| **Number of modes detected (bare plate):** |       |
+| **Fundamental f(1,1) (Hz):**               |       |
+| **Predicted f(1,1) (Hz):**                 |       |
+| **SNR of strongest mode (dB):**            |       |
+| **Q factor (best mode):**                  |       |
+| **Mean mode spacing (Hz):**                |       |
+| **Min mode spacing (Hz):**                 |       |
+| **FFT resolution (Hz):**                   |       |
+| **All modes resolved? (Y/N):**             |       |
+| **Mode count ratio vs rod baseline:**      |       |
+
+**Expected results.** For 100 × 100 × 1 mm fused quartz: ~30–52 modes below 20 kHz (simply-supported predicts 52; real boundary conditions will reduce this). Fundamental at ~530 Hz. Q should be 100–1,000 on a bare plate (limited by support pads and epoxy). SNR ≥ 40 dB. Mode spacing ~355 Hz mean, well above the 24.2 Hz FFT resolution.
+
+**Predicted mode spectrum** (simply-supported, fused quartz):
+
+| Mode (n,m) | Frequency (Hz) | Degenerate with |
+| ---------- | -------------- | --------------- |
+| (1,1)      | 529            | —               |
+| (1,2)      | 1,323          | (2,1)           |
+| (2,2)      | 2,116          | —               |
+| (1,3)      | 2,645          | (3,1)           |
+| (2,3)      | 3,439          | (3,2)           |
+| (1,4)      | 4,182          | (4,1)           |
+| (3,3)      | 4,703          | —               |
+| (2,4)      | 4,976          | (4,2)           |
+| (3,4)      | 6,201          | (4,3)           |
+| (1,5)      | 6,879          | (5,1)           |
+
+> **Why fused quartz?** Borosilicate stirring rods work for the 1D experiments. But for the 2D plate extension, fused quartz's 10× higher $Q$ and 6× lower thermal expansion translate to sharper, more stable peaks. This is the same material used in MEMS resonators and gravitational-wave detector optics.
+
+---
+
+### D.16b Experiment 16 — 2D Perturbation Encoding on a Plate
+
+**Objective:** Demonstrate that a putty pellet placed at position $(x, y)$ on the plate face produces a unique spectral fingerprint via the 2D sensitivity function $\sin^2(n\pi x/a)\cdot\sin^2(m\pi y/b)$.
+
+**Time:** 45–60 minutes.
+
+**Materials:** Same plate setup from Experiment 15 (PZTs already bonded); silicone putty; milligram scale; grid template or ruler.
+
+**Preparation.** Print or draw a grid on paper, place under the glass plate (the plate is transparent). Mark positions at $a/6$ intervals in both axes — this gives a 5 × 5 grid of 25 possible putty positions.
+
+**Procedure:**
+
+1. **Capture bare-plate baseline.** Record the mode spectrum with no putty (from Experiment 15, or re-capture).
+
+2. **Place putty at position (a/3, b/3).** Roll a ~50 mg pellet of silicone putty and press gently onto the plate face at position (33, 33) mm from the bottom-left corner. Ensure flat contact with the glass.
+
+3. **Capture perturbed spectrum.**
+
+   ```bash
+   PYTHONPATH=. python tools/cwm_picoscope.py capture --label plate_putty_33_33
+   ```
+
+4. **Record shifts.** Compare each peak frequency to the bare-plate baseline. Compute fractional shift $\Delta f/f$ for every mode.
+
+5. **Repeat at 3–5 positions:**
+   - **(a/3, b/3)** = (33, 33) mm — away from edges/center, good sensitivity
+   - **(a/2, b/2)** = (50, 50) mm — plate center, maximal for (odd,odd) modes
+   - **(a/3, b/φ)** = (33, 62) mm — golden-ratio y, maximally irrational spacing
+   - **(a/4, 3b/4)** = (25, 75) mm — near corner, tests edge sensitivity
+   - **(2a/3, b/3)** = (67, 33) mm — mirror of first position, tests symmetry
+
+6. **Look for degeneracy splitting.** At center position (50, 50), the degenerate pairs (n,m)/(m,n) are NOT broken (both indices see the same sin² value). At (33, 62), the asymmetric position should split some degenerate pairs into two distinct peaks — count how many pairs split.
+
+7. **Attempt position recovery.** Given only the spectral fingerprint (list of shifted frequencies), can you determine which grid position the putty was at? The 2D sin² model predicts that each grid position produces a unique pattern. Use:
+
+   ```bash
+   PYTHONPATH=. python tools/plate_position_decode.py --spectrum data/results/plate_putty_33_62.csv
+   ```
+
+8. **Record results** in the worksheet below.
+
+| Putty Position (x, y) mm | Mass (g) | Modes Shifted | Max Δf/f (%) | Pairs Split | Unique Fingerprint? |
+| ------------------------ | -------- | ------------- | ------------ | ----------- | ------------------- |
+| (33, 33)                 |          |               |              |             |                     |
+| (50, 50)                 |          |               |              |             |                     |
+| (33, 62)                 |          |               |              |             |                     |
+| (25, 75)                 |          |               |              |             |                     |
+| (67, 33)                 |          |               |              |             |                     |
+
+**Expected results.** Each position should shift a different subset of modes. Positions with irrational ratios (like $b/\varphi$) should affect the most modes. Degenerate pair splitting should occur at any position where $x \neq y$. The center position (50, 50) should show the MOST shift for (1,1), (3,3), (5,5) etc. modes but NO degeneracy splitting (because $\sin^2(n\pi/2) = \sin^2(m\pi/2)$ when $x=y$ at center).
+
+The key result: 2D encoding gives $\sim N^2$ distinguishable positions vs $\sim N$ for a 1D rod.
+
+---
+
 <div class="worksheet-header">
 <h4>D.17 — Consolidated Experiment Log</h4>
 <p class="ws-project">CWM Macro-Scale Experiment Guide · Coherent Wave Memory</p>
 <p class="ws-instruction">Photocopy this page for each student group or session. Attach completed Worksheets D.1–D.13.</p>
 </div>
 
-| Field                                          | Entry                                                                                                                       |
-| ---------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **Experimenter name(s)**                       |                                                                                                                             |
-| **Date**                                       |                                                                                                                             |
-| **School / Institution**                       |                                                                                                                             |
-| **Rod serial # (label each rod)**              |                                                                                                                             |
-| **Rod length L (mm)**                          |                                                                                                                             |
-| **Rod diameter d (mm)**                        |                                                                                                                             |
-| **Rod mass M (g)**                             |                                                                                                                             |
-| **PZT disc serial #**                          |                                                                                                                             |
-| **PicoScope model & serial**                   |                                                                                                                             |
-| **Room temperature at start (°C)**             |                                                                                                                             |
-| **Relative humidity (%)**                      |                                                                                                                             |
-| **Rod mount type**                             |                                                                                                                             |
-| **Thermal enclosure used? (Y/N)**              |                                                                                                                             |
-| **Experiments completed (circle)**             | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 &ensp; 12 &ensp; 13 &ensp; 14 |
-| **Best Q measured**                            |                                                                                                                             |
-| **Number of confirmed longitudinal modes**     |                                                                                                                             |
-| **Best discrimination margin (dB)**            |                                                                                                                             |
-| **CW lock-in gain at 10 s (dB)**               |                                                                                                                             |
-| **Wet-finger bowing successful? (Y/N)**        |                                                                                                                             |
-| **Water-drop patterns written & erased**       |                                                                                                                             |
-| **Array recall: all diagonals correct? (Y/N)** |                                                                                                                             |
-| **NN crossover α (expected 0.50):**            |                                                                                                                             |
-| **Boolean ops all correct? (Y/N)**             |                                                                                                                             |
-| **Vault: all credentials verified? (Y/N)**     |                                                                                                                             |
-| **Image search rank-1 accuracy (%)**           |                                                                                                                             |
-| **CAM lookup accuracy (%)**                    |                                                                                                                             |
-| **Anomalies or unexpected observations**       |                                                                                                                             |
+| Field                                          | Entry                                                                                                                                           |
+| ---------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Experimenter name(s)**                       |                                                                                                                                                 |
+| **Date**                                       |                                                                                                                                                 |
+| **School / Institution**                       |                                                                                                                                                 |
+| **Rod serial # (label each rod)**              |                                                                                                                                                 |
+| **Rod length L (mm)**                          |                                                                                                                                                 |
+| **Rod diameter d (mm)**                        |                                                                                                                                                 |
+| **Rod mass M (g)**                             |                                                                                                                                                 |
+| **PZT disc serial #**                          |                                                                                                                                                 |
+| **PicoScope model & serial**                   |                                                                                                                                                 |
+| **Room temperature at start (°C)**             |                                                                                                                                                 |
+| **Relative humidity (%)**                      |                                                                                                                                                 |
+| **Rod mount type**                             |                                                                                                                                                 |
+| **Thermal enclosure used? (Y/N)**              |                                                                                                                                                 |
+| **Experiments completed (circle)**             | 1 &ensp; 2 &ensp; 3 &ensp; 4 &ensp; 5 &ensp; 6 &ensp; 7 &ensp; 8 &ensp; 9 &ensp; 10 &ensp; 11 &ensp; 12 &ensp; 13 &ensp; 14 &ensp; 15 &ensp; 16 |
+| **Best Q measured**                            |                                                                                                                                                 |
+| **Number of confirmed longitudinal modes**     |                                                                                                                                                 |
+| **Best discrimination margin (dB)**            |                                                                                                                                                 |
+| **CW lock-in gain at 10 s (dB)**               |                                                                                                                                                 |
+| **Wet-finger bowing successful? (Y/N)**        |                                                                                                                                                 |
+| **Water-drop patterns written & erased**       |                                                                                                                                                 |
+| **Array recall: all diagonals correct? (Y/N)** |                                                                                                                                                 |
+| **NN crossover α (expected 0.50):**            |                                                                                                                                                 |
+| **Boolean ops all correct? (Y/N)**             |                                                                                                                                                 |
+| **Vault: all credentials verified? (Y/N)**     |                                                                                                                                                 |
+| **Image search rank-1 accuracy (%)**           |                                                                                                                                                 |
+| **CAM lookup accuracy (%)**                    |                                                                                                                                                 |
+| **Anomalies or unexpected observations**       |                                                                                                                                                 |
 
 ---
 
@@ -1885,28 +2072,28 @@ _The following pages provide 1:1-scale templates. Print at 100% scale (no fit-to
 </div>
 
 <div class="template-page">
-<img src="figures/template_multi_rod_2x2.svg" alt="Template T.2A: 2×2 Grid Divider (4 rods)"/>
+<img src="figures/template_single_row_1x4.svg" alt="Template T.2A: Single-Row Divider (4 rods)"/>
 </div>
 
 <div class="template-page">
-<img src="figures/template_multi_rod_3x2.svg" alt="Template T.2B: 3×2 Grid Divider (6 rods)"/>
+<img src="figures/template_single_row_1x6.svg" alt="Template T.2B: Single-Row Divider (6 rods)"/>
 </div>
 
 <div class="template-page">
-<img src="figures/template_multi_rod_5x2.svg" alt="Template T.2C: 5×2 Grid Divider (10 rods)"/>
+<img src="figures/template_single_row_1x8.svg" alt="Template T.2C: Single-Row Divider (8 rods)"/>
 </div>
 
 <div class="template-instructions">
-<h3>Templates T.2A / T.2B / T.2C — Multi-Rod Grid Divider Instructions</h3>
-<p>The three preceding templates provide 1:1-scale pinhole patterns for packed-array experiments: 2×2 (4 rods, Experiments 9–11), 3×2 (6 rods), or 5×2 (10 rods, Experiment 12). All use 30 mm center-to-center spacing — this provides 5 mm clearance between adjacent 25 mm PZT discs. Each pinhole creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
-<p>Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). If using a different enclosure, cut the cardboard to match your box’s interior cross-section and center the pinhole grid accordingly.</p>
+<h3>Templates T.2A / T.2B / T.2C — Single-Row Divider Instructions</h3>
+<p>The three preceding templates provide 1:1-scale U-notch patterns for packed-array experiments: 1×4 (4 rods, Experiments 9–11, 30 mm spacing), 1×6 (6 rods, 25 mm spacing), or 1×8 (8 rods, 25 mm spacing, requires wider enclosure). Rods drop into the notches from above — essential when PZTs are glued to both ends (Topology B) and putty has been applied, making it impossible to slide rods through holes. Each notch creates an isolated acoustic chamber between the two dividers — the same architecture proposed for MEMS CWM arrays.</p>
+<p><strong>T.2A (1×4):</strong> Cut each divider to <strong>165 mm × 140 mm</strong> (6.5″ × 5.5″) to fit the CH-BOX (item 11). 30 mm spacing provides 5 mm clearance between adjacent 25 mm PZT discs. <strong>T.2B (1×6):</strong> Same divider size, 25 mm spacing — use with 10 mm PZTs (Topology B). <strong>T.2C (1×8):</strong> Cut a wider divider (<strong>210 mm × 90 mm</strong>) — does not fit in a standard CH-BOX; use a larger enclosure.</p>
 <ol>
-<li>Print the template page for your chosen grid at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
-<li>Cut out the template along the dashed line. Tape it to cardboard and trace, marking all ⊙ positions.</li>
-<li>Punch a 7 mm hole at each ⊙ using the hollow punch from the kit (item 22). All pinholes must be at the same height as the single-rod template so rods are interchangeable between mounts.</li>
-<li>Cut <strong>TWO</strong> dividers per grid option. Drop them into the box 75 mm apart. Slide rods through the aligned pinholes — each rod should pass through freely with no hard contact.</li>
+<li>Print the template page for your chosen layout at 100% scale (no fit-to-page). Verify the calibration ruler measures exactly 50 mm.</li>
+<li>Cut out the template along the dashed line. Tape it to cardboard and trace, marking all U-notch positions along the top edge.</li>
+<li>Cut each U-notch from the top edge: 7 mm wide × 10 mm deep. Use scissors or a craft knife. A semicircular bottom is ideal, but a flat-bottomed slot works too. The rod should sit snugly in the notch with no hard clamping.</li>
+<li>Cut <strong>TWO</strong> identical dividers. Drop them into the box 75 mm apart. Drop rods into the aligned notches from above — each rod should rest freely with no binding.</li>
 </ol>
-<p>The 30 mm spacing provides 5× the rod diameter between adjacent channels — sufficient for acoustic isolation at the power levels used in these experiments, with 5 mm clearance between 25 mm PZT disc edges. For the 5×2 grid (10 rods), the pinhole pattern spans 120 mm × 30 mm, which fits within the 165 × 140 mm divider with 22.5 mm margins.</p>
+<p>The single-row layout ensures rods can be installed and removed without disassembling the array — critical when PZTs protrude from both ends and putty must not be disturbed. For Topology A (single PZT per rod, 25 mm discs), use T.2A with 30 mm spacing. For Topology B (10 mm PZTs on both ends), T.2B and T.2C use 25 mm spacing with ample clearance.</p>
 </div>
 
 <div class="template-page">

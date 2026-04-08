@@ -1142,6 +1142,9 @@ def _splice_template_pages(pdf_path, base_dir):
         "Multi-Rod Grid Divider: 2": "template_multi_rod_2x2.svg",
         "Multi-Rod Grid Divider: 3": "template_multi_rod_3x2.svg",
         "Multi-Rod Grid Divider: 5": "template_multi_rod_5x2.svg",
+        "Single-Row Divider: 1\u00d74": "template_single_row_1x4.svg",
+        "Single-Row Divider: 1\u00d76": "template_single_row_1x6.svg",
+        "Single-Row Divider: 1\u00d78": "template_single_row_1x8.svg",
         "Perturbation Placement Guide": "template_perturbation_guide.svg",
         "PZT Centering Template": "template_pzt_centering.svg",
     }

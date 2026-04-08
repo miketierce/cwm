@@ -31,12 +31,6 @@
     margin-right: 0.85in;
 }
 
-/* Named page for landscape plates */
-@page plate {
-    size: letter landscape;
-    margin: 0.5in;
-}
-
 :root {
     --text: #1a1a1a;
     --muted: #555;
@@ -456,6 +450,11 @@ div.cwm-thumb p {
 }
 
 /* -- Landscape plate pages -- */
+@page plate {
+    size: letter landscape;
+    margin: 0.5in;
+}
+
 div.plate-page {
     page: plate;
     page-break-before: always;
@@ -473,6 +472,8 @@ div.plate-page img {
     max-height: 6.5in;
     width: auto;
     height: auto;
+    display: block;
+    margin: 0 auto;
 }
 
 div.plate-page p {
@@ -481,6 +482,66 @@ div.plate-page p {
     margin-top: 10pt;
     font-size: 9.5pt;
     line-height: 1.4;
+}
+
+/* Named page for portrait templates — 1:1 physical scale, zero margin */
+@page template {
+    size: letter;
+    margin: 0;
+}
+
+div.template-page {
+    page: template;
+    page-break-before: always;
+    page-break-after: always;
+    width: 8.5in;
+    height: 11in;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+div.template-page img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* Template instruction verso pages */
+@page template-inst {
+    size: letter;
+    margin: 1in;
+}
+
+div.template-instructions {
+    page: template-inst;
+    page-break-before: always;
+    page-break-after: always;
+    padding-top: 0.5in;
+}
+
+div.template-instructions h3 {
+    font-size: 14pt;
+    font-weight: 700;
+    margin-bottom: 14pt;
+    color: var(--text);
+}
+
+div.template-instructions p {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 10pt;
+}
+
+div.template-instructions ol {
+    font-size: 10.5pt;
+    line-height: 1.55;
+    margin-bottom: 12pt;
+    padding-left: 24pt;
+}
+
+div.template-instructions ol li {
+    margin-bottom: 6pt;
 }
 
 /* -- Footnotes / References -- */
@@ -556,7 +617,13 @@ table, pre {
 }
 
 /* -- Printable worksheet pages -- */
+@page worksheet {
+    size: letter;
+    margin: 0.75in;
+}
+
 div.worksheet-plate {
+    page: worksheet;
     page-break-before: always;
     page-break-after: always;
     padding-top: 0.15in;
@@ -827,7 +894,7 @@ ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a></
     Typeset from Markdown source using Chromium PDF rendering.<br>
     Body text in Palatino 11 pt. Mathematics rendered by KaTeX.<br>
     All quantitative claims computed from first-principles simulation code<br>
-    (44 modules, 1910 automated tests) with independent FEM validation.
+    (48 modules, 2253 automated tests) with independent FEM validation.
   </p>
 </div>
 
