@@ -1476,7 +1476,7 @@ Alternatively, make a simple cardboard jig by hand:
     │  tick  tick                          │
     │  (15mm)(115mm from left jig edge)    │
     └──────────────────────────────────────┘
-    
+
     Slot: 100mm between ticks, 1.5mm wide, cut with hobby knife
     PZT hole: 11mm circle centered at (15 + 22) = 37mm from left jig edge
 ```
@@ -1639,7 +1639,7 @@ For multi-plate experiments (5-pack) or overnight thermal soak runs, build a cas
 
    ```
        Cross-section (front view)
-       
+
        ║                               ║  ← cardboard wall
        ║                               ║
        ■══════════════════════════════■  ← shelf on cleats
@@ -1652,7 +1652,7 @@ For multi-plate experiments (5-pack) or overnight thermal soak runs, build a cas
        ║     ■                ■      ║
        ║     ┊────────────────┊      ║
        ...
-       
+
        ■ on wall = cleat cube (structural)
        ■ on shelf = support cube (acoustic, at 22 mm inset)
        ═ = cardboard shelf resting on cleat cubes
