@@ -1274,9 +1274,9 @@ def html_to_pdf(html, pdf_path, md_path=None):
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Convert WCFOMA markdown to book-quality PDF"
+        description="Convert WCFOMA markdown (or pre-built HTML) to book-quality PDF"
     )
-    parser.add_argument("input", help="Path to .md file")
+    parser.add_argument("input", help="Path to .md or .html file")
     parser.add_argument(
         "-o", "--output", help="Output PDF path (default: same name as input)"
     )
@@ -1287,10 +1287,37 @@ def main():
     )
     args = parser.parse_args()
 
-    md_path = Path(args.input)
-    if not md_path.exists():
-        print("Error: " + str(md_path) + " not found", file=sys.stderr)
+    input_path = Path(args.input)
+    if not input_path.exists():
+        print("Error: " + str(input_path) + " not found", file=sys.stderr)
         sys.exit(1)
+
+    # --- HTML input: skip MD conversion, render directly ---
+    if input_path.suffix.lower() in (".html", ".htm"):
+        print("Reading pre-built HTML...")
+        html = input_path.read_text(encoding="utf-8")
+        pdf_path = Path(args.output) if args.output else input_path.with_suffix(".pdf")
+        print("Rendering PDF (this takes a few seconds)...")
+        html_to_pdf(html, pdf_path, md_path=input_path)
+        print("PDF written to " + str(pdf_path))
+
+        # Report page count on macOS
+        try:
+            import subprocess
+            result = subprocess.run(
+                ["mdls", "-name", "kMDItemNumberOfPages", str(pdf_path)],
+                capture_output=True, text=True,
+            )
+            for line in result.stdout.strip().split("\n"):
+                if "kMDItemNumberOfPages" in line:
+                    pages = line.split("=")[1].strip()
+                    print("Pages: " + pages)
+        except Exception:
+            pass
+        return
+
+    # --- Markdown input: full conversion pipeline ---
+    md_path = input_path
 
     print("Building HTML...")
     html = build_html(md_path)

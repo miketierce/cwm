@@ -34,18 +34,18 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 
 **Table D.1: Core Components**
 
-| #   | Component                               | Specification                                                     | Qty     | Est. Cost        | Amazon Link                                                                        |
-| --- | --------------------------------------- | ----------------------------------------------------------------- | ------- | ---------------- | ---------------------------------------------------------------------------------- |
-| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3                  | 15-pack | ~\$8             | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)    |
-| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed        | 10-pack | ~\$9             | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)        |
+| #   | Component                               | Specification                                                     | Qty     | Est. Cost        | Amazon Link                                                                                             |
+| --- | --------------------------------------- | ----------------------------------------------------------------- | ------- | ---------------- | ------------------------------------------------------------------------------------------------------- |
+| 1   | Borosilicate glass stirring rods        | 6 mm dia × 150 mm (5.9″), rounded ends, Boro 3.3                  | 15-pack | ~\$8             | [PATIKIL 15 Pcs, 5.9″ × 6 mm](https://www.amazon.com/dp/B0F93VD85L?tag=cwmt-20)                         |
+| 2   | Borosilicate glass stirring rods (alt.) | 6 mm dia × 200 mm (7.9″), Boro 3.3—cut to 150 mm if needed        | 10-pack | ~\$9             | [EISCO 10PK, 7.9″ × 6 mm](https://www.amazon.com/dp/B07DKPF1RT?tag=cwmt-20)                             |
 | 3   | Piezoelectric discs with leads          | 25 mm dia, PZT ceramic, pre-soldered 4″ wire leads                | 15-pack | ~\$7             | [E-outstanding 15 PCS](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20) (labelled 10 mm; actual 25 mm) |
-| 4   | Piezoelectric discs (alt.)              | 25 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20) (labelled 10 mm; actual 25 mm)       |
-| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software      | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                |
-| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1–2     | ~\$5–\$10        | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20) |
-| 7   | Moldable silicone putty earplugs        | Mack's Pillow Soft, moldable silicone putty (perturbation masses) | 1 pack  | ~\$9             | [Mack's Pillow Soft, 8 Pair](https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20)     |
-| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                              | 2–4     | ~\$10–\$20       | Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)   |
-|     | **Core materials (without scope)**      |                                                                   |         | **~\$38–\$54**   |                                                                                    |
-|     | **Core materials (with PicoScope)**     |                                                                   |         | **~\$230–\$246** |                                                                                    |
+| 4   | Piezoelectric discs (alt.)              | 25 mm dia, PZT, bare discs (solder leads yourself)                | 10-pack | ~\$6             | [uxcell 10 Pcs](https://www.amazon.com/dp/B07RK2V1P2?tag=cwmt-20) (labelled 10 mm; actual 25 mm)        |
+| 5   | USB oscilloscope + waveform generator   | PicoScope 2204A, 10 MHz BW, 2-ch, built-in AWG, PS7 software      | 1       | ~\$192           | [PicoScope 2204A](https://www.amazon.com/dp/B00GZMRZ3M?tag=cwmt-20)                                     |
+| 6   | Cyanoacrylate glue (super glue)         | Medium viscosity, precision tip, gel formula                      | 1–2     | ~\$5–\$10        | [Loctite Ultra Gel Control, 4 g](https://www.amazon.com/dp/B00ELV2D0Y?tag=cwmt-20)                      |
+| 7   | Moldable silicone putty earplugs        | Mack's Pillow Soft, moldable silicone putty (perturbation masses) | 1 pack  | ~\$9             | [Mack's Pillow Soft, 8 Pair](https://www.amazon.com/dp/B00SYEHC64?tag=cwmt-20)                          |
+| 8   | BNC cables (male–male, 50 Ω)            | 1 m length, for Picoscope connection                              | 2–4     | ~\$10–\$20       | Included with PicoScope kit; 4 recommended for multi-rod experiments (Exps 9–14)                        |
+|     | **Core materials (without scope)**      |                                                                   |         | **~\$38–\$54**   |                                                                                                         |
+|     | **Core materials (with PicoScope)**     |                                                                   |         | **~\$230–\$246** |                                                                                                         |
 
 **Table D.2: Mitigation and Measurement Accessories**
 
@@ -69,6 +69,21 @@ The core BOM from Paper I §4.2 is expanded below with recommended quantities (e
 |     | **Accessories subtotal**               |                                                                                                    |                | **~$77–$84**   |                                                                                                         |
 |     | **Grand total (without scope)**        |                                                                                                    |                | **~$116–$131** |                                                                                                         |
 |     | **Grand total (with PicoScope)**       |                                                                                                    |                | **~$308–$323** |                                                                                                         |
+
+**Table D.3: Relay Multiplexer Kit (Topology B, optional)**
+
+For per-rod readout with 4–8 rods, the relay multiplexer kit adds a second PZT per rod and an Arduino-controlled relay to switch individual sense PZTs onto Channel A. No soldering required — all connections use screw terminals, DuPont jumper wires, and twist splices.
+
+| #   | Component                          | Specification                                                     | Qty    | Est. Cost | Amazon Link                                                              |
+| --- | ---------------------------------- | ----------------------------------------------------------------- | ------ | --------- | ------------------------------------------------------------------------ |
+| 24  | 8-channel relay module             | 5V opto-isolated, screw terminals, high/low trigger               | 1      | ~\$11     | [VOGURTIME 8-ch](https://www.amazon.com/dp/B07XM5GVWJ?tag=cwmt-20)       |
+| 25  | Arduino Nano clone (CH340)         | Type-C USB, ATmega328P; powers relay + provides GPIO              | 1      | ~\$10     | [AITRIP 2-pack](https://www.amazon.com/dp/B0B42GRG15?tag=cwmt-20)        |
+| 26  | DuPont jumper wires (F-to-F)       | 40-pin, 10 cm; connects Arduino to relay header pins              | 1 pack | ~\$5      | [40pcs F-to-F](https://www.amazon.com/dp/B0BRTKTV64?tag=cwmt-20)         |
+| 27  | Stranded silicone wire (26 AWG)    | 6-color, 32.8 ft each; extends PZT leads to relay screw terminals | 1 set  | ~\$11     | Amazon search: "26 AWG stranded silicone wire 6 colors"                  |
+| 28  | Electrical tape                    | Secures twist-splice wire joints                                  | 1 roll | ~\$2      | Any hardware store                                                       |
+| 29  | Precision screwdriver set          | Small flathead for relay screw terminals                          | 1 set  | ~\$6      | [11 Pcs Set](https://www.amazon.com/dp/B0FLDH6FF4?tag=cwmt-20)           |
+| 30  | Extra PZT discs with leads (10 mm) | Second PZT per rod (drive end); 15-pack                           | 1 pack | ~\$7      | [E-outstanding 15 PCS](https://www.amazon.com/dp/B08R581G3H?tag=cwmt-20) |
+|     | **Relay kit subtotal**             |                                                                   |        | **~$52**  |                                                                          |
 
 > **Budget note.** Most schools already own an oscilloscope with FFT capability and a function generator—if so, skip item 5 and the core materials cost is just ~\$38. For labs without a scope, we recommend the PicoScope 2204A (\$192), which provides both the waveform generator (transmit) and the digitizer (receive) in one USB device with free cross-platform software (PS7). Any oscilloscope with ≥200 kHz bandwidth and a separate function generator will also work. The 15 glass rods and 15 PZT discs provide enough spares for multiple student groups, breakage, and control experiments. One kit serves an entire class.
 
@@ -263,7 +278,11 @@ Click **Close Scope** when finished to release the PicoScope handle. This is imp
 
 The packed-array experiments drive **all rods simultaneously** and read the **aggregate response** — this is the physical parallel search that defines CWM. You do not need a separate scope channel per rod.
 
-**Parallel wiring (primary topology):**
+There are two supported topologies: **Topology A** uses one PZT per rod (simpler build) and **Topology B** uses two PZTs per rod with a relay multiplexer (enables per-rod energy measurement). Topology A works for all experiments; Topology B is recommended for 4+ rods and required for calibrated per-rod readout.
+
+---
+
+**Topology A — Shared single-PZT bus (simplest):**
 
 1. Twist or solder all PZT "hot" leads (red wires) together. Do the same for all ground leads (black wires). A small terminal strip or screw-terminal block keeps this tidy.
 2. Connect the bundled leads to a single BNC cable. Use a BNC T-connector so the bundle connects to both the AWG output and Channel A input — the same topology as single-rod experiments, just with more PZTs on the wire.
@@ -271,7 +290,87 @@ The packed-array experiments drive **all rods simultaneously** and read the **ag
 
 > **Electrical note.** Each PZT is ~28 nF. Ten in parallel = 280 nF (impedance ~32 Ω at 17.7 kHz). The AWG's 600 Ω output drives this easily. The parallel capacitance does not degrade signal quality — it is equivalent to a single larger transducer.
 
-**Per-rod diagnostic (optional):**
+---
+
+**Topology B — Two PZTs per rod with relay multiplexer (recommended for 4+ rods):**
+
+This topology separates the drive path from the sense path using two PZTs on each rod and an 8-channel relay module to read each rod individually. No soldering is required — all connections use screw terminals, DuPont jumper wires, twist splices, and electrical tape.
+
+**Additional materials for Topology B:**
+
+| Component                                | Purpose                                    | Est. Cost |
+| ---------------------------------------- | ------------------------------------------ | --------- |
+| 8-ch relay module (5V, opto-isolated)    | Switches individual sense PZTs onto Ch A   | ~$11      |
+| Arduino Nano clone (CH340, Type-C USB)   | Powers relay + provides GPIO for switching | ~$10      |
+| DuPont jumper wires (F-to-F, 40-pack)    | Connects Arduino pins to relay headers     | ~$5       |
+| Stranded silicone wire (26 AWG, 6-color) | Extends short PZT leads to relay terminals | ~$11      |
+| Electrical tape                          | Secures twist-splice wire joints           | ~$2       |
+| Precision screwdriver set                | For relay screw terminals                  | ~$6       |
+| Extra PZT discs (15-pack)                | Second PZT per rod (drive end)             | ~$7       |
+
+**Build procedure:**
+
+1. **Attach two PZTs per rod.** Glue one PZT to each end of every rod (per Experiment 1 procedure). Label one end "Drive" and the other end "Sense" with masking tape.
+
+2. **Wire the drive PZTs.** Twist all drive PZT hot leads together, and all drive PZT ground leads together. Connect the bundle to the PicoScope AWG output via a BNC-to-alligator cable. All rods receive the same drive signal simultaneously.
+
+3. **Extend the sense PZT leads.** The PZT leads (~4 inches) are too short to reach the relay module. For each sense PZT:
+   - Cut a 12–18 inch length of 26 AWG stranded wire.
+   - Strip ~½ inch from each end. The silicone insulation strips easily with scissors — nick it and pull.
+   - Twist the PZT lead around the stripped extension wire for ~1 cm. Wrap the joint with electrical tape.
+   - Use a consistent color code: e.g. red for hot, black for ground.
+
+4. **Connect sense wires to the relay module.** Each relay channel has three screw terminals: **COM** (common), **NO** (normally open), and **NC** (normally closed). For each rod:
+   - Run the hot extension wire into the **COM** terminal of that rod's relay channel. Tighten the screw.
+   - Run the ground extension wire to a shared ground bus (twist all sense grounds together and connect to the BNC cable ground via alligator clip).
+
+5. **Wire the relay outputs to Channel A.** Connect all **NO** terminals together (twist or terminal strip) and run to the PicoScope Channel A BNC-to-alligator cable (hot lead). When a relay activates, it connects that rod's sense PZT to Channel A; all others are disconnected.
+
+6. **Connect the Arduino to the relay module.**
+   - Use DuPont female-to-female jumper wires to connect Arduino digital pins D2–D9 to the relay module's IN1–IN8 header pins.
+   - Connect Arduino **5V** pin to relay module **VCC** and Arduino **GND** to relay module **GND**.
+   - Connect the Arduino to your computer via USB-C cable.
+
+7. **Upload the relay controller firmware.** CWM Lab communicates with the Arduino over USB serial to select which relay is active. Upload the sketch from `tools/relay_controller/relay_controller.ino` using the Arduino IDE:
+   - Install the Arduino IDE (free) and select Board: "Arduino Nano" and Port: the CH340 serial port.
+   - Open `tools/relay_controller/relay_controller.ino` and click Upload.
+   - The sketch listens for single-character commands ('0'–'7' to activate a relay, 'x' to deactivate all).
+
+**Topology B wiring diagram:**
+
+```
+                    ┌──────────────────────────────────────┐
+                    │         8-Channel Relay Module        │
+  Arduino Nano      │  IN1  IN2  IN3  ...  IN8             │
+  D2─────────────── │──IN1                                 │
+  D3─────────────── │──IN2                                 │
+  D4─────────────── │──IN3                                 │
+  ...               │  ...                                 │
+  5V─────────────── │──VCC                                 │
+  GND────────────── │──GND                                 │
+                    │                                      │
+                    │  COM1  NO1  COM2  NO2  ...           │
+                    │   │     │    │     │                  │
+                    └───┼─────┼────┼─────┼─────────────────┘
+                        │     │    │     │
+            Rod 1 Sense─┘     │    │     │
+            Rod 2 Sense───────┼────┘     │
+                              │          │
+                              └────┬─────┘
+                                   │ (all NO terminals joined)
+                                   │
+                              Ch A input
+                           (BNC alligator)
+
+  AWG output ──── All Drive PZTs in parallel
+                  (BNC alligator → twisted bundle)
+```
+
+> **Why two PZTs?** With a single shared PZT bus (Topology A), the AWG drive signal appears directly on Channel A, masking the rod's acoustic response. Separating drive and sense PZTs onto opposite ends of each rod provides ~20 dB of isolation. The relay then lets you read each rod individually, enabling calibrated per-rod energy measurement and eliminating coupling-strength bias between rods.
+
+---
+
+**Per-rod diagnostic (optional, Topology A only):**
 
 To verify which rod is responding (useful the first time through Experiment 9), you can temporarily connect **Channel B** to a single rod's PZT while Channel A reads the aggregate:
 

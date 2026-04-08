@@ -1,8 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606 784" width="8.5in" height="11in">
-  <!-- US Letter: 8.5×11 in. Print at 100% scale. -->
-  <!-- viewBox shrunk ~1% from 612×792 to compensate for Chromium PDF rendering -->
-  <!-- shrinkage (~0.5 mm over 50 mm). All pt values use nominal 72 dpi. -->
-  <!-- 1 mm = 2.8346 pt (nominal); printed ~1% larger to hit true physical size. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 792" width="8.5in" height="11in">
+  <!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+  <!-- 1 pt = 0.3528 mm; 1 mm = 2.8346 pt -->
   <style>
     text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
     .title { font-size: 14pt; font-weight: 700; fill: #1a1a1a; }
@@ -12,14 +10,15 @@
     .note { font-size: 7pt; fill: #555; font-style: italic; }
     .step { font-size: 9pt; fill: #1a1a1a; }
     .step-bold { font-size: 9pt; fill: #1a1a1a; font-weight: 700; }
+    .dim-line { stroke: #c00; stroke-width: 0.6; fill: none; }
   </style>
 
   <!-- Page title -->
-  <text x="303" y="36" text-anchor="middle" class="title">CWM Experiment Guide — PZT Centering Template</text>
-  <text x="303" y="52" text-anchor="middle" class="subtitle">Print at 100% (no scaling) on US Letter paper. Verify the ruler below measures 50 mm.</text>
+  <text x="306" y="36" text-anchor="middle" class="title">CWM Experiment Guide — PZT Centering Template</text>
+  <text x="306" y="52" text-anchor="middle" class="subtitle">Print at 100% (no scaling) on US Letter paper. Verify the ruler below measures 50 mm.</text>
 
-  <!-- Calibration ruler: 50 mm = 141.73 pt nominal -->
-  <g transform="translate(203, 62)">
+  <!-- Calibration ruler -->
+  <g transform="translate(206, 62)">
     <rect x="0" y="0" width="141.73" height="12" fill="none" stroke="#333" stroke-width="0.8"/>
     <line x1="0" y1="0" x2="0" y2="12" stroke="#333" stroke-width="0.8"/>
     <line x1="141.73" y1="0" x2="141.73" y2="12" stroke="#333" stroke-width="0.8"/>
@@ -41,117 +40,209 @@
   </g>
 
   <!-- Template label -->
-  <text x="303" y="115" text-anchor="middle" class="label">Template T.4 — PZT Disc Centering Guide (1:1 scale) — 25 mm PZT on 6 mm rod</text>
+  <text x="306" y="115" text-anchor="middle" class="label">Template T.4 — PZT Disc Centering Guide (1:1 scale)</text>
 
   <!-- =====================================================
-       3×2 grid of centering guides (6 per sheet)
-       25 mm PZT disc: r = 35.433 pt
-       6 mm rod end:   r =  8.504 pt
-       Crosshair extends ±18 mm = ±51.02 pt
+       MAIN TEMPLATE AREA — 4×3 grid of centering guides
+       Each guide: 10 mm PZT circle + 6 mm rod circle + crosshair
+       10 mm = 28.346 pt; 6 mm = 17.008 pt; 5 mm radius = 14.173 pt; 3 mm radius = 8.504 pt
+       Grid: 4 columns × 3 rows, 50 mm (141.73 pt) spacing
        ===================================================== -->
 
-  <!-- GUIDE 1: Row 1, Col 1 -->
-  <g transform="translate(120, 230)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <!-- Grid origin: center of page horizontally, starting at y=200 -->
+  <!-- Column centers: 306 - 1.5*141.73 = 93.4, 235.1, 376.8, 518.5 → use 130, 236, 342, 448 (40mm spacing = 113.39pt) -->
+
+  <!-- Use 45mm spacing = 127.56pt. Centers: 306-1.5*127.56 = 114.66, 242.22, 369.78, 497.34 -->
+  <!-- Rows at y = 210, 337.56, 465.12 (45mm = 127.56pt apart) -->
+
+  <!-- Row 1 -->
+  <g id="guide-template">
+    <!-- Repeat this block for each centering guide -->
+  </g>
+
+  <!-- Function: centering guide at (cx, cy) -->
+  <!-- PZT disc outline: 10mm dia = r 14.173pt, dashed grey -->
+  <!-- Rod end outline: 6mm dia = r 8.504pt, solid blue -->
+  <!-- Center crosshair: ±8mm = ±22.677pt, red fine lines -->
+  <!-- Center dot: 0.5mm radius = 1.417pt, solid red -->
+
+  <!-- GUIDE 1 of 12: Row 1, Col 1 -->
+  <g transform="translate(130, 210)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
   <!-- GUIDE 2: Row 1, Col 2 -->
-  <g transform="translate(303, 230)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <g transform="translate(257, 210)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
   <!-- GUIDE 3: Row 1, Col 3 -->
-  <g transform="translate(486, 230)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <g transform="translate(384, 210)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
-  <!-- GUIDE 4: Row 2, Col 1 -->
-  <g transform="translate(120, 400)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <!-- GUIDE 4: Row 1, Col 4 -->
+  <g transform="translate(511, 210)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
-  <!-- GUIDE 5: Row 2, Col 2 -->
-  <g transform="translate(303, 400)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <!-- GUIDE 5: Row 2, Col 1 -->
+  <g transform="translate(130, 340)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
-  <!-- GUIDE 6: Row 2, Col 3 -->
-  <g transform="translate(486, 400)">
-    <circle cx="0" cy="0" r="35.433" fill="none" stroke="#888" stroke-width="1.2" stroke-dasharray="4,2.5"/>
-    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.4"/>
-    <line x1="-51.02" y1="0" x2="-3.5" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="3.5" y1="0" x2="51.02" y2="0" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="-51.02" x2="0" y2="-3.5" stroke="#c00" stroke-width="0.5"/>
-    <line x1="0" y1="3.5" x2="0" y2="51.02" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="0" cy="0" r="1.7" fill="#c00" stroke="none"/>
-    <text x="0" y="48" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  <!-- GUIDE 6: Row 2, Col 2 -->
+  <g transform="translate(257, 340)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 7: Row 2, Col 3 -->
+  <g transform="translate(384, 340)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 8: Row 2, Col 4 -->
+  <g transform="translate(511, 340)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 9: Row 3, Col 1 -->
+  <g transform="translate(130, 470)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 10: Row 3, Col 2 -->
+  <g transform="translate(257, 470)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 11: Row 3, Col 3 -->
+  <g transform="translate(384, 470)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
+  </g>
+
+  <!-- GUIDE 12: Row 3, Col 4 -->
+  <g transform="translate(511, 470)">
+    <circle cx="0" cy="0" r="14.173" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <circle cx="0" cy="0" r="8.504" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
+    <line x1="-22.677" y1="0" x2="-2.835" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="2.835" y1="0" x2="22.677" y2="0" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="-22.677" x2="0" y2="-2.835" stroke="#c00" stroke-width="0.5"/>
+    <line x1="0" y1="2.835" x2="0" y2="22.677" stroke="#c00" stroke-width="0.5"/>
+    <circle cx="0" cy="0" r="1.417" fill="#c00" stroke="none"/>
+    <text x="0" y="28" text-anchor="middle" class="note">✂ cut on grey dash</text>
   </g>
 
   <!-- Legend -->
-  <g transform="translate(72, 490)">
+  <g transform="translate(72, 540)">
     <text x="0" y="0" class="label" font-weight="700">Legend</text>
-    <circle cx="12" cy="18" r="10" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
-    <text x="28" y="22" class="label">Grey dashed circle = 25 mm PZT disc outline (cut here)</text>
+    <!-- PZT disc -->
+    <circle cx="12" cy="18" r="8" fill="none" stroke="#888" stroke-width="1.0" stroke-dasharray="3,2"/>
+    <text x="28" y="22" class="label">Grey dashed circle = 10 mm PZT disc outline (cut here)</text>
+    <!-- Rod end -->
     <circle cx="12" cy="40" r="8" fill="none" stroke="#2a7fff" stroke-width="1.2"/>
     <text x="28" y="44" class="label">Blue circle = 6 mm rod end (your rod sits inside this ring)</text>
+    <!-- Crosshair -->
     <line x1="4" y1="60" x2="20" y2="60" stroke="#c00" stroke-width="0.5"/>
     <line x1="12" y1="52" x2="12" y2="68" stroke="#c00" stroke-width="0.5"/>
-    <circle cx="12" cy="60" r="1.7" fill="#c00" stroke="none"/>
+    <circle cx="12" cy="60" r="1.417" fill="#c00" stroke="none"/>
     <text x="28" y="64" class="label">Red crosshair + dot = exact center — place your glue drop here</text>
   </g>
 
   <!-- Instructions -->
-  <g transform="translate(72, 575)">
+  <g transform="translate(72, 615)">
     <text x="0" y="0" class="step-bold">How to use:</text>
     <text x="0" y="18" class="step">1. Print this page at 100% scale. Verify the 50 mm ruler above with a physical ruler.</text>
-    <text x="0" y="34" class="step">2. Cut out one centering guide along the grey dashed circle (25 mm).</text>
-    <text x="0" y="50" class="step">3. Lay the paper disc on the flat end of your glass rod. Align the blue circle (6 mm)</text>
-    <text x="14" y="64" class="step">with the rod's edge. The red dot marks the exact center of the rod face.</text>
-    <text x="0" y="82" class="step">4. Mark the center with a fine-tip pen. Place one tiny drop of cyanoacrylate (&lt;0.5 mm)</text>
-    <text x="14" y="96" class="step">on the center mark.</text>
-    <text x="0" y="114" class="step">5. Remove the paper guide. Press the PZT disc flat onto the rod end, centering the</text>
-    <text x="14" y="128" class="step">6 mm rod within the 25 mm disc. There should be 9.5 mm overhang all around.</text>
-    <text x="0" y="148" class="step">6. Hold firm pressure for 30 seconds. Cure 24 hours before use.</text>
+    <text x="0" y="34" class="step">2. Cut out one centering guide along the grey dashed circle.</text>
+    <text x="0" y="50" class="step">3. Place the paper disc on the flat end of your glass rod, aligning the blue circle</text>
+    <text x="14" y="64" class="step">with the rod's edge. The red dot marks the exact center of the 6 mm face.</text>
+    <text x="0" y="82" class="step">4. Place one tiny drop of cyanoacrylate (&lt;0.5 mm) on the red center dot.</text>
+    <text x="0" y="98" class="step">5. Remove the paper guide. Press the PZT disc onto the rod end, centering the</text>
+    <text x="14" y="112" class="step">disc so the rod end (6 mm) sits in the middle of the PZT disc (10 mm).</text>
+    <text x="14" y="126" class="step">There should be 2 mm of PZT overhang uniformly around the rod.</text>
+    <text x="0" y="144" class="step">6. Hold firm pressure for 30 seconds. Cure 24 hours before use.</text>
   </g>
 
-  <!-- Note about 25mm disc -->
-  <g transform="translate(72, 738)">
-    <text x="0" y="0" class="note">PZT disc: 25 mm dia · Rod: 6 mm dia × 150 mm borosilicate · 6 guides per sheet · 9.5 mm overhang is normal — only the 6 mm contact area couples acoustic energy.</text>
+  <!-- Dimensions callout -->
+  <g transform="translate(72, 770)">
+    <text x="0" y="0" class="note">PZT disc: 10 mm dia (E-outstanding B08R581G3H or uxcell B07RK2V1P2) · Rod: 6 mm dia × 150 mm borosilicate (PATIKIL B0F93VD85L) · 12 guides per sheet</text>
   </g>
 
 </svg>

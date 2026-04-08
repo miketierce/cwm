@@ -59,6 +59,11 @@ try:
         compute_spectrum as _compute_spectrum,
         close_scope as _close_scope,
         is_scope_busy,
+        _capture_and_fft,
+        score_spectrum_against_rod,
+        score_spectrum_energy,
+        capture_awg_driven,
+        parallel_search as _parallel_search_hw,
     )
     HARDWARE_AVAILABLE = check_hardware()
     SCOPE_FUNCTIONS_AVAILABLE = True
@@ -371,13 +376,10 @@ def _register_user(username: str, rod_id: int, channel: int) -> dict:
 def _authenticate_user(username: str) -> dict:
     """Authenticate by re-measuring the rod and comparing to enrolled fingerprint.
 
-    Uses a two-stage approach:
-    1. Measure with search centres on the enrolled perturbed_hz (not theoretical
-       baseline), so we find the same peaks as enrollment even if the mode
-       frequencies have drifted slightly between sessions.
-    2. Compare using RMS distance between live and enrolled perturbed_hz
-       (normalised by enrolled values) rather than correlating the noisy
-       shift_hz.  The user passes if their rod is the closest match.
+    Measures with neutral search (same as enrollment — no rod-specific bias),
+    then identifies which enrolled rod the live spectrum matches best.
+    Passes only if the best match is the user's assigned rod AND the
+    RMS deviation is below threshold.
     """
     db = _load_users()
     _ensure_rods(db)
@@ -390,50 +392,93 @@ def _authenticate_user(username: str) -> dict:
     if not rod_data:
         return {"authenticated": False, "error": "Rod data missing."}
 
-    enrolled_hz = np.array(rod_data["perturbed_hz"])
+    # ── Score against ALL enrolled rods ──────────────────────────────
+    # Capture once, then search each rod's enrolled peaks in the live
+    # spectrum using ±5% windows.  This avoids the blind-peak ordering
+    # problem and only counts genuine peak matches.
+    N_AUTH_MODES = 10
+    rms_all = {}
+    live_hz = None
 
-    # Measure with peaks searched around enrolled frequencies
-    fp = _compute_rod_fingerprint(
-        pattern_name=rod_data["pattern"],
-        rod_id=user["rod"],
-        reference_hz=enrolled_hz,
-    )
-    live_hz = np.array(fp["perturbed_hz"])
+    # If hardware is available, capture a fresh spectrum and score properly
+    hw_ok = HARDWARE_AVAILABLE and SCOPE_FUNCTIONS_AVAILABLE
+    if hw_ok:
+        try:
+            hw_ok = not is_scope_busy()
+        except Exception:
+            hw_ok = False
+    if hw_ok:
+        try:
+            try:
+                _close_scope()
+            except Exception:
+                pass
+            freq_axis, magnitude, bin_hz = _capture_and_fft()
+            for rod_key, rod_info in db["rods"].items():
+                if not rod_info.get("enrolled"):
+                    continue
+                score = score_spectrum_against_rod(
+                    freq_axis, magnitude, bin_hz,
+                    rod_info["perturbed_hz"], n_modes=N_AUTH_MODES,
+                )
+                rms_all[rod_key] = score["score"]
+            # Also extract blind peaks for display
+            live_hz = np.array(rod_data.get("perturbed_hz", []))
+        except Exception:
+            hw_ok = False
 
-    # ── Primary metric: normalised RMS distance from enrolled ────────
-    # Use fractional deviation so high and low modes contribute equally.
-    # Same rod in similar conditions → small fractional deviations.
-    # Wrong rod → large systematic offsets in most modes.
-    frac_dev = (live_hz - enrolled_hz) / enrolled_hz  # ~0 for matching rod
-    rms_self = float(np.sqrt(np.mean(frac_dev ** 2)))
+    if not hw_ok:
+        # Fallback: simulation-based comparison
+        fp = _compute_rod_fingerprint(
+            pattern_name=rod_data["pattern"],
+            rod_id=user["rod"],
+            reference_hz=None,
+        )
+        live_hz = np.array(fp["perturbed_hz"])
+        live_nonzero = live_hz[live_hz > 0]
+        for rod_key, rod_info in db["rods"].items():
+            if not rod_info.get("enrolled"):
+                continue
+            enrolled = np.array(rod_info["perturbed_hz"])
+            enr_nonzero = enrolled[enrolled > 0][:N_AUTH_MODES]
+            if len(enr_nonzero) == 0 or len(live_nonzero) == 0:
+                rms_all[rod_key] = float("inf")
+                continue
+            fracs = []
+            for ef in enr_nonzero:
+                closest = live_nonzero[np.argmin(np.abs(live_nonzero - ef))]
+                frac = abs(closest - ef) / ef
+                fracs.append(frac)
+            rms_all[rod_key] = float(np.sqrt(np.mean(np.array(fracs) ** 2)))
 
-    # Compare against every other rod's enrolled fingerprint
-    rms_others = {}
-    for rod_key, rod_info in db["rods"].items():
-        if int(rod_key) == user["rod"]:
-            continue
-        other_enrolled = rod_info.get("perturbed_hz")
-        if not other_enrolled:
-            continue
-        other_hz = np.array(other_enrolled)
-        frac_other = (live_hz - other_hz) / other_hz
-        rms_others[rod_key] = float(np.sqrt(np.mean(frac_other ** 2)))
+    # Identify closest rod
+    best_rod_key = min(rms_all, key=rms_all.get) if rms_all else None
+    own_rod_key = str(user["rod"])
+    rms_self = rms_all.get(own_rod_key, float("inf"))
 
+    # Best wrong rod (excluding the user's assigned rod)
+    rms_others = {k: v for k, v in rms_all.items() if k != own_rod_key}
     best_wrong_rod = min(rms_others, key=rms_others.get) if rms_others else None
     best_wrong_rms = rms_others[best_wrong_rod] if best_wrong_rod else float("inf")
 
-    # Margin: how much closer is the live measurement to own rod vs closest wrong rod
-    margin = best_wrong_rms - rms_self   # positive = own rod is closer = good
+    margin = best_wrong_rms - rms_self
     margin_db = 20 * np.log10(best_wrong_rms / max(rms_self, 1e-9)) if rms_self > 1e-9 else 0.0
 
     # Also compute legacy correlation for display
-    enrolled_fp = np.array(rod_data["fingerprint"])
-    live_fp = np.array(fp["fingerprint"])
-    corr = _correlate(live_fp, enrolled_fp)
+    enrolled_fp = np.array(rod_data.get("fingerprint", rod_data.get("perturbed_hz", [])))
+    if live_hz is not None and len(live_hz) > 0:
+        corr = _correlate(np.array(live_hz[:len(enrolled_fp)], dtype=float), enrolled_fp)
+    else:
+        corr = 0.0
 
-    # Pass if own-rod RMS is less than 2.5% AND closer than nearest wrong rod
-    RMS_THRESHOLD = 0.025   # 2.5% fractional deviation
+    # Pass if:
+    #   1. The user's rod is the CLOSEST match (margin > 0)
+    #   2. The RMS deviation is below threshold
+    RMS_THRESHOLD = 0.05   # 5% fractional deviation (tap-to-tap jitter is 3-5%)
     passed = (rms_self < RMS_THRESHOLD) and (margin > 0)
+
+    # Extra info: which rod was actually detected
+    detected_rod = int(best_rod_key) if best_rod_key else None
 
     return {
         "authenticated": passed,
@@ -443,6 +488,8 @@ def _authenticate_user(username: str) -> dict:
         "margin_pct": round(margin * 100, 4),
         "margin_db": round(margin_db, 1),
         "best_wrong_rod": best_wrong_rod or "—",
+        "detected_rod": detected_rod,
+        "expected_rod": user["rod"],
         "rms_threshold_pct": RMS_THRESHOLD * 100,
         # Legacy fields kept for UI compatibility
         "correlation": round(corr, 4),
@@ -1206,7 +1253,7 @@ class LabHandler(SimpleHTTPRequestHandler):
                 if not username or len(username) > 50:
                     self._json_response({"error": "Invalid username."}, 400)
                     return
-                # Auto-assign next available slot
+                # Identify the rod by measuring what's currently on the wire
                 db = _load_users()
                 _ensure_rods(db)
                 # Block registration if any rod is not yet enrolled
@@ -1220,23 +1267,54 @@ class LabHandler(SimpleHTTPRequestHandler):
                          "unenrolled": sorted(unenrolled, key=int)}, 400
                     )
                     return
-                used = set()
-                for u, ud in db["users"].items():
-                    used.add((ud["rod"], ud["channel"]))
-                assigned = None
-                for rod_id in range(1, len(db["rods"]) + 1):
-                    for ch in range(N_CHANNELS):
-                        if (rod_id, ch) not in used:
-                            assigned = (rod_id, ch)
-                            break
-                    if assigned:
-                        break
-                if not assigned:
-                    self._json_response(
-                        {"error": "All slots taken. Max users reached."}, 409
-                    )
+                # Measure the rod that's currently connected
+                try:
+                    try:
+                        _close_scope()
+                    except Exception:
+                        pass
+                    freq_axis, magnitude, bin_hz = _capture_and_fft()
+                except Exception as e:
+                    self._json_response({"error": f"Measurement failed: {e}"}, 500)
                     return
-                result = _register_user(username, assigned[0], assigned[1])
+                # Find the enrolled rod with the best score
+                N_REG_MODES = 10
+                best_rod_id = None
+                best_score = float("inf")
+                for rod_key, rod_info in db["rods"].items():
+                    if not rod_info.get("enrolled"):
+                        continue
+                    result = score_spectrum_against_rod(
+                        freq_axis, magnitude, bin_hz,
+                        rod_info["perturbed_hz"], n_modes=N_REG_MODES,
+                    )
+                    if result["score"] < best_score:
+                        best_score = result["score"]
+                        best_rod_id = int(rod_key)
+                        best_rms = result["rms"]
+                        best_matched = result["n_matched"]
+                if best_rod_id is None:
+                    self._json_response({"error": "No enrolled rods found."}, 400)
+                    return
+                # Reject if no rod is clearly detected
+                if best_score > 0.15 or best_score == float("inf"):
+                    self._json_response({
+                        "error": f"Could not identify a rod on the wire "
+                                 f"(best match {best_rms*100:.1f}% RMS, {best_matched}/10 peaks from Rod {best_rod_id}). "
+                                 f"Check the cable is connected to exactly one rod."
+                    }, 400)
+                    return
+                # Enforce one user per physical rod
+                for u, ud in db["users"].items():
+                    if ud["rod"] == best_rod_id:
+                        self._json_response({
+                            "error": f"Rod {best_rod_id} is already assigned to '{u}'. "
+                                     f"Each rod can only have one registered user."
+                        }, 409)
+                        return
+                result = _register_user(username, best_rod_id, 0)
+                result["detected_rms_pct"] = round(best_rms * 100, 2)
+                result["detected_matched"] = best_matched
                 self._json_response(result, 200 if result.get("ok") else 409)
 
             elif path == "/api/authenticate":
@@ -1423,9 +1501,67 @@ class LabHandler(SimpleHTTPRequestHandler):
 
             elif path == "/api/qcb/parallel-search":
                 db = _load_users()
+                _ensure_rods(db)
+                t0 = __import__("time").time()
+
+                # ── Hardware path: AWG-driven parallel search ────────
+                hw_ok = HARDWARE_AVAILABLE and SCOPE_FUNCTIONS_AVAILABLE
+                if hw_ok:
+                    try:
+                        hw_ok = not is_scope_busy()
+                    except Exception:
+                        hw_ok = False
+                if hw_ok:
+                    try:
+                        try:
+                            _close_scope()
+                        except Exception:
+                            pass
+                        enrolled_rods = {}
+                        for rk, ri in db["rods"].items():
+                            if ri.get("enrolled"):
+                                enrolled_rods[rk] = ri
+                        search_result = _parallel_search_hw(
+                            enrolled_rods, n_modes=10,
+                            awg_mode="sweep",
+                            awg_start_hz=1000.0,
+                            awg_stop_hz=100000.0,
+                        )
+                        elapsed_ms = (__import__("time").time() - t0) * 1000
+                        ranked = search_result["ranked"]
+                        results = []
+                        for r in ranked:
+                            rod_info = db["rods"].get(str(r["rod_id"]), {})
+                            results.append({
+                                "rod": r["rod_id"],
+                                "pattern": rod_info.get("pattern", "?"),
+                                "energy": round(r["energy"], 1),
+                                "mean_snr": round(r["mean_snr"], 1),
+                                "n_detected": r["n_detected"],
+                                "n_matched": r["n_matched"],
+                                "n_total": r["n_total"],
+                                "fingerprint": rod_info.get("perturbed_hz", [])[:N_MODES],
+                            })
+                        winner = search_result.get("winner")
+                        self._json_response({
+                            "ok": True,
+                            "mode": "hardware_awg",
+                            "scoring": "energy (higher = better)",
+                            "results": results,
+                            "winner": winner["rod_id"] if winner else None,
+                            "winner_energy": round(winner["energy"], 1) if winner else None,
+                            "winner_mean_snr": round(winner["mean_snr"], 1) if winner else None,
+                            "elapsed_ms": round(elapsed_ms, 2),
+                            "n_rods": len(enrolled_rods),
+                        })
+                        return
+                    except Exception as e:
+                        hw_ok = False
+                        print(f"[parallel-search] HW failed, falling back: {e}")
+
+                # ── Fallback: simulation-based parallel search ───────
                 patterns = ["A", "B", "C", "D"]
                 results = []
-                t0 = __import__("time").time()
                 for rod_id in range(1, min(N_RODS_DEFAULT + 1, 5)):
                     for pidx, pname in enumerate(patterns):
                         fp = _compute_rod_fingerprint(
@@ -1437,7 +1573,6 @@ class LabHandler(SimpleHTTPRequestHandler):
                             "fingerprint": fp.get("fingerprint", [])[:N_MODES],
                         })
                 elapsed_ms = (__import__("time").time() - t0) * 1000
-                # Correlate all against a random query (first pattern)
                 if results:
                     query = np.array(results[0]["fingerprint"])
                     for r in results:
@@ -1448,6 +1583,7 @@ class LabHandler(SimpleHTTPRequestHandler):
                             r["correlation"] = 0.0
                 self._json_response({
                     "ok": True,
+                    "mode": "simulation",
                     "query_pattern": results[0]["pattern"] if results else "A",
                     "query_rod": 1,
                     "results": results,
