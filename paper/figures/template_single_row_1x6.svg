@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 606 784" width="8.5in" height="11in">
+  <!-- US Letter. Print at 100% scale. -->
+  <!-- Single-Row Divider: 1×6 (6 rods), 25 mm centre-to-centre spacing -->
+  <!-- Rods drop in from the top through U-shaped notches -->
+  <!-- 25 mm spacing used (not 30) to fit 6 rods in 165 mm divider -->
+  <title>Single-Row Divider: 1×6 (6 rods)</title>
+  <style>
+    text { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .title { font-size: 13pt; font-weight: 700; fill: #1a1a1a; }
+    .subtitle { font-size: 9.5pt; fill: #444; }
+    .label { font-size: 8.5pt; fill: #1a1a1a; }
+    .dim { font-size: 7.5pt; fill: #c00; font-weight: 600; }
+    .note { font-size: 7pt; fill: #555; font-style: italic; }
+    .cut-line { stroke: #333; stroke-width: 1.2; stroke-dasharray: 6,3; fill: none; }
+    .dim-line { stroke: #c00; stroke-width: 0.6; fill: none; }
+    .dim-arrow { fill: #c00; stroke: none; }
+    .notch { fill: none; stroke: #c00; stroke-width: 1.5; }
+    .crosshair { stroke: #c00; stroke-width: 0.5; stroke-dasharray: 2,1; }
+    .chamber { fill: none; stroke: #2a7fff; stroke-width: 0.6; stroke-dasharray: 3,2; }
+    .pzt-outline { fill: none; stroke: #999; stroke-width: 0.5; stroke-dasharray: 2,2; }
+  </style>
+
+  <!-- Page title -->
+  <text x="303" y="32" text-anchor="middle" class="title">Template T.2B — Single-Row Divider: 1×6 (6 rods)</text>
+  <text x="303" y="46" text-anchor="middle" class="subtitle">Print at 100% (no scaling) on US Letter paper. Verify the ruler below measures exactly 50 mm.</text>
+
+  <!-- Calibration ruler -->
+  <g transform="translate(206, 56)">
+    <rect x="0" y="0" width="141.73" height="12" fill="none" stroke="#333" stroke-width="0.8"/>
+    <line x1="0" y1="0" x2="0" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="141.73" y1="0" x2="141.73" y2="12" stroke="#333" stroke-width="0.8"/>
+    <line x1="28.35" y1="0" x2="28.35" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="56.69" y1="0" x2="56.69" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="85.04" y1="0" x2="85.04" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="113.39" y1="0" x2="113.39" y2="8" stroke="#333" stroke-width="0.5"/>
+    <line x1="14.17" y1="0" x2="14.17" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="42.52" y1="0" x2="42.52" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="70.87" y1="0" x2="70.87" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="99.21" y1="0" x2="99.21" y2="5" stroke="#333" stroke-width="0.3"/>
+    <line x1="127.56" y1="0" x2="127.56" y2="5" stroke="#333" stroke-width="0.3"/>
+    <text x="0" y="24" class="label" text-anchor="middle">0</text>
+    <text x="28.35" y="24" class="label" text-anchor="middle">10</text>
+    <text x="56.69" y="24" class="label" text-anchor="middle">20</text>
+    <text x="85.04" y="24" class="label" text-anchor="middle">30</text>
+    <text x="113.39" y="24" class="label" text-anchor="middle">40</text>
+    <text x="141.73" y="24" class="label" text-anchor="middle">50 mm</text>
+  </g>
+
+  <!-- ================================================================== -->
+  <!-- 1×6 SINGLE ROW at 1:1 SCALE — 25 mm centre-to-centre              -->
+  <!-- Divider: 165 mm × 140 mm = 467.72 × 396.85 pt                     -->
+  <!-- 25 mm = 70.87 pt between centres                                   -->
+  <!-- 6 rods: offsets from centre = ±35.43, ±106.30, ±177.17            -->
+  <!-- i.e. ±0.5, ±1.5, ±2.5 × 70.87                                    -->
+  <!-- R1: 233.86 − 177.17 = 56.69                                       -->
+  <!-- R2: 233.86 − 106.30 = 127.56                                      -->
+  <!-- R3: 233.86 − 35.43  = 198.43                                      -->
+  <!-- R4: 233.86 + 35.43  = 269.29                                      -->
+  <!-- R5: 233.86 + 106.30 = 340.16                                      -->
+  <!-- R6: 233.86 + 177.17 = 411.03                                      -->
+  <!-- Edge margins: 56.69 pt = 20 mm (OK)                               -->
+  <!-- ================================================================== -->
+
+  <text x="69" y="104" class="label" font-weight="700">1×6 SINGLE-ROW DIVIDER — cut 165 mm × 140 mm (6.5″ × 5.5″)</text>
+  <text x="69" y="116" class="note">For 6-rod experiments. 25 mm spacing (use 10 mm PZTs with Topology B). Cut TWO identical dividers.</text>
+
+  <g transform="translate(69, 128)">
+    <!-- 25mm spacing, 6 notches -->
+    <!-- Notch width: 7 mm = 19.84 pt. Half = 9.92 pt each side of centre -->
+    <!-- Notch depth: 10 mm = 28.35 pt -->
+    <path d="
+      M 0,0
+      L 46.77,0
+      L 46.77,28.35
+      A 9.92,9.92 0 0,1 66.61,28.35
+      L 66.61,0
+      L 117.64,0
+      L 117.64,28.35
+      A 9.92,9.92 0 0,1 137.48,28.35
+      L 137.48,0
+      L 188.51,0
+      L 188.51,28.35
+      A 9.92,9.92 0 0,1 208.35,28.35
+      L 208.35,0
+      L 259.37,0
+      L 259.37,28.35
+      A 9.92,9.92 0 0,1 279.21,28.35
+      L 279.21,0
+      L 330.24,0
+      L 330.24,28.35
+      A 9.92,9.92 0 0,1 350.08,28.35
+      L 350.08,0
+      L 401.11,0
+      L 401.11,28.35
+      A 9.92,9.92 0 0,1 420.95,28.35
+      L 420.95,0
+      L 467.72,0
+      L 467.72,396.85
+      L 0,396.85
+      Z
+    " class="cut-line"/>
+
+    <!-- Dimension: width -->
+    <line x1="0" y1="-12" x2="467.72" y2="-12" class="dim-line"/>
+    <line x1="0" y1="-18" x2="0" y2="-6" class="dim-line"/>
+    <line x1="467.72" y1="-18" x2="467.72" y2="-6" class="dim-line"/>
+    <text x="233.86" y="-16" text-anchor="middle" class="dim">165 mm (6.5″)</text>
+
+    <!-- Dimension: height -->
+    <line x1="-12" y1="0" x2="-12" y2="396.85" class="dim-line"/>
+    <line x1="-18" y1="0" x2="-6" y2="0" class="dim-line"/>
+    <line x1="-18" y1="396.85" x2="-6" y2="396.85" class="dim-line"/>
+    <text x="-24" y="198.43" text-anchor="middle" class="dim" transform="rotate(-90, -24, 198.43)">140 mm (5.5″)</text>
+
+    <!-- Rod centreline -->
+    <line x1="0" y1="28.35" x2="467.72" y2="28.35" stroke="#eee" stroke-width="0.4"/>
+
+    <!-- Notch depth dimension -->
+    <line x1="70" y1="0" x2="70" y2="28.35" class="dim-line"/>
+    <text x="80" y="18" class="dim">10 mm</text>
+
+    <!-- PZT disc outlines (10 mm = 14.17 pt radius for Topology B) -->
+    <circle cx="56.69" cy="28.35" r="14.17" class="pzt-outline"/>
+    <circle cx="127.56" cy="28.35" r="14.17" class="pzt-outline"/>
+    <circle cx="198.43" cy="28.35" r="14.17" class="pzt-outline"/>
+    <circle cx="269.29" cy="28.35" r="14.17" class="pzt-outline"/>
+    <circle cx="340.16" cy="28.35" r="14.17" class="pzt-outline"/>
+    <circle cx="411.03" cy="28.35" r="14.17" class="pzt-outline"/>
+
+    <!-- Crosshairs and labels -->
+    <line x1="42" y1="28.35" x2="72" y2="28.35" class="crosshair"/>
+    <text x="56.69" y="55" text-anchor="middle" class="dim">R1</text>
+
+    <line x1="113" y1="28.35" x2="143" y2="28.35" class="crosshair"/>
+    <text x="127.56" y="55" text-anchor="middle" class="dim">R2</text>
+
+    <line x1="184" y1="28.35" x2="214" y2="28.35" class="crosshair"/>
+    <text x="198.43" y="55" text-anchor="middle" class="dim">R3</text>
+
+    <line x1="255" y1="28.35" x2="285" y2="28.35" class="crosshair"/>
+    <text x="269.29" y="55" text-anchor="middle" class="dim">R4</text>
+
+    <line x1="326" y1="28.35" x2="356" y2="28.35" class="crosshair"/>
+    <text x="340.16" y="55" text-anchor="middle" class="dim">R5</text>
+
+    <line x1="397" y1="28.35" x2="427" y2="28.35" class="crosshair"/>
+    <text x="411.03" y="55" text-anchor="middle" class="dim">R6</text>
+
+    <!-- Spacing dimension (one example) -->
+    <line x1="56.69" y1="68" x2="127.56" y2="68" class="dim-line"/>
+    <polygon points="56.69,68 62.3,65 62.3,71" class="dim-arrow"/>
+    <polygon points="127.56,68 121.9,65 121.9,71" class="dim-arrow"/>
+    <text x="92.13" y="64" text-anchor="middle" class="dim">25 mm</text>
+
+    <!-- Acoustic isolation chambers -->
+    <rect x="21.26" y="0" width="70.87" height="396.85" class="chamber"/>
+    <rect x="92.13" y="0" width="70.87" height="396.85" class="chamber"/>
+    <rect x="163.00" y="0" width="70.87" height="396.85" class="chamber"/>
+    <rect x="233.86" y="0" width="70.87" height="396.85" class="chamber"/>
+    <rect x="304.73" y="0" width="70.87" height="396.85" class="chamber"/>
+    <rect x="375.60" y="0" width="70.87" height="396.85" class="chamber"/>
+
+    <!-- Drop-in arrows -->
+    <text x="56.69" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="127.56" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="198.43" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="269.29" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="340.16" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="411.03" y="-28" text-anchor="middle" class="label" fill="#2a7fff">↓</text>
+    <text x="233.86" y="-40" text-anchor="middle" class="note">rods drop in from above</text>
+
+    <!-- Notch spec -->
+    <text x="233.86" y="100" text-anchor="middle" class="dim">All U-notches: 7 mm wide × 10 mm deep (cut from top edge)</text>
+    <text x="233.86" y="113" text-anchor="middle" class="note">Grey dashed circles = 10 mm PZT disc outline (15 mm clearance between adjacent discs at 25 mm spacing)</text>
+
+    <!-- PZT side label -->
+    <text x="8" y="198" text-anchor="start" class="label" fill="#2a7fff">← PZT this side</text>
+
+    <!-- Cut instruction -->
+    <text x="6" y="375" class="note">✂ cut along dashed line, including U-notches from top edge</text>
+  </g>
+
+  <!-- Side-view sketch -->
+  <g transform="translate(69, 610)">
+    <text x="0" y="0" class="label" font-weight="700">Side view (rods resting in notches):</text>
+    <rect x="20" y="20" width="420" height="60" fill="none" stroke="#333" stroke-width="0.8"/>
+    <!-- 6 notches -->
+    <rect x="60" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <rect x="130" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <rect x="200" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <rect x="270" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <rect x="340" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <rect x="410" y="20" width="14" height="16" fill="white" stroke="#c00" stroke-width="0.8"/>
+    <!-- Rods -->
+    <circle cx="67" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <circle cx="137" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <circle cx="207" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <circle cx="277" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <circle cx="347" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <circle cx="417" cy="33" r="5" fill="#ddd" stroke="#333" stroke-width="0.6"/>
+    <text x="67" y="14" text-anchor="middle" class="dim">R1</text>
+    <text x="137" y="14" text-anchor="middle" class="dim">R2</text>
+    <text x="207" y="14" text-anchor="middle" class="dim">R3</text>
+    <text x="277" y="14" text-anchor="middle" class="dim">R4</text>
+    <text x="347" y="14" text-anchor="middle" class="dim">R5</text>
+    <text x="417" y="14" text-anchor="middle" class="dim">R6</text>
+  </g>
+
+  <!-- Footer -->
+  <text x="303" y="740" text-anchor="middle" class="note">Template T.2B — CWM Macro-Scale Experiment Guide — github.com/miketierce/cwm</text>
+  <text x="303" y="752" text-anchor="middle" class="note">1:1 scale. Cut TWO identical dividers. Space 75 mm apart inside CH-BOX. Blue dashes = acoustic chamber boundaries.</text>
+</svg>
