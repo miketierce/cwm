@@ -2,8 +2,9 @@
 """
 Run remaining rod experiments and submit results to Firestore.
 
-This script captures data from the current 4-rod Topology A setup
-(all sense PZTs sharing PicoScope Ch A — no relay mux required).
+This script captures data from the current 4-rod setup.
+With --mux, each rod is measured in isolation via the relay multiplexer.
+Without --mux, all sense PZTs share PicoScope Ch A (Topology A).
 
 Experiments:
   1. Mode persistence — Rods 2, 3, 4 (Rod 1 already submitted)
@@ -18,8 +19,9 @@ weak for clean spectral capture). The script will prompt you before each tap.
 The AWG identifier runs (experiment 4) use the AWG — no tapping needed.
 
 Usage:
-  PYTHONPATH=. python tools/run_rod_experiments.py              # full run
-  PYTHONPATH=. python tools/run_rod_experiments.py --exp 1      # mode persistence only
+  PYTHONPATH=. python tools/run_rod_experiments.py              # full run (shared Ch A)
+  PYTHONPATH=. python tools/run_rod_experiments.py --mux        # full run with relay isolation
+  PYTHONPATH=. python tools/run_rod_experiments.py --mux --exp 1  # mode persistence, isolated
   PYTHONPATH=. python tools/run_rod_experiments.py --exp 4      # identifier runs only
   PYTHONPATH=. python tools/run_rod_experiments.py --dry-run    # no Firestore submission
   PYTHONPATH=. python tools/run_rod_experiments.py --exp 5      # overlap analysis (no hardware)
@@ -45,6 +47,12 @@ from cwm_picoscope import (
     TIMEBASE, N_SAMPLES, SAMPLE_RATE, N_MODES,
     check_hardware, _capture_and_fft, _extract_peaks_blind,
 )
+
+# Optional relay mux
+try:
+    from relay_mux import RelayMux
+except ImportError:
+    RelayMux = None
 
 # ── Paths ──────────────────────────────────────────────────────────────
 ROOT = Path(__file__).resolve().parent.parent
@@ -198,7 +206,7 @@ def _compute_ringdown(freq_axis, mag, raw_captures=None) -> dict:
 #  Experiment 1: Mode Persistence (Rods 2, 3, 4)
 # ═══════════════════════════════════════════════════════════════════════
 
-def exp1_mode_persistence(token: str, dry_run: bool) -> list:
+def exp1_mode_persistence(token: str, dry_run: bool, mux=None) -> list:
     """Measure mode persistence over time for Rods 2, 3, 4.
 
     Rod 1 was already submitted.  For each rod:
@@ -218,6 +226,8 @@ def exp1_mode_persistence(token: str, dry_run: bool) -> list:
     db = _load_users()
     results = []
 
+    topology = "relay-isolated" if mux else "shared Ch A"
+
     for rid in ["2", "3", "4"]:
         rod = db["rods"][rid]
         pattern = rod.get("pattern", "?")
@@ -228,6 +238,9 @@ def exp1_mode_persistence(token: str, dry_run: bool) -> list:
         print(f"\n─── Rod {rid} (Pattern {pattern}, putty @ {putty_pos} mm) ───")
         print(f"  Enrollment baseline:  {[round(f, 1) for f in baseline_hz]}")
 
+        if mux:
+            mux.select(int(rid))
+            print(f"  Relay {rid} selected (isolated)")
         _prompt_tap(rid, f"current state with putty")
         freq_axis, mag, peaks, snr_db = _capture_spectrum()
         live_top3 = peaks[:3] if len(peaks) >= 3 else peaks
@@ -259,11 +272,11 @@ def exp1_mode_persistence(token: str, dry_run: bool) -> list:
 
         notes = (
             f"Rod {rid} pattern {pattern}, putty @ {putty_pos} mm. "
-            f"PZT+PicoScope 2204A on Ch A (Topology A, shared bus). "
+            f"PZT+PicoScope 2204A on Ch A ({topology}). "
             f"Enrollment→live temporal persistence test. "
             f"Live capture: {len(peaks)} peaks, {snr_db:.1f} dB SNR. "
             f"Live top-3: {[round(f, 1) for f in live_top3]}. "
-            f"8 April 2026, post-reenrollment."
+            f"8 April 2026, relay mux isolation."
         )
 
         if dry_run:
@@ -275,6 +288,8 @@ def exp1_mode_persistence(token: str, dry_run: bool) -> list:
             _print_result(r)
             results.append(r)
 
+    if mux:
+        mux.off()
     return results
 
 
@@ -282,7 +297,7 @@ def exp1_mode_persistence(token: str, dry_run: bool) -> list:
 #  Experiment 2: SNR Measurement — all 4 rods
 # ═══════════════════════════════════════════════════════════════════════
 
-def exp2_snr(token: str, dry_run: bool) -> list:
+def exp2_snr(token: str, dry_run: bool, mux=None) -> list:
     """Fresh per-rod SNR measurement with live captures."""
     print("\n" + "=" * 65)
     print("  EXPERIMENT 2: SNR MEASUREMENT — All 4 Rods")
@@ -291,12 +306,16 @@ def exp2_snr(token: str, dry_run: bool) -> list:
 
     results = []
     db = _load_users()
+    topology = "relay-isolated" if mux else "shared Ch A"
 
     for rid in ["1", "2", "3", "4"]:
         rod = db["rods"][rid]
         pattern = rod.get("pattern", "?")
 
         print(f"\n─── Rod {rid} (Pattern {pattern}) ───")
+        if mux:
+            mux.select(int(rid))
+            print(f"  Relay {rid} selected (isolated)")
         _prompt_tap(rid, "clean tap near center")
         freq_axis, mag, peaks, snr_db = _capture_spectrum()
 
@@ -321,9 +340,9 @@ def exp2_snr(token: str, dry_run: bool) -> list:
 
         notes = (
             f"Rod {rid} pattern {pattern}. PZT+PicoScope 2204A on Ch A "
-            f"(Topology A). Fingernail flick. "
+            f"({topology}). Fingernail flick. "
             f"Top peaks: {[round(f, 1) for f in peaks[:5]]} Hz. "
-            f"8 April 2026."
+            f"8 April 2026, relay mux isolation."
         )
 
         if dry_run:
@@ -335,6 +354,8 @@ def exp2_snr(token: str, dry_run: bool) -> list:
             _print_result(r)
             results.append(r)
 
+    if mux:
+        mux.off()
     return results
 
 
@@ -342,7 +363,7 @@ def exp2_snr(token: str, dry_run: bool) -> list:
 #  Experiment 3: Damping / Ring-Down — all 4 rods
 # ═══════════════════════════════════════════════════════════════════════
 
-def exp3_damping(token: str, dry_run: bool) -> list:
+def exp3_damping(token: str, dry_run: bool, mux=None) -> list:
     """Measure decay time and Q factor for each rod."""
     print("\n" + "=" * 65)
     print("  EXPERIMENT 3: DAMPING / RING-DOWN — All 4 Rods")
@@ -351,12 +372,16 @@ def exp3_damping(token: str, dry_run: bool) -> list:
 
     results = []
     db = _load_users()
+    topology = "relay-isolated" if mux else "shared Ch A"
 
     for rid in ["1", "2", "3", "4"]:
         rod = db["rods"][rid]
         pattern = rod.get("pattern", "?")
 
         print(f"\n─── Rod {rid} (Pattern {pattern}) ───")
+        if mux:
+            mux.select(int(rid))
+            print(f"  Relay {rid} selected (isolated)")
         _prompt_tap(rid, "single gentle tap")
         freq_axis, mag, peaks, snr_db = _capture_spectrum()
 
@@ -379,10 +404,10 @@ def exp3_damping(token: str, dry_run: bool) -> list:
 
         notes = (
             f"Rod {rid} pattern {pattern}. PZT+PicoScope 2204A Ch A "
-            f"(Topology A). τ={decay['tau_s']*1000:.1f} ms, "
+            f"({topology}). τ={decay['tau_s']*1000:.1f} ms, "
             f"Q≈{decay['q_factor']:.0f}, BW={decay['bandwidth_hz']:.1f} Hz. "
             f"Estimated from {WINDOW_MS:.1f} ms capture, 3 dB bandwidth method. "
-            f"8 April 2026."
+            f"8 April 2026, relay mux isolation."
         )
 
         if dry_run:
@@ -394,6 +419,8 @@ def exp3_damping(token: str, dry_run: bool) -> list:
             _print_result(r)
             results.append(r)
 
+    if mux:
+        mux.off()
     return results
 
 
@@ -401,7 +428,7 @@ def exp3_damping(token: str, dry_run: bool) -> list:
 #  Experiment 4: AWG Identifier — 3 consecutive runs (no tapping)
 # ═══════════════════════════════════════════════════════════════════════
 
-def exp4_identifier(token: str, dry_run: bool) -> list:
+def exp4_identifier(token: str, dry_run: bool, mux=None) -> list:
     """Run AWG stepped-dwell identifier 3 times, submit each as hw-auth."""
     print("\n" + "=" * 65)
     print("  EXPERIMENT 4: AWG IDENTIFIER — 3 Runs (no tapping needed)")
@@ -411,13 +438,14 @@ def exp4_identifier(token: str, dry_run: bool) -> list:
 
     from awg_stepped_dwell_id import identify
 
+    topology = "relay-isolated" if mux else "shared Ch A"
     results = []
 
     for run_num in range(1, 4):
         print(f"\n─── Run {run_num}/3 ───")
         t0 = time.time()
         try:
-            id_result = identify(verbose=True)
+            id_result = identify(verbose=True, mux=mux)
         except Exception as e:
             print(f"  ✗ Identifier failed: {e}")
             results.append({"ok": False, "error": str(e),
@@ -458,7 +486,7 @@ def exp4_identifier(token: str, dry_run: bool) -> list:
             f"AWG stepped-dwell identifier run {run_num}/3. "
             f"Winner: Rod {winner} (score={winner_data['score']:.1f}). "
             f"Margin: {margin_pct:.0f}%. Duration: {duration:.0f}s. "
-            f"Topology A (shared Ch A). 8 April 2026. "
+            f"{topology}. 8 April 2026, relay mux isolation. "
             f"Ranking: {ranking_str}."
         )
 
@@ -580,6 +608,14 @@ def main():
         "--dry-run", action="store_true",
         help="Process data but don't submit to Firestore"
     )
+    parser.add_argument(
+        "--mux", action="store_true",
+        help="Use relay multiplexer for per-rod isolation (requires Arduino)"
+    )
+    parser.add_argument(
+        "--port", type=str, default=None,
+        help="Serial port for relay mux (default: auto-detect CH340)"
+    )
     args = parser.parse_args()
 
     exps = args.exp or [1, 2, 3, 4, 5]
@@ -593,6 +629,17 @@ def main():
             print("       (Experiments 5 can run without hardware: --exp 5)")
             sys.exit(1)
         print("  ✓ PicoScope ready")
+
+    # Open relay mux if requested
+    mux = None
+    if args.mux:
+        if RelayMux is None:
+            print("ERROR: relay_mux module not available. "
+                  "Ensure relay_mux.py is in tools/ and pyserial is installed.")
+            sys.exit(1)
+        mux = RelayMux(port=args.port)
+        mux.open()
+        print(f"  ✓ Relay mux connected on {mux.port}")
 
     # Authenticate
     token = None
@@ -612,16 +659,20 @@ def main():
 
     all_results = []
 
-    if 1 in exps:
-        all_results.extend(exp1_mode_persistence(token, args.dry_run))
-    if 2 in exps:
-        all_results.extend(exp2_snr(token, args.dry_run))
-    if 3 in exps:
-        all_results.extend(exp3_damping(token, args.dry_run))
-    if 4 in exps:
-        all_results.extend(exp4_identifier(token, args.dry_run))
-    if 5 in exps:
-        all_results.extend(exp5_overlap(token, args.dry_run))
+    try:
+        if 1 in exps:
+            all_results.extend(exp1_mode_persistence(token, args.dry_run, mux=mux))
+        if 2 in exps:
+            all_results.extend(exp2_snr(token, args.dry_run, mux=mux))
+        if 3 in exps:
+            all_results.extend(exp3_damping(token, args.dry_run, mux=mux))
+        if 4 in exps:
+            all_results.extend(exp4_identifier(token, args.dry_run, mux=mux))
+        if 5 in exps:
+            all_results.extend(exp5_overlap(token, args.dry_run))
+    finally:
+        if mux is not None:
+            mux.close()
 
     # Summary
     submitted = [r for r in all_results if r.get("ok") and not r.get("dry") and not r.get("local_only")]

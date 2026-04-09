@@ -4,11 +4,11 @@ Arduino Nano firmware for the 8-channel relay module that switches individual ro
 
 ## Hardware
 
-| Component | Specification |
-|-----------|--------------|
-| Arduino Nano | ATmega328P clone with CH340 USB-serial (Type-C) |
+| Component    | Specification                                             |
+| ------------ | --------------------------------------------------------- |
+| Arduino Nano | ATmega328P clone with CH340 USB-serial (Type-C)           |
 | Relay module | 8-channel, 5V, opto-isolated, active-LOW, screw terminals |
-| Jumper wires | Female-to-female DuPont, 10 cm |
+| Jumper wires | Female-to-female DuPont, 10 cm                            |
 
 ## Wiring
 
@@ -45,6 +45,7 @@ arduino-cli compile --fqbn arduino:avr:nano tools/relay_controller
 ```
 
 Expected output:
+
 ```
 Sketch uses 2724 bytes (8%) of program storage space.
 Global variables use 236 bytes (11%) of dynamic memory.
@@ -72,6 +73,7 @@ Global variables use 236 bytes (11%) of dynamic memory.
    ```
 
    > **Clone with old bootloader?** If upload fails with a sync error, the Nano clone may use the older bootloader. Add the CPU option:
+   >
    > ```bash
    > arduino-cli upload \
    >   -p /dev/cu.usbserial-XXXX \
@@ -85,11 +87,11 @@ Global variables use 236 bytes (11%) of dynamic memory.
 
 9600 baud, 8N1. Send a single ASCII character; the Arduino responds with a newline-terminated string.
 
-| Send | Action | Response |
-|------|--------|----------|
-| `1`–`8` | Activate that relay (all others off first) | `OK:N` |
-| `0` or `x` | All relays off (open circuit) | `OK:0` |
-| `?` | Query current state | `OK:N` |
+| Send       | Action                                     | Response |
+| ---------- | ------------------------------------------ | -------- |
+| `1`–`8`    | Activate that relay (all others off first) | `OK:N`   |
+| `0` or `x` | All relays off (open circuit)              | `OK:0`   |
+| `?`        | Query current state                        | `OK:N`   |
 
 Switching is break-before-make: all relays open for 5 ms before the new relay closes. Total switching time ~10 ms.
 
@@ -154,10 +156,10 @@ PYTHONPATH=. python tools/awg_stepped_dwell_id.py --mux --port /dev/cu.usbserial
 
 ## Troubleshooting
 
-| Problem | Fix |
-|---------|-----|
-| `arduino-cli upload` sync error | Try `--fqbn arduino:avr:nano:cpu=atmega328old` |
-| Port not found after plugging in | Install CH340 driver: [macOS download](https://www.wch-ic.com/downloads/CH341SER_MAC_ZIP.html) |
-| `relay_mux.py` hangs on open | Arduino resets on serial connect — the 2.5s boot wait handles this. If it still hangs, check the port with `screen /dev/cu.usbserial-XXXX 9600` |
-| Relay clicks but PicoScope sees nothing | Check that the NO terminal (not NC) is wired to Ch A. Verify with a multimeter in continuity mode. |
-| All relays stuck on at boot | The sketch sets all pins HIGH (relay OFF) in `setup()`. If relays are active-HIGH instead of active-LOW, swap `RELAY_ON`/`RELAY_OFF` constants in the sketch. |
+| Problem                                 | Fix                                                                                                                                                           |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `arduino-cli upload` sync error         | Try `--fqbn arduino:avr:nano:cpu=atmega328old`                                                                                                                |
+| Port not found after plugging in        | Install CH340 driver: [macOS download](https://www.wch-ic.com/downloads/CH341SER_MAC_ZIP.html)                                                                |
+| `relay_mux.py` hangs on open            | Arduino resets on serial connect — the 2.5s boot wait handles this. If it still hangs, check the port with `screen /dev/cu.usbserial-XXXX 9600`               |
+| Relay clicks but PicoScope sees nothing | Check that the NO terminal (not NC) is wired to Ch A. Verify with a multimeter in continuity mode.                                                            |
+| All relays stuck on at boot             | The sketch sets all pins HIGH (relay OFF) in `setup()`. If relays are active-HIGH instead of active-LOW, swap `RELAY_ON`/`RELAY_OFF` constants in the sketch. |

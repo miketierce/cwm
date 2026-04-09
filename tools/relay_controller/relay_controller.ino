@@ -1,6 +1,6 @@
 /*
  * CWM Relay Multiplexer Controller
- * 
+ *
  * Controls an 8-channel opto-isolated relay module to switch individual
  * rod sense PZTs onto PicoScope Channel A. One relay active at a time
  * (break-before-make) to prevent signal blending.
@@ -62,15 +62,15 @@ void allOff() {
 void activateRelay(int relay) {
   // relay: 1–8
   if (relay < 1 || relay > NUM_RELAYS) return;
-  
+
   // Break-before-make: turn everything off first
   allOff();
   delay(BBM_DELAY_MS);
-  
+
   // Activate the requested relay
   digitalWrite(RELAY_PINS[relay - 1], RELAY_ON);
   activeRelay = relay;
-  
+
   // Blink LED
   digitalWrite(LED_PIN, HIGH);
   delay(20);
@@ -79,16 +79,16 @@ void activateRelay(int relay) {
 
 void setup() {
   Serial.begin(9600);
-  
+
   // Configure all relay pins as outputs, initially OFF
   for (int i = 0; i < NUM_RELAYS; i++) {
     pinMode(RELAY_PINS[i], OUTPUT);
     digitalWrite(RELAY_PINS[i], RELAY_OFF);
   }
-  
+
   pinMode(LED_PIN, OUTPUT);
   digitalWrite(LED_PIN, LOW);
-  
+
   // Startup blink: 3 quick flashes
   for (int i = 0; i < 3; i++) {
     digitalWrite(LED_PIN, HIGH);
@@ -96,20 +96,20 @@ void setup() {
     digitalWrite(LED_PIN, LOW);
     delay(100);
   }
-  
+
   Serial.println("OK:0");  // Ready, no relay active
 }
 
 void loop() {
   if (Serial.available() > 0) {
     char cmd = Serial.read();
-    
+
     // Drain any trailing newline/carriage return
     delay(5);
     while (Serial.available() > 0) {
       Serial.read();
     }
-    
+
     if (cmd >= '1' && cmd <= '8') {
       int relay = cmd - '0';
       activateRelay(relay);
