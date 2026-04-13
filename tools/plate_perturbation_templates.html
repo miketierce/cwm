@@ -1,0 +1,3060 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM Fused Silica Plate — Perturbation Site Templates</title>
+		<style>
+			/* ── Screen styles ─────────────────────────────────────── */
+			body {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				margin: 20px;
+				color: #222;
+				background: #f8f8f8;
+			}
+			h1 {
+				font-size: 18px;
+				margin-bottom: 4px;
+			}
+			h2 {
+				font-size: 14px;
+				margin: 0 0 2px 0;
+				color: #444;
+			}
+			.subtitle {
+				font-size: 11px;
+				color: #666;
+				margin-bottom: 12px;
+			}
+			.instructions {
+				font-size: 11px;
+				color: #555;
+				max-width: 700px;
+				margin-bottom: 20px;
+				line-height: 1.5;
+				border: 1px solid #ccc;
+				padding: 10px;
+				background: #fff;
+			}
+			.instructions strong {
+				color: #222;
+			}
+			.plate-page {
+				page-break-after: always;
+				margin-bottom: 30px;
+				background: #fff;
+				padding: 15px;
+				border: 1px solid #ddd;
+				display: inline-block;
+			}
+			.plate-page:last-child {
+				page-break-after: avoid;
+			}
+			.plate-label {
+				font-size: 13px;
+				font-weight: bold;
+				margin-bottom: 2px;
+			}
+			.plate-desc {
+				font-size: 10px;
+				color: #555;
+				margin-bottom: 6px;
+				max-width: 400px;
+			}
+			.legend {
+				font-size: 9px;
+				color: #666;
+				margin-top: 4px;
+			}
+
+			/* ── Print styles ──────────────────────────────────────── */
+			@media print {
+				body {
+					margin: 0;
+					background: #fff;
+				}
+				.instructions {
+					display: none;
+				}
+				.plate-page {
+					border: none;
+					padding: 10mm 0 0 0;
+					page-break-after: always;
+				}
+				.plate-page:last-child {
+					page-break-after: avoid;
+				}
+				/* The SVG viewBox handles exact scaling; the container
+       just needs to not interfere. */
+			}
+
+			/* SVG shared styles */
+			.plate-outline {
+				fill: none;
+				stroke: #000;
+				stroke-width: 0.4;
+			}
+			.crosshair {
+				stroke: #000;
+				stroke-width: 0.15;
+				stroke-dasharray: 0.8, 0.8;
+				opacity: 0.25;
+			}
+			.site-circle {
+				stroke-width: 0.3;
+			}
+			.site-label {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 2.2px;
+				fill: #333;
+				text-anchor: middle;
+			}
+			.coord-label {
+				font-family: 'Courier New', monospace;
+				font-size: 1.8px;
+				fill: #888;
+				text-anchor: middle;
+			}
+			.ruler-tick {
+				stroke: #000;
+				stroke-width: 0.15;
+			}
+			.ruler-label {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 2px;
+				fill: #444;
+				text-anchor: middle;
+			}
+			.mode-tag {
+				font-family: 'Courier New', monospace;
+				font-size: 1.6px;
+				fill: #999;
+			}
+			.nodal-line {
+				stroke: #ccc;
+				stroke-width: 0.2;
+				stroke-dasharray: 1, 0.5;
+				fill: none;
+				opacity: 0.5;
+			}
+			.plate-id {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 3.5px;
+				font-weight: bold;
+				fill: #000;
+			}
+			.pattern-name {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 2.5px;
+				fill: #555;
+			}
+			.cut-mark {
+				stroke: #000;
+				stroke-width: 0.1;
+			}
+			.pzt-outline {
+				stroke-width: 0.4;
+				stroke-dasharray: none;
+			}
+			.pzt-label {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 2px;
+				font-weight: bold;
+				text-anchor: middle;
+			}
+			.pzt-coord {
+				font-family: 'Courier New', monospace;
+				font-size: 1.6px;
+				text-anchor: middle;
+			}
+			.pzt-note {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 1.5px;
+				text-anchor: middle;
+			}
+			.foam-block {
+				fill: rgba(60, 180, 80, 0.2);
+				stroke: #2a2;
+				stroke-width: 0.3;
+				stroke-dasharray: 0.8, 0.4;
+			}
+			.foam-label {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				font-size: 1.8px;
+				font-weight: bold;
+				fill: #2a2;
+				text-anchor: middle;
+			}
+			.foam-coord {
+				font-family: 'Courier New', monospace;
+				font-size: 1.5px;
+				fill: #2a2;
+				text-anchor: middle;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>CWM Phase 1.6 — Fused Silica Plate Perturbation Templates</h1>
+		<h2>100 mm × 100 mm plates — Print at 100% scale (no fit-to-page)</h2>
+		<div class="subtitle">
+			Generated 2026-04-11 | 5 plates: 4 unique patterns + 1 duplicate pair
+		</div>
+
+		<div class="instructions">
+			<strong>Printing Instructions:</strong><br />
+			• Open in browser → File → Print → set Scale to <strong>100%</strong> (not
+			"Fit to page")<br />
+			• Verify: the ruler ticks along the edges should measure exactly 10 mm
+			apart with a physical ruler<br />
+			• Cut along the outer dashed marks and align the template on the plate<br />
+			• Apply perturbation mass (BluTack/putty, ~0.05 g per site) at each marked
+			● location<br />
+			• <strong>Plates D and E share the same pattern</strong> — this is
+			intentional for reproducibility testing<br />
+			<br />
+			<strong>PZT Transducer Placement (all plates):</strong><br />
+			• <strong style="color: #d80">TX (transmit)</strong> PZT disc: bottom-left
+			corner at <strong>(5, 95) mm</strong> — bond to plate
+			<strong>underside</strong> with cyanoacrylate<br />
+			• <strong style="color: #08a">RX (receive)</strong> PZT disc: top-right
+			corner at <strong>(95, 5) mm</strong> — bond to plate
+			<strong>underside</strong> (same face as TX)<br />
+			• <strong>Both PZTs on underside</strong> — leaves entire top surface
+			clear for perturbation sites<br />
+			• <strong>Extreme corner placement</strong> — corners are nodal for most
+			bending modes → preserves Q ≈ 22,500 (see analysis)<br />
+			• PZT disc: 10 mm dia × 1 mm thick, flush with two plate edges at each
+			corner<br />
+			• Diagonal-opposite corners maximize acoustic path. Orange ◆ = TX, Blue ◆
+			= RX on each diagram<br />
+			<br />
+			<strong>Foam Support Placement (all plates):</strong><br />
+			• <strong style="color: #2a2">3-point support</strong> — statically
+			determinate, no over-constraint<br />
+			• Positions at <strong>nodal intersections</strong> of (2,0)×(0,2) modes:
+			<strong>(22, 22)</strong>, <strong>(78, 22)</strong>, and
+			<strong>(50, 78)</strong> mm<br />
+			• Soft foam pads (~5 mm × 5 mm × 3 mm thick) — green □ on each diagram<br />
+			• These points have near-zero displacement for all fundamental bending
+			modes → minimal Q damping<br />
+			• Triangle base faces upward, apex downward — stable against tipping,
+			clears both PZTs<br />
+			<br />
+			<strong>Pattern Design Rationale (from E38 3-condition results):</strong
+			><br />
+			• Perturbation <em>location</em> matters more than mass — sites must sit
+			near mode antinodes<br />
+			• Each pattern targets different mode families of a free square plate
+			(Chladni patterns)<br />
+			• Pattern A: (1,1) + (2,2) antinodes — center + quarter-points<br />
+			• Pattern B: (2,1) + (1,2) antinodes — edge midpoints<br />
+			• Pattern C: (3,3) grid — higher-order mode antinodes at third-points<br />
+			• Pattern D/E (duplicate): Diagonal — asymmetric modes, breaks (m,n)↔(n,m)
+			degeneracy<br />
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PLATE A — Center + Quarter-Points
+     Targets (1,1) mode antinode (center) and (2,2) mode
+     antinodes (four quarter-points)
+     ════════════════════════════════════════════════════════ -->
+		<div class="plate-page">
+			<div class="plate-label">Plate A — Center + Quarter-Points</div>
+			<div class="plate-desc">
+				Targets (1,1) fundamental antinode at center and (2,2) mode antinodes at
+				quarter-points. 5 sites.
+			</div>
+			<!-- viewBox adds 15mm margin for rulers and labels; plate sits at (10,10) -->
+			<svg
+				width="130mm"
+				height="130mm"
+				viewBox="0 0 130 130"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Cut marks at corners -->
+				<line
+					x1="7"
+					y1="10"
+					x2="9"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="7"
+					x2="10"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="10"
+					x2="113"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="7"
+					x2="110"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="7"
+					y1="110"
+					x2="9"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="111"
+					x2="10"
+					y2="113"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="110"
+					x2="113"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="111"
+					x2="110"
+					y2="113"
+					class="cut-mark" />
+
+				<!-- Plate outline (100×100 starting at 10,10) -->
+				<rect
+					x="10"
+					y="10"
+					width="100"
+					height="100"
+					class="plate-outline" />
+
+				<!-- Rulers — top edge -->
+				<line
+					x1="10"
+					y1="8"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="10"
+					y="7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="20"
+					y1="8.5"
+					x2="20"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="20"
+					y="7"
+					class="ruler-label">
+					10
+				</text>
+				<line
+					x1="30"
+					y1="8.5"
+					x2="30"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="30"
+					y="7"
+					class="ruler-label">
+					20
+				</text>
+				<line
+					x1="40"
+					y1="8.5"
+					x2="40"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="40"
+					y="7"
+					class="ruler-label">
+					30
+				</text>
+				<line
+					x1="50"
+					y1="8.5"
+					x2="50"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="50"
+					y="7"
+					class="ruler-label">
+					40
+				</text>
+				<line
+					x1="60"
+					y1="8"
+					x2="60"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="60"
+					y="7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="70"
+					y1="8.5"
+					x2="70"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="70"
+					y="7"
+					class="ruler-label">
+					60
+				</text>
+				<line
+					x1="80"
+					y1="8.5"
+					x2="80"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="80"
+					y="7"
+					class="ruler-label">
+					70
+				</text>
+				<line
+					x1="90"
+					y1="8.5"
+					x2="90"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="90"
+					y="7"
+					class="ruler-label">
+					80
+				</text>
+				<line
+					x1="100"
+					y1="8.5"
+					x2="100"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="100"
+					y="7"
+					class="ruler-label">
+					90
+				</text>
+				<line
+					x1="110"
+					y1="8"
+					x2="110"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="110"
+					y="7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Rulers — left edge -->
+				<line
+					x1="8"
+					y1="10"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="10.7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="8.5"
+					y1="20"
+					x2="10"
+					y2="20"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="30"
+					x2="10"
+					y2="30"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="40"
+					x2="10"
+					y2="40"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="50"
+					x2="10"
+					y2="50"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="60"
+					x2="10"
+					y2="60"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="60.7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="8.5"
+					y1="70"
+					x2="10"
+					y2="70"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="80"
+					x2="10"
+					y2="80"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="90"
+					x2="10"
+					y2="90"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="100"
+					x2="10"
+					y2="100"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="110"
+					x2="10"
+					y2="110"
+					class="ruler-tick" />
+				<text
+					x="5"
+					y="110.7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Crosshairs -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="crosshair" />
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="crosshair" />
+
+				<!-- Plate ID -->
+				<text
+					x="12"
+					y="13.5"
+					class="plate-id">
+					PLATE A
+				</text>
+				<text
+					x="12"
+					y="16.5"
+					class="pattern-name">
+					Center + Quarter-Points — (1,1)+(2,2)
+				</text>
+
+				<!-- PZT Transducers — extreme corner placement for Q preservation -->
+				<!-- TX PZT at (5,95) → SVG (15,105), flush with bottom-left corner -->
+				<rect
+					x="10"
+					y="100"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(220,140,0,0.18)"
+					stroke="#d80" />
+				<circle
+					cx="15"
+					cy="105"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#d80"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="15"
+					y="105.7"
+					class="pzt-label"
+					fill="#d80">
+					TX
+				</text>
+				<text
+					x="15"
+					y="112"
+					class="pzt-coord"
+					fill="#d80">
+					(5,95)
+				</text>
+				<text
+					x="15"
+					y="114"
+					class="pzt-note"
+					fill="#b70">
+					underside · corner
+				</text>
+				<!-- RX PZT at (95,5) → SVG (105,15), flush with top-right corner -->
+				<rect
+					x="100"
+					y="10"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(0,140,200,0.18)"
+					stroke="#08a" />
+				<circle
+					cx="105"
+					cy="15"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#08a"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="105"
+					y="15.7"
+					class="pzt-label"
+					fill="#08a">
+					RX
+				</text>
+				<text
+					x="105"
+					y="9"
+					class="pzt-coord"
+					fill="#08a">
+					(95,5)
+				</text>
+				<text
+					x="105"
+					y="7"
+					class="pzt-note"
+					fill="#07a">
+					underside · corner
+				</text>
+
+				<!-- Foam support blocks — 3-point nodal support -->
+				<!-- F1: (22,22) → SVG (32,32) — (2,0)×(0,2) nodal intersection -->
+				<rect
+					x="29.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="32"
+					y="32.7"
+					class="foam-label">
+					F1
+				</text>
+				<text
+					x="32"
+					y="36"
+					class="foam-coord">
+					(22,22)
+				</text>
+				<!-- F2: (78,22) → SVG (88,32) — (2,0)×(0,2) nodal intersection -->
+				<rect
+					x="85.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="88"
+					y="32.7"
+					class="foam-label">
+					F2
+				</text>
+				<text
+					x="88"
+					y="36"
+					class="foam-coord">
+					(78,22)
+				</text>
+				<!-- F3: (50,78) → SVG (60,88) — (2,2)×(0,2) nodal intersection -->
+				<rect
+					x="57.5"
+					y="85.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="60"
+					y="88.7"
+					class="foam-label">
+					F3
+				</text>
+				<text
+					x="60"
+					y="92"
+					class="foam-coord">
+					(50,78)
+				</text>
+
+				<!-- Perturbation sites -->
+				<!-- Center: (1,1) antinode at 50,50 -->
+				<circle
+					cx="60"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(220,50,50,0.15)"
+					stroke="#c00" />
+				<text
+					x="60"
+					y="60.8"
+					class="site-label">
+					A1
+				</text>
+				<text
+					x="60"
+					y="63.5"
+					class="coord-label">
+					(50,50)
+				</text>
+
+				<!-- Quarter-points: (2,2) antinodes -->
+				<circle
+					cx="35"
+					cy="35"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(220,50,50,0.15)"
+					stroke="#c00" />
+				<text
+					x="35"
+					y="35.8"
+					class="site-label">
+					A2
+				</text>
+				<text
+					x="35"
+					y="38.5"
+					class="coord-label">
+					(25,25)
+				</text>
+
+				<circle
+					cx="85"
+					cy="35"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(220,50,50,0.15)"
+					stroke="#c00" />
+				<text
+					x="85"
+					y="35.8"
+					class="site-label">
+					A3
+				</text>
+				<text
+					x="85"
+					y="38.5"
+					class="coord-label">
+					(75,25)
+				</text>
+
+				<circle
+					cx="35"
+					cy="85"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(220,50,50,0.15)"
+					stroke="#c00" />
+				<text
+					x="35"
+					y="85.8"
+					class="site-label">
+					A4
+				</text>
+				<text
+					x="35"
+					y="88.5"
+					class="coord-label">
+					(25,75)
+				</text>
+
+				<circle
+					cx="85"
+					cy="85"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(220,50,50,0.15)"
+					stroke="#c00" />
+				<text
+					x="85"
+					y="85.8"
+					class="site-label">
+					A5
+				</text>
+				<text
+					x="85"
+					y="88.5"
+					class="coord-label">
+					(75,75)
+				</text>
+
+				<!-- Mode reference: nodal lines for (2,2) -->
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="nodal-line" />
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="nodal-line" />
+				<text
+					x="112"
+					y="60.7"
+					class="mode-tag">
+					(2,2) nodal
+				</text>
+			</svg>
+			<div class="legend">
+				● = perturbation site (~0.05 g BluTack) | ◆ orange = TX PZT (underside)
+				| ◆ blue = RX PZT (underside) | □ green = foam support (nodal) | Dashed
+				= nodal lines | mm from corner
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PLATE B — Edge Midpoints
+     Targets (2,1) and (1,2) mode antinodes
+     ════════════════════════════════════════════════════════ -->
+		<div class="plate-page">
+			<div class="plate-label">Plate B — Edge Midpoints</div>
+			<div class="plate-desc">
+				Targets (2,1) and (1,2) mode antinodes at edge midpoints, plus
+				off-center asymmetric site. 5 sites.
+			</div>
+			<svg
+				width="130mm"
+				height="130mm"
+				viewBox="0 0 130 130"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Cut marks -->
+				<line
+					x1="7"
+					y1="10"
+					x2="9"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="7"
+					x2="10"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="10"
+					x2="113"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="7"
+					x2="110"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="7"
+					y1="110"
+					x2="9"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="111"
+					x2="10"
+					y2="113"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="110"
+					x2="113"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="111"
+					x2="110"
+					y2="113"
+					class="cut-mark" />
+
+				<rect
+					x="10"
+					y="10"
+					width="100"
+					height="100"
+					class="plate-outline" />
+
+				<!-- Rulers — top -->
+				<line
+					x1="10"
+					y1="8"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="10"
+					y="7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="20"
+					y1="8.5"
+					x2="20"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="30"
+					y1="8.5"
+					x2="30"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="40"
+					y1="8.5"
+					x2="40"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="50"
+					y1="8.5"
+					x2="50"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="60"
+					y1="8"
+					x2="60"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="60"
+					y="7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="70"
+					y1="8.5"
+					x2="70"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="80"
+					y1="8.5"
+					x2="80"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="90"
+					y1="8.5"
+					x2="90"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="100"
+					y1="8.5"
+					x2="100"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="110"
+					y1="8"
+					x2="110"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="110"
+					y="7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Rulers — left -->
+				<line
+					x1="8"
+					y1="10"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="10.7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="8.5"
+					y1="20"
+					x2="10"
+					y2="20"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="30"
+					x2="10"
+					y2="30"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="40"
+					x2="10"
+					y2="40"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="50"
+					x2="10"
+					y2="50"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="60"
+					x2="10"
+					y2="60"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="60.7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="8.5"
+					y1="70"
+					x2="10"
+					y2="70"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="80"
+					x2="10"
+					y2="80"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="90"
+					x2="10"
+					y2="90"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="100"
+					x2="10"
+					y2="100"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="110"
+					x2="10"
+					y2="110"
+					class="ruler-tick" />
+				<text
+					x="5"
+					y="110.7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Crosshairs -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="crosshair" />
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="crosshair" />
+
+				<!-- Plate ID -->
+				<text
+					x="12"
+					y="13.5"
+					class="plate-id">
+					PLATE B
+				</text>
+				<text
+					x="12"
+					y="16.5"
+					class="pattern-name">
+					Edge Midpoints — (2,1)+(1,2)
+				</text>
+
+				<!-- PZT Transducers — extreme corner placement for Q preservation -->
+				<rect
+					x="10"
+					y="100"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(220,140,0,0.18)"
+					stroke="#d80" />
+				<circle
+					cx="15"
+					cy="105"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#d80"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="15"
+					y="105.7"
+					class="pzt-label"
+					fill="#d80">
+					TX
+				</text>
+				<text
+					x="15"
+					y="112"
+					class="pzt-coord"
+					fill="#d80">
+					(5,95)
+				</text>
+				<text
+					x="15"
+					y="114"
+					class="pzt-note"
+					fill="#b70">
+					underside · corner
+				</text>
+				<rect
+					x="100"
+					y="10"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(0,140,200,0.18)"
+					stroke="#08a" />
+				<circle
+					cx="105"
+					cy="15"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#08a"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="105"
+					y="15.7"
+					class="pzt-label"
+					fill="#08a">
+					RX
+				</text>
+				<text
+					x="105"
+					y="9"
+					class="pzt-coord"
+					fill="#08a">
+					(95,5)
+				</text>
+				<text
+					x="105"
+					y="7"
+					class="pzt-note"
+					fill="#07a">
+					underside · corner
+				</text>
+
+				<!-- Foam support blocks — 3-point nodal support -->
+				<rect
+					x="29.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="32"
+					y="32.7"
+					class="foam-label">
+					F1
+				</text>
+				<text
+					x="32"
+					y="36"
+					class="foam-coord">
+					(22,22)
+				</text>
+				<rect
+					x="85.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="88"
+					y="32.7"
+					class="foam-label">
+					F2
+				</text>
+				<text
+					x="88"
+					y="36"
+					class="foam-coord">
+					(78,22)
+				</text>
+				<rect
+					x="57.5"
+					y="85.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="60"
+					y="88.7"
+					class="foam-label">
+					F3
+				</text>
+				<text
+					x="60"
+					y="92"
+					class="foam-coord">
+					(50,78)
+				</text>
+
+				<!-- Perturbation sites -->
+				<!-- Top edge midpoint: (1,2) antinode at (50,15) -->
+				<circle
+					cx="60"
+					cy="25"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,100,220,0.15)"
+					stroke="#06c" />
+				<text
+					x="60"
+					y="25.8"
+					class="site-label">
+					B1
+				</text>
+				<text
+					x="60"
+					y="28.5"
+					class="coord-label">
+					(50,15)
+				</text>
+
+				<!-- Bottom edge midpoint: (1,2) antinode at (50,85) -->
+				<circle
+					cx="60"
+					cy="95"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,100,220,0.15)"
+					stroke="#06c" />
+				<text
+					x="60"
+					y="95.8"
+					class="site-label">
+					B2
+				</text>
+				<text
+					x="60"
+					y="98.5"
+					class="coord-label">
+					(50,85)
+				</text>
+
+				<!-- Left edge midpoint: (2,1) antinode at (15,50) -->
+				<circle
+					cx="25"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,100,220,0.15)"
+					stroke="#06c" />
+				<text
+					x="25"
+					y="60.8"
+					class="site-label">
+					B3
+				</text>
+				<text
+					x="25"
+					y="63.5"
+					class="coord-label">
+					(15,50)
+				</text>
+
+				<!-- Right edge midpoint: (2,1) antinode at (85,50) -->
+				<circle
+					cx="95"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,100,220,0.15)"
+					stroke="#06c" />
+				<text
+					x="95"
+					y="60.8"
+					class="site-label">
+					B4
+				</text>
+				<text
+					x="95"
+					y="63.5"
+					class="coord-label">
+					(85,50)
+				</text>
+
+				<!-- Off-center asymmetric: (35,65) — breaks fourfold symmetry -->
+				<circle
+					cx="45"
+					cy="75"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,100,220,0.15)"
+					stroke="#06c" />
+				<text
+					x="45"
+					y="75.8"
+					class="site-label">
+					B5
+				</text>
+				<text
+					x="45"
+					y="78.5"
+					class="coord-label">
+					(35,65)
+				</text>
+
+				<!-- Nodal reference for (1,2) — horizontal midline -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="nodal-line" />
+				<text
+					x="112"
+					y="60.7"
+					class="mode-tag">
+					(1,2) nodal
+				</text>
+				<!-- Nodal reference for (2,1) — vertical midline -->
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="nodal-line" />
+				<text
+					x="61"
+					y="117"
+					class="mode-tag">
+					(2,1) nodal
+				</text>
+			</svg>
+			<div class="legend">
+				● = perturbation site (~0.05 g BluTack) | ◆ orange = TX PZT (underside)
+				| ◆ blue = RX PZT (underside) | □ green = foam support (nodal) | B5
+				breaks 4-fold symmetry
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PLATE C — Third-Points Grid
+     Targets higher-order (3,3) mode antinodes
+     ════════════════════════════════════════════════════════ -->
+		<div class="plate-page">
+			<div class="plate-label">Plate C — Third-Points Grid</div>
+			<div class="plate-desc">
+				Targets (3,1), (1,3), and (3,3) mode antinodes at third-point
+				intersections. 6 sites in asymmetric selection from 3×3 grid.
+			</div>
+			<svg
+				width="130mm"
+				height="130mm"
+				viewBox="0 0 130 130"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Cut marks -->
+				<line
+					x1="7"
+					y1="10"
+					x2="9"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="7"
+					x2="10"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="10"
+					x2="113"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="7"
+					x2="110"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="7"
+					y1="110"
+					x2="9"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="111"
+					x2="10"
+					y2="113"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="110"
+					x2="113"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="111"
+					x2="110"
+					y2="113"
+					class="cut-mark" />
+
+				<rect
+					x="10"
+					y="10"
+					width="100"
+					height="100"
+					class="plate-outline" />
+
+				<!-- Rulers — top -->
+				<line
+					x1="10"
+					y1="8"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="10"
+					y="7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="20"
+					y1="8.5"
+					x2="20"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="30"
+					y1="8.5"
+					x2="30"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="40"
+					y1="8.5"
+					x2="40"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="50"
+					y1="8.5"
+					x2="50"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="60"
+					y1="8"
+					x2="60"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="60"
+					y="7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="70"
+					y1="8.5"
+					x2="70"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="80"
+					y1="8.5"
+					x2="80"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="90"
+					y1="8.5"
+					x2="90"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="100"
+					y1="8.5"
+					x2="100"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="110"
+					y1="8"
+					x2="110"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="110"
+					y="7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Rulers — left -->
+				<line
+					x1="8"
+					y1="10"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="10.7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="8.5"
+					y1="20"
+					x2="10"
+					y2="20"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="30"
+					x2="10"
+					y2="30"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="40"
+					x2="10"
+					y2="40"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="50"
+					x2="10"
+					y2="50"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="60"
+					x2="10"
+					y2="60"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="60.7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="8.5"
+					y1="70"
+					x2="10"
+					y2="70"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="80"
+					x2="10"
+					y2="80"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="90"
+					x2="10"
+					y2="90"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="100"
+					x2="10"
+					y2="100"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="110"
+					x2="10"
+					y2="110"
+					class="ruler-tick" />
+				<text
+					x="5"
+					y="110.7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Crosshairs -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="crosshair" />
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="crosshair" />
+
+				<!-- Plate ID -->
+				<text
+					x="12"
+					y="13.5"
+					class="plate-id">
+					PLATE C
+				</text>
+				<text
+					x="12"
+					y="16.5"
+					class="pattern-name">
+					Third-Points Grid — (3,1)+(1,3)+(3,3)
+				</text>
+
+				<!-- PZT Transducers — extreme corner placement for Q preservation -->
+				<rect
+					x="10"
+					y="100"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(220,140,0,0.18)"
+					stroke="#d80" />
+				<circle
+					cx="15"
+					cy="105"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#d80"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="15"
+					y="105.7"
+					class="pzt-label"
+					fill="#d80">
+					TX
+				</text>
+				<text
+					x="15"
+					y="112"
+					class="pzt-coord"
+					fill="#d80">
+					(5,95)
+				</text>
+				<text
+					x="15"
+					y="114"
+					class="pzt-note"
+					fill="#b70">
+					underside · corner
+				</text>
+				<rect
+					x="100"
+					y="10"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(0,140,200,0.18)"
+					stroke="#08a" />
+				<circle
+					cx="105"
+					cy="15"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#08a"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="105"
+					y="15.7"
+					class="pzt-label"
+					fill="#08a">
+					RX
+				</text>
+				<text
+					x="105"
+					y="9"
+					class="pzt-coord"
+					fill="#08a">
+					(95,5)
+				</text>
+				<text
+					x="105"
+					y="7"
+					class="pzt-note"
+					fill="#07a">
+					underside · corner
+				</text>
+
+				<!-- Foam support blocks — 3-point nodal support -->
+				<rect
+					x="29.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="32"
+					y="32.7"
+					class="foam-label">
+					F1
+				</text>
+				<text
+					x="32"
+					y="36"
+					class="foam-coord">
+					(22,22)
+				</text>
+				<rect
+					x="85.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="88"
+					y="32.7"
+					class="foam-label">
+					F2
+				</text>
+				<text
+					x="88"
+					y="36"
+					class="foam-coord">
+					(78,22)
+				</text>
+				<rect
+					x="57.5"
+					y="85.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="60"
+					y="88.7"
+					class="foam-label">
+					F3
+				</text>
+				<text
+					x="60"
+					y="92"
+					class="foam-coord">
+					(50,78)
+				</text>
+
+				<!-- Reference grid: third-point lines -->
+				<line
+					x1="43.3"
+					y1="10"
+					x2="43.3"
+					y2="110"
+					class="nodal-line" />
+				<line
+					x1="76.7"
+					y1="10"
+					x2="76.7"
+					y2="110"
+					class="nodal-line" />
+				<line
+					x1="10"
+					y1="43.3"
+					x2="110"
+					y2="43.3"
+					class="nodal-line" />
+				<line
+					x1="10"
+					y1="76.7"
+					x2="110"
+					y2="76.7"
+					class="nodal-line" />
+				<text
+					x="112"
+					y="43.6"
+					class="mode-tag">
+					(3,x) nodal
+				</text>
+				<text
+					x="112"
+					y="77"
+					class="mode-tag">
+					(3,x) nodal
+				</text>
+
+				<!-- Perturbation sites — asymmetric selection from 3×3 -->
+				<!-- (17,17) — top-left cell antinode -->
+				<circle
+					cx="27"
+					cy="27"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="27"
+					y="27.8"
+					class="site-label">
+					C1
+				</text>
+				<text
+					x="27"
+					y="30.5"
+					class="coord-label">
+					(17,17)
+				</text>
+
+				<!-- (50,17) — top-center cell antinode -->
+				<circle
+					cx="60"
+					cy="27"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="60"
+					y="27.8"
+					class="site-label">
+					C2
+				</text>
+				<text
+					x="60"
+					y="30.5"
+					class="coord-label">
+					(50,17)
+				</text>
+
+				<!-- (83,50) — right-center cell antinode -->
+				<circle
+					cx="93"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="93"
+					y="60.8"
+					class="site-label">
+					C3
+				</text>
+				<text
+					x="93"
+					y="63.5"
+					class="coord-label">
+					(83,50)
+				</text>
+
+				<!-- (17,50) — left-center cell antinode -->
+				<circle
+					cx="27"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="27"
+					y="60.8"
+					class="site-label">
+					C4
+				</text>
+				<text
+					x="27"
+					y="63.5"
+					class="coord-label">
+					(17,50)
+				</text>
+
+				<!-- (50,83) — bottom-center cell antinode -->
+				<circle
+					cx="60"
+					cy="93"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="60"
+					y="93.8"
+					class="site-label">
+					C5
+				</text>
+				<text
+					x="60"
+					y="96.5"
+					class="coord-label">
+					(50,83)
+				</text>
+
+				<!-- (83,83) — bottom-right cell antinode -->
+				<circle
+					cx="93"
+					cy="93"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(50,180,80,0.15)"
+					stroke="#090" />
+				<text
+					x="93"
+					y="93.8"
+					class="site-label">
+					C6
+				</text>
+				<text
+					x="93"
+					y="96.5"
+					class="coord-label">
+					(83,83)
+				</text>
+			</svg>
+			<div class="legend">
+				● = perturbation site (~0.05 g BluTack) | ◆ orange = TX PZT (underside)
+				| ◆ blue = RX PZT (underside) | □ green = foam support (nodal) | 6 of 9
+				grid positions
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PLATE D — Diagonal Pattern (DUPLICATE PAIR 1/2)
+     Breaks (m,n)↔(n,m) degeneracy
+     ════════════════════════════════════════════════════════ -->
+		<div class="plate-page">
+			<div class="plate-label">
+				Plate D — Diagonal Pattern (DUPLICATE 1 of 2)
+			</div>
+			<div class="plate-desc">
+				Sites along and near the main diagonal break (m,n)↔(n,m) mode
+				degeneracy. 5 sites. Same pattern as Plate E for reproducibility
+				comparison.
+			</div>
+			<svg
+				width="130mm"
+				height="130mm"
+				viewBox="0 0 130 130"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Cut marks -->
+				<line
+					x1="7"
+					y1="10"
+					x2="9"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="7"
+					x2="10"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="10"
+					x2="113"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="7"
+					x2="110"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="7"
+					y1="110"
+					x2="9"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="111"
+					x2="10"
+					y2="113"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="110"
+					x2="113"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="111"
+					x2="110"
+					y2="113"
+					class="cut-mark" />
+
+				<rect
+					x="10"
+					y="10"
+					width="100"
+					height="100"
+					class="plate-outline" />
+
+				<!-- Rulers — top -->
+				<line
+					x1="10"
+					y1="8"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="10"
+					y="7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="20"
+					y1="8.5"
+					x2="20"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="30"
+					y1="8.5"
+					x2="30"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="40"
+					y1="8.5"
+					x2="40"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="50"
+					y1="8.5"
+					x2="50"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="60"
+					y1="8"
+					x2="60"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="60"
+					y="7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="70"
+					y1="8.5"
+					x2="70"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="80"
+					y1="8.5"
+					x2="80"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="90"
+					y1="8.5"
+					x2="90"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="100"
+					y1="8.5"
+					x2="100"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="110"
+					y1="8"
+					x2="110"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="110"
+					y="7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Rulers — left -->
+				<line
+					x1="8"
+					y1="10"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="10.7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="8.5"
+					y1="20"
+					x2="10"
+					y2="20"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="30"
+					x2="10"
+					y2="30"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="40"
+					x2="10"
+					y2="40"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="50"
+					x2="10"
+					y2="50"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="60"
+					x2="10"
+					y2="60"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="60.7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="8.5"
+					y1="70"
+					x2="10"
+					y2="70"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="80"
+					x2="10"
+					y2="80"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="90"
+					x2="10"
+					y2="90"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="100"
+					x2="10"
+					y2="100"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="110"
+					x2="10"
+					y2="110"
+					class="ruler-tick" />
+				<text
+					x="5"
+					y="110.7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Diagonal reference -->
+				<line
+					x1="10"
+					y1="10"
+					x2="110"
+					y2="110"
+					class="nodal-line" />
+				<text
+					x="100"
+					y="105"
+					class="mode-tag">
+					main diagonal
+				</text>
+
+				<!-- Crosshairs -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="crosshair" />
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="crosshair" />
+
+				<!-- Plate ID -->
+				<text
+					x="12"
+					y="13.5"
+					class="plate-id">
+					PLATE D
+				</text>
+				<text
+					x="12"
+					y="16.5"
+					class="pattern-name">
+					Diagonal — degeneracy breaker (DUP 1/2)
+				</text>
+
+				<!-- PZT Transducers — extreme corner placement for Q preservation -->
+				<rect
+					x="10"
+					y="100"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(220,140,0,0.18)"
+					stroke="#d80" />
+				<circle
+					cx="15"
+					cy="105"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#d80"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="15"
+					y="105.7"
+					class="pzt-label"
+					fill="#d80">
+					TX
+				</text>
+				<text
+					x="15"
+					y="112"
+					class="pzt-coord"
+					fill="#d80">
+					(5,95)
+				</text>
+				<text
+					x="15"
+					y="114"
+					class="pzt-note"
+					fill="#b70">
+					underside · corner
+				</text>
+				<rect
+					x="100"
+					y="10"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(0,140,200,0.18)"
+					stroke="#08a" />
+				<circle
+					cx="105"
+					cy="15"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#08a"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="105"
+					y="15.7"
+					class="pzt-label"
+					fill="#08a">
+					RX
+				</text>
+				<text
+					x="105"
+					y="9"
+					class="pzt-coord"
+					fill="#08a">
+					(95,5)
+				</text>
+				<text
+					x="105"
+					y="7"
+					class="pzt-note"
+					fill="#07a">
+					underside · corner
+				</text>
+
+				<!-- Foam support blocks — 3-point nodal support -->
+				<rect
+					x="29.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="32"
+					y="32.7"
+					class="foam-label">
+					F1
+				</text>
+				<text
+					x="32"
+					y="36"
+					class="foam-coord">
+					(22,22)
+				</text>
+				<rect
+					x="85.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="88"
+					y="32.7"
+					class="foam-label">
+					F2
+				</text>
+				<text
+					x="88"
+					y="36"
+					class="foam-coord">
+					(78,22)
+				</text>
+				<rect
+					x="57.5"
+					y="85.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="60"
+					y="88.7"
+					class="foam-label">
+					F3
+				</text>
+				<text
+					x="60"
+					y="92"
+					class="foam-coord">
+					(50,78)
+				</text>
+
+				<!-- Perturbation sites — along/near main diagonal -->
+				<!-- (20,20) — near corner -->
+				<circle
+					cx="30"
+					cy="30"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="30"
+					y="30.8"
+					class="site-label">
+					D1
+				</text>
+				<text
+					x="30"
+					y="33.5"
+					class="coord-label">
+					(20,20)
+				</text>
+
+				<!-- (40,35) — slightly off diagonal -->
+				<circle
+					cx="50"
+					cy="45"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="50"
+					y="45.8"
+					class="site-label">
+					D2
+				</text>
+				<text
+					x="50"
+					y="48.5"
+					class="coord-label">
+					(40,35)
+				</text>
+
+				<!-- (50,50) — center -->
+				<circle
+					cx="60"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="60"
+					y="60.8"
+					class="site-label">
+					D3
+				</text>
+				<text
+					x="60"
+					y="63.5"
+					class="coord-label">
+					(50,50)
+				</text>
+
+				<!-- (65,70) — slightly off diagonal -->
+				<circle
+					cx="75"
+					cy="80"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="75"
+					y="80.8"
+					class="site-label">
+					D4
+				</text>
+				<text
+					x="75"
+					y="83.5"
+					class="coord-label">
+					(65,70)
+				</text>
+
+				<!-- (80,80) — near opposite corner -->
+				<circle
+					cx="90"
+					cy="90"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="90"
+					y="90.8"
+					class="site-label">
+					D5
+				</text>
+				<text
+					x="90"
+					y="93.5"
+					class="coord-label">
+					(80,80)
+				</text>
+			</svg>
+			<div class="legend">
+				● = perturbation site (~0.05 g BluTack) | ◆ orange = TX PZT (underside)
+				| ◆ blue = RX PZT (underside) | □ green = foam support (nodal) | D2,D4
+				off-diagonal
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PLATE E — Diagonal Pattern (DUPLICATE PAIR 2/2)
+     Identical to Plate D
+     ════════════════════════════════════════════════════════ -->
+		<div class="plate-page">
+			<div class="plate-label">
+				Plate E — Diagonal Pattern (DUPLICATE 2 of 2)
+			</div>
+			<div class="plate-desc">
+				IDENTICAL to Plate D. Tests: (1) reproducibility of perturbation effect
+				across plates, (2) whether two identically-perturbed plates remain
+				distinguishable by intrinsic geometry.
+			</div>
+			<svg
+				width="130mm"
+				height="130mm"
+				viewBox="0 0 130 130"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Cut marks -->
+				<line
+					x1="7"
+					y1="10"
+					x2="9"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="7"
+					x2="10"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="10"
+					x2="113"
+					y2="10"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="7"
+					x2="110"
+					y2="9"
+					class="cut-mark" />
+				<line
+					x1="7"
+					y1="110"
+					x2="9"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="10"
+					y1="111"
+					x2="10"
+					y2="113"
+					class="cut-mark" />
+				<line
+					x1="111"
+					y1="110"
+					x2="113"
+					y2="110"
+					class="cut-mark" />
+				<line
+					x1="110"
+					y1="111"
+					x2="110"
+					y2="113"
+					class="cut-mark" />
+
+				<rect
+					x="10"
+					y="10"
+					width="100"
+					height="100"
+					class="plate-outline" />
+
+				<!-- Rulers — top -->
+				<line
+					x1="10"
+					y1="8"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="10"
+					y="7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="20"
+					y1="8.5"
+					x2="20"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="30"
+					y1="8.5"
+					x2="30"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="40"
+					y1="8.5"
+					x2="40"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="50"
+					y1="8.5"
+					x2="50"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="60"
+					y1="8"
+					x2="60"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="60"
+					y="7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="70"
+					y1="8.5"
+					x2="70"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="80"
+					y1="8.5"
+					x2="80"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="90"
+					y1="8.5"
+					x2="90"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="100"
+					y1="8.5"
+					x2="100"
+					y2="10"
+					class="ruler-tick" />
+				<line
+					x1="110"
+					y1="8"
+					x2="110"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="110"
+					y="7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Rulers — left -->
+				<line
+					x1="8"
+					y1="10"
+					x2="10"
+					y2="10"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="10.7"
+					class="ruler-label">
+					0
+				</text>
+				<line
+					x1="8.5"
+					y1="20"
+					x2="10"
+					y2="20"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="30"
+					x2="10"
+					y2="30"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="40"
+					x2="10"
+					y2="40"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="50"
+					x2="10"
+					y2="50"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="60"
+					x2="10"
+					y2="60"
+					class="ruler-tick" />
+				<text
+					x="6"
+					y="60.7"
+					class="ruler-label">
+					50
+				</text>
+				<line
+					x1="8.5"
+					y1="70"
+					x2="10"
+					y2="70"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="80"
+					x2="10"
+					y2="80"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="90"
+					x2="10"
+					y2="90"
+					class="ruler-tick" />
+				<line
+					x1="8.5"
+					y1="100"
+					x2="10"
+					y2="100"
+					class="ruler-tick" />
+				<line
+					x1="8"
+					y1="110"
+					x2="10"
+					y2="110"
+					class="ruler-tick" />
+				<text
+					x="5"
+					y="110.7"
+					class="ruler-label">
+					100
+				</text>
+
+				<!-- Diagonal reference -->
+				<line
+					x1="10"
+					y1="10"
+					x2="110"
+					y2="110"
+					class="nodal-line" />
+				<text
+					x="100"
+					y="105"
+					class="mode-tag">
+					main diagonal
+				</text>
+
+				<!-- Crosshairs -->
+				<line
+					x1="10"
+					y1="60"
+					x2="110"
+					y2="60"
+					class="crosshair" />
+				<line
+					x1="60"
+					y1="10"
+					x2="60"
+					y2="110"
+					class="crosshair" />
+
+				<!-- Plate ID -->
+				<text
+					x="12"
+					y="13.5"
+					class="plate-id">
+					PLATE E
+				</text>
+				<text
+					x="12"
+					y="16.5"
+					class="pattern-name">
+					Diagonal — degeneracy breaker (DUP 2/2)
+				</text>
+				<text
+					x="12"
+					y="19"
+					class="pattern-name"
+					style="fill: #c00">
+					⬆ IDENTICAL TO PLATE D — reproducibility pair
+				</text>
+
+				<!-- PZT Transducers — extreme corner placement for Q preservation -->
+				<rect
+					x="10"
+					y="100"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(220,140,0,0.18)"
+					stroke="#d80" />
+				<circle
+					cx="15"
+					cy="105"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#d80"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="15"
+					y="105.7"
+					class="pzt-label"
+					fill="#d80">
+					TX
+				</text>
+				<text
+					x="15"
+					y="112"
+					class="pzt-coord"
+					fill="#d80">
+					(5,95)
+				</text>
+				<text
+					x="15"
+					y="114"
+					class="pzt-note"
+					fill="#b70">
+					underside · corner
+				</text>
+				<rect
+					x="100"
+					y="10"
+					width="10"
+					height="10"
+					rx="1"
+					class="pzt-outline"
+					fill="rgba(0,140,200,0.18)"
+					stroke="#08a" />
+				<circle
+					cx="105"
+					cy="15"
+					r="5"
+					class="pzt-outline"
+					fill="none"
+					stroke="#08a"
+					stroke-dasharray="0.6,0.4" />
+				<text
+					x="105"
+					y="15.7"
+					class="pzt-label"
+					fill="#08a">
+					RX
+				</text>
+				<text
+					x="105"
+					y="9"
+					class="pzt-coord"
+					fill="#08a">
+					(95,5)
+				</text>
+				<text
+					x="105"
+					y="7"
+					class="pzt-note"
+					fill="#07a">
+					underside · corner
+				</text>
+
+				<!-- Foam support blocks — 3-point nodal support -->
+				<rect
+					x="29.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="32"
+					y="32.7"
+					class="foam-label">
+					F1
+				</text>
+				<text
+					x="32"
+					y="36"
+					class="foam-coord">
+					(22,22)
+				</text>
+				<rect
+					x="85.5"
+					y="29.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="88"
+					y="32.7"
+					class="foam-label">
+					F2
+				</text>
+				<text
+					x="88"
+					y="36"
+					class="foam-coord">
+					(78,22)
+				</text>
+				<rect
+					x="57.5"
+					y="85.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					class="foam-block" />
+				<text
+					x="60"
+					y="88.7"
+					class="foam-label">
+					F3
+				</text>
+				<text
+					x="60"
+					y="92"
+					class="foam-coord">
+					(50,78)
+				</text>
+
+				<!-- Perturbation sites — identical to Plate D -->
+				<circle
+					cx="30"
+					cy="30"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="30"
+					y="30.8"
+					class="site-label">
+					E1
+				</text>
+				<text
+					x="30"
+					y="33.5"
+					class="coord-label">
+					(20,20)
+				</text>
+
+				<circle
+					cx="50"
+					cy="45"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="50"
+					y="45.8"
+					class="site-label">
+					E2
+				</text>
+				<text
+					x="50"
+					y="48.5"
+					class="coord-label">
+					(40,35)
+				</text>
+
+				<circle
+					cx="60"
+					cy="60"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="60"
+					y="60.8"
+					class="site-label">
+					E3
+				</text>
+				<text
+					x="60"
+					y="63.5"
+					class="coord-label">
+					(50,50)
+				</text>
+
+				<circle
+					cx="75"
+					cy="80"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="75"
+					y="80.8"
+					class="site-label">
+					E4
+				</text>
+				<text
+					x="75"
+					y="83.5"
+					class="coord-label">
+					(65,70)
+				</text>
+
+				<circle
+					cx="90"
+					cy="90"
+					r="2.5"
+					class="site-circle"
+					fill="rgba(180,100,220,0.15)"
+					stroke="#90c" />
+				<text
+					x="90"
+					y="90.8"
+					class="site-label">
+					E5
+				</text>
+				<text
+					x="90"
+					y="93.5"
+					class="coord-label">
+					(80,80)
+				</text>
+			</svg>
+			<div class="legend">
+				● = perturbation site (~0.05 g BluTack) | ◆ orange = TX PZT (underside)
+				| ◆ blue = RX PZT (underside) | □ green = foam support (nodal) |
+				IDENTICAL to Plate D
+			</div>
+		</div>
+	</body>
+</html>

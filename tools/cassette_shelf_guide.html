@@ -1,0 +1,1633 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM Plate Cassette — Shelf Spacing & Foam Placement Guide</title>
+		<style>
+			body {
+				font-family: 'Helvetica Neue', Arial, sans-serif;
+				margin: 20px;
+				color: #222;
+				background: #f8f8f8;
+			}
+			h1 {
+				font-size: 18px;
+				margin-bottom: 4px;
+			}
+			h2 {
+				font-size: 14px;
+				margin: 0 0 2px 0;
+				color: #444;
+			}
+			.subtitle {
+				font-size: 11px;
+				color: #666;
+				margin-bottom: 12px;
+			}
+			.instructions {
+				font-size: 11px;
+				color: #555;
+				max-width: 700px;
+				margin-bottom: 20px;
+				line-height: 1.5;
+				border: 1px solid #ccc;
+				padding: 10px;
+				background: #fff;
+			}
+			.instructions strong {
+				color: #222;
+			}
+			.guide-page {
+				page-break-after: always;
+				margin-bottom: 30px;
+				background: #fff;
+				padding: 15px;
+				border: 1px solid #ddd;
+				display: inline-block;
+			}
+			.guide-page:last-child {
+				page-break-after: avoid;
+			}
+			.guide-label {
+				font-size: 13px;
+				font-weight: bold;
+				margin-bottom: 2px;
+			}
+			.guide-desc {
+				font-size: 10px;
+				color: #555;
+				margin-bottom: 6px;
+				max-width: 400px;
+			}
+			.legend {
+				font-size: 9px;
+				color: #666;
+				margin-top: 4px;
+			}
+
+			@media print {
+				body {
+					margin: 0;
+					background: #fff;
+				}
+				.instructions {
+					display: none;
+				}
+				.guide-page {
+					border: none;
+					padding: 10mm 0 0 0;
+					page-break-after: always;
+				}
+				.guide-page:last-child {
+					page-break-after: avoid;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>CWM Phase 1.6 — Plate Cassette Build Guides</h1>
+		<h2>Print at 100% scale (no fit-to-page)</h2>
+		<div class="subtitle">
+			Generated 2026-04-11 | 2 templates: wall height guide + shelf foam
+			placement
+		</div>
+
+		<div class="instructions">
+			<strong>Printing Instructions:</strong><br />
+			• Open in browser → File → Print → set Scale to <strong>100%</strong> (not
+			"Fit to page")<br />
+			• Verify: ruler marks should measure exactly 10 mm apart with a physical
+			ruler<br />
+			<br />
+			<strong>Page 1 — Wall Height Guide:</strong><br />
+			• Cut out the vertical strip and tape it to the inside of a cassette side
+			wall<br />
+			• Mark shelf ledge positions at the indicated heights:
+			<strong>25, 75, 125, 175, 225 mm</strong> from bottom<br />
+			• 50 mm center-to-center spacing between shelves → ~43 mm clear air above
+			each plate<br />
+			• All measurements reference the
+			<strong>top surface of each shelf/ledge</strong> (where foam sits)<br />
+			<br />
+			<strong>Page 2 — Shelf Foam Template:</strong><br />
+			• Cut out and place on each shelf ledge to mark the 3 foam support pad
+			positions<br />
+			• Foam pads: ~5 mm × 5 mm × 3 mm thick, topped with thin flattened
+			silicone putty<br />
+			• The 100 mm plate outline shows how the glass sits relative to foam
+			pads<br />
+			• Front edge of shelf is open for plate insertion and PZT wire routing<br />
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — VERTICAL WALL HEIGHT GUIDE
+     300 mm tall cassette, 5 shelf positions
+     ════════════════════════════════════════════════════════ -->
+		<div class="guide-page">
+			<div class="guide-label">Cassette Wall — Shelf Height Guide</div>
+			<div class="guide-desc">
+				Tape to inside of side wall. All heights from bottom edge. Mark ledge
+				tops at each line.
+			</div>
+
+			<!-- 50mm wide × 320mm tall; cassette 300mm occupies y=10..310 -->
+			<svg
+				width="120mm"
+				height="330mm"
+				viewBox="0 0 120 330"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Title -->
+				<text
+					x="60"
+					y="6"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="3.5"
+					font-weight="bold"
+					fill="#000"
+					text-anchor="middle">
+					CASSETTE WALL — SHELF HEIGHTS
+				</text>
+
+				<!-- Outer cassette wall outline: 40mm wide × 300mm tall, starting at (40, 10) -->
+				<rect
+					x="30"
+					y="10"
+					width="60"
+					height="300"
+					fill="none"
+					stroke="#000"
+					stroke-width="0.5" />
+
+				<!-- Bottom label -->
+				<text
+					x="60"
+					y="314"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.5"
+					fill="#444"
+					text-anchor="middle">
+					BOTTOM EDGE
+				</text>
+				<!-- Top label -->
+				<text
+					x="60"
+					y="8.5"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.5"
+					fill="#444"
+					text-anchor="middle">
+					TOP EDGE
+				</text>
+
+				<!-- Y axis: SVG y=310 is bottom (0mm), y=10 is top (300mm) -->
+				<!-- So shelf at H mm from bottom = SVG y = 310 - H -->
+
+				<!-- ── Ruler ticks along left edge ── -->
+				<!-- Every 10mm, labelled every 50mm -->
+				<line
+					x1="25"
+					y1="310"
+					x2="30"
+					y2="310"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="310.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					0
+				</text>
+
+				<line
+					x1="27"
+					y1="300"
+					x2="30"
+					y2="300"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="290"
+					x2="30"
+					y2="290"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="280"
+					x2="30"
+					y2="280"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="270"
+					x2="30"
+					y2="270"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="260"
+					x2="30"
+					y2="260"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="260.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					50
+				</text>
+
+				<line
+					x1="27"
+					y1="250"
+					x2="30"
+					y2="250"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="240"
+					x2="30"
+					y2="240"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="230"
+					x2="30"
+					y2="230"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="220"
+					x2="30"
+					y2="220"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="210"
+					x2="30"
+					y2="210"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="210.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					100
+				</text>
+
+				<line
+					x1="27"
+					y1="200"
+					x2="30"
+					y2="200"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="190"
+					x2="30"
+					y2="190"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="180"
+					x2="30"
+					y2="180"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="170"
+					x2="30"
+					y2="170"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="160"
+					x2="30"
+					y2="160"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="160.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					150
+				</text>
+
+				<line
+					x1="27"
+					y1="150"
+					x2="30"
+					y2="150"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="140"
+					x2="30"
+					y2="140"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="130"
+					x2="30"
+					y2="130"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="120"
+					x2="30"
+					y2="120"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="110"
+					x2="30"
+					y2="110"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="110.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					200
+				</text>
+
+				<line
+					x1="27"
+					y1="100"
+					x2="30"
+					y2="100"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="90"
+					x2="30"
+					y2="90"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="80"
+					x2="30"
+					y2="80"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="70"
+					x2="30"
+					y2="70"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="60"
+					x2="30"
+					y2="60"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="60.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					250
+				</text>
+
+				<line
+					x1="27"
+					y1="50"
+					x2="30"
+					y2="50"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="40"
+					x2="30"
+					y2="40"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="30"
+					x2="30"
+					y2="30"
+					stroke="#000"
+					stroke-width="0.15" />
+				<line
+					x1="27"
+					y1="20"
+					x2="30"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.15" />
+
+				<line
+					x1="25"
+					y1="10"
+					x2="30"
+					y2="10"
+					stroke="#000"
+					stroke-width="0.2" />
+				<text
+					x="23"
+					y="10.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="end">
+					300
+				</text>
+
+				<!-- ── SHELF 1: Plate A at 25mm → SVG y=285 ── -->
+				<line
+					x1="30"
+					y1="285"
+					x2="90"
+					y2="285"
+					stroke="#c00"
+					stroke-width="0.6" />
+				<rect
+					x="30"
+					y="285"
+					width="60"
+					height="5"
+					fill="rgba(220,50,50,0.08)"
+					stroke="none" />
+				<!-- Shelf ledge indicator -->
+				<rect
+					x="30"
+					y="283"
+					width="8"
+					height="2"
+					fill="#c00"
+					opacity="0.3"
+					stroke="#c00"
+					stroke-width="0.2" />
+				<rect
+					x="82"
+					y="283"
+					width="8"
+					height="2"
+					fill="#c00"
+					opacity="0.3"
+					stroke="#c00"
+					stroke-width="0.2" />
+				<!-- Glass plate (1mm thick) -->
+				<rect
+					x="32"
+					y="281.5"
+					width="56"
+					height="1"
+					fill="rgba(100,180,255,0.3)"
+					stroke="#48a"
+					stroke-width="0.15" />
+				<text
+					x="95"
+					y="285.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#c00"
+					text-anchor="start">
+					← 25 mm
+				</text>
+				<text
+					x="95"
+					y="288"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#c00"
+					text-anchor="start">
+					PLATE A
+				</text>
+
+				<!-- ── SHELF 2: Plate B at 75mm → SVG y=235 ── -->
+				<line
+					x1="30"
+					y1="235"
+					x2="90"
+					y2="235"
+					stroke="#06c"
+					stroke-width="0.6" />
+				<rect
+					x="30"
+					y="235"
+					width="60"
+					height="5"
+					fill="rgba(50,100,220,0.08)"
+					stroke="none" />
+				<rect
+					x="30"
+					y="233"
+					width="8"
+					height="2"
+					fill="#06c"
+					opacity="0.3"
+					stroke="#06c"
+					stroke-width="0.2" />
+				<rect
+					x="82"
+					y="233"
+					width="8"
+					height="2"
+					fill="#06c"
+					opacity="0.3"
+					stroke="#06c"
+					stroke-width="0.2" />
+				<rect
+					x="32"
+					y="231.5"
+					width="56"
+					height="1"
+					fill="rgba(100,180,255,0.3)"
+					stroke="#48a"
+					stroke-width="0.15" />
+				<text
+					x="95"
+					y="235.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#06c"
+					text-anchor="start">
+					← 75 mm
+				</text>
+				<text
+					x="95"
+					y="238"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#06c"
+					text-anchor="start">
+					PLATE B
+				</text>
+
+				<!-- ── SHELF 3: Plate C at 125mm → SVG y=185 ── -->
+				<line
+					x1="30"
+					y1="185"
+					x2="90"
+					y2="185"
+					stroke="#080"
+					stroke-width="0.6" />
+				<rect
+					x="30"
+					y="185"
+					width="60"
+					height="5"
+					fill="rgba(50,180,50,0.08)"
+					stroke="none" />
+				<rect
+					x="30"
+					y="183"
+					width="8"
+					height="2"
+					fill="#080"
+					opacity="0.3"
+					stroke="#080"
+					stroke-width="0.2" />
+				<rect
+					x="82"
+					y="183"
+					width="8"
+					height="2"
+					fill="#080"
+					opacity="0.3"
+					stroke="#080"
+					stroke-width="0.2" />
+				<rect
+					x="32"
+					y="181.5"
+					width="56"
+					height="1"
+					fill="rgba(100,180,255,0.3)"
+					stroke="#48a"
+					stroke-width="0.15" />
+				<text
+					x="95"
+					y="185.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#080"
+					text-anchor="start">
+					← 125 mm
+				</text>
+				<text
+					x="95"
+					y="188"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#080"
+					text-anchor="start">
+					PLATE C
+				</text>
+
+				<!-- ── SHELF 4: Plate D at 175mm → SVG y=135 ── -->
+				<line
+					x1="30"
+					y1="135"
+					x2="90"
+					y2="135"
+					stroke="#90c"
+					stroke-width="0.6" />
+				<rect
+					x="30"
+					y="135"
+					width="60"
+					height="5"
+					fill="rgba(180,100,220,0.08)"
+					stroke="none" />
+				<rect
+					x="30"
+					y="133"
+					width="8"
+					height="2"
+					fill="#90c"
+					opacity="0.3"
+					stroke="#90c"
+					stroke-width="0.2" />
+				<rect
+					x="82"
+					y="133"
+					width="8"
+					height="2"
+					fill="#90c"
+					opacity="0.3"
+					stroke="#90c"
+					stroke-width="0.2" />
+				<rect
+					x="32"
+					y="131.5"
+					width="56"
+					height="1"
+					fill="rgba(100,180,255,0.3)"
+					stroke="#48a"
+					stroke-width="0.15" />
+				<text
+					x="95"
+					y="135.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#90c"
+					text-anchor="start">
+					← 175 mm
+				</text>
+				<text
+					x="95"
+					y="138"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#90c"
+					text-anchor="start">
+					PLATE D
+				</text>
+
+				<!-- ── SHELF 5: Plate E at 225mm → SVG y=85 ── -->
+				<line
+					x1="30"
+					y1="85"
+					x2="90"
+					y2="85"
+					stroke="#90c"
+					stroke-width="0.6" />
+				<rect
+					x="30"
+					y="85"
+					width="60"
+					height="5"
+					fill="rgba(180,100,220,0.08)"
+					stroke="none" />
+				<rect
+					x="30"
+					y="83"
+					width="8"
+					height="2"
+					fill="#90c"
+					opacity="0.3"
+					stroke="#90c"
+					stroke-width="0.2" />
+				<rect
+					x="82"
+					y="83"
+					width="8"
+					height="2"
+					fill="#90c"
+					opacity="0.3"
+					stroke="#90c"
+					stroke-width="0.2" />
+				<rect
+					x="32"
+					y="81.5"
+					width="56"
+					height="1"
+					fill="rgba(100,180,255,0.3)"
+					stroke="#48a"
+					stroke-width="0.15" />
+				<text
+					x="95"
+					y="85.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#90c"
+					text-anchor="start">
+					← 225 mm
+				</text>
+				<text
+					x="95"
+					y="88"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#90c"
+					text-anchor="start">
+					PLATE E
+				</text>
+
+				<!-- ── Spacing annotations ── -->
+				<!-- 50mm gap arrows between shelves -->
+				<line
+					x1="18"
+					y1="285"
+					x2="18"
+					y2="235"
+					stroke="#666"
+					stroke-width="0.2" />
+				<line
+					x1="16"
+					y1="285"
+					x2="20"
+					y2="285"
+					stroke="#666"
+					stroke-width="0.2" />
+				<line
+					x1="16"
+					y1="235"
+					x2="20"
+					y2="235"
+					stroke="#666"
+					stroke-width="0.2" />
+				<text
+					x="18"
+					y="262"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#666"
+					text-anchor="middle"
+					transform="rotate(-90,18,262)">
+					50 mm
+				</text>
+
+				<line
+					x1="18"
+					y1="235"
+					x2="18"
+					y2="185"
+					stroke="#666"
+					stroke-width="0.2" />
+				<line
+					x1="16"
+					y1="185"
+					x2="20"
+					y2="185"
+					stroke="#666"
+					stroke-width="0.2" />
+				<text
+					x="18"
+					y="212"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#666"
+					text-anchor="middle"
+					transform="rotate(-90,18,212)">
+					50 mm
+				</text>
+
+				<line
+					x1="18"
+					y1="185"
+					x2="18"
+					y2="135"
+					stroke="#666"
+					stroke-width="0.2" />
+				<line
+					x1="16"
+					y1="135"
+					x2="20"
+					y2="135"
+					stroke="#666"
+					stroke-width="0.2" />
+				<text
+					x="18"
+					y="162"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#666"
+					text-anchor="middle"
+					transform="rotate(-90,18,162)">
+					50 mm
+				</text>
+
+				<line
+					x1="18"
+					y1="135"
+					x2="18"
+					y2="85"
+					stroke="#666"
+					stroke-width="0.2" />
+				<line
+					x1="16"
+					y1="85"
+					x2="20"
+					y2="85"
+					stroke="#666"
+					stroke-width="0.2" />
+				<text
+					x="18"
+					y="112"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#666"
+					text-anchor="middle"
+					transform="rotate(-90,18,112)">
+					50 mm
+				</text>
+
+				<!-- Bottom margin -->
+				<line
+					x1="12"
+					y1="310"
+					x2="12"
+					y2="285"
+					stroke="#999"
+					stroke-width="0.15"
+					stroke-dasharray="0.5,0.5" />
+				<text
+					x="12"
+					y="299"
+					font-family="'Courier New', monospace"
+					font-size="1.5"
+					fill="#999"
+					text-anchor="middle"
+					transform="rotate(-90,12,299)">
+					25 mm
+				</text>
+
+				<!-- Top margin -->
+				<line
+					x1="12"
+					y1="85"
+					x2="12"
+					y2="10"
+					stroke="#999"
+					stroke-width="0.15"
+					stroke-dasharray="0.5,0.5" />
+				<text
+					x="12"
+					y="50"
+					font-family="'Courier New', monospace"
+					font-size="1.5"
+					fill="#999"
+					text-anchor="middle"
+					transform="rotate(-90,12,50)">
+					75 mm
+				</text>
+
+				<!-- Cut marks -->
+				<line
+					x1="27"
+					y1="10"
+					x2="29"
+					y2="10"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="30"
+					y1="7"
+					x2="30"
+					y2="9"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="91"
+					y1="10"
+					x2="93"
+					y2="10"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="90"
+					y1="7"
+					x2="90"
+					y2="9"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="27"
+					y1="310"
+					x2="29"
+					y2="310"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="30"
+					y1="311"
+					x2="30"
+					y2="313"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="91"
+					y1="310"
+					x2="93"
+					y2="310"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="90"
+					y1="311"
+					x2="90"
+					y2="313"
+					stroke="#000"
+					stroke-width="0.1" />
+
+				<!-- Side-view cross-section detail for one slot -->
+				<text
+					x="60"
+					y="322"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="middle">
+					Ledge tops = shelf height | Blue = glass (1mm) | Colored blocks =
+					ledges
+				</text>
+				<text
+					x="60"
+					y="326"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#444"
+					text-anchor="middle">
+					Wire routing: front edge open | All heights from cassette bottom
+				</text>
+			</svg>
+			<div class="legend">
+				Heights reference top of shelf ledge (where foam sits) | 50 mm
+				center-to-center | Cut strip and tape to wall interior
+			</div>
+		</div>
+
+		<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — SHELF TOP-DOWN FOAM PLACEMENT TEMPLATE
+     Shows 100mm plate footprint + 3 foam pad locations
+     ════════════════════════════════════════════════════════ -->
+		<div class="guide-page">
+			<div class="guide-label">Shelf Foam Pad — Placement Template</div>
+			<div class="guide-desc">
+				Top-down view. Cut out and place on each shelf to mark foam pad
+				positions. Same template for all 5 shelves. Front edge faces you (open
+				for plate insertion).
+			</div>
+
+			<!-- 130mm × 130mm like the plate templates; shelf area = plate footprint -->
+			<svg
+				width="140mm"
+				height="140mm"
+				viewBox="0 0 140 140"
+				xmlns="http://www.w3.org/2000/svg">
+				<!-- Title -->
+				<text
+					x="70"
+					y="6"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="3.5"
+					font-weight="bold"
+					fill="#000"
+					text-anchor="middle">
+					SHELF FOAM PLACEMENT — TOP VIEW
+				</text>
+
+				<!-- Shelf surface outline (should be ≥ plate footprint)
+         Assume shelf is ~120mm wide × 110mm deep to give a bit of margin
+         Shelf at (10, 15) → 120 wide × 110 deep -->
+				<rect
+					x="10"
+					y="15"
+					width="120"
+					height="115"
+					fill="rgba(200,180,140,0.15)"
+					stroke="#a90"
+					stroke-width="0.4"
+					stroke-dasharray="1,0.5" />
+				<text
+					x="70"
+					y="13"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#a90"
+					text-anchor="middle">
+					SHELF SURFACE (indicative)
+				</text>
+
+				<!-- Front edge label (open side) -->
+				<text
+					x="70"
+					y="133"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.5"
+					font-weight="bold"
+					fill="#c00"
+					text-anchor="middle">
+					▼ FRONT EDGE — OPEN (plate slides in here) ▼
+				</text>
+
+				<!-- Back edge label -->
+				<text
+					x="70"
+					y="18"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2"
+					fill="#666"
+					text-anchor="middle">
+					BACK WALL
+				</text>
+
+				<!-- 100mm plate footprint (ghost outline to show where glass will sit)
+         Plate centered on shelf: at (20, 20), 100×100 -->
+				<rect
+					x="20"
+					y="20"
+					width="100"
+					height="100"
+					fill="none"
+					stroke="#48a"
+					stroke-width="0.4"
+					stroke-dasharray="1.5,0.8" />
+				<text
+					x="70"
+					y="72"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="3"
+					fill="rgba(70,140,200,0.4)"
+					text-anchor="middle">
+					100 × 100 mm PLATE (ghost)
+				</text>
+
+				<!-- Rulers — top edge of plate footprint -->
+				<line
+					x1="20"
+					y1="18"
+					x2="20"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="20"
+					y="16.5"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="middle">
+					0
+				</text>
+				<line
+					x1="30"
+					y1="18.5"
+					x2="30"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="40"
+					y1="18.5"
+					x2="40"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="50"
+					y1="18.5"
+					x2="50"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="60"
+					y1="18.5"
+					x2="60"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="70"
+					y1="18"
+					x2="70"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="70"
+					y="16.5"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="middle">
+					50
+				</text>
+				<line
+					x1="80"
+					y1="18.5"
+					x2="80"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="90"
+					y1="18.5"
+					x2="90"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="100"
+					y1="18.5"
+					x2="100"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="110"
+					y1="18.5"
+					x2="110"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="120"
+					y1="18"
+					x2="120"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="120"
+					y="16.5"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="middle">
+					100
+				</text>
+
+				<!-- Rulers — left edge of plate footprint -->
+				<line
+					x1="18"
+					y1="20"
+					x2="20"
+					y2="20"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="16"
+					y="20.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="end">
+					0
+				</text>
+				<line
+					x1="18.5"
+					y1="30"
+					x2="20"
+					y2="30"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="40"
+					x2="20"
+					y2="40"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="50"
+					x2="20"
+					y2="50"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="60"
+					x2="20"
+					y2="60"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18"
+					y1="70"
+					x2="20"
+					y2="70"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="16"
+					y="70.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="end">
+					50
+				</text>
+				<line
+					x1="18.5"
+					y1="80"
+					x2="20"
+					y2="80"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="90"
+					x2="20"
+					y2="90"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="100"
+					x2="20"
+					y2="100"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18.5"
+					y1="110"
+					x2="20"
+					y2="110"
+					stroke="#000"
+					stroke-width="0.12" />
+				<line
+					x1="18"
+					y1="120"
+					x2="20"
+					y2="120"
+					stroke="#000"
+					stroke-width="0.15" />
+				<text
+					x="16"
+					y="120.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#444"
+					text-anchor="end">
+					100
+				</text>
+
+				<!-- PZT ghost outlines (on underside of plate, won't touch shelf)
+         TX at plate (5,95) → shelf view: since plate is face-down,
+         PZTs face UP. But from top-view looking down at shelf,
+         the plate sits on foam with PZTs underneath (between glass and shelf).
+         We show them as reference ghosts. -->
+				<!-- TX at plate corner (5,95) → SVG (25, 115) -->
+				<circle
+					cx="25"
+					cy="115"
+					r="5"
+					fill="none"
+					stroke="#d80"
+					stroke-width="0.3"
+					stroke-dasharray="0.8,0.5"
+					opacity="0.5" />
+				<text
+					x="25"
+					y="115.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#d80"
+					text-anchor="middle"
+					opacity="0.6">
+					TX
+				</text>
+				<!-- RX at plate corner (95,5) → SVG (115, 25) -->
+				<circle
+					cx="115"
+					cy="25"
+					r="5"
+					fill="none"
+					stroke="#08a"
+					stroke-width="0.3"
+					stroke-dasharray="0.8,0.5"
+					opacity="0.5" />
+				<text
+					x="115"
+					y="25.7"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#08a"
+					text-anchor="middle"
+					opacity="0.6">
+					RX
+				</text>
+
+				<!-- ═══ FOAM PADS — the main feature ═══ -->
+				<!-- F1: plate (22,22) → SVG (42, 42) -->
+				<rect
+					x="39.5"
+					y="39.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					fill="rgba(60,180,80,0.3)"
+					stroke="#2a2"
+					stroke-width="0.4" />
+				<text
+					x="42"
+					y="42.8"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#2a2"
+					text-anchor="middle">
+					F1
+				</text>
+				<text
+					x="42"
+					y="47"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#2a2"
+					text-anchor="middle">
+					(22, 22)
+				</text>
+
+				<!-- F2: plate (78,22) → SVG (98, 42) -->
+				<rect
+					x="95.5"
+					y="39.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					fill="rgba(60,180,80,0.3)"
+					stroke="#2a2"
+					stroke-width="0.4" />
+				<text
+					x="98"
+					y="42.8"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#2a2"
+					text-anchor="middle">
+					F2
+				</text>
+				<text
+					x="98"
+					y="47"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#2a2"
+					text-anchor="middle">
+					(78, 22)
+				</text>
+
+				<!-- F3: plate (50,78) → SVG (70, 98) -->
+				<rect
+					x="67.5"
+					y="95.5"
+					width="5"
+					height="5"
+					rx="0.8"
+					fill="rgba(60,180,80,0.3)"
+					stroke="#2a2"
+					stroke-width="0.4" />
+				<text
+					x="70"
+					y="98.8"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="2.2"
+					font-weight="bold"
+					fill="#2a2"
+					text-anchor="middle">
+					F3
+				</text>
+				<text
+					x="70"
+					y="103"
+					font-family="'Courier New', monospace"
+					font-size="1.8"
+					fill="#2a2"
+					text-anchor="middle">
+					(50, 78)
+				</text>
+
+				<!-- Triangle connecting foam pads -->
+				<polygon
+					points="42,42 98,42 70,98"
+					fill="none"
+					stroke="#2a2"
+					stroke-width="0.2"
+					stroke-dasharray="1,0.8"
+					opacity="0.4" />
+
+				<!-- Dimension annotation: F1–F2 distance -->
+				<line
+					x1="42"
+					y1="52"
+					x2="98"
+					y2="52"
+					stroke="#2a2"
+					stroke-width="0.15" />
+				<text
+					x="70"
+					y="54.5"
+					font-family="'Courier New', monospace"
+					font-size="1.6"
+					fill="#2a2"
+					text-anchor="middle">
+					56 mm
+				</text>
+
+				<!-- Dimension annotation: center to F3 vertical -->
+				<line
+					x1="70"
+					y1="42"
+					x2="70"
+					y2="98"
+					stroke="#2a2"
+					stroke-width="0.15"
+					stroke-dasharray="0.5,0.5" />
+				<text
+					x="76"
+					y="72"
+					font-family="'Courier New', monospace"
+					font-size="1.6"
+					fill="#2a2"
+					text-anchor="start">
+					56 mm
+				</text>
+
+				<!-- Assembly notes -->
+				<text
+					x="70"
+					y="108"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#555"
+					text-anchor="middle">
+					Foam ~5×5×3 mm on shelf, topped with thin silicone putty
+				</text>
+				<text
+					x="70"
+					y="111"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.8"
+					fill="#555"
+					text-anchor="middle">
+					Place glass plate on top — PZTs face down into gaps between pads
+				</text>
+
+				<!-- Wire routing indicators -->
+				<line
+					x1="25"
+					y1="120"
+					x2="25"
+					y2="128"
+					stroke="#d80"
+					stroke-width="0.3"
+					stroke-dasharray="0.5,0.3" />
+				<text
+					x="25"
+					y="130"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.5"
+					fill="#d80"
+					text-anchor="middle">
+					TX wire →
+				</text>
+				<line
+					x1="115"
+					y1="120"
+					x2="115"
+					y2="128"
+					stroke="#08a"
+					stroke-width="0.3"
+					stroke-dasharray="0.5,0.3" />
+				<text
+					x="115"
+					y="130"
+					font-family="'Helvetica Neue', Arial, sans-serif"
+					font-size="1.5"
+					fill="#08a"
+					text-anchor="middle">
+					RX wire →
+				</text>
+
+				<!-- Cut marks -->
+				<line
+					x1="7"
+					y1="15"
+					x2="9"
+					y2="15"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="10"
+					y1="12"
+					x2="10"
+					y2="14"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="131"
+					y1="15"
+					x2="133"
+					y2="15"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="130"
+					y1="12"
+					x2="130"
+					y2="14"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="7"
+					y1="130"
+					x2="9"
+					y2="130"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="10"
+					y1="131"
+					x2="10"
+					y2="133"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="131"
+					y1="130"
+					x2="133"
+					y2="130"
+					stroke="#000"
+					stroke-width="0.1" />
+				<line
+					x1="130"
+					y1="131"
+					x2="130"
+					y2="133"
+					stroke="#000"
+					stroke-width="0.1" />
+			</svg>
+			<div class="legend">
+				□ green = foam pad (5×5×3 mm + silicone putty) | Dashed blue = plate
+				footprint (100×100 mm) | Dashed orange/blue circles = PZT locations
+				(underside)
+			</div>
+		</div>
+	</body>
+</html>
