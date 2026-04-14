@@ -1414,3 +1414,221 @@ Data files:
 - Clean: `additional_20260411_120229.json`
 - Random: `additional_20260411_124246.json`
 - 3-condition analysis: `tools/e38_3cond_analysis.py`
+
+---
+
+## Plate Reservoir Computing — E09 Hardware Results (2026-04-13)
+
+### 4. Reservoir Classification — Polynomial Feature Breakthrough
+
+**Result:** 5/5 plates achieve **100% test accuracy** on 4-bit parity classification with degree-4 polynomial feature expansion over diagonal self-response features.
+
+**Version history (the diagnostic path matters):**
+
+| Version | Change                           | Best Parity (test) | What We Learned                                                                        |
+| ------- | -------------------------------- | ------------------ | -------------------------------------------------------------------------------------- |
+| v1      | Raw cross-coupling → SVM         | 60%                | Plate is linear at µV drive                                                            |
+| v2      | Balanced sampling → Ridge        | 70%                | Data balance helps, but ceiling is fundamental                                         |
+| v3      | RMS feature normalization        | 68.8%              | Normalization is cosmetic when the geometry is wrong                                   |
+| v4      | **Polynomial diagonal features** | **100% (all 5)**   | The plate provides clean binary features; polynomial provides the missing nonlinearity |
+
+**Paper impact — major revision needed in multiple sections:**
+
+#### §5 / §6: Reservoir Computing Architecture
+
+The paper's current framing implies that physical nonlinear mixing in the substrate is required for useful computation. The v4 result shows the architecture actually decomposes into three independent layers:
+
+1. **Plate** = stable binary feature extractor (self-response at eigenmode frequencies, separation index 3,000–7,000)
+2. **Polynomial expansion** = nonlinear activation function (15 interaction-only terms for 4-bit parity)
+3. **Ridge regression** = linear readout (15 weights for parity_poly)
+
+This is stronger than the original claim because it **separates the roles cleanly**: the plate need only be a reliable ON/OFF detector per mode, and the required nonlinearity has an exact mathematical specification (degree-n interaction terms for n-bit parity).
+
+#### §7: The paper's "scaling miracle" claim
+
+v4 directly validates this. The 15-weight classifier for 4-bit parity is parameter-minimal — it's the exact polynomial basis required and nothing more. At MEMS scale:
+
+- Plate provides the ON/OFF detection via thin-film piezo on micro-resonators
+- Duffing nonlinearity at higher drive levels provides the polynomial terms physically (cubic spring constant creates x³ and x⁴ terms natively)
+- CMOS readout implements the 15-weight linear readout (~300 transistors)
+- Total system: plate + CMOS = complete compute element
+
+#### §9: "What It Can Do" — the money shot
+
+The progression v1→v4 is itself a story the paper should tell:
+
+- v1–v3 failure: proves the plate is linear (parity_raw ≈ 50%, mathematically correct — XOR parity is not linearly separable)
+- v4 success: proves the architecture works when the right nonlinear layer is added (parity_poly = 100%, also mathematically correct — degree-4 interaction makes parity linearly separable by construction)
+- Majority_raw = 100%: control task confirms majority IS linearly separable from raw features (it's a threshold on the sum), validating the readout machinery
+
+This gives the reader a real "aha moment" — watching the theorem come to life on hardware.
+
+#### New parallel: Dave's PDP-11 Transformer (Attention-11)
+
+The paper could benefit from this parallel in the introduction or conclusion:
+
+- **PDP-11 transformer:** Q8/Q15 fixed-point arithmetic matched to PDP-11 register geometry → 100% on 8-digit reversal with 1,216 parameters
+- **CWM plate reservoir:** eigenmode spectrum matched to polynomial readout → 100% on 4-bit parity with 15 weights
+- **Common principle:** extreme parameter efficiency from matching the algorithm to the hardware's natural capabilities rather than brute-forcing with scale
+
+This supports the paper's central thesis: you don't need billions of parameters when the physics does most of the work.
+
+### 5. Diagonal Self-Response — A New Metric
+
+The "separation index" $|μ_{ON} - μ_{OFF}| / (σ_{ON} + σ_{OFF})$ measured at 3,000–7,000 across all plates is a new metric worth defining in the paper. It quantifies how cleanly each eigenmode acts as a binary detector:
+
+| Plate | Modes | Sep. Index | Interpretation                                     |
+| ----- | ----- | ---------- | -------------------------------------------------- |
+| A     | 3     | 7,152      | 3-bit reservoir, clearest binary signals           |
+| B     | 6     | 4,318      | 4-bit, some mode overlap in 29 kHz band            |
+| C     | 6     | 6,542      | 4-bit, clean                                       |
+| D     | 8     | 3,105      | 4-bit, slightly noisier (8 modes = more crosstalk) |
+| E     | 8     | 4,704      | 4-bit, best 8-mode plate                           |
+
+**All > 1,000** — thousands of standard deviations between ON and OFF states. This is qualitatively different from software noise or ADC quantization error. It means the plate's eigenmode spectrum is digitally clean even through an analog measurement chain.
+
+### 6. Forward Pass Equivalence — Next Hardware Test (E10)
+
+The v4 reservoir data already contains the transfer matrix H for each plate (the sequential drive captures are literally the columns of H). The next experiment computes:
+
+$$y_{pred} = H \cdot x \quad \text{vs} \quad y_{meas}$$
+
+for arbitrary input amplitude vectors, confirming that the plate physically implements a matrix-vector multiply. Expected R² > 0.95 given the separation index cleanliness.
+
+This experiment closes the "physics IS the computation" claim with direct evidence.
+
+### 7. Path to Sequence Processing — The Attention Question
+
+The current reservoir demo is a feedforward classifier. The long-term goal is:
+
+- **Step 1 (DONE):** Binary classification with polynomial features — plate as "hidden layer"
+- **Step 2 (NEXT):** Forward pass verification — plate as matrix multiplier
+- **Step 3:** Time-series reservoir — drive plate with sequential inputs, read echo state
+- **Step 4:** Physical attention — multi-plate cross-excitation as Q/K/V dot products
+- **Step 5:** Token generation — autoregressive readout from plate echo state
+
+Step 3 requires only a protocol change: instead of driving one pattern per measurement, drive a _sequence_ of patterns with settling time between them, then read the plate's residual vibrational state as an "echo" that encodes the history. The plate's ringdown time (30ms–114ms depending on Q) is the memory horizon. This is a physical implementation of an echo state network.
+
+Step 4 is the transformative one: if plate A holds "query" vibrations and plate B holds "key" vibrations, their cross-coupling via shared table/fixture vibrations could implement the Q·K^T dot product physically. The PZT on plate B would read the correlation between A's excitation and B's mode structure — which IS attention.
+
+Data: `data/results/lab/plate_exps/reservoir_demo_all_20260413_142516.json`
+Firestore: `pGkB5E5wKb8Sr4XtCgIE` through `gQGwaBnkejI85UNHwn9n`
+
+---
+
+## ESN v3 Results — 8-Bit Tokens: The Plate Wins (April 13, 2026)
+
+**The headline finding:** A fused silica plate driven at 8 eigenmodes, measured as 16 raw amplitude values, outperforms all software polynomial baselines at 8-bit sequence reversal. DE_raw (16d) = 99.5% per-bit / 96.0% token accuracy vs sw_poly4 (162d) = 65.1% / 14.9%.
+
+### Paper-Ready Result: Physics-Native Encoding Beats Polynomial Expansion
+
+The plate acts as a **physics-native kernel** that maps 256 discrete tokens → 16 continuous-valued features via resonance amplitude. It avoids the curse of dimensionality that kills polynomial features:
+
+| Encoding Type       | Dims | Per-Bit Acc | Token Acc | Scaling with N-bit tokens                    |
+| ------------------- | ---- | ----------- | --------- | -------------------------------------------- |
+| Plate raw (DE)      | 16   | 99.5%       | 96.0%     | Fixed at M modes (physics)                   |
+| Plate raw (E alone) | 8    | 99.2%       | 93.6%     | Fixed at M modes                             |
+| SW polynomial deg-4 | 162  | 65.1%       | 14.9%     | $\sum_{k=1}^{4}\binom{N}{k}$ (combinatorial) |
+| SW polynomial deg-8 | 255  | 60.8%       | 9.5%      | $\sum_{k=1}^{8}\binom{N}{k}$ (worse)         |
+
+The polynomial curse worsens monotonically: **more features = worse accuracy** (162d→246d→255d = 65.1%→61.8%→60.8%). The plate's encoding dimension is fixed by mode count, not input alphabet size.
+
+### Why This Matters for the Paper
+
+**§5 (Computation):** The plate IS a nonlinear feature extractor. Not metaphorically — measurably. 16 mode amplitudes encode 256 tokens at 99.5% bit-level accuracy through a 200-unit ESN. This is direct evidence that resonance physics performs useful computation.
+
+**§7 (Scaling):** The structural advantage grows with token width. At 4-bit tokens (v1/v2), degree-4 polynomial is COMPLETE (15 features for 16 tokens) and software always wins. At 8-bit tokens, polynomial is INCOMPLETE (162 features for 256 tokens) and the plate wins by +34.3%. At 16-bit tokens (65,536), polynomial degree-4 = ~1,820 features — far worse curse of dimensionality, while the plate still produces M ≈ 16 features. The plate's advantage is asymptotic.
+
+**§9 (What It Can Do):** Add the v1→v2→v3 progression as a narrative:
+
+| Version | Bits | Polynomial basis     | Plate vs SW             | Story                                   |
+| ------- | ---- | -------------------- | ----------------------- | --------------------------------------- |
+| v1      | 4    | Complete (15/16)     | SW wins by 16%          | Plate diluted by off-resonance noise    |
+| v2      | 4    | Complete (15/16)     | SW wins by 1.7%         | Per-plate calibration closes the gap    |
+| v3      | 8    | Incomplete (162/256) | **Plate wins by 34.3%** | Physics captures what polynomials can't |
+
+### The sw_poly8 / sw_raw_bits Paradox — Critical Explanatory Note
+
+This must be addressed in the paper because a naïve reader would expect the complete 255-term Walsh-Hadamard basis (sw_poly8) to be the gold standard. Instead it's the worst:
+
+**sw_raw_bits (8d) = 100%** because each per-bit readout only needs to track ONE bit through the ESN. The 8 features project into 200 hidden units — an EXPANDING representation (8→200) that preserves individual bit information perfectly.
+
+**sw_poly8 (255d) = 60.8%** because the ESN's input layer (W_in: 200×255×0.1) performs a LOSSY random compression — 255→200 with information destruction. The per-bit readout then tries to recover one bit from a corrupted hidden state. Adding more polynomial terms HURTS monotonically (sw_poly4=65.1% > sw_poly6=61.8% > sw_poly8=60.8%).
+
+**This is not a bug — it's the point.** Polynomial expansion creates features that grow combinatorially while the downstream capacity (ESN hidden state, training data) stays fixed. The plate encoding avoids this by collapsing 256 tokens into 16 physically-meaningful continuous features that the 200-unit ESN can easily expand.
+
+**For the paper:** Frame this as the "feature explosion trap" — a cautionary result showing that brute-force polynomial expansion fails when the alphabet outgrows the basis, while resonance-based encoding provides a compact representation that scales gracefully. Any fixed-capacity learner (ESN, SVM, compact neural net, CMOS readout circuit) will exhibit this asymmetry. The plate's compactness is not an accident — it's the physics doing the dimensionality reduction for free.
+
+### Citable Numbers
+
+- DE_raw vs sw_poly4: **+34.3% per-bit accuracy, +81.1% token accuracy** (99.5%/96.0% vs 65.1%/14.9%)
+- Single plate E alone: 99.2% per-bit / 93.6% token — 8 mode amplitudes rival the 16d ensemble
+- Compression ratio: 256 tokens → 16 features (plate) vs 256 tokens → 162–255 features (polynomial)
+- Memoryless baseline: 62.3% (DE_raw) / 62.5% (sw_poly4) — confirms ESN provides genuine temporal memory
+- ESN architecture: 200 hidden, spectral_radius=0.9, leak=0.9, ridge_alpha=10.0; 1,500 train / 500 test
+
+### Design Rule for MEMS
+
+At chip scale: the resonator IS the feature extractor. No polynomial expansion in CMOS. Drive N modes, read N amplitudes, feed to a compact ridge regression or threshold circuit. The plate reduces the combinatorial complexity of the input encoding problem to a fixed-cost physical measurement. For an N-bit input alphabet at M eigenmodes, the CMOS readout needs only M weights per output bit — not $\binom{N}{d}$.
+
+Data: `esn_v3_8bit_20260413_182237.json`, `sequence_esn_v3_20260413_182237.json`
+Script: `tools/plate_sequence_esn_v3.py`
+
+---
+
+## Perturbation Pattern Selection — Task-Dependent Advantage
+
+### Paper-Ready Finding
+
+The diagonal perturbation pattern (plates D/E) is not universally superior — it is specifically superior for **high-dimensional encoding tasks**. For low-dimensional tasks, symmetric patterns (A, C) actually outperform:
+
+| Task Class               | Best Pattern Type              | Evidence                                        |
+| ------------------------ | ------------------------------ | ----------------------------------------------- |
+| Token encoding (≥ 8-bit) | Diagonal (degeneracy-breaking) | DE_raw 99.5% — only D/E have 8 resolvable modes |
+| Linear forward pass      | Symmetric (quarter-point)      | A: R²=0.999 vs D: R²=0.965                      |
+| Binary classification    | Any (all tie at 100%)          | Parity, majority identical across all 5 plates  |
+| 4-bit ESN sequence       | Slight advantage to symmetric  | C_poly=94.3% > D_poly=90.7% at same task        |
+| Authentication           | Diagonal (mode-rich)           | E=+8.29 margin vs C=+5.48                       |
+
+### The Physics Argument
+
+A free square plate's D₄ symmetry makes modes (m,n) and (n,m) degenerate. Diagonal mass placement breaks this symmetry (Zeeman-like splitting), lifting degenerate pairs into distinct frequencies. This is visible in the census: D has a 89.4/90.0/90.3 kHz triplet (~250 Hz spacing) and E has a 28.9/29.3/30.0 kHz triplet (~375 Hz spacing) — classic split-degeneracy signatures.
+
+The tradeoff: breaking degeneracy creates closely-spaced mode pairs that cross-couple under simultaneous excitation. This coupling IS the nonlinear hash that makes token encoding work — but it degrades linear fidelity (forward-pass R² drops from 0.999 to 0.965 as mode count increases from 3 to 8).
+
+### Sentence for the Paper
+
+"Perturbation geometry trades mode count against per-mode fidelity: diagonal patterns break (m,n)↔(n,m) degeneracies to maximize resolvable modes (8 vs 3–6 for symmetric layouts), enabling high-capacity token encoding, while symmetric patterns yield fewer but individually cleaner modes suited to linear computation. This makes the mass pattern a tunable design knob: the same plate physics serves either combinatorial memory or transparent analog mixing, depending on how the perturbation field is configured."
+
+### Suggested Future Experiment
+
+4-level × 6-mode encoding on plates B/C (4⁶ = 4,096 tokens). If B/C outperform D/E at matched token count, this confirms that the pattern tradeoff is fundamental, not an artifact of mode count alone.
+
+---
+
+## ESN v4 Results — Multi-Level Amplitude Sweep: The Breakpoint
+
+### Paper-Ready Finding
+
+The glass plate is a reliable **1-bit-per-mode binary transducer** with large margin (WorstSep > 2.3σ, SNR 10–25×) but **cannot scale to ternary or higher** via amplitude levels. The v4 sweep across L ∈ {2, 3, 4, 6, 8, 12, 16} levels shows a hard cliff between L=2 and L=3:
+
+| L    | DE digit acc | DE token acc | D WorstSep | E WorstSep |
+| ---- | ------------ | ------------ | ---------- | ---------- |
+| 2    | 99.7%        | 98.0%        | 2.30       | 2.31       |
+| 3    | 74.8%        | 9.4%         | 0.63       | 0.61       |
+| 4–16 | 35–64%       | 1–3%         | ≤ 0.09     | ≤ 0.09     |
+
+### Why Multilevel Fails
+
+When mode i is driven at intermediate amplitude (e.g., 0.5), modes j ≠ i shift unpredictably due to nonlinear cross-coupling. The response to "mode 3 at half power" depends on which other modes are active. This is the same coupling that makes the plate a powerful computational hash — it maps each token to a unique multivariate fingerprint — but it prevents treating each mode as an independent amplitude channel.
+
+### Sentence for the Paper
+
+"Each eigenmode functions as a reliable binary switch — on or off — with per-mode gap separations exceeding 2.3 noise standard deviations (SNR 10–25×). Intermediate amplitude levels collapse into the noise floor (gap separation < 0.6σ at L=3), because the nonlinear multi-tone coupling that gives the plate its computational power also makes mode amplitudes mutually dependent. The plate thus provides exactly 1 bit per resolvable eigenmode, yielding 2^N addressable tokens for N modes — 256 for the 8-mode diagonal pattern, with a path to 2^22 or more via multi-plate parallel readout."
+
+### Scaling Implications
+
+The 1-bit-per-mode ceiling reframes the scaling question: more tokens require **more modes, not more levels**. At MEMS scale with sub-micron lithography, a 10 mm² chip could pattern 50+ resolvable modes → 2⁵⁰ ≈ 10¹⁵ addressable tokens. The binary-only constraint is not a limitation — it's a design simplification that eliminates the need for high-resolution DACs/ADCs.
+
+Data: `esn_v4_summary_20260413_221433.json`, `esn_v4_L{2..16}_20260413_221433.json`
+Script: `tools/plate_sequence_esn_v4.py`

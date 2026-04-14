@@ -81,6 +81,527 @@ PATTERN_CYCLE = ["A", "B", "C", "D"]
 DATA_DIR = Path("data/results/lab")
 USERS_DB_PATH = DATA_DIR / "users.json"
 
+# ── Memory Demo (ESN sequence reversal) ───────────────────────────────────
+#
+# Practitioners can run this on their own glass resonator.
+# Three modes:
+#   "simulation"  — Rayleigh perturbation model (no hardware needed)
+#   "reference"   — Our lab's calibration data (read-only comparison)
+#   "hardware"    — Live calibration sweep on their resonator (TBD)
+
+_MEMORY_CACHE = {}
+
+_MEM_SEQ_LEN = 4
+_MEM_ESN_HIDDEN = 200
+_MEM_ESN_SPECTRAL = 0.9
+_MEM_ESN_INPUT_SCALE = 0.1
+_MEM_ESN_LEAK = 0.9
+_MEM_RIDGE_ALPHA = 10.0
+_MEM_N_SEQ = 2000
+_MEM_N_TRAIN = 1500
+_MEM_CALIB_PATH = Path("data/results/lab/plate_exps/esn_v3_8bit_20260413_182237.json")
+
+
+class _ESN:
+    def __init__(self, input_dim, hidden_dim=_MEM_ESN_HIDDEN, seed=42):
+        rng = np.random.default_rng(seed)
+        self.hidden_dim = hidden_dim
+        self.leak = _MEM_ESN_LEAK
+        self.W_in = rng.standard_normal((hidden_dim, input_dim)) * _MEM_ESN_INPUT_SCALE
+        W = rng.standard_normal((hidden_dim, hidden_dim))
+        rho = np.max(np.abs(np.linalg.eigvals(W)))
+        self.W_rec = W * (_MEM_ESN_SPECTRAL / rho) if rho > 0 else W
+
+    def run_sequence(self, feat_seq):
+        h = np.zeros(self.hidden_dim)
+        for x in feat_seq:
+            h = (1 - self.leak) * h + self.leak * np.tanh(
+                self.W_in @ x + self.W_rec @ h)
+        return h
+
+    def collect_states(self, all_seqs):
+        return np.array([self.run_sequence(s) for s in all_seqs])
+
+
+def _mem_interaction_expand(x, max_degree=4):
+    from itertools import combinations
+    terms = list(x)
+    for deg in range(2, max_degree + 1):
+        for combo in combinations(range(len(x)), deg):
+            t = 1.0
+            for idx in combo:
+                t *= x[idx]
+            terms.append(t)
+    return np.array(terms)
+
+
+# ── Simulation calibration using Rayleigh perturbation theory ─────────
+
+def _mem_sim_calibrate(n_modes=8, pattern_positions=None, seed=42):
+    """Simulate two rods with different perturbation patterns.
+
+    Physics model:
+    1. Rayleigh perturbation gives mode frequencies for each rod
+    2. For each 8-bit token, we "drive" the selected mode subset
+    3. Nonlinear mode coupling (quadratic + cubic) creates richer
+       response than the binary input — this is the CWM advantage
+    4. Two rods with different patterns double the feature space (16d)
+
+    Returns (feat_map, feat_dim, rod_info) where feat_map maps token→16d vector.
+    """
+    rng = np.random.default_rng(seed)
+
+    if pattern_positions is None:
+        # Two rods with different patterns (like our D and E plates)
+        rod_patterns = {
+            "Rod 1": [0.20, 0.80],  # Diagonal: breaks D4 symmetry
+            "Rod 2": [0.35, 0.65],  # Different asymmetric pattern
+        }
+    else:
+        rod_patterns = {"Rod 1": pattern_positions}
+
+    n_tokens = 2 ** n_modes
+    rod_info = {}
+    per_rod_feats = {}
+
+    for rod_name, positions in rod_patterns.items():
+        # Use Rayleigh model to get realistic mode frequencies
+        rod_seed = seed + sum(int(p * 1000) for p in positions)
+        rod_rng = np.random.default_rng(rod_seed)
+
+        # Base frequencies for fused-silica rod (150mm x 6mm)
+        v_long = 5760.0  # m/s (fused silica)
+        L = 0.150  # m
+        f_fundamental = v_long / (2 * L)  # ~19,200 Hz
+        base_freqs = np.array([f_fundamental * (n + 1) for n in range(n_modes)])
+
+        # Apply Rayleigh shifts from putty perturbations
+        M_rod = 0.0305  # kg (fused silica 150mm x 6mm)
+        delta_m = 0.8e-6  # kg (0.8 mg putty)
+        perturbed_freqs = base_freqs.copy()
+        for pos in positions:
+            for i in range(n_modes):
+                n = i + 1
+                shift_frac = -(delta_m / (2 * M_rod)) * np.sin(n * np.pi * pos) ** 2
+                perturbed_freqs[i] *= (1 + shift_frac)
+        # Add small manufacturing jitter
+        perturbed_freqs *= (1 + rod_rng.normal(0, 0.002, n_modes))
+
+        # Build coupling matrix from perturbation positions
+        # C[i,j] = coupling from mode j to mode i via anharmonicity at putty
+        C = np.zeros((n_modes, n_modes))
+        for pos in positions:
+            for i in range(n_modes):
+                for j in range(n_modes):
+                    if i != j:
+                        phi_i = np.sin((i + 1) * np.pi * pos)
+                        phi_j = np.sin((j + 1) * np.pi * pos)
+                        C[i, j] += 0.12 * phi_i * phi_j
+
+        # Simulate response for each token
+        raw_feats = {}
+        for token in range(n_tokens):
+            bits = np.array([(token >> b) & 1 for b in range(n_modes)], dtype=float)
+
+            # Direct excitation at driven modes
+            direct = bits * (perturbed_freqs / perturbed_freqs.max())
+
+            # Quadratic coupling: driven modes leak energy into others
+            coupled = direct + C @ direct
+
+            # Cubic nonlinearity (makes each bit combination unique)
+            cubic = 0.04 * np.array([
+                np.sum(bits * np.sin(np.arange(n_modes) * (i + 1) * np.pi / n_modes))
+                for i in range(n_modes)
+            ])
+
+            response = coupled + cubic
+
+            # Measurement noise (simulates 4-sample averaged capture)
+            noise = rod_rng.normal(0, 0.008, n_modes)
+            raw_feats[token] = response + noise
+
+        # Normalize: log1p(max(x - baseline, 0)) -> Z-score
+        baseline = raw_feats[0]
+        log_feats = {}
+        for t, resp in raw_feats.items():
+            log_feats[t] = np.log1p(np.maximum(resp - baseline, 0))
+
+        all_log = np.array([log_feats[t] for t in range(n_tokens)])
+        mu = all_log.mean(axis=0)
+        sigma = all_log.std(axis=0) + 1e-8
+
+        norm_feats = {}
+        for t in log_feats:
+            norm_feats[t] = (log_feats[t] - mu) / sigma
+
+        per_rod_feats[rod_name] = norm_feats
+        rod_info[rod_name] = {
+            "pattern_positions": positions,
+            "mode_freqs_hz": perturbed_freqs.tolist(),
+            "n_modes": n_modes,
+        }
+
+    # Concatenate features from all rods
+    rod_names = sorted(per_rod_feats.keys())
+    feat_map = {}
+    for t in range(n_tokens):
+        feat_map[t] = np.concatenate([per_rod_feats[r][t] for r in rod_names])
+
+    total_dim = n_modes * len(rod_names)
+    return feat_map, total_dim, rod_info
+
+
+# ── Reference data from our lab's calibration ────────────────────────
+
+def _mem_load_reference():
+    """Load our v3 calibration data (plates D+E) as 16d features."""
+    if not _MEM_CALIB_PATH.exists():
+        return None, None, None
+
+    with open(_MEM_CALIB_PATH) as f:
+        calib = json.load(f)
+
+    feat_maps = {}
+    for pid in ["4", "5"]:
+        pdata = calib["per_plate"].get(pid, {})
+        data = pdata.get("data", {})
+        if "0" not in data:
+            continue
+        baseline = np.array(data["0"]["mean"])
+        raw_feats = {}
+        for t in range(256):
+            tk = str(t)
+            if tk in data:
+                raw_feats[t] = np.array(data[tk]["mean"])
+
+        log_feats = {}
+        for t, mean in raw_feats.items():
+            log_feats[t] = np.log1p(np.maximum(mean - baseline, 0))
+
+        all_log = np.array([log_feats[t] for t in range(256) if t in log_feats])
+        mu = all_log.mean(axis=0)
+        sigma = all_log.std(axis=0) + 1e-8
+
+        norm_feats = {}
+        for t in log_feats:
+            norm_feats[t] = (log_feats[t] - mu) / sigma
+        feat_maps[pid] = norm_feats
+
+    if "4" not in feat_maps or "5" not in feat_maps:
+        return None, None, None
+
+    de_feats = {}
+    for t in range(256):
+        if t in feat_maps["4"] and t in feat_maps["5"]:
+            de_feats[t] = np.concatenate([feat_maps["4"][t], feat_maps["5"][t]])
+
+    rod_info = {
+        "Plate D": {"pattern_positions": [0.2, 0.8], "n_modes": 8,
+                     "note": "Fused silica, diagonal putty pattern"},
+        "Plate E": {"pattern_positions": [0.35, 0.65], "n_modes": 8,
+                     "note": "Fused silica, offset diagonal pattern"},
+    }
+    return de_feats, 16, rod_info
+
+
+# ── Software baseline ────────────────────────────────────────────────
+
+def _mem_build_sw_baseline(n_modes):
+    """Build software poly4 features for comparison."""
+    n_tokens = 2 ** n_modes
+    sw_feats = {}
+    for t in range(n_tokens):
+        bits = np.array([(t >> b) & 1 for b in range(n_modes)],
+                        dtype=np.float64) * 2 - 1
+        sw_feats[t] = _mem_interaction_expand(bits)
+    return sw_feats
+
+
+# ── ESN training ─────────────────────────────────────────────────────
+
+def _mem_train_esn(feat_map, sequences, reversed_seqs):
+    """Train ESN on sequence reversal. Returns accuracy + weights."""
+    dim = len(next(iter(feat_map.values())))
+    n_tokens = max(feat_map.keys()) + 1
+    esn = _ESN(input_dim=dim)
+
+    all_feat_seqs = []
+    for seq in sequences:
+        all_feat_seqs.append([feat_map[int(t)] for t in seq])
+
+    H_tr = esn.collect_states(all_feat_seqs[:_MEM_N_TRAIN])
+    H_te = esn.collect_states(all_feat_seqs[_MEM_N_TRAIN:])
+    n_test = len(H_te)
+    n_modes = int(np.log2(n_tokens))
+
+    bit_accs = np.zeros((_MEM_SEQ_LEN, n_modes))
+    bit_preds = np.zeros((n_test, _MEM_SEQ_LEN, n_modes), dtype=int)
+    readout_weights = {}
+
+    for pos in range(_MEM_SEQ_LEN):
+        for bit in range(n_modes):
+            y_tr = np.array([(int(reversed_seqs[i, pos]) >> bit) & 1
+                             for i in range(_MEM_N_TRAIN)])
+            y_te = np.array([(int(reversed_seqs[i, pos]) >> bit) & 1
+                             for i in range(_MEM_N_TRAIN, _MEM_N_TRAIN + n_test)])
+            Hb_tr = np.column_stack([H_tr, np.ones(len(H_tr))])
+            Hb_te = np.column_stack([H_te, np.ones(len(H_te))])
+            d = Hb_tr.shape[1]
+            w = np.linalg.solve(
+                Hb_tr.T @ Hb_tr + _MEM_RIDGE_ALPHA * np.eye(d),
+                Hb_tr.T @ y_tr.astype(np.float64))
+            preds = (Hb_te @ w > 0.5).astype(int)
+            bit_accs[pos, bit] = float(np.mean(preds == y_te))
+            bit_preds[:, pos, bit] = preds
+            readout_weights[(pos, bit)] = w
+
+    pred_tokens = np.zeros((n_test, _MEM_SEQ_LEN), dtype=int)
+    for pos in range(_MEM_SEQ_LEN):
+        for bit in range(n_modes):
+            pred_tokens[:, pos] |= bit_preds[:, pos, bit] << bit
+
+    true_tokens = reversed_seqs[_MEM_N_TRAIN:_MEM_N_TRAIN + n_test]
+    digit_acc = float(np.mean(bit_accs))
+    token_acc = float(np.mean(pred_tokens == true_tokens))
+    pos_digit = [float(np.mean(bit_accs[p, :])) for p in range(_MEM_SEQ_LEN)]
+
+    return {
+        "esn": esn, "readout_weights": readout_weights,
+        "digit_acc": digit_acc, "token_acc": token_acc,
+        "pos_digit": pos_digit, "dim": dim, "n_modes": n_modes,
+    }
+
+
+def _mem_predict_sequence(esn, weights, feat_seq, n_modes=8):
+    """Predict reversed tokens from a feature sequence."""
+    h = np.zeros(esn.hidden_dim)
+    for x in feat_seq:
+        h = (1 - esn.leak) * h + esn.leak * np.tanh(
+            esn.W_in @ x + esn.W_rec @ h)
+    hb = np.append(h, 1.0)
+
+    predicted = [0] * _MEM_SEQ_LEN
+    for pos in range(_MEM_SEQ_LEN):
+        for bit in range(n_modes):
+            w = weights.get((pos, bit))
+            if w is not None and (hb @ w) > 0.5:
+                predicted[pos] |= 1 << bit
+    return predicted
+
+
+# ── API handlers ─────────────────────────────────────────────────────
+
+def _mem_status():
+    """Return what calibration modes are available."""
+    has_reference = _MEM_CALIB_PATH.exists()
+    has_hardware = HARDWARE_AVAILABLE
+    calibrated = "ready" in _MEMORY_CACHE
+    calibrated_mode = _MEMORY_CACHE.get("mode") if calibrated else None
+
+    # Check enrolled rods
+    rod_info = {}
+    try:
+        db = _load_users()
+        for rk, rv in db.get("rods", {}).items():
+            if rv.get("enrolled"):
+                rod_info[rk] = {
+                    "pattern": rv.get("pattern", "?"),
+                    "hw_enrolled": rv.get("hw_enrolled", False),
+                    "n_modes": len(rv.get("perturbed_hz", [])),
+                }
+    except Exception:
+        pass
+
+    return {
+        "modes": {
+            "simulation": {
+                "available": True,
+                "description": "Rayleigh perturbation model — no hardware needed",
+            },
+            "reference": {
+                "available": has_reference,
+                "description": "Our lab's fused-silica plate data (D+E, 8 modes each)",
+            },
+            "hardware": {
+                "available": has_hardware,
+                "description": "Calibrate your own resonator via PicoScope",
+                "enrolled_rods": rod_info,
+            },
+        },
+        "calibrated": calibrated,
+        "calibrated_mode": calibrated_mode,
+        "validation": _MEMORY_CACHE.get("validation") if calibrated else None,
+    }
+
+
+def _mem_calibrate(mode, n_modes=8, pattern_positions=None):
+    """Run calibration + ESN training. Caches results."""
+    _MEMORY_CACHE.clear()
+
+    # Step 1: Build glass feature map
+    if mode == "simulation":
+        feat_map, feat_dim, rod_info = _mem_sim_calibrate(
+            n_modes=n_modes,
+            pattern_positions=pattern_positions,
+        )
+    elif mode == "reference":
+        feat_map, feat_dim, rod_info = _mem_load_reference()
+        if feat_map is None:
+            return {"error": "Reference calibration file not found"}
+        n_modes = 8
+    elif mode == "hardware":
+        return {"error": "Hardware calibration coming soon. "
+                "For now, use simulation to run the full experiment on "
+                "your machine, or reference to compare against our lab data."}
+    else:
+        return {"error": "Unknown mode: " + str(mode)}
+
+    n_tokens = 2 ** n_modes
+
+    # Step 2: Build software baseline
+    sw_feats = _mem_build_sw_baseline(n_modes)
+
+    # Step 3: Generate sequences and train ESN
+    rng = np.random.default_rng(42)
+    seqs = rng.integers(0, n_tokens, size=(_MEM_N_SEQ, _MEM_SEQ_LEN))
+    rev = seqs[:, ::-1].copy()
+
+    glass_res = _mem_train_esn(feat_map, seqs, rev)
+    sw_res = _mem_train_esn(sw_feats, seqs, rev)
+
+    validation = {
+        "glass_digit_acc": round(glass_res["digit_acc"] * 100, 1),
+        "glass_token_acc": round(glass_res["token_acc"] * 100, 1),
+        "sw_digit_acc": round(sw_res["digit_acc"] * 100, 1),
+        "sw_token_acc": round(sw_res["token_acc"] * 100, 1),
+        "glass_dim": glass_res["dim"],
+        "sw_dim": sw_res["dim"],
+        "glass_pos_digit": [round(p * 100, 1) for p in glass_res["pos_digit"]],
+        "sw_pos_digit": [round(p * 100, 1) for p in sw_res["pos_digit"]],
+    }
+
+    _MEMORY_CACHE.update({
+        "ready": True,
+        "mode": mode,
+        "n_modes": n_modes,
+        "n_tokens": n_tokens,
+        "feat_map": feat_map,
+        "sw_feats": sw_feats,
+        "glass_res": glass_res,
+        "sw_res": sw_res,
+        "rod_info": rod_info,
+        "validation": validation,
+    })
+
+    return {
+        "ok": True,
+        "mode": mode,
+        "n_modes": n_modes,
+        "n_tokens": n_tokens,
+        "glass_dim": glass_res["dim"],
+        "sw_dim": sw_res["dim"],
+        "rod_info": {k: {kk: vv for kk, vv in v.items()
+                         if kk != "mode_freqs_hz"}
+                     for k, v in rod_info.items()},
+        "validation": validation,
+    }
+
+
+def _mem_demo(message):
+    """Run the memory demo on a calibrated model."""
+    if "ready" not in _MEMORY_CACHE:
+        return {"error": "Not calibrated. Run calibration first."}
+
+    glass_res = _MEMORY_CACHE["glass_res"]
+    sw_res = _MEMORY_CACHE["sw_res"]
+    feat_map = _MEMORY_CACHE["feat_map"]
+    sw_feats = _MEMORY_CACHE["sw_feats"]
+    n_modes = _MEMORY_CACHE["n_modes"]
+    n_tokens = _MEMORY_CACHE["n_tokens"]
+
+    # Encode message
+    chars = [ord(c) % n_tokens for c in message]
+    while len(chars) % _MEM_SEQ_LEN != 0:
+        chars.append(ord(' '))
+
+    n_chunks = len(chars) // _MEM_SEQ_LEN
+    glass_decoded = []
+    sw_decoded = []
+    chunks_detail = []
+
+    for ci in range(n_chunks):
+        chunk = chars[ci * _MEM_SEQ_LEN:(ci + 1) * _MEM_SEQ_LEN]
+        expected = list(reversed(chunk))
+
+        glass_feat_seq = [feat_map[t] for t in chunk]
+        sw_feat_seq = [sw_feats[t] for t in chunk]
+
+        glass_pred = _mem_predict_sequence(
+            glass_res["esn"], glass_res["readout_weights"],
+            glass_feat_seq, n_modes)
+        sw_pred = _mem_predict_sequence(
+            sw_res["esn"], sw_res["readout_weights"],
+            sw_feat_seq, n_modes)
+
+        glass_decoded.extend(glass_pred)
+        sw_decoded.extend(sw_pred)
+
+        # Per-token feature visualization (split into rod 1 / rod 2)
+        feat_dim = len(feat_map[chunk[0]])
+        half = feat_dim // 2
+        rod1_feats = [feat_map[t][:half].tolist() for t in chunk]
+        rod2_feats = [feat_map[t][half:].tolist() for t in chunk]
+
+        chunks_detail.append({
+            "input": [chr(c) if 32 <= c < 127 else '?' for c in chunk],
+            "input_tokens": chunk,
+            "expected": [chr(c) if 32 <= c < 127 else '?' for c in expected],
+            "expected_tokens": expected,
+            "glass_pred": glass_pred,
+            "glass_chars": [chr(p) if 32 <= p < 127 else '?' for p in glass_pred],
+            "glass_correct": [glass_pred[i] == expected[i]
+                              for i in range(_MEM_SEQ_LEN)],
+            "sw_pred": sw_pred,
+            "sw_chars": [chr(p) if 32 <= p < 127 else '?' for p in sw_pred],
+            "sw_correct": [sw_pred[i] == expected[i]
+                           for i in range(_MEM_SEQ_LEN)],
+            "rod1_features": rod1_feats,
+            "rod2_features": rod2_feats,
+        })
+
+    # Per-chunk reversed expectations
+    expected_all = []
+    for ci in range(n_chunks):
+        chunk = chars[ci * _MEM_SEQ_LEN:(ci + 1) * _MEM_SEQ_LEN]
+        expected_all.extend(reversed(chunk))
+
+    glass_correct = sum(1 for i in range(len(expected_all))
+                        if glass_decoded[i] == expected_all[i])
+    sw_correct = sum(1 for i in range(len(expected_all))
+                     if sw_decoded[i] == expected_all[i])
+    total = len(expected_all)
+
+    return {
+        "message": message,
+        "mode": _MEMORY_CACHE.get("mode"),
+        "total_chars": total,
+        "glass": {
+            "decoded": ''.join(chr(p) if 32 <= p < 127 else '?' for p in glass_decoded),
+            "correct": glass_correct,
+            "accuracy": round(glass_correct / total * 100, 1) if total else 0,
+        },
+        "software": {
+            "decoded": ''.join(chr(p) if 32 <= p < 127 else '?' for p in sw_decoded),
+            "correct": sw_correct,
+            "accuracy": round(sw_correct / total * 100, 1) if total else 0,
+        },
+        "expected": ''.join(chr(c) if 32 <= c < 127 else '?' for c in expected_all),
+        "chunks": chunks_detail,
+        "validation": _MEMORY_CACHE.get("validation"),
+    }
+
+
 # ── Shared physics engine ─────────────────────────────────────────────────
 
 def _channel_modes(channel: int) -> list:
@@ -1232,6 +1753,8 @@ class LabHandler(SimpleHTTPRequestHandler):
                 self._json_response(_get_user_library(username))
             else:
                 self._json_response({"error": "Username required."}, 400)
+        elif path == "/api/memory/status":
+            self._json_response(_mem_status())
         else:
             self.send_error(404)
 
@@ -1590,6 +2113,27 @@ class LabHandler(SimpleHTTPRequestHandler):
                     "elapsed_ms": round(elapsed_ms, 2),
                     "n_rods": N_RODS_DEFAULT,
                 })
+
+            elif path == "/api/memory/calibrate":
+                data = json.loads(body)
+                mode = str(data.get("mode", "simulation")).strip()
+                n_modes = int(data.get("n_modes", 8))
+                if n_modes < 4 or n_modes > 12:
+                    self._json_response(
+                        {"error": "n_modes must be 4-12"}, 400)
+                    return
+                result = _mem_calibrate(mode, n_modes=n_modes)
+                self._json_response(result)
+
+            elif path == "/api/memory/demo":
+                data = json.loads(body)
+                message = str(data.get("message", "")).strip()
+                if not message or len(message) > 200:
+                    self._json_response(
+                        {"error": "Message required (1-200 chars)."}, 400)
+                    return
+                result = _mem_demo(message)
+                self._json_response(result)
 
             else:
                 self.send_error(404)

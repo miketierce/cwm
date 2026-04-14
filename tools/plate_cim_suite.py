@@ -153,8 +153,12 @@ def _measure_at(handle, freq_hz: float,
 
 # ── Enrollment loader ────────────────────────────────────────────────
 
-def _load_enrollment() -> tuple[dict, dict, list]:
-    """Load plate enrollment from latest census file."""
+def _load_enrollment() -> tuple[dict, dict, dict, list]:
+    """Load plate enrollment from latest census file.
+
+    Returns (enrolled_freqs, plate_names, enrolled_mags, plate_ids).
+    enrolled_mags maps plate_id -> list of magnitudes (same order as enrolled_freqs).
+    """
     census_files = sorted(
         f for f in LAB_DIR.glob("plate_census_*.json")
         if "sweeps" not in f.name
@@ -168,15 +172,18 @@ def _load_enrollment() -> tuple[dict, dict, list]:
         census = census["results"]
 
     enrolled = {}
+    enrolled_mags = {}
     plate_names = {}
     for pid in PLATE_IDS:
         if pid in census and census[pid].get("peaks"):
-            enrolled[pid] = [p["freq_hz"] for p in census[pid]["peaks"][:N_PEAKS]]
+            peaks = census[pid]["peaks"][:N_PEAKS]
+            enrolled[pid] = [p["freq_hz"] for p in peaks]
+            enrolled_mags[pid] = [p["magnitude"] for p in peaks]
             plate_names[pid] = PLATE_NAMES[pid]
 
     plate_ids = sorted(enrolled.keys())
     log(f"Loaded enrollment: {len(plate_ids)} plates, {N_PEAKS} peaks each")
-    return enrolled, plate_names, plate_ids
+    return enrolled, plate_names, enrolled_mags, plate_ids
 
 
 # ── Frequency classification ─────────────────────────────────────────
@@ -240,14 +247,17 @@ def _template_score(query_freqs: list[float],
 #  Block 1: Temporal Stability
 # ═══════════════════════════════════════════════════════════════════════
 
-def block_temporal(handle, mux, enrolled, plate_names, plate_ids,
-                   token, dry_run) -> list:
+def block_temporal(handle, mux, enrolled, plate_names, plate_ids) -> dict:
     """Re-measure enrolled frequencies, check for drift."""
     log("\n" + "=" * 65)
     log("  BLOCK 1: TEMPORAL STABILITY")
     log("=" * 65)
 
-    results = []
+    t0 = time.time()
+    plates = []
+    total_alive = 0
+    total_enrolled = 0
+
     for pid in plate_ids:
         name = plate_names[pid]
         freqs = enrolled[pid]
@@ -261,42 +271,113 @@ def block_temporal(handle, mux, enrolled, plate_names, plate_ids,
             live_mags.append(m["magnitude"])
             log(f"    {freq:.0f} Hz: {m['magnitude']:.0f}")
 
-        # Compare: any frequency with magnitude drop > 50% is flagged
-        total_mag = sum(live_mags)
-        n_alive = sum(1 for m in live_mags if m > 100000)  # threshold
+        n_alive = sum(1 for m in live_mags if m > 100_000)
+        total_alive += n_alive
+        total_enrolled += len(freqs)
 
-        data = {
-            "plate_name": name,
-            "n_enrolled": len(freqs),
-            "n_alive": n_alive,
-            "total_magnitude": round(total_mag, 1),
-            "mean_magnitude": round(total_mag / len(freqs), 1) if freqs else 0,
-        }
-        notes = f"Plate {name} temporal stability: {n_alive}/{len(freqs)} modes alive."
-
-        if dry_run:
-            results.append({"ok": True, "dry": True, "plate": name})
-        else:
-            r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-            print_result(r)
-            results.append(r)
+        plates.append({
+            "plate": name, "n_enrolled": len(freqs), "n_alive": n_alive,
+            "magnitudes": [round(m, 1) for m in live_mags],
+        })
+        log(f"    → {n_alive}/{len(freqs)} modes alive")
 
     mux.off()
-    return results
+    recall_pct = round(total_alive / total_enrolled * 100, 1) if total_enrolled else 0
+    duration = round(time.time() - t0, 1)
+
+    log(f"\n  Temporal stability: {total_alive}/{total_enrolled} "
+        f"({recall_pct}%) modes alive across {len(plate_ids)} plates")
+
+    return {
+        "block": "temporal", "plates": plates,
+        "total_alive": total_alive, "total_enrolled": total_enrolled,
+        "recall_pct": recall_pct, "duration_s": duration,
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════
 #  Block 2: Boolean All Pairs
 # ═══════════════════════════════════════════════════════════════════════
 
+def _boolean_fidelity(mags_a, mags_b, categories,
+                      enroll_mags_a=None, enroll_mags_b=None):
+    """Compute Boolean fidelity against expected truth tables.
+
+    categories[i] = 'a_only' | 'b_only' | 'shared'
+
+    Truth tables (magnitude-based):
+      AND:  shared → expect both high (1), else 0
+      OR:   any → expect at least one high (1), always 1 for our freqs
+      XOR:  a_only or b_only → expect 1, shared → expect 0
+
+    Adaptive thresholding: if enroll_mags_a/b are provided, each frequency
+    gets its own threshold = 15% of that plate's enrollment magnitude at
+    that frequency. This calibrates against per-frequency sensitivity
+    rather than using a global max.
+    """
+    n = len(categories)
+    if n == 0:
+        return {"and": 0.0, "or": 0.0, "xor": 0.0}
+
+    if enroll_mags_a is not None and enroll_mags_b is not None:
+        # Adaptive: per-frequency threshold from enrollment data
+        bit_a = []
+        bit_b = []
+        for i in range(n):
+            # Plate A: "active" if live mag > 15% of its enrollment mag
+            thresh_a_i = enroll_mags_a[i] * 0.15 if enroll_mags_a[i] > 0 else 100_000
+            thresh_b_i = enroll_mags_b[i] * 0.15 if enroll_mags_b[i] > 0 else 100_000
+            bit_a.append(1 if mags_a[i] > thresh_a_i else 0)
+            bit_b.append(1 if mags_b[i] > thresh_b_i else 0)
+    else:
+        # Fallback: global 25% of max
+        max_a = max(mags_a) if mags_a else 1
+        max_b = max(mags_b) if mags_b else 1
+        thresh_a = max_a * 0.25
+        thresh_b = max_b * 0.25
+        bit_a = [1 if m > thresh_a else 0 for m in mags_a]
+        bit_b = [1 if m > thresh_b else 0 for m in mags_b]
+
+    and_correct = 0
+    or_correct = 0
+    xor_correct = 0
+    for i in range(n):
+        cat = categories[i]
+        a, b = bit_a[i], bit_b[i]
+        hw_and = a & b
+        hw_or = a | b
+        hw_xor = a ^ b
+        # Expected from categories
+        if cat == "shared":
+            exp_and, exp_xor = 1, 0
+        else:
+            exp_and, exp_xor = 0, 1
+        exp_or = 1  # all tested freqs are in at least one enrollment
+        if hw_and == exp_and:
+            and_correct += 1
+        if hw_or == exp_or:
+            or_correct += 1
+        if hw_xor == exp_xor:
+            xor_correct += 1
+
+    return {
+        "and": round(and_correct / n * 100, 1),
+        "or": round(or_correct / n * 100, 1),
+        "xor": round(xor_correct / n * 100, 1),
+    }
+
+
 def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
-                        token, dry_run) -> list:
+                        enrolled_mags=None) -> dict:
     """AND/OR/XOR via spectral superposition for all plate pairs."""
     log("\n" + "=" * 65)
     log("  BLOCK 2: BOOLEAN ALL PAIRS")
     log("=" * 65)
 
-    results = []
+    t0 = time.time()
+    pairs = []
+    fidelities = []
+
     for pa, pb in combinations(plate_ids, 2):
         na, nb = plate_names[pa], plate_names[pb]
         log(f"\n  Pair: Plate {na} × Plate {nb}")
@@ -309,10 +390,38 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
             f"B-only: {classified['n_b_only']}, "
             f"Shared: {classified['n_shared']}")
 
-        # Measure each plate at all classified frequencies
-        all_freqs = (classified["a_only"] + classified["b_only"]
-                     + [s[0] for s in classified["shared"]])
+        # Build enrollment magnitude lookup for adaptive thresholding
+        def _enroll_mag(pid, freq):
+            """Get enrollment magnitude for a plate at a given frequency."""
+            if enrolled_mags is None:
+                return None
+            for i, ef in enumerate(enrolled[pid]):
+                if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                    return enrolled_mags[pid][i]
+            return 0.0  # not enrolled → zero reference
 
+        # Build frequency list with category labels
+        all_freqs = []
+        categories = []
+        enroll_a = []  # enrollment magnitudes for plate A at each freq
+        enroll_b = []  # enrollment magnitudes for plate B at each freq
+        for f in classified["a_only"]:
+            all_freqs.append(f)
+            categories.append("a_only")
+            enroll_a.append(_enroll_mag(pa, f))
+            enroll_b.append(_enroll_mag(pb, f))
+        for f in classified["b_only"]:
+            all_freqs.append(f)
+            categories.append("b_only")
+            enroll_a.append(_enroll_mag(pa, f))
+            enroll_b.append(_enroll_mag(pb, f))
+        for fa, _ in classified["shared"]:
+            all_freqs.append(fa)
+            categories.append("shared")
+            enroll_a.append(_enroll_mag(pa, fa))
+            enroll_b.append(_enroll_mag(pb, fa))
+
+        # Measure plate A at all freqs (own relay)
         mags_a = []
         mux.select(int(pa))
         time.sleep(SETTLE_RELAY_S)
@@ -320,6 +429,7 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
             m = _measure_at(handle, freq)
             mags_a.append(m["magnitude"])
 
+        # Measure plate B at all freqs (own relay)
         mags_b = []
         mux.select(int(pb))
         time.sleep(SETTLE_RELAY_S)
@@ -327,121 +437,105 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
             m = _measure_at(handle, freq)
             mags_b.append(m["magnitude"])
 
-        # Boolean computation via superposition thresholds
-        superposed = [a + b for a, b in zip(mags_a, mags_b)]
-        n = len(superposed)
-        if n == 0:
-            continue
+        fid = _boolean_fidelity(mags_a, mags_b, categories,
+                               enroll_mags_a=enroll_a if enrolled_mags else None,
+                               enroll_mags_b=enroll_b if enrolled_mags else None)
+        mean_fid = round((fid["and"] + fid["or"] + fid["xor"]) / 3, 1)
+        fidelities.append(mean_fid)
 
-        med = float(np.median(superposed))
-        hi_thresh = med * 1.5
-        lo_thresh = med * 0.5
+        log(f"    Fidelity: AND={fid['and']}%, OR={fid['or']}%, "
+            f"XOR={fid['xor']}%, mean={mean_fid}%")
 
-        n_and = sum(1 for s in superposed if s > hi_thresh)
-        n_or = sum(1 for s in superposed if s > lo_thresh)
-        n_xor = sum(1 for s in superposed if lo_thresh < s <= hi_thresh)
-
-        data = {
-            "plate_a": na, "plate_b": nb,
+        pairs.append({
+            "pair": f"{na}-{nb}",
             "n_a_only": classified["n_a_only"],
             "n_b_only": classified["n_b_only"],
             "n_shared": classified["n_shared"],
-            "n_and": n_and, "n_or": n_or, "n_xor": n_xor,
-            "total_freqs": n,
-        }
-
-        notes = (
-            f"Boolean: Plate {na} × {nb}. "
-            f"AND={n_and}, OR={n_or}, XOR={n_xor} out of {n} freqs."
-        )
-
-        if dry_run:
-            results.append({"ok": True, "dry": True, "pair": f"{na}-{nb}"})
-        else:
-            r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-            print_result(r)
-            results.append(r)
+            "fidelity_and": fid["and"],
+            "fidelity_or": fid["or"],
+            "fidelity_xor": fid["xor"],
+            "fidelity_mean": mean_fid,
+        })
 
     mux.off()
-    return results
+    overall = round(float(np.mean(fidelities)), 1) if fidelities else 0.0
+    worst = round(min(fidelities), 1) if fidelities else 0.0
+    duration = round(time.time() - t0, 1)
+
+    log(f"\n  Boolean fidelity: mean={overall}%, worst={worst}%")
+
+    return {
+        "block": "boolean-pairs", "pairs": pairs,
+        "mean_fidelity": overall, "worst_fidelity": worst,
+        "duration_s": duration,
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════
-#  Block 3: Nearest-Neighbor All Pairs
+#  Block 3: Nearest-Neighbor (Cross-Relay)
 # ═══════════════════════════════════════════════════════════════════════
 
-def block_nn_pairs(handle, mux, enrolled, plate_names, plate_ids,
-                   token, dry_run) -> list:
-    """For each plate, identify which enrolled template is nearest."""
+def block_nn_pairs(handle, mux, enrolled, plate_names, plate_ids) -> dict:
+    """For each plate, identify via cross-relay template matching."""
     log("\n" + "=" * 65)
-    log("  BLOCK 3: NEAREST-NEIGHBOR ALL PAIRS")
+    log("  BLOCK 3: NEAREST-NEIGHBOR (cross-relay)")
     log("=" * 65)
 
-    results = []
+    t0 = time.time()
+    queries = []
     correct = 0
-    total = 0
+    margins = []
 
-    for pid in plate_ids:
-        name = plate_names[pid]
-        log(f"\n  Query: Plate {name}")
+    for qpid in plate_ids:
+        qname = plate_names[qpid]
+        query_freqs = enrolled[qpid][:N_PEAKS]
 
-        # Measure at all enrolled frequencies for all plates
-        all_freqs = []
-        for eid in plate_ids:
-            all_freqs.extend(enrolled[eid])
-        all_freqs = sorted(set(all_freqs))
+        log(f"\n  Query: Plate {qname} ({len(query_freqs)} freqs)")
 
-        mux.select(int(pid))
-        time.sleep(SETTLE_RELAY_S)
+        # Cross-relay: for EACH query frequency, measure on ALL plates' relays
+        raw_mags = {pid: [] for pid in plate_ids}
+        for freq in query_freqs:
+            for pid in plate_ids:
+                mux.select(int(pid))
+                time.sleep(SETTLE_RELAY_S)
+                m = _measure_at(handle, freq)
+                raw_mags[pid].append(m["magnitude"])
+        mux.off()
 
-        raw_mags = {eid: [] for eid in plate_ids}
-        for freq in all_freqs:
-            m = _measure_at(handle, freq)
-            for eid in plate_ids:
-                # Check if this freq belongs to this enrollment
-                belongs = any(abs(freq - ef) / max(freq, ef) < 0.03
-                              for ef in enrolled[eid])
-                if belongs:
-                    raw_mags[eid].append(m["magnitude"])
-
-        # Pad to equal length
-        max_len = max(len(v) for v in raw_mags.values())
-        for eid in plate_ids:
-            while len(raw_mags[eid]) < max_len:
-                raw_mags[eid].append(0.0)
-
-        query_freqs = all_freqs[:max_len]
         scores = _template_score(query_freqs, raw_mags, enrolled, plate_ids)
-
         winner = max(scores, key=scores.get)
-        total += 1
-        is_correct = winner == pid
+        is_correct = winner == qpid
+        margin = scores[qpid] - max(v for k, v in scores.items() if k != qpid)
+
         if is_correct:
             correct += 1
+        margins.append(margin)
 
+        score_strs = ", ".join(
+            f"{plate_names[p]}:{scores[p]:+.2f}" for p in plate_ids
+        )
         log(f"    Winner: Plate {plate_names[winner]} "
-            f"({'✓' if is_correct else '✗'})")
-        for eid in plate_ids:
-            log(f"      Plate {plate_names[eid]}: {scores[eid]:.2f}")
+            f"({'✓' if is_correct else '✗'})  margin={margin:+.2f}")
+        log(f"    Scores: [{score_strs}]")
 
-        data = {
-            "query_plate": name,
-            "winner_plate": plate_names[winner],
-            "correct": is_correct,
-            "scores": scores,
-        }
-        notes = f"NN: Plate {name} → {plate_names[winner]} ({'correct' if is_correct else 'wrong'})"
+        queries.append({
+            "query": qname, "winner": plate_names[winner],
+            "correct": is_correct, "margin": round(margin, 2),
+            "scores": {plate_names[p]: scores[p] for p in plate_ids},
+        })
 
-        if dry_run:
-            results.append({"ok": True, "dry": True, "plate": name})
-        else:
-            r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-            print_result(r)
-            results.append(r)
+    accuracy = round(correct / len(plate_ids) * 100, 1)
+    mean_margin = round(float(np.mean(margins)), 2)
+    duration = round(time.time() - t0, 1)
 
-    log(f"\n  NN accuracy: {correct}/{total}")
-    mux.off()
-    return results
+    log(f"\n  NN accuracy: {correct}/{len(plate_ids)} ({accuracy}%), "
+        f"mean margin={mean_margin:+.2f}")
+
+    return {
+        "block": "nn-pairs", "queries": queries,
+        "accuracy": accuracy, "correct": correct, "total": len(plate_ids),
+        "mean_margin": mean_margin, "duration_s": duration,
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -449,23 +543,46 @@ def block_nn_pairs(handle, mux, enrolled, plate_names, plate_ids,
 # ═══════════════════════════════════════════════════════════════════════
 
 def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
-                         token, dry_run) -> list:
+                         enrolled_mags=None) -> dict:
     """AND/OR/XOR across 3 plates simultaneously."""
     log("\n" + "=" * 65)
     log("  BLOCK 4: 3-PLATE BOOLEAN")
     log("=" * 65)
 
-    results = []
-    # Pick up to 10 triples
+    t0 = time.time()
+    triples_data = []
+    fidelities = []
     triples = list(combinations(plate_ids, 3))[:10]
+
+    def _get_enroll_mag(pid, freq):
+        """Lookup enrollment magnitude for adaptive threshold."""
+        if enrolled_mags is None:
+            return None
+        for j, ef in enumerate(enrolled[pid]):
+            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                return enrolled_mags[pid][j]
+        return 0.0
 
     for pa, pb, pc in triples:
         na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
         log(f"\n  Triple: {na} × {nb} × {nc}")
 
-        # Union of enrolled frequencies
-        all_freqs = sorted(set(enrolled[pa] + enrolled[pb] + enrolled[pc]))
+        # Union of enrolled frequencies with category tracking
+        freq_owners = {}  # freq → set of plate_ids that own it
+        for pid in [pa, pb, pc]:
+            for f in enrolled[pid]:
+                matched = False
+                for existing in freq_owners:
+                    if abs(f - existing) / max(f, existing) < 0.03:
+                        freq_owners[existing].add(pid)
+                        matched = True
+                        break
+                if not matched:
+                    freq_owners[f] = {pid}
 
+        all_freqs = sorted(freq_owners.keys())
+
+        # Measure each plate at all freqs
         mags = {}
         for pid in [pa, pb, pc]:
             mux.select(int(pid))
@@ -475,58 +592,126 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
                 m = _measure_at(handle, freq)
                 mags[pid].append(m["magnitude"])
 
-        # 3-way superposition
-        superposed = [mags[pa][i] + mags[pb][i] + mags[pc][i]
-                      for i in range(len(all_freqs))]
+        # 3-way Boolean fidelity: AND3 expects all 3 own the freq
+        n = len(all_freqs)
+        and3_correct = 0
+        or3_correct = 0
+        for i, freq in enumerate(all_freqs):
+            owners = freq_owners[freq]
+            n_owners = len(owners)
+            # Binarise per-plate with adaptive threshold
+            bits = []
+            for pid in [pa, pb, pc]:
+                emag = _get_enroll_mag(pid, freq)
+                if emag is not None and emag > 0:
+                    threshold = emag * 0.15
+                else:
+            # 3-way Boolean fidelity: AND3 expects all 3 own the freq
+        n = len(all_freqs)
+        and3_correct = 0
+        or3_correct = 0
+        for i, freq in enumerate(all_freqs):
+            owners = freq_owners[freq]
+            n_owners = len(owners)
+            # Binarise per-plate with adaptive threshold
+            bits = []
+            for pid in [pa, pb, pc]:
+                emag = _get_enroll_mag(pid, freq)
+                if emag is not None and emag > 0:
+                    threshold = emag * 0.15
+                else:
+                    threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
+                bits.append(1 if mags[pid][i] > threshold else 0)
+            hw_and3 = bits[0] & bits[1] & bits[2]
+            hw_or3 = bits[0] | bits[1] | bits[2]
+            exp_and3 = 1 if n_owners == 3 else 0
+            exp_or3 = 1  # all freqs belong to at least one plate
+            if hw_and3 == exp_and3:
+                and3_correct += 1
+            if hw_or3 == exp_or3:
+                or3_correct += 1
 
-        med = float(np.median(superposed)) if superposed else 1.0
-        hi_thresh = med * 2.0    # all 3 plates active
-        mid_thresh = med * 1.0   # 2 of 3
-        lo_thresh = med * 0.5    # at least 1
+        and3_fid = round(and3_correct / n * 100, 1) if n else 0
+        or3_fid = round(or3_correct / n * 100, 1) if n else 0
+        mean_fid = round((and3_fid + or3_fid) / 2, 1)
+        fidelities.append(mean_fid)
 
-        n_and3 = sum(1 for s in superposed if s > hi_thresh)
-        n_or3 = sum(1 for s in superposed if s > lo_thresh)
+        log(f"    Fidelity: AND3={and3_fid}%, OR3={or3_fid}%, mean={mean_fid}%")
 
-        data = {
-            "plate_a": na, "plate_b": nb, "plate_c": nc,
-            "total_freqs": len(all_freqs),
-            "n_and3": n_and3, "n_or3": n_or3,
-        }
-        notes = f"3-plate Boolean: {na}×{nb}×{nc}. AND3={n_and3}, OR3={n_or3}."
-
-        if dry_run:
-            results.append({"ok": True, "dry": True, "triple": f"{na}-{nb}-{nc}"})
-        else:
-            r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-            print_result(r)
-            results.append(r)
+        triples_data.append({
+            "triple": f"{na}-{nb}-{nc}", "n_freqs": n,
+            "fidelity_and3": and3_fid, "fidelity_or3": or3_fid,
+            "fidelity_mean": mean_fid,
+        })
 
     mux.off()
-    return results
-
-
-# ═══════════════════════════════════════════════════════════════════════
-#  Block 5: Chained Boolean (A AND B → result XOR C)
-# ═══════════════════════════════════════════════════════════════════════
-
-def block_chained(handle, mux, enrolled, plate_names, plate_ids,
-                  token, dry_run) -> list:
-    """A AND B → intermediate → XOR C."""
+    overall = round(float(np.mean(fidelities)), 1) if fidelities else 0.0
+    duration = round(time.time() - t0, 1),
+                  enrolled_mags=None) -> dict:
+    """(A AND B) XOR C — two-stage Boolean computation."""
     log("\n" + "=" * 65)
     log("  BLOCK 5: CHAINED BOOLEAN")
     log("=" * 65)
 
-    results = []
-    # Use first 3 plates
+    t0 = time.time()
+
     if len(plate_ids) < 3:
         log("  Need at least 3 plates, skipping")
-        return results
+        return {"block": "chained", "skipped": True, "duration_s": 0}
 
     pa, pb, pc = plate_ids[0], plate_ids[1], plate_ids[2]
     na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
     log(f"  Chain: ({na} AND {nb}) XOR {nc}")
 
-    all_freqs = sorted(set(enrolled[pa] + enrolled[pb] + enrolled[pc]))
+    def _get_enroll_mag(pid, freq):
+        if enrolled_mags is None:
+            return None
+        for j, ef in enumerate(enrolled[pid]):
+            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                return enrolled_mags[pid][j]
+        return 0.0e_names, plate_ids,
+                  enrolled_mags=None) -> dict:
+    """(A AND B) XOR C — two-stage Boolean computation."""
+    log("\n" + "=" * 65)
+    log("  BLOCK 5: CHAINED BOOLEAN")
+    log("=" * 65)
+
+    t0 = time.time()
+
+    if len(plate_ids) < 3:
+        log("  Need at least 3 plates, skipping")
+        return {"block": "chained", "skipped": True, "duration_s": 0}
+
+    pa, pb, pc = plate_ids[0], plate_ids[1], plate_ids[2]
+    na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
+    log(f"  Chain: ({na} AND {nb}) XOR {nc}")
+
+    def _get_enroll_mag(pid, freq):
+        if enrolled_mags is None:
+            return None
+        for j, ef in enumerate(enrolled[pid]):
+            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                return enrolled_mags[pid][j]
+        return 0.0
+
+    # Build freq list with ownership
+    freq_owners = {}
+    for pid in [pa, pb, pc]:
+        for f in enrolled[pid]:
+            matched = False
+            for existing in freq_owners:
+                if abs(f - existing) / max(f, existing) < 0.03:
+                   with adaptive threshold
+        bits = {}
+        for pid in [pa, pb, pc]:
+            emag = _get_enroll_mag(pid, freq)
+            if emag is not None and emag > 0:
+                threshold = emag * 0.15
+            else:
+                if not matched:
+                freq_owners[f] = {pid}
+
+    all_freqs = sorted(freq_owners.keys())
 
     mags = {}
     for pid in [pa, pb, pc]:
@@ -537,100 +722,190 @@ def block_chained(handle, mux, enrolled, plate_names, plate_ids,
             m = _measure_at(handle, freq)
             mags[pid].append(m["magnitude"])
 
-    # Step 1: A AND B (superpose, high-threshold)
-    ab_super = [mags[pa][i] + mags[pb][i] for i in range(len(all_freqs))]
-    med_ab = float(np.median(ab_super)) if ab_super else 1.0
-    ab_and = [1 if s > med_ab * 1.5 else 0 for s in ab_super]
-
-    # Step 2: (A AND B) XOR C
-    c_binary = [1 if mags[pc][i] > float(np.median([m for m in mags[pc] if m > 0] or [1])) * 0.5
-                else 0 for i in range(len(all_freqs))]
-    xor_result = [a ^ c for a, c in zip(ab_and, c_binary)]
-
-    n_and_hits = sum(ab_and)
-    n_xor_hits = sum(xor_result)
-
-    data = {
-        "plate_a": na, "plate_b": nb, "plate_c": nc,
-        "operation": f"({na} AND {nb}) XOR {nc}",
-        "n_and_ab": n_and_hits,
-        "n_xor_result": n_xor_hits,
-        "total_freqs": len(all_freqs),
-    }
-    notes = f"Chained: ({na} AND {nb}) XOR {nc}. AND={n_and_hits}, XOR={n_xor_hits}."
-
-    if dry_run:
-        results.append({"ok": True, "dry": True})
-    else:
-        r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-        print_result(r)
-        results.append(r)
-
     mux.off()
-    return results
+
+    n = len(all_freqs)
+    chain_correct = 0
+    for i, freq in enumerate(all_freqs):
+        owners = freq_owners[freq]
+        # Binarise with adaptive threshold
+        bits = {}
+        for pid in [pa, pb, pc]:
+            emag = _get_enroll_mag(pid, freq)
+            if emag is not None and emag > 0:
+                threshold = emag * 0.15
+            else:
+                threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
+            bits[pid] = 1 if mags[pid][i] > threshold else 0
+
+        hw_chain = (bits[pa] & bits[pb]) ^ bits[pc]
+
+        # Expected: (A owns freq AND B owns freq) XOR (C owns freq)
+        a_owns = 1 if pa in owners else 0
+        b_owns = 1 if pb in owners else 0
+        c_owns = 1 if pc in owners else 0
+        exp_chain = (a_owns & b_owns) ^ c_owns
+
+        if hw_chain == exp_chain:
+            chain_correct += 1
+
+    fidelity = round(chain_correct / n * 100, 1) if n else 0
+    duration = round(time.time() - t0, 1)
+
+    log(f"  Chained fidelity: {fidelity}% ({chain_correct}/{n})")
+
+    return {
+        "block": "chained",
+        "plates": [na, nb, nc],
+        "operation": f"({na} AND {nb}) XOR {nc}",
+        "n_freqs": n, "n_correct": chain_correct,
+        "fidelity": fidelity, "duration_s": duration,
+    }
 
 
 # ═══════════════════════════════════════════════════════════════════════
 #  Block 6: Noise Robustness (Drive Voltage Sweep)
 # ═══════════════════════════════════════════════════════════════════════
 
-def block_noise(handle, mux, enrolled, plate_names, plate_ids,
-                token, dry_run) -> list:
+def block_noise(handle, mux, enrolled, plate_names, plate_ids) -> dict:
     """Sweep drive voltage from 100% down to 10%, measure recall fidelity."""
     log("\n" + "=" * 65)
     log("  BLOCK 6: NOISE ROBUSTNESS (drive voltage sweep)")
     log("=" * 65)
 
+    t0 = time.time()
     drive_fractions = [1.0, 0.75, 0.50, 0.25, 0.10]
-    results = []
+    sweep_results = []
+    floor_pct = 100.0  # will track lowest drive % with correct NN
 
-    pid = plate_ids[0]  # Use first plate
-    name = plate_names[pid]
-    freqs = enrolled[pid]
-    mux.select(int(pid))
-    time.sleep(SETTLE_RELAY_S)
+    # Baseline: cross-relay NN at full drive
+    log(f"\n  Baseline: full-drive cross-relay NN on {len(plate_ids)} plates")
 
-    log(f"  Plate {name}: sweeping drive voltage")
-
-    baseline_mags = []
-    for freq in freqs:
-        m = _measure_at(handle, freq)
-        baseline_mags.append(m["magnitude"])
+    pid0 = plate_ids[0]
+    name0 = plate_names[pid0]
+    query_freqs = enrolled[pid0][:N_PEAKS]
 
     for frac in drive_fractions:
         drive_uv = int(AWG_DRIVE_UVPP * frac)
-        mags = []
-        for freq in freqs:
-            m = _measure_at(handle, freq, drive_uvpp=drive_uv)
-            mags.append(m["magnitude"])
+        log(f"\n  Drive {frac*100:.0f}% ({drive_uv} µVpp):")
 
-        # Correlation with baseline
-        if baseline_mags and mags:
-            corr = float(np.corrcoef(baseline_mags, mags)[0, 1])
-        else:
-            corr = 0.0
+        raw_mags = {pid: [] for pid in plate_ids}
+        for freq in query_freqs:
+            for pid in plate_ids:
+                mux.select(int(pid))
+                time.sleep(SETTLE_RELAY_S)
+                m = _measure_at(handle, freq, drive_uvpp=drive_uv)
+                raw_mags[pid].append(m["magnitude"])
+        mux.off()
 
-        log(f"    {frac * 100:5.0f}% drive ({drive_uv} µVpp): "
-            f"corr={corr:.4f}, mean_mag={np.mean(mags):.0f}")
+        scores = _template_score(query_freqs, raw_mags, enrolled, plate_ids)
+        winner = max(scores, key=scores.get)
+        is_correct = winner == pid0
+        margin = scores[pid0] - max(v for k, v in scores.items() if k != pid0)
 
-        data = {
-            "plate_name": name,
-            "drive_fraction": frac,
+        # Also compute correlation of this plate's magnitudes against baseline
+        if frac == 1.0:
+            baseline_mags = raw_mags[pid0][:]
+        corr = float(np.corrcoef(baseline_mags, raw_mags[pid0])[0, 1]) \
+            if baseline_mags and raw_mags[pid0] else 0.0
+
+        if is_correct:
+            floor_pct = frac * 100
+
+        log(f"    Winner: {plate_names[winner]} "
+            f"({'✓' if is_correct else '✗'})  "
+            f"margin={margin:+.2f}  corr={corr:.4f}")
+
+        sweep_results.append({
+            "drive_pct": round(frac * 100, 0),
             "drive_uvpp": drive_uv,
+            "winner": plate_names[winner],
+            "correct": is_correct,
+            "margin": round(margin, 2),
             "correlation": round(corr, 4),
-            "mean_magnitude": round(float(np.mean(mags)), 1),
-        }
-        notes = f"Noise: Plate {name} at {frac * 100:.0f}% drive, corr={corr:.4f}."
+        })
 
-        if dry_run:
-            results.append({"ok": True, "dry": True, "frac": frac})
-        else:
-            r = submit_experiment(token, "exp-cim-suite", data, notes=notes)
-            print_result(r)
-            results.append(r)
+    duration = round(time.time() - t0, 1)
+    log(f"\n  Noise floor: correct recall down to {floor_pct}% drive")
 
-    mux.off()
-    return results
+    return {
+        "block": "noise", "query_plate": name0,
+        "sweep": sweep_results, "noise_floor_pct": floor_pct,
+        "duration_s": duration,
+    }
+
+
+# ═══════════════════════════════════════════════════════════════════════
+#  Firestore submission helper
+# ═══════════════════════════════════════════════════════════════════════
+
+FIRESTORE_COLLECTION = "exp-plate-cim-suite"
+
+
+def _submit_block(token, block_data: dict, dry_run: bool) -> dict | None:
+    """Submit one block's summary to Firestore as a single document."""
+    block = block_data["block"]
+    n_plates = block_data.get("total", 5)  # default
+
+    data = {
+        "block_name": block,
+        "n_plates": n_plates,
+        "duration_s": block_data.get("duration_s", 0),
+    }
+
+    if block == "temporal":
+        data["n_plates"] = len(block_data.get("plates", []))
+        data["recall_accuracy"] = block_data.get("recall_pct", 0)
+        notes = (f"Temporal stability: {block_data.get('total_alive', 0)}/"
+                 f"{block_data.get('total_enrolled', 0)} modes alive "
+                 f"({block_data.get('recall_pct', 0)}%)")
+
+    elif block == "boolean-pairs":
+        data["boolean_fidelity"] = block_data.get("mean_fidelity", 0)
+        n = len(block_data.get("pairs", []))
+        data["n_plates"] = 5
+        notes = (f"Boolean all pairs: {n} pairs, "
+                 f"mean fidelity {block_data.get('mean_fidelity', 0)}%, "
+                 f"worst {block_data.get('worst_fidelity', 0)}%")
+
+    elif block == "nn-pairs":
+        data["recall_accuracy"] = block_data.get("accuracy", 0)
+        data["n_plates"] = block_data.get("total", 5)
+        notes = (f"NN cross-relay: {block_data.get('correct', 0)}/"
+                 f"{block_data.get('total', 0)} correct "
+                 f"({block_data.get('accuracy', 0)}%), "
+                 f"mean margin {block_data.get('mean_margin', 0):+.2f}")
+
+    elif block == "3plate-boolean":
+        data["boolean_fidelity"] = block_data.get("mean_fidelity", 0)
+        data["n_plates"] = 5
+        notes = (f"3-plate Boolean: mean fidelity "
+                 f"{block_data.get('mean_fidelity', 0)}%")
+
+    elif block == "chained":
+        data["boolean_fidelity"] = block_data.get("fidelity", 0)
+        data["n_plates"] = 3
+        notes = (f"Chained Boolean: {block_data.get('operation', '?')} "
+                 f"fidelity {block_data.get('fidelity', 0)}%")
+
+    elif block == "noise":
+        data["noise_floor_pct"] = block_data.get("noise_floor_pct", 0)
+        # Get correlation at full drive (should be 1.0)
+        sweep = block_data.get("sweep", [])
+        if sweep:
+            data["correlation"] = sweep[-1].get("correlation", 0)
+        data["n_plates"] = 5
+        notes = (f"Noise robustness: correct recall down to "
+                 f"{block_data.get('noise_floor_pct', 0)}% drive")
+    else:
+        notes = f"CIM block: {block}"
+
+    if dry_run:
+        log(f"  [DRY] Would submit {block}: {data}")
+        return None
+
+    r = submit_experiment(token, FIRESTORE_COLLECTION, data, notes=notes)
+    return r
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -640,7 +915,7 @@ def block_noise(handle, mux, enrolled, plate_names, plate_ids,
 ALL_BLOCKS = {
     "temporal": "Temporal stability",
     "boolean-pairs": "Boolean all pairs",
-    "nn-pairs": "NN all pairs",
+    "nn-pairs": "NN all pairs (cross-relay)",
     "3plate-boolean": "3-plate Boolean",
     "chained": "Chained Boolean",
     "noise": "Noise robustness",
@@ -660,10 +935,16 @@ def main():
         help="Don't submit to Firestore"
     )
     parser.add_argument(
+        "--no-submit", action="store_true",
+        help="Save locally but don't submit to Firestore"
+    )
+    parser.add_argument(
         "--port", type=str, default="/dev/cu.usbserial-11310",
         help="Serial port for relay mux"
     )
     args = parser.parse_args()
+
+    skip_submit = args.dry_run or args.no_submit
 
     blocks = list(ALL_BLOCKS.keys())
     if args.only:
@@ -679,66 +960,100 @@ def main():
     mux.open()
     log(f"Relay mux connected on {mux.port}")
 
-    enrolled, plate_names, plate_ids = _load_enrollment()
+    enrolled, plate_names, enrolled_mags, plate_ids = _load_enrollment()
 
-    token = None
-    if not args.dry_run:
+    block_results = {}
+    suite_t0 = time.time()
+
+    try:
+        if "temporal" in blocks:
+            block_results["temporal"] = block_temporal(
+                handle, mux, enrolled, plate_names, plate_ids)
+        if "boolean-pairs" in blocks:
+            block_results["boolean-pairs"] = block_boolean_pairs(
+                handle, mux, enrolled, plate_names, plate_ids,
+                enrolled_mags=enrolled_mags)
+        if "nn-pairs" in blocks:
+            block_results["nn-pairs"] = block_nn_pairs(
+                handle, mux, enrolled, plate_names, plate_ids)
+        if "3plate-boolean" in blocks:
+            block_results["3plate-boolean"] = block_3plate_boolean(
+                handle, mux, enrolled, plate_names, plate_ids,
+                enrolled_mags=enrolled_mags)
+        if "chained" in blocks:
+            block_results["chained"] = block_chained(
+                handle, mux, enrolled, plate_names, plate_ids,
+                enrolled_mags=enrolled_mags)
+        if "noise" in blocks:
+            block_results["noise"] = block_noise(
+                handle, mux, enrolled, plate_names, plate_ids)
+    finally:
+        _close_scope(handle)
+        mux.close()
+
+    suite_duration = round(time.time() - suite_t0, 1)
+
+    # ── Save locally ──────────────────────────────────────────────────
+    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
+    save_payload = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "blocks_run": blocks,
+        "n_plates": len(plate_ids),
+        "duration_s": suite_duration,
+        "results": block_results,
+    }
+    with open(RESULTS_FILE, "w") as fw:
+        json.dump(save_payload, fw, indent=2, default=str)
+    log(f"\n  Saved: {RESULTS_FILE}")
+
+    # ── Submit to Firestore (one doc per block) ───────────────────────
+    log("\n" + "=" * 65)
+    log("  FIRESTORE SUBMISSION")
+    log("=" * 65)
+
+    if not skip_submit:
         try:
             token = firebase_anon_auth()
             log("  ✓ Firebase auth OK")
         except Exception as e:
             log(f"  ✗ Auth failed: {e}")
-            log("  Continuing in dry-run mode")
-            args.dry_run = True
-            token = "FAILED"
+            token = None
+
+        if token:
+            for bname, bdata in block_results.items():
+                r = _submit_block(token, bdata, dry_run=False)
+                if r:
+                    status = "✓" if r.get("ok") else "✗"
+                    doc_id = r.get("id", r.get("error", "?"))
+                    log(f"  {bname}: {status} {doc_id}")
+                    print_result(r)
+                time.sleep(1)  # respect rate limit
     else:
-        token = "DRY_RUN"
-        log("DRY RUN mode")
+        log("  Skipped (--dry-run or --no-submit)")
 
-    all_results = []
-
-    try:
-        if "temporal" in blocks:
-            all_results.extend(block_temporal(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-        if "boolean-pairs" in blocks:
-            all_results.extend(block_boolean_pairs(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-        if "nn-pairs" in blocks:
-            all_results.extend(block_nn_pairs(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-        if "3plate-boolean" in blocks:
-            all_results.extend(block_3plate_boolean(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-        if "chained" in blocks:
-            all_results.extend(block_chained(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-        if "noise" in blocks:
-            all_results.extend(block_noise(
-                handle, mux, enrolled, plate_names, plate_ids, token, args.dry_run))
-    finally:
-        _close_scope(handle)
-        mux.close()
-        _save_log()
-
-    # Summary
-    submitted = [r for r in all_results if r.get("ok") and not r.get("dry")]
-    failed = [r for r in all_results if not r.get("ok")]
-
+    # ── Summary ───────────────────────────────────────────────────────
     log(f"\n{'=' * 65}")
-    log(f"  SUMMARY: {len(submitted)} submitted, {len(failed)} failed")
+    log(f"  SUITE SUMMARY ({suite_duration}s)")
     log(f"{'=' * 65}")
 
-    # Save results
-    RESULTS_DIR.mkdir(parents=True, exist_ok=True)
-    with open(RESULTS_FILE, "w") as fw:
-        json.dump({
-            "timestamp": datetime.now(timezone.utc).isoformat(),
-            "dry_run": args.dry_run,
-            "blocks": blocks,
-            "results": all_results,
-        }, fw, indent=2, default=str)
-    log(f"  Saved: {RESULTS_FILE}")
+    for bname, bdata in block_results.items():
+        btype = bdata.get("block", bname)
+        if btype == "temporal":
+            log(f"  Temporal:     {bdata.get('recall_pct', '?')}% modes alive")
+        elif btype == "boolean-pairs":
+            log(f"  Boolean:      {bdata.get('mean_fidelity', '?')}% mean fidelity")
+        elif btype == "nn-pairs":
+            log(f"  NN:           {bdata.get('accuracy', '?')}% accuracy, "
+                f"margin {bdata.get('mean_margin', '?'):+.2f}")
+        elif btype == "3plate-boolean":
+            log(f"  3-plate:      {bdata.get('mean_fidelity', '?')}% mean fidelity")
+        elif btype == "chained":
+            log(f"  Chained:      {bdata.get('fidelity', '?')}% fidelity")
+        elif btype == "noise":
+            log(f"  Noise floor:  {bdata.get('noise_floor_pct', '?')}% drive")
+
+    _save_log()
+    log(f"\n  Log: {LOG_FILE}")
 
 
 if __name__ == "__main__":

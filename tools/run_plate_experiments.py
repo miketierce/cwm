@@ -290,13 +290,25 @@ def exp1_mode_persistence(token: str, dry_run: bool, handle, mux,
             f"PicoScope 2204A, relay mux isolation."
         )
 
+        detail = {
+            "plate": name,
+            "sweep": sweep,
+            "live_peaks": live_peaks,
+            "baseline_peaks": [{"freq_hz": bp["freq_hz"], "magnitude": bp.get("magnitude")} for bp in base_top],
+            "matched": matched,
+            "match_pct": match_pct,
+            "mean_drift_pct": mean_drift,
+            "drifts_pct": drifts,
+        }
+
         if dry_run:
             print(f"  [DRY RUN] Would submit exp05-plate-mode-survey (persistence)")
-            results.append({"ok": True, "dry": True, "plate": name, "data": data})
+            results.append({"ok": True, "dry": True, "plate": name, "data": data, "_detail": detail})
         else:
             r = submit_experiment(token, "exp05-plate-mode-survey", data, notes=notes)
             r["_data"] = data
             r["_notes"] = notes
+            r["_detail"] = detail
             print_result(r)
             results.append(r)
 
@@ -353,13 +365,23 @@ def exp2_snr(token: str, dry_run: bool, handle, mux) -> list:
             f"PicoScope 2204A, relay mux isolation."
         )
 
+        detail = {
+            "plate": name,
+            "sweep": sweep,
+            "live_peaks": [{"freq_hz": p["freq_hz"], "magnitude": p["magnitude"], "snr_db": p["snr_db"]} for p in peaks],
+            "peak_mag": peak_mag,
+            "noise_floor": noise_floor,
+            "snr_db": round(snr_db, 2),
+        }
+
         if dry_run:
             print(f"  [DRY RUN] Would submit")
-            results.append({"ok": True, "dry": True, "plate": name, "data": data})
+            results.append({"ok": True, "dry": True, "plate": name, "data": data, "_detail": detail})
         else:
             r = submit_experiment(token, "exp05-plate-mode-survey", data, notes=notes)
             r["_data"] = data
             r["_notes"] = notes
+            r["_detail"] = detail
             print_result(r)
             results.append(r)
 
@@ -439,13 +461,26 @@ def exp3_damping(token: str, dry_run: bool, handle, mux) -> list:
             f"PicoScope 2204A, relay mux isolation."
         )
 
+        detail = {
+            "plate": name,
+            "sweep": sweep,
+            "live_peaks": [{"freq_hz": p["freq_hz"], "magnitude": p["magnitude"], "snr_db": p["snr_db"]} for p in peaks],
+            "f1_hz": bf,
+            "q_factor": round(q_factor, 1),
+            "tau_s": round(tau_s, 6),
+            "bw_hz": round(bw_hz, 1),
+            "half_power_left_hz": float(freqs[left]),
+            "half_power_right_hz": float(freqs[right]),
+        }
+
         if dry_run:
             print(f"  [DRY RUN] Would submit")
-            results.append({"ok": True, "dry": True, "plate": name, "data": data})
+            results.append({"ok": True, "dry": True, "plate": name, "data": data, "_detail": detail})
         else:
             r = submit_experiment(token, "exp05-plate-mode-survey", data, notes=notes)
             r["_data"] = data
             r["_notes"] = notes
+            r["_detail"] = detail
             print_result(r)
             results.append(r)
 
@@ -458,15 +493,21 @@ def exp3_damping(token: str, dry_run: bool, handle, mux) -> list:
 # ═══════════════════════════════════════════════════════════════════════
 
 def exp4_fingerprint(token: str, dry_run: bool, handle, mux) -> list:
-    """Identify each plate from its spectral fingerprint.
+    """Identify each plate via cross-relay template matching.
 
-    Protocol:
+    Protocol (same as rod associative recall):
       1. Load census data as enrollment templates
-      2. For each plate, do a live sweep and score against all templates
-      3. Check if correct plate is identified (highest score)
+      2. For each query plate Q:
+         a. Drive AWG at Q's enrolled frequencies
+         b. At each freq, measure ALL plates via relay mux
+         c. Cross-relay normalize (frac = mag / sum_all)
+         d. Template score: boost +3 if sense plate has enrolled peak
+            within 3% of query freq, else penalty -1
+      3. Winner = highest template score
     """
     print("\n" + "=" * 65)
     print("  PLATE EXPERIMENT 4: SPECTRAL FINGERPRINT AUTH")
+    print("  (cross-relay template matching)")
     print("=" * 65)
 
     # Load enrollment data
@@ -493,67 +534,105 @@ def exp4_fingerprint(token: str, dry_run: bool, handle, mux) -> list:
         print("  ERROR: Need at least 2 enrolled plates")
         return []
 
+    active_ids = [pid for pid in PLATE_IDS if pid in templates]
     print(f"  Enrolled: {len(templates)} plates, {N_PEAKS_AUTH} peaks each")
 
     results = []
     correct = 0
     total = 0
 
-    for pid in PLATE_IDS:
-        if pid not in templates:
-            continue
+    for pid in active_ids:
         name = PLATE_NAMES[pid]
-        print(f"\n─── Plate {name} (relay {pid}) — blind identification ───")
+        query_freqs = templates[pid]
+        print(f"\n─── Query Plate {name} (relay {pid}) — {len(query_freqs)} enrolled freqs ───")
 
-        # Live sweep
-        sweep = _quick_sweep(handle, mux, pid)
-        live_peaks = _extract_peaks(sweep)
+        # Measure all plates at each query frequency via relay mux
+        # raw_mags[sense_pid][peak_idx] = magnitude
+        raw_mags = {sid: [] for sid in active_ids}
+        t0 = time.time()
 
-        # Score against each template
-        scores = {}
-        for tid, t_freqs in templates.items():
-            score = 0
-            for tf in t_freqs:
-                # Find closest live peak
-                best_match = min(live_peaks, key=lambda p: abs(p["freq_hz"] - tf)) \
-                    if live_peaks else None
-                if best_match and abs(best_match["freq_hz"] - tf) / tf < 0.03:
-                    score += best_match["magnitude"]
-            scores[tid] = score
+        for fi, freq in enumerate(query_freqs):
+            for sid in active_ids:
+                mux.select(int(sid))
+                time.sleep(SETTLE_RELAY_S)
+                m = _measure_at(handle, freq)
+                raw_mags[sid].append(m["magnitude"])
 
-        # Identify winner
-        winner = max(scores, key=scores.get)
+            if fi % 5 == 0:
+                elapsed = time.time() - t0
+                pct = (fi + 1) / len(query_freqs) * 100
+                print(f"    freq {fi+1}/{len(query_freqs)} "
+                      f"({freq:.0f} Hz) [{pct:.0f}% | {elapsed:.0f}s]")
+
+        elapsed = time.time() - t0
+        print(f"    Done: {elapsed:.0f}s ({elapsed / 60:.1f} min)")
+
+        # Cross-relay template scoring (same as associative_recall_hw.py)
+        tmpl_scores = {}
+        peak_detail = {}
+        for sid in active_ids:
+            score = 0.0
+            peaks_log = []
+            for fi, freq in enumerate(query_freqs):
+                # Cross-relay normalization at this frequency
+                mags_at_freq = {s: raw_mags[s][fi] for s in active_ids}
+                total_mag = sum(mags_at_freq.values())
+                if total_mag == 0:
+                    continue
+                frac = mags_at_freq[sid] / total_mag
+
+                # Does this sense plate have an enrolled peak near this freq?
+                expected = any(
+                    abs(freq - ep) / max(freq, ep) < 0.03
+                    for ep in templates[sid]
+                )
+
+                if expected:
+                    score += frac * 3.0   # expected resonance → boost
+                else:
+                    score -= frac * 1.0   # unexpected → penalize
+
+                peaks_log.append({
+                    "query_freq_hz": freq,
+                    "magnitude": round(mags_at_freq[sid], 1),
+                    "frac": round(frac, 4),
+                    "expected": expected,
+                    "contribution": round(frac * 3.0 if expected else -frac * 1.0, 4),
+                })
+
+            tmpl_scores[sid] = round(score, 2)
+            peak_detail[sid] = peaks_log
+
+        # Winner = highest template score
+        winner = max(tmpl_scores, key=tmpl_scores.get)
         total += 1
         is_correct = winner == pid
         if is_correct:
             correct += 1
 
         winner_name = PLATE_NAMES[winner]
-        margin = 0
-        if len(scores) > 1:
-            sorted_scores = sorted(scores.values(), reverse=True)
-            if sorted_scores[0] > 0:
-                margin = (sorted_scores[0] - sorted_scores[1]) / sorted_scores[0] * 100
+        # Margin: gap between top two scores
+        sorted_s = sorted(tmpl_scores.values(), reverse=True)
+        margin = sorted_s[0] - sorted_s[1] if len(sorted_s) > 1 else 0
 
         status = "✓ CORRECT" if is_correct else "✗ WRONG"
-        print(f"  Identified as Plate {winner_name} ({status}), margin: {margin:.0f}%")
-        for tid in sorted(scores.keys()):
-            marker = " ←" if tid == winner else ""
-            print(f"    Plate {PLATE_NAMES[tid]}: {scores[tid]:.0f}{marker}")
+        print(f"  Identified as Plate {winner_name} ({status}), margin: {margin:.2f}")
+        for sid in active_ids:
+            marker = " ◄" if sid == winner else ""
+            print(f"    Plate {PLATE_NAMES[sid]}: score={tmpl_scores[sid]:+.2f}{marker}")
 
-        sorted_scores = sorted(scores.values(), reverse=True)
+        # Firestore data
+        winner_score = tmpl_scores[winner]
+        next_best = sorted_s[1] if len(sorted_s) > 1 else 0
         data = {
             "n_rods": len(templates),
             "peaks_per_rod": N_PEAKS_AUTH,
             "sample_rate": SAMPLE_RATE,
             "freq_resolution": 24.2,
-            "auth_rms_pct": round(scores[winner], 1),
-            "auth_matched_peaks": min(N_PEAKS_AUTH,
-                sum(1 for tf in templates[winner]
-                    for lp in live_peaks
-                    if abs(lp["freq_hz"] - tf) / tf < 0.03)),
-            "auth_score_pct": round(scores[winner], 1),
-            "next_best_score_pct": round(sorted_scores[1], 1) if len(sorted_scores) > 1 else 0,
+            "auth_rms_pct": round(abs(margin), 2),
+            "auth_matched_peaks": N_PEAKS_AUTH,
+            "auth_score_pct": round(winner_score, 1),
+            "next_best_score_pct": round(next_best, 1),
             "min_cross_rod_pct": round(margin, 1),
             "excitation_method": "Piezo pulse",
             "correct_rod_identified": "Yes" if is_correct else "No",
@@ -561,18 +640,36 @@ def exp4_fingerprint(token: str, dry_run: bool, handle, mux) -> list:
 
         notes = (
             f"Plate {name} fingerprint auth: identified as {winner_name} "
-            f"({'correct' if is_correct else 'WRONG'}), margin {margin:.0f}%. "
-            f"AWG CW sweep, template matching against census enrollment. "
+            f"({'correct' if is_correct else 'WRONG'}), margin {margin:.2f}. "
+            f"Cross-relay template matching ({len(query_freqs)} enrolled freqs, "
+            f"{len(active_ids)} sense plates). "
             f"PicoScope 2204A, relay mux isolation."
         )
 
+        detail = {
+            "plate": name,
+            "query_freqs": query_freqs,
+            "raw_mags": {sid: raw_mags[sid] for sid in active_ids},
+            "template_scores": {sid: {
+                "plate": PLATE_NAMES[sid],
+                "score": tmpl_scores[sid],
+                "peak_detail": peak_detail[sid],
+            } for sid in active_ids},
+            "enrollment_templates": {sid: templates[sid] for sid in active_ids},
+            "winner": winner,
+            "winner_name": winner_name,
+            "correct": is_correct,
+            "margin": margin,
+        }
+
         if dry_run:
             print(f"  [DRY RUN] Would submit")
-            results.append({"ok": True, "dry": True, "plate": name, "data": data})
+            results.append({"ok": True, "dry": True, "plate": name, "data": data, "_detail": detail})
         else:
             r = submit_experiment(token, "exp-hw-auth", data, notes=notes)
             r["_data"] = data
             r["_notes"] = notes
+            r["_detail"] = detail
             print_result(r)
             results.append(r)
 
@@ -646,13 +743,21 @@ def exp5_mode_survey(token: str, dry_run: bool,
             f"Source: {cpath.name}."
         )
 
+        detail = {
+            "plate": name,
+            "census_file": str(cpath.name),
+            "peaks": peaks,
+            "stats": stats,
+        }
+
         if dry_run:
             print(f"  [DRY RUN] Would submit (Plate {name}, {len(peaks)} modes)")
-            results.append({"ok": True, "dry": True, "plate": name, "data": data})
+            results.append({"ok": True, "dry": True, "plate": name, "data": data, "_detail": detail})
         else:
             r = submit_experiment(token, "exp05-plate-mode-survey", data, notes=notes)
             r["_data"] = data
             r["_notes"] = notes
+            r["_detail"] = detail
             print_result(r)
             results.append(r)
 

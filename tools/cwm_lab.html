@@ -1440,6 +1440,12 @@
 					id="tabQCB">
 					⚛️ Quantum Bridge
 				</div>
+				<div
+					class="nav-tab"
+					onclick="switchTab('memory')"
+					id="tabMemory">
+					💾 Memory Demo
+				</div>
 				<div class="nav-spacer"></div>
 				<div
 					class="nav-status"
@@ -2439,7 +2445,555 @@
 				</div>
 			</div>
 
-			<!-- ═══════════ TAB 4: AUTH DEMO ═══════════ -->
+			<!-- ═══════════ TAB 5: MEMORY DEMO ═══════════ -->
+			<div
+				class="tab-content"
+				id="sectionMemory">
+				<div style="max-width: 960px; margin: 0 auto">
+					<!-- Header -->
+					<div style="margin-bottom: 20px">
+						<h3 style="margin: 0 0 6px 0">
+							💾 <span style="color: var(--accent2)">Glass Memory</span> —
+							Sequence Reversal Demo
+						</h3>
+						<p
+							style="
+								font-size: 13px;
+								color: var(--muted);
+								line-height: 1.6;
+								margin: 0;
+							">
+							This experiment encodes characters as vibrational fingerprints on
+							glass resonators, feeds them through an Echo State Network, and
+							decodes the sequence <em>backwards</em> from memory. You can run
+							it on your own hardware, use simulation physics, or compare
+							against our lab reference data.
+						</p>
+					</div>
+
+					<!-- ── STEP 1: Mode Selection ── -->
+					<div
+						style="
+							background: var(--surface);
+							border: 1px solid var(--border);
+							border-radius: 10px;
+							padding: 16px;
+							margin-bottom: 16px;
+						">
+						<div
+							style="
+								display: flex;
+								align-items: center;
+								gap: 10px;
+								margin-bottom: 12px;
+							">
+							<div
+								style="
+									width: 28px;
+									height: 28px;
+									border-radius: 50%;
+									background: var(--accent2);
+									color: #000;
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-weight: 700;
+									font-size: 13px;
+									flex-shrink: 0;
+								">
+								1
+							</div>
+							<h4 style="margin: 0; font-size: 14px">Choose Your Setup</h4>
+						</div>
+
+						<div
+							id="memModeCards"
+							style="
+								display: grid;
+								grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+								gap: 10px;
+								margin-bottom: 12px;
+							">
+							<!-- Simulation -->
+							<div
+								class="mem-mode-card"
+								id="memModeSimulation"
+								onclick="memSelectMode('simulation')"
+								style="
+									border: 2px solid var(--border);
+									border-radius: 8px;
+									padding: 14px;
+									cursor: pointer;
+									transition: border-color 0.2s;
+								">
+								<div
+									style="font-size: 14px; font-weight: 600; margin-bottom: 4px">
+									🔄 Simulation
+								</div>
+								<div
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										line-height: 1.5;
+									">
+									Rayleigh perturbation model generates realistic mode
+									frequencies and nonlinear coupling.
+									<b>No hardware needed</b> — perfect for getting started.
+								</div>
+								<div
+									style="
+										font-size: 10px;
+										color: var(--accent2);
+										margin-top: 6px;
+									">
+									2 simulated rods × 8 modes → 16d features
+								</div>
+							</div>
+							<!-- Reference -->
+							<div
+								class="mem-mode-card"
+								id="memModeReference"
+								onclick="memSelectMode('reference')"
+								style="
+									border: 2px solid var(--border);
+									border-radius: 8px;
+									padding: 14px;
+									cursor: pointer;
+									transition: border-color 0.2s;
+									opacity: 0.5;
+								">
+								<div
+									style="font-size: 14px; font-weight: 600; margin-bottom: 4px">
+									📊 Reference Data
+								</div>
+								<div
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										line-height: 1.5;
+									">
+									Our lab's real calibration data from fused-silica plates D and
+									E. Compare your results against the published numbers.
+								</div>
+								<div
+									id="memRefStatus"
+									style="font-size: 10px; color: var(--muted); margin-top: 6px">
+									Checking…
+								</div>
+							</div>
+							<!-- Hardware -->
+							<div
+								class="mem-mode-card"
+								id="memModeHardware"
+								onclick="memSelectMode('hardware')"
+								style="
+									border: 2px solid var(--border);
+									border-radius: 8px;
+									padding: 14px;
+									cursor: pointer;
+									transition: border-color 0.2s;
+									opacity: 0.5;
+								">
+								<div
+									style="font-size: 14px; font-weight: 600; margin-bottom: 4px">
+									🔬 Your Hardware
+								</div>
+								<div
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										line-height: 1.5;
+									">
+									Calibrate your own glass resonator via PicoScope. Drive tone
+									patterns through your rods, capture response spectra.
+								</div>
+								<div
+									id="memHwStatus"
+									style="font-size: 10px; color: var(--muted); margin-top: 6px">
+									Checking…
+								</div>
+							</div>
+						</div>
+
+						<div
+							id="memModeInfo"
+							style="
+								font-size: 12px;
+								color: var(--muted);
+								padding: 8px 12px;
+								background: var(--bg);
+								border-radius: 6px;
+								display: none;
+							"></div>
+					</div>
+
+					<!-- ── STEP 2: Calibrate & Train ── -->
+					<div
+						id="memStep2"
+						style="
+							background: var(--surface);
+							border: 1px solid var(--border);
+							border-radius: 10px;
+							padding: 16px;
+							margin-bottom: 16px;
+							opacity: 0.4;
+							pointer-events: none;
+						">
+						<div
+							style="
+								display: flex;
+								align-items: center;
+								gap: 10px;
+								margin-bottom: 12px;
+							">
+							<div
+								style="
+									width: 28px;
+									height: 28px;
+									border-radius: 50%;
+									background: var(--border);
+									color: var(--text);
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-weight: 700;
+									font-size: 13px;
+									flex-shrink: 0;
+								"
+								id="memStep2Num">
+								2
+							</div>
+							<h4 style="margin: 0; font-size: 14px">Calibrate &amp; Train</h4>
+							<div style="flex: 1"></div>
+							<button
+								class="btn btn-primary"
+								onclick="memCalibrate()"
+								id="memCalibrateBtn"
+								style="padding: 8px 20px; font-size: 13px"
+								disabled>
+								⚡ Run Calibration
+							</button>
+						</div>
+						<div
+							id="memCalStatus"
+							style="font-size: 12px; color: var(--muted); line-height: 1.6">
+							Select a setup above, then calibrate to build the feature map and
+							train the ESN.
+						</div>
+
+						<!-- Training results (shown after calibration) -->
+						<div
+							id="memTrainResults"
+							style="display: none; margin-top: 14px">
+							<div style="display: flex; gap: 16px; margin-bottom: 10px">
+								<div style="flex: 1">
+									<div
+										style="font-size: 11px; color: #22d3ee; margin-bottom: 3px">
+										🔬 Glass (resonator features)
+									</div>
+									<div
+										style="
+											background: var(--bg);
+											border-radius: 4px;
+											overflow: hidden;
+											height: 26px;
+											position: relative;
+										">
+										<div
+											id="memGlassBar"
+											style="
+												height: 100%;
+												background: linear-gradient(90deg, #22d3ee, #06b6d4);
+												border-radius: 4px;
+												transition: width 0.8s ease;
+											"></div>
+										<span
+											id="memGlassBarLabel"
+											style="
+												position: absolute;
+												right: 6px;
+												top: 50%;
+												transform: translateY(-50%);
+												font-size: 11px;
+												font-weight: 700;
+												color: var(--text);
+											"></span>
+									</div>
+								</div>
+								<div style="flex: 1">
+									<div
+										style="font-size: 11px; color: #eab308; margin-bottom: 3px">
+										💻 Software (polynomial features)
+									</div>
+									<div
+										style="
+											background: var(--bg);
+											border-radius: 4px;
+											overflow: hidden;
+											height: 26px;
+											position: relative;
+										">
+										<div
+											id="memSwBar"
+											style="
+												height: 100%;
+												background: linear-gradient(90deg, #eab308, #ca8a04);
+												border-radius: 4px;
+												transition: width 0.8s ease;
+											"></div>
+										<span
+											id="memSwBarLabel"
+											style="
+												position: absolute;
+												right: 6px;
+												top: 50%;
+												transform: translateY(-50%);
+												font-size: 11px;
+												font-weight: 700;
+												color: var(--text);
+											"></span>
+									</div>
+								</div>
+							</div>
+							<div
+								id="memTrainDetail"
+								style="font-size: 12px; color: var(--muted)"></div>
+						</div>
+					</div>
+
+					<!-- ── STEP 3: Interactive Demo ── -->
+					<div
+						id="memStep3"
+						style="
+							background: var(--surface);
+							border: 1px solid var(--border);
+							border-radius: 10px;
+							padding: 16px;
+							margin-bottom: 16px;
+							opacity: 0.4;
+							pointer-events: none;
+						">
+						<div
+							style="
+								display: flex;
+								align-items: center;
+								gap: 10px;
+								margin-bottom: 12px;
+							">
+							<div
+								style="
+									width: 28px;
+									height: 28px;
+									border-radius: 50%;
+									background: var(--border);
+									color: var(--text);
+									display: flex;
+									align-items: center;
+									justify-content: center;
+									font-weight: 700;
+									font-size: 13px;
+									flex-shrink: 0;
+								"
+								id="memStep3Num">
+								3
+							</div>
+							<h4 style="margin: 0; font-size: 14px">Decode a Message</h4>
+						</div>
+
+						<div
+							style="
+								display: flex;
+								gap: 10px;
+								margin-bottom: 14px;
+								align-items: stretch;
+							">
+							<input
+								type="text"
+								id="memInput"
+								placeholder="Type a message (e.g. HELLO WORLD)"
+								maxlength="200"
+								style="
+									flex: 1;
+									background: var(--bg);
+									border: 1px solid var(--border);
+									border-radius: 8px;
+									padding: 10px 14px;
+									color: var(--text);
+									font-size: 15px;
+									font-family: 'JetBrains Mono', monospace;
+									outline: none;
+								"
+								onkeydown="if (event.key === 'Enter') memRun()" />
+							<button
+								class="btn btn-primary"
+								onclick="memRun()"
+								id="memRunBtn"
+								style="padding: 10px 24px; font-size: 14px; white-space: nowrap"
+								disabled>
+								⚡ Decode
+							</button>
+						</div>
+
+						<!-- Token Visualization -->
+						<div
+							id="memTokenViz"
+							style="display: none; margin-bottom: 14px">
+							<div
+								style="
+									font-size: 11px;
+									color: var(--muted);
+									margin-bottom: 6px;
+								">
+								Token fingerprints — each character encodes as mode amplitudes
+								on 2 resonators
+							</div>
+							<div
+								id="memTokenGrid"
+								style="display: flex; flex-wrap: wrap; gap: 6px"></div>
+						</div>
+
+						<!-- Results -->
+						<div
+							id="memResults"
+							style="display: none">
+							<div
+								style="
+									background: var(--bg);
+									border: 1px solid var(--border);
+									border-radius: 8px;
+									padding: 14px;
+									margin-bottom: 10px;
+								">
+								<div
+									style="
+										font-size: 11px;
+										color: var(--muted);
+										margin-bottom: 6px;
+									">
+									Expected (each 4-char chunk reversed)
+								</div>
+								<div
+									id="memExpected"
+									style="
+										font-family: 'JetBrains Mono', monospace;
+										font-size: 20px;
+										color: var(--text);
+										letter-spacing: 2px;
+									"></div>
+							</div>
+							<div style="display: flex; gap: 12px; margin-bottom: 10px">
+								<div
+									style="
+										flex: 1;
+										background: rgba(34, 211, 238, 0.06);
+										border: 1px solid rgba(34, 211, 238, 0.2);
+										border-radius: 8px;
+										padding: 12px;
+									">
+									<div
+										style="font-size: 11px; color: #22d3ee; margin-bottom: 2px"
+										id="memGlassLabel">
+										🔬 Glass
+									</div>
+									<div
+										id="memGlassResult"
+										style="
+											font-family: 'JetBrains Mono', monospace;
+											font-size: 20px;
+											letter-spacing: 2px;
+										"></div>
+									<div
+										id="memGlassAcc"
+										style="
+											font-size: 13px;
+											margin-top: 4px;
+											font-weight: 600;
+										"></div>
+								</div>
+								<div
+									style="
+										flex: 1;
+										background: rgba(234, 179, 8, 0.06);
+										border: 1px solid rgba(234, 179, 8, 0.2);
+										border-radius: 8px;
+										padding: 12px;
+									">
+									<div
+										style="font-size: 11px; color: #eab308; margin-bottom: 2px">
+										💻 Software (poly4)
+									</div>
+									<div
+										id="memSwResult"
+										style="
+											font-family: 'JetBrains Mono', monospace;
+											font-size: 20px;
+											letter-spacing: 2px;
+										"></div>
+									<div
+										id="memSwAcc"
+										style="
+											font-size: 13px;
+											margin-top: 4px;
+											font-weight: 600;
+										"></div>
+								</div>
+							</div>
+							<!-- Per-chunk detail -->
+							<div
+								id="memChunks"
+								style="margin-bottom: 10px"></div>
+						</div>
+					</div>
+
+					<!-- How it works (collapsible) -->
+					<details style="margin-bottom: 16px">
+						<summary
+							style="
+								cursor: pointer;
+								font-size: 13px;
+								color: var(--muted);
+								padding: 8px 0;
+							">
+							ℹ️ How does this work?
+						</summary>
+						<div
+							style="
+								font-size: 12px;
+								color: var(--muted);
+								line-height: 1.7;
+								padding: 10px 14px;
+								background: var(--surface);
+								border: 1px solid var(--border);
+								border-radius: 8px;
+								margin-top: 6px;
+							">
+							<b>The experiment:</b> An Echo State Network (ESN) — a recurrent
+							neural network with a fixed random reservoir — reads a 4-character
+							sequence and must output it <em>reversed</em>. This requires
+							genuine memory: the network must hold all 4 characters before
+							emitting any output.<br /><br />
+							<b>Glass path:</b> Each 8-bit ASCII character is encoded by
+							driving a subset of the resonator's eigenmodes. The physical
+							coupling between modes creates a unique 8-dimensional spectral
+							fingerprint per token — richer than the binary input because
+							nonlinear anharmonic coupling adds information the software
+							baseline doesn't have. Two resonators are used (16d total
+							features).<br /><br />
+							<b>Software baseline:</b> The same 8-bit binary encoding, expanded
+							to 163 dimensions via degree-4 polynomial interaction terms.
+							Despite having 10× more features, the polynomial expansion
+							overfits with the same training data.<br /><br />
+							<b>Why glass wins:</b> The physics naturally produces
+							well-conditioned features. The polynomial baseline is overcomplete
+							→ the ridge regression overfits. Glass features are
+							information-dense because the coupling is governed by the rod's
+							actual mechanical transfer function, not a generic expansion.
+						</div>
+					</details>
+				</div>
+			</div>
+
+			<!-- ═══════════ TAB 6: AUTH DEMO ═══════════ -->
 			<div
 				class="tab-content"
 				id="sectionAuth">
@@ -3738,6 +4292,7 @@
 					cim: ['tabCIM', 'sectionCIM'],
 					auth: ['tabAuth', 'sectionAuth'],
 					qcb: ['tabQCB', 'sectionQCB'],
+					memory: ['tabMemory', 'sectionMemory'],
 				}
 				const [tabId, sectionId] = map[tab] || map.experiments
 				document.getElementById(tabId).classList.add('active')
@@ -3745,6 +4300,7 @@
 				if (tab === 'cim' && !cimInitialized) cimInit()
 				if (tab === 'qcb' && !qcbInitialized) qcbInit()
 				if (tab === 'auth') checkEnrollmentStatus()
+				if (tab === 'memory' && !memInitialized) memInit()
 			}
 
 			// ── Experiment Wizard ─────────────────────────────────────────────────
@@ -5778,6 +6334,322 @@
 					btn.disabled = false
 					btn.textContent = '⚡ Compute Orthogonality Matrix'
 				}
+			}
+
+			// ── Memory Demo ───────────────────────────────────────────────────
+			let memInitialized = false
+			let memSelectedMode = null
+			let memCalibrated = false
+
+			async function memInit() {
+				memInitialized = true
+				try {
+					const res = await fetch(API + '/api/memory/status')
+					const data = await res.json()
+					// Enable available mode cards
+					const modes = data.modes || {}
+					if (modes.reference && modes.reference.available) {
+						document.getElementById('memModeReference').style.opacity = '1'
+						document.getElementById('memRefStatus').innerHTML =
+							'✅ Calibration data available (plates D+E, 16d)'
+						document.getElementById('memRefStatus').style.color = '#22c55e'
+					} else {
+						document.getElementById('memRefStatus').innerHTML =
+							'❌ No calibration file found'
+						document.getElementById('memRefStatus').style.color = '#f87171'
+					}
+					if (modes.hardware && modes.hardware.available) {
+						document.getElementById('memModeHardware').style.opacity = '1'
+						const rods = modes.hardware.enrolled_rods || {}
+						const n = Object.keys(rods).length
+						if (n > 0) {
+							document.getElementById('memHwStatus').innerHTML =
+								`✅ PicoScope detected, ${n} rod(s) enrolled`
+							document.getElementById('memHwStatus').style.color = '#22c55e'
+						} else {
+							document.getElementById('memHwStatus').innerHTML =
+								'⚠️ PicoScope detected — enroll rods in Auth tab first'
+							document.getElementById('memHwStatus').style.color = '#eab308'
+						}
+					} else {
+						document.getElementById('memHwStatus').innerHTML =
+							'❌ No PicoScope detected'
+						document.getElementById('memHwStatus').style.color = '#f87171'
+					}
+					// If already calibrated from previous visit, restore state
+					if (data.calibrated && data.validation) {
+						memCalibrated = true
+						memSelectedMode = data.calibrated_mode
+						memShowTrainResults(data.validation)
+						memUnlockStep(2)
+						memUnlockStep(3)
+						memHighlightMode(data.calibrated_mode)
+					}
+				} catch (e) {
+					console.error('memInit error:', e)
+				}
+			}
+
+			function memSelectMode(mode) {
+				memSelectedMode = mode
+				memHighlightMode(mode)
+				memUnlockStep(2)
+				document.getElementById('memCalibrateBtn').disabled = false
+				const infoDiv = document.getElementById('memModeInfo')
+				infoDiv.style.display = 'block'
+				const descriptions = {
+					simulation:
+						'🔄 <b>Simulation mode</b> — Two virtual rods with different putty patterns. ' +
+						'Mode frequencies from Rayleigh perturbation theory. Nonlinear coupling simulates real glass physics. ' +
+						"This produces the same glass-vs-software advantage you'd see with real hardware.",
+					reference:
+						'📊 <b>Reference mode</b> — Using real calibration data captured from our fused-silica plates (D and E). ' +
+						'8 modes per plate, 8 reps per token, 256 tokens. This is the exact data behind the published results.',
+					hardware:
+						'🔬 <b>Hardware mode</b> — Will sweep 256 tone patterns through your enrolled resonators, ' +
+						'capture the response spectrum for each, and build a feature map from YOUR glass. ' +
+						'(Coming soon — use simulation to preview the experiment workflow.)',
+				}
+				infoDiv.innerHTML = descriptions[mode] || ''
+			}
+
+			function memHighlightMode(mode) {
+				document.querySelectorAll('.mem-mode-card').forEach((c) => {
+					c.style.borderColor = 'var(--border)'
+				})
+				const id = 'memMode' + mode.charAt(0).toUpperCase() + mode.slice(1)
+				const el = document.getElementById(id)
+				if (el) el.style.borderColor = 'var(--accent2)'
+			}
+
+			function memUnlockStep(step) {
+				const el = document.getElementById('memStep' + step)
+				if (el) {
+					el.style.opacity = '1'
+					el.style.pointerEvents = 'auto'
+				}
+				const num = document.getElementById('memStep' + step + 'Num')
+				if (num) num.style.background = 'var(--accent2)'
+			}
+
+			async function memCalibrate() {
+				const btn = document.getElementById('memCalibrateBtn')
+				const statusEl = document.getElementById('memCalStatus')
+				btn.disabled = true
+				btn.textContent = '⏳ Calibrating…'
+				statusEl.innerHTML =
+					'🔬 Building feature map from ' +
+					(memSelectedMode === 'simulation'
+						? 'Rayleigh perturbation model'
+						: memSelectedMode === 'reference'
+							? 'lab calibration data'
+							: 'your hardware') +
+					'…<br>Training ESN (200-node reservoir, ridge readout)… this takes ~10s'
+				document.getElementById('memTrainResults').style.display = 'none'
+
+				try {
+					const res = await fetch(API + '/api/memory/calibrate', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({mode: memSelectedMode, n_modes: 8}),
+					})
+					const data = await res.json()
+					if (data.error) {
+						statusEl.innerHTML = `<span style="color:#f87171">❌ ${data.error}</span>`
+						btn.disabled = false
+						btn.textContent = '⚡ Run Calibration'
+						return
+					}
+					memCalibrated = true
+					const v = data.validation
+					statusEl.innerHTML =
+						`✅ Calibrated in <b>${data.mode}</b> mode — ` +
+						`${data.n_tokens} tokens, ${data.glass_dim}d glass features vs ${data.sw_dim}d software`
+					memShowTrainResults(v)
+					memUnlockStep(3)
+					document.getElementById('memRunBtn').disabled = false
+				} catch (e) {
+					statusEl.innerHTML = `<span style="color:#f87171">❌ Error: ${e.message}</span>`
+				} finally {
+					btn.disabled = false
+					btn.textContent = '⚡ Re-calibrate'
+				}
+			}
+
+			function memShowTrainResults(v) {
+				document.getElementById('memTrainResults').style.display = 'block'
+				document.getElementById('memGlassBar').style.width =
+					v.glass_digit_acc + '%'
+				document.getElementById('memGlassBarLabel').textContent =
+					v.glass_digit_acc + '%'
+				document.getElementById('memSwBar').style.width = v.sw_digit_acc + '%'
+				document.getElementById('memSwBarLabel').textContent =
+					v.sw_digit_acc + '%'
+				const advD = (v.glass_digit_acc - v.sw_digit_acc).toFixed(1)
+				const advT = (v.glass_token_acc - v.sw_token_acc).toFixed(1)
+				document.getElementById('memTrainDetail').innerHTML =
+					`<b style="color:#22d3ee">Glass</b>: ${v.glass_digit_acc}% digit / ${v.glass_token_acc}% token (${v.glass_dim}d features)` +
+					` · <b style="color:#eab308">Software</b>: ${v.sw_digit_acc}% digit / ${v.sw_token_acc}% token (${v.sw_dim}d features)` +
+					` · <span style="color:#22c55e;font-weight:600">Glass advantage: +${advD}% digit</span>`
+			}
+
+			async function memRun() {
+				const input = document.getElementById('memInput').value.trim()
+				if (!input || !memCalibrated) return
+				const btn = document.getElementById('memRunBtn')
+				btn.disabled = true
+				btn.textContent = '⏳ Decoding…'
+				try {
+					const res = await fetch(API + '/api/memory/demo', {
+						method: 'POST',
+						headers: {'Content-Type': 'application/json'},
+						body: JSON.stringify({message: input}),
+					})
+					const data = await res.json()
+					if (data.error) {
+						alert(data.error)
+						return
+					}
+					memRender(data)
+				} catch (e) {
+					alert('Error: ' + e.message)
+				} finally {
+					btn.disabled = false
+					btn.textContent = '⚡ Decode'
+				}
+			}
+
+			function memRender(data) {
+				// Token visualization
+				const vizDiv = document.getElementById('memTokenViz')
+				const gridDiv = document.getElementById('memTokenGrid')
+				vizDiv.style.display = 'block'
+				gridDiv.innerHTML = ''
+
+				// Update glass label with mode info
+				const modeLabel =
+					data.mode === 'reference'
+						? 'Glass (plates D+E)'
+						: data.mode === 'simulation'
+							? 'Glass (simulated rods)'
+							: 'Glass (your hardware)'
+				document.getElementById('memGlassLabel').textContent = '🔬 ' + modeLabel
+
+				for (let ci = 0; ci < data.chunks.length; ci++) {
+					const chunk = data.chunks[ci]
+					for (let i = 0; i < chunk.input.length; i++) {
+						const ch = chunk.input[i]
+						const tok = chunk.input_tokens[i]
+						const r1F = chunk.rod1_features[i]
+						const r2F = chunk.rod2_features[i]
+
+						const card = document.createElement('div')
+						card.style.cssText =
+							'background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px;text-align:center;min-width:56px'
+
+						const label = document.createElement('div')
+						label.style.cssText =
+							'font-family:"JetBrains Mono",monospace;font-size:16px;color:var(--text);margin-bottom:2px'
+						label.textContent = ch === ' ' ? '␣' : ch
+						card.appendChild(label)
+
+						const tokLabel = document.createElement('div')
+						tokLabel.style.cssText =
+							'font-size:9px;color:var(--muted);margin-bottom:5px'
+						tokLabel.textContent = `${tok}`
+						card.appendChild(tokLabel)
+
+						// Rod 1 barcodes
+						const r1Bar = document.createElement('div')
+						r1Bar.style.cssText =
+							'display:flex;gap:1px;justify-content:center;margin-bottom:2px'
+						const r1Max = Math.max(...r1F.map(Math.abs), 0.01)
+						for (const v of r1F) {
+							const bar = document.createElement('div')
+							const h = Math.max(2, Math.round((Math.abs(v) / r1Max) * 18))
+							bar.style.cssText = `width:3px;height:${h}px;background:#22d3ee;border-radius:1px;opacity:${0.3 + (Math.abs(v) / r1Max) * 0.7}`
+							r1Bar.appendChild(bar)
+						}
+						card.appendChild(r1Bar)
+
+						// Rod 2 barcodes
+						const r2Bar = document.createElement('div')
+						r2Bar.style.cssText = 'display:flex;gap:1px;justify-content:center'
+						const r2Max = Math.max(...r2F.map(Math.abs), 0.01)
+						for (const v of r2F) {
+							const bar = document.createElement('div')
+							const h = Math.max(2, Math.round((Math.abs(v) / r2Max) * 18))
+							bar.style.cssText = `width:3px;height:${h}px;background:#a78bfa;border-radius:1px;opacity:${0.3 + (Math.abs(v) / r2Max) * 0.7}`
+							r2Bar.appendChild(bar)
+						}
+						card.appendChild(r2Bar)
+
+						gridDiv.appendChild(card)
+					}
+				}
+
+				// Results
+				document.getElementById('memResults').style.display = 'block'
+				document.getElementById('memExpected').textContent =
+					data.expected.replace(/ /g, '␣')
+
+				// Glass result with per-char coloring
+				const glassEl = document.getElementById('memGlassResult')
+				glassEl.innerHTML = ''
+				for (let i = 0; i < data.glass.decoded.length; i++) {
+					const span = document.createElement('span')
+					const ch = data.glass.decoded[i]
+					span.textContent = ch === ' ' ? '␣' : ch
+					span.style.color = ch === data.expected[i] ? '#22c55e' : '#f87171'
+					glassEl.appendChild(span)
+				}
+				document.getElementById('memGlassAcc').innerHTML =
+					`<span style="color:${data.glass.accuracy >= 80 ? '#22c55e' : data.glass.accuracy >= 50 ? '#eab308' : '#f87171'}">${data.glass.accuracy}% correct</span>`
+
+				// Software result
+				const swEl = document.getElementById('memSwResult')
+				swEl.innerHTML = ''
+				for (let i = 0; i < data.software.decoded.length; i++) {
+					const span = document.createElement('span')
+					const ch = data.software.decoded[i]
+					span.textContent = ch === ' ' ? '␣' : ch
+					span.style.color = ch === data.expected[i] ? '#22c55e' : '#f87171'
+					swEl.appendChild(span)
+				}
+				document.getElementById('memSwAcc').innerHTML =
+					`<span style="color:${data.software.accuracy >= 80 ? '#22c55e' : data.software.accuracy >= 50 ? '#eab308' : '#f87171'}">${data.software.accuracy}% correct</span>`
+
+				// Per-chunk detail
+				const chunksEl = document.getElementById('memChunks')
+				chunksEl.innerHTML = ''
+				data.chunks.forEach((chunk, ci) => {
+					const row = document.createElement('div')
+					row.style.cssText =
+						'background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:8px 12px;margin-bottom:4px;font-family:"JetBrains Mono",monospace;font-size:12px'
+					const inputStr = chunk.input
+						.map((c) => (c === ' ' ? '␣' : c))
+						.join('')
+					const expectStr = chunk.expected
+						.map((c) => (c === ' ' ? '␣' : c))
+						.join('')
+					const glassStr = chunk.glass_chars
+						.map((c, i) => {
+							const color = chunk.glass_correct[i] ? '#22c55e' : '#f87171'
+							return `<span style="color:${color}">${c === ' ' ? '␣' : c}${chunk.glass_correct[i] ? '✓' : '✗'}</span>`
+						})
+						.join(' ')
+					const swStr = chunk.sw_chars
+						.map((c, i) => {
+							const color = chunk.sw_correct[i] ? '#22c55e' : '#f87171'
+							return `<span style="color:${color}">${c === ' ' ? '␣' : c}${chunk.sw_correct[i] ? '✓' : '✗'}</span>`
+						})
+						.join(' ')
+					row.innerHTML =
+						`<span style="color:var(--muted)">Chunk ${ci + 1}:</span> [${inputStr}]→[${expectStr}] ` +
+						`<span style="color:#22d3ee">Glass:</span> ${glassStr} ` +
+						`<span style="color:#eab308">SW:</span> ${swStr}`
+					chunksEl.appendChild(row)
+				})
 			}
 		</script>
 	</body>
