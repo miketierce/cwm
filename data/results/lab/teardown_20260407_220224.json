@@ -1,0 +1,162 @@
+{
+  "date": "2026-04-07 22:02",
+  "purpose": "Pre-teardown final measurements",
+  "cross_rod_matrix": {
+    "matrix": {
+      "rod_1": {
+        "scores_all": [
+          {
+            "capture": 1,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 2,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 3,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          }
+        ],
+        "scores": {
+          "1": {
+            "score_pct": Infinity,
+            "best_pct": Infinity,
+            "matched": "0/10"
+          }
+        },
+        "winner": "1",
+        "avg_score": Infinity
+      },
+      "rod_2": {
+        "scores_all": [
+          {
+            "capture": 1,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 2,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 3,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          }
+        ],
+        "scores": {
+          "2": {
+            "score_pct": Infinity,
+            "best_pct": Infinity,
+            "matched": "0/10"
+          }
+        },
+        "winner": "1",
+        "avg_score": Infinity
+      },
+      "rod_3": {
+        "scores_all": [
+          {
+            "capture": 1,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 2,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 3,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          }
+        ],
+        "scores": {
+          "3": {
+            "score_pct": Infinity,
+            "best_pct": Infinity,
+            "matched": "0/10"
+          }
+        },
+        "winner": "1",
+        "avg_score": Infinity
+      },
+      "rod_4": {
+        "scores_all": [
+          {
+            "capture": 1,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 2,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          },
+          {
+            "capture": 3,
+            "score_pct": Infinity,
+            "rms_pct": Infinity,
+            "matched": "0/10"
+          }
+        ],
+        "scores": {
+          "4": {
+            "score_pct": Infinity,
+            "best_pct": Infinity,
+            "matched": "0/10"
+          }
+        },
+        "winner": "1",
+        "avg_score": Infinity
+      }
+    },
+    "ranking": [
+      {
+        "rod": "1",
+        "avg_score_pct": Infinity
+      },
+      {
+        "rod": "2",
+        "avg_score_pct": Infinity
+      },
+      {
+        "rod": "3",
+        "avg_score_pct": Infinity
+      },
+      {
+        "rod": "4",
+        "avg_score_pct": Infinity
+      }
+    ],
+    "n_captures": 3,
+    "topology": "parallel_pzt_awg_sweep"
+  },
+  "last_updated": "2026-04-08T03:02:37.441882+00:00",
+  "snr_awg_sweep": {
+    "rod_material": "Borosilicate glass",
+    "rod_length": 150,
+    "excitation_method": "Piezo buzzer",
+    "peak_amplitude": -41.7,
+    "noise_floor": -61.1,
+    "snr": 19.4,
+    "num_visible_modes": 0
+  }
+}

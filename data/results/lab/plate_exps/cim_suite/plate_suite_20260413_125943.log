@@ -1,0 +1,257 @@
+[12:59:43.356] 
+======================================================================
+[12:59:43.356]   PLATE CIM EXPERIMENT SUITE
+[12:59:43.356]   Blocks: temporal, boolean-pairs, nn-pairs, 3plate-boolean, chained, noise
+[12:59:43.356] ======================================================================
+[12:59:44.584] PicoScope opened (Ch A ±1V DC)
+[12:59:47.168] Relay mux connected on /dev/cu.usbserial-11310
+[12:59:47.172] Loaded enrollment: 5 plates, 10 peaks each
+[12:59:47.172] 
+=================================================================
+[12:59:47.172]   BLOCK 1: TEMPORAL STABILITY
+[12:59:47.172] =================================================================
+[12:59:47.332] 
+  Plate A: measuring 3 enrolled frequencies
+[12:59:47.590]     29700 Hz: 7086129
+[12:59:47.844]     89425 Hz: 4521286
+[12:59:48.112]     18775 Hz: 1717342
+[12:59:48.112]     → 3/3 modes alive
+[12:59:48.272] 
+  Plate B: measuring 6 enrolled frequencies
+[12:59:48.512]     29200 Hz: 7397210
+[12:59:48.759]     49650 Hz: 5010193
+[12:59:49.010]     28825 Hz: 3884211
+[12:59:49.264]     18950 Hz: 1887048
+[12:59:49.536]     15125 Hz: 1684670
+[12:59:49.980]     89350 Hz: 1348802
+[12:59:49.980]     → 6/6 modes alive
+[12:59:50.140] 
+  Plate C: measuring 6 enrolled frequencies
+[12:59:50.535]     43175 Hz: 6178489
+[12:59:50.777]     49625 Hz: 5883828
+[12:59:51.022]     31400 Hz: 4721845
+[12:59:51.275]     26175 Hz: 2909162
+[12:59:51.524]     61650 Hz: 2638369
+[12:59:51.776]     89325 Hz: 2365862
+[12:59:51.776]     → 6/6 modes alive
+[12:59:51.936] 
+  Plate D: measuring 8 enrolled frequencies
+[12:59:52.189]     49625 Hz: 5369692
+[12:59:52.444]     29925 Hz: 4490712
+[12:59:52.706]     90275 Hz: 2498799
+[12:59:52.975]     78125 Hz: 2238825
+[12:59:53.240]     89375 Hz: 1919574
+[12:59:53.507]     90025 Hz: 1746094
+[12:59:53.783]     45025 Hz: 1579303
+[12:59:54.052]     94675 Hz: 1472471
+[12:59:54.052]     → 8/8 modes alive
+[12:59:54.210] 
+  Plate E: measuring 8 enrolled frequencies
+[12:59:54.449]     49675 Hz: 8695560
+[12:59:54.692]     29250 Hz: 7956334
+[12:59:54.936]     29975 Hz: 6815031
+[12:59:55.193]     28875 Hz: 4439018
+[12:59:55.469]     34500 Hz: 2723666
+[12:59:55.743]     26200 Hz: 2673285
+[12:59:56.015]     89475 Hz: 2617142
+[12:59:56.298]     94775 Hz: 1460417
+[12:59:56.298]     → 8/8 modes alive
+[12:59:56.352] 
+  Temporal stability: 31/31 (100.0%) modes alive across 5 plates
+[12:59:56.352] 
+=================================================================
+[12:59:56.352]   BLOCK 2: BOOLEAN ALL PAIRS
+[12:59:56.352] =================================================================
+[12:59:56.352] 
+  Pair: Plate A × Plate B
+[12:59:56.352]     A-only: 0, B-only: 3, Shared: 3
+[13:00:00.041]     Fidelity: AND=50.0%, OR=83.3%, XOR=66.7%, mean=66.7%
+[13:00:00.041] 
+  Pair: Plate A × Plate C
+[13:00:00.042]     A-only: 2, B-only: 5, Shared: 1
+[13:00:04.709]     Fidelity: AND=62.5%, OR=87.5%, XOR=50.0%, mean=66.7%
+[13:00:04.709] 
+  Pair: Plate A × Plate D
+[13:00:04.709]     A-only: 1, B-only: 6, Shared: 2
+[13:00:10.091]     Fidelity: AND=77.8%, OR=88.9%, XOR=66.7%, mean=77.8%
+[13:00:10.091] 
+  Pair: Plate A × Plate E
+[13:00:10.091]     A-only: 1, B-only: 6, Shared: 2
+[13:00:15.226]     Fidelity: AND=55.6%, OR=77.8%, XOR=33.3%, mean=55.6%
+[13:00:15.226] 
+  Pair: Plate B × Plate C
+[13:00:15.226]     A-only: 4, B-only: 4, Shared: 2
+[13:00:20.837]     Fidelity: AND=50.0%, OR=100.0%, XOR=50.0%, mean=66.7%
+[13:00:20.837] 
+  Pair: Plate B × Plate D
+[13:00:20.837]     A-only: 3, B-only: 5, Shared: 3
+[13:00:27.101]     Fidelity: AND=72.7%, OR=90.9%, XOR=63.6%, mean=75.7%
+[13:00:27.101] 
+  Pair: Plate B × Plate E
+[13:00:27.101]     A-only: 2, B-only: 4, Shared: 4
+[13:00:32.837]     Fidelity: AND=60.0%, OR=70.0%, XOR=50.0%, mean=60.0%
+[13:00:32.837] 
+  Pair: Plate C × Plate D
+[13:00:32.837]     A-only: 4, B-only: 6, Shared: 2
+[13:00:39.491]     Fidelity: AND=58.3%, OR=100.0%, XOR=58.3%, mean=72.2%
+[13:00:39.491] 
+  Pair: Plate C × Plate E
+[13:00:39.492]     A-only: 3, B-only: 5, Shared: 3
+[13:00:45.586]     Fidelity: AND=36.4%, OR=90.9%, XOR=27.3%, mean=51.5%
+[13:00:45.586] 
+  Pair: Plate D × Plate E
+[13:00:45.586]     A-only: 4, B-only: 4, Shared: 4
+[13:00:52.287]     Fidelity: AND=58.3%, OR=100.0%, XOR=58.3%, mean=72.2%
+[13:00:52.341] 
+  Boolean fidelity: mean=66.5%, worst=51.5%
+[13:00:52.341] 
+=================================================================
+[13:00:52.341]   BLOCK 3: NEAREST-NEIGHBOR (cross-relay)
+[13:00:52.341] =================================================================
+[13:00:52.341] 
+  Query: Plate A (3 freqs)
+[13:00:58.934]     Winner: Plate A (✓)  margin=+3.88
+[13:00:58.934]     Scores: [A:+4.71, B:+0.76, C:+0.26, D:+0.33, E:+0.83]
+[13:00:58.934] 
+  Query: Plate B (6 freqs)
+[13:01:11.762]     Winner: Plate B (✓)  margin=+2.25
+[13:01:11.763]     Scores: [A:+1.78, B:+4.62, C:+0.68, D:+1.44, E:+2.37]
+[13:01:11.763] 
+  Query: Plate C (6 freqs)
+[13:01:24.673]     Winner: Plate C (✓)  margin=+4.04
+[13:01:24.673]     Scores: [A:-0.06, B:+0.51, C:+5.45, D:+0.48, E:+1.41]
+[13:01:24.673] 
+  Query: Plate D (8 freqs)
+[13:01:42.159]     Winner: Plate D (✓)  margin=+3.60
+[13:01:42.159]     Scores: [A:+1.43, B:+2.55, C:+1.37, D:+7.18, E:+3.58]
+[13:01:42.159] 
+  Query: Plate E (8 freqs)
+[13:01:59.336]     Winner: Plate E (✓)  margin=+6.10
+[13:01:59.336]     Scores: [A:+1.56, B:+2.14, C:+1.30, D:+1.83, E:+8.24]
+[13:01:59.336] 
+  NN accuracy: 5/5 (100.0%), mean margin=+3.97
+[13:01:59.336] 
+=================================================================
+[13:01:59.336]   BLOCK 4: 3-PLATE BOOLEAN
+[13:01:59.336] =================================================================
+[13:01:59.336] 
+  Triple: A × B × C
+[13:02:07.316]     Fidelity: AND3=66.7%, OR3=88.9%, mean=77.8%
+[13:02:07.316] 
+  Triple: A × B × D
+[13:02:14.399]     Fidelity: AND3=87.5%, OR3=87.5%, mean=87.5%
+[13:02:14.399] 
+  Triple: A × B × E
+[13:02:21.408]     Fidelity: AND3=62.5%, OR3=75.0%, mean=68.8%
+[13:02:21.409] 
+  Triple: A × C × D
+[13:02:30.983]     Fidelity: AND3=81.8%, OR3=90.9%, mean=86.3%
+[13:02:30.983] 
+  Triple: A × C × E
+[13:02:39.808]     Fidelity: AND3=70.0%, OR3=90.0%, mean=80.0%
+[13:02:39.808] 
+  Triple: A × D × E
+[13:02:47.738]     Fidelity: AND3=77.8%, OR3=88.9%, mean=83.3%
+[13:02:47.738] 
+  Triple: B × C × D
+[13:02:57.815]     Fidelity: AND3=66.7%, OR3=100.0%, mean=83.3%
+[13:02:57.815] 
+  Triple: B × C × E
+[13:03:07.214]     Fidelity: AND3=72.7%, OR3=90.9%, mean=81.8%
+[13:03:07.214] 
+  Triple: B × D × E
+[13:03:15.881]     Fidelity: AND3=70.0%, OR3=90.0%, mean=80.0%
+[13:03:15.881] 
+  Triple: C × D × E
+[13:03:26.000]     Fidelity: AND3=41.7%, OR3=100.0%, mean=70.8%
+[13:03:26.051] 
+  3-plate fidelity: mean=80.0%
+[13:03:26.051] 
+=================================================================
+[13:03:26.051]   BLOCK 5: CHAINED BOOLEAN
+[13:03:26.051] =================================================================
+[13:03:26.051]   Chain: (A AND B) XOR C
+[13:03:34.228]   Chained fidelity: 55.6% (5/9)
+[13:03:34.228] 
+=================================================================
+[13:03:34.228]   BLOCK 6: NOISE ROBUSTNESS (drive voltage sweep)
+[13:03:34.228] =================================================================
+[13:03:34.229] 
+  Baseline: full-drive cross-relay NN on 5 plates
+[13:03:34.229] 
+  Drive 100% (2000000 µVpp):
+[13:03:40.797]     Winner: A (✓)  margin=+3.90  corr=1.0000
+[13:03:40.797] 
+  Drive 75% (1500000 µVpp):
+[13:03:47.321]     Winner: A (✓)  margin=+3.89  corr=0.9998
+[13:03:47.321] 
+  Drive 50% (1000000 µVpp):
+[13:03:53.944]     Winner: A (✓)  margin=+3.84  corr=0.9998
+[13:03:53.944] 
+  Drive 25% (500000 µVpp):
+[13:04:00.668]     Winner: A (✓)  margin=+3.84  corr=0.9994
+[13:04:00.668] 
+  Drive 10% (200000 µVpp):
+[13:04:07.324]     Winner: A (✓)  margin=+3.66  corr=1.0000
+[13:04:07.324] 
+  Noise floor: correct recall down to 10.0% drive
+[13:04:08.345] PicoScope closed
+[13:04:08.406] 
+  Saved: /Users/Mike/Code/wcfoma/data/results/lab/plate_exps/cim_suite/plate_suite_20260413_125943.json
+[13:04:08.406] 
+=================================================================
+[13:04:08.406]   FIRESTORE SUBMISSION
+[13:04:08.406] =================================================================
+[13:04:08.964]   ✓ Firebase auth OK
+[13:04:11.172]   temporal: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 400,
+  "statusMessage": "Unknown experiment: exp-plate-cim-suite",
+  "message": "Unknown experiment: exp-plate-cim-suite"
+}
+[13:04:12.631]   boolean-pairs: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 400,
+  "statusMessage": "Unknown experiment: exp-plate-cim-suite",
+  "message": "Unknown experiment: exp-plate-cim-suite"
+}
+[13:04:14.049]   nn-pairs: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 400,
+  "statusMessage": "Unknown experiment: exp-plate-cim-suite",
+  "message": "Unknown experiment: exp-plate-cim-suite"
+}
+[13:04:15.391]   3plate-boolean: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 400,
+  "statusMessage": "Unknown experiment: exp-plate-cim-suite",
+  "message": "Unknown experiment: exp-plate-cim-suite"
+}
+[13:04:16.958]   chained: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 400,
+  "statusMessage": "Unknown experiment: exp-plate-cim-suite",
+  "message": "Unknown experiment: exp-plate-cim-suite"
+}
+[13:04:18.495]   noise: ✗ {
+  "error": true,
+  "url": "https://coherent-wave-memory.web.app/api/submit-experiment",
+  "statusCode": 429,
+  "statusMessage": "Too many submissions. Please wait a minute.",
+  "message": "Too many submissions. Please wait a minute."
+}
+[13:04:19.500] 
+=================================================================
+[13:04:19.500]   SUITE SUMMARY (261.2s)
+[13:04:19.500] =================================================================
+[13:04:19.500]   Temporal:     100.0% modes alive
+[13:04:19.500]   Boolean:      66.5% mean fidelity
+[13:04:19.500]   NN:           100.0% accuracy, margin +3.97
+[13:04:19.500]   3-plate:      80.0% mean fidelity
+[13:04:19.500]   Chained:      55.6% fidelity
+[13:04:19.500]   Noise floor:  10.0% drive

@@ -1,0 +1,330 @@
+{
+  "timestamp": "2026-04-09T23:20:31.236526+00:00",
+  "experiments_run": [
+    "reexcitation"
+  ],
+  "total_duration_s": 59.1,
+  "results": {
+    "ringdown_reexcitation": {
+      "experiment": "ringdown_reexcitation_interference",
+      "description": "Classical two-source interference via ringdown re-excitation",
+      "rod_id": "1",
+      "mode_freq_hz": 2299.2,
+      "ringdown_tau_ms": 30.0,
+      "Q_measured": null,
+      "period_ms": 0.435,
+      "n_delays": 23,
+      "n_reps": 3,
+      "reference_mag": 24212859.4,
+      "sweep": [
+        {
+          "delay_s": 0.0,
+          "delay_cycles": 0.0,
+          "delay_over_tau": 0.0,
+          "magnitude_mean": 24193726.4,
+          "magnitude_std": 15243.4,
+          "magnitude_reps": [
+            24215082.0,
+            24185597.2,
+            24180500.0
+          ]
+        },
+        {
+          "delay_s": 5.4e-05,
+          "delay_cycles": 0.124,
+          "delay_over_tau": 0.002,
+          "magnitude_mean": 24160882.7,
+          "magnitude_std": 1508.6,
+          "magnitude_reps": [
+            24162491.2,
+            24161292.1,
+            24158864.7
+          ]
+        },
+        {
+          "delay_s": 0.000109,
+          "delay_cycles": 0.251,
+          "delay_over_tau": 0.004,
+          "magnitude_mean": 24152087.0,
+          "magnitude_std": 10468.0,
+          "magnitude_reps": [
+            24143514.0,
+            24145921.5,
+            24166825.6
+          ]
+        },
+        {
+          "delay_s": 0.000163,
+          "delay_cycles": 0.375,
+          "delay_over_tau": 0.005,
+          "magnitude_mean": 24157002.0,
+          "magnitude_std": 8278.5,
+          "magnitude_reps": [
+            24157532.0,
+            24146608.3,
+            24166865.5
+          ]
+        },
+        {
+          "delay_s": 0.000217,
+          "delay_cycles": 0.499,
+          "delay_over_tau": 0.007,
+          "magnitude_mean": 24155511.3,
+          "magnitude_std": 5702.2,
+          "magnitude_reps": [
+            24147505.1,
+            24158679.1,
+            24160349.7
+          ]
+        },
+        {
+          "delay_s": 0.000272,
+          "delay_cycles": 0.625,
+          "delay_over_tau": 0.009,
+          "magnitude_mean": 24151557.6,
+          "magnitude_std": 7056.4,
+          "magnitude_reps": [
+            24150768.5,
+            24160567.4,
+            24143336.9
+          ]
+        },
+        {
+          "delay_s": 0.000326,
+          "delay_cycles": 0.75,
+          "delay_over_tau": 0.011,
+          "magnitude_mean": 24157462.6,
+          "magnitude_std": 6574.4,
+          "magnitude_reps": [
+            24151456.3,
+            24166612.1,
+            24154319.4
+          ]
+        },
+        {
+          "delay_s": 0.000381,
+          "delay_cycles": 0.876,
+          "delay_over_tau": 0.013,
+          "magnitude_mean": 24171577.0,
+          "magnitude_std": 4797.0,
+          "magnitude_reps": [
+            24174042.6,
+            24175817.5,
+            24164870.8
+          ]
+        },
+        {
+          "delay_s": 0.000435,
+          "delay_cycles": 1.0,
+          "delay_over_tau": 0.015,
+          "magnitude_mean": 24163024.6,
+          "magnitude_std": 12887.1,
+          "magnitude_reps": [
+            24163089.6,
+            24178775.5,
+            24147208.8
+          ]
+        },
+        {
+          "delay_s": 0.000652,
+          "delay_cycles": 1.499,
+          "delay_over_tau": 0.022,
+          "magnitude_mean": 24169827.6,
+          "magnitude_std": 3595.0,
+          "magnitude_reps": [
+            24165177.8,
+            24173932.9,
+            24170372.0
+          ]
+        },
+        {
+          "delay_s": 0.00087,
+          "delay_cycles": 2.0,
+          "delay_over_tau": 0.029,
+          "magnitude_mean": 24161048.4,
+          "magnitude_std": 6113.7,
+          "magnitude_reps": [
+            24152512.4,
+            24166507.8,
+            24164124.9
+          ]
+        },
+        {
+          "delay_s": 0.001305,
+          "delay_cycles": 3.0,
+          "delay_over_tau": 0.043,
+          "magnitude_mean": 24184831.0,
+          "magnitude_std": 1085.4,
+          "magnitude_reps": [
+            24183323.7,
+            24185332.9,
+            24185836.3
+          ]
+        },
+        {
+          "delay_s": 0.00174,
+          "delay_cycles": 4.001,
+          "delay_over_tau": 0.058,
+          "magnitude_mean": 24175393.8,
+          "magnitude_std": 3363.8,
+          "magnitude_reps": [
+            24173950.4,
+            24172190.0,
+            24180041.0
+          ]
+        },
+        {
+          "delay_s": 0.002175,
+          "delay_cycles": 5.001,
+          "delay_over_tau": 0.072,
+          "magnitude_mean": 24176774.9,
+          "magnitude_std": 6269.5,
+          "magnitude_reps": [
+            24181956.0,
+            24167953.1,
+            24180415.5
+          ]
+        },
+        {
+          "delay_s": 0.003044,
+          "delay_cycles": 6.999,
+          "delay_over_tau": 0.101,
+          "magnitude_mean": 24181645.1,
+          "magnitude_std": 7973.2,
+          "magnitude_reps": [
+            24192823.1,
+            24174773.0,
+            24177339.1
+          ]
+        },
+        {
+          "delay_s": 0.004349,
+          "delay_cycles": 9.999,
+          "delay_over_tau": 0.145,
+          "magnitude_mean": 24183237.6,
+          "magnitude_std": 3636.4,
+          "magnitude_reps": [
+            24178632.7,
+            24183557.2,
+            24187522.8
+          ]
+        },
+        {
+          "delay_s": 0.015,
+          "delay_cycles": 34.488,
+          "delay_over_tau": 0.5,
+          "magnitude_mean": 24176398.9,
+          "magnitude_std": 6179.4,
+          "magnitude_reps": [
+            24171613.0,
+            24185124.3,
+            24172459.4
+          ]
+        },
+        {
+          "delay_s": 0.03,
+          "delay_cycles": 68.977,
+          "delay_over_tau": 1.0,
+          "magnitude_mean": 24168802.5,
+          "magnitude_std": 9897.8,
+          "magnitude_reps": [
+            24156693.5,
+            24168775.9,
+            24180938.0
+          ]
+        },
+        {
+          "delay_s": 0.045,
+          "delay_cycles": 103.465,
+          "delay_over_tau": 1.5,
+          "magnitude_mean": 24172608.0,
+          "magnitude_std": 4832.4,
+          "magnitude_reps": [
+            24175612.6,
+            24176421.6,
+            24165789.9
+          ]
+        },
+        {
+          "delay_s": 0.06,
+          "delay_cycles": 137.954,
+          "delay_over_tau": 2.0,
+          "magnitude_mean": 24181308.6,
+          "magnitude_std": 966.0,
+          "magnitude_reps": [
+            24182263.8,
+            24181676.7,
+            24179985.2
+          ]
+        },
+        {
+          "delay_s": 0.09,
+          "delay_cycles": 206.931,
+          "delay_over_tau": 3.0,
+          "magnitude_mean": 24200599.3,
+          "magnitude_std": 8740.6,
+          "magnitude_reps": [
+            24203470.0,
+            24188751.6,
+            24209576.4
+          ]
+        },
+        {
+          "delay_s": 0.15,
+          "delay_cycles": 344.884,
+          "delay_over_tau": 5.0,
+          "magnitude_mean": 24216820.4,
+          "magnitude_std": 7732.2,
+          "magnitude_reps": [
+            24218787.9,
+            24206521.2,
+            24225152.0
+          ]
+        },
+        {
+          "delay_s": 0.5,
+          "delay_cycles": 1149.615,
+          "delay_over_tau": 16.667,
+          "magnitude_mean": 24212859.4,
+          "magnitude_std": 5129.3,
+          "magnitude_reps": [
+            24209964.4,
+            24208546.7,
+            24220067.0
+          ]
+        }
+      ],
+      "normalized_magnitudes": [
+        0.9992,
+        0.9979,
+        0.9975,
+        0.9977,
+        0.9976,
+        0.9975,
+        0.9977,
+        0.9983,
+        0.9979,
+        0.9982,
+        0.9979,
+        0.9988,
+        0.9985,
+        0.9985,
+        0.9987,
+        0.9988,
+        0.9985,
+        0.9982,
+        0.9983,
+        0.9987,
+        0.9995,
+        1.0002,
+        1.0
+      ],
+      "max_normalized": 1.0002,
+      "min_normalized": 0.9975,
+      "contrast": 0.0027,
+      "oscillation_detected": true,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "detail": "Amplitude contrast 0.3% is below 2% threshold. Ringdown may decay too fast (\u03c4=30.0 ms) for detectable phase-dependent interference at Python timing precision."
+    }
+  }
+}

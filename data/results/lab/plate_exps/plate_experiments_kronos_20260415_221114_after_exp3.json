@@ -1,0 +1,5585 @@
+{
+  "timestamp": "2026-04-16T03:53:06.032299+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "checkpoint": "after_exp3",
+  "results": [
+    {
+      "ok": true,
+      "id": "UWKAcHvnlSLCwnHIL2Ct",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "A",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.1
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 13675.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 7575.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 2725.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 2875.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 4550.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 2775.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 15675.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9800.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9325.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5700.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9275.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 20300.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 350.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 7725.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 5600.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 5200.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 20475.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14225.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.902161,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "9UWziskE65CzXA7eAGkP",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "B",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.0
+          },
+          {
+            "freq_hz": 17075.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 18475.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 12950.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 1350.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 12825.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 475.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 7225.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 17250.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 6775.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 1975.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5625.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 7675.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 1925.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 12050.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 10900.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 1775.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 825.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 8350.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 4325.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.892546,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "d5eL4cxF1iD52rXa8fJ2",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "G",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 198.2
+          },
+          {
+            "freq_hz": 275.0,
+            "snr_db": 188.9
+          },
+          {
+            "freq_hz": 10775.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 650.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 20100.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 6200.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 4875.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 8050.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 6850.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 3400.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 5950.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 11450.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 2725.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 17025.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14000.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 5525.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 7525.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 8975.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 10000.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 15675.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.816337,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "439s3s2KL0Lw6Kc6ynix",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "D",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.5
+          },
+          {
+            "freq_hz": 275.0,
+            "snr_db": 189.1
+          },
+          {
+            "freq_hz": 10150.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 5950.0,
+            "snr_db": 188.7
+          },
+          {
+            "freq_hz": 9575.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 13375.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 13000.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 14775.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 12700.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 1600.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 600.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 325.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 11250.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14450.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 20150.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 6625.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 1050.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 17700.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 6050.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.940053,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "5h7ejOyOB2yKWP4xaDs6",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "H",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.4
+          },
+          {
+            "freq_hz": 525.0,
+            "snr_db": 189.4
+          },
+          {
+            "freq_hz": 6875.0,
+            "snr_db": 188.9
+          },
+          {
+            "freq_hz": 4350.0,
+            "snr_db": 188.7
+          },
+          {
+            "freq_hz": 400.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 2750.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 17725.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 12025.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 4725.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 4900.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 8000.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 13850.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 17175.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 14375.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 4400.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5150.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 10650.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9900.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 10125.0,
+            "snr_db": 187.8
+          }
+        ],
+        "peak_mag": 0.935441,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "g3BJ70BRI0m9LcKcLCms",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "A",
+        "f1_hz": 6200.0,
+        "q_factor": 100.0,
+        "tau_s": 0.005134,
+        "bw_hz": 0.0,
+        "half_power_left_hz": 6200.0,
+        "half_power_right_hz": 6200.0,
+        "narrow_sweep": [
+          {
+            "freq_hz": 6200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6205.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6210.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6215.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6220.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6225.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6230.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6235.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6240.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6245.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6250.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6255.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6260.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6265.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6270.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6275.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6280.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6285.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6290.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6295.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6300.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6305.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6310.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6315.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6320.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6325.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6330.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6335.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6340.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6345.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6350.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6355.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6360.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6365.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6370.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6375.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6380.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6385.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6390.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6395.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6400.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6405.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6410.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6415.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6420.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6425.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6430.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6435.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6440.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6445.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6450.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6455.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6460.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6465.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6470.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6475.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6480.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6485.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6490.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6495.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6500.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6505.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6510.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6515.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6520.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6525.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6530.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6535.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6540.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6545.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6550.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6555.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6560.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6565.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6570.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6575.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6580.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6585.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6590.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6595.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6600.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6605.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6610.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6615.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6620.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6625.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6630.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6635.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6640.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6645.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6650.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6655.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6660.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6665.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6670.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6675.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6680.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6685.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6690.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6695.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6700.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6705.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6710.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6715.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6720.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6725.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6730.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6735.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6740.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6745.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6750.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6755.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6760.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6765.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6770.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6775.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6780.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6785.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6790.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6795.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6800.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6805.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6810.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6815.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6820.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6825.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6830.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6835.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6840.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6845.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6850.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6855.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6860.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6865.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6870.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6875.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6880.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6885.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6890.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6895.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6900.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6905.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6910.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6915.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6920.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6925.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6930.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6935.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6940.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6945.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6950.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6955.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6960.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6965.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6970.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6975.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6980.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6985.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6990.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6995.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7000.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7005.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7010.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7015.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7020.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7025.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7030.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7035.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7040.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7045.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7050.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7055.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7060.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7065.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7070.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7075.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7080.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7085.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7090.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7095.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7100.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7105.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7110.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7115.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7120.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7125.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7130.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7135.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7140.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7145.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7150.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7155.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7160.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7165.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7170.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7175.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7180.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7185.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7190.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7195.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "YuPafryQipFEsMTJ4I74",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "B",
+        "f1_hz": 6200.0,
+        "q_factor": 100.0,
+        "tau_s": 0.005134,
+        "bw_hz": 0.0,
+        "half_power_left_hz": 6200.0,
+        "half_power_right_hz": 6200.0,
+        "narrow_sweep": [
+          {
+            "freq_hz": 6200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6205.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6210.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6215.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6220.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6225.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6230.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6235.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6240.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6245.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6250.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6255.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6260.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6265.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6270.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6275.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6280.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6285.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6290.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6295.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6300.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6305.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6310.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6315.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6320.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6325.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6330.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6335.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6340.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6345.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6350.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6355.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6360.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6365.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6370.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6375.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6380.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6385.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6390.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6395.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6400.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6405.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6410.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6415.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6420.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6425.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6430.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6435.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6440.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6445.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6450.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6455.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6460.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6465.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6470.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6475.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6480.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6485.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6490.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6495.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6500.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6505.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6510.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6515.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6520.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6525.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6530.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6535.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6540.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6545.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6550.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6555.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6560.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6565.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6570.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6575.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6580.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6585.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6590.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6595.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6600.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6605.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6610.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6615.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6620.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6625.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6630.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6635.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6640.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6645.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6650.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6655.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6660.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6665.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6670.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6675.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6680.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6685.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6690.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6695.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6700.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6705.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6710.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6715.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6720.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6725.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6730.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6735.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6740.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6745.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6750.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6755.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6760.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6765.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6770.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6775.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6780.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6785.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6790.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6795.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6800.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6805.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6810.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6815.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6820.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6825.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6830.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6835.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6840.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6845.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6850.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6855.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6860.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6865.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6870.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6875.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6880.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6885.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6890.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6895.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6900.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6905.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6910.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6915.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6920.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6925.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6930.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6935.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6940.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6945.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6950.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6955.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6960.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6965.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6970.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6975.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6980.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6985.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6990.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6995.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7000.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7005.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7010.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7015.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7020.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7025.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7030.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7035.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7040.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7045.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7050.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7055.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7060.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7065.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7070.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7075.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7080.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7085.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7090.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7095.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7100.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7105.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7110.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7115.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7120.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7125.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7130.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7135.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7140.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7145.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7150.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7155.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7160.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7165.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7170.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7175.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7180.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7185.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7190.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7195.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "8U1ZoPI0J72qShVRInsy",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "G",
+        "f1_hz": 6200.0,
+        "q_factor": 100.0,
+        "tau_s": 0.005134,
+        "bw_hz": 0.0,
+        "half_power_left_hz": 6200.0,
+        "half_power_right_hz": 6200.0,
+        "narrow_sweep": [
+          {
+            "freq_hz": 6200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6205.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6210.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6215.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6220.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6225.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6230.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6235.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6240.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6245.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6250.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6255.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6260.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6265.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6270.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6275.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6280.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6285.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6290.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6295.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6300.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6305.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6310.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6315.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6320.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6325.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6330.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6335.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6340.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6345.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6350.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6355.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6360.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6365.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6370.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6375.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6380.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6385.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6390.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6395.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6400.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6405.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6410.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6415.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6420.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6425.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6430.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6435.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6440.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6445.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6450.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6455.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6460.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6465.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6470.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6475.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6480.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6485.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6490.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6495.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6500.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6505.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6510.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6515.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6520.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6525.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6530.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6535.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6540.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6545.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6550.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6555.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6560.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6565.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6570.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6575.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6580.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6585.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6590.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6595.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6600.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6605.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6610.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6615.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6620.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6625.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6630.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6635.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6640.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6645.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6650.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6655.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6660.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6665.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6670.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6675.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6680.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6685.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6690.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6695.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6700.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6705.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6710.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6715.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6720.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6725.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6730.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6735.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6740.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6745.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6750.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6755.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6760.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6765.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6770.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6775.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6780.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6785.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6790.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6795.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6800.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6805.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6810.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6815.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6820.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6825.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6830.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6835.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6840.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6845.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6850.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6855.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6860.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6865.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6870.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6875.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6880.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6885.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6890.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6895.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6900.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6905.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6910.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6915.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6920.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6925.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6930.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6935.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6940.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6945.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6950.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6955.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6960.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6965.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6970.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6975.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6980.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6985.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6990.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6995.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7000.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7005.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7010.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7015.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7020.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7025.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7030.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7035.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7040.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7045.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7050.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7055.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7060.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7065.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7070.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7075.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7080.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7085.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7090.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7095.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7100.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7105.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7110.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7115.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7120.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7125.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7130.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7135.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7140.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7145.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7150.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7155.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7160.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7165.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7170.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7175.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7180.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7185.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7190.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7195.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "iRLZsX5UQhBKVM4FG1VN",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "D",
+        "f1_hz": 6200.0,
+        "q_factor": 100.0,
+        "tau_s": 0.005134,
+        "bw_hz": 0.0,
+        "half_power_left_hz": 6200.0,
+        "half_power_right_hz": 6200.0,
+        "narrow_sweep": [
+          {
+            "freq_hz": 6200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6205.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6210.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6215.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6220.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6225.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6230.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6235.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6240.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6245.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6250.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6255.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6260.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6265.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6270.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6275.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6280.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6285.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6290.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6295.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6300.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6305.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6310.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6315.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6320.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6325.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6330.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6335.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6340.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6345.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6350.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6355.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6360.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6365.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6370.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6375.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6380.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6385.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6390.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6395.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6400.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6405.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6410.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6415.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6420.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6425.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6430.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6435.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6440.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6445.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6450.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6455.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6460.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6465.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6470.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6475.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6480.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6485.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6490.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6495.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6500.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6505.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6510.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6515.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6520.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6525.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6530.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6535.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6540.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6545.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6550.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6555.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6560.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6565.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6570.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6575.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6580.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6585.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6590.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6595.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6600.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6605.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6610.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6615.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6620.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6625.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6630.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6635.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6640.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6645.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6650.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6655.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6660.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6665.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6670.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6675.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6680.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6685.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6690.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6695.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6700.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6705.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6710.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6715.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6720.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6725.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6730.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6735.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6740.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6745.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6750.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6755.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6760.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6765.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6770.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6775.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6780.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6785.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6790.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6795.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6800.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6805.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6810.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6815.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6820.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6825.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6830.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6835.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6840.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6845.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6850.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6855.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6860.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6865.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6870.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6875.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6880.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6885.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6890.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6895.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6900.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6905.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6910.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6915.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6920.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6925.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6930.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6935.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6940.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6945.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6950.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6955.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6960.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6965.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6970.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6975.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6980.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6985.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6990.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6995.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7000.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7005.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7010.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7015.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7020.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7025.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7030.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7035.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7040.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7045.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7050.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7055.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7060.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7065.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7070.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7075.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7080.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7085.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7090.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7095.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7100.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7105.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7110.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7115.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7120.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7125.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7130.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7135.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7140.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7145.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7150.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7155.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7160.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7165.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7170.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7175.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7180.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7185.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7190.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7195.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "ok": true,
+      "id": "FlNGoA6G2gm7TzQ2Cmi6",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "H",
+        "f1_hz": 6200.0,
+        "q_factor": 100.0,
+        "tau_s": 0.005134,
+        "bw_hz": 0.0,
+        "half_power_left_hz": 6200.0,
+        "half_power_right_hz": 6200.0,
+        "narrow_sweep": [
+          {
+            "freq_hz": 6200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6205.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6210.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6215.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6220.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6225.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6230.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6235.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6240.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6245.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6250.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6255.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6260.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6265.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6270.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6275.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6280.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6285.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6290.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6295.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6300.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6305.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6310.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6315.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6320.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6325.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6330.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6335.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6340.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6345.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6350.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6355.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6360.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6365.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6370.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6375.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6380.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6385.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6390.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6395.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6400.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6405.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6410.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6415.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6420.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6425.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6430.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6435.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6440.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6445.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6450.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6455.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6460.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6465.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6470.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6475.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6480.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6485.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6490.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6495.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6500.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6505.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6510.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6515.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6520.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6525.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6530.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6535.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6540.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6545.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6550.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6555.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6560.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6565.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6570.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6575.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6580.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6585.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6590.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6595.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6600.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6605.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6610.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6615.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6620.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6625.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6630.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6635.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6640.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6645.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6650.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6655.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6660.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6665.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6670.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6675.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6680.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6685.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6690.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6695.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6700.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6705.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6710.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6715.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6720.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6725.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6730.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6735.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6740.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6745.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6750.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6755.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6760.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6765.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6770.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6775.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6780.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6785.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6790.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6795.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6800.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6805.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6810.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6815.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6820.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6825.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6830.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6835.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6840.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6845.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6850.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6855.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6860.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6865.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6870.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6875.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6880.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6885.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6890.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6895.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6900.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6905.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6910.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6915.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6920.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6925.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6930.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6935.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6940.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6945.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6950.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6955.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6960.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6965.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6970.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6975.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6980.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6985.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6990.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 6995.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7000.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7005.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7010.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7015.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7020.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7025.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7030.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7035.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7040.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7045.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7050.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7055.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7060.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7065.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7070.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7075.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7080.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7085.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7090.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7095.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7100.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7105.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7110.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7115.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7120.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7125.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7130.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7135.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7140.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7145.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7150.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7155.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7160.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7165.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7170.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7175.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7180.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7185.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7190.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7195.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          },
+          {
+            "freq_hz": 7200.0,
+            "magnitude": 0.0,
+            "phase_rad": 0.0
+          }
+        ]
+      }
+    }
+  ]
+}

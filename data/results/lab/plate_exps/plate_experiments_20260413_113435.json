@@ -1,0 +1,1855 @@
+{
+  "timestamp": "2026-04-13T16:35:33.402477+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    4
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "LC8wq41v7YeeugjDVNP0",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 3.81,
+        "auth_matched_peaks": 10,
+        "auth_score_pct": 4.7,
+        "next_best_score_pct": 0.9,
+        "min_cross_rod_pct": 3.8,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate A fingerprint auth: identified as A (correct), margin 3.81. Cross-relay template matching (3 enrolled freqs, 5 sense plates). PicoScope 2204A, relay mux isolation.",
+      "_detail": {
+        "plate": "A",
+        "query_freqs": [
+          29700.0,
+          89425.0,
+          18775.0
+        ],
+        "raw_mags": {
+          "1": [
+            6849248.6,
+            4622403.2,
+            1714582.3
+          ],
+          "2": [
+            1670875.8,
+            527384.6,
+            238875.2
+          ],
+          "3": [
+            1719955.9,
+            1340915.7,
+            287041.5
+          ],
+          "4": [
+            1605951.6,
+            387411.7,
+            651431.7
+          ],
+          "5": [
+            1679238.3,
+            1784245.2,
+            423729.6
+          ]
+        },
+        "template_scores": {
+          "1": {
+            "plate": "A",
+            "score": 4.67,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29700.0,
+                "magnitude": 6849248.6,
+                "frac": 0.5064,
+                "expected": true,
+                "contribution": 1.5192
+              },
+              {
+                "query_freq_hz": 89425.0,
+                "magnitude": 4622403.2,
+                "frac": 0.5336,
+                "expected": true,
+                "contribution": 1.6009
+              },
+              {
+                "query_freq_hz": 18775.0,
+                "magnitude": 1714582.3,
+                "frac": 0.5171,
+                "expected": true,
+                "contribution": 1.5513
+              }
+            ]
+          },
+          "2": {
+            "plate": "B",
+            "score": 0.77,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29700.0,
+                "magnitude": 1670875.8,
+                "frac": 0.1235,
+                "expected": true,
+                "contribution": 0.3706
+              },
+              {
+                "query_freq_hz": 89425.0,
+                "magnitude": 527384.6,
+                "frac": 0.0609,
+                "expected": true,
+                "contribution": 0.1826
+              },
+              {
+                "query_freq_hz": 18775.0,
+                "magnitude": 238875.2,
+                "frac": 0.072,
+                "expected": true,
+                "contribution": 0.2161
+              }
+            ]
+          },
+          "3": {
+            "plate": "C",
+            "score": 0.25,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29700.0,
+                "magnitude": 1719955.9,
+                "frac": 0.1272,
+                "expected": false,
+                "contribution": -0.1272
+              },
+              {
+                "query_freq_hz": 89425.0,
+                "magnitude": 1340915.7,
+                "frac": 0.1548,
+                "expected": true,
+                "contribution": 0.4644
+              },
+              {
+                "query_freq_hz": 18775.0,
+                "magnitude": 287041.5,
+                "frac": 0.0866,
+                "expected": false,
+                "contribution": -0.0866
+              }
+            ]
+          },
+          "4": {
+            "plate": "D",
+            "score": 0.29,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29700.0,
+                "magnitude": 1605951.6,
+                "frac": 0.1187,
+                "expected": true,
+                "contribution": 0.3562
+              },
+              {
+                "query_freq_hz": 89425.0,
+                "magnitude": 387411.7,
+                "frac": 0.0447,
+                "expected": true,
+                "contribution": 0.1342
+              },
+              {
+                "query_freq_hz": 18775.0,
+                "magnitude": 651431.7,
+                "frac": 0.1965,
+                "expected": false,
+                "contribution": -0.1965
+              }
+            ]
+          },
+          "5": {
+            "plate": "E",
+            "score": 0.86,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29700.0,
+                "magnitude": 1679238.3,
+                "frac": 0.1242,
+                "expected": true,
+                "contribution": 0.3725
+              },
+              {
+                "query_freq_hz": 89425.0,
+                "magnitude": 1784245.2,
+                "frac": 0.206,
+                "expected": true,
+                "contribution": 0.6179
+              },
+              {
+                "query_freq_hz": 18775.0,
+                "magnitude": 423729.6,
+                "frac": 0.1278,
+                "expected": false,
+                "contribution": -0.1278
+              }
+            ]
+          }
+        },
+        "enrollment_templates": {
+          "1": [
+            29700.0,
+            89425.0,
+            18775.0
+          ],
+          "2": [
+            29200.0,
+            49650.0,
+            28825.0,
+            18950.0,
+            15125.0,
+            89350.0
+          ],
+          "3": [
+            43175.0,
+            49625.0,
+            31400.0,
+            26175.0,
+            61650.0,
+            89325.0
+          ],
+          "4": [
+            49625.0,
+            29925.0,
+            90275.0,
+            78125.0,
+            89375.0,
+            90025.0,
+            45025.0,
+            94675.0
+          ],
+          "5": [
+            49675.0,
+            29250.0,
+            29975.0,
+            28875.0,
+            34500.0,
+            26200.0,
+            89475.0,
+            94775.0
+          ]
+        },
+        "winner": "1",
+        "winner_name": "A",
+        "correct": true,
+        "margin": 3.81
+      }
+    },
+    {
+      "ok": true,
+      "id": "J3JpKi1ged1k8DVqixTq",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 2.13,
+        "auth_matched_peaks": 10,
+        "auth_score_pct": 4.6,
+        "next_best_score_pct": 2.5,
+        "min_cross_rod_pct": 2.1,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate B fingerprint auth: identified as B (correct), margin 2.13. Cross-relay template matching (6 enrolled freqs, 5 sense plates). PicoScope 2204A, relay mux isolation.",
+      "_detail": {
+        "plate": "B",
+        "query_freqs": [
+          29200.0,
+          49650.0,
+          28825.0,
+          18950.0,
+          15125.0,
+          89350.0
+        ],
+        "raw_mags": {
+          "1": [
+            1155172.9,
+            515496.7,
+            2853747.6,
+            1404466.1,
+            726894.9,
+            1649954.8
+          ],
+          "2": [
+            7387976.2,
+            4779361.2,
+            3924276.1,
+            1876954.9,
+            1673048.0,
+            1376224.3
+          ],
+          "3": [
+            2524417.6,
+            4862501.7,
+            1840011.2,
+            1634024.2,
+            1633073.1,
+            1720587.3
+          ],
+          "4": [
+            4935547.7,
+            4588403.9,
+            2633758.9,
+            1427737.6,
+            1161102.8,
+            1780942.7
+          ],
+          "5": [
+            5348097.4,
+            7939693.9,
+            2521973.3,
+            1404918.3,
+            1157824.3,
+            1194483.7
+          ]
+        },
+        "template_scores": {
+          "1": {
+            "plate": "A",
+            "score": 1.83,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29200.0,
+                "magnitude": 1155172.9,
+                "frac": 0.0541,
+                "expected": true,
+                "contribution": 0.1623
+              },
+              {
+                "query_freq_hz": 49650.0,
+                "magnitude": 515496.7,
+                "frac": 0.0227,
+                "expected": false,
+                "contribution": -0.0227
+              },
+              {
+                "query_freq_hz": 28825.0,
+                "magnitude": 2853747.6,
+                "frac": 0.2072,
+                "expected": true,
+                "contribution": 0.6216
+              },
+              {
+                "query_freq_hz": 18950.0,
+                "magnitude": 1404466.1,
+                "frac": 0.1813,
+                "expected": true,
+                "contribution": 0.5438
+              },
+              {
+                "query_freq_hz": 15125.0,
+                "magnitude": 726894.9,
+                "frac": 0.1144,
+                "expected": false,
+                "contribution": -0.1144
+              },
+              {
+                "query_freq_hz": 89350.0,
+                "magnitude": 1649954.8,
+                "frac": 0.2137,
+                "expected": true,
+                "contribution": 0.641
+              }
+            ]
+          },
+          "2": {
+            "plate": "B",
+            "score": 4.58,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29200.0,
+                "magnitude": 7387976.2,
+                "frac": 0.346,
+                "expected": true,
+                "contribution": 1.0381
+              },
+              {
+                "query_freq_hz": 49650.0,
+                "magnitude": 4779361.2,
+                "frac": 0.2107,
+                "expected": true,
+                "contribution": 0.632
+              },
+              {
+                "query_freq_hz": 28825.0,
+                "magnitude": 3924276.1,
+                "frac": 0.2849,
+                "expected": true,
+                "contribution": 0.8547
+              },
+              {
+                "query_freq_hz": 18950.0,
+                "magnitude": 1876954.9,
+                "frac": 0.2422,
+                "expected": true,
+                "contribution": 0.7267
+              },
+              {
+                "query_freq_hz": 15125.0,
+                "magnitude": 1673048.0,
+                "frac": 0.2634,
+                "expected": true,
+                "contribution": 0.7902
+              },
+              {
+                "query_freq_hz": 89350.0,
+                "magnitude": 1376224.3,
+                "frac": 0.1782,
+                "expected": true,
+                "contribution": 0.5347
+              }
+            ]
+          },
+          "3": {
+            "plate": "C",
+            "score": 0.59,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29200.0,
+                "magnitude": 2524417.6,
+                "frac": 0.1182,
+                "expected": false,
+                "contribution": -0.1182
+              },
+              {
+                "query_freq_hz": 49650.0,
+                "magnitude": 4862501.7,
+                "frac": 0.2143,
+                "expected": true,
+                "contribution": 0.643
+              },
+              {
+                "query_freq_hz": 28825.0,
+                "magnitude": 1840011.2,
+                "frac": 0.1336,
+                "expected": false,
+                "contribution": -0.1336
+              },
+              {
+                "query_freq_hz": 18950.0,
+                "magnitude": 1634024.2,
+                "frac": 0.2109,
+                "expected": false,
+                "contribution": -0.2109
+              },
+              {
+                "query_freq_hz": 15125.0,
+                "magnitude": 1633073.1,
+                "frac": 0.2571,
+                "expected": false,
+                "contribution": -0.2571
+              },
+              {
+                "query_freq_hz": 89350.0,
+                "magnitude": 1720587.3,
+                "frac": 0.2228,
+                "expected": true,
+                "contribution": 0.6684
+              }
+            ]
+          },
+          "4": {
+            "plate": "D",
+            "score": 1.43,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29200.0,
+                "magnitude": 4935547.7,
+                "frac": 0.2312,
+                "expected": true,
+                "contribution": 0.6935
+              },
+              {
+                "query_freq_hz": 49650.0,
+                "magnitude": 4588403.9,
+                "frac": 0.2023,
+                "expected": true,
+                "contribution": 0.6068
+              },
+              {
+                "query_freq_hz": 28825.0,
+                "magnitude": 2633758.9,
+                "frac": 0.1912,
+                "expected": false,
+                "contribution": -0.1912
+              },
+              {
+                "query_freq_hz": 18950.0,
+                "magnitude": 1427737.6,
+                "frac": 0.1843,
+                "expected": false,
+                "contribution": -0.1843
+              },
+              {
+                "query_freq_hz": 15125.0,
+                "magnitude": 1161102.8,
+                "frac": 0.1828,
+                "expected": false,
+                "contribution": -0.1828
+              },
+              {
+                "query_freq_hz": 89350.0,
+                "magnitude": 1780942.7,
+                "frac": 0.2306,
+                "expected": true,
+                "contribution": 0.6919
+              }
+            ]
+          },
+          "5": {
+            "plate": "E",
+            "score": 2.45,
+            "peak_detail": [
+              {
+                "query_freq_hz": 29200.0,
+                "magnitude": 5348097.4,
+                "frac": 0.2505,
+                "expected": true,
+                "contribution": 0.7514
+              },
+              {
+                "query_freq_hz": 49650.0,
+                "magnitude": 7939693.9,
+                "frac": 0.35,
+                "expected": true,
+                "contribution": 1.05
+              },
+              {
+                "query_freq_hz": 28825.0,
+                "magnitude": 2521973.3,
+                "frac": 0.1831,
+                "expected": true,
+                "contribution": 0.5493
+              },
+              {
+                "query_freq_hz": 18950.0,
+                "magnitude": 1404918.3,
+                "frac": 0.1813,
+                "expected": false,
+                "contribution": -0.1813
+              },
+              {
+                "query_freq_hz": 15125.0,
+                "magnitude": 1157824.3,
+                "frac": 0.1823,
+                "expected": false,
+                "contribution": -0.1823
+              },
+              {
+                "query_freq_hz": 89350.0,
+                "magnitude": 1194483.7,
+                "frac": 0.1547,
+                "expected": true,
+                "contribution": 0.464
+              }
+            ]
+          }
+        },
+        "enrollment_templates": {
+          "1": [
+            29700.0,
+            89425.0,
+            18775.0
+          ],
+          "2": [
+            29200.0,
+            49650.0,
+            28825.0,
+            18950.0,
+            15125.0,
+            89350.0
+          ],
+          "3": [
+            43175.0,
+            49625.0,
+            31400.0,
+            26175.0,
+            61650.0,
+            89325.0
+          ],
+          "4": [
+            49625.0,
+            29925.0,
+            90275.0,
+            78125.0,
+            89375.0,
+            90025.0,
+            45025.0,
+            94675.0
+          ],
+          "5": [
+            49675.0,
+            29250.0,
+            29975.0,
+            28875.0,
+            34500.0,
+            26200.0,
+            89475.0,
+            94775.0
+          ]
+        },
+        "winner": "2",
+        "winner_name": "B",
+        "correct": true,
+        "margin": 2.13
+      }
+    },
+    {
+      "ok": true,
+      "id": "G5dPLfDx1pCRTuNX3WKn",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 4.07,
+        "auth_matched_peaks": 10,
+        "auth_score_pct": 5.5,
+        "next_best_score_pct": 1.4,
+        "min_cross_rod_pct": 4.1,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate C fingerprint auth: identified as C (correct), margin 4.07. Cross-relay template matching (6 enrolled freqs, 5 sense plates). PicoScope 2204A, relay mux isolation.",
+      "_detail": {
+        "plate": "C",
+        "query_freqs": [
+          43175.0,
+          49625.0,
+          31400.0,
+          26175.0,
+          61650.0,
+          89325.0
+        ],
+        "raw_mags": {
+          "1": [
+            899573.2,
+            356838.3,
+            700862.4,
+            687560.8,
+            2298928.2,
+            1047003.0
+          ],
+          "2": [
+            4097026.0,
+            4847344.7,
+            1834502.4,
+            1781077.3,
+            1467811.5,
+            1286156.4
+          ],
+          "3": [
+            6527695.1,
+            5900043.2,
+            4801363.9,
+            3007168.9,
+            2666323.8,
+            2350682.1
+          ],
+          "4": [
+            5514760.1,
+            5355382.6,
+            3067459.3,
+            2174469.5,
+            1107253.7,
+            1429696.7
+          ],
+          "5": [
+            5190408.7,
+            5913121.8,
+            3846805.2,
+            2481401.3,
+            901204.3,
+            1212639.7
+          ]
+        },
+        "template_scores": {
+          "1": {
+            "plate": "A",
+            "score": -0.02,
+            "peak_detail": [
+              {
+                "query_freq_hz": 43175.0,
+                "magnitude": 899573.2,
+                "frac": 0.0405,
+                "expected": false,
+                "contribution": -0.0405
+              },
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 356838.3,
+                "frac": 0.0159,
+                "expected": false,
+                "contribution": -0.0159
+              },
+              {
+                "query_freq_hz": 31400.0,
+                "magnitude": 700862.4,
+                "frac": 0.0492,
+                "expected": false,
+                "contribution": -0.0492
+              },
+              {
+                "query_freq_hz": 26175.0,
+                "magnitude": 687560.8,
+                "frac": 0.0679,
+                "expected": false,
+                "contribution": -0.0679
+              },
+              {
+                "query_freq_hz": 61650.0,
+                "magnitude": 2298928.2,
+                "frac": 0.2723,
+                "expected": false,
+                "contribution": -0.2723
+              },
+              {
+                "query_freq_hz": 89325.0,
+                "magnitude": 1047003.0,
+                "frac": 0.1429,
+                "expected": true,
+                "contribution": 0.4287
+              }
+            ]
+          },
+          "2": {
+            "plate": "B",
+            "score": 0.51,
+            "peak_detail": [
+              {
+                "query_freq_hz": 43175.0,
+                "magnitude": 4097026.0,
+                "frac": 0.1843,
+                "expected": false,
+                "contribution": -0.1843
+              },
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 4847344.7,
+                "frac": 0.2167,
+                "expected": true,
+                "contribution": 0.65
+              },
+              {
+                "query_freq_hz": 31400.0,
+                "magnitude": 1834502.4,
+                "frac": 0.1287,
+                "expected": false,
+                "contribution": -0.1287
+              },
+              {
+                "query_freq_hz": 26175.0,
+                "magnitude": 1781077.3,
+                "frac": 0.1758,
+                "expected": false,
+                "contribution": -0.1758
+              },
+              {
+                "query_freq_hz": 61650.0,
+                "magnitude": 1467811.5,
+                "frac": 0.1739,
+                "expected": false,
+                "contribution": -0.1739
+              },
+              {
+                "query_freq_hz": 89325.0,
+                "magnitude": 1286156.4,
+                "frac": 0.1756,
+                "expected": true,
+                "contribution": 0.5267
+              }
+            ]
+          },
+          "3": {
+            "plate": "C",
+            "score": 5.48,
+            "peak_detail": [
+              {
+                "query_freq_hz": 43175.0,
+                "magnitude": 6527695.1,
+                "frac": 0.2937,
+                "expected": true,
+                "contribution": 0.881
+              },
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5900043.2,
+                "frac": 0.2637,
+                "expected": true,
+                "contribution": 0.7911
+              },
+              {
+                "query_freq_hz": 31400.0,
+                "magnitude": 4801363.9,
+                "frac": 0.3369,
+                "expected": true,
+                "contribution": 1.0107
+              },
+              {
+                "query_freq_hz": 26175.0,
+                "magnitude": 3007168.9,
+                "frac": 0.2968,
+                "expected": true,
+                "contribution": 0.8904
+              },
+              {
+                "query_freq_hz": 61650.0,
+                "magnitude": 2666323.8,
+                "frac": 0.3159,
+                "expected": true,
+                "contribution": 0.9476
+              },
+              {
+                "query_freq_hz": 89325.0,
+                "magnitude": 2350682.1,
+                "frac": 0.3209,
+                "expected": true,
+                "contribution": 0.9626
+              }
+            ]
+          },
+          "4": {
+            "plate": "D",
+            "score": 0.49,
+            "peak_detail": [
+              {
+                "query_freq_hz": 43175.0,
+                "magnitude": 5514760.1,
+                "frac": 0.2481,
+                "expected": false,
+                "contribution": -0.2481
+              },
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5355382.6,
+                "frac": 0.2394,
+                "expected": true,
+                "contribution": 0.7181
+              },
+              {
+                "query_freq_hz": 31400.0,
+                "magnitude": 3067459.3,
+                "frac": 0.2152,
+                "expected": false,
+                "contribution": -0.2152
+              },
+              {
+                "query_freq_hz": 26175.0,
+                "magnitude": 2174469.5,
+                "frac": 0.2146,
+                "expected": false,
+                "contribution": -0.2146
+              },
+              {
+                "query_freq_hz": 61650.0,
+                "magnitude": 1107253.7,
+                "frac": 0.1312,
+                "expected": false,
+                "contribution": -0.1312
+              },
+              {
+                "query_freq_hz": 89325.0,
+                "magnitude": 1429696.7,
+                "frac": 0.1951,
+                "expected": true,
+                "contribution": 0.5854
+              }
+            ]
+          },
+          "5": {
+            "plate": "E",
+            "score": 1.41,
+            "peak_detail": [
+              {
+                "query_freq_hz": 43175.0,
+                "magnitude": 5190408.7,
+                "frac": 0.2335,
+                "expected": false,
+                "contribution": -0.2335
+              },
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5913121.8,
+                "frac": 0.2643,
+                "expected": true,
+                "contribution": 0.7929
+              },
+              {
+                "query_freq_hz": 31400.0,
+                "magnitude": 3846805.2,
+                "frac": 0.2699,
+                "expected": false,
+                "contribution": -0.2699
+              },
+              {
+                "query_freq_hz": 26175.0,
+                "magnitude": 2481401.3,
+                "frac": 0.2449,
+                "expected": true,
+                "contribution": 0.7347
+              },
+              {
+                "query_freq_hz": 61650.0,
+                "magnitude": 901204.3,
+                "frac": 0.1068,
+                "expected": false,
+                "contribution": -0.1068
+              },
+              {
+                "query_freq_hz": 89325.0,
+                "magnitude": 1212639.7,
+                "frac": 0.1655,
+                "expected": true,
+                "contribution": 0.4966
+              }
+            ]
+          }
+        },
+        "enrollment_templates": {
+          "1": [
+            29700.0,
+            89425.0,
+            18775.0
+          ],
+          "2": [
+            29200.0,
+            49650.0,
+            28825.0,
+            18950.0,
+            15125.0,
+            89350.0
+          ],
+          "3": [
+            43175.0,
+            49625.0,
+            31400.0,
+            26175.0,
+            61650.0,
+            89325.0
+          ],
+          "4": [
+            49625.0,
+            29925.0,
+            90275.0,
+            78125.0,
+            89375.0,
+            90025.0,
+            45025.0,
+            94675.0
+          ],
+          "5": [
+            49675.0,
+            29250.0,
+            29975.0,
+            28875.0,
+            34500.0,
+            26200.0,
+            89475.0,
+            94775.0
+          ]
+        },
+        "winner": "3",
+        "winner_name": "C",
+        "correct": true,
+        "margin": 4.07
+      }
+    },
+    {
+      "ok": true,
+      "id": "d7KrgWOKuQ5ZOXpeYyO9",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 3.39,
+        "auth_matched_peaks": 10,
+        "auth_score_pct": 7.1,
+        "next_best_score_pct": 3.7,
+        "min_cross_rod_pct": 3.4,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate D fingerprint auth: identified as D (correct), margin 3.39. Cross-relay template matching (8 enrolled freqs, 5 sense plates). PicoScope 2204A, relay mux isolation.",
+      "_detail": {
+        "plate": "D",
+        "query_freqs": [
+          49625.0,
+          29925.0,
+          90275.0,
+          78125.0,
+          89375.0,
+          90025.0,
+          45025.0,
+          94675.0
+        ],
+        "raw_mags": {
+          "1": [
+            386307.1,
+            1185614.1,
+            597520.9,
+            531774.6,
+            2585129.8,
+            874969.7,
+            260847.0,
+            524829.2
+          ],
+          "2": [
+            4845179.3,
+            3386903.8,
+            1640301.9,
+            1645303.4,
+            973920.7,
+            1626780.3,
+            632109.1,
+            702997.2
+          ],
+          "3": [
+            5905772.0,
+            2013934.6,
+            1056864.4,
+            1292218.1,
+            1404059.4,
+            744803.6,
+            870865.0,
+            1191794.2
+          ],
+          "4": [
+            5352349.6,
+            4492339.5,
+            2544985.3,
+            2382896.1,
+            1800996.7,
+            1692411.1,
+            1541517.6,
+            1506865.0
+          ],
+          "5": [
+            5919917.2,
+            5094329.3,
+            1857091.2,
+            782175.8,
+            1310674.6,
+            1524002.9,
+            1047646.4,
+            659491.9
+          ]
+        },
+        "template_scores": {
+          "1": {
+            "plate": "A",
+            "score": 1.55,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 386307.1,
+                "frac": 0.0172,
+                "expected": false,
+                "contribution": -0.0172
+              },
+              {
+                "query_freq_hz": 29925.0,
+                "magnitude": 1185614.1,
+                "frac": 0.0733,
+                "expected": true,
+                "contribution": 0.2199
+              },
+              {
+                "query_freq_hz": 90275.0,
+                "magnitude": 597520.9,
+                "frac": 0.0776,
+                "expected": true,
+                "contribution": 0.2329
+              },
+              {
+                "query_freq_hz": 78125.0,
+                "magnitude": 531774.6,
+                "frac": 0.0802,
+                "expected": false,
+                "contribution": -0.0802
+              },
+              {
+                "query_freq_hz": 89375.0,
+                "magnitude": 2585129.8,
+                "frac": 0.3201,
+                "expected": true,
+                "contribution": 0.9604
+              },
+              {
+                "query_freq_hz": 90025.0,
+                "magnitude": 874969.7,
+                "frac": 0.1354,
+                "expected": true,
+                "contribution": 0.4061
+              },
+              {
+                "query_freq_hz": 45025.0,
+                "magnitude": 260847.0,
+                "frac": 0.0599,
+                "expected": false,
+                "contribution": -0.0599
+              },
+              {
+                "query_freq_hz": 94675.0,
+                "magnitude": 524829.2,
+                "frac": 0.1144,
+                "expected": false,
+                "contribution": -0.1144
+              }
+            ]
+          },
+          "2": {
+            "plate": "B",
+            "score": 2.49,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 4845179.3,
+                "frac": 0.2162,
+                "expected": true,
+                "contribution": 0.6486
+              },
+              {
+                "query_freq_hz": 29925.0,
+                "magnitude": 3386903.8,
+                "frac": 0.2094,
+                "expected": true,
+                "contribution": 0.6282
+              },
+              {
+                "query_freq_hz": 90275.0,
+                "magnitude": 1640301.9,
+                "frac": 0.2131,
+                "expected": true,
+                "contribution": 0.6393
+              },
+              {
+                "query_freq_hz": 78125.0,
+                "magnitude": 1645303.4,
+                "frac": 0.248,
+                "expected": false,
+                "contribution": -0.248
+              },
+              {
+                "query_freq_hz": 89375.0,
+                "magnitude": 973920.7,
+                "frac": 0.1206,
+                "expected": true,
+                "contribution": 0.3618
+              },
+              {
+                "query_freq_hz": 90025.0,
+                "magnitude": 1626780.3,
+                "frac": 0.2517,
+                "expected": true,
+                "contribution": 0.7551
+              },
+              {
+                "query_freq_hz": 45025.0,
+                "magnitude": 632109.1,
+                "frac": 0.1452,
+                "expected": false,
+                "contribution": -0.1452
+              },
+              {
+                "query_freq_hz": 94675.0,
+                "magnitude": 702997.2,
+                "frac": 0.1533,
+                "expected": false,
+                "contribution": -0.1533
+              }
+            ]
+          },
+          "3": {
+            "plate": "C",
+            "score": 1.29,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5905772.0,
+                "frac": 0.2635,
+                "expected": true,
+                "contribution": 0.7906
+              },
+              {
+                "query_freq_hz": 29925.0,
+                "magnitude": 2013934.6,
+                "frac": 0.1245,
+                "expected": false,
+                "contribution": -0.1245
+              },
+              {
+                "query_freq_hz": 90275.0,
+                "magnitude": 1056864.4,
+                "frac": 0.1373,
+                "expected": true,
+                "contribution": 0.4119
+              },
+              {
+                "query_freq_hz": 78125.0,
+                "magnitude": 1292218.1,
+                "frac": 0.1948,
+                "expected": false,
+                "contribution": -0.1948
+              },
+              {
+                "query_freq_hz": 89375.0,
+                "magnitude": 1404059.4,
+                "frac": 0.1739,
+                "expected": true,
+                "contribution": 0.5216
+              },
+              {
+                "query_freq_hz": 90025.0,
+                "magnitude": 744803.6,
+                "frac": 0.1152,
+                "expected": true,
+                "contribution": 0.3457
+              },
+              {
+                "query_freq_hz": 45025.0,
+                "magnitude": 870865.0,
+                "frac": 0.2001,
+                "expected": false,
+                "contribution": -0.2001
+              },
+              {
+                "query_freq_hz": 94675.0,
+                "magnitude": 1191794.2,
+                "frac": 0.2599,
+                "expected": false,
+                "contribution": -0.2599
+              }
+            ]
+          },
+          "4": {
+            "plate": "D",
+            "score": 7.12,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5352349.6,
+                "frac": 0.2388,
+                "expected": true,
+                "contribution": 0.7165
+              },
+              {
+                "query_freq_hz": 29925.0,
+                "magnitude": 4492339.5,
+                "frac": 0.2778,
+                "expected": true,
+                "contribution": 0.8333
+              },
+              {
+                "query_freq_hz": 90275.0,
+                "magnitude": 2544985.3,
+                "frac": 0.3307,
+                "expected": true,
+                "contribution": 0.992
+              },
+              {
+                "query_freq_hz": 78125.0,
+                "magnitude": 2382896.1,
+                "frac": 0.3592,
+                "expected": true,
+                "contribution": 1.0775
+              },
+              {
+                "query_freq_hz": 89375.0,
+                "magnitude": 1800996.7,
+                "frac": 0.223,
+                "expected": true,
+                "contribution": 0.6691
+              },
+              {
+                "query_freq_hz": 90025.0,
+                "magnitude": 1692411.1,
+                "frac": 0.2619,
+                "expected": true,
+                "contribution": 0.7856
+              },
+              {
+                "query_freq_hz": 45025.0,
+                "magnitude": 1541517.6,
+                "frac": 0.3541,
+                "expected": true,
+                "contribution": 1.0624
+              },
+              {
+                "query_freq_hz": 94675.0,
+                "magnitude": 1506865.0,
+                "frac": 0.3286,
+                "expected": true,
+                "contribution": 0.9857
+              }
+            ]
+          },
+          "5": {
+            "plate": "E",
+            "score": 3.73,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49625.0,
+                "magnitude": 5919917.2,
+                "frac": 0.2642,
+                "expected": true,
+                "contribution": 0.7925
+              },
+              {
+                "query_freq_hz": 29925.0,
+                "magnitude": 5094329.3,
+                "frac": 0.315,
+                "expected": true,
+                "contribution": 0.945
+              },
+              {
+                "query_freq_hz": 90275.0,
+                "magnitude": 1857091.2,
+                "frac": 0.2413,
+                "expected": true,
+                "contribution": 0.7238
+              },
+              {
+                "query_freq_hz": 78125.0,
+                "magnitude": 782175.8,
+                "frac": 0.1179,
+                "expected": false,
+                "contribution": -0.1179
+              },
+              {
+                "query_freq_hz": 89375.0,
+                "magnitude": 1310674.6,
+                "frac": 0.1623,
+                "expected": true,
+                "contribution": 0.487
+              },
+              {
+                "query_freq_hz": 90025.0,
+                "magnitude": 1524002.9,
+                "frac": 0.2358,
+                "expected": true,
+                "contribution": 0.7074
+              },
+              {
+                "query_freq_hz": 45025.0,
+                "magnitude": 1047646.4,
+                "frac": 0.2407,
+                "expected": false,
+                "contribution": -0.2407
+              },
+              {
+                "query_freq_hz": 94675.0,
+                "magnitude": 659491.9,
+                "frac": 0.1438,
+                "expected": true,
+                "contribution": 0.4314
+              }
+            ]
+          }
+        },
+        "enrollment_templates": {
+          "1": [
+            29700.0,
+            89425.0,
+            18775.0
+          ],
+          "2": [
+            29200.0,
+            49650.0,
+            28825.0,
+            18950.0,
+            15125.0,
+            89350.0
+          ],
+          "3": [
+            43175.0,
+            49625.0,
+            31400.0,
+            26175.0,
+            61650.0,
+            89325.0
+          ],
+          "4": [
+            49625.0,
+            29925.0,
+            90275.0,
+            78125.0,
+            89375.0,
+            90025.0,
+            45025.0,
+            94675.0
+          ],
+          "5": [
+            49675.0,
+            29250.0,
+            29975.0,
+            28875.0,
+            34500.0,
+            26200.0,
+            89475.0,
+            94775.0
+          ]
+        },
+        "winner": "4",
+        "winner_name": "D",
+        "correct": true,
+        "margin": 3.39
+      }
+    },
+    {
+      "ok": true,
+      "id": "x3e1TLeY3cHyceOnHdAV",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 6.18,
+        "auth_matched_peaks": 10,
+        "auth_score_pct": 8.3,
+        "next_best_score_pct": 2.1,
+        "min_cross_rod_pct": 6.2,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate E fingerprint auth: identified as E (correct), margin 6.18. Cross-relay template matching (8 enrolled freqs, 5 sense plates). PicoScope 2204A, relay mux isolation.",
+      "_detail": {
+        "plate": "E",
+        "query_freqs": [
+          49675.0,
+          29250.0,
+          29975.0,
+          28875.0,
+          34500.0,
+          26200.0,
+          89475.0,
+          94775.0
+        ],
+        "raw_mags": {
+          "1": [
+            684339.7,
+            1230698.2,
+            995146.5,
+            3187756.8,
+            4704282.5,
+            630137.8,
+            3292024.4,
+            914615.2
+          ],
+          "2": [
+            4013023.1,
+            4298993.9,
+            2111460.7,
+            3001879.1,
+            1890776.9,
+            1935317.4,
+            642661.3,
+            284450.8
+          ],
+          "3": [
+            3663755.1,
+            2074238.6,
+            1534090.5,
+            1820576.0,
+            2013585.8,
+            2941559.0,
+            1448749.5,
+            455196.5
+          ],
+          "4": [
+            3610299.0,
+            3908719.8,
+            2737811.6,
+            2732323.0,
+            2078761.9,
+            1894480.8,
+            375063.4,
+            582232.9
+          ],
+          "5": [
+            8540634.0,
+            8029357.8,
+            6660297.2,
+            4518567.1,
+            2726155.4,
+            2610333.6,
+            2510563.6,
+            1477403.3
+          ]
+        },
+        "template_scores": {
+          "1": {
+            "plate": "A",
+            "score": 1.53,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49675.0,
+                "magnitude": 684339.7,
+                "frac": 0.0334,
+                "expected": false,
+                "contribution": -0.0334
+              },
+              {
+                "query_freq_hz": 29250.0,
+                "magnitude": 1230698.2,
+                "frac": 0.063,
+                "expected": true,
+                "contribution": 0.1889
+              },
+              {
+                "query_freq_hz": 29975.0,
+                "magnitude": 995146.5,
+                "frac": 0.0709,
+                "expected": true,
+                "contribution": 0.2127
+              },
+              {
+                "query_freq_hz": 28875.0,
+                "magnitude": 3187756.8,
+                "frac": 0.2089,
+                "expected": true,
+                "contribution": 0.6266
+              },
+              {
+                "query_freq_hz": 34500.0,
+                "magnitude": 4704282.5,
+                "frac": 0.3507,
+                "expected": false,
+                "contribution": -0.3507
+              },
+              {
+                "query_freq_hz": 26200.0,
+                "magnitude": 630137.8,
+                "frac": 0.0629,
+                "expected": false,
+                "contribution": -0.0629
+              },
+              {
+                "query_freq_hz": 89475.0,
+                "magnitude": 3292024.4,
+                "frac": 0.3981,
+                "expected": true,
+                "contribution": 1.1943
+              },
+              {
+                "query_freq_hz": 94775.0,
+                "magnitude": 914615.2,
+                "frac": 0.2463,
+                "expected": false,
+                "contribution": -0.2463
+              }
+            ]
+          },
+          "2": {
+            "plate": "B",
+            "score": 2.11,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49675.0,
+                "magnitude": 4013023.1,
+                "frac": 0.1956,
+                "expected": true,
+                "contribution": 0.5869
+              },
+              {
+                "query_freq_hz": 29250.0,
+                "magnitude": 4298993.9,
+                "frac": 0.22,
+                "expected": true,
+                "contribution": 0.66
+              },
+              {
+                "query_freq_hz": 29975.0,
+                "magnitude": 2111460.7,
+                "frac": 0.1504,
+                "expected": true,
+                "contribution": 0.4512
+              },
+              {
+                "query_freq_hz": 28875.0,
+                "magnitude": 3001879.1,
+                "frac": 0.1967,
+                "expected": true,
+                "contribution": 0.5901
+              },
+              {
+                "query_freq_hz": 34500.0,
+                "magnitude": 1890776.9,
+                "frac": 0.141,
+                "expected": false,
+                "contribution": -0.141
+              },
+              {
+                "query_freq_hz": 26200.0,
+                "magnitude": 1935317.4,
+                "frac": 0.1933,
+                "expected": false,
+                "contribution": -0.1933
+              },
+              {
+                "query_freq_hz": 89475.0,
+                "magnitude": 642661.3,
+                "frac": 0.0777,
+                "expected": true,
+                "contribution": 0.2332
+              },
+              {
+                "query_freq_hz": 94775.0,
+                "magnitude": 284450.8,
+                "frac": 0.0766,
+                "expected": false,
+                "contribution": -0.0766
+              }
+            ]
+          },
+          "3": {
+            "plate": "C",
+            "score": 1.34,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49675.0,
+                "magnitude": 3663755.1,
+                "frac": 0.1786,
+                "expected": true,
+                "contribution": 0.5358
+              },
+              {
+                "query_freq_hz": 29250.0,
+                "magnitude": 2074238.6,
+                "frac": 0.1061,
+                "expected": false,
+                "contribution": -0.1061
+              },
+              {
+                "query_freq_hz": 29975.0,
+                "magnitude": 1534090.5,
+                "frac": 0.1093,
+                "expected": false,
+                "contribution": -0.1093
+              },
+              {
+                "query_freq_hz": 28875.0,
+                "magnitude": 1820576.0,
+                "frac": 0.1193,
+                "expected": false,
+                "contribution": -0.1193
+              },
+              {
+                "query_freq_hz": 34500.0,
+                "magnitude": 2013585.8,
+                "frac": 0.1501,
+                "expected": false,
+                "contribution": -0.1501
+              },
+              {
+                "query_freq_hz": 26200.0,
+                "magnitude": 2941559.0,
+                "frac": 0.2938,
+                "expected": true,
+                "contribution": 0.8814
+              },
+              {
+                "query_freq_hz": 89475.0,
+                "magnitude": 1448749.5,
+                "frac": 0.1752,
+                "expected": true,
+                "contribution": 0.5256
+              },
+              {
+                "query_freq_hz": 94775.0,
+                "magnitude": 455196.5,
+                "frac": 0.1226,
+                "expected": false,
+                "contribution": -0.1226
+              }
+            ]
+          },
+          "4": {
+            "plate": "D",
+            "score": 1.8,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49675.0,
+                "magnitude": 3610299.0,
+                "frac": 0.176,
+                "expected": true,
+                "contribution": 0.528
+              },
+              {
+                "query_freq_hz": 29250.0,
+                "magnitude": 3908719.8,
+                "frac": 0.2,
+                "expected": true,
+                "contribution": 0.6
+              },
+              {
+                "query_freq_hz": 29975.0,
+                "magnitude": 2737811.6,
+                "frac": 0.195,
+                "expected": true,
+                "contribution": 0.5851
+              },
+              {
+                "query_freq_hz": 28875.0,
+                "magnitude": 2732323.0,
+                "frac": 0.179,
+                "expected": false,
+                "contribution": -0.179
+              },
+              {
+                "query_freq_hz": 34500.0,
+                "magnitude": 2078761.9,
+                "frac": 0.155,
+                "expected": false,
+                "contribution": -0.155
+              },
+              {
+                "query_freq_hz": 26200.0,
+                "magnitude": 1894480.8,
+                "frac": 0.1892,
+                "expected": false,
+                "contribution": -0.1892
+              },
+              {
+                "query_freq_hz": 89475.0,
+                "magnitude": 375063.4,
+                "frac": 0.0454,
+                "expected": true,
+                "contribution": 0.1361
+              },
+              {
+                "query_freq_hz": 94775.0,
+                "magnitude": 582232.9,
+                "frac": 0.1568,
+                "expected": true,
+                "contribution": 0.4703
+              }
+            ]
+          },
+          "5": {
+            "plate": "E",
+            "score": 8.29,
+            "peak_detail": [
+              {
+                "query_freq_hz": 49675.0,
+                "magnitude": 8540634.0,
+                "frac": 0.4164,
+                "expected": true,
+                "contribution": 1.2491
+              },
+              {
+                "query_freq_hz": 29250.0,
+                "magnitude": 8029357.8,
+                "frac": 0.4109,
+                "expected": true,
+                "contribution": 1.2326
+              },
+              {
+                "query_freq_hz": 29975.0,
+                "magnitude": 6660297.2,
+                "frac": 0.4744,
+                "expected": true,
+                "contribution": 1.4233
+              },
+              {
+                "query_freq_hz": 28875.0,
+                "magnitude": 4518567.1,
+                "frac": 0.2961,
+                "expected": true,
+                "contribution": 0.8883
+              },
+              {
+                "query_freq_hz": 34500.0,
+                "magnitude": 2726155.4,
+                "frac": 0.2032,
+                "expected": true,
+                "contribution": 0.6097
+              },
+              {
+                "query_freq_hz": 26200.0,
+                "magnitude": 2610333.6,
+                "frac": 0.2607,
+                "expected": true,
+                "contribution": 0.7822
+              },
+              {
+                "query_freq_hz": 89475.0,
+                "magnitude": 2510563.6,
+                "frac": 0.3036,
+                "expected": true,
+                "contribution": 0.9108
+              },
+              {
+                "query_freq_hz": 94775.0,
+                "magnitude": 1477403.3,
+                "frac": 0.3978,
+                "expected": true,
+                "contribution": 1.1934
+              }
+            ]
+          }
+        },
+        "enrollment_templates": {
+          "1": [
+            29700.0,
+            89425.0,
+            18775.0
+          ],
+          "2": [
+            29200.0,
+            49650.0,
+            28825.0,
+            18950.0,
+            15125.0,
+            89350.0
+          ],
+          "3": [
+            43175.0,
+            49625.0,
+            31400.0,
+            26175.0,
+            61650.0,
+            89325.0
+          ],
+          "4": [
+            49625.0,
+            29925.0,
+            90275.0,
+            78125.0,
+            89375.0,
+            90025.0,
+            45025.0,
+            94675.0
+          ],
+          "5": [
+            49675.0,
+            29250.0,
+            29975.0,
+            28875.0,
+            34500.0,
+            26200.0,
+            89475.0,
+            94775.0
+          ]
+        },
+        "winner": "5",
+        "winner_name": "E",
+        "correct": true,
+        "margin": 6.18
+      }
+    }
+  ]
+}

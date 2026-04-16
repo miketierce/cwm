@@ -1,0 +1,17 @@
+{
+  "experiment": "Intermodulation Test (Kronos runner)",
+  "timestamp": "20260415_235726",
+  "plate": "D",
+  "drive_freqs_hz": [
+    15475.0,
+    2575.0
+  ],
+  "sample_rate": 192000,
+  "noise_floor": 1.0091860679499618e-08,
+  "noise_std": 0.10395286502994988,
+  "detect_threshold_3sigma": 0.3118586051817103,
+  "intermod_detected": [
+    "2f2",
+    "f1+f2"
+  ]
+}

@@ -52,5 +52,5 @@ firebase-debug.log
 serviceAccount*.json
 *-credentials.json
 *.secret
-data/results/lab/
 companion/tmp*.pdf
+docs/crypto_diary.md

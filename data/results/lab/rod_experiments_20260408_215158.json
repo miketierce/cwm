@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-09T02:52:43.457329+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    2
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "6lf9ZLma5g361tMn9vAC",
+      "experimentId": "exp02-snr-measurement"
+    },
+    {
+      "ok": true,
+      "id": "PzpRQPaxVT9pdTpFQcpV",
+      "experimentId": "exp02-snr-measurement"
+    },
+    {
+      "ok": true,
+      "id": "Io2RhqdkyrBsvrRUHd6d",
+      "experimentId": "exp02-snr-measurement"
+    },
+    {
+      "ok": true,
+      "id": "dD3SSqmAZStMPyrCmIue",
+      "experimentId": "exp02-snr-measurement"
+    }
+  ]
+}

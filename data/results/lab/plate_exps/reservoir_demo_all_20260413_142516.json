@@ -1,0 +1,375 @@
+[
+  {
+    "timestamp": "2026-04-13T19:26:05.537384+00:00",
+    "plate_name": "A",
+    "plate_id": "1",
+    "capture_mode": "sine",
+    "n_modes": 3,
+    "n_input_bits": 3,
+    "n_readout_freqs": 12,
+    "n_train": 80,
+    "n_test": 16,
+    "tasks": {
+      "parity_raw": {
+        "train_pct": 62.5,
+        "test_pct": 56.2,
+        "n_weights": 74
+      },
+      "parity_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 16
+      },
+      "parity_combined": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 88
+      },
+      "majority_raw": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 74
+      },
+      "majority_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 16
+      }
+    },
+    "best_parity_test_pct": 100.0,
+    "best_majority_test_pct": 100.0,
+    "train_accuracy_pct": 100.0,
+    "test_accuracy_pct": 100.0,
+    "trainable_params": 88,
+    "capture_time_s": 45.1,
+    "mode_freqs_hz": [
+      29700.0,
+      89425.0,
+      18775.0
+    ],
+    "readout_freqs_hz": [
+      10925.0,
+      18775.0,
+      29700.0,
+      37550.0,
+      48475.0,
+      59400.0,
+      59725.0,
+      70650.0,
+      89425.0,
+      108200.0,
+      119125.0,
+      178850.0
+    ],
+    "feature_dim_raw": 36,
+    "poly_dim": 7
+  },
+  {
+    "timestamp": "2026-04-13T19:27:06.231677+00:00",
+    "plate_name": "B",
+    "plate_id": "2",
+    "capture_mode": "sine",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_readout_freqs": 22,
+    "n_train": 80,
+    "n_test": 16,
+    "tasks": {
+      "parity_raw": {
+        "train_pct": 91.2,
+        "test_pct": 50.0,
+        "n_weights": 178
+      },
+      "parity_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      },
+      "parity_combined": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 208
+      },
+      "majority_raw": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 178
+      },
+      "majority_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      }
+    },
+    "best_parity_test_pct": 100.0,
+    "best_majority_test_pct": 100.0,
+    "train_accuracy_pct": 100.0,
+    "test_accuracy_pct": 100.0,
+    "trainable_params": 208,
+    "capture_time_s": 60.5,
+    "mode_freqs_hz": [
+      29200.0,
+      49650.0,
+      28825.0,
+      18950.0,
+      15125.0,
+      89350.0
+    ],
+    "readout_freqs_hz": [
+      10250.0,
+      15125.0,
+      18950.0,
+      20450.0,
+      28825.0,
+      29200.0,
+      30700.0,
+      37900.0,
+      39700.0,
+      48150.0,
+      49650.0,
+      58400.0,
+      60150.0,
+      68600.0,
+      70400.0,
+      78850.0,
+      89350.0,
+      99300.0,
+      108300.0,
+      118550.0
+    ],
+    "feature_dim_raw": 88,
+    "poly_dim": 15
+  },
+  {
+    "timestamp": "2026-04-13T19:28:05.834383+00:00",
+    "plate_name": "C",
+    "plate_id": "3",
+    "capture_mode": "sine",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_readout_freqs": 22,
+    "n_train": 80,
+    "n_test": 16,
+    "tasks": {
+      "parity_raw": {
+        "train_pct": 90.0,
+        "test_pct": 50.0,
+        "n_weights": 178
+      },
+      "parity_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      },
+      "parity_combined": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 208
+      },
+      "majority_raw": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 178
+      },
+      "majority_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      }
+    },
+    "best_parity_test_pct": 100.0,
+    "best_majority_test_pct": 100.0,
+    "train_accuracy_pct": 100.0,
+    "test_accuracy_pct": 100.0,
+    "trainable_params": 208,
+    "capture_time_s": 59.4,
+    "mode_freqs_hz": [
+      43175.0,
+      49625.0,
+      31400.0,
+      26175.0,
+      61650.0,
+      89325.0
+    ],
+    "readout_freqs_hz": [
+      6450.0,
+      17000.0,
+      23450.0,
+      26175.0,
+      31400.0,
+      39700.0,
+      43175.0,
+      46150.0,
+      49625.0,
+      52350.0,
+      61650.0,
+      63150.0,
+      69350.0,
+      75800.0,
+      86350.0,
+      89325.0,
+      92800.0,
+      99250.0,
+      115500.0,
+      132500.0
+    ],
+    "feature_dim_raw": 88,
+    "poly_dim": 15
+  },
+  {
+    "timestamp": "2026-04-13T19:29:06.588930+00:00",
+    "plate_name": "D",
+    "plate_id": "4",
+    "capture_mode": "sine",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_readout_freqs": 24,
+    "n_train": 80,
+    "n_test": 16,
+    "tasks": {
+      "parity_raw": {
+        "train_pct": 81.2,
+        "test_pct": 50.0,
+        "n_weights": 194
+      },
+      "parity_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      },
+      "parity_combined": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 224
+      },
+      "majority_raw": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 194
+      },
+      "majority_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      }
+    },
+    "best_parity_test_pct": 100.0,
+    "best_majority_test_pct": 100.0,
+    "train_accuracy_pct": 100.0,
+    "test_accuracy_pct": 100.0,
+    "trainable_params": 224,
+    "capture_time_s": 60.5,
+    "mode_freqs_hz": [
+      49625.0,
+      29925.0,
+      90275.0,
+      78125.0,
+      89375.0,
+      90025.0,
+      45025.0,
+      94675.0
+    ],
+    "readout_freqs_hz": [
+      900.0,
+      4400.0,
+      5300.0,
+      29925.0,
+      39750.0,
+      40650.0,
+      45025.0,
+      45050.0,
+      49625.0,
+      78125.0,
+      89375.0,
+      90025.0,
+      90275.0,
+      94675.0,
+      99250.0,
+      139000.0,
+      139900.0,
+      144300.0,
+      178750.0,
+      179650.0
+    ],
+    "feature_dim_raw": 96,
+    "poly_dim": 15
+  },
+  {
+    "timestamp": "2026-04-13T19:30:05.976869+00:00",
+    "plate_name": "E",
+    "plate_id": "5",
+    "capture_mode": "sine",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_readout_freqs": 24,
+    "n_train": 80,
+    "n_test": 16,
+    "tasks": {
+      "parity_raw": {
+        "train_pct": 83.8,
+        "test_pct": 56.2,
+        "n_weights": 194
+      },
+      "parity_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      },
+      "parity_combined": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 224
+      },
+      "majority_raw": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 194
+      },
+      "majority_poly": {
+        "train_pct": 100.0,
+        "test_pct": 100.0,
+        "n_weights": 32
+      }
+    },
+    "best_parity_test_pct": 100.0,
+    "best_majority_test_pct": 100.0,
+    "train_accuracy_pct": 100.0,
+    "test_accuracy_pct": 100.0,
+    "trainable_params": 224,
+    "capture_time_s": 59.2,
+    "mode_freqs_hz": [
+      49675.0,
+      29250.0,
+      29975.0,
+      28875.0,
+      34500.0,
+      26200.0,
+      89475.0,
+      94775.0
+    ],
+    "readout_freqs_hz": [
+      4525.0,
+      15175.0,
+      19700.0,
+      26200.0,
+      28875.0,
+      29250.0,
+      29975.0,
+      34500.0,
+      45100.0,
+      49675.0,
+      59950.0,
+      60275.0,
+      64475.0,
+      64800.0,
+      69000.0,
+      79650.0,
+      84175.0,
+      89475.0,
+      94775.0,
+      99350.0
+    ],
+    "feature_dim_raw": 96,
+    "poly_dim": 15
+  }
+]

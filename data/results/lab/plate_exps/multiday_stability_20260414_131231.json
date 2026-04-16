@@ -1,0 +1,190 @@
+{
+  "experiment": "plate_multiday_stability",
+  "experiment_id": "E28",
+  "timestamp": "2026-04-14T18:12:45.026662+00:00",
+  "paper_claim": "Non-volatile without power/refresh (\u00a73.2)",
+  "rod_baseline": {
+    "sessions": 7,
+    "span_hours": 18.7,
+    "accuracy": "100%"
+  },
+  "sessions_total": 2,
+  "sessions_with_accuracy": 2,
+  "pct_100": 100.0,
+  "wilson_ci_95": [
+    34.2,
+    100
+  ],
+  "time_span_hours": 25.3,
+  "first_timestamp": "2026-04-13T16:52:29.887647+00:00",
+  "last_timestamp": "2026-04-13T16:52:29.887647+00:00",
+  "timeline": [
+    {
+      "source": "auth_stress",
+      "file": "auth_stress_20260413_114825.json",
+      "timestamp": "2026-04-13T16:52:29.887647+00:00",
+      "accuracy_pct": 100.0,
+      "n_trials": 3,
+      "all_100": true
+    },
+    {
+      "source": "fresh_recall",
+      "timestamp": "2026-04-14T18:12:45.019329+00:00",
+      "accuracy_pct": 100.0,
+      "correct": 5,
+      "total": 5,
+      "trials": [
+        {
+          "query_plate": "A",
+          "winner": "A",
+          "correct": true,
+          "self_score": 0.9891,
+          "margin": 0.9891,
+          "all_scores": {
+            "A": 0.9891,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.0,
+            "E": 0.0
+          }
+        },
+        {
+          "query_plate": "B",
+          "winner": "B",
+          "correct": true,
+          "self_score": 0.9956,
+          "margin": 0.0188,
+          "all_scores": {
+            "A": 0.0,
+            "B": 0.9956,
+            "C": 0.9768,
+            "D": 0.0,
+            "E": 0.0
+          }
+        },
+        {
+          "query_plate": "C",
+          "winner": "C",
+          "correct": true,
+          "self_score": 0.9969,
+          "margin": 0.0512,
+          "all_scores": {
+            "A": 0.0,
+            "B": 0.9458,
+            "C": 0.9969,
+            "D": 0.0,
+            "E": 0.0
+          }
+        },
+        {
+          "query_plate": "D",
+          "winner": "D",
+          "correct": true,
+          "self_score": 0.9979,
+          "margin": 0.0852,
+          "all_scores": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.9979,
+            "E": 0.9128
+          }
+        },
+        {
+          "query_plate": "E",
+          "winner": "E",
+          "correct": true,
+          "self_score": 0.9937,
+          "margin": 0.0878,
+          "all_scores": {
+            "A": 0.0,
+            "B": 0.0,
+            "C": 0.0,
+            "D": 0.9059,
+            "E": 0.9937
+          }
+        }
+      ]
+    }
+  ],
+  "fresh_recall": {
+    "source": "fresh_recall",
+    "timestamp": "2026-04-14T18:12:45.019329+00:00",
+    "accuracy_pct": 100.0,
+    "correct": 5,
+    "total": 5,
+    "trials": [
+      {
+        "query_plate": "A",
+        "winner": "A",
+        "correct": true,
+        "self_score": 0.9891,
+        "margin": 0.9891,
+        "all_scores": {
+          "A": 0.9891,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      {
+        "query_plate": "B",
+        "winner": "B",
+        "correct": true,
+        "self_score": 0.9956,
+        "margin": 0.0188,
+        "all_scores": {
+          "A": 0.0,
+          "B": 0.9956,
+          "C": 0.9768,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      {
+        "query_plate": "C",
+        "winner": "C",
+        "correct": true,
+        "self_score": 0.9969,
+        "margin": 0.0512,
+        "all_scores": {
+          "A": 0.0,
+          "B": 0.9458,
+          "C": 0.9969,
+          "D": 0.0,
+          "E": 0.0
+        }
+      },
+      {
+        "query_plate": "D",
+        "winner": "D",
+        "correct": true,
+        "self_score": 0.9979,
+        "margin": 0.0852,
+        "all_scores": {
+          "A": 0.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.9979,
+          "E": 0.9128
+        }
+      },
+      {
+        "query_plate": "E",
+        "winner": "E",
+        "correct": true,
+        "self_score": 0.9937,
+        "margin": 0.0878,
+        "all_scores": {
+          "A": 0.0,
+          "B": 0.0,
+          "C": 0.0,
+          "D": 0.9059,
+          "E": 0.9937
+        }
+      }
+    ]
+  },
+  "verdict": "CONFIRMED \u2014 2/2 sessions at 100%, 25.3h span (rod: 7 sessions, 18.7h)"
+}

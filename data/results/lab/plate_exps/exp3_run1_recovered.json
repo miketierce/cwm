@@ -1,0 +1,71 @@
+{
+  "source": "terminal_paste_resubmit",
+  "original_run": "2026-04-12T22:46:59",
+  "run1_all_plates": {
+    "A": {
+      "f1": 29675,
+      "q": 237,
+      "tau_ms": 2.5,
+      "bw": 125.0,
+      "firestore_id": "Oo173RoQNwogvOtalDRJ"
+    },
+    "B": {
+      "f1": 29200,
+      "q": 292,
+      "tau_ms": 3.2,
+      "bw": 100.0,
+      "sweep_time_s": 1957,
+      "firestore_id": "6TdbDkT4DMV6lZ2qtAgO"
+    },
+    "C": {
+      "f1": 43175,
+      "q": 345,
+      "tau_ms": 2.5,
+      "bw": 125.0,
+      "sweep_time_s": 1939,
+      "firestore_id": "nBxDV0IXI2NJzL2tjMVw"
+    },
+    "D": {
+      "f1": 49625,
+      "q": 397,
+      "tau_ms": 2.5,
+      "bw": 125.0,
+      "sweep_time_s": 1732,
+      "firestore_id": "csRkR1GaAQ5ppYLwmapZ"
+    },
+    "E": {
+      "f1": 49675,
+      "q": 497,
+      "tau_ms": 3.2,
+      "bw": 100.0,
+      "sweep_time_s": 1808,
+      "firestore_id": "gTJn3kKcsl9FJvoZUpVG"
+    }
+  },
+  "results": [
+    {
+      "plate": "B",
+      "ok": true,
+      "id": "6TdbDkT4DMV6lZ2qtAgO",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "plate": "C",
+      "ok": true,
+      "id": "nBxDV0IXI2NJzL2tjMVw",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "plate": "D",
+      "ok": true,
+      "id": "csRkR1GaAQ5ppYLwmapZ",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "plate": "E",
+      "ok": true,
+      "id": "gTJn3kKcsl9FJvoZUpVG",
+      "experimentId": "exp05-plate-mode-survey"
+    }
+  ]
+}

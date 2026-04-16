@@ -1,0 +1,46 @@
+{
+  "experiment": "Write-Read Cross-Talk Test",
+  "timestamp": "20260415_213341",
+  "write_freqs_hz": [
+    6700.0,
+    16950.0,
+    2875.0
+  ],
+  "read_freqs_hz": [
+    1375.0,
+    250.0,
+    4200.0
+  ],
+  "drive_amplitude": 0.8,
+  "probe_amplitude_relative": 0.1,
+  "duration_s": 2.0,
+  "averages": 8,
+  "sample_rate": 192000,
+  "device": "KRONOS _ USB _ L&R",
+  "plate": "5",
+  "relay": 7,
+  "results": {
+    "1375.0": {
+      "freq_hz": 1375.0,
+      "baseline_mag": 0.414873189933353,
+      "writeread_mag": 0.3967332990545384,
+      "change_db": -0.39,
+      "crosstalk": false
+    },
+    "250.0": {
+      "freq_hz": 250.0,
+      "baseline_mag": 0.5118055744124452,
+      "writeread_mag": 0.47540297546269106,
+      "change_db": -0.64,
+      "crosstalk": false
+    },
+    "4200.0": {
+      "freq_hz": 4200.0,
+      "baseline_mag": 0.3699504007147633,
+      "writeread_mag": 0.3854630930052903,
+      "change_db": 0.36,
+      "crosstalk": false
+    }
+  },
+  "crosstalk_detected": false
+}

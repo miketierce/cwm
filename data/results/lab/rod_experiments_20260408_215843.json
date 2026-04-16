@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-04-09T03:00:12.581713+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    4
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "ZWuJPkzdVA4oBaiIfj3f",
+      "experimentId": "exp-hw-auth"
+    },
+    {
+      "ok": true,
+      "id": "JDl7ns463HtJEiaLFkUp",
+      "experimentId": "exp-hw-auth"
+    },
+    {
+      "ok": true,
+      "id": "LmWYzVl7j5iIcfVUj3Gg",
+      "experimentId": "exp-hw-auth"
+    }
+  ]
+}

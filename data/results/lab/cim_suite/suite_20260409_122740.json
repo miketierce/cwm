@@ -1,0 +1,2094 @@
+{
+  "timestamp": "2026-04-09T17:27:44.665233+00:00",
+  "experiments_run": [
+    "temporal",
+    "boolean-pairs",
+    "nn-pairs",
+    "boolean-three",
+    "chained",
+    "noise-sweep"
+  ],
+  "rod_ids": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "rod_patterns": {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+    "4": "E"
+  },
+  "awg_drive_uvpp": 2000000,
+  "sample_rate": 781250,
+  "n_avg": 12,
+  "n_peaks": 10,
+  "temporal_stability": {
+    "recall": [
+      {
+        "query_rod": "1",
+        "winner": "1",
+        "correct": true,
+        "scores": {
+          "1": 6.8,
+          "2": -0.96,
+          "3": 0.57,
+          "4": 4.13
+        },
+        "margin": 2.67
+      },
+      {
+        "query_rod": "2",
+        "winner": "2",
+        "correct": true,
+        "scores": {
+          "1": 1.42,
+          "2": 7.63,
+          "3": 0.89,
+          "4": 4.1
+        },
+        "margin": 3.53
+      },
+      {
+        "query_rod": "3",
+        "winner": "3",
+        "correct": true,
+        "scores": {
+          "1": -0.71,
+          "2": 0.68,
+          "3": 10.71,
+          "4": 0.17
+        },
+        "margin": 10.03
+      },
+      {
+        "query_rod": "4",
+        "winner": "4",
+        "correct": true,
+        "scores": {
+          "1": 3.54,
+          "2": 0.75,
+          "3": 0.74,
+          "4": 8.42
+        },
+        "margin": 4.88
+      }
+    ],
+    "boolean": {
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "total_bits": 7,
+      "and_correct": 7,
+      "or_correct": 7,
+      "xor_correct": 7,
+      "rod_thresholds": {
+        "1": 778660.9,
+        "2": 199576.6
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "b_only",
+          "mag_a": 312650.2,
+          "mag_b": 399153.2,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1616.9,
+          "category": "b_only",
+          "mag_a": 1255755.9,
+          "mag_b": 2111640.8,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1825.5,
+          "category": "a_only",
+          "mag_a": 2801920.4,
+          "mag_b": 4331513.0,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2111.3,
+          "category": "both",
+          "mag_a": 18471027.0,
+          "mag_b": 49306940.3,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25414071.5,
+          "mag_b": 5577615.6,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2644.6,
+          "category": "a_only",
+          "mag_a": 1557321.8,
+          "mag_b": 1318721.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2924.3,
+          "category": "b_only",
+          "mag_a": 681879.7,
+          "mag_b": 631582.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    "recall_accuracy": 1.0,
+    "recall_mean_margin": 5.28
+  },
+  "boolean_all_pairs": [
+    {
+      "pair": [
+        "1",
+        "2"
+      ],
+      "patterns": [
+        "A",
+        "B"
+      ],
+      "strong_a": 4,
+      "strong_b": 6,
+      "overlap_pct": 16.7,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 7,
+        "and_correct": 7,
+        "or_correct": 7,
+        "xor_correct": 7,
+        "rod_thresholds": {
+          "1": 777446.6,
+          "2": 194602.5
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "b_only",
+          "mag_a": 311002.6,
+          "mag_b": 389205.0,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1616.9,
+          "category": "b_only",
+          "mag_a": 1257377.6,
+          "mag_b": 2105459.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1825.5,
+          "category": "a_only",
+          "mag_a": 2817611.2,
+          "mag_b": 4336694.2,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2111.3,
+          "category": "both",
+          "mag_a": 18457240.1,
+          "mag_b": 49480248.4,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25404581.1,
+          "mag_b": 5571710.9,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2644.6,
+          "category": "a_only",
+          "mag_a": 1554893.2,
+          "mag_b": 1316120.3,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2924.3,
+          "category": "b_only",
+          "mag_a": 683179.7,
+          "mag_b": 639774.0,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "3"
+      ],
+      "patterns": [
+        "A",
+        "C"
+      ],
+      "strong_a": 5,
+      "strong_b": 4,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 6,
+        "and_correct": 6,
+        "or_correct": 6,
+        "xor_correct": 6,
+        "rod_thresholds": {
+          "1": 781160.7,
+          "3": 417340.2
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1536.4,
+          "category": "b_only",
+          "mag_a": 874475.3,
+          "mag_b": 3118783.6,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1714.2,
+          "category": "b_only",
+          "mag_a": 2595138.7,
+          "mag_b": 2364012.6,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1825.5,
+          "category": "a_only",
+          "mag_a": 2817007.9,
+          "mag_b": 8744573.3,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25386242.7,
+          "mag_b": 4663720.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2644.6,
+          "category": "a_only",
+          "mag_a": 1562321.3,
+          "mag_b": 1158311.5,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2833.8,
+          "category": "b_only",
+          "mag_a": 901741.2,
+          "mag_b": 834680.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "4"
+      ],
+      "patterns": [
+        "A",
+        "E"
+      ],
+      "strong_a": 4,
+      "strong_b": 5,
+      "overlap_pct": 40.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 4,
+        "and_correct": 4,
+        "or_correct": 4,
+        "xor_correct": 4,
+        "rod_thresholds": {
+          "1": 893477.7,
+          "4": 517656.0
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1631.9,
+          "category": "b_only",
+          "mag_a": 1306813.7,
+          "mag_b": 2696824.9,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2096.4,
+          "category": "both",
+          "mag_a": 22271043.1,
+          "mag_b": 26696042.4,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25390709.8,
+          "mag_b": 4108587.3,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2614.5,
+          "category": "both",
+          "mag_a": 1786955.3,
+          "mag_b": 1035312.0,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "3"
+      ],
+      "patterns": [
+        "B",
+        "C"
+      ],
+      "strong_a": 6,
+      "strong_b": 4,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 5,
+        "and_correct": 5,
+        "or_correct": 5,
+        "xor_correct": 5,
+        "rod_thresholds": {
+          "2": 199946.6,
+          "3": 1188862.8
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "a_only",
+          "mag_a": 399893.2,
+          "mag_b": 507792.7,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1714.2,
+          "category": "b_only",
+          "mag_a": 2665154.9,
+          "mag_b": 2377725.5,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2001.1,
+          "category": "b_only",
+          "mag_a": 39021655.5,
+          "mag_b": 16439105.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2117.8,
+          "category": "a_only",
+          "mag_a": 52404923.1,
+          "mag_b": 28041397.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 6792.7,
+          "category": "a_only",
+          "mag_a": 460204.2,
+          "mag_b": 243458.9,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "4"
+      ],
+      "patterns": [
+        "B",
+        "E"
+      ],
+      "strong_a": 7,
+      "strong_b": 5,
+      "overlap_pct": 42.9,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 7,
+        "and_correct": 7,
+        "or_correct": 7,
+        "xor_correct": 7,
+        "rod_thresholds": {
+          "2": 160944.6,
+          "4": 419413.2
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "a_only",
+          "mag_a": 392296.1,
+          "mag_b": 440978.4,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1624.4,
+          "category": "both",
+          "mag_a": 1977088.8,
+          "mag_b": 3162790.5,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 1895.7,
+          "category": "b_only",
+          "mag_a": 3310827.7,
+          "mag_b": 19805965.0,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2102.9,
+          "category": "both",
+          "mag_a": 45459791.8,
+          "mag_b": 28338228.5,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2584.4,
+          "category": "b_only",
+          "mag_a": 1570638.0,
+          "mag_b": 1174512.8,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2924.3,
+          "category": "a_only",
+          "mag_a": 645119.5,
+          "mag_b": 562806.5,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 6311.6,
+          "category": "both",
+          "mag_a": 321889.2,
+          "mag_b": 838826.4,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        }
+      ]
+    },
+    {
+      "pair": [
+        "3",
+        "4"
+      ],
+      "patterns": [
+        "C",
+        "E"
+      ],
+      "strong_a": 4,
+      "strong_b": 5,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 4,
+        "and_correct": 4,
+        "or_correct": 4,
+        "xor_correct": 4,
+        "rod_thresholds": {
+          "3": 421920.6,
+          "4": 586086.2
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1536.4,
+          "category": "a_only",
+          "mag_a": 3136583.7,
+          "mag_b": 940514.4,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1895.7,
+          "category": "b_only",
+          "mag_a": 10190594.2,
+          "mag_b": 19811404.5,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2584.4,
+          "category": "b_only",
+          "mag_a": 1386653.4,
+          "mag_b": 1172172.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2833.8,
+          "category": "a_only",
+          "mag_a": 843841.2,
+          "mag_b": 639050.0,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    }
+  ],
+  "nn_all_pairs": [
+    {
+      "pair": [
+        "1",
+        "2"
+      ],
+      "patterns": [
+        "A",
+        "B"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.78,
+            "2": -1.0,
+            "3": 0.69,
+            "4": 4.22
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.85,
+            "2": -0.99,
+            "3": 0.55,
+            "4": 4.19
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.81,
+            "2": -0.98,
+            "3": 0.52,
+            "4": 4.2
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.81,
+            "2": -0.95,
+            "3": 0.61,
+            "4": 4.2
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.9,
+            "2": -0.97,
+            "3": 0.7,
+            "4": 4.24
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.87,
+            "2": -0.94,
+            "3": 0.67,
+            "4": 4.11
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.43,
+            "2": 7.7,
+            "3": 0.79,
+            "4": 4.09
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.39,
+            "2": 7.69,
+            "3": 0.79,
+            "4": 4.07
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.41,
+            "2": 7.62,
+            "3": 0.82,
+            "4": 4.08
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.4,
+            "2": 7.67,
+            "3": 0.79,
+            "4": 4.1
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.42,
+            "2": 7.64,
+            "3": 0.81,
+            "4": 4.08
+          }
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "3"
+      ],
+      "patterns": [
+        "A",
+        "C"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.84,
+            "2": -0.95,
+            "3": 0.59,
+            "4": 4.18
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.91,
+            "2": -0.95,
+            "3": 0.67,
+            "4": 4.25
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.93,
+            "2": -0.92,
+            "3": 0.67,
+            "4": 4.19
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.89,
+            "2": -0.92,
+            "3": 0.61,
+            "4": 4.19
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.93,
+            "2": -0.93,
+            "3": 0.54,
+            "4": 4.19
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.83,
+            "2": -0.93,
+            "3": 0.65,
+            "4": 4.14
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.74,
+            "2": 0.78,
+            "3": 10.55,
+            "4": 0.19
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.65,
+            "2": 0.74,
+            "3": 10.64,
+            "4": 0.18
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.69,
+            "2": 0.71,
+            "3": 10.69,
+            "4": 0.15
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.73,
+            "2": 0.71,
+            "3": 10.7,
+            "4": 0.21
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.72,
+            "2": 0.66,
+            "3": 10.68,
+            "4": 0.14
+          }
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "4"
+      ],
+      "patterns": [
+        "A",
+        "E"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.75,
+            "2": -1.01,
+            "3": 0.56,
+            "4": 4.15
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.91,
+            "2": -0.93,
+            "3": 0.61,
+            "4": 4.21
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.77,
+            "2": -0.92,
+            "3": 0.64,
+            "4": 4.22
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.92,
+            "2": -0.98,
+            "3": 0.6,
+            "4": 4.23
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.8,
+            "2": -0.99,
+            "3": 0.71,
+            "4": 4.14
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "1",
+          "expected": "1",
+          "correct": true,
+          "scores": {
+            "1": 6.85,
+            "2": -0.91,
+            "3": 0.7,
+            "4": 4.25
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.64,
+            "2": 0.73,
+            "3": 0.75,
+            "4": 8.41
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.52,
+            "2": 0.72,
+            "3": 0.77,
+            "4": 8.45
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.58,
+            "2": 0.74,
+            "3": 0.79,
+            "4": 8.49
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.6,
+            "2": 0.78,
+            "3": 0.77,
+            "4": 8.45
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.59,
+            "2": 0.76,
+            "3": 0.76,
+            "4": 8.46
+          }
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "3"
+      ],
+      "patterns": [
+        "B",
+        "C"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.38,
+            "2": 7.6,
+            "3": 0.85,
+            "4": 4.1
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.44,
+            "2": 7.68,
+            "3": 0.79,
+            "4": 4.07
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.41,
+            "2": 7.62,
+            "3": 0.8,
+            "4": 4.1
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.41,
+            "2": 7.57,
+            "3": 0.75,
+            "4": 4.05
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.43,
+            "2": 7.63,
+            "3": 0.77,
+            "4": 4.07
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.46,
+            "2": 7.57,
+            "3": 0.83,
+            "4": 4.07
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.66,
+            "2": 0.69,
+            "3": 10.66,
+            "4": 0.17
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.7,
+            "2": 0.7,
+            "3": 10.66,
+            "4": 0.12
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.74,
+            "2": 0.67,
+            "3": 10.64,
+            "4": 0.19
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.71,
+            "2": 0.67,
+            "3": 10.74,
+            "4": 0.17
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.64,
+            "2": 0.69,
+            "3": 10.78,
+            "4": 0.17
+          }
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "4"
+      ],
+      "patterns": [
+        "B",
+        "E"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.43,
+            "2": 7.61,
+            "3": 0.81,
+            "4": 4.1
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.45,
+            "2": 7.57,
+            "3": 0.79,
+            "4": 4.05
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.42,
+            "2": 7.59,
+            "3": 0.74,
+            "4": 4.08
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.45,
+            "2": 7.64,
+            "3": 0.87,
+            "4": 4.07
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.44,
+            "2": 7.56,
+            "3": 0.79,
+            "4": 4.06
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "2",
+          "expected": "2",
+          "correct": true,
+          "scores": {
+            "1": 1.46,
+            "2": 7.66,
+            "3": 0.77,
+            "4": 4.06
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.62,
+            "2": 0.74,
+            "3": 0.75,
+            "4": 8.42
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.59,
+            "2": 0.73,
+            "3": 0.77,
+            "4": 8.41
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.5,
+            "2": 0.72,
+            "3": 0.77,
+            "4": 8.45
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.56,
+            "2": 0.75,
+            "3": 0.76,
+            "4": 8.44
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.57,
+            "2": 0.78,
+            "3": 0.73,
+            "4": 8.43
+          }
+        }
+      ]
+    },
+    {
+      "pair": [
+        "3",
+        "4"
+      ],
+      "patterns": [
+        "C",
+        "E"
+      ],
+      "n_correct": 11,
+      "n_steps": 11,
+      "accuracy": 1.0,
+      "kendall_tau": 1.0,
+      "steps": [
+        {
+          "alpha": 0.0,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.73,
+            "2": 0.76,
+            "3": 10.69,
+            "4": 0.15
+          }
+        },
+        {
+          "alpha": 0.1,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.64,
+            "2": 0.74,
+            "3": 10.61,
+            "4": 0.13
+          }
+        },
+        {
+          "alpha": 0.2,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.68,
+            "2": 0.64,
+            "3": 10.55,
+            "4": 0.11
+          }
+        },
+        {
+          "alpha": 0.3,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.76,
+            "2": 0.74,
+            "3": 10.68,
+            "4": 0.18
+          }
+        },
+        {
+          "alpha": 0.4,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.71,
+            "2": 0.71,
+            "3": 10.68,
+            "4": 0.14
+          }
+        },
+        {
+          "alpha": 0.5,
+          "winner": "3",
+          "expected": "3",
+          "correct": true,
+          "scores": {
+            "1": -0.68,
+            "2": 0.62,
+            "3": 10.65,
+            "4": 0.18
+          }
+        },
+        {
+          "alpha": 0.6,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.6,
+            "2": 0.75,
+            "3": 0.74,
+            "4": 8.45
+          }
+        },
+        {
+          "alpha": 0.7,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.56,
+            "2": 0.76,
+            "3": 0.75,
+            "4": 8.49
+          }
+        },
+        {
+          "alpha": 0.8,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.56,
+            "2": 0.74,
+            "3": 0.76,
+            "4": 8.46
+          }
+        },
+        {
+          "alpha": 0.9,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.59,
+            "2": 0.74,
+            "3": 0.79,
+            "4": 8.41
+          }
+        },
+        {
+          "alpha": 1.0,
+          "winner": "4",
+          "expected": "4",
+          "correct": true,
+          "scores": {
+            "1": 3.54,
+            "2": 0.74,
+            "3": 0.78,
+            "4": 8.45
+          }
+        }
+      ]
+    }
+  ],
+  "boolean_three": {
+    "rods": [
+      "1",
+      "2",
+      "3"
+    ],
+    "patterns": [
+      "A",
+      "B",
+      "C"
+    ],
+    "strong_peaks": {
+      "1": 4,
+      "2": 7,
+      "3": 4
+    },
+    "classification": {
+      "abc": 0,
+      "ab": 1,
+      "ac": 0,
+      "bc": 0,
+      "a_only": 3,
+      "b_only": 6,
+      "c_only": 4,
+      "all": 14
+    },
+    "analysis": {
+      "and3_fidelity": 1.0,
+      "or3_fidelity": 1.0,
+      "majority_fidelity": 1.0,
+      "xor3_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "total_bits": 14
+    },
+    "per_freq": [
+      {
+        "freq": 1203.2,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 314687.8,
+        "mag_b": 390220.2,
+        "mag_c": 488335.2
+      },
+      {
+        "freq": 1536.4,
+        "category": "c_only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "mag_a": 874940.3,
+        "mag_b": 1552521.6,
+        "mag_c": 3114338.3
+      },
+      {
+        "freq": 1616.9,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 1252743.5,
+        "mag_b": 2115662.3,
+        "mag_c": 1499787.7
+      },
+      {
+        "freq": 1714.2,
+        "category": "c_only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "mag_a": 2560751.4,
+        "mag_b": 2649016.5,
+        "mag_c": 2379872.5
+      },
+      {
+        "freq": 1825.5,
+        "category": "a_only",
+        "det_a": 1,
+        "det_b": 0,
+        "det_c": 0,
+        "mag_a": 2789931.2,
+        "mag_b": 4346195.7,
+        "mag_c": 8667924.2
+      },
+      {
+        "freq": 2001.1,
+        "category": "c_only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "mag_a": 25186060.7,
+        "mag_b": 38882524.0,
+        "mag_c": 16435913.7
+      },
+      {
+        "freq": 2104.9,
+        "category": "ab",
+        "det_a": 1,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 20298651.9,
+        "mag_b": 45587797.0,
+        "mag_c": 24993056.7
+      },
+      {
+        "freq": 2299.2,
+        "category": "a_only",
+        "det_a": 1,
+        "det_b": 0,
+        "det_c": 0,
+        "mag_a": 25402211.3,
+        "mag_b": 5542165.2,
+        "mag_c": 4643812.4
+      },
+      {
+        "freq": 2644.6,
+        "category": "a_only",
+        "det_a": 1,
+        "det_b": 0,
+        "det_c": 0,
+        "mag_a": 1547760.4,
+        "mag_b": 1325860.6,
+        "mag_c": 1157893.3
+      },
+      {
+        "freq": 2833.8,
+        "category": "c_only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "mag_a": 899289.7,
+        "mag_b": 735512.1,
+        "mag_c": 853389.6
+      },
+      {
+        "freq": 2924.3,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 682032.0,
+        "mag_b": 647536.9,
+        "mag_c": 693171.2
+      },
+      {
+        "freq": 6303.4,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 428584.8,
+        "mag_b": 347054.1,
+        "mag_c": 189181.6
+      },
+      {
+        "freq": 6506.6,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 1161574.3,
+        "mag_b": 642598.0,
+        "mag_c": 124976.8
+      },
+      {
+        "freq": 6792.7,
+        "category": "b_only",
+        "det_a": 0,
+        "det_b": 1,
+        "det_c": 0,
+        "mag_a": 74720.4,
+        "mag_b": 464286.5,
+        "mag_c": 234459.6
+      }
+    ]
+  },
+  "chained_boolean": {
+    "rods": [
+      "1",
+      "2",
+      "3"
+    ],
+    "and_result_freqs": [
+      2111.3
+    ],
+    "xor_expected_freqs": [
+      1536.4,
+      1714.2,
+      2001.1,
+      2111.3,
+      2833.8
+    ],
+    "fidelity": 1.0,
+    "correct": 5,
+    "total": 5,
+    "per_freq": [
+      {
+        "freq": 1536.4,
+        "category": "c-only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "and_ab": 0,
+        "chain_xor": 1,
+        "xor_expected": 1,
+        "correct": true
+      },
+      {
+        "freq": 1714.2,
+        "category": "c-only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "and_ab": 0,
+        "chain_xor": 1,
+        "xor_expected": 1,
+        "correct": true
+      },
+      {
+        "freq": 2001.1,
+        "category": "c-only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "and_ab": 0,
+        "chain_xor": 1,
+        "xor_expected": 1,
+        "correct": true
+      },
+      {
+        "freq": 2111.3,
+        "category": "and-only",
+        "det_a": 1,
+        "det_b": 1,
+        "det_c": 0,
+        "and_ab": 1,
+        "chain_xor": 1,
+        "xor_expected": 1,
+        "correct": true
+      },
+      {
+        "freq": 2833.8,
+        "category": "c-only",
+        "det_a": 0,
+        "det_b": 0,
+        "det_c": 1,
+        "and_ab": 0,
+        "chain_xor": 1,
+        "xor_expected": 1,
+        "correct": true
+      }
+    ]
+  },
+  "noise_sweep": [
+    {
+      "voltage_frac": 1.0,
+      "drive_uvpp": 2000000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 2.54,
+      "recall_scores": {
+        "1": 6.83,
+        "2": -0.98,
+        "3": 0.62,
+        "4": 4.29
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 7
+    },
+    {
+      "voltage_frac": 0.8,
+      "drive_uvpp": 1600000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 2.58,
+      "recall_scores": {
+        "1": 6.86,
+        "2": -0.92,
+        "3": 0.64,
+        "4": 4.28
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 6
+    },
+    {
+      "voltage_frac": 0.6,
+      "drive_uvpp": 1200000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 3.01,
+      "recall_scores": {
+        "1": 7.27,
+        "2": -0.91,
+        "3": 0.42,
+        "4": 4.26
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 6
+    },
+    {
+      "voltage_frac": 0.4,
+      "drive_uvpp": 800000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 3.32,
+      "recall_scores": {
+        "1": 7.41,
+        "2": -0.89,
+        "3": 0.32,
+        "4": 4.09
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 7
+    },
+    {
+      "voltage_frac": 0.2,
+      "drive_uvpp": 400000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 3.68,
+      "recall_scores": {
+        "1": 7.61,
+        "2": -0.88,
+        "3": -0.01,
+        "4": 3.93
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 7
+    },
+    {
+      "voltage_frac": 0.1,
+      "drive_uvpp": 200000,
+      "recall_winner": "1",
+      "recall_correct": true,
+      "recall_margin": 3.56,
+      "recall_scores": {
+        "1": 7.87,
+        "2": -0.84,
+        "3": -0.05,
+        "4": 4.31
+      },
+      "boolean_and": 1.0,
+      "boolean_or": 1.0,
+      "boolean_xor": 1.0,
+      "boolean_mean": 1.0,
+      "strong_a": 4,
+      "strong_b": 4
+    }
+  ],
+  "total_duration_s": 2041.5
+}

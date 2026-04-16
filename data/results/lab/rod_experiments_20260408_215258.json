@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-04-09T02:53:41.181536+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    3
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "CTyi7nCQfmBiKkjzaYE7",
+      "experimentId": "exp03-damping-time"
+    },
+    {
+      "ok": true,
+      "id": "2KhjBzFur5fn9SHEe36u",
+      "experimentId": "exp03-damping-time"
+    },
+    {
+      "ok": true,
+      "id": "KAPcLwvuXbNGIKYj0thV",
+      "experimentId": "exp03-damping-time"
+    },
+    {
+      "ok": true,
+      "id": "zxpKZmrmn7CXfgeDrVDA",
+      "experimentId": "exp03-damping-time"
+    }
+  ]
+}

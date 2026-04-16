@@ -1,0 +1,33 @@
+{
+  "test": "C",
+  "test_name": "cross_plate_live_routing",
+  "timestamp": "2026-04-13T21:26:27.167897+00:00",
+  "plate_names": [
+    "A",
+    "B",
+    "C"
+  ],
+  "n_plates": 3,
+  "drive_plate": "B",
+  "n_drive_modes": 6,
+  "n_input_bits": 4,
+  "n_readout": 30,
+  "n_patterns": 60,
+  "total_samples": 180,
+  "tasks": {
+    "parity_from_any_plate": {
+      "train": 76.3,
+      "test": 51.1
+    },
+    "plate_identity": {
+      "train": 67.4,
+      "test": 68.9
+    },
+    "joint_pattern_plate": {
+      "train": 88.9,
+      "test": 15.6
+    }
+  },
+  "plate_identity_pct": 68.9,
+  "parity_any_plate_pct": 51.1
+}

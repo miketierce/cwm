@@ -1,0 +1,480 @@
+{
+  "timestamp": "2026-04-16T03:12:51.250569+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "checkpoint": "after_exp2",
+  "results": [
+    {
+      "ok": true,
+      "id": "UWKAcHvnlSLCwnHIL2Ct",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "A",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.1
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 13675.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 7575.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 2725.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 2875.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 4550.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 2775.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 15675.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9800.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9325.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5700.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9275.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 20300.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 350.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 7725.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 5600.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 5200.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 20475.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14225.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.902161,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "9UWziskE65CzXA7eAGkP",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "B",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.0
+          },
+          {
+            "freq_hz": 17075.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 18475.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 12950.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 1350.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 12825.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 475.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 7225.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 17250.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 6775.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 1975.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5625.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 7675.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 1925.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 12050.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 10900.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 1775.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 825.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 8350.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 4325.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.892546,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "d5eL4cxF1iD52rXa8fJ2",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "G",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 198.2
+          },
+          {
+            "freq_hz": 275.0,
+            "snr_db": 188.9
+          },
+          {
+            "freq_hz": 10775.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 650.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 20100.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 6200.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 4875.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 8050.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 6850.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 3400.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 5950.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 11450.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 2725.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 17025.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14000.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 5525.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 7525.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 8975.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 10000.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 15675.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.816337,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "439s3s2KL0Lw6Kc6ynix",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "D",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.5
+          },
+          {
+            "freq_hz": 275.0,
+            "snr_db": 189.1
+          },
+          {
+            "freq_hz": 10150.0,
+            "snr_db": 188.8
+          },
+          {
+            "freq_hz": 5950.0,
+            "snr_db": 188.7
+          },
+          {
+            "freq_hz": 9575.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 13375.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 13000.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 14775.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.0
+          },
+          {
+            "freq_hz": 12700.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 1600.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 600.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 325.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 11250.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 14450.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 20150.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 6625.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 1050.0,
+            "snr_db": 187.8
+          },
+          {
+            "freq_hz": 17700.0,
+            "snr_db": 187.7
+          },
+          {
+            "freq_hz": 6050.0,
+            "snr_db": 187.7
+          }
+        ],
+        "peak_mag": 0.940053,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "id": "5h7ejOyOB2yKWP4xaDs6",
+      "experimentId": "exp05-plate-mode-survey",
+      "_detail": {
+        "plate": "H",
+        "peaks": [
+          {
+            "freq_hz": 6700.0,
+            "snr_db": 199.4
+          },
+          {
+            "freq_hz": 525.0,
+            "snr_db": 189.4
+          },
+          {
+            "freq_hz": 6875.0,
+            "snr_db": 188.9
+          },
+          {
+            "freq_hz": 4350.0,
+            "snr_db": 188.7
+          },
+          {
+            "freq_hz": 400.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 2750.0,
+            "snr_db": 188.6
+          },
+          {
+            "freq_hz": 17725.0,
+            "snr_db": 188.5
+          },
+          {
+            "freq_hz": 12025.0,
+            "snr_db": 188.4
+          },
+          {
+            "freq_hz": 4725.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 4900.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 1325.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 8000.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 13850.0,
+            "snr_db": 188.3
+          },
+          {
+            "freq_hz": 17175.0,
+            "snr_db": 188.2
+          },
+          {
+            "freq_hz": 14375.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 4400.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 5150.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 10650.0,
+            "snr_db": 188.1
+          },
+          {
+            "freq_hz": 9900.0,
+            "snr_db": 187.9
+          },
+          {
+            "freq_hz": 10125.0,
+            "snr_db": 187.8
+          }
+        ],
+        "peak_mag": 0.935441,
+        "noise_floor": 0.0,
+        "snr_db": 0
+      }
+    }
+  ]
+}

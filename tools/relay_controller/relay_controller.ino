@@ -2,7 +2,7 @@
  * CWM Relay Multiplexer Controller
  *
  * Controls an 8-channel opto-isolated relay module to switch individual
- * rod sense PZTs onto PicoScope Channel A. One relay active at a time
+ * plate sense PZTs onto PicoScope Channel A. One relay active at a time
  * (break-before-make) to prevent signal blending.
  *
  * Hardware:
@@ -11,17 +11,18 @@
  *   - DuPont F-to-F jumper wires: D2–D9 → IN1–IN8
  *   - 5V/GND from Arduino → relay VCC/GND
  *
- * Wiring:
- *   Arduino D2  → Relay IN1 (Rod 1 sense PZT)
- *   Arduino D3  → Relay IN2 (Rod 2 sense PZT)
- *   Arduino D4  → Relay IN3 (Rod 3 sense PZT)
- *   Arduino D5  → Relay IN4 (Rod 4 sense PZT)
- *   Arduino D6  → Relay IN5 (Rod 5, if installed)
- *   Arduino D7  → Relay IN6 (Rod 6, if installed)
- *   Arduino D8  → Relay IN7 (Rod 7, if installed)
- *   Arduino D9  → Relay IN8 (Rod 8, if installed)
+ * Wiring (Phase 1.6 dual-RX plate layout):
+ *   Arduino D2  → Relay IN1  Plate 1 (A)  NE-RX (95,5) diagonal
+ *   Arduino D3  → Relay IN2  Plate 2 (B)  NE-RX (95,5) diagonal
+ *   Arduino D4  → Relay IN3  Plate 3 (G)  NE-RX (95,5) diagonal
+ *   Arduino D5  → Relay IN4  Plate 3 (G)  NW-RX (5,5)  L-path
+ *   Arduino D6  → Relay IN5  Plate 4 (D)  NE-RX (95,5) diagonal
+ *   Arduino D7  → Relay IN6  Plate 4 (D)  NW-RX (5,5)  L-path
+ *   Arduino D8  → Relay IN7  Plate 5 (F)  NE-RX (95,5) diagonal
+ *   Arduino D9  → Relay IN8  Plate 5 (F)  NW-RX (5,5)  L-path
  *   Arduino 5V  → Relay VCC
  *   Arduino GND → Relay GND
+ *   All TX PZTs wired in parallel → PicoScope AWG
  *
  * Protocol (9600 baud, newline-terminated):
  *   Send '1'–'8' → activate that relay (deactivate all others first)

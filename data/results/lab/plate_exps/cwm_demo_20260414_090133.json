@@ -1,0 +1,26 @@
+{
+  "timestamp": "2026-04-14T14:01:55.007440+00:00",
+  "mode": "hardware",
+  "message": "CWM GLASS",
+  "glass_decoded": "?MW?_ilg d [",
+  "sw_decoded": " ??5?UL? \"*=",
+  "glass_char_accuracy": 33.33333333333333,
+  "sw_char_accuracy": 25.0,
+  "validation": {
+    "DE_raw": {
+      "digit_acc": 0.9946875,
+      "token_acc": 0.9595,
+      "dim": 16
+    },
+    "sw_raw": {
+      "digit_acc": 1.0,
+      "token_acc": 1.0,
+      "dim": 8
+    },
+    "sw_poly4": {
+      "digit_acc": 0.6511875,
+      "token_acc": 0.14850000000000002,
+      "dim": 162
+    }
+  }
+}

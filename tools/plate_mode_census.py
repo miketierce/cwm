@@ -8,6 +8,8 @@ Builds a complete mode catalog for fingerprint enrollment (Step 3).
 Reuses hardware abstractions from plate_q_measurement.py.
 Saves full sweep data + detected peaks per plate.
 """
+from __future__ import annotations
+
 import ctypes
 import json
 import math
@@ -32,8 +34,23 @@ RESULTS_DIR.mkdir(parents=True, exist_ok=True)
 TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # ── Plate config ──
-PLATE_IDS = ["1", "2", "3", "4", "5"]
-PLATE_NAMES = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
+# Physical plate → pattern → relay channel(s)
+# Plate 1 (A): relay 1 (NE-RX only)
+# Plate 2 (B): relay 2 (NE-RX only)
+# Plate 3 (G): relay 3 (NE-RX), relay 4 (NW-RX)
+# Plate 4 (D): relay 5 (NE-RX), relay 6 (NW-RX)
+# Plate 5 (F): relay 7 (NE-RX), relay 8 (NW-RX)
+PLATE_IDS = ["5"]  # TEMP: re-sweep plate F only after wax removal
+PLATE_NAMES = {"1": "A", "2": "B", "3": "G", "4": "D", "5": "F"}
+
+# Map plate ID → list of (relay_channel, rx_label) for census sweeps
+PLATE_RELAYS = {
+    "1": [(1, "NE")],
+    "2": [(2, "NE")],
+    "3": [(3, "NE"), (4, "NW")],
+    "4": [(5, "NE"), (6, "NW")],
+    "5": [(7, "NE"), (8, "NW")],
+}
 
 # ── Sweep config ──
 F_START = 200        # Hz
@@ -95,18 +112,20 @@ def _capture_raw(handle):
     return np.zeros(N_SAMPLES, dtype=np.float64)
 
 
-def sweep_plate(handle, mux, plate_id: str) -> list[dict]:
-    """High-resolution CW sweep for one plate."""
+def sweep_plate(handle, mux, plate_id: str, relay_ch: int | None = None,
+                rx_label: str = "NE") -> list[dict]:
+    """High-resolution CW sweep for one plate on a specific relay channel."""
     from picosdk.ps2000 import ps2000
     from cwm_picoscope import AWG_DRIVE_UVPP, SAMPLE_RATE
 
-    mux.select(int(plate_id))
+    ch = relay_ch if relay_ch is not None else int(plate_id)
+    mux.select(ch)
     time.sleep(SETTLE_RELAY_S)
 
     freqs = np.arange(F_START, F_STOP + F_STEP, F_STEP)
     name = PLATE_NAMES[plate_id]
     n_pts = len(freqs)
-    print(f"\n  Plate {name} (relay {plate_id}): sweep {F_START}–{F_STOP} Hz, "
+    print(f"\n  Plate {name} (relay {ch}, RX-{rx_label}): sweep {F_START}–{F_STOP} Hz, "
           f"{F_STEP} Hz steps ({n_pts} pts)")
 
     sweep_data = []
@@ -246,38 +265,47 @@ def run_mode_census(port: str) -> dict:
 
     for pid in PLATE_IDS:
         name = PLATE_NAMES[pid]
-        print(f"\n{'─' * 70}")
-        print(f"  PLATE {name} (relay {pid})")
-        print(f"{'─' * 70}")
+        relays = PLATE_RELAYS[pid]
 
-        sweep_data = sweep_plate(handle, mux, pid)
-        peaks = detect_modes(sweep_data)
-        stats = analyze_mode_spacing(peaks)
+        for relay_ch, rx_label in relays:
+            # Result key: "1" for single-RX plates, "3_NE"/"3_NW" for dual-RX
+            rkey = pid if len(relays) == 1 else f"{pid}_{rx_label}"
 
-        print(f"  Detected {len(peaks)} modes (SNR > {MIN_SNR_DB} dB, "
-              f"prominence > {MIN_PROMINENCE_DB} dB)")
-        if stats.get("modes_per_khz"):
-            print(f"  Mode density: {stats['modes_per_khz']:.1f} modes/kHz "
-                  f"({stats['freq_min_hz']:.0f}–{stats['freq_max_hz']:.0f} Hz)")
-            print(f"  Spacing: mean {stats['mean_spacing_hz']:.0f} Hz, "
-                  f"min {stats['min_spacing_hz']:.0f} Hz, "
-                  f"max {stats['max_spacing_hz']:.0f} Hz")
+            print(f"\n{'─' * 70}")
+            print(f"  PLATE {name} — RX-{rx_label} (relay {relay_ch})")
+            print(f"{'─' * 70}")
 
-        # Print top 20 modes
-        print(f"\n  Top 20 modes:")
-        print(f"    {'#':>3}  {'Freq (Hz)':>10}  {'Magnitude':>12}  "
-              f"{'SNR (dB)':>8}  {'Prom (dB)':>9}  {'Phase (rad)':>11}  {'σ_φ':>6}")
-        for i, p in enumerate(peaks[:20]):
-            print(f"    {i+1:3d}  {p['freq_hz']:10.1f}  {p['magnitude']:12.0f}  "
-                  f"{p['snr_db']:8.1f}  {p['prominence_db']:9.1f}  "
-                  f"{p['phase_rad']:11.4f}  {p['phase_std']:6.4f}")
+            sweep_data = sweep_plate(handle, mux, pid, relay_ch, rx_label)
+            peaks = detect_modes(sweep_data)
+            stats = analyze_mode_spacing(peaks)
 
-        all_results[pid] = {
-            "plate_name": name,
-            "sweep_data": sweep_data,
-            "peaks": peaks,
-            "stats": stats,
-        }
+            print(f"  Detected {len(peaks)} modes (SNR > {MIN_SNR_DB} dB, "
+                  f"prominence > {MIN_PROMINENCE_DB} dB)")
+            if stats.get("modes_per_khz"):
+                print(f"  Mode density: {stats['modes_per_khz']:.1f} modes/kHz "
+                      f"({stats['freq_min_hz']:.0f}–{stats['freq_max_hz']:.0f} Hz)")
+                print(f"  Spacing: mean {stats['mean_spacing_hz']:.0f} Hz, "
+                      f"min {stats['min_spacing_hz']:.0f} Hz, "
+                      f"max {stats['max_spacing_hz']:.0f} Hz")
+
+            # Print top 20 modes
+            print(f"\n  Top 20 modes:")
+            print(f"    {'#':>3}  {'Freq (Hz)':>10}  {'Magnitude':>12}  "
+                  f"{'SNR (dB)':>8}  {'Prom (dB)':>9}  {'Phase (rad)':>11}  {'σ_φ':>6}")
+            for i, p in enumerate(peaks[:20]):
+                print(f"    {i+1:3d}  {p['freq_hz']:10.1f}  {p['magnitude']:12.0f}  "
+                      f"{p['snr_db']:8.1f}  {p['prominence_db']:9.1f}  "
+                      f"{p['phase_rad']:11.4f}  {p['phase_std']:6.4f}")
+
+            all_results[rkey] = {
+                "plate_name": name,
+                "plate_id": pid,
+                "relay_ch": relay_ch,
+                "rx_path": rx_label,
+                "sweep_data": sweep_data,
+                "peaks": peaks,
+                "stats": stats,
+            }
 
     # Cleanup
     mux.off()
@@ -285,16 +313,17 @@ def run_mode_census(port: str) -> dict:
 
     elapsed = time.time() - t_start
 
-    # Cross-plate comparison
+    # Cross-plate comparison (iterate over all result keys)
+    result_keys = sorted(all_results.keys())
     print(f"\n{'=' * 70}")
     print(f"  MODE CENSUS SUMMARY — {elapsed:.0f}s ({elapsed / 60:.1f} min)")
     print(f"{'=' * 70}")
-    print(f"  {'Plate':<6} {'Modes':<7} {'Range (kHz)':<16} "
+    print(f"  {'Key':<8} {'Plate':<6} {'RX':<4} {'Modes':<7} {'Range (kHz)':<16} "
           f"{'Density (/kHz)':<15} {'Min Δf (Hz)':<12} {'Top Mode (kHz)'}")
-    print(f"  {'─'*6} {'─'*7} {'─'*16} {'─'*15} {'─'*12} {'─'*15}")
+    print(f"  {'─'*8} {'─'*6} {'─'*4} {'─'*7} {'─'*16} {'─'*15} {'─'*12} {'─'*15}")
 
-    for pid in PLATE_IDS:
-        r = all_results[pid]
+    for rkey in result_keys:
+        r = all_results[rkey]
         s = r["stats"]
         top = r["peaks"][0]["freq_hz"] / 1000 if r["peaks"] else 0
         n = s["n_modes"]
@@ -302,14 +331,18 @@ def run_mode_census(port: str) -> dict:
         fhi = s.get("freq_max_hz", 0) / 1000
         density = s.get("modes_per_khz", 0)
         min_df = s.get("min_spacing_hz", 0)
-        print(f"  {r['plate_name']:<6} {n:<7} {flo:5.1f}–{fhi:5.1f} kHz  "
+        print(f"  {rkey:<8} {r['plate_name']:<6} {r['rx_path']:<4} {n:<7} "
+              f"{flo:5.1f}–{fhi:5.1f} kHz  "
               f"{density:<15.1f} {min_df:<12.0f} {top:5.1f}")
 
-    # Shared mode frequency analysis
-    print(f"\n  Common mode frequencies (within ±50 Hz across plates):")
+    # Shared mode frequency analysis (use NE-RX per plate for cross-plate comparison)
+    print(f"\n  Common mode frequencies (within ±50 Hz across plates, NE-RX):")
+    ne_keys = [rkey for rkey in result_keys
+               if all_results[rkey]["rx_path"] == "NE"]
     all_peak_freqs = {}
-    for pid in PLATE_IDS:
-        for p in all_results[pid]["peaks"]:
+    for rkey in ne_keys:
+        pid = all_results[rkey]["plate_id"]
+        for p in all_results[rkey]["peaks"]:
             all_peak_freqs.setdefault(pid, []).append(p["freq_hz"])
 
     # Find frequencies that appear in 3+ plates
@@ -337,22 +370,27 @@ def run_mode_census(port: str) -> dict:
     out_path = RESULTS_DIR / f"plate_census_{TIMESTAMP}.json"
     # Strip full sweep data for summary, save separately
     summary_results = {}
-    for pid, r in all_results.items():
-        summary_results[pid] = {
+    for rkey, r in all_results.items():
+        summary_results[rkey] = {
             "plate_name": r["plate_name"],
+            "plate_id": r["plate_id"],
+            "relay_ch": r["relay_ch"],
+            "rx_path": r["rx_path"],
             "peaks": r["peaks"],
             "stats": r["stats"],
             "sweep_n_points": len(r["sweep_data"]),
         }
 
     save_data = {
-        "experiment": "Phase 1.6 Step 2: Broadband Mode Census",
+        "experiment": "Phase 1.6 Step 2: Broadband Mode Census (dual-RX)",
         "timestamp": TIMESTAMP,
         "elapsed_s": round(elapsed, 1),
         "config": {
             "f_start": F_START, "f_stop": F_STOP, "f_step": F_STEP,
             "n_avg": N_AVG, "min_snr_db": MIN_SNR_DB,
             "min_prominence_db": MIN_PROMINENCE_DB,
+            "plate_relays": {pid: [(ch, rx) for ch, rx in rl]
+                             for pid, rl in PLATE_RELAYS.items()},
         },
         "results": summary_results,
     }
@@ -363,9 +401,12 @@ def run_mode_census(port: str) -> dict:
     # Also save full sweep data (large file, separate)
     sweep_path = RESULTS_DIR / f"plate_census_sweeps_{TIMESTAMP}.json"
     sweep_save = {}
-    for pid, r in all_results.items():
-        sweep_save[pid] = {
+    for rkey, r in all_results.items():
+        sweep_save[rkey] = {
             "plate_name": r["plate_name"],
+            "plate_id": r["plate_id"],
+            "relay_ch": r["relay_ch"],
+            "rx_path": r["rx_path"],
             "sweep_data": r["sweep_data"],
         }
     with open(sweep_path, "w") as f:

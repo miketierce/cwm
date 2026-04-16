@@ -1,0 +1,643 @@
+{
+  "timestamp": "2026-04-09T04:23:22.529246+00:00",
+  "pattern_a": "1",
+  "pattern_b": "2",
+  "rod_patterns": {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+    "4": "E"
+  },
+  "rod_ids": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "peaks_a": [
+    516.8,
+    891.3,
+    1127.2,
+    1825.5,
+    2104.9,
+    2299.2,
+    2644.6,
+    5197.8,
+    5460.7,
+    6022.8
+  ],
+  "peaks_b": [
+    709.4,
+    1026.0,
+    1203.2,
+    1616.9,
+    2117.8,
+    2924.3,
+    5689.9,
+    6303.4,
+    6506.6,
+    6792.7
+  ],
+  "classes": {
+    "both": [
+      2111.3
+    ],
+    "a_only": [
+      516.8,
+      891.3,
+      1127.2,
+      1825.5,
+      2299.2,
+      2644.6,
+      5197.8,
+      5460.7,
+      6022.8
+    ],
+    "b_only": [
+      709.4,
+      1026.0,
+      1203.2,
+      1616.9,
+      2924.3,
+      5689.9,
+      6303.4,
+      6506.6,
+      6792.7
+    ],
+    "all": [
+      516.8,
+      709.4,
+      891.3,
+      1026.0,
+      1127.2,
+      1203.2,
+      1616.9,
+      1825.5,
+      2111.3,
+      2299.2,
+      2644.6,
+      2924.3,
+      5197.8,
+      5460.7,
+      5689.9,
+      6022.8,
+      6303.4,
+      6506.6,
+      6792.7
+    ]
+  },
+  "n_peaks": 10,
+  "n_avg": 12,
+  "awg_uvpp": 2000000,
+  "sample_rate": 781250,
+  "mux_port": "/dev/cu.usbserial-11310",
+  "method": "cross-relay-normalization",
+  "duration_s": 45.9,
+  "raw_mags": [
+    {
+      "1": 43807.7,
+      "2": 48899.2,
+      "3": 52960.4,
+      "4": 50407.8
+    },
+    {
+      "1": 63231.2,
+      "2": 61586.3,
+      "3": 87995.1,
+      "4": 72942.6
+    },
+    {
+      "1": 111965.5,
+      "2": 99882.6,
+      "3": 177092.4,
+      "4": 147692.3
+    },
+    {
+      "1": 199196.0,
+      "2": 175445.6,
+      "3": 248517.8,
+      "4": 223584.8
+    },
+    {
+      "1": 252257.0,
+      "2": 292061.1,
+      "3": 365644.2,
+      "4": 317600.3
+    },
+    {
+      "1": 328384.4,
+      "2": 387414.2,
+      "3": 557449.9,
+      "4": 447584.7
+    },
+    {
+      "1": 1294988.3,
+      "2": 2230163.3,
+      "3": 1443275.6,
+      "4": 3276820.7
+    },
+    {
+      "1": 2673951.8,
+      "2": 4203457.1,
+      "3": 9301984.9,
+      "4": 7868477.7
+    },
+    {
+      "1": 19019752.9,
+      "2": 49561480.1,
+      "3": 28467775.2,
+      "4": 30749709.0
+    },
+    {
+      "1": 25474672.7,
+      "2": 5625340.5,
+      "3": 4474266.0,
+      "4": 4183011.3
+    },
+    {
+      "1": 1551294.3,
+      "2": 1318426.5,
+      "3": 1154123.8,
+      "4": 971804.3
+    },
+    {
+      "1": 688122.0,
+      "2": 635862.7,
+      "3": 686255.1,
+      "4": 550894.4
+    },
+    {
+      "1": 20145.8,
+      "2": 47970.7,
+      "3": 36614.9,
+      "4": 39788.1
+    },
+    {
+      "1": 15524.4,
+      "2": 24911.4,
+      "3": 62356.7,
+      "4": 21970.0
+    },
+    {
+      "1": 13741.3,
+      "2": 20391.8,
+      "3": 195294.6,
+      "4": 12761.5
+    },
+    {
+      "1": 243070.9,
+      "2": 640017.1,
+      "3": 323666.9,
+      "4": 1027424.2
+    },
+    {
+      "1": 417162.6,
+      "2": 352447.1,
+      "3": 166354.4,
+      "4": 874094.9
+    },
+    {
+      "1": 1170852.5,
+      "2": 605712.0,
+      "3": 111091.0,
+      "4": 920085.4
+    },
+    {
+      "1": 76974.5,
+      "2": 470373.3,
+      "3": 229759.1,
+      "4": 278851.5
+    }
+  ],
+  "results_per_freq": [
+    {
+      "freq": 516.8,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.2234,
+        "2": 0.2494,
+        "3": 0.2701,
+        "4": 0.2571
+      },
+      "frac_a": 0.2234,
+      "frac_b": 0.2494,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 709.4,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.2213,
+        "2": 0.2155,
+        "3": 0.3079,
+        "4": 0.2553
+      },
+      "frac_a": 0.2213,
+      "frac_b": 0.2155,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 891.3,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.2086,
+        "2": 0.1861,
+        "3": 0.33,
+        "4": 0.2752
+      },
+      "frac_a": 0.2086,
+      "frac_b": 0.1861,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 1026.0,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.2352,
+        "2": 0.2072,
+        "3": 0.2935,
+        "4": 0.2641
+      },
+      "frac_a": 0.2352,
+      "frac_b": 0.2072,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 1127.2,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.2055,
+        "2": 0.2379,
+        "3": 0.2979,
+        "4": 0.2587
+      },
+      "frac_a": 0.2055,
+      "frac_b": 0.2379,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 1203.2,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.1908,
+        "2": 0.2251,
+        "3": 0.3239,
+        "4": 0.2601
+      },
+      "frac_a": 0.1908,
+      "frac_b": 0.2251,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 1616.9,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.1571,
+        "2": 0.2705,
+        "3": 0.175,
+        "4": 0.3974
+      },
+      "frac_a": 0.1571,
+      "frac_b": 0.2705,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 1825.5,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.1112,
+        "2": 0.1748,
+        "3": 0.3868,
+        "4": 0.3272
+      },
+      "frac_a": 0.1112,
+      "frac_b": 0.1748,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 2111.3,
+      "category": "both",
+      "fracs": {
+        "1": 0.1488,
+        "2": 0.3878,
+        "3": 0.2228,
+        "4": 0.2406
+      },
+      "frac_a": 0.1488,
+      "frac_b": 0.3878,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 1,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 0,
+      "xor_computed": 1
+    },
+    {
+      "freq": 2299.2,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.6408,
+        "2": 0.1415,
+        "3": 0.1125,
+        "4": 0.1052
+      },
+      "frac_a": 0.6408,
+      "frac_b": 0.1415,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1
+    },
+    {
+      "freq": 2644.6,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.3105,
+        "2": 0.2639,
+        "3": 0.231,
+        "4": 0.1945
+      },
+      "frac_a": 0.3105,
+      "frac_b": 0.2639,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1
+    },
+    {
+      "freq": 2924.3,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.2687,
+        "2": 0.2483,
+        "3": 0.2679,
+        "4": 0.2151
+      },
+      "frac_a": 0.2687,
+      "frac_b": 0.2483,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 5197.8,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.1394,
+        "2": 0.3319,
+        "3": 0.2534,
+        "4": 0.2753
+      },
+      "frac_a": 0.1394,
+      "frac_b": 0.3319,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 5460.7,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.1244,
+        "2": 0.1997,
+        "3": 0.4998,
+        "4": 0.1761
+      },
+      "frac_a": 0.1244,
+      "frac_b": 0.1997,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 5689.9,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.0567,
+        "2": 0.0842,
+        "3": 0.8064,
+        "4": 0.0527
+      },
+      "frac_a": 0.0567,
+      "frac_b": 0.0842,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 6022.8,
+      "category": "a_only",
+      "fracs": {
+        "1": 0.1088,
+        "2": 0.2865,
+        "3": 0.1449,
+        "4": 0.4599
+      },
+      "frac_a": 0.1088,
+      "frac_b": 0.2865,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 6303.4,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.2305,
+        "2": 0.1947,
+        "3": 0.0919,
+        "4": 0.4829
+      },
+      "frac_a": 0.2305,
+      "frac_b": 0.1947,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 0,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 6506.6,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.417,
+        "2": 0.2157,
+        "3": 0.0396,
+        "4": 0.3277
+      },
+      "frac_a": 0.417,
+      "frac_b": 0.2157,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 1,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 1,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 0
+    },
+    {
+      "freq": 6792.7,
+      "category": "b_only",
+      "fracs": {
+        "1": 0.0729,
+        "2": 0.4454,
+        "3": 0.2176,
+        "4": 0.2641
+      },
+      "frac_a": 0.0729,
+      "frac_b": 0.4454,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1
+    }
+  ],
+  "analysis": {
+    "and_fidelity": 0.895,
+    "or_fidelity": 0.263,
+    "xor_fidelity": 0.158,
+    "mean_fidelity": 0.439,
+    "total_bits": 19,
+    "and_correct": 17,
+    "or_correct": 5,
+    "xor_correct": 3,
+    "method": "rank-based"
+  }
+}

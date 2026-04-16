@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-04-13T02:34:26.986354+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    1
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "BBVyiJOLIDXVJFPdVlJE",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "mkPrImdsQJOAuLvJMnJt",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: f11_measured must be <= 50000\",\n  \"message\": \"Validation errors: f11_measured must be <= 50000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: f11_measured must be <= 50000\",\n  \"message\": \"Validation errors: f11_measured must be <= 50000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: f11_measured must be <= 50000\",\n  \"message\": \"Validation errors: f11_measured must be <= 50000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    }
+  ]
+}

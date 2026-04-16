@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-04-13T01:22:03.063920+00:00",
+  "dry_run": true,
+  "experiments_run": [
+    5
+  ],
+  "results": [
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "A",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "A",
+        "n_modes": 0,
+        "freq_min_hz": 0,
+        "freq_max_hz": 0,
+        "mean_spacing_hz": 0,
+        "modes_per_khz": 0,
+        "top_freq_hz": 0,
+        "top_magnitude": 0,
+        "top_snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "B",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "B",
+        "n_modes": 0,
+        "freq_min_hz": 0,
+        "freq_max_hz": 0,
+        "mean_spacing_hz": 0,
+        "modes_per_khz": 0,
+        "top_freq_hz": 0,
+        "top_magnitude": 0,
+        "top_snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "C",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "C",
+        "n_modes": 0,
+        "freq_min_hz": 0,
+        "freq_max_hz": 0,
+        "mean_spacing_hz": 0,
+        "modes_per_khz": 0,
+        "top_freq_hz": 0,
+        "top_magnitude": 0,
+        "top_snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "D",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "D",
+        "n_modes": 0,
+        "freq_min_hz": 0,
+        "freq_max_hz": 0,
+        "mean_spacing_hz": 0,
+        "modes_per_khz": 0,
+        "top_freq_hz": 0,
+        "top_magnitude": 0,
+        "top_snr_db": 0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "E",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "E",
+        "n_modes": 0,
+        "freq_min_hz": 0,
+        "freq_max_hz": 0,
+        "mean_spacing_hz": 0,
+        "modes_per_khz": 0,
+        "top_freq_hz": 0,
+        "top_magnitude": 0,
+        "top_snr_db": 0
+      }
+    }
+  ]
+}

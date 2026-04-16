@@ -1,0 +1,195 @@
+{
+  "experiment": "Phase 1.6 Step 2: Broadband Mode Census (dual-RX)",
+  "timestamp": "20260414_231839",
+  "elapsed_s": 3453.9,
+  "config": {
+    "f_start": 200,
+    "f_stop": 100000,
+    "f_step": 25,
+    "n_avg": 4,
+    "min_snr_db": 6.0,
+    "min_prominence_db": 3.0,
+    "plate_relays": {
+      "1": [
+        [
+          1,
+          "NE"
+        ]
+      ],
+      "2": [
+        [
+          2,
+          "NE"
+        ]
+      ],
+      "3": [
+        [
+          3,
+          "NE"
+        ],
+        [
+          4,
+          "NW"
+        ]
+      ],
+      "4": [
+        [
+          5,
+          "NE"
+        ],
+        [
+          6,
+          "NW"
+        ]
+      ],
+      "5": [
+        [
+          7,
+          "NE"
+        ],
+        [
+          8,
+          "NW"
+        ]
+      ]
+    }
+  },
+  "results": {
+    "5_NE": {
+      "plate_name": "F",
+      "plate_id": "5",
+      "relay_ch": 7,
+      "rx_path": "NE",
+      "peaks": [
+        {
+          "freq_hz": 28875.0,
+          "magnitude": 3310428.9,
+          "snr_db": 14.7,
+          "prominence_db": 3.7,
+          "phase_rad": -1.6636,
+          "phase_std": 0.0881
+        },
+        {
+          "freq_hz": 51525.0,
+          "magnitude": 3307035.9,
+          "snr_db": 14.6,
+          "prominence_db": 3.4,
+          "phase_rad": -1.5648,
+          "phase_std": 0.2866
+        },
+        {
+          "freq_hz": 34575.0,
+          "magnitude": 2962292.2,
+          "snr_db": 13.7,
+          "prominence_db": 4.9,
+          "phase_rad": -2.11,
+          "phase_std": 0.2074
+        },
+        {
+          "freq_hz": 68075.0,
+          "magnitude": 2209751.1,
+          "snr_db": 11.1,
+          "prominence_db": 5.2,
+          "phase_rad": -2.3938,
+          "phase_std": 0.4077
+        }
+      ],
+      "stats": {
+        "n_modes": 4,
+        "freq_min_hz": 28875.0,
+        "freq_max_hz": 68075.0,
+        "bandwidth_hz": 39200.0,
+        "mean_spacing_hz": 13066.7,
+        "median_spacing_hz": 16550.0,
+        "min_spacing_hz": 5700.0,
+        "max_spacing_hz": 16950.0,
+        "modes_per_khz": 0.1
+      },
+      "sweep_n_points": 3993
+    },
+    "5_NW": {
+      "plate_name": "F",
+      "plate_id": "5",
+      "relay_ch": 8,
+      "rx_path": "NW",
+      "peaks": [
+        {
+          "freq_hz": 29250.0,
+          "magnitude": 5202494.4,
+          "snr_db": 21.0,
+          "prominence_db": 3.0,
+          "phase_rad": -1.9016,
+          "phase_std": 0.022
+        },
+        {
+          "freq_hz": 51550.0,
+          "magnitude": 3504744.8,
+          "snr_db": 17.6,
+          "prominence_db": 4.8,
+          "phase_rad": -1.947,
+          "phase_std": 0.3222
+        },
+        {
+          "freq_hz": 34875.0,
+          "magnitude": 2874587.7,
+          "snr_db": 15.8,
+          "prominence_db": 3.2,
+          "phase_rad": -2.0997,
+          "phase_std": 0.1223
+        },
+        {
+          "freq_hz": 34550.0,
+          "magnitude": 2619368.3,
+          "snr_db": 15.0,
+          "prominence_db": 3.6,
+          "phase_rad": -2.3867,
+          "phase_std": 0.248
+        },
+        {
+          "freq_hz": 29950.0,
+          "magnitude": 2089665.3,
+          "snr_db": 13.1,
+          "prominence_db": 5.6,
+          "phase_rad": -2.0943,
+          "phase_std": 0.2682
+        },
+        {
+          "freq_hz": 47750.0,
+          "magnitude": 1997274.4,
+          "snr_db": 12.7,
+          "prominence_db": 4.0,
+          "phase_rad": -2.2599,
+          "phase_std": 0.0919
+        },
+        {
+          "freq_hz": 86875.0,
+          "magnitude": 1937280.1,
+          "snr_db": 12.4,
+          "prominence_db": 3.7,
+          "phase_rad": -1.8639,
+          "phase_std": 0.1245
+        },
+        {
+          "freq_hz": 62125.0,
+          "magnitude": 1503995.2,
+          "snr_db": 10.2,
+          "prominence_db": 3.1,
+          "phase_rad": -1.4896,
+          "phase_std": 0.1644
+        }
+      ],
+      "stats": {
+        "n_modes": 8,
+        "freq_min_hz": 29250.0,
+        "freq_max_hz": 86875.0,
+        "bandwidth_hz": 57625.0,
+        "mean_spacing_hz": 8232.1,
+        "median_spacing_hz": 4600.0,
+        "min_spacing_hz": 325.0,
+        "max_spacing_hz": 24750.0,
+        "modes_per_khz": 0.14
+      },
+      "sweep_n_points": 3993
+    }
+  }
+}

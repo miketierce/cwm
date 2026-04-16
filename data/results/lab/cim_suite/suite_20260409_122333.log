@@ -1,0 +1,64 @@
+[12:23:36.451] Relay mux connected on /dev/cu.usbserial-11310
+[12:23:36.454] Enrolled rods: ['1', '2', '3', '4'] (['A', 'B', 'C', 'E'])
+[12:23:37.618] PicoScope opened (Ch A ±1V DC)
+[12:23:37.619] 
+======================================================================
+[12:23:37.619]   EXPERIMENT 2: Boolean Compute — All 6 Rod Pairs
+[12:23:37.619] ======================================================================
+[12:23:37.619] 
+  ── Pair Rod 1 vs Rod 2 ──
+[12:23:41.100]   Rod 1 (A): 4/10 strong, thresh=389272, peaks=[1826, 2105, 2299, 2645]
+[12:23:44.562]   Rod 2 (B): 7/10 strong, thresh=330408, peaks=[1203, 1617, 2118, 2924, 6303, 6507, 6793]
+[12:23:44.617]     Union: 7 freqs (both=1, a-only=3, b-only=3, guarded=3)
+[12:23:44.617]     Guard-band excluded: [6303.4, 6506.6, 6792.7]
+[12:24:00.126]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=14.3%
+[12:24:00.127] 
+  ── Pair Rod 1 vs Rod 3 ──
+[12:24:03.501]   Rod 1 (A): 4/10 strong, thresh=371900, peaks=[1826, 2105, 2299, 2645]
+[12:24:06.957]   Rod 3 (C): 4/10 strong, thresh=653625, peaks=[1536, 1714, 2001, 2834]
+[12:24:07.013]     Union: 6 freqs (both=0, a-only=3, b-only=3, guarded=2)
+[12:24:07.013]     Guard-band excluded: [2001.1, 2104.9]
+[12:24:20.298]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=0.0%
+[12:24:20.298] 
+  ── Pair Rod 1 vs Rod 4 ──
+[12:24:23.630]   Rod 1 (A): 4/10 strong, thresh=372609, peaks=[1826, 2105, 2299, 2645]
+[12:24:27.060]   Rod 4 (E): 5/10 strong, thresh=616811, peaks=[1632, 1896, 2088, 2584, 6320]
+[12:24:27.112]     Union: 4 freqs (both=2, a-only=1, b-only=1, guarded=3)
+[12:24:27.112]     Guard-band excluded: [1825.5, 1895.7, 6319.8]
+[12:24:35.995]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=40.0%
+[12:24:35.996] 
+  ── Pair Rod 2 vs Rod 3 ──
+[12:24:39.460]   Rod 2 (B): 7/10 strong, thresh=326835, peaks=[1203, 1617, 2118, 2924, 6303, 6507, 6793]
+[12:24:42.905]   Rod 3 (C): 4/10 strong, thresh=665141, peaks=[1536, 1714, 2001, 2834]
+[12:24:42.961]     Union: 5 freqs (both=0, a-only=3, b-only=2, guarded=6)
+[12:24:42.961]     Guard-band excluded: [1536.4, 1616.9, 2833.8, 2924.3, 6303.4, 6506.6]
+[12:24:53.885]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=0.0%
+[12:24:53.885] 
+  ── Pair Rod 2 vs Rod 4 ──
+[12:24:57.279]   Rod 2 (B): 6/10 strong, thresh=341363, peaks=[1203, 1617, 2118, 2924, 6507, 6793]
+[12:25:00.748]   Rod 4 (E): 5/10 strong, thresh=617410, peaks=[1632, 1896, 2088, 2584, 6320]
+[12:25:00.803]     Union: 7 freqs (both=3, a-only=2, b-only=2, guarded=1)
+[12:25:00.803]     Guard-band excluded: [6792.7]
+[12:25:16.330]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=50.0%
+[12:25:16.330] 
+  ── Pair Rod 3 vs Rod 4 ──
+[12:25:19.757]   Rod 3 (C): 4/10 strong, thresh=658931, peaks=[1536, 1714, 2001, 2834]
+[12:25:23.171]   Rod 4 (E): 5/10 strong, thresh=614737, peaks=[1632, 1896, 2088, 2584, 6320]
+[12:25:23.227]     Union: 4 freqs (both=0, a-only=2, b-only=2, guarded=5)
+[12:25:23.227]     Guard-band excluded: [1631.9, 1714.2, 2001.1, 2088.0, 6319.8]
+[12:25:32.108]     AND=100%  OR=100%  XOR=100%  Mean=100%  Overlap=0.0%
+[12:25:33.131] PicoScope closed
+[12:25:33.189] 
+======================================================================
+[12:25:33.189]   SUITE SUMMARY
+[12:25:33.189] ======================================================================
+[12:25:33.190]   Bool 1v2: AND=100% OR=100% XOR=100% (overlap=14.3%)
+[12:25:33.190]   Bool 1v3: AND=100% OR=100% XOR=100% (overlap=0.0%)
+[12:25:33.190]   Bool 1v4: AND=100% OR=100% XOR=100% (overlap=40.0%)
+[12:25:33.190]   Bool 2v3: AND=100% OR=100% XOR=100% (overlap=0.0%)
+[12:25:33.190]   Bool 2v4: AND=100% OR=100% XOR=100% (overlap=50.0%)
+[12:25:33.190]   Bool 3v4: AND=100% OR=100% XOR=100% (overlap=0.0%)
+[12:25:33.190] 
+  Total duration: 116s
+[12:25:33.192] 
+  Results saved to data/results/lab/cim_suite/suite_20260409_122333.json

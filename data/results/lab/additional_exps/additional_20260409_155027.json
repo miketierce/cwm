@@ -1,0 +1,154 @@
+{
+  "timestamp": "2026-04-09T20:50:27.356586+00:00",
+  "experiments_run": [
+    "binary",
+    "xcorr",
+    "puf"
+  ],
+  "total_duration_s": 0.0,
+  "results": {
+    "leibniz_binary": {
+      "experiment": "leibniz_binary_recall",
+      "n_rods": 4,
+      "n_peaks": 10,
+      "baseline_accuracy": 1.0,
+      "baseline_margin": 5.26,
+      "binary_results": [
+        {
+          "percentile": 10,
+          "threshold": 39097.7,
+          "ones_fraction": 0.9,
+          "accuracy": 1.0,
+          "margin": 18.25
+        },
+        {
+          "percentile": 25,
+          "threshold": 108523.8,
+          "ones_fraction": 0.75,
+          "accuracy": 1.0,
+          "margin": 14.5
+        },
+        {
+          "percentile": 40,
+          "threshold": 231415.7,
+          "ones_fraction": 0.6,
+          "accuracy": 1.0,
+          "margin": 10.25
+        },
+        {
+          "percentile": 50,
+          "threshold": 371588.0,
+          "ones_fraction": 0.5,
+          "accuracy": 1.0,
+          "margin": 8.5
+        },
+        {
+          "percentile": 60,
+          "threshold": 676393.6,
+          "ones_fraction": 0.4,
+          "accuracy": 0.75,
+          "margin": 5.5
+        },
+        {
+          "percentile": 75,
+          "threshold": 1541148.7,
+          "ones_fraction": 0.25,
+          "accuracy": 1.0,
+          "margin": 6.25
+        },
+        {
+          "percentile": 90,
+          "threshold": 16440725.9,
+          "ones_fraction": 0.1,
+          "accuracy": 1.0,
+          "margin": 2.25
+        }
+      ],
+      "best_binary": {
+        "percentile": 10,
+        "threshold": 39097.7,
+        "ones_fraction": 0.9,
+        "accuracy": 1.0,
+        "margin": 18.25
+      },
+      "paper_claim": "Binary FFT \u2192 still discriminates (S7 H-L1)"
+    },
+    "cross_correlation": {
+      "experiment": "cross_correlation_matrix",
+      "n_rods": 4,
+      "n_peaks": 10,
+      "self_response_correlation": {
+        "1": {
+          "1": 1.0,
+          "2": 0.593,
+          "3": -0.132,
+          "4": 0.452
+        },
+        "2": {
+          "1": 0.593,
+          "2": 1.0,
+          "3": -0.076,
+          "4": 0.79
+        },
+        "3": {
+          "1": -0.132,
+          "2": -0.076,
+          "3": 1.0,
+          "4": 0.539
+        },
+        "4": {
+          "1": 0.452,
+          "2": 0.79,
+          "3": 0.539,
+          "4": 1.0
+        }
+      },
+      "full_response_correlation": {
+        "1": {
+          "1": 1.0,
+          "2": 0.908,
+          "3": 0.005,
+          "4": 0.901
+        },
+        "2": {
+          "1": 0.908,
+          "2": 1.0,
+          "3": -0.048,
+          "4": 0.928
+        },
+        "3": {
+          "1": 0.005,
+          "2": -0.048,
+          "3": 1.0,
+          "4": 0.083
+        },
+        "4": {
+          "1": 0.901,
+          "2": 0.928,
+          "3": 0.083,
+          "4": 1.0
+        }
+      },
+      "max_off_diagonal_self": 0.79,
+      "mean_off_diagonal_self": 0.43,
+      "max_off_diagonal_full": 0.928,
+      "paper_claim": "Max off-diagonal \u2264 0.21 (C12, 8 rods; we test 4)"
+    },
+    "puf_uniqueness": {
+      "experiment": "puf_uniqueness",
+      "n_rods": 4,
+      "n_peaks": 10,
+      "pairwise_distances_hz": {
+        "1_vs_2": 208.8,
+        "1_vs_3": 202.2,
+        "1_vs_4": 115.8,
+        "2_vs_3": 191.8,
+        "2_vs_4": 152.5,
+        "3_vs_4": 1177.3
+      },
+      "min_distance_hz": 115.8,
+      "max_distance_hz": 1177.3,
+      "paper_claim": "Spectral fingerprint is physically unclonable (C49)"
+    }
+  }
+}

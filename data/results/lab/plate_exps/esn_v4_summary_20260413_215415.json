@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-04-14T02:54:16.619890+00:00",
+  "levels_tested": [
+    2
+  ],
+  "per_level": {
+    "2": {
+      "n_levels": 2,
+      "total_alphabet": 256,
+      "plate_D_min_snr": 7.318313083329738,
+      "plate_D_nn_unique": 1.0,
+      "plate_E_min_snr": 20.32595094474968,
+      "plate_E_nn_unique": 1.0,
+      "esn_sw_raw_digits_digit": 1.0,
+      "esn_sw_raw_digits_token": 1.0,
+      "esn_DE_raw_digit": 0.9946875,
+      "esn_DE_raw_token": 0.9595,
+      "esn_D_raw_digit": 0.9795,
+      "esn_D_raw_token": 0.855,
+      "esn_E_raw_digit": 0.9918750000000001,
+      "esn_E_raw_token": 0.9359999999999999
+    }
+  }
+}

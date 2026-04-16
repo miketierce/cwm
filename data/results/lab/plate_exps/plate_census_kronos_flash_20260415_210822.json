@@ -1,0 +1,2741 @@
+{
+  "experiment": "Kronos-Only Mode Census (FLASH)",
+  "timestamp": "20260415_210822",
+  "elapsed_s": 62.3,
+  "config": {
+    "mode": "flash",
+    "f_start": 200,
+    "f_stop": 95000,
+    "f_step": 25,
+    "n_avg": 8,
+    "capture_s": 2.0,
+    "min_snr_db": 6.0,
+    "min_prominence_db": 3.0,
+    "drive_amplitude": 0.8,
+    "audio_device": "KRONOS _ USB _ L&R",
+    "audio_sample_rate": 192000,
+    "audio_bit_depth": 24
+  },
+  "results": {
+    "5_NE": {
+      "plate_name": "H",
+      "plate_id": "5",
+      "relay_ch": 7,
+      "rx_path": "NE",
+      "peaks": [
+        {
+          "freq_hz": 6700.0,
+          "magnitude": 0.796883,
+          "snr_db": 198.0,
+          "prominence_db": 11.9,
+          "phase_rad": -2.2788,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1125.0,
+          "magnitude": 0.414871,
+          "snr_db": 192.4,
+          "prominence_db": 4.7,
+          "phase_rad": -0.3952,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9250.0,
+          "magnitude": 0.414463,
+          "snr_db": 192.3,
+          "prominence_db": 7.6,
+          "phase_rad": 2.9195,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2000.0,
+          "magnitude": 0.374982,
+          "snr_db": 191.5,
+          "prominence_db": 3.5,
+          "phase_rad": -1.7837,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18425.0,
+          "magnitude": 0.369893,
+          "snr_db": 191.4,
+          "prominence_db": 5.3,
+          "phase_rad": -2.0353,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13225.0,
+          "magnitude": 0.368334,
+          "snr_db": 191.3,
+          "prominence_db": 6.9,
+          "phase_rad": -2.6449,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1000.0,
+          "magnitude": 0.35913,
+          "snr_db": 191.1,
+          "prominence_db": 4.1,
+          "phase_rad": -1.4162,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11775.0,
+          "magnitude": 0.358566,
+          "snr_db": 191.1,
+          "prominence_db": 6.3,
+          "phase_rad": 2.2615,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4625.0,
+          "magnitude": 0.35795,
+          "snr_db": 191.1,
+          "prominence_db": 5.5,
+          "phase_rad": -1.1893,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2525.0,
+          "magnitude": 0.355832,
+          "snr_db": 191.0,
+          "prominence_db": 4.1,
+          "phase_rad": 1.1706,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1175.0,
+          "magnitude": 0.353744,
+          "snr_db": 191.0,
+          "prominence_db": 4.9,
+          "phase_rad": -0.8961,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9900.0,
+          "magnitude": 0.350188,
+          "snr_db": 190.9,
+          "prominence_db": 6.2,
+          "phase_rad": 0.2025,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5975.0,
+          "magnitude": 0.346813,
+          "snr_db": 190.8,
+          "prominence_db": 4.9,
+          "phase_rad": 2.2123,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6425.0,
+          "magnitude": 0.346409,
+          "snr_db": 190.8,
+          "prominence_db": 9.7,
+          "phase_rad": 2.506,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8825.0,
+          "magnitude": 0.343549,
+          "snr_db": 190.7,
+          "prominence_db": 3.2,
+          "phase_rad": 0.0384,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8100.0,
+          "magnitude": 0.342328,
+          "snr_db": 190.7,
+          "prominence_db": 4.6,
+          "phase_rad": 2.5772,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18825.0,
+          "magnitude": 0.341195,
+          "snr_db": 190.7,
+          "prominence_db": 6.0,
+          "phase_rad": -3.1012,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5000.0,
+          "magnitude": 0.340238,
+          "snr_db": 190.6,
+          "prominence_db": 5.5,
+          "phase_rad": -2.1676,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5750.0,
+          "magnitude": 0.338951,
+          "snr_db": 190.6,
+          "prominence_db": 3.3,
+          "phase_rad": 0.4982,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9850.0,
+          "magnitude": 0.337597,
+          "snr_db": 190.6,
+          "prominence_db": 6.1,
+          "phase_rad": 3.0826,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10375.0,
+          "magnitude": 0.337091,
+          "snr_db": 190.6,
+          "prominence_db": 5.1,
+          "phase_rad": 2.0578,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15250.0,
+          "magnitude": 0.333261,
+          "snr_db": 190.5,
+          "prominence_db": 5.2,
+          "phase_rad": -0.9779,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 875.0,
+          "magnitude": 0.332529,
+          "snr_db": 190.4,
+          "prominence_db": 5.2,
+          "phase_rad": -3.1041,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3050.0,
+          "magnitude": 0.330934,
+          "snr_db": 190.4,
+          "prominence_db": 6.9,
+          "phase_rad": -1.6876,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3300.0,
+          "magnitude": 0.330614,
+          "snr_db": 190.4,
+          "prominence_db": 3.6,
+          "phase_rad": -0.1468,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14175.0,
+          "magnitude": 0.329007,
+          "snr_db": 190.3,
+          "prominence_db": 5.0,
+          "phase_rad": 1.5119,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14600.0,
+          "magnitude": 0.328629,
+          "snr_db": 190.3,
+          "prominence_db": 4.3,
+          "phase_rad": -2.7827,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6550.0,
+          "magnitude": 0.328373,
+          "snr_db": 190.3,
+          "prominence_db": 3.0,
+          "phase_rad": 1.9926,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4025.0,
+          "magnitude": 0.326643,
+          "snr_db": 190.3,
+          "prominence_db": 3.2,
+          "phase_rad": 0.5454,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20750.0,
+          "magnitude": 0.326056,
+          "snr_db": 190.3,
+          "prominence_db": 5.6,
+          "phase_rad": -0.2734,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7600.0,
+          "magnitude": 0.322235,
+          "snr_db": 190.2,
+          "prominence_db": 7.1,
+          "phase_rad": 0.9718,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8450.0,
+          "magnitude": 0.32211,
+          "snr_db": 190.2,
+          "prominence_db": 3.1,
+          "phase_rad": -1.5589,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13750.0,
+          "magnitude": 0.321137,
+          "snr_db": 190.1,
+          "prominence_db": 4.8,
+          "phase_rad": -3.1378,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9475.0,
+          "magnitude": 0.321082,
+          "snr_db": 190.1,
+          "prominence_db": 5.7,
+          "phase_rad": 2.4221,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18500.0,
+          "magnitude": 0.320939,
+          "snr_db": 190.1,
+          "prominence_db": 5.3,
+          "phase_rad": -2.3775,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15625.0,
+          "magnitude": 0.320882,
+          "snr_db": 190.1,
+          "prominence_db": 5.8,
+          "phase_rad": 2.7298,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2350.0,
+          "magnitude": 0.319938,
+          "snr_db": 190.1,
+          "prominence_db": 4.8,
+          "phase_rad": -1.0982,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1400.0,
+          "magnitude": 0.31987,
+          "snr_db": 190.1,
+          "prominence_db": 4.1,
+          "phase_rad": 2.1284,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2725.0,
+          "magnitude": 0.319845,
+          "snr_db": 190.1,
+          "prominence_db": 3.8,
+          "phase_rad": 0.3108,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13325.0,
+          "magnitude": 0.319787,
+          "snr_db": 190.1,
+          "prominence_db": 5.7,
+          "phase_rad": 2.56,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1725.0,
+          "magnitude": 0.319722,
+          "snr_db": 190.1,
+          "prominence_db": 3.4,
+          "phase_rad": 1.0773,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9375.0,
+          "magnitude": 0.319653,
+          "snr_db": 190.1,
+          "prominence_db": 3.5,
+          "phase_rad": 2.9536,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1775.0,
+          "magnitude": 0.319468,
+          "snr_db": 190.1,
+          "prominence_db": 3.3,
+          "phase_rad": -0.894,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10125.0,
+          "magnitude": 0.316666,
+          "snr_db": 190.0,
+          "prominence_db": 3.7,
+          "phase_rad": 0.7268,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5800.0,
+          "magnitude": 0.313743,
+          "snr_db": 189.9,
+          "prominence_db": 3.8,
+          "phase_rad": 0.3556,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14500.0,
+          "magnitude": 0.313056,
+          "snr_db": 189.9,
+          "prominence_db": 4.5,
+          "phase_rad": 2.7006,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17450.0,
+          "magnitude": 0.312326,
+          "snr_db": 189.9,
+          "prominence_db": 6.6,
+          "phase_rad": 1.0306,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8200.0,
+          "magnitude": 0.312192,
+          "snr_db": 189.9,
+          "prominence_db": 6.2,
+          "phase_rad": 1.6251,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7425.0,
+          "magnitude": 0.31177,
+          "snr_db": 189.9,
+          "prominence_db": 3.4,
+          "phase_rad": -2.7311,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15775.0,
+          "magnitude": 0.311731,
+          "snr_db": 189.9,
+          "prominence_db": 3.4,
+          "phase_rad": 1.316,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20650.0,
+          "magnitude": 0.311341,
+          "snr_db": 189.9,
+          "prominence_db": 5.1,
+          "phase_rad": 0.0595,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5250.0,
+          "magnitude": 0.311277,
+          "snr_db": 189.9,
+          "prominence_db": 4.0,
+          "phase_rad": 3.1146,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5875.0,
+          "magnitude": 0.310809,
+          "snr_db": 189.8,
+          "prominence_db": 3.8,
+          "phase_rad": -2.7056,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2150.0,
+          "magnitude": 0.309821,
+          "snr_db": 189.8,
+          "prominence_db": 3.1,
+          "phase_rad": -2.7198,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16150.0,
+          "magnitude": 0.307898,
+          "snr_db": 189.8,
+          "prominence_db": 4.1,
+          "phase_rad": -2.1169,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2850.0,
+          "magnitude": 0.307113,
+          "snr_db": 189.7,
+          "prominence_db": 6.2,
+          "phase_rad": 2.5639,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2450.0,
+          "magnitude": 0.306603,
+          "snr_db": 189.7,
+          "prominence_db": 3.1,
+          "phase_rad": -0.3651,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19200.0,
+          "magnitude": 0.306448,
+          "snr_db": 189.7,
+          "prominence_db": 3.4,
+          "phase_rad": 1.9531,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 325.0,
+          "magnitude": 0.306297,
+          "snr_db": 189.7,
+          "prominence_db": 3.0,
+          "phase_rad": 1.9627,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15200.0,
+          "magnitude": 0.303787,
+          "snr_db": 189.7,
+          "prominence_db": 3.0,
+          "phase_rad": 2.3976,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12175.0,
+          "magnitude": 0.302774,
+          "snr_db": 189.6,
+          "prominence_db": 3.0,
+          "phase_rad": 0.9126,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18375.0,
+          "magnitude": 0.302745,
+          "snr_db": 189.6,
+          "prominence_db": 3.6,
+          "phase_rad": -2.1097,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1275.0,
+          "magnitude": 0.302562,
+          "snr_db": 189.6,
+          "prominence_db": 3.6,
+          "phase_rad": -2.3323,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14375.0,
+          "magnitude": 0.302502,
+          "snr_db": 189.6,
+          "prominence_db": 3.5,
+          "phase_rad": -3.1034,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6150.0,
+          "magnitude": 0.302267,
+          "snr_db": 189.6,
+          "prominence_db": 3.9,
+          "phase_rad": 0.7116,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7325.0,
+          "magnitude": 0.301736,
+          "snr_db": 189.6,
+          "prominence_db": 6.7,
+          "phase_rad": 0.4016,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14025.0,
+          "magnitude": 0.300506,
+          "snr_db": 189.6,
+          "prominence_db": 4.2,
+          "phase_rad": 0.5464,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11225.0,
+          "magnitude": 0.300011,
+          "snr_db": 189.5,
+          "prominence_db": 4.8,
+          "phase_rad": 2.9608,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11850.0,
+          "magnitude": 0.29995,
+          "snr_db": 189.5,
+          "prominence_db": 4.0,
+          "phase_rad": -2.6951,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5600.0,
+          "magnitude": 0.299833,
+          "snr_db": 189.5,
+          "prominence_db": 5.6,
+          "phase_rad": 0.9747,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20900.0,
+          "magnitude": 0.299413,
+          "snr_db": 189.5,
+          "prominence_db": 5.1,
+          "phase_rad": 1.0401,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8600.0,
+          "magnitude": 0.298597,
+          "snr_db": 189.5,
+          "prominence_db": 3.3,
+          "phase_rad": -0.203,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5400.0,
+          "magnitude": 0.298235,
+          "snr_db": 189.5,
+          "prominence_db": 4.0,
+          "phase_rad": -0.0864,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9675.0,
+          "magnitude": 0.297315,
+          "snr_db": 189.5,
+          "prominence_db": 3.2,
+          "phase_rad": 2.2875,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16625.0,
+          "magnitude": 0.295891,
+          "snr_db": 189.4,
+          "prominence_db": 3.3,
+          "phase_rad": 0.3567,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4475.0,
+          "magnitude": 0.294172,
+          "snr_db": 189.4,
+          "prominence_db": 6.9,
+          "phase_rad": -2.3397,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7525.0,
+          "magnitude": 0.293852,
+          "snr_db": 189.4,
+          "prominence_db": 4.2,
+          "phase_rad": -0.8292,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16225.0,
+          "magnitude": 0.293743,
+          "snr_db": 189.4,
+          "prominence_db": 4.9,
+          "phase_rad": -2.4189,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11075.0,
+          "magnitude": 0.293335,
+          "snr_db": 189.3,
+          "prominence_db": 3.4,
+          "phase_rad": 1.7677,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14775.0,
+          "magnitude": 0.293217,
+          "snr_db": 189.3,
+          "prominence_db": 4.6,
+          "phase_rad": 2.7467,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18125.0,
+          "magnitude": 0.292842,
+          "snr_db": 189.3,
+          "prominence_db": 3.2,
+          "phase_rad": -0.3434,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16550.0,
+          "magnitude": 0.292755,
+          "snr_db": 189.3,
+          "prominence_db": 3.1,
+          "phase_rad": 0.4124,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4325.0,
+          "magnitude": 0.291518,
+          "snr_db": 189.3,
+          "prominence_db": 3.6,
+          "phase_rad": 2.1109,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2250.0,
+          "magnitude": 0.290197,
+          "snr_db": 189.3,
+          "prominence_db": 3.9,
+          "phase_rad": -1.3237,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15375.0,
+          "magnitude": 0.290181,
+          "snr_db": 189.3,
+          "prominence_db": 5.0,
+          "phase_rad": -0.6714,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3675.0,
+          "magnitude": 0.289321,
+          "snr_db": 189.2,
+          "prominence_db": 5.7,
+          "phase_rad": -1.6884,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9525.0,
+          "magnitude": 0.288668,
+          "snr_db": 189.2,
+          "prominence_db": 4.8,
+          "phase_rad": -2.634,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7700.0,
+          "magnitude": 0.288014,
+          "snr_db": 189.2,
+          "prominence_db": 3.4,
+          "phase_rad": -1.9582,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19825.0,
+          "magnitude": 0.286614,
+          "snr_db": 189.1,
+          "prominence_db": 4.7,
+          "phase_rad": 2.6852,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17375.0,
+          "magnitude": 0.285333,
+          "snr_db": 189.1,
+          "prominence_db": 4.0,
+          "phase_rad": -1.2562,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16700.0,
+          "magnitude": 0.283462,
+          "snr_db": 189.0,
+          "prominence_db": 3.6,
+          "phase_rad": 3.1005,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4675.0,
+          "magnitude": 0.282897,
+          "snr_db": 189.0,
+          "prominence_db": 3.5,
+          "phase_rad": -0.1081,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5350.0,
+          "magnitude": 0.281836,
+          "snr_db": 189.0,
+          "prominence_db": 4.9,
+          "phase_rad": -0.6195,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11450.0,
+          "magnitude": 0.281802,
+          "snr_db": 189.0,
+          "prominence_db": 3.1,
+          "phase_rad": 3.0831,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18700.0,
+          "magnitude": 0.281671,
+          "snr_db": 189.0,
+          "prominence_db": 3.9,
+          "phase_rad": 0.4796,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17725.0,
+          "magnitude": 0.281368,
+          "snr_db": 189.0,
+          "prominence_db": 3.3,
+          "phase_rad": -2.0322,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13550.0,
+          "magnitude": 0.280818,
+          "snr_db": 189.0,
+          "prominence_db": 3.4,
+          "phase_rad": 0.4008,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9200.0,
+          "magnitude": 0.279408,
+          "snr_db": 188.9,
+          "prominence_db": 4.1,
+          "phase_rad": 0.5594,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20475.0,
+          "magnitude": 0.279171,
+          "snr_db": 188.9,
+          "prominence_db": 4.6,
+          "phase_rad": -1.7083,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10825.0,
+          "magnitude": 0.278086,
+          "snr_db": 188.9,
+          "prominence_db": 4.3,
+          "phase_rad": -0.1887,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19275.0,
+          "magnitude": 0.278052,
+          "snr_db": 188.9,
+          "prominence_db": 4.8,
+          "phase_rad": 0.4098,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7650.0,
+          "magnitude": 0.276516,
+          "snr_db": 188.8,
+          "prominence_db": 5.8,
+          "phase_rad": 3.005,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8675.0,
+          "magnitude": 0.275255,
+          "snr_db": 188.8,
+          "prominence_db": 3.8,
+          "phase_rad": 2.4489,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8725.0,
+          "magnitude": 0.275058,
+          "snr_db": 188.8,
+          "prominence_db": 3.8,
+          "phase_rad": 1.8174,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9775.0,
+          "magnitude": 0.274863,
+          "snr_db": 188.8,
+          "prominence_db": 4.3,
+          "phase_rad": 2.5597,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19725.0,
+          "magnitude": 0.274713,
+          "snr_db": 188.8,
+          "prominence_db": 4.0,
+          "phase_rad": -0.066,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3600.0,
+          "magnitude": 0.273794,
+          "snr_db": 188.7,
+          "prominence_db": 5.2,
+          "phase_rad": -3.0478,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11725.0,
+          "magnitude": 0.271148,
+          "snr_db": 188.7,
+          "prominence_db": 3.9,
+          "phase_rad": 0.5888,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10725.0,
+          "magnitude": 0.267902,
+          "snr_db": 188.6,
+          "prominence_db": 4.0,
+          "phase_rad": 0.4597,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16750.0,
+          "magnitude": 0.267827,
+          "snr_db": 188.6,
+          "prominence_db": 3.1,
+          "phase_rad": -0.1236,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11350.0,
+          "magnitude": 0.267774,
+          "snr_db": 188.6,
+          "prominence_db": 4.0,
+          "phase_rad": 2.6074,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4150.0,
+          "magnitude": 0.267344,
+          "snr_db": 188.5,
+          "prominence_db": 4.2,
+          "phase_rad": 0.6799,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4800.0,
+          "magnitude": 0.266471,
+          "snr_db": 188.5,
+          "prominence_db": 4.1,
+          "phase_rad": -1.8039,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3175.0,
+          "magnitude": 0.265943,
+          "snr_db": 188.5,
+          "prominence_db": 3.2,
+          "phase_rad": -1.5303,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4100.0,
+          "magnitude": 0.265918,
+          "snr_db": 188.5,
+          "prominence_db": 4.2,
+          "phase_rad": -2.4249,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20375.0,
+          "magnitude": 0.265746,
+          "snr_db": 188.5,
+          "prominence_db": 3.6,
+          "phase_rad": -2.496,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17275.0,
+          "magnitude": 0.263563,
+          "snr_db": 188.4,
+          "prominence_db": 3.3,
+          "phase_rad": 2.1684,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5075.0,
+          "magnitude": 0.261523,
+          "snr_db": 188.4,
+          "prominence_db": 3.2,
+          "phase_rad": -2.6996,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21000.0,
+          "magnitude": 0.261422,
+          "snr_db": 188.3,
+          "prominence_db": 3.9,
+          "phase_rad": -1.6723,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7000.0,
+          "magnitude": 0.260065,
+          "snr_db": 188.3,
+          "prominence_db": 5.6,
+          "phase_rad": -0.4335,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19550.0,
+          "magnitude": 0.259473,
+          "snr_db": 188.3,
+          "prominence_db": 3.2,
+          "phase_rad": 2.2395,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10325.0,
+          "magnitude": 0.257754,
+          "snr_db": 188.2,
+          "prominence_db": 5.0,
+          "phase_rad": 0.3997,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3950.0,
+          "magnitude": 0.25746,
+          "snr_db": 188.2,
+          "prominence_db": 3.1,
+          "phase_rad": -2.5716,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7150.0,
+          "magnitude": 0.25552,
+          "snr_db": 188.1,
+          "prominence_db": 3.1,
+          "phase_rad": -2.0815,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11900.0,
+          "magnitude": 0.251736,
+          "snr_db": 188.0,
+          "prominence_db": 4.0,
+          "phase_rad": 0.9942,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1575.0,
+          "magnitude": 0.25065,
+          "snr_db": 188.0,
+          "prominence_db": 3.1,
+          "phase_rad": -1.0355,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7950.0,
+          "magnitude": 0.250491,
+          "snr_db": 188.0,
+          "prominence_db": 5.2,
+          "phase_rad": -1.7117,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12950.0,
+          "magnitude": 0.248396,
+          "snr_db": 187.9,
+          "prominence_db": 3.2,
+          "phase_rad": -0.6463,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18075.0,
+          "magnitude": 0.24753,
+          "snr_db": 187.9,
+          "prominence_db": 4.0,
+          "phase_rad": 0.4787,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5300.0,
+          "magnitude": 0.247236,
+          "snr_db": 187.9,
+          "prominence_db": 3.8,
+          "phase_rad": -1.5097,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16300.0,
+          "magnitude": 0.247151,
+          "snr_db": 187.9,
+          "prominence_db": 3.4,
+          "phase_rad": -1.2995,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4875.0,
+          "magnitude": 0.241932,
+          "snr_db": 187.7,
+          "prominence_db": 3.3,
+          "phase_rad": 3.0494,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7375.0,
+          "magnitude": 0.240663,
+          "snr_db": 187.6,
+          "prominence_db": 4.7,
+          "phase_rad": -0.5469,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20325.0,
+          "magnitude": 0.240056,
+          "snr_db": 187.6,
+          "prominence_db": 5.0,
+          "phase_rad": -2.5567,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20200.0,
+          "magnitude": 0.239404,
+          "snr_db": 187.6,
+          "prominence_db": 3.7,
+          "phase_rad": 1.8019,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5650.0,
+          "magnitude": 0.23405,
+          "snr_db": 187.4,
+          "prominence_db": 3.5,
+          "phase_rad": -3.0789,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7075.0,
+          "magnitude": 0.231756,
+          "snr_db": 187.3,
+          "prominence_db": 4.6,
+          "phase_rad": -0.6296,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20075.0,
+          "magnitude": 0.224048,
+          "snr_db": 187.0,
+          "prominence_db": 4.0,
+          "phase_rad": -0.3487,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2775.0,
+          "magnitude": 0.22275,
+          "snr_db": 187.0,
+          "prominence_db": 3.4,
+          "phase_rad": -2.8694,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6350.0,
+          "magnitude": 0.192298,
+          "snr_db": 185.7,
+          "prominence_db": 4.6,
+          "phase_rad": -2.914,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21475.0,
+          "magnitude": 0.184163,
+          "snr_db": 185.3,
+          "prominence_db": 3.4,
+          "phase_rad": 0.2824,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21700.0,
+          "magnitude": 0.132556,
+          "snr_db": 182.4,
+          "prominence_db": 5.1,
+          "phase_rad": -0.0088,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21775.0,
+          "magnitude": 0.13108,
+          "snr_db": 182.4,
+          "prominence_db": 5.0,
+          "phase_rad": -2.6348,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21850.0,
+          "magnitude": 0.101216,
+          "snr_db": 180.1,
+          "prominence_db": 4.8,
+          "phase_rad": 2.9732,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21950.0,
+          "magnitude": 0.082674,
+          "snr_db": 178.3,
+          "prominence_db": 3.6,
+          "phase_rad": -1.7475,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22000.0,
+          "magnitude": 0.065591,
+          "snr_db": 176.3,
+          "prominence_db": 4.1,
+          "phase_rad": 1.493,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22100.0,
+          "magnitude": 0.049867,
+          "snr_db": 174.0,
+          "prominence_db": 3.0,
+          "phase_rad": -0.0461,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22175.0,
+          "magnitude": 0.044737,
+          "snr_db": 173.0,
+          "prominence_db": 4.3,
+          "phase_rad": -1.1124,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22300.0,
+          "magnitude": 0.03016,
+          "snr_db": 169.6,
+          "prominence_db": 4.2,
+          "phase_rad": 1.482,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22425.0,
+          "magnitude": 0.020239,
+          "snr_db": 166.1,
+          "prominence_db": 3.6,
+          "phase_rad": 2.4922,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22475.0,
+          "magnitude": 0.01667,
+          "snr_db": 164.4,
+          "prominence_db": 4.4,
+          "phase_rad": 0.726,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22550.0,
+          "magnitude": 0.013072,
+          "snr_db": 162.3,
+          "prominence_db": 4.6,
+          "phase_rad": -0.5886,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22625.0,
+          "magnitude": 0.011518,
+          "snr_db": 161.2,
+          "prominence_db": 4.3,
+          "phase_rad": -1.5005,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22800.0,
+          "magnitude": 0.004062,
+          "snr_db": 152.2,
+          "prominence_db": 5.1,
+          "phase_rad": -2.2249,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22875.0,
+          "magnitude": 0.003571,
+          "snr_db": 151.1,
+          "prominence_db": 4.2,
+          "phase_rad": -2.6179,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22925.0,
+          "magnitude": 0.002573,
+          "snr_db": 148.2,
+          "prominence_db": 5.3,
+          "phase_rad": -0.0557,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23050.0,
+          "magnitude": 0.001112,
+          "snr_db": 140.9,
+          "prominence_db": 6.0,
+          "phase_rad": -1.6204,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23125.0,
+          "magnitude": 0.00066,
+          "snr_db": 136.4,
+          "prominence_db": 6.1,
+          "phase_rad": 1.4959,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23175.0,
+          "magnitude": 0.00045,
+          "snr_db": 133.1,
+          "prominence_db": 4.7,
+          "phase_rad": 2.6793,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23300.0,
+          "magnitude": 0.000182,
+          "snr_db": 125.2,
+          "prominence_db": 4.5,
+          "phase_rad": -1.688,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23400.0,
+          "magnitude": 8e-05,
+          "snr_db": 118.1,
+          "prominence_db": 5.4,
+          "phase_rad": 0.1563,
+          "phase_std": 0.0
+        }
+      ],
+      "stats": {
+        "n_modes": 161,
+        "freq_min_hz": 325.0,
+        "freq_max_hz": 23400.0,
+        "bandwidth_hz": 23075.0,
+        "mean_spacing_hz": 144.2,
+        "median_spacing_hz": 100.0,
+        "min_spacing_hz": 50.0,
+        "max_spacing_hz": 775.0,
+        "modes_per_khz": 6.98
+      },
+      "sweep_n_points": 3793
+    },
+    "5_NW": {
+      "plate_name": "H",
+      "plate_id": "5",
+      "relay_ch": 8,
+      "rx_path": "NW",
+      "peaks": [
+        {
+          "freq_hz": 6700.0,
+          "magnitude": 0.782218,
+          "snr_db": 197.9,
+          "prominence_db": 15.1,
+          "phase_rad": -0.0494,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18700.0,
+          "magnitude": 0.376806,
+          "snr_db": 191.5,
+          "prominence_db": 6.8,
+          "phase_rad": -2.2009,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 350.0,
+          "magnitude": 0.373171,
+          "snr_db": 191.4,
+          "prominence_db": 3.7,
+          "phase_rad": 0.4151,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3250.0,
+          "magnitude": 0.372643,
+          "snr_db": 191.4,
+          "prominence_db": 3.8,
+          "phase_rad": -1.5735,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10300.0,
+          "magnitude": 0.368275,
+          "snr_db": 191.3,
+          "prominence_db": 4.6,
+          "phase_rad": 2.9176,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 575.0,
+          "magnitude": 0.357747,
+          "snr_db": 191.1,
+          "prominence_db": 4.1,
+          "phase_rad": -2.2566,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11725.0,
+          "magnitude": 0.356544,
+          "snr_db": 191.0,
+          "prominence_db": 7.0,
+          "phase_rad": -0.7399,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5600.0,
+          "magnitude": 0.35533,
+          "snr_db": 191.0,
+          "prominence_db": 4.6,
+          "phase_rad": 0.5209,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7025.0,
+          "magnitude": 0.354322,
+          "snr_db": 191.0,
+          "prominence_db": 3.5,
+          "phase_rad": 2.7715,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18875.0,
+          "magnitude": 0.353449,
+          "snr_db": 191.0,
+          "prominence_db": 4.7,
+          "phase_rad": -1.4333,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17775.0,
+          "magnitude": 0.353081,
+          "snr_db": 191.0,
+          "prominence_db": 3.8,
+          "phase_rad": -2.5168,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7500.0,
+          "magnitude": 0.352968,
+          "snr_db": 191.0,
+          "prominence_db": 3.4,
+          "phase_rad": -0.0117,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8725.0,
+          "magnitude": 0.35181,
+          "snr_db": 190.9,
+          "prominence_db": 3.7,
+          "phase_rad": -2.1179,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18450.0,
+          "magnitude": 0.350543,
+          "snr_db": 190.9,
+          "prominence_db": 5.4,
+          "phase_rad": -1.8847,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2175.0,
+          "magnitude": 0.343938,
+          "snr_db": 190.7,
+          "prominence_db": 4.1,
+          "phase_rad": -0.0685,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19475.0,
+          "magnitude": 0.341423,
+          "snr_db": 190.7,
+          "prominence_db": 3.6,
+          "phase_rad": -2.1481,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1675.0,
+          "magnitude": 0.339097,
+          "snr_db": 190.6,
+          "prominence_db": 4.6,
+          "phase_rad": -0.4631,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12550.0,
+          "magnitude": 0.338381,
+          "snr_db": 190.6,
+          "prominence_db": 4.4,
+          "phase_rad": 1.3169,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2300.0,
+          "magnitude": 0.337034,
+          "snr_db": 190.6,
+          "prominence_db": 6.6,
+          "phase_rad": 2.3214,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5825.0,
+          "magnitude": 0.335519,
+          "snr_db": 190.5,
+          "prominence_db": 5.1,
+          "phase_rad": -2.2628,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9525.0,
+          "magnitude": 0.334568,
+          "snr_db": 190.5,
+          "prominence_db": 4.2,
+          "phase_rad": -0.5079,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3425.0,
+          "magnitude": 0.334252,
+          "snr_db": 190.5,
+          "prominence_db": 6.3,
+          "phase_rad": -0.0478,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1175.0,
+          "magnitude": 0.333512,
+          "snr_db": 190.5,
+          "prominence_db": 4.4,
+          "phase_rad": 1.6172,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6850.0,
+          "magnitude": 0.330789,
+          "snr_db": 190.4,
+          "prominence_db": 4.1,
+          "phase_rad": -1.7978,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16275.0,
+          "magnitude": 0.330556,
+          "snr_db": 190.4,
+          "prominence_db": 6.8,
+          "phase_rad": -0.403,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9150.0,
+          "magnitude": 0.330452,
+          "snr_db": 190.4,
+          "prominence_db": 4.2,
+          "phase_rad": 1.9165,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12375.0,
+          "magnitude": 0.329237,
+          "snr_db": 190.4,
+          "prominence_db": 5.4,
+          "phase_rad": 3.1194,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10075.0,
+          "magnitude": 0.328566,
+          "snr_db": 190.3,
+          "prominence_db": 5.9,
+          "phase_rad": -0.7613,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5200.0,
+          "magnitude": 0.328149,
+          "snr_db": 190.3,
+          "prominence_db": 3.0,
+          "phase_rad": 0.9275,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2000.0,
+          "magnitude": 0.327357,
+          "snr_db": 190.3,
+          "prominence_db": 5.9,
+          "phase_rad": 1.3952,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18625.0,
+          "magnitude": 0.327312,
+          "snr_db": 190.3,
+          "prominence_db": 3.6,
+          "phase_rad": 1.5291,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1375.0,
+          "magnitude": 0.326701,
+          "snr_db": 190.3,
+          "prominence_db": 4.1,
+          "phase_rad": 1.5607,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11650.0,
+          "magnitude": 0.326622,
+          "snr_db": 190.3,
+          "prominence_db": 6.3,
+          "phase_rad": 0.6331,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19850.0,
+          "magnitude": 0.326369,
+          "snr_db": 190.3,
+          "prominence_db": 5.6,
+          "phase_rad": -0.256,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1100.0,
+          "magnitude": 0.326044,
+          "snr_db": 190.3,
+          "prominence_db": 4.2,
+          "phase_rad": -2.7448,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14100.0,
+          "magnitude": 0.324905,
+          "snr_db": 190.2,
+          "prominence_db": 3.3,
+          "phase_rad": 0.462,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14400.0,
+          "magnitude": 0.324493,
+          "snr_db": 190.2,
+          "prominence_db": 5.0,
+          "phase_rad": -1.8716,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13850.0,
+          "magnitude": 0.324129,
+          "snr_db": 190.2,
+          "prominence_db": 4.8,
+          "phase_rad": 0.9452,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15950.0,
+          "magnitude": 0.324077,
+          "snr_db": 190.2,
+          "prominence_db": 4.0,
+          "phase_rad": 2.0745,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2450.0,
+          "magnitude": 0.323654,
+          "snr_db": 190.2,
+          "prominence_db": 4.0,
+          "phase_rad": -0.4549,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6025.0,
+          "magnitude": 0.322602,
+          "snr_db": 190.2,
+          "prominence_db": 4.2,
+          "phase_rad": -2.0436,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6625.0,
+          "magnitude": 0.322099,
+          "snr_db": 190.2,
+          "prominence_db": 4.6,
+          "phase_rad": -0.4295,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11875.0,
+          "magnitude": 0.321973,
+          "snr_db": 190.2,
+          "prominence_db": 5.7,
+          "phase_rad": -0.9465,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9700.0,
+          "magnitude": 0.321789,
+          "snr_db": 190.2,
+          "prominence_db": 3.3,
+          "phase_rad": 1.2616,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7600.0,
+          "magnitude": 0.318985,
+          "snr_db": 190.1,
+          "prominence_db": 4.0,
+          "phase_rad": -2.6557,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13250.0,
+          "magnitude": 0.317297,
+          "snr_db": 190.0,
+          "prominence_db": 4.6,
+          "phase_rad": 3.0455,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10525.0,
+          "magnitude": 0.316136,
+          "snr_db": 190.0,
+          "prominence_db": 3.6,
+          "phase_rad": -2.1541,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9625.0,
+          "magnitude": 0.315705,
+          "snr_db": 190.0,
+          "prominence_db": 3.1,
+          "phase_rad": -3.0291,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4450.0,
+          "magnitude": 0.315115,
+          "snr_db": 190.0,
+          "prominence_db": 3.5,
+          "phase_rad": -0.5931,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20150.0,
+          "magnitude": 0.314883,
+          "snr_db": 190.0,
+          "prominence_db": 3.9,
+          "phase_rad": 0.7183,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9025.0,
+          "magnitude": 0.314617,
+          "snr_db": 190.0,
+          "prominence_db": 4.2,
+          "phase_rad": 0.9427,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6400.0,
+          "magnitude": 0.314404,
+          "snr_db": 189.9,
+          "prominence_db": 5.5,
+          "phase_rad": 0.7103,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3300.0,
+          "magnitude": 0.313606,
+          "snr_db": 189.9,
+          "prominence_db": 5.4,
+          "phase_rad": 0.1223,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4525.0,
+          "magnitude": 0.313379,
+          "snr_db": 189.9,
+          "prominence_db": 4.3,
+          "phase_rad": 0.6662,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20000.0,
+          "magnitude": 0.312011,
+          "snr_db": 189.9,
+          "prominence_db": 4.1,
+          "phase_rad": -2.0006,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10950.0,
+          "magnitude": 0.311965,
+          "snr_db": 189.9,
+          "prominence_db": 4.8,
+          "phase_rad": 2.039,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 500.0,
+          "magnitude": 0.310906,
+          "snr_db": 189.9,
+          "prominence_db": 3.4,
+          "phase_rad": -0.7467,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8025.0,
+          "magnitude": 0.310773,
+          "snr_db": 189.8,
+          "prominence_db": 3.7,
+          "phase_rad": -1.6228,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9275.0,
+          "magnitude": 0.310367,
+          "snr_db": 189.8,
+          "prominence_db": 5.4,
+          "phase_rad": 3.1158,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4825.0,
+          "magnitude": 0.310301,
+          "snr_db": 189.8,
+          "prominence_db": 4.8,
+          "phase_rad": -0.8077,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5925.0,
+          "magnitude": 0.310078,
+          "snr_db": 189.8,
+          "prominence_db": 3.6,
+          "phase_rad": -2.1699,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9425.0,
+          "magnitude": 0.309768,
+          "snr_db": 189.8,
+          "prominence_db": 3.5,
+          "phase_rad": -0.8574,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20375.0,
+          "magnitude": 0.308124,
+          "snr_db": 189.8,
+          "prominence_db": 5.2,
+          "phase_rad": 0.9944,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4275.0,
+          "magnitude": 0.307707,
+          "snr_db": 189.8,
+          "prominence_db": 4.0,
+          "phase_rad": 0.1196,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5750.0,
+          "magnitude": 0.307141,
+          "snr_db": 189.7,
+          "prominence_db": 4.4,
+          "phase_rad": -0.3219,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12925.0,
+          "magnitude": 0.304784,
+          "snr_db": 189.7,
+          "prominence_db": 3.9,
+          "phase_rad": 1.9977,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16450.0,
+          "magnitude": 0.304475,
+          "snr_db": 189.7,
+          "prominence_db": 3.6,
+          "phase_rad": -0.2354,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18825.0,
+          "magnitude": 0.30428,
+          "snr_db": 189.7,
+          "prominence_db": 3.7,
+          "phase_rad": -0.1847,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2975.0,
+          "magnitude": 0.304017,
+          "snr_db": 189.7,
+          "prominence_db": 3.4,
+          "phase_rad": -3.0653,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13125.0,
+          "magnitude": 0.302544,
+          "snr_db": 189.6,
+          "prominence_db": 3.2,
+          "phase_rad": -1.7912,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13550.0,
+          "magnitude": 0.30229,
+          "snr_db": 189.6,
+          "prominence_db": 5.5,
+          "phase_rad": -2.3997,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7850.0,
+          "magnitude": 0.30173,
+          "snr_db": 189.6,
+          "prominence_db": 7.0,
+          "phase_rad": -2.9512,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9075.0,
+          "magnitude": 0.301537,
+          "snr_db": 189.6,
+          "prominence_db": 3.4,
+          "phase_rad": -0.6287,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13800.0,
+          "magnitude": 0.299898,
+          "snr_db": 189.5,
+          "prominence_db": 4.2,
+          "phase_rad": -0.0141,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14450.0,
+          "magnitude": 0.299367,
+          "snr_db": 189.5,
+          "prominence_db": 5.5,
+          "phase_rad": 1.3557,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7925.0,
+          "magnitude": 0.299191,
+          "snr_db": 189.5,
+          "prominence_db": 6.9,
+          "phase_rad": -0.9948,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10200.0,
+          "magnitude": 0.298512,
+          "snr_db": 189.5,
+          "prominence_db": 3.9,
+          "phase_rad": 1.422,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8200.0,
+          "magnitude": 0.297308,
+          "snr_db": 189.5,
+          "prominence_db": 4.6,
+          "phase_rad": -2.0142,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18775.0,
+          "magnitude": 0.297023,
+          "snr_db": 189.5,
+          "prominence_db": 4.7,
+          "phase_rad": -0.5235,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 400.0,
+          "magnitude": 0.296957,
+          "snr_db": 189.5,
+          "prominence_db": 3.1,
+          "phase_rad": -0.6222,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16625.0,
+          "magnitude": 0.296573,
+          "snr_db": 189.4,
+          "prominence_db": 4.1,
+          "phase_rad": -0.035,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4925.0,
+          "magnitude": 0.296112,
+          "snr_db": 189.4,
+          "prominence_db": 4.4,
+          "phase_rad": -0.6622,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10725.0,
+          "magnitude": 0.293758,
+          "snr_db": 189.4,
+          "prominence_db": 5.4,
+          "phase_rad": -1.9198,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12200.0,
+          "magnitude": 0.293296,
+          "snr_db": 189.3,
+          "prominence_db": 4.3,
+          "phase_rad": 0.0082,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13950.0,
+          "magnitude": 0.292659,
+          "snr_db": 189.3,
+          "prominence_db": 3.3,
+          "phase_rad": 2.8564,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1825.0,
+          "magnitude": 0.292433,
+          "snr_db": 189.3,
+          "prominence_db": 3.4,
+          "phase_rad": 1.5407,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8775.0,
+          "magnitude": 0.292188,
+          "snr_db": 189.3,
+          "prominence_db": 4.2,
+          "phase_rad": -2.2455,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1325.0,
+          "magnitude": 0.291744,
+          "snr_db": 189.3,
+          "prominence_db": 3.2,
+          "phase_rad": -1.0603,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10900.0,
+          "magnitude": 0.291557,
+          "snr_db": 189.3,
+          "prominence_db": 4.2,
+          "phase_rad": -2.6041,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20500.0,
+          "magnitude": 0.290694,
+          "snr_db": 189.3,
+          "prominence_db": 6.2,
+          "phase_rad": -2.1531,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11100.0,
+          "magnitude": 0.290364,
+          "snr_db": 189.3,
+          "prominence_db": 5.7,
+          "phase_rad": 1.6195,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12825.0,
+          "magnitude": 0.289755,
+          "snr_db": 189.2,
+          "prominence_db": 3.4,
+          "phase_rad": -0.5995,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7675.0,
+          "magnitude": 0.288947,
+          "snr_db": 189.2,
+          "prominence_db": 3.2,
+          "phase_rad": 3.0766,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 5100.0,
+          "magnitude": 0.28752,
+          "snr_db": 189.2,
+          "prominence_db": 3.1,
+          "phase_rad": 0.5041,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15150.0,
+          "magnitude": 0.285896,
+          "snr_db": 189.1,
+          "prominence_db": 3.3,
+          "phase_rad": 3.0023,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6250.0,
+          "magnitude": 0.284405,
+          "snr_db": 189.1,
+          "prominence_db": 4.3,
+          "phase_rad": -1.5409,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3350.0,
+          "magnitude": 0.2842,
+          "snr_db": 189.1,
+          "prominence_db": 4.9,
+          "phase_rad": 1.3433,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19900.0,
+          "magnitude": 0.283723,
+          "snr_db": 189.1,
+          "prominence_db": 5.6,
+          "phase_rad": 1.9596,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11000.0,
+          "magnitude": 0.283276,
+          "snr_db": 189.0,
+          "prominence_db": 3.3,
+          "phase_rad": 1.2389,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18100.0,
+          "magnitude": 0.280556,
+          "snr_db": 189.0,
+          "prominence_db": 5.7,
+          "phase_rad": -1.3089,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16700.0,
+          "magnitude": 0.27935,
+          "snr_db": 188.9,
+          "prominence_db": 3.4,
+          "phase_rad": 1.6767,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16000.0,
+          "magnitude": 0.27927,
+          "snr_db": 188.9,
+          "prominence_db": 3.2,
+          "phase_rad": -2.5694,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8875.0,
+          "magnitude": 0.278332,
+          "snr_db": 188.9,
+          "prominence_db": 3.1,
+          "phase_rad": 1.6295,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14575.0,
+          "magnitude": 0.277086,
+          "snr_db": 188.9,
+          "prominence_db": 3.8,
+          "phase_rad": 0.2425,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18025.0,
+          "magnitude": 0.277065,
+          "snr_db": 188.9,
+          "prominence_db": 3.3,
+          "phase_rad": 1.0438,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15625.0,
+          "magnitude": 0.276654,
+          "snr_db": 188.8,
+          "prominence_db": 4.7,
+          "phase_rad": 0.9289,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18950.0,
+          "magnitude": 0.276377,
+          "snr_db": 188.8,
+          "prominence_db": 3.4,
+          "phase_rad": 2.8422,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12000.0,
+          "magnitude": 0.275969,
+          "snr_db": 188.8,
+          "prominence_db": 4.3,
+          "phase_rad": 2.4098,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2525.0,
+          "magnitude": 0.275861,
+          "snr_db": 188.8,
+          "prominence_db": 3.8,
+          "phase_rad": -0.8499,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18275.0,
+          "magnitude": 0.275257,
+          "snr_db": 188.8,
+          "prominence_db": 4.8,
+          "phase_rad": -1.2918,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17525.0,
+          "magnitude": 0.273042,
+          "snr_db": 188.7,
+          "prominence_db": 4.5,
+          "phase_rad": -0.2829,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10800.0,
+          "magnitude": 0.272718,
+          "snr_db": 188.7,
+          "prominence_db": 4.7,
+          "phase_rad": 0.8066,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4125.0,
+          "magnitude": 0.271772,
+          "snr_db": 188.7,
+          "prominence_db": 3.7,
+          "phase_rad": 2.2717,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10650.0,
+          "magnitude": 0.271069,
+          "snr_db": 188.7,
+          "prominence_db": 4.3,
+          "phase_rad": 1.1503,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8675.0,
+          "magnitude": 0.270942,
+          "snr_db": 188.7,
+          "prominence_db": 3.3,
+          "phase_rad": -0.097,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11275.0,
+          "magnitude": 0.270744,
+          "snr_db": 188.7,
+          "prominence_db": 3.4,
+          "phase_rad": 2.8316,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14200.0,
+          "magnitude": 0.27022,
+          "snr_db": 188.6,
+          "prominence_db": 3.4,
+          "phase_rad": -0.3189,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18400.0,
+          "magnitude": 0.269608,
+          "snr_db": 188.6,
+          "prominence_db": 3.4,
+          "phase_rad": -1.8668,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14725.0,
+          "magnitude": 0.269497,
+          "snr_db": 188.6,
+          "prominence_db": 4.5,
+          "phase_rad": -0.0331,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10575.0,
+          "magnitude": 0.269349,
+          "snr_db": 188.6,
+          "prominence_db": 4.2,
+          "phase_rad": 1.6341,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 2650.0,
+          "magnitude": 0.268422,
+          "snr_db": 188.6,
+          "prominence_db": 3.3,
+          "phase_rad": 0.8451,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20575.0,
+          "magnitude": 0.267743,
+          "snr_db": 188.6,
+          "prominence_db": 5.5,
+          "phase_rad": -0.136,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19275.0,
+          "magnitude": 0.267574,
+          "snr_db": 188.5,
+          "prominence_db": 5.1,
+          "phase_rad": -1.4299,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13425.0,
+          "magnitude": 0.265568,
+          "snr_db": 188.5,
+          "prominence_db": 4.7,
+          "phase_rad": -1.5513,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14800.0,
+          "magnitude": 0.265266,
+          "snr_db": 188.5,
+          "prominence_db": 4.0,
+          "phase_rad": -0.9227,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16575.0,
+          "magnitude": 0.264548,
+          "snr_db": 188.5,
+          "prominence_db": 3.1,
+          "phase_rad": -2.6113,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 9225.0,
+          "magnitude": 0.263843,
+          "snr_db": 188.4,
+          "prominence_db": 4.0,
+          "phase_rad": -2.1832,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 7350.0,
+          "magnitude": 0.263399,
+          "snr_db": 188.4,
+          "prominence_db": 5.2,
+          "phase_rad": 1.1339,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 18175.0,
+          "magnitude": 0.263047,
+          "snr_db": 188.4,
+          "prominence_db": 5.2,
+          "phase_rad": 2.8816,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 1575.0,
+          "magnitude": 0.262419,
+          "snr_db": 188.4,
+          "prominence_db": 3.7,
+          "phase_rad": -0.1521,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12100.0,
+          "magnitude": 0.261749,
+          "snr_db": 188.4,
+          "prominence_db": 3.3,
+          "phase_rad": 1.562,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 8600.0,
+          "magnitude": 0.261611,
+          "snr_db": 188.4,
+          "prominence_db": 3.0,
+          "phase_rad": -0.6243,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20425.0,
+          "magnitude": 0.260829,
+          "snr_db": 188.3,
+          "prominence_db": 3.8,
+          "phase_rad": 1.1738,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3900.0,
+          "magnitude": 0.260535,
+          "snr_db": 188.3,
+          "prominence_db": 3.4,
+          "phase_rad": -0.1766,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14300.0,
+          "magnitude": 0.260239,
+          "snr_db": 188.3,
+          "prominence_db": 3.1,
+          "phase_rad": 0.7573,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 6175.0,
+          "magnitude": 0.259366,
+          "snr_db": 188.3,
+          "prominence_db": 3.5,
+          "phase_rad": 2.1644,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 12300.0,
+          "magnitude": 0.259349,
+          "snr_db": 188.3,
+          "prominence_db": 3.4,
+          "phase_rad": -1.1616,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 10150.0,
+          "magnitude": 0.256438,
+          "snr_db": 188.2,
+          "prominence_db": 3.8,
+          "phase_rad": -2.1466,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14625.0,
+          "magnitude": 0.255763,
+          "snr_db": 188.2,
+          "prominence_db": 3.1,
+          "phase_rad": -1.5423,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 4050.0,
+          "magnitude": 0.255111,
+          "snr_db": 188.1,
+          "prominence_db": 3.2,
+          "phase_rad": 2.9687,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17125.0,
+          "magnitude": 0.254782,
+          "snr_db": 188.1,
+          "prominence_db": 3.9,
+          "phase_rad": 0.5539,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16925.0,
+          "magnitude": 0.253046,
+          "snr_db": 188.1,
+          "prominence_db": 3.1,
+          "phase_rad": -3.0708,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 3125.0,
+          "magnitude": 0.252974,
+          "snr_db": 188.1,
+          "prominence_db": 3.5,
+          "phase_rad": 0.0191,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20800.0,
+          "magnitude": 0.250505,
+          "snr_db": 188.0,
+          "prominence_db": 8.3,
+          "phase_rad": 2.522,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11925.0,
+          "magnitude": 0.249229,
+          "snr_db": 187.9,
+          "prominence_db": 3.4,
+          "phase_rad": 1.7251,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15800.0,
+          "magnitude": 0.248732,
+          "snr_db": 187.9,
+          "prominence_db": 3.2,
+          "phase_rad": 2.0312,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11200.0,
+          "magnitude": 0.248357,
+          "snr_db": 187.9,
+          "prominence_db": 4.3,
+          "phase_rad": -0.0056,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20225.0,
+          "magnitude": 0.244999,
+          "snr_db": 187.8,
+          "prominence_db": 3.0,
+          "phase_rad": -0.9913,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 17075.0,
+          "magnitude": 0.244828,
+          "snr_db": 187.8,
+          "prominence_db": 3.6,
+          "phase_rad": 2.4198,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15900.0,
+          "magnitude": 0.244466,
+          "snr_db": 187.8,
+          "prominence_db": 3.1,
+          "phase_rad": -0.5898,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 19775.0,
+          "magnitude": 0.243172,
+          "snr_db": 187.7,
+          "prominence_db": 3.5,
+          "phase_rad": -0.238,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 11825.0,
+          "magnitude": 0.23949,
+          "snr_db": 187.6,
+          "prominence_db": 3.1,
+          "phase_rad": -0.1194,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 14525.0,
+          "magnitude": 0.237067,
+          "snr_db": 187.5,
+          "prominence_db": 3.5,
+          "phase_rad": -2.8048,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 16375.0,
+          "magnitude": 0.231894,
+          "snr_db": 187.3,
+          "prominence_db": 3.5,
+          "phase_rad": 2.5784,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 15675.0,
+          "magnitude": 0.228089,
+          "snr_db": 187.2,
+          "prominence_db": 3.0,
+          "phase_rad": -2.0505,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13625.0,
+          "magnitude": 0.227273,
+          "snr_db": 187.1,
+          "prominence_db": 3.1,
+          "phase_rad": 1.3572,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 20875.0,
+          "magnitude": 0.226029,
+          "snr_db": 187.1,
+          "prominence_db": 7.4,
+          "phase_rad": -0.0402,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 13375.0,
+          "magnitude": 0.222792,
+          "snr_db": 187.0,
+          "prominence_db": 3.2,
+          "phase_rad": -1.5067,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21200.0,
+          "magnitude": 0.208584,
+          "snr_db": 186.4,
+          "prominence_db": 9.5,
+          "phase_rad": 1.1813,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21275.0,
+          "magnitude": 0.207818,
+          "snr_db": 186.4,
+          "prominence_db": 9.5,
+          "phase_rad": 1.7434,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21525.0,
+          "magnitude": 0.174352,
+          "snr_db": 184.8,
+          "prominence_db": 6.0,
+          "phase_rad": 1.2205,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21325.0,
+          "magnitude": 0.172996,
+          "snr_db": 184.8,
+          "prominence_db": 5.0,
+          "phase_rad": -2.8829,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21600.0,
+          "magnitude": 0.137881,
+          "snr_db": 182.8,
+          "prominence_db": 4.0,
+          "phase_rad": -1.7224,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21700.0,
+          "magnitude": 0.136505,
+          "snr_db": 182.7,
+          "prominence_db": 3.6,
+          "phase_rad": 0.745,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 21850.0,
+          "magnitude": 0.093798,
+          "snr_db": 179.4,
+          "prominence_db": 3.2,
+          "phase_rad": 0.5883,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22025.0,
+          "magnitude": 0.070204,
+          "snr_db": 176.9,
+          "prominence_db": 3.7,
+          "phase_rad": 0.5782,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22275.0,
+          "magnitude": 0.02937,
+          "snr_db": 169.4,
+          "prominence_db": 4.1,
+          "phase_rad": 1.8842,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22475.0,
+          "magnitude": 0.015474,
+          "snr_db": 163.8,
+          "prominence_db": 3.3,
+          "phase_rad": -0.3203,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22550.0,
+          "magnitude": 0.013709,
+          "snr_db": 162.7,
+          "prominence_db": 3.9,
+          "phase_rad": 0.9507,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22725.0,
+          "magnitude": 0.008218,
+          "snr_db": 158.3,
+          "prominence_db": 5.4,
+          "phase_rad": 2.9318,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 22950.0,
+          "magnitude": 0.002055,
+          "snr_db": 146.3,
+          "prominence_db": 4.3,
+          "phase_rad": -2.3392,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23300.0,
+          "magnitude": 0.000134,
+          "snr_db": 122.5,
+          "prominence_db": 3.5,
+          "phase_rad": -1.3075,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23400.0,
+          "magnitude": 6.8e-05,
+          "snr_db": 116.7,
+          "prominence_db": 9.0,
+          "phase_rad": 0.6237,
+          "phase_std": 0.0
+        },
+        {
+          "freq_hz": 23525.0,
+          "magnitude": 1.5e-05,
+          "snr_db": 103.5,
+          "prominence_db": 6.6,
+          "phase_rad": -2.8052,
+          "phase_std": 0.0
+        }
+      ],
+      "stats": {
+        "n_modes": 174,
+        "freq_min_hz": 350.0,
+        "freq_max_hz": 23525.0,
+        "bandwidth_hz": 23175.0,
+        "mean_spacing_hz": 134.0,
+        "median_spacing_hz": 100.0,
+        "min_spacing_hz": 50.0,
+        "max_spacing_hz": 525.0,
+        "modes_per_khz": 7.51
+      },
+      "sweep_n_points": 3793
+    }
+  }
+}

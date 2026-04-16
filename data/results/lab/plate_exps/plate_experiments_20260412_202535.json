@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-04-13T01:25:35.471968+00:00",
+  "dry_run": true,
+  "experiments_run": [
+    5
+  ],
+  "results": [
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "A",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "A",
+        "n_modes": 3,
+        "freq_min_hz": 18775.0,
+        "freq_max_hz": 89425.0,
+        "mean_spacing_hz": 35325.0,
+        "modes_per_khz": 0.04,
+        "top_freq_hz": 29700.0,
+        "top_magnitude": 6997294.1,
+        "top_snr_db": 20.3
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "B",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "B",
+        "n_modes": 6,
+        "freq_min_hz": 15125.0,
+        "freq_max_hz": 89350.0,
+        "mean_spacing_hz": 14845.0,
+        "modes_per_khz": 0.08,
+        "top_freq_hz": 29200.0,
+        "top_magnitude": 7479235.8,
+        "top_snr_db": 22.1
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "C",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "C",
+        "n_modes": 6,
+        "freq_min_hz": 26175.0,
+        "freq_max_hz": 89325.0,
+        "mean_spacing_hz": 12630.0,
+        "modes_per_khz": 0.1,
+        "top_freq_hz": 43175.0,
+        "top_magnitude": 6206980.3,
+        "top_snr_db": 18.7
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "D",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "D",
+        "n_modes": 8,
+        "freq_min_hz": 29925.0,
+        "freq_max_hz": 94675.0,
+        "mean_spacing_hz": 9250.0,
+        "modes_per_khz": 0.12,
+        "top_freq_hz": 49625.0,
+        "top_magnitude": 5303173.5,
+        "top_snr_db": 18.1
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "E",
+      "data": {
+        "plate_material": "Fused silica",
+        "plate_size_mm": "100x100x1",
+        "plate_name": "E",
+        "n_modes": 8,
+        "freq_min_hz": 26200.0,
+        "freq_max_hz": 94775.0,
+        "mean_spacing_hz": 9796.4,
+        "modes_per_khz": 0.12,
+        "top_freq_hz": 49675.0,
+        "top_magnitude": 8552226.4,
+        "top_snr_db": 21.8
+      }
+    }
+  ]
+}

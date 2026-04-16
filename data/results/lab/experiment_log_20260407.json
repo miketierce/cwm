@@ -1,0 +1,309 @@
+{
+  "experiment": "CWM Hardware Authentication \u2014 First Successful Run",
+  "date": "2026-04-07",
+  "hardware": {
+    "scope": "PicoScope 2204A",
+    "driver": "ps2000 (macOS ARM64)",
+    "driver_version": "3.0.152.6217",
+    "library": "/Applications/PicoScope 7 T&M Early Access.app/Contents/Resources/libps2000.dylib",
+    "driver_bug": "macOS ps2000 reports time_unit=1 (picoseconds) but values are actually nanoseconds"
+  },
+  "capture_params": {
+    "timebase": 7,
+    "dt_ns": 1280,
+    "sample_rate_hz": 781250,
+    "n_samples": 8064,
+    "window_ms": 10.3,
+    "fft_zero_pad": "4x",
+    "fft_points": 32256,
+    "freq_resolution_hz": 24.2,
+    "nyquist_hz": 390625,
+    "trigger_mv": 200,
+    "trigger_edge": "rising",
+    "trigger_timeout_ms": 20000,
+    "voltage_range_mv": 500
+  },
+  "signal_processing": {
+    "window": "Hanning",
+    "peak_detection": "scipy.signal.find_peaks, SNR > 10x noise floor",
+    "peak_refinement": "parabolic interpolation (sub-bin accuracy)",
+    "hum_filter_hz": 500,
+    "min_peak_spacing_hz": 200,
+    "n_modes_extracted": 20
+  },
+  "excitation": {
+    "method": "fingernail flick on glass rod body",
+    "notes": "Quick bounce-off, rod must ring freely. Do NOT press or hold.",
+    "wiring": "Ch A -> single BNC-to-alligator cable -> PZT (red=red, black=black)",
+    "no_awg": true,
+    "reason": "AWG 50-ohm output impedance shunts PZT ring-down through T-adapter"
+  },
+  "auth_scoring": {
+    "method": "reference-based peak search",
+    "window_frac": 0.05,
+    "min_peak_height": "3x noise floor",
+    "miss_penalty": 0.05,
+    "score_formula": "RMS(matched_fracs) + n_missed * 0.05",
+    "auth_threshold_rms": 0.05,
+    "registration_threshold_score": 0.15,
+    "min_matched_peaks": 3
+  },
+  "enrolled_rods": {
+    "rod_1": {
+      "pattern": "A",
+      "hw_enrolled": true,
+      "n_peaks": 20,
+      "freq_range_hz": [
+        989.299754529999,
+        25826.858993473543
+      ],
+      "peak_frequencies_hz": [
+        989.3,
+        1337.8,
+        1622.1,
+        1833.3,
+        2355.7,
+        2805.5,
+        3118.9,
+        4206.8,
+        5221.9,
+        5710.5,
+        6063.5,
+        6442.4,
+        7095.6,
+        7607.6,
+        9935.3,
+        10654.4,
+        11385.0,
+        11770.5,
+        20066.2,
+        25826.9
+      ]
+    },
+    "rod_2": {
+      "pattern": "B",
+      "hw_enrolled": true,
+      "n_peaks": 20,
+      "freq_range_hz": [
+        709.3766154272687,
+        25925.001817792036
+      ],
+      "peak_frequencies_hz": [
+        709.4,
+        1026.0,
+        1203.2,
+        1616.9,
+        2117.8,
+        2924.3,
+        5689.9,
+        6303.4,
+        6506.6,
+        6792.7,
+        7469.2,
+        14242.5,
+        16364.0,
+        17802.2,
+        18672.3,
+        19440.0,
+        19679.5,
+        19960.4,
+        25707.1,
+        25925.0
+      ]
+    },
+    "rod_3": {
+      "pattern": "C",
+      "hw_enrolled": true,
+      "n_peaks": 20,
+      "freq_range_hz": [
+        913.1315694636048,
+        31809.619000577983
+      ],
+      "peak_frequencies_hz": [
+        913.1,
+        1536.4,
+        1714.2,
+        2001.1,
+        2833.8,
+        5575.5,
+        5765.3,
+        6218.2,
+        9396.4,
+        13910.5,
+        15383.8,
+        16285.2,
+        17904.6,
+        18192.2,
+        18375.5,
+        18604.9,
+        19029.8,
+        19480.0,
+        25294.8,
+        31809.6
+      ]
+    },
+    "rod_4": {
+      "pattern": "D",
+      "hw_enrolled": true,
+      "n_peaks": 20,
+      "freq_range_hz": [
+        1068.5322293516972,
+        32253.327318980602
+      ],
+      "peak_frequencies_hz": [
+        1068.5,
+        1537.7,
+        1751.5,
+        1981.9,
+        2328.7,
+        2691.6,
+        2924.0,
+        3807.9,
+        5682.4,
+        6043.5,
+        6593.2,
+        9487.0,
+        11943.2,
+        14093.8,
+        16485.6,
+        18623.3,
+        18872.7,
+        19209.1,
+        19656.6,
+        32253.3
+      ]
+    }
+  },
+  "users": {
+    "billy": {
+      "rod": 1,
+      "channel": 0,
+      "template": [
+        989.299754529999,
+        1337.8146762101624,
+        1622.1281370727106,
+        1833.3203038871925,
+        2355.690980277824
+      ],
+      "rod_pattern": "A"
+    }
+  },
+  "raw_files": {
+    "tap_v2_raw.npy": 64640,
+    "flick_run2_raw.npy": 64640,
+    "flick_run3_raw.npy": 64640,
+    "flick_run1_raw.npy": 64640,
+    "tap_diagnostic_raw.npy": 31872
+  },
+  "reproducibility_test": {
+    "description": "3 consecutive flick tests on Rod 1, checking peak consistency",
+    "results": {
+      "run1": {
+        "pkpk_mv": 833,
+        "q1_rms_mv": 173,
+        "q4_rms_mv": 25,
+        "decay_ratio": 6.8,
+        "top_peaks_hz": [
+          1816.5,
+          5764.4,
+          1017.3,
+          6442.6,
+          14168.9,
+          9567.0,
+          193.8,
+          2373.6,
+          32382.5,
+          16639.3
+        ]
+      },
+      "run2": {
+        "pkpk_mv": 1000,
+        "q1_rms_mv": 243,
+        "q4_rms_mv": 59,
+        "decay_ratio": 4.1,
+        "top_peaks_hz": [
+          2349.4,
+          1816.5,
+          5740.2,
+          14168.9,
+          6854.3,
+          1017.3,
+          242.2,
+          25843.1,
+          16663.6,
+          7363.0
+        ]
+      },
+      "run3": {
+        "pkpk_mv": 1000,
+        "q1_rms_mv": 338,
+        "q4_rms_mv": 79,
+        "decay_ratio": 4.3,
+        "top_peaks_hz": [
+          2349.4,
+          1816.5,
+          5740.2,
+          1017.3,
+          6830.1,
+          14168.9,
+          9567.0,
+          32382.5,
+          19570.0,
+          218.0
+        ]
+      }
+    },
+    "peaks_matched_within_100hz": "13/16",
+    "verdict": "REPRODUCIBLE"
+  },
+  "auth_test": {
+    "description": "Live tap on Rod 1 scored against all 4 enrolled rods",
+    "waveform": {
+      "pkpk_mv": 1000,
+      "q1_rms_mv": 277,
+      "q4_rms_mv": 65,
+      "decay_ratio": 4.3
+    },
+    "scores": {
+      "rod_1": {
+        "matched": "9/10",
+        "rms_pct": 2.38,
+        "score_pct": 7.4,
+        "result": "BEST MATCH"
+      },
+      "rod_2": {
+        "matched": "8/10",
+        "rms_pct": 2.56,
+        "score_pct": 12.6
+      },
+      "rod_3": {
+        "matched": "7/10",
+        "rms_pct": 3.11,
+        "score_pct": 18.1
+      },
+      "rod_4": {
+        "matched": "8/10",
+        "rms_pct": 2.85,
+        "score_pct": 12.9
+      }
+    },
+    "correct_rod_identified": true,
+    "margin_to_second_best": "70%"
+  },
+  "discovery_timeline": [
+    "AWG delta_phase=0 -> fixed but 8-gauge wire cant seat in BNC",
+    "Improvised BNC cable (two BNC-to-alligator clipped together) -> 988 mV, SNR 8445x",
+    "Tap@20mV -> triggers on noise instantly",
+    "Tap@200mV with screwdriver -> 693 Hz strain pulse (pressing not ringing)",
+    "CRITICAL: ps2000 macOS driver time-unit bug discovered (reports ps, means ns)",
+    "AWG frequency confirmed accurate: 10kHz request -> 10003 Hz measured",
+    "AWG chirp during capture -> sees chirp itself, not rod (through T-adapter)",
+    "Pulse-and-listen -> 50-ohm shunts ring-down to ground",
+    "Direct tap with corrected sample rate -> FIRST REAL ROD RESONANCE DATA",
+    "3-run reproducibility test -> 13/16 peaks match within 100 Hz",
+    "Blind peak search enrollment -> index mismatch problem in auth",
+    "Reference-based scoring with miss penalty -> correct rod identification",
+    "Hum filter raised to 500 Hz -> cleaner rod-specific peaks",
+    "Full auth through UI -> SUCCESS"
+  ]
+}

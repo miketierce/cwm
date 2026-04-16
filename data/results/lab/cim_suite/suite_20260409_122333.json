@@ -1,0 +1,661 @@
+{
+  "timestamp": "2026-04-09T17:23:37.618813+00:00",
+  "experiments_run": [
+    "boolean-pairs"
+  ],
+  "rod_ids": [
+    "1",
+    "2",
+    "3",
+    "4"
+  ],
+  "rod_patterns": {
+    "1": "A",
+    "2": "B",
+    "3": "C",
+    "4": "E"
+  },
+  "awg_drive_uvpp": 2000000,
+  "sample_rate": 781250,
+  "n_avg": 12,
+  "n_peaks": 10,
+  "boolean_all_pairs": [
+    {
+      "pair": [
+        "1",
+        "2"
+      ],
+      "patterns": [
+        "A",
+        "B"
+      ],
+      "strong_a": 4,
+      "strong_b": 7,
+      "overlap_pct": 14.3,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 7,
+        "and_correct": 7,
+        "or_correct": 7,
+        "xor_correct": 7,
+        "rod_thresholds": {
+          "1": 788877.3,
+          "2": 197598.4
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "b_only",
+          "mag_a": 311861.0,
+          "mag_b": 395196.7,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1616.9,
+          "category": "b_only",
+          "mag_a": 1263136.9,
+          "mag_b": 2123367.2,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1825.5,
+          "category": "a_only",
+          "mag_a": 2816166.4,
+          "mag_b": 4300136.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2111.3,
+          "category": "both",
+          "mag_a": 18604556.8,
+          "mag_b": 49711939.9,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25509573.0,
+          "mag_b": 5614027.9,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2644.6,
+          "category": "a_only",
+          "mag_a": 1577754.7,
+          "mag_b": 1328817.6,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2924.3,
+          "category": "b_only",
+          "mag_a": 678588.6,
+          "mag_b": 647394.6,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "3"
+      ],
+      "patterns": [
+        "A",
+        "C"
+      ],
+      "strong_a": 4,
+      "strong_b": 4,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 6,
+        "and_correct": 6,
+        "or_correct": 6,
+        "xor_correct": 6,
+        "rod_thresholds": {
+          "1": 779047.7,
+          "3": 418944.8
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1536.4,
+          "category": "b_only",
+          "mag_a": 871131.9,
+          "mag_b": 3099611.4,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1714.2,
+          "category": "b_only",
+          "mag_a": 2566294.6,
+          "mag_b": 2357614.1,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1825.5,
+          "category": "a_only",
+          "mag_a": 2811719.6,
+          "mag_b": 8702342.2,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25446489.4,
+          "mag_b": 4689517.3,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2644.6,
+          "category": "a_only",
+          "mag_a": 1558095.3,
+          "mag_b": 1153921.5,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2833.8,
+          "category": "b_only",
+          "mag_a": 890487.3,
+          "mag_b": 837889.7,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "1",
+        "4"
+      ],
+      "patterns": [
+        "A",
+        "E"
+      ],
+      "strong_a": 4,
+      "strong_b": 5,
+      "overlap_pct": 40.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 4,
+        "and_correct": 4,
+        "or_correct": 4,
+        "xor_correct": 4,
+        "rod_thresholds": {
+          "1": 892096.3,
+          "4": 521373.1
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1631.9,
+          "category": "b_only",
+          "mag_a": 1306056.9,
+          "mag_b": 2725245.8,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2096.4,
+          "category": "both",
+          "mag_a": 22385540.7,
+          "mag_b": 26653903.5,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2299.2,
+          "category": "a_only",
+          "mag_a": 25434254.6,
+          "mag_b": 4132079.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2614.5,
+          "category": "both",
+          "mag_a": 1784192.6,
+          "mag_b": 1042746.2,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "3"
+      ],
+      "patterns": [
+        "B",
+        "C"
+      ],
+      "strong_a": 7,
+      "strong_b": 4,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 5,
+        "and_correct": 5,
+        "or_correct": 5,
+        "xor_correct": 5,
+        "rod_thresholds": {
+          "2": 202058.4,
+          "3": 1178254.9
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "a_only",
+          "mag_a": 404116.8,
+          "mag_b": 493100.8,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1714.2,
+          "category": "b_only",
+          "mag_a": 2664091.7,
+          "mag_b": 2356509.9,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2001.1,
+          "category": "b_only",
+          "mag_a": 39161333.3,
+          "mag_b": 16437227.3,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2117.8,
+          "category": "a_only",
+          "mag_a": 52261391.0,
+          "mag_b": 27840054.7,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 6792.7,
+          "category": "a_only",
+          "mag_a": 471449.1,
+          "mag_b": 238819.7,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    },
+    {
+      "pair": [
+        "2",
+        "4"
+      ],
+      "patterns": [
+        "B",
+        "E"
+      ],
+      "strong_a": 6,
+      "strong_b": 5,
+      "overlap_pct": 50.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 7,
+        "and_correct": 7,
+        "or_correct": 7,
+        "xor_correct": 7,
+        "rod_thresholds": {
+          "2": 199592.0,
+          "4": 115893.2
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1203.2,
+          "category": "a_only",
+          "mag_a": 399183.9,
+          "mag_b": 448004.6,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1624.4,
+          "category": "both",
+          "mag_a": 1969941.6,
+          "mag_b": 3181653.5,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 1895.7,
+          "category": "b_only",
+          "mag_a": 3292391.6,
+          "mag_b": 19776842.1,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2102.9,
+          "category": "both",
+          "mag_a": 45489484.3,
+          "mag_b": 28299925.9,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        },
+        {
+          "freq": 2584.4,
+          "category": "b_only",
+          "mag_a": 1572040.8,
+          "mag_b": 1181845.3,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2924.3,
+          "category": "a_only",
+          "mag_a": 636124.6,
+          "mag_b": 544061.5,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 6413.2,
+          "category": "both",
+          "mag_a": 416091.4,
+          "mag_b": 231786.5,
+          "det_a": 1,
+          "det_b": 1,
+          "and_exp": 1,
+          "and_got": 1,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 0,
+          "xor_got": 0
+        }
+      ]
+    },
+    {
+      "pair": [
+        "3",
+        "4"
+      ],
+      "patterns": [
+        "C",
+        "E"
+      ],
+      "strong_a": 4,
+      "strong_b": 5,
+      "overlap_pct": 0.0,
+      "analysis": {
+        "and_fidelity": 1.0,
+        "or_fidelity": 1.0,
+        "xor_fidelity": 1.0,
+        "mean_fidelity": 1.0,
+        "total_bits": 4,
+        "and_correct": 4,
+        "or_correct": 4,
+        "xor_correct": 4,
+        "rod_thresholds": {
+          "3": 418932.8,
+          "4": 590243.1
+        }
+      },
+      "per_freq": [
+        {
+          "freq": 1536.4,
+          "category": "a_only",
+          "mag_a": 3111625.4,
+          "mag_b": 945620.5,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 1895.7,
+          "category": "b_only",
+          "mag_a": 10189268.7,
+          "mag_b": 19760786.9,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2584.4,
+          "category": "b_only",
+          "mag_a": 1396292.1,
+          "mag_b": 1180486.2,
+          "det_a": 0,
+          "det_b": 1,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        },
+        {
+          "freq": 2833.8,
+          "category": "a_only",
+          "mag_a": 837865.6,
+          "mag_b": 650667.2,
+          "det_a": 1,
+          "det_b": 0,
+          "and_exp": 0,
+          "and_got": 0,
+          "or_exp": 1,
+          "or_got": 1,
+          "xor_exp": 1,
+          "xor_got": 1
+        }
+      ]
+    }
+  ],
+  "total_duration_s": 115.6
+}

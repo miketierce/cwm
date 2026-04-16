@@ -1,0 +1,24 @@
+{
+  "timestamp": "2026-04-09T02:51:41.240864+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    1
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "m0TugjDPgHH7oPF3VXi7",
+      "experimentId": "exp01-mode-persistence"
+    },
+    {
+      "ok": true,
+      "id": "lFuQiCeewXgdh8W4Llk3",
+      "experimentId": "exp01-mode-persistence"
+    },
+    {
+      "ok": true,
+      "id": "ZflhniTsRfQcmfLxBrSu",
+      "experimentId": "exp01-mode-persistence"
+    }
+  ]
+}

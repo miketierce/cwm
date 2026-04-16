@@ -1,0 +1,788 @@
+[
+  {
+    "test": "A",
+    "test_name": "same_plate_pulsed_ringdown",
+    "timestamp": "2026-04-13T21:10:45.757502+00:00",
+    "plate_name": "A",
+    "plate_id": "1",
+    "n_modes": 3,
+    "n_input_bits": 3,
+    "n_patterns": 60,
+    "t_excite_ms": 300.0,
+    "delays_ms": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "delay_results": [
+      {
+        "delay_ms": 1,
+        "tasks": {
+          "parity_raw": {
+            "train": 68.9,
+            "test": 73.3
+          },
+          "parity_poly": {
+            "train": 73.3,
+            "test": 66.7
+          },
+          "pattern_raw": {
+            "train": 26.7,
+            "test": 20.0
+          },
+          "pattern_poly": {
+            "train": 40.0,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.0906,
+        "driven_mean": 9.317,
+        "silent_mean": 9.279,
+        "capture_time_s": 26.0
+      },
+      {
+        "delay_ms": 5,
+        "tasks": {
+          "parity_raw": {
+            "train": 64.4,
+            "test": 60.0
+          },
+          "parity_poly": {
+            "train": 66.7,
+            "test": 53.3
+          },
+          "pattern_raw": {
+            "train": 28.9,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 40.0,
+            "test": 13.3
+          }
+        },
+        "ringdown_snr": -0.0392,
+        "driven_mean": 9.267,
+        "silent_mean": 9.283,
+        "capture_time_s": 26.0
+      },
+      {
+        "delay_ms": 10,
+        "tasks": {
+          "parity_raw": {
+            "train": 66.7,
+            "test": 60.0
+          },
+          "parity_poly": {
+            "train": 66.7,
+            "test": 60.0
+          },
+          "pattern_raw": {
+            "train": 31.1,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 46.7,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.048,
+        "driven_mean": 9.289,
+        "silent_mean": 9.31,
+        "capture_time_s": 26.9
+      },
+      {
+        "delay_ms": 20,
+        "tasks": {
+          "parity_raw": {
+            "train": 68.9,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 71.1,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 20.0,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 28.9,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.0375,
+        "driven_mean": 9.318,
+        "silent_mean": 9.302,
+        "capture_time_s": 26.9
+      },
+      {
+        "delay_ms": 50,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 60.0
+          },
+          "parity_poly": {
+            "train": 66.7,
+            "test": 53.3
+          },
+          "pattern_raw": {
+            "train": 35.6,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 42.2,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.1244,
+        "driven_mean": 9.356,
+        "silent_mean": 9.299,
+        "capture_time_s": 28.8
+      }
+    ],
+    "best_parity_pct": 66.7,
+    "best_pattern_pct": 13.3,
+    "best_ringdown_snr": 0.1244,
+    "has_memory": false,
+    "mode_freqs_hz": [
+      29700.0,
+      89425.0,
+      18775.0
+    ]
+  },
+  {
+    "test": "A",
+    "test_name": "same_plate_pulsed_ringdown",
+    "timestamp": "2026-04-13T21:12:56.247948+00:00",
+    "plate_name": "B",
+    "plate_id": "2",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_patterns": 60,
+    "t_excite_ms": 300.0,
+    "delays_ms": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "delay_results": [
+      {
+        "delay_ms": 1,
+        "tasks": {
+          "parity_raw": {
+            "train": 66.7,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 75.6,
+            "test": 60.0
+          },
+          "pattern_raw": {
+            "train": 35.6,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.0101,
+        "driven_mean": 9.364,
+        "silent_mean": 9.36,
+        "capture_time_s": 25.0
+      },
+      {
+        "delay_ms": 5,
+        "tasks": {
+          "parity_raw": {
+            "train": 68.9,
+            "test": 53.3
+          },
+          "parity_poly": {
+            "train": 82.2,
+            "test": 53.3
+          },
+          "pattern_raw": {
+            "train": 46.7,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 66.7,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.1525,
+        "driven_mean": 9.397,
+        "silent_mean": 9.335,
+        "capture_time_s": 25.2
+      },
+      {
+        "delay_ms": 10,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 26.7
+          },
+          "parity_poly": {
+            "train": 84.4,
+            "test": 33.3
+          },
+          "pattern_raw": {
+            "train": 42.2,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.0079,
+        "driven_mean": 9.348,
+        "silent_mean": 9.345,
+        "capture_time_s": 26.0
+      },
+      {
+        "delay_ms": 20,
+        "tasks": {
+          "parity_raw": {
+            "train": 66.7,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 82.2,
+            "test": 26.7
+          },
+          "pattern_raw": {
+            "train": 40.0,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 68.9,
+            "test": 13.3
+          }
+        },
+        "ringdown_snr": 0.0147,
+        "driven_mean": 9.332,
+        "silent_mean": 9.326,
+        "capture_time_s": 26.2
+      },
+      {
+        "delay_ms": 50,
+        "tasks": {
+          "parity_raw": {
+            "train": 73.3,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 80.0,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 35.6,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.1025,
+        "driven_mean": 9.332,
+        "silent_mean": 9.372,
+        "capture_time_s": 27.9
+      }
+    ],
+    "best_parity_pct": 60.0,
+    "best_pattern_pct": 13.3,
+    "best_ringdown_snr": 0.1525,
+    "has_memory": false,
+    "mode_freqs_hz": [
+      29200.0,
+      49650.0,
+      28825.0,
+      18950.0,
+      15125.0,
+      89350.0
+    ]
+  },
+  {
+    "test": "A",
+    "test_name": "same_plate_pulsed_ringdown",
+    "timestamp": "2026-04-13T21:15:09.201884+00:00",
+    "plate_name": "C",
+    "plate_id": "3",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_patterns": 60,
+    "t_excite_ms": 300.0,
+    "delays_ms": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "delay_results": [
+      {
+        "delay_ms": 1,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 33.3
+          },
+          "parity_poly": {
+            "train": 73.3,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 66.7,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0289,
+        "driven_mean": 9.352,
+        "silent_mean": 9.365,
+        "capture_time_s": 25.2
+      },
+      {
+        "delay_ms": 5,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 53.3
+          },
+          "parity_poly": {
+            "train": 73.3,
+            "test": 40.0
+          },
+          "pattern_raw": {
+            "train": 35.6,
+            "test": 0.0
+          },
+          "pattern_poly": {
+            "train": 77.8,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0686,
+        "driven_mean": 9.378,
+        "silent_mean": 9.407,
+        "capture_time_s": 25.9
+      },
+      {
+        "delay_ms": 10,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 46.7
+          },
+          "parity_poly": {
+            "train": 77.8,
+            "test": 66.7
+          },
+          "pattern_raw": {
+            "train": 48.9,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 68.9,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0071,
+        "driven_mean": 9.367,
+        "silent_mean": 9.37,
+        "capture_time_s": 26.1
+      },
+      {
+        "delay_ms": 20,
+        "tasks": {
+          "parity_raw": {
+            "train": 64.4,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 77.8,
+            "test": 33.3
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 0.0
+          },
+          "pattern_poly": {
+            "train": 66.7,
+            "test": 0.0
+          }
+        },
+        "ringdown_snr": -0.0529,
+        "driven_mean": 9.386,
+        "silent_mean": 9.405,
+        "capture_time_s": 26.9
+      },
+      {
+        "delay_ms": 50,
+        "tasks": {
+          "parity_raw": {
+            "train": 80.0,
+            "test": 60.0
+          },
+          "parity_poly": {
+            "train": 80.0,
+            "test": 60.0
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 13.3
+          }
+        },
+        "ringdown_snr": -0.0827,
+        "driven_mean": 9.381,
+        "silent_mean": 9.417,
+        "capture_time_s": 28.6
+      }
+    ],
+    "best_parity_pct": 66.7,
+    "best_pattern_pct": 13.3,
+    "best_ringdown_snr": -0.0071,
+    "has_memory": false,
+    "mode_freqs_hz": [
+      43175.0,
+      49625.0,
+      31400.0,
+      26175.0,
+      61650.0,
+      89325.0
+    ]
+  },
+  {
+    "test": "A",
+    "test_name": "same_plate_pulsed_ringdown",
+    "timestamp": "2026-04-13T21:17:17.097033+00:00",
+    "plate_name": "D",
+    "plate_id": "4",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_patterns": 60,
+    "t_excite_ms": 300.0,
+    "delays_ms": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "delay_results": [
+      {
+        "delay_ms": 1,
+        "tasks": {
+          "parity_raw": {
+            "train": 73.3,
+            "test": 33.3
+          },
+          "parity_poly": {
+            "train": 82.2,
+            "test": 40.0
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 73.3,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": 0.0108,
+        "driven_mean": 9.446,
+        "silent_mean": 9.441,
+        "capture_time_s": 24.5
+      },
+      {
+        "delay_ms": 5,
+        "tasks": {
+          "parity_raw": {
+            "train": 66.7,
+            "test": 66.7
+          },
+          "parity_poly": {
+            "train": 86.7,
+            "test": 40.0
+          },
+          "pattern_raw": {
+            "train": 42.2,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 77.8,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0526,
+        "driven_mean": 9.398,
+        "silent_mean": 9.42,
+        "capture_time_s": 24.6
+      },
+      {
+        "delay_ms": 10,
+        "tasks": {
+          "parity_raw": {
+            "train": 75.6,
+            "test": 53.3
+          },
+          "parity_poly": {
+            "train": 80.0,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 55.6,
+            "test": 0.0
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0484,
+        "driven_mean": 9.438,
+        "silent_mean": 9.457,
+        "capture_time_s": 25.1
+      },
+      {
+        "delay_ms": 20,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 84.4,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 82.2,
+            "test": 13.3
+          }
+        },
+        "ringdown_snr": 0.0658,
+        "driven_mean": 9.437,
+        "silent_mean": 9.411,
+        "capture_time_s": 25.7
+      },
+      {
+        "delay_ms": 50,
+        "tasks": {
+          "parity_raw": {
+            "train": 77.8,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 80.0,
+            "test": 46.7
+          },
+          "pattern_raw": {
+            "train": 46.7,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 73.3,
+            "test": 0.0
+          }
+        },
+        "ringdown_snr": 0.0992,
+        "driven_mean": 9.432,
+        "silent_mean": 9.39,
+        "capture_time_s": 27.7
+      }
+    ],
+    "best_parity_pct": 46.7,
+    "best_pattern_pct": 13.3,
+    "best_ringdown_snr": 0.0992,
+    "has_memory": false,
+    "mode_freqs_hz": [
+      49625.0,
+      29925.0,
+      90275.0,
+      78125.0,
+      89375.0,
+      90025.0,
+      45025.0,
+      94675.0
+    ]
+  },
+  {
+    "test": "A",
+    "test_name": "same_plate_pulsed_ringdown",
+    "timestamp": "2026-04-13T21:19:27.131209+00:00",
+    "plate_name": "E",
+    "plate_id": "5",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_patterns": 60,
+    "t_excite_ms": 300.0,
+    "delays_ms": [
+      1,
+      5,
+      10,
+      20,
+      50
+    ],
+    "delay_results": [
+      {
+        "delay_ms": 1,
+        "tasks": {
+          "parity_raw": {
+            "train": 75.6,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 80.0,
+            "test": 40.0
+          },
+          "pattern_raw": {
+            "train": 35.6,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 71.1,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0132,
+        "driven_mean": 9.37,
+        "silent_mean": 9.375,
+        "capture_time_s": 24.9
+      },
+      {
+        "delay_ms": 5,
+        "tasks": {
+          "parity_raw": {
+            "train": 66.7,
+            "test": 60.0
+          },
+          "parity_poly": {
+            "train": 86.7,
+            "test": 60.0
+          },
+          "pattern_raw": {
+            "train": 55.6,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 80.0,
+            "test": 0.0
+          }
+        },
+        "ringdown_snr": -0.0035,
+        "driven_mean": 9.365,
+        "silent_mean": 9.367,
+        "capture_time_s": 25.3
+      },
+      {
+        "delay_ms": 10,
+        "tasks": {
+          "parity_raw": {
+            "train": 84.4,
+            "test": 40.0
+          },
+          "parity_poly": {
+            "train": 88.9,
+            "test": 40.0
+          },
+          "pattern_raw": {
+            "train": 57.8,
+            "test": 13.3
+          },
+          "pattern_poly": {
+            "train": 77.8,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0703,
+        "driven_mean": 9.35,
+        "silent_mean": 9.379,
+        "capture_time_s": 25.6
+      },
+      {
+        "delay_ms": 20,
+        "tasks": {
+          "parity_raw": {
+            "train": 68.9,
+            "test": 53.3
+          },
+          "parity_poly": {
+            "train": 82.2,
+            "test": 53.3
+          },
+          "pattern_raw": {
+            "train": 46.7,
+            "test": 0.0
+          },
+          "pattern_poly": {
+            "train": 86.7,
+            "test": 0.0
+          }
+        },
+        "ringdown_snr": 0.0219,
+        "driven_mean": 9.37,
+        "silent_mean": 9.362,
+        "capture_time_s": 26.2
+      },
+      {
+        "delay_ms": 50,
+        "tasks": {
+          "parity_raw": {
+            "train": 71.1,
+            "test": 46.7
+          },
+          "parity_poly": {
+            "train": 82.2,
+            "test": 53.3
+          },
+          "pattern_raw": {
+            "train": 44.4,
+            "test": 6.7
+          },
+          "pattern_poly": {
+            "train": 73.3,
+            "test": 6.7
+          }
+        },
+        "ringdown_snr": -0.0049,
+        "driven_mean": 9.363,
+        "silent_mean": 9.365,
+        "capture_time_s": 27.9
+      }
+    ],
+    "best_parity_pct": 60.0,
+    "best_pattern_pct": 6.7,
+    "best_ringdown_snr": 0.0219,
+    "has_memory": false,
+    "mode_freqs_hz": [
+      49675.0,
+      29250.0,
+      29975.0,
+      28875.0,
+      34500.0,
+      26200.0,
+      89475.0,
+      94775.0
+    ]
+  }
+]

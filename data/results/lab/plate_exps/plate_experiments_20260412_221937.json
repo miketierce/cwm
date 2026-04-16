@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-04-13T03:43:50.105035+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    2
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "x3jdFBosF6i9dhe5HK2N",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "kIkYTmR0JgxeR6ud5yZC",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "XROVHCPoFfhUyTbyeBH8",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "uEfmxVniMMbcciB7P4Xb",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "hUqYxLOutXkfeegvIJvr",
+      "experimentId": "exp05-plate-mode-survey"
+    }
+  ]
+}

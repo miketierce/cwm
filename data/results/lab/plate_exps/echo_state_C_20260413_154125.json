@@ -1,0 +1,273 @@
+{
+  "timestamp": "2026-04-13T20:48:59.389030+00:00",
+  "plate_name": "C",
+  "plate_id": "3",
+  "n_modes": 6,
+  "n_input_bits": 4,
+  "n_sequences": 60,
+  "t_excite_ms": 200.0,
+  "delays_ms": [
+    2,
+    5,
+    10,
+    20,
+    50,
+    100,
+    150
+  ],
+  "delay_results": [
+    {
+      "delay_ms": 2,
+      "tasks": {
+        "current_raw": {
+          "train": 68.9,
+          "test": 46.7
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 93.3
+        },
+        "previous_raw": {
+          "train": 75.6,
+          "test": 40.0
+        },
+        "previous_poly": {
+          "train": 86.7,
+          "test": 46.7
+        },
+        "xor_seq_raw": {
+          "train": 60.0,
+          "test": 60.0
+        },
+        "xor_seq_poly": {
+          "train": 91.1,
+          "test": 60.0
+        }
+      },
+      "echo_snr": -0.1256,
+      "echo_mean": 9.329,
+      "noise_mean": 9.382,
+      "capture_time_s": 18.4
+    },
+    {
+      "delay_ms": 5,
+      "tasks": {
+        "current_raw": {
+          "train": 55.6,
+          "test": 60.0
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 100.0
+        },
+        "previous_raw": {
+          "train": 75.6,
+          "test": 40.0
+        },
+        "previous_poly": {
+          "train": 82.2,
+          "test": 46.7
+        },
+        "xor_seq_raw": {
+          "train": 66.7,
+          "test": 46.7
+        },
+        "xor_seq_poly": {
+          "train": 84.4,
+          "test": 46.7
+        }
+      },
+      "echo_snr": -0.0988,
+      "echo_mean": 9.352,
+      "noise_mean": 9.39,
+      "capture_time_s": 18.5
+    },
+    {
+      "delay_ms": 10,
+      "tasks": {
+        "current_raw": {
+          "train": 75.6,
+          "test": 46.7
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 100.0
+        },
+        "previous_raw": {
+          "train": 75.6,
+          "test": 33.3
+        },
+        "previous_poly": {
+          "train": 80.0,
+          "test": 40.0
+        },
+        "xor_seq_raw": {
+          "train": 60.0,
+          "test": 60.0
+        },
+        "xor_seq_poly": {
+          "train": 77.8,
+          "test": 40.0
+        }
+      },
+      "echo_snr": 0.1177,
+      "echo_mean": 9.398,
+      "noise_mean": 9.35,
+      "capture_time_s": 19.0
+    },
+    {
+      "delay_ms": 20,
+      "tasks": {
+        "current_raw": {
+          "train": 57.8,
+          "test": 60.0
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 100.0
+        },
+        "previous_raw": {
+          "train": 75.6,
+          "test": 33.3
+        },
+        "previous_poly": {
+          "train": 82.2,
+          "test": 46.7
+        },
+        "xor_seq_raw": {
+          "train": 60.0,
+          "test": 53.3
+        },
+        "xor_seq_poly": {
+          "train": 82.2,
+          "test": 53.3
+        }
+      },
+      "echo_snr": -0.0359,
+      "echo_mean": 9.347,
+      "noise_mean": 9.361,
+      "capture_time_s": 19.5
+    },
+    {
+      "delay_ms": 50,
+      "tasks": {
+        "current_raw": {
+          "train": 62.2,
+          "test": 66.7
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 100.0
+        },
+        "previous_raw": {
+          "train": 77.8,
+          "test": 40.0
+        },
+        "previous_poly": {
+          "train": 80.0,
+          "test": 40.0
+        },
+        "xor_seq_raw": {
+          "train": 68.9,
+          "test": 73.3
+        },
+        "xor_seq_poly": {
+          "train": 86.7,
+          "test": 40.0
+        }
+      },
+      "echo_snr": -0.095,
+      "echo_mean": 9.346,
+      "noise_mean": 9.381,
+      "capture_time_s": 21.5
+    },
+    {
+      "delay_ms": 100,
+      "tasks": {
+        "current_raw": {
+          "train": 62.2,
+          "test": 46.7
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 93.3
+        },
+        "previous_raw": {
+          "train": 77.8,
+          "test": 33.3
+        },
+        "previous_poly": {
+          "train": 80.0,
+          "test": 40.0
+        },
+        "xor_seq_raw": {
+          "train": 55.6,
+          "test": 53.3
+        },
+        "xor_seq_poly": {
+          "train": 82.2,
+          "test": 40.0
+        }
+      },
+      "echo_snr": -0.0301,
+      "echo_mean": 9.355,
+      "noise_mean": 9.369,
+      "capture_time_s": 24.5
+    },
+    {
+      "delay_ms": 150,
+      "tasks": {
+        "current_raw": {
+          "train": 53.3,
+          "test": 60.0
+        },
+        "current_poly": {
+          "train": 100.0,
+          "test": 100.0
+        },
+        "previous_raw": {
+          "train": 77.8,
+          "test": 26.7
+        },
+        "previous_poly": {
+          "train": 86.7,
+          "test": 53.3
+        },
+        "xor_seq_raw": {
+          "train": 64.4,
+          "test": 46.7
+        },
+        "xor_seq_poly": {
+          "train": 75.6,
+          "test": 40.0
+        }
+      },
+      "echo_snr": -0.0395,
+      "echo_mean": 9.357,
+      "noise_mean": 9.373,
+      "capture_time_s": 27.3
+    }
+  ],
+  "memory_horizon_ms": 0,
+  "best_current_pct": 100.0,
+  "best_previous_pct": 53.3,
+  "best_xor_seq_pct": 60.0,
+  "has_memory": false,
+  "has_temporal_compute": false,
+  "mode_freqs_hz": [
+    43175.0,
+    49625.0,
+    31400.0,
+    26175.0,
+    61650.0,
+    89325.0
+  ],
+  "readout_freqs_hz": [
+    26175.0,
+    31400.0,
+    43175.0,
+    49625.0,
+    61650.0,
+    89325.0
+  ]
+}

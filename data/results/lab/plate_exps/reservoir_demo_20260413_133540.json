@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-04-13T18:38:20.720446+00:00",
+  "plate_name": "E",
+  "plate_id": "5",
+  "n_modes": 8,
+  "n_input_bits": 4,
+  "n_train": 40,
+  "n_test": 20,
+  "train_accuracy_pct": 77.5,
+  "test_accuracy_pct": 60.0,
+  "confusion_matrix": [
+    [
+      2,
+      8
+    ],
+    [
+      0,
+      10
+    ]
+  ],
+  "readout_weights_shape": [
+    9,
+    2
+  ],
+  "trainable_params": 18,
+  "capture_time_s": 156.7,
+  "mode_freqs_hz": [
+    49675.0,
+    29250.0,
+    29975.0,
+    28875.0,
+    34500.0,
+    26200.0,
+    89475.0,
+    94775.0
+  ],
+  "feature_matrix_shape": [
+    60,
+    8
+  ]
+}

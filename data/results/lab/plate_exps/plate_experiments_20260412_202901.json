@@ -1,0 +1,37 @@
+{
+  "timestamp": "2026-04-13T01:29:04.510351+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    5
+  ],
+  "results": [
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: mean_mode_spacing must be <= 10000\",\n  \"message\": \"Validation errors: mean_mode_spacing must be <= 10000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: mean_mode_spacing must be <= 10000\",\n  \"message\": \"Validation errors: mean_mode_spacing must be <= 10000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: mean_mode_spacing must be <= 10000\",\n  \"message\": \"Validation errors: mean_mode_spacing must be <= 10000\"\n}",
+      "status": 400,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "nQdQ4S3v2SCSs4JAIx4J",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": true,
+      "id": "F0qcTR8LcHetPPhjYoyr",
+      "experimentId": "exp05-plate-mode-survey"
+    }
+  ]
+}

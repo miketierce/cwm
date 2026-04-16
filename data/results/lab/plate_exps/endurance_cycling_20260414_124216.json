@@ -1,0 +1,483 @@
+{
+  "experiment": "plate_endurance_cycling",
+  "experiment_id": "E25",
+  "timestamp": "2026-04-14T18:07:48.173540+00:00",
+  "paper_claim": ">10^15 non-destructive cycles (\u00a71.3, \u00a710.1)",
+  "rod_baseline": {
+    "cycles": 549000,
+    "max_change_db": 0.2
+  },
+  "config": {
+    "drive_duration_s": 300,
+    "n_avg": 8,
+    "drive_uvpp": 2000000,
+    "checkpoint_interval_s": 60
+  },
+  "plate_results": [
+    {
+      "plate_id": "1",
+      "plate_name": "A",
+      "drive_freq_hz": 29700.0,
+      "drive_duration_s": 300.3,
+      "estimated_cycles": 8918734,
+      "baseline": {
+        "29700.0": 5968702.9,
+        "89425.0": 4564318.8,
+        "18775.0": 1862450.3
+      },
+      "post_stress": {
+        "29700.0": 5954113.5,
+        "89425.0": 4554739.3,
+        "18775.0": 1870751.2
+      },
+      "per_peak": [
+        {
+          "freq_hz": 29700.0,
+          "pre": 5968702.9,
+          "post": 5954113.5,
+          "change_pct": -0.2,
+          "ratio_db": -0.02
+        },
+        {
+          "freq_hz": 89425.0,
+          "pre": 4564318.8,
+          "post": 4554739.3,
+          "change_pct": -0.2,
+          "ratio_db": -0.02
+        },
+        {
+          "freq_hz": 18775.0,
+          "pre": 1862450.3,
+          "post": 1870751.2,
+          "change_pct": 0.4,
+          "ratio_db": 0.04
+        }
+      ],
+      "checkpoints": [
+        {
+          "elapsed_s": 60.3,
+          "magnitude": 5986395.4
+        },
+        {
+          "elapsed_s": 120.6,
+          "magnitude": 5978935.5
+        },
+        {
+          "elapsed_s": 180.8,
+          "magnitude": 5969217.3
+        },
+        {
+          "elapsed_s": 240.0,
+          "magnitude": 5970043.0
+        }
+      ],
+      "max_change_pct": 0.4,
+      "max_change_db": 0.04,
+      "mean_change_db": 0.03,
+      "checkpoint_drift_pct": -0.3,
+      "verdict": "PASS \u2014 max change 0.04 dB (\u22640.5 dB threshold)"
+    },
+    {
+      "plate_id": "2",
+      "plate_name": "B",
+      "drive_freq_hz": 29200.0,
+      "drive_duration_s": 300.9,
+      "estimated_cycles": 8787556,
+      "baseline": {
+        "29200.0": 7204427.2,
+        "49650.0": 5250634.1,
+        "28825.0": 3843246.7,
+        "18950.0": 1776500.0,
+        "15125.0": 1517019.4,
+        "89350.0": 1357084.6
+      },
+      "post_stress": {
+        "29200.0": 7204983.5,
+        "49650.0": 5246763.2,
+        "28825.0": 3833940.5,
+        "18950.0": 1774976.6,
+        "15125.0": 1517581.6,
+        "89350.0": 1343138.3
+      },
+      "per_peak": [
+        {
+          "freq_hz": 29200.0,
+          "pre": 7204427.2,
+          "post": 7204983.5,
+          "change_pct": 0.0,
+          "ratio_db": 0.0
+        },
+        {
+          "freq_hz": 49650.0,
+          "pre": 5250634.1,
+          "post": 5246763.2,
+          "change_pct": -0.1,
+          "ratio_db": -0.01
+        },
+        {
+          "freq_hz": 28825.0,
+          "pre": 3843246.7,
+          "post": 3833940.5,
+          "change_pct": -0.2,
+          "ratio_db": -0.02
+        },
+        {
+          "freq_hz": 18950.0,
+          "pre": 1776500.0,
+          "post": 1774976.6,
+          "change_pct": -0.1,
+          "ratio_db": -0.01
+        },
+        {
+          "freq_hz": 15125.0,
+          "pre": 1517019.4,
+          "post": 1517581.6,
+          "change_pct": 0.0,
+          "ratio_db": 0.0
+        },
+        {
+          "freq_hz": 89350.0,
+          "pre": 1357084.6,
+          "post": 1343138.3,
+          "change_pct": -1.0,
+          "ratio_db": -0.09
+        }
+      ],
+      "checkpoints": [
+        {
+          "elapsed_s": 60.2,
+          "magnitude": 7201987.4
+        },
+        {
+          "elapsed_s": 120.6,
+          "magnitude": 7190213.7
+        },
+        {
+          "elapsed_s": 180.1,
+          "magnitude": 7176512.8
+        },
+        {
+          "elapsed_s": 240.5,
+          "magnitude": 7201911.5
+        }
+      ],
+      "max_change_pct": 1.0,
+      "max_change_db": 0.09,
+      "mean_change_db": 0.02,
+      "checkpoint_drift_pct": -0.0,
+      "verdict": "PASS \u2014 max change 0.09 dB (\u22640.5 dB threshold)"
+    },
+    {
+      "plate_id": "3",
+      "plate_name": "C",
+      "drive_freq_hz": 43175.0,
+      "drive_duration_s": 300.4,
+      "estimated_cycles": 12969433,
+      "baseline": {
+        "43175.0": 5979435.7,
+        "49625.0": 5680877.8,
+        "31400.0": 4812568.8,
+        "26175.0": 2729451.8,
+        "61650.0": 2538313.6,
+        "89325.0": 2372867.4
+      },
+      "post_stress": {
+        "43175.0": 5982412.9,
+        "49625.0": 5679803.1,
+        "31400.0": 4816912.5,
+        "26175.0": 2733166.7,
+        "61650.0": 2535260.2,
+        "89325.0": 2360495.7
+      },
+      "per_peak": [
+        {
+          "freq_hz": 43175.0,
+          "pre": 5979435.7,
+          "post": 5982412.9,
+          "change_pct": 0.0,
+          "ratio_db": 0.0
+        },
+        {
+          "freq_hz": 49625.0,
+          "pre": 5680877.8,
+          "post": 5679803.1,
+          "change_pct": -0.0,
+          "ratio_db": -0.0
+        },
+        {
+          "freq_hz": 31400.0,
+          "pre": 4812568.8,
+          "post": 4816912.5,
+          "change_pct": 0.1,
+          "ratio_db": 0.01
+        },
+        {
+          "freq_hz": 26175.0,
+          "pre": 2729451.8,
+          "post": 2733166.7,
+          "change_pct": 0.1,
+          "ratio_db": 0.01
+        },
+        {
+          "freq_hz": 61650.0,
+          "pre": 2538313.6,
+          "post": 2535260.2,
+          "change_pct": -0.1,
+          "ratio_db": -0.01
+        },
+        {
+          "freq_hz": 89325.0,
+          "pre": 2372867.4,
+          "post": 2360495.7,
+          "change_pct": -0.5,
+          "ratio_db": -0.05
+        }
+      ],
+      "checkpoints": [
+        {
+          "elapsed_s": 60.5,
+          "magnitude": 5989616.5
+        },
+        {
+          "elapsed_s": 120.9,
+          "magnitude": 5992792.7
+        },
+        {
+          "elapsed_s": 180.4,
+          "magnitude": 5990103.1
+        },
+        {
+          "elapsed_s": 240.9,
+          "magnitude": 5984908.0
+        }
+      ],
+      "max_change_pct": 0.5,
+      "max_change_db": 0.05,
+      "mean_change_db": 0.01,
+      "checkpoint_drift_pct": -0.1,
+      "verdict": "PASS \u2014 max change 0.05 dB (\u22640.5 dB threshold)"
+    },
+    {
+      "plate_id": "4",
+      "plate_name": "D",
+      "drive_freq_hz": 49625.0,
+      "drive_duration_s": 300.7,
+      "estimated_cycles": 14921545,
+      "baseline": {
+        "49625.0": 5398558.1,
+        "29925.0": 4328543.1,
+        "90275.0": 2522562.9,
+        "78125.0": 2371142.0,
+        "89375.0": 1934054.4,
+        "90025.0": 1749822.2,
+        "45025.0": 1526993.8,
+        "94675.0": 1490315.1
+      },
+      "post_stress": {
+        "49625.0": 5395704.3,
+        "29925.0": 4316494.3,
+        "90275.0": 2510384.6,
+        "78125.0": 2372228.6,
+        "89375.0": 1938030.0,
+        "90025.0": 1758683.4,
+        "45025.0": 1537486.5,
+        "94675.0": 1478881.9
+      },
+      "per_peak": [
+        {
+          "freq_hz": 49625.0,
+          "pre": 5398558.1,
+          "post": 5395704.3,
+          "change_pct": -0.1,
+          "ratio_db": -0.0
+        },
+        {
+          "freq_hz": 29925.0,
+          "pre": 4328543.1,
+          "post": 4316494.3,
+          "change_pct": -0.3,
+          "ratio_db": -0.02
+        },
+        {
+          "freq_hz": 90275.0,
+          "pre": 2522562.9,
+          "post": 2510384.6,
+          "change_pct": -0.5,
+          "ratio_db": -0.04
+        },
+        {
+          "freq_hz": 78125.0,
+          "pre": 2371142.0,
+          "post": 2372228.6,
+          "change_pct": 0.0,
+          "ratio_db": 0.0
+        },
+        {
+          "freq_hz": 89375.0,
+          "pre": 1934054.4,
+          "post": 1938030.0,
+          "change_pct": 0.2,
+          "ratio_db": 0.02
+        },
+        {
+          "freq_hz": 90025.0,
+          "pre": 1749822.2,
+          "post": 1758683.4,
+          "change_pct": 0.5,
+          "ratio_db": 0.04
+        },
+        {
+          "freq_hz": 45025.0,
+          "pre": 1526993.8,
+          "post": 1537486.5,
+          "change_pct": 0.7,
+          "ratio_db": 0.06
+        },
+        {
+          "freq_hz": 94675.0,
+          "pre": 1490315.1,
+          "post": 1478881.9,
+          "change_pct": -0.8,
+          "ratio_db": -0.07
+        }
+      ],
+      "checkpoints": [
+        {
+          "elapsed_s": 60.5,
+          "magnitude": 5392767.7
+        },
+        {
+          "elapsed_s": 120.9,
+          "magnitude": 5398207.1
+        },
+        {
+          "elapsed_s": 180.2,
+          "magnitude": 5397483.0
+        },
+        {
+          "elapsed_s": 240.4,
+          "magnitude": 5388234.5
+        }
+      ],
+      "max_change_pct": 0.8,
+      "max_change_db": 0.07,
+      "mean_change_db": 0.03,
+      "checkpoint_drift_pct": -0.1,
+      "verdict": "PASS \u2014 max change 0.07 dB (\u22640.5 dB threshold)"
+    },
+    {
+      "plate_id": "5",
+      "plate_name": "E",
+      "drive_freq_hz": 49675.0,
+      "drive_duration_s": 300.9,
+      "estimated_cycles": 14949400,
+      "baseline": {
+        "49675.0": 8551011.9,
+        "29250.0": 7262002.6,
+        "29975.0": 6839197.8,
+        "28875.0": 4075077.3,
+        "34500.0": 2656970.7,
+        "26200.0": 2518877.3,
+        "89475.0": 2627409.3,
+        "94775.0": 1446960.9
+      },
+      "post_stress": {
+        "49675.0": 8555946.3,
+        "29250.0": 7274508.5,
+        "29975.0": 6877891.2,
+        "28875.0": 4052140.4,
+        "34500.0": 2645153.6,
+        "26200.0": 2544301.9,
+        "89475.0": 2625785.0,
+        "94775.0": 1449631.4
+      },
+      "per_peak": [
+        {
+          "freq_hz": 49675.0,
+          "pre": 8551011.9,
+          "post": 8555946.3,
+          "change_pct": 0.1,
+          "ratio_db": 0.01
+        },
+        {
+          "freq_hz": 29250.0,
+          "pre": 7262002.6,
+          "post": 7274508.5,
+          "change_pct": 0.2,
+          "ratio_db": 0.01
+        },
+        {
+          "freq_hz": 29975.0,
+          "pre": 6839197.8,
+          "post": 6877891.2,
+          "change_pct": 0.6,
+          "ratio_db": 0.05
+        },
+        {
+          "freq_hz": 28875.0,
+          "pre": 4075077.3,
+          "post": 4052140.4,
+          "change_pct": -0.6,
+          "ratio_db": -0.05
+        },
+        {
+          "freq_hz": 34500.0,
+          "pre": 2656970.7,
+          "post": 2645153.6,
+          "change_pct": -0.4,
+          "ratio_db": -0.04
+        },
+        {
+          "freq_hz": 26200.0,
+          "pre": 2518877.3,
+          "post": 2544301.9,
+          "change_pct": 1.0,
+          "ratio_db": 0.09
+        },
+        {
+          "freq_hz": 89475.0,
+          "pre": 2627409.3,
+          "post": 2625785.0,
+          "change_pct": -0.1,
+          "ratio_db": -0.01
+        },
+        {
+          "freq_hz": 94775.0,
+          "pre": 1446960.9,
+          "post": 1449631.4,
+          "change_pct": 0.2,
+          "ratio_db": 0.02
+        }
+      ],
+      "checkpoints": [
+        {
+          "elapsed_s": 60.3,
+          "magnitude": 8541971.1
+        },
+        {
+          "elapsed_s": 120.6,
+          "magnitude": 8551128.5
+        },
+        {
+          "elapsed_s": 181.0,
+          "magnitude": 8548274.6
+        },
+        {
+          "elapsed_s": 240.5,
+          "magnitude": 8551703.4
+        }
+      ],
+      "max_change_pct": 1.0,
+      "max_change_db": 0.09,
+      "mean_change_db": 0.04,
+      "checkpoint_drift_pct": 0.1,
+      "verdict": "PASS \u2014 max change 0.09 dB (\u22640.5 dB threshold)"
+    }
+  ],
+  "summary": {
+    "plates_tested": 5,
+    "total_cycles": 60546668,
+    "worst_change_db": 0.09
+  },
+  "runtime_s": 1526.4
+}

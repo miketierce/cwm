@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-04-13T06:18:41.789992+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    3
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "Oo173RoQNwogvOtalDRJ",
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 401,\n  \"statusMessage\": \"Invalid auth token\",\n  \"message\": \"Invalid auth token\"\n}",
+      "status": 401,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 401,\n  \"statusMessage\": \"Invalid auth token\",\n  \"message\": \"Invalid auth token\"\n}",
+      "status": 401,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 401,\n  \"statusMessage\": \"Invalid auth token\",\n  \"message\": \"Invalid auth token\"\n}",
+      "status": 401,
+      "experimentId": "exp05-plate-mode-survey"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 401,\n  \"statusMessage\": \"Invalid auth token\",\n  \"message\": \"Invalid auth token\"\n}",
+      "status": 401,
+      "experimentId": "exp05-plate-mode-survey"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "timestamp": "2026-04-09T02:55:18.781436+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    4
+  ],
+  "results": [
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\",\n  \"message\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\"\n}",
+      "status": 400,
+      "experimentId": "exp-hw-auth"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\",\n  \"message\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\"\n}",
+      "status": 400,
+      "experimentId": "exp-hw-auth"
+    },
+    {
+      "ok": false,
+      "error": "{\n  \"error\": true,\n  \"url\": \"https://coherent-wave-memory.web.app/api/submit-experiment\",\n  \"statusCode\": 400,\n  \"statusMessage\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\",\n  \"message\": \"Validation errors: auth_rms_pct must be <= 100; auth_score_pct must be <= 100; next_best_score_pct must be <= 100\"\n}",
+      "status": 400,
+      "experimentId": "exp-hw-auth"
+    }
+  ]
+}

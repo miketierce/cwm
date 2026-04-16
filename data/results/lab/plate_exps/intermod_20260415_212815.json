@@ -1,0 +1,108 @@
+{
+  "experiment": "Intermodulation Test",
+  "timestamp": "20260415_212815",
+  "drive_freqs_hz": [
+    250.0,
+    400.0
+  ],
+  "drive_amplitude": 0.8,
+  "duration_s": 2.0,
+  "averages": 8,
+  "sample_rate": 192000,
+  "device": "KRONOS _ USB _ L&R",
+  "plate": "5",
+  "relay": 7,
+  "noise_floor": 1.008989000583985e-08,
+  "results": {
+    "3f1-2f2": {
+      "expected_freq_hz": 50.0,
+      "actual_freq_hz": 50.50013151075915,
+      "magnitude": 0.5238490344737226,
+      "snr_db": 154.3,
+      "is_drive": false,
+      "detected": true
+    },
+    "2f1-f2": {
+      "expected_freq_hz": 100.0,
+      "actual_freq_hz": 99.0002578131714,
+      "magnitude": 0.4810604243883314,
+      "snr_db": 153.6,
+      "is_drive": false,
+      "detected": true
+    },
+    "f2-f1": {
+      "expected_freq_hz": 150.0,
+      "actual_freq_hz": 150.00039062601726,
+      "magnitude": 0.3689721038953834,
+      "snr_db": 151.3,
+      "is_drive": false,
+      "detected": true
+    },
+    "f1": {
+      "expected_freq_hz": 250.0,
+      "actual_freq_hz": 251.5006549496223,
+      "magnitude": 0.35738922950205815,
+      "snr_db": 151.0,
+      "is_drive": true,
+      "detected": true
+    },
+    "f2": {
+      "expected_freq_hz": 400.0,
+      "actual_freq_hz": 400.5010429714661,
+      "magnitude": 0.3510532289071998,
+      "snr_db": 150.8,
+      "is_drive": true,
+      "detected": true
+    },
+    "2f1": {
+      "expected_freq_hz": 500.0,
+      "actual_freq_hz": 498.50129818046406,
+      "magnitude": 0.40235906559200435,
+      "snr_db": 152.0,
+      "is_drive": false,
+      "detected": true
+    },
+    "2f2-f1": {
+      "expected_freq_hz": 550.0,
+      "actual_freq_hz": 551.0014348995701,
+      "magnitude": 0.36272731514178386,
+      "snr_db": 151.1,
+      "is_drive": false,
+      "detected": true
+    },
+    "f1+f2": {
+      "expected_freq_hz": 650.0,
+      "actual_freq_hz": 649.5016914106548,
+      "magnitude": 0.32576986250640505,
+      "snr_db": 150.2,
+      "is_drive": false,
+      "detected": true
+    },
+    "3f2-2f1": {
+      "expected_freq_hz": 700.0,
+      "actual_freq_hz": 699.0018203172405,
+      "magnitude": 0.3513300492546101,
+      "snr_db": 150.8,
+      "is_drive": false,
+      "detected": true
+    },
+    "2f2": {
+      "expected_freq_hz": 800.0,
+      "actual_freq_hz": 800.5020846408455,
+      "magnitude": 0.2756263832091001,
+      "snr_db": 148.7,
+      "is_drive": false,
+      "detected": true
+    }
+  },
+  "intermod_detected": [
+    "3f1-2f2",
+    "2f1-f2",
+    "f2-f1",
+    "2f1",
+    "2f2-f1",
+    "f1+f2",
+    "3f2-2f1",
+    "2f2"
+  ]
+}

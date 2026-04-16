@@ -1,0 +1,2461 @@
+{
+  "timestamp": "2026-04-09T21:00:48.274981+00:00",
+  "experiments_run": [
+    "ringdown",
+    "orthogonality",
+    "lockin-snr",
+    "two-phase",
+    "snr",
+    "wave-speed",
+    "position",
+    "parametric",
+    "freq-stability"
+  ],
+  "total_duration_s": 554.6,
+  "results": {
+    "ringdown_q": {
+      "experiment": "ringdown_q_extraction",
+      "per_rod": {
+        "1": [
+          {
+            "freq_hz": 516.8,
+            "tau_ms": 17.546,
+            "Q_ringdown": 28.5,
+            "fit_r2": 0.3749,
+            "bw_3db_hz": 49.1,
+            "Q_bandwidth": 10.1,
+            "peak_envelope": 6135.8
+          },
+          {
+            "freq_hz": 2104.9,
+            "tau_ms": 23.101,
+            "Q_ringdown": 152.8,
+            "fit_r2": 0.0657,
+            "bw_3db_hz": 42.1,
+            "Q_bandwidth": 47.9,
+            "peak_envelope": 4667.5
+          },
+          {
+            "freq_hz": 5460.7,
+            "tau_ms": 30.342,
+            "Q_ringdown": 520.5,
+            "fit_r2": 0.072,
+            "bw_3db_hz": 341.29,
+            "Q_bandwidth": 16.2,
+            "peak_envelope": 4962.0
+          }
+        ],
+        "2": [
+          {
+            "freq_hz": 709.4,
+            "tau_ms": null,
+            "Q_ringdown": null,
+            "fit_r2": null,
+            "bw_3db_hz": 65.62,
+            "Q_bandwidth": 10.3,
+            "peak_envelope": 3284.9
+          },
+          {
+            "freq_hz": 2117.8,
+            "tau_ms": 11.445,
+            "Q_ringdown": 76.1,
+            "fit_r2": 0.2649,
+            "bw_3db_hz": 58.24,
+            "Q_bandwidth": 36.6,
+            "peak_envelope": 5015.4
+          },
+          {
+            "freq_hz": 6506.6,
+            "tau_ms": null,
+            "Q_ringdown": null,
+            "fit_r2": null,
+            "bw_3db_hz": 471.73,
+            "Q_bandwidth": 14.0,
+            "peak_envelope": 4080.0
+          }
+        ],
+        "3": [
+          {
+            "freq_hz": 913.1,
+            "tau_ms": null,
+            "Q_ringdown": null,
+            "fit_r2": null,
+            "bw_3db_hz": 86.75,
+            "Q_bandwidth": 10.9,
+            "peak_envelope": 3477.6
+          },
+          {
+            "freq_hz": 2833.8,
+            "tau_ms": 26.419,
+            "Q_ringdown": 235.2,
+            "fit_r2": 0.079,
+            "bw_3db_hz": 184.19,
+            "Q_bandwidth": 14.6,
+            "peak_envelope": 4681.0
+          },
+          {
+            "freq_hz": 9396.4,
+            "tau_ms": null,
+            "Q_ringdown": null,
+            "fit_r2": null,
+            "bw_3db_hz": 939.64,
+            "Q_bandwidth": 9.7,
+            "peak_envelope": 4596.7
+          }
+        ],
+        "4": [
+          {
+            "freq_hz": 867.7,
+            "tau_ms": 35.096,
+            "Q_ringdown": 95.7,
+            "fit_r2": 0.0435,
+            "bw_3db_hz": 82.43,
+            "Q_bandwidth": 10.8,
+            "peak_envelope": 4829.8
+          },
+          {
+            "freq_hz": 2088.0,
+            "tau_ms": null,
+            "Q_ringdown": null,
+            "fit_r2": null,
+            "bw_3db_hz": 93.96,
+            "Q_bandwidth": 22.6,
+            "peak_envelope": 4428.3
+          },
+          {
+            "freq_hz": 5892.7,
+            "tau_ms": 17.288,
+            "Q_ringdown": 320.0,
+            "fit_r2": 0.192,
+            "bw_3db_hz": 162.05,
+            "Q_bandwidth": 38.2,
+            "peak_envelope": 4868.7
+          }
+        ]
+      },
+      "all_q_ringdown": [
+        28.5,
+        152.8,
+        520.5,
+        76.1,
+        235.2,
+        95.7,
+        320.0
+      ],
+      "all_q_bandwidth": [
+        10.1,
+        47.9,
+        16.2,
+        10.3,
+        36.6,
+        14.0,
+        10.9,
+        14.6,
+        9.7,
+        10.8,
+        22.6,
+        38.2
+      ],
+      "paper_claim_q": 10000,
+      "paper_claim_tau_ms": 180
+    },
+    "mode_orthogonality": {
+      "experiment": "mode_orthogonality",
+      "per_rod": {
+        "1": [
+          {
+            "drive_peak_idx": 0,
+            "drive_freq_hz": 516.8,
+            "driven_magnitude": 52429.0,
+            "max_non_driven_magnitude": 18705.5,
+            "isolation_db": 9.0,
+            "snr_above_noise_db": 3.1,
+            "all_peak_mags": {
+              "0": 52429.0,
+              "1": 18705.5,
+              "2": 18164.0,
+              "3": 12711.4,
+              "4": 13095.8,
+              "5": 14303.2,
+              "6": 15009.2,
+              "7": 15756.4,
+              "8": 11797.6,
+              "9": 13782.3
+            }
+          },
+          {
+            "drive_peak_idx": 1,
+            "drive_freq_hz": 891.3,
+            "driven_magnitude": 107250.7,
+            "max_non_driven_magnitude": 35732.9,
+            "isolation_db": 9.5,
+            "snr_above_noise_db": 13.0,
+            "all_peak_mags": {
+              "0": 35732.9,
+              "1": 107250.7,
+              "2": 22541.5,
+              "3": 13364.2,
+              "4": 16098.1,
+              "5": 16178.2,
+              "6": 14960.9,
+              "7": 13988.7,
+              "8": 14972.4,
+              "9": 12760.2
+            }
+          },
+          {
+            "drive_peak_idx": 2,
+            "drive_freq_hz": 1127.2,
+            "driven_magnitude": 253430.8,
+            "max_non_driven_magnitude": 33772.2,
+            "isolation_db": 17.5,
+            "snr_above_noise_db": 25.0,
+            "all_peak_mags": {
+              "0": 26442.6,
+              "1": 33772.2,
+              "2": 253430.8,
+              "3": 25868.8,
+              "4": 15838.6,
+              "5": 15222.2,
+              "6": 16720.3,
+              "7": 14426.3,
+              "8": 14570.6,
+              "9": 11308.5
+            }
+          },
+          {
+            "drive_peak_idx": 3,
+            "drive_freq_hz": 1825.5,
+            "driven_magnitude": 2717494.7,
+            "max_non_driven_magnitude": 70835.0,
+            "isolation_db": 31.7,
+            "snr_above_noise_db": 44.6,
+            "all_peak_mags": {
+              "0": 14824.1,
+              "1": 13194.5,
+              "2": 12716.0,
+              "3": 2717494.7,
+              "4": 70835.0,
+              "5": 18242.4,
+              "6": 14938.8,
+              "7": 16737.9,
+              "8": 21451.4,
+              "9": 12712.5
+            }
+          },
+          {
+            "drive_peak_idx": 4,
+            "drive_freq_hz": 2104.9,
+            "driven_magnitude": 19398635.6,
+            "max_non_driven_magnitude": 5920921.4,
+            "isolation_db": 10.3,
+            "snr_above_noise_db": 61.0,
+            "all_peak_mags": {
+              "0": 17927.5,
+              "1": 14250.6,
+              "2": 16130.3,
+              "3": 485178.9,
+              "4": 19398635.6,
+              "5": 5920921.4,
+              "6": 41924.1,
+              "7": 15435.0,
+              "8": 10960.9,
+              "9": 12692.9
+            }
+          },
+          {
+            "drive_peak_idx": 5,
+            "drive_freq_hz": 2299.2,
+            "driven_magnitude": 24687349.0,
+            "max_non_driven_magnitude": 8178959.4,
+            "isolation_db": 9.6,
+            "snr_above_noise_db": 64.4,
+            "all_peak_mags": {
+              "0": 17832.3,
+              "1": 14038.2,
+              "2": 13455.7,
+              "3": 91744.1,
+              "4": 8178959.4,
+              "5": 24687349.0,
+              "6": 287220.2,
+              "7": 12371.7,
+              "8": 15931.6,
+              "9": 13336.9
+            }
+          },
+          {
+            "drive_peak_idx": 6,
+            "drive_freq_hz": 2644.6,
+            "driven_magnitude": 1509507.3,
+            "max_non_driven_magnitude": 44564.2,
+            "isolation_db": 30.6,
+            "snr_above_noise_db": 38.7,
+            "all_peak_mags": {
+              "0": 18973.9,
+              "1": 14308.7,
+              "2": 13112.0,
+              "3": 13291.8,
+              "4": 18672.1,
+              "5": 24662.0,
+              "6": 1509507.3,
+              "7": 44564.2,
+              "8": 36255.9,
+              "9": 13474.5
+            }
+          },
+          {
+            "drive_peak_idx": 7,
+            "drive_freq_hz": 5197.8,
+            "driven_magnitude": 16519.6,
+            "max_non_driven_magnitude": 37258.1,
+            "isolation_db": -7.1,
+            "snr_above_noise_db": 1.1,
+            "all_peak_mags": {
+              "0": 37258.1,
+              "1": 21015.3,
+              "2": 16588.2,
+              "3": 14038.2,
+              "4": 15235.2,
+              "5": 12251.8,
+              "6": 13800.3,
+              "7": 16519.6,
+              "8": 13028.6,
+              "9": 15131.1
+            }
+          },
+          {
+            "drive_peak_idx": 8,
+            "drive_freq_hz": 5460.7,
+            "driven_magnitude": 12150.1,
+            "max_non_driven_magnitude": 32508.1,
+            "isolation_db": -8.5,
+            "snr_above_noise_db": -2.1,
+            "all_peak_mags": {
+              "0": 32508.1,
+              "1": 17424.9,
+              "2": 13788.1,
+              "3": 13640.1,
+              "4": 13868.3,
+              "5": 14443.2,
+              "6": 12227.3,
+              "7": 14730.8,
+              "8": 12150.1,
+              "9": 13892.7
+            }
+          },
+          {
+            "drive_peak_idx": 9,
+            "drive_freq_hz": 6022.8,
+            "driven_magnitude": 316697.7,
+            "max_non_driven_magnitude": 21174.1,
+            "isolation_db": 23.5,
+            "snr_above_noise_db": 27.6,
+            "all_peak_mags": {
+              "0": 21174.1,
+              "1": 16673.9,
+              "2": 16027.4,
+              "3": 16615.3,
+              "4": 16231.8,
+              "5": 16133.4,
+              "6": 12514.7,
+              "7": 15819.2,
+              "8": 19563.2,
+              "9": 316697.7
+            }
+          }
+        ],
+        "2": [
+          {
+            "drive_peak_idx": 0,
+            "drive_freq_hz": 709.4,
+            "driven_magnitude": 59107.6,
+            "max_non_driven_magnitude": 29248.4,
+            "isolation_db": 6.1,
+            "snr_above_noise_db": 5.3,
+            "all_peak_mags": {
+              "0": 59107.6,
+              "1": 18668.4,
+              "2": 22019.4,
+              "3": 16397.6,
+              "4": 29248.4,
+              "5": 13399.9,
+              "6": 12327.5,
+              "7": 16849.3,
+              "8": 15365.3,
+              "9": 15121.4
+            }
+          },
+          {
+            "drive_peak_idx": 1,
+            "drive_freq_hz": 1026.0,
+            "driven_magnitude": 176855.5,
+            "max_non_driven_magnitude": 69157.9,
+            "isolation_db": 8.2,
+            "snr_above_noise_db": 20.8,
+            "all_peak_mags": {
+              "0": 27167.4,
+              "1": 176855.5,
+              "2": 69157.9,
+              "3": 24037.3,
+              "4": 19650.6,
+              "5": 18273.9,
+              "6": 15718.9,
+              "7": 14651.5,
+              "8": 13546.9,
+              "9": 12264.4
+            }
+          },
+          {
+            "drive_peak_idx": 2,
+            "drive_freq_hz": 1203.2,
+            "driven_magnitude": 392485.5,
+            "max_non_driven_magnitude": 136871.8,
+            "isolation_db": 9.2,
+            "snr_above_noise_db": 29.1,
+            "all_peak_mags": {
+              "0": 20331.9,
+              "1": 136871.8,
+              "2": 392485.5,
+              "3": 24625.5,
+              "4": 20814.4,
+              "5": 25851.4,
+              "6": 15675.9,
+              "7": 14941.5,
+              "8": 14892.6,
+              "9": 16348.8
+            }
+          },
+          {
+            "drive_peak_idx": 3,
+            "drive_freq_hz": 1616.9,
+            "driven_magnitude": 2081394.6,
+            "max_non_driven_magnitude": 33557.0,
+            "isolation_db": 35.9,
+            "snr_above_noise_db": 44.4,
+            "all_peak_mags": {
+              "0": 16959.3,
+              "1": 18603.7,
+              "2": 27606.3,
+              "3": 2081394.6,
+              "4": 17149.0,
+              "5": 15124.7,
+              "6": 12633.8,
+              "7": 33557.0,
+              "8": 30287.6,
+              "9": 19621.9
+            }
+          },
+          {
+            "drive_peak_idx": 4,
+            "drive_freq_hz": 2117.8,
+            "driven_magnitude": 56011766.4,
+            "max_non_driven_magnitude": 205771.6,
+            "isolation_db": 48.7,
+            "snr_above_noise_db": 71.0,
+            "all_peak_mags": {
+              "0": 17608.8,
+              "1": 21050.3,
+              "2": 32975.9,
+              "3": 205771.6,
+              "4": 56011766.4,
+              "5": 42144.8,
+              "6": 13650.5,
+              "7": 22707.8,
+              "8": 15766.2,
+              "9": 14863.0
+            }
+          },
+          {
+            "drive_peak_idx": 5,
+            "drive_freq_hz": 2924.3,
+            "driven_magnitude": 625661.2,
+            "max_non_driven_magnitude": 29894.1,
+            "isolation_db": 26.4,
+            "snr_above_noise_db": 29.2,
+            "all_peak_mags": {
+              "0": 14196.6,
+              "1": 15522.2,
+              "2": 16093.2,
+              "3": 15445.9,
+              "4": 14919.6,
+              "5": 625661.2,
+              "6": 29894.1,
+              "7": 19219.1,
+              "8": 17743.8,
+              "9": 15085.2
+            }
+          },
+          {
+            "drive_peak_idx": 6,
+            "drive_freq_hz": 5689.9,
+            "driven_magnitude": 27257.7,
+            "max_non_driven_magnitude": 31811.6,
+            "isolation_db": -1.3,
+            "snr_above_noise_db": 1.3,
+            "all_peak_mags": {
+              "0": 31811.6,
+              "1": 14485.2,
+              "2": 14177.4,
+              "3": 14306.2,
+              "4": 16383.5,
+              "5": 13447.5,
+              "6": 27257.7,
+              "7": 17362.7,
+              "8": 16444.4,
+              "9": 14651.8
+            }
+          },
+          {
+            "drive_peak_idx": 7,
+            "drive_freq_hz": 6303.4,
+            "driven_magnitude": 337215.8,
+            "max_non_driven_magnitude": 67102.2,
+            "isolation_db": 14.0,
+            "snr_above_noise_db": 22.7,
+            "all_peak_mags": {
+              "0": 13898.2,
+              "1": 13547.6,
+              "2": 15278.9,
+              "3": 16523.4,
+              "4": 14290.1,
+              "5": 15161.5,
+              "6": 19255.1,
+              "7": 337215.8,
+              "8": 67102.2,
+              "9": 19273.4
+            }
+          },
+          {
+            "drive_peak_idx": 8,
+            "drive_freq_hz": 6506.6,
+            "driven_magnitude": 668663.7,
+            "max_non_driven_magnitude": 153219.2,
+            "isolation_db": 12.8,
+            "snr_above_noise_db": 30.3,
+            "all_peak_mags": {
+              "0": 14818.0,
+              "1": 14455.0,
+              "2": 14029.9,
+              "3": 13207.8,
+              "4": 13411.7,
+              "5": 15559.2,
+              "6": 15687.1,
+              "7": 153219.2,
+              "8": 668663.7,
+              "9": 24667.2
+            }
+          },
+          {
+            "drive_peak_idx": 9,
+            "drive_freq_hz": 6792.7,
+            "driven_magnitude": 457920.6,
+            "max_non_driven_magnitude": 36485.9,
+            "isolation_db": 22.0,
+            "snr_above_noise_db": 29.0,
+            "all_peak_mags": {
+              "0": 19384.7,
+              "1": 15676.4,
+              "2": 16364.0,
+              "3": 16986.8,
+              "4": 11629.0,
+              "5": 16764.8,
+              "6": 13971.6,
+              "7": 16274.8,
+              "8": 36485.9,
+              "9": 457920.6
+            }
+          }
+        ],
+        "3": [
+          {
+            "drive_peak_idx": 0,
+            "drive_freq_hz": 913.1,
+            "driven_magnitude": 189335.1,
+            "max_non_driven_magnitude": 27322.3,
+            "isolation_db": 16.8,
+            "snr_above_noise_db": 18.5,
+            "all_peak_mags": {
+              "0": 189335.1,
+              "1": 27322.3,
+              "2": 22862.6,
+              "3": 15675.8,
+              "4": 16725.2,
+              "5": 13291.4,
+              "6": 13650.2,
+              "7": 10455.3,
+              "8": 14816.9,
+              "9": 12153.2
+            }
+          },
+          {
+            "drive_peak_idx": 1,
+            "drive_freq_hz": 1536.4,
+            "driven_magnitude": 3321303.3,
+            "max_non_driven_magnitude": 1325030.0,
+            "isolation_db": 8.0,
+            "snr_above_noise_db": 44.2,
+            "all_peak_mags": {
+              "0": 16868.1,
+              "1": 3321303.3,
+              "2": 1325030.0,
+              "3": 18668.3,
+              "4": 13832.1,
+              "5": 14463.1,
+              "6": 11781.2,
+              "7": 21239.9,
+              "8": 24019.6,
+              "9": 19790.3
+            }
+          },
+          {
+            "drive_peak_idx": 2,
+            "drive_freq_hz": 1714.2,
+            "driven_magnitude": 2299080.9,
+            "max_non_driven_magnitude": 830054.8,
+            "isolation_db": 8.8,
+            "snr_above_noise_db": 40.6,
+            "all_peak_mags": {
+              "0": 12243.2,
+              "1": 830054.8,
+              "2": 2299080.9,
+              "3": 58817.3,
+              "4": 13133.0,
+              "5": 14470.9,
+              "6": 13854.9,
+              "7": 12386.5,
+              "8": 13871.4,
+              "9": 15690.2
+            }
+          },
+          {
+            "drive_peak_idx": 3,
+            "drive_freq_hz": 2001.1,
+            "driven_magnitude": 16631626.6,
+            "max_non_driven_magnitude": 441383.0,
+            "isolation_db": 31.5,
+            "snr_above_noise_db": 59.2,
+            "all_peak_mags": {
+              "0": 14819.3,
+              "1": 62068.0,
+              "2": 441383.0,
+              "3": 16631626.6,
+              "4": 16337.5,
+              "5": 15512.2,
+              "6": 14054.2,
+              "7": 14531.9,
+              "8": 14496.0,
+              "9": 16232.6
+            }
+          },
+          {
+            "drive_peak_idx": 4,
+            "drive_freq_hz": 2833.8,
+            "driven_magnitude": 821591.9,
+            "max_non_driven_magnitude": 25524.9,
+            "isolation_db": 30.2,
+            "snr_above_noise_db": 33.0,
+            "all_peak_mags": {
+              "0": 13667.8,
+              "1": 17013.7,
+              "2": 15137.1,
+              "3": 12578.6,
+              "4": 821591.9,
+              "5": 25524.9,
+              "6": 23990.4,
+              "7": 15763.4,
+              "8": 11233.5,
+              "9": 18597.0
+            }
+          },
+          {
+            "drive_peak_idx": 5,
+            "drive_freq_hz": 5575.5,
+            "driven_magnitude": 92480.5,
+            "max_non_driven_magnitude": 34046.0,
+            "isolation_db": 8.7,
+            "snr_above_noise_db": 18.6,
+            "all_peak_mags": {
+              "0": 14440.7,
+              "1": 14924.2,
+              "2": 13774.9,
+              "3": 14858.5,
+              "4": 14959.1,
+              "5": 92480.5,
+              "6": 34046.0,
+              "7": 18203.2,
+              "8": 11162.1,
+              "9": 12574.4
+            }
+          },
+          {
+            "drive_peak_idx": 6,
+            "drive_freq_hz": 5765.3,
+            "driven_magnitude": 245339.3,
+            "max_non_driven_magnitude": 81964.9,
+            "isolation_db": 9.5,
+            "snr_above_noise_db": 23.6,
+            "all_peak_mags": {
+              "0": 16259.9,
+              "1": 14016.2,
+              "2": 14820.8,
+              "3": 16250.0,
+              "4": 13088.7,
+              "5": 81964.9,
+              "6": 245339.3,
+              "7": 21376.8,
+              "8": 13411.1,
+              "9": 14112.2
+            }
+          },
+          {
+            "drive_peak_idx": 7,
+            "drive_freq_hz": 6218.2,
+            "driven_magnitude": 194189.9,
+            "max_non_driven_magnitude": 22622.4,
+            "isolation_db": 18.7,
+            "snr_above_noise_db": 23.7,
+            "all_peak_mags": {
+              "0": 13841.8,
+              "1": 16517.3,
+              "2": 15360.7,
+              "3": 12683.8,
+              "4": 15730.7,
+              "5": 22622.4,
+              "6": 21833.8,
+              "7": 194189.9,
+              "8": 12767.7,
+              "9": 12555.1
+            }
+          },
+          {
+            "drive_peak_idx": 8,
+            "drive_freq_hz": 9396.4,
+            "driven_magnitude": 54340.7,
+            "max_non_driven_magnitude": 18458.8,
+            "isolation_db": 9.4,
+            "snr_above_noise_db": 12.9,
+            "all_peak_mags": {
+              "0": 18448.0,
+              "1": 18458.8,
+              "2": 18227.7,
+              "3": 15780.7,
+              "4": 15352.8,
+              "5": 11639.3,
+              "6": 12213.7,
+              "7": 17251.2,
+              "8": 54340.7,
+              "9": 13366.0
+            }
+          },
+          {
+            "drive_peak_idx": 9,
+            "drive_freq_hz": 13910.5,
+            "driven_magnitude": 179219.3,
+            "max_non_driven_magnitude": 18534.7,
+            "isolation_db": 19.7,
+            "snr_above_noise_db": 19.7,
+            "all_peak_mags": {
+              "0": 18534.7,
+              "1": 12176.5,
+              "2": 12853.2,
+              "3": 12782.2,
+              "4": 12451.9,
+              "5": 14234.0,
+              "6": 14854.1,
+              "7": 13655.9,
+              "8": 12699.9,
+              "9": 179219.3
+            }
+          }
+        ],
+        "4": [
+          {
+            "drive_peak_idx": 0,
+            "drive_freq_hz": 867.7,
+            "driven_magnitude": 138188.5,
+            "max_non_driven_magnitude": 29190.7,
+            "isolation_db": 13.5,
+            "snr_above_noise_db": 20.6,
+            "all_peak_mags": {
+              "0": 138188.5,
+              "1": 29190.7,
+              "2": 18779.0,
+              "3": 13869.7,
+              "4": 13241.7,
+              "5": 14976.1,
+              "6": 16290.8,
+              "7": 12251.0,
+              "8": 13350.7,
+              "9": 15443.3
+            }
+          },
+          {
+            "drive_peak_idx": 1,
+            "drive_freq_hz": 1094.7,
+            "driven_magnitude": 300373.4,
+            "max_non_driven_magnitude": 52603.4,
+            "isolation_db": 15.1,
+            "snr_above_noise_db": 26.7,
+            "all_peak_mags": {
+              "0": 52603.4,
+              "1": 300373.4,
+              "2": 25491.8,
+              "3": 16509.6,
+              "4": 14182.1,
+              "5": 19226.3,
+              "6": 12506.9,
+              "7": 14589.5,
+              "8": 12676.6,
+              "9": 11873.0
+            }
+          },
+          {
+            "drive_peak_idx": 2,
+            "drive_freq_hz": 1631.9,
+            "driven_magnitude": 2662296.0,
+            "max_non_driven_magnitude": 73267.4,
+            "isolation_db": 31.2,
+            "snr_above_noise_db": 46.1,
+            "all_peak_mags": {
+              "0": 13266.7,
+              "1": 15253.0,
+              "2": 2662296.0,
+              "3": 73267.4,
+              "4": 19165.9,
+              "5": 13570.3,
+              "6": 24225.1,
+              "7": 17398.6,
+              "8": 17671.2,
+              "9": 15426.0
+            }
+          },
+          {
+            "drive_peak_idx": 3,
+            "drive_freq_hz": 1895.7,
+            "driven_magnitude": 20613962.0,
+            "max_non_driven_magnitude": 7585393.7,
+            "isolation_db": 8.7,
+            "snr_above_noise_db": 61.1,
+            "all_peak_mags": {
+              "0": 15240.2,
+              "1": 20925.6,
+              "2": 546576.5,
+              "3": 20613962.0,
+              "4": 7585393.7,
+              "5": 29875.2,
+              "6": 11465.1,
+              "7": 13602.1,
+              "8": 13679.9,
+              "9": 12422.0
+            }
+          },
+          {
+            "drive_peak_idx": 4,
+            "drive_freq_hz": 2088.0,
+            "driven_magnitude": 25740277.8,
+            "max_non_driven_magnitude": 7345428.7,
+            "isolation_db": 10.9,
+            "snr_above_noise_db": 65.6,
+            "all_peak_mags": {
+              "0": 17417.8,
+              "1": 15613.1,
+              "2": 88661.1,
+              "3": 7345428.7,
+              "4": 25740277.8,
+              "5": 95310.4,
+              "6": 14351.2,
+              "7": 14910.9,
+              "8": 15294.7,
+              "9": 15843.9
+            }
+          },
+          {
+            "drive_peak_idx": 5,
+            "drive_freq_hz": 2584.4,
+            "driven_magnitude": 1152607.7,
+            "max_non_driven_magnitude": 35970.5,
+            "isolation_db": 30.1,
+            "snr_above_noise_db": 38.0,
+            "all_peak_mags": {
+              "0": 16090.9,
+              "1": 15277.2,
+              "2": 12212.2,
+              "3": 13343.5,
+              "4": 17047.6,
+              "5": 1152607.7,
+              "6": 17704.1,
+              "7": 35970.5,
+              "8": 14327.8,
+              "9": 15855.2
+            }
+          },
+          {
+            "drive_peak_idx": 6,
+            "drive_freq_hz": 3189.9,
+            "driven_magnitude": 320332.0,
+            "max_non_driven_magnitude": 19746.8,
+            "isolation_db": 24.2,
+            "snr_above_noise_db": 30.4,
+            "all_peak_mags": {
+              "0": 13341.8,
+              "1": 11275.9,
+              "2": 14947.3,
+              "3": 11094.8,
+              "4": 13993.6,
+              "5": 16619.3,
+              "6": 320332.0,
+              "7": 12596.8,
+              "8": 19746.8,
+              "9": 15693.6
+            }
+          },
+          {
+            "drive_peak_idx": 7,
+            "drive_freq_hz": 5258.1,
+            "driven_magnitude": 42908.3,
+            "max_non_driven_magnitude": 21887.4,
+            "isolation_db": 5.8,
+            "snr_above_noise_db": 10.0,
+            "all_peak_mags": {
+              "0": 21887.4,
+              "1": 15305.8,
+              "2": 13230.4,
+              "3": 13516.0,
+              "4": 14522.6,
+              "5": 16727.6,
+              "6": 13416.0,
+              "7": 42908.3,
+              "8": 18999.0,
+              "9": 13443.7
+            }
+          },
+          {
+            "drive_peak_idx": 8,
+            "drive_freq_hz": 5892.7,
+            "driven_magnitude": 121688.8,
+            "max_non_driven_magnitude": 21478.3,
+            "isolation_db": 15.1,
+            "snr_above_noise_db": 18.3,
+            "all_peak_mags": {
+              "0": 16793.3,
+              "1": 16970.5,
+              "2": 12840.1,
+              "3": 14194.7,
+              "4": 14133.2,
+              "5": 14604.9,
+              "6": 13748.9,
+              "7": 21478.3,
+              "8": 121688.8,
+              "9": 20441.4
+            }
+          },
+          {
+            "drive_peak_idx": 9,
+            "drive_freq_hz": 6319.8,
+            "driven_magnitude": 771441.2,
+            "max_non_driven_magnitude": 18169.7,
+            "isolation_db": 32.6,
+            "snr_above_noise_db": 35.1,
+            "all_peak_mags": {
+              "0": 14031.2,
+              "1": 13791.0,
+              "2": 13042.0,
+              "3": 12729.6,
+              "4": 12226.7,
+              "5": 15783.5,
+              "6": 12543.3,
+              "7": 13495.3,
+              "8": 18169.7,
+              "9": 771441.2
+            }
+          }
+        ]
+      },
+      "mean_isolation_db": 16.4,
+      "min_isolation_db": -8.5,
+      "paper_claim": "Driving f\u2099 couples exclusively to mode n (C50)"
+    },
+    "cw_lockin_snr": {
+      "experiment": "cw_lockin_snr_gain",
+      "test_rod": "1",
+      "test_freq_hz": 1825.5,
+      "impulse_snr_db": 17.9,
+      "cw_results": [
+        {
+          "integration_s": 0.01,
+          "n_captures_averaged": 1,
+          "cw_signal": 2717351.4,
+          "cw_noise_floor": 9039.7,
+          "cw_snr_db": 49.6,
+          "gain_over_impulse_db": 31.6
+        },
+        {
+          "integration_s": 0.1,
+          "n_captures_averaged": 9,
+          "cw_signal": 2748469.1,
+          "cw_noise_floor": 10398.5,
+          "cw_snr_db": 48.4,
+          "gain_over_impulse_db": 30.5
+        },
+        {
+          "integration_s": 0.5,
+          "n_captures_averaged": 48,
+          "cw_signal": 2730031.5,
+          "cw_noise_floor": 10180.8,
+          "cw_snr_db": 48.6,
+          "gain_over_impulse_db": 30.6
+        },
+        {
+          "integration_s": 1.0,
+          "n_captures_averaged": 96,
+          "cw_signal": 2727433.4,
+          "cw_noise_floor": 10408.4,
+          "cw_snr_db": 48.4,
+          "gain_over_impulse_db": 30.4
+        },
+        {
+          "integration_s": 2.0,
+          "n_captures_averaged": 193,
+          "cw_signal": 2730709.4,
+          "cw_noise_floor": 10457.3,
+          "cw_snr_db": 48.3,
+          "gain_over_impulse_db": 30.4
+        },
+        {
+          "integration_s": 5.0,
+          "n_captures_averaged": 484,
+          "cw_signal": 2732970.8,
+          "cw_noise_floor": 10394.7,
+          "cw_snr_db": 48.4,
+          "gain_over_impulse_db": 30.5
+        },
+        {
+          "integration_s": 10.0,
+          "n_captures_averaged": 968,
+          "cw_signal": 2732576.5,
+          "cw_noise_floor": 10486.5,
+          "cw_snr_db": 48.3,
+          "gain_over_impulse_db": 30.4
+        }
+      ],
+      "paper_claim": "+17.5 dB at 10 s integration (C13)"
+    },
+    "two_phase_readout": {
+      "experiment": "two_phase_readout",
+      "per_query": {
+        "1": {
+          "phase1_scores": {
+            "1": 49058571.1,
+            "2": 44615080.0,
+            "3": -14592622.0,
+            "4": 27726461.5
+          },
+          "phase1_winner": "1",
+          "phase1_correct": true,
+          "phase1_margin": 4443491.1,
+          "phase2_winner_signal": 4520852.2,
+          "phase2_non_winner_signal": 10726044.1,
+          "phase2_margin_db": -7.5
+        },
+        "2": {
+          "phase1_scores": {
+            "1": 16132574.4,
+            "2": 60900731.5,
+            "3": -10866572.9,
+            "4": 35848509.5
+          },
+          "phase1_winner": "2",
+          "phase1_correct": true,
+          "phase1_margin": 25052222.0,
+          "phase2_winner_signal": 11803476.7,
+          "phase2_non_winner_signal": 3448556.9,
+          "phase2_margin_db": 10.7
+        },
+        "3": {
+          "phase1_scores": {
+            "1": -11769444.7,
+            "2": -13575711.6,
+            "3": 24087286.9,
+            "4": -5006282.7
+          },
+          "phase1_winner": "3",
+          "phase1_correct": true,
+          "phase1_margin": 29093569.6,
+          "phase2_winner_signal": 4668885.7,
+          "phase2_non_winner_signal": 7203678.2,
+          "phase2_margin_db": -3.8
+        },
+        "4": {
+          "phase1_scores": {
+            "1": 24458085.2,
+            "2": 42639212.5,
+            "3": -12625884.7,
+            "4": 52005129.6
+          },
+          "phase1_winner": "4",
+          "phase1_correct": true,
+          "phase1_margin": 9365917.1,
+          "phase2_winner_signal": 9926292.3,
+          "phase2_non_winner_signal": 5393494.6,
+          "phase2_margin_db": 5.3
+        }
+      },
+      "phase1_accuracy": 1.0,
+      "phase2_mean_margin_db": 1.2,
+      "paper_claim": "Two-phase: impulse search + CW precision (\u00a72.3)"
+    },
+    "derived_snr": {
+      "experiment": "derived_snr_measurement",
+      "per_rod": {
+        "1": {
+          "noise_rms": 25141.1,
+          "noise_median": 10540.1,
+          "peaks": [
+            {
+              "freq_hz": 516.8,
+              "signal": 44433.6,
+              "snr_db": 12.5
+            },
+            {
+              "freq_hz": 891.3,
+              "signal": 106799.1,
+              "snr_db": 20.1
+            },
+            {
+              "freq_hz": 1127.2,
+              "signal": 241314.9,
+              "snr_db": 27.2
+            },
+            {
+              "freq_hz": 1825.5,
+              "signal": 2756032.7,
+              "snr_db": 48.3
+            },
+            {
+              "freq_hz": 2104.9,
+              "signal": 19286506.9,
+              "snr_db": 65.2
+            },
+            {
+              "freq_hz": 2299.2,
+              "signal": 24499366.1,
+              "snr_db": 67.3
+            },
+            {
+              "freq_hz": 2644.6,
+              "signal": 1491420.2,
+              "snr_db": 43.0
+            },
+            {
+              "freq_hz": 5197.8,
+              "signal": 24180.1,
+              "snr_db": 7.2
+            },
+            {
+              "freq_hz": 5460.7,
+              "signal": 15969.7,
+              "snr_db": 3.6
+            },
+            {
+              "freq_hz": 6022.8,
+              "signal": 315461.0,
+              "snr_db": 29.5
+            }
+          ],
+          "mean_snr_db": 32.4,
+          "max_snr_db": 67.3
+        },
+        "2": {
+          "noise_rms": 25575.4,
+          "noise_median": 10670.0,
+          "peaks": [
+            {
+              "freq_hz": 709.4,
+              "signal": 73119.8,
+              "snr_db": 16.7
+            },
+            {
+              "freq_hz": 1026.0,
+              "signal": 178766.5,
+              "snr_db": 24.5
+            },
+            {
+              "freq_hz": 1203.2,
+              "signal": 387433.4,
+              "snr_db": 31.2
+            },
+            {
+              "freq_hz": 1616.9,
+              "signal": 2041630.9,
+              "snr_db": 45.6
+            },
+            {
+              "freq_hz": 2117.8,
+              "signal": 56359255.1,
+              "snr_db": 74.5
+            },
+            {
+              "freq_hz": 2924.3,
+              "signal": 635574.3,
+              "snr_db": 35.5
+            },
+            {
+              "freq_hz": 5689.9,
+              "signal": 27667.9,
+              "snr_db": 8.3
+            },
+            {
+              "freq_hz": 6303.4,
+              "signal": 337183.4,
+              "snr_db": 30.0
+            },
+            {
+              "freq_hz": 6506.6,
+              "signal": 682323.6,
+              "snr_db": 36.1
+            },
+            {
+              "freq_hz": 6792.7,
+              "signal": 433151.3,
+              "snr_db": 32.2
+            }
+          ],
+          "mean_snr_db": 33.5,
+          "max_snr_db": 74.5
+        },
+        "3": {
+          "noise_rms": 21861.8,
+          "noise_median": 10349.4,
+          "peaks": [
+            {
+              "freq_hz": 913.1,
+              "signal": 191592.0,
+              "snr_db": 25.3
+            },
+            {
+              "freq_hz": 1536.4,
+              "signal": 3355629.0,
+              "snr_db": 50.2
+            },
+            {
+              "freq_hz": 1714.2,
+              "signal": 2306134.2,
+              "snr_db": 47.0
+            },
+            {
+              "freq_hz": 2001.1,
+              "signal": 16688647.5,
+              "snr_db": 64.2
+            },
+            {
+              "freq_hz": 2833.8,
+              "signal": 826834.7,
+              "snr_db": 38.1
+            },
+            {
+              "freq_hz": 5575.5,
+              "signal": 99671.5,
+              "snr_db": 19.7
+            },
+            {
+              "freq_hz": 5765.3,
+              "signal": 241755.8,
+              "snr_db": 27.4
+            },
+            {
+              "freq_hz": 6218.2,
+              "signal": 187515.8,
+              "snr_db": 25.2
+            },
+            {
+              "freq_hz": 9396.4,
+              "signal": 58612.4,
+              "snr_db": 15.1
+            },
+            {
+              "freq_hz": 13910.5,
+              "signal": 176159.4,
+              "snr_db": 24.6
+            }
+          ],
+          "mean_snr_db": 33.7,
+          "max_snr_db": 64.2
+        },
+        "4": {
+          "noise_rms": 24641.7,
+          "noise_median": 10204.6,
+          "peaks": [
+            {
+              "freq_hz": 867.7,
+              "signal": 135062.5,
+              "snr_db": 22.4
+            },
+            {
+              "freq_hz": 1094.7,
+              "signal": 297991.8,
+              "snr_db": 29.3
+            },
+            {
+              "freq_hz": 1631.9,
+              "signal": 2633979.1,
+              "snr_db": 48.2
+            },
+            {
+              "freq_hz": 1895.7,
+              "signal": 20637796.2,
+              "snr_db": 66.1
+            },
+            {
+              "freq_hz": 2088.0,
+              "signal": 25866372.7,
+              "snr_db": 68.1
+            },
+            {
+              "freq_hz": 2584.4,
+              "signal": 1150430.8,
+              "snr_db": 41.0
+            },
+            {
+              "freq_hz": 3189.9,
+              "signal": 319228.1,
+              "snr_db": 29.9
+            },
+            {
+              "freq_hz": 5258.1,
+              "signal": 38828.5,
+              "snr_db": 11.6
+            },
+            {
+              "freq_hz": 5892.7,
+              "signal": 120033.0,
+              "snr_db": 21.4
+            },
+            {
+              "freq_hz": 6319.8,
+              "signal": 769975.0,
+              "snr_db": 37.6
+            }
+          ],
+          "mean_snr_db": 37.6,
+          "max_snr_db": 68.1
+        }
+      },
+      "overall_mean_snr_db": 34.3,
+      "overall_max_snr_db": 74.5,
+      "paper_claim_snr_db": 98.5
+    },
+    "wave_speed": {
+      "experiment": "wave_speed_verification",
+      "rod_length_m": 0.15,
+      "predicted_v_bar_ms": 5315,
+      "per_rod": {
+        "1": {
+          "measured_peaks_hz": [
+            521.98,
+            900.21,
+            1149.75,
+            1789.01,
+            2062.76,
+            2290.03,
+            2591.71,
+            5093.86,
+            5548.07,
+            6058.91
+          ],
+          "mode_number_estimates": [
+            0.0,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.3,
+            0.3,
+            0.3
+          ],
+          "spacings_hz": [
+            378.23,
+            249.54,
+            639.26,
+            273.75,
+            227.27,
+            301.68,
+            2502.15,
+            454.21,
+            510.84
+          ],
+          "mean_spacing_hz": 615.21,
+          "v_from_spacing_ms": 184.6,
+          "v_from_f1_ms": 0
+        },
+        "2": {
+          "measured_peaks_hz": [
+            703.7,
+            1040.36,
+            1222.43,
+            1594.23,
+            2134.7,
+            2871.7,
+            5644.43,
+            6177.38,
+            6610.68,
+            6656.87
+          ],
+          "mode_number_estimates": [
+            0.0,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.2,
+            0.3,
+            0.3,
+            0.4,
+            0.4
+          ],
+          "spacings_hz": [
+            336.66,
+            182.07,
+            371.8,
+            540.47,
+            737.0,
+            2772.73,
+            532.95,
+            433.3,
+            46.19
+          ],
+          "mean_spacing_hz": 661.46,
+          "v_from_spacing_ms": 198.4,
+          "v_from_f1_ms": 0
+        },
+        "3": {
+          "measured_peaks_hz": [
+            911.31,
+            1551.71,
+            1686.74,
+            2041.17,
+            2777.09,
+            5675.84,
+            5880.63,
+            6230.68,
+            9283.65,
+            14188.73
+          ],
+          "mode_number_estimates": [
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.2,
+            0.3,
+            0.3,
+            0.4,
+            0.5,
+            0.8
+          ],
+          "spacings_hz": [
+            640.4,
+            135.03,
+            354.43,
+            735.92,
+            2898.75,
+            204.79,
+            350.05,
+            3052.97,
+            4905.08
+          ],
+          "mean_spacing_hz": 1475.27,
+          "v_from_spacing_ms": 442.6,
+          "v_from_f1_ms": 0
+        },
+        "4": {
+          "measured_peaks_hz": [
+            864.18,
+            1109.99,
+            1615.6,
+            1872.92,
+            2121.43,
+            2532.74,
+            3126.12,
+            5258.12,
+            6010.56,
+            6193.39
+          ],
+          "mode_number_estimates": [
+            0.0,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.1,
+            0.2,
+            0.3,
+            0.3,
+            0.3
+          ],
+          "spacings_hz": [
+            245.81,
+            505.61,
+            257.32,
+            248.51,
+            411.31,
+            593.38,
+            2132.0,
+            752.44,
+            182.83
+          ],
+          "mean_spacing_hz": 592.13,
+          "v_from_spacing_ms": 177.6,
+          "v_from_f1_ms": 0
+        }
+      },
+      "paper_claim": "v_bar = 5,315 m/s (C2)"
+    },
+    "freq_stability": {
+      "experiment": "freq_stability_temporal",
+      "historical_drift_stats": [
+        {
+          "rod": "1",
+          "peak_idx": 0,
+          "mean_freq_hz": 516.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 1,
+          "mean_freq_hz": 891.3,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 2,
+          "mean_freq_hz": 1127.2,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 3,
+          "mean_freq_hz": 1825.5,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 4,
+          "mean_freq_hz": 2104.9,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 5,
+          "mean_freq_hz": 2299.2,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 6,
+          "mean_freq_hz": 2644.6,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 7,
+          "mean_freq_hz": 5197.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 8,
+          "mean_freq_hz": 5460.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "1",
+          "peak_idx": 9,
+          "mean_freq_hz": 6022.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 0,
+          "mean_freq_hz": 709.4,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 1,
+          "mean_freq_hz": 1026.0,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 2,
+          "mean_freq_hz": 1203.2,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 3,
+          "mean_freq_hz": 1616.9,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 4,
+          "mean_freq_hz": 2117.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 5,
+          "mean_freq_hz": 2924.3,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 6,
+          "mean_freq_hz": 5689.9,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 7,
+          "mean_freq_hz": 6303.4,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 8,
+          "mean_freq_hz": 6506.6,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "2",
+          "peak_idx": 9,
+          "mean_freq_hz": 6792.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 0,
+          "mean_freq_hz": 913.1,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 1,
+          "mean_freq_hz": 1536.4,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 2,
+          "mean_freq_hz": 1714.2,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 3,
+          "mean_freq_hz": 2001.1,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 4,
+          "mean_freq_hz": 2833.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 5,
+          "mean_freq_hz": 5575.5,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 6,
+          "mean_freq_hz": 5765.3,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 7,
+          "mean_freq_hz": 6218.2,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 8,
+          "mean_freq_hz": 9396.4,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "3",
+          "peak_idx": 9,
+          "mean_freq_hz": 13910.5,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 0,
+          "mean_freq_hz": 867.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 1,
+          "mean_freq_hz": 1094.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 2,
+          "mean_freq_hz": 1631.9,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 3,
+          "mean_freq_hz": 1895.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 4,
+          "mean_freq_hz": 2088.0,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 5,
+          "mean_freq_hz": 2584.4,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 6,
+          "mean_freq_hz": 3189.9,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 7,
+          "mean_freq_hz": 5258.1,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 8,
+          "mean_freq_hz": 5892.7,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        },
+        {
+          "rod": "4",
+          "peak_idx": 9,
+          "mean_freq_hz": 6319.8,
+          "std_hz": 0.0,
+          "range_hz": 0.0,
+          "drift_ppm": 0.0,
+          "n_measurements": 7
+        }
+      ],
+      "fresh_vs_enrollment": {
+        "1": [
+          {
+            "enrolled_hz": 516.81,
+            "measured_hz": 517.33,
+            "shift_hz": 0.52,
+            "shift_ppm": 1000.0
+          },
+          {
+            "enrolled_hz": 891.3,
+            "measured_hz": 899.32,
+            "shift_hz": 8.02,
+            "shift_ppm": 9000.0
+          },
+          {
+            "enrolled_hz": 1127.21,
+            "measured_hz": 1121.57,
+            "shift_hz": -5.64,
+            "shift_ppm": -5000.0
+          },
+          {
+            "enrolled_hz": 1825.52,
+            "measured_hz": 1843.78,
+            "shift_hz": 18.26,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 2104.85,
+            "measured_hz": 2083.81,
+            "shift_hz": -21.05,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 2299.23,
+            "measured_hz": 2292.33,
+            "shift_hz": -6.9,
+            "shift_ppm": -3000.0
+          },
+          {
+            "enrolled_hz": 2644.6,
+            "measured_hz": 2618.16,
+            "shift_hz": -26.45,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 5197.81,
+            "measured_hz": 5182.22,
+            "shift_hz": -15.59,
+            "shift_ppm": -3000.0
+          },
+          {
+            "enrolled_hz": 5460.7,
+            "measured_hz": 5466.16,
+            "shift_hz": 5.46,
+            "shift_ppm": 1000.0
+          },
+          {
+            "enrolled_hz": 6022.78,
+            "measured_hz": 6052.89,
+            "shift_hz": 30.11,
+            "shift_ppm": 5000.0
+          }
+        ],
+        "2": [
+          {
+            "enrolled_hz": 709.38,
+            "measured_hz": 716.47,
+            "shift_hz": 7.09,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 1026.0,
+            "measured_hz": 1035.23,
+            "shift_hz": 9.23,
+            "shift_ppm": 9000.0
+          },
+          {
+            "enrolled_hz": 1203.18,
+            "measured_hz": 1207.99,
+            "shift_hz": 4.81,
+            "shift_ppm": 4000.0
+          },
+          {
+            "enrolled_hz": 1616.86,
+            "measured_hz": 1600.69,
+            "shift_hz": -16.17,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 2117.76,
+            "measured_hz": 2136.82,
+            "shift_hz": 19.06,
+            "shift_ppm": 9000.0
+          },
+          {
+            "enrolled_hz": 2924.34,
+            "measured_hz": 2906.79,
+            "shift_hz": -17.55,
+            "shift_ppm": -6000.0
+          },
+          {
+            "enrolled_hz": 5689.94,
+            "measured_hz": 5644.43,
+            "shift_hz": -45.52,
+            "shift_ppm": -8000.0
+          },
+          {
+            "enrolled_hz": 6303.45,
+            "measured_hz": 6240.41,
+            "shift_hz": -63.03,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 6506.57,
+            "measured_hz": 6571.64,
+            "shift_hz": 65.07,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 6792.73,
+            "measured_hz": 6724.8,
+            "shift_hz": -67.93,
+            "shift_ppm": -10000.0
+          }
+        ],
+        "3": [
+          {
+            "enrolled_hz": 913.13,
+            "measured_hz": 915.87,
+            "shift_hz": 2.74,
+            "shift_ppm": 3000.0
+          },
+          {
+            "enrolled_hz": 1536.35,
+            "measured_hz": 1550.18,
+            "shift_hz": 13.83,
+            "shift_ppm": 9000.0
+          },
+          {
+            "enrolled_hz": 1714.17,
+            "measured_hz": 1697.02,
+            "shift_hz": -17.14,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 2001.15,
+            "measured_hz": 2021.16,
+            "shift_hz": 20.01,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 2833.77,
+            "measured_hz": 2805.43,
+            "shift_hz": -28.34,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 5575.48,
+            "measured_hz": 5625.66,
+            "shift_hz": 50.18,
+            "shift_ppm": 9000.0
+          },
+          {
+            "enrolled_hz": 5765.32,
+            "measured_hz": 5822.98,
+            "shift_hz": 57.65,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 6218.24,
+            "measured_hz": 6255.55,
+            "shift_hz": 37.31,
+            "shift_ppm": 6000.0
+          },
+          {
+            "enrolled_hz": 9396.41,
+            "measured_hz": 9452.79,
+            "shift_hz": 56.38,
+            "shift_ppm": 6000.0
+          },
+          {
+            "enrolled_hz": 13910.52,
+            "measured_hz": 14035.72,
+            "shift_hz": 125.19,
+            "shift_ppm": 9000.0
+          }
+        ],
+        "4": [
+          {
+            "enrolled_hz": 867.65,
+            "measured_hz": 872.86,
+            "shift_hz": 5.21,
+            "shift_ppm": 6000.0
+          },
+          {
+            "enrolled_hz": 1094.66,
+            "measured_hz": 1102.33,
+            "shift_hz": 7.66,
+            "shift_ppm": 7000.0
+          },
+          {
+            "enrolled_hz": 1631.92,
+            "measured_hz": 1617.24,
+            "shift_hz": -14.69,
+            "shift_ppm": -9000.0
+          },
+          {
+            "enrolled_hz": 1895.67,
+            "measured_hz": 1876.71,
+            "shift_hz": -18.96,
+            "shift_ppm": -10000.0
+          },
+          {
+            "enrolled_hz": 2088.02,
+            "measured_hz": 2108.9,
+            "shift_hz": 20.88,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 2584.43,
+            "measured_hz": 2561.17,
+            "shift_hz": -23.26,
+            "shift_ppm": -9000.0
+          },
+          {
+            "enrolled_hz": 3189.92,
+            "measured_hz": 3167.59,
+            "shift_hz": -22.33,
+            "shift_ppm": -7000.0
+          },
+          {
+            "enrolled_hz": 5258.12,
+            "measured_hz": 5247.6,
+            "shift_hz": -10.52,
+            "shift_ppm": -2000.0
+          },
+          {
+            "enrolled_hz": 5892.7,
+            "measured_hz": 5951.63,
+            "shift_hz": 58.93,
+            "shift_ppm": 10000.0
+          },
+          {
+            "enrolled_hz": 6319.78,
+            "measured_hz": 6256.59,
+            "shift_hz": -63.2,
+            "shift_ppm": -10000.0
+          }
+        ]
+      },
+      "short_term_drift": [
+        {
+          "round": 1,
+          "timestamp": "2026-04-09T20:58:05.579357+00:00",
+          "freqs_hz": [
+            519.91,
+            900.21,
+            1129.46,
+            1843.78,
+            2083.81
+          ]
+        },
+        {
+          "round": 2,
+          "timestamp": "2026-04-09T20:59:09.258627+00:00",
+          "freqs_hz": [
+            511.64,
+            900.21,
+            1138.48,
+            1843.78,
+            2083.81
+          ]
+        },
+        {
+          "round": 3,
+          "timestamp": "2026-04-09T21:00:12.961580+00:00",
+          "freqs_hz": [
+            520.94,
+            900.21,
+            1129.46,
+            1843.78,
+            2083.81
+          ]
+        }
+      ],
+      "paper_tcf_ppm_per_k": 3.25
+    },
+    "position_sensitivity": {
+      "experiment": "position_dependent_sensitivity",
+      "per_rod": {
+        "1": {
+          "response_profile": [
+            {
+              "freq_hz": 516.8,
+              "magnitude": 41531.1,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 891.3,
+              "magnitude": 107731.5,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1127.2,
+              "magnitude": 247946.4,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1825.5,
+              "magnitude": 2751213.4,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2104.9,
+              "magnitude": 19241907.6,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2299.2,
+              "magnitude": 24419414.3,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2644.6,
+              "magnitude": 1488963.1,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5197.8,
+              "magnitude": 23771.7,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5460.7,
+              "magnitude": 12304.9,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6022.8,
+              "magnitude": 308160.4,
+              "est_mode_n": 0
+            }
+          ],
+          "strongest_mode": {
+            "freq_hz": 2299.2,
+            "magnitude": 24419414.3,
+            "est_mode_n": 0
+          }
+        },
+        "2": {
+          "response_profile": [
+            {
+              "freq_hz": 709.4,
+              "magnitude": 67838.4,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1026.0,
+              "magnitude": 179898.9,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1203.2,
+              "magnitude": 395166.0,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1616.9,
+              "magnitude": 2030290.5,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2117.8,
+              "magnitude": 56573268.9,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2924.3,
+              "magnitude": 615835.2,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5689.9,
+              "magnitude": 28253.5,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6303.4,
+              "magnitude": 327517.0,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6506.6,
+              "magnitude": 682492.6,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6792.7,
+              "magnitude": 437173.5,
+              "est_mode_n": 0
+            }
+          ],
+          "strongest_mode": {
+            "freq_hz": 2117.8,
+            "magnitude": 56573268.9,
+            "est_mode_n": 0
+          }
+        },
+        "3": {
+          "response_profile": [
+            {
+              "freq_hz": 913.1,
+              "magnitude": 194678.1,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1536.4,
+              "magnitude": 3374949.5,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1714.2,
+              "magnitude": 2330382.6,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2001.1,
+              "magnitude": 16708185.8,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2833.8,
+              "magnitude": 818198.7,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5575.5,
+              "magnitude": 105797.7,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5765.3,
+              "magnitude": 242860.7,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6218.2,
+              "magnitude": 194496.2,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 9396.4,
+              "magnitude": 54030.0,
+              "est_mode_n": 1
+            },
+            {
+              "freq_hz": 13910.5,
+              "magnitude": 178416.0,
+              "est_mode_n": 1
+            }
+          ],
+          "strongest_mode": {
+            "freq_hz": 2001.1,
+            "magnitude": 16708185.8,
+            "est_mode_n": 0
+          }
+        },
+        "4": {
+          "response_profile": [
+            {
+              "freq_hz": 867.7,
+              "magnitude": 142602.9,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1094.7,
+              "magnitude": 306162.4,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1631.9,
+              "magnitude": 2586781.1,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 1895.7,
+              "magnitude": 20686879.5,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2088.0,
+              "magnitude": 26020195.0,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 2584.4,
+              "magnitude": 1146669.6,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 3189.9,
+              "magnitude": 325600.4,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5258.1,
+              "magnitude": 40572.0,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 5892.7,
+              "magnitude": 115095.2,
+              "est_mode_n": 0
+            },
+            {
+              "freq_hz": 6319.8,
+              "magnitude": 764938.1,
+              "est_mode_n": 0
+            }
+          ],
+          "strongest_mode": {
+            "freq_hz": 2088.0,
+            "magnitude": 26020195.0,
+            "est_mode_n": 0
+          }
+        }
+      },
+      "paper_claim": "Mass at antinode shifts that mode most (C4, sin\u00b2 profile)"
+    },
+    "parametric_proxy": {
+      "experiment": "parametric_amplification_proxy",
+      "test_rod": "1",
+      "pairs_tested": 4,
+      "results": [
+        {
+          "f1_hz": 516.8,
+          "f2_hz": 891.3,
+          "f_pump_hz": 1408.1,
+          "solo_f1": 40520.0,
+          "solo_f2": 107054.9,
+          "pump_f1_response": 18685.0,
+          "pump_f2_response": 16840.0,
+          "gain_f1_db": -6.7,
+          "gain_f2_db": -16.1
+        },
+        {
+          "f1_hz": 516.8,
+          "f2_hz": 1127.2,
+          "f_pump_hz": 1644.0,
+          "solo_f1": 49324.2,
+          "solo_f2": 256404.8,
+          "pump_f1_response": 22504.3,
+          "pump_f2_response": 18440.2,
+          "gain_f1_db": -6.8,
+          "gain_f2_db": -22.9
+        },
+        {
+          "f1_hz": 516.8,
+          "f2_hz": 1825.5,
+          "f_pump_hz": 2342.3,
+          "solo_f1": 50316.0,
+          "solo_f2": 2731311.8,
+          "pump_f1_response": 16268.1,
+          "pump_f2_response": 41788.0,
+          "gain_f1_db": -9.8,
+          "gain_f2_db": -36.3
+        },
+        {
+          "f1_hz": 516.8,
+          "f2_hz": 2104.9,
+          "f_pump_hz": 2621.7,
+          "solo_f1": 49971.9,
+          "solo_f2": 19216722.3,
+          "pump_f1_response": 17369.6,
+          "pump_f2_response": 19145.7,
+          "gain_f1_db": -9.2,
+          "gain_f2_db": -60.0
+        }
+      ],
+      "paper_claim": "+12 dB parametric amplification (S16)"
+    }
+  }
+}

@@ -1,0 +1,209 @@
+{
+  "timestamp": "2026-04-13T20:14:00.563146+00:00",
+  "plate_name": "A",
+  "plate_id": "1",
+  "n_modes": 3,
+  "n_trials": 20,
+  "r2_global": 0.6802,
+  "r2_mean": 0.8281,
+  "r2_std": 0.3155,
+  "correlation": 0.8777,
+  "rmse_mean": 1.2769,
+  "r2_sparse": 0.7136,
+  "r2_medium": NaN,
+  "r2_dense": 0.9991,
+  "r2_per_mode": [
+    0.5621,
+    0.7476,
+    0.9993
+  ],
+  "noise_floor_mean_raw": 10033.58,
+  "h_diag_mean_log": 14.9088,
+  "h_capture_time_s": 1.1,
+  "trial_time_s": 6.7,
+  "mode_freqs_hz": [
+    29700.0,
+    89425.0,
+    18775.0
+  ],
+  "verdict": "FAIL",
+  "transfer_matrix_log": [
+    [
+      15.757908764669242,
+      9.514239024257432,
+      9.671845267470859
+    ],
+    [
+      9.718665221864303,
+      14.629133224277604,
+      9.368051310574902
+    ],
+    [
+      9.528721958920391,
+      9.558975845319473,
+      14.339299096197907
+    ]
+  ],
+  "trial_details": [
+    {
+      "trial": 0,
+      "n_active": 1,
+      "r_squared": 0.2709,
+      "rmse": 5.0063,
+      "correlation": 0.8654,
+      "peak_factor": 0.6072
+    },
+    {
+      "trial": 1,
+      "n_active": 2,
+      "r_squared": 0.9998,
+      "rmse": 0.0425,
+      "correlation": 1.0,
+      "peak_factor": 1.3484
+    },
+    {
+      "trial": 2,
+      "n_active": 3,
+      "r_squared": 0.9999,
+      "rmse": 0.0041,
+      "correlation": 1.0,
+      "peak_factor": 2.1223
+    },
+    {
+      "trial": 3,
+      "n_active": 1,
+      "r_squared": 0.2824,
+      "rmse": 4.9574,
+      "correlation": 0.8429,
+      "peak_factor": 0.8759
+    },
+    {
+      "trial": 4,
+      "n_active": 2,
+      "r_squared": 0.9931,
+      "rmse": 0.2272,
+      "correlation": 1.0,
+      "peak_factor": 1.0324
+    },
+    {
+      "trial": 5,
+      "n_active": 1,
+      "r_squared": -0.0106,
+      "rmse": 6.7966,
+      "correlation": 0.9984,
+      "peak_factor": 0.7422
+    },
+    {
+      "trial": 6,
+      "n_active": 1,
+      "r_squared": 0.9161,
+      "rmse": 0.9653,
+      "correlation": 0.9886,
+      "peak_factor": 0.8065
+    },
+    {
+      "trial": 7,
+      "n_active": 1,
+      "r_squared": 0.8663,
+      "rmse": 1.3192,
+      "correlation": 0.996,
+      "peak_factor": 0.9766
+    },
+    {
+      "trial": 8,
+      "n_active": 1,
+      "r_squared": 0.9809,
+      "rmse": 0.4047,
+      "correlation": 0.9979,
+      "peak_factor": 0.9145
+    },
+    {
+      "trial": 9,
+      "n_active": 1,
+      "r_squared": 0.3016,
+      "rmse": 4.921,
+      "correlation": 0.7742,
+      "peak_factor": 0.3557
+    },
+    {
+      "trial": 10,
+      "n_active": 1,
+      "r_squared": 0.9671,
+      "rmse": 0.5427,
+      "correlation": 0.9862,
+      "peak_factor": 0.5734
+    },
+    {
+      "trial": 11,
+      "n_active": 1,
+      "r_squared": 0.9996,
+      "rmse": 0.0584,
+      "correlation": 1.0,
+      "peak_factor": 0.3234
+    },
+    {
+      "trial": 12,
+      "n_active": 1,
+      "r_squared": 0.9965,
+      "rmse": 0.2121,
+      "correlation": 0.9997,
+      "peak_factor": 0.7464
+    },
+    {
+      "trial": 13,
+      "n_active": 3,
+      "r_squared": 0.9999,
+      "rmse": 0.0102,
+      "correlation": 1.0,
+      "peak_factor": 2.1329
+    },
+    {
+      "trial": 14,
+      "n_active": 3,
+      "r_squared": 0.9996,
+      "rmse": 0.0164,
+      "correlation": 1.0,
+      "peak_factor": 1.2257
+    },
+    {
+      "trial": 15,
+      "n_active": 3,
+      "r_squared": 1.0,
+      "rmse": 0.0025,
+      "correlation": 1.0,
+      "peak_factor": 1.0485
+    },
+    {
+      "trial": 16,
+      "n_active": 3,
+      "r_squared": 0.9999,
+      "rmse": 0.0065,
+      "correlation": 1.0,
+      "peak_factor": 2.0446
+    },
+    {
+      "trial": 17,
+      "n_active": 3,
+      "r_squared": 0.9999,
+      "rmse": 0.0064,
+      "correlation": 1.0,
+      "peak_factor": 1.9594
+    },
+    {
+      "trial": 18,
+      "n_active": 3,
+      "r_squared": 0.9997,
+      "rmse": 0.0165,
+      "correlation": 1.0,
+      "peak_factor": 1.6317
+    },
+    {
+      "trial": 19,
+      "n_active": 3,
+      "r_squared": 0.9996,
+      "rmse": 0.0217,
+      "correlation": 1.0,
+      "peak_factor": 1.2195
+    }
+  ]
+}

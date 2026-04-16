@@ -1,0 +1,37 @@
+{
+  "experiment": "Write-Read Cross-Talk (Kronos runner)",
+  "timestamp": "20260415_235726",
+  "plate": "D",
+  "write_freqs_hz": [
+    15475.0,
+    2575.0,
+    6375.0
+  ],
+  "read_freqs_hz": [
+    700.0,
+    17250.0,
+    13425.0
+  ],
+  "sample_rate": 192000,
+  "results": {
+    "700.0": {
+      "baseline": 0.46951165706521525,
+      "with_write": 0.5277198241109332,
+      "change_db": 1.02,
+      "crosstalk": false
+    },
+    "17250.0": {
+      "baseline": 0.3453285634714767,
+      "with_write": 0.39642406644433154,
+      "change_db": 1.2,
+      "crosstalk": false
+    },
+    "13425.0": {
+      "baseline": 0.3860605988267076,
+      "with_write": 0.3608880829953007,
+      "change_db": -0.59,
+      "crosstalk": false
+    }
+  },
+  "crosstalk_detected": false
+}

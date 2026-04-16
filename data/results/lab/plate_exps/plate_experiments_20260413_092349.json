@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-04-13T15:40:46.716328+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    3
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "4cqosfwHYRUe4jy0ai9w",
+      "experimentId": "exp05-plate-mode-survey",
+      "_data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 2,
+        "f11_measured": 29675.0,
+        "snr_best_mode": 20.3,
+        "q_estimate": 237
+      },
+      "_notes": "Plate A Q measurement. Strongest mode at 29675 Hz, Q=237, \u03c4=2.5 ms, BW=125.0 Hz. 25Hz-step CW sweep, 3dB bandwidth method. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "ZsinlN1h3DZky4WZAlz2",
+      "experimentId": "exp05-plate-mode-survey",
+      "_data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 4,
+        "f11_measured": 15125.0,
+        "snr_best_mode": 22.0,
+        "q_estimate": 292
+      },
+      "_notes": "Plate B Q measurement. Strongest mode at 29200 Hz, Q=292, \u03c4=3.2 ms, BW=100.0 Hz. 25Hz-step CW sweep, 3dB bandwidth method. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "NShYI2boZu3WO98WONuk",
+      "experimentId": "exp05-plate-mode-survey",
+      "_data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 5,
+        "f11_measured": 26175.0,
+        "snr_best_mode": 19.2,
+        "q_estimate": 345
+      },
+      "_notes": "Plate C Q measurement. Strongest mode at 43175 Hz, Q=345, \u03c4=2.5 ms, BW=125.0 Hz. 25Hz-step CW sweep, 3dB bandwidth method. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "JD1VPmDyfdqO6SJFmqR3",
+      "experimentId": "exp05-plate-mode-survey",
+      "_data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 7,
+        "f11_measured": 29925.0,
+        "snr_best_mode": 17.9,
+        "q_estimate": 397
+      },
+      "_notes": "Plate D Q measurement. Strongest mode at 49625 Hz, Q=397, \u03c4=2.5 ms, BW=125.0 Hz. 25Hz-step CW sweep, 3dB bandwidth method. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "XFcegmgQy3h9rNmYJN3H",
+      "experimentId": "exp05-plate-mode-survey",
+      "_data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 6,
+        "f11_measured": 28875.0,
+        "snr_best_mode": 21.7,
+        "q_estimate": 397
+      },
+      "_notes": "Plate E Q measurement. Strongest mode at 49675 Hz, Q=397, \u03c4=2.5 ms, BW=125.0 Hz. 25Hz-step CW sweep, 3dB bandwidth method. PicoScope 2204A, relay mux isolation."
+    }
+  ]
+}

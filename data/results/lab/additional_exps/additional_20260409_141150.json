@@ -1,0 +1,4981 @@
+{
+  "timestamp": "2026-04-09T19:27:05.135601+00:00",
+  "experiments_run": [
+    "pruning",
+    "polysemic",
+    "virtual-rewrite",
+    "phase",
+    "qfactor",
+    "temporal",
+    "hybridization"
+  ],
+  "total_duration_s": 915.0,
+  "results": {
+    "synaptic_pruning": {
+      "experiment": "synaptic_pruning_real_spectra",
+      "source_file": "/Users/Mike/Code/wcfoma/data/results/lab/associative_recall/recall_20260408_225247.json",
+      "n_rods": 4,
+      "n_peaks": 10,
+      "max_contribution": 2.4577,
+      "baseline_accuracy": 1.0,
+      "baseline_margin": 5.26,
+      "threshold_sweep": [
+        {
+          "theta_frac": 0,
+          "theta_abs": 0.0,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.01,
+          "theta_abs": 0.0246,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.02,
+          "theta_abs": 0.0492,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.05,
+          "theta_abs": 0.1229,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.08,
+          "theta_abs": 0.1966,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.1,
+          "theta_abs": 0.2458,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.15,
+          "theta_abs": 0.3687,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26,
+          "delta_accuracy": 0.0,
+          "delta_margin": 0.0
+        },
+        {
+          "theta_frac": 0.2,
+          "theta_abs": 0.4915,
+          "pruned_pct": 2.5,
+          "accuracy": 1.0,
+          "mean_margin": 5.1,
+          "delta_accuracy": 0.0,
+          "delta_margin": -0.17
+        },
+        {
+          "theta_frac": 0.3,
+          "theta_abs": 0.7373,
+          "pruned_pct": 22.5,
+          "accuracy": 1.0,
+          "mean_margin": 3.4,
+          "delta_accuracy": 0.0,
+          "delta_margin": -1.87
+        },
+        {
+          "theta_frac": 0.5,
+          "theta_abs": 1.2288,
+          "pruned_pct": 65.0,
+          "accuracy": 0.75,
+          "mean_margin": 1.62,
+          "delta_accuracy": -0.25,
+          "delta_margin": -3.64
+        },
+        {
+          "theta_frac": 0.75,
+          "theta_abs": 1.8433,
+          "pruned_pct": 90.0,
+          "accuracy": 0.5,
+          "mean_margin": 0.0,
+          "delta_accuracy": -0.5,
+          "delta_margin": -5.26
+        }
+      ],
+      "magnitude_sweep": [
+        {
+          "mag_mult": 0,
+          "threshold": 0.0,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26
+        },
+        {
+          "mag_mult": 1,
+          "threshold": 39098.0,
+          "pruned_pct": 0.0,
+          "accuracy": 1.0,
+          "mean_margin": 5.26
+        },
+        {
+          "mag_mult": 2,
+          "threshold": 78195.0,
+          "pruned_pct": 10.0,
+          "accuracy": 1.0,
+          "mean_margin": 4.72
+        },
+        {
+          "mag_mult": 3,
+          "threshold": 117293.0,
+          "pruned_pct": 15.0,
+          "accuracy": 1.0,
+          "mean_margin": 4.18
+        },
+        {
+          "mag_mult": 5,
+          "threshold": 195489.0,
+          "pruned_pct": 27.5,
+          "accuracy": 1.0,
+          "mean_margin": 3.49
+        },
+        {
+          "mag_mult": 10,
+          "threshold": 390977.0,
+          "pruned_pct": 42.5,
+          "accuracy": 1.0,
+          "mean_margin": 2.37
+        },
+        {
+          "mag_mult": 20,
+          "threshold": 781954.0,
+          "pruned_pct": 50.0,
+          "accuracy": 0.75,
+          "mean_margin": 1.76
+        },
+        {
+          "mag_mult": 50,
+          "threshold": 1954886.0,
+          "pruned_pct": 70.0,
+          "accuracy": 1.0,
+          "mean_margin": 1.94
+        },
+        {
+          "mag_mult": 100,
+          "threshold": 3909771.0,
+          "pruned_pct": 82.5,
+          "accuracy": 1.0,
+          "mean_margin": 1.13
+        }
+      ],
+      "paper_claim": "+10.7% at \u03b8=0.055 (sim, N=50, P=8)"
+    },
+    "polysemic_subband": {
+      "experiment": "polysemic_subband_recall",
+      "n_rods": 4,
+      "n_peaks_per_rod": 10,
+      "freq_range_hz": [
+        516.8,
+        13910.5
+      ],
+      "baseline_accuracy": 1.0,
+      "baseline_margin": 5.26,
+      "partitions": {
+        "2_bands": {
+          "n_bands": 2,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 7213.7,
+              "n_peak_rod_entries": 38,
+              "accuracy": 1.0,
+              "mean_margin": 4.89,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 7213.7,
+              "hi_hz": 13911.5,
+              "n_peak_rod_entries": 2,
+              "accuracy": 0.5,
+              "mean_margin": 0.32,
+              "correct": 2,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 1
+        },
+        "3_bands": {
+          "n_bands": 3,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 4981.0,
+              "n_peak_rod_entries": 25,
+              "accuracy": 1.0,
+              "mean_margin": 3.98,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 4981.0,
+              "hi_hz": 9446.3,
+              "n_peak_rod_entries": 14,
+              "accuracy": 0.25,
+              "mean_margin": 0.59,
+              "correct": 1,
+              "total": 4
+            },
+            {
+              "band": 3,
+              "lo_hz": 9446.3,
+              "hi_hz": 13911.5,
+              "n_peak_rod_entries": 1,
+              "accuracy": 0.5,
+              "mean_margin": 0.08,
+              "correct": 2,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 1
+        },
+        "4_bands": {
+          "n_bands": 4,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 3864.7,
+              "n_peak_rod_entries": 25,
+              "accuracy": 1.0,
+              "mean_margin": 3.98,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 3864.7,
+              "hi_hz": 7213.7,
+              "n_peak_rod_entries": 13,
+              "accuracy": 0.25,
+              "mean_margin": 0.35,
+              "correct": 1,
+              "total": 4
+            },
+            {
+              "band": 3,
+              "lo_hz": 7213.7,
+              "hi_hz": 10562.6,
+              "n_peak_rod_entries": 1,
+              "accuracy": 0.5,
+              "mean_margin": 0.24,
+              "correct": 2,
+              "total": 4
+            },
+            {
+              "band": 4,
+              "lo_hz": 10562.6,
+              "hi_hz": 13911.5,
+              "n_peak_rod_entries": 1,
+              "accuracy": 0.5,
+              "mean_margin": 0.08,
+              "correct": 2,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 1
+        }
+      },
+      "paper_claim": "+297% capacity from 4-channel polysemic readout (sim)"
+    },
+    "virtual_rewrite": {
+      "experiment": "virtual_rewrite_subband",
+      "n_rods": 4,
+      "n_peaks_per_rod": 10,
+      "baseline_accuracy": 1.0,
+      "baseline_margin": 5.26,
+      "strategies": {
+        "even_odd": {
+          "strategy": "even_odd",
+          "n_subsets": 2,
+          "subsets": [
+            {
+              "subset": "A",
+              "n_active_peaks": 5,
+              "accuracy": 1.0,
+              "mean_margin": 2.91,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "subset": "B",
+              "n_active_peaks": 5,
+              "accuracy": 1.0,
+              "mean_margin": 2.04,
+              "correct": 4,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 2
+        },
+        "first_half_second_half": {
+          "strategy": "first_half_second_half",
+          "n_subsets": 2,
+          "subsets": [
+            {
+              "subset": "A",
+              "n_active_peaks": 5,
+              "accuracy": 1.0,
+              "mean_margin": 3.03,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "subset": "B",
+              "n_active_peaks": 5,
+              "accuracy": 1.0,
+              "mean_margin": 1.94,
+              "correct": 4,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 2
+        },
+        "thirds": {
+          "strategy": "thirds",
+          "n_subsets": 3,
+          "subsets": [
+            {
+              "subset": "A",
+              "n_active_peaks": 4,
+              "accuracy": 1.0,
+              "mean_margin": 2.65,
+              "correct": 4,
+              "total": 4
+            },
+            {
+              "subset": "B",
+              "n_active_peaks": 3,
+              "accuracy": 0.75,
+              "mean_margin": 0.38,
+              "correct": 3,
+              "total": 4
+            },
+            {
+              "subset": "C",
+              "n_active_peaks": 3,
+              "accuracy": 0.75,
+              "mean_margin": 1.58,
+              "correct": 3,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 1
+        }
+      },
+      "paper_claim": "4+ logical devices per rod via firmware partitioning (sim)"
+    },
+    "phase_stability": {
+      "experiment": "phase_stability",
+      "n_trials": 10,
+      "per_rod": {
+        "1": [
+          {
+            "freq_hz": 516.8,
+            "phase_mean_rad": -0.7233,
+            "phase_std_rad": 3.7057,
+            "phase_range_rad": 11.0712,
+            "mag_mean": 42249.5,
+            "mag_cv": 0.3814,
+            "n_trials": 10,
+            "phases_raw": [
+              1.2236,
+              2.5081,
+              4.3924,
+              2.7255,
+              2.1332,
+              -0.9668,
+              -2.3577,
+              -4.7523,
+              -6.6788,
+              -5.4602
+            ]
+          },
+          {
+            "freq_hz": 891.3,
+            "phase_mean_rad": 3.1319,
+            "phase_std_rad": 1.3277,
+            "phase_range_rad": 4.3669,
+            "mag_mean": 103086.8,
+            "mag_cv": 0.0908,
+            "n_trials": 10,
+            "phases_raw": [
+              1.0002,
+              2.6835,
+              2.3759,
+              4.776,
+              2.1336,
+              2.9403,
+              5.3671,
+              2.2887,
+              4.8141,
+              2.9397
+            ]
+          },
+          {
+            "freq_hz": 1127.2,
+            "phase_mean_rad": 3.7591,
+            "phase_std_rad": 1.2019,
+            "phase_range_rad": 3.8904,
+            "mag_mean": 256962.8,
+            "mag_cv": 0.0415,
+            "n_trials": 10,
+            "phases_raw": [
+              1.7556,
+              3.585,
+              5.646,
+              2.5103,
+              4.207,
+              2.1869,
+              5.1129,
+              3.8494,
+              4.4788,
+              4.2588
+            ]
+          },
+          {
+            "freq_hz": 1825.5,
+            "phase_mean_rad": -1.4782,
+            "phase_std_rad": 0.3428,
+            "phase_range_rad": 1.2141,
+            "mag_mean": 2830824.2,
+            "mag_cv": 0.0057,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.2623,
+              -1.2936,
+              -0.6252,
+              -1.5237,
+              -1.8393,
+              -1.5172,
+              -1.6739,
+              -1.4661,
+              -1.7921,
+              -1.7882
+            ]
+          },
+          {
+            "freq_hz": 2104.9,
+            "phase_mean_rad": -1.6923,
+            "phase_std_rad": 0.0465,
+            "phase_range_rad": 0.1137,
+            "mag_mean": 20428528.0,
+            "mag_cv": 0.0004,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7496,
+              -1.7452,
+              -1.6711,
+              -1.6367,
+              -1.6359,
+              -1.6574,
+              -1.7422,
+              -1.7404,
+              -1.7036,
+              -1.6408
+            ]
+          },
+          {
+            "freq_hz": 2299.2,
+            "phase_mean_rad": -1.6594,
+            "phase_std_rad": 0.0385,
+            "phase_range_rad": 0.1022,
+            "mag_mean": 25419494.9,
+            "mag_cv": 0.0002,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.617,
+              -1.615,
+              -1.6329,
+              -1.6902,
+              -1.715,
+              -1.7172,
+              -1.6726,
+              -1.6157,
+              -1.6386,
+              -1.6799
+            ]
+          },
+          {
+            "freq_hz": 2644.6,
+            "phase_mean_rad": 4.4467,
+            "phase_std_rad": 1.6524,
+            "phase_range_rad": 5.3079,
+            "mag_mean": 1543933.6,
+            "mag_cv": 0.0121,
+            "n_trials": 10,
+            "phases_raw": [
+              2.1021,
+              4.5618,
+              3.4401,
+              4.3446,
+              1.6853,
+              4.7509,
+              4.6841,
+              4.9574,
+              6.9932,
+              6.9471
+            ]
+          },
+          {
+            "freq_hz": 5197.8,
+            "phase_mean_rad": 0.0204,
+            "phase_std_rad": 2.257,
+            "phase_range_rad": 6.8849,
+            "mag_mean": 20199.5,
+            "mag_cv": 0.269,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.9251,
+              -2.2256,
+              -0.5773,
+              -2.2428,
+              -1.806,
+              -0.0726,
+              1.5958,
+              1.7669,
+              3.9599,
+              2.7303
+            ]
+          },
+          {
+            "freq_hz": 5460.7,
+            "phase_mean_rad": -4.999,
+            "phase_std_rad": 2.4767,
+            "phase_range_rad": 7.8059,
+            "mag_mean": 19139.7,
+            "mag_cv": 0.3804,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.3648,
+              -4.9322,
+              -7.3158,
+              -4.3127,
+              -1.3075,
+              -2.0437,
+              -4.3896,
+              -6.9908,
+              -7.219,
+              -9.1134
+            ]
+          },
+          {
+            "freq_hz": 6022.8,
+            "phase_mean_rad": -0.7334,
+            "phase_std_rad": 2.0646,
+            "phase_range_rad": 7.0659,
+            "mag_mean": 299785.9,
+            "mag_cv": 0.0459,
+            "n_trials": 10,
+            "phases_raw": [
+              2.3848,
+              2.9645,
+              0.2134,
+              -1.3113,
+              -0.0706,
+              -2.6089,
+              -1.5866,
+              -2.0749,
+              -4.1014,
+              -1.1436
+            ]
+          }
+        ],
+        "2": [
+          {
+            "freq_hz": 709.4,
+            "phase_mean_rad": -6.0427,
+            "phase_std_rad": 2.4565,
+            "phase_range_rad": 8.7561,
+            "mag_mean": 66003.7,
+            "mag_cv": 0.1915,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.4274,
+              -3.7424,
+              -3.5588,
+              -6.2881,
+              -6.8957,
+              -4.6718,
+              -7.4145,
+              -6.0037,
+              -8.2415,
+              -11.1835
+            ]
+          },
+          {
+            "freq_hz": 1026.0,
+            "phase_mean_rad": -3.7679,
+            "phase_std_rad": 1.0687,
+            "phase_range_rad": 4.0354,
+            "mag_mean": 174234.3,
+            "mag_cv": 0.0749,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.9022,
+              -5.013,
+              -4.066,
+              -3.6515,
+              -3.8376,
+              -3.3572,
+              -2.7805,
+              -3.1477,
+              -5.9376,
+              -3.9853
+            ]
+          },
+          {
+            "freq_hz": 1203.2,
+            "phase_mean_rad": -4.2753,
+            "phase_std_rad": 2.2432,
+            "phase_range_rad": 7.474,
+            "mag_mean": 406610.4,
+            "mag_cv": 0.0435,
+            "n_trials": 10,
+            "phases_raw": [
+              -0.4212,
+              -2.6656,
+              -5.4837,
+              -7.3166,
+              -7.8952,
+              -5.2418,
+              -4.0754,
+              -4.8797,
+              -2.9291,
+              -1.8446
+            ]
+          },
+          {
+            "freq_hz": 1616.9,
+            "phase_mean_rad": -2.1517,
+            "phase_std_rad": 0.34,
+            "phase_range_rad": 1.1884,
+            "mag_mean": 2141070.7,
+            "mag_cv": 0.0071,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7827,
+              -2.4213,
+              -1.7556,
+              -2.144,
+              -2.4242,
+              -2.944,
+              -2.0511,
+              -1.9437,
+              -2.0614,
+              -1.9892
+            ]
+          },
+          {
+            "freq_hz": 2117.8,
+            "phase_mean_rad": -1.249,
+            "phase_std_rad": 0.0185,
+            "phase_range_rad": 0.0509,
+            "mag_mean": 53568230.7,
+            "mag_cv": 0.0002,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.2251,
+              -1.2333,
+              -1.2587,
+              -1.2718,
+              -1.245,
+              -1.2316,
+              -1.2265,
+              -1.2694,
+              -1.276,
+              -1.2525
+            ]
+          },
+          {
+            "freq_hz": 2924.3,
+            "phase_mean_rad": -2.6988,
+            "phase_std_rad": 1.8094,
+            "phase_range_rad": 6.7533,
+            "mag_mean": 632313.5,
+            "mag_cv": 0.029,
+            "n_trials": 10,
+            "phases_raw": [
+              0.7189,
+              -1.0542,
+              -3.8486,
+              -2.0412,
+              -1.5308,
+              -2.0761,
+              -4.3331,
+              -3.1914,
+              -6.0344,
+              -3.5975
+            ]
+          },
+          {
+            "freq_hz": 5689.9,
+            "phase_mean_rad": -3.8728,
+            "phase_std_rad": 2.6355,
+            "phase_range_rad": 9.2665,
+            "mag_mean": 28606.6,
+            "mag_cv": 0.4031,
+            "n_trials": 10,
+            "phases_raw": [
+              -3.0823,
+              -0.8407,
+              0.5202,
+              -2.1274,
+              -4.162,
+              -6.9305,
+              -8.7463,
+              -5.8464,
+              -3.4499,
+              -4.0625
+            ]
+          },
+          {
+            "freq_hz": 6303.4,
+            "phase_mean_rad": -2.178,
+            "phase_std_rad": 1.8303,
+            "phase_range_rad": 6.0161,
+            "mag_mean": 337624.8,
+            "mag_cv": 0.0507,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.8393,
+              -5.7718,
+              -4.6458,
+              -2.0857,
+              -2.6896,
+              -0.6966,
+              0.2444,
+              -2.1061,
+              -0.0004,
+              -1.1887
+            ]
+          },
+          {
+            "freq_hz": 6506.6,
+            "phase_mean_rad": -4.1761,
+            "phase_std_rad": 2.158,
+            "phase_range_rad": 7.0896,
+            "mag_mean": 640763.9,
+            "mag_cv": 0.0337,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7097,
+              -4.7051,
+              -6.1123,
+              -5.8472,
+              -8.057,
+              -5.8235,
+              -3.0321,
+              -2.4082,
+              -3.0986,
+              -0.9674
+            ]
+          },
+          {
+            "freq_hz": 6792.7,
+            "phase_mean_rad": -1.4302,
+            "phase_std_rad": 2.4672,
+            "phase_range_rad": 7.679,
+            "mag_mean": 478096.3,
+            "mag_cv": 0.0268,
+            "n_trials": 10,
+            "phases_raw": [
+              1.0131,
+              -1.0869,
+              -2.9646,
+              -2.4373,
+              -5.0566,
+              -4.0935,
+              -3.427,
+              -0.6203,
+              1.7485,
+              2.6224
+            ]
+          }
+        ],
+        "3": [
+          {
+            "freq_hz": 913.1,
+            "phase_mean_rad": 1.3861,
+            "phase_std_rad": 2.3043,
+            "phase_range_rad": 7.597,
+            "mag_mean": 179706.5,
+            "mag_cv": 0.0571,
+            "n_trials": 10,
+            "phases_raw": [
+              1.4888,
+              0.327,
+              2.2915,
+              4.1065,
+              4.8929,
+              3.5697,
+              1.5687,
+              -0.7942,
+              -0.8858,
+              -2.7041
+            ]
+          },
+          {
+            "freq_hz": 1536.4,
+            "phase_mean_rad": -2.0354,
+            "phase_std_rad": 1.1122,
+            "phase_range_rad": 3.2973,
+            "mag_mean": 3122608.2,
+            "mag_cv": 0.0035,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.3849,
+              -1.2623,
+              -1.2127,
+              -2.165,
+              -1.7128,
+              -1.773,
+              -3.9008,
+              -1.1371,
+              -1.3716,
+              -4.4344
+            ]
+          },
+          {
+            "freq_hz": 1714.2,
+            "phase_mean_rad": 3.1479,
+            "phase_std_rad": 1.1,
+            "phase_range_rad": 2.8496,
+            "mag_mean": 2378448.3,
+            "mag_cv": 0.0093,
+            "n_trials": 10,
+            "phases_raw": [
+              1.7646,
+              3.6074,
+              1.6777,
+              2.6,
+              3.9754,
+              3.0398,
+              1.6693,
+              4.1782,
+              4.5189,
+              4.4481
+            ]
+          },
+          {
+            "freq_hz": 2001.1,
+            "phase_mean_rad": -1.9367,
+            "phase_std_rad": 0.0557,
+            "phase_range_rad": 0.1587,
+            "mag_mean": 16364355.9,
+            "mag_cv": 0.0007,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.8568,
+              -1.8386,
+              -1.8813,
+              -1.9211,
+              -1.9515,
+              -1.9888,
+              -1.9866,
+              -1.9794,
+              -1.9973,
+              -1.9656
+            ]
+          },
+          {
+            "freq_hz": 2833.8,
+            "phase_mean_rad": 4.1472,
+            "phase_std_rad": 1.7034,
+            "phase_range_rad": 5.281,
+            "mag_mean": 833423.8,
+            "mag_cv": 0.0254,
+            "n_trials": 10,
+            "phases_raw": [
+              1.7874,
+              4.923,
+              5.989,
+              5.7578,
+              4.4292,
+              1.3967,
+              4.043,
+              6.6777,
+              3.9856,
+              2.4822
+            ]
+          },
+          {
+            "freq_hz": 5575.5,
+            "phase_mean_rad": 5.3682,
+            "phase_std_rad": 4.4284,
+            "phase_range_rad": 12.9995,
+            "mag_mean": 96338.1,
+            "mag_cv": 0.0851,
+            "n_trials": 10,
+            "phases_raw": [
+              0.2018,
+              -0.7278,
+              0.063,
+              2.263,
+              5.1501,
+              6.9368,
+              8.4321,
+              9.5131,
+              12.2717,
+              9.5787
+            ]
+          },
+          {
+            "freq_hz": 5765.3,
+            "phase_mean_rad": 4.4733,
+            "phase_std_rad": 2.6942,
+            "phase_range_rad": 8.1143,
+            "mag_mean": 227748.2,
+            "mag_cv": 0.0563,
+            "n_trials": 10,
+            "phases_raw": [
+              -0.5719,
+              1.5683,
+              1.5096,
+              3.9781,
+              7.0731,
+              7.5424,
+              6.6978,
+              7.1637,
+              4.1926,
+              5.579
+            ]
+          },
+          {
+            "freq_hz": 6218.2,
+            "phase_mean_rad": -4.1074,
+            "phase_std_rad": 3.6983,
+            "phase_range_rad": 11.2932,
+            "mag_mean": 186753.2,
+            "mag_cv": 0.076,
+            "n_trials": 10,
+            "phases_raw": [
+              2.1508,
+              -0.0008,
+              -1.1837,
+              -2.7878,
+              -2.0621,
+              -4.8829,
+              -6.9543,
+              -7.7509,
+              -9.1424,
+              -8.4594
+            ]
+          },
+          {
+            "freq_hz": 9396.4,
+            "phase_mean_rad": 1.8156,
+            "phase_std_rad": 2.6416,
+            "phase_range_rad": 8.2925,
+            "mag_mean": 55346.8,
+            "mag_cv": 0.1421,
+            "n_trials": 10,
+            "phases_raw": [
+              2.6354,
+              4.3785,
+              2.3959,
+              -0.3456,
+              -3.4604,
+              -1.1649,
+              0.7044,
+              3.8337,
+              4.3467,
+              4.8322
+            ]
+          },
+          {
+            "freq_hz": 13910.5,
+            "phase_mean_rad": -0.9255,
+            "phase_std_rad": 1.5742,
+            "phase_range_rad": 6.1377,
+            "mag_mean": 181741.1,
+            "mag_cv": 0.0472,
+            "n_trials": 10,
+            "phases_raw": [
+              2.2819,
+              -0.3008,
+              -0.9267,
+              -1.504,
+              -3.8558,
+              -1.1256,
+              -1.9891,
+              0.6113,
+              -2.0812,
+              -0.3645
+            ]
+          }
+        ],
+        "4": [
+          {
+            "freq_hz": 867.7,
+            "phase_mean_rad": -3.1019,
+            "phase_std_rad": 2.3545,
+            "phase_range_rad": 7.3354,
+            "mag_mean": 137320.7,
+            "mag_cv": 0.0689,
+            "n_trials": 10,
+            "phases_raw": [
+              0.7136,
+              -0.1975,
+              -2.4454,
+              -0.7102,
+              -2.5215,
+              -4.6484,
+              -5.7518,
+              -5.0039,
+              -3.8317,
+              -6.6218
+            ]
+          },
+          {
+            "freq_hz": 1094.7,
+            "phase_mean_rad": 0.8295,
+            "phase_std_rad": 2.2669,
+            "phase_range_rad": 7.2484,
+            "mag_mean": 293290.3,
+            "mag_cv": 0.0578,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.3964,
+              -1.9172,
+              0.1632,
+              -0.5444,
+              -0.2102,
+              2.4638,
+              -0.2309,
+              2.8141,
+              4.852,
+              3.3011
+            ]
+          },
+          {
+            "freq_hz": 1631.9,
+            "phase_mean_rad": -1.4114,
+            "phase_std_rad": 0.2643,
+            "phase_range_rad": 0.9222,
+            "mag_mean": 2812674.9,
+            "mag_cv": 0.0033,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.4213,
+              -1.2321,
+              -2.1212,
+              -1.4936,
+              -1.2841,
+              -1.1989,
+              -1.5606,
+              -1.2233,
+              -1.3487,
+              -1.23
+            ]
+          },
+          {
+            "freq_hz": 1895.7,
+            "phase_mean_rad": -1.411,
+            "phase_std_rad": 0.0447,
+            "phase_range_rad": 0.1228,
+            "mag_mean": 20073579.7,
+            "mag_cv": 0.0005,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.3707,
+              -1.3526,
+              -1.4171,
+              -1.4594,
+              -1.4493,
+              -1.3908,
+              -1.346,
+              -1.3917,
+              -1.4688,
+              -1.4634
+            ]
+          },
+          {
+            "freq_hz": 2088.0,
+            "phase_mean_rad": -1.4405,
+            "phase_std_rad": 0.0415,
+            "phase_range_rad": 0.1294,
+            "mag_mean": 24861841.5,
+            "mag_cv": 0.0003,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.5039,
+              -1.4515,
+              -1.4086,
+              -1.3949,
+              -1.4475,
+              -1.502,
+              -1.4754,
+              -1.4262,
+              -1.3744,
+              -1.4212
+            ]
+          },
+          {
+            "freq_hz": 2584.4,
+            "phase_mean_rad": -2.2238,
+            "phase_std_rad": 0.807,
+            "phase_range_rad": 2.8522,
+            "mag_mean": 1180025.7,
+            "mag_cv": 0.01,
+            "n_trials": 10,
+            "phases_raw": [
+              -3.0325,
+              -2.0311,
+              -1.7951,
+              -1.4863,
+              -1.802,
+              -1.7931,
+              -1.8377,
+              -2.2281,
+              -4.3385,
+              -1.8934
+            ]
+          },
+          {
+            "freq_hz": 3189.9,
+            "phase_mean_rad": -1.642,
+            "phase_std_rad": 1.5314,
+            "phase_range_rad": 5.3223,
+            "mag_mean": 317005.1,
+            "mag_cv": 0.0403,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.3412,
+              -0.6294,
+              0.1513,
+              -2.2144,
+              -2.849,
+              -4.0199,
+              -2.9126,
+              -2.1346,
+              -0.7724,
+              1.3024
+            ]
+          },
+          {
+            "freq_hz": 5258.1,
+            "phase_mean_rad": 2.9398,
+            "phase_std_rad": 1.6633,
+            "phase_range_rad": 5.0943,
+            "mag_mean": 38029.9,
+            "mag_cv": 0.2118,
+            "n_trials": 10,
+            "phases_raw": [
+              1.0004,
+              1.392,
+              1.9924,
+              1.0367,
+              3.9719,
+              3.8722,
+              2.2174,
+              2.7491,
+              5.071,
+              6.0947
+            ]
+          },
+          {
+            "freq_hz": 5892.7,
+            "phase_mean_rad": -4.6605,
+            "phase_std_rad": 2.3865,
+            "phase_range_rad": 7.6243,
+            "mag_mean": 110580.8,
+            "mag_cv": 0.0412,
+            "n_trials": 10,
+            "phases_raw": [
+              0.0161,
+              -1.5507,
+              -3.7702,
+              -3.9296,
+              -3.9885,
+              -5.8094,
+              -7.6082,
+              -6.7324,
+              -7.5334,
+              -5.6985
+            ]
+          },
+          {
+            "freq_hz": 6319.8,
+            "phase_mean_rad": -8.7416,
+            "phase_std_rad": 3.4042,
+            "phase_range_rad": 11.9232,
+            "mag_mean": 806609.9,
+            "mag_cv": 0.0233,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.2934,
+              -5.1347,
+              -7.4991,
+              -7.5353,
+              -7.9961,
+              -9.0847,
+              -9.2424,
+              -10.9068,
+              -13.5071,
+              -14.2166
+            ]
+          }
+        ]
+      },
+      "pair_comparison": [],
+      "global_phase_std_rad": 1.7054,
+      "stable_fraction": 0.15,
+      "paper_claim": "+84% discriminability from phase-spectral encoding (sim)"
+    },
+    "qfactor_mode_census": {
+      "experiment": "qfactor_mode_census",
+      "per_rod": {
+        "1": {
+          "test_freq_hz": 1825.5,
+          "tau_ms": null,
+          "Q_measured": null,
+          "mode_count": 0,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 10172.2,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": []
+        },
+        "2": {
+          "test_freq_hz": 1616.9,
+          "tau_ms": 24.97,
+          "Q_measured": 127.0,
+          "mode_count": 2,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 10098.6,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 96.9,
+              "magnitude": 988030.2
+            },
+            {
+              "freq_hz": 581.3,
+              "magnitude": 33672.2
+            }
+          ]
+        },
+        "3": {
+          "test_freq_hz": 2001.1,
+          "tau_ms": null,
+          "Q_measured": null,
+          "mode_count": 2,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 9312.0,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 96.9,
+              "magnitude": 1042293.7
+            },
+            {
+              "freq_hz": 581.3,
+              "magnitude": 28772.1
+            }
+          ]
+        },
+        "4": {
+          "test_freq_hz": 1895.7,
+          "tau_ms": 19.81,
+          "Q_measured": 118.0,
+          "mode_count": 3,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 8925.2,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 96.9,
+              "magnitude": 1016137.4
+            },
+            {
+              "freq_hz": 581.3,
+              "magnitude": 34115.5
+            },
+            {
+              "freq_hz": 164698.0,
+              "magnitude": 29001.1
+            }
+          ]
+        }
+      },
+      "sample_rate": 781250,
+      "paper_claim_q": "Q = 10,000 (macro prototype)",
+      "paper_claim_modes": "9,380 (size-independent, full bandwidth)"
+    },
+    "temporal_stability": {
+      "experiment": "extended_temporal_stability",
+      "timestamp": "2026-04-09T19:13:31.967356+00:00",
+      "matrix": {
+        "1": {
+          "1": 6.83,
+          "2": -0.92,
+          "3": 0.63,
+          "4": 4.21
+        },
+        "2": {
+          "1": 1.43,
+          "2": 7.72,
+          "3": 0.81,
+          "4": 4.09
+        },
+        "3": {
+          "1": -0.75,
+          "2": 0.72,
+          "3": 10.63,
+          "4": 0.17
+        },
+        "4": {
+          "1": 3.56,
+          "2": 0.74,
+          "3": 0.76,
+          "4": 8.5
+        }
+      },
+      "accuracy": 1.0,
+      "correct": 4,
+      "total": 4,
+      "history": [
+        {
+          "file": "suite_20260409_110727.json",
+          "timestamp": "2026-04-09T16:07:31.209175+00:00",
+          "recall_accuracy": 1.0,
+          "recall_mean_margin": 5.33
+        },
+        {
+          "file": "suite_20260409_122333.json",
+          "timestamp": "2026-04-09T17:23:37.618813+00:00",
+          "recall_accuracy": 0,
+          "recall_mean_margin": 0
+        },
+        {
+          "file": "suite_20260409_122740.json",
+          "timestamp": "2026-04-09T17:27:44.665233+00:00",
+          "recall_accuracy": 1.0,
+          "recall_mean_margin": 5.28
+        }
+      ]
+    },
+    "mode_hybridization": {
+      "experiment": "mode_hybridization_search",
+      "per_rod": {
+        "1": {
+          "n_known_peaks": 20,
+          "fine_scan": [
+            {
+              "enrolled_freq_hz": 516.8,
+              "sweep_lo_hz": 491.0,
+              "sweep_hi_hz": 542.6,
+              "n_local_maxima": 14,
+              "is_split": true,
+              "splitting_hz": 44.0,
+              "splitting_pct": 8.514,
+              "mag_ratio": 0.88,
+              "local_maxima": [
+                {
+                  "freq_hz": 494.8,
+                  "magnitude": 44951.1
+                },
+                {
+                  "freq_hz": 498.7,
+                  "magnitude": 52535.3
+                },
+                {
+                  "freq_hz": 502.6,
+                  "magnitude": 55930.7
+                },
+                {
+                  "freq_hz": 507.8,
+                  "magnitude": 51562.4
+                },
+                {
+                  "freq_hz": 510.3,
+                  "magnitude": 56306.8
+                },
+                {
+                  "freq_hz": 514.2,
+                  "magnitude": 52759.4
+                },
+                {
+                  "freq_hz": 516.8,
+                  "magnitude": 49167.8
+                },
+                {
+                  "freq_hz": 520.7,
+                  "magnitude": 65368.0
+                },
+                {
+                  "freq_hz": 523.3,
+                  "magnitude": 45065.4
+                },
+                {
+                  "freq_hz": 527.1,
+                  "magnitude": 44511.9
+                },
+                {
+                  "freq_hz": 529.7,
+                  "magnitude": 54224.4
+                },
+                {
+                  "freq_hz": 533.6,
+                  "magnitude": 57520.7
+                },
+                {
+                  "freq_hz": 536.2,
+                  "magnitude": 45856.3
+                },
+                {
+                  "freq_hz": 538.8,
+                  "magnitude": 55127.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 891.3,
+              "sweep_lo_hz": 846.7,
+              "sweep_hi_hz": 935.9,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 78.0,
+              "splitting_pct": 8.751,
+              "mag_ratio": 0.947,
+              "local_maxima": [
+                {
+                  "freq_hz": 851.2,
+                  "magnitude": 124451.0
+                },
+                {
+                  "freq_hz": 860.1,
+                  "magnitude": 120945.6
+                },
+                {
+                  "freq_hz": 871.2,
+                  "magnitude": 105889.4
+                },
+                {
+                  "freq_hz": 875.7,
+                  "magnitude": 109258.2
+                },
+                {
+                  "freq_hz": 880.2,
+                  "magnitude": 106189.0
+                },
+                {
+                  "freq_hz": 889.1,
+                  "magnitude": 107971.2
+                },
+                {
+                  "freq_hz": 898.0,
+                  "magnitude": 122085.0
+                },
+                {
+                  "freq_hz": 904.7,
+                  "magnitude": 124885.0
+                },
+                {
+                  "freq_hz": 911.4,
+                  "magnitude": 135578.7
+                },
+                {
+                  "freq_hz": 918.0,
+                  "magnitude": 131877.1
+                },
+                {
+                  "freq_hz": 924.7,
+                  "magnitude": 153805.2
+                },
+                {
+                  "freq_hz": 929.2,
+                  "magnitude": 145660.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1127.2,
+              "sweep_lo_hz": 1070.8,
+              "sweep_hi_hz": 1183.6,
+              "n_local_maxima": 13,
+              "is_split": true,
+              "splitting_hz": 101.4,
+              "splitting_pct": 8.996,
+              "mag_ratio": 0.982,
+              "local_maxima": [
+                {
+                  "freq_hz": 1073.7,
+                  "magnitude": 225031.2
+                },
+                {
+                  "freq_hz": 1079.3,
+                  "magnitude": 233174.1
+                },
+                {
+                  "freq_hz": 1084.9,
+                  "magnitude": 242730.5
+                },
+                {
+                  "freq_hz": 1093.4,
+                  "magnitude": 236673.6
+                },
+                {
+                  "freq_hz": 1101.8,
+                  "magnitude": 243439.5
+                },
+                {
+                  "freq_hz": 1107.5,
+                  "magnitude": 243157.2
+                },
+                {
+                  "freq_hz": 1115.9,
+                  "magnitude": 259374.7
+                },
+                {
+                  "freq_hz": 1127.2,
+                  "magnitude": 249930.0
+                },
+                {
+                  "freq_hz": 1135.7,
+                  "magnitude": 267263.5
+                },
+                {
+                  "freq_hz": 1144.1,
+                  "magnitude": 273952.6
+                },
+                {
+                  "freq_hz": 1149.8,
+                  "magnitude": 277096.6
+                },
+                {
+                  "freq_hz": 1163.8,
+                  "magnitude": 292418.0
+                },
+                {
+                  "freq_hz": 1175.1,
+                  "magnitude": 297870.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1825.5,
+              "sweep_lo_hz": 1734.2,
+              "sweep_hi_hz": 1916.8,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 95.8,
+              "splitting_pct": 5.248,
+              "mag_ratio": 0.754,
+              "local_maxima": [
+                {
+                  "freq_hz": 1770.8,
+                  "magnitude": 4692955.9
+                },
+                {
+                  "freq_hz": 1866.6,
+                  "magnitude": 3538657.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2104.9,
+              "sweep_lo_hz": 1999.6,
+              "sweep_hi_hz": 2210.1,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 2020.7,
+                  "magnitude": 43402334.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2299.2,
+              "sweep_lo_hz": 2184.3,
+              "sweep_hi_hz": 2414.2,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 2299.2,
+                  "magnitude": 25384937.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2644.6,
+              "sweep_lo_hz": 2512.4,
+              "sweep_hi_hz": 2776.8,
+              "n_local_maxima": 0,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": []
+            },
+            {
+              "enrolled_freq_hz": 5197.8,
+              "sweep_lo_hz": 4937.9,
+              "sweep_hi_hz": 5457.7,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 441.8,
+              "splitting_pct": 8.5,
+              "mag_ratio": 0.98,
+              "local_maxima": [
+                {
+                  "freq_hz": 4976.9,
+                  "magnitude": 26484.7
+                },
+                {
+                  "freq_hz": 5015.9,
+                  "magnitude": 28638.6
+                },
+                {
+                  "freq_hz": 5054.9,
+                  "magnitude": 26668.7
+                },
+                {
+                  "freq_hz": 5080.9,
+                  "magnitude": 29790.6
+                },
+                {
+                  "freq_hz": 5132.8,
+                  "magnitude": 23974.5
+                },
+                {
+                  "freq_hz": 5184.8,
+                  "magnitude": 19370.1
+                },
+                {
+                  "freq_hz": 5223.8,
+                  "magnitude": 27814.5
+                },
+                {
+                  "freq_hz": 5249.8,
+                  "magnitude": 30413.4
+                },
+                {
+                  "freq_hz": 5327.8,
+                  "magnitude": 21158.6
+                },
+                {
+                  "freq_hz": 5353.7,
+                  "magnitude": 20992.9
+                },
+                {
+                  "freq_hz": 5379.7,
+                  "magnitude": 19832.8
+                },
+                {
+                  "freq_hz": 5418.7,
+                  "magnitude": 15516.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5460.7,
+              "sweep_lo_hz": 5187.7,
+              "sweep_hi_hz": 5733.7,
+              "n_local_maxima": 11,
+              "is_split": true,
+              "splitting_hz": 505.1,
+              "splitting_pct": 9.25,
+              "mag_ratio": 0.836,
+              "local_maxima": [
+                {
+                  "freq_hz": 5215.0,
+                  "magnitude": 26166.4
+                },
+                {
+                  "freq_hz": 5269.6,
+                  "magnitude": 21448.4
+                },
+                {
+                  "freq_hz": 5296.9,
+                  "magnitude": 18691.4
+                },
+                {
+                  "freq_hz": 5419.7,
+                  "magnitude": 21871.7
+                },
+                {
+                  "freq_hz": 5515.3,
+                  "magnitude": 16505.0
+                },
+                {
+                  "freq_hz": 5542.6,
+                  "magnitude": 18548.4
+                },
+                {
+                  "freq_hz": 5569.9,
+                  "magnitude": 17922.1
+                },
+                {
+                  "freq_hz": 5610.9,
+                  "magnitude": 16502.9
+                },
+                {
+                  "freq_hz": 5665.5,
+                  "magnitude": 17143.5
+                },
+                {
+                  "freq_hz": 5692.8,
+                  "magnitude": 17554.2
+                },
+                {
+                  "freq_hz": 5720.1,
+                  "magnitude": 19882.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6022.8,
+              "sweep_lo_hz": 5721.6,
+              "sweep_hi_hz": 6323.9,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 406.6,
+              "splitting_pct": 6.751,
+              "mag_ratio": 0.926,
+              "local_maxima": [
+                {
+                  "freq_hz": 5827.0,
+                  "magnitude": 22949.5
+                },
+                {
+                  "freq_hz": 6052.9,
+                  "magnitude": 364384.0
+                },
+                {
+                  "freq_hz": 6233.6,
+                  "magnitude": 393600.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6432.4,
+              "sweep_lo_hz": 6110.7,
+              "sweep_hi_hz": 6754.0,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 321.6,
+              "splitting_pct": 5.0,
+              "mag_ratio": 0.294,
+              "local_maxima": [
+                {
+                  "freq_hz": 6175.1,
+                  "magnitude": 353489.8
+                },
+                {
+                  "freq_hz": 6496.7,
+                  "magnitude": 1202895.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6798.4,
+              "sweep_lo_hz": 6458.5,
+              "sweep_hi_hz": 7138.4,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 441.9,
+              "splitting_pct": 6.5,
+              "mag_ratio": 0.174,
+              "local_maxima": [
+                {
+                  "freq_hz": 6492.5,
+                  "magnitude": 1204704.9
+                },
+                {
+                  "freq_hz": 6934.4,
+                  "magnitude": 209301.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 7095.9,
+              "sweep_lo_hz": 6741.1,
+              "sweep_hi_hz": 7450.7,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 496.7,
+              "splitting_pct": 7.0,
+              "mag_ratio": 0.637,
+              "local_maxima": [
+                {
+                  "freq_hz": 6936.2,
+                  "magnitude": 191881.0
+                },
+                {
+                  "freq_hz": 7184.6,
+                  "magnitude": 768833.9
+                },
+                {
+                  "freq_hz": 7326.5,
+                  "magnitude": 489807.8
+                },
+                {
+                  "freq_hz": 7432.9,
+                  "magnitude": 324399.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 8824.4,
+              "sweep_lo_hz": 8383.2,
+              "sweep_hi_hz": 9265.6,
+              "n_local_maxima": 11,
+              "is_split": true,
+              "splitting_hz": 816.2,
+              "splitting_pct": 9.249,
+              "mag_ratio": 0.933,
+              "local_maxima": [
+                {
+                  "freq_hz": 8405.3,
+                  "magnitude": 91578.5
+                },
+                {
+                  "freq_hz": 8471.4,
+                  "magnitude": 93767.2
+                },
+                {
+                  "freq_hz": 8559.7,
+                  "magnitude": 89796.1
+                },
+                {
+                  "freq_hz": 8603.8,
+                  "magnitude": 87295.4
+                },
+                {
+                  "freq_hz": 8692.1,
+                  "magnitude": 73844.1
+                },
+                {
+                  "freq_hz": 8824.4,
+                  "magnitude": 84511.3
+                },
+                {
+                  "freq_hz": 8912.7,
+                  "magnitude": 100459.0
+                },
+                {
+                  "freq_hz": 8978.8,
+                  "magnitude": 90375.6
+                },
+                {
+                  "freq_hz": 9089.2,
+                  "magnitude": 73892.6
+                },
+                {
+                  "freq_hz": 9155.3,
+                  "magnitude": 78344.5
+                },
+                {
+                  "freq_hz": 9221.5,
+                  "magnitude": 79037.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 13209.1,
+              "sweep_lo_hz": 12548.6,
+              "sweep_hi_hz": 13869.5,
+              "n_local_maxima": 14,
+              "is_split": true,
+              "splitting_hz": 1188.9,
+              "splitting_pct": 9.001,
+              "mag_ratio": 0.991,
+              "local_maxima": [
+                {
+                  "freq_hz": 12581.6,
+                  "magnitude": 75113.8
+                },
+                {
+                  "freq_hz": 12647.7,
+                  "magnitude": 77485.6
+                },
+                {
+                  "freq_hz": 12746.8,
+                  "magnitude": 78221.6
+                },
+                {
+                  "freq_hz": 12845.8,
+                  "magnitude": 88761.9
+                },
+                {
+                  "freq_hz": 12977.9,
+                  "magnitude": 89180.2
+                },
+                {
+                  "freq_hz": 13077.0,
+                  "magnitude": 94926.6
+                },
+                {
+                  "freq_hz": 13143.0,
+                  "magnitude": 85758.4
+                },
+                {
+                  "freq_hz": 13242.1,
+                  "magnitude": 101551.7
+                },
+                {
+                  "freq_hz": 13308.1,
+                  "magnitude": 103262.4
+                },
+                {
+                  "freq_hz": 13407.2,
+                  "magnitude": 103843.1
+                },
+                {
+                  "freq_hz": 13473.3,
+                  "magnitude": 100043.4
+                },
+                {
+                  "freq_hz": 13572.3,
+                  "magnitude": 97088.6
+                },
+                {
+                  "freq_hz": 13671.4,
+                  "magnitude": 117043.3
+                },
+                {
+                  "freq_hz": 13770.5,
+                  "magnitude": 118060.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 17617.0,
+              "sweep_lo_hz": 16736.1,
+              "sweep_hi_hz": 18497.8,
+              "n_local_maxima": 6,
+              "is_split": true,
+              "splitting_hz": 1409.3,
+              "splitting_pct": 8.0,
+              "mag_ratio": 0.49,
+              "local_maxima": [
+                {
+                  "freq_hz": 16824.2,
+                  "magnitude": 728750.6
+                },
+                {
+                  "freq_hz": 16956.3,
+                  "magnitude": 770538.9
+                },
+                {
+                  "freq_hz": 17044.4,
+                  "magnitude": 753651.2
+                },
+                {
+                  "freq_hz": 17440.8,
+                  "magnitude": 894864.0
+                },
+                {
+                  "freq_hz": 17617.0,
+                  "magnitude": 1015386.4
+                },
+                {
+                  "freq_hz": 18233.5,
+                  "magnitude": 2071873.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18014.2,
+              "sweep_lo_hz": 17113.5,
+              "sweep_hi_hz": 18914.9,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1170.9,
+              "splitting_pct": 6.5,
+              "mag_ratio": 0.498,
+              "local_maxima": [
+                {
+                  "freq_hz": 17653.9,
+                  "magnitude": 1034988.2
+                },
+                {
+                  "freq_hz": 18239.4,
+                  "magnitude": 2077340.7
+                },
+                {
+                  "freq_hz": 18824.8,
+                  "magnitude": 984837.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19512.9,
+              "sweep_lo_hz": 18537.3,
+              "sweep_hi_hz": 20488.5,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1219.5,
+              "splitting_pct": 6.25,
+              "mag_ratio": 0.934,
+              "local_maxima": [
+                {
+                  "freq_hz": 18781.2,
+                  "magnitude": 987106.3
+                },
+                {
+                  "freq_hz": 18927.5,
+                  "magnitude": 922442.9
+                },
+                {
+                  "freq_hz": 20000.7,
+                  "magnitude": 813850.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19965.0,
+              "sweep_lo_hz": 18966.7,
+              "sweep_hi_hz": 20963.2,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 1597.2,
+              "splitting_pct": 8.0,
+              "mag_ratio": 0.819,
+              "local_maxima": [
+                {
+                  "freq_hz": 19216.3,
+                  "magnitude": 656019.0
+                },
+                {
+                  "freq_hz": 20014.9,
+                  "magnitude": 801062.9
+                },
+                {
+                  "freq_hz": 20713.6,
+                  "magnitude": 52828.7
+                },
+                {
+                  "freq_hz": 20813.5,
+                  "magnitude": 41883.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 30646.0,
+              "sweep_lo_hz": 29113.7,
+              "sweep_hi_hz": 32178.3,
+              "n_local_maxima": 11,
+              "is_split": true,
+              "splitting_hz": 2758.2,
+              "splitting_pct": 9.0,
+              "mag_ratio": 0.992,
+              "local_maxima": [
+                {
+                  "freq_hz": 29266.9,
+                  "magnitude": 18307.4
+                },
+                {
+                  "freq_hz": 29420.2,
+                  "magnitude": 12138.5
+                },
+                {
+                  "freq_hz": 29573.4,
+                  "magnitude": 14320.4
+                },
+                {
+                  "freq_hz": 29803.3,
+                  "magnitude": 20684.2
+                },
+                {
+                  "freq_hz": 29956.5,
+                  "magnitude": 13012.9
+                },
+                {
+                  "freq_hz": 30262.9,
+                  "magnitude": 19122.2
+                },
+                {
+                  "freq_hz": 30646.0,
+                  "magnitude": 24488.1
+                },
+                {
+                  "freq_hz": 30952.5,
+                  "magnitude": 21422.5
+                },
+                {
+                  "freq_hz": 31642.0,
+                  "magnitude": 70092.0
+                },
+                {
+                  "freq_hz": 31795.2,
+                  "magnitude": 72105.5
+                },
+                {
+                  "freq_hz": 32025.1,
+                  "magnitude": 71529.6
+                }
+              ]
+            }
+          ],
+          "spacings": [
+            {
+              "f_lower": 516.8,
+              "f_upper": 891.3,
+              "gap_hz": 374.5,
+              "gap_pct": 72.46
+            },
+            {
+              "f_lower": 891.3,
+              "f_upper": 1127.2,
+              "gap_hz": 235.9,
+              "gap_pct": 26.47
+            },
+            {
+              "f_lower": 1127.2,
+              "f_upper": 1825.5,
+              "gap_hz": 698.3,
+              "gap_pct": 61.95
+            },
+            {
+              "f_lower": 1825.5,
+              "f_upper": 2104.9,
+              "gap_hz": 279.3,
+              "gap_pct": 15.3
+            },
+            {
+              "f_lower": 2104.9,
+              "f_upper": 2299.2,
+              "gap_hz": 194.4,
+              "gap_pct": 9.23
+            },
+            {
+              "f_lower": 2299.2,
+              "f_upper": 2644.6,
+              "gap_hz": 345.4,
+              "gap_pct": 15.02
+            },
+            {
+              "f_lower": 2644.6,
+              "f_upper": 5197.8,
+              "gap_hz": 2553.2,
+              "gap_pct": 96.54
+            },
+            {
+              "f_lower": 5197.8,
+              "f_upper": 5460.7,
+              "gap_hz": 262.9,
+              "gap_pct": 5.06
+            },
+            {
+              "f_lower": 5460.7,
+              "f_upper": 6022.8,
+              "gap_hz": 562.1,
+              "gap_pct": 10.29
+            },
+            {
+              "f_lower": 6022.8,
+              "f_upper": 6432.4,
+              "gap_hz": 409.6,
+              "gap_pct": 6.8
+            },
+            {
+              "f_lower": 6432.4,
+              "f_upper": 6798.4,
+              "gap_hz": 366.1,
+              "gap_pct": 5.69
+            },
+            {
+              "f_lower": 6798.4,
+              "f_upper": 7095.9,
+              "gap_hz": 297.4,
+              "gap_pct": 4.37
+            },
+            {
+              "f_lower": 7095.9,
+              "f_upper": 8824.4,
+              "gap_hz": 1728.6,
+              "gap_pct": 24.36
+            },
+            {
+              "f_lower": 8824.4,
+              "f_upper": 13209.1,
+              "gap_hz": 4384.6,
+              "gap_pct": 49.69
+            },
+            {
+              "f_lower": 13209.1,
+              "f_upper": 17617.0,
+              "gap_hz": 4407.9,
+              "gap_pct": 33.37
+            },
+            {
+              "f_lower": 17617.0,
+              "f_upper": 18014.2,
+              "gap_hz": 397.2,
+              "gap_pct": 2.25
+            },
+            {
+              "f_lower": 18014.2,
+              "f_upper": 19512.9,
+              "gap_hz": 1498.7,
+              "gap_pct": 8.32
+            },
+            {
+              "f_lower": 19512.9,
+              "f_upper": 19965.0,
+              "gap_hz": 452.1,
+              "gap_pct": 2.32
+            },
+            {
+              "f_lower": 19965.0,
+              "f_upper": 30646.0,
+              "gap_hz": 10681.1,
+              "gap_pct": 53.5
+            }
+          ],
+          "near_degenerate_pairs": [
+            {
+              "f_lower": 6798.4,
+              "f_upper": 7095.9,
+              "gap_hz": 297.4,
+              "gap_pct": 4.37
+            },
+            {
+              "f_lower": 17617.0,
+              "f_upper": 18014.2,
+              "gap_hz": 397.2,
+              "gap_pct": 2.25
+            },
+            {
+              "f_lower": 19512.9,
+              "f_upper": 19965.0,
+              "gap_hz": 452.1,
+              "gap_pct": 2.32
+            }
+          ],
+          "n_near_degenerate": 3,
+          "n_doublets_found": 17,
+          "hidden_modes": [
+            {
+              "freq_hz": 2027.3,
+              "magnitude": 43154346.5
+            },
+            {
+              "freq_hz": 16000.8,
+              "magnitude": 4588543.2
+            },
+            {
+              "freq_hz": 21982.5,
+              "magnitude": 173764.3
+            }
+          ]
+        },
+        "2": {
+          "n_known_peaks": 20,
+          "fine_scan": [
+            {
+              "enrolled_freq_hz": 709.4,
+              "sweep_lo_hz": 673.9,
+              "sweep_hi_hz": 744.8,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 65.6,
+              "splitting_pct": 9.248,
+              "mag_ratio": 0.844,
+              "local_maxima": [
+                {
+                  "freq_hz": 677.5,
+                  "magnitude": 66541.9
+                },
+                {
+                  "freq_hz": 682.8,
+                  "magnitude": 63947.2
+                },
+                {
+                  "freq_hz": 689.9,
+                  "magnitude": 71408.9
+                },
+                {
+                  "freq_hz": 693.4,
+                  "magnitude": 65303.9
+                },
+                {
+                  "freq_hz": 700.5,
+                  "magnitude": 66103.4
+                },
+                {
+                  "freq_hz": 709.4,
+                  "magnitude": 74030.4
+                },
+                {
+                  "freq_hz": 714.7,
+                  "magnitude": 89180.5
+                },
+                {
+                  "freq_hz": 720.0,
+                  "magnitude": 73956.9
+                },
+                {
+                  "freq_hz": 725.3,
+                  "magnitude": 73598.3
+                },
+                {
+                  "freq_hz": 732.4,
+                  "magnitude": 71715.9
+                },
+                {
+                  "freq_hz": 736.0,
+                  "magnitude": 75280.7
+                },
+                {
+                  "freq_hz": 743.1,
+                  "magnitude": 73824.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1026.0,
+              "sweep_lo_hz": 974.7,
+              "sweep_hi_hz": 1077.3,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 92.3,
+              "splitting_pct": 8.996,
+              "mag_ratio": 0.943,
+              "local_maxima": [
+                {
+                  "freq_hz": 982.4,
+                  "magnitude": 156742.1
+                },
+                {
+                  "freq_hz": 990.1,
+                  "magnitude": 157120.6
+                },
+                {
+                  "freq_hz": 995.2,
+                  "magnitude": 161720.0
+                },
+                {
+                  "freq_hz": 1005.5,
+                  "magnitude": 166583.5
+                },
+                {
+                  "freq_hz": 1010.6,
+                  "magnitude": 178738.5
+                },
+                {
+                  "freq_hz": 1015.7,
+                  "magnitude": 169520.3
+                },
+                {
+                  "freq_hz": 1023.4,
+                  "magnitude": 184160.3
+                },
+                {
+                  "freq_hz": 1033.7,
+                  "magnitude": 184504.1
+                },
+                {
+                  "freq_hz": 1041.4,
+                  "magnitude": 198415.5
+                },
+                {
+                  "freq_hz": 1046.5,
+                  "magnitude": 192142.1
+                },
+                {
+                  "freq_hz": 1059.3,
+                  "magnitude": 216146.8
+                },
+                {
+                  "freq_hz": 1074.7,
+                  "magnitude": 229284.2
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1203.2,
+              "sweep_lo_hz": 1143.0,
+              "sweep_hi_hz": 1263.3,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 105.3,
+              "splitting_pct": 8.752,
+              "mag_ratio": 0.951,
+              "local_maxima": [
+                {
+                  "freq_hz": 1149.0,
+                  "magnitude": 333103.2
+                },
+                {
+                  "freq_hz": 1164.1,
+                  "magnitude": 355249.4
+                },
+                {
+                  "freq_hz": 1176.1,
+                  "magnitude": 368195.1
+                },
+                {
+                  "freq_hz": 1185.1,
+                  "magnitude": 382629.9
+                },
+                {
+                  "freq_hz": 1194.2,
+                  "magnitude": 390064.3
+                },
+                {
+                  "freq_hz": 1206.2,
+                  "magnitude": 410206.7
+                },
+                {
+                  "freq_hz": 1218.2,
+                  "magnitude": 408931.7
+                },
+                {
+                  "freq_hz": 1227.2,
+                  "magnitude": 430994.2
+                },
+                {
+                  "freq_hz": 1233.3,
+                  "magnitude": 450250.6
+                },
+                {
+                  "freq_hz": 1239.3,
+                  "magnitude": 442572.0
+                },
+                {
+                  "freq_hz": 1245.3,
+                  "magnitude": 448763.5
+                },
+                {
+                  "freq_hz": 1254.3,
+                  "magnitude": 473341.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1616.9,
+              "sweep_lo_hz": 1536.0,
+              "sweep_hi_hz": 1697.7,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 72.7,
+              "splitting_pct": 4.496,
+              "mag_ratio": 0.966,
+              "local_maxima": [
+                {
+                  "freq_hz": 1596.7,
+                  "magnitude": 2789409.7
+                },
+                {
+                  "freq_hz": 1629.0,
+                  "magnitude": 1954340.0
+                },
+                {
+                  "freq_hz": 1669.4,
+                  "magnitude": 2695462.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2117.8,
+              "sweep_lo_hz": 2011.9,
+              "sweep_hi_hz": 2223.6,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 100.6,
+              "splitting_pct": 4.75,
+              "mag_ratio": 0.578,
+              "local_maxima": [
+                {
+                  "freq_hz": 2038.3,
+                  "magnitude": 38556172.1
+                },
+                {
+                  "freq_hz": 2138.9,
+                  "magnitude": 66659411.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2924.3,
+              "sweep_lo_hz": 2778.1,
+              "sweep_hi_hz": 3070.6,
+              "n_local_maxima": 8,
+              "is_split": true,
+              "splitting_hz": 241.2,
+              "splitting_pct": 8.248,
+              "mag_ratio": 0.994,
+              "local_maxima": [
+                {
+                  "freq_hz": 2814.7,
+                  "magnitude": 799109.1
+                },
+                {
+                  "freq_hz": 2873.2,
+                  "magnitude": 794050.3
+                },
+                {
+                  "freq_hz": 2902.4,
+                  "magnitude": 693521.7
+                },
+                {
+                  "freq_hz": 2960.9,
+                  "magnitude": 591959.9
+                },
+                {
+                  "freq_hz": 2997.4,
+                  "magnitude": 522427.8
+                },
+                {
+                  "freq_hz": 3019.4,
+                  "magnitude": 512261.5
+                },
+                {
+                  "freq_hz": 3034.0,
+                  "magnitude": 499887.0
+                },
+                {
+                  "freq_hz": 3055.9,
+                  "magnitude": 475832.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5689.9,
+              "sweep_lo_hz": 5405.4,
+              "sweep_hi_hz": 5974.4,
+              "n_local_maxima": 10,
+              "is_split": true,
+              "splitting_hz": 369.9,
+              "splitting_pct": 6.501,
+              "mag_ratio": 0.972,
+              "local_maxima": [
+                {
+                  "freq_hz": 5448.1,
+                  "magnitude": 29564.1
+                },
+                {
+                  "freq_hz": 5476.6,
+                  "magnitude": 37487.6
+                },
+                {
+                  "freq_hz": 5505.0,
+                  "magnitude": 37201.0
+                },
+                {
+                  "freq_hz": 5533.5,
+                  "magnitude": 31902.0
+                },
+                {
+                  "freq_hz": 5561.9,
+                  "magnitude": 33399.0
+                },
+                {
+                  "freq_hz": 5604.6,
+                  "magnitude": 38564.4
+                },
+                {
+                  "freq_hz": 5633.0,
+                  "magnitude": 34039.0
+                },
+                {
+                  "freq_hz": 5704.2,
+                  "magnitude": 29036.8
+                },
+                {
+                  "freq_hz": 5746.8,
+                  "magnitude": 21904.5
+                },
+                {
+                  "freq_hz": 5818.0,
+                  "magnitude": 22088.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6303.4,
+              "sweep_lo_hz": 5988.3,
+              "sweep_hi_hz": 6618.6,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 283.7,
+              "splitting_pct": 4.501,
+              "mag_ratio": 0.267,
+              "local_maxima": [
+                {
+                  "freq_hz": 6130.1,
+                  "magnitude": 1575355.2
+                },
+                {
+                  "freq_hz": 6413.8,
+                  "magnitude": 419846.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6506.6,
+              "sweep_lo_hz": 6181.2,
+              "sweep_hi_hz": 6831.9,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 195.2,
+              "splitting_pct": 3.0,
+              "mag_ratio": 0.359,
+              "local_maxima": [
+                {
+                  "freq_hz": 6620.4,
+                  "magnitude": 1278484.4
+                },
+                {
+                  "freq_hz": 6815.6,
+                  "magnitude": 458862.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6792.7,
+              "sweep_lo_hz": 6453.1,
+              "sweep_hi_hz": 7132.4,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 475.5,
+              "splitting_pct": 7.0,
+              "mag_ratio": 0.199,
+              "local_maxima": [
+                {
+                  "freq_hz": 6605.9,
+                  "magnitude": 1256072.6
+                },
+                {
+                  "freq_hz": 6996.5,
+                  "magnitude": 249981.0
+                },
+                {
+                  "freq_hz": 7081.4,
+                  "magnitude": 209022.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 7469.2,
+              "sweep_lo_hz": 7095.8,
+              "sweep_hi_hz": 7842.7,
+              "n_local_maxima": 9,
+              "is_split": true,
+              "splitting_hz": 597.6,
+              "splitting_pct": 8.001,
+              "mag_ratio": 0.903,
+              "local_maxima": [
+                {
+                  "freq_hz": 7189.1,
+                  "magnitude": 184715.1
+                },
+                {
+                  "freq_hz": 7263.8,
+                  "magnitude": 166821.9
+                },
+                {
+                  "freq_hz": 7357.2,
+                  "magnitude": 144379.7
+                },
+                {
+                  "freq_hz": 7413.2,
+                  "magnitude": 123339.6
+                },
+                {
+                  "freq_hz": 7543.9,
+                  "magnitude": 125526.5
+                },
+                {
+                  "freq_hz": 7599.9,
+                  "magnitude": 114947.4
+                },
+                {
+                  "freq_hz": 7655.9,
+                  "magnitude": 106801.3
+                },
+                {
+                  "freq_hz": 7693.3,
+                  "magnitude": 104472.4
+                },
+                {
+                  "freq_hz": 7786.7,
+                  "magnitude": 94573.2
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 14242.5,
+              "sweep_lo_hz": 13530.4,
+              "sweep_hi_hz": 14954.6,
+              "n_local_maxima": 6,
+              "is_split": true,
+              "splitting_hz": 997.0,
+              "splitting_pct": 7.0,
+              "mag_ratio": 0.754,
+              "local_maxima": [
+                {
+                  "freq_hz": 13744.0,
+                  "magnitude": 115631.8
+                },
+                {
+                  "freq_hz": 13886.4,
+                  "magnitude": 126787.8
+                },
+                {
+                  "freq_hz": 14100.1,
+                  "magnitude": 142613.3
+                },
+                {
+                  "freq_hz": 14206.9,
+                  "magnitude": 160047.1
+                },
+                {
+                  "freq_hz": 14420.5,
+                  "magnitude": 189803.8
+                },
+                {
+                  "freq_hz": 14741.0,
+                  "magnitude": 251569.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 16364.0,
+              "sweep_lo_hz": 15545.8,
+              "sweep_hi_hz": 17182.2,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 327.3,
+              "splitting_pct": 2.0,
+              "mag_ratio": 0.288,
+              "local_maxima": [
+                {
+                  "freq_hz": 15668.5,
+                  "magnitude": 1220804.9
+                },
+                {
+                  "freq_hz": 15995.8,
+                  "magnitude": 4235248.9
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 17802.2,
+              "sweep_lo_hz": 16912.1,
+              "sweep_hi_hz": 18692.3,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 445.1,
+              "splitting_pct": 2.5,
+              "mag_ratio": 0.616,
+              "local_maxima": [
+                {
+                  "freq_hz": 17579.6,
+                  "magnitude": 2815250.9
+                },
+                {
+                  "freq_hz": 18024.7,
+                  "magnitude": 1734336.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18672.3,
+              "sweep_lo_hz": 17738.7,
+              "sweep_hi_hz": 19605.9,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 887.0,
+              "splitting_pct": 4.75,
+              "mag_ratio": 0.957,
+              "local_maxima": [
+                {
+                  "freq_hz": 18018.7,
+                  "magnitude": 1734712.3
+                },
+                {
+                  "freq_hz": 18905.7,
+                  "magnitude": 1812620.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19440.0,
+              "sweep_lo_hz": 18468.0,
+              "sweep_hi_hz": 20412.0,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1069.2,
+              "splitting_pct": 5.5,
+              "mag_ratio": 0.55,
+              "local_maxima": [
+                {
+                  "freq_hz": 18613.8,
+                  "magnitude": 977341.4
+                },
+                {
+                  "freq_hz": 18905.4,
+                  "magnitude": 1827041.2
+                },
+                {
+                  "freq_hz": 19683.0,
+                  "magnitude": 1004221.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19679.5,
+              "sweep_lo_hz": 18695.5,
+              "sweep_hi_hz": 20663.4,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 787.2,
+              "splitting_pct": 4.0,
+              "mag_ratio": 0.544,
+              "local_maxima": [
+                {
+                  "freq_hz": 18892.3,
+                  "magnitude": 1837410.5
+                },
+                {
+                  "freq_hz": 19285.9,
+                  "magnitude": 494771.2
+                },
+                {
+                  "freq_hz": 19679.5,
+                  "magnitude": 998943.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19960.4,
+              "sweep_lo_hz": 18962.4,
+              "sweep_hi_hz": 20958.5,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 19661.0,
+                  "magnitude": 994469.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 25707.1,
+              "sweep_lo_hz": 24421.7,
+              "sweep_hi_hz": 26992.4,
+              "n_local_maxima": 10,
+              "is_split": true,
+              "splitting_hz": 2185.1,
+              "splitting_pct": 8.5,
+              "mag_ratio": 0.864,
+              "local_maxima": [
+                {
+                  "freq_hz": 24614.5,
+                  "magnitude": 15282.9
+                },
+                {
+                  "freq_hz": 24807.3,
+                  "magnitude": 16875.3
+                },
+                {
+                  "freq_hz": 25128.7,
+                  "magnitude": 15977.6
+                },
+                {
+                  "freq_hz": 25450.0,
+                  "magnitude": 13643.3
+                },
+                {
+                  "freq_hz": 25707.1,
+                  "magnitude": 20334.9
+                },
+                {
+                  "freq_hz": 25899.9,
+                  "magnitude": 12634.5
+                },
+                {
+                  "freq_hz": 26157.0,
+                  "magnitude": 16213.1
+                },
+                {
+                  "freq_hz": 26349.8,
+                  "magnitude": 13994.9
+                },
+                {
+                  "freq_hz": 26606.8,
+                  "magnitude": 16772.2
+                },
+                {
+                  "freq_hz": 26799.6,
+                  "magnitude": 17566.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 25925.0,
+              "sweep_lo_hz": 24628.8,
+              "sweep_hi_hz": 27221.3,
+              "n_local_maxima": 13,
+              "is_split": true,
+              "splitting_hz": 2462.8,
+              "splitting_pct": 9.5,
+              "mag_ratio": 0.889,
+              "local_maxima": [
+                {
+                  "freq_hz": 24693.6,
+                  "magnitude": 14507.6
+                },
+                {
+                  "freq_hz": 24952.8,
+                  "magnitude": 15676.8
+                },
+                {
+                  "freq_hz": 25082.4,
+                  "magnitude": 17285.1
+                },
+                {
+                  "freq_hz": 25276.9,
+                  "magnitude": 12881.9
+                },
+                {
+                  "freq_hz": 25600.9,
+                  "magnitude": 19445.4
+                },
+                {
+                  "freq_hz": 25795.4,
+                  "magnitude": 13772.8
+                },
+                {
+                  "freq_hz": 26054.6,
+                  "magnitude": 12577.2
+                },
+                {
+                  "freq_hz": 26184.3,
+                  "magnitude": 15092.5
+                },
+                {
+                  "freq_hz": 26378.7,
+                  "magnitude": 15228.6
+                },
+                {
+                  "freq_hz": 26508.3,
+                  "magnitude": 17102.2
+                },
+                {
+                  "freq_hz": 26767.6,
+                  "magnitude": 15898.6
+                },
+                {
+                  "freq_hz": 26897.2,
+                  "magnitude": 13569.9
+                },
+                {
+                  "freq_hz": 27156.4,
+                  "magnitude": 16183.4
+                }
+              ]
+            }
+          ],
+          "spacings": [
+            {
+              "f_lower": 709.4,
+              "f_upper": 1026.0,
+              "gap_hz": 316.6,
+              "gap_pct": 44.63
+            },
+            {
+              "f_lower": 1026.0,
+              "f_upper": 1203.2,
+              "gap_hz": 177.2,
+              "gap_pct": 17.27
+            },
+            {
+              "f_lower": 1203.2,
+              "f_upper": 1616.9,
+              "gap_hz": 413.7,
+              "gap_pct": 34.38
+            },
+            {
+              "f_lower": 1616.9,
+              "f_upper": 2117.8,
+              "gap_hz": 500.9,
+              "gap_pct": 30.98
+            },
+            {
+              "f_lower": 2117.8,
+              "f_upper": 2924.3,
+              "gap_hz": 806.6,
+              "gap_pct": 38.09
+            },
+            {
+              "f_lower": 2924.3,
+              "f_upper": 5689.9,
+              "gap_hz": 2765.6,
+              "gap_pct": 94.57
+            },
+            {
+              "f_lower": 5689.9,
+              "f_upper": 6303.4,
+              "gap_hz": 613.5,
+              "gap_pct": 10.78
+            },
+            {
+              "f_lower": 6303.4,
+              "f_upper": 6506.6,
+              "gap_hz": 203.1,
+              "gap_pct": 3.22
+            },
+            {
+              "f_lower": 6506.6,
+              "f_upper": 6792.7,
+              "gap_hz": 286.2,
+              "gap_pct": 4.4
+            },
+            {
+              "f_lower": 6792.7,
+              "f_upper": 7469.2,
+              "gap_hz": 676.5,
+              "gap_pct": 9.96
+            },
+            {
+              "f_lower": 7469.2,
+              "f_upper": 14242.5,
+              "gap_hz": 6773.3,
+              "gap_pct": 90.68
+            },
+            {
+              "f_lower": 14242.5,
+              "f_upper": 16364.0,
+              "gap_hz": 2121.5,
+              "gap_pct": 14.9
+            },
+            {
+              "f_lower": 16364.0,
+              "f_upper": 17802.2,
+              "gap_hz": 1438.2,
+              "gap_pct": 8.79
+            },
+            {
+              "f_lower": 17802.2,
+              "f_upper": 18672.3,
+              "gap_hz": 870.1,
+              "gap_pct": 4.89
+            },
+            {
+              "f_lower": 18672.3,
+              "f_upper": 19440.0,
+              "gap_hz": 767.7,
+              "gap_pct": 4.11
+            },
+            {
+              "f_lower": 19440.0,
+              "f_upper": 19679.5,
+              "gap_hz": 239.4,
+              "gap_pct": 1.23
+            },
+            {
+              "f_lower": 19679.5,
+              "f_upper": 19960.4,
+              "gap_hz": 281.0,
+              "gap_pct": 1.43
+            },
+            {
+              "f_lower": 19960.4,
+              "f_upper": 25707.1,
+              "gap_hz": 5746.6,
+              "gap_pct": 28.79
+            },
+            {
+              "f_lower": 25707.1,
+              "f_upper": 25925.0,
+              "gap_hz": 217.9,
+              "gap_pct": 0.85
+            }
+          ],
+          "near_degenerate_pairs": [
+            {
+              "f_lower": 6303.4,
+              "f_upper": 6506.6,
+              "gap_hz": 203.1,
+              "gap_pct": 3.22
+            },
+            {
+              "f_lower": 6506.6,
+              "f_upper": 6792.7,
+              "gap_hz": 286.2,
+              "gap_pct": 4.4
+            },
+            {
+              "f_lower": 17802.2,
+              "f_upper": 18672.3,
+              "gap_hz": 870.1,
+              "gap_pct": 4.89
+            },
+            {
+              "f_lower": 18672.3,
+              "f_upper": 19440.0,
+              "gap_hz": 767.7,
+              "gap_pct": 4.11
+            },
+            {
+              "f_lower": 19440.0,
+              "f_upper": 19679.5,
+              "gap_hz": 239.4,
+              "gap_pct": 1.23
+            },
+            {
+              "f_lower": 19679.5,
+              "f_upper": 19960.4,
+              "gap_hz": 281.0,
+              "gap_pct": 1.43
+            },
+            {
+              "f_lower": 25707.1,
+              "f_upper": 25925.0,
+              "gap_hz": 217.9,
+              "gap_pct": 0.85
+            }
+          ],
+          "n_near_degenerate": 7,
+          "n_doublets_found": 19,
+          "hidden_modes": [
+            {
+              "freq_hz": 6133.0,
+              "magnitude": 1552505.1
+            },
+            {
+              "freq_hz": 15963.3,
+              "magnitude": 4309699.9
+            }
+          ]
+        },
+        "3": {
+          "n_known_peaks": 20,
+          "fine_scan": [
+            {
+              "enrolled_freq_hz": 913.1,
+              "sweep_lo_hz": 867.5,
+              "sweep_hi_hz": 958.8,
+              "n_local_maxima": 13,
+              "is_split": true,
+              "splitting_hz": 79.9,
+              "splitting_pct": 8.75,
+              "mag_ratio": 0.982,
+              "local_maxima": [
+                {
+                  "freq_hz": 876.6,
+                  "magnitude": 165781.6
+                },
+                {
+                  "freq_hz": 885.7,
+                  "magnitude": 167012.3
+                },
+                {
+                  "freq_hz": 894.9,
+                  "magnitude": 188762.1
+                },
+                {
+                  "freq_hz": 901.7,
+                  "magnitude": 194128.6
+                },
+                {
+                  "freq_hz": 908.6,
+                  "magnitude": 193100.8
+                },
+                {
+                  "freq_hz": 915.4,
+                  "magnitude": 200037.4
+                },
+                {
+                  "freq_hz": 922.3,
+                  "magnitude": 198104.4
+                },
+                {
+                  "freq_hz": 926.8,
+                  "magnitude": 203686.4
+                },
+                {
+                  "freq_hz": 933.7,
+                  "magnitude": 192991.8
+                },
+                {
+                  "freq_hz": 938.2,
+                  "magnitude": 194049.1
+                },
+                {
+                  "freq_hz": 945.1,
+                  "magnitude": 192438.9
+                },
+                {
+                  "freq_hz": 949.7,
+                  "magnitude": 193274.9
+                },
+                {
+                  "freq_hz": 956.5,
+                  "magnitude": 194208.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1536.4,
+              "sweep_lo_hz": 1459.5,
+              "sweep_hi_hz": 1613.2,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 53.8,
+              "splitting_pct": 3.502,
+              "mag_ratio": 0.365,
+              "local_maxima": [
+                {
+                  "freq_hz": 1551.7,
+                  "magnitude": 4197341.9
+                },
+                {
+                  "freq_hz": 1605.5,
+                  "magnitude": 1533315.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1714.2,
+              "sweep_lo_hz": 1628.5,
+              "sweep_hi_hz": 1799.9,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 1688.5,
+                  "magnitude": 3866557.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2001.1,
+              "sweep_lo_hz": 1901.1,
+              "sweep_hi_hz": 2101.2,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 1951.1,
+                  "magnitude": 17441409.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2833.8,
+              "sweep_lo_hz": 2692.1,
+              "sweep_hi_hz": 2975.5,
+              "n_local_maxima": 9,
+              "is_split": true,
+              "splitting_hz": 240.9,
+              "splitting_pct": 8.501,
+              "mag_ratio": 0.997,
+              "local_maxima": [
+                {
+                  "freq_hz": 2720.4,
+                  "magnitude": 950878.9
+                },
+                {
+                  "freq_hz": 2741.7,
+                  "magnitude": 944438.7
+                },
+                {
+                  "freq_hz": 2762.9,
+                  "magnitude": 965305.5
+                },
+                {
+                  "freq_hz": 2777.1,
+                  "magnitude": 962159.5
+                },
+                {
+                  "freq_hz": 2862.1,
+                  "magnitude": 768809.9
+                },
+                {
+                  "freq_hz": 2904.6,
+                  "magnitude": 699046.0
+                },
+                {
+                  "freq_hz": 2918.8,
+                  "magnitude": 698783.6
+                },
+                {
+                  "freq_hz": 2933.0,
+                  "magnitude": 674257.9
+                },
+                {
+                  "freq_hz": 2961.3,
+                  "magnitude": 632799.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5575.5,
+              "sweep_lo_hz": 5296.7,
+              "sweep_hi_hz": 5854.3,
+              "n_local_maxima": 8,
+              "is_split": true,
+              "splitting_hz": 362.4,
+              "splitting_pct": 6.5,
+              "mag_ratio": 0.613,
+              "local_maxima": [
+                {
+                  "freq_hz": 5324.6,
+                  "magnitude": 46975.8
+                },
+                {
+                  "freq_hz": 5352.5,
+                  "magnitude": 49627.7
+                },
+                {
+                  "freq_hz": 5380.3,
+                  "magnitude": 57285.6
+                },
+                {
+                  "freq_hz": 5450.0,
+                  "magnitude": 70728.9
+                },
+                {
+                  "freq_hz": 5505.8,
+                  "magnitude": 84926.1
+                },
+                {
+                  "freq_hz": 5561.5,
+                  "magnitude": 100870.7
+                },
+                {
+                  "freq_hz": 5617.3,
+                  "magnitude": 122250.0
+                },
+                {
+                  "freq_hz": 5687.0,
+                  "magnitude": 199492.9
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5765.3,
+              "sweep_lo_hz": 5477.1,
+              "sweep_hi_hz": 6053.6,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 389.2,
+              "splitting_pct": 6.751,
+              "mag_ratio": 0.201,
+              "local_maxima": [
+                {
+                  "freq_hz": 5520.3,
+                  "magnitude": 83585.6
+                },
+                {
+                  "freq_hz": 5693.3,
+                  "magnitude": 203247.4
+                },
+                {
+                  "freq_hz": 5909.5,
+                  "magnitude": 1009242.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6218.2,
+              "sweep_lo_hz": 5907.3,
+              "sweep_hi_hz": 6529.2,
+              "n_local_maxima": 7,
+              "is_split": true,
+              "splitting_hz": 326.4,
+              "splitting_pct": 5.249,
+              "mag_ratio": 0.962,
+              "local_maxima": [
+                {
+                  "freq_hz": 6093.9,
+                  "magnitude": 241094.4
+                },
+                {
+                  "freq_hz": 6171.6,
+                  "magnitude": 186454.6
+                },
+                {
+                  "freq_hz": 6202.7,
+                  "magnitude": 188072.7
+                },
+                {
+                  "freq_hz": 6264.9,
+                  "magnitude": 231961.7
+                },
+                {
+                  "freq_hz": 6327.1,
+                  "magnitude": 172951.6
+                },
+                {
+                  "freq_hz": 6389.2,
+                  "magnitude": 220152.5
+                },
+                {
+                  "freq_hz": 6420.3,
+                  "magnitude": 211897.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 9396.4,
+              "sweep_lo_hz": 8926.6,
+              "sweep_hi_hz": 9866.2,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 869.1,
+              "splitting_pct": 9.249,
+              "mag_ratio": 0.997,
+              "local_maxima": [
+                {
+                  "freq_hz": 8950.1,
+                  "magnitude": 64280.1
+                },
+                {
+                  "freq_hz": 9067.5,
+                  "magnitude": 58363.1
+                },
+                {
+                  "freq_hz": 9114.5,
+                  "magnitude": 64118.2
+                },
+                {
+                  "freq_hz": 9232.0,
+                  "magnitude": 64010.5
+                },
+                {
+                  "freq_hz": 9279.0,
+                  "magnitude": 55937.3
+                },
+                {
+                  "freq_hz": 9349.4,
+                  "magnitude": 57797.6
+                },
+                {
+                  "freq_hz": 9419.9,
+                  "magnitude": 62332.6
+                },
+                {
+                  "freq_hz": 9513.9,
+                  "magnitude": 55630.9
+                },
+                {
+                  "freq_hz": 9584.3,
+                  "magnitude": 55508.8
+                },
+                {
+                  "freq_hz": 9654.8,
+                  "magnitude": 62674.6
+                },
+                {
+                  "freq_hz": 9701.8,
+                  "magnitude": 57795.8
+                },
+                {
+                  "freq_hz": 9819.2,
+                  "magnitude": 56929.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 13910.5,
+              "sweep_lo_hz": 13215.0,
+              "sweep_hi_hz": 14606.0,
+              "n_local_maxima": 9,
+              "is_split": true,
+              "splitting_hz": 1147.7,
+              "splitting_pct": 8.251,
+              "mag_ratio": 0.954,
+              "local_maxima": [
+                {
+                  "freq_hz": 13284.5,
+                  "magnitude": 125194.8
+                },
+                {
+                  "freq_hz": 13458.4,
+                  "magnitude": 138456.1
+                },
+                {
+                  "freq_hz": 13528.0,
+                  "magnitude": 138563.4
+                },
+                {
+                  "freq_hz": 13736.6,
+                  "magnitude": 161518.3
+                },
+                {
+                  "freq_hz": 13806.2,
+                  "magnitude": 167934.1
+                },
+                {
+                  "freq_hz": 13910.5,
+                  "magnitude": 194810.0
+                },
+                {
+                  "freq_hz": 14049.6,
+                  "magnitude": 203287.5
+                },
+                {
+                  "freq_hz": 14362.6,
+                  "magnitude": 273673.3
+                },
+                {
+                  "freq_hz": 14432.2,
+                  "magnitude": 286897.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 15383.8,
+              "sweep_lo_hz": 14614.6,
+              "sweep_hi_hz": 16153.0,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1346.1,
+              "splitting_pct": 8.75,
+              "mag_ratio": 0.319,
+              "local_maxima": [
+                {
+                  "freq_hz": 14653.1,
+                  "magnitude": 370508.1
+                },
+                {
+                  "freq_hz": 15691.5,
+                  "magnitude": 8963606.3
+                },
+                {
+                  "freq_hz": 15999.2,
+                  "magnitude": 2861821.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 16285.2,
+              "sweep_lo_hz": 15470.9,
+              "sweep_hi_hz": 17099.5,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1180.7,
+              "splitting_pct": 7.25,
+              "mag_ratio": 0.722,
+              "local_maxima": [
+                {
+                  "freq_hz": 15674.5,
+                  "magnitude": 9198513.7
+                },
+                {
+                  "freq_hz": 16000.2,
+                  "magnitude": 2871626.8
+                },
+                {
+                  "freq_hz": 16855.2,
+                  "magnitude": 6642448.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 17904.6,
+              "sweep_lo_hz": 17009.4,
+              "sweep_hi_hz": 18799.9,
+              "n_local_maxima": 5,
+              "is_split": true,
+              "splitting_hz": 1074.3,
+              "splitting_pct": 6.0,
+              "mag_ratio": 0.673,
+              "local_maxima": [
+                {
+                  "freq_hz": 17680.8,
+                  "magnitude": 1253353.9
+                },
+                {
+                  "freq_hz": 18038.9,
+                  "magnitude": 840874.2
+                },
+                {
+                  "freq_hz": 18128.4,
+                  "magnitude": 843779.0
+                },
+                {
+                  "freq_hz": 18486.5,
+                  "magnitude": 355634.4
+                },
+                {
+                  "freq_hz": 18755.1,
+                  "magnitude": 171779.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18192.2,
+              "sweep_lo_hz": 17282.6,
+              "sweep_hi_hz": 19101.8,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 1091.5,
+              "splitting_pct": 6.0,
+              "mag_ratio": 0.684,
+              "local_maxima": [
+                {
+                  "freq_hz": 17691.9,
+                  "magnitude": 1237367.1
+                },
+                {
+                  "freq_hz": 18146.7,
+                  "magnitude": 845928.0
+                },
+                {
+                  "freq_hz": 18465.0,
+                  "magnitude": 340890.2
+                },
+                {
+                  "freq_hz": 18783.4,
+                  "magnitude": 170306.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18375.5,
+              "sweep_lo_hz": 17456.7,
+              "sweep_hi_hz": 19294.3,
+              "n_local_maxima": 5,
+              "is_split": true,
+              "splitting_hz": 1424.1,
+              "splitting_pct": 7.75,
+              "mag_ratio": 0.68,
+              "local_maxima": [
+                {
+                  "freq_hz": 17686.4,
+                  "magnitude": 1248169.1
+                },
+                {
+                  "freq_hz": 18099.9,
+                  "magnitude": 849184.1
+                },
+                {
+                  "freq_hz": 18467.4,
+                  "magnitude": 352888.8
+                },
+                {
+                  "freq_hz": 18788.9,
+                  "magnitude": 171532.0
+                },
+                {
+                  "freq_hz": 19110.5,
+                  "magnitude": 387810.9
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18604.9,
+              "sweep_lo_hz": 17674.7,
+              "sweep_hi_hz": 19535.2,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 1069.8,
+              "splitting_pct": 5.75,
+              "mag_ratio": 0.479,
+              "local_maxima": [
+                {
+                  "freq_hz": 18093.3,
+                  "magnitude": 858340.4
+                },
+                {
+                  "freq_hz": 18465.4,
+                  "magnitude": 362845.0
+                },
+                {
+                  "freq_hz": 18791.0,
+                  "magnitude": 168069.3
+                },
+                {
+                  "freq_hz": 19163.1,
+                  "magnitude": 410763.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19029.8,
+              "sweep_lo_hz": 18078.3,
+              "sweep_hi_hz": 19981.2,
+              "n_local_maxima": 6,
+              "is_split": true,
+              "splitting_hz": 1570.0,
+              "splitting_pct": 8.25,
+              "mag_ratio": 0.977,
+              "local_maxima": [
+                {
+                  "freq_hz": 18125.8,
+                  "magnitude": 846100.4
+                },
+                {
+                  "freq_hz": 18458.9,
+                  "magnitude": 348616.0
+                },
+                {
+                  "freq_hz": 18791.9,
+                  "magnitude": 167659.4
+                },
+                {
+                  "freq_hz": 19124.9,
+                  "magnitude": 407130.5
+                },
+                {
+                  "freq_hz": 19553.1,
+                  "magnitude": 881297.3
+                },
+                {
+                  "freq_hz": 19695.8,
+                  "magnitude": 901602.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19480.0,
+              "sweep_lo_hz": 18506.0,
+              "sweep_hi_hz": 20454.0,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 925.3,
+              "splitting_pct": 4.75,
+              "mag_ratio": 0.921,
+              "local_maxima": [
+                {
+                  "freq_hz": 18749.5,
+                  "magnitude": 173461.8
+                },
+                {
+                  "freq_hz": 18846.9,
+                  "magnitude": 163525.9
+                },
+                {
+                  "freq_hz": 19528.7,
+                  "magnitude": 852734.3
+                },
+                {
+                  "freq_hz": 19674.8,
+                  "magnitude": 925412.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 25294.8,
+              "sweep_lo_hz": 24030.1,
+              "sweep_hi_hz": 26559.6,
+              "n_local_maxima": 14,
+              "is_split": true,
+              "splitting_hz": 2339.8,
+              "splitting_pct": 9.25,
+              "mag_ratio": 0.877,
+              "local_maxima": [
+                {
+                  "freq_hz": 24093.3,
+                  "magnitude": 21595.1
+                },
+                {
+                  "freq_hz": 24219.8,
+                  "magnitude": 24952.9
+                },
+                {
+                  "freq_hz": 24409.5,
+                  "magnitude": 21879.0
+                },
+                {
+                  "freq_hz": 24536.0,
+                  "magnitude": 16862.1
+                },
+                {
+                  "freq_hz": 24662.5,
+                  "magnitude": 17989.7
+                },
+                {
+                  "freq_hz": 24915.4,
+                  "magnitude": 14501.7
+                },
+                {
+                  "freq_hz": 25041.9,
+                  "magnitude": 15852.7
+                },
+                {
+                  "freq_hz": 25168.4,
+                  "magnitude": 15095.4
+                },
+                {
+                  "freq_hz": 25421.3,
+                  "magnitude": 13326.6
+                },
+                {
+                  "freq_hz": 25547.8,
+                  "magnitude": 17864.9
+                },
+                {
+                  "freq_hz": 25864.0,
+                  "magnitude": 15091.5
+                },
+                {
+                  "freq_hz": 25990.4,
+                  "magnitude": 12983.8
+                },
+                {
+                  "freq_hz": 26243.4,
+                  "magnitude": 14842.7
+                },
+                {
+                  "freq_hz": 26433.1,
+                  "magnitude": 13821.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 31809.6,
+              "sweep_lo_hz": 30219.1,
+              "sweep_hi_hz": 33400.1,
+              "n_local_maxima": 5,
+              "is_split": true,
+              "splitting_hz": 2703.8,
+              "splitting_pct": 8.5,
+              "mag_ratio": 0.453,
+              "local_maxima": [
+                {
+                  "freq_hz": 30616.8,
+                  "magnitude": 80877.1
+                },
+                {
+                  "freq_hz": 31571.0,
+                  "magnitude": 214554.6
+                },
+                {
+                  "freq_hz": 32684.4,
+                  "magnitude": 42813.3
+                },
+                {
+                  "freq_hz": 32843.4,
+                  "magnitude": 48667.3
+                },
+                {
+                  "freq_hz": 33320.6,
+                  "magnitude": 97177.5
+                }
+              ]
+            }
+          ],
+          "spacings": [
+            {
+              "f_lower": 913.1,
+              "f_upper": 1536.4,
+              "gap_hz": 623.2,
+              "gap_pct": 68.25
+            },
+            {
+              "f_lower": 1536.4,
+              "f_upper": 1714.2,
+              "gap_hz": 177.8,
+              "gap_pct": 11.57
+            },
+            {
+              "f_lower": 1714.2,
+              "f_upper": 2001.1,
+              "gap_hz": 287.0,
+              "gap_pct": 16.74
+            },
+            {
+              "f_lower": 2001.1,
+              "f_upper": 2833.8,
+              "gap_hz": 832.6,
+              "gap_pct": 41.61
+            },
+            {
+              "f_lower": 2833.8,
+              "f_upper": 5575.5,
+              "gap_hz": 2741.7,
+              "gap_pct": 96.75
+            },
+            {
+              "f_lower": 5575.5,
+              "f_upper": 5765.3,
+              "gap_hz": 189.8,
+              "gap_pct": 3.4
+            },
+            {
+              "f_lower": 5765.3,
+              "f_upper": 6218.2,
+              "gap_hz": 452.9,
+              "gap_pct": 7.86
+            },
+            {
+              "f_lower": 6218.2,
+              "f_upper": 9396.4,
+              "gap_hz": 3178.2,
+              "gap_pct": 51.11
+            },
+            {
+              "f_lower": 9396.4,
+              "f_upper": 13910.5,
+              "gap_hz": 4514.1,
+              "gap_pct": 48.04
+            },
+            {
+              "f_lower": 13910.5,
+              "f_upper": 15383.8,
+              "gap_hz": 1473.3,
+              "gap_pct": 10.59
+            },
+            {
+              "f_lower": 15383.8,
+              "f_upper": 16285.2,
+              "gap_hz": 901.4,
+              "gap_pct": 5.86
+            },
+            {
+              "f_lower": 16285.2,
+              "f_upper": 17904.6,
+              "gap_hz": 1619.4,
+              "gap_pct": 9.94
+            },
+            {
+              "f_lower": 17904.6,
+              "f_upper": 18192.2,
+              "gap_hz": 287.5,
+              "gap_pct": 1.61
+            },
+            {
+              "f_lower": 18192.2,
+              "f_upper": 18375.5,
+              "gap_hz": 183.3,
+              "gap_pct": 1.01
+            },
+            {
+              "f_lower": 18375.5,
+              "f_upper": 18604.9,
+              "gap_hz": 229.4,
+              "gap_pct": 1.25
+            },
+            {
+              "f_lower": 18604.9,
+              "f_upper": 19029.8,
+              "gap_hz": 424.8,
+              "gap_pct": 2.28
+            },
+            {
+              "f_lower": 19029.8,
+              "f_upper": 19480.0,
+              "gap_hz": 450.3,
+              "gap_pct": 2.37
+            },
+            {
+              "f_lower": 19480.0,
+              "f_upper": 25294.8,
+              "gap_hz": 5814.8,
+              "gap_pct": 29.85
+            },
+            {
+              "f_lower": 25294.8,
+              "f_upper": 31809.6,
+              "gap_hz": 6514.8,
+              "gap_pct": 25.76
+            }
+          ],
+          "near_degenerate_pairs": [
+            {
+              "f_lower": 5575.5,
+              "f_upper": 5765.3,
+              "gap_hz": 189.8,
+              "gap_pct": 3.4
+            },
+            {
+              "f_lower": 17904.6,
+              "f_upper": 18192.2,
+              "gap_hz": 287.5,
+              "gap_pct": 1.61
+            },
+            {
+              "f_lower": 18192.2,
+              "f_upper": 18375.5,
+              "gap_hz": 183.3,
+              "gap_pct": 1.01
+            },
+            {
+              "f_lower": 18375.5,
+              "f_upper": 18604.9,
+              "gap_hz": 229.4,
+              "gap_pct": 1.25
+            },
+            {
+              "f_lower": 18604.9,
+              "f_upper": 19029.8,
+              "gap_hz": 424.8,
+              "gap_pct": 2.28
+            },
+            {
+              "f_lower": 19029.8,
+              "f_upper": 19480.0,
+              "gap_hz": 450.3,
+              "gap_pct": 2.37
+            }
+          ],
+          "n_near_degenerate": 6,
+          "n_doublets_found": 18,
+          "hidden_modes": [
+            {
+              "freq_hz": 2158.4,
+              "magnitude": 31775118.8
+            },
+            {
+              "freq_hz": 16879.0,
+              "magnitude": 6536735.4
+            },
+            {
+              "freq_hz": 29999.9,
+              "magnitude": 76513.4
+            }
+          ]
+        },
+        "4": {
+          "n_known_peaks": 20,
+          "fine_scan": [
+            {
+              "enrolled_freq_hz": 867.7,
+              "sweep_lo_hz": 824.3,
+              "sweep_hi_hz": 911.0,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 78.1,
+              "splitting_pct": 9.001,
+              "mag_ratio": 0.978,
+              "local_maxima": [
+                {
+                  "freq_hz": 828.6,
+                  "magnitude": 123943.2
+                },
+                {
+                  "freq_hz": 835.1,
+                  "magnitude": 132575.5
+                },
+                {
+                  "freq_hz": 839.5,
+                  "magnitude": 131013.6
+                },
+                {
+                  "freq_hz": 843.8,
+                  "magnitude": 132256.7
+                },
+                {
+                  "freq_hz": 848.1,
+                  "magnitude": 140279.9
+                },
+                {
+                  "freq_hz": 859.0,
+                  "magnitude": 149252.9
+                },
+                {
+                  "freq_hz": 863.3,
+                  "magnitude": 137048.4
+                },
+                {
+                  "freq_hz": 869.8,
+                  "magnitude": 145098.9
+                },
+                {
+                  "freq_hz": 878.5,
+                  "magnitude": 156591.4
+                },
+                {
+                  "freq_hz": 891.5,
+                  "magnitude": 147804.9
+                },
+                {
+                  "freq_hz": 900.2,
+                  "magnitude": 160036.4
+                },
+                {
+                  "freq_hz": 906.7,
+                  "magnitude": 154225.2
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1094.7,
+              "sweep_lo_hz": 1039.9,
+              "sweep_hi_hz": 1149.4,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 95.8,
+              "splitting_pct": 8.752,
+              "mag_ratio": 0.966,
+              "local_maxima": [
+                {
+                  "freq_hz": 1042.7,
+                  "magnitude": 249332.0
+                },
+                {
+                  "freq_hz": 1048.1,
+                  "magnitude": 251359.0
+                },
+                {
+                  "freq_hz": 1056.4,
+                  "magnitude": 255811.5
+                },
+                {
+                  "freq_hz": 1064.6,
+                  "magnitude": 271448.3
+                },
+                {
+                  "freq_hz": 1075.5,
+                  "magnitude": 270828.4
+                },
+                {
+                  "freq_hz": 1081.0,
+                  "magnitude": 278837.7
+                },
+                {
+                  "freq_hz": 1086.5,
+                  "magnitude": 293632.9
+                },
+                {
+                  "freq_hz": 1108.3,
+                  "magnitude": 300558.8
+                },
+                {
+                  "freq_hz": 1116.6,
+                  "magnitude": 316563.3
+                },
+                {
+                  "freq_hz": 1124.8,
+                  "magnitude": 324722.6
+                },
+                {
+                  "freq_hz": 1130.2,
+                  "magnitude": 332562.8
+                },
+                {
+                  "freq_hz": 1138.5,
+                  "magnitude": 344309.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1631.9,
+              "sweep_lo_hz": 1550.3,
+              "sweep_hi_hz": 1713.5,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 1615.6,
+                  "magnitude": 3431931.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 1895.7,
+              "sweep_lo_hz": 1800.9,
+              "sweep_hi_hz": 1990.4,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 33.2,
+              "splitting_pct": 1.751,
+              "mag_ratio": 0.896,
+              "local_maxima": [
+                {
+                  "freq_hz": 1876.7,
+                  "magnitude": 22882546.9
+                },
+                {
+                  "freq_hz": 1909.9,
+                  "magnitude": 20501389.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2088.0,
+              "sweep_lo_hz": 1983.6,
+              "sweep_hi_hz": 2192.4,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 2124.6,
+                  "magnitude": 31531496.2
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 2584.4,
+              "sweep_lo_hz": 2455.2,
+              "sweep_hi_hz": 2713.7,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 2681.3,
+                  "magnitude": 1070447.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 3189.9,
+              "sweep_lo_hz": 3030.4,
+              "sweep_hi_hz": 3349.4,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 295.0,
+              "splitting_pct": 9.248,
+              "mag_ratio": 0.912,
+              "local_maxima": [
+                {
+                  "freq_hz": 3046.4,
+                  "magnitude": 425350.3
+                },
+                {
+                  "freq_hz": 3086.3,
+                  "magnitude": 388000.2
+                },
+                {
+                  "freq_hz": 3102.2,
+                  "magnitude": 385318.0
+                },
+                {
+                  "freq_hz": 3126.1,
+                  "magnitude": 364579.3
+                },
+                {
+                  "freq_hz": 3142.1,
+                  "magnitude": 376313.2
+                },
+                {
+                  "freq_hz": 3181.9,
+                  "magnitude": 341891.9
+                },
+                {
+                  "freq_hz": 3205.9,
+                  "magnitude": 316950.4
+                },
+                {
+                  "freq_hz": 3237.8,
+                  "magnitude": 293575.0
+                },
+                {
+                  "freq_hz": 3269.7,
+                  "magnitude": 279546.7
+                },
+                {
+                  "freq_hz": 3301.6,
+                  "magnitude": 257430.8
+                },
+                {
+                  "freq_hz": 3325.5,
+                  "magnitude": 257657.2
+                },
+                {
+                  "freq_hz": 3341.4,
+                  "magnitude": 246758.0
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5258.1,
+              "sweep_lo_hz": 4995.2,
+              "sweep_hi_hz": 5521.0,
+              "n_local_maxima": 12,
+              "is_split": true,
+              "splitting_hz": 473.2,
+              "splitting_pct": 8.999,
+              "mag_ratio": 0.975,
+              "local_maxima": [
+                {
+                  "freq_hz": 5021.5,
+                  "magnitude": 34188.0
+                },
+                {
+                  "freq_hz": 5074.1,
+                  "magnitude": 27196.8
+                },
+                {
+                  "freq_hz": 5100.4,
+                  "magnitude": 29468.4
+                },
+                {
+                  "freq_hz": 5139.8,
+                  "magnitude": 42030.8
+                },
+                {
+                  "freq_hz": 5166.1,
+                  "magnitude": 33914.2
+                },
+                {
+                  "freq_hz": 5205.5,
+                  "magnitude": 40395.1
+                },
+                {
+                  "freq_hz": 5245.0,
+                  "magnitude": 43108.8
+                },
+                {
+                  "freq_hz": 5271.3,
+                  "magnitude": 39705.3
+                },
+                {
+                  "freq_hz": 5350.1,
+                  "magnitude": 34510.0
+                },
+                {
+                  "freq_hz": 5402.7,
+                  "magnitude": 27907.1
+                },
+                {
+                  "freq_hz": 5442.2,
+                  "magnitude": 30817.1
+                },
+                {
+                  "freq_hz": 5494.7,
+                  "magnitude": 31968.8
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 5892.7,
+              "sweep_lo_hz": 5598.1,
+              "sweep_hi_hz": 6187.3,
+              "n_local_maxima": 6,
+              "is_split": true,
+              "splitting_hz": 442.0,
+              "splitting_pct": 7.501,
+              "mag_ratio": 0.021,
+              "local_maxima": [
+                {
+                  "freq_hz": 5612.8,
+                  "magnitude": 25453.0
+                },
+                {
+                  "freq_hz": 5642.3,
+                  "magnitude": 23054.6
+                },
+                {
+                  "freq_hz": 5686.5,
+                  "magnitude": 19675.7
+                },
+                {
+                  "freq_hz": 5715.9,
+                  "magnitude": 15997.0
+                },
+                {
+                  "freq_hz": 5745.4,
+                  "magnitude": 16380.1
+                },
+                {
+                  "freq_hz": 6054.8,
+                  "magnitude": 1198002.9
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6319.8,
+              "sweep_lo_hz": 6003.8,
+              "sweep_hi_hz": 6635.8,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 458.2,
+              "splitting_pct": 7.25,
+              "mag_ratio": 0.865,
+              "local_maxima": [
+                {
+                  "freq_hz": 6051.2,
+                  "magnitude": 1196392.4
+                },
+                {
+                  "freq_hz": 6225.0,
+                  "magnitude": 1382692.6
+                },
+                {
+                  "freq_hz": 6509.4,
+                  "magnitude": 934852.3
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 6784.7,
+              "sweep_lo_hz": 6445.5,
+              "sweep_hi_hz": 7124.0,
+              "n_local_maxima": 6,
+              "is_split": true,
+              "splitting_hz": 593.6,
+              "splitting_pct": 8.749,
+              "mag_ratio": 0.522,
+              "local_maxima": [
+                {
+                  "freq_hz": 6513.4,
+                  "magnitude": 926333.2
+                },
+                {
+                  "freq_hz": 6666.0,
+                  "magnitude": 483093.8
+                },
+                {
+                  "freq_hz": 6886.5,
+                  "magnitude": 227559.9
+                },
+                {
+                  "freq_hz": 6971.3,
+                  "magnitude": 195125.0
+                },
+                {
+                  "freq_hz": 7073.1,
+                  "magnitude": 161730.2
+                },
+                {
+                  "freq_hz": 7107.0,
+                  "magnitude": 153521.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 8336.2,
+              "sweep_lo_hz": 7919.4,
+              "sweep_hi_hz": 8753.0,
+              "n_local_maxima": 14,
+              "is_split": true,
+              "splitting_hz": 750.3,
+              "splitting_pct": 9.0,
+              "mag_ratio": 0.915,
+              "local_maxima": [
+                {
+                  "freq_hz": 7981.9,
+                  "magnitude": 83699.8
+                },
+                {
+                  "freq_hz": 8023.6,
+                  "magnitude": 91497.5
+                },
+                {
+                  "freq_hz": 8107.0,
+                  "magnitude": 72730.9
+                },
+                {
+                  "freq_hz": 8190.4,
+                  "magnitude": 75594.5
+                },
+                {
+                  "freq_hz": 8252.9,
+                  "magnitude": 69617.1
+                },
+                {
+                  "freq_hz": 8315.4,
+                  "magnitude": 71055.8
+                },
+                {
+                  "freq_hz": 8357.1,
+                  "magnitude": 65731.7
+                },
+                {
+                  "freq_hz": 8440.4,
+                  "magnitude": 70240.5
+                },
+                {
+                  "freq_hz": 8482.1,
+                  "magnitude": 71450.7
+                },
+                {
+                  "freq_hz": 8523.8,
+                  "magnitude": 64336.2
+                },
+                {
+                  "freq_hz": 8565.5,
+                  "magnitude": 63733.8
+                },
+                {
+                  "freq_hz": 8607.2,
+                  "magnitude": 63564.0
+                },
+                {
+                  "freq_hz": 8648.8,
+                  "magnitude": 63734.1
+                },
+                {
+                  "freq_hz": 8732.2,
+                  "magnitude": 62690.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 8691.0,
+              "sweep_lo_hz": 8256.4,
+              "sweep_hi_hz": 9125.5,
+              "n_local_maxima": 13,
+              "is_split": true,
+              "splitting_hz": 825.6,
+              "splitting_pct": 9.499,
+              "mag_ratio": 0.954,
+              "local_maxima": [
+                {
+                  "freq_hz": 8278.2,
+                  "magnitude": 72217.8
+                },
+                {
+                  "freq_hz": 8343.4,
+                  "magnitude": 66303.3
+                },
+                {
+                  "freq_hz": 8452.0,
+                  "magnitude": 73921.5
+                },
+                {
+                  "freq_hz": 8517.2,
+                  "magnitude": 69342.1
+                },
+                {
+                  "freq_hz": 8560.6,
+                  "magnitude": 69725.2
+                },
+                {
+                  "freq_hz": 8669.3,
+                  "magnitude": 64520.1
+                },
+                {
+                  "freq_hz": 8712.7,
+                  "magnitude": 63701.6
+                },
+                {
+                  "freq_hz": 8799.6,
+                  "magnitude": 71893.0
+                },
+                {
+                  "freq_hz": 8864.8,
+                  "magnitude": 77487.0
+                },
+                {
+                  "freq_hz": 8930.0,
+                  "magnitude": 72958.6
+                },
+                {
+                  "freq_hz": 8973.5,
+                  "magnitude": 68963.4
+                },
+                {
+                  "freq_hz": 9016.9,
+                  "magnitude": 73462.5
+                },
+                {
+                  "freq_hz": 9103.8,
+                  "magnitude": 72340.6
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 8911.0,
+              "sweep_lo_hz": 8465.4,
+              "sweep_hi_hz": 9356.5,
+              "n_local_maxima": 11,
+              "is_split": true,
+              "splitting_hz": 735.1,
+              "splitting_pct": 8.249,
+              "mag_ratio": 0.994,
+              "local_maxima": [
+                {
+                  "freq_hz": 8554.6,
+                  "magnitude": 66781.9
+                },
+                {
+                  "freq_hz": 8643.7,
+                  "magnitude": 63557.4
+                },
+                {
+                  "freq_hz": 8732.8,
+                  "magnitude": 64710.7
+                },
+                {
+                  "freq_hz": 8799.6,
+                  "magnitude": 73531.3
+                },
+                {
+                  "freq_hz": 8844.2,
+                  "magnitude": 76838.2
+                },
+                {
+                  "freq_hz": 8911.0,
+                  "magnitude": 76358.8
+                },
+                {
+                  "freq_hz": 9044.7,
+                  "magnitude": 75145.9
+                },
+                {
+                  "freq_hz": 9089.2,
+                  "magnitude": 69329.0
+                },
+                {
+                  "freq_hz": 9156.0,
+                  "magnitude": 66035.0
+                },
+                {
+                  "freq_hz": 9245.2,
+                  "magnitude": 63114.0
+                },
+                {
+                  "freq_hz": 9289.7,
+                  "magnitude": 65655.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 15570.9,
+              "sweep_lo_hz": 14792.3,
+              "sweep_hi_hz": 16349.4,
+              "n_local_maxima": 1,
+              "is_split": false,
+              "splitting_hz": 0,
+              "splitting_pct": 0,
+              "mag_ratio": 0,
+              "local_maxima": [
+                {
+                  "freq_hz": 15960.1,
+                  "magnitude": 5688935.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 17511.6,
+              "sweep_lo_hz": 16636.0,
+              "sweep_hi_hz": 18387.2,
+              "n_local_maxima": 2,
+              "is_split": true,
+              "splitting_hz": 788.0,
+              "splitting_pct": 4.5,
+              "mag_ratio": 0.728,
+              "local_maxima": [
+                {
+                  "freq_hz": 17511.6,
+                  "magnitude": 1720996.6
+                },
+                {
+                  "freq_hz": 18299.6,
+                  "magnitude": 2365216.5
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 18235.6,
+              "sweep_lo_hz": 17323.8,
+              "sweep_hi_hz": 19147.4,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1504.4,
+              "splitting_pct": 8.25,
+              "mag_ratio": 0.721,
+              "local_maxima": [
+                {
+                  "freq_hz": 17506.2,
+                  "magnitude": 1736437.2
+                },
+                {
+                  "freq_hz": 18281.2,
+                  "magnitude": 2407259.9
+                },
+                {
+                  "freq_hz": 19010.6,
+                  "magnitude": 918344.1
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19002.5,
+              "sweep_lo_hz": 18052.4,
+              "sweep_hi_hz": 19952.7,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 760.1,
+              "splitting_pct": 4.0,
+              "mag_ratio": 0.963,
+              "local_maxima": [
+                {
+                  "freq_hz": 18289.9,
+                  "magnitude": 2424444.4
+                },
+                {
+                  "freq_hz": 18384.9,
+                  "magnitude": 2335540.3
+                },
+                {
+                  "freq_hz": 19050.0,
+                  "magnitude": 885988.4
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19467.0,
+              "sweep_lo_hz": 18493.7,
+              "sweep_hi_hz": 20440.4,
+              "n_local_maxima": 4,
+              "is_split": true,
+              "splitting_hz": 1216.7,
+              "splitting_pct": 6.25,
+              "mag_ratio": 0.888,
+              "local_maxima": [
+                {
+                  "freq_hz": 19029.0,
+                  "magnitude": 899836.6
+                },
+                {
+                  "freq_hz": 19369.7,
+                  "magnitude": 487709.0
+                },
+                {
+                  "freq_hz": 19613.0,
+                  "magnitude": 280035.1
+                },
+                {
+                  "freq_hz": 20245.7,
+                  "magnitude": 1013015.7
+                }
+              ]
+            },
+            {
+              "enrolled_freq_hz": 19747.8,
+              "sweep_lo_hz": 18760.4,
+              "sweep_hi_hz": 20735.2,
+              "n_local_maxima": 3,
+              "is_split": true,
+              "splitting_hz": 1234.3,
+              "splitting_pct": 6.25,
+              "mag_ratio": 0.896,
+              "local_maxima": [
+                {
+                  "freq_hz": 19007.2,
+                  "magnitude": 908556.1
+                },
+                {
+                  "freq_hz": 19402.2,
+                  "magnitude": 476311.1
+                },
+                {
+                  "freq_hz": 20241.5,
+                  "magnitude": 1013721.3
+                }
+              ]
+            }
+          ],
+          "spacings": [
+            {
+              "f_lower": 867.7,
+              "f_upper": 1094.7,
+              "gap_hz": 227.0,
+              "gap_pct": 26.16
+            },
+            {
+              "f_lower": 1094.7,
+              "f_upper": 1631.9,
+              "gap_hz": 537.3,
+              "gap_pct": 49.08
+            },
+            {
+              "f_lower": 1631.9,
+              "f_upper": 1895.7,
+              "gap_hz": 263.7,
+              "gap_pct": 16.16
+            },
+            {
+              "f_lower": 1895.7,
+              "f_upper": 2088.0,
+              "gap_hz": 192.4,
+              "gap_pct": 10.15
+            },
+            {
+              "f_lower": 2088.0,
+              "f_upper": 2584.4,
+              "gap_hz": 496.4,
+              "gap_pct": 23.77
+            },
+            {
+              "f_lower": 2584.4,
+              "f_upper": 3189.9,
+              "gap_hz": 605.5,
+              "gap_pct": 23.43
+            },
+            {
+              "f_lower": 3189.9,
+              "f_upper": 5258.1,
+              "gap_hz": 2068.2,
+              "gap_pct": 64.84
+            },
+            {
+              "f_lower": 5258.1,
+              "f_upper": 5892.7,
+              "gap_hz": 634.6,
+              "gap_pct": 12.07
+            },
+            {
+              "f_lower": 5892.7,
+              "f_upper": 6319.8,
+              "gap_hz": 427.1,
+              "gap_pct": 7.25
+            },
+            {
+              "f_lower": 6319.8,
+              "f_upper": 6784.7,
+              "gap_hz": 465.0,
+              "gap_pct": 7.36
+            },
+            {
+              "f_lower": 6784.7,
+              "f_upper": 8336.2,
+              "gap_hz": 1551.5,
+              "gap_pct": 22.87
+            },
+            {
+              "f_lower": 8336.2,
+              "f_upper": 8691.0,
+              "gap_hz": 354.8,
+              "gap_pct": 4.26
+            },
+            {
+              "f_lower": 8691.0,
+              "f_upper": 8911.0,
+              "gap_hz": 220.0,
+              "gap_pct": 2.53
+            },
+            {
+              "f_lower": 8911.0,
+              "f_upper": 15570.9,
+              "gap_hz": 6659.9,
+              "gap_pct": 74.74
+            },
+            {
+              "f_lower": 15570.9,
+              "f_upper": 17511.6,
+              "gap_hz": 1940.7,
+              "gap_pct": 12.46
+            },
+            {
+              "f_lower": 17511.6,
+              "f_upper": 18235.6,
+              "gap_hz": 724.0,
+              "gap_pct": 4.13
+            },
+            {
+              "f_lower": 18235.6,
+              "f_upper": 19002.5,
+              "gap_hz": 766.9,
+              "gap_pct": 4.21
+            },
+            {
+              "f_lower": 19002.5,
+              "f_upper": 19467.0,
+              "gap_hz": 464.5,
+              "gap_pct": 2.44
+            },
+            {
+              "f_lower": 19467.0,
+              "f_upper": 19747.8,
+              "gap_hz": 280.7,
+              "gap_pct": 1.44
+            }
+          ],
+          "near_degenerate_pairs": [
+            {
+              "f_lower": 8336.2,
+              "f_upper": 8691.0,
+              "gap_hz": 354.8,
+              "gap_pct": 4.26
+            },
+            {
+              "f_lower": 8691.0,
+              "f_upper": 8911.0,
+              "gap_hz": 220.0,
+              "gap_pct": 2.53
+            },
+            {
+              "f_lower": 17511.6,
+              "f_upper": 18235.6,
+              "gap_hz": 724.0,
+              "gap_pct": 4.13
+            },
+            {
+              "f_lower": 18235.6,
+              "f_upper": 19002.5,
+              "gap_hz": 766.9,
+              "gap_pct": 4.21
+            },
+            {
+              "f_lower": 19002.5,
+              "f_upper": 19467.0,
+              "gap_hz": 464.5,
+              "gap_pct": 2.44
+            },
+            {
+              "f_lower": 19467.0,
+              "f_upper": 19747.8,
+              "gap_hz": 280.7,
+              "gap_pct": 1.44
+            }
+          ],
+          "n_near_degenerate": 6,
+          "n_doublets_found": 16,
+          "hidden_modes": [
+            {
+              "freq_hz": 15937.5,
+              "magnitude": 5231278.5
+            }
+          ]
+        }
+      },
+      "total_doublets": 70,
+      "total_peaks_scanned": 80,
+      "total_near_degenerate_pairs": 22,
+      "total_hidden_modes": 9,
+      "hybridization_rate": 0.875,
+      "coupling_threshold_pct": 5.0,
+      "paper_claim": "+160% capacity from mode hybridization (sim, \u03ba=0.05\u03c9\u2080)"
+    }
+  }
+}

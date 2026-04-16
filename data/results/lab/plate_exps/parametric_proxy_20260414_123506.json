@@ -1,0 +1,359 @@
+{
+  "experiment": "plate_parametric_proxy",
+  "experiment_id": "E23",
+  "timestamp": "2026-04-14T17:35:33.110437+00:00",
+  "paper_claim": "+12 dB parametric amplification",
+  "rod_baseline": {
+    "result": "all loss",
+    "reason": "Q too low (204-572)"
+  },
+  "plate_q_range": "7,687\u201330,830",
+  "config": {
+    "n_avg": 8,
+    "settle_s": 0.15,
+    "drive_uvpp": 2000000,
+    "sample_rate": 781250,
+    "nyquist_hz": 390625.0
+  },
+  "plate_results": [
+    {
+      "plate_id": "4",
+      "plate_name": "D",
+      "n_pairs": 6,
+      "pair_results": [
+        {
+          "f1_hz": 49625.0,
+          "f2_hz": 29925.0,
+          "solo_f1_mag": 5409390.9,
+          "solo_f2_mag": 4325011.9,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 79550.0,
+              "response_at_f1": 15470.9,
+              "response_at_f2": 16720.6,
+              "gain_f1_db": -50.87,
+              "gain_f2_db": -48.25,
+              "max_gain_db": -48.25
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 19700.0,
+              "response_at_f1": 17062.3,
+              "response_at_f2": 18764.5,
+              "gain_f1_db": -50.02,
+              "gain_f2_db": -47.25,
+              "max_gain_db": -47.25
+            }
+          ]
+        },
+        {
+          "f1_hz": 49625.0,
+          "f2_hz": 90275.0,
+          "solo_f1_mag": 5408042.5,
+          "solo_f2_mag": 2530503.0,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 139900.0,
+              "response_at_f1": 17082.2,
+              "response_at_f2": 2534807.5,
+              "gain_f1_db": -50.01,
+              "gain_f2_db": 0.01,
+              "max_gain_db": 0.01
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 40650.0,
+              "response_at_f1": 12111.2,
+              "response_at_f2": 15417.0,
+              "gain_f1_db": -53.0,
+              "gain_f2_db": -44.3,
+              "max_gain_db": -44.3
+            }
+          ]
+        },
+        {
+          "f1_hz": 49625.0,
+          "f2_hz": 78125.0,
+          "solo_f1_mag": 5400868.8,
+          "solo_f2_mag": 2390697.6,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 127750.0,
+              "response_at_f1": 18128.4,
+              "response_at_f2": 2397068.9,
+              "gain_f1_db": -49.48,
+              "gain_f2_db": 0.02,
+              "max_gain_db": 0.02
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 28500.0,
+              "response_at_f1": 12936.8,
+              "response_at_f2": 18088.7,
+              "gain_f1_db": -52.41,
+              "gain_f2_db": -42.42,
+              "max_gain_db": -42.42
+            }
+          ]
+        },
+        {
+          "f1_hz": 49625.0,
+          "f2_hz": 89375.0,
+          "solo_f1_mag": 5403385.0,
+          "solo_f2_mag": 1936863.9,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 139000.0,
+              "response_at_f1": 15223.2,
+              "response_at_f2": 1955861.4,
+              "gain_f1_db": -51.0,
+              "gain_f2_db": 0.08,
+              "max_gain_db": 0.08
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 39750.0,
+              "response_at_f1": 19923.2,
+              "response_at_f2": 19049.1,
+              "gain_f1_db": -48.67,
+              "gain_f2_db": -40.14,
+              "max_gain_db": -40.14
+            }
+          ]
+        },
+        {
+          "f1_hz": 29925.0,
+          "f2_hz": 90275.0,
+          "solo_f1_mag": 4333939.2,
+          "solo_f2_mag": 2533394.2,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 120200.0,
+              "response_at_f1": 16642.3,
+              "response_at_f2": 2552287.2,
+              "gain_f1_db": -48.31,
+              "gain_f2_db": 0.06,
+              "max_gain_db": 0.06
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 60350.0,
+              "response_at_f1": 15842.7,
+              "response_at_f2": 14841.7,
+              "gain_f1_db": -48.74,
+              "gain_f2_db": -44.64,
+              "max_gain_db": -44.64
+            }
+          ]
+        },
+        {
+          "f1_hz": 29925.0,
+          "f2_hz": 78125.0,
+          "solo_f1_mag": 4327120.5,
+          "solo_f2_mag": 2400695.6,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 108050.0,
+              "response_at_f1": 18421.8,
+              "response_at_f2": 2401969.1,
+              "gain_f1_db": -47.42,
+              "gain_f2_db": 0.0,
+              "max_gain_db": 0.0
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 48200.0,
+              "response_at_f1": 21775.1,
+              "response_at_f2": 16198.8,
+              "gain_f1_db": -45.96,
+              "gain_f2_db": -43.42,
+              "max_gain_db": -43.42
+            }
+          ]
+        }
+      ],
+      "max_gain_db": 0.08,
+      "any_positive_gain": true,
+      "verdict": "PARTIAL GAIN \u2014 max +0.1 dB (below +12 dB target)"
+    },
+    {
+      "plate_id": "5",
+      "plate_name": "E",
+      "n_pairs": 6,
+      "pair_results": [
+        {
+          "f1_hz": 49675.0,
+          "f2_hz": 29250.0,
+          "solo_f1_mag": 8506105.1,
+          "solo_f2_mag": 7281268.0,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 78925.0,
+              "response_at_f1": 15942.8,
+              "response_at_f2": 12509.9,
+              "gain_f1_db": -54.54,
+              "gain_f2_db": -55.3,
+              "max_gain_db": -54.54
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 20425.0,
+              "response_at_f1": 16528.4,
+              "response_at_f2": 17597.4,
+              "gain_f1_db": -54.23,
+              "gain_f2_db": -52.34,
+              "max_gain_db": -52.34
+            }
+          ]
+        },
+        {
+          "f1_hz": 49675.0,
+          "f2_hz": 29975.0,
+          "solo_f1_mag": 8513049.1,
+          "solo_f2_mag": 6818452.3,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 79650.0,
+              "response_at_f1": 15600.4,
+              "response_at_f2": 18092.5,
+              "gain_f1_db": -54.74,
+              "gain_f2_db": -51.52,
+              "max_gain_db": -51.52
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 19700.0,
+              "response_at_f1": 10858.4,
+              "response_at_f2": 14283.2,
+              "gain_f1_db": -57.89,
+              "gain_f2_db": -53.58,
+              "max_gain_db": -53.58
+            }
+          ]
+        },
+        {
+          "f1_hz": 49675.0,
+          "f2_hz": 28875.0,
+          "solo_f1_mag": 8517312.5,
+          "solo_f2_mag": 4104423.2,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 78550.0,
+              "response_at_f1": 13295.9,
+              "response_at_f2": 11817.5,
+              "gain_f1_db": -56.13,
+              "gain_f2_db": -50.81,
+              "max_gain_db": -50.81
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 20800.0,
+              "response_at_f1": 13321.4,
+              "response_at_f2": 15678.4,
+              "gain_f1_db": -56.12,
+              "gain_f2_db": -48.36,
+              "max_gain_db": -48.36
+            }
+          ]
+        },
+        {
+          "f1_hz": 49675.0,
+          "f2_hz": 34500.0,
+          "solo_f1_mag": 8513950.4,
+          "solo_f2_mag": 2653240.7,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 84175.0,
+              "response_at_f1": 12138.5,
+              "response_at_f2": 18739.7,
+              "gain_f1_db": -56.92,
+              "gain_f2_db": -43.02,
+              "max_gain_db": -43.02
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 15175.0,
+              "response_at_f1": 11009.2,
+              "response_at_f2": 17894.0,
+              "gain_f1_db": -57.77,
+              "gain_f2_db": -43.42,
+              "max_gain_db": -43.42
+            }
+          ]
+        },
+        {
+          "f1_hz": 29250.0,
+          "f2_hz": 29975.0,
+          "solo_f1_mag": 7283711.0,
+          "solo_f2_mag": 6813021.4,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 59225.0,
+              "response_at_f1": 15989.9,
+              "response_at_f2": 10972.2,
+              "gain_f1_db": -53.17,
+              "gain_f2_db": -55.86,
+              "max_gain_db": -53.17
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 725.0,
+              "response_at_f1": 21879.9,
+              "response_at_f2": 15592.6,
+              "gain_f1_db": -50.45,
+              "gain_f2_db": -52.81,
+              "max_gain_db": -50.45
+            }
+          ]
+        },
+        {
+          "f1_hz": 29250.0,
+          "f2_hz": 28875.0,
+          "solo_f1_mag": 7288229.4,
+          "solo_f2_mag": 4110558.7,
+          "tests": [
+            {
+              "pump_type": "sum",
+              "pump_freq_hz": 58125.0,
+              "response_at_f1": 19096.9,
+              "response_at_f2": 12810.9,
+              "gain_f1_db": -51.63,
+              "gain_f2_db": -50.13,
+              "max_gain_db": -50.13
+            },
+            {
+              "pump_type": "difference",
+              "pump_freq_hz": 375.0,
+              "response_at_f1": 14663.3,
+              "response_at_f2": 17256.0,
+              "gain_f1_db": -53.93,
+              "gain_f2_db": -47.54,
+              "max_gain_db": -47.54
+            }
+          ]
+        }
+      ],
+      "max_gain_db": -43.02,
+      "any_positive_gain": false,
+      "verdict": "LOSS \u2014 max -43.0 dB (no parametric gain)"
+    }
+  ],
+  "summary": {
+    "plates_tested": 2,
+    "overall_max_gain_db": 0.08,
+    "any_positive_gain": true,
+    "verdict": "PARTIAL \u2014 max gain +0.1 dB (positive but below +12 dB)"
+  },
+  "runtime_s": 22.2
+}

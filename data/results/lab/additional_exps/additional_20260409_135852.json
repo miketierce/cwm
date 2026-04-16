@@ -1,0 +1,993 @@
+{
+  "timestamp": "2026-04-09T19:00:31.811664+00:00",
+  "experiments_run": [
+    "phase",
+    "qfactor",
+    "temporal"
+  ],
+  "total_duration_s": 99.7,
+  "results": {
+    "phase_stability": {
+      "experiment": "phase_stability",
+      "n_trials": 10,
+      "per_rod": {
+        "1": [
+          {
+            "freq_hz": 516.8,
+            "phase_mean_rad": 0.6864,
+            "phase_std_rad": 1.9857,
+            "phase_range_rad": 5.7374,
+            "mag_mean": 50106.3,
+            "mag_cv": 0.3162,
+            "n_trials": 10,
+            "phases_raw": [
+              3.1346,
+              2.0558,
+              4.087,
+              2.3251,
+              0.4288,
+              -1.4504,
+              -1.2906,
+              -1.0963,
+              0.3203,
+              -1.6503
+            ]
+          },
+          {
+            "freq_hz": 891.3,
+            "phase_mean_rad": 2.5702,
+            "phase_std_rad": 1.6506,
+            "phase_range_rad": 6.1222,
+            "mag_mean": 108877.1,
+            "mag_cv": 0.0932,
+            "n_trials": 10,
+            "phases_raw": [
+              0.1256,
+              1.7897,
+              2.8319,
+              0.7428,
+              3.7158,
+              6.2477,
+              3.5479,
+              1.6104,
+              2.0273,
+              3.0625
+            ]
+          },
+          {
+            "freq_hz": 1127.2,
+            "phase_mean_rad": -1.9164,
+            "phase_std_rad": 2.5672,
+            "phase_range_rad": 8.3805,
+            "mag_mean": 258819.9,
+            "mag_cv": 0.0356,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.2286,
+              -0.7509,
+              -0.3457,
+              -0.4708,
+              -0.3611,
+              0.8375,
+              0.0356,
+              -2.7053,
+              -5.6311,
+              -7.543
+            ]
+          },
+          {
+            "freq_hz": 1825.5,
+            "phase_mean_rad": -1.9588,
+            "phase_std_rad": 0.8031,
+            "phase_range_rad": 2.5893,
+            "mag_mean": 2807583.3,
+            "mag_cv": 0.0039,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.828,
+              -2.0,
+              -1.2974,
+              -1.4048,
+              -0.9764,
+              -2.8527,
+              -3.5656,
+              -1.5945,
+              -1.2614,
+              -2.8076
+            ]
+          },
+          {
+            "freq_hz": 2104.9,
+            "phase_mean_rad": -1.6759,
+            "phase_std_rad": 0.062,
+            "phase_range_rad": 0.2199,
+            "mag_mean": 20320150.8,
+            "mag_cv": 0.0005,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7072,
+              -1.6867,
+              -1.6624,
+              -1.6406,
+              -1.8469,
+              -1.638,
+              -1.647,
+              -1.627,
+              -1.6318,
+              -1.6711
+            ]
+          },
+          {
+            "freq_hz": 2299.2,
+            "phase_mean_rad": -1.6761,
+            "phase_std_rad": 0.0274,
+            "phase_range_rad": 0.1025,
+            "mag_mean": 25381398.6,
+            "mag_cv": 0.0003,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.6907,
+              -1.6264,
+              -1.6752,
+              -1.6739,
+              -1.6973,
+              -1.7289,
+              -1.6915,
+              -1.6609,
+              -1.6728,
+              -1.6433
+            ]
+          },
+          {
+            "freq_hz": 2644.6,
+            "phase_mean_rad": -2.1123,
+            "phase_std_rad": 0.871,
+            "phase_range_rad": 2.9706,
+            "mag_mean": 1546854.9,
+            "mag_cv": 0.0149,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.157,
+              -2.8718,
+              -4.1281,
+              -1.1575,
+              -1.3441,
+              -1.4385,
+              -2.091,
+              -2.7021,
+              -1.8878,
+              -1.345
+            ]
+          },
+          {
+            "freq_hz": 5197.8,
+            "phase_mean_rad": 1.9207,
+            "phase_std_rad": 2.478,
+            "phase_range_rad": 8.1126,
+            "mag_mean": 19325.0,
+            "mag_cv": 0.3018,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.0849,
+              -2.6749,
+              0.454,
+              0.5209,
+              3.1919,
+              3.9529,
+              5.4377,
+              4.8701,
+              2.4742,
+              2.065
+            ]
+          },
+          {
+            "freq_hz": 5460.7,
+            "phase_mean_rad": 4.0756,
+            "phase_std_rad": 2.098,
+            "phase_range_rad": 7.6115,
+            "mag_mean": 15087.4,
+            "mag_cv": 0.3162,
+            "n_trials": 10,
+            "phases_raw": [
+              -0.5899,
+              1.9528,
+              4.9457,
+              7.0215,
+              6.5243,
+              4.9546,
+              4.1474,
+              4.8304,
+              3.8492,
+              3.1199
+            ]
+          },
+          {
+            "freq_hz": 6022.8,
+            "phase_mean_rad": -6.314,
+            "phase_std_rad": 3.1785,
+            "phase_range_rad": 10.121,
+            "mag_mean": 308231.4,
+            "mag_cv": 0.0316,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.4419,
+              -2.0691,
+              -3.4357,
+              -5.5841,
+              -5.1721,
+              -7.1216,
+              -8.2786,
+              -9.2187,
+              -11.5629,
+              -9.2554
+            ]
+          }
+        ],
+        "2": [
+          {
+            "freq_hz": 709.4,
+            "phase_mean_rad": 1.9621,
+            "phase_std_rad": 2.6089,
+            "phase_range_rad": 7.8347,
+            "mag_mean": 57859.3,
+            "mag_cv": 0.3018,
+            "n_trials": 10,
+            "phases_raw": [
+              0.5217,
+              -1.5582,
+              -2.614,
+              0.0928,
+              1.9332,
+              4.8409,
+              3.1189,
+              5.2207,
+              4.4455,
+              3.6195
+            ]
+          },
+          {
+            "freq_hz": 1026.0,
+            "phase_mean_rad": -4.7417,
+            "phase_std_rad": 1.5912,
+            "phase_range_rad": 5.9205,
+            "mag_mean": 171320.0,
+            "mag_cv": 0.1075,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.0179,
+              -3.0814,
+              -5.1218,
+              -3.0882,
+              -4.7774,
+              -5.7443,
+              -5.1023,
+              -7.9384,
+              -4.8571,
+              -5.6884
+            ]
+          },
+          {
+            "freq_hz": 1203.2,
+            "phase_mean_rad": 2.6206,
+            "phase_std_rad": 1.6834,
+            "phase_range_rad": 5.2718,
+            "mag_mean": 398835.1,
+            "mag_cv": 0.0598,
+            "n_trials": 10,
+            "phases_raw": [
+              0.9691,
+              3.8403,
+              4.302,
+              5.7051,
+              4.362,
+              1.909,
+              1.4033,
+              1.8103,
+              0.4333,
+              1.4713
+            ]
+          },
+          {
+            "freq_hz": 1616.9,
+            "phase_mean_rad": 3.7903,
+            "phase_std_rad": 0.5775,
+            "phase_range_rad": 1.9609,
+            "mag_mean": 2104343.6,
+            "mag_cv": 0.0104,
+            "n_trials": 10,
+            "phases_raw": [
+              3.0513,
+              3.7346,
+              3.595,
+              4.2063,
+              4.9817,
+              4.1853,
+              4.0645,
+              3.2166,
+              3.0207,
+              3.8471
+            ]
+          },
+          {
+            "freq_hz": 2117.8,
+            "phase_mean_rad": -1.2659,
+            "phase_std_rad": 0.01,
+            "phase_range_rad": 0.0302,
+            "mag_mean": 53900430.9,
+            "mag_cv": 0.0001,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.2762,
+              -1.2601,
+              -1.2534,
+              -1.2491,
+              -1.2558,
+              -1.2734,
+              -1.2732,
+              -1.2792,
+              -1.2693,
+              -1.2697
+            ]
+          },
+          {
+            "freq_hz": 2924.3,
+            "phase_mean_rad": -0.5141,
+            "phase_std_rad": 2.5556,
+            "phase_range_rad": 9.0585,
+            "mag_mean": 637010.4,
+            "mag_cv": 0.0305,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.2255,
+              -2.5985,
+              -5.1606,
+              -2.7745,
+              -1.671,
+              0.5644,
+              0.0839,
+              2.0324,
+              3.8979,
+              1.7106
+            ]
+          },
+          {
+            "freq_hz": 5689.9,
+            "phase_mean_rad": -2.0916,
+            "phase_std_rad": 2.6117,
+            "phase_range_rad": 8.8503,
+            "mag_mean": 31180.4,
+            "mag_cv": 0.1761,
+            "n_trials": 10,
+            "phases_raw": [
+              -3.037,
+              -0.1988,
+              -2.169,
+              -4.2913,
+              -6.7298,
+              -4.2428,
+              -2.751,
+              -1.2488,
+              1.6314,
+              2.1205
+            ]
+          },
+          {
+            "freq_hz": 6303.4,
+            "phase_mean_rad": -0.8371,
+            "phase_std_rad": 2.0487,
+            "phase_range_rad": 7.1381,
+            "mag_mean": 343989.4,
+            "mag_cv": 0.0515,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.563,
+              -0.5178,
+              -3.5242,
+              -1.937,
+              -1.7557,
+              -1.8214,
+              -2.4187,
+              -0.5614,
+              2.1141,
+              3.6139
+            ]
+          },
+          {
+            "freq_hz": 6506.6,
+            "phase_mean_rad": -1.8909,
+            "phase_std_rad": 1.8692,
+            "phase_range_rad": 6.6366,
+            "mag_mean": 661847.1,
+            "mag_cv": 0.035,
+            "n_trials": 10,
+            "phases_raw": [
+              -0.7548,
+              -2.0338,
+              0.6329,
+              0.6563,
+              -1.9542,
+              -2.7446,
+              -2.6998,
+              -0.8684,
+              -3.1617,
+              -5.9803
+            ]
+          },
+          {
+            "freq_hz": 6792.7,
+            "phase_mean_rad": -2.4832,
+            "phase_std_rad": 1.2478,
+            "phase_range_rad": 4.058,
+            "mag_mean": 464757.8,
+            "mag_cv": 0.0505,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.1002,
+              -0.724,
+              -1.8009,
+              -3.9787,
+              -4.782,
+              -3.8223,
+              -1.6806,
+              -2.1523,
+              -2.481,
+              -2.3097
+            ]
+          }
+        ],
+        "3": [
+          {
+            "freq_hz": 913.1,
+            "phase_mean_rad": -3.0142,
+            "phase_std_rad": 3.6688,
+            "phase_range_rad": 11.4119,
+            "mag_mean": 189976.6,
+            "mag_cv": 0.047,
+            "n_trials": 10,
+            "phases_raw": [
+              2.5346,
+              0.6562,
+              -1.3511,
+              -0.1112,
+              -1.0798,
+              -2.9766,
+              -4.4677,
+              -5.9529,
+              -8.5167,
+              -8.8773
+            ]
+          },
+          {
+            "freq_hz": 1536.4,
+            "phase_mean_rad": -1.6684,
+            "phase_std_rad": 1.5371,
+            "phase_range_rad": 5.622,
+            "mag_mean": 3167556.9,
+            "mag_cv": 0.0036,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7704,
+              -4.2662,
+              -1.4622,
+              -4.3164,
+              -1.3246,
+              -1.3337,
+              -1.1912,
+              -1.1636,
+              -1.1616,
+              1.3056
+            ]
+          },
+          {
+            "freq_hz": 1714.2,
+            "phase_mean_rad": -1.9053,
+            "phase_std_rad": 1.0265,
+            "phase_range_rad": 4.4587,
+            "mag_mean": 2369605.5,
+            "mag_cv": 0.0097,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.5906,
+              -4.0451,
+              -1.7631,
+              -1.8416,
+              -1.8615,
+              -2.0585,
+              -1.7276,
+              0.4136,
+              -1.8259,
+              -1.7522
+            ]
+          },
+          {
+            "freq_hz": 2001.1,
+            "phase_mean_rad": -1.8841,
+            "phase_std_rad": 0.0345,
+            "phase_range_rad": 0.1142,
+            "mag_mean": 16331308.7,
+            "mag_cv": 0.0006,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.9571,
+              -1.9117,
+              -1.8791,
+              -1.8429,
+              -1.8512,
+              -1.8637,
+              -1.8702,
+              -1.8535,
+              -1.8898,
+              -1.9219
+            ]
+          },
+          {
+            "freq_hz": 2833.8,
+            "phase_mean_rad": 2.3861,
+            "phase_std_rad": 1.7548,
+            "phase_range_rad": 5.2874,
+            "mag_mean": 829045.2,
+            "mag_cv": 0.0175,
+            "n_trials": 10,
+            "phases_raw": [
+              1.3235,
+              -0.2758,
+              0.8614,
+              3.3933,
+              1.1544,
+              1.1654,
+              2.1905,
+              5.0116,
+              4.1968,
+              4.8399
+            ]
+          },
+          {
+            "freq_hz": 5575.5,
+            "phase_mean_rad": -2.9603,
+            "phase_std_rad": 2.6941,
+            "phase_range_rad": 9.0116,
+            "mag_mean": 96861.0,
+            "mag_cv": 0.0715,
+            "n_trials": 10,
+            "phases_raw": [
+              1.3924,
+              -0.8168,
+              0.5593,
+              -2.0057,
+              -4.0686,
+              -5.5503,
+              -2.5766,
+              -3.6037,
+              -5.3136,
+              -7.6192
+            ]
+          },
+          {
+            "freq_hz": 5765.3,
+            "phase_mean_rad": 1.9412,
+            "phase_std_rad": 2.4683,
+            "phase_range_rad": 8.575,
+            "mag_mean": 234983.7,
+            "mag_cv": 0.0536,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.0995,
+              0.8264,
+              0.2181,
+              0.6383,
+              0.5349,
+              2.2053,
+              1.4458,
+              3.6157,
+              6.4755,
+              5.551
+            ]
+          },
+          {
+            "freq_hz": 6218.2,
+            "phase_mean_rad": 3.2101,
+            "phase_std_rad": 2.4742,
+            "phase_range_rad": 9.069,
+            "mag_mean": 191855.0,
+            "mag_cv": 0.0799,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.5942,
+              0.5632,
+              1.5597,
+              3.2213,
+              4.7141,
+              2.6441,
+              3.2369,
+              5.4396,
+              7.4748,
+              4.8417
+            ]
+          },
+          {
+            "freq_hz": 9396.4,
+            "phase_mean_rad": -6.0691,
+            "phase_std_rad": 2.1963,
+            "phase_range_rad": 7.16,
+            "mag_mean": 60236.5,
+            "mag_cv": 0.1471,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.8318,
+              -3.6925,
+              -4.0978,
+              -7.2154,
+              -6.5785,
+              -7.453,
+              -4.8739,
+              -7.9673,
+              -8.9919,
+              -7.9886
+            ]
+          },
+          {
+            "freq_hz": 13910.5,
+            "phase_mean_rad": 0.9987,
+            "phase_std_rad": 1.6073,
+            "phase_range_rad": 5.5184,
+            "mag_mean": 180738.9,
+            "mag_cv": 0.0597,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.0239,
+              0.8146,
+              3.2262,
+              4.1681,
+              1.4056,
+              0.7044,
+              -1.3504,
+              1.3208,
+              0.4452,
+              0.2767
+            ]
+          }
+        ],
+        "4": [
+          {
+            "freq_hz": 867.7,
+            "phase_mean_rad": -2.8097,
+            "phase_std_rad": 2.0217,
+            "phase_range_rad": 7.3156,
+            "mag_mean": 138883.8,
+            "mag_cv": 0.1206,
+            "n_trials": 10,
+            "phases_raw": [
+              1.4571,
+              -1.0677,
+              -2.9554,
+              -2.132,
+              -3.8091,
+              -1.804,
+              -2.4264,
+              -4.4616,
+              -5.8585,
+              -5.0392
+            ]
+          },
+          {
+            "freq_hz": 1094.7,
+            "phase_mean_rad": 2.6129,
+            "phase_std_rad": 2.5311,
+            "phase_range_rad": 7.3026,
+            "mag_mean": 289878.6,
+            "mag_cv": 0.0365,
+            "n_trials": 10,
+            "phases_raw": [
+              1.1022,
+              -0.9207,
+              -1.4034,
+              0.7837,
+              3.6246,
+              1.9633,
+              4.9461,
+              4.86,
+              5.8992,
+              5.2744
+            ]
+          },
+          {
+            "freq_hz": 1631.9,
+            "phase_mean_rad": -2.263,
+            "phase_std_rad": 1.1799,
+            "phase_range_rad": 3.8722,
+            "mag_mean": 2776225.2,
+            "mag_cv": 0.006,
+            "n_trials": 10,
+            "phases_raw": [
+              -2.1087,
+              -1.2853,
+              -1.2469,
+              -1.5049,
+              -1.7182,
+              -2.0623,
+              -2.2311,
+              -1.5597,
+              -3.7943,
+              -5.1191
+            ]
+          },
+          {
+            "freq_hz": 1895.7,
+            "phase_mean_rad": -1.406,
+            "phase_std_rad": 0.0309,
+            "phase_range_rad": 0.1243,
+            "mag_mean": 20126535.9,
+            "mag_cv": 0.0005,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.4122,
+              -1.3793,
+              -1.3419,
+              -1.3872,
+              -1.4172,
+              -1.4181,
+              -1.4265,
+              -1.4083,
+              -1.4033,
+              -1.4662
+            ]
+          },
+          {
+            "freq_hz": 2088.0,
+            "phase_mean_rad": -1.4497,
+            "phase_std_rad": 0.0285,
+            "phase_range_rad": 0.094,
+            "mag_mean": 25025836.4,
+            "mag_cv": 0.0005,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.466,
+              -1.4768,
+              -1.5052,
+              -1.4629,
+              -1.4589,
+              -1.4147,
+              -1.4323,
+              -1.4225,
+              -1.4464,
+              -1.4112
+            ]
+          },
+          {
+            "freq_hz": 2584.4,
+            "phase_mean_rad": -2.7765,
+            "phase_std_rad": 1.4769,
+            "phase_range_rad": 5.1311,
+            "mag_mean": 1176530.8,
+            "mag_cv": 0.0095,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.5898,
+              -2.9331,
+              -1.8571,
+              -2.282,
+              -5.2184,
+              -3.6323,
+              -5.0223,
+              -2.9134,
+              -0.0873,
+              -2.2292
+            ]
+          },
+          {
+            "freq_hz": 3189.9,
+            "phase_mean_rad": 4.6693,
+            "phase_std_rad": 1.6476,
+            "phase_range_rad": 5.7379,
+            "mag_mean": 319456.9,
+            "mag_cv": 0.0423,
+            "n_trials": 10,
+            "phases_raw": [
+              0.9101,
+              3.4198,
+              4.2006,
+              5.1253,
+              6.648,
+              5.8243,
+              6.1724,
+              4.3001,
+              3.802,
+              6.2906
+            ]
+          },
+          {
+            "freq_hz": 5258.1,
+            "phase_mean_rad": 6.0962,
+            "phase_std_rad": 2.4587,
+            "phase_range_rad": 7.9268,
+            "mag_mean": 47903.4,
+            "mag_cv": 0.2193,
+            "n_trials": 10,
+            "phases_raw": [
+              1.9699,
+              2.294,
+              5.244,
+              6.0157,
+              8.8489,
+              7.1265,
+              4.7713,
+              7.3211,
+              9.8966,
+              7.4735
+            ]
+          },
+          {
+            "freq_hz": 5892.7,
+            "phase_mean_rad": 4.8926,
+            "phase_std_rad": 3.2145,
+            "phase_range_rad": 12.0328,
+            "mag_mean": 123277.8,
+            "mag_cv": 0.0588,
+            "n_trials": 10,
+            "phases_raw": [
+              -1.7539,
+              1.367,
+              3.6818,
+              3.8513,
+              5.8448,
+              5.0558,
+              5.752,
+              6.8466,
+              8.0021,
+              10.2789
+            ]
+          },
+          {
+            "freq_hz": 6319.8,
+            "phase_mean_rad": -2.7206,
+            "phase_std_rad": 1.8651,
+            "phase_range_rad": 5.724,
+            "mag_mean": 807068.3,
+            "mag_cv": 0.0196,
+            "n_trials": 10,
+            "phases_raw": [
+              -0.799,
+              -3.7331,
+              -6.0181,
+              -4.1444,
+              -5.3463,
+              -2.2072,
+              -1.4914,
+              -0.2941,
+              -1.4488,
+              -1.7234
+            ]
+          }
+        ]
+      },
+      "pair_comparison": [],
+      "global_phase_std_rad": 1.7111,
+      "stable_fraction": 0.15,
+      "paper_claim": "+84% discriminability from phase-spectral encoding (sim)"
+    },
+    "qfactor_mode_census": {
+      "experiment": "qfactor_mode_census",
+      "per_rod": {
+        "1": {
+          "test_freq_hz": 1825.5,
+          "tau_ms": null,
+          "Q_measured": null,
+          "mode_count": 2,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 10086.1,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 581.3,
+              "magnitude": 36338.9
+            },
+            {
+              "freq_hz": 164794.9,
+              "magnitude": 32570.7
+            }
+          ]
+        },
+        "2": {
+          "test_freq_hz": 1616.9,
+          "tau_ms": 31.21,
+          "Q_measured": 159.0,
+          "mode_count": 1,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 10197.6,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 581.3,
+              "magnitude": 31001.6
+            }
+          ]
+        },
+        "3": {
+          "test_freq_hz": 2001.1,
+          "tau_ms": 47.22,
+          "Q_measured": 297.0,
+          "mode_count": 0,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 9689.2,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": []
+        },
+        "4": {
+          "test_freq_hz": 1895.7,
+          "tau_ms": 12.39,
+          "Q_measured": 74.0,
+          "mode_count": 2,
+          "nyquist_hz": 390625.0,
+          "noise_floor": 9655.9,
+          "n_max_theoretical_at_nyquist": 22,
+          "peaks_detected": [
+            {
+              "freq_hz": 581.3,
+              "magnitude": 30571.9
+            },
+            {
+              "freq_hz": 164794.9,
+              "magnitude": 30184.5
+            }
+          ]
+        }
+      },
+      "sample_rate": 781250,
+      "paper_claim_q": "Q = 10,000 (macro prototype)",
+      "paper_claim_modes": "9,380 (size-independent, full bandwidth)"
+    },
+    "temporal_stability": {
+      "experiment": "extended_temporal_stability",
+      "timestamp": "2026-04-09T19:00:31.808430+00:00",
+      "matrix": {
+        "1": {
+          "1": 6.72,
+          "2": -0.99,
+          "3": 0.64,
+          "4": 4.22
+        },
+        "2": {
+          "1": 1.4,
+          "2": 7.62,
+          "3": 0.8,
+          "4": 4.08
+        },
+        "3": {
+          "1": -0.64,
+          "2": 0.66,
+          "3": 10.62,
+          "4": 0.14
+        },
+        "4": {
+          "1": 3.57,
+          "2": 0.72,
+          "3": 0.78,
+          "4": 8.42
+        }
+      },
+      "accuracy": 1.0,
+      "correct": 4,
+      "total": 4,
+      "history": [
+        {
+          "file": "suite_20260409_110727.json",
+          "timestamp": "2026-04-09T16:07:31.209175+00:00",
+          "recall_accuracy": 1.0,
+          "recall_mean_margin": 5.33
+        },
+        {
+          "file": "suite_20260409_122333.json",
+          "timestamp": "2026-04-09T17:23:37.618813+00:00",
+          "recall_accuracy": 0,
+          "recall_mean_margin": 0
+        },
+        {
+          "file": "suite_20260409_122740.json",
+          "timestamp": "2026-04-09T17:27:44.665233+00:00",
+          "recall_accuracy": 1.0,
+          "recall_mean_margin": 5.28
+        }
+      ]
+    }
+  }
+}

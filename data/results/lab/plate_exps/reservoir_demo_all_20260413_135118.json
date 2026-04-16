@@ -1,0 +1,198 @@
+[
+  {
+    "timestamp": "2026-04-13T18:52:13.112684+00:00",
+    "plate_name": "A",
+    "plate_id": "1",
+    "n_modes": 3,
+    "n_input_bits": 3,
+    "n_train": 80,
+    "n_test": 20,
+    "train_accuracy_pct": 65.0,
+    "test_accuracy_pct": 55.0,
+    "confusion_matrix": [
+      [
+        9,
+        4
+      ],
+      [
+        5,
+        2
+      ]
+    ],
+    "readout_weights_shape": [
+      10,
+      2
+    ],
+    "trainable_params": 20,
+    "capture_time_s": 50.9,
+    "mode_freqs_hz": [
+      29700.0,
+      89425.0,
+      18775.0
+    ],
+    "feature_matrix_shape": [
+      100,
+      9
+    ]
+  },
+  {
+    "timestamp": "2026-04-13T18:53:20.862743+00:00",
+    "plate_name": "B",
+    "plate_id": "2",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_train": 80,
+    "n_test": 20,
+    "train_accuracy_pct": 80.0,
+    "test_accuracy_pct": 55.0,
+    "confusion_matrix": [
+      [
+        6,
+        4
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "readout_weights_shape": [
+      25,
+      2
+    ],
+    "trainable_params": 50,
+    "capture_time_s": 67.5,
+    "mode_freqs_hz": [
+      29200.0,
+      49650.0,
+      28825.0,
+      18950.0,
+      15125.0,
+      89350.0
+    ],
+    "feature_matrix_shape": [
+      100,
+      24
+    ]
+  },
+  {
+    "timestamp": "2026-04-13T18:54:27.354759+00:00",
+    "plate_name": "C",
+    "plate_id": "3",
+    "n_modes": 6,
+    "n_input_bits": 4,
+    "n_train": 80,
+    "n_test": 20,
+    "train_accuracy_pct": 72.5,
+    "test_accuracy_pct": 60.0,
+    "confusion_matrix": [
+      [
+        6,
+        4
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "readout_weights_shape": [
+      25,
+      2
+    ],
+    "trainable_params": 50,
+    "capture_time_s": 66.3,
+    "mode_freqs_hz": [
+      43175.0,
+      49625.0,
+      31400.0,
+      26175.0,
+      61650.0,
+      89325.0
+    ],
+    "feature_matrix_shape": [
+      100,
+      24
+    ]
+  },
+  {
+    "timestamp": "2026-04-13T18:55:35.325760+00:00",
+    "plate_name": "D",
+    "plate_id": "4",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_train": 80,
+    "n_test": 20,
+    "train_accuracy_pct": 85.0,
+    "test_accuracy_pct": 70.0,
+    "confusion_matrix": [
+      [
+        8,
+        2
+      ],
+      [
+        4,
+        6
+      ]
+    ],
+    "readout_weights_shape": [
+      33,
+      2
+    ],
+    "trainable_params": 66,
+    "capture_time_s": 67.7,
+    "mode_freqs_hz": [
+      49625.0,
+      29925.0,
+      90275.0,
+      78125.0,
+      89375.0,
+      90025.0,
+      45025.0,
+      94675.0
+    ],
+    "feature_matrix_shape": [
+      100,
+      32
+    ]
+  },
+  {
+    "timestamp": "2026-04-13T18:56:42.108637+00:00",
+    "plate_name": "E",
+    "plate_id": "5",
+    "n_modes": 8,
+    "n_input_bits": 4,
+    "n_train": 80,
+    "n_test": 20,
+    "train_accuracy_pct": 76.2,
+    "test_accuracy_pct": 40.0,
+    "confusion_matrix": [
+      [
+        3,
+        7
+      ],
+      [
+        5,
+        5
+      ]
+    ],
+    "readout_weights_shape": [
+      33,
+      2
+    ],
+    "trainable_params": 66,
+    "capture_time_s": 66.6,
+    "mode_freqs_hz": [
+      49675.0,
+      29250.0,
+      29975.0,
+      28875.0,
+      34500.0,
+      26200.0,
+      89475.0,
+      94775.0
+    ],
+    "feature_matrix_shape": [
+      100,
+      32
+    ]
+  }
+]

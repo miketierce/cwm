@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """
-Plate Sequence ESN v3 — 8-bit Tokens on Plates D + E
+Plate Sequence ESN v3 — 8-bit Tokens on Plates G, D, F (dual-RX)
 
 Key hypothesis: For 4-bit tokens, degree-4 polynomial is COMPLETE (16 basis
 functions = 16 tokens) so software wins by definition. For 8-bit tokens,
 degree-4 polynomial is INCOMPLETE (163 features for 256 tokens). The plate's
 resonance physics might capture nonlinear structure that polynomial misses.
 
-Option 1: D and E only — each has exactly 8 modes → 8 carriers → 8-bit tokens.
+Plates 3 (G), 4 (D), 5 (F) — each has 8 modes, dual-RX (NE + NW) per plate.
   - Per-bit readout (primary): 8 binary classifiers per position
   - 256-class readout (secondary): full token prediction
   - Software baselines: degree-4 (163d, incomplete), degree-8 (256d, complete)
@@ -43,10 +43,20 @@ ROOT = TOOLS_DIR.parent
 LAB_DIR = ROOT / "data" / "results" / "lab" / "plate_exps"
 TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-PLATE_NAMES = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
+PLATE_NAMES = {"1": "A", "2": "B", "3": "G", "4": "D", "5": "F"}
 
-# 8-bit experiment: D and E only (both have 8 modes)
-TARGET_PLATES = ["4", "5"]
+# Dual-RX plates: map plate ID → list of (relay_ch, rx_label)
+# Plates 3, 4, 5 have NE-RX (diagonal path) + NW-RX (L-path)
+PLATE_RELAYS = {
+    "1": [(1, "NE")],
+    "2": [(2, "NE")],
+    "3": [(3, "NE"), (4, "NW")],
+    "4": [(5, "NE"), (6, "NW")],
+    "5": [(7, "NE"), (8, "NW")],
+}
+
+# Target plates for 8-bit calibration (dual-RX plates with new patterns)
+TARGET_PLATES = ["3", "4", "5"]
 
 # Experiment parameters
 SEQ_LENGTH = 4
@@ -254,8 +264,9 @@ def software_poly(token, n_bits=N_INPUT_BITS, degree=4):
 
 def calibrate_8bit(handle, mux, all_modes, n_reps=N_CALIB_REPS):
     """
-    Calibrate plates D and E with 8-bit tokens.
+    Calibrate target plates with 8-bit tokens, dual-RX paths.
     Each plate has 8 modes → 8 carriers → 256 unique drive patterns.
+    For dual-RX plates, captures from both NE and NW receivers per token.
     """
     per_plate_calib = {}
     total_captures = 0
@@ -269,7 +280,7 @@ def calibrate_8bit(handle, mux, all_modes, n_reps=N_CALIB_REPS):
             print(f"  WARNING: Plate {pname} has {n_modes} modes < {N_INPUT_BITS}")
             continue
 
-        # All modes are carriers for 8-bit encoding
+        relays = PLATE_RELAYS[pid]
         n_carriers = N_INPUT_BITS
 
         # ARB setup
@@ -280,10 +291,7 @@ def calibrate_8bit(handle, mux, all_modes, n_reps=N_CALIB_REPS):
         print(f"\n  Plate {pname}: {n_modes} modes, "
               f"{n_carriers} carriers, f_rep={fixed_f_rep:.0f} Hz")
         print(f"    Modes: {[f'{f:.0f}' for f in plate_modes]}")
-
-        # Switch mux
-        mux.select(int(pid))
-        time.sleep(SETTLE_RELAY_S)
+        print(f"    RX paths: {[(ch, rx) for ch, rx in relays]}")
 
         plate_calib = {}
         t0_plate = time.time()
@@ -298,27 +306,45 @@ def calibrate_8bit(handle, mux, all_modes, n_reps=N_CALIB_REPS):
                     drive_freqs.append(plate_modes[b_idx])
             amps = [1.0] * len(drive_freqs)
 
-            reps_data = []
+            # Collect reps across all RX paths
+            per_rx_reps = {rx_label: [] for _, rx_label in relays}
+
             for rep in range(n_reps):
+                # Drive the multitone (TX is shared across all plates)
                 if drive_freqs:
                     _drive_multitone_arb(handle, drive_freqs, amps, fixed_f_rep)
                 else:
                     _awg_off(handle)
                 time.sleep(T_EXCITE_S)
 
-                # Capture at this plate's mode frequencies only
-                mag = _capture_spectrum(handle, plate_modes)
-                reps_data.append(mag.tolist())
-                total_captures += 1
+                # Capture from each RX relay channel
+                for relay_ch, rx_label in relays:
+                    mux.select(relay_ch)
+                    time.sleep(0.02)  # brief settle for relay switch
+                    mag = _capture_spectrum(handle, plate_modes)
+                    per_rx_reps[rx_label].append(mag.tolist())
+                    total_captures += 1
 
-            mean_mag = np.mean(reps_data, axis=0).tolist()
-            plate_calib[token] = {"mean": mean_mag, "reps": reps_data}
+            # Store per-RX means and raw reps
+            token_data = {}
+            combined_mean = []
+            for _, rx_label in relays:
+                reps = per_rx_reps[rx_label]
+                mean_mag = np.mean(reps, axis=0).tolist()
+                token_data[rx_label] = {"mean": mean_mag, "reps": reps}
+                combined_mean.extend(mean_mag)
+
+            # "mean" = concatenated NE+NW features for backward compat
+            token_data["mean"] = combined_mean
+            plate_calib[token] = token_data
 
             # Progress every 32 tokens
             if (token + 1) % 32 == 0 or token == N_TOKENS - 1:
                 elapsed = time.time() - t0_plate
-                rate = (token + 1) * n_reps / elapsed if elapsed > 0 else 0
-                remaining = (N_TOKENS - token - 1) * n_reps / rate if rate > 0 else 0
+                n_done = (token + 1) * n_reps * len(relays)
+                rate = n_done / elapsed if elapsed > 0 else 0
+                remaining_caps = (N_TOKENS - token - 1) * n_reps * len(relays)
+                remaining = remaining_caps / rate if rate > 0 else 0
                 print(f"    [{pname} {token+1}/{N_TOKENS}] "
                       f"{total_captures} captures, {elapsed:.0f}s, "
                       f"~{remaining:.0f}s remaining")
@@ -327,6 +353,8 @@ def calibrate_8bit(handle, mux, all_modes, n_reps=N_CALIB_REPS):
             "data": plate_calib,
             "modes": plate_modes,
             "n_carriers": n_carriers,
+            "n_rx_paths": len(relays),
+            "rx_labels": [rx for _, rx in relays],
             "f_rep": fixed_f_rep,
         }
 
@@ -352,8 +380,10 @@ def build_token_cache(per_plate_calib):
         pname = PLATE_NAMES[pid]
         pdata = per_plate_calib[pid]
         n_modes = len(pdata["modes"])
+        n_rx = pdata.get("n_rx_paths", 1)
 
         # Extract raw features: log-amplitude relative to baseline (token 0)
+        # "mean" key contains concatenated NE+NW features if dual-RX
         baseline = np.array(pdata["data"][0]["mean"])
         raw_feats = []
         for t in range(N_TOKENS):

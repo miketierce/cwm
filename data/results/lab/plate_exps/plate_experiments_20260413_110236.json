@@ -1,0 +1,104 @@
+{
+  "timestamp": "2026-04-13T16:15:33.454447+00:00",
+  "dry_run": false,
+  "experiments_run": [
+    4
+  ],
+  "results": [
+    {
+      "ok": true,
+      "id": "BbY1BtlDGcfAGYXzGO4U",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 0.08,
+        "auth_matched_peaks": 3,
+        "auth_score_pct": 100.0,
+        "next_best_score_pct": 100.0,
+        "min_cross_rod_pct": 0.0,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate A fingerprint auth: identified as A (correct), margin 0%. AWG CW sweep, template matching against census enrollment. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "776NvfSiEbdhn2HN0VEY",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 0.16,
+        "auth_matched_peaks": 6,
+        "auth_score_pct": 100.0,
+        "next_best_score_pct": 100.0,
+        "min_cross_rod_pct": 0.0,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "No"
+      },
+      "_notes": "Plate B fingerprint auth: identified as C (WRONG), margin 0%. AWG CW sweep, template matching against census enrollment. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "uMwD6jPf2ckXOYIBils8",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 0.16,
+        "auth_matched_peaks": 6,
+        "auth_score_pct": 100.0,
+        "next_best_score_pct": 100.0,
+        "min_cross_rod_pct": 0.0,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate C fingerprint auth: identified as C (correct), margin 0%. AWG CW sweep, template matching against census enrollment. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "mE4RUBk7eAdIV3fF30HX",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 0.15,
+        "auth_matched_peaks": 8,
+        "auth_score_pct": 100.0,
+        "next_best_score_pct": 100.0,
+        "min_cross_rod_pct": 0.0,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "Yes"
+      },
+      "_notes": "Plate D fingerprint auth: identified as D (correct), margin 0%. AWG CW sweep, template matching against census enrollment. PicoScope 2204A, relay mux isolation."
+    },
+    {
+      "ok": true,
+      "id": "8sbvQNVuDvpMLLURvyal",
+      "experimentId": "exp-hw-auth",
+      "_data": {
+        "n_rods": 5,
+        "peaks_per_rod": 10,
+        "sample_rate": 781250,
+        "freq_resolution": 24.2,
+        "auth_rms_pct": 0.37,
+        "auth_matched_peaks": 6,
+        "auth_score_pct": 100.0,
+        "next_best_score_pct": 100.0,
+        "min_cross_rod_pct": 0.0,
+        "excitation_method": "Piezo pulse",
+        "correct_rod_identified": "No"
+      },
+      "_notes": "Plate E fingerprint auth: identified as C (WRONG), margin 0%. AWG CW sweep, template matching against census enrollment. PicoScope 2204A, relay mux isolation."
+    }
+  ]
+}

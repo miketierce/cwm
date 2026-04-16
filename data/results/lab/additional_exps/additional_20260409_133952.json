@@ -1,0 +1,511 @@
+{
+  "timestamp": "2026-04-09T18:39:52.168465+00:00",
+  "experiments_run": [
+    "pruning",
+    "polysemic",
+    "virtual-rewrite"
+  ],
+  "total_duration_s": 0.0,
+  "results": {
+    "synaptic_pruning": {
+      "experiment": "synaptic_pruning_real_spectra",
+      "source_file": "/Users/Mike/Code/wcfoma/data/results/lab/associative_recall/recall_20260408_225247.json",
+      "n_rods": 4,
+      "n_weights": 160,
+      "max_weighted_ratio": 25.24,
+      "threshold_sweep": [
+        {
+          "theta_frac": 0.0,
+          "theta_abs": 0.0,
+          "pruned_pct": 0.0,
+          "accuracy": 0.0,
+          "mean_margin": -8.15,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.01,
+          "theta_abs": 0.2524,
+          "pruned_pct": 10.0,
+          "accuracy": 0.0,
+          "mean_margin": -8.05,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.02,
+          "theta_abs": 0.5048,
+          "pruned_pct": 15.0,
+          "accuracy": 0.0,
+          "mean_margin": -8.3,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.05,
+          "theta_abs": 1.262,
+          "pruned_pct": 33.1,
+          "accuracy": 0.0,
+          "mean_margin": -9.3,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.1,
+          "theta_abs": 2.524,
+          "pruned_pct": 66.2,
+          "accuracy": 0.0,
+          "mean_margin": -9.55,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.15,
+          "theta_abs": 3.786,
+          "pruned_pct": 78.8,
+          "accuracy": 0.0,
+          "mean_margin": -8.04,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.2,
+          "theta_abs": 5.048,
+          "pruned_pct": 89.4,
+          "accuracy": 0.0,
+          "mean_margin": -9.47,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.3,
+          "theta_abs": 7.572,
+          "pruned_pct": 92.5,
+          "accuracy": 0.0,
+          "mean_margin": -11.04,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.5,
+          "theta_abs": 12.62,
+          "pruned_pct": 95.0,
+          "accuracy": 0.0,
+          "mean_margin": -11.88,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 0.75,
+          "theta_abs": 18.93,
+          "pruned_pct": 96.9,
+          "accuracy": 0.0,
+          "mean_margin": -11.86,
+          "correct": 0,
+          "total": 4
+        },
+        {
+          "theta_frac": 1.0,
+          "theta_abs": 25.24,
+          "pruned_pct": 99.4,
+          "accuracy": 0.0,
+          "mean_margin": -6.31,
+          "correct": 0,
+          "total": 4
+        }
+      ],
+      "snr_sweep": [
+        {
+          "snr_threshold_db": 0,
+          "pruned_pct": 0.0,
+          "accuracy": 0.0,
+          "mean_margin": -8.15
+        },
+        {
+          "snr_threshold_db": 5,
+          "pruned_pct": 8.1,
+          "accuracy": 0.0,
+          "mean_margin": -8.1
+        },
+        {
+          "snr_threshold_db": 10,
+          "pruned_pct": 21.9,
+          "accuracy": 0.0,
+          "mean_margin": -8.03
+        },
+        {
+          "snr_threshold_db": 15,
+          "pruned_pct": 44.4,
+          "accuracy": 0.25,
+          "mean_margin": -8.24
+        },
+        {
+          "snr_threshold_db": 20,
+          "pruned_pct": 65.0,
+          "accuracy": 0.0,
+          "mean_margin": -15.96
+        },
+        {
+          "snr_threshold_db": 25,
+          "pruned_pct": 82.5,
+          "accuracy": 0.75,
+          "mean_margin": 2.39
+        },
+        {
+          "snr_threshold_db": 30,
+          "pruned_pct": 88.1,
+          "accuracy": 0.75,
+          "mean_margin": 2.79
+        },
+        {
+          "snr_threshold_db": 40,
+          "pruned_pct": 100.0,
+          "accuracy": 0.25,
+          "mean_margin": 0.0
+        },
+        {
+          "snr_threshold_db": 50,
+          "pruned_pct": 100.0,
+          "accuracy": 0.25,
+          "mean_margin": 0.0
+        }
+      ],
+      "paper_claim": "+10.7% at \u03b8=0.055 (sim, N=50, P=8)"
+    },
+    "polysemic_subband": {
+      "experiment": "polysemic_subband_recall",
+      "n_rods": 4,
+      "n_peaks_per_rod": 10,
+      "freq_range_hz": [
+        516.8,
+        13910.5
+      ],
+      "partitions": {
+        "2_bands": {
+          "n_bands": 2,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 7213.7,
+              "n_peaks": 38,
+              "accuracy": 0.0,
+              "mean_margin": -8.27,
+              "correct": 0,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 7213.7,
+              "hi_hz": 13911.5,
+              "n_peaks": 2,
+              "accuracy": 0.25,
+              "mean_margin": 0.07,
+              "correct": 1,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 0
+        },
+        "3_bands": {
+          "n_bands": 3,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 4981.0,
+              "n_peaks": 25,
+              "accuracy": 0.75,
+              "mean_margin": 1.59,
+              "correct": 3,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 4981.0,
+              "hi_hz": 9446.3,
+              "n_peaks": 14,
+              "accuracy": 0.0,
+              "mean_margin": -10.95,
+              "correct": 0,
+              "total": 4
+            },
+            {
+              "band": 3,
+              "lo_hz": 9446.3,
+              "hi_hz": 13911.5,
+              "n_peaks": 1,
+              "accuracy": 0.25,
+              "mean_margin": 0.05,
+              "correct": 1,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 0
+        },
+        "4_bands": {
+          "n_bands": 4,
+          "bands": [
+            {
+              "band": 1,
+              "lo_hz": 515.8,
+              "hi_hz": 3864.7,
+              "n_peaks": 25,
+              "accuracy": 0.75,
+              "mean_margin": 1.59,
+              "correct": 3,
+              "total": 4
+            },
+            {
+              "band": 2,
+              "lo_hz": 3864.7,
+              "hi_hz": 7213.7,
+              "n_peaks": 13,
+              "accuracy": 0.0,
+              "mean_margin": -10.96,
+              "correct": 0,
+              "total": 4
+            },
+            {
+              "band": 3,
+              "lo_hz": 7213.7,
+              "hi_hz": 10562.6,
+              "n_peaks": 1,
+              "accuracy": 0.25,
+              "mean_margin": 0.01,
+              "correct": 1,
+              "total": 4
+            },
+            {
+              "band": 4,
+              "lo_hz": 10562.6,
+              "hi_hz": 13911.5,
+              "n_peaks": 1,
+              "accuracy": 0.25,
+              "mean_margin": 0.05,
+              "correct": 1,
+              "total": 4
+            }
+          ],
+          "independent_100pct": 0
+        }
+      },
+      "paper_claim": "+297% capacity from 4-channel polysemic readout (sim)"
+    },
+    "virtual_rewrite": {
+      "experiment": "virtual_rewrite_subband",
+      "n_rods": 4,
+      "n_peaks_per_rod": 10,
+      "strategies": {
+        "even_odd": {
+          "strategy": "even_odd",
+          "subsets": {
+            "1": {
+              "A": [
+                516.8,
+                1127.2,
+                2104.9,
+                2644.6,
+                5460.7
+              ],
+              "B": [
+                891.3,
+                1825.5,
+                2299.2,
+                5197.8,
+                6022.8
+              ]
+            },
+            "2": {
+              "A": [
+                709.4,
+                1203.2,
+                2117.8,
+                5689.9,
+                6506.6
+              ],
+              "B": [
+                1026.0,
+                1616.9,
+                2924.3,
+                6303.4,
+                6792.7
+              ]
+            },
+            "3": {
+              "A": [
+                913.1,
+                1714.2,
+                2833.8,
+                5765.3,
+                9396.4
+              ],
+              "B": [
+                1536.4,
+                2001.1,
+                5575.5,
+                6218.2,
+                13910.5
+              ]
+            },
+            "4": {
+              "A": [
+                867.7,
+                1631.9,
+                2088.0,
+                3189.9,
+                5892.7
+              ],
+              "B": [
+                1094.7,
+                1895.7,
+                2584.4,
+                5258.1,
+                6319.8
+              ]
+            }
+          }
+        },
+        "first_half_second_half": {
+          "strategy": "first_half_second_half",
+          "subsets": {
+            "1": {
+              "A": [
+                516.8,
+                891.3,
+                1127.2,
+                1825.5,
+                2104.9
+              ],
+              "B": [
+                2299.2,
+                2644.6,
+                5197.8,
+                5460.7,
+                6022.8
+              ]
+            },
+            "2": {
+              "A": [
+                709.4,
+                1026.0,
+                1203.2,
+                1616.9,
+                2117.8
+              ],
+              "B": [
+                2924.3,
+                5689.9,
+                6303.4,
+                6506.6,
+                6792.7
+              ]
+            },
+            "3": {
+              "A": [
+                913.1,
+                1536.4,
+                1714.2,
+                2001.1,
+                2833.8
+              ],
+              "B": [
+                5575.5,
+                5765.3,
+                6218.2,
+                9396.4,
+                13910.5
+              ]
+            },
+            "4": {
+              "A": [
+                867.7,
+                1094.7,
+                1631.9,
+                1895.7,
+                2088.0
+              ],
+              "B": [
+                2584.4,
+                3189.9,
+                5258.1,
+                5892.7,
+                6319.8
+              ]
+            }
+          }
+        },
+        "low_high": {
+          "strategy": "low_high",
+          "subsets": {
+            "1": {
+              "A": [
+                516.8,
+                891.3,
+                1127.2,
+                1825.5,
+                2104.9
+              ],
+              "B": [
+                2299.2,
+                2644.6,
+                5197.8,
+                5460.7,
+                6022.8
+              ]
+            },
+            "2": {
+              "A": [
+                709.4,
+                1026.0,
+                1203.2,
+                1616.9,
+                2117.8
+              ],
+              "B": [
+                2924.3,
+                5689.9,
+                6303.4,
+                6506.6,
+                6792.7
+              ]
+            },
+            "3": {
+              "A": [
+                913.1,
+                1536.4,
+                1714.2,
+                2001.1,
+                2833.8
+              ],
+              "B": [
+                5575.5,
+                5765.3,
+                6218.2,
+                9396.4,
+                13910.5
+              ]
+            },
+            "4": {
+              "A": [
+                867.7,
+                1094.7,
+                1631.9,
+                1895.7,
+                2088.0
+              ],
+              "B": [
+                2584.4,
+                3189.9,
+                5258.1,
+                5892.7,
+                6319.8
+              ]
+            }
+          }
+        }
+      },
+      "paper_claim": "4+ logical devices per rod via firmware partitioning (sim)"
+    }
+  }
+}

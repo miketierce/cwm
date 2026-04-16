@@ -1,0 +1,2276 @@
+{
+  "timestamp": "2026-04-13T17:25:46.677154+00:00",
+  "experiments_run": [
+    "e33",
+    "e36"
+  ],
+  "results": {
+    "e33": {
+      "experiment": "e33_reexcitation_interference",
+      "substrate": "fused_silica_plates_100x100x1mm",
+      "n_plates": 5,
+      "plate_results": {
+        "1": {
+          "plate_id": "1",
+          "plate_name": "A",
+          "mode_freq_hz": 29700.0,
+          "ringdown_tau_ms": 30.0,
+          "Q_measured": null,
+          "period_ms": 0.034,
+          "n_delays": 23,
+          "n_reps": 3,
+          "reference_mag": 6988532.7,
+          "sweep": [
+            {
+              "delay_s": 0.0,
+              "delay_cycles": 0.0,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6994631.2,
+              "magnitude_std": 15830.1,
+              "magnitude_reps": [
+                6979452.1,
+                7016471.5,
+                6987969.9
+              ]
+            },
+            {
+              "delay_s": 4e-06,
+              "delay_cycles": 0.119,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6997098.6,
+              "magnitude_std": 11819.2,
+              "magnitude_reps": [
+                6983111.6,
+                7012017.6,
+                6996166.6
+              ]
+            },
+            {
+              "delay_s": 8e-06,
+              "delay_cycles": 0.238,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6992264.0,
+              "magnitude_std": 9240.5,
+              "magnitude_reps": [
+                6980410.5,
+                6993426.0,
+                7002955.4
+              ]
+            },
+            {
+              "delay_s": 1.3e-05,
+              "delay_cycles": 0.386,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6997627.2,
+              "magnitude_std": 18930.5,
+              "magnitude_reps": [
+                7019402.0,
+                7000228.0,
+                6973251.4
+              ]
+            },
+            {
+              "delay_s": 1.7e-05,
+              "delay_cycles": 0.505,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6988187.4,
+              "magnitude_std": 6277.3,
+              "magnitude_reps": [
+                6990700.3,
+                6979557.3,
+                6994304.6
+              ]
+            },
+            {
+              "delay_s": 2.1e-05,
+              "delay_cycles": 0.624,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6990953.4,
+              "magnitude_std": 17620.3,
+              "magnitude_reps": [
+                7008252.5,
+                6997836.6,
+                6966771.0
+              ]
+            },
+            {
+              "delay_s": 2.5e-05,
+              "delay_cycles": 0.743,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6987052.2,
+              "magnitude_std": 12058.1,
+              "magnitude_reps": [
+                6983623.7,
+                6974300.0,
+                7003233.0
+              ]
+            },
+            {
+              "delay_s": 2.9e-05,
+              "delay_cycles": 0.861,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6980905.2,
+              "magnitude_std": 6063.0,
+              "magnitude_reps": [
+                6975159.3,
+                6978266.4,
+                6989289.9
+              ]
+            },
+            {
+              "delay_s": 3.4e-05,
+              "delay_cycles": 1.01,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7000354.1,
+              "magnitude_std": 11514.4,
+              "magnitude_reps": [
+                7008575.6,
+                7008416.2,
+                6984070.6
+              ]
+            },
+            {
+              "delay_s": 5.1e-05,
+              "delay_cycles": 1.515,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 6989481.8,
+              "magnitude_std": 20211.6,
+              "magnitude_reps": [
+                7017954.2,
+                6973065.5,
+                6977425.5
+              ]
+            },
+            {
+              "delay_s": 6.7e-05,
+              "delay_cycles": 1.99,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 6979767.6,
+              "magnitude_std": 7710.1,
+              "magnitude_reps": [
+                6969622.3,
+                6988300.7,
+                6981379.8
+              ]
+            },
+            {
+              "delay_s": 0.000101,
+              "delay_cycles": 3.0,
+              "delay_over_tau": 0.003,
+              "magnitude_mean": 6999546.0,
+              "magnitude_std": 7937.7,
+              "magnitude_reps": [
+                7007940.5,
+                7001803.3,
+                6988894.3
+              ]
+            },
+            {
+              "delay_s": 0.000135,
+              "delay_cycles": 4.01,
+              "delay_over_tau": 0.005,
+              "magnitude_mean": 6989516.6,
+              "magnitude_std": 12431.3,
+              "magnitude_reps": [
+                7003453.9,
+                6991828.1,
+                6973267.8
+              ]
+            },
+            {
+              "delay_s": 0.000168,
+              "delay_cycles": 4.99,
+              "delay_over_tau": 0.006,
+              "magnitude_mean": 6994646.4,
+              "magnitude_std": 23702.4,
+              "magnitude_reps": [
+                6978853.3,
+                6976937.6,
+                7028148.4
+              ]
+            },
+            {
+              "delay_s": 0.000236,
+              "delay_cycles": 7.009,
+              "delay_over_tau": 0.008,
+              "magnitude_mean": 6988481.3,
+              "magnitude_std": 17388.1,
+              "magnitude_reps": [
+                6965595.9,
+                6992131.9,
+                7007715.9
+              ]
+            },
+            {
+              "delay_s": 0.000337,
+              "delay_cycles": 10.009,
+              "delay_over_tau": 0.011,
+              "magnitude_mean": 6975892.4,
+              "magnitude_std": 1673.3,
+              "magnitude_reps": [
+                6974956.6,
+                6974477.9,
+                6978242.5
+              ]
+            },
+            {
+              "delay_s": 0.015,
+              "delay_cycles": 445.5,
+              "delay_over_tau": 0.5,
+              "magnitude_mean": 6994787.1,
+              "magnitude_std": 18457.6,
+              "magnitude_reps": [
+                7015260.1,
+                6998574.3,
+                6970526.9
+              ]
+            },
+            {
+              "delay_s": 0.03,
+              "delay_cycles": 891.0,
+              "delay_over_tau": 1.0,
+              "magnitude_mean": 6998341.6,
+              "magnitude_std": 12199.0,
+              "magnitude_reps": [
+                6986925.5,
+                7015251.3,
+                6992847.8
+              ]
+            },
+            {
+              "delay_s": 0.045,
+              "delay_cycles": 1336.5,
+              "delay_over_tau": 1.5,
+              "magnitude_mean": 7003887.2,
+              "magnitude_std": 18463.2,
+              "magnitude_reps": [
+                7028977.6,
+                6997602.2,
+                6985081.8
+              ]
+            },
+            {
+              "delay_s": 0.06,
+              "delay_cycles": 1782.0,
+              "delay_over_tau": 2.0,
+              "magnitude_mean": 7007314.3,
+              "magnitude_std": 8375.9,
+              "magnitude_reps": [
+                6997643.1,
+                7006226.6,
+                7018073.1
+              ]
+            },
+            {
+              "delay_s": 0.09,
+              "delay_cycles": 2673.0,
+              "delay_over_tau": 3.0,
+              "magnitude_mean": 6992371.4,
+              "magnitude_std": 14859.8,
+              "magnitude_reps": [
+                7013022.3,
+                6978673.4,
+                6985418.6
+              ]
+            },
+            {
+              "delay_s": 0.15,
+              "delay_cycles": 4455.0,
+              "delay_over_tau": 5.0,
+              "magnitude_mean": 6988198.0,
+              "magnitude_std": 19173.0,
+              "magnitude_reps": [
+                7014887.2,
+                6970709.8,
+                6978997.0
+              ]
+            },
+            {
+              "delay_s": 0.5,
+              "delay_cycles": 14850.0,
+              "delay_over_tau": 16.667,
+              "magnitude_mean": 6988532.7,
+              "magnitude_std": 16305.0,
+              "magnitude_reps": [
+                6973908.8,
+                7011284.4,
+                6980404.8
+              ]
+            }
+          ],
+          "normalized_magnitudes": [
+            1.0009,
+            1.0012,
+            1.0005,
+            1.0013,
+            1.0,
+            1.0003,
+            0.9998,
+            0.9989,
+            1.0017,
+            1.0001,
+            0.9987,
+            1.0016,
+            1.0001,
+            1.0009,
+            1.0,
+            0.9982,
+            1.0009,
+            1.0014,
+            1.0022,
+            1.0027,
+            1.0005,
+            1.0,
+            1.0
+          ],
+          "max_normalized": 1.0027,
+          "min_normalized": 0.9982,
+          "contrast": 0.0045,
+          "contrast_pct": 0.45,
+          "oscillation_detected": true,
+          "verdict": "NO SIGNIFICANT INTERFERENCE"
+        },
+        "2": {
+          "plate_id": "2",
+          "plate_name": "B",
+          "mode_freq_hz": 29200.0,
+          "ringdown_tau_ms": 30.0,
+          "Q_measured": null,
+          "period_ms": 0.034,
+          "n_delays": 23,
+          "n_reps": 3,
+          "reference_mag": 7399578.8,
+          "sweep": [
+            {
+              "delay_s": 0.0,
+              "delay_cycles": 0.0,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 7400209.7,
+              "magnitude_std": 9378.6,
+              "magnitude_reps": [
+                7410392.6,
+                7402478.4,
+                7387758.2
+              ]
+            },
+            {
+              "delay_s": 4e-06,
+              "delay_cycles": 0.117,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 7409578.1,
+              "magnitude_std": 5037.3,
+              "magnitude_reps": [
+                7404009.9,
+                7416210.4,
+                7408513.9
+              ]
+            },
+            {
+              "delay_s": 9e-06,
+              "delay_cycles": 0.263,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 7413379.1,
+              "magnitude_std": 531.1,
+              "magnitude_reps": [
+                7413944.0,
+                7413525.4,
+                7412667.9
+              ]
+            },
+            {
+              "delay_s": 1.3e-05,
+              "delay_cycles": 0.38,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 7404673.6,
+              "magnitude_std": 2034.2,
+              "magnitude_reps": [
+                7405963.5,
+                7406255.7,
+                7401801.7
+              ]
+            },
+            {
+              "delay_s": 1.7e-05,
+              "delay_cycles": 0.496,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7410653.0,
+              "magnitude_std": 3247.9,
+              "magnitude_reps": [
+                7409976.0,
+                7407057.0,
+                7414925.8
+              ]
+            },
+            {
+              "delay_s": 2.1e-05,
+              "delay_cycles": 0.613,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7394269.4,
+              "magnitude_std": 6034.2,
+              "magnitude_reps": [
+                7395005.7,
+                7386538.4,
+                7401264.1
+              ]
+            },
+            {
+              "delay_s": 2.6e-05,
+              "delay_cycles": 0.759,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7401149.4,
+              "magnitude_std": 5070.9,
+              "magnitude_reps": [
+                7399236.6,
+                7396120.4,
+                7408091.4
+              ]
+            },
+            {
+              "delay_s": 3e-05,
+              "delay_cycles": 0.876,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7408009.9,
+              "magnitude_std": 11430.6,
+              "magnitude_reps": [
+                7403911.8,
+                7423601.2,
+                7396516.7
+              ]
+            },
+            {
+              "delay_s": 3.4e-05,
+              "delay_cycles": 0.993,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 7404414.0,
+              "magnitude_std": 9562.6,
+              "magnitude_reps": [
+                7409072.4,
+                7391089.9,
+                7413079.8
+              ]
+            },
+            {
+              "delay_s": 5.1e-05,
+              "delay_cycles": 1.489,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 7408017.2,
+              "magnitude_std": 8358.0,
+              "magnitude_reps": [
+                7405111.5,
+                7399547.6,
+                7419392.3
+              ]
+            },
+            {
+              "delay_s": 6.8e-05,
+              "delay_cycles": 1.986,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 7394842.0,
+              "magnitude_std": 5239.4,
+              "magnitude_reps": [
+                7398562.4,
+                7387432.4,
+                7398531.3
+              ]
+            },
+            {
+              "delay_s": 0.000103,
+              "delay_cycles": 3.008,
+              "delay_over_tau": 0.003,
+              "magnitude_mean": 7403113.9,
+              "magnitude_std": 8114.6,
+              "magnitude_reps": [
+                7392449.8,
+                7412117.1,
+                7404774.8
+              ]
+            },
+            {
+              "delay_s": 0.000137,
+              "delay_cycles": 4.0,
+              "delay_over_tau": 0.005,
+              "magnitude_mean": 7403641.3,
+              "magnitude_std": 4769.8,
+              "magnitude_reps": [
+                7398663.7,
+                7402187.5,
+                7410072.7
+              ]
+            },
+            {
+              "delay_s": 0.000171,
+              "delay_cycles": 4.993,
+              "delay_over_tau": 0.006,
+              "magnitude_mean": 7396010.9,
+              "magnitude_std": 8634.0,
+              "magnitude_reps": [
+                7386958.4,
+                7393440.9,
+                7407633.6
+              ]
+            },
+            {
+              "delay_s": 0.00024,
+              "delay_cycles": 7.008,
+              "delay_over_tau": 0.008,
+              "magnitude_mean": 7398683.2,
+              "magnitude_std": 7197.2,
+              "magnitude_reps": [
+                7408067.9,
+                7390578.3,
+                7397403.5
+              ]
+            },
+            {
+              "delay_s": 0.000342,
+              "delay_cycles": 9.986,
+              "delay_over_tau": 0.011,
+              "magnitude_mean": 7408269.7,
+              "magnitude_std": 3737.8,
+              "magnitude_reps": [
+                7412969.4,
+                7408015.5,
+                7403824.2
+              ]
+            },
+            {
+              "delay_s": 0.015,
+              "delay_cycles": 438.0,
+              "delay_over_tau": 0.5,
+              "magnitude_mean": 7399546.9,
+              "magnitude_std": 12373.2,
+              "magnitude_reps": [
+                7392872.5,
+                7416892.4,
+                7388875.8
+              ]
+            },
+            {
+              "delay_s": 0.03,
+              "delay_cycles": 876.0,
+              "delay_over_tau": 1.0,
+              "magnitude_mean": 7393646.8,
+              "magnitude_std": 8258.0,
+              "magnitude_reps": [
+                7382374.5,
+                7401927.5,
+                7396638.4
+              ]
+            },
+            {
+              "delay_s": 0.045,
+              "delay_cycles": 1314.0,
+              "delay_over_tau": 1.5,
+              "magnitude_mean": 7398179.7,
+              "magnitude_std": 6208.0,
+              "magnitude_reps": [
+                7389420.4,
+                7402044.7,
+                7403074.1
+              ]
+            },
+            {
+              "delay_s": 0.06,
+              "delay_cycles": 1752.0,
+              "delay_over_tau": 2.0,
+              "magnitude_mean": 7407501.5,
+              "magnitude_std": 3446.9,
+              "magnitude_reps": [
+                7404165.9,
+                7412247.9,
+                7406090.7
+              ]
+            },
+            {
+              "delay_s": 0.09,
+              "delay_cycles": 2628.0,
+              "delay_over_tau": 3.0,
+              "magnitude_mean": 7408160.2,
+              "magnitude_std": 2852.7,
+              "magnitude_reps": [
+                7404131.8,
+                7410362.8,
+                7409985.9
+              ]
+            },
+            {
+              "delay_s": 0.15,
+              "delay_cycles": 4380.0,
+              "delay_over_tau": 5.0,
+              "magnitude_mean": 7403428.1,
+              "magnitude_std": 6280.0,
+              "magnitude_reps": [
+                7399030.4,
+                7398944.7,
+                7412309.3
+              ]
+            },
+            {
+              "delay_s": 0.5,
+              "delay_cycles": 14600.0,
+              "delay_over_tau": 16.667,
+              "magnitude_mean": 7399578.8,
+              "magnitude_std": 7845.2,
+              "magnitude_reps": [
+                7398456.7,
+                7409699.0,
+                7390580.8
+              ]
+            }
+          ],
+          "normalized_magnitudes": [
+            1.0001,
+            1.0014,
+            1.0019,
+            1.0007,
+            1.0015,
+            0.9993,
+            1.0002,
+            1.0011,
+            1.0007,
+            1.0011,
+            0.9994,
+            1.0005,
+            1.0005,
+            0.9995,
+            0.9999,
+            1.0012,
+            1.0,
+            0.9992,
+            0.9998,
+            1.0011,
+            1.0012,
+            1.0005,
+            1.0
+          ],
+          "max_normalized": 1.0019,
+          "min_normalized": 0.9992,
+          "contrast": 0.0027,
+          "contrast_pct": 0.27,
+          "oscillation_detected": true,
+          "verdict": "NO SIGNIFICANT INTERFERENCE"
+        },
+        "3": {
+          "plate_id": "3",
+          "plate_name": "C",
+          "mode_freq_hz": 43175.0,
+          "ringdown_tau_ms": 74.54,
+          "Q_measured": 10111.0,
+          "period_ms": 0.023,
+          "n_delays": 23,
+          "n_reps": 3,
+          "reference_mag": 6336672.5,
+          "sweep": [
+            {
+              "delay_s": 0.0,
+              "delay_cycles": 0.0,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6352922.4,
+              "magnitude_std": 16656.8,
+              "magnitude_reps": [
+                6331283.7,
+                6355679.6,
+                6371803.9
+              ]
+            },
+            {
+              "delay_s": 3e-06,
+              "delay_cycles": 0.13,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6342049.2,
+              "magnitude_std": 14820.7,
+              "magnitude_reps": [
+                6353356.4,
+                6351679.2,
+                6321112.0
+              ]
+            },
+            {
+              "delay_s": 6e-06,
+              "delay_cycles": 0.259,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6353856.7,
+              "magnitude_std": 12172.3,
+              "magnitude_reps": [
+                6337117.1,
+                6358749.9,
+                6365703.1
+              ]
+            },
+            {
+              "delay_s": 9e-06,
+              "delay_cycles": 0.389,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6332899.9,
+              "magnitude_std": 10368.2,
+              "magnitude_reps": [
+                6337246.4,
+                6318599.0,
+                6342854.3
+              ]
+            },
+            {
+              "delay_s": 1.2e-05,
+              "delay_cycles": 0.518,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6338336.3,
+              "magnitude_std": 7225.8,
+              "magnitude_reps": [
+                6334360.7,
+                6348476.7,
+                6332171.5
+              ]
+            },
+            {
+              "delay_s": 1.4e-05,
+              "delay_cycles": 0.604,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6348493.4,
+              "magnitude_std": 14539.0,
+              "magnitude_reps": [
+                6369021.2,
+                6337213.4,
+                6339245.6
+              ]
+            },
+            {
+              "delay_s": 1.7e-05,
+              "delay_cycles": 0.734,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6349793.1,
+              "magnitude_std": 20670.8,
+              "magnitude_reps": [
+                6369197.0,
+                6359026.2,
+                6321156.1
+              ]
+            },
+            {
+              "delay_s": 2e-05,
+              "delay_cycles": 0.864,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6333622.9,
+              "magnitude_std": 14608.3,
+              "magnitude_reps": [
+                6326305.9,
+                6354013.1,
+                6320549.7
+              ]
+            },
+            {
+              "delay_s": 2.3e-05,
+              "delay_cycles": 0.993,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6340300.5,
+              "magnitude_std": 18071.3,
+              "magnitude_reps": [
+                6320690.0,
+                6335913.3,
+                6364298.3
+              ]
+            },
+            {
+              "delay_s": 3.5e-05,
+              "delay_cycles": 1.511,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 6348961.6,
+              "magnitude_std": 10216.2,
+              "magnitude_reps": [
+                6356233.5,
+                6356137.6,
+                6334513.8
+              ]
+            },
+            {
+              "delay_s": 4.6e-05,
+              "delay_cycles": 1.986,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6345747.2,
+              "magnitude_std": 13360.9,
+              "magnitude_reps": [
+                6326915.0,
+                6353828.5,
+                6356498.0
+              ]
+            },
+            {
+              "delay_s": 6.9e-05,
+              "delay_cycles": 2.979,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6333417.0,
+              "magnitude_std": 22069.3,
+              "magnitude_reps": [
+                6353409.3,
+                6344176.7,
+                6302664.9
+              ]
+            },
+            {
+              "delay_s": 9.3e-05,
+              "delay_cycles": 4.015,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 6337413.5,
+              "magnitude_std": 10232.2,
+              "magnitude_reps": [
+                6324971.2,
+                6337236.3,
+                6350033.0
+              ]
+            },
+            {
+              "delay_s": 0.000116,
+              "delay_cycles": 5.008,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 6352386.2,
+              "magnitude_std": 16062.4,
+              "magnitude_reps": [
+                6359114.5,
+                6367811.6,
+                6330232.5
+              ]
+            },
+            {
+              "delay_s": 0.000162,
+              "delay_cycles": 6.994,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 6335504.9,
+              "magnitude_std": 16238.4,
+              "magnitude_reps": [
+                6330610.2,
+                6357383.1,
+                6318521.3
+              ]
+            },
+            {
+              "delay_s": 0.000232,
+              "delay_cycles": 10.017,
+              "delay_over_tau": 0.003,
+              "magnitude_mean": 6319322.7,
+              "magnitude_std": 9363.2,
+              "magnitude_reps": [
+                6318990.5,
+                6330952.7,
+                6308024.8
+              ]
+            },
+            {
+              "delay_s": 0.037271,
+              "delay_cycles": 1609.175,
+              "delay_over_tau": 0.5,
+              "magnitude_mean": 6337517.4,
+              "magnitude_std": 9886.5,
+              "magnitude_reps": [
+                6350239.5,
+                6336178.7,
+                6326133.9
+              ]
+            },
+            {
+              "delay_s": 0.074542,
+              "delay_cycles": 3218.351,
+              "delay_over_tau": 1.0,
+              "magnitude_mean": 6337217.3,
+              "magnitude_std": 12848.9,
+              "magnitude_reps": [
+                6344476.0,
+                6348014.4,
+                6319161.5
+              ]
+            },
+            {
+              "delay_s": 0.111814,
+              "delay_cycles": 4827.569,
+              "delay_over_tau": 1.5,
+              "magnitude_mean": 6333695.7,
+              "magnitude_std": 15424.4,
+              "magnitude_reps": [
+                6315727.7,
+                6353391.0,
+                6331968.3
+              ]
+            },
+            {
+              "delay_s": 0.149085,
+              "delay_cycles": 6436.745,
+              "delay_over_tau": 2.0,
+              "magnitude_mean": 6330278.0,
+              "magnitude_std": 15227.4,
+              "magnitude_reps": [
+                6308837.8,
+                6342744.5,
+                6339251.6
+              ]
+            },
+            {
+              "delay_s": 0.223627,
+              "delay_cycles": 9655.096,
+              "delay_over_tau": 3.0,
+              "magnitude_mean": 6342282.7,
+              "magnitude_std": 6136.9,
+              "magnitude_reps": [
+                6333837.7,
+                6348238.6,
+                6344771.7
+              ]
+            },
+            {
+              "delay_s": 0.372712,
+              "delay_cycles": 16091.841,
+              "delay_over_tau": 5.0,
+              "magnitude_mean": 6332810.4,
+              "magnitude_std": 15878.0,
+              "magnitude_reps": [
+                6314172.5,
+                6331283.0,
+                6352975.5
+              ]
+            },
+            {
+              "delay_s": 0.745424,
+              "delay_cycles": 32183.681,
+              "delay_over_tau": 10.0,
+              "magnitude_mean": 6336672.5,
+              "magnitude_std": 13175.9,
+              "magnitude_reps": [
+                6324413.4,
+                6354954.9,
+                6330649.2
+              ]
+            }
+          ],
+          "normalized_magnitudes": [
+            1.0026,
+            1.0008,
+            1.0027,
+            0.9994,
+            1.0003,
+            1.0019,
+            1.0021,
+            0.9995,
+            1.0006,
+            1.0019,
+            1.0014,
+            0.9995,
+            1.0001,
+            1.0025,
+            0.9998,
+            0.9973,
+            1.0001,
+            1.0001,
+            0.9995,
+            0.999,
+            1.0009,
+            0.9994,
+            1.0
+          ],
+          "max_normalized": 1.0027,
+          "min_normalized": 0.9973,
+          "contrast": 0.0054,
+          "contrast_pct": 0.54,
+          "oscillation_detected": true,
+          "verdict": "NO SIGNIFICANT INTERFERENCE"
+        },
+        "4": {
+          "plate_id": "4",
+          "plate_name": "D",
+          "mode_freq_hz": 49625.0,
+          "ringdown_tau_ms": 114.02,
+          "Q_measured": 17776.0,
+          "period_ms": 0.02,
+          "n_delays": 23,
+          "n_reps": 3,
+          "reference_mag": 5372805.1,
+          "sweep": [
+            {
+              "delay_s": 0.0,
+              "delay_cycles": 0.0,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5372587.1,
+              "magnitude_std": 900.9,
+              "magnitude_reps": [
+                5372127.3,
+                5371788.0,
+                5373846.1
+              ]
+            },
+            {
+              "delay_s": 3e-06,
+              "delay_cycles": 0.149,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5375443.3,
+              "magnitude_std": 10994.4,
+              "magnitude_reps": [
+                5374386.4,
+                5362537.5,
+                5389406.0
+              ]
+            },
+            {
+              "delay_s": 5e-06,
+              "delay_cycles": 0.248,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5367099.5,
+              "magnitude_std": 6986.0,
+              "magnitude_reps": [
+                5376979.2,
+                5362176.6,
+                5362142.7
+              ]
+            },
+            {
+              "delay_s": 8e-06,
+              "delay_cycles": 0.397,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5369072.2,
+              "magnitude_std": 16336.5,
+              "magnitude_reps": [
+                5349595.2,
+                5389572.0,
+                5368049.5
+              ]
+            },
+            {
+              "delay_s": 1e-05,
+              "delay_cycles": 0.496,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5365625.3,
+              "magnitude_std": 11680.1,
+              "magnitude_reps": [
+                5358319.5,
+                5356448.2,
+                5382108.1
+              ]
+            },
+            {
+              "delay_s": 1.3e-05,
+              "delay_cycles": 0.645,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5375324.9,
+              "magnitude_std": 8007.4,
+              "magnitude_reps": [
+                5386467.3,
+                5371504.0,
+                5368003.4
+              ]
+            },
+            {
+              "delay_s": 1.5e-05,
+              "delay_cycles": 0.744,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5366549.3,
+              "magnitude_std": 3437.0,
+              "magnitude_reps": [
+                5370261.7,
+                5361975.9,
+                5367410.4
+              ]
+            },
+            {
+              "delay_s": 1.8e-05,
+              "delay_cycles": 0.893,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5375354.8,
+              "magnitude_std": 7876.0,
+              "magnitude_reps": [
+                5382683.5,
+                5378954.2,
+                5364426.6
+              ]
+            },
+            {
+              "delay_s": 2e-05,
+              "delay_cycles": 0.993,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5364482.1,
+              "magnitude_std": 7058.2,
+              "magnitude_reps": [
+                5360021.9,
+                5374445.7,
+                5358978.6
+              ]
+            },
+            {
+              "delay_s": 3e-05,
+              "delay_cycles": 1.489,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5367278.2,
+              "magnitude_std": 11873.7,
+              "magnitude_reps": [
+                5383986.3,
+                5360375.5,
+                5357472.8
+              ]
+            },
+            {
+              "delay_s": 4e-05,
+              "delay_cycles": 1.985,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 5367256.9,
+              "magnitude_std": 6822.6,
+              "magnitude_reps": [
+                5374128.1,
+                5369687.4,
+                5357955.2
+              ]
+            },
+            {
+              "delay_s": 6e-05,
+              "delay_cycles": 2.978,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 5379147.3,
+              "magnitude_std": 5407.2,
+              "magnitude_reps": [
+                5371605.1,
+                5381826.1,
+                5384010.6
+              ]
+            },
+            {
+              "delay_s": 8.1e-05,
+              "delay_cycles": 4.02,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 5369173.3,
+              "magnitude_std": 5780.1,
+              "magnitude_reps": [
+                5368984.5,
+                5362190.4,
+                5376344.9
+              ]
+            },
+            {
+              "delay_s": 0.000101,
+              "delay_cycles": 5.012,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 5368724.6,
+              "magnitude_std": 11577.1,
+              "magnitude_reps": [
+                5382300.6,
+                5369862.1,
+                5354011.1
+              ]
+            },
+            {
+              "delay_s": 0.000141,
+              "delay_cycles": 6.997,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 5365123.8,
+              "magnitude_std": 8916.4,
+              "magnitude_reps": [
+                5374757.2,
+                5367353.5,
+                5353260.6
+              ]
+            },
+            {
+              "delay_s": 0.000202,
+              "delay_cycles": 10.024,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 5361935.8,
+              "magnitude_std": 3004.6,
+              "magnitude_reps": [
+                5366114.7,
+                5360512.5,
+                5359180.1
+              ]
+            },
+            {
+              "delay_s": 0.057009,
+              "delay_cycles": 2829.072,
+              "delay_over_tau": 0.5,
+              "magnitude_mean": 5359578.4,
+              "magnitude_std": 6220.4,
+              "magnitude_reps": [
+                5357416.5,
+                5353274.6,
+                5368044.1
+              ]
+            },
+            {
+              "delay_s": 0.114018,
+              "delay_cycles": 5658.143,
+              "delay_over_tau": 1.0,
+              "magnitude_mean": 5368505.3,
+              "magnitude_std": 17359.0,
+              "magnitude_reps": [
+                5367056.0,
+                5348006.6,
+                5390453.2
+              ]
+            },
+            {
+              "delay_s": 0.171027,
+              "delay_cycles": 8487.215,
+              "delay_over_tau": 1.5,
+              "magnitude_mean": 5370496.7,
+              "magnitude_std": 1818.7,
+              "magnitude_reps": [
+                5372769.4,
+                5370403.3,
+                5368317.5
+              ]
+            },
+            {
+              "delay_s": 0.228036,
+              "delay_cycles": 11316.286,
+              "delay_over_tau": 2.0,
+              "magnitude_mean": 5361196.3,
+              "magnitude_std": 4617.5,
+              "magnitude_reps": [
+                5355495.7,
+                5361288.0,
+                5366805.1
+              ]
+            },
+            {
+              "delay_s": 0.342054,
+              "delay_cycles": 16974.43,
+              "delay_over_tau": 3.0,
+              "magnitude_mean": 5378665.1,
+              "magnitude_std": 5793.0,
+              "magnitude_reps": [
+                5382500.7,
+                5383016.6,
+                5370478.0
+              ]
+            },
+            {
+              "delay_s": 0.57009,
+              "delay_cycles": 28290.716,
+              "delay_over_tau": 5.0,
+              "magnitude_mean": 5358822.7,
+              "magnitude_std": 10124.7,
+              "magnitude_reps": [
+                5346933.7,
+                5357857.0,
+                5371677.5
+              ]
+            },
+            {
+              "delay_s": 1.14018,
+              "delay_cycles": 56581.432,
+              "delay_over_tau": 10.0,
+              "magnitude_mean": 5372805.1,
+              "magnitude_std": 7153.2,
+              "magnitude_reps": [
+                5380806.6,
+                5374164.6,
+                5363444.0
+              ]
+            }
+          ],
+          "normalized_magnitudes": [
+            1.0,
+            1.0005,
+            0.9989,
+            0.9993,
+            0.9987,
+            1.0005,
+            0.9988,
+            1.0005,
+            0.9985,
+            0.999,
+            0.999,
+            1.0012,
+            0.9993,
+            0.9992,
+            0.9986,
+            0.998,
+            0.9975,
+            0.9992,
+            0.9996,
+            0.9978,
+            1.0011,
+            0.9974,
+            1.0
+          ],
+          "max_normalized": 1.0012,
+          "min_normalized": 0.9974,
+          "contrast": 0.0038,
+          "contrast_pct": 0.38,
+          "oscillation_detected": true,
+          "verdict": "NO SIGNIFICANT INTERFERENCE"
+        },
+        "5": {
+          "plate_id": "5",
+          "plate_name": "E",
+          "mode_freq_hz": 49675.0,
+          "ringdown_tau_ms": 30.0,
+          "Q_measured": null,
+          "period_ms": 0.02,
+          "n_delays": 23,
+          "n_reps": 3,
+          "reference_mag": 8652210.7,
+          "sweep": [
+            {
+              "delay_s": 0.0,
+              "delay_cycles": 0.0,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8640282.5,
+              "magnitude_std": 4466.1,
+              "magnitude_reps": [
+                8642072.0,
+                8634142.1,
+                8644633.5
+              ]
+            },
+            {
+              "delay_s": 3e-06,
+              "delay_cycles": 0.149,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8640682.7,
+              "magnitude_std": 3292.7,
+              "magnitude_reps": [
+                8639394.4,
+                8645202.3,
+                8637451.5
+              ]
+            },
+            {
+              "delay_s": 5e-06,
+              "delay_cycles": 0.248,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8646639.3,
+              "magnitude_std": 1388.7,
+              "magnitude_reps": [
+                8648098.1,
+                8647048.7,
+                8644771.2
+              ]
+            },
+            {
+              "delay_s": 8e-06,
+              "delay_cycles": 0.397,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8647345.3,
+              "magnitude_std": 1430.0,
+              "magnitude_reps": [
+                8649365.1,
+                8646422.2,
+                8646248.6
+              ]
+            },
+            {
+              "delay_s": 1e-05,
+              "delay_cycles": 0.497,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8645237.9,
+              "magnitude_std": 3852.5,
+              "magnitude_reps": [
+                8647976.3,
+                8647947.7,
+                8639789.7
+              ]
+            },
+            {
+              "delay_s": 1.3e-05,
+              "delay_cycles": 0.646,
+              "delay_over_tau": 0.0,
+              "magnitude_mean": 8654611.2,
+              "magnitude_std": 3289.9,
+              "magnitude_reps": [
+                8650860.2,
+                8658870.6,
+                8654102.8
+              ]
+            },
+            {
+              "delay_s": 1.5e-05,
+              "delay_cycles": 0.745,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 8646610.0,
+              "magnitude_std": 3926.9,
+              "magnitude_reps": [
+                8641685.6,
+                8651295.6,
+                8646848.9
+              ]
+            },
+            {
+              "delay_s": 1.8e-05,
+              "delay_cycles": 0.894,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 8645689.2,
+              "magnitude_std": 2359.5,
+              "magnitude_reps": [
+                8644801.3,
+                8648918.8,
+                8643347.5
+              ]
+            },
+            {
+              "delay_s": 2e-05,
+              "delay_cycles": 0.994,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 8648063.6,
+              "magnitude_std": 5954.9,
+              "magnitude_reps": [
+                8640533.4,
+                8655094.0,
+                8648563.3
+              ]
+            },
+            {
+              "delay_s": 3e-05,
+              "delay_cycles": 1.49,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 8644665.6,
+              "magnitude_std": 381.4,
+              "magnitude_reps": [
+                8644126.4,
+                8644929.3,
+                8644941.2
+              ]
+            },
+            {
+              "delay_s": 4e-05,
+              "delay_cycles": 1.987,
+              "delay_over_tau": 0.001,
+              "magnitude_mean": 8646011.7,
+              "magnitude_std": 11153.4,
+              "magnitude_reps": [
+                8648796.1,
+                8631174.0,
+                8658065.0
+              ]
+            },
+            {
+              "delay_s": 6e-05,
+              "delay_cycles": 2.981,
+              "delay_over_tau": 0.002,
+              "magnitude_mean": 8642348.0,
+              "magnitude_std": 6849.3,
+              "magnitude_reps": [
+                8651991.3,
+                8636736.7,
+                8638315.9
+              ]
+            },
+            {
+              "delay_s": 8.1e-05,
+              "delay_cycles": 4.024,
+              "delay_over_tau": 0.003,
+              "magnitude_mean": 8646035.2,
+              "magnitude_std": 3365.7,
+              "magnitude_reps": [
+                8648563.6,
+                8641278.6,
+                8648263.4
+              ]
+            },
+            {
+              "delay_s": 0.000101,
+              "delay_cycles": 5.017,
+              "delay_over_tau": 0.003,
+              "magnitude_mean": 8648986.7,
+              "magnitude_std": 4824.8,
+              "magnitude_reps": [
+                8646060.1,
+                8645111.9,
+                8655788.0
+              ]
+            },
+            {
+              "delay_s": 0.000141,
+              "delay_cycles": 7.004,
+              "delay_over_tau": 0.005,
+              "magnitude_mean": 8648186.0,
+              "magnitude_std": 6322.1,
+              "magnitude_reps": [
+                8647510.6,
+                8656244.6,
+                8640802.9
+              ]
+            },
+            {
+              "delay_s": 0.000201,
+              "delay_cycles": 9.985,
+              "delay_over_tau": 0.007,
+              "magnitude_mean": 8647977.9,
+              "magnitude_std": 11233.7,
+              "magnitude_reps": [
+                8632596.9,
+                8659112.5,
+                8652224.2
+              ]
+            },
+            {
+              "delay_s": 0.015,
+              "delay_cycles": 745.125,
+              "delay_over_tau": 0.5,
+              "magnitude_mean": 8640097.8,
+              "magnitude_std": 7654.0,
+              "magnitude_reps": [
+                8650263.3,
+                8631794.5,
+                8638235.5
+              ]
+            },
+            {
+              "delay_s": 0.03,
+              "delay_cycles": 1490.25,
+              "delay_over_tau": 1.0,
+              "magnitude_mean": 8647955.7,
+              "magnitude_std": 9269.7,
+              "magnitude_reps": [
+                8661037.6,
+                8642149.2,
+                8640680.3
+              ]
+            },
+            {
+              "delay_s": 0.045,
+              "delay_cycles": 2235.375,
+              "delay_over_tau": 1.5,
+              "magnitude_mean": 8645605.7,
+              "magnitude_std": 2089.2,
+              "magnitude_reps": [
+                8647468.1,
+                8646661.0,
+                8642688.1
+              ]
+            },
+            {
+              "delay_s": 0.06,
+              "delay_cycles": 2980.5,
+              "delay_over_tau": 2.0,
+              "magnitude_mean": 8651257.5,
+              "magnitude_std": 1027.3,
+              "magnitude_reps": [
+                8652414.9,
+                8651439.2,
+                8649918.4
+              ]
+            },
+            {
+              "delay_s": 0.09,
+              "delay_cycles": 4470.75,
+              "delay_over_tau": 3.0,
+              "magnitude_mean": 8649727.1,
+              "magnitude_std": 1862.3,
+              "magnitude_reps": [
+                8650747.8,
+                8651319.3,
+                8647114.1
+              ]
+            },
+            {
+              "delay_s": 0.15,
+              "delay_cycles": 7451.25,
+              "delay_over_tau": 5.0,
+              "magnitude_mean": 8650635.9,
+              "magnitude_std": 5517.0,
+              "magnitude_reps": [
+                8657222.8,
+                8650964.0,
+                8643720.9
+              ]
+            },
+            {
+              "delay_s": 0.5,
+              "delay_cycles": 24837.5,
+              "delay_over_tau": 16.667,
+              "magnitude_mean": 8652210.7,
+              "magnitude_std": 2269.9,
+              "magnitude_reps": [
+                8653821.3,
+                8649000.5,
+                8653810.2
+              ]
+            }
+          ],
+          "normalized_magnitudes": [
+            0.9986,
+            0.9987,
+            0.9994,
+            0.9994,
+            0.9992,
+            1.0003,
+            0.9994,
+            0.9992,
+            0.9995,
+            0.9991,
+            0.9993,
+            0.9989,
+            0.9993,
+            0.9996,
+            0.9995,
+            0.9995,
+            0.9986,
+            0.9995,
+            0.9992,
+            0.9999,
+            0.9997,
+            0.9998,
+            1.0
+          ],
+          "max_normalized": 1.0003,
+          "min_normalized": 0.9986,
+          "contrast": 0.0017,
+          "contrast_pct": 0.17,
+          "oscillation_detected": true,
+          "verdict": "NO SIGNIFICANT INTERFERENCE"
+        }
+      },
+      "summary": {
+        "mean_contrast_pct": 0.36,
+        "max_contrast_pct": 0.54,
+        "min_contrast_pct": 0.17,
+        "rod_reference_contrast_pct": 0.27
+      }
+    },
+    "e36": {
+      "experiment": "e36_null_control",
+      "substrate": "fused_silica_plates_100x100x1mm",
+      "n_plates": 5,
+      "n_peaks": 10,
+      "raw_measurement_matrix": {
+        "1": {
+          "1": [
+            6978596.31035107,
+            4556968.018693371,
+            1706821.224974267
+          ],
+          "2": [
+            1656237.6929282965,
+            515234.68458203395,
+            246399.9772560068
+          ],
+          "3": [
+            1699221.185855607,
+            1329851.5205386234,
+            287675.12623025
+          ],
+          "4": [
+            1599605.301961819,
+            433942.94683025597,
+            653027.9506349503
+          ],
+          "5": [
+            1656673.0448958452,
+            1720846.0813854737,
+            412953.006567168
+          ]
+        },
+        "2": {
+          "1": [
+            1156096.3570315633,
+            480724.80550029664,
+            2815113.2753072036,
+            1394300.1158262365,
+            753348.3637850261,
+            1560195.8780364709
+          ],
+          "2": [
+            7391718.443181274,
+            4918394.342214486,
+            3892175.548178775,
+            1883289.99287944,
+            1669005.956256471,
+            1360342.2751591585
+          ],
+          "3": [
+            2528553.339462585,
+            5010704.176503008,
+            1837760.7974633905,
+            1643096.7578138122,
+            1656773.3476261618,
+            1818802.564513022
+          ],
+          "4": [
+            4904786.596134272,
+            4727816.09572366,
+            2564612.293094014,
+            1393968.4327743845,
+            1150919.8017271468,
+            1710942.2187759997
+          ],
+          "5": [
+            5216605.990061134,
+            7704126.431496307,
+            2466547.0292324508,
+            1372813.3803288927,
+            1174273.9442489545,
+            1190038.7687462505
+          ]
+        },
+        "3": {
+          "1": [
+            914262.1679952112,
+            347281.76351506676,
+            715040.5169116054,
+            675016.9945720766,
+            2304255.3318750216,
+            952746.687591097
+          ],
+          "2": [
+            4192998.6294062533,
+            4844401.9942483045,
+            1835219.644760521,
+            1768275.3184841531,
+            1447220.6492613386,
+            1267033.2069769332
+          ],
+          "3": [
+            6306378.65539607,
+            5903824.061038472,
+            4766412.929356474,
+            2924030.201387533,
+            2652572.9199918043,
+            2375844.6893246034
+          ],
+          "4": [
+            5519772.957452385,
+            5367101.913028331,
+            3103218.401201319,
+            2192350.126182355,
+            1092023.290461406,
+            1388903.4062361526
+          ],
+          "5": [
+            5008117.180915078,
+            5687171.281716045,
+            3839623.7851154935,
+            2475367.696566831,
+            898906.1419271963,
+            1209145.2998369713
+          ]
+        },
+        "4": {
+          "1": [
+            390454.02645129996,
+            1197475.4619207422,
+            570595.9717553912,
+            522300.4512295136,
+            2439842.6621624758,
+            872629.5866736523,
+            299706.3615042487,
+            510229.3460742645
+          ],
+          "2": [
+            4843921.7550094575,
+            3424880.925757328,
+            1620060.013646917,
+            1608458.1315979457,
+            1071484.2390753655,
+            1575604.6133469823,
+            631300.8727482054,
+            668297.5893132451
+          ],
+          "3": [
+            5905534.304304495,
+            2024101.8221578386,
+            1092259.8289252236,
+            1299038.7097158893,
+            1428077.6180133005,
+            830967.7432632947,
+            865682.6148462393,
+            1252317.7699331243
+          ],
+          "4": [
+            5362248.647128957,
+            4491749.735209761,
+            2528292.5774287293,
+            2306310.0051826965,
+            1861577.4059505537,
+            1729781.373113004,
+            1581951.1408742676,
+            1475049.4198742383
+          ],
+          "5": [
+            5672581.726460082,
+            5007599.957064269,
+            1788201.5313397334,
+            759776.7217149338,
+            1274236.0775907969,
+            1479865.9793570135,
+            1013437.6300274648,
+            630938.6061332603
+          ]
+        },
+        "5": {
+          "1": [
+            662045.7782197096,
+            1209324.3140527476,
+            982224.6406898996,
+            3122572.7831759863,
+            4777610.162435432,
+            604292.6773215672,
+            3397514.6779673975,
+            880540.3633242832
+          ],
+          "2": [
+            4169330.8844823334,
+            4365214.641917726,
+            2145748.107238831,
+            3041158.0508997217,
+            1868735.9318196503,
+            1923289.5000147498,
+            615256.2580686245,
+            309012.75346199394
+          ],
+          "3": [
+            3784410.199097221,
+            2093812.7071518349,
+            1550306.5492090352,
+            1812501.439681461,
+            2016421.5569431437,
+            2919857.2626744984,
+            1416049.1570959184,
+            469332.39803824417
+          ],
+          "4": [
+            3742239.3451873977,
+            3942659.55023137,
+            2817572.2610945622,
+            2720562.91654409,
+            2083784.0371777369,
+            1922161.440467305,
+            356463.43216409016,
+            591322.8408504147
+          ],
+          "5": [
+            8647514.408052748,
+            7987576.104076294,
+            6758900.197885053,
+            4477789.715305418,
+            2737140.665166947,
+            2643265.8058344107,
+            2577363.579632039,
+            1473971.8681727923
+          ]
+        }
+      },
+      "correct_scoring": {
+        "correct": 5,
+        "accuracy": 1.0,
+        "mean_margin": 3.9614,
+        "min_margin": 2.2026,
+        "matrix": {
+          "1": {
+            "1": 4.6866,
+            "2": 0.7698,
+            "3": 0.2542,
+            "4": 0.3078,
+            "5": 0.8441
+          },
+          "2": {
+            "1": 1.8037,
+            "2": 4.6031,
+            "3": 0.6452,
+            "4": 1.437,
+            "5": 2.4005
+          },
+          "3": {
+            "1": -0.0519,
+            "2": 0.5161,
+            "3": 5.4775,
+            "4": 0.4884,
+            "5": 1.41
+          },
+          "4": {
+            "1": 1.4789,
+            "2": 2.5191,
+            "3": 1.3464,
+            "4": 7.1705,
+            "5": 3.6309
+          },
+          "5": {
+            "1": 1.5453,
+            "2": 2.1235,
+            "3": 1.3127,
+            "4": 1.8094,
+            "5": 8.2783
+          }
+        },
+        "details": [
+          {
+            "query": "1",
+            "query_name": "A",
+            "winner": "1",
+            "winner_name": "A",
+            "expected": "1",
+            "correct": true,
+            "margin": 3.8425,
+            "scores": {
+              "1": 4.6866,
+              "2": 0.7698,
+              "3": 0.2542,
+              "4": 0.3078,
+              "5": 0.8441
+            }
+          },
+          {
+            "query": "2",
+            "query_name": "B",
+            "winner": "2",
+            "winner_name": "B",
+            "expected": "2",
+            "correct": true,
+            "margin": 2.2026,
+            "scores": {
+              "1": 1.8037,
+              "2": 4.6031,
+              "3": 0.6452,
+              "4": 1.437,
+              "5": 2.4005
+            }
+          },
+          {
+            "query": "3",
+            "query_name": "C",
+            "winner": "3",
+            "winner_name": "C",
+            "expected": "3",
+            "correct": true,
+            "margin": 4.0675,
+            "scores": {
+              "1": -0.0519,
+              "2": 0.5161,
+              "3": 5.4775,
+              "4": 0.4884,
+              "5": 1.41
+            }
+          },
+          {
+            "query": "4",
+            "query_name": "D",
+            "winner": "4",
+            "winner_name": "D",
+            "expected": "4",
+            "correct": true,
+            "margin": 3.5396,
+            "scores": {
+              "1": 1.4789,
+              "2": 2.5191,
+              "3": 1.3464,
+              "4": 7.1705,
+              "5": 3.6309
+            }
+          },
+          {
+            "query": "5",
+            "query_name": "E",
+            "winner": "5",
+            "winner_name": "E",
+            "expected": "5",
+            "correct": true,
+            "margin": 6.1548,
+            "scores": {
+              "1": 1.5453,
+              "2": 2.1235,
+              "3": 1.3127,
+              "4": 1.8094,
+              "5": 8.2783
+            }
+          }
+        ]
+      },
+      "shuffled_scoring": {
+        "self_correct": 1,
+        "donor_correct": 0,
+        "matrix": {
+          "1": {
+            "1": 4.6866,
+            "2": -0.0157,
+            "3": 0.7543,
+            "4": 0.3078,
+            "5": 1.3437
+          },
+          "2": {
+            "1": 2.3585,
+            "2": 0.0391,
+            "3": 1.1223,
+            "4": 2.1926,
+            "5": 1.7657
+          },
+          "3": {
+            "1": 0.0108,
+            "2": 3.1897,
+            "3": 0.5614,
+            "4": 1.3623,
+            "5": -0.6038
+          },
+          "4": {
+            "1": 1.5493,
+            "2": 1.6706,
+            "3": 4.5403,
+            "4": 4.3096,
+            "5": 2.0514
+          },
+          "5": {
+            "1": 1.6714,
+            "2": 0.5972,
+            "3": 1.5127,
+            "4": 3.9125,
+            "5": 3.1805
+          }
+        },
+        "details": [
+          {
+            "query": "1",
+            "query_name": "A",
+            "winner": "1",
+            "winner_name": "A",
+            "expected": "2",
+            "correct": false,
+            "margin": -4.7023,
+            "scores": {
+              "1": 4.6866,
+              "2": -0.0157,
+              "3": 0.7543,
+              "4": 0.3078,
+              "5": 1.3437
+            }
+          },
+          {
+            "query": "2",
+            "query_name": "B",
+            "winner": "1",
+            "winner_name": "A",
+            "expected": "3",
+            "correct": false,
+            "margin": -1.2362,
+            "scores": {
+              "1": 2.3585,
+              "2": 0.0391,
+              "3": 1.1223,
+              "4": 2.1926,
+              "5": 1.7657
+            }
+          },
+          {
+            "query": "3",
+            "query_name": "C",
+            "winner": "2",
+            "winner_name": "B",
+            "expected": "4",
+            "correct": false,
+            "margin": -1.8274,
+            "scores": {
+              "1": 0.0108,
+              "2": 3.1897,
+              "3": 0.5614,
+              "4": 1.3623,
+              "5": -0.6038
+            }
+          },
+          {
+            "query": "4",
+            "query_name": "D",
+            "winner": "3",
+            "winner_name": "C",
+            "expected": "5",
+            "correct": false,
+            "margin": -2.4889,
+            "scores": {
+              "1": 1.5493,
+              "2": 1.6706,
+              "3": 4.5403,
+              "4": 4.3096,
+              "5": 2.0514
+            }
+          },
+          {
+            "query": "5",
+            "query_name": "E",
+            "winner": "4",
+            "winner_name": "D",
+            "expected": "1",
+            "correct": false,
+            "margin": -2.2411,
+            "scores": {
+              "1": 1.6714,
+              "2": 0.5972,
+              "3": 1.5127,
+              "4": 3.9125,
+              "5": 3.1805
+            }
+          }
+        ]
+      },
+      "reversed_scoring": {
+        "correct": 5,
+        "accuracy": 1.0,
+        "mean_margin": 2.1677,
+        "matrix": {
+          "1": {
+            "1": 1.5622,
+            "2": 0.2566,
+            "3": -0.4807,
+            "4": -0.424,
+            "5": -0.0516
+          },
+          "2": {
+            "1": 0.2314,
+            "2": 1.5344,
+            "3": -1.7238,
+            "4": -0.9875,
+            "5": -0.165
+          },
+          "3": {
+            "1": -1.2153,
+            "2": -1.6104,
+            "3": 1.8258,
+            "4": -2.0178,
+            "5": -1.1423
+          },
+          "4": {
+            "1": -0.2503,
+            "2": -0.5967,
+            "3": -1.6805,
+            "4": 2.3902,
+            "5": 0.2831
+          },
+          "5": {
+            "1": -1.3052,
+            "2": -0.3952,
+            "3": -1.1907,
+            "4": -0.799,
+            "5": 2.7594
+          }
+        },
+        "details": [
+          {
+            "query": "1",
+            "query_name": "A",
+            "winner": "1",
+            "winner_name": "A",
+            "expected": "1",
+            "correct": true,
+            "margin": 1.3056,
+            "scores": {
+              "1": 1.5622,
+              "2": 0.2566,
+              "3": -0.4807,
+              "4": -0.424,
+              "5": -0.0516
+            }
+          },
+          {
+            "query": "2",
+            "query_name": "B",
+            "winner": "2",
+            "winner_name": "B",
+            "expected": "2",
+            "correct": true,
+            "margin": 1.303,
+            "scores": {
+              "1": 0.2314,
+              "2": 1.5344,
+              "3": -1.7238,
+              "4": -0.9875,
+              "5": -0.165
+            }
+          },
+          {
+            "query": "3",
+            "query_name": "C",
+            "winner": "3",
+            "winner_name": "C",
+            "expected": "3",
+            "correct": true,
+            "margin": 2.9681,
+            "scores": {
+              "1": -1.2153,
+              "2": -1.6104,
+              "3": 1.8258,
+              "4": -2.0178,
+              "5": -1.1423
+            }
+          },
+          {
+            "query": "4",
+            "query_name": "D",
+            "winner": "4",
+            "winner_name": "D",
+            "expected": "4",
+            "correct": true,
+            "margin": 2.1071,
+            "scores": {
+              "1": -0.2503,
+              "2": -0.5967,
+              "3": -1.6805,
+              "4": 2.3902,
+              "5": 0.2831
+            }
+          },
+          {
+            "query": "5",
+            "query_name": "E",
+            "winner": "5",
+            "winner_name": "E",
+            "expected": "5",
+            "correct": true,
+            "margin": 3.1546,
+            "scores": {
+              "1": -1.3052,
+              "2": -0.3952,
+              "3": -1.1907,
+              "4": -0.799,
+              "5": 2.7594
+            }
+          }
+        ]
+      },
+      "random_scoring": {
+        "n_trials": 10,
+        "mean_accuracy": 0.24,
+        "expected_chance": 0.2,
+        "results": [
+          {
+            "trial": 0,
+            "correct": 1,
+            "accuracy": 0.2
+          },
+          {
+            "trial": 1,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          {
+            "trial": 2,
+            "correct": 4,
+            "accuracy": 0.8
+          },
+          {
+            "trial": 3,
+            "correct": 1,
+            "accuracy": 0.2
+          },
+          {
+            "trial": 4,
+            "correct": 1,
+            "accuracy": 0.2
+          },
+          {
+            "trial": 5,
+            "correct": 0,
+            "accuracy": 0.0
+          },
+          {
+            "trial": 6,
+            "correct": 1,
+            "accuracy": 0.2
+          },
+          {
+            "trial": 7,
+            "correct": 2,
+            "accuracy": 0.4
+          },
+          {
+            "trial": 8,
+            "correct": 1,
+            "accuracy": 0.2
+          },
+          {
+            "trial": 9,
+            "correct": 1,
+            "accuracy": 0.2
+          }
+        ]
+      },
+      "separation_metric": 6.4606,
+      "separation_strength": "STRONG"
+    }
+  }
+}

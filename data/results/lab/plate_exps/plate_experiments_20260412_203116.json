@@ -1,0 +1,99 @@
+{
+  "timestamp": "2026-04-13T02:00:06.921419+00:00",
+  "dry_run": true,
+  "experiments_run": [
+    1
+  ],
+  "results": [
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "A",
+      "data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 49,
+        "f11_measured": 29700.0,
+        "snr_best_mode": 20.4,
+        "mean_mode_spacing": 1708.3
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "B",
+      "data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 51,
+        "f11_measured": 29200.0,
+        "snr_best_mode": 22.2,
+        "mean_mode_spacing": 1730.0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "C",
+      "data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 51,
+        "f11_measured": 56900.0,
+        "snr_best_mode": 21.6,
+        "mean_mode_spacing": 1688.0
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "D",
+      "data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 52,
+        "f11_measured": 64100.0,
+        "snr_best_mode": 18.4,
+        "mean_mode_spacing": 1543.1
+      }
+    },
+    {
+      "ok": true,
+      "dry": true,
+      "plate": "E",
+      "data": {
+        "plate_material": "Fused quartz",
+        "plate_length": 100,
+        "plate_width": 100,
+        "plate_thickness": 1,
+        "pzt_mounting": "Corner face mount",
+        "pzt_drive_position": 5,
+        "pzt_sense_position": 95,
+        "num_modes_bare": 50,
+        "f11_measured": 64300.0,
+        "snr_best_mode": 22.8,
+        "mean_mode_spacing": 1608.2
+      }
+    }
+  ]
+}

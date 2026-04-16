@@ -1,0 +1,241 @@
+{
+  "timestamp": "2026-04-09T20:03:00.427789+00:00",
+  "experiments_run": [
+    "doublet-capacity",
+    "nullspace-proxy"
+  ],
+  "total_duration_s": 0.0,
+  "results": {
+    "doublet_capacity": {
+      "experiment": "doublet_capacity_gain",
+      "baseline_accuracy": 1.0,
+      "baseline_margin": 5.26,
+      "augmented_accuracy": 1.0,
+      "augmented_margin": 5.56,
+      "delta_margin": 0.3,
+      "n_augmented_doublets": 8,
+      "baseline_matrix": {
+        "1": {
+          "1": 6.87,
+          "2": -0.94,
+          "3": 0.6,
+          "4": 4.16
+        },
+        "2": {
+          "1": 1.38,
+          "2": 7.61,
+          "3": 0.83,
+          "4": 4.11
+        },
+        "3": {
+          "1": -0.79,
+          "2": 0.77,
+          "3": 10.76,
+          "4": 0.09
+        },
+        "4": {
+          "1": 3.58,
+          "2": 0.76,
+          "3": 0.74,
+          "4": 8.43
+        }
+      },
+      "augmented_matrix": {
+        "1": {
+          "1": 7.15,
+          "2": -0.62,
+          "3": 0.6,
+          "4": 4.16
+        },
+        "2": {
+          "1": 1.38,
+          "2": 8.47,
+          "3": 0.83,
+          "4": 5.37
+        },
+        "3": {
+          "1": -0.79,
+          "2": 1.03,
+          "3": 11.02,
+          "4": 0.74
+        },
+        "4": {
+          "1": 3.65,
+          "2": 1.56,
+          "3": 0.74,
+          "4": 9.81
+        }
+      },
+      "paper_claim": "Doublet decomposition adds independent info channels"
+    },
+    "nullspace_proxy": {
+      "experiment": "nullspace_proxy_svd",
+      "matrix_shape": [
+        16,
+        10
+      ],
+      "singular_values": [
+        2.2859,
+        1.4444,
+        1.0638,
+        0.7943,
+        0.6215,
+        0.4866,
+        0.373,
+        0.3008,
+        0.246,
+        0.1124
+      ],
+      "effective_rank": 10,
+      "cumulative_energy_pct": [
+        52.3,
+        73.1,
+        84.4,
+        90.7,
+        94.6,
+        97.0,
+        98.4,
+        99.3,
+        99.9,
+        100.0
+      ],
+      "subspace_results": [
+        {
+          "n_components": 1,
+          "energy_pct": 52.3,
+          "accuracy": 1.0,
+          "margin": 5.57
+        },
+        {
+          "n_components": 2,
+          "energy_pct": 73.1,
+          "accuracy": 1.0,
+          "margin": 4.79
+        },
+        {
+          "n_components": 3,
+          "energy_pct": 84.4,
+          "accuracy": 1.0,
+          "margin": 5.23
+        },
+        {
+          "n_components": 4,
+          "energy_pct": 90.7,
+          "accuracy": 1.0,
+          "margin": 5.38
+        },
+        {
+          "n_components": 5,
+          "energy_pct": 94.6,
+          "accuracy": 1.0,
+          "margin": 5.34
+        },
+        {
+          "n_components": 6,
+          "energy_pct": 97.0,
+          "accuracy": 1.0,
+          "margin": 4.45
+        },
+        {
+          "n_components": 7,
+          "energy_pct": 98.4,
+          "accuracy": 1.0,
+          "margin": 4.16
+        },
+        {
+          "n_components": 8,
+          "energy_pct": 99.3,
+          "accuracy": 1.0,
+          "margin": 4.03
+        },
+        {
+          "n_components": 9,
+          "energy_pct": 99.9,
+          "accuracy": 1.0,
+          "margin": 5.34
+        },
+        {
+          "n_components": 10,
+          "energy_pct": 100.0,
+          "accuracy": 1.0,
+          "margin": 5.26
+        }
+      ],
+      "nullspace_results": [
+        {
+          "components_removed": 0,
+          "components_kept": 10,
+          "energy_pct": 100,
+          "accuracy": 1.0,
+          "margin": 5.26
+        },
+        {
+          "components_removed": 1,
+          "components_kept": 9,
+          "energy_pct": 47.7,
+          "accuracy": 1.0,
+          "margin": 2.01
+        },
+        {
+          "components_removed": 2,
+          "components_kept": 8,
+          "energy_pct": 26.9,
+          "accuracy": 1.0,
+          "margin": 4.82
+        },
+        {
+          "components_removed": 3,
+          "components_kept": 7,
+          "energy_pct": 15.6,
+          "accuracy": 1.0,
+          "margin": 6.15
+        },
+        {
+          "components_removed": 4,
+          "components_kept": 6,
+          "energy_pct": 9.3,
+          "accuracy": 1.0,
+          "margin": 4.81
+        },
+        {
+          "components_removed": 5,
+          "components_kept": 5,
+          "energy_pct": 5.4,
+          "accuracy": 1.0,
+          "margin": 5.83
+        },
+        {
+          "components_removed": 6,
+          "components_kept": 4,
+          "energy_pct": 3.0,
+          "accuracy": 1.0,
+          "margin": 6.25
+        },
+        {
+          "components_removed": 7,
+          "components_kept": 3,
+          "energy_pct": 1.6,
+          "accuracy": 1.0,
+          "margin": 4.79
+        },
+        {
+          "components_removed": 8,
+          "components_kept": 2,
+          "energy_pct": 0.7,
+          "accuracy": 0.75,
+          "margin": 4.24
+        },
+        {
+          "components_removed": 9,
+          "components_kept": 1,
+          "energy_pct": 0.1,
+          "accuracy": 0.5,
+          "margin": 3.96
+        }
+      ],
+      "min_components_for_100pct": 1,
+      "max_removable_for_100pct": 7,
+      "paper_claim": "+60% capacity from null-space multiplexing (10\u00d716 sim)"
+    }
+  }
+}
