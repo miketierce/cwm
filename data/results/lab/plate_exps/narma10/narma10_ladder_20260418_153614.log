@@ -1,0 +1,79 @@
+[15:36:14.351] ══════════════════════════════════════════════════════════════
+[15:36:14.351]   NARMA-10 HARMONIC LADDER — Spatial Encoding of Temporal Memory
+[15:36:14.351] ══════════════════════════════════════════════════════════════
+[15:36:14.351] 
+[15:36:14.351]   Census modes: 61
+[15:36:14.351]   Carriers: [19.0, 23.9, 29.2, 29.9, 34.55, 37.0, 45.0, 49.6, 56.2, 58.5]k
+[15:36:14.352]   Readout frequencies: 117
+[15:36:14.352]     Carriers: 10, Ambient modes: 23, IM2: 44, IM3: 40
+[15:36:14.352]   Step pairs with IM coverage: 43/45
+[15:36:14.352]   Critical u(t-9)×u(t) pair: ✓ COVERED
+[15:36:14.352] 
+[15:36:14.352]   Generating NARMA-10 time series...
+[15:36:14.354]   Steps: 360 total, 300 usable (201 train / 99 test)
+[15:36:14.354] 
+[15:36:14.354] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:36:14.354]   SIMULATION MODE
+[15:36:14.354] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:36:36.082]     50/300 steps (21.7s)
+[15:36:57.059]     100/300 steps (42.7s)
+[15:37:18.049]     150/300 steps (63.7s)
+[15:37:38.991]     200/300 steps (84.6s)
+[15:37:59.872]     250/300 steps (105.5s)
+[15:38:21.125]     300/300 steps (126.7s)
+[15:38:21.126] 
+  Feature matrix: (300, 127)
+[15:38:21.126] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:38:21.126]   RESULTS
+[15:38:21.126] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:38:21.128] 
+  Approach                                 Train       Test  Feats
+[15:38:21.128]   ─────────────────────────────────── ────────── ────────── ──────
+[15:38:21.128]   mean_baseline                            1.000     1.0054      0
+[15:38:21.163]   ladder_full                             0.4787     0.9149    127
+[15:38:21.181]   ladder_spectrum_only                    0.4805     0.9158    117
+[15:38:21.193]   input_window_only                       0.6489     0.7872     10
+[15:38:21.206]   input_poly2                             0.6054     0.8333     65
+[15:38:21.236]   ladder_top20_poly_interact              0.5241     0.9257    465
+[15:38:21.236] 
+  Running software ESN baseline...
+[15:38:21.255]   software_esn                            0.2974     0.3338     64
+[15:38:21.272]   ladder_esn                              0.5815     0.8561     64
+[15:38:21.293]   ladder_plus_esn_concat                  0.2692     0.6973    191
+[15:38:21.293] 
+  Running enrollment-based denoising approaches...
+[15:38:21.313]   ladder_census_norm                      0.4787     0.9149    127
+[15:38:21.329]   ladder_im_only                          0.4917     0.9121    104
+[15:38:21.346]   ladder_log_census                       0.4785     0.9136    127
+[15:38:21.360]   ladder_pair_agg                         0.5915     0.8491     64
+[15:38:21.376]   ladder_denoised                         0.5903     0.8448     63
+[15:38:21.377]   Computing template residuals from enrollment...
+[15:38:21.397]   ladder_template_resid                   0.4821     0.9119    127
+[15:38:21.411]   ladder_resid_agg                        0.5878     0.8781     63
+[15:38:21.426]   ladder_resid_esn                        0.2972     0.3335     64
+[15:38:21.426] 
+  Running closed-loop (output feedback on 11th carrier)...
+[15:38:21.427]   Closed-loop: 136 readout freqs (was 117 without feedback carrier)
+[15:38:21.427]   Pass 1: Open-loop capture (teacher forcing)...
+[15:38:51.267]     50/300 (29.8s)
+[15:39:21.815]     100/300 (60.4s)
+[15:39:51.683]     150/300 (90.3s)
+[15:40:21.382]     200/300 (120.0s)
+[15:40:51.224]     250/300 (149.8s)
+[15:41:20.650]     300/300 (179.2s)
+[15:41:20.657]   Pass 1 ridge α=0.001
+[15:41:20.657]   Pass 2: Closed-loop capture (predicted feedback)...
+[15:41:31.827]     220/300 (11.2s)
+[15:41:43.636]     240/300 (23.0s)
+[15:41:55.373]     260/300 (34.7s)
+[15:42:07.119]     280/300 (46.5s)
+[15:42:18.978]     300/300 (58.3s)
+[15:42:18.979]   ladder_feedback_openloop                0.0000     0.0000    147
+[15:42:18.979]   ladder_feedback_closedloop              0.0000     1.0592    147
+[15:42:18.979] 
+  ★ BEST: ladder_feedback_openloop — NMSE 0.0000
+[15:42:18.979]   Quality: EXCELLENT
+[15:42:18.979]   ▲ BEATS previous best (0.666) by 100.0%
+[15:42:18.981] 
+  Saved: narma10_ladder_20260418_153614.json

@@ -1,0 +1,126 @@
+{
+  "timestamp": "2026-04-16T21:51:24.850858+00:00",
+  "plate_name": "D",
+  "plate_id": "4",
+  "n_modes": 57,
+  "n_carrier_bits": 7,
+  "mode": "hardware",
+  "benchmarks": [
+    {
+      "benchmark": "parity",
+      "feature_mode": "poly",
+      "n_bits": 3,
+      "n_patterns": 8,
+      "n_readout_dims": 61,
+      "plate_parity_raw_test": 37.5,
+      "plate_majority_raw_test": 50.0,
+      "sw_logistic_parity_test": 50.0,
+      "sw_mlp_parity_test": 75.0,
+      "latency_ms": 3609.5,
+      "energy_per_query_mJ": 28045.83,
+      "capture_time_s": 115.5
+    },
+    {
+      "benchmark": "parity",
+      "feature_mode": "poly",
+      "n_bits": 4,
+      "n_patterns": 16,
+      "n_readout_dims": 68,
+      "plate_parity_raw_test": 31.2,
+      "plate_majority_raw_test": 37.5,
+      "sw_logistic_parity_test": 50.0,
+      "sw_mlp_parity_test": 68.8,
+      "latency_ms": 3605.31,
+      "energy_per_query_mJ": 28013.29,
+      "capture_time_s": 230.7
+    },
+    {
+      "benchmark": "parity",
+      "feature_mode": "poly",
+      "n_bits": 5,
+      "n_patterns": 32,
+      "n_readout_dims": 83,
+      "plate_parity_raw_test": 53.1,
+      "plate_majority_raw_test": 59.4,
+      "sw_logistic_parity_test": 50.0,
+      "sw_mlp_parity_test": 53.1,
+      "latency_ms": 3605.19,
+      "energy_per_query_mJ": 28012.32,
+      "capture_time_s": 461.5
+    },
+    {
+      "benchmark": "parity",
+      "feature_mode": "poly",
+      "n_bits": 6,
+      "n_patterns": 64,
+      "n_readout_dims": 114,
+      "plate_parity_raw_test": 57.8,
+      "plate_majority_raw_test": 57.8,
+      "sw_logistic_parity_test": 50.0,
+      "sw_mlp_parity_test": 57.8,
+      "latency_ms": 3613.57,
+      "energy_per_query_mJ": 28077.47,
+      "capture_time_s": 925.1
+    },
+    {
+      "benchmark": "parity",
+      "feature_mode": "poly",
+      "n_bits": 7,
+      "n_patterns": 128,
+      "n_readout_dims": 177,
+      "plate_parity_raw_test": 42.2,
+      "plate_majority_raw_test": 53.9,
+      "sw_logistic_parity_test": 50.0,
+      "sw_mlp_parity_test": 56.2,
+      "latency_ms": 3637.54,
+      "energy_per_query_mJ": 28263.7,
+      "capture_time_s": 1862.4
+    }
+  ],
+  "viability": {
+    "power_watts": 7.77,
+    "power_kwh_per_day": 0.19,
+    "gpu_comparison_kwh_per_day": 3.6,
+    "power_ratio_vs_gpu": 19.3,
+    "queries_per_second": 0.28,
+    "queries_per_day": 23905,
+    "avg_latency_ms": 3614.2,
+    "best_accuracy_pct": 75.0,
+    "n_readout_dims": 57,
+    "hardware_cost_usd": 265,
+    "scenarios": {
+      "optimistic": {
+        "daily_tao": 15.3191,
+        "daily_usd": 5361.7,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 5360.95,
+        "annual_profit": 1956748.0,
+        "profitable": true
+      },
+      "realistic": {
+        "daily_tao": 3.0638,
+        "daily_usd": 1072.34,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 1071.59,
+        "annual_profit": 391131.0,
+        "profitable": true
+      },
+      "pessimistic": {
+        "daily_tao": 0.766,
+        "daily_usd": 268.09,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 267.34,
+        "annual_profit": 97578.0,
+        "profitable": true
+      }
+    },
+    "tao_price_usd": 350.0,
+    "breakeven_note": "At 7.77W vs GPU 150.0W, plate uses 19\u00d7 less power. Viable if inference quality scores competitively."
+  }
+}

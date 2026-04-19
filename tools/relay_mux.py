@@ -221,6 +221,28 @@ class RelayMux:
             self._active = int(resp.split(":")[1])
         return self._active
 
+    def all_ne(self) -> int:
+        """Close all 5 NE relays simultaneously (relays 1,2,3,5,7).
+
+        Returns the superposition of all NE plates on Ch A.
+        Reported as relay 9 (special code for all-NE).
+        """
+        resp = self._send_cmd("A")
+        if resp.startswith("OK:"):
+            self._active = int(resp.split(":")[1])
+        return self._active
+
+    def all_open(self) -> int:
+        """Close all 8 relays simultaneously (all NE + NW).
+
+        Returns the superposition of all plates/paths on Ch A.
+        Reported as relay 10 (special code for all).
+        """
+        resp = self._send_cmd("B")
+        if resp.startswith("OK:"):
+            self._active = int(resp.split(":")[1])
+        return self._active
+
     def query(self) -> int:
         """Query current relay state without changing it."""
         resp = self._send_cmd("?")

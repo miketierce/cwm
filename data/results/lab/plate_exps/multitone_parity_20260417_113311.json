@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-04-17T16:33:11.630666+00:00",
+  "experiment": "multitone_parity",
+  "mode": "simulation",
+  "n_samples": 500,
+  "n_carriers": 7,
+  "n_modes": 8,
+  "tasks": {
+    "parity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 0.43,
+        "mean_position": 0.43000000000000005,
+        "per_position": [
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.45,
+        "mean_position": 0.45000000000000007,
+        "per_position": [
+          0.45,
+          0.45,
+          0.45,
+          0.45,
+          0.45,
+          0.45,
+          0.45
+        ],
+        "best_alpha": 0.01
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 0.46,
+        "mean_position": 0.46,
+        "per_position": [
+          0.46,
+          0.46,
+          0.46,
+          0.46,
+          0.46,
+          0.46,
+          0.46
+        ],
+        "best_alpha": 0.1
+      }
+    },
+    "reverse": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    }
+  }
+}

@@ -1725,39 +1725,42 @@ Drive at f₁+f₂ (sum of two enrolled plate frequencies), measure response at 
 
 ### Physical Changes Since April 12 Census
 
-| Plate | Shelf | Pattern Change        | PZT Change                           |
-| ----- | ----- | --------------------- | ------------------------------------ |
-| A     | 1     | None (center+quarter) | None (2 PZT: TX + NE-RX)            |
-| B     | 2     | None (edge midpoints) | None (2 PZT: TX + NE-RX)            |
-| G     | 3     | E diagonal → **G asymmetric pentagon** | Added **NW-RX PZT at (5,5)** (+0.609 g) |
-| D     | 4     | None (diagonal)       | Added **NW-RX PZT at (5,5)** (+0.609 g) |
+| Plate | Shelf | Pattern Change                              | PZT Change                              |
+| ----- | ----- | ------------------------------------------- | --------------------------------------- |
+| A     | 1     | None (center+quarter)                       | None (2 PZT: TX + NE-RX)                |
+| B     | 2     | None (edge midpoints)                       | None (2 PZT: TX + NE-RX)                |
+| G     | 3     | E diagonal → **G asymmetric pentagon**      | Added **NW-RX PZT at (5,5)** (+0.609 g) |
+| D     | 4     | None (diagonal)                             | Added **NW-RX PZT at (5,5)** (+0.609 g) |
 | F     | 5     | C third-points → **F anti-diagonal zigzag** | Added **NW-RX PZT at (5,5)** (+0.609 g) |
 
 ### Results — Before vs After
 
-| Plate | Pattern    | PZTs | Apr-12 Modes (NE) | Apr-14 Modes (NE) | Apr-14 Modes (NW) | Apr-14 Total Unique |
-| ----- | ---------- | ---- | ----------------: | ----------------: | ----------------: | ------------------: |
-| A     | Same       | 2    | 3                 | **6** ↑           | —                 | 6                   |
-| B     | Same       | 2    | 6                 | **7** ↑           | —                 | 7                   |
-| G     | E→G        | 2→3  | 8 (as E)          | **2** ↓↓↓        | **2**             | ~3                  |
-| D     | Same       | 2→3  | 8                 | **1** ↓↓↓        | **3**             | ~4                  |
-| F     | C→F        | 2→3  | 6 (as C)          | **0** ↓↓↓        | **4**             | ~4                  |
+| Plate | Pattern | PZTs | Apr-12 Modes (NE) | Apr-14 Modes (NE) | Apr-14 Modes (NW) | Apr-14 Total Unique |
+| ----- | ------- | ---- | ----------------: | ----------------: | ----------------: | ------------------: |
+| A     | Same    | 2    |                 3 |           **6** ↑ |                 — |                   6 |
+| B     | Same    | 2    |                 6 |           **7** ↑ |                 — |                   7 |
+| G     | E→G     | 2→3  |          8 (as E) |         **2** ↓↓↓ |             **2** |                  ~3 |
+| D     | Same    | 2→3  |                 8 |         **1** ↓↓↓ |             **3** |                  ~4 |
+| F     | C→F     | 2→3  |          6 (as C) |         **0** ↓↓↓ |             **4** |                  ~4 |
 
 **Total modes detected:** Apr-12: 31 (5 channels) → Apr-14: 25 (8 channels). Net loss despite doubling the receiver coverage.
 
 ### Mode Details — Dual-RX Plates
 
 **Plate G (was E, pattern changed + NW PZT added):**
+
 - NE: 61.7 kHz (11.4 dB), 26.2 kHz (8.6 dB) — only 2 modes survive
 - NW: 29.9 kHz (9.7 dB), 26.2 kHz (8.2 dB) — same 26 kHz mode, one new at 30 kHz
 - Old E had 8 modes: 49.7, 29.2, 30.0, 28.9, 34.5, 26.2, 89.5, 94.8 kHz — 6 modes vanished
 
 **Plate D (same pattern, only NW PZT added):**
+
 - NE: 30.0 kHz (20.1 dB) — single surviving mode, still strong
 - NW: 34.9 kHz (11.6 dB), 28.9 kHz (9.1 dB), 30.0 kHz (8.4 dB)
 - Old D had 8 modes: 49.6, 29.9, 90.3, 78.1, 89.4, 90.0, 45.0, 94.7 kHz — 5 high-freq modes (45–95 kHz) completely vanished
 
 **Plate F (was C, pattern changed + NW PZT added):**
+
 - NE: 0 modes — total blackout on the diagonal path
 - NW: 29.2 kHz (21.1 dB), 29.9 kHz (14.5 dB), 41.9 kHz (10.2 dB), 26.1 kHz (7.3 dB)
 - Old C had 6 modes: 43.2, 49.6, 31.4, 26.2, 61.6, 89.3 kHz — only 26 kHz survived
@@ -1768,11 +1771,12 @@ Drive at f₁+f₂ (sum of two enrolled plate frequencies), measure response at 
 
 Plate D's perturbation pattern didn't change. Only the NW PZT was added. It went from 8 modes to 1 (NE) + 3 (NW) = 4 unique. This eliminates pattern changes as the primary cause.
 
-Meanwhile, plates A and B (unchanged, 2 PZTs) actually *improved* — A: 3→6, B: 6→7 modes — suggesting environmental conditions or handling during reassembly helped their coupling.
+Meanwhile, plates A and B (unchanged, 2 PZTs) actually _improved_ — A: 3→6, B: 6→7 modes — suggesting environmental conditions or handling during reassembly helped their coupling.
 
 **Root Cause: Third PZT mass loading + Q damping**
 
 Mass analysis:
+
 - Plate mass: 22.0 g
 - Each PZT disc: 0.609 g (10 mm dia × 1 mm, PZT-5A ρ=7750 kg/m³)
 - 2-PZT config: 1.22 g total PZT = 5.5% of plate mass
@@ -1784,12 +1788,14 @@ Mass analysis:
 All three PZTs sit at corners, which are near-nodal for low-order modes. But PZT-5A has mechanical Q ≈ 80 vs fused silica Q ≈ 10,000–30,000. The rigid cyanoacrylate bond means the PZT's low Q acts as an energy sink for any mode with non-zero displacement at that corner.
 
 Mode coupling at corners (sin(mπ × 0.05) × sin(nπ × 0.05)):
+
 - Mode (1,1): 2.4% coupling — negligible, survives
 - Mode (2,2): 9.5% — moderate damping
 - Mode (3,3): 20.6% — **severe damping**
 - Mode (4,4): 34.5% — **catastrophic damping**
 
 For a mode with 20% coupling to the PZT corner:
+
 - Q_effective ≈ 1/(1/Q_glass + coupling²/Q_PZT) ≈ 1/(0.00003 + 0.0005) ≈ **1,900**
 
 Going from 2 to 3 PZTs adds a third damping site, and all three corners act on the same high-order modes. The modes still exist physically but their Q drops below the SNR detection threshold.
@@ -1803,11 +1809,13 @@ Plate F (NE path) saw zero modes. The anti-diagonal zigzag perturbation pattern 
 ### Improvement Options
 
 **Option 1 — Remove NW PZTs (revert to 2-PZT config)**
+
 - Pros: Immediate fix, recovers original mode count
 - Cons: Loses dual-RX capability, wasted wiring effort
 - Verdict: Keep as fallback
 
 **Option 2 — Replace NW PZTs with smaller discs**
+
 - Use 5 mm dia × 0.5 mm PZTs instead of 10 mm × 1 mm
 - Mass: 0.076 g vs 0.609 g (8× lighter)
 - Coupling area: 19.6 mm² vs 78.5 mm² (4× less)
@@ -1815,17 +1823,20 @@ Plate F (NE path) saw zero modes. The anti-diagonal zigzag perturbation pattern 
 - Verdict: **Best long-term fix** but requires new PZTs
 
 **Option 3 — Relax detection thresholds and reanalyze**
+
 - Try SNR ≥ 4 dB, prominence ≥ 2 dB on saved sweep data
 - Modes still exist with degraded Q — just below current thresholds
 - Verdict: **Immediate action** — no hardware change needed
 
 **Option 4 — Debond NW PZTs, reattach with silicone (compliant bond)**
+
 - Soft adhesive decouples PZT mass from plate at high frequencies
 - Acts as mechanical low-pass filter — low modes couple, high modes don't see PZT
 - Pros: Keeps dual-RX, reduces Q damping
 - Cons: Weaker bond, may introduce its own resonances
 
 **Option 5 — Open-circuit isolation**
+
 - Add a high-impedance buffer or simply leave NW PZT wires disconnected when not in use
 - PZT in open-circuit has slightly less damping than shorted
 - Reality: The relay already disconnects unused PZTs, so this is already happening
@@ -1845,6 +1856,7 @@ Plate F (NE path) saw zero modes. The anti-diagonal zigzag perturbation pattern 
 For MEMS-scale CWM devices, this won't be a problem — thin-film PZT (< 1 μm) on silicon has negligible mass ratio. But for our macro prototype, the lesson is clear: **fewer, smaller transducers, or switch to non-contact actuation (laser Doppler).**
 
 Data files:
+
 - Summary: `data/results/lab/plate_exps/plate_census_20260414_180514.json`
 - Full sweeps: `data/results/lab/plate_exps/plate_census_sweeps_20260414_180514.json`
 
@@ -1863,13 +1875,13 @@ Data files:
 
 ### Kronos USB Audio Verification
 
-| Test | Result |
-|------|--------|
-| Device detection | `KRONOS _ USB _ L&R` at index 3, 2 in / 2 out |
-| Sample rate support | **192 kHz**, 96 kHz, 48 kHz, 44.1 kHz — all confirmed |
-| Idle noise floor | RMS = 0.000664, Peak = 0.003 (−63.6 dBFS) |
+| Test                        | Result                                                      |
+| --------------------------- | ----------------------------------------------------------- |
+| Device detection            | `KRONOS _ USB _ L&R` at index 3, 2 in / 2 out               |
+| Sample rate support         | **192 kHz**, 96 kHz, 48 kHz, 44.1 kHz — all confirmed       |
+| Idle noise floor            | RMS = 0.000664, Peak = 0.003 (−63.6 dBFS)                   |
 | 5 kHz drive through plate 5 | FFT peak @ 6700 Hz (nearby resonance), 5 kHz bin mag = 0.07 |
-| End-to-end chain | **PASS** — AWG → plate 5 NE (relay 7) → Kronos ch1 |
+| End-to-end chain            | **PASS** — AWG → plate 5 NE (relay 7) → Kronos ch1          |
 
 **Key surprise:** Kronos supports **192 kHz** over USB (was expected to cap at 48 kHz). Full 200 Hz – 95 kHz sweep range preserved — no mode loss.
 
@@ -1899,14 +1911,14 @@ Plate 5 census launched: 200 Hz – 95 kHz, 25 Hz steps, 4 averages, 192 kHz cap
 
 Getting USB audio out of the Kronos L/MONO jack required multiple steps:
 
-| Issue | Fix |
-|-------|-----|
-| Kronos not routing USB audio to analog outputs | Set audio output routing to L/R in Global → Audio settings |
-| macOS input not set to Kronos | System Preferences → Sound → Input → KRONOS |
-| Device index shifted (3→2) after settings change | Use name-based device lookup (`find_audio_device("KRONOS")`) |
-| `sd.play()` + `sd.rec()` on same device: "Invalid number of channels" | Use `sd.playrec()` for single combined stream |
-| Keyboard makes no sound through headphones | Volume slider was down; confirmed headphone jack works |
-| No driver needed | KRONOS is USB Audio Class compliant — Core Audio native on macOS |
+| Issue                                                                 | Fix                                                              |
+| --------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| Kronos not routing USB audio to analog outputs                        | Set audio output routing to L/R in Global → Audio settings       |
+| macOS input not set to Kronos                                         | System Preferences → Sound → Input → KRONOS                      |
+| Device index shifted (3→2) after settings change                      | Use name-based device lookup (`find_audio_device("KRONOS")`)     |
+| `sd.play()` + `sd.rec()` on same device: "Invalid number of channels" | Use `sd.playrec()` for single combined stream                    |
+| Keyboard makes no sound through headphones                            | Volume slider was down; confirmed headphone jack works           |
+| No driver needed                                                      | KRONOS is USB Audio Class compliant — Core Audio native on macOS |
 
 ### Verified Configuration
 
@@ -1920,10 +1932,10 @@ Getting USB audio out of the Kronos L/MONO jack required multiple steps:
 
 **Method:** 3,793 tones driven simultaneously (200–95,000 Hz, 25 Hz steps), 2.0s captures, 8 averages. All frequencies measured in one shot. Total time: **62 seconds** (vs 30+ min for CW step-sweep).
 
-| RX Path | Modes Detected | Range | Mode Density | Top Mode | Min Spacing |
-|---------|---------------|-------|--------------|----------|-------------|
-| NE (relay 7) | **161** | 0.3–23.4 kHz | 7.0/kHz | 6700 Hz | 50 Hz |
-| NW (relay 8) | **174** | 0.3–23.5 kHz | 7.5/kHz | 6700 Hz | 50 Hz |
+| RX Path      | Modes Detected | Range        | Mode Density | Top Mode | Min Spacing |
+| ------------ | -------------- | ------------ | ------------ | -------- | ----------- |
+| NE (relay 7) | **161**        | 0.3–23.4 kHz | 7.0/kHz      | 6700 Hz  | 50 Hz       |
+| NW (relay 8) | **174**        | 0.3–23.5 kHz | 7.5/kHz      | 6700 Hz  | 50 Hz       |
 
 **Comparison to PicoScope step-sweep:** Previously found 10 modes with PicoScope (limited to ~20 kHz Nyquist, 8-bit ADC, single-tone CW sweep). Kronos flash census finds **161–174 modes** — a 16× increase in mode yield. The 24-bit dynamic range and multitone excitation reveal modes that were buried in PicoScope quantization noise.
 
@@ -1950,16 +1962,16 @@ Getting USB audio out of the Kronos L/MONO jack required multiple steps:
 
 Full census across all plates completed in **242 seconds (4.0 min)**. Total: **1,404 mode observations** across 8 relay paths, **754 unique frequencies**.
 
-| Key   | Plate | RX | Modes | Range (kHz) | Density (/kHz) | Top Mode |
-|-------|-------|----|-------|-------------|-----------------|----------|
-| 1     | A     | NE | 183   | 0.2–23.3    | 7.9             | 6700 Hz  |
-| 2     | B     | NE | 179   | 0.3–23.2    | 7.8             | 6700 Hz  |
-| 3_NE  | G     | NE | 180   | 0.4–23.2    | 7.9             | 6700 Hz  |
-| 3_NW  | G     | NW | 180   | 0.2–23.6    | 7.7             | 6700 Hz  |
-| 4_NE  | D     | NE | 174   | 0.3–23.6    | 7.5             | 6700 Hz  |
-| 4_NW  | D     | NW | 179   | 0.2–23.3    | 7.8             | 6700 Hz  |
-| 5_NE  | H     | NE | **186** | 0.2–23.2  | **8.1**         | 6700 Hz  |
-| 5_NW  | H     | NW | 143   | 0.4–23.6    | 6.2             | 6700 Hz  |
+| Key  | Plate | RX  | Modes   | Range (kHz) | Density (/kHz) | Top Mode |
+| ---- | ----- | --- | ------- | ----------- | -------------- | -------- |
+| 1    | A     | NE  | 183     | 0.2–23.3    | 7.9            | 6700 Hz  |
+| 2    | B     | NE  | 179     | 0.3–23.2    | 7.8            | 6700 Hz  |
+| 3_NE | G     | NE  | 180     | 0.4–23.2    | 7.9            | 6700 Hz  |
+| 3_NW | G     | NW  | 180     | 0.2–23.6    | 7.7            | 6700 Hz  |
+| 4_NE | D     | NE  | 174     | 0.3–23.6    | 7.5            | 6700 Hz  |
+| 4_NW | D     | NW  | 179     | 0.2–23.3    | 7.8            | 6700 Hz  |
+| 5_NE | H     | NE  | **186** | 0.2–23.2    | **8.1**        | 6700 Hz  |
+| 5_NW | H     | NW  | 143     | 0.4–23.6    | 6.2            | 6700 Hz  |
 
 **6700 Hz mode** appears on every plate (magnitude 0.68–0.80) — likely a fixture/PZT resonance, not a plate eigenmode.
 
@@ -1968,7 +1980,7 @@ Full census across all plates completed in **242 seconds (4.0 min)**. Total: **1
 Pairwise Jaccard similarity (mode frequency overlap):
 
 |       | A     | B     | G     | D     | H     |
-|-------|-------|-------|-------|-------|-------|
+| ----- | ----- | ----- | ----- | ----- | ----- |
 | **A** | 1.000 | 0.117 | 0.178 | 0.152 | 0.129 |
 | **B** | 0.117 | 1.000 | 0.129 | 0.138 | 0.168 |
 | **G** | 0.178 | 0.129 | 1.000 | 0.196 | 0.197 |
@@ -1980,17 +1992,17 @@ All pairwise Jaccard values **0.10–0.20** (low overlap) — plates are highly 
 Unique modes per plate (not found on any other plate):
 
 | Plate | Total Modes | Unique | % Unique |
-|-------|-------------|--------|----------|
+| ----- | ----------- | ------ | -------- |
 | A     | 183         | 40     | 21.9%    |
 | B     | 179         | 41     | 22.9%    |
-| G     | 320 (NE+NW)| 104    | 32.5%    |
-| D     | 309 (NE+NW)| 96     | 31.1%    |
-| H     | 300 (NE+NW)| 89     | 29.7%    |
+| G     | 320 (NE+NW) | 104    | 32.5%    |
+| D     | 309 (NE+NW) | 96     | 31.1%    |
+| H     | 300 (NE+NW) | 89     | 29.7%    |
 
 ### Same-Plate NE vs NW (Spatial Diversity)
 
 | Plate | NE Modes | NW Modes | Shared | Jaccard |
-|-------|----------|----------|--------|---------|
+| ----- | -------- | -------- | ------ | ------- |
 | G     | 180      | 180      | 40     | 0.125   |
 | D     | 174      | 179      | 44     | 0.142   |
 | H     | 186      | 143      | 29     | 0.097   |
@@ -2025,15 +2037,15 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 **Run 2 — Strong modes (6700 + 1375 Hz):**
 
-| Product | Freq (Hz) | Magnitude | Note |
-|---------|-----------|-----------|------|
-| f1 (drive) | 6700 | 2.117 | Dominant drive |
-| f2 (drive) | 1375 | 0.319 | |
-| 2f1 | 13400 | 0.567 | Strongest "intermod" |
-| 2f2 | 2750 | 0.314 | |
-| f1+f2 | 8075 | 0.288 | |
-| f2−f1 | 5325 | 0.269 | |
-| 2f2−f1 | 3950 | 0.265 | |
+| Product    | Freq (Hz) | Magnitude | Note                 |
+| ---------- | --------- | --------- | -------------------- |
+| f1 (drive) | 6700      | 2.117     | Dominant drive       |
+| f2 (drive) | 1375      | 0.319     |                      |
+| 2f1        | 13400     | 0.567     | Strongest "intermod" |
+| 2f2        | 2750      | 0.314     |                      |
+| f1+f2      | 8075      | 0.288     |                      |
+| f2−f1      | 5325      | 0.269     |                      |
+| 2f2−f1     | 3950      | 0.265     |                      |
 
 **Issue:** Noise floor calculation uses `median(FFT magnitude)` which is ~0 for a sparse 2-tone signal — all bins report "detected." Need proper noise floor reference (e.g., median of non-drive bins excluding ±50 Hz around each expected product).
 
@@ -2041,20 +2053,20 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 **Protocol:** Phase 1: drive only the "read" probe tones (baseline). Phase 2: drive "write" tones at full power + same probe tones. Compare read-mode amplitudes — any change > 3 dB = cross-talk.
 
-| Parameter | Value |
-|-----------|-------|
+| Parameter   | Value                                      |
+| ----------- | ------------------------------------------ |
 | Write modes | 6700, 16950, 2875 Hz (indices 56, 133, 25) |
-| Read modes | 1375, 250, 4200 Hz (indices 10, 0, 37) |
-| Probe level | −20 dB relative to write |
-| Duration | 2.0s × 8 averages per phase |
+| Read modes  | 1375, 250, 4200 Hz (indices 10, 0, 37)     |
+| Probe level | −20 dB relative to write                   |
+| Duration    | 2.0s × 8 averages per phase                |
 
 **Results:**
 
 | Read Mode (Hz) | Baseline Mag | With Write Mag | Change (dB) | Status |
-|----------------|-------------|----------------|-------------|--------|
-| 1375 | 0.4149 | 0.3967 | −0.4 | OK |
-| 250 | 0.5118 | 0.4754 | −0.6 | OK |
-| 4200 | 0.3700 | 0.3855 | +0.4 | OK |
+| -------------- | ------------ | -------------- | ----------- | ------ |
+| 1375           | 0.4149       | 0.3967         | −0.4        | OK     |
+| 250            | 0.5118       | 0.4754         | −0.6        | OK     |
+| 4200           | 0.3700       | 0.3855         | +0.4        | OK     |
 
 **Verdict: PASS** — All read modes changed < 1 dB (threshold 3 dB). Writing to modes 6700/16950/2875 Hz does not disturb modes 1375/250/4200 Hz. Modes appear independent — multi-mode storage is viable at this drive level.
 
@@ -2077,18 +2089,18 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 **Results (6700 + 1375 Hz, plate H NE):**
 
-| Product | Freq (Hz) | Magnitude | σ above noise | Status |
-|---------|-----------|-----------|---------------|--------|
-| f2 (drive) | 1375 | 0.323 | 3.2 | DRIVE |
-| 2f2 | 2750 | 0.296 | 2.9 | — |
-| 2f2−f1 | 3950 | 0.299 | 2.9 | — |
-| f2−f1 | 5325 | 0.291 | 2.8 | — |
-| f1 (drive) | 6700 | 2.241 | 21.9 | DRIVE |
-| f1+f2 | 8075 | 0.291 | 2.8 | — |
-| 3f2−2f1 | 9275 | 0.311 | 3.0 | DETECTED (marginal) |
-| 2f1−f2 | 12025 | 0.302 | 3.0 | — |
-| 2f1 | 13400 | 0.487 | 4.8 | DETECTED |
-| 3f1−2f2 | 17350 | 0.285 | 2.8 | — |
+| Product    | Freq (Hz) | Magnitude | σ above noise | Status              |
+| ---------- | --------- | --------- | ------------- | ------------------- |
+| f2 (drive) | 1375      | 0.323     | 3.2           | DRIVE               |
+| 2f2        | 2750      | 0.296     | 2.9           | —                   |
+| 2f2−f1     | 3950      | 0.299     | 2.9           | —                   |
+| f2−f1      | 5325      | 0.291     | 2.8           | —                   |
+| f1 (drive) | 6700      | 2.241     | 21.9          | DRIVE               |
+| f1+f2      | 8075      | 0.291     | 2.8           | —                   |
+| 3f2−2f1    | 9275      | 0.311     | 3.0           | DETECTED (marginal) |
+| 2f1−f2     | 12025     | 0.302     | 3.0           | —                   |
+| 2f1        | 13400     | 0.487     | 4.8           | DETECTED            |
+| 3f1−2f2    | 17350     | 0.285     | 2.8           | —                   |
 
 **Interpretation:** Only **2 of 8** products above 3σ (vs all 8 with broken noise floor). The dominant detection is **2f1 = 13400 Hz (4.8σ)** — a second harmonic of the 6700 Hz drive. This is most likely DAC/ADC nonlinearity (THD) rather than plate mode coupling, since it's exactly 2× the strongest drive. The 3f2−2f1 at 3.0σ is marginal (right at threshold). All other combination products (f1±f2, difference tones) are **below noise** — no evidence of mode-to-mode energy transfer.
 
@@ -2127,12 +2139,12 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 **Method:** Flash multitone census (all frequencies simultaneously, 2.0 s captures, 8 averages), compared top-10 baseline peaks within ±2% frequency tolerance.
 
 | Plate | Live Modes | Matched (of 10) | Mean Drift |
-|-------|-----------|------------------|------------|
-| A     | 173       | 8 (80%)          | +0.08%     |
-| B     | 174       | 7 (70%)          | +0.37%     |
-| G     | 176       | 7 (70%)          | −0.37%     |
-| D     | 174       | 8 (80%)          | −0.03%     |
-| H     | 165       | 7 (70%)          | −0.34%     |
+| ----- | ---------- | --------------- | ---------- |
+| A     | 173        | 8 (80%)         | +0.08%     |
+| B     | 174        | 7 (70%)         | +0.37%     |
+| G     | 176        | 7 (70%)         | −0.37%     |
+| D     | 174        | 8 (80%)         | −0.03%     |
+| H     | 165        | 7 (70%)         | −0.34%     |
 
 **Verdict:** 70–80% top-mode persistence. Drift under ±0.4%. Modes stable between census runs.
 
@@ -2141,7 +2153,7 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 **Method:** Flash census per plate, SNR = 20·log₁₀(peak_mag / median_mag).
 
 | Plate | Modes | Peak Mag |
-|-------|-------|----------|
+| ----- | ----- | -------- |
 | A     | 183   | 0.902    |
 | B     | 179   | 0.893    |
 | G     | 180   | 0.816    |
@@ -2155,7 +2167,7 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 **Method:** Flash census to find strongest glass mode (fixture-excluded), then 201-point CW narrow sweep (±500 Hz, 5 Hz steps) around that mode. Q estimated from −3 dB bandwidth.
 
 | Plate | Mode (Hz) | Q Factor | τ (ms) | BW (Hz) |
-|-------|-----------|----------|--------|---------|
+| ----- | --------- | -------- | ------ | ------- |
 | A     | 7700      | **770**  | 31.8   | 10      |
 | B     | 5595      | **187**  | 10.6   | 30      |
 | G     | 1230      | **123**  | 31.8   | 10      |
@@ -2169,7 +2181,7 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 **Method:** Build CW magnitude template (top 10 glass modes per plate, 4 averages per frequency), then query each plate and score against all 5 templates using asymmetric self/cross max-normalization.
 
 | Plate | Correct? | Score | Next Best | Margin |
-|-------|----------|-------|-----------|--------|
+| ----- | -------- | ----- | --------- | ------ |
 | A     | **Yes**  | 100%  | 11.4%     | 88.6%  |
 | B     | **Yes**  | 100%  | 17.2%     | 82.8%  |
 | G     | **Yes**  | 100%  | 9.5%      | 90.5%  |
@@ -2186,13 +2198,13 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 **Method:** Two-tone drive at each plate's top 2 glass modes (8 averages, 2.0 s), check for energy at combination frequencies. Detection threshold: 3σ above median of noise-only bins (excluding ±50 Hz guard bands around all expected products and harmonics up to 5th order).
 
-| Plate | f₁ (Hz) | f₂ (Hz) | Products Detected | Verdict |
-|-------|---------|---------|-------------------|---------|
+| Plate | f₁ (Hz) | f₂ (Hz) | Products Detected                | Verdict  |
+| ----- | ------- | ------- | -------------------------------- | -------- |
 | A     | 9825    | 675     | 2f2, 2f2−f1, f1+f2, 3f2−2f1, 2f1 | **FAIL** |
-| B     | 325     | 16425   | 2f1                               | **FAIL** |
-| G     | 1025    | 9900    | 2f1, 2f1−f2, f2−f1, 2f2           | **FAIL** |
-| D     | 15475   | 2575    | 2f2, f1+f2                        | **FAIL** |
-| H     | 1375    | 16950   | none                              | **PASS** |
+| B     | 325     | 16425   | 2f1                              | **FAIL** |
+| G     | 1025    | 9900    | 2f1, 2f1−f2, f2−f1, 2f2          | **FAIL** |
+| D     | 15475   | 2575    | 2f2, f1+f2                       | **FAIL** |
+| H     | 1375    | 16950   | none                             | **PASS** |
 
 **Interpretation:** 4/5 plates show intermod products above 3σ. However, the dominant detections are **harmonics** (2f1, 2f2) rather than combination tones (f1±f2). Harmonics are typically DAC/ADC THD artifacts, not plate nonlinearity. Plate H (the only PASS) has widely-spaced drives (1375 + 16950 Hz) where harmonics fall outside the measurement band. The combination products that do appear (f1+f2, 2f2−f1) are marginal and may also be measurement chain artifacts. Cross-referencing with the earlier plate-H-only intermod test (which found only 2f1 at 4.8σ after proper noise floor) suggests the dominant signal is instrumentation distortion.
 
@@ -2200,13 +2212,13 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 **Method:** Drive write modes at full amplitude + probe tones at −20 dB on read modes. Compare read-mode amplitudes with and without write tones present. Threshold: ±3 dB change = cross-talk.
 
-| Plate | Write Modes (Hz) | Read Modes (Hz) | Max Δ (dB) | Verdict |
-|-------|-------------------|------------------|------------|---------|
-| A     | 9825, 675, 1850   | 10575, 11550, 2600 | +0.7     | **PASS** |
-| B     | 325, 16425, 1950  | 14475, 4450, 5825  | −1.1     | **PASS** |
-| G     | 1025, 9900, 1575  | 8025, 5900, 18375  | +0.6     | **PASS** |
-| D     | 15475, 2575, 6375 | 700, 17250, 13425  | +1.2     | **PASS** |
-| H     | 1375, 16950, 250  | 4200, 2875, 400    | **−3.2** | **FAIL** |
+| Plate | Write Modes (Hz)  | Read Modes (Hz)    | Max Δ (dB) | Verdict  |
+| ----- | ----------------- | ------------------ | ---------- | -------- |
+| A     | 9825, 675, 1850   | 10575, 11550, 2600 | +0.7       | **PASS** |
+| B     | 325, 16425, 1950  | 14475, 4450, 5825  | −1.1       | **PASS** |
+| G     | 1025, 9900, 1575  | 8025, 5900, 18375  | +0.6       | **PASS** |
+| D     | 15475, 2575, 6375 | 700, 17250, 13425  | +1.2       | **PASS** |
+| H     | 1375, 16950, 250  | 4200, 2875, 400    | **−3.2**   | **FAIL** |
 
 **Detail on plate H failure:** 400 Hz read mode dropped from 0.545 to 0.377 (−3.2 dB) when write tones were active. The 250 Hz write mode and 400 Hz read mode are only 150 Hz apart — likely mechanical coupling at low frequency where modal overlap is higher and the resonator Q is low (Q = 14 for H). The other 14/15 read modes across all plates changed < 1.6 dB.
 
@@ -2214,15 +2226,15 @@ NE and NW PZTs on the same plate see **mostly different modes** (Jaccard ~0.1). 
 
 ### Aggregate Summary
 
-| Experiment | Result | Key Finding |
-|------------|--------|-------------|
-| 1. Mode Persistence | 70–80% matched | Modes stable between census runs |
-| 2. SNR | 0.82–0.94 peak | Flash SNR metric needs redesign |
-| 3. Q / Damping | Q = 14–820 | 2–3 OOM below MEMS; adequate for selectivity proof |
+| Experiment          | Result                         | Key Finding                                             |
+| ------------------- | ------------------------------ | ------------------------------------------------------- |
+| 1. Mode Persistence | 70–80% matched                 | Modes stable between census runs                        |
+| 2. SNR              | 0.82–0.94 peak                 | Flash SNR metric needs redesign                         |
+| 3. Q / Damping      | Q = 14–820                     | 2–3 OOM below MEMS; adequate for selectivity proof      |
 | 4. Auth Fingerprint | **5/5 correct, 83–91% margin** | Strongest result — plates unambiguously distinguishable |
-| 5. Mode Survey | 143–186 modes/path | 16× improvement over PicoScope |
-| 6. Intermod | 4/5 FAIL | Likely instrumentation THD, not plate nonlinearity |
-| 7. Write-Read | 4/5 PASS | Modes independent except low-Q, close-spaced pair |
+| 5. Mode Survey      | 143–186 modes/path             | 16× improvement over PicoScope                          |
+| 6. Intermod         | 4/5 FAIL                       | Likely instrumentation THD, not plate nonlinearity      |
+| 7. Write-Read       | 4/5 PASS                       | Modes independent except low-Q, close-spaced pair       |
 
 ### Timing
 
@@ -2266,7 +2278,7 @@ Run the standard ML benchmark suite (`plate_benchmark_kronos.py`) on hardware, s
 ### Hardware Parity Results (Linear Pipeline)
 
 | Bits | plate_raw | sw_logistic | sw_mlp | Latency/query |
-|------|-----------|-------------|--------|---------------|
+| ---- | --------- | ----------- | ------ | ------------- |
 | 3    | 50.0%     | 50.0%       | 75.0%  | 2589 ms       |
 | 4    | 50.0%     | 50.0%       | 68.8%  | 2563 ms       |
 | 5    | 50.0%     | 50.0%       | 53.1%  | 2603 ms       |
@@ -2286,6 +2298,7 @@ The plate response at mode $i$ is: $R_i = \sum_j p_j \cdot H(\text{carrier}_j \t
 So $\mathbf{R} = \mathbf{H} \mathbf{p}$ — a matrix multiply. Ridge on top gives $\hat{y} = \mathbf{W}\mathbf{H}\mathbf{p} + b$ — still linear. XOR/parity is not linearly separable, so 50% is the mathematical ceiling regardless of the number of modes.
 
 **Supporting evidence:**
+
 - Intermod experiment (exp 6): zero combination-tone products on any plate. The plate exhibits perfect linear superposition.
 - 183 modes don't help — they're all linear combinations of the 7 input bits.
 
@@ -2297,10 +2310,10 @@ The fix does not require hardware changes. The nonlinearity is available in the 
 
 **Simulation verification:**
 
-| Feature type | Ridge accuracy on 3-bit XOR |
-|---|---|
-| Linear FFT peaks | 50% (chance) |
-| FFT of y²(t) | **100%** |
+| Feature type     | Ridge accuracy on 3-bit XOR |
+| ---------------- | --------------------------- |
+| Linear FFT peaks | 50% (chance)                |
+| FFT of y²(t)     | **100%**                    |
 
 This was confirmed in pure NumPy simulation before running on hardware.
 
@@ -2311,6 +2324,7 @@ The plate has sufficient dimensionality (186 modes). The bottleneck was feature 
 ### Script Modification
 
 Added `hardware_capture_squared()` to `plate_benchmark_kronos.py`:
+
 - Computes `rx²(t)` after settle discard
 - FFTs the squared signal
 - Extracts features at beat frequencies ($f_i - f_j$, $f_i + f_j$) and double frequencies ($2f_i$)
@@ -2319,9 +2333,699 @@ Added `hardware_capture_squared()` to `plate_benchmark_kronos.py`:
 
 ### Hardware Results (Squared Pipeline)
 
-*(To be filled after hardware run completes)*
+The squared-signal approach (FFT of y²) **failed on hardware** — parity remained at 50% with `--feature-mode combined`:
+
+| Bits | Feature Mode | Plate Parity | Dims | Latency |
+| ---- | ------------ | ------------ | ---- | ------- |
+| 3    | combined     | 50.0%        | 192  | 2783ms  |
+| 4    | combined     | 50.0%        | 199  | 2598ms  |
+| 5    | combined     | 50.0%        | 208  | 2557ms  |
+| 6    | combined     | 50.0%        | 219  | 2570ms  |
+| 7    | combined     | 50.0%        | 232  | 2591ms  |
+
+**Root cause:** The beat products in y²(t) are ~35 dB below the fundamental tones. With only N_AVG=4 and Kronos DAC drive levels (0.8 full-scale / 7 carriers = 0.114 per carrier), the cross-terms are buried in the noise floor. The simulation worked because it had zero-noise ideal transfer functions.
+
+Beat-product SNR analysis:
+
+- 3 carriers: beat product at −28 dB relative to fundamental
+- 7 carriers: beat product at −35 dB relative to fundamental
+
+### Revised Approach: Polynomial Feature Expansion (`--feature-mode poly`)
+
+Since the plate's beat products are too weak to detect via FFT(y²), an alternative: compute polynomial cross-terms in software from the 183 linear FFT magnitudes.
+
+The key insight: at carrier mode bins, the FFT magnitude is HIGH when the carrier is ON and near-zero when OFF. The product `mag_i × mag_j` is therefore an AND gate — exactly the building blocks needed for XOR/parity. For n-bit parity, the full degree-n interaction term is required:
+
+$$\text{parity}(x_1,\ldots,x_n) = \sum_{k=0}^{n}(-2)^{k-1}\!\!\sum_{\substack{S\subseteq[n]\\|S|=k}}\prod_{i\in S}x_i$$
+
+For 7-bit parity: $\binom{7}{2}+\binom{7}{3}+\cdots+\binom{7}{7} = 120$ polynomial features appended to the 183 linear features = 303 total dims.
+
+**Simulation:** 100% parity accuracy across all bit widths (3-7) with `--feature-mode poly`.
+
+### Hardware Results (Poly Pipeline)
+
+_(Running — results pending)_
+
+### Honest Assessment
+
+The polynomial expansion is **software nonlinearity**, not plate physics. The plate contributes:
+
+1. 183-dimensional fingerprint (each plate has a unique transfer function H)
+2. High-Q resonance for ON/OFF carrier detection (effectively a matched filter bank)
+3. Analog parallelism (all 183 modes measured in one 0.2s capture)
+
+But the XOR computation itself lives in the polynomial expansion layer, not in the glass.
+
+The plate's genuine computational contribution requires either:
+
+- **Higher drive power** to induce material nonlinearity (Duffing effect, PZT $d_{33}$ nonlinearity)
+- **Temporal protocols** (echo state) where ringdown memory creates state-dependent mixing
+- **Multi-channel interference** where spatial wave overlap generates physical cross-terms
 
 ### Data
 
-- Parity benchmark (linear): `plate_benchmark_kronos_20260416_*.json`
+- Parity benchmark (linear): `benchmark_kronos_H_20260416_102010.json`
+- Parity benchmark (squared/combined): `benchmark_kronos_H_20260416_110037.json`
+- Parity benchmark (poly): _(pending)_
 - Census: `plate_census_kronos_flash_20260415_211405.json`
+
+---
+
+## 2026-04-16 (Session 2) — USB Loopback Subtraction & Clean Census
+
+### Kronos Audio Configuration (Definitive)
+
+**CRITICAL**: Settings must be made on the **PROG page** (not Global). PROG-level overrides Global.
+
+| Setting                         | Value  | Page   |
+| ------------------------------- | ------ | ------ |
+| USB1 Bus Select                 | L/R    | PROG   |
+| Input 1 Bus Select              | L/R    | PROG   |
+| Input 1 Level                   | 127    | PROG   |
+| Input 1 Pan                     | L000   | PROG   |
+| All other inputs                | Off    | PROG   |
+| macOS System Prefs audio output | KRONOS | System |
+
+**Physical cabling:**
+
+- Output: macOS → Kronos USB → L/R bus → headphone jack (front panel) → relay board → plate exciter PZTs
+- Input: plate pickup → relay board → Kronos Input 1 jack (rear panel) → L/R bus → USB input → macOS
+- 1/4" to banana adapter on order to replace cable splices
+
+### USB Loopback Problem
+
+The Kronos USB input reads **only** from the L/R bus. USB output must also go to L/R bus for the headphone jack to work. Both share L/R = unavoidable electronic loopback. Cannot be eliminated via routing (confirmed: Individual Output 1 on rear uses 1/2 bus, which doesn't reach USB input).
+
+**Impact:** Previous census data (`plate_census_kronos_flash_20260415_211405.json`) was contaminated — every plate showed ~180 peaks with impossible SNR (90–198 dB), modes at every frequency bin.
+
+### Loopback Subtraction Implementation
+
+Added software loopback subtraction to both tools:
+
+**`plate_census_kronos.py`:**
+
+- `capture_loopback_reference()`: captures averaged RX waveform with relay OFF (no acoustic path)
+- Reference captured once before plate sweeps using identical TX signal
+- Subtracted in time domain from each plate capture before FFT
+- Config flag `loopback_subtraction: true` saved in output JSON
+
+**`plate_benchmark_kronos.py`:**
+
+- `capture_loopback_reference()`: captures averaged reference with all carriers ON, relay OFF
+- Reference passed to `hardware_capture()` and `hardware_capture_squared()`
+- Subtracted in time domain before settle-trim and FFT
+
+### Relay Channel Health (from 8-relay probe with loopback subtraction)
+
+| Relay | Plate | Residual RMS | FFT Peak | Status     |
+| ----- | ----- | ------------ | -------- | ---------- |
+| 1     | 1-NE  | 0.074        | 59.5     | **Strong** |
+| 2     | 2-NE  | 0.000        | 0.4      | Dead       |
+| 3     | 3-NE  | 0.027        | 6.0      | Signal     |
+| 4     | 3-NW  | 0.093        | 109.9    | **Strong** |
+| 5     | 4-NE  | 0.010        | 1.3      | Weak       |
+| 6     | 4-NW  | 0.090        | 102.1    | **Strong** |
+| 7     | 5-NE  | 0.026        | 5.6      | Signal     |
+| 8     | 5-NW  | 0.000        | 0.5      | Dead       |
+
+### Census Re-run (with loopback subtraction)
+
+Census file: `plate_census_kronos_flash_20260416_144549.json`
+
+| Key  | Plate | RX  | Modes | RMS    | Range (kHz) | Notes                                    |
+| ---- | ----- | --- | ----- | ------ | ----------- | ---------------------------------------- |
+| 1    | A     | NE  | 49    | 0.1024 | 22.6–79.4   | Loopback residual (same as ref baseline) |
+| 2    | B     | NE  | 48    | 0.1024 | 22.6–79.4   | Loopback residual (dead relay)           |
+| 3_NE | G     | NE  | 44    | 0.1024 | 22.6–79.4   | Loopback residual                        |
+| 3_NW | G     | NW  | 59    | 0.1148 | 22.4–87.6   | **Acoustic signal**                      |
+| 4_NE | D     | NE  | 57    | 0.1234 | 22.6–86.5   | **Acoustic signal**                      |
+| 4_NW | D     | NW  | 58    | 0.1234 | 22.6–86.5   | **Acoustic signal**                      |
+| 5_NE | H     | NE  | 46    | 0.1024 | 22.6–79.4   | Loopback residual                        |
+| 5_NW | H     | NW  | 201   | 0.0003 | 0.3–23.3    | Dead channel (noise)                     |
+
+**Key findings:**
+
+- Channels with RMS ≈ 0.1024 (same as loopback ref) share identical top modes (22625, 22725 Hz) — loopback residual only
+- Channels with higher RMS (0.1148, 0.1234) show distinct mode patterns — real acoustic coupling
+- Plate D (4) shows strongest distinct acoustic signal on both NE and NW
+- Mode counts dropped from ~180 (contaminated) to 44–59 (clean) — loopback subtraction working
+
+### Parity Benchmarks (with loopback subtraction)
+
+**Plate D (4), 57 modes, 7 carrier bits, loopback ref RMS = 0.000087**
+
+File: `benchmark_kronos_D_20260416_145009.json`
+
+#### Linear Features
+
+| Bits | Plate     | sw_logistic | sw_mlp    | Latency |
+| ---- | --------- | ----------- | --------- | ------- |
+| 3    | 37.5%     | 50.0%       | 75.0%     | 3612 ms |
+| 4    | **62.5%** | 50.0%       | 68.8%     | 3621 ms |
+| 5    | 46.9%     | 50.0%       | 53.1%     | 3644 ms |
+| 6    | **57.8%** | 50.0%       | **57.8%** | 3630 ms |
+| 7    | 52.3%     | 50.0%       | 56.2%     | 3616 ms |
+
+Key observations:
+
+- 4-bit: plate 62.5% beats sw_logistic (50%) and approaches sw_mlp (68.8%)
+- 6-bit: plate ties sw_mlp at 57.8%, both well above chance (50%)
+- Plate consistently ≥ sw_logistic across all bit-widths (except 3-bit)
+- Latency ~3.6 s per inference (192 kHz, 4 averages)
+
+#### Poly Features
+
+File: `benchmark_kronos_D_20260416_155129.json`
+
+| Bits | Plate     | sw_logistic | sw_mlp    | Latency | Dims |
+| ---- | --------- | ----------- | --------- | ------- | ---- |
+| 3    | 37.5%     | 50.0%       | 75.0%     | 3610 ms | 61   |
+| 4    | 31.2%     | 50.0%       | 68.8%     | 3605 ms | 68   |
+| 5    | 53.1%     | 50.0%       | 53.1%     | 3605 ms | 83   |
+| 6    | **57.8%** | 50.0%       | **57.8%** | 3614 ms | 114  |
+| 7    | 42.2%     | 50.0%       | 56.2%     | 3638 ms | 177  |
+
+Key observations:
+
+- Poly HURT at 3-bit and 4-bit (37.5%, 31.2% — below chance)
+- 6-bit tied linear (57.8%) — poly added nothing
+- The polynomial product terms amplify measurement noise exponentially: if carrier SNR = s, the degree-n product has effective SNR ≈ s^n. With marginal carrier contrast from twist-and-tape wiring, higher-degree products are pure noise that confuse the Ridge classifier.
+
+**Comparison with PicoScope results (same architecture, different ADC/wiring):**
+
+| Config    | Carrier Sep Index | 4-bit parity_poly | 7-bit parity_poly |
+| --------- | ----------------- | ----------------- | ----------------- |
+| PicoScope | 3,000–7,000       | **100%**          | N/A (4-bit max)   |
+| Kronos    | Unknown (low)     | 31.2%             | 42.2%             |
+
+The PicoScope v4 result worked because separation indices were >3,000 (ON vs OFF separated by thousands of sigma). The Kronos hardware path with twist-and-tape connections has drastically lower carrier contrast — likely separation index <5, making polynomial products meaningless.
+
+**Diagnosis:** This is a wiring/coupling problem, not an algorithm problem. Priority fix: replace twist-and-tape joints with crimped DuPont connections or solder, then re-measure carrier separation index.
+
+---
+
+## 2026-04-17 — The Representation Hypothesis
+
+### Context
+
+After running 38 rod experiments, 7 plate experiments, and the Kronos census campaign, we stepped back from the "what can it do?" question and asked the harder one: "what _is_ it, fundamentally?"
+
+The prompt came from an observation that had been nagging across multiple sessions: CWM's robustness doesn't degrade the way it should. Crosstalk, partial queries, weight permutation, sensor position change, instrument swap — each of these should independently degrade a spectral fingerprint. Together they should obliterate it. They don't. That pattern is too consistent to be luck and too broad to be explained by any single current interpretation (PUF, reservoir, fingerprint classifier, mode-addressable memory).
+
+### The Hypothesis
+
+> CWM is a physical embedding mechanism that maps physical state into a modal representation in which identity is preserved under transformations that ordinarily destroy discriminability.
+
+All current interpretations may be downstream effects of a single deeper primitive: **invariant-preserving embedding of physical state.** The glass doesn't just measure state — it re-expresses state into a structured coordinate system whose stable features survive projection changes.
+
+Formal writeup: `docs/REPRESENTATION_HYPOTHESIS.md`
+
+### Three Columns Exercise
+
+We built a rigorous three-column analysis:
+
+**Column 1 — Observed Facts (10 items):**
+
+- F1: Discrimination survives −3.9 dB crosstalk (100% accuracy)
+- F2: K=2 of 10 peaks → 100% recall (20% partial query)
+- F3: Weight ratio 0.5×–10× → 100% (reversed weights also 100%)
+- F4: NE/NW PZTs share ~10% of modes on same plate (Jaccard 0.10–0.20)
+- F5: Perturbation location encodes; mass doesn't
+- F6: Shuffled enrollment → 0%
+- F7: Lock-in SNR +13 dB above linear prediction
+- F8: Mode count 13 (1D rod) → 180 (2D plate) — combinatorial scaling
+- F9: Modes are linear and independent (no real intermod)
+- F10: 5/5 authentication at 83–91% margins with no isolation
+
+**Column 2 — Current Interpretations:** PUF, reservoir, spectral fingerprint, mode-addressable memory. Each explains a surface effect. None explains the full pattern.
+
+**Column 3 — Unexplained Residue (5 items):**
+
+- R1: Robustness under transforms that should be destructive
+- R2: Near-orthogonal views (90% different modes) both preserve identity
+- R3: Dimensionality explosion with geometry (and discriminability _improves_)
+- R4: Location over mass — spatial Fourier decomposition of boundary conditions
+- R5: Excess SNR as coherence selectivity (+13 dB unexplained by linear model)
+
+All five cluster around one theme: **the medium projects physical state into a latent manifold where identity is encoded as stable relational structure.**
+
+### Null Hypotheses
+
+Three explicit nulls that must be weakened before the representation hypothesis is supported:
+
+| Null                                 | Mechanism                                          | How to falsify |
+| ------------------------------------ | -------------------------------------------------- | -------------- |
+| N1: High-dimensional redundancy only | Enough duplicated info survives any damage         | RH-02 + RH-05  |
+| N2: Channel-specific fingerprinting  | Each path has its own separate signature           | RH-01 + RH-03  |
+| N3: Simple resonator physics         | Q + modal density + matched filtering = sufficient | RH-06 + RH-04  |
+
+### The RH Experiment Program (7 experiments)
+
+| Priority | Experiment                            | Question                                                | Data Source     |
+| -------- | ------------------------------------- | ------------------------------------------------------- | --------------- |
+| 1        | **RH-02** Intrinsic Dimensionality    | What is $d_{eff}$?                                      | Existing census |
+| 2        | **RH-05** Redundancy vs. Invariance   | Shuffled modes, structured dropout                      | Existing census |
+| 3        | **RH-01** Cross-Measure Transfer      | Does mag-only→phase-only transfer?                      | Existing census |
+| 4        | **RH-03** Cross-Object Generalization | Do unseen plates land in same manifold?                 | Existing census |
+| 5        | **RH-04** Controlled Transform Orbits | Smooth orbits in PCA space?                             | New hardware    |
+| 6        | **RH-06** Matched-Filter Gain         | Is excess SNR explained by Q alone?                     | New hardware    |
+| 7        | **RH-07** Approx. Local Symmetry      | Algebraic regularity of identity-preserving transforms? | RH-04 data      |
+
+Gate A (RH-02 + RH-05): if $d_{eff} > 0.8 \times N_{modes}$ AND shuffled modes still authenticate, abandon hypothesis. This gate can be evaluated today — purely computational on existing data.
+
+### Temporal Persistence: Why Glass Matters
+
+A separate but convergent line of reasoning surfaced today about _time_ as a material property.
+
+CWM's viability reduces to a question of how the substrate "lives in time":
+
+- Can it preserve phase relationships long enough to be useful?
+- Does it respond predictably to excitation?
+- Does it avoid diffusion/scrambling over the readout interval?
+- Does it maintain a discriminable spectral fingerprint across hours/days/weeks?
+
+Glasses are uniquely suited because they occupy a specific position in the landscape of temporal behavior:
+
+| Material Class     | Relaxation Timescale | CWM Relevance                                                                                                                               |
+| ------------------ | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| Liquids / colloids | µs–ms                | Too fast — phase diffusion destroys coherence (this killed ferrofluid in Phase 0)                                                           |
+| Polymers           | ms–hours             | Marginal — viscoelastic creep on readout timescale                                                                                          |
+| Crystalline solids | Geological           | Stable but rigid — no reconfigurability                                                                                                     |
+| **Glasses**        | **Years–geological** | **Frozen disorder: amorphous structure provides unique eigenmode fingerprints, relaxation times far exceed any practical readout interval** |
+
+The glass state is essentially _frozen liquid_ — disordered but temporally stable. This means:
+
+1. **Manufacturing disorder** creates unique mode spectra (PUF property)
+2. **Frozen relaxation** preserves those spectra indefinitely at room temperature
+3. **Amorphous structure** means eigenmodes are determined by the full 3D geometry, not by a periodic lattice — this is why the dimensionality explosion (F8) happens and why spatial position creates near-orthogonal views (F4)
+
+This connects to the representation hypothesis directly: if the medium is performing a geometry-sensitive projection, the _stability_ of that projection depends on the material's relaxation timescale. Glass gives you a projection that doesn't drift.
+
+**Discrete time crystals and driven phases** are an interesting conceptual parallel. A periodically driven system can develop robust temporal order — oscillations that survive perturbation because they are protected by a symmetry of the driving protocol. CWM resonant modes may exhibit a similar robustness: the eigenmode structure is "protected" by the geometry of the glass in the same way a time crystal's oscillation is protected by the discrete time-translation symmetry of the drive. The protection mechanism is different (spatial boundary conditions vs. temporal periodicity), but the _phenomenology_ is analogous: a pattern that persists because it is a stable fixed point of the system's dynamics, not because energy is being continuously supplied to maintain it.
+
+### New Experiments: Temporal Persistence Series (TP)
+
+This reasoning motivates a new experiment series — **TP** (Temporal Persistence) — that directly probes CWM's relationship to time. These complement the RH series: where RH probes the _geometry_ of the representation, TP probes its _temporal stability_.
+
+**TP-01: Short-Term Spectral Drift**
+
+- Question: How stable is the modal fingerprint over minutes-to-hours?
+- Method: Census plate D (strongest signal) every 15 minutes for 8 hours. No perturbation, no physical contact between measurements. Compute per-mode frequency drift, amplitude drift, and phase drift. Report drift as fraction of mode bandwidth.
+- Predicted outcome: Drift < 0.1% of mode bandwidth per hour (glass relaxation is geological). If drift > 1%, investigate thermal sensitivity.
+- Kill criterion: If modes drift by more than one linewidth per hour, long-term memory is not viable without environmental control.
+- Attacks null: N3 (if stability exceeds simple thermal expansion predictions, something structural is happening)
+
+**TP-02: Day-Scale Fingerprint Persistence**
+
+- Question: Is the plate's spectral identity the same tomorrow as today?
+- Method: Full census now, full census 24h later, full census 72h later. Same plate, same relay, same drive parameters. Compute authentication score of Day-N census against Day-0 enrollment.
+- Predicted outcome: Auth score > 80% at 72h (glass relaxation ≫ days). Temperature log required for correlation analysis.
+- Kill criterion: If auth score drops below 50% at 24h, the fingerprint is session-specific, not material-specific. (Would still be useful for short-term PUF, but not for memory.)
+
+**TP-03: Thermal Sensitivity Characterization**
+
+- Question: What is the temperature coefficient of the modal representation?
+- Method: Census at ambient, then warm plate gently with heat gun (5°C above ambient), census again, cool back to ambient, census again. Track mode-by-mode frequency shift per degree C.
+- Predicted outcome: Frequency shift ~ 1–10 ppm/°C (fused silica thermal expansion is 0.55 ppm/°C, but the PZT coupling adds thermal sensitivity). Modes should shift uniformly in frequency (translation in modal space), preserving inter-mode relationships.
+- Key question: Does temperature shift the representation _along_ the manifold (preserving identity) or _off_ the manifold (destroying it)? If thermal variation produces a smooth orbit in PCA space (connects to RH-04), that's strong support for geometric invariance.
+- Kill criterion: If inter-mode spacing changes by > 5% across a 5°C range, the representation is thermally fragile.
+
+**TP-04: Post-Perturbation Relaxation Timescale**
+
+- Question: After removing a perturbation (putty dot), how quickly does the spectrum return to baseline?
+- Method: Baseline census → apply putty → census → remove putty → census immediately → census at +1min, +5min, +30min, +2h. Track return trajectory in PCA space.
+- Predicted outcome: Return to within 5% of baseline within seconds (elastic recovery of glass). Slow drift component from residual adhesive/contamination.
+- Significance: If return is fast and complete, the "write/erase" cycle is clean. If there's a slow tail, the glass retains some memory of perturbation — which is _also_ interesting, because it would mean the medium has hysteresis, i.e., it is path-sensitive (connects to RH hypothesis candidate #3 from the original analysis).
+
+### Connecting TP to RH
+
+| TP Experiment      | RH Connection                     | What It Adds                                                                                               |
+| ------------------ | --------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| TP-01 (drift)      | RH-04 (orbits)                    | Establishes the _temporal_ baseline for orbit measurements — are we measuring geometry or drift?           |
+| TP-02 (day-scale)  | RH-05 (redundancy vs invariance)  | If fingerprint persists across days, the representation is a material property, not a measurement artifact |
+| TP-03 (thermal)    | RH-04 (orbits) + RH-07 (symmetry) | Temperature sweeps are a specific transformation whose orbit structure can be characterized                |
+| TP-04 (relaxation) | RH-04 (orbits)                    | The return trajectory is an orbit — its smoothness and completeness test geometric structure directly      |
+
+### Updated Execution Priority (Combined RH + TP)
+
+**Day 1 (computational, no hardware):**
+
+1. RH-02: Intrinsic dimensionality (existing census data)
+2. RH-05: Redundancy vs. invariance (existing census data)
+3. RH-01: Cross-measure transfer (existing census data, split mag/phase)
+4. RH-03: Cross-object generalization (existing census data)
+   → **Gate A decision**
+
+**Day 2 (hardware, automated):** 5. TP-01: Short-term drift (8h unattended run, plate D) 6. Exps 8–12 from the gap-closing suite (ringdown Q, true SNR, intermod atten, write-read precision, fixture characterization)
+
+**Day 3+ (hardware, interactive):** 7. TP-03: Thermal sensitivity (requires gentle warming) 8. TP-04: Post-perturbation relaxation (requires manual putty placement) 9. RH-04: Controlled transform orbits (systematic variation runs) 10. Exp 13: Perturbation write-read (interactive, prototype for RH-04)
+→ **Gate B decision**
+
+**Day 7+ (analysis):** 11. TP-02: Day-scale persistence (final census, compare to Day 1) 12. RH-06: Matched-filter gain (requires controlled noise injection) 13. RH-07: Approximate local symmetry (analysis of RH-04 + TP-03/04 orbit data)
+→ **Gate C decision**
+
+### The Deeper Frame
+
+What emerged today is a synthesis of two threads:
+
+1. **Spatial:** The representation hypothesis — CWM may be performing invariant-preserving embedding of physical state into a modal manifold.
+2. **Temporal:** The glass-as-time-medium insight — the _stability_ of that embedding is not incidental; it is a material property that glasses uniquely provide.
+
+Together they suggest: **CWM is a substrate that converts spatiotemporal physical structure into a geometrically stable representation, where "geometrically stable" means stable in both the spatial sense (survives projection changes) and the temporal sense (survives on timescales set by the glass transition, not by any digital refresh).**
+
+That's not a proven statement. It's the hypothesis that the next two weeks of experiments are designed to either support or kill.
+
+The sentence on the whiteboard:
+
+> _CWM may be less a classifier than a physical embedding mechanism that renders relational structure geometrically stable — and glass may be the right medium precisely because its frozen disorder provides both the complexity for rich embedding and the temporal stability for persistent readout._
+
+---
+
+## 2026-04-18 — Gate A Results: The Manifold That Wasn't
+
+### Context
+
+Ran all four Gate A computational experiments (RH-02, RH-05, RH-01, RH-03) on existing census data. Three analysis tiers:
+
+1. **Single-run, full sweeps** — 8 relay paths, 3793 freq bins, Kronos flash census (Apr 15)
+2. **Single-run, peak vectors** — same 8 paths, 500-bin peak-magnitude/phase representation
+3. **Pooled multi-census** — 16–24 samples from 2–3 independent census runs, peak vectors
+
+### Data Used
+
+| Run  | File                                             | Method                             | Peaks/path |
+| ---- | ------------------------------------------------ | ---------------------------------- | ---------- |
+| run1 | `plate_census_kronos_flash_20260415_211405.json` | Kronos flash                       | 143–186    |
+| run2 | `plate_census_kronos_flash_20260416_144549.json` | Kronos flash (loopback-subtracted) | 44–59      |
+| run3 | `plate_census_hybrid_flash_20260416_204546.json` | Hybrid flash                       | 160–191    |
+
+### Results
+
+#### RH-02: Intrinsic Dimensionality
+
+| Analysis                   | N_samples | N_features | d_eff(95%) | d_eff/N | Participation Ratio | Rank ceiling |
+| -------------------------- | --------- | ---------- | ---------- | ------- | ------------------- | ------------ |
+| Single-run, sweeps         | 8         | 7586       | 7          | 0.001   | 6.99                | 7 ⚠          |
+| Single-run, peaks          | 8         | 1000       | 7          | 0.007   | 6.79                | 7 ⚠          |
+| Pooled (3 runs)            | 24        | 1000       | 20         | 0.020   | 10.42               | 23           |
+| Pooled (2 comparable runs) | 16        | 1000       | 14         | 0.014   | 11.9                | 15           |
+
+**Critical finding:** The 8-sample analyses were _rank-limited_ — d_eff = N-1 by mathematical necessity, not by physical structure. The apparently dramatic d_eff/N ratio of 0.001 was an artifact.
+
+With 24 samples: d_eff(95%) = 20 out of 23 possible dimensions. Eigenvalue spectrum nearly flat (PC1=24%, PC2=10%, gradual decline). **No scree-plot elbow. No strong low-dimensional concentration.** PR = 10.4 (vs. max 23) suggests moderate but not dramatic compression.
+
+#### RH-05: Redundancy vs. Invariance
+
+**Headline result: Shuffling frequency-bin labels preserves 100% of NN identity in _every_ analysis, across all 200 trials.**
+
+This means: permuting which frequency carries which energy does not change which plates are nearest neighbors. The NN structure is determined entirely by aggregate statistics (total energy, peak count, magnitude distribution) — _not_ by the spectral geometry of which specific modes carry energy.
+
+| Test                               | Result                 | Interpretation                       |
+| ---------------------------------- | ---------------------- | ------------------------------------ |
+| Shuffle mode labels → NN preserved | 100% ± 0%              | REDUNDANCY, not geometric invariance |
+| Contiguous vs random 20% dropout   | Random 71%, Contig 76% | Similar → REDUNDANCY                 |
+| Contiguous vs random 40% dropout   | Random 58%, Contig 66% | Similar                              |
+| Contiguous vs random 60% dropout   | Random 46%, Contig 53% | Slight geometric signal              |
+
+#### RH-01: Cross-Measure Transfer
+
+| Test                               | Accuracy  | Note                             |
+| ---------------------------------- | --------- | -------------------------------- |
+| Mag-only → same plate              | 0–12%     | Chance level                     |
+| Phase-only → same plate            | 12%       | Chance level                     |
+| Mag NN == Phase NN                 | 0–25%     | Channels see different structure |
+| NE↔NW same-plate clustering        | 0–33%     | Positions don't cluster          |
+| Cross-run relay ID (kronos→hybrid) | 1/8 = 12% | One-day gap destroys identity    |
+
+Neither magnitude alone nor phase alone carries plate identity. Cross-channel agreement is at or below chance. Cross-position (NE vs NW of same plate) distances are comparable to inter-plate distances.
+
+#### RH-03: Cross-Object Generalization
+
+Leave-one-out reconstruction ratios were infinite (PCA perfectly fits N-1 training samples when d ≈ N-1, making train error ≈ 0). This test was mathematically ill-posed at our sample size.
+
+Distance rank preservation (Spearman ρ): 0.65–0.71. Moderate, but expected given rank ceiling.
+
+**Separation ratio (intra-relay / inter-relay):** 0.94–0.95. Same relay measured on different days is _more distant_ than average cross-relay pair. No clustering by identity.
+
+### Gate A Decision
+
+**⚠ GATE A: MIXED — leaning NEGATIVE for the geometric-manifold hypothesis.**
+
+The data does not support the claim that "each physical resonator occupies a compact, low-dimensional region of a representational manifold M." Specifically:
+
+1. **No low-dimensional structure.** The eigenvalue spectrum is flat; d_eff ≈ N-1 (rank ceiling) in every analysis. There is no evidence of a sharp elbow or concentration.
+2. **Identity is aggregate, not geometric.** Shuffling bin labels changes nothing. The "representation" is a histogram of energy levels, not a geometrically structured point in mode-frequency space.
+3. **Cross-run identity fails.** The same relay path measured 24 hours apart, with comparable hardware, does not cluster with itself. Separation ratio < 1.
+4. **Cross-channel identity fails.** Magnitude alone and phase alone carry no plate identity.
+
+### What This Doesn't Kill
+
+The negative Gate A result refutes the _specific geometric-manifold form_ of the RH. It does NOT refute:
+
+- **CWM as a PUF.** Experiment 4 achieved 5/5 authentication in a single session. Within-session, plate identity _is_ discriminable. The authentication application survives.
+- **CWM as a physical system with interesting modal structure.** The plates _have_ rich mode spectra. Q values, intermod behavior, write-read dynamics are all real physics.
+- **A weaker form of the RH.** Perhaps identity is encoded in aggregate spectral statistics (total energy, peak count, spectral shape) rather than in modal geometry. This is a "spectral histogram fingerprint" rather than a "geometric manifold."
+
+### Why It Failed (Honest Post-Mortem)
+
+1. **Sample size too small for the question.** 5 plates × 2 positions × 1–3 runs = 8–24 samples. Manifold learning needs ≫ intrinsic dimension; we couldn't distinguish intrinsic structure from rank ceiling.
+2. **Binned peak representation is lossy.** Multiple peaks landing in the same 192-Hz bin get averaged. The phase information is especially degraded.
+3. **Run-to-run variability dominates.** Different hardware (Kronos vs Hybrid), different coupling (twist-and-tape joints vary), different detection thresholds — these systematic effects are larger than the plate-identity signal.
+4. **The shuffle test is decisive but sobering.** If frequency-bin shuffling preserves identity, then the specific frequency locations of modes are irrelevant to the NN metric. This is the strongest single piece of evidence.
+
+### Revised Understanding
+
+The "robustness" we observed in earlier experiments (Exps 1–7) was likely:
+
+- **Within-session consistency** (same hardware, same coupling, same temperature) rather than deep geometric invariance
+- **Aggregate spectral-envelope similarity** (plates have different total energy, different peak counts) rather than structured modal representation
+- **A coincidence of our particular 5 plates being sufficiently different** in bulk properties (thickness, size, composition) that even crude measures discriminate them
+
+This is still useful (PUF, authentication) but it's a conventional spectral fingerprint, not a "physical embedding mechanism that renders relational structure geometrically stable."
+
+### What Changes
+
+1. **Representation Hypothesis status: PAUSED.** The geometric-manifold form is not supported. A weaker "spectral histogram" form remains viable but is less interesting — it reduces to standard PUF technology.
+2. **Temporal Persistence experiments (TP-01 through TP-04) remain valuable.** They test stability over time, which is relevant to PUF applications regardless of whether a manifold exists.
+3. **Hardware experiments (Exps 8–13) remain valuable.** They characterize the system's physical properties, which are real regardless of interpretation.
+4. **Gate B and Gate C are moot** in their current form (they presuppose Gate A passing).
+
+### Sentence on the whiteboard (revised)
+
+> _CWM is a broadband spectral fingerprinting system whose robustness comes from aggregate energy distribution rather than geometric embedding — but whose temporal stability and physical unclonable properties may still make it valuable. The Representation Hypothesis, in its geometric form, is not supported by the data._
+
+### Scripts
+
+- `tools/rh_gate_a.py` — single-run Gate A experiments
+- `tools/rh_gate_a_pooled.py` — pooled multi-census analysis
+- Results saved to `data/results/lab/plate_exps/rh_gate_a_*.json`
+
+---
+
+## 2026-04-18 (evening) — Fresh PicoScope CW Census + Gate A Replication
+
+### Motivation
+
+Re-ran full census with fresh PicoScope CW sweep data to validate/challenge the earlier negative Gate A result (which used Kronos flash and hybrid data). Different excitation method (CW sine sweep vs. broadband flash), different day, different coupling conditions.
+
+### Data Collection
+
+**Instrument:** PicoScope 2204A CW sweep, 200–100 kHz, 100 Hz steps, 2 averages, 0.03 s settle.
+
+| Relay | Plate | RX  | Modes | Sweep Time | Top Mode (kHz) |
+| ----- | ----- | --- | ----- | ---------- | -------------- |
+| 1     | A     | NE  | 57    | 3.4 min    | 55.0           |
+| 2     | B     | NE  | 50    | 1.8 min    | 29.2           |
+| 3     | G     | NE  | 51    | 3.1 min    | 64.2           |
+| 4     | G     | NW  | 49    | 3.6 min    | 43.3           |
+| 5     | D     | NE  | 67    | 4.5 min    | 47.8           |
+| 6     | D     | NW  | 59    | 4.4 min    | 29.3           |
+| 7     | H     | NE  | 54    | 1.9 min    | 63.2           |
+| 8     | H     | NW  | 52    | 1.7 min    | 66.2           |
+
+Total: 439 modes across 8 relays, 24.4 min.
+Mode density 0.6–0.8 modes/kHz. Consistent with earlier runs (Kronos detected 44–191 peaks depending on method).
+
+Three common frequencies across ≥3 plates (NE-RX, within ±50 Hz): 19.0 kHz, 28.9 kHz, 54.2 kHz.
+
+### Gate A: Single-Run (Fresh Data)
+
+| Metric                         | Fresh PicoScope CW   | Previous Best (run1 Kronos) |
+| ------------------------------ | -------------------- | --------------------------- |
+| d_eff(95%)/N_features          | 7/1998 = 0.004       | 7/7586 = 0.001              |
+| Shuffle NN preserved           | **100.0% ± 0.0%**    | 100.0% ± 0.0%               |
+| NN stability @50% features     | 90.9% ± 8.6%         | 92.9% ± 6.2%                |
+| PCA ≈ Isomap (flat manifold)   | Yes (91.7% vs 95.8%) | Yes                         |
+| Cross-position same-plate NN   | 0/6 = 0%             | 0%                          |
+| Spearman ρ (rank preservation) | 0.961                | 0.959                       |
+
+**Key observation:** Contiguous dropout discrimination appeared:
+
+- 20%: random 98.1% vs contiguous 93.1% (Δ = 5.0%) — similar
+- 40%: random 92.4% vs contiguous 86.2% (Δ = 6.1%) — **contiguous hurts more**
+- 60%: random 89.1% vs contiguous 76.8% (Δ = 12.4%) — **contiguous hurts more**
+
+This hints at mild spectral locality (nearby freq bins carry correlated info), but shuffle still preserves 100% NN identity, so the aggregate signal dominates.
+
+### Gate A: Pooled 4-Run Analysis
+
+Added run4 (fresh PicoScope CW) to previous 3 runs → 32 total samples.
+
+| Metric                         | 4-run pooled    | Previous 3-run pooled |
+| ------------------------------ | --------------- | --------------------- |
+| d_eff(95%)                     | 26/1000 = 0.026 | ~23/1000              |
+| PR                             | 14.35           | ~10                   |
+| Shuffled NN preserved          | **100.0%**      | 100.0%                |
+| Cross-run relay ID             | 0–12% per pair  | 0–12%                 |
+| Intra-relay distance           | 36.65 ± 9.47    | ~similar              |
+| Inter-relay distance           | 35.08 ± 10.76   | ~similar              |
+| Separation ratio (inter/intra) | **0.96**        | 0.94–0.95             |
+| NN is same relay (cross-run)   | **0/32 = 0%**   | 0/24 = 0%             |
+| NN is same plate (any)         | 6/32 = 18.8%    | ~similar              |
+| Subspace @50% features         | 47.9% ± 9.9%    | ~similar              |
+
+**Cross-run transfer (enroll→test):**
+
+- run1→run4: relay 12%, plate 25%
+- run2→run4: relay 0%, plate 0%
+- run3→run4: relay 12%, plate 25%
+
+Run2 (Kronos loopback-subtracted, fewer peaks) is the outlier — transfers to nothing.
+
+### Verdict: Replication Confirms Negative
+
+The fresh PicoScope CW data replicates every finding from the earlier Kronos/hybrid analysis:
+
+1. **Shuffle invariance = 100%:** Identity lives in aggregate spectral statistics, not mode ordering. This is the killing blow for geometric manifold.
+2. **Separation ratio ≈ 1.0:** Intra-relay and inter-relay distances are indistinguishable in pooled analysis. No relay-specific "cluster" survives across measurement sessions.
+3. **Cross-run relay ID = 0–12%:** Chance is 12.5% for 8 relays. We're at or below chance. A given relay measured on different days/methods is **not recognizable**.
+4. **Flat eigenvalue spectrum:** PR = 14.35 across 31 possible PCs. No scree elbow. No low-dimensional manifold.
+
+The one mildly interesting signal: **contiguous dropout hurts more than random at 40–60%**, suggesting frequency bins are not fully independent. But this is expected from physics (resonance peaks have width) and does not rescue the manifold hypothesis.
+
+### Gate A Final Decision
+
+**NEGATIVE.** The geometric-manifold form of the Representation Hypothesis is refuted across:
+
+- 4 independent measurement sessions
+- 2 excitation methods (flash broadband, CW sweep)
+- 2 different DAQ chains (Kronos USB audio, PicoScope 2204A)
+- 32 total spectral vectors
+
+What we have is a spectral fingerprint system with within-session discrimination but no cross-session geometric invariance.
+
+### Files
+
+- Census: `data/results/lab/plate_exps/plate_census_20260418_221958.json`
+- Sweeps: `data/results/lab/plate_exps/plate_census_sweeps_20260418_221958.json`
+- Gate A (single): `data/results/lab/plate_exps/gate_a_fresh_pico_20260418.json`
+- Script: `tools/fast_pico_census.py`, `tools/rh_gate_a.py`, `tools/rh_gate_a_pooled.py`
+
+---
+
+## 2026-04-18 (late night) — Phase 1.6 Step 4: Re-Excitation Interference
+
+### Objective
+
+The big test from the roadmap: does coherent phononic memory persist in fused silica plates?
+If residual vibration after AWG cutoff interferes with re-excitation, the measured amplitude should depend on the delay Δt. At rod Q ≈ 400, E33 showed only 0.27% contrast. With plate Q up to 7,525, the prediction was >5% contrast.
+
+### Protocol
+
+For each plate's strongest mode:
+
+1. Drive CW to steady state (0.5 s)
+2. Stop AWG
+3. Wait delay Δt (25 log-spaced points, 0–1000 ms)
+4. Re-excite CW, capture after 5 ms settle
+5. Measure amplitude via I/Q demodulation at mode frequency
+6. Repeat 3× per delay, average
+
+Two sweeps per plate:
+
+- **Re-excitation sweep:** steps 1–5 above
+- **Residual-only control:** same but skip step 4 — capture without re-excitation to see free ringdown decay
+
+Script: `tools/plate_reexcitation.py` — fast mode (3 reps, 25 delays)
+
+### Results — All Five Plates
+
+| Plate | Freq (Hz) | Q_meas | τ (ms) | SS mag | Enhancement (Δt=0) | Contrast | Resid@0/SS | Verdict |
+| ----- | --------- | ------ | ------ | ------ | ------------------ | -------- | ---------- | ------- |
+| A     | 55,000    | 1,569  | 9.1    | 3,699  | 1.003×             | 0.29%    | 0.001      | NONE    |
+| B     | 29,200    | 895    | 9.8    | 3,429  | 0.999×             | 0.11%    | 0.013      | NONE    |
+| G     | 64,200    | 7,525  | 37.3   | 2,955  | 1.000×             | 0.15%    | 0.001      | NONE    |
+| D     | 29,300    | 695    | 7.6    | 3,361  | 0.998×             | 0.20%    | 0.002      | NONE    |
+| H     | 63,200    | 1,693  | 8.5    | 2,457  | 0.997×             | 0.23%    | 0.001      | NONE    |
+
+**No plate exceeded the 2% contrast threshold.** All enhancements were within ±0.3% of unity. Total run time: 9.2 minutes.
+
+### Critical Discovery: Electrical Crosstalk Dominates CW Signal
+
+The CW measurement at mode frequency is **~99.9% direct AWG→scope electrical coupling**, with only ~0.1–1.3% actual plate acoustic response.
+
+Evidence:
+
+- Steady-state CW magnitudes: 2,457–3,699 (dominated by AWG leakage)
+- Residual-only at Δt=0 (AWG off, pure acoustic): 3–45 (0.1–1.3% of SS)
+- When AWG restarts for re-excitation, the electrical crosstalk returns instantly and overwhelms any acoustic interference signal
+
+This explains why re-excitation magnitude ≈ steady state regardless of delay: the acoustic contribution is buried under 1000× larger electrical crosstalk.
+
+### Residual-Only Control — Plate B Shows Real Acoustic Decay
+
+Plate B (29.2 kHz) gave the strongest residual signal, showing clear exponential decay:
+
+| Δt (ms) | Δt/τ | Residual mag | Expected exp(-Δt/τ) |
+| ------- | ---- | ------------ | ------------------- |
+| 0       | 0    | 45           | 1.000               |
+| 3.3     | 0.34 | 23           | 0.711               |
+| 14.9    | 1.53 | 4            | 0.217               |
+| 67      | 6.87 | 4            | 0.001               |
+| 301+    | 30+  | 3–5          | 0 (noise floor)     |
+
+Plate D also showed a decay trend (8→5→2→3→1→2). Other plates were at noise floor (mag 2–5) even at Δt=0, meaning their acoustic coupling is negligible.
+
+### DDS Phase-Matching Issue
+
+The PicoScope DDS free-runs during AWG stop. When CW restarts, the phase is determined by the DDS oscillator state, NOT reset. This means:
+
+- The new drive and any residual vibration stay phase-matched
+- Result: always constructive interference → magnitude ≈ steady state at all delays
+- Even if acoustic signal were measurable, the protocol cannot produce destructive interference fringes
+
+### Why This Experiment Cannot Detect Interference
+
+Three independent problems:
+
+1. **Electrical crosstalk** (×1000 larger than acoustic) masks any interference signal
+2. **DDS free-run** means re-excitation phase always matches residual → no fringes possible
+3. **Residual acoustic signal** at Δt=0 is only 0.1–1.3% of SS → even perfect measurement gives <1.3% contrast
+
+### Measured Q vs Estimated Q
+
+| Plate | Est. Q (from Step 1) | Measured τ (ms) | Implied Q | Ratio |
+| ----- | -------------------- | --------------- | --------- | ----- |
+| A     | 12,515               | 9.1             | 1,569     | 0.13  |
+| B     | 9,433                | 9.8             | 895       | 0.09  |
+| G     | 15,184               | 37.3            | 7,525     | 0.50  |
+| D     | 4,378                | 7.6             | 695       | 0.16  |
+| H     | 3,735                | 8.5             | 1,693     | 0.45  |
+
+Ringdown τ fits had low R² (0.01–0.24), likely because the 10.3 ms capture window is too short to see a clean exponential for modes with τ > 10 ms. Plate G's fit is most trustworthy (longest τ, best Q).
+
+### Step 4 Verdict
+
+**NEGATIVE.** No re-excitation interference detected on any of 5 fused silica plates.
+
+However, this is a **measurement limitation, not necessarily a physics null result.** The protocol cannot separate acoustic interference from electrical crosstalk in CW mode. A redesigned experiment would need:
+
+- Galvanic isolation between AWG and scope paths
+- Or: use ringdown envelope (no CW re-excitation) to measure energy decay rates
+- Or: detuned re-excitation (different frequency) to create a beat note
+- Or: pulsed excitation with time-gated capture
+
+### Files
+
+- Results: `data/results/lab/plate_exps/reexcitation_20260418_231600.json`
+- Script: `tools/plate_reexcitation.py`

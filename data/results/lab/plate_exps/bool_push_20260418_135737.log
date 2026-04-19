@@ -1,0 +1,229 @@
+[13:51:04.800]   Census loaded: 8/8 receivers
+[13:51:07.899] 
+══════════════════════════════════════════════════════════════════════
+[13:51:07.899]   PUSH BOOLEAN COMPUTE — Find the Upper Bit-Count Limit
+[13:51:07.899] ══════════════════════════════════════════════════════════════════════
+[13:51:07.899] 
+  Census frequencies: 51
+[13:51:07.899]   Probe frequencies: 24
+[13:51:07.899]   Total frequencies: 75
+[13:51:07.899]   Range: 5.0k – 95.0k
+[13:51:07.899]   Receivers: 8 (including plate A)
+[13:51:07.899]   Total measurements: 600
+[13:51:07.899]   Estimated time: 360s (6.0m)
+[13:51:07.899] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:51:07.899]   PHASE 0: Comprehensive capture
+[13:51:07.899] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:51:09.068]   PicoScope opened (Ch A ±1V DC)
+[13:51:40.253]     5/75 freqs  (40/600 meas)  last=11.4k
+[13:52:10.302]     10/75 freqs  (80/600 meas)  last=17.4k
+[13:52:35.182]     15/75 freqs  (120/600 meas)  last=23.9k
+[13:52:57.362]     20/75 freqs  (160/600 meas)  last=29.2k
+[13:53:18.628]     25/75 freqs  (200/600 meas)  last=31.6k
+[13:53:43.447]     30/75 freqs  (240/600 meas)  last=34.5k
+[13:54:04.647]     35/75 freqs  (280/600 meas)  last=36.0k
+[13:54:33.536]     40/75 freqs  (320/600 meas)  last=46.1k
+[13:54:55.245]     45/75 freqs  (360/600 meas)  last=47.8k
+[13:55:17.355]     50/75 freqs  (400/600 meas)  last=51.5k
+[13:55:44.209]     55/75 freqs  (440/600 meas)  last=61.0k
+[13:56:09.266]     60/75 freqs  (480/600 meas)  last=65.1k
+[13:56:36.902]     65/75 freqs  (520/600 meas)  last=73.5k
+[13:57:05.839]     70/75 freqs  (560/600 meas)  last=86.9k
+[13:57:36.003]     75/75 freqs  (600/600 meas)  last=95.0k
+[13:57:37.116]   PicoScope closed
+[13:57:37.116] 
+  Capture: 389.2s (600 measurements)
+[13:57:37.116] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.116]   PHASE 1: Cross-detection — mining capture for new modes
+[13:57:37.116] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.117] 
+  New modes discovered: 118
+[13:57:37.117]     A-NE: NEW mode at 18.9k (mag=2.42M)
+[13:57:37.117]     A-NE: NEW mode at 19.0k (mag=2.75M)
+[13:57:37.117]     A-NE: NEW mode at 19.0k (mag=3.10M)
+[13:57:37.117]     A-NE: NEW mode at 28.8k (mag=2.67M)
+[13:57:37.117]     A-NE: NEW mode at 28.9k (mag=4.31M)
+[13:57:37.117]     A-NE: NEW mode at 29.2k (mag=1.68M)
+[13:57:37.117]     A-NE: NEW mode at 29.2k (mag=1.61M)
+[13:57:37.117]     A-NE: NEW mode at 29.3k (mag=1.62M)
+[13:57:37.117]     A-NE: NEW mode at 29.3k (mag=1.65M)
+[13:57:37.117]     A-NE: NEW mode at 47.2k (mag=3.01M)
+[13:57:37.117]     A-NE: NEW mode at 47.3k (mag=2.12M)
+[13:57:37.117]     A-NE: NEW mode at 47.7k (mag=2.63M)
+[13:57:37.117]     A-NE: NEW mode at 47.8k (mag=2.83M)
+[13:57:37.117]     A-NE: NEW mode at 47.8k (mag=3.44M)
+[13:57:37.117]     A-NE: NEW mode at 47.9k (mag=4.24M)
+[13:57:37.118]     A-NE: NEW mode at 53.9k (mag=3.11M)
+[13:57:37.118]     A-NE: NEW mode at 56.2k (mag=4.18M)
+[13:57:37.118]     A-NE: NEW mode at 61.7k (mag=3.23M)
+[13:57:37.118]     A-NE: NEW mode at 61.8k (mag=2.75M)
+[13:57:37.118]     A-NE: NEW mode at 62.0k (mag=2.00M)
+[13:57:37.118]     A-NE: NEW mode at 62.1k (mag=2.21M)
+[13:57:37.118]     A-NE: NEW mode at 65.1k (mag=1.85M)
+[13:57:37.118]     A-NE: NEW mode at 81.5k (mag=1.73M)
+[13:57:37.118]     A-NE: NEW mode at 86.9k (mag=2.07M)
+[13:57:37.118]     A-NE: NEW mode at 95.0k (mag=1.64M)
+[13:57:37.118]     B-NE: NEW mode at 23.9k (mag=2.68M)
+[13:57:37.118]     B-NE: NEW mode at 29.9k (mag=2.50M)
+[13:57:37.118]     B-NE: NEW mode at 34.5k (mag=2.01M)
+[13:57:37.118]     B-NE: NEW mode at 34.5k (mag=2.36M)
+[13:57:37.118]     B-NE: NEW mode at 34.6k (mag=2.71M)
+[13:57:37.118]     B-NE: NEW mode at 34.9k (mag=1.95M)
+[13:57:37.118]     B-NE: NEW mode at 34.9k (mag=1.89M)
+[13:57:37.118]     B-NE: NEW mode at 34.9k (mag=1.83M)
+[13:57:37.118]     B-NE: NEW mode at 37.0k (mag=1.71M)
+[13:57:37.118]     B-NE: NEW mode at 47.2k (mag=2.01M)
+[13:57:37.118]     B-NE: NEW mode at 47.3k (mag=2.21M)
+[13:57:37.118]     B-NE: NEW mode at 47.7k (mag=2.11M)
+[13:57:37.118]     B-NE: NEW mode at 47.8k (mag=2.01M)
+[13:57:37.118]     B-NE: NEW mode at 47.8k (mag=1.96M)
+[13:57:37.118]     B-NE: NEW mode at 47.9k (mag=1.93M)
+[13:57:37.118]     B-NE: NEW mode at 58.5k (mag=1.94M)
+[13:57:37.118]     B-NE: NEW mode at 61.7k (mag=1.85M)
+[13:57:37.118]     B-NE: NEW mode at 61.8k (mag=1.87M)
+[13:57:37.118]     B-NE: NEW mode at 62.0k (mag=4.03M)
+[13:57:37.118]     B-NE: NEW mode at 62.1k (mag=1.83M)
+[13:57:37.118]     B-NE: NEW mode at 73.5k (mag=2.36M)
+[13:57:37.118]     B-NE: NEW mode at 78.8k (mag=2.37M)
+[13:57:37.118]     G-NE: NEW mode at 23.9k (mag=1.73M)
+[13:57:37.118]     G-NE: NEW mode at 29.9k (mag=3.27M)
+[13:57:37.118]     G-NE: NEW mode at 30.0k (mag=2.62M)
+[13:57:37.118]     G-NE: NEW mode at 37.0k (mag=1.58M)
+[13:57:37.118]     G-NE: NEW mode at 47.2k (mag=1.64M)
+[13:57:37.118]     G-NE: NEW mode at 47.3k (mag=1.72M)
+[13:57:37.118]     G-NE: NEW mode at 47.7k (mag=4.48M)
+[13:57:37.118]     G-NE: NEW mode at 47.8k (mag=3.63M)
+[13:57:37.118]     G-NE: NEW mode at 47.8k (mag=2.79M)
+[13:57:37.118]     G-NE: NEW mode at 47.9k (mag=2.29M)
+[13:57:37.118]     G-NE: NEW mode at 48.5k (mag=4.43M)
+[13:57:37.118]     G-NE: NEW mode at 49.6k (mag=2.35M)
+[13:57:37.118]     G-NE: NEW mode at 58.5k (mag=2.84M)
+[13:57:37.118]     G-NE: NEW mode at 61.8k (mag=1.69M)
+[13:57:37.118]     G-NE: NEW mode at 62.0k (mag=1.83M)
+[13:57:37.118]     G-NE: NEW mode at 62.1k (mag=3.71M)
+[13:57:37.118]     G-NE: NEW mode at 70.8k (mag=2.76M)
+[13:57:37.118]     G-NE: NEW mode at 73.5k (mag=1.58M)
+[13:57:37.118]     G-NE: NEW mode at 76.2k (mag=1.65M)
+[13:57:37.118]     G-NE: NEW mode at 84.2k (mag=1.75M)
+[13:57:37.118]     D-NE: NEW mode at 23.9k (mag=2.68M)
+[13:57:37.118]     D-NE: NEW mode at 29.9k (mag=4.85M)
+[13:57:37.118]     D-NE: NEW mode at 30.0k (mag=4.38M)
+[13:57:37.118]     D-NE: NEW mode at 34.5k (mag=2.07M)
+[13:57:37.118]     D-NE: NEW mode at 34.5k (mag=2.23M)
+[13:57:37.118]     D-NE: NEW mode at 34.6k (mag=2.25M)
+[13:57:37.118]     D-NE: NEW mode at 34.9k (mag=5.63M)
+[13:57:37.118]     D-NE: NEW mode at 34.9k (mag=6.05M)
+[13:57:37.118]     D-NE: NEW mode at 34.9k (mag=5.87M)
+[13:57:37.118]     D-NE: NEW mode at 36.0k (mag=2.23M)
+[13:57:37.118]     D-NE: NEW mode at 37.0k (mag=2.24M)
+[13:57:37.118]     D-NE: NEW mode at 42.3k (mag=1.83M)
+[13:57:37.118]     D-NE: NEW mode at 45.0k (mag=2.98M)
+[13:57:37.118]     D-NE: NEW mode at 49.6k (mag=3.29M)
+[13:57:37.118]     D-NE: NEW mode at 56.2k (mag=1.71M)
+[13:57:37.118]     D-NE: NEW mode at 58.5k (mag=2.72M)
+[13:57:37.118]     D-NE: NEW mode at 61.0k (mag=2.63M)
+[13:57:37.118]     D-NE: NEW mode at 62.1k (mag=2.00M)
+[13:57:37.118]     D-NE: NEW mode at 70.8k (mag=2.88M)
+[13:57:37.118]     D-NE: NEW mode at 89.4k (mag=1.53M)
+[13:57:37.118]     H-NE: NEW mode at 23.9k (mag=2.09M)
+[13:57:37.118]     H-NE: NEW mode at 28.8k (mag=2.52M)
+[13:57:37.118]     H-NE: NEW mode at 28.9k (mag=2.88M)
+[13:57:37.118]     H-NE: NEW mode at 29.2k (mag=3.30M)
+[13:57:37.118]     H-NE: NEW mode at 29.2k (mag=5.02M)
+[13:57:37.118]     H-NE: NEW mode at 29.3k (mag=5.00M)
+[13:57:37.118]     H-NE: NEW mode at 29.3k (mag=4.41M)
+[13:57:37.118]     H-NE: NEW mode at 29.9k (mag=4.03M)
+[13:57:37.118]     H-NE: NEW mode at 30.0k (mag=2.98M)
+[13:57:37.118]     H-NE: NEW mode at 36.0k (mag=1.80M)
+[13:57:37.118]     H-NE: NEW mode at 37.0k (mag=1.93M)
+[13:57:37.118]     H-NE: NEW mode at 42.3k (mag=1.64M)
+[13:57:37.118]     H-NE: NEW mode at 45.0k (mag=2.55M)
+[13:57:37.118]     H-NE: NEW mode at 47.7k (mag=2.89M)
+[13:57:37.118]     H-NE: NEW mode at 47.8k (mag=2.47M)
+[13:57:37.118]     H-NE: NEW mode at 47.8k (mag=1.91M)
+[13:57:37.118]     H-NE: NEW mode at 47.9k (mag=1.57M)
+[13:57:37.118]     H-NE: NEW mode at 48.5k (mag=3.80M)
+[13:57:37.118]     H-NE: NEW mode at 49.6k (mag=3.24M)
+[13:57:37.118]     H-NE: NEW mode at 58.5k (mag=2.65M)
+[13:57:37.118]     H-NE: NEW mode at 70.8k (mag=2.33M)
+[13:57:37.118]     H-NE: NEW mode at 76.2k (mag=1.55M)
+[13:57:37.118]     H-NE: NEW mode at 78.8k (mag=1.94M)
+[13:57:37.118]     H-NE: NEW mode at 86.9k (mag=1.68M)
+[13:57:37.118]     H-NW: NEW mode at 31.6k (mag=1.56M)
+[13:57:37.118]     H-NW: NEW mode at 70.8k (mag=1.87M)
+[13:57:37.118]     H-NW: NEW mode at 76.2k (mag=1.54M)
+[13:57:37.118]     G-NW: NEW mode at 48.5k (mag=4.00M)
+[13:57:37.118]     G-NW: NEW mode at 49.6k (mag=1.75M)
+[13:57:37.118]     G-NW: NEW mode at 76.2k (mag=1.74M)
+[13:57:37.118]     D-NW: NEW mode at 70.8k (mag=1.53M)
+[13:57:37.118] 
+  Probe frequency discoveries:
+[13:57:37.118]   Probe hits: 0
+[13:57:37.118]   Augmented frequency count: 75 (was 75)
+[13:57:37.118] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.118]   PHASE 2: Exhaustive partition search (no-prescan)
+[13:57:37.118] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.118]   Testing 15 partitions...
+[13:57:37.158] 
+══════════════════════════════════════════════════════════════════════
+[13:57:37.158]   RESULTS — All Partitions (no-prescan), sorted by bits
+[13:57:37.158] ══════════════════════════════════════════════════════════════════════
+[13:57:37.158] 
+  Partition                       Bits  Both    A    B   AND    OR   XOR  Mean
+[13:57:37.158]   ──────────────────────────────  ────  ────  ───  ───  ────  ────  ────  ────
+[13:57:37.158]   G vs A+B+D+H                      39    21    1   17  100%  100%  100%  100% ◄
+[13:57:37.158]   H vs A+B+D+G                      39    22    2   15  100%  100%  100%  100% ◄
+[13:57:37.158]   A+D vs B+G+H                      39    23    7    9  100%  100%  100%  100% ◄
+[13:57:37.158]   B+H vs A+D+G                      39    26    4    9  100%  100%  100%  100% ◄
+[13:57:37.158]   D+G vs A+B+H                      39    26    3   10  100%  100%  100%  100% ◄
+[13:57:37.158]   G+H vs A+B+D                      39    24    5   10  100%  100%  100%  100% ◄
+[13:57:37.158]   D vs A+B+G+H                      39    23    1   15   97%  100%   97%   98%
+[13:57:37.158]   B+G vs A+D+H                      39    22    4   13   97%  100%   97%   98%
+[13:57:37.158]   B vs A+D+G+H                      39    16    2   21   92%  100%   92%   95%
+[13:57:37.158]   A+B vs D+G+H                      38    19    6   13  100%  100%  100%  100% ◄
+[13:57:37.158]   A+G vs B+D+H                      38    25    5    8  100%  100%  100%  100% ◄
+[13:57:37.158]   A+H vs B+D+G                      38    25    7    6  100%  100%  100%  100% ◄
+[13:57:37.158]   D+H vs A+B+G                      38    25    5    8  100%  100%  100%  100% ◄
+[13:57:37.158]   B+D vs A+G+H                      38    25    3   10   97%  100%   97%   98%
+[13:57:37.158]   A vs B+D+G+H                      38    10    4   24   95%  100%   95%   96%
+[13:57:37.158] 
+  ★ BEST 100% CONFIG: G vs A+B+D+H — 39 bits
+[13:57:37.158] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.158]   PHASE 3: Breakdown analysis — per-frequency detail for top configs
+[13:57:37.158] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.158] 
+  G vs A+B+D+H  [39 bits]  Mean=100%
+[13:57:37.158]     All 39 frequencies passed ✓
+[13:57:37.158] 
+  H vs A+B+D+G  [39 bits]  Mean=100%
+[13:57:37.158]     All 39 frequencies passed ✓
+[13:57:37.158] 
+  A+D vs B+G+H  [39 bits]  Mean=100%
+[13:57:37.158]     All 39 frequencies passed ✓
+[13:57:37.158] 
+  D vs A+B+G+H  [39 bits]  Mean=98%
+[13:57:37.158]     FAIL: 34.4k  cat=both  det_A=False(exp=True)  det_B=True(exp=True)
+[13:57:37.158] 
+  B+G vs A+D+H  [39 bits]  Mean=98%
+[13:57:37.158]     FAIL: 88.1k  cat=both  det_A=False(exp=True)  det_B=True(exp=True)
+[13:57:37.158] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.158]   PHASE 4: Prescan variants for top no-prescan configs
+[13:57:37.158] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[13:57:37.179] 
+  Partition                       NoPre   Pre   AND    OR   XOR  Mean
+[13:57:37.179]   ──────────────────────────────  ─────  ────  ────  ────  ────  ────
+[13:57:37.179]   G vs A+B+D+H                       39    24   96%  100%   96%   97%
+[13:57:37.179]   H vs A+B+D+G                       39    24   96%  100%   96%   97%
+[13:57:37.179]   A+D vs B+G+H                       39    23   96%  100%   96%   97%
+[13:57:37.179]   B+H vs A+D+G                       39    23  100%  100%  100%  100%
+[13:57:37.179]   D+G vs A+B+H                       39    23   96%  100%   96%   97%
+[13:57:37.179]   G+H vs A+B+D                       39    24   96%  100%   96%   97%
+[13:57:37.179]   D vs A+B+G+H                       39    22  100%  100%  100%  100%
+[13:57:37.179]   B+G vs A+D+H                       39    24   96%  100%   96%   97%
+[13:57:37.181] 
+  Results saved: bool_push_20260418_135737.json

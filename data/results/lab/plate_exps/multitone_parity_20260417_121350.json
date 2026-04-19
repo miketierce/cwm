@@ -1,0 +1,196 @@
+{
+  "timestamp": "2026-04-17T17:13:50.849013+00:00",
+  "experiment": "multitone_parity",
+  "mode": "hardware",
+  "n_samples": 500,
+  "n_carriers": 5,
+  "n_modes": 27,
+  "tasks": {
+    "parity": {
+      "One-hot (10-dim)": {
+        "sequence_acc": 0.43,
+        "mean_position": 0.43,
+        "per_position": [
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.62,
+        "mean_position": 0.62,
+        "per_position": [
+          0.62,
+          0.62,
+          0.62,
+          0.62,
+          0.62
+        ],
+        "best_alpha": 10.0
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 0.61,
+        "mean_position": 0.61,
+        "per_position": [
+          0.61,
+          0.61,
+          0.61,
+          0.61,
+          0.61
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband (27-dim)": {
+        "sequence_acc": 0.62,
+        "mean_position": 0.62,
+        "per_position": [
+          0.62,
+          0.62,
+          0.62,
+          0.62,
+          0.62
+        ],
+        "best_alpha": 100.0
+      },
+      "Wideband exp (405-dim)": {
+        "sequence_acc": 0.58,
+        "mean_position": 0.58,
+        "per_position": [
+          0.58,
+          0.58,
+          0.58,
+          0.58,
+          0.58
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "reverse": {
+      "One-hot (10-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.99,
+        "mean_position": 0.998,
+        "per_position": [
+          0.99,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband (27-dim)": {
+        "sequence_acc": 0.97,
+        "mean_position": 0.99,
+        "per_position": [
+          0.98,
+          0.99,
+          0.99,
+          1.0,
+          0.99
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband exp (405-dim)": {
+        "sequence_acc": 0.75,
+        "mean_position": 0.938,
+        "per_position": [
+          0.91,
+          0.94,
+          0.89,
+          0.97,
+          0.98
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (10-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.96,
+        "mean_position": 0.99,
+        "per_position": [
+          0.99,
+          1.0,
+          1.0,
+          1.0,
+          0.96
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 0.99,
+        "mean_position": 0.998,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          0.99,
+          1.0
+        ],
+        "best_alpha": 0.1
+      },
+      "Wideband (27-dim)": {
+        "sequence_acc": 0.98,
+        "mean_position": 0.9960000000000001,
+        "per_position": [
+          1.0,
+          0.99,
+          1.0,
+          1.0,
+          0.99
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband exp (405-dim)": {
+        "sequence_acc": 0.65,
+        "mean_position": 0.9,
+        "per_position": [
+          0.96,
+          0.97,
+          0.85,
+          0.86,
+          0.86
+        ],
+        "best_alpha": 0.001
+      }
+    }
+  }
+}

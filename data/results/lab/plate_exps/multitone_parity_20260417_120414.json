@@ -1,0 +1,166 @@
+{
+  "timestamp": "2026-04-17T17:04:14.164431+00:00",
+  "experiment": "multitone_parity",
+  "mode": "hardware",
+  "n_samples": 500,
+  "n_carriers": 3,
+  "n_modes": 14,
+  "tasks": {
+    "parity": {
+      "One-hot (6-dim)": {
+        "sequence_acc": 0.79,
+        "mean_position": 0.79,
+        "per_position": [
+          0.79,
+          0.79,
+          0.79
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.72,
+        "mean_position": 0.7200000000000001,
+        "per_position": [
+          0.72,
+          0.72,
+          0.72
+        ],
+        "best_alpha": 10.0
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 0.82,
+        "mean_position": 0.82,
+        "per_position": [
+          0.82,
+          0.82,
+          0.82
+        ],
+        "best_alpha": 1.0
+      },
+      "Wideband (14-dim)": {
+        "sequence_acc": 0.83,
+        "mean_position": 0.83,
+        "per_position": [
+          0.83,
+          0.83,
+          0.83
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband exp (119-dim)": {
+        "sequence_acc": 0.99,
+        "mean_position": 0.9899999999999999,
+        "per_position": [
+          0.99,
+          0.99,
+          0.99
+        ],
+        "best_alpha": 1.0
+      }
+    },
+    "reverse": {
+      "One-hot (6-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.94,
+        "mean_position": 0.98,
+        "per_position": [
+          0.97,
+          1.0,
+          0.97
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband (14-dim)": {
+        "sequence_acc": 0.98,
+        "mean_position": 0.9933333333333333,
+        "per_position": [
+          0.99,
+          0.99,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband exp (119-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (6-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes only (8-dim)": {
+        "sequence_acc": 0.97,
+        "mean_position": 0.98,
+        "per_position": [
+          0.98,
+          0.98,
+          0.98
+        ],
+        "best_alpha": 0.001
+      },
+      "Modes exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband (14-dim)": {
+        "sequence_acc": 0.97,
+        "mean_position": 0.9899999999999999,
+        "per_position": [
+          1.0,
+          1.0,
+          0.97
+        ],
+        "best_alpha": 0.001
+      },
+      "Wideband exp (119-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    }
+  }
+}

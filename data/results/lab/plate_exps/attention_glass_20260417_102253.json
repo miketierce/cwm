@@ -1,0 +1,2938 @@
+{
+  "timestamp": "2026-04-17T15:22:53.631144+00:00",
+  "experiment": "attention_in_glass",
+  "description": "PDP-11/44 vs Plate D on sequence tasks",
+  "n_carriers": 7,
+  "n_modes": 8,
+  "n_test": 2000,
+  "tasks": {
+    "identity": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.15342857142857141,
+          "per_position": [
+            0.1275,
+            0.166,
+            0.1605,
+            0.1525,
+            0.1575,
+            0.152,
+            0.158
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.37107142857142855,
+          "per_position": [
+            0.436,
+            0.373,
+            0.307,
+            0.414,
+            0.355,
+            0.306,
+            0.4065
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.15328571428571428,
+          "per_position": [
+            0.1275,
+            0.1655,
+            0.1605,
+            0.1525,
+            0.1575,
+            0.152,
+            0.1575
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.162,
+          "per_position": [
+            0.1765,
+            0.1655,
+            0.163,
+            0.1585,
+            0.164,
+            0.162,
+            0.1445
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.19249999999999998,
+          "per_position": [
+            0.1945,
+            0.1875,
+            0.1925,
+            0.2,
+            0.202,
+            0.1855,
+            0.1855
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0095,
+          "mean_position": 0.5854999999999999,
+          "per_position": [
+            0.647,
+            0.5815,
+            0.526,
+            0.563,
+            0.649,
+            0.5385,
+            0.5935
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.19249999999999998,
+          "per_position": [
+            0.1945,
+            0.1875,
+            0.1925,
+            0.2,
+            0.202,
+            0.1855,
+            0.1855
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.15614285714285714,
+          "per_position": [
+            0.169,
+            0.16,
+            0.139,
+            0.164,
+            0.1475,
+            0.153,
+            0.1605
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22692857142857142,
+          "per_position": [
+            0.1885,
+            0.276,
+            0.215,
+            0.221,
+            0.2245,
+            0.2365,
+            0.227
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.881,
+          "mean_position": 0.9827857142857143,
+          "per_position": [
+            0.9995,
+            0.9975,
+            0.892,
+            1.0,
+            0.9985,
+            0.998,
+            0.994
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22692857142857142,
+          "per_position": [
+            0.1885,
+            0.276,
+            0.215,
+            0.221,
+            0.2245,
+            0.2365,
+            0.227
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1752857142857143,
+          "per_position": [
+            0.18,
+            0.205,
+            0.156,
+            0.155,
+            0.1885,
+            0.1545,
+            0.188
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.2444285714285714,
+          "per_position": [
+            0.259,
+            0.224,
+            0.244,
+            0.2475,
+            0.247,
+            0.2325,
+            0.257
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.2444285714285714,
+          "per_position": [
+            0.259,
+            0.224,
+            0.244,
+            0.2475,
+            0.247,
+            0.2325,
+            0.257
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2095,
+          "per_position": [
+            0.214,
+            0.2035,
+            0.1945,
+            0.2205,
+            0.2065,
+            0.199,
+            0.2285
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2507142857142858,
+          "per_position": [
+            0.245,
+            0.254,
+            0.249,
+            0.259,
+            0.2475,
+            0.261,
+            0.2395
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2507142857142858,
+          "per_position": [
+            0.245,
+            0.254,
+            0.249,
+            0.259,
+            0.2475,
+            0.261,
+            0.2395
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22878571428571431,
+          "per_position": [
+            0.209,
+            0.243,
+            0.2275,
+            0.2305,
+            0.218,
+            0.24,
+            0.2335
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23857142857142857,
+          "per_position": [
+            0.23,
+            0.2545,
+            0.257,
+            0.218,
+            0.226,
+            0.2465,
+            0.238
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23857142857142857,
+          "per_position": [
+            0.23,
+            0.2545,
+            0.257,
+            0.218,
+            0.226,
+            0.2465,
+            0.238
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23664285714285715,
+          "per_position": [
+            0.233,
+            0.2495,
+            0.239,
+            0.2405,
+            0.235,
+            0.245,
+            0.2145
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22421428571428573,
+          "per_position": [
+            0.202,
+            0.2265,
+            0.22,
+            0.2375,
+            0.227,
+            0.2335,
+            0.223
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22421428571428573,
+          "per_position": [
+            0.202,
+            0.2265,
+            0.22,
+            0.2375,
+            0.227,
+            0.2335,
+            0.223
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22899999999999995,
+          "per_position": [
+            0.2355,
+            0.2265,
+            0.229,
+            0.228,
+            0.241,
+            0.2305,
+            0.2125
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2076428571428571,
+          "per_position": [
+            0.194,
+            0.216,
+            0.201,
+            0.21,
+            0.196,
+            0.218,
+            0.2185
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2076428571428571,
+          "per_position": [
+            0.194,
+            0.216,
+            0.201,
+            0.21,
+            0.196,
+            0.218,
+            0.2185
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23192857142857143,
+          "per_position": [
+            0.2255,
+            0.2355,
+            0.221,
+            0.243,
+            0.2365,
+            0.2255,
+            0.2365
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20007142857142854,
+          "per_position": [
+            0.1825,
+            0.207,
+            0.2055,
+            0.207,
+            0.1845,
+            0.2035,
+            0.2105
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20007142857142854,
+          "per_position": [
+            0.1825,
+            0.207,
+            0.2055,
+            0.207,
+            0.1845,
+            0.2035,
+            0.2105
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22021428571428572,
+          "per_position": [
+            0.2005,
+            0.2345,
+            0.2195,
+            0.2165,
+            0.2115,
+            0.231,
+            0.228
+          ]
+        }
+      }
+    },
+    "reverse": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1412857142857143,
+          "per_position": [
+            0.1145,
+            0.1475,
+            0.143,
+            0.1675,
+            0.1155,
+            0.1315,
+            0.1695
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3722142857142857,
+          "per_position": [
+            0.4355,
+            0.371,
+            0.412,
+            0.3045,
+            0.4905,
+            0.362,
+            0.23
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1412142857142857,
+          "per_position": [
+            0.1145,
+            0.1475,
+            0.1425,
+            0.1675,
+            0.1155,
+            0.1315,
+            0.1695
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1475,
+          "per_position": [
+            0.125,
+            0.144,
+            0.1655,
+            0.166,
+            0.1165,
+            0.1395,
+            0.176
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1829285714285714,
+          "per_position": [
+            0.183,
+            0.1765,
+            0.195,
+            0.173,
+            0.193,
+            0.1885,
+            0.1715
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0125,
+          "mean_position": 0.5720714285714286,
+          "per_position": [
+            0.591,
+            0.645,
+            0.4435,
+            0.5155,
+            0.5725,
+            0.6775,
+            0.5595
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1829285714285714,
+          "per_position": [
+            0.183,
+            0.1765,
+            0.195,
+            0.173,
+            0.193,
+            0.1885,
+            0.1715
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1595,
+          "per_position": [
+            0.15,
+            0.1795,
+            0.147,
+            0.159,
+            0.162,
+            0.1615,
+            0.1575
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21771428571428572,
+          "per_position": [
+            0.2155,
+            0.2105,
+            0.2215,
+            0.2095,
+            0.2255,
+            0.206,
+            0.2355
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.974,
+          "mean_position": 0.9961428571428572,
+          "per_position": [
+            0.9955,
+            0.9985,
+            0.9985,
+            0.9955,
+            0.9945,
+            0.9935,
+            0.997
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21771428571428572,
+          "per_position": [
+            0.2155,
+            0.2105,
+            0.2215,
+            0.2095,
+            0.2255,
+            0.206,
+            0.2355
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.17900000000000002,
+          "per_position": [
+            0.173,
+            0.183,
+            0.1905,
+            0.171,
+            0.166,
+            0.1755,
+            0.194
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24892857142857144,
+          "per_position": [
+            0.226,
+            0.265,
+            0.263,
+            0.261,
+            0.2455,
+            0.247,
+            0.235
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24892857142857144,
+          "per_position": [
+            0.226,
+            0.265,
+            0.263,
+            0.261,
+            0.2455,
+            0.247,
+            0.235
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21107142857142858,
+          "per_position": [
+            0.2175,
+            0.23,
+            0.206,
+            0.2085,
+            0.1985,
+            0.2055,
+            0.2115
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23978571428571427,
+          "per_position": [
+            0.208,
+            0.2455,
+            0.229,
+            0.2655,
+            0.2265,
+            0.268,
+            0.236
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23978571428571427,
+          "per_position": [
+            0.208,
+            0.2455,
+            0.229,
+            0.2655,
+            0.2265,
+            0.268,
+            0.236
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22992857142857145,
+          "per_position": [
+            0.2235,
+            0.2305,
+            0.223,
+            0.232,
+            0.2375,
+            0.2335,
+            0.2295
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24699999999999997,
+          "per_position": [
+            0.242,
+            0.242,
+            0.2405,
+            0.274,
+            0.2445,
+            0.2325,
+            0.2535
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24699999999999997,
+          "per_position": [
+            0.242,
+            0.242,
+            0.2405,
+            0.274,
+            0.2445,
+            0.2325,
+            0.2535
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24042857142857144,
+          "per_position": [
+            0.2485,
+            0.2455,
+            0.243,
+            0.26,
+            0.2145,
+            0.215,
+            0.2565
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2282142857142857,
+          "per_position": [
+            0.2075,
+            0.247,
+            0.229,
+            0.2185,
+            0.2085,
+            0.2345,
+            0.2525
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2282142857142857,
+          "per_position": [
+            0.2075,
+            0.247,
+            0.229,
+            0.2185,
+            0.2085,
+            0.2345,
+            0.2525
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24235714285714285,
+          "per_position": [
+            0.229,
+            0.241,
+            0.234,
+            0.228,
+            0.2445,
+            0.254,
+            0.266
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2147142857142857,
+          "per_position": [
+            0.203,
+            0.228,
+            0.2115,
+            0.2005,
+            0.211,
+            0.2165,
+            0.2325
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2147142857142857,
+          "per_position": [
+            0.203,
+            0.228,
+            0.2115,
+            0.2005,
+            0.211,
+            0.2165,
+            0.2325
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24257142857142858,
+          "per_position": [
+            0.234,
+            0.245,
+            0.2315,
+            0.2375,
+            0.241,
+            0.2425,
+            0.2665
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2047142857142857,
+          "per_position": [
+            0.1955,
+            0.2125,
+            0.2105,
+            0.1955,
+            0.195,
+            0.208,
+            0.216
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2047142857142857,
+          "per_position": [
+            0.1955,
+            0.2125,
+            0.2105,
+            0.1955,
+            0.195,
+            0.208,
+            0.216
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2222142857142857,
+          "per_position": [
+            0.215,
+            0.225,
+            0.2255,
+            0.216,
+            0.2165,
+            0.22,
+            0.2375
+          ]
+        }
+      }
+    },
+    "rotate_3": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1535714285714286,
+          "per_position": [
+            0.156,
+            0.134,
+            0.158,
+            0.142,
+            0.16,
+            0.156,
+            0.169
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3642142857142857,
+          "per_position": [
+            0.439,
+            0.2685,
+            0.347,
+            0.347,
+            0.3665,
+            0.4175,
+            0.364
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1535714285714286,
+          "per_position": [
+            0.156,
+            0.134,
+            0.158,
+            0.142,
+            0.16,
+            0.156,
+            0.169
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.15464285714285714,
+          "per_position": [
+            0.1615,
+            0.138,
+            0.168,
+            0.134,
+            0.1685,
+            0.152,
+            0.1605
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1842857142857143,
+          "per_position": [
+            0.167,
+            0.2015,
+            0.202,
+            0.162,
+            0.1735,
+            0.193,
+            0.191
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0085,
+          "mean_position": 0.5757857142857142,
+          "per_position": [
+            0.599,
+            0.476,
+            0.5745,
+            0.709,
+            0.613,
+            0.5815,
+            0.4775
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.18421428571428572,
+          "per_position": [
+            0.167,
+            0.2015,
+            0.202,
+            0.162,
+            0.173,
+            0.193,
+            0.191
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.15835714285714286,
+          "per_position": [
+            0.13,
+            0.1725,
+            0.155,
+            0.163,
+            0.1555,
+            0.165,
+            0.1675
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2312857142857143,
+          "per_position": [
+            0.235,
+            0.262,
+            0.219,
+            0.2245,
+            0.2265,
+            0.2355,
+            0.2165
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.977,
+          "mean_position": 0.996642857142857,
+          "per_position": [
+            0.9965,
+            0.995,
+            1.0,
+            0.992,
+            0.9975,
+            0.9965,
+            0.999
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2312857142857143,
+          "per_position": [
+            0.235,
+            0.262,
+            0.219,
+            0.2245,
+            0.2265,
+            0.2355,
+            0.2165
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.19178571428571428,
+          "per_position": [
+            0.202,
+            0.169,
+            0.189,
+            0.2015,
+            0.2035,
+            0.184,
+            0.1935
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24707142857142858,
+          "per_position": [
+            0.2545,
+            0.23,
+            0.25,
+            0.2465,
+            0.2505,
+            0.2515,
+            0.2465
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24707142857142858,
+          "per_position": [
+            0.2545,
+            0.23,
+            0.25,
+            0.2465,
+            0.2505,
+            0.2515,
+            0.2465
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.208,
+          "per_position": [
+            0.199,
+            0.2,
+            0.216,
+            0.194,
+            0.2205,
+            0.2055,
+            0.221
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24857142857142858,
+          "per_position": [
+            0.256,
+            0.2495,
+            0.251,
+            0.2445,
+            0.249,
+            0.246,
+            0.244
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24857142857142858,
+          "per_position": [
+            0.256,
+            0.2495,
+            0.251,
+            0.2445,
+            0.249,
+            0.246,
+            0.244
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23064285714285718,
+          "per_position": [
+            0.2195,
+            0.251,
+            0.2265,
+            0.231,
+            0.214,
+            0.235,
+            0.2375
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23735714285714285,
+          "per_position": [
+            0.2325,
+            0.224,
+            0.239,
+            0.255,
+            0.2525,
+            0.252,
+            0.2065
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23735714285714285,
+          "per_position": [
+            0.2325,
+            0.224,
+            0.239,
+            0.255,
+            0.2525,
+            0.252,
+            0.2065
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23085714285714282,
+          "per_position": [
+            0.2325,
+            0.224,
+            0.2355,
+            0.2485,
+            0.2185,
+            0.243,
+            0.214
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2145,
+          "per_position": [
+            0.2295,
+            0.207,
+            0.214,
+            0.2185,
+            0.21,
+            0.219,
+            0.2035
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2145,
+          "per_position": [
+            0.2295,
+            0.207,
+            0.214,
+            0.2185,
+            0.21,
+            0.219,
+            0.2035
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24050000000000002,
+          "per_position": [
+            0.234,
+            0.258,
+            0.237,
+            0.237,
+            0.2395,
+            0.251,
+            0.227
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20885714285714285,
+          "per_position": [
+            0.2095,
+            0.208,
+            0.2065,
+            0.214,
+            0.215,
+            0.217,
+            0.192
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20885714285714285,
+          "per_position": [
+            0.2095,
+            0.208,
+            0.2065,
+            0.214,
+            0.215,
+            0.217,
+            0.192
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22678571428571428,
+          "per_position": [
+            0.231,
+            0.239,
+            0.2295,
+            0.224,
+            0.2225,
+            0.231,
+            0.2105
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.19885714285714284,
+          "per_position": [
+            0.202,
+            0.2015,
+            0.1995,
+            0.204,
+            0.1935,
+            0.2015,
+            0.19
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.19885714285714284,
+          "per_position": [
+            0.202,
+            0.2015,
+            0.1995,
+            0.204,
+            0.1935,
+            0.2015,
+            0.19
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21571428571428572,
+          "per_position": [
+            0.2175,
+            0.2175,
+            0.22,
+            0.228,
+            0.2145,
+            0.2095,
+            0.203
+          ]
+        }
+      }
+    },
+    "sort": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21485714285714286,
+          "per_position": [
+            0.2155,
+            0.2175,
+            0.1815,
+            0.1995,
+            0.2045,
+            0.197,
+            0.2885
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.28614285714285714,
+          "per_position": [
+            0.333,
+            0.279,
+            0.26,
+            0.2715,
+            0.248,
+            0.233,
+            0.3785
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2149285714285714,
+          "per_position": [
+            0.2155,
+            0.217,
+            0.182,
+            0.1995,
+            0.2045,
+            0.1975,
+            0.2885
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21150000000000002,
+          "per_position": [
+            0.187,
+            0.2105,
+            0.204,
+            0.1975,
+            0.1965,
+            0.206,
+            0.279
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24792857142857144,
+          "per_position": [
+            0.309,
+            0.2195,
+            0.227,
+            0.23,
+            0.201,
+            0.225,
+            0.324
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.29957142857142854,
+          "per_position": [
+            0.393,
+            0.3365,
+            0.2605,
+            0.2645,
+            0.2455,
+            0.247,
+            0.35
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24792857142857144,
+          "per_position": [
+            0.309,
+            0.2195,
+            0.227,
+            0.23,
+            0.201,
+            0.225,
+            0.324
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22528571428571428,
+          "per_position": [
+            0.269,
+            0.168,
+            0.2165,
+            0.222,
+            0.2145,
+            0.2405,
+            0.2465
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.28585714285714287,
+          "per_position": [
+            0.3555,
+            0.273,
+            0.236,
+            0.236,
+            0.256,
+            0.2685,
+            0.376
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.28771428571428576,
+          "per_position": [
+            0.3385,
+            0.301,
+            0.2565,
+            0.234,
+            0.277,
+            0.324,
+            0.283
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.28585714285714287,
+          "per_position": [
+            0.3555,
+            0.273,
+            0.236,
+            0.236,
+            0.256,
+            0.2685,
+            0.376
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.26435714285714285,
+          "per_position": [
+            0.3135,
+            0.2595,
+            0.2175,
+            0.261,
+            0.227,
+            0.241,
+            0.331
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.30757142857142855,
+          "per_position": [
+            0.3735,
+            0.2975,
+            0.292,
+            0.2595,
+            0.2305,
+            0.268,
+            0.432
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.005,
+          "mean_position": 0.42578571428571427,
+          "per_position": [
+            0.462,
+            0.484,
+            0.393,
+            0.3475,
+            0.3735,
+            0.433,
+            0.4875
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.30757142857142855,
+          "per_position": [
+            0.3735,
+            0.2975,
+            0.292,
+            0.2595,
+            0.2305,
+            0.268,
+            0.432
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.29871428571428577,
+          "per_position": [
+            0.4045,
+            0.282,
+            0.2585,
+            0.2455,
+            0.2435,
+            0.2865,
+            0.3705
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.3117142857142857,
+          "per_position": [
+            0.432,
+            0.29,
+            0.2535,
+            0.2765,
+            0.2625,
+            0.266,
+            0.4015
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.023,
+          "mean_position": 0.5365,
+          "per_position": [
+            0.619,
+            0.5365,
+            0.4985,
+            0.4625,
+            0.4805,
+            0.549,
+            0.6095
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.3117142857142857,
+          "per_position": [
+            0.432,
+            0.29,
+            0.2535,
+            0.2765,
+            0.2625,
+            0.266,
+            0.4015
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3272857142857143,
+          "per_position": [
+            0.4475,
+            0.283,
+            0.2625,
+            0.3,
+            0.283,
+            0.324,
+            0.391
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.32071428571428573,
+          "per_position": [
+            0.422,
+            0.2715,
+            0.2955,
+            0.2555,
+            0.275,
+            0.308,
+            0.4175
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.047,
+          "mean_position": 0.6429999999999999,
+          "per_position": [
+            0.6725,
+            0.645,
+            0.5905,
+            0.569,
+            0.59,
+            0.655,
+            0.779
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.32071428571428573,
+          "per_position": [
+            0.422,
+            0.2715,
+            0.2955,
+            0.2555,
+            0.275,
+            0.308,
+            0.4175
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3537857142857143,
+          "per_position": [
+            0.4605,
+            0.327,
+            0.3055,
+            0.3,
+            0.3015,
+            0.351,
+            0.431
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.331,
+          "per_position": [
+            0.46,
+            0.285,
+            0.2845,
+            0.286,
+            0.2895,
+            0.278,
+            0.434
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.061,
+          "mean_position": 0.6759285714285715,
+          "per_position": [
+            0.7965,
+            0.6845,
+            0.6115,
+            0.5695,
+            0.616,
+            0.667,
+            0.7865
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.331,
+          "per_position": [
+            0.46,
+            0.285,
+            0.2845,
+            0.286,
+            0.2895,
+            0.278,
+            0.434
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3694285714285714,
+          "per_position": [
+            0.473,
+            0.355,
+            0.309,
+            0.3475,
+            0.3195,
+            0.3155,
+            0.4665
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.33749999999999997,
+          "per_position": [
+            0.466,
+            0.2905,
+            0.282,
+            0.279,
+            0.289,
+            0.306,
+            0.45
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.07,
+          "mean_position": 0.7117857142857144,
+          "per_position": [
+            0.8595,
+            0.687,
+            0.629,
+            0.612,
+            0.6385,
+            0.6965,
+            0.86
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.33749999999999997,
+          "per_position": [
+            0.466,
+            0.2905,
+            0.282,
+            0.279,
+            0.289,
+            0.306,
+            0.45
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.002,
+          "mean_position": 0.3814285714285714,
+          "per_position": [
+            0.4945,
+            0.345,
+            0.3165,
+            0.3325,
+            0.337,
+            0.3605,
+            0.484
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.002,
+          "mean_position": 0.3309285714285714,
+          "per_position": [
+            0.4435,
+            0.286,
+            0.2785,
+            0.2725,
+            0.28,
+            0.3055,
+            0.4505
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.068,
+          "mean_position": 0.7222142857142856,
+          "per_position": [
+            0.8555,
+            0.72,
+            0.6445,
+            0.614,
+            0.642,
+            0.716,
+            0.8635
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.002,
+          "mean_position": 0.3309285714285714,
+          "per_position": [
+            0.4435,
+            0.286,
+            0.2785,
+            0.2725,
+            0.28,
+            0.3055,
+            0.4505
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.39121428571428574,
+          "per_position": [
+            0.49,
+            0.352,
+            0.334,
+            0.36,
+            0.3465,
+            0.3715,
+            0.4845
+          ]
+        }
+      }
+    },
+    "parity": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.488,
+          "mean_position": 0.488,
+          "per_position": [
+            0.488,
+            0.488,
+            0.488,
+            0.488,
+            0.488,
+            0.488,
+            0.488
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.5085,
+          "mean_position": 0.5084999999999998,
+          "per_position": [
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.487,
+          "mean_position": 0.48700000000000004,
+          "per_position": [
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.5105,
+          "mean_position": 0.5105,
+          "per_position": [
+            0.5105,
+            0.5105,
+            0.5105,
+            0.5105,
+            0.5105,
+            0.5105,
+            0.5105
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.504,
+          "mean_position": 0.504,
+          "per_position": [
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.51,
+          "mean_position": 0.5099999999999999,
+          "per_position": [
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.504,
+          "mean_position": 0.504,
+          "per_position": [
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.4985,
+          "mean_position": 0.4985,
+          "per_position": [
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.479,
+          "mean_position": 0.47900000000000004,
+          "per_position": [
+            0.479,
+            0.479,
+            0.479,
+            0.479,
+            0.479,
+            0.479,
+            0.479
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4955,
+          "mean_position": 0.49549999999999994,
+          "per_position": [
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.478,
+          "mean_position": 0.47799999999999987,
+          "per_position": [
+            0.478,
+            0.478,
+            0.478,
+            0.478,
+            0.478,
+            0.478,
+            0.478
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.4975,
+          "mean_position": 0.4975,
+          "per_position": [
+            0.4975,
+            0.4975,
+            0.4975,
+            0.4975,
+            0.4975,
+            0.4975,
+            0.4975
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.5125,
+          "mean_position": 0.5125000000000001,
+          "per_position": [
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.5195,
+          "mean_position": 0.5195,
+          "per_position": [
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.5125,
+          "mean_position": 0.5125000000000001,
+          "per_position": [
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.508,
+          "mean_position": 0.508,
+          "per_position": [
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.497,
+          "mean_position": 0.49699999999999994,
+          "per_position": [
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4815,
+          "mean_position": 0.4815,
+          "per_position": [
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.4935,
+          "mean_position": 0.4935,
+          "per_position": [
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.4915,
+          "mean_position": 0.49149999999999994,
+          "per_position": [
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.49,
+          "mean_position": 0.4900000000000001,
+          "per_position": [
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.497,
+          "mean_position": 0.49699999999999994,
+          "per_position": [
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.49,
+          "mean_position": 0.4900000000000001,
+          "per_position": [
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.474,
+          "mean_position": 0.4740000000000001,
+          "per_position": [
+            0.474,
+            0.474,
+            0.474,
+            0.474,
+            0.474,
+            0.474,
+            0.474
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.501,
+          "mean_position": 0.501,
+          "per_position": [
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.501,
+          "mean_position": 0.501,
+          "per_position": [
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501,
+            0.501
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.496,
+          "mean_position": 0.496,
+          "per_position": [
+            0.496,
+            0.496,
+            0.496,
+            0.496,
+            0.496,
+            0.496,
+            0.496
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.503,
+          "mean_position": 0.503,
+          "per_position": [
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4925,
+          "mean_position": 0.49250000000000005,
+          "per_position": [
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.503,
+          "mean_position": 0.503,
+          "per_position": [
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.503,
+          "mean_position": 0.503,
+          "per_position": [
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503,
+            0.503
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.521,
+          "mean_position": 0.521,
+          "per_position": [
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.487,
+          "mean_position": 0.48700000000000004,
+          "per_position": [
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.521,
+          "mean_position": 0.521,
+          "per_position": [
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521,
+            0.521
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.5115,
+          "mean_position": 0.5115,
+          "per_position": [
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115
+          ]
+        }
+      }
+    },
+    "swap_ends": {
+      "10": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.16571428571428573,
+          "per_position": [
+            0.153,
+            0.1725,
+            0.1845,
+            0.1635,
+            0.17,
+            0.151,
+            0.1655
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3521428571428572,
+          "per_position": [
+            0.403,
+            0.328,
+            0.3345,
+            0.423,
+            0.31,
+            0.3615,
+            0.305
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.16564285714285715,
+          "per_position": [
+            0.1525,
+            0.1725,
+            0.1845,
+            0.1635,
+            0.17,
+            0.151,
+            0.1655
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.16671428571428568,
+          "per_position": [
+            0.155,
+            0.174,
+            0.1815,
+            0.1515,
+            0.1645,
+            0.165,
+            0.1755
+          ]
+        }
+      },
+      "20": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.18235714285714286,
+          "per_position": [
+            0.189,
+            0.1955,
+            0.192,
+            0.1765,
+            0.1745,
+            0.1635,
+            0.1855
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.008,
+          "mean_position": 0.5792142857142856,
+          "per_position": [
+            0.5535,
+            0.4915,
+            0.551,
+            0.587,
+            0.6685,
+            0.5675,
+            0.6355
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.18235714285714286,
+          "per_position": [
+            0.189,
+            0.1955,
+            0.192,
+            0.1765,
+            0.1745,
+            0.1635,
+            0.1855
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.13842857142857143,
+          "per_position": [
+            0.1345,
+            0.158,
+            0.152,
+            0.1385,
+            0.114,
+            0.1355,
+            0.1365
+          ]
+        }
+      },
+      "50": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21285714285714288,
+          "per_position": [
+            0.2095,
+            0.2115,
+            0.2185,
+            0.2035,
+            0.205,
+            0.221,
+            0.221
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.971,
+          "mean_position": 0.9955,
+          "per_position": [
+            0.997,
+            0.9985,
+            0.994,
+            1.0,
+            0.9975,
+            0.9975,
+            0.984
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21285714285714288,
+          "per_position": [
+            0.2095,
+            0.2115,
+            0.2185,
+            0.2035,
+            0.205,
+            0.221,
+            0.221
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.17635714285714285,
+          "per_position": [
+            0.184,
+            0.193,
+            0.175,
+            0.173,
+            0.155,
+            0.1745,
+            0.18
+          ]
+        }
+      },
+      "100": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24099999999999996,
+          "per_position": [
+            0.24,
+            0.229,
+            0.229,
+            0.2635,
+            0.235,
+            0.2415,
+            0.249
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24099999999999996,
+          "per_position": [
+            0.24,
+            0.229,
+            0.229,
+            0.2635,
+            0.235,
+            0.2415,
+            0.249
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20792857142857146,
+          "per_position": [
+            0.214,
+            0.204,
+            0.2005,
+            0.23,
+            0.199,
+            0.205,
+            0.203
+          ]
+        }
+      },
+      "200": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24907142857142855,
+          "per_position": [
+            0.2385,
+            0.27,
+            0.2275,
+            0.252,
+            0.251,
+            0.2525,
+            0.252
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24907142857142855,
+          "per_position": [
+            0.2385,
+            0.27,
+            0.2275,
+            0.252,
+            0.251,
+            0.2525,
+            0.252
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22121428571428572,
+          "per_position": [
+            0.213,
+            0.227,
+            0.1975,
+            0.228,
+            0.2315,
+            0.2245,
+            0.227
+          ]
+        }
+      },
+      "500": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24214285714285716,
+          "per_position": [
+            0.245,
+            0.2465,
+            0.2355,
+            0.242,
+            0.23,
+            0.236,
+            0.26
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24214285714285716,
+          "per_position": [
+            0.245,
+            0.2465,
+            0.2355,
+            0.242,
+            0.23,
+            0.236,
+            0.26
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24292857142857144,
+          "per_position": [
+            0.251,
+            0.263,
+            0.2295,
+            0.2405,
+            0.231,
+            0.226,
+            0.2595
+          ]
+        }
+      },
+      "1000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22992857142857143,
+          "per_position": [
+            0.226,
+            0.242,
+            0.229,
+            0.246,
+            0.2395,
+            0.205,
+            0.222
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22992857142857143,
+          "per_position": [
+            0.226,
+            0.242,
+            0.229,
+            0.246,
+            0.2395,
+            0.205,
+            0.222
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23550000000000001,
+          "per_position": [
+            0.22,
+            0.232,
+            0.23,
+            0.2385,
+            0.239,
+            0.2535,
+            0.2355
+          ]
+        }
+      },
+      "2000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2162142857142857,
+          "per_position": [
+            0.2215,
+            0.2245,
+            0.2095,
+            0.2325,
+            0.205,
+            0.202,
+            0.2185
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2162142857142857,
+          "per_position": [
+            0.2215,
+            0.2245,
+            0.2095,
+            0.2325,
+            0.205,
+            0.202,
+            0.2185
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.24585714285714286,
+          "per_position": [
+            0.2435,
+            0.243,
+            0.2445,
+            0.252,
+            0.2505,
+            0.2285,
+            0.259
+          ]
+        }
+      },
+      "5000": {
+        "Raw digits (7-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20385714285714288,
+          "per_position": [
+            0.2155,
+            0.207,
+            0.192,
+            0.221,
+            0.193,
+            0.202,
+            0.1965
+          ]
+        },
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate spectral (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20385714285714288,
+          "per_position": [
+            0.2155,
+            0.207,
+            0.192,
+            0.221,
+            0.193,
+            0.202,
+            0.1965
+          ]
+        },
+        "Plate+poly (77-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.224,
+          "per_position": [
+            0.223,
+            0.221,
+            0.2325,
+            0.246,
+            0.202,
+            0.22,
+            0.2235
+          ]
+        }
+      }
+    }
+  }
+}

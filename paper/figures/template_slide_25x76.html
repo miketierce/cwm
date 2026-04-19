@@ -1,0 +1,3252 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>
+			CWM Plate Template — 25.4 × 76.2 mm Slide — with Perturbation Sites
+		</title>
+		<style>
+			@page {
+				size: letter;
+				margin: 0;
+			}
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			svg {
+				display: block;
+				width: 8.5in;
+				height: 11in;
+			}
+			@media print {
+				html,
+				body {
+					margin: 0;
+					padding: 0;
+				}
+				svg {
+					page-break-after: always;
+				}
+				svg:last-of-type {
+					page-break-after: avoid;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ════════════════════════════════════════════════════════════════
+     PAGE 1 — ANNOTATED REFERENCE + PATTERN TABLE + LEGEND
+     ════════════════════════════════════════════════════════════════ -->
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 612 792"
+			width="8.5in"
+			height="11in">
+			<!-- 1 mm = 2.8346 pt; Plate: 25.4 mm = 71.96 pt, 76.2 mm = 215.89 pt -->
+			<style>
+				text {
+					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				}
+				.title {
+					font-size: 13pt;
+					font-weight: 700;
+					fill: #1a1a1a;
+				}
+				.subtitle {
+					font-size: 9pt;
+					fill: #444;
+				}
+				.label {
+					font-size: 8pt;
+					fill: #1a1a1a;
+				}
+				.label-bold {
+					font-size: 8pt;
+					fill: #1a1a1a;
+					font-weight: 700;
+				}
+				.dim {
+					font-size: 7pt;
+					fill: #c00;
+					font-weight: 600;
+				}
+				.note {
+					font-size: 6.5pt;
+					fill: #555;
+					font-style: italic;
+				}
+				.inst {
+					font-size: 7pt;
+					fill: #333;
+				}
+				.plate-outline {
+					fill: #f0f5ff;
+					stroke: #2a7fff;
+					stroke-width: 1;
+				}
+				.pzt-tx {
+					fill: none;
+					stroke: #e67e00;
+					stroke-width: 1.2;
+				}
+				.pzt-rx {
+					fill: none;
+					stroke: #2a7fff;
+					stroke-width: 1.2;
+				}
+				.pzt-fill-tx {
+					fill: #e67e00;
+					fill-opacity: 0.12;
+				}
+				.pzt-fill-ne {
+					fill: #2a7fff;
+					fill-opacity: 0.12;
+				}
+				.pzt-fill-nw {
+					fill: #00aa55;
+					fill-opacity: 0.12;
+				}
+				.pzt-nw {
+					fill: none;
+					stroke: #00aa55;
+					stroke-width: 1.2;
+				}
+				.crosshair {
+					stroke: #c00;
+					stroke-width: 0.4;
+				}
+				.center-dot {
+					fill: #c00;
+					stroke: none;
+				}
+				.dim-line {
+					stroke: #c00;
+					stroke-width: 0.5;
+				}
+				.dim-ext {
+					stroke: #c00;
+					stroke-width: 0.3;
+				}
+				.zone-label {
+					font-size: 7pt;
+					fill: #999;
+					font-style: italic;
+				}
+				.ruler-bg {
+					fill: #fafaf5;
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+				.tick {
+					stroke: #333;
+					stroke-width: 0.5;
+				}
+				.tick-major {
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+				.site {
+					fill: rgba(220, 50, 50, 0.2);
+					stroke: #c00;
+					stroke-width: 0.8;
+				}
+				.site-id {
+					font-size: 5pt;
+					fill: #c00;
+					font-weight: 700;
+					text-anchor: middle;
+				}
+				.site-coord {
+					font-family: 'Courier New', monospace;
+					font-size: 5pt;
+					fill: #888;
+				}
+				.pattern-label {
+					font-size: 6.5pt;
+					fill: #c00;
+					font-weight: 700;
+				}
+			</style>
+
+			<defs>
+				<marker
+					id="arrowhead-dim"
+					markerWidth="5"
+					markerHeight="3"
+					refX="4.5"
+					refY="1.5"
+					orient="auto">
+					<polygon
+						points="0 0, 5 1.5, 0 3"
+						fill="#c00" />
+				</marker>
+			</defs>
+
+			<!-- PAGE HEADER -->
+			<text
+				x="306"
+				y="28"
+				text-anchor="middle"
+				class="title">
+				CWM Slide Template — 25.4 × 76.2 mm (1:1 Scale) + Perturbation Sites
+			</text>
+			<text
+				x="306"
+				y="42"
+				text-anchor="middle"
+				class="subtitle">
+				Print at 100% (no scaling). PZTs on underside. Perturbation putty on top
+				surface at red ● marks.
+			</text>
+			<text
+				x="306"
+				y="54"
+				text-anchor="middle"
+				class="note">
+				Verify: the calibration ruler below should measure exactly 50 mm with a
+				physical ruler.
+			</text>
+
+			<!-- CALIBRATION RULER (50 mm = 141.73 pt) -->
+			<g transform="translate(235, 62)">
+				<rect
+					x="0"
+					y="0"
+					width="141.73"
+					height="10"
+					class="ruler-bg" />
+				<line
+					x1="0"
+					y1="0"
+					x2="0"
+					y2="10"
+					class="tick-major" />
+				<line
+					x1="28.35"
+					y1="0"
+					x2="28.35"
+					y2="7"
+					class="tick" />
+				<line
+					x1="56.69"
+					y1="0"
+					x2="56.69"
+					y2="7"
+					class="tick" />
+				<line
+					x1="85.04"
+					y1="0"
+					x2="85.04"
+					y2="7"
+					class="tick" />
+				<line
+					x1="113.39"
+					y1="0"
+					x2="113.39"
+					y2="7"
+					class="tick" />
+				<line
+					x1="141.73"
+					y1="0"
+					x2="141.73"
+					y2="10"
+					class="tick-major" />
+				<line
+					x1="14.17"
+					y1="0"
+					x2="14.17"
+					y2="4"
+					class="tick" />
+				<line
+					x1="42.52"
+					y1="0"
+					x2="42.52"
+					y2="4"
+					class="tick" />
+				<line
+					x1="70.87"
+					y1="0"
+					x2="70.87"
+					y2="4"
+					class="tick" />
+				<line
+					x1="99.21"
+					y1="0"
+					x2="99.21"
+					y2="4"
+					class="tick" />
+				<line
+					x1="127.56"
+					y1="0"
+					x2="127.56"
+					y2="4"
+					class="tick" />
+				<text
+					x="0"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					0
+				</text>
+				<text
+					x="28.35"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					10
+				</text>
+				<text
+					x="56.69"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					20
+				</text>
+				<text
+					x="85.04"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					30
+				</text>
+				<text
+					x="113.39"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					40
+				</text>
+				<text
+					x="141.73"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					50 mm
+				</text>
+			</g>
+
+			<!-- ═══ ANNOTATED REFERENCE with Pattern S5 (Pentagon) ═══ -->
+			<text
+				x="60"
+				y="96"
+				class="label-bold">
+				ANNOTATED REFERENCE — Underside view (PZT bonding face)
+			</text>
+			<text
+				x="60"
+				y="106"
+				class="note">
+				Red ● = perturbation sites (top surface), shown here for position
+				reference
+			</text>
+
+			<g transform="translate(60, 116)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-outline" />
+
+				<!-- Dimension: width -->
+				<line
+					x1="0"
+					y1="-8"
+					x2="71.96"
+					y2="-8"
+					class="dim-line"
+					marker-end="url(#arrowhead-dim)" />
+				<line
+					x1="71.96"
+					y1="-8"
+					x2="0"
+					y2="-8"
+					class="dim-line"
+					marker-end="url(#arrowhead-dim)" />
+				<line
+					x1="0"
+					y1="-14"
+					x2="0"
+					y2="-2"
+					class="dim-ext" />
+				<line
+					x1="71.96"
+					y1="-14"
+					x2="71.96"
+					y2="-2"
+					class="dim-ext" />
+				<text
+					x="35.98"
+					y="-11"
+					text-anchor="middle"
+					class="dim">
+					25.4 mm (1″)
+				</text>
+
+				<!-- Dimension: height -->
+				<line
+					x1="-8"
+					y1="0"
+					x2="-8"
+					y2="215.89"
+					class="dim-line" />
+				<line
+					x1="-14"
+					y1="0"
+					x2="-2"
+					y2="0"
+					class="dim-ext" />
+				<line
+					x1="-14"
+					y1="215.89"
+					x2="-2"
+					y2="215.89"
+					class="dim-ext" />
+				<text
+					x="-18"
+					y="107.95"
+					text-anchor="middle"
+					class="dim"
+					transform="rotate(-90, -18, 107.95)">
+					76.2 mm (3″)
+				</text>
+
+				<!-- TX PZT (orange) center = (12.7, 5.0) mm = (36.0, 14.2) pt -->
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-fill-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="85"
+					y="12"
+					class="label-bold"
+					fill="#e67e00">
+					TX
+				</text>
+				<text
+					x="85"
+					y="22"
+					class="note">
+					(12.7, 5.0) centered
+				</text>
+
+				<!-- TX offset dimension -->
+				<line
+					x1="75"
+					y1="0"
+					x2="75"
+					y2="14.2"
+					class="dim-line" />
+				<line
+					x1="72"
+					y1="0"
+					x2="78"
+					y2="0"
+					class="dim-ext" />
+				<line
+					x1="72"
+					y1="14.2"
+					x2="78"
+					y2="14.2"
+					class="dim-ext" />
+				<text
+					x="80"
+					y="9"
+					class="dim">
+					5
+				</text>
+
+				<!-- Perturbation zone boundary -->
+				<rect
+					x="2"
+					y="34"
+					width="67.96"
+					height="147.89"
+					fill="none"
+					stroke="#ccc"
+					stroke-width="0.5"
+					stroke-dasharray="3,2" />
+
+				<!-- Pattern S5 — Pentagon sites with coordinate labels -->
+				<text
+					x="85"
+					y="37"
+					class="pattern-label">
+					Pattern S5 — Pentagon
+				</text>
+
+				<!-- Site 1: (8.0, 16.0) mm → (22.7, 45.4) pt -->
+				<circle
+					cx="22.7"
+					cy="45.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="22.7"
+					y="47.0"
+					class="site-id">
+					1
+				</text>
+				<text
+					x="85"
+					y="47"
+					class="site-coord">
+					(8, 16)
+				</text>
+
+				<!-- Site 2: (18.0, 25.0) mm → (51.0, 70.9) pt -->
+				<circle
+					cx="51.0"
+					cy="70.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="51.0"
+					y="72.5"
+					class="site-id">
+					2
+				</text>
+				<text
+					x="85"
+					y="71"
+					class="site-coord">
+					(18, 25)
+				</text>
+
+				<!-- Site 3: (6.0, 37.0) mm → (17.0, 104.9) pt -->
+				<circle
+					cx="17.0"
+					cy="104.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="17.0"
+					y="106.5"
+					class="site-id">
+					3
+				</text>
+				<text
+					x="85"
+					y="105"
+					class="site-coord">
+					(6, 37)
+				</text>
+
+				<!-- Site 4: (20.0, 48.0) mm → (56.7, 136.1) pt -->
+				<circle
+					cx="56.7"
+					cy="136.1"
+					r="4.0"
+					class="site" />
+				<text
+					x="56.7"
+					y="137.7"
+					class="site-id">
+					4
+				</text>
+				<text
+					x="85"
+					y="136"
+					class="site-coord">
+					(20, 48)
+				</text>
+
+				<!-- Site 5: (12.7, 60.0) mm → (36.0, 170.1) pt -->
+				<circle
+					cx="36.0"
+					cy="170.1"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="171.7"
+					class="site-id">
+					5
+				</text>
+				<text
+					x="85"
+					y="170"
+					class="site-coord">
+					(12.7, 60)
+				</text>
+
+				<!-- RX_NW (green) center = (6.35, 71.2) mm = (18.0, 201.8) pt -->
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-fill-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+
+				<!-- RX_NE (blue) center = (19.05, 71.2) mm = (54.0, 201.8) pt -->
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-fill-ne" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+
+				<!-- RX labels -->
+				<text
+					x="85"
+					y="197"
+					class="label-bold"
+					fill="#2a7fff">
+					RX_NE (19.05, 71.2)
+				</text>
+				<text
+					x="85"
+					y="207"
+					class="label-bold"
+					fill="#00aa55">
+					RX_NW (6.35, 71.2)
+				</text>
+
+				<!-- RX offset dimension -->
+				<line
+					x1="75"
+					y1="201.8"
+					x2="75"
+					y2="215.89"
+					class="dim-line" />
+				<line
+					x1="72"
+					y1="201.8"
+					x2="78"
+					y2="201.8"
+					class="dim-ext" />
+				<line
+					x1="72"
+					y1="215.89"
+					x2="78"
+					y2="215.89"
+					class="dim-ext" />
+				<text
+					x="80"
+					y="211"
+					class="dim">
+					5
+				</text>
+
+				<!-- RX separation -->
+				<line
+					x1="18.0"
+					y1="222"
+					x2="54.0"
+					y2="222"
+					class="dim-line" />
+				<line
+					x1="18.0"
+					y1="219"
+					x2="18.0"
+					y2="225"
+					class="dim-ext" />
+				<line
+					x1="54.0"
+					y1="219"
+					x2="54.0"
+					y2="225"
+					class="dim-ext" />
+				<text
+					x="36.0"
+					y="232"
+					text-anchor="middle"
+					class="dim">
+					12.7 mm c-c
+				</text>
+			</g>
+
+			<!-- ═══ PATTERN TABLE ═══ -->
+			<g transform="translate(260, 116)">
+				<text
+					x="0"
+					y="0"
+					class="label-bold">
+					6 Slide Perturbation Patterns (mm from plate top-left, top surface)
+				</text>
+				<text
+					x="0"
+					y="12"
+					class="note">
+					TX end = top (y=0). RX end = bottom (y=76.2). Safe zone: y = 12–64 mm.
+				</text>
+
+				<text
+					x="0"
+					y="32"
+					class="pattern-label">
+					S1 — Null (control)
+				</text>
+				<text
+					x="0"
+					y="42"
+					class="inst">
+					No perturbation sites. Baseline measurement.
+				</text>
+
+				<text
+					x="0"
+					y="60"
+					class="pattern-label">
+					S2 — Center
+				</text>
+				<text
+					x="0"
+					y="70"
+					class="inst">
+					1 site: ① (12.7, 38.1) — geometric center of plate
+				</text>
+
+				<text
+					x="0"
+					y="88"
+					class="pattern-label">
+					S3 — Thirds (linear)
+				</text>
+				<text
+					x="0"
+					y="98"
+					class="inst">
+					3 sites on centerline at length third-points:
+				</text>
+				<text
+					x="0"
+					y="108"
+					class="inst">
+					① (12.7, 21) · ② (12.7, 38) · ③ (12.7, 55)
+				</text>
+
+				<text
+					x="0"
+					y="126"
+					class="pattern-label">
+					S4 — Zigzag
+				</text>
+				<text
+					x="0"
+					y="136"
+					class="inst">
+					4 sites alternating left/right along length:
+				</text>
+				<text
+					x="0"
+					y="146"
+					class="inst">
+					① (7, 18) · ② (19, 29) · ③ (7, 42) · ④ (19, 55)
+				</text>
+
+				<text
+					x="0"
+					y="164"
+					class="pattern-label">
+					S5 — Pentagon (asymmetric) ← shown on reference
+				</text>
+				<text
+					x="0"
+					y="174"
+					class="inst">
+					5 sites in general position — no mirror/rotation symmetry:
+				</text>
+				<text
+					x="0"
+					y="184"
+					class="inst">
+					① (8, 16) · ② (18, 25) · ③ (6, 37) · ④ (20, 48) · ⑤ (12.7, 60)
+				</text>
+
+				<text
+					x="0"
+					y="202"
+					class="pattern-label">
+					S6 — Diagonal
+				</text>
+				<text
+					x="0"
+					y="212"
+					class="inst">
+					5 sites corner-to-corner sweep across plate:
+				</text>
+				<text
+					x="0"
+					y="222"
+					class="inst">
+					① (5, 16) · ② (9.3, 28) · ③ (12.7, 40) · ④ (17.5, 52) · ⑤ (21.5, 61)
+				</text>
+
+				<line
+					x1="0"
+					y1="240"
+					x2="310"
+					y2="240"
+					stroke="#ddd"
+					stroke-width="0.5" />
+				<text
+					x="0"
+					y="256"
+					class="label-bold">
+					Design Rationale
+				</text>
+				<text
+					x="0"
+					y="268"
+					class="inst">
+					• Rectangular geometry: length-axis position dominates mode coupling
+				</text>
+				<text
+					x="0"
+					y="280"
+					class="inst">
+					• All sites ≥7 mm from PZT centers to avoid transducer-dominated zones
+				</text>
+				<text
+					x="0"
+					y="292"
+					class="inst">
+					• S1 (null) provides baseline; S2 tests single-point sensitivity
+				</text>
+				<text
+					x="0"
+					y="304"
+					class="inst">
+					• S3 probes length-axis modes symmetrically; S4 breaks L↔R mirror
+				</text>
+				<text
+					x="0"
+					y="316"
+					class="inst">
+					• S5 maximizes asymmetry (all sites in general position)
+				</text>
+				<text
+					x="0"
+					y="328"
+					class="inst">
+					• S6 sweeps diagonal for broadband mode perturbation
+				</text>
+				<text
+					x="0"
+					y="340"
+					class="inst">
+					• Putty mass: ~0.05 g per site (BluTack). 5 sites ≈ 0.5% of slide
+					mass.
+				</text>
+			</g>
+
+			<!-- ═══ LEGEND ═══ -->
+			<g transform="translate(42, 590)">
+				<text
+					x="0"
+					y="0"
+					class="label-bold">
+					Legend
+				</text>
+				<circle
+					cx="10"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#e67e00"
+					stroke-width="1.2" />
+				<text
+					x="22"
+					y="19"
+					class="label">
+					Orange = TX PZT (underside)
+				</text>
+				<circle
+					cx="175"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#2a7fff"
+					stroke-width="1.2" />
+				<text
+					x="187"
+					y="19"
+					class="label">
+					Blue = RX_NE (underside)
+				</text>
+				<circle
+					cx="315"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#00aa55"
+					stroke-width="1.2" />
+				<text
+					x="327"
+					y="19"
+					class="label">
+					Green = RX_NW (underside)
+				</text>
+				<circle
+					cx="10"
+					cy="35"
+					r="4"
+					class="site" />
+				<text
+					x="10"
+					y="36.5"
+					class="site-id">
+					n
+				</text>
+				<text
+					x="22"
+					y="39"
+					class="label">
+					Red ● = perturbation site (top surface)
+				</text>
+				<circle
+					cx="260"
+					cy="35"
+					r="1.5"
+					fill="#c00"
+					stroke="none" />
+				<text
+					x="272"
+					y="39"
+					class="label">
+					Small red dot = PZT center (glue here)
+				</text>
+
+				<line
+					x1="0"
+					y1="50"
+					x2="530"
+					y2="50"
+					stroke="#ddd"
+					stroke-width="0.5" />
+				<text
+					x="0"
+					y="64"
+					class="label-bold">
+					Printing &amp; Assembly
+				</text>
+				<text
+					x="0"
+					y="78"
+					class="inst">
+					1. Print both pages at 100% scale. Verify 50 mm ruler with physical
+					ruler.
+				</text>
+				<text
+					x="0"
+					y="90"
+					class="inst">
+					2. Page 2 has 6 working copies (S1–S6). Lay slide on outline to bond
+					PZTs, or cut out template.
+				</text>
+				<text
+					x="0"
+					y="102"
+					class="inst">
+					3. Bond PZTs to underside at small red center dots. Cure 24 h.
+				</text>
+				<text
+					x="0"
+					y="114"
+					class="inst">
+					4. Flip slide (top up). Apply ~0.05 g putty at each numbered ● site
+					for that slide's pattern.
+				</text>
+				<text
+					x="0"
+					y="126"
+					class="inst">
+					5. PZT: 10 mm dia ceramic disc. RX gap: 2.7 mm. Edge clearance: 1.35
+					mm.
+				</text>
+
+				<line
+					x1="0"
+					y1="138"
+					x2="530"
+					y2="138"
+					stroke="#ddd"
+					stroke-width="0.5" />
+				<text
+					x="0"
+					y="152"
+					class="label-bold">
+					Suggested Slide Assignment
+				</text>
+				<text
+					x="0"
+					y="164"
+					class="inst">
+					Slide 1 → S1 (null) · Slide 2 → S5 (pentagon) · Slide 3 → S6
+					(diagonal)
+				</text>
+				<text
+					x="0"
+					y="176"
+					class="inst">
+					Slide 4 → S4 (zigzag) · Slide 5 → S3 (thirds) · Slide 6 → S5 repeat
+					(reproducibility check)
+				</text>
+			</g>
+
+			<text
+				x="306"
+				y="782"
+				text-anchor="middle"
+				class="note">
+				Template T.5 — Slide PZT + Perturbation Layout (25.4 × 76.2 mm) · Rev 2
+				· 2026-04-16 · Page 1/2
+			</text>
+		</svg>
+
+		<!-- ════════════════════════════════════════════════════════════════
+     PAGE 2 — WORKING COPIES: S1–S6 at 1:1 scale
+     ════════════════════════════════════════════════════════════════ -->
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 612 792"
+			width="8.5in"
+			height="11in">
+			<style>
+				text {
+					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				}
+				.title {
+					font-size: 11pt;
+					font-weight: 700;
+					fill: #1a1a1a;
+				}
+				.label {
+					font-size: 7pt;
+					fill: #1a1a1a;
+				}
+				.note {
+					font-size: 6pt;
+					fill: #555;
+					font-style: italic;
+				}
+				.plate-clean {
+					fill: none;
+					stroke: #2a7fff;
+					stroke-width: 0.8;
+				}
+				.pzt-tx {
+					fill: none;
+					stroke: #e67e00;
+					stroke-width: 0.8;
+				}
+				.pzt-rx {
+					fill: none;
+					stroke: #2a7fff;
+					stroke-width: 0.8;
+				}
+				.pzt-nw {
+					fill: none;
+					stroke: #00aa55;
+					stroke-width: 0.8;
+				}
+				.center-dot {
+					fill: #c00;
+					stroke: none;
+				}
+				.site {
+					fill: rgba(220, 50, 50, 0.2);
+					stroke: #c00;
+					stroke-width: 0.8;
+				}
+				.site-id {
+					font-size: 5pt;
+					fill: #c00;
+					font-weight: 700;
+					text-anchor: middle;
+				}
+				.pattern-label {
+					font-size: 6.5pt;
+					fill: #c00;
+					font-weight: 700;
+					text-anchor: middle;
+				}
+				.ruler-bg {
+					fill: #fafaf5;
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+				.tick {
+					stroke: #333;
+					stroke-width: 0.5;
+				}
+				.tick-major {
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+			</style>
+
+			<text
+				x="306"
+				y="20"
+				text-anchor="middle"
+				class="title">
+				Working Copies — 6 Perturbation Patterns (1:1 Scale)
+			</text>
+			<text
+				x="306"
+				y="32"
+				text-anchor="middle"
+				class="note">
+				Lay glass slide on outline. Bond PZTs at red dots (underside). Apply
+				putty at numbered ● (top surface).
+			</text>
+
+			<!-- Calibration ruler -->
+			<g transform="translate(235, 38)">
+				<rect
+					x="0"
+					y="0"
+					width="141.73"
+					height="8"
+					class="ruler-bg" />
+				<line
+					x1="0"
+					y1="0"
+					x2="0"
+					y2="8"
+					class="tick-major" />
+				<line
+					x1="28.35"
+					y1="0"
+					x2="28.35"
+					y2="5"
+					class="tick" />
+				<line
+					x1="56.69"
+					y1="0"
+					x2="56.69"
+					y2="5"
+					class="tick" />
+				<line
+					x1="85.04"
+					y1="0"
+					x2="85.04"
+					y2="5"
+					class="tick" />
+				<line
+					x1="113.39"
+					y1="0"
+					x2="113.39"
+					y2="5"
+					class="tick" />
+				<line
+					x1="141.73"
+					y1="0"
+					x2="141.73"
+					y2="8"
+					class="tick-major" />
+				<text
+					x="0"
+					y="18"
+					class="label"
+					text-anchor="middle">
+					0
+				</text>
+				<text
+					x="56.69"
+					y="18"
+					class="label"
+					text-anchor="middle">
+					20
+				</text>
+				<text
+					x="113.39"
+					y="18"
+					class="label"
+					text-anchor="middle">
+					40
+				</text>
+				<text
+					x="141.73"
+					y="18"
+					class="label"
+					text-anchor="middle">
+					50 mm
+				</text>
+			</g>
+
+			<!-- ═══ ROW 1: S1, S2, S3 ═══ -->
+
+			<!-- S1 — Null -->
+			<text
+				x="126"
+				y="70"
+				text-anchor="middle"
+				class="pattern-label">
+				S1 — Null
+			</text>
+			<g transform="translate(90, 80)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<text
+					x="36.0"
+					y="108"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#bbb"
+					font-style="italic">
+					no sites
+				</text>
+			</g>
+
+			<!-- S2 — Center -->
+			<text
+				x="276"
+				y="70"
+				text-anchor="middle"
+				class="pattern-label">
+				S2 — Center
+			</text>
+			<g transform="translate(240, 80)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<!-- (12.7, 38.1) mm → (36.0, 108.0) pt -->
+				<circle
+					cx="36.0"
+					cy="108.0"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="109.6"
+					class="site-id">
+					1
+				</text>
+			</g>
+
+			<!-- S3 — Thirds -->
+			<text
+				x="426"
+				y="70"
+				text-anchor="middle"
+				class="pattern-label">
+				S3 — Thirds
+			</text>
+			<g transform="translate(390, 80)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<!-- (12.7, 21) mm → (36.0, 59.5) pt -->
+				<circle
+					cx="36.0"
+					cy="59.5"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="61.1"
+					class="site-id">
+					1
+				</text>
+				<!-- (12.7, 38) mm → (36.0, 107.7) pt -->
+				<circle
+					cx="36.0"
+					cy="107.7"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="109.3"
+					class="site-id">
+					2
+				</text>
+				<!-- (12.7, 55) mm → (36.0, 155.9) pt -->
+				<circle
+					cx="36.0"
+					cy="155.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="157.5"
+					class="site-id">
+					3
+				</text>
+			</g>
+
+			<!-- ═══ ROW 2: S4, S5, S6 ═══ -->
+
+			<!-- S4 — Zigzag -->
+			<text
+				x="126"
+				y="335"
+				text-anchor="middle"
+				class="pattern-label">
+				S4 — Zigzag
+			</text>
+			<g transform="translate(90, 345)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<!-- (7, 18) mm → (19.8, 51.0) pt -->
+				<circle
+					cx="19.8"
+					cy="51.0"
+					r="4.0"
+					class="site" />
+				<text
+					x="19.8"
+					y="52.6"
+					class="site-id">
+					1
+				</text>
+				<!-- (19, 29) mm → (53.9, 82.2) pt -->
+				<circle
+					cx="53.9"
+					cy="82.2"
+					r="4.0"
+					class="site" />
+				<text
+					x="53.9"
+					y="83.8"
+					class="site-id">
+					2
+				</text>
+				<!-- (7, 42) mm → (19.8, 119.1) pt -->
+				<circle
+					cx="19.8"
+					cy="119.1"
+					r="4.0"
+					class="site" />
+				<text
+					x="19.8"
+					y="120.7"
+					class="site-id">
+					3
+				</text>
+				<!-- (19, 55) mm → (53.9, 155.9) pt -->
+				<circle
+					cx="53.9"
+					cy="155.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="53.9"
+					y="157.5"
+					class="site-id">
+					4
+				</text>
+			</g>
+
+			<!-- S5 — Pentagon -->
+			<text
+				x="276"
+				y="335"
+				text-anchor="middle"
+				class="pattern-label">
+				S5 — Pentagon
+			</text>
+			<g transform="translate(240, 345)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<!-- (8, 16) mm → (22.7, 45.4) pt -->
+				<circle
+					cx="22.7"
+					cy="45.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="22.7"
+					y="47.0"
+					class="site-id">
+					1
+				</text>
+				<!-- (18, 25) mm → (51.0, 70.9) pt -->
+				<circle
+					cx="51.0"
+					cy="70.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="51.0"
+					y="72.5"
+					class="site-id">
+					2
+				</text>
+				<!-- (6, 37) mm → (17.0, 104.9) pt -->
+				<circle
+					cx="17.0"
+					cy="104.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="17.0"
+					y="106.5"
+					class="site-id">
+					3
+				</text>
+				<!-- (20, 48) mm → (56.7, 136.1) pt -->
+				<circle
+					cx="56.7"
+					cy="136.1"
+					r="4.0"
+					class="site" />
+				<text
+					x="56.7"
+					y="137.7"
+					class="site-id">
+					4
+				</text>
+				<!-- (12.7, 60) mm → (36.0, 170.1) pt -->
+				<circle
+					cx="36.0"
+					cy="170.1"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="171.7"
+					class="site-id">
+					5
+				</text>
+			</g>
+
+			<!-- S6 — Diagonal -->
+			<text
+				x="426"
+				y="335"
+				text-anchor="middle"
+				class="pattern-label">
+				S6 — Diagonal
+			</text>
+			<g transform="translate(390, 345)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="12"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199.5"
+					text-anchor="middle"
+					font-size="4.5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+				<!-- (5, 16) mm → (14.2, 45.4) pt -->
+				<circle
+					cx="14.2"
+					cy="45.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="14.2"
+					y="47.0"
+					class="site-id">
+					1
+				</text>
+				<!-- (9.3, 28) mm → (26.4, 79.4) pt -->
+				<circle
+					cx="26.4"
+					cy="79.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="26.4"
+					y="81.0"
+					class="site-id">
+					2
+				</text>
+				<!-- (12.7, 40) mm → (36.0, 113.4) pt -->
+				<circle
+					cx="36.0"
+					cy="113.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="36.0"
+					y="115.0"
+					class="site-id">
+					3
+				</text>
+				<!-- (17.5, 52) mm → (49.6, 147.4) pt -->
+				<circle
+					cx="49.6"
+					cy="147.4"
+					r="4.0"
+					class="site" />
+				<text
+					x="49.6"
+					y="149.0"
+					class="site-id">
+					4
+				</text>
+				<!-- (21.5, 61) mm → (60.9, 172.9) pt -->
+				<circle
+					cx="60.9"
+					cy="172.9"
+					r="4.0"
+					class="site" />
+				<text
+					x="60.9"
+					y="174.5"
+					class="site-id">
+					5
+				</text>
+			</g>
+
+			<!-- Footer -->
+			<text
+				x="306"
+				y="590"
+				text-anchor="middle"
+				class="note">
+				All outlines at 1:1 scale. Site ● radius not to scale — marks center of
+				~2 mm putty ball (~0.05 g).
+			</text>
+			<text
+				x="306"
+				y="782"
+				text-anchor="middle"
+				class="note">
+				Template T.5 — Slide PZT + Perturbation Layout (25.4 × 76.2 mm) · Rev 2
+				· 2026-04-16 · Page 2/2
+			</text>
+		</svg>
+	</body>
+</html>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM Plate Template — 25.4 × 76.2 mm Slide</title>
+		<style>
+			@page {
+				size: letter;
+				margin: 0;
+			}
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+				width: 8.5in;
+				height: 11in;
+			}
+			svg {
+				display: block;
+				width: 8.5in;
+				height: 11in;
+			}
+			@media print {
+				html,
+				body {
+					margin: 0;
+					padding: 0;
+				}
+				svg {
+					page-break-inside: avoid;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 612 792"
+			width="8.5in"
+			height="11in">
+			<!-- US Letter: 612×792 pt (8.5×11 in). Print at 100% scale. -->
+			<!-- 1 mm = 2.8346 pt -->
+			<!-- Plate: 25.4 mm = 71.96 pt wide, 76.2 mm = 215.89 pt tall -->
+			<!-- PZT disc: 10 mm diameter = 28.35 pt dia, 14.17 pt radius -->
+			<style>
+				text {
+					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				}
+				.title {
+					font-size: 13pt;
+					font-weight: 700;
+					fill: #1a1a1a;
+				}
+				.subtitle {
+					font-size: 9pt;
+					fill: #444;
+				}
+				.label {
+					font-size: 8pt;
+					fill: #1a1a1a;
+				}
+				.label-bold {
+					font-size: 8pt;
+					fill: #1a1a1a;
+					font-weight: 700;
+				}
+				.dim {
+					font-size: 7pt;
+					fill: #c00;
+					font-weight: 600;
+				}
+				.note {
+					font-size: 6.5pt;
+					fill: #555;
+					font-style: italic;
+				}
+				.inst {
+					font-size: 7pt;
+					fill: #333;
+				}
+				.plate-outline {
+					fill: #f0f5ff;
+					stroke: #2a7fff;
+					stroke-width: 1;
+				}
+				.plate-clean {
+					fill: none;
+					stroke: #2a7fff;
+					stroke-width: 0.8;
+				}
+				.pzt-tx {
+					fill: none;
+					stroke: #e67e00;
+					stroke-width: 1.2;
+				}
+				.pzt-rx {
+					fill: none;
+					stroke: #2a7fff;
+					stroke-width: 1.2;
+				}
+				.pzt-fill-tx {
+					fill: #e67e00;
+					fill-opacity: 0.12;
+				}
+				.pzt-fill-ne {
+					fill: #2a7fff;
+					fill-opacity: 0.12;
+				}
+				.pzt-fill-nw {
+					fill: #00aa55;
+					fill-opacity: 0.12;
+				}
+				.pzt-nw {
+					fill: none;
+					stroke: #00aa55;
+					stroke-width: 1.2;
+				}
+				.crosshair {
+					stroke: #c00;
+					stroke-width: 0.4;
+				}
+				.center-dot {
+					fill: #c00;
+					stroke: none;
+				}
+				.dim-line {
+					stroke: #c00;
+					stroke-width: 0.5;
+				}
+				.dim-ext {
+					stroke: #c00;
+					stroke-width: 0.3;
+				}
+				.zone-hatch {
+					fill: none;
+					stroke: #ddd;
+					stroke-width: 0.3;
+				}
+				.zone-label {
+					font-size: 7pt;
+					fill: #999;
+					font-style: italic;
+				}
+				.ruler-bg {
+					fill: #fafaf5;
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+				.tick {
+					stroke: #333;
+					stroke-width: 0.5;
+				}
+				.tick-major {
+					stroke: #333;
+					stroke-width: 0.8;
+				}
+				.orient-arrow {
+					fill: none;
+					stroke: #888;
+					stroke-width: 0.6;
+					marker-end: url(#arrowhead);
+				}
+			</style>
+
+			<defs>
+				<marker
+					id="arrowhead"
+					markerWidth="6"
+					markerHeight="4"
+					refX="5"
+					refY="2"
+					orient="auto">
+					<polygon
+						points="0 0, 6 2, 0 4"
+						fill="#c00" />
+				</marker>
+				<marker
+					id="arrowhead-dim"
+					markerWidth="5"
+					markerHeight="3"
+					refX="4.5"
+					refY="1.5"
+					orient="auto">
+					<polygon
+						points="0 0, 5 1.5, 0 3"
+						fill="#c00" />
+				</marker>
+			</defs>
+
+			<!-- PAGE HEADER -->
+			<text
+				x="306"
+				y="28"
+				text-anchor="middle"
+				class="title">
+				CWM Plate Template — 25.4 × 76.2 mm Slide (1:1 Scale)
+			</text>
+			<text
+				x="306"
+				y="42"
+				text-anchor="middle"
+				class="subtitle">
+				Print at 100% (no scaling). PZTs bond to underside. Top surface clear
+				for perturbations.
+			</text>
+			<text
+				x="306"
+				y="54"
+				text-anchor="middle"
+				class="note">
+				Verify: the calibration ruler below should measure exactly 50 mm with a
+				physical ruler.
+			</text>
+
+			<!-- CALIBRATION RULER (50 mm = 141.73 pt) -->
+			<g transform="translate(235, 62)">
+				<rect
+					x="0"
+					y="0"
+					width="141.73"
+					height="10"
+					class="ruler-bg" />
+				<line
+					x1="0"
+					y1="0"
+					x2="0"
+					y2="10"
+					class="tick-major" />
+				<line
+					x1="28.35"
+					y1="0"
+					x2="28.35"
+					y2="7"
+					class="tick" />
+				<line
+					x1="56.69"
+					y1="0"
+					x2="56.69"
+					y2="7"
+					class="tick" />
+				<line
+					x1="85.04"
+					y1="0"
+					x2="85.04"
+					y2="7"
+					class="tick" />
+				<line
+					x1="113.39"
+					y1="0"
+					x2="113.39"
+					y2="7"
+					class="tick" />
+				<line
+					x1="141.73"
+					y1="0"
+					x2="141.73"
+					y2="10"
+					class="tick-major" />
+				<line
+					x1="14.17"
+					y1="0"
+					x2="14.17"
+					y2="4"
+					class="tick" />
+				<line
+					x1="42.52"
+					y1="0"
+					x2="42.52"
+					y2="4"
+					class="tick" />
+				<line
+					x1="70.87"
+					y1="0"
+					x2="70.87"
+					y2="4"
+					class="tick" />
+				<line
+					x1="99.21"
+					y1="0"
+					x2="99.21"
+					y2="4"
+					class="tick" />
+				<line
+					x1="127.56"
+					y1="0"
+					x2="127.56"
+					y2="4"
+					class="tick" />
+				<text
+					x="0"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					0
+				</text>
+				<text
+					x="28.35"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					10
+				</text>
+				<text
+					x="56.69"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					20
+				</text>
+				<text
+					x="85.04"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					30
+				</text>
+				<text
+					x="113.39"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					40
+				</text>
+				<text
+					x="141.73"
+					y="22"
+					class="label"
+					text-anchor="middle">
+					50 mm
+				</text>
+			</g>
+
+			<!-- SECTION 1: ANNOTATED REFERENCE PLATE -->
+			<text
+				x="60"
+				y="100"
+				class="label-bold">
+				ANNOTATED REFERENCE — Underside view (PZT bonding face)
+			</text>
+
+			<g transform="translate(60, 108)">
+				<!-- Plate outline -->
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-outline" />
+
+				<!-- Dimension: width (25.4 mm) -->
+				<line
+					x1="0"
+					y1="-8"
+					x2="71.96"
+					y2="-8"
+					class="dim-line"
+					marker-end="url(#arrowhead-dim)" />
+				<line
+					x1="71.96"
+					y1="-8"
+					x2="0"
+					y2="-8"
+					class="dim-line"
+					marker-end="url(#arrowhead-dim)" />
+				<line
+					x1="0"
+					y1="-14"
+					x2="0"
+					y2="-2"
+					class="dim-ext" />
+				<line
+					x1="71.96"
+					y1="-14"
+					x2="71.96"
+					y2="-2"
+					class="dim-ext" />
+				<text
+					x="35.98"
+					y="-11"
+					text-anchor="middle"
+					class="dim">
+					25.4 mm (1″)
+				</text>
+
+				<!-- Dimension: height (76.2 mm) -->
+				<line
+					x1="-8"
+					y1="0"
+					x2="-8"
+					y2="215.89"
+					class="dim-line" />
+				<line
+					x1="-14"
+					y1="0"
+					x2="-2"
+					y2="0"
+					class="dim-ext" />
+				<line
+					x1="-14"
+					y1="215.89"
+					x2="-2"
+					y2="215.89"
+					class="dim-ext" />
+				<text
+					x="-18"
+					y="107.95"
+					text-anchor="middle"
+					class="dim"
+					transform="rotate(-90, -18, 107.95)">
+					76.2 mm (3″)
+				</text>
+
+				<!-- TX PZT (orange) at (36.0, 14.2) -->
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-fill-tx" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx" />
+				<line
+					x1="29.0"
+					y1="14.2"
+					x2="33.0"
+					y2="14.2"
+					class="crosshair" />
+				<line
+					x1="39.0"
+					y1="14.2"
+					x2="43.0"
+					y2="14.2"
+					class="crosshair" />
+				<line
+					x1="36.0"
+					y1="7.2"
+					x2="36.0"
+					y2="11.2"
+					class="crosshair" />
+				<line
+					x1="36.0"
+					y1="17.2"
+					x2="36.0"
+					y2="21.2"
+					class="crosshair" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="85"
+					y="12"
+					class="label-bold"
+					fill="#e67e00">
+					TX
+				</text>
+				<text
+					x="85"
+					y="22"
+					class="note">
+					centered, 5 mm from edge
+				</text>
+
+				<!-- Dimension: TX offset (5 mm from top) -->
+				<line
+					x1="75"
+					y1="0"
+					x2="75"
+					y2="14.2"
+					class="dim-line" />
+				<line
+					x1="72"
+					y1="0"
+					x2="78"
+					y2="0"
+					class="dim-ext" />
+				<line
+					x1="72"
+					y1="14.2"
+					x2="78"
+					y2="14.2"
+					class="dim-ext" />
+				<text
+					x="80"
+					y="9"
+					class="dim">
+					5
+				</text>
+
+				<!-- Perturbation zone (middle) -->
+				<rect
+					x="2"
+					y="34"
+					width="67.96"
+					height="147.89"
+					fill="none"
+					stroke="#ccc"
+					stroke-width="0.5"
+					stroke-dasharray="3,2" />
+				<text
+					x="35.98"
+					y="112"
+					text-anchor="middle"
+					class="zone-label">
+					PERTURBATION ZONE
+				</text>
+				<text
+					x="35.98"
+					y="122"
+					text-anchor="middle"
+					class="zone-label">
+					(top surface)
+				</text>
+
+				<!-- Dimension: perturbation zone length -->
+				<line
+					x1="-28"
+					y1="28.35"
+					x2="-28"
+					y2="187.54"
+					class="dim-line" />
+				<line
+					x1="-34"
+					y1="28.35"
+					x2="-22"
+					y2="28.35"
+					class="dim-ext" />
+				<line
+					x1="-34"
+					y1="187.54"
+					x2="-22"
+					y2="187.54"
+					class="dim-ext" />
+				<text
+					x="-38"
+					y="107.95"
+					text-anchor="middle"
+					class="dim"
+					transform="rotate(-90, -38, 107.95)">
+					~56 mm usable
+				</text>
+
+				<!-- RX_NW PZT (green) at (18.0, 201.8) -->
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-fill-nw" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw" />
+				<line
+					x1="11.0"
+					y1="201.8"
+					x2="15.0"
+					y2="201.8"
+					class="crosshair" />
+				<line
+					x1="21.0"
+					y1="201.8"
+					x2="25.0"
+					y2="201.8"
+					class="crosshair" />
+				<line
+					x1="18.0"
+					y1="194.8"
+					x2="18.0"
+					y2="198.8"
+					class="crosshair" />
+				<line
+					x1="18.0"
+					y1="204.8"
+					x2="18.0"
+					y2="208.8"
+					class="crosshair" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+
+				<!-- RX_NE PZT (blue) at (54.0, 201.8) -->
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-fill-ne" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx" />
+				<line
+					x1="47.0"
+					y1="201.8"
+					x2="51.0"
+					y2="201.8"
+					class="crosshair" />
+				<line
+					x1="57.0"
+					y1="201.8"
+					x2="61.0"
+					y2="201.8"
+					class="crosshair" />
+				<line
+					x1="54.0"
+					y1="194.8"
+					x2="54.0"
+					y2="198.8"
+					class="crosshair" />
+				<line
+					x1="54.0"
+					y1="204.8"
+					x2="54.0"
+					y2="208.8"
+					class="crosshair" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+
+				<!-- RX labels -->
+				<text
+					x="85"
+					y="195"
+					class="label-bold"
+					fill="#2a7fff">
+					RX_NE
+				</text>
+				<text
+					x="85"
+					y="205"
+					class="label-bold"
+					fill="#00aa55">
+					RX_NW
+				</text>
+				<text
+					x="85"
+					y="215"
+					class="note">
+					¼ and ¾ width, 5 mm from edge
+				</text>
+
+				<!-- Dimension: RX offset (5 mm from bottom) -->
+				<line
+					x1="75"
+					y1="201.8"
+					x2="75"
+					y2="215.89"
+					class="dim-line" />
+				<line
+					x1="72"
+					y1="201.8"
+					x2="78"
+					y2="201.8"
+					class="dim-ext" />
+				<line
+					x1="72"
+					y1="215.89"
+					x2="78"
+					y2="215.89"
+					class="dim-ext" />
+				<text
+					x="80"
+					y="211"
+					class="dim">
+					5
+				</text>
+
+				<!-- Dimension: RX separation -->
+				<line
+					x1="18.0"
+					y1="222"
+					x2="54.0"
+					y2="222"
+					class="dim-line" />
+				<line
+					x1="18.0"
+					y1="219"
+					x2="18.0"
+					y2="225"
+					class="dim-ext" />
+				<line
+					x1="54.0"
+					y1="219"
+					x2="54.0"
+					y2="225"
+					class="dim-ext" />
+				<text
+					x="36.0"
+					y="232"
+					text-anchor="middle"
+					class="dim">
+					12.7 mm (½″) c-c
+				</text>
+
+				<!-- Dimension: PZT diameter callout -->
+				<line
+					x1="36.0"
+					y1="0.03"
+					x2="50.17"
+					y2="0.03"
+					class="dim-line" />
+				<text
+					x="53"
+					y="3"
+					class="dim">
+					⌀10 PZT
+				</text>
+
+				<!-- Dimension: NW edge clearance -->
+				<line
+					x1="0"
+					y1="230"
+					x2="18.0"
+					y2="230"
+					class="dim-line" />
+				<line
+					x1="0"
+					y1="227"
+					x2="0"
+					y2="233"
+					class="dim-ext" />
+				<line
+					x1="18.0"
+					y1="227"
+					x2="18.0"
+					y2="233"
+					class="dim-ext" />
+				<text
+					x="9.0"
+					y="240"
+					text-anchor="middle"
+					class="dim">
+					6.35
+				</text>
+			</g>
+
+			<!-- SECTION 2: WORKING COPIES — 6 clean plates -->
+			<text
+				x="290"
+				y="100"
+				class="label-bold">
+				WORKING COPIES — lay glass plate on outline, bond PZTs at marks
+			</text>
+
+			<!-- Plate 2: Row 1, Col 1 -->
+			<g transform="translate(240, 108)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- Plate 3: Row 1, Col 2 -->
+			<g transform="translate(340, 108)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- Plate 4: Row 1, Col 3 -->
+			<g transform="translate(440, 108)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- Plate 5: Row 2, Col 1 -->
+			<g transform="translate(240, 365)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- Plate 6: Row 2, Col 2 -->
+			<g transform="translate(340, 365)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- Plate 7: Row 2, Col 3 -->
+			<g transform="translate(440, 365)">
+				<rect
+					x="0"
+					y="0"
+					width="71.96"
+					height="215.89"
+					class="plate-clean" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="14.17"
+					class="pzt-tx"
+					stroke-width="0.8" />
+				<circle
+					cx="36.0"
+					cy="14.2"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="36.0"
+					y="11"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#e67e00"
+					font-weight="700">
+					TX
+				</text>
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-nw"
+					stroke-width="0.8" />
+				<circle
+					cx="18.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="18.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#00aa55"
+					font-weight="700">
+					NW
+				</text>
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="14.17"
+					class="pzt-rx"
+					stroke-width="0.8" />
+				<circle
+					cx="54.0"
+					cy="201.8"
+					r="1.0"
+					class="center-dot" />
+				<text
+					x="54.0"
+					y="199"
+					text-anchor="middle"
+					font-size="5pt"
+					fill="#2a7fff"
+					font-weight="700">
+					NE
+				</text>
+			</g>
+
+			<!-- LEGEND & INSTRUCTIONS -->
+			<g transform="translate(42, 610)">
+				<text
+					x="0"
+					y="0"
+					class="label-bold">
+					Legend
+				</text>
+				<circle
+					cx="10"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#e67e00"
+					stroke-width="1.2" />
+				<text
+					x="22"
+					y="19"
+					class="label">
+					Orange = TX PZT (drive)
+				</text>
+				<circle
+					cx="150"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#2a7fff"
+					stroke-width="1.2" />
+				<text
+					x="162"
+					y="19"
+					class="label">
+					Blue = RX_NE (receive, northeast)
+				</text>
+				<circle
+					cx="340"
+					cy="15"
+					r="6"
+					fill="none"
+					stroke="#00aa55"
+					stroke-width="1.2" />
+				<text
+					x="352"
+					y="19"
+					class="label">
+					Green = RX_NW (receive, northwest)
+				</text>
+				<circle
+					cx="10"
+					cy="35"
+					r="1.5"
+					fill="#c00"
+					stroke="none" />
+				<text
+					x="22"
+					y="39"
+					class="label">
+					Red dot = PZT center — apply adhesive here
+				</text>
+
+				<line
+					x1="0"
+					y1="50"
+					x2="530"
+					y2="50"
+					stroke="#ddd"
+					stroke-width="0.5" />
+
+				<text
+					x="0"
+					y="64"
+					class="label-bold">
+					How to use
+				</text>
+				<text
+					x="0"
+					y="78"
+					class="inst">
+					1. Print at 100% scale. Verify the 50 mm ruler with a physical ruler.
+				</text>
+				<text
+					x="0"
+					y="90"
+					class="inst">
+					2. Place glass slide face-down (underside up) on a working-copy
+					outline, aligning all four edges.
+				</text>
+				<text
+					x="0"
+					y="102"
+					class="inst">
+					3. Apply a tiny drop of cyanoacrylate at each red center dot.
+				</text>
+				<text
+					x="0"
+					y="114"
+					class="inst">
+					4. Press 10 mm PZT disc onto each marked position. Hold 30 s. Cure 24
+					h.
+				</text>
+				<text
+					x="0"
+					y="126"
+					class="inst">
+					5. The two RX PZTs have 2.7 mm gap and 1.35 mm edge clearance — tight
+					but functional.
+				</text>
+				<text
+					x="0"
+					y="138"
+					class="inst">
+					6. Wire: TX to AWG bus, RX_NE and RX_NW each to separate relay
+					channels.
+				</text>
+
+				<line
+					x1="0"
+					y1="148"
+					x2="530"
+					y2="148"
+					stroke="#ddd"
+					stroke-width="0.5" />
+
+				<text
+					x="0"
+					y="162"
+					class="label-bold">
+					Dimensions (mm)
+				</text>
+				<text
+					x="0"
+					y="176"
+					class="inst">
+					Plate: 25.4 × 76.2 × 1 mm soda-lime glass (standard microscope slide)
+				</text>
+				<text
+					x="0"
+					y="188"
+					class="inst">
+					PZT: 10 mm dia × 0.5 mm ceramic disc (e.g., uxcell B07RK2V1P2)
+				</text>
+				<text
+					x="0"
+					y="200"
+					class="inst">
+					TX center: (12.7, 5.0) mm from near end — centered on width
+				</text>
+				<text
+					x="0"
+					y="212"
+					class="inst">
+					RX_NE center: (19.05, 71.2) mm — ¾ width, 5 mm from far end
+				</text>
+				<text
+					x="0"
+					y="224"
+					class="inst">
+					RX_NW center: (6.35, 71.2) mm — ¼ width, 5 mm from far end
+				</text>
+				<text
+					x="0"
+					y="236"
+					class="inst">
+					RX separation: 12.7 mm center-to-center. Edge clearance: 1.35 mm. PZT
+					gap: 2.7 mm.
+				</text>
+				<text
+					x="0"
+					y="248"
+					class="inst">
+					Perturbation zone: ~56 mm × 25.4 mm between TX and RX ends (top
+					surface)
+				</text>
+			</g>
+
+			<!-- Template ID -->
+			<text
+				x="306"
+				y="782"
+				text-anchor="middle"
+				class="note">
+				Template T.5 — Slide PZT Layout (25.4 × 76.2 mm) · 1 annotated + 6
+				working copies · Rev 1 · 2026-04-16
+			</text>
+		</svg>
+	</body>
+</html>

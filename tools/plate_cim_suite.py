@@ -153,20 +153,27 @@ def _measure_at(handle, freq_hz: float,
 
 # ── Enrollment loader ────────────────────────────────────────────────
 
-def _load_enrollment() -> tuple[dict, dict, dict, list]:
+def _load_enrollment(census_path: str | None = None) -> tuple[dict, dict, dict, list]:
     """Load plate enrollment from latest census file.
 
     Returns (enrolled_freqs, plate_names, enrolled_mags, plate_ids).
     enrolled_mags maps plate_id -> list of magnitudes (same order as enrolled_freqs).
     """
-    census_files = sorted(
-        f for f in LAB_DIR.glob("plate_census_*.json")
-        if "sweeps" not in f.name
-    )
-    if not census_files:
-        raise FileNotFoundError("No census file found. Run plate_mode_census.py first.")
+    if census_path:
+        census_file = Path(census_path)
+        if not census_file.exists():
+            raise FileNotFoundError(f"Census file not found: {census_path}")
+    else:
+        census_files = sorted(
+            f for f in LAB_DIR.glob("plate_census_*.json")
+            if "sweeps" not in f.name
+        )
+        if not census_files:
+            raise FileNotFoundError("No census file found. Run plate_mode_census.py first.")
+        census_file = census_files[-1]
 
-    with open(census_files[-1]) as f:
+    log(f"Census: {census_file.name}")
+    with open(census_file) as f:
         census = json.load(f)
     if "results" in census:
         census = census["results"]
@@ -215,6 +222,56 @@ def _classify_frequencies(peaks_a: list[float], peaks_b: list[float],
         "a_only": a_only, "b_only": b_only, "shared": shared,
         "n_a_only": len(a_only), "n_b_only": len(b_only), "n_shared": len(shared),
     }
+
+
+# ── Pre-scan filtering (V5 approach from rods) ───────────────────────
+
+def _prescan_strong_peaks(handle, mux, enrolled, plate_names, plate_ids) -> dict:
+    """Phase 0: measure each plate's self-response, filter to strong modes.
+
+    For each plate, drive AWG at each enrolled frequency while measuring on
+    that plate's own relay.  Sort magnitudes, split at midpoint, compute
+    geometric mean of median(top half) and median(bottom half) as threshold.
+    Peaks above the threshold are "strong" — reliable enough to carry Boolean
+    information.  Returns dict[pid] → list of strong freq_hz.
+    """
+    log("\n" + "=" * 65)
+    log("  PRE-SCAN: filtering strong modes per plate")
+    log("=" * 65)
+
+    strong = {}          # pid → [freq, ...]
+    strong_mags = {}     # pid → {freq: magnitude}  (for detection threshold)
+
+    for pid in plate_ids:
+        name = plate_names[pid]
+        freqs = enrolled[pid][:N_PEAKS]
+        mux.select(int(pid))
+        time.sleep(SETTLE_RELAY_S)
+
+        scan = []
+        for freq in freqs:
+            m = _measure_at(handle, freq)
+            scan.append((freq, m["magnitude"]))
+
+        # Geometric-mean threshold of top/bottom halves
+        mags_sorted = sorted(m for _, m in scan)
+        mid = len(mags_sorted) // 2
+        med_strong = float(np.median(mags_sorted[mid:]))
+        med_weak = float(np.median(mags_sorted[:mid])) if mid > 0 else 0.0
+        thresh = math.sqrt(med_strong * med_weak) if med_weak > 0 else med_strong * 0.1
+
+        s = [(f, m) for f, m in scan if m > thresh]
+        strong[pid] = [f for f, _ in s]
+        strong_mags[pid] = {f: m for f, m in s}
+
+        log(f"  Plate {name}: {len(s)}/{len(scan)} strong  "
+            f"(thresh {thresh:,.0f})  "
+            f"peaks {[round(f) for f in strong[pid]]}")
+
+    mux.off()
+    total = sum(len(v) for v in strong.values())
+    log(f"  Total strong modes: {total}")
+    return strong, strong_mags
 
 
 # ── Template scoring ─────────────────────────────────────────────────
@@ -299,60 +356,49 @@ def block_temporal(handle, mux, enrolled, plate_names, plate_ids) -> dict:
 #  Block 2: Boolean All Pairs
 # ═══════════════════════════════════════════════════════════════════════
 
-def _boolean_fidelity(mags_a, mags_b, categories,
-                      enroll_mags_a=None, enroll_mags_b=None):
-    """Compute Boolean fidelity against expected truth tables.
+def _boolean_fidelity_v5(mags_a, mags_b, categories, freqs,
+                         strong_a, strong_b,
+                         thresh_a, thresh_b):
+    """V5 pre-scan-filtered Boolean fidelity.
 
-    categories[i] = 'a_only' | 'b_only' | 'shared'
-
-    Truth tables (magnitude-based):
-      AND:  shared → expect both high (1), else 0
-      OR:   any → expect at least one high (1), always 1 for our freqs
-      XOR:  a_only or b_only → expect 1, shared → expect 0
-
-    Adaptive thresholding: if enroll_mags_a/b are provided, each frequency
-    gets its own threshold = 15% of that plate's enrollment magnitude at
-    that frequency. This calibrates against per-frequency sensitivity
-    rather than using a global max.
+    Detection rule (same as rod V5):
+      plate detects "present" if:
+        1. The frequency is in its strong-peak set, AND
+        2. Its self-response magnitude > its detection threshold
     """
     n = len(categories)
     if n == 0:
         return {"and": 0.0, "or": 0.0, "xor": 0.0}
 
-    if enroll_mags_a is not None and enroll_mags_b is not None:
-        # Adaptive: per-frequency threshold from enrollment data
-        bit_a = []
-        bit_b = []
-        for i in range(n):
-            # Plate A: "active" if live mag > 15% of its enrollment mag
-            thresh_a_i = enroll_mags_a[i] * 0.15 if enroll_mags_a[i] > 0 else 100_000
-            thresh_b_i = enroll_mags_b[i] * 0.15 if enroll_mags_b[i] > 0 else 100_000
-            bit_a.append(1 if mags_a[i] > thresh_a_i else 0)
-            bit_b.append(1 if mags_b[i] > thresh_b_i else 0)
-    else:
-        # Fallback: global 25% of max
-        max_a = max(mags_a) if mags_a else 1
-        max_b = max(mags_b) if mags_b else 1
-        thresh_a = max_a * 0.25
-        thresh_b = max_b * 0.25
-        bit_a = [1 if m > thresh_a else 0 for m in mags_a]
-        bit_b = [1 if m > thresh_b else 0 for m in mags_b]
-
     and_correct = 0
     or_correct = 0
     xor_correct = 0
+
     for i in range(n):
+        freq = freqs[i]
         cat = categories[i]
-        a, b = bit_a[i], bit_b[i]
-        hw_and = a & b
-        hw_or = a | b
-        hw_xor = a ^ b
-        # Expected from categories
+
+        # Enrollment check: freq near this plate's STRONG peaks
+        a_enrolled = any(
+            abs(freq - sp) / max(freq, sp) < 0.03 for sp in strong_a
+        )
+        b_enrolled = any(
+            abs(freq - sp) / max(freq, sp) < 0.03 for sp in strong_b
+        )
+
+        det_a = 1 if (a_enrolled and mags_a[i] > thresh_a) else 0
+        det_b = 1 if (b_enrolled and mags_b[i] > thresh_b) else 0
+
+        hw_and = det_a & det_b
+        hw_or = det_a | det_b
+        hw_xor = det_a ^ det_b
+
         if cat == "shared":
             exp_and, exp_xor = 1, 0
         else:
             exp_and, exp_xor = 0, 1
-        exp_or = 1  # all tested freqs are in at least one enrollment
+        exp_or = 1
+
         if hw_and == exp_and:
             and_correct += 1
         if hw_or == exp_or:
@@ -367,11 +413,42 @@ def _boolean_fidelity(mags_a, mags_b, categories,
     }
 
 
+def _plate_detection_threshold(strong_peaks_list, strong_mags_dict, pid,
+                               mags_measured, freqs_measured):
+    """Compute V5 detection threshold for a plate.
+
+    = 50% of the weakest strong peak's self-response magnitude during
+    the main-phase measurement.
+    """
+    min_self = float('inf')
+    for i, freq in enumerate(freqs_measured):
+        is_strong = any(
+            abs(freq - sp) / max(freq, sp) < 0.03
+            for sp in strong_peaks_list
+        )
+        if is_strong:
+            min_self = min(min_self, mags_measured[i])
+    if min_self == float('inf'):
+        # Fallback: use 50% of weakest from pre-scan
+        if strong_mags_dict:
+            min_self = min(strong_mags_dict.values())
+        else:
+            min_self = 100_000
+    return min_self * 0.5
+
+
 def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
-                        enrolled_mags=None) -> dict:
-    """AND/OR/XOR via spectral superposition for all plate pairs."""
+                        enrolled_mags=None,
+                        prescan=None, prescan_mags=None) -> dict:
+    """AND/OR/XOR via spectral superposition for all plate pairs.
+
+    If prescan/prescan_mags are provided (from _prescan_strong_peaks),
+    uses V5 pre-scan-filtered Boolean detection. Otherwise falls back
+    to adaptive 15%-enrollment thresholding.
+    """
     log("\n" + "=" * 65)
-    log("  BLOCK 2: BOOLEAN ALL PAIRS")
+    log("  BLOCK 2: BOOLEAN ALL PAIRS"
+        + (" (V5 pre-scan filtered)" if prescan else ""))
     log("=" * 65)
 
     t0 = time.time()
@@ -380,46 +457,29 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
 
     for pa, pb in combinations(plate_ids, 2):
         na, nb = plate_names[pa], plate_names[pb]
-        log(f"\n  Pair: Plate {na} × Plate {nb}")
 
-        freqs_a = enrolled[pa]
-        freqs_b = enrolled[pb]
+        # Use strong peaks if available, else full enrollment
+        freqs_a = prescan[pa] if prescan else enrolled[pa]
+        freqs_b = prescan[pb] if prescan else enrolled[pb]
         classified = _classify_frequencies(freqs_a, freqs_b)
 
+        log(f"\n  Pair: Plate {na} × Plate {nb}")
         log(f"    A-only: {classified['n_a_only']}, "
             f"B-only: {classified['n_b_only']}, "
             f"Shared: {classified['n_shared']}")
 
-        # Build enrollment magnitude lookup for adaptive thresholding
-        def _enroll_mag(pid, freq):
-            """Get enrollment magnitude for a plate at a given frequency."""
-            if enrolled_mags is None:
-                return None
-            for i, ef in enumerate(enrolled[pid]):
-                if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
-                    return enrolled_mags[pid][i]
-            return 0.0  # not enrolled → zero reference
-
         # Build frequency list with category labels
         all_freqs = []
         categories = []
-        enroll_a = []  # enrollment magnitudes for plate A at each freq
-        enroll_b = []  # enrollment magnitudes for plate B at each freq
         for f in classified["a_only"]:
             all_freqs.append(f)
             categories.append("a_only")
-            enroll_a.append(_enroll_mag(pa, f))
-            enroll_b.append(_enroll_mag(pb, f))
         for f in classified["b_only"]:
             all_freqs.append(f)
             categories.append("b_only")
-            enroll_a.append(_enroll_mag(pa, f))
-            enroll_b.append(_enroll_mag(pb, f))
         for fa, _ in classified["shared"]:
             all_freqs.append(fa)
             categories.append("shared")
-            enroll_a.append(_enroll_mag(pa, fa))
-            enroll_b.append(_enroll_mag(pb, fa))
 
         # Measure plate A at all freqs (own relay)
         mags_a = []
@@ -437,9 +497,53 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
             m = _measure_at(handle, freq)
             mags_b.append(m["magnitude"])
 
-        fid = _boolean_fidelity(mags_a, mags_b, categories,
-                               enroll_mags_a=enroll_a if enrolled_mags else None,
-                               enroll_mags_b=enroll_b if enrolled_mags else None)
+        if prescan and prescan_mags:
+            # V5: detection threshold = 50% of weakest strong peak's
+            # self-response during this measurement pass
+            thresh_a = _plate_detection_threshold(
+                prescan[pa], prescan_mags[pa], pa, mags_a, all_freqs)
+            thresh_b = _plate_detection_threshold(
+                prescan[pb], prescan_mags[pb], pb, mags_b, all_freqs)
+
+            fid = _boolean_fidelity_v5(
+                mags_a, mags_b, categories, all_freqs,
+                prescan[pa], prescan[pb], thresh_a, thresh_b)
+        else:
+            # Legacy fallback (adaptive 15% enrollment threshold)
+            def _enroll_mag(pid, freq):
+                if enrolled_mags is None:
+                    return None
+                for j, ef in enumerate(enrolled[pid]):
+                    if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                        return enrolled_mags[pid][j]
+                return 0.0
+
+            enroll_a = [_enroll_mag(pa, f) for f in all_freqs]
+            enroll_b = [_enroll_mag(pb, f) for f in all_freqs]
+
+            n = len(categories)
+            bit_a, bit_b = [], []
+            for i in range(n):
+                ta = enroll_a[i] * 0.15 if enroll_a[i] and enroll_a[i] > 0 else 100_000
+                tb = enroll_b[i] * 0.15 if enroll_b[i] and enroll_b[i] > 0 else 100_000
+                bit_a.append(1 if mags_a[i] > ta else 0)
+                bit_b.append(1 if mags_b[i] > tb else 0)
+
+            and_c = or_c = xor_c = 0
+            for i in range(n):
+                cat = categories[i]
+                ha, hb = bit_a[i] & bit_b[i], bit_a[i] | bit_b[i]
+                hx = bit_a[i] ^ bit_b[i]
+                ea, ex = (1, 0) if cat == "shared" else (0, 1)
+                if ha == ea: and_c += 1
+                if hb == 1: or_c += 1
+                if hx == ex: xor_c += 1
+            fid = {
+                "and": round(and_c / n * 100, 1) if n else 0,
+                "or": round(or_c / n * 100, 1) if n else 0,
+                "xor": round(xor_c / n * 100, 1) if n else 0,
+            }
+
         mean_fid = round((fid["and"] + fid["or"] + fid["xor"]) / 3, 1)
         fidelities.append(mean_fid)
 
@@ -466,6 +570,7 @@ def block_boolean_pairs(handle, mux, enrolled, plate_names, plate_ids,
 
     return {
         "block": "boolean-pairs", "pairs": pairs,
+        "method": "prescan-v5" if prescan else "adaptive-15pct",
         "mean_fidelity": overall, "worst_fidelity": worst,
         "duration_s": duration,
     }
@@ -543,10 +648,12 @@ def block_nn_pairs(handle, mux, enrolled, plate_names, plate_ids) -> dict:
 # ═══════════════════════════════════════════════════════════════════════
 
 def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
-                         enrolled_mags=None) -> dict:
+                         enrolled_mags=None,
+                         prescan=None, prescan_mags=None) -> dict:
     """AND/OR/XOR across 3 plates simultaneously."""
     log("\n" + "=" * 65)
-    log("  BLOCK 4: 3-PLATE BOOLEAN")
+    log("  BLOCK 4: 3-PLATE BOOLEAN"
+        + (" (V5 pre-scan filtered)" if prescan else ""))
     log("=" * 65)
 
     t0 = time.time()
@@ -554,23 +661,15 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
     fidelities = []
     triples = list(combinations(plate_ids, 3))[:10]
 
-    def _get_enroll_mag(pid, freq):
-        """Lookup enrollment magnitude for adaptive threshold."""
-        if enrolled_mags is None:
-            return None
-        for j, ef in enumerate(enrolled[pid]):
-            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
-                return enrolled_mags[pid][j]
-        return 0.0
-
     for pa, pb, pc in triples:
         na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
         log(f"\n  Triple: {na} × {nb} × {nc}")
 
-        # Union of enrolled frequencies with category tracking
+        # Union of strong (or enrolled) frequencies with ownership tracking
         freq_owners = {}  # freq → set of plate_ids that own it
         for pid in [pa, pb, pc]:
-            for f in enrolled[pid]:
+            src = prescan[pid] if prescan else enrolled[pid]
+            for f in src:
                 matched = False
                 for existing in freq_owners:
                     if abs(f - existing) / max(f, existing) < 0.03:
@@ -592,44 +691,66 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
                 m = _measure_at(handle, freq)
                 mags[pid].append(m["magnitude"])
 
-        # 3-way Boolean fidelity: AND3 expects all 3 own the freq
+        # 3-way Boolean fidelity
         n = len(all_freqs)
         and3_correct = 0
         or3_correct = 0
-        for i, freq in enumerate(all_freqs):
-            owners = freq_owners[freq]
-            n_owners = len(owners)
-            # Binarise per-plate with adaptive threshold
-            bits = []
+
+        if prescan and prescan_mags:
+            # V5: per-plate detection threshold
+            thresholds = {}
             for pid in [pa, pb, pc]:
-                emag = _get_enroll_mag(pid, freq)
-                if emag is not None and emag > 0:
-                    threshold = emag * 0.15
-                else:
-            # 3-way Boolean fidelity: AND3 expects all 3 own the freq
-        n = len(all_freqs)
-        and3_correct = 0
-        or3_correct = 0
-        for i, freq in enumerate(all_freqs):
-            owners = freq_owners[freq]
-            n_owners = len(owners)
-            # Binarise per-plate with adaptive threshold
-            bits = []
-            for pid in [pa, pb, pc]:
-                emag = _get_enroll_mag(pid, freq)
-                if emag is not None and emag > 0:
-                    threshold = emag * 0.15
-                else:
-                    threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
-                bits.append(1 if mags[pid][i] > threshold else 0)
-            hw_and3 = bits[0] & bits[1] & bits[2]
-            hw_or3 = bits[0] | bits[1] | bits[2]
-            exp_and3 = 1 if n_owners == 3 else 0
-            exp_or3 = 1  # all freqs belong to at least one plate
-            if hw_and3 == exp_and3:
-                and3_correct += 1
-            if hw_or3 == exp_or3:
-                or3_correct += 1
+                thresholds[pid] = _plate_detection_threshold(
+                    prescan[pid], prescan_mags[pid], pid,
+                    mags[pid], all_freqs)
+
+            for i, freq in enumerate(all_freqs):
+                owners = freq_owners[freq]
+                n_owners = len(owners)
+                bits = []
+                for pid in [pa, pb, pc]:
+                    is_strong = any(
+                        abs(freq - sp) / max(freq, sp) < 0.03
+                        for sp in prescan[pid]
+                    )
+                    bits.append(1 if (is_strong and mags[pid][i] > thresholds[pid]) else 0)
+                hw_and3 = bits[0] & bits[1] & bits[2]
+                hw_or3 = bits[0] | bits[1] | bits[2]
+                exp_and3 = 1 if n_owners == 3 else 0
+                exp_or3 = 1
+                if hw_and3 == exp_and3:
+                    and3_correct += 1
+                if hw_or3 == exp_or3:
+                    or3_correct += 1
+        else:
+            # Legacy adaptive threshold
+            def _get_enroll_mag(pid, freq):
+                if enrolled_mags is None:
+                    return None
+                for j, ef in enumerate(enrolled[pid]):
+                    if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                        return enrolled_mags[pid][j]
+                return 0.0
+
+            for i, freq in enumerate(all_freqs):
+                owners = freq_owners[freq]
+                n_owners = len(owners)
+                bits = []
+                for pid in [pa, pb, pc]:
+                    emag = _get_enroll_mag(pid, freq)
+                    if emag is not None and emag > 0:
+                        threshold = emag * 0.15
+                    else:
+                        threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
+                    bits.append(1 if mags[pid][i] > threshold else 0)
+                hw_and3 = bits[0] & bits[1] & bits[2]
+                hw_or3 = bits[0] | bits[1] | bits[2]
+                exp_and3 = 1 if n_owners == 3 else 0
+                exp_or3 = 1
+                if hw_and3 == exp_and3:
+                    and3_correct += 1
+                if hw_or3 == exp_or3:
+                    or3_correct += 1
 
         and3_fid = round(and3_correct / n * 100, 1) if n else 0
         or3_fid = round(or3_correct / n * 100, 1) if n else 0
@@ -646,11 +767,31 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
 
     mux.off()
     overall = round(float(np.mean(fidelities)), 1) if fidelities else 0.0
-    duration = round(time.time() - t0, 1),
-                  enrolled_mags=None) -> dict:
+    duration = round(time.time() - t0, 1)
+
+    log(f"\n  3-plate Boolean overall fidelity: {overall}%")
+
+    return {
+        "block": "3plate-boolean",
+        "method": "prescan-v5" if prescan else "adaptive-15pct",
+        "n_triples": len(triples_data),
+        "mean_fidelity": overall,
+        "triples": triples_data,
+        "duration_s": duration,
+    }
+
+
+# ═══════════════════════════════════════════════════════════════════════
+#  Block 5: Chained Boolean
+# ═══════════════════════════════════════════════════════════════════════
+
+def block_chained(handle, mux, enrolled, plate_names, plate_ids,
+                  enrolled_mags=None,
+                  prescan=None, prescan_mags=None) -> dict:
     """(A AND B) XOR C — two-stage Boolean computation."""
     log("\n" + "=" * 65)
-    log("  BLOCK 5: CHAINED BOOLEAN")
+    log("  BLOCK 5: CHAINED BOOLEAN"
+        + (" (V5 pre-scan filtered)" if prescan else ""))
     log("=" * 65)
 
     t0 = time.time()
@@ -663,52 +804,18 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
     na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
     log(f"  Chain: ({na} AND {nb}) XOR {nc}")
 
-    def _get_enroll_mag(pid, freq):
-        if enrolled_mags is None:
-            return None
-        for j, ef in enumerate(enrolled[pid]):
-            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
-                return enrolled_mags[pid][j]
-        return 0.0e_names, plate_ids,
-                  enrolled_mags=None) -> dict:
-    """(A AND B) XOR C — two-stage Boolean computation."""
-    log("\n" + "=" * 65)
-    log("  BLOCK 5: CHAINED BOOLEAN")
-    log("=" * 65)
-
-    t0 = time.time()
-
-    if len(plate_ids) < 3:
-        log("  Need at least 3 plates, skipping")
-        return {"block": "chained", "skipped": True, "duration_s": 0}
-
-    pa, pb, pc = plate_ids[0], plate_ids[1], plate_ids[2]
-    na, nb, nc = plate_names[pa], plate_names[pb], plate_names[pc]
-    log(f"  Chain: ({na} AND {nb}) XOR {nc}")
-
-    def _get_enroll_mag(pid, freq):
-        if enrolled_mags is None:
-            return None
-        for j, ef in enumerate(enrolled[pid]):
-            if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
-                return enrolled_mags[pid][j]
-        return 0.0
-
-    # Build freq list with ownership
+    # Build freq list with ownership (from strong peaks if available)
     freq_owners = {}
     for pid in [pa, pb, pc]:
-        for f in enrolled[pid]:
+        src = prescan[pid] if prescan else enrolled[pid]
+        for f in src:
             matched = False
             for existing in freq_owners:
                 if abs(f - existing) / max(f, existing) < 0.03:
-                   with adaptive threshold
-        bits = {}
-        for pid in [pa, pb, pc]:
-            emag = _get_enroll_mag(pid, freq)
-            if emag is not None and emag > 0:
-                threshold = emag * 0.15
-            else:
-                if not matched:
+                    freq_owners[existing].add(pid)
+                    matched = True
+                    break
+            if not matched:
                 freq_owners[f] = {pid}
 
     all_freqs = sorted(freq_owners.keys())
@@ -726,28 +833,60 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
 
     n = len(all_freqs)
     chain_correct = 0
-    for i, freq in enumerate(all_freqs):
-        owners = freq_owners[freq]
-        # Binarise with adaptive threshold
-        bits = {}
+
+    if prescan and prescan_mags:
+        # V5: per-plate detection thresholds
+        thresholds = {}
         for pid in [pa, pb, pc]:
-            emag = _get_enroll_mag(pid, freq)
-            if emag is not None and emag > 0:
-                threshold = emag * 0.15
-            else:
-                threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
-            bits[pid] = 1 if mags[pid][i] > threshold else 0
+            thresholds[pid] = _plate_detection_threshold(
+                prescan[pid], prescan_mags[pid], pid,
+                mags[pid], all_freqs)
 
-        hw_chain = (bits[pa] & bits[pb]) ^ bits[pc]
+        for i, freq in enumerate(all_freqs):
+            owners = freq_owners[freq]
+            bits = {}
+            for pid in [pa, pb, pc]:
+                is_strong = any(
+                    abs(freq - sp) / max(freq, sp) < 0.03
+                    for sp in prescan[pid]
+                )
+                bits[pid] = 1 if (is_strong and mags[pid][i] > thresholds[pid]) else 0
 
-        # Expected: (A owns freq AND B owns freq) XOR (C owns freq)
-        a_owns = 1 if pa in owners else 0
-        b_owns = 1 if pb in owners else 0
-        c_owns = 1 if pc in owners else 0
-        exp_chain = (a_owns & b_owns) ^ c_owns
+            hw_chain = (bits[pa] & bits[pb]) ^ bits[pc]
+            a_owns = 1 if pa in owners else 0
+            b_owns = 1 if pb in owners else 0
+            c_owns = 1 if pc in owners else 0
+            exp_chain = (a_owns & b_owns) ^ c_owns
+            if hw_chain == exp_chain:
+                chain_correct += 1
+    else:
+        # Legacy adaptive threshold
+        def _get_enroll_mag(pid, freq):
+            if enrolled_mags is None:
+                return None
+            for j, ef in enumerate(enrolled[pid]):
+                if abs(freq - ef) / max(freq, ef) * 100 < FREQ_MATCH_PCT:
+                    return enrolled_mags[pid][j]
+            return 0.0
 
-        if hw_chain == exp_chain:
-            chain_correct += 1
+        for i, freq in enumerate(all_freqs):
+            owners = freq_owners[freq]
+            bits = {}
+            for pid in [pa, pb, pc]:
+                emag = _get_enroll_mag(pid, freq)
+                if emag is not None and emag > 0:
+                    threshold = emag * 0.15
+                else:
+                    threshold = max(mags[pid]) * 0.25 if mags[pid] else 1
+                bits[pid] = 1 if mags[pid][i] > threshold else 0
+
+            hw_chain = (bits[pa] & bits[pb]) ^ bits[pc]
+            a_owns = 1 if pa in owners else 0
+            b_owns = 1 if pb in owners else 0
+            c_owns = 1 if pc in owners else 0
+            exp_chain = (a_owns & b_owns) ^ c_owns
+            if hw_chain == exp_chain:
+                chain_correct += 1
 
     fidelity = round(chain_correct / n * 100, 1) if n else 0
     duration = round(time.time() - t0, 1)
@@ -756,6 +895,7 @@ def block_3plate_boolean(handle, mux, enrolled, plate_names, plate_ids,
 
     return {
         "block": "chained",
+        "method": "prescan-v5" if prescan else "adaptive-15pct",
         "plates": [na, nb, nc],
         "operation": f"({na} AND {nb}) XOR {nc}",
         "n_freqs": n, "n_correct": chain_correct,
@@ -942,6 +1082,10 @@ def main():
         "--port", type=str, default="/dev/cu.usbserial-11310",
         help="Serial port for relay mux"
     )
+    parser.add_argument(
+        "--census", type=str, default=None,
+        help="Path to census JSON (default: latest plate_census_*.json)"
+    )
     args = parser.parse_args()
 
     skip_submit = args.dry_run or args.no_submit
@@ -960,10 +1104,19 @@ def main():
     mux.open()
     log(f"Relay mux connected on {mux.port}")
 
-    enrolled, plate_names, enrolled_mags, plate_ids = _load_enrollment()
+    enrolled, plate_names, enrolled_mags, plate_ids = _load_enrollment(
+        census_path=args.census)
 
     block_results = {}
     suite_t0 = time.time()
+
+    # Run pre-scan once if any Boolean block is requested
+    prescan = None
+    prescan_mags = None
+    bool_blocks = {"boolean-pairs", "3plate-boolean", "chained"}
+    if bool_blocks & set(blocks):
+        prescan, prescan_mags = _prescan_strong_peaks(
+            handle, mux, enrolled, plate_names, plate_ids)
 
     try:
         if "temporal" in blocks:
@@ -972,18 +1125,21 @@ def main():
         if "boolean-pairs" in blocks:
             block_results["boolean-pairs"] = block_boolean_pairs(
                 handle, mux, enrolled, plate_names, plate_ids,
-                enrolled_mags=enrolled_mags)
+                enrolled_mags=enrolled_mags,
+                prescan=prescan, prescan_mags=prescan_mags)
         if "nn-pairs" in blocks:
             block_results["nn-pairs"] = block_nn_pairs(
                 handle, mux, enrolled, plate_names, plate_ids)
         if "3plate-boolean" in blocks:
             block_results["3plate-boolean"] = block_3plate_boolean(
                 handle, mux, enrolled, plate_names, plate_ids,
-                enrolled_mags=enrolled_mags)
+                enrolled_mags=enrolled_mags,
+                prescan=prescan, prescan_mags=prescan_mags)
         if "chained" in blocks:
             block_results["chained"] = block_chained(
                 handle, mux, enrolled, plate_names, plate_ids,
-                enrolled_mags=enrolled_mags)
+                enrolled_mags=enrolled_mags,
+                prescan=prescan, prescan_mags=prescan_mags)
         if "noise" in blocks:
             block_results["noise"] = block_noise(
                 handle, mux, enrolled, plate_names, plate_ids)

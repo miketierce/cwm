@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-04-17T15:55:58.722419+00:00",
+  "experiment": "multitone_parity",
+  "mode": "simulation",
+  "n_samples": 1000,
+  "n_carriers": 7,
+  "n_modes": 8,
+  "tasks": {
+    "parity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 0.515,
+        "mean_position": 0.515,
+        "per_position": [
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 0.515,
+        "mean_position": 0.515,
+        "per_position": [
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515,
+          0.515
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 0.545,
+        "mean_position": 0.545,
+        "per_position": [
+          0.545,
+          0.545,
+          0.545,
+          0.545,
+          0.545,
+          0.545,
+          0.545
+        ],
+        "best_alpha": 100.0
+      }
+    },
+    "reverse": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    }
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-04-18T21:21:11.018093+00:00",
+  "experiment": "q_factor_ringdown",
+  "mode": "hardware",
+  "plate": "4_NE",
+  "sample_rate": 781250,
+  "n_samples": 8064,
+  "captures_per_freq": 5,
+  "results": [
+    {
+      "freq_hz": 11425,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 19000,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 23900,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 29200,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 29900,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 33225,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 34550,
+      "Q_mean": 214.77639261303167,
+      "Q_std": 94.32301407210957,
+      "tau_ms": 1.9787394815519324,
+      "r_squared": 0.8972761050095052,
+      "n_good": 3
+    },
+    {
+      "freq_hz": 37000,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 45000,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 47800,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 49600,
+      "Q_mean": 0.0,
+      "Q_std": 0.0,
+      "tau_ms": 0.0,
+      "r_squared": 0.0,
+      "n_good": 0
+    },
+    {
+      "freq_hz": 56200,
+      "Q_mean": 23.474007252987434,
+      "Q_std": 5.188053480063196,
+      "tau_ms": 0.13295388927003396,
+      "r_squared": 0.8789729365050966,
+      "n_good": 2
+    },
+    {
+      "freq_hz": 58500,
+      "Q_mean": 27.453889956809075,
+      "Q_std": 0.0,
+      "tau_ms": 0.14938195875990104,
+      "r_squared": 0.9437893952817977,
+      "n_good": 1
+    },
+    {
+      "freq_hz": 68200,
+      "Q_mean": 40.08704265341662,
+      "Q_std": 0.0,
+      "tau_ms": 0.18709826956677134,
+      "r_squared": 0.9533546784606247,
+      "n_good": 1
+    },
+    {
+      "freq_hz": 89400,
+      "Q_mean": 77.32021242680192,
+      "Q_std": 8.68115734733044,
+      "tau_ms": 0.27529964225147463,
+      "r_squared": 0.8806132065178043,
+      "n_good": 2
+    }
+  ]
+}

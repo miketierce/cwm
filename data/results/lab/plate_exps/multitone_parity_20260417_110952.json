@@ -1,0 +1,142 @@
+{
+  "timestamp": "2026-04-17T16:09:52.040037+00:00",
+  "experiment": "multitone_parity",
+  "mode": "hardware",
+  "n_samples": 500,
+  "n_carriers": 7,
+  "n_modes": 8,
+  "tasks": {
+    "parity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 0.43,
+        "mean_position": 0.43000000000000005,
+        "per_position": [
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 0.43,
+        "mean_position": 0.43000000000000005,
+        "per_position": [
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43,
+          0.43
+        ],
+        "best_alpha": 100.0
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 0.57,
+        "mean_position": 0.57,
+        "per_position": [
+          0.57,
+          0.57,
+          0.57,
+          0.57,
+          0.57,
+          0.57,
+          0.57
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "reverse": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 0.95,
+        "mean_position": 0.9785714285714285,
+        "per_position": [
+          0.99,
+          0.95,
+          0.98,
+          0.98,
+          0.98,
+          0.98,
+          0.99
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 0.95,
+        "mean_position": 0.9928571428571428,
+        "per_position": [
+          0.98,
+          0.99,
+          1.0,
+          1.0,
+          0.98,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (14-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone raw (8-dim)": {
+        "sequence_acc": 0.96,
+        "mean_position": 0.9928571428571429,
+        "per_position": [
+          1.0,
+          1.0,
+          0.99,
+          1.0,
+          1.0,
+          0.96,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "Multi-tone exp (44-dim)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 100.0
+      }
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-04-17T05:33:44.637621+00:00",
+  "plate": "D",
+  "symbols": [
+    "BTC-USD"
+  ],
+  "period": "2y",
+  "tests": {
+    "walk_forward": {
+      "train_window": 120,
+      "test_window": 20
+    },
+    "friction_levels_bps": [
+      0,
+      5,
+      10,
+      17,
+      25,
+      50
+    ]
+  }
+}

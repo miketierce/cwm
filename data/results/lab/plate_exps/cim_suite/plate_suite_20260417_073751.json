@@ -1,0 +1,214 @@
+{
+  "timestamp": "2026-04-17T12:40:47.547372+00:00",
+  "blocks_run": [
+    "boolean-pairs",
+    "3plate-boolean",
+    "chained"
+  ],
+  "n_plates": 5,
+  "duration_s": 172.6,
+  "results": {
+    "boolean-pairs": {
+      "block": "boolean-pairs",
+      "pairs": [
+        {
+          "pair": "A-B",
+          "n_a_only": 1,
+          "n_b_only": 2,
+          "n_shared": 1,
+          "fidelity_and": 75.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 75.0,
+          "fidelity_mean": 83.3
+        },
+        {
+          "pair": "A-C",
+          "n_a_only": 2,
+          "n_b_only": 3,
+          "n_shared": 0,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "A-D",
+          "n_a_only": 0,
+          "n_b_only": 1,
+          "n_shared": 2,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "A-E",
+          "n_a_only": 1,
+          "n_b_only": 3,
+          "n_shared": 1,
+          "fidelity_and": 60.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 60.0,
+          "fidelity_mean": 73.3
+        },
+        {
+          "pair": "B-C",
+          "n_a_only": 2,
+          "n_b_only": 2,
+          "n_shared": 1,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "B-D",
+          "n_a_only": 1,
+          "n_b_only": 1,
+          "n_shared": 2,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "B-E",
+          "n_a_only": 0,
+          "n_b_only": 1,
+          "n_shared": 3,
+          "fidelity_and": 75.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 75.0,
+          "fidelity_mean": 83.3
+        },
+        {
+          "pair": "C-D",
+          "n_a_only": 2,
+          "n_b_only": 2,
+          "n_shared": 1,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "C-E",
+          "n_a_only": 2,
+          "n_b_only": 3,
+          "n_shared": 1,
+          "fidelity_and": 100.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "pair": "D-E",
+          "n_a_only": 1,
+          "n_b_only": 2,
+          "n_shared": 2,
+          "fidelity_and": 80.0,
+          "fidelity_or": 100.0,
+          "fidelity_xor": 80.0,
+          "fidelity_mean": 86.7
+        }
+      ],
+      "method": "prescan-v5",
+      "mean_fidelity": 92.7,
+      "worst_fidelity": 73.3,
+      "duration_s": 55.4
+    },
+    "3plate-boolean": {
+      "block": "3plate-boolean",
+      "method": "prescan-v5",
+      "n_triples": 10,
+      "mean_fidelity": 100.0,
+      "triples": [
+        {
+          "triple": "A-B-C",
+          "n_freqs": 5,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "A-B-D",
+          "n_freqs": 3,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "A-B-E",
+          "n_freqs": 3,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "A-C-D",
+          "n_freqs": 5,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "A-C-E",
+          "n_freqs": 5,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "A-D-E",
+          "n_freqs": 3,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "B-C-D",
+          "n_freqs": 5,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "B-C-E",
+          "n_freqs": 4,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "B-D-E",
+          "n_freqs": 3,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        },
+        {
+          "triple": "C-D-E",
+          "n_freqs": 6,
+          "fidelity_and3": 100.0,
+          "fidelity_or3": 100.0,
+          "fidelity_mean": 100.0
+        }
+      ],
+      "duration_s": 82.2
+    },
+    "chained": {
+      "block": "chained",
+      "method": "prescan-v5",
+      "plates": [
+        "A",
+        "B",
+        "C"
+      ],
+      "operation": "(A AND B) XOR C",
+      "n_freqs": 5,
+      "n_correct": 5,
+      "fidelity": 100.0,
+      "duration_s": 10.9
+    }
+  }
+}

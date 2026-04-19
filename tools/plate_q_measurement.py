@@ -38,7 +38,7 @@ TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 # ── Plate config ──
 PLATE_IDS = ["1", "2", "3", "4", "5"]  # relay channels
-PLATE_NAMES = {"1": "A", "2": "B", "3": "C", "4": "D", "5": "E"}
+PLATE_NAMES = {"1": "A", "2": "B", "3": "G", "4": "D", "5": "H"}
 
 # ── Sweep config ──
 F_START = 200       # Hz  (lowest bending mode for 100mm plate ~136 Hz)

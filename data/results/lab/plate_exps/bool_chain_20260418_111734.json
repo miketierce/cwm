@@ -1,0 +1,414 @@
+{
+  "timestamp": "2026-04-18T16:17:34.233385+00:00",
+  "experiment": "boolean_chain",
+  "method": "v5-prescan-filtered-self-response",
+  "pattern_a": {
+    "key": "4_NE",
+    "label": "D-NE",
+    "relay": 5
+  },
+  "pattern_b": {
+    "key": "3_NE",
+    "label": "G-NE",
+    "relay": 3
+  },
+  "chain_plates": [
+    {
+      "key": "2",
+      "label": "B-NE",
+      "relay": 2
+    },
+    {
+      "key": "3_NE",
+      "label": "G-NE",
+      "relay": 3
+    },
+    {
+      "key": "4_NE",
+      "label": "D-NE",
+      "relay": 5
+    },
+    {
+      "key": "5_NE",
+      "label": "H-NE",
+      "relay": 7
+    }
+  ],
+  "enrolled_a": [
+    29300.0,
+    47800.0,
+    48525.0,
+    28900.0,
+    68175.0,
+    18975.0,
+    33250.0,
+    47325.0,
+    11425.0
+  ],
+  "enrolled_b": [
+    29250.0,
+    34900.0,
+    34550.0,
+    51525.0,
+    78850.0,
+    44950.0,
+    68025.0,
+    18950.0
+  ],
+  "strong_a": [
+    29300.0,
+    47800.0,
+    48525.0,
+    28900.0,
+    68175.0,
+    18975.0,
+    33250.0,
+    47325.0,
+    11425.0
+  ],
+  "strong_b": [
+    29250.0,
+    34900.0,
+    34550.0,
+    51525.0,
+    78850.0,
+    44950.0,
+    68025.0,
+    18950.0
+  ],
+  "classes": {
+    "both": [
+      18962.5,
+      29275.0,
+      68100.0
+    ],
+    "a_only": [
+      11425.0,
+      28900.0,
+      33250.0,
+      47325.0,
+      47800.0,
+      48525.0
+    ],
+    "b_only": [
+      34550.0,
+      34900.0,
+      44950.0,
+      51525.0,
+      78850.0
+    ],
+    "all": [
+      11425.0,
+      18962.5,
+      28900.0,
+      29275.0,
+      33250.0,
+      34550.0,
+      34900.0,
+      44950.0,
+      47325.0,
+      47800.0,
+      48525.0,
+      51525.0,
+      68100.0,
+      78850.0
+    ]
+  },
+  "thresholds": {
+    "4_NE": 640585.3,
+    "3_NE": 390591.5
+  },
+  "results_per_freq": [
+    {
+      "freq_hz": 11425.0,
+      "category": "a_only",
+      "mag_a": 1281170.6,
+      "mag_b": 563902.2,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 973503.1,
+        "H-NE": 669544.0
+      }
+    },
+    {
+      "freq_hz": 18962.5,
+      "category": "both",
+      "mag_a": 1972296.2,
+      "mag_b": 1585696.7,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 1,
+      "det_b": 1,
+      "and_expected": 1,
+      "and_computed": 1,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 0,
+      "xor_computed": 0,
+      "witness_mags": {
+        "B-NE": 1844561.6,
+        "H-NE": 2119655.0
+      }
+    },
+    {
+      "freq_hz": 28900.0,
+      "category": "a_only",
+      "mag_a": 4560966.0,
+      "mag_b": 1782956.8,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 2438765.4,
+        "H-NE": 2847495.7
+      }
+    },
+    {
+      "freq_hz": 29275.0,
+      "category": "both",
+      "mag_a": 6072797.6,
+      "mag_b": 4693802.8,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 1,
+      "det_b": 1,
+      "and_expected": 1,
+      "and_computed": 1,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 0,
+      "xor_computed": 0,
+      "witness_mags": {
+        "B-NE": 3040192.9,
+        "H-NE": 4934712.3
+      }
+    },
+    {
+      "freq_hz": 33250.0,
+      "category": "a_only",
+      "mag_a": 2047448.7,
+      "mag_b": 1066828.9,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 1192772.6,
+        "H-NE": 2195894.9
+      }
+    },
+    {
+      "freq_hz": 34550.0,
+      "category": "b_only",
+      "mag_a": 2223729.6,
+      "mag_b": 3565665.3,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 2386192.5,
+        "H-NE": 2571867.7
+      }
+    },
+    {
+      "freq_hz": 34900.0,
+      "category": "b_only",
+      "mag_a": 6071731.5,
+      "mag_b": 4626514.5,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 1865182.2,
+        "H-NE": 3545628.5
+      }
+    },
+    {
+      "freq_hz": 44950.0,
+      "category": "b_only",
+      "mag_a": 3007929.1,
+      "mag_b": 2805385.5,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 718058.9,
+        "H-NE": 2542755.9
+      }
+    },
+    {
+      "freq_hz": 47325.0,
+      "category": "a_only",
+      "mag_a": 1548626.1,
+      "mag_b": 1746654.3,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 2258974.1,
+        "H-NE": 660947.8
+      }
+    },
+    {
+      "freq_hz": 47800.0,
+      "category": "a_only",
+      "mag_a": 7044824.1,
+      "mag_b": 2757557.6,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 1957768.3,
+        "H-NE": 1909196.9
+      }
+    },
+    {
+      "freq_hz": 48525.0,
+      "category": "a_only",
+      "mag_a": 5478706.3,
+      "mag_b": 4395504.2,
+      "a_enrolled": true,
+      "b_enrolled": false,
+      "det_a": 1,
+      "det_b": 0,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 1436041.0,
+        "H-NE": 3860063.5
+      }
+    },
+    {
+      "freq_hz": 51525.0,
+      "category": "b_only",
+      "mag_a": 559531.4,
+      "mag_b": 3673104.8,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 541901.3,
+        "H-NE": 3303504.6
+      }
+    },
+    {
+      "freq_hz": 68100.0,
+      "category": "both",
+      "mag_a": 1912735.7,
+      "mag_b": 781183.0,
+      "a_enrolled": true,
+      "b_enrolled": true,
+      "det_a": 1,
+      "det_b": 1,
+      "and_expected": 1,
+      "and_computed": 1,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 0,
+      "xor_computed": 0,
+      "witness_mags": {
+        "B-NE": 640685.8,
+        "H-NE": 1325836.3
+      }
+    },
+    {
+      "freq_hz": 78850.0,
+      "category": "b_only",
+      "mag_a": 1046490.4,
+      "mag_b": 3569148.9,
+      "a_enrolled": false,
+      "b_enrolled": true,
+      "det_a": 0,
+      "det_b": 1,
+      "and_expected": 0,
+      "and_computed": 0,
+      "or_expected": 1,
+      "or_computed": 1,
+      "xor_expected": 1,
+      "xor_computed": 1,
+      "witness_mags": {
+        "B-NE": 2408710.9,
+        "H-NE": 1932462.1
+      }
+    }
+  ],
+  "analysis": {
+    "and_fidelity": 1.0,
+    "or_fidelity": 1.0,
+    "xor_fidelity": 1.0,
+    "mean_fidelity": 1.0,
+    "total_bits": 14,
+    "and_correct": 14,
+    "or_correct": 14,
+    "xor_correct": 14
+  },
+  "duration_s": 52.3
+}

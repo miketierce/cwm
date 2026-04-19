@@ -1,0 +1,100 @@
+{
+  "timestamp": "2026-04-19T00:01:58.465649+00:00",
+  "experiment": "narma10_temporal",
+  "mode": "simulation",
+  "n_steps": 500,
+  "n_train": 335,
+  "n_test": 165,
+  "seed": 42,
+  "carriers_hz": [
+    29900
+  ],
+  "carrier_mode": "single_29900",
+  "n_samples_per_step": 256,
+  "sample_rate": 781250,
+  "results": [
+    {
+      "train_nmse": 0.495528,
+      "test_nmse": 0.537273,
+      "alpha": 10.0,
+      "features": 64,
+      "name": "software_esn"
+    },
+    {
+      "train_nmse": 0.668454,
+      "test_nmse": 0.755917,
+      "alpha": 0.001,
+      "features": 10,
+      "name": "input_window_only"
+    },
+    {
+      "train_nmse": 0.668092,
+      "test_nmse": 0.763028,
+      "alpha": 0.001,
+      "features": 12,
+      "name": "temporal_demod_SHUFFLED+input"
+    },
+    {
+      "train_nmse": 0.665096,
+      "test_nmse": 0.763166,
+      "alpha": 1.0,
+      "features": 12,
+      "name": "temporal_demod+input"
+    },
+    {
+      "train_nmse": 0.633272,
+      "test_nmse": 0.804419,
+      "alpha": 100.0,
+      "features": 42,
+      "name": "temporal_subsample_s8+input"
+    },
+    {
+      "train_nmse": 0.610746,
+      "test_nmse": 0.874007,
+      "alpha": 10.0,
+      "features": 30,
+      "name": "temporal_fft_bands+input"
+    },
+    {
+      "name": "mean_baseline",
+      "train_nmse": 1.0,
+      "test_nmse": 1.001799,
+      "features": 0
+    },
+    {
+      "train_nmse": 0.965229,
+      "test_nmse": 1.033221,
+      "alpha": 10.0,
+      "features": 2,
+      "name": "temporal_demod"
+    },
+    {
+      "train_nmse": 0.932895,
+      "test_nmse": 1.076878,
+      "alpha": 100.0,
+      "features": 16,
+      "name": "temporal_subsample_s16 (16)"
+    },
+    {
+      "train_nmse": 0.91962,
+      "test_nmse": 1.083578,
+      "alpha": 100.0,
+      "features": 20,
+      "name": "temporal_fft_bands_20"
+    },
+    {
+      "train_nmse": 0.90915,
+      "test_nmse": 1.098276,
+      "alpha": 100.0,
+      "features": 32,
+      "name": "temporal_subsample_s8 (32)"
+    },
+    {
+      "train_nmse": 0.823659,
+      "test_nmse": 1.16772,
+      "alpha": 100.0,
+      "features": 64,
+      "name": "temporal_subsample_s4 (64)"
+    }
+  ]
+}

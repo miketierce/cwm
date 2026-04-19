@@ -1,0 +1,80 @@
+{
+  "timestamp": "2026-04-16T22:02:38.564799+00:00",
+  "plate_name": "D",
+  "plate_id": "4",
+  "n_modes": 57,
+  "n_carrier_bits": 7,
+  "mode": "hardware",
+  "benchmarks": [
+    {
+      "benchmark": "nonlinear",
+      "function": "xor_surface",
+      "plate_nmse_test": 1.1352,
+      "sw_linear_nmse_test": 1.2947,
+      "plate_advantage": 0.1596,
+      "latency_ms": 3628.49
+    },
+    {
+      "benchmark": "nonlinear",
+      "function": "sinusoidal",
+      "plate_nmse_test": 1.0423,
+      "sw_linear_nmse_test": 1.0941,
+      "plate_advantage": 0.0518,
+      "latency_ms": 3628.49
+    },
+    {
+      "benchmark": "nonlinear",
+      "function": "threshold_count",
+      "plate_nmse_test": 1.4284,
+      "sw_linear_nmse_test": 0.0015,
+      "plate_advantage": -1.4269,
+      "latency_ms": 3628.49
+    }
+  ],
+  "viability": {
+    "power_watts": 7.77,
+    "power_kwh_per_day": 0.19,
+    "gpu_comparison_kwh_per_day": 3.6,
+    "power_ratio_vs_gpu": 19.3,
+    "queries_per_second": 2.0,
+    "queries_per_day": 172800,
+    "avg_latency_ms": 500,
+    "best_accuracy_pct": 1.4284,
+    "n_readout_dims": 57,
+    "hardware_cost_usd": 265,
+    "scenarios": {
+      "optimistic": {
+        "daily_tao": 15.3191,
+        "daily_usd": 5361.7,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 5360.95,
+        "annual_profit": 1956748.0,
+        "profitable": true
+      },
+      "realistic": {
+        "daily_tao": 3.0638,
+        "daily_usd": 1072.34,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 1071.59,
+        "annual_profit": 391131.0,
+        "profitable": true
+      },
+      "pessimistic": {
+        "daily_tao": 0.766,
+        "daily_usd": 268.09,
+        "daily_power_cost": 0.02,
+        "daily_hardware_cost": 0.73,
+        "daily_total_cost": 0.75,
+        "daily_profit": 267.34,
+        "annual_profit": 97578.0,
+        "profitable": true
+      }
+    },
+    "tao_price_usd": 350.0,
+    "breakeven_note": "At 7.77W vs GPU 150.0W, plate uses 19\u00d7 less power. Viable if inference quality scores competitively."
+  }
+}

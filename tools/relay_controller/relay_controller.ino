@@ -78,6 +78,22 @@ void activateRelay(int relay) {
   digitalWrite(LED_PIN, LOW);
 }
 
+void activateSubset(const int* relays, int count, int reportCode) {
+  // Close a specific subset of relays simultaneously
+  allOff();
+  delay(BBM_DELAY_MS);
+  for (int i = 0; i < count; i++) {
+    int r = relays[i];
+    if (r >= 1 && r <= NUM_RELAYS) {
+      digitalWrite(RELAY_PINS[r - 1], RELAY_ON);
+    }
+  }
+  activeRelay = reportCode;
+  digitalWrite(LED_PIN, HIGH);
+  delay(20);
+  digitalWrite(LED_PIN, LOW);
+}
+
 void setup() {
   Serial.begin(9600);
 
@@ -125,6 +141,18 @@ void loop() {
     else if (cmd == '?') {
       Serial.print("OK:");
       Serial.println(activeRelay);
+    }
+    else if (cmd == 'A' || cmd == 'a') {
+      // All 5 NE receivers: relays 1,2,3,5,7
+      const int neRelays[] = {1, 2, 3, 5, 7};
+      activateSubset(neRelays, 5, 9);  // report as 9 = all-NE
+      Serial.println("OK:9");
+    }
+    else if (cmd == 'B' || cmd == 'b') {
+      // All 8 relays (NE + NW)
+      const int allRelays[] = {1, 2, 3, 4, 5, 6, 7, 8};
+      activateSubset(allRelays, 8, 10);  // report as 10 = all
+      Serial.println("OK:10");
     }
     else if (cmd == '\n' || cmd == '\r') {
       // Ignore bare newlines

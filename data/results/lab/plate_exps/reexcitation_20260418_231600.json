@@ -1,0 +1,399 @@
+{
+  "experiment": "Phase 1.6 Step 4: Re-Excitation Interference",
+  "timestamp": "2026-04-18T23:25:16",
+  "duration_s": 552,
+  "n_reps": 3,
+  "fast_mode": true,
+  "excite_duration_s": 0.5,
+  "measure_settle_s": 0.005,
+  "plates_tested": [
+    "A",
+    "B",
+    "G",
+    "D",
+    "H"
+  ],
+  "results": [
+    {
+      "plate": "A",
+      "relay": 1,
+      "freq_hz": 55000,
+      "tau_s": 0.00908,
+      "Q_measured": 1569,
+      "ringdown_r2": 0.186,
+      "ss_mag": 3699,
+      "ss_std": 2,
+      "ref_reexcite_mag": 3687,
+      "ref_residual_mag": 3,
+      "enhancement_at_zero": 1.003,
+      "contrast": 0.0029,
+      "residual_at_zero_ratio": 0.001,
+      "decay_trend": false,
+      "interference_detected": false,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "reexcite_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3697,
+          "norm": 0.9993
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 3702,
+          "norm": 1.0007
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 3700,
+          "norm": 1.0001
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3704,
+          "norm": 1.0013
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3700,
+          "norm": 1.0003
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 3687,
+          "norm": 0.9967
+        }
+      ],
+      "residual_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 4
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 3
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 3
+        }
+      ]
+    },
+    {
+      "plate": "B",
+      "relay": 2,
+      "freq_hz": 29200,
+      "tau_s": 0.00976,
+      "Q_measured": 895,
+      "ringdown_r2": 0.183,
+      "ss_mag": 3429,
+      "ss_std": 1,
+      "ref_reexcite_mag": 3431,
+      "ref_residual_mag": 5,
+      "enhancement_at_zero": 0.999,
+      "contrast": 0.0011,
+      "residual_at_zero_ratio": 0.013,
+      "decay_trend": false,
+      "interference_detected": false,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "reexcite_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3427,
+          "norm": 0.9993
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 3427,
+          "norm": 0.9992
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 3431,
+          "norm": 1.0006
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3428,
+          "norm": 0.9996
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3426,
+          "norm": 0.9989
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 3431,
+          "norm": 1.0004
+        }
+      ],
+      "residual_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 45
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 23
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 4
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 4
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 5
+        }
+      ]
+    },
+    {
+      "plate": "G",
+      "relay": 3,
+      "freq_hz": 64200,
+      "tau_s": 0.03731,
+      "Q_measured": 7525,
+      "ringdown_r2": 0.012,
+      "ss_mag": 2955,
+      "ss_std": 3,
+      "ref_reexcite_mag": 2956,
+      "ref_residual_mag": 3,
+      "enhancement_at_zero": 1.0,
+      "contrast": 0.0015,
+      "residual_at_zero_ratio": 0.001,
+      "decay_trend": true,
+      "interference_detected": false,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "reexcite_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 2956,
+          "norm": 1.0003
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 2957,
+          "norm": 1.0009
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 2957,
+          "norm": 1.0009
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 2957,
+          "norm": 1.0007
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 2957,
+          "norm": 1.0007
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 2956,
+          "norm": 1.0004
+        }
+      ],
+      "residual_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 4
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 5
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 3
+        }
+      ]
+    },
+    {
+      "plate": "D",
+      "relay": 5,
+      "freq_hz": 29300,
+      "tau_s": 0.00756,
+      "Q_measured": 695,
+      "ringdown_r2": 0.225,
+      "ss_mag": 3361,
+      "ss_std": 1,
+      "ref_reexcite_mag": 3362,
+      "ref_residual_mag": 2,
+      "enhancement_at_zero": 0.998,
+      "contrast": 0.002,
+      "residual_at_zero_ratio": 0.002,
+      "decay_trend": true,
+      "interference_detected": false,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "reexcite_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3355,
+          "norm": 0.9983
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 3357,
+          "norm": 0.9988
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 3356,
+          "norm": 0.9984
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3352,
+          "norm": 0.9973
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3363,
+          "norm": 1.0005
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 3362,
+          "norm": 1.0002
+        }
+      ],
+      "residual_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 8
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 5
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 2
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 3
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 1
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 2
+        }
+      ]
+    },
+    {
+      "plate": "H",
+      "relay": 7,
+      "freq_hz": 63200,
+      "tau_s": 0.00853,
+      "Q_measured": 1693,
+      "ringdown_r2": 0.238,
+      "ss_mag": 2457,
+      "ss_std": 3,
+      "ref_reexcite_mag": 2464,
+      "ref_residual_mag": 2,
+      "enhancement_at_zero": 0.997,
+      "contrast": 0.0023,
+      "residual_at_zero_ratio": 0.001,
+      "decay_trend": false,
+      "interference_detected": false,
+      "verdict": "NO SIGNIFICANT INTERFERENCE",
+      "reexcite_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 2457,
+          "norm": 1.0001
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 2460,
+          "norm": 1.0014
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 2459,
+          "norm": 1.0008
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 2458,
+          "norm": 1.0003
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 2456,
+          "norm": 0.9996
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 2464,
+          "norm": 1.0029
+        }
+      ],
+      "residual_summary": [
+        {
+          "delay_ms": 0,
+          "mag": 3
+        },
+        {
+          "delay_ms": 3.325,
+          "mag": 3
+        },
+        {
+          "delay_ms": 14.925,
+          "mag": 3
+        },
+        {
+          "delay_ms": 67.002,
+          "mag": 2
+        },
+        {
+          "delay_ms": 300.788,
+          "mag": 3
+        },
+        {
+          "delay_ms": 1000.0,
+          "mag": 2
+        }
+      ]
+    }
+  ],
+  "note": "Reconstructed from terminal stdout \u2014 original JSON save failed on numpy bool serialization"
+}

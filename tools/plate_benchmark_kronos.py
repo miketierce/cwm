@@ -67,8 +67,9 @@ PLATE_RELAYS = {
 # ── Audio config ──
 PREFERRED_SAMPLE_RATES = [192000, 96000, 48000, 44100]
 AUDIO_DTYPE = "float32"
-DRIVE_AMPLITUDE = 0.8
+DRIVE_AMPLITUDE = 0.95
 SETTLE_RELAY_S = 0.10
+USB_LATENCY_S = 0.25           # Kronos USB round-trip; sustain tone beyond this
 
 # ── Benchmark config ──
 N_AVG = 4
@@ -142,13 +143,66 @@ def get_plate_modes(census: dict, plate_id: str,
 # Hardware capture
 # ══════════════════════════════════════════════════════════════════════
 
-def hardware_capture(mode_freqs: list[float], carrier_indices: list[int],
-                     pattern: np.ndarray, sample_rate: int, device_idx: int,
-                     duration_s: float = 0.2) -> np.ndarray:
-    """Drive pattern as multitone, capture spectrum at all mode freqs."""
+def capture_loopback_reference(sample_rate: int, device_idx: int, mux,
+                               mode_freqs: list[float],
+                               carrier_indices: list[int],
+                               n_averages: int = N_AVG) -> np.ndarray:
+    """Capture USB loopback reference with relay OFF (no acoustic path).
+
+    Drives a representative multitone (all carriers ON) and records.
+    Returns the averaged raw RX waveform (pre-settle-trim) for subtraction.
+    """
     import sounddevice as sd
 
-    n_samples = int(sample_rate * duration_s)
+    mux.off()
+    time.sleep(SETTLE_RELAY_S)
+
+    total_dur = USB_LATENCY_S + 0.2  # match hardware_capture default
+    n_samples = int(sample_rate * total_dur)
+    t = np.arange(n_samples) / sample_rate
+    sig = np.zeros(n_samples, dtype=np.float64)
+
+    rng = np.random.default_rng(42)
+    for b in range(len(carrier_indices)):
+        freq = mode_freqs[carrier_indices[b]]
+        phi = rng.uniform(0, 2 * np.pi)
+        sig += np.sin(2 * np.pi * freq * t + phi)
+
+    peak = np.max(np.abs(sig))
+    if peak > 0:
+        sig *= DRIVE_AMPLITUDE / peak
+    tx = sig.astype(np.float32).reshape(-1, 1)
+
+    print("  Capturing loopback reference (relay OFF)...", flush=True)
+    ref_accum = None
+    for i in range(n_averages):
+        rx = sd.playrec(tx, samplerate=sample_rate,
+                        input_mapping=[1], output_mapping=[1],
+                        device=device_idx, dtype=AUDIO_DTYPE, blocking=True)
+        rx_mono = rx[:, 0].astype(np.float64)
+        if ref_accum is None:
+            ref_accum = np.zeros_like(rx_mono)
+        ref_accum += rx_mono
+    ref_avg = ref_accum / n_averages
+    rms = float(np.sqrt(np.mean(ref_avg ** 2)))
+    print(f"  Loopback ref RMS = {rms:.6f}", flush=True)
+    return ref_avg
+
+
+def hardware_capture(mode_freqs: list[float], carrier_indices: list[int],
+                     pattern: np.ndarray, sample_rate: int, device_idx: int,
+                     duration_s: float = 0.2,
+                     loopback_ref: np.ndarray | None = None) -> np.ndarray:
+    """Drive pattern as multitone, capture spectrum at all mode freqs.
+
+    If loopback_ref is provided (raw RX waveform captured with relay OFF),
+    it is subtracted from each capture in time domain before FFT.
+    """
+    import sounddevice as sd
+
+    # Extend TX to cover USB latency + desired analysis window
+    total_dur = USB_LATENCY_S + duration_s
+    n_samples = int(sample_rate * total_dur)
     t = np.arange(n_samples) / sample_rate
     sig = np.zeros(n_samples, dtype=np.float64)
 
@@ -172,9 +226,15 @@ def hardware_capture(mode_freqs: list[float], carrier_indices: list[int],
                         device=device_idx, dtype=AUDIO_DTYPE, blocking=True)
         rx_mono = rx[:, 0].astype(np.float64)
 
-        # Discard first 10% as settle
-        settle = int(len(rx_mono) * 0.1)
+        # Skip USB round-trip latency — signal starts arriving after this
+        settle = int(sample_rate * USB_LATENCY_S)
         rx_capture = rx_mono[settle:]
+
+        # Subtract USB loopback if reference available
+        if loopback_ref is not None:
+            ref_capture = loopback_ref[settle:]
+            min_len = min(len(rx_capture), len(ref_capture))
+            rx_capture = rx_capture[:min_len] - ref_capture[:min_len]
 
         windowed = rx_capture * np.hanning(len(rx_capture))
         nfft = len(rx_capture) * 4
@@ -196,7 +256,8 @@ def hardware_capture(mode_freqs: list[float], carrier_indices: list[int],
 def hardware_capture_squared(mode_freqs: list[float], carrier_indices: list[int],
                             pattern: np.ndarray, sample_rate: int,
                             device_idx: int,
-                            duration_s: float = 0.2) -> np.ndarray:
+                            duration_s: float = 0.2,
+                            loopback_ref: np.ndarray | None = None) -> np.ndarray:
     """Drive pattern as multitone, capture linear + squared-signal features.
 
     The squared signal y²(t) produces beat frequencies at f_i ± f_j
@@ -208,7 +269,8 @@ def hardware_capture_squared(mode_freqs: list[float], carrier_indices: list[int]
     """
     import sounddevice as sd
 
-    n_samples = int(sample_rate * duration_s)
+    total_dur = USB_LATENCY_S + duration_s
+    n_samples = int(sample_rate * total_dur)
     t = np.arange(n_samples) / sample_rate
     sig = np.zeros(n_samples, dtype=np.float64)
 
@@ -263,8 +325,15 @@ def hardware_capture_squared(mode_freqs: list[float], carrier_indices: list[int]
                         device=device_idx, dtype=AUDIO_DTYPE, blocking=True)
         rx_mono = rx[:, 0].astype(np.float64)
 
-        settle = int(len(rx_mono) * 0.1)
+        # Skip USB round-trip latency
+        settle = int(sample_rate * USB_LATENCY_S)
         rx_capture = rx_mono[settle:]
+
+        # Subtract USB loopback if reference available
+        if loopback_ref is not None:
+            ref_capture = loopback_ref[settle:]
+            min_len = min(len(rx_capture), len(ref_capture))
+            rx_capture = rx_capture[:min_len] - ref_capture[:min_len]
 
         # --- Linear features (same as hardware_capture) ---
         windowed = rx_capture * np.hanning(len(rx_capture))
@@ -295,6 +364,117 @@ def hardware_capture_squared(mode_freqs: list[float], carrier_indices: list[int]
         sum_sq += sq_mags
 
     return np.concatenate([sum_mags / N_AVG, sum_sq / N_AVG])
+
+
+def hardware_capture_sequential(mode_freqs: list[float],
+                                carrier_indices: list[int],
+                                pattern: np.ndarray,
+                                sample_rate: int, device_idx: int,
+                                duration_s: float = 0.2,
+                                loopback_ref: np.ndarray | None = None
+                                ) -> np.ndarray:
+    """Drive ONE carrier at a time at full amplitude, read all modes.
+
+    Produces an N_carriers × N_modes cross-coupling matrix (flattened),
+    mirroring the PicoScope sequential-sine protocol that achieved
+    separation indices >3,000.
+
+    For each active carrier bit:
+      - Drive that single frequency at full DRIVE_AMPLITUDE
+      - Capture response at all mode frequencies
+    For each inactive carrier bit:
+      - Drive nothing (silence), capture noise floor at all mode freqs
+
+    Returns flattened array of shape (n_carriers * n_modes,).
+    """
+    import sounddevice as sd
+
+    n_modes = len(mode_freqs)
+    n_carriers = len(carrier_indices)
+    cross_matrix = np.zeros((n_carriers, n_modes))
+
+    total_dur = USB_LATENCY_S + duration_s
+
+    for b in range(n_carriers):
+        n_samples = int(sample_rate * total_dur)
+        t = np.arange(n_samples) / sample_rate
+
+        if pattern[b] > 0:
+            freq = mode_freqs[carrier_indices[b]]
+            sig = DRIVE_AMPLITUDE * np.sin(2 * np.pi * freq * t)
+        else:
+            sig = np.zeros(n_samples, dtype=np.float64)
+
+        tx = sig.astype(np.float32).reshape(-1, 1)
+
+        sum_mags = np.zeros(n_modes)
+        for _ in range(N_AVG):
+            rx = sd.playrec(tx, samplerate=sample_rate,
+                            input_mapping=[1], output_mapping=[1],
+                            device=device_idx, dtype=AUDIO_DTYPE,
+                            blocking=True)
+            rx_mono = rx[:, 0].astype(np.float64)
+
+            settle = int(sample_rate * USB_LATENCY_S)
+            rx_capture = rx_mono[settle:]
+
+            if loopback_ref is not None:
+                ref_capture = loopback_ref[settle:]
+                min_len = min(len(rx_capture), len(ref_capture))
+                rx_capture = rx_capture[:min_len] - ref_capture[:min_len]
+
+            windowed = rx_capture * np.hanning(len(rx_capture))
+            nfft = len(rx_capture) * 4
+            spectrum = np.abs(np.fft.rfft(windowed, n=nfft))
+            freq_axis = np.fft.rfftfreq(nfft, d=1.0 / sample_rate)
+            bin_hz = freq_axis[1] if len(freq_axis) > 1 else 1.0
+
+            mags = np.zeros(n_modes)
+            for j, f in enumerate(mode_freqs):
+                tb = int(round(f / bin_hz))
+                lo = max(0, tb - 3)
+                hi = min(len(spectrum) - 1, tb + 3)
+                mags[j] = float(np.max(spectrum[lo:hi + 1]))
+            sum_mags += mags
+
+        cross_matrix[b, :] = sum_mags / N_AVG
+
+    return cross_matrix.ravel()
+
+
+def simulated_capture_sequential(mode_freqs: list[float],
+                                 carrier_indices: list[int],
+                                 pattern: np.ndarray,
+                                 census_mags: np.ndarray,
+                                 noise_std: float = 0.01) -> np.ndarray:
+    """Simulate sequential-sine capture using census transfer function.
+
+    Same cross-coupling matrix as hardware_capture_sequential but
+    synthesized from census magnitudes.
+
+    Returns flattened array of shape (n_carriers * n_modes,).
+    """
+    n_modes = len(mode_freqs)
+    n_carriers = len(carrier_indices)
+    cross_matrix = np.zeros((n_carriers, n_modes))
+    rng = np.random.default_rng(hash(tuple(pattern.tolist())) % (2**32))
+
+    for b in range(n_carriers):
+        ci = carrier_indices[b]
+        if pattern[b] > 0:
+            # Self-coupling: strong (full amplitude to one carrier)
+            cross_matrix[b, ci] = census_mags[ci]
+            # Cross-coupling: weak, frequency-distance dependent
+            for j in range(n_modes):
+                if j != ci:
+                    dist = abs(mode_freqs[j] - mode_freqs[ci])
+                    coupling = census_mags[j] * 0.05 * np.exp(-dist / 5000)
+                    cross_matrix[b, j] = coupling
+        # Add noise to this row
+        cross_matrix[b, :] += rng.normal(0, noise_std, n_modes)
+        cross_matrix[b, :] = np.maximum(cross_matrix[b, :], 0)
+
+    return cross_matrix.ravel()
 
 
 def simulated_capture_squared(mode_freqs: list[float],
@@ -499,6 +679,11 @@ def benchmark_parity(mode_freqs, carrier_indices, census_mags,
       'linear'   — use only the first N_modes features (FFT peak mags)
       'squared'  — use only the squared-signal features (beat freqs)
       'combined' — concatenate both
+      'poly'     — linear mags + polynomial expansion of carrier bins
+      'sequential' — cross-coupling matrix (N_carriers × N_modes), full power
+                     per carrier. All features used with log1p normalization.
+      'seqpoly'  — sequential capture + polynomial expansion on diagonal
+                   self-coupling features (closest match to PicoScope protocol)
     """
     if n_bits_list is None:
         n_bits_list = [3, 4, 5, 6, 7]
@@ -517,10 +702,26 @@ def benchmark_parity(mode_freqs, carrier_indices, census_mags,
         X_all = []
         y_par_all = []
         y_maj_all = []
+        total_captures = n_patterns * n_reps
+        capture_count = 0
         t0 = time.time()
+
+        print(f"    {n_bits}-bit: {n_patterns} patterns × {n_reps} reps "
+              f"= {total_captures} captures", flush=True)
 
         for rep in range(n_reps):
             for p_idx in range(n_patterns):
+                capture_count += 1
+                pat_str = ''.join(str(int(x)) for x in all_patterns[p_idx])
+                elapsed = time.time() - t0
+                if capture_count > 1:
+                    eta = elapsed / (capture_count - 1) * (total_captures - capture_count + 1)
+                    eta_str = f" ETA {eta/60:.1f}min"
+                else:
+                    eta_str = ""
+                print(f"      [{capture_count}/{total_captures}] "
+                      f"rep={rep+1}/{n_reps} pat={pat_str} "
+                      f"({elapsed:.0f}s elapsed{eta_str})", flush=True)
                 mags = capture_fn(mode_freqs, ci, all_patterns[p_idx],
                                   census_mags)
                 X_all.append(mags)
@@ -528,24 +729,95 @@ def benchmark_parity(mode_freqs, carrier_indices, census_mags,
                 y_maj_all.append(y_majority[p_idx])
 
         capture_time = time.time() - t0
+        print(f"    {n_bits}-bit capture complete: {capture_time:.0f}s total",
+              flush=True)
         X_all = np.array(X_all)
         y_par_all = np.array(y_par_all)
         y_maj_all = np.array(y_maj_all)
 
         # Slice features based on mode
         n_modes = len(mode_freqs)
-        if feature_mode == "linear":
-            X_feat = X_all[:, :n_modes]
-        elif feature_mode == "squared":
-            X_feat = X_all[:, n_modes:]
-        else:  # combined
-            X_feat = X_all
+        if feature_mode == "poly":
+            # Poly: normalize linear features FIRST, then compute products
+            # from normalized carrier magnitudes. This preserves the
+            # ON/OFF contrast that log1p(raw product) would compress.
+            X_lin = X_all[:, :n_modes]
+            X_lin_log = np.log1p(X_lin)
+            mu_lin = X_lin_log.mean(axis=0)
+            sigma_lin = X_lin_log.std(axis=0) + 1e-8
+            X_lin_std = (X_lin_log - mu_lin) / sigma_lin
 
-        # Normalize
-        X_log = np.log1p(X_feat)
-        mu = X_log.mean(axis=0)
-        sigma = X_log.std(axis=0) + 1e-8
-        X_std = (X_log - mu) / sigma
+            carrier_normed = X_lin_std[:, ci]
+            n_ci = carrier_normed.shape[1]
+            poly_cols = []
+            for deg in range(2, n_ci + 1):
+                for combo in combinations(range(n_ci), deg):
+                    col = np.ones(len(X_lin))
+                    for idx in combo:
+                        col *= carrier_normed[:, idx]
+                    poly_cols.append(col)
+            X_poly = np.column_stack(poly_cols) if poly_cols else np.empty(
+                (len(X_lin), 0))
+            # Z-score the poly columns separately
+            mu_poly = X_poly.mean(axis=0)
+            sigma_poly = X_poly.std(axis=0) + 1e-8
+            X_poly_std = (X_poly - mu_poly) / sigma_poly
+
+            X_std = np.column_stack([X_lin_std, X_poly_std])
+            n_feat = X_std.shape[1]
+        elif feature_mode == "seqpoly":
+            # Sequential + poly: extract diagonal self-coupling features
+            # (carrier b's response at its own mode frequency) from the
+            # N_carriers × N_modes cross-coupling matrix, then expand
+            # with polynomial products. This mirrors the PicoScope protocol
+            # where separation indices were >3,000.
+            X_all_log = np.log1p(X_all)
+            mu_all = X_all_log.mean(axis=0)
+            sigma_all = X_all_log.std(axis=0) + 1e-8
+            X_all_std = (X_all_log - mu_all) / sigma_all
+
+            # Extract diagonal: carrier b's self-response is at
+            # index b * n_modes + ci[b] in the flattened vector
+            diag_indices = [b * n_modes + ci[b] for b in range(n_bits)]
+            carrier_normed = X_all_std[:, diag_indices]
+
+            n_ci = carrier_normed.shape[1]
+            poly_cols = []
+            for deg in range(2, n_ci + 1):
+                for combo in combinations(range(n_ci), deg):
+                    col = np.ones(len(X_all))
+                    for idx in combo:
+                        col *= carrier_normed[:, idx]
+                    poly_cols.append(col)
+            X_poly = np.column_stack(poly_cols) if poly_cols else np.empty(
+                (len(X_all), 0))
+            mu_poly = X_poly.mean(axis=0)
+            sigma_poly = X_poly.std(axis=0) + 1e-8
+            X_poly_std = (X_poly - mu_poly) / sigma_poly
+
+            X_std = np.column_stack([X_all_std, X_poly_std])
+            n_feat = X_std.shape[1]
+        elif feature_mode in ("sequential",):
+            # Sequential: use full cross-coupling matrix as-is
+            X_log = np.log1p(X_all)
+            mu = X_log.mean(axis=0)
+            sigma = X_log.std(axis=0) + 1e-8
+            X_std = (X_log - mu) / sigma
+            n_feat = X_all.shape[1]
+        else:
+            if feature_mode == "linear":
+                X_feat = X_all[:, :n_modes]
+            elif feature_mode == "squared":
+                X_feat = X_all[:, n_modes:]
+            else:  # combined
+                X_feat = X_all
+
+            # Normalize
+            X_log = np.log1p(X_feat)
+            mu = X_log.mean(axis=0)
+            sigma = X_log.std(axis=0) + 1e-8
+            X_std = (X_log - mu) / sigma
+            n_feat = X_feat.shape[1]
 
         # Train/test split (leave-one-rep-out)
         n_per_rep = n_patterns
@@ -574,7 +846,6 @@ def benchmark_parity(mode_freqs, carrier_indices, census_mags,
         latency_ms = (capture_time / (n_patterns * n_reps)) * 1000
         energy_per_query_mj = latency_ms * POWER_TOTAL_W
 
-        n_feat = X_feat.shape[1]
         r = {
             "benchmark": "parity",
             "feature_mode": feature_mode,
@@ -641,10 +912,22 @@ def benchmark_nonlinear(mode_freqs, carrier_indices, census_mags,
     # Capture
     X_all = []
     t0 = time.time()
-    for p in patterns:
+    n_total = len(patterns)
+    print(f"    Capturing {n_total} nonlinear patterns...", flush=True)
+    for i, p in enumerate(patterns):
+        if (i + 1) % 10 == 0 or i == 0:
+            elapsed = time.time() - t0
+            if i > 0:
+                eta = elapsed / i * (n_total - i)
+                eta_str = f" ETA {eta/60:.1f}min"
+            else:
+                eta_str = ""
+            print(f"      [{i+1}/{n_total}] ({elapsed:.0f}s{eta_str})",
+                  flush=True)
         mags = capture_fn(mode_freqs, ci, p, census_mags)
         X_all.append(mags)
     capture_time = time.time() - t0
+    print(f"    Nonlinear capture complete: {capture_time:.0f}s", flush=True)
     X_all = np.array(X_all)
 
     X_log = np.log1p(X_all)
@@ -727,10 +1010,23 @@ def benchmark_capacity(mode_freqs, carrier_indices, census_mags,
         # Capture
         X_all = []
         t0 = time.time()
-        for p in all_patterns:
+        print(f"    {n_classes}-class: capturing {n_patterns} patterns...",
+              flush=True)
+        for i, p in enumerate(all_patterns):
+            if (i + 1) % 16 == 0 or i == 0:
+                elapsed = time.time() - t0
+                if i > 0:
+                    eta = elapsed / i * (n_patterns - i)
+                    eta_str = f" ETA {eta/60:.1f}min"
+                else:
+                    eta_str = ""
+                print(f"      [{i+1}/{n_patterns}] ({elapsed:.0f}s{eta_str})",
+                      flush=True)
             mags = capture_fn(mode_freqs, ci, p, census_mags)
             X_all.append(mags)
         capture_time = time.time() - t0
+        print(f"    {n_classes}-class capture complete: {capture_time:.0f}s",
+              flush=True)
         X_all = np.array(X_all)
 
         X_log = np.log1p(X_all)
@@ -898,10 +1194,16 @@ def main():
                         help="Comma-separated: parity,nonlinear,capacity,all")
     parser.add_argument("--n-bits", type=int, default=7)
     parser.add_argument("--feature-mode", default="linear",
-                        choices=["linear", "squared", "combined"],
+                        choices=["linear", "squared", "combined", "poly",
+                                 "sequential", "seqpoly"],
                         help="Feature extraction: linear (FFT peaks), "
                              "squared (beat freqs from y^2), "
-                             "combined (both)")
+                             "combined (both), "
+                             "poly (linear + carrier-bin polynomial expansion), "
+                             "sequential (one carrier at a time, full power, "
+                             "cross-coupling matrix — matches PicoScope protocol), "
+                             "seqpoly (sequential + polynomial on diagonal "
+                             "self-coupling — full PicoScope parity protocol)")
     args = parser.parse_args()
 
     if not args.hardware and not args.simulate:
@@ -962,20 +1264,37 @@ def main():
         mux.open()
 
         relay_ch = PLATE_RELAYS[pid][0][0]
+
+        # Capture loopback reference before selecting plate relay
+        lb_ref = capture_loopback_reference(
+            sample_rate, device_idx, mux,
+            mode_freqs, carrier_indices)
+
         mux.select(relay_ch)
         time.sleep(SETTLE_RELAY_S)
 
         if args.feature_mode in ("squared", "combined"):
             def capture_fn(mf, ci, pat, _cm):
                 return hardware_capture_squared(
-                    mf, ci, pat, sample_rate, device_idx)
+                    mf, ci, pat, sample_rate, device_idx,
+                    loopback_ref=lb_ref)
+        elif args.feature_mode in ("sequential", "seqpoly"):
+            def capture_fn(mf, ci, pat, _cm):
+                return hardware_capture_sequential(
+                    mf, ci, pat, sample_rate, device_idx,
+                    loopback_ref=lb_ref)
         else:
             def capture_fn(mf, ci, pat, _cm):
-                return hardware_capture(mf, ci, pat, sample_rate, device_idx)
+                return hardware_capture(
+                    mf, ci, pat, sample_rate, device_idx,
+                    loopback_ref=lb_ref)
     else:
         if args.feature_mode in ("squared", "combined"):
             def capture_fn(mf, ci, pat, cm):
                 return simulated_capture_squared(mf, ci, pat, cm)
+        elif args.feature_mode in ("sequential", "seqpoly"):
+            def capture_fn(mf, ci, pat, cm):
+                return simulated_capture_sequential(mf, ci, pat, cm)
         else:
             def capture_fn(mf, ci, pat, cm):
                 return simulated_capture(mf, ci, pat, cm)

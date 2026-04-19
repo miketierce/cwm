@@ -1,0 +1,795 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM v3 Resonator — 16-Channel Relay Wiring Guide</title>
+		<style>
+			@page {
+				size: letter;
+				margin: 0.6in;
+			}
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+				font-size: 10pt;
+				line-height: 1.45;
+				color: #1a1a1a;
+				max-width: 7.5in;
+				margin: 0 auto;
+				padding: 0.5in;
+			}
+			h1 {
+				font-size: 16pt;
+				border-bottom: 2.5px solid #111;
+				padding-bottom: 4pt;
+				margin-bottom: 6pt;
+			}
+			h1 small {
+				font-size: 10pt;
+				font-weight: normal;
+				color: #555;
+			}
+			h2 {
+				font-size: 12pt;
+				margin-top: 14pt;
+				margin-bottom: 4pt;
+				color: #222;
+				border-bottom: 1px solid #ccc;
+				padding-bottom: 2pt;
+			}
+			h3 {
+				font-size: 10.5pt;
+				margin-top: 10pt;
+				margin-bottom: 3pt;
+			}
+			p,
+			li {
+				margin-bottom: 3pt;
+			}
+			ul {
+				padding-left: 16pt;
+			}
+			code {
+				font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+				font-size: 9pt;
+				background: #f4f4f4;
+				padding: 1px 3px;
+				border-radius: 2px;
+			}
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				margin: 6pt 0 10pt;
+				font-size: 9pt;
+			}
+			th,
+			td {
+				border: 1px solid #999;
+				padding: 3pt 5pt;
+				text-align: left;
+			}
+			th {
+				background: #e8e8e8;
+				font-weight: 600;
+			}
+			tr:nth-child(even) td {
+				background: #fafafa;
+			}
+			.pin-arduino {
+				color: #0055aa;
+				font-weight: 600;
+			}
+			.pin-relay {
+				color: #aa3300;
+				font-weight: 600;
+			}
+			.power {
+				color: #cc0000;
+				font-weight: 600;
+			}
+			.gnd {
+				color: #333;
+				font-weight: 600;
+			}
+			.note {
+				background: #fffde7;
+				border-left: 3px solid #f9a825;
+				padding: 5pt 8pt;
+				margin: 8pt 0;
+				font-size: 9pt;
+			}
+			.warning {
+				background: #fce4ec;
+				border-left: 3px solid #d32f2f;
+				padding: 5pt 8pt;
+				margin: 8pt 0;
+				font-size: 9pt;
+			}
+			.diagram {
+				font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+				font-size: 8pt;
+				line-height: 1.3;
+				background: #f8f8f8;
+				border: 1px solid #ddd;
+				padding: 8pt;
+				margin: 6pt 0 10pt;
+				white-space: pre;
+				overflow-x: auto;
+			}
+			.section-cols {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 12pt;
+			}
+			.checklist {
+				list-style: none;
+				padding-left: 4pt;
+			}
+			.checklist li::before {
+				content: '☐ ';
+				font-size: 12pt;
+			}
+			@media print {
+				body {
+					padding: 0;
+				}
+				.page-break {
+					page-break-before: always;
+				}
+			}
+			.sig-path {
+				display: grid;
+				grid-template-columns: auto;
+				gap: 0;
+				margin: 8pt 0;
+			}
+			.sig-path .row {
+				display: flex;
+				align-items: center;
+				font-size: 9pt;
+				font-family: 'SF Mono', monospace;
+			}
+			.sig-path .arrow {
+				color: #888;
+				margin: 0 4pt;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>
+			CWM v3 Resonator — 16-Channel Relay Wiring Guide <br /><small
+				>Arduino Nano + CW-024 16-CH Relay Module (ULN2803) + Kronos USB
+				Audio</small
+			>
+		</h1>
+		<p style="color: #555; font-size: 9pt">
+			Rev 2 — 2026-04-16 &nbsp;|&nbsp; Print: Cmd+P → PDF or paper
+		</p>
+
+		<!-- ─── BILL OF MATERIALS ─── -->
+		<h2>1. Bill of Materials</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Item</th>
+					<th>Qty</th>
+					<th>Notes</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>Arduino Nano (ATmega328P, CH340 USB)</td>
+					<td>1</td>
+					<td>Same as v2</td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>CW-024 16-channel 5V relay module (ULN2803 Darlington)</td>
+					<td>1</td>
+					<td>Active-LOW, dual-row pin header + screw terminal</td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Full-size breadboard (830 tie points)</td>
+					<td>1</td>
+					<td>For Nano + signal routing</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>DuPont F-to-F jumper wires</td>
+					<td>20+</td>
+					<td>Nano → relay header</td>
+				</tr>
+				<tr>
+					<td>5</td>
+					<td>22 AWG solid-core hookup wire</td>
+					<td>—</td>
+					<td>Breadboard signal bus</td>
+				</tr>
+				<tr>
+					<td>6</td>
+					<td>1/4" TS → banana adapter cable</td>
+					<td>1</td>
+					<td>Kronos headphone out → exciter (on order)</td>
+				</tr>
+				<tr>
+					<td>7</td>
+					<td>1/4" TS → banana adapter cable</td>
+					<td>1</td>
+					<td>Pickup common → Kronos Input 1 rear</td>
+				</tr>
+				<tr>
+					<td>8</td>
+					<td>Banana-to-alligator leads</td>
+					<td>as needed</td>
+					<td>Relay NO/COM → PZTs</td>
+				</tr>
+				<tr>
+					<td>9</td>
+					<td>Project enclosure</td>
+					<td>1</td>
+					<td>New enclosure for v3</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="note">
+			<strong>Power note (CW-024):</strong> This board uses ULN2803 Darlington
+			drivers — no VCC–JD jumper, no opto-isolators. It has a
+			<strong>screw terminal</strong> (GND + VCC) for relay coil power and a
+			<strong>dual-row pin header</strong> (5V + signal pins 1–16 + GND) for
+			logic. Since firmware only activates <strong>one relay at a time</strong>
+			(~70–80 mA), the Nano USB 5V rail can supply both logic and the single
+			active coil. Connect both the screw terminal VCC and pin header 5V to Nano
+			5V.
+		</div>
+
+		<!-- ─── SIGNAL FLOW ─── -->
+		<h2>2. Signal Path</h2>
+		<pre class="diagram">
+                           ┌──────────────────┐
+  Kronos L-OUT ──1/4"──►   │  TX EXCITER PZT   │  (driven in parallel on all plates)
+  (headphone jack)         │  (SW corner, each) │
+                           └──────────────────┘
+                                     │ acoustic wave through glass
+                                     ▼
+                           ┌──────────────────┐
+                           │  RX PICKUP PZTs   │  one per tap point (NE, NW, etc.)
+                           │  (per-plate)       │
+                           └───────┬──────────┘
+                                   │ individual PZT leads
+                     ┌─────────────┴──────────────────┐
+                     │  CW-024 16-CH RELAY MODULE      │
+                     │  (ULN2803 Darlington drivers)    │
+                     │  NO contacts → common bus        │
+                     └─────────────┬──────────────────┘
+                                   │ common bus (single pair)
+                                   ▼
+                           ┌──────────────────┐
+  Kronos Input 1 ◄──1/4"── │  COMMON RX BUS    │
+  (rear panel)             └──────────────────┘
+
+  Arduino Nano ──USB──► macOS (serial control of relay select)
+  Kronos ──USB──► macOS (audio I/O: sd.playrec)
+</pre
+		>
+
+		<!-- ─── PIN MAPPING ─── -->
+		<h2>3. Arduino Nano → 16-CH Relay Pin Map</h2>
+		<div class="note">
+			The Nano has 12 digital pins (D2–D13) and 6 analog pins (A0–A5) usable as
+			digital GPIO. D0/D1 reserved for serial TX/RX. A4/A5 reserved for I²C if
+			needed later. This gives exactly <strong>16 pins</strong>: D2–D13 + A0–A3.
+		</div>
+
+		<div class="section-cols">
+			<div>
+				<h3>Digital Pins (D2–D13)</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Relay</th>
+							<th>Nano Pin</th>
+							<th>Relay IN</th>
+							<th>Assignment</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>1</td>
+							<td class="pin-arduino">D2</td>
+							<td class="pin-relay">IN1</td>
+							<td>Plate 1 (A) NE</td>
+						</tr>
+						<tr>
+							<td>2</td>
+							<td class="pin-arduino">D3</td>
+							<td class="pin-relay">IN2</td>
+							<td>Plate 1 (A) NW</td>
+						</tr>
+						<tr>
+							<td>3</td>
+							<td class="pin-arduino">D4</td>
+							<td class="pin-relay">IN3</td>
+							<td>Plate 2 (B) NE</td>
+						</tr>
+						<tr>
+							<td>4</td>
+							<td class="pin-arduino">D5</td>
+							<td class="pin-relay">IN4</td>
+							<td>Plate 2 (B) NW</td>
+						</tr>
+						<tr>
+							<td>5</td>
+							<td class="pin-arduino">D6</td>
+							<td class="pin-relay">IN5</td>
+							<td>Plate 3 (G) NE</td>
+						</tr>
+						<tr>
+							<td>6</td>
+							<td class="pin-arduino">D7</td>
+							<td class="pin-relay">IN6</td>
+							<td>Plate 3 (G) NW</td>
+						</tr>
+						<tr>
+							<td>7</td>
+							<td class="pin-arduino">D8</td>
+							<td class="pin-relay">IN7</td>
+							<td>Plate 4 (D) NE</td>
+						</tr>
+						<tr>
+							<td>8</td>
+							<td class="pin-arduino">D9</td>
+							<td class="pin-relay">IN8</td>
+							<td>Plate 4 (D) NW</td>
+						</tr>
+						<tr>
+							<td>9</td>
+							<td class="pin-arduino">D10</td>
+							<td class="pin-relay">IN9</td>
+							<td>Plate 5 (H) NE</td>
+						</tr>
+						<tr>
+							<td>10</td>
+							<td class="pin-arduino">D11</td>
+							<td class="pin-relay">IN10</td>
+							<td>Plate 5 (H) NW</td>
+						</tr>
+						<tr>
+							<td>11</td>
+							<td class="pin-arduino">D12</td>
+							<td class="pin-relay">IN11</td>
+							<td>Plate 6 NE</td>
+						</tr>
+						<tr>
+							<td>12</td>
+							<td class="pin-arduino">D13</td>
+							<td class="pin-relay">IN12</td>
+							<td>Plate 6 NW</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div>
+				<h3>Analog Pins (A0–A3 as Digital)</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>Relay</th>
+							<th>Nano Pin</th>
+							<th>Relay IN</th>
+							<th>Assignment</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>13</td>
+							<td class="pin-arduino">A0</td>
+							<td class="pin-relay">IN13</td>
+							<td>Plate 7 NE</td>
+						</tr>
+						<tr>
+							<td>14</td>
+							<td class="pin-arduino">A1</td>
+							<td class="pin-relay">IN14</td>
+							<td>Plate 7 NW</td>
+						</tr>
+						<tr>
+							<td>15</td>
+							<td class="pin-arduino">A2</td>
+							<td class="pin-relay">IN15</td>
+							<td>Plate 8 NE</td>
+						</tr>
+						<tr>
+							<td>16</td>
+							<td class="pin-arduino">A3</td>
+							<td class="pin-relay">IN16</td>
+							<td>Plate 8 NW</td>
+						</tr>
+					</tbody>
+				</table>
+				<h3>Power Connections (CW-024)</h3>
+				<table>
+					<thead>
+						<tr>
+							<th>From</th>
+							<th>To</th>
+							<th>Wire</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="pin-arduino">Nano 5V</td>
+							<td class="pin-relay">Screw terminal VCC</td>
+							<td class="power">Red</td>
+						</tr>
+						<tr>
+							<td class="pin-arduino">Nano GND</td>
+							<td class="pin-relay">Screw terminal GND</td>
+							<td class="gnd">Black</td>
+						</tr>
+						<tr>
+							<td class="pin-arduino">Nano 5V</td>
+							<td class="pin-relay">Pin header 5V</td>
+							<td class="power">Red (jumper)</td>
+						</tr>
+						<tr>
+							<td class="pin-arduino">Nano GND</td>
+							<td class="pin-relay">Pin header GND</td>
+							<td class="gnd">Black (jumper)</td>
+						</tr>
+					</tbody>
+				</table>
+				<div
+					class="note"
+					style="font-size: 8pt">
+					Check with multimeter if screw VCC and pin header 5V are the same net.
+					If yes, only one 5V connection is needed.
+				</div>
+			</div>
+		</div>
+
+		<!-- ─── BREADBOARD LAYOUT ─── -->
+		<h2 class="page-break">4. Breadboard Layout</h2>
+		<pre class="diagram">
+  BREADBOARD (830 pt)                              CW-024 RELAY MODULE
+  ┌──────────────────────────────────────────┐    ┌──────────────────────────┐
+  │  + ─────── +5V bus (Nano 5V) ────────── +│    │  K1  K2  K3 ... K16      │
+  │  − ─────── GND bus ─────────────────── − │    │  ┌───┐┌───┐     ┌───┐   │
+  │                                          │    │  │ R ││ R │ ... │ R │   │
+  │        ┌──────────────────┐              │    │  └─┬─┘└─┬─┘     └─┬─┘   │
+  │   a  1 │  ┌────────────┐ │ 30  a        │    │  NO COM NC (×16 screw)   │
+  │   b  1 │  │            │ │ 30  b        │    │                          │
+  │   c  1 │  │  ARDUINO   │ │ 30  c        │    │  ┌─ULN2803─┐ ┌─ULN2803─┐│
+  │   d  1 │  │   NANO     │ │ 30  d        │    │  └─────────┘ └─────────┘│
+  │   e  1 │  │            │ │ 30  e        │    │  ┌PR1─┐┌PR2─┐...┌PR8──┐ │
+  │        │  │  D13  D12  │ │              │    │  └────┘└────┘   └─────┘ │
+  │   f  1 │  │  3V3  D11  │ │ 30  f        │    │                          │
+  │   g  1 │  │  REF  D10  │ │ 30  g        │    │ Pin header (dual row):   │
+  │   h  1 │  │  A0   D9   │ │ 30  h        │    │ 5V 1 3 5 7 9  11 13 15  │
+  │   i  1 │  │  A1   D8   │ │ 30  i        │    │ 5V 2 4 6 8 10 12 14 16  │
+  │   j  1 │  │  A2   D7   │ │ 30  j        │    │                  GND GND │
+  │        │  │  A3   D6   │ │              │    │                          │
+  │        │  │  A4   D5   │ │              │    │   [GND ■ ■ VCC] (screw)  │
+  │        │  │  A5   D4   │ │              │    └──────────────────────────┘
+  │        │  │  5V   D3   │ │              │
+  │        │  │  RST  D2   │ │              │      Wiring:
+  │        │  │  GND  GND  │ │              │      Nano D2–D13  → header 1–12
+  │        │  │  VIN  RX0  │ │              │      Nano A0–A3   → header 13–16
+  │        │  └────────────┘ │              │      Nano 5V      → header 5V
+  │  + ─────── +5V bus ──────────────── +   │                    + screw VCC
+  │  − ─────── GND bus ──────────────── −   │      Nano GND     → header GND
+  └──────────────────────────────────────────┘                    + screw GND
+
+  Nano sits across breadboard center channel, USB end toward row 1.
+  DuPont F-to-F jumpers from Nano pin rows to CW-024 pin header.
+</pre
+		>
+
+		<!-- ─── WIRING STEP BY STEP ─── -->
+		<h2>5. Wiring Procedure</h2>
+
+		<h3>A. Breadboard + Arduino Nano</h3>
+		<ul class="checklist">
+			<li>Seat Nano across center channel, USB jack at row 1</li>
+			<li>
+				Jumper Nano <code>5V</code> pin → top <span class="power">+5V</span> bus
+			</li>
+			<li>
+				Jumper Nano <code>GND</code> pin → top <span class="gnd">GND</span> bus
+			</li>
+			<li>Bridge top buses to bottom buses (if Nano spans center gap)</li>
+		</ul>
+
+		<h3>B. Relay Module Power (CW-024)</h3>
+		<div class="note">
+			The CW-024 has <strong>no VCC–JD jumper</strong>. It uses ULN2803
+			Darlington drivers (not optocouplers). Power both the screw terminal and
+			pin header from the Nano's 5V — single-relay operation draws ~80 mA, well
+			within USB limits.
+		</div>
+		<ul class="checklist">
+			<li>
+				Screw terminal <code>VCC</code> → breadboard
+				<span class="power">+5V</span> bus
+			</li>
+			<li>
+				Screw terminal <code>GND</code> → breadboard
+				<span class="gnd">GND</span> bus
+			</li>
+			<li>
+				Pin header <code>5V</code> → breadboard
+				<span class="power">+5V</span> bus (may be same net as screw VCC — check
+				with multimeter)
+			</li>
+			<li>
+				Pin header <code>GND</code> → breadboard
+				<span class="gnd">GND</span> bus
+			</li>
+		</ul>
+
+		<h3>C. Signal Pins (DuPont F-to-F)</h3>
+		<ul class="checklist">
+			<li>Nano <code>D2</code> → header pin <code>1</code> (Plate 1-A NE)</li>
+			<li>Nano <code>D3</code> → header pin <code>2</code> (Plate 1-A NW)</li>
+			<li>Nano <code>D4</code> → header pin <code>3</code> (Plate 2-B NE)</li>
+			<li>Nano <code>D5</code> → header pin <code>4</code> (Plate 2-B NW)</li>
+			<li>Nano <code>D6</code> → header pin <code>5</code> (Plate 3-G NE)</li>
+			<li>Nano <code>D7</code> → header pin <code>6</code> (Plate 3-G NW)</li>
+			<li>Nano <code>D8</code> → header pin <code>7</code> (Plate 4-D NE)</li>
+			<li>Nano <code>D9</code> → header pin <code>8</code> (Plate 4-D NW)</li>
+			<li>Nano <code>D10</code> → header pin <code>9</code> (Plate 5-H NE)</li>
+			<li>Nano <code>D11</code> → header pin <code>10</code> (Plate 5-H NW)</li>
+			<li>Nano <code>D12</code> → header pin <code>11</code> (Plate 6 NE)</li>
+			<li>Nano <code>D13</code> → header pin <code>12</code> (Plate 6 NW)</li>
+			<li>Nano <code>A0</code> → header pin <code>13</code> (Plate 7 NE)</li>
+			<li>Nano <code>A1</code> → header pin <code>14</code> (Plate 7 NW)</li>
+			<li>Nano <code>A2</code> → header pin <code>15</code> (Plate 8 NE)</li>
+			<li>Nano <code>A3</code> → header pin <code>16</code> (Plate 8 NW)</li>
+		</ul>
+
+		<h3>D. Relay Output (Screw Terminals)</h3>
+		<ul class="checklist">
+			<li>
+				Each relay has <code>NO</code> / <code>COM</code> /
+				<code>NC</code> screw terminals
+			</li>
+			<li>
+				Wire each PZT pickup between the relay's <code>NO</code> and
+				<code>COM</code>
+			</li>
+			<li>
+				Daisy-chain ALL relay <code>COM</code> terminals → single twisted pair →
+				1/4" jack → Kronos Input 1
+			</li>
+			<li>Only one relay closes at a time (break-before-make in firmware)</li>
+		</ul>
+
+		<h3>E. TX Exciter</h3>
+		<ul class="checklist">
+			<li>Kronos headphone jack (front panel) → 1/4" TS to banana adapter</li>
+			<li>Banana → alligator clips → all TX PZTs wired in parallel</li>
+			<li>
+				TX PZTs at SW corner of each plate (not switched by relay — always
+				driven)
+			</li>
+		</ul>
+
+		<!-- ─── FIRMWARE CHANGES ─── -->
+		<h2 class="page-break">6. Firmware Update (relay_controller.ino)</h2>
+		<div class="note">
+			The v2 firmware accepts <code>'1'</code>–<code>'8'</code>. v3 extends to
+			16 channels using hex: <code>'1'</code>–<code>'9'</code>,
+			<code>'a'</code>–<code>'g'</code> (10–16). Query <code>'?'</code> and
+			all-off <code>'0'</code> remain unchanged.
+		</div>
+
+		<table>
+			<thead>
+				<tr>
+					<th>Change</th>
+					<th>v2 (8-ch)</th>
+					<th>v3 (16-ch)</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>Pin array</td>
+					<td><code>{2,3,4,5,6,7,8,9}</code></td>
+					<td><code>{2,3,4,5,6,7,8,9,10,11,12,13,A0,A1,A2,A3}</code></td>
+				</tr>
+				<tr>
+					<td>NUM_RELAYS</td>
+					<td><code>8</code></td>
+					<td><code>16</code></td>
+				</tr>
+				<tr>
+					<td>Command parse</td>
+					<td><code>'1'–'8'</code></td>
+					<td>
+						<code>'1'–'9'</code> + <code>'a'–'g'</code> (case-insensitive)
+					</td>
+				</tr>
+				<tr>
+					<td>Response</td>
+					<td><code>OK:1</code>–<code>OK:8</code></td>
+					<td><code>OK:1</code>–<code>OK:16</code> (decimal)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>Key Firmware Snippet</h3>
+		<pre class="diagram">
+const int RELAY_PINS[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, A0, A1, A2, A3};
+const int NUM_RELAYS = 16;
+
+// In loop(), parse command:
+if (cmd &gt;= '1' &amp;&amp; cmd &lt;= '9') {
+    relay = cmd - '0';              // 1–9
+} else if (cmd &gt;= 'a' &amp;&amp; cmd &lt;= 'g') {
+    relay = cmd - 'a' + 10;         // 10–16
+} else if (cmd &gt;= 'A' &amp;&amp; cmd &lt;= 'G') {
+    relay = cmd - 'A' + 10;         // 10–16 (case-insensitive)
+}
+</pre
+		>
+
+		<!-- ─── PYTHON DRIVER UPDATE ─── -->
+		<h2>7. Python Driver Update (relay_mux.py)</h2>
+		<table>
+			<thead>
+				<tr>
+					<th>Change</th>
+					<th>Detail</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><code>select()</code> range</td>
+					<td>Accept 1–16 instead of 1–8</td>
+				</tr>
+				<tr>
+					<td>Send command</td>
+					<td><code>'1'–'9'</code> for 1–9, <code>'a'–'g'</code> for 10–16</td>
+				</tr>
+				<tr>
+					<td>PLATE_RELAYS</td>
+					<td>Every plate gets 2 consecutive relays (NE, NW)</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<h3>Updated PLATE_RELAYS</h3>
+		<pre class="diagram">
+PLATE_RELAYS = {
+    "1": [(1, "NE"),  (2, "NW")],     # Plate A
+    "2": [(3, "NE"),  (4, "NW")],     # Plate B
+    "3": [(5, "NE"),  (6, "NW")],     # Plate G
+    "4": [(7, "NE"),  (8, "NW")],     # Plate D
+    "5": [(9, "NE"),  (10, "NW")],    # Plate H
+    "6": [(11, "NE"), (12, "NW")],    # Plate 6 (future)
+    "7": [(13, "NE"), (14, "NW")],    # Plate 7 (future)
+    "8": [(15, "NE"), (16, "NW")],    # Plate 8 (future)
+}
+</pre
+		>
+
+		<!-- ─── RELAY COM BUS ─── -->
+		<h2>8. Relay COM Bus Wiring Detail</h2>
+		<pre class="diagram">
+  Plate A NE-PZT ──┐        ┌── Relay K1  NO ─┐
+  Plate A NW-PZT ──┤        ├── Relay K2  NO ─┤
+  Plate B NE-PZT ──┤        ├── Relay K3  NO ─┤
+  Plate B NW-PZT ──┤        ├── Relay K4  NO ─┤
+  Plate G NE-PZT ──┤  PZT   ├── Relay K5  NO ─┤
+  Plate G NW-PZT ──┤ leads  ├── Relay K6  NO ─┤  COM bus
+  Plate D NE-PZT ──┤  to    ├── Relay K7  NO ─┤  (all COMs
+  Plate D NW-PZT ──┤  relay ├── Relay K8  NO ─┤  daisy-chained)
+  Plate H NE-PZT ──┤  NO    ├── Relay K9  NO ─┤     │
+  Plate H NW-PZT ──┤        ├── Relay K10 NO ─┤     │
+                   ┤        ├── Relay K11 NO ─┤     │
+  (future plates)  ┤        ├── ...       ... ─┤     │
+                   └        └── Relay K16 NO ─┘     │
+                                                     │
+                                                     ▼
+                                             Twisted pair
+                                                     │
+                                             1/4" TS jack
+                                                     │
+                                             Kronos Input 1
+                                             (rear panel)
+
+  PZT hot  → relay NO terminal
+  PZT gnd  → relay COM terminal (all COMs jumpered together)
+  COM bus → Kronos Input 1 TIP
+  COM gnd → Kronos Input 1 SLEEVE
+</pre
+		>
+
+		<!-- ─── SMOKE TEST ─── -->
+		<h2>9. Smoke Test Checklist</h2>
+		<ul class="checklist">
+			<li>Plug Nano USB — verify 3 boot blinks on Nano LED</li>
+			<li>Verify CW-024 POW-LED (bottom left of board) is lit</li>
+			<li>Open serial monitor (9600 baud) — see <code>OK:0</code></li>
+			<li>Send <code>1</code> — hear relay click, see <code>OK:1</code></li>
+			<li>Send <code>a</code> — hear relay 10 click, see <code>OK:10</code></li>
+			<li>Send <code>g</code> — hear relay 16 click, see <code>OK:16</code></li>
+			<li>Send <code>0</code> — all off, see <code>OK:0</code></li>
+			<li>
+				Run
+				<code
+					>python tools/relay_mux.py --port /dev/cu.usbserial-XXXX --scan</code
+				>
+			</li>
+			<li>
+				Run <code>python tools/relay_mux.py --select 1</code> through
+				<code>--select 16</code>
+			</li>
+			<li>
+				With Kronos: run a quick flash census on plate 4 to verify signal path
+			</li>
+		</ul>
+
+		<!-- ─── NOTES ─── -->
+		<h2>10. Design Notes</h2>
+		<ul>
+			<li>
+				<strong>v2 → v3 migration:</strong> Relays 1–8 keep the same physical
+				Nano pins (D2–D9). If you wire existing plates to the same relay
+				numbers, no software changes needed for plates 1–5.
+			</li>
+			<li>
+				<strong>Break-before-make:</strong> Firmware always calls
+				<code>allOff()</code> + 5 ms delay before activating a new relay.
+				Prevents signal blending between plates.
+			</li>
+			<li>
+				<strong>Loopback subtraction:</strong> Already implemented in census and
+				benchmark tools. Captures reference with <code>mux.off()</code> before
+				plate sweep.
+			</li>
+			<li>
+				<strong>CW-024 board:</strong> Uses ULN2803AG Darlington transistor
+				arrays instead of individual optocouplers. No VCC–JD jumper. POW-LED
+				indicator at bottom-left. Screw terminal + pin header power inputs. Pin
+				header has dual-row layout: odds on top, evens on bottom.
+			</li>
+			<li>
+				<strong>D13 caution:</strong> D13 is shared with the onboard LED. The
+				LED's series resistor may slightly load the signal. In practice this is
+				fine for driving a ULN2803 Darlington input (mA-level sink).
+			</li>
+			<li>
+				<strong>A4/A5 reserved:</strong> Left free for future I²C peripherals
+				(DAC, ADC, temp sensor, etc.).
+			</li>
+			<li>
+				<strong>Relay type:</strong> Using NO (normally open) contacts means the
+				signal path is disconnected when the relay is de-energized — safe
+				default, no accidental cross-talk.
+			</li>
+			<li>
+				<strong>Cable note:</strong> 1/4" TS to banana adapter on order —
+				replaces the current splice cables for cleaner connections.
+			</li>
+		</ul>
+
+		<div
+			style="
+				margin-top: 20pt;
+				border-top: 1px solid #ccc;
+				padding-top: 6pt;
+				font-size: 8pt;
+				color: #888;
+			">
+			CWM Project — v3 Resonator Build Guide — Generated 2026-04-16
+		</div>
+	</body>
+</html>

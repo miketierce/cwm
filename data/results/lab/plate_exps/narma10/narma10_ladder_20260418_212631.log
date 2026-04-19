@@ -1,0 +1,66 @@
+[21:26:31.032] ══════════════════════════════════════════════════════════════
+[21:26:31.032]   NARMA-10 HARMONIC LADDER — Spatial Encoding of Temporal Memory
+[21:26:31.032] ══════════════════════════════════════════════════════════════
+[21:26:31.032] 
+[21:26:31.033]   Census modes: 61
+[21:26:31.033]   Carriers: [19.0, 23.9, 29.2, 29.9, 34.55, 37.0, 45.0, 49.6, 56.2, 58.5]k
+[21:26:31.034]   Readout frequencies: 117
+[21:26:31.034]     Carriers: 10, Ambient modes: 23, IM2: 44, IM3: 40
+[21:26:31.034]   Step pairs with IM coverage: 43/45
+[21:26:31.034]   Critical u(t-9)×u(t) pair: ✓ COVERED
+[21:26:31.034] 
+[21:26:31.034]   Generating NARMA-10 time series...
+[21:26:31.036]   Steps: 140 total, 80 usable (53 train / 27 test)
+[21:26:31.036] 
+[21:26:31.036] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[21:26:31.036]   SIMULATION MODE
+[21:26:31.036] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[21:26:52.610]     50/80 steps (21.5s)
+[21:27:05.256] 
+  Feature matrix: (80, 127)
+[21:27:05.257] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[21:27:05.257]   RESULTS
+[21:27:05.257] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[21:27:05.259] 
+  Approach                                 Train       Test  Feats
+[21:27:05.259]   ─────────────────────────────────── ────────── ────────── ──────
+[21:27:05.259]   mean_baseline                            1.000     1.0915      0
+[21:27:05.283]   ladder_full                             0.3367     1.1610    127
+[21:27:05.295]   ladder_spectrum_only                    0.3419     1.1579    117
+[21:27:05.305]   input_window_only                       0.5467     1.2148     10
+[21:27:05.317]   input_poly2                             0.5121     1.1539     65
+[21:27:05.331]   ladder_top20_poly_interact              0.3356     1.2104    465
+[21:27:05.331] 
+  Running software ESN baseline...
+[21:27:05.346]   software_esn                            0.0741     0.2340     64
+[21:27:05.359]   ladder_esn                              0.3070     1.7432     64
+[21:27:05.370]   ladder_plus_esn_concat                  0.2539     1.1824    191
+[21:27:05.370] 
+  Running enrollment-based denoising approaches...
+[21:27:05.382]   ladder_census_norm                      0.3367     1.1610    127
+[21:27:05.394]   ladder_im_only                          0.3645     1.1732    104
+[21:27:05.405]   ladder_log_census                       0.3369     1.1587    127
+[21:27:05.416]   ladder_pair_agg                         0.4948     1.2089     64
+[21:27:05.428]   ladder_denoised                         0.4947     1.2049     63
+[21:27:05.428]   Computing template residuals from enrollment...
+[21:27:05.440]   ladder_template_resid                   0.3317     1.3022    127
+[21:27:05.451]   ladder_resid_agg                        0.4774     1.3339     63
+[21:27:05.463]   ladder_resid_esn                        0.1373     0.3606     64
+[21:27:05.463] 
+  Running closed-loop (output feedback on 11th carrier)...
+[21:27:05.464]   Closed-loop: 136 readout freqs (was 117 without feedback carrier)
+[21:27:05.464]   Pass 1: Open-loop capture (teacher forcing)...
+[21:27:34.960]     50/80 (29.5s)
+[21:27:52.581]   Pass 1 ridge α=1.0
+[21:27:52.581]   Pass 2: Closed-loop capture (predicted feedback)...
+[21:27:56.699]     60/80 (4.1s)
+[21:28:08.600]     80/80 (16.0s)
+[21:28:08.601]   ladder_feedback_openloop                0.0001     0.1640    147
+[21:28:08.601]   ladder_feedback_closedloop              0.0001     0.6687    147
+[21:28:08.601] 
+  ★ BEST: ladder_feedback_openloop — NMSE 0.1640
+[21:28:08.601]   Quality: GOOD
+[21:28:08.601]   ▲ BEATS previous best (0.666) by 75.4%
+[21:28:08.603] 
+  Saved: narma10_ladder_20260418_212631.json

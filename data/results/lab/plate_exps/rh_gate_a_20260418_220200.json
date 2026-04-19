@@ -1,0 +1,65 @@
+{
+  "experiment": "rh_gate_a",
+  "timestamp": "2026-04-18T22:02:00.294406",
+  "census_file": "data/results/lab/plate_exps/plate_census_kronos_flash_20260415_211405.json",
+  "sweeps_file": "data/results/lab/plate_exps/plate_census_kronos_flash_sweeps_20260415_211405.json",
+  "results": {
+    "rh02": {
+      "n_samples": 8,
+      "n_features": 7586,
+      "d90": 7,
+      "d95": 7,
+      "d99": 7,
+      "participation_ratio": 6.9866844716771315,
+      "eigenvalues": [
+        827.878273481612,
+        802.3267699250939,
+        787.3096996549309,
+        769.9640542995885,
+        760.6648792058876,
+        738.1221241368446,
+        722.8770564388981,
+        1.4004110432504483e-27
+      ],
+      "var_explained_cumulative": [
+        0.1530516563060238,
+        0.30137955059811283,
+        0.44693120646079293,
+        0.5892761351555194,
+        0.7299019051333667,
+        0.8663601469714693,
+        1.0,
+        1.0
+      ],
+      "nn_stability_50pct": 0.56625,
+      "nn_stability_50pct_std": 0.1718056678343296
+    },
+    "rh05": {
+      "shuffle_nn_preserved": 1.0,
+      "shuffle_nn_std": 0.0,
+      "shuffle_plate_preserved": 0.25,
+      "dropout_results": {}
+    },
+    "rh01": {
+      "mag_plate_accuracy": 0.125,
+      "phase_plate_accuracy": 0.125,
+      "mag_phase_nn_agreement": 0.0,
+      "cross_channel_plate_match": 0.375
+    },
+    "rh03": {
+      "reconstruction_ratios": [
+        802276674817566.2,
+        1071242920730168.5,
+        848453141074816.9,
+        926890051669391.6,
+        966717988731314.8,
+        1232919226945624.5,
+        709971769366010.2,
+        755216842918295.8
+      ],
+      "mean_reconstruction_ratio": 914211077031648.5,
+      "spearman_rho": 0.7077175697865353,
+      "spearman_p": 2.5287796396264843e-05
+    }
+  }
+}

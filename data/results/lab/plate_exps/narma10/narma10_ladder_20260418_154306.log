@@ -1,0 +1,108 @@
+[15:43:06.275] ══════════════════════════════════════════════════════════════
+[15:43:06.275]   NARMA-10 HARMONIC LADDER — Spatial Encoding of Temporal Memory
+[15:43:06.275] ══════════════════════════════════════════════════════════════
+[15:43:06.275] 
+[15:43:06.276]   Census modes: 61
+[15:43:06.276]   Carriers: [19.0, 23.9, 29.2, 29.9, 34.55, 37.0, 45.0, 49.6, 56.2, 58.5]k
+[15:43:06.276]   Readout frequencies: 117
+[15:43:06.276]     Carriers: 10, Ambient modes: 23, IM2: 44, IM3: 40
+[15:43:06.277]   Step pairs with IM coverage: 43/45
+[15:43:06.277]   Critical u(t-9)×u(t) pair: ✓ COVERED
+[15:43:06.277] 
+[15:43:06.277]   Generating NARMA-10 time series...
+[15:43:06.279]   Steps: 360 total, 300 usable (201 train / 99 test)
+[15:43:06.279] 
+[15:43:06.279] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:43:06.279]   HARDWARE CAPTURE
+[15:43:06.279] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:43:07.459]   PicoScope opened (Ch A ±1V DC)
+[15:43:10.563]   f_rep = 29.0 Hz
+[15:43:10.563]   Enrollment prescan (noise floor + solo carriers)...
+[15:43:20.118]   Enrollment done (9.6s, noise_floor max=13692, solo range=1155664–2902998)
+[15:43:32.349]     10/300 steps (0.82/s, ETA 355s)
+[15:43:44.391]     20/300 steps (0.82/s, ETA 340s)
+[15:43:56.474]     30/300 steps (0.83/s, ETA 327s)
+[15:44:08.747]     40/300 steps (0.82/s, ETA 316s)
+[15:44:20.978]     50/300 steps (0.82/s, ETA 304s)
+[15:44:33.308]     60/300 steps (0.82/s, ETA 293s)
+[15:44:45.689]     70/300 steps (0.82/s, ETA 281s)
+[15:44:57.783]     80/300 steps (0.82/s, ETA 269s)
+[15:45:10.079]     90/300 steps (0.82/s, ETA 257s)
+[15:45:22.439]     100/300 steps (0.82/s, ETA 245s)
+[15:45:34.702]     110/300 steps (0.82/s, ETA 232s)
+[15:45:46.884]     120/300 steps (0.82/s, ETA 220s)
+[15:45:59.214]     130/300 steps (0.82/s, ETA 208s)
+[15:46:11.431]     140/300 steps (0.82/s, ETA 196s)
+[15:46:23.681]     150/300 steps (0.82/s, ETA 184s)
+[15:46:36.043]     160/300 steps (0.82/s, ETA 171s)
+[15:46:48.352]     170/300 steps (0.82/s, ETA 159s)
+[15:47:00.638]     180/300 steps (0.82/s, ETA 147s)
+[15:47:12.984]     190/300 steps (0.82/s, ETA 135s)
+[15:47:25.222]     200/300 steps (0.82/s, ETA 123s)
+[15:47:37.556]     210/300 steps (0.82/s, ETA 110s)
+[15:47:49.946]     220/300 steps (0.82/s, ETA 98s)
+[15:48:02.316]     230/300 steps (0.82/s, ETA 86s)
+[15:48:14.620]     240/300 steps (0.81/s, ETA 74s)
+[15:48:27.119]     250/300 steps (0.81/s, ETA 61s)
+[15:48:39.567]     260/300 steps (0.81/s, ETA 49s)
+[15:48:52.028]     270/300 steps (0.81/s, ETA 37s)
+[15:49:04.469]     280/300 steps (0.81/s, ETA 25s)
+[15:49:16.829]     290/300 steps (0.81/s, ETA 12s)
+[15:49:29.274]     300/300 steps (0.81/s, ETA 0s)
+[15:49:29.274]   Open-loop capture complete, scope stays open for eval...
+[15:49:29.274] 
+  Feature matrix: (300, 127)
+[15:49:29.275] 
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:49:29.275]   RESULTS
+[15:49:29.275] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[15:49:29.276] 
+  Approach                                 Train       Test  Feats
+[15:49:29.276]   ─────────────────────────────────── ────────── ────────── ──────
+[15:49:29.276]   mean_baseline                            1.000     1.0054      0
+[15:49:29.317]   ladder_full                             0.4384     0.9989    127
+[15:49:29.336]   ladder_spectrum_only                    0.4660     1.1102    117
+[15:49:29.353]   input_window_only                       0.6489     0.7872     10
+[15:49:29.368]   input_poly2                             0.6054     0.8333     65
+[15:49:29.404]   ladder_top20_poly_interact              0.5155     0.9291    465
+[15:49:29.404] 
+  Running software ESN baseline...
+[15:49:29.435]   software_esn                            0.2974     0.3338     64
+[15:49:29.450]   ladder_esn                              0.6301     1.0460     64
+[15:49:29.470]   ladder_plus_esn_concat                  0.2502     0.8965    191
+[15:49:29.470] 
+  Running enrollment-based denoising approaches...
+[15:49:29.488]   ladder_census_norm                      0.4384     0.9989    127
+[15:49:29.504]   ladder_im_only                          0.4727     0.9067    104
+[15:49:29.521]   ladder_log_census                       0.4380     0.9987    127
+[15:49:29.535]   ladder_pair_agg                         0.5913     0.8522     64
+[15:49:29.548]   ladder_denoised                         0.5894     0.8487     63
+[15:49:29.549]   Computing template residuals from enrollment...
+[15:49:29.569]   ladder_template_resid                   0.5117     0.8435    127
+[15:49:29.583]   ladder_resid_agg                        0.6118     0.7971     63
+[15:49:29.597]   ladder_resid_esn                        0.3020     0.3505     64
+[15:49:29.597] 
+  Running closed-loop (output feedback on 11th carrier)...
+[15:49:29.599]   Closed-loop: 136 readout freqs (was 117 without feedback carrier)
+[15:49:29.599]   Pass 1: Open-loop capture (teacher forcing)...
+[15:50:31.985]     50/300 (62.4s)
+[15:51:34.039]     100/300 (124.4s)
+[15:52:36.148]     150/300 (186.5s)
+[15:53:38.688]     200/300 (249.1s)
+[15:54:41.253]     250/300 (311.7s)
+[15:55:43.959]     300/300 (374.4s)
+[15:55:43.995]   Pass 1 ridge α=0.001
+[15:55:43.995]   Pass 2: Closed-loop capture (predicted feedback)...
+[15:56:07.918]     220/300 (23.9s)
+[15:56:33.045]     240/300 (49.0s)
+[15:56:58.137]     260/300 (74.1s)
+[15:57:23.238]     280/300 (99.2s)
+[15:57:48.335]     300/300 (124.3s)
+[15:57:48.337]   ladder_feedback_openloop                0.0000     0.0000    147
+[15:57:48.337]   ladder_feedback_closedloop              0.0000     1.0619    147
+[15:57:48.337] 
+  ★ BEST: ladder_feedback_openloop — NMSE 0.0000
+[15:57:48.337]   Quality: EXCELLENT
+[15:57:48.337]   ▲ BEATS previous best (0.666) by 100.0%
+[15:57:48.345] 
+  Saved: narma10_ladder_20260418_154306.json

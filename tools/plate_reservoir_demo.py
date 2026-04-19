@@ -314,15 +314,21 @@ def _build_readout_grid(mode_freqs, input_indices):
 
 # ── Enrollment loader ────────────────────────────────────────────────
 
-def _load_plate_modes(plate_id: str) -> list[float]:
-    """Load enrolled mode frequencies from latest census."""
-    census_files = sorted(
-        f for f in LAB_DIR.glob("plate_census_*.json")
-        if "sweeps" not in f.name
-    )
-    if not census_files:
-        raise FileNotFoundError("No census file. Run plate_mode_census.py first.")
-    with open(census_files[-1]) as f:
+def _load_plate_modes(plate_id: str, census_path: str = None) -> list[float]:
+    """Load enrolled mode frequencies from latest PicoScope census."""
+    if census_path:
+        path = Path(census_path)
+    else:
+        census_files = sorted(
+            f for f in LAB_DIR.glob("plate_census_*.json")
+            if "sweeps" not in f.name
+            and "kronos" not in f.name
+            and "hybrid" not in f.name
+        )
+        if not census_files:
+            raise FileNotFoundError("No census file. Run plate_mode_census.py first.")
+        path = census_files[-1]
+    with open(path) as f:
         census = json.load(f)
     if "results" in census:
         census = census["results"]
@@ -376,7 +382,8 @@ def run_reservoir_demo(handle, mux, plate_id: str,
                        n_test: int = 20,
                        seed: int = 42,
                        capture_mode: str = "sequential",
-                       wave_type: int = 0) -> dict:
+                       wave_type: int = 0,
+                       census_path: str = None) -> dict:
     """Run the full reservoir computing demo on one plate.
 
     Evaluates multiple tasks and feature strategies:
@@ -392,7 +399,7 @@ def run_reservoir_demo(handle, mux, plate_id: str,
     print(f"  Train: {n_train}, Test: {n_test}")
     print(f"{'=' * 65}")
 
-    mode_freqs = _load_plate_modes(plate_id)
+    mode_freqs = _load_plate_modes(plate_id, census_path=census_path)
     n_modes = len(mode_freqs)
     n_input_bits = min(n_input_bits, n_modes)
     input_indices = np.linspace(0, n_modes - 1, n_input_bits, dtype=int)
@@ -635,6 +642,10 @@ def main():
         "--dry-run", action="store_true",
         help="Don't submit to Firestore"
     )
+    parser.add_argument(
+        "--census", type=str, default=None,
+        help="Path to census JSON (default: auto-detect latest PicoScope census)"
+    )
     args = parser.parse_args()
 
     plate_ids = sorted(PLATE_NAMES.keys()) if args.all_plates else [args.plate]
@@ -654,6 +665,7 @@ def main():
                 n_test=args.n_test,
                 capture_mode=args.mode,
                 wave_type=args.wave,
+                census_path=args.census,
             )
             results.append(result)
     finally:

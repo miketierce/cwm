@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-04-17T13:12:48.775593+00:00",
+  "benchmark": "narma10_ensemble",
+  "n_plates": 5,
+  "total_modes": 31,
+  "n_steps": 500,
+  "results": {
+    "ensemble_esn": {
+      "nmse_train": 0.631582,
+      "nmse_test": 1.987831,
+      "n_features": 64
+    },
+    "ensemble_esn_plus": {
+      "nmse_train": 0.467111,
+      "nmse_test": 2.429671,
+      "n_features": 95
+    },
+    "ensemble_raw": {
+      "nmse_train": 0.948223,
+      "nmse_test": 1.398101,
+      "n_features": 31
+    },
+    "ensemble_window": {
+      "nmse_train": 0.033621,
+      "nmse_test": 3.332867,
+      "n_features": 310
+    },
+    "input_esn": {
+      "nmse_train": 0.341768,
+      "nmse_test": 0.683558,
+      "n_features": 64
+    },
+    "input_only": {
+      "nmse_train": 0.990011,
+      "nmse_test": 1.312055,
+      "n_features": 7
+    },
+    "input_window": {
+      "nmse_train": 0.578342,
+      "nmse_test": 1.000745,
+      "n_features": 70
+    },
+    "single_plate_D": {
+      "nmse_train": 0.985324,
+      "nmse_test": 1.327294,
+      "n_features": 8
+    },
+    "sw_rbf_window": {
+      "nmse_train": 0.305697,
+      "nmse_test": 1.267075,
+      "n_features": 70
+    }
+  },
+  "ensemble_best_nmse": 1.398101,
+  "single_plate_D_nmse": 1.327294,
+  "input_esn_nmse": 0.683558
+}

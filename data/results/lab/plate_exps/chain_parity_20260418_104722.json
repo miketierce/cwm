@@ -1,0 +1,392 @@
+{
+  "timestamp": "2026-04-18T15:47:22.771296+00:00",
+  "experiment": "chain_parity",
+  "mode": "hardware",
+  "n_samples": 500,
+  "n_carriers": 10,
+  "n_plates": 4,
+  "n_features": 31,
+  "carrier_freqs_hz": [
+    11425.0,
+    18968.75,
+    29262.5,
+    34900.0,
+    44950.0,
+    49625.0,
+    61775.0,
+    68106.25,
+    78850.0,
+    89350.0
+  ],
+  "plates": [
+    "B-NE",
+    "G-NE",
+    "D-NE",
+    "H-NE"
+  ],
+  "tasks": {
+    "parity": {
+      "One-hot (100d)": {
+        "sequence_acc": 0.51,
+        "mean_position": 0.51,
+        "per_position": [
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51,
+          0.51
+        ],
+        "best_alpha": 100.0
+      },
+      "B-NE only (7d)": {
+        "sequence_acc": 0.53,
+        "mean_position": 0.53,
+        "per_position": [
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53,
+          0.53
+        ],
+        "best_alpha": 100.0
+      },
+      "G-NE only (8d)": {
+        "sequence_acc": 0.48,
+        "mean_position": 0.4800000000000001,
+        "per_position": [
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48,
+          0.48
+        ],
+        "best_alpha": 100.0
+      },
+      "D-NE only (9d)": {
+        "sequence_acc": 0.52,
+        "mean_position": 0.5199999999999999,
+        "per_position": [
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52
+        ],
+        "best_alpha": 100.0
+      },
+      "H-NE only (7d)": {
+        "sequence_acc": 0.47,
+        "mean_position": 0.4699999999999999,
+        "per_position": [
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47,
+          0.47
+        ],
+        "best_alpha": 100.0
+      },
+      "Chain raw (31d)": {
+        "sequence_acc": 0.52,
+        "mean_position": 0.5199999999999999,
+        "per_position": [
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52,
+          0.52
+        ],
+        "best_alpha": 0.1
+      },
+      "Chain exp (527d)": {
+        "sequence_acc": 0.5,
+        "mean_position": 0.5,
+        "per_position": [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ],
+        "best_alpha": 1.0
+      }
+    },
+    "reverse": {
+      "One-hot (100d)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "B-NE only (7d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.181,
+        "per_position": [
+          0.21,
+          0.15,
+          0.06,
+          0.09,
+          0.29,
+          0.15,
+          0.09,
+          0.33,
+          0.31,
+          0.13
+        ],
+        "best_alpha": 0.001
+      },
+      "G-NE only (8d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.196,
+        "per_position": [
+          0.1,
+          0.32,
+          0.21,
+          0.09,
+          0.09,
+          0.21,
+          0.22,
+          0.31,
+          0.24,
+          0.17
+        ],
+        "best_alpha": 0.001
+      },
+      "D-NE only (9d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.17099999999999999,
+        "per_position": [
+          0.12,
+          0.12,
+          0.16,
+          0.1,
+          0.17,
+          0.14,
+          0.1,
+          0.3,
+          0.26,
+          0.24
+        ],
+        "best_alpha": 0.001
+      },
+      "H-NE only (7d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.17400000000000002,
+        "per_position": [
+          0.1,
+          0.17,
+          0.19,
+          0.3,
+          0.1,
+          0.15,
+          0.26,
+          0.06,
+          0.28,
+          0.13
+        ],
+        "best_alpha": 0.001
+      },
+      "Chain raw (31d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.28200000000000003,
+        "per_position": [
+          0.3,
+          0.3,
+          0.3,
+          0.28,
+          0.23,
+          0.25,
+          0.26,
+          0.33,
+          0.31,
+          0.26
+        ],
+        "best_alpha": 0.001
+      },
+      "Chain exp (527d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.15899999999999997,
+        "per_position": [
+          0.17,
+          0.19,
+          0.16,
+          0.18,
+          0.14,
+          0.13,
+          0.13,
+          0.19,
+          0.15,
+          0.15
+        ],
+        "best_alpha": 0.001
+      }
+    },
+    "identity": {
+      "One-hot (100d)": {
+        "sequence_acc": 1.0,
+        "mean_position": 1.0,
+        "per_position": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "best_alpha": 0.001
+      },
+      "B-NE only (7d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.18300000000000002,
+        "per_position": [
+          0.13,
+          0.2,
+          0.32,
+          0.11,
+          0.15,
+          0.27,
+          0.13,
+          0.14,
+          0.14,
+          0.24
+        ],
+        "best_alpha": 0.001
+      },
+      "G-NE only (8d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.207,
+        "per_position": [
+          0.19,
+          0.26,
+          0.27,
+          0.23,
+          0.18,
+          0.17,
+          0.1,
+          0.25,
+          0.29,
+          0.13
+        ],
+        "best_alpha": 0.001
+      },
+      "D-NE only (9d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.183,
+        "per_position": [
+          0.28,
+          0.26,
+          0.32,
+          0.1,
+          0.15,
+          0.12,
+          0.06,
+          0.25,
+          0.18,
+          0.11
+        ],
+        "best_alpha": 0.001
+      },
+      "H-NE only (7d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.167,
+        "per_position": [
+          0.09,
+          0.22,
+          0.15,
+          0.2,
+          0.12,
+          0.1,
+          0.3,
+          0.25,
+          0.13,
+          0.11
+        ],
+        "best_alpha": 0.001
+      },
+      "Chain raw (31d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.257,
+        "per_position": [
+          0.23,
+          0.27,
+          0.34,
+          0.2,
+          0.21,
+          0.27,
+          0.24,
+          0.35,
+          0.3,
+          0.16
+        ],
+        "best_alpha": 0.001
+      },
+      "Chain exp (527d)": {
+        "sequence_acc": 0.0,
+        "mean_position": 0.142,
+        "per_position": [
+          0.13,
+          0.19,
+          0.2,
+          0.1,
+          0.1,
+          0.13,
+          0.14,
+          0.16,
+          0.15,
+          0.12
+        ],
+        "best_alpha": 0.001
+      }
+    }
+  }
+}

@@ -1,0 +1,3453 @@
+{
+  "timestamp": "2026-04-18T18:40:34.148940+00:00",
+  "experiment": "boolean_sweep",
+  "method": "v5-progressive-sweep",
+  "master_freqs": [
+    11375.0,
+    11425.0,
+    11450.0,
+    15125.0,
+    16000.0,
+    17375.0,
+    18950.0,
+    18975.0,
+    19000.0,
+    28825.0,
+    28900.0,
+    29200.0,
+    29250.0,
+    29275.0,
+    29300.0,
+    29950.0,
+    30025.0,
+    33225.0,
+    33250.0,
+    34525.0,
+    34550.0,
+    34575.0,
+    34875.0,
+    34900.0,
+    34925.0,
+    37050.0,
+    44950.0,
+    47225.0,
+    47325.0,
+    47725.0,
+    47750.0,
+    47800.0,
+    47850.0,
+    48525.0,
+    49625.0,
+    51525.0,
+    51550.0,
+    58525.0,
+    60975.0,
+    61725.0,
+    61775.0,
+    62000.0,
+    62125.0,
+    68025.0,
+    68050.0,
+    68175.0,
+    78850.0,
+    86875.0,
+    89350.0
+  ],
+  "receivers": {
+    "2": {
+      "relay": 2,
+      "label": "B-NE"
+    },
+    "3_NE": {
+      "relay": 3,
+      "label": "G-NE"
+    },
+    "3_NW": {
+      "relay": 4,
+      "label": "G-NW"
+    },
+    "4_NE": {
+      "relay": 5,
+      "label": "D-NE"
+    },
+    "4_NW": {
+      "relay": 6,
+      "label": "D-NW"
+    },
+    "5_NE": {
+      "relay": 7,
+      "label": "H-NE"
+    },
+    "5_NW": {
+      "relay": 8,
+      "label": "H-NW"
+    }
+  },
+  "sweep_steps": [
+    {
+      "name": "B vs G (NE)",
+      "keys_a": [
+        "2"
+      ],
+      "keys_b": [
+        "3_NE"
+      ]
+    },
+    {
+      "name": "D_NE vs G_NE",
+      "keys_a": [
+        "4_NE"
+      ],
+      "keys_b": [
+        "3_NE"
+      ]
+    },
+    {
+      "name": "D(NE+NW) vs G(NE+NW)",
+      "keys_a": [
+        "4_NE",
+        "4_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW"
+      ]
+    },
+    {
+      "name": "D+H(NE) vs G+B",
+      "keys_a": [
+        "4_NE",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "2"
+      ]
+    },
+    {
+      "name": "D(all)+H(NE) vs G(all)+B",
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ]
+    },
+    {
+      "name": "D(all)+H(all) vs G(all)+B",
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE",
+        "5_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ]
+    }
+  ],
+  "results": [
+    {
+      "step_name": "Step 1: B vs G (NE)",
+      "use_prescan": true,
+      "keys_a": [
+        "2"
+      ],
+      "keys_b": [
+        "3_NE"
+      ],
+      "prescan_info": {
+        "2": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2258761.2
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        }
+      },
+      "strong_a_count": 3,
+      "strong_b_count": 5,
+      "classes": {
+        "both": [
+          29037.5
+        ],
+        "a_only": [
+          29200.0,
+          49625.0
+        ],
+        "b_only": [
+          34550.0,
+          34900.0,
+          51525.0,
+          78850.0
+        ],
+        "all": [
+          29037.5,
+          29200.0,
+          34550.0,
+          34900.0,
+          49625.0,
+          51525.0,
+          78850.0
+        ]
+      },
+      "total_bits": 7,
+      "and_correct": 7,
+      "or_correct": 7,
+      "xor_correct": 7,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "2": 1903583.8,
+        "3_NE": 1795513.3
+      },
+      "per_freq": [
+        {
+          "freq_hz": 29037.5,
+          "category": "both",
+          "mag_a": 2437091.5,
+          "mag_b": 1804707.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29200.0,
+          "category": "a_only",
+          "mag_a": 6918664.9,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3638565.1,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49625.0,
+          "category": "a_only",
+          "mag_a": 5222570.4,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3721810.0,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 1: B vs G (NE)",
+      "use_prescan": false,
+      "keys_a": [
+        "2"
+      ],
+      "keys_b": [
+        "3_NE"
+      ],
+      "prescan_info": {
+        "2": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 7,
+      "strong_b_count": 8,
+      "classes": {
+        "both": [
+          18950.0,
+          29037.5
+        ],
+        "a_only": [
+          15125.0,
+          17375.0,
+          29200.0,
+          49625.0,
+          89350.0
+        ],
+        "b_only": [
+          34550.0,
+          34900.0,
+          44950.0,
+          51525.0,
+          68025.0,
+          78850.0
+        ],
+        "all": [
+          15125.0,
+          17375.0,
+          18950.0,
+          29037.5,
+          29200.0,
+          34550.0,
+          34900.0,
+          44950.0,
+          49625.0,
+          51525.0,
+          68025.0,
+          78850.0,
+          89350.0
+        ]
+      },
+      "total_bits": 13,
+      "and_correct": 13,
+      "or_correct": 13,
+      "xor_correct": 13,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "2": 553533.0,
+        "3_NE": 782058.4
+      },
+      "per_freq": [
+        {
+          "freq_hz": 15125.0,
+          "category": "a_only",
+          "mag_a": 1547631.3,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 17375.0,
+          "category": "a_only",
+          "mag_a": 1107065.9,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18950.0,
+          "category": "both",
+          "mag_a": 1850439.2,
+          "mag_b": 1564116.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29037.5,
+          "category": "both",
+          "mag_a": 2437091.5,
+          "mag_b": 1804707.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29200.0,
+          "category": "a_only",
+          "mag_a": 6918664.9,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3638565.1,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49625.0,
+          "category": "a_only",
+          "mag_a": 5222570.4,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3721810.0,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68025.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1912556.0,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 89350.0,
+          "category": "a_only",
+          "mag_a": 1130044.4,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 2: D_NE vs G_NE",
+      "use_prescan": true,
+      "keys_a": [
+        "4_NE"
+      ],
+      "keys_b": [
+        "3_NE"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 4,
+          "thresh": 3104614.4
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        }
+      },
+      "strong_a_count": 4,
+      "strong_b_count": 5,
+      "classes": {
+        "both": [
+          29075.0
+        ],
+        "a_only": [
+          29300.0,
+          47800.0,
+          48525.0
+        ],
+        "b_only": [
+          34550.0,
+          34900.0,
+          51525.0,
+          78850.0
+        ],
+        "all": [
+          29075.0,
+          29300.0,
+          34550.0,
+          34900.0,
+          47800.0,
+          48525.0,
+          51525.0,
+          78850.0
+        ]
+      },
+      "total_bits": 8,
+      "and_correct": 8,
+      "or_correct": 8,
+      "xor_correct": 8,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 2284334.7,
+        "3_NE": 1795513.3
+      },
+      "per_freq": [
+        {
+          "freq_hz": 29075.0,
+          "category": "both",
+          "mag_a": 3377928.8,
+          "mag_b": 3718014.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29300.0,
+          "category": "a_only",
+          "mag_a": 6813503.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3638565.1,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47800.0,
+          "category": "a_only",
+          "mag_a": 7058975.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 48525.0,
+          "category": "a_only",
+          "mag_a": 5541034.5,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3721810.0,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 2: D_NE vs G_NE",
+      "use_prescan": false,
+      "keys_a": [
+        "4_NE"
+      ],
+      "keys_b": [
+        "3_NE"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 9,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 8,
+      "strong_b_count": 8,
+      "classes": {
+        "both": [
+          18962.5,
+          29075.0,
+          68100.0
+        ],
+        "a_only": [
+          11425.0,
+          29300.0,
+          33250.0,
+          47325.0,
+          48525.0
+        ],
+        "b_only": [
+          34550.0,
+          34900.0,
+          44950.0,
+          51525.0,
+          78850.0
+        ],
+        "all": [
+          11425.0,
+          18962.5,
+          29075.0,
+          29300.0,
+          33250.0,
+          34550.0,
+          34900.0,
+          44950.0,
+          47325.0,
+          48525.0,
+          51525.0,
+          68100.0,
+          78850.0
+        ]
+      },
+      "total_bits": 13,
+      "and_correct": 13,
+      "or_correct": 13,
+      "xor_correct": 13,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 639457.0,
+        "3_NE": 782058.4
+      },
+      "per_freq": [
+        {
+          "freq_hz": 11425.0,
+          "category": "a_only",
+          "mag_a": 1278914.0,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18962.5,
+          "category": "both",
+          "mag_a": 1836562.0,
+          "mag_b": 1564116.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29075.0,
+          "category": "both",
+          "mag_a": 3377928.8,
+          "mag_b": 3718014.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29300.0,
+          "category": "a_only",
+          "mag_a": 6813503.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33250.0,
+          "category": "a_only",
+          "mag_a": 1985599.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3638565.1,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47325.0,
+          "category": "a_only",
+          "mag_a": 1521986.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 48525.0,
+          "category": "a_only",
+          "mag_a": 5541034.5,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3721810.0,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68100.0,
+          "category": "both",
+          "mag_a": 1208418.5,
+          "mag_b": 1627432.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 3: D(NE+NW) vs G(NE+NW)",
+      "use_prescan": true,
+      "keys_a": [
+        "4_NE",
+        "4_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 4,
+          "thresh": 3104614.4
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 4,
+          "thresh": 1370377.9
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 4,
+          "thresh": 1931095.9
+        }
+      },
+      "strong_a_count": 5,
+      "strong_b_count": 5,
+      "classes": {
+        "both": [
+          29075.0
+        ],
+        "a_only": [
+          29300.0,
+          47800.0,
+          48525.0,
+          60975.0
+        ],
+        "b_only": [
+          34525.0,
+          34875.0,
+          51525.0,
+          78850.0
+        ],
+        "all": [
+          29075.0,
+          29300.0,
+          34525.0,
+          34875.0,
+          47800.0,
+          48525.0,
+          51525.0,
+          60975.0,
+          78850.0
+        ]
+      },
+      "total_bits": 9,
+      "and_correct": 9,
+      "or_correct": 9,
+      "xor_correct": 9,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 2284334.7,
+        "4_NW": 583632.0,
+        "3_NE": 1795513.3,
+        "3_NW": 1186677.3
+      },
+      "per_freq": [
+        {
+          "freq_hz": 29075.0,
+          "category": "both",
+          "mag_a": 3377928.8,
+          "mag_b": 3898257.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29300.0,
+          "category": "a_only",
+          "mag_a": 6813503.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3805858.4,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34875.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4234995.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47800.0,
+          "category": "a_only",
+          "mag_a": 7058975.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 48525.0,
+          "category": "a_only",
+          "mag_a": 5541034.5,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3810860.2,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 60975.0,
+          "category": "a_only",
+          "mag_a": 2316751.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 3: D(NE+NW) vs G(NE+NW)",
+      "use_prescan": false,
+      "keys_a": [
+        "4_NE",
+        "4_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 9,
+          "thresh": 0
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 11,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 13,
+      "strong_b_count": 11,
+      "classes": {
+        "both": [
+          11400.0,
+          18962.5,
+          29075.0,
+          34725.0,
+          47275.0,
+          61487.5,
+          68100.0
+        ],
+        "a_only": [
+          29300.0,
+          30025.0,
+          33250.0,
+          37050.0,
+          47850.0,
+          48525.0
+        ],
+        "b_only": [
+          34875.0,
+          44950.0,
+          51525.0,
+          78850.0
+        ],
+        "all": [
+          11400.0,
+          18962.5,
+          29075.0,
+          29300.0,
+          30025.0,
+          33250.0,
+          34725.0,
+          34875.0,
+          37050.0,
+          44950.0,
+          47275.0,
+          47850.0,
+          48525.0,
+          51525.0,
+          61487.5,
+          68100.0,
+          78850.0
+        ]
+      },
+      "total_bits": 17,
+      "and_correct": 17,
+      "or_correct": 17,
+      "xor_correct": 17,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 639457.0,
+        "4_NW": 362069.5,
+        "3_NE": 782058.4,
+        "3_NW": 411167.8
+      },
+      "per_freq": [
+        {
+          "freq_hz": 11400.0,
+          "category": "both",
+          "mag_a": 913421.0,
+          "mag_b": 830495.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18962.5,
+          "category": "both",
+          "mag_a": 1836562.0,
+          "mag_b": 1564116.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29075.0,
+          "category": "both",
+          "mag_a": 3377928.8,
+          "mag_b": 3898257.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29300.0,
+          "category": "a_only",
+          "mag_a": 6813503.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 30025.0,
+          "category": "a_only",
+          "mag_a": 4359455.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33250.0,
+          "category": "a_only",
+          "mag_a": 1985599.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34725.0,
+          "category": "both",
+          "mag_a": 876890.6,
+          "mag_b": 3035913.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34875.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4234995.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 37050.0,
+          "category": "a_only",
+          "mag_a": 1246215.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47275.0,
+          "category": "both",
+          "mag_a": 1090868.1,
+          "mag_b": 1106838.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47850.0,
+          "category": "a_only",
+          "mag_a": 4139491.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 48525.0,
+          "category": "a_only",
+          "mag_a": 5541034.5,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3810860.2,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61487.5,
+          "category": "both",
+          "mag_a": 762871.7,
+          "mag_b": 943005.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68100.0,
+          "category": "both",
+          "mag_a": 1208418.5,
+          "mag_b": 1627432.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 4: D+H(NE) vs G+B",
+      "use_prescan": true,
+      "keys_a": [
+        "4_NE",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 4,
+          "thresh": 3104614.4
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2245015.7
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2258761.2
+        }
+      },
+      "strong_a_count": 7,
+      "strong_b_count": 7,
+      "classes": {
+        "both": [
+          28862.5,
+          29250.0,
+          34562.5,
+          49075.0,
+          51525.0
+        ],
+        "a_only": [
+          33225.0,
+          47800.0
+        ],
+        "b_only": [
+          34900.0,
+          78850.0
+        ],
+        "all": [
+          28862.5,
+          29250.0,
+          33225.0,
+          34562.5,
+          34900.0,
+          47800.0,
+          49075.0,
+          51525.0,
+          78850.0
+        ]
+      },
+      "total_bits": 9,
+      "and_correct": 7,
+      "or_correct": 9,
+      "xor_correct": 7,
+      "and_fidelity": 0.778,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 0.778,
+      "mean_fidelity": 0.852,
+      "thresholds": {
+        "4_NE": 2284334.7,
+        "5_NE": 1137144.6,
+        "3_NE": 1795513.3,
+        "2": 1903583.8
+      },
+      "per_freq": [
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 29250.0,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34562.5,
+          "category": "both",
+          "mag_a": 2544013.5,
+          "mag_b": 3638565.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47800.0,
+          "category": "a_only",
+          "mag_a": 7058975.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 5541034.5,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3299546.5,
+          "mag_b": 3721810.0,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 4: D+H(NE) vs G+B",
+      "use_prescan": false,
+      "keys_a": [
+        "4_NE",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 9,
+          "thresh": 0
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 12,
+      "strong_b_count": 13,
+      "classes": {
+        "both": [
+          18962.5,
+          28862.5,
+          29250.0,
+          34562.5,
+          49075.0,
+          51525.0,
+          68037.5
+        ],
+        "a_only": [
+          11425.0,
+          16000.0,
+          33225.0,
+          47325.0,
+          61775.0
+        ],
+        "b_only": [
+          15125.0,
+          17375.0,
+          34900.0,
+          44950.0,
+          78850.0,
+          89350.0
+        ],
+        "all": [
+          11425.0,
+          15125.0,
+          16000.0,
+          17375.0,
+          18962.5,
+          28862.5,
+          29250.0,
+          33225.0,
+          34562.5,
+          34900.0,
+          44950.0,
+          47325.0,
+          49075.0,
+          51525.0,
+          61775.0,
+          68037.5,
+          78850.0,
+          89350.0
+        ]
+      },
+      "total_bits": 18,
+      "and_correct": 18,
+      "or_correct": 18,
+      "xor_correct": 18,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 604209.2,
+        "5_NE": 927269.6,
+        "3_NE": 782058.4,
+        "2": 553533.0
+      },
+      "per_freq": [
+        {
+          "freq_hz": 11425.0,
+          "category": "a_only",
+          "mag_a": 1278914.0,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 15125.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1547631.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 16000.0,
+          "category": "a_only",
+          "mag_a": 1854539.3,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 17375.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1107065.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18962.5,
+          "category": "both",
+          "mag_a": 1965223.2,
+          "mag_b": 1850439.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29250.0,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34562.5,
+          "category": "both",
+          "mag_a": 2544013.5,
+          "mag_b": 3638565.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4602615.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47325.0,
+          "category": "a_only",
+          "mag_a": 1521986.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 5541034.5,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3299546.5,
+          "mag_b": 3721810.0,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61775.0,
+          "category": "a_only",
+          "mag_a": 1974877.4,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68037.5,
+          "category": "both",
+          "mag_a": 1986603.1,
+          "mag_b": 1912556.0,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 89350.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1130044.4,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 5: D(all)+H(NE) vs G(all)+B",
+      "use_prescan": true,
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 4,
+          "thresh": 3104614.4
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 4,
+          "thresh": 1370377.9
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2245015.7
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 4,
+          "thresh": 1931095.9
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2258761.2
+        }
+      },
+      "strong_a_count": 8,
+      "strong_b_count": 7,
+      "classes": {
+        "both": [
+          28862.5,
+          29250.0,
+          34550.0,
+          49075.0,
+          51525.0
+        ],
+        "a_only": [
+          33225.0,
+          47800.0,
+          60975.0
+        ],
+        "b_only": [
+          34875.0,
+          78850.0
+        ],
+        "all": [
+          28862.5,
+          29250.0,
+          33225.0,
+          34550.0,
+          34875.0,
+          47800.0,
+          49075.0,
+          51525.0,
+          60975.0,
+          78850.0
+        ]
+      },
+      "total_bits": 10,
+      "and_correct": 8,
+      "or_correct": 10,
+      "xor_correct": 8,
+      "and_fidelity": 0.8,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 0.8,
+      "mean_fidelity": 0.867,
+      "thresholds": {
+        "4_NE": 2284334.7,
+        "4_NW": 583632.0,
+        "5_NE": 1137144.6,
+        "3_NE": 1795513.3,
+        "3_NW": 1186677.3,
+        "2": 1903583.8
+      },
+      "per_freq": [
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 29250.0,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "both",
+          "mag_a": 2544013.5,
+          "mag_b": 3638565.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34875.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4234995.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47800.0,
+          "category": "a_only",
+          "mag_a": 7058975.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 5541034.5,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3299546.5,
+          "mag_b": 3810860.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 60975.0,
+          "category": "a_only",
+          "mag_a": 2316751.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 5: D(all)+H(NE) vs G(all)+B",
+      "use_prescan": false,
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 9,
+          "thresh": 0
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 11,
+          "thresh": 0
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 17,
+      "strong_b_count": 16,
+      "classes": {
+        "both": [
+          11400.0,
+          18962.5,
+          28862.5,
+          29250.0,
+          34550.0,
+          34900.0,
+          47275.0,
+          49075.0,
+          51525.0,
+          61487.5,
+          68037.5
+        ],
+        "a_only": [
+          16000.0,
+          30025.0,
+          33225.0,
+          37050.0,
+          47850.0,
+          61775.0
+        ],
+        "b_only": [
+          15125.0,
+          17375.0,
+          44950.0,
+          78850.0,
+          89350.0
+        ],
+        "all": [
+          11400.0,
+          15125.0,
+          16000.0,
+          17375.0,
+          18962.5,
+          28862.5,
+          29250.0,
+          30025.0,
+          33225.0,
+          34550.0,
+          34900.0,
+          37050.0,
+          44950.0,
+          47275.0,
+          47850.0,
+          49075.0,
+          51525.0,
+          61487.5,
+          61775.0,
+          68037.5,
+          78850.0,
+          89350.0
+        ]
+      },
+      "total_bits": 22,
+      "and_correct": 22,
+      "or_correct": 22,
+      "xor_correct": 22,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 604209.2,
+        "4_NW": 362069.5,
+        "5_NE": 927269.6,
+        "3_NE": 782058.4,
+        "3_NW": 411167.8,
+        "2": 553533.0
+      },
+      "per_freq": [
+        {
+          "freq_hz": 11400.0,
+          "category": "both",
+          "mag_a": 913421.0,
+          "mag_b": 830495.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 15125.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1547631.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 16000.0,
+          "category": "a_only",
+          "mag_a": 1854539.3,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 17375.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1107065.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18962.5,
+          "category": "both",
+          "mag_a": 1965223.2,
+          "mag_b": 1850439.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29250.0,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 30025.0,
+          "category": "a_only",
+          "mag_a": 4359455.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34550.0,
+          "category": "both",
+          "mag_a": 2544013.5,
+          "mag_b": 3638565.1,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "both",
+          "mag_a": 3558993.4,
+          "mag_b": 4602615.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 37050.0,
+          "category": "a_only",
+          "mag_a": 1246215.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47275.0,
+          "category": "both",
+          "mag_a": 1090868.1,
+          "mag_b": 1106838.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47850.0,
+          "category": "a_only",
+          "mag_a": 4139491.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 4736547.2,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3299546.5,
+          "mag_b": 3810860.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61487.5,
+          "category": "both",
+          "mag_a": 762871.7,
+          "mag_b": 943005.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61775.0,
+          "category": "a_only",
+          "mag_a": 753314.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68037.5,
+          "category": "both",
+          "mag_a": 1986603.1,
+          "mag_b": 1912556.0,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 89350.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1130044.4,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 6: D(all)+H(all) vs G(all)+B",
+      "use_prescan": true,
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE",
+        "5_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 4,
+          "thresh": 3104614.4
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 4,
+          "thresh": 1370377.9
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2245015.7
+        },
+        "5_NW": {
+          "enrolled": 10,
+          "strong": 5,
+          "thresh": 1862501.3
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 5,
+          "thresh": 3137493.3
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 4,
+          "thresh": 1931095.9
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 3,
+          "thresh": 2258761.2
+        }
+      },
+      "strong_a_count": 10,
+      "strong_b_count": 7,
+      "classes": {
+        "both": [
+          28862.5,
+          29237.5,
+          34537.5,
+          49075.0,
+          51525.0
+        ],
+        "a_only": [
+          16000.0,
+          33225.0,
+          47800.0,
+          60975.0,
+          86875.0
+        ],
+        "b_only": [
+          34875.0,
+          78850.0
+        ],
+        "all": [
+          16000.0,
+          28862.5,
+          29237.5,
+          33225.0,
+          34537.5,
+          34875.0,
+          47800.0,
+          49075.0,
+          51525.0,
+          60975.0,
+          78850.0,
+          86875.0
+        ]
+      },
+      "total_bits": 12,
+      "and_correct": 10,
+      "or_correct": 12,
+      "xor_correct": 10,
+      "and_fidelity": 0.833,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 0.833,
+      "mean_fidelity": 0.889,
+      "thresholds": {
+        "4_NE": 2284334.7,
+        "4_NW": 583632.0,
+        "5_NE": 1137144.6,
+        "5_NW": 951871.9,
+        "3_NE": 1795513.3,
+        "3_NW": 1186677.3,
+        "2": 1903583.8
+      },
+      "per_freq": [
+        {
+          "freq_hz": 16000.0,
+          "category": "a_only",
+          "mag_a": 1945487.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 29237.5,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34537.5,
+          "category": "both",
+          "mag_a": 2148832.2,
+          "mag_b": 3805858.4,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34875.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 4234995.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47800.0,
+          "category": "a_only",
+          "mag_a": 7058975.1,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 5541034.5,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": false,
+          "or_ok": true,
+          "xor_ok": false
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3531953.1,
+          "mag_b": 3810860.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 60975.0,
+          "category": "a_only",
+          "mag_a": 2316751.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 86875.0,
+          "category": "a_only",
+          "mag_a": 1903743.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    },
+    {
+      "step_name": "Step 6: D(all)+H(all) vs G(all)+B",
+      "use_prescan": false,
+      "keys_a": [
+        "4_NE",
+        "4_NW",
+        "5_NE",
+        "5_NW"
+      ],
+      "keys_b": [
+        "3_NE",
+        "3_NW",
+        "2"
+      ],
+      "prescan_info": {
+        "4_NE": {
+          "enrolled": 9,
+          "strong": 9,
+          "thresh": 0
+        },
+        "4_NW": {
+          "enrolled": 11,
+          "strong": 11,
+          "thresh": 0
+        },
+        "5_NE": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        },
+        "5_NW": {
+          "enrolled": 10,
+          "strong": 10,
+          "thresh": 0
+        },
+        "3_NE": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "3_NW": {
+          "enrolled": 8,
+          "strong": 8,
+          "thresh": 0
+        },
+        "2": {
+          "enrolled": 7,
+          "strong": 7,
+          "thresh": 0
+        }
+      },
+      "strong_a_count": 19,
+      "strong_b_count": 16,
+      "classes": {
+        "both": [
+          11400.0,
+          18962.5,
+          28862.5,
+          29237.5,
+          34537.5,
+          34900.0,
+          47275.0,
+          49075.0,
+          51525.0,
+          61487.5,
+          68037.5,
+          88112.5
+        ],
+        "a_only": [
+          16000.0,
+          29950.0,
+          33225.0,
+          37050.0,
+          47850.0,
+          58525.0,
+          61725.0
+        ],
+        "b_only": [
+          15125.0,
+          17375.0,
+          44950.0,
+          78850.0
+        ],
+        "all": [
+          11400.0,
+          15125.0,
+          16000.0,
+          17375.0,
+          18962.5,
+          28862.5,
+          29237.5,
+          29950.0,
+          33225.0,
+          34537.5,
+          34900.0,
+          37050.0,
+          44950.0,
+          47275.0,
+          47850.0,
+          49075.0,
+          51525.0,
+          58525.0,
+          61487.5,
+          61725.0,
+          68037.5,
+          78850.0,
+          88112.5
+        ]
+      },
+      "total_bits": 23,
+      "and_correct": 23,
+      "or_correct": 23,
+      "xor_correct": 23,
+      "and_fidelity": 1.0,
+      "or_fidelity": 1.0,
+      "xor_fidelity": 1.0,
+      "mean_fidelity": 1.0,
+      "thresholds": {
+        "4_NE": 604209.2,
+        "4_NW": 195405.1,
+        "5_NE": 620127.4,
+        "5_NW": 90965.5,
+        "3_NE": 782058.4,
+        "3_NW": 411167.8,
+        "2": 553533.0
+      },
+      "per_freq": [
+        {
+          "freq_hz": 11400.0,
+          "category": "both",
+          "mag_a": 913421.0,
+          "mag_b": 830495.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 15125.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1547631.3,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 16000.0,
+          "category": "a_only",
+          "mag_a": 1945487.6,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 17375.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 1107065.9,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 18962.5,
+          "category": "both",
+          "mag_a": 1965223.2,
+          "mag_b": 1850439.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 28862.5,
+          "category": "both",
+          "mag_a": 1960892.5,
+          "mag_b": 3807167.6,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29237.5,
+          "category": "both",
+          "mag_a": 4751069.2,
+          "mag_b": 3875614.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 29950.0,
+          "category": "a_only",
+          "mag_a": 4861986.9,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 33225.0,
+          "category": "a_only",
+          "mag_a": 2274289.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34537.5,
+          "category": "both",
+          "mag_a": 2148832.2,
+          "mag_b": 3805858.4,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 34900.0,
+          "category": "both",
+          "mag_a": 3558993.4,
+          "mag_b": 4602615.9,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 37050.0,
+          "category": "a_only",
+          "mag_a": 1246215.2,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 44950.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 2817554.7,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47275.0,
+          "category": "both",
+          "mag_a": 1090868.1,
+          "mag_b": 1106838.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 47850.0,
+          "category": "a_only",
+          "mag_a": 4139491.8,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 49075.0,
+          "category": "both",
+          "mag_a": 4736547.2,
+          "mag_b": 1431705.5,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 51525.0,
+          "category": "both",
+          "mag_a": 3531953.1,
+          "mag_b": 3810860.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 58525.0,
+          "category": "a_only",
+          "mag_a": 1338612.9,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61487.5,
+          "category": "both",
+          "mag_a": 762871.7,
+          "mag_b": 943005.2,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 61725.0,
+          "category": "a_only",
+          "mag_a": 762871.7,
+          "mag_b": 0,
+          "det_a": true,
+          "det_b": false,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 68037.5,
+          "category": "both",
+          "mag_a": 1986603.1,
+          "mag_b": 1912556.0,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 78850.0,
+          "category": "b_only",
+          "mag_a": 0,
+          "mag_b": 3591026.6,
+          "det_a": false,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        },
+        {
+          "freq_hz": 88112.5,
+          "category": "both",
+          "mag_a": 1903743.8,
+          "mag_b": 825229.8,
+          "det_a": true,
+          "det_b": true,
+          "and_ok": true,
+          "or_ok": true,
+          "xor_ok": true
+        }
+      ]
+    }
+  ],
+  "capture": {
+    "11375.0": {
+      "2": 1016818.6,
+      "3_NE": 866968.9,
+      "3_NW": 830495.6,
+      "4_NE": 913421.0,
+      "4_NW": 500042.5,
+      "5_NE": 655286.0,
+      "5_NW": 686605.8
+    },
+    "11425.0": {
+      "2": 984157.6,
+      "3_NE": 561733.0,
+      "3_NW": 574141.1,
+      "4_NE": 1278914.0,
+      "4_NW": 864653.8,
+      "5_NE": 658053.1,
+      "5_NW": 731906.6
+    },
+    "11450.0": {
+      "2": 790507.4,
+      "3_NE": 428060.5,
+      "3_NW": 474844.8,
+      "4_NE": 1222579.1,
+      "4_NW": 885099.4,
+      "5_NE": 619285.0,
+      "5_NW": 680381.9
+    },
+    "15125.0": {
+      "2": 1547631.3,
+      "3_NE": 1044872.7,
+      "3_NW": 35809.3,
+      "4_NE": 1266869.1,
+      "4_NW": 347020.4,
+      "5_NE": 991311.0,
+      "5_NW": 462603.6
+    },
+    "16000.0": {
+      "2": 714931.2,
+      "3_NE": 1056722.9,
+      "3_NW": 1021646.9,
+      "4_NE": 1065533.6,
+      "4_NW": 853820.7,
+      "5_NE": 1854539.3,
+      "5_NW": 1945487.6
+    },
+    "17375.0": {
+      "2": 1107065.9,
+      "3_NE": 365429.6,
+      "3_NW": 112811.9,
+      "4_NE": 663920.1,
+      "4_NW": 104106.3,
+      "5_NE": 509088.2,
+      "5_NW": 224190.3
+    },
+    "18950.0": {
+      "2": 1850439.2,
+      "3_NE": 1564116.8,
+      "3_NW": 417812.6,
+      "4_NE": 1836562.0,
+      "4_NW": 542175.9,
+      "5_NE": 1965223.2,
+      "5_NW": 493244.9
+    },
+    "18975.0": {
+      "2": 1793607.1,
+      "3_NE": 1541598.4,
+      "3_NW": 422235.6,
+      "4_NE": 1957013.5,
+      "4_NW": 724139.0,
+      "5_NE": 2162454.8,
+      "5_NW": 727566.2
+    },
+    "19000.0": {
+      "2": 1732595.6,
+      "3_NE": 1483507.0,
+      "3_NW": 463519.5,
+      "4_NE": 1921990.7,
+      "4_NW": 726991.5,
+      "5_NE": 2068501.6,
+      "5_NW": 921131.7
+    },
+    "28825.0": {
+      "2": 3807167.6,
+      "3_NE": 2233940.7,
+      "3_NW": 823717.4,
+      "4_NE": 1960892.5,
+      "4_NW": 830312.5,
+      "5_NE": 2556168.5,
+      "5_NW": 668076.2
+    },
+    "28900.0": {
+      "2": 2437091.5,
+      "3_NE": 1804707.2,
+      "3_NW": 603591.7,
+      "4_NE": 4568669.5,
+      "4_NW": 1233066.3,
+      "5_NE": 2877886.9,
+      "5_NW": 1254970.0
+    },
+    "29200.0": {
+      "2": 6918664.9,
+      "3_NE": 3718014.1,
+      "3_NW": 3898257.2,
+      "4_NE": 3377928.8,
+      "4_NW": 2676255.9,
+      "5_NE": 3321517.5,
+      "5_NW": 3661352.5
+    },
+    "29250.0": {
+      "2": 3875614.9,
+      "3_NE": 5273941.6,
+      "3_NW": 5354659.6,
+      "4_NE": 4751069.2,
+      "4_NW": 4048374.8,
+      "5_NE": 5022656.3,
+      "5_NW": 5373345.1
+    },
+    "29275.0": {
+      "2": 3067130.3,
+      "3_NE": 4742394.4,
+      "3_NW": 4725413.9,
+      "4_NE": 6006500.6,
+      "4_NW": 5107482.4,
+      "5_NE": 4978657.9,
+      "5_NW": 5251694.4
+    },
+    "29300.0": {
+      "2": 2626711.2,
+      "3_NE": 3905259.5,
+      "3_NW": 3785352.3,
+      "4_NE": 6813503.1,
+      "4_NW": 5634246.1,
+      "5_NE": 4368196.4,
+      "5_NW": 4481533.3
+    },
+    "29950.0": {
+      "2": 2488053.2,
+      "3_NE": 3269045.5,
+      "3_NW": 1077021.5,
+      "4_NE": 4861986.9,
+      "4_NW": 390810.2,
+      "5_NE": 4012373.4,
+      "5_NW": 1830441.6
+    },
+    "30025.0": {
+      "2": 1410455.7,
+      "3_NE": 2617525.4,
+      "3_NW": 575663.5,
+      "4_NE": 4359455.6,
+      "4_NW": 1314384.8,
+      "5_NE": 2971150.4,
+      "5_NW": 843275.8
+    },
+    "33225.0": {
+      "2": 1360350.0,
+      "3_NE": 1140524.8,
+      "3_NW": 469547.7,
+      "4_NE": 1841651.5,
+      "4_NW": 266454.6,
+      "5_NE": 2274289.2,
+      "5_NW": 471709.1
+    },
+    "33250.0": {
+      "2": 1201871.7,
+      "3_NE": 1063434.9,
+      "3_NW": 527053.0,
+      "4_NE": 1985599.2,
+      "4_NW": 134448.7,
+      "5_NE": 2202935.4,
+      "5_NW": 489295.9
+    },
+    "34525.0": {
+      "2": 1998791.1,
+      "3_NE": 3805858.4,
+      "3_NW": 3776061.2,
+      "4_NE": 2049972.9,
+      "4_NW": 1371981.9,
+      "5_NE": 1807830.7,
+      "5_NW": 2148832.2
+    },
+    "34550.0": {
+      "2": 2358420.0,
+      "3_NE": 3638565.1,
+      "3_NW": 2713728.7,
+      "4_NE": 2241822.6,
+      "4_NW": 1147848.7,
+      "5_NE": 2544013.5,
+      "5_NW": 2404857.3
+    },
+    "34575.0": {
+      "2": 2720202.6,
+      "3_NE": 3035913.2,
+      "3_NW": 1657585.3,
+      "4_NE": 2239356.6,
+      "4_NW": 876890.6,
+      "5_NE": 2829921.9,
+      "5_NW": 2115270.4
+    },
+    "34875.0": {
+      "2": 1935309.1,
+      "3_NE": 4234995.3,
+      "3_NW": 2373354.7,
+      "4_NE": 5657441.9,
+      "4_NW": 502793.5,
+      "5_NE": 3435543.4,
+      "5_NW": 1926900.7
+    },
+    "34900.0": {
+      "2": 1863148.7,
+      "3_NE": 4602615.9,
+      "3_NW": 2138676.4,
+      "4_NE": 6064297.1,
+      "4_NW": 832765.6,
+      "5_NE": 3558993.4,
+      "5_NW": 1576414.1
+    },
+    "34925.0": {
+      "2": 1834334.8,
+      "3_NE": 4323213.9,
+      "3_NW": 1637726.8,
+      "4_NE": 5858607.3,
+      "4_NW": 954054.1,
+      "5_NE": 3415284.0,
+      "5_NW": 1091709.2
+    },
+    "37050.0": {
+      "2": 1701814.6,
+      "3_NE": 1576111.5,
+      "3_NW": 248153.5,
+      "4_NE": 2232634.9,
+      "4_NW": 1246215.2,
+      "5_NE": 1887286.3,
+      "5_NW": 606802.6
+    },
+    "44950.0": {
+      "2": 717817.8,
+      "3_NE": 2817554.7,
+      "3_NW": 1224796.7,
+      "4_NE": 2981279.1,
+      "4_NW": 395948.0,
+      "5_NE": 2567784.8,
+      "5_NW": 991293.6
+    },
+    "47225.0": {
+      "2": 2002725.9,
+      "3_NE": 1639739.0,
+      "3_NW": 1106838.8,
+      "4_NE": 1090868.1,
+      "4_NW": 772058.6,
+      "5_NE": 625300.7,
+      "5_NW": 447345.8
+    },
+    "47325.0": {
+      "2": 2230253.7,
+      "3_NE": 1735031.4,
+      "3_NW": 442681.5,
+      "4_NE": 1521986.8,
+      "4_NW": 1010940.1,
+      "5_NE": 682078.3,
+      "5_NW": 181931.1
+    },
+    "47725.0": {
+      "2": 2120962.0,
+      "3_NE": 4468007.5,
+      "3_NW": 838891.7,
+      "4_NE": 4624629.2,
+      "4_NW": 1362840.6,
+      "5_NE": 2885855.1,
+      "5_NW": 1551252.0
+    },
+    "47750.0": {
+      "2": 2023901.6,
+      "3_NE": 3600818.5,
+      "3_NW": 848810.4,
+      "4_NE": 5568449.4,
+      "4_NW": 965956.6,
+      "5_NE": 2464174.7,
+      "5_NW": 1714842.8
+    },
+    "47800.0": {
+      "2": 1961729.2,
+      "3_NE": 2770866.8,
+      "3_NW": 889493.6,
+      "4_NE": 7058975.1,
+      "4_NW": 1167264.1,
+      "5_NE": 1910897.6,
+      "5_NW": 1620198.5
+    },
+    "47850.0": {
+      "2": 1914832.2,
+      "3_NE": 2272968.7,
+      "3_NW": 929821.3,
+      "4_NE": 4139491.8,
+      "4_NW": 1619997.2,
+      "5_NE": 1581194.5,
+      "5_NW": 1495856.9
+    },
+    "48525.0": {
+      "2": 1431705.5,
+      "3_NE": 4436554.3,
+      "3_NW": 4002823.2,
+      "4_NE": 5541034.5,
+      "4_NW": 4736547.2,
+      "5_NE": 3818188.8,
+      "5_NW": 4438100.8
+    },
+    "49625.0": {
+      "2": 5222570.4,
+      "3_NE": 2369592.4,
+      "3_NW": 1749890.7,
+      "4_NE": 3290704.5,
+      "4_NW": 607043.3,
+      "5_NE": 3253504.7,
+      "5_NW": 922844.1
+    },
+    "51525.0": {
+      "2": 592744.1,
+      "3_NE": 3721810.0,
+      "3_NW": 3810860.2,
+      "4_NE": 558522.1,
+      "4_NW": 779183.7,
+      "5_NE": 3299546.5,
+      "5_NW": 3531953.1
+    },
+    "51550.0": {
+      "2": 594220.6,
+      "3_NE": 2918067.8,
+      "3_NW": 3177761.2,
+      "4_NE": 486253.3,
+      "4_NW": 713506.0,
+      "5_NE": 2874109.5,
+      "5_NW": 3297246.3
+    },
+    "58525.0": {
+      "2": 1902507.1,
+      "3_NE": 2873510.3,
+      "3_NW": 1262472.5,
+      "4_NE": 2752334.4,
+      "4_NW": 524060.2,
+      "5_NE": 2649415.6,
+      "5_NW": 1338612.9
+    },
+    "60975.0": {
+      "2": 530653.1,
+      "3_NE": 578836.0,
+      "3_NW": 1139484.4,
+      "4_NE": 2637102.7,
+      "4_NW": 2316751.6,
+      "5_NE": 1264813.6,
+      "5_NW": 1739574.3
+    },
+    "61725.0": {
+      "2": 1848136.3,
+      "3_NE": 1447613.9,
+      "3_NW": 943005.2,
+      "4_NE": 395086.6,
+      "4_NW": 762871.7,
+      "5_NE": 1240254.7,
+      "5_NW": 1074534.4
+    },
+    "61775.0": {
+      "2": 1869016.4,
+      "3_NE": 1695049.8,
+      "3_NW": 678276.6,
+      "4_NE": 1051423.4,
+      "4_NW": 753314.1,
+      "5_NE": 1974877.4,
+      "5_NW": 620756.2
+    },
+    "62000.0": {
+      "2": 3991930.0,
+      "3_NE": 1834927.7,
+      "3_NW": 1128020.1,
+      "4_NE": 1436446.1,
+      "4_NW": 106075.9,
+      "5_NE": 2068831.8,
+      "5_NW": 318249.1
+    },
+    "62125.0": {
+      "2": 1826047.2,
+      "3_NE": 3753249.8,
+      "3_NW": 343947.1,
+      "4_NE": 2002848.6,
+      "4_NW": 736329.9,
+      "5_NE": 3598574.2,
+      "5_NW": 1442460.2
+    },
+    "68025.0": {
+      "2": 926252.5,
+      "3_NE": 1912556.0,
+      "3_NW": 822335.5,
+      "4_NE": 980583.0,
+      "4_NW": 458904.7,
+      "5_NE": 1986603.1,
+      "5_NW": 210785.9
+    },
+    "68050.0": {
+      "2": 834084.5,
+      "3_NE": 1627432.9,
+      "3_NW": 859245.3,
+      "4_NE": 1208418.5,
+      "4_NW": 492721.4,
+      "5_NE": 2189897.4,
+      "5_NW": 371626.2
+    },
+    "68175.0": {
+      "2": 527158.7,
+      "3_NE": 345272.3,
+      "3_NW": 560834.8,
+      "4_NE": 2235547.3,
+      "4_NW": 45520.5,
+      "5_NE": 626451.9,
+      "5_NW": 388301.5
+    },
+    "78850.0": {
+      "2": 2392847.5,
+      "3_NE": 3591026.6,
+      "3_NW": 1297775.4,
+      "4_NE": 1016234.7,
+      "4_NW": 1292035.2,
+      "5_NE": 1939083.5,
+      "5_NW": 1223002.7
+    },
+    "86875.0": {
+      "2": 825229.8,
+      "3_NE": 637925.1,
+      "3_NW": 973358.9,
+      "4_NE": 605307.7,
+      "4_NW": 773611.3,
+      "5_NE": 1664304.9,
+      "5_NW": 1903743.8
+    },
+    "89350.0": {
+      "2": 1130044.4,
+      "3_NE": 367164.5,
+      "3_NW": 516943.5,
+      "4_NE": 1442596.7,
+      "4_NW": 1011862.9,
+      "5_NE": 794743.6,
+      "5_NW": 517130.1
+    }
+  },
+  "capture_duration_s": 205.5,
+  "total_duration_s": 205.6
+}

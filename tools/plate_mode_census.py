@@ -40,8 +40,8 @@ TIMESTAMP = datetime.now().strftime("%Y%m%d_%H%M%S")
 # Plate 3 (G): relay 3 (NE-RX), relay 4 (NW-RX)
 # Plate 4 (D): relay 5 (NE-RX), relay 6 (NW-RX)
 # Plate 5 (F): relay 7 (NE-RX), relay 8 (NW-RX)
-PLATE_IDS = ["5"]  # TEMP: re-sweep plate F only after wax removal
-PLATE_NAMES = {"1": "A", "2": "B", "3": "G", "4": "D", "5": "F"}
+PLATE_IDS = ["1", "2", "3", "4", "5"]
+PLATE_NAMES = {"1": "A", "2": "B", "3": "G", "4": "D", "5": "H"}
 
 # Map plate ID → list of (relay_channel, rx_label) for census sweeps
 PLATE_RELAYS = {

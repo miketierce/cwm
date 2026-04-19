@@ -1,0 +1,94 @@
+{
+  "timestamp": "2026-04-17T13:12:48.717455+00:00",
+  "benchmark": "narma10",
+  "narma_order": 10,
+  "n_steps": 500,
+  "n_washout": 50,
+  "n_train": 284,
+  "n_test": 166,
+  "n_input_bits": 7,
+  "plate_id": "5",
+  "plate_name": "E",
+  "n_modes": 8,
+  "mode": "simulate",
+  "seed": 42,
+  "capture_time_s": 0.0,
+  "total_time_s": 0.0,
+  "results": {
+    "mean_baseline": {
+      "nmse_train": 1.0,
+      "nmse_test": 1.28157,
+      "n_features": 0
+    },
+    "input_esn": {
+      "nmse_train": 0.341768,
+      "nmse_test": 0.683558,
+      "n_features": 64
+    },
+    "input_only": {
+      "nmse_train": 0.990011,
+      "nmse_test": 1.312055,
+      "n_features": 7
+    },
+    "input_poly": {
+      "nmse_train": 0.853005,
+      "nmse_test": 1.456132,
+      "n_features": 35
+    },
+    "input_window": {
+      "nmse_train": 0.578342,
+      "nmse_test": 1.000745,
+      "n_features": 70
+    },
+    "plate_esn": {
+      "nmse_train": 0.56233,
+      "nmse_test": 2.727313,
+      "n_features": 64
+    },
+    "plate_esn_plus": {
+      "nmse_train": 0.453791,
+      "nmse_test": 2.744906,
+      "n_features": 72
+    },
+    "plate_poly": {
+      "nmse_train": 0.815766,
+      "nmse_test": 1.448067,
+      "n_features": 44
+    },
+    "plate_raw": {
+      "nmse_train": 0.977368,
+      "nmse_test": 1.358122,
+      "n_features": 8
+    },
+    "plate_window": {
+      "nmse_train": 0.531282,
+      "nmse_test": 1.541845,
+      "n_features": 80
+    },
+    "sw_rbf_auto": {
+      "nmse_train": 0.758754,
+      "nmse_test": 1.519123,
+      "n_features": 7,
+      "kernel": "rbf",
+      "gamma": "None"
+    },
+    "sw_rbf_0.1": {
+      "nmse_train": 0.791707,
+      "nmse_test": 1.459962,
+      "n_features": 7,
+      "kernel": "rbf",
+      "gamma": "0.1"
+    },
+    "sw_rbf_window": {
+      "nmse_train": 0.305697,
+      "nmse_test": 1.267075,
+      "n_features": 70,
+      "kernel": "rbf",
+      "gamma": "auto",
+      "window": 10
+    }
+  },
+  "best_approach": "input_esn",
+  "best_nmse": 0.683558,
+  "plate_beats_software": false
+}

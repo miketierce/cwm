@@ -1,0 +1,255 @@
+{
+  "timestamp": "2026-04-17T05:25:21.117561+00:00",
+  "plate": "D",
+  "plate_id": "4",
+  "n_modes": 8,
+  "lookback": 7,
+  "carrier_indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7
+  ],
+  "mode_freqs_hz": [
+    29925.0,
+    45025.0,
+    49625.0,
+    78125.0,
+    89375.0,
+    90025.0,
+    90275.0,
+    94675.0
+  ],
+  "mode": "hardware",
+  "symbols": [
+    "EURUSD=X",
+    "BTC-USD"
+  ],
+  "results": {
+    "EURUSD=X": {
+      "Random (coin flip)": {
+        "total_ret_pct": -1.9032186293700404,
+        "annual_ret_pct": -6.252436945947282,
+        "sharpe": -0.8294943237748171,
+        "max_dd_pct": 3.7594032072074213,
+        "win_rate_pct": 50.66666666666667,
+        "profit_factor": 0.8754557293339251,
+        "n_trades": 75,
+        "train_acc": 50.0,
+        "test_acc": 50.0,
+        "dims": 0
+      },
+      "Buy & hold": {
+        "total_ret_pct": 0.3100028548222111,
+        "annual_ret_pct": 1.0454251913836643,
+        "sharpe": 0.1766669019568525,
+        "max_dd_pct": 4.847343983000297,
+        "win_rate_pct": 41.333333333333336,
+        "profit_factor": 1.0287308411571086,
+        "n_trades": 75,
+        "train_acc": 50.857142857142854,
+        "test_acc": 41.333333333333336,
+        "dims": 0
+      },
+      "Momentum (last candle)": {
+        "total_ret_pct": 2.101336823085398,
+        "annual_ret_pct": 7.2372329627308,
+        "sharpe": 0.9760085483799722,
+        "max_dd_pct": 3.089276630742297,
+        "win_rate_pct": 54.666666666666664,
+        "profit_factor": 1.1694237642484728,
+        "n_trades": 75,
+        "train_acc": 45.714285714285715,
+        "test_acc": 54.666666666666664,
+        "dims": 1
+      },
+      "Ridge (binary 7-dim)": {
+        "total_ret_pct": -2.3086692485836613,
+        "annual_ret_pct": -7.548013751027749,
+        "sharpe": -1.0170633365407062,
+        "max_dd_pct": 4.927864206000523,
+        "win_rate_pct": 52.0,
+        "profit_factor": 0.8495089998462981,
+        "n_trades": 75,
+        "train_acc": 56.00000000000001,
+        "test_acc": 52.0,
+        "dims": 7
+      },
+      "Ridge (binary+poly)": {
+        "total_ret_pct": -7.778807403726717,
+        "annual_ret_pct": -23.821701728213174,
+        "sharpe": -3.7081826322549953,
+        "max_dd_pct": 9.747433713564119,
+        "win_rate_pct": 40.0,
+        "profit_factor": 0.5510117777568886,
+        "n_trades": 75,
+        "train_acc": 59.42857142857143,
+        "test_acc": 40.0,
+        "dims": 105
+      },
+      "Plate (raw spectral)": {
+        "total_ret_pct": -2.3086692485836613,
+        "annual_ret_pct": -7.548013751027749,
+        "sharpe": -1.0170633365407062,
+        "max_dd_pct": 4.927864206000523,
+        "win_rate_pct": 52.0,
+        "profit_factor": 0.8495089998462981,
+        "n_trades": 75,
+        "train_acc": 56.00000000000001,
+        "test_acc": 52.0,
+        "dims": 56
+      },
+      "Plate (spectral+poly)": {
+        "total_ret_pct": -7.778807403726717,
+        "annual_ret_pct": -23.821701728213174,
+        "sharpe": -3.7081826322549953,
+        "max_dd_pct": 9.747433713564119,
+        "win_rate_pct": 40.0,
+        "profit_factor": 0.5510117777568886,
+        "n_trades": 75,
+        "train_acc": 59.42857142857143,
+        "test_acc": 40.0,
+        "dims": 154
+      },
+      "Plate (return-wt raw)": {
+        "total_ret_pct": -10.17762013171012,
+        "annual_ret_pct": -30.277634427046785,
+        "sharpe": -5.033710791691163,
+        "max_dd_pct": 10.2331624190664,
+        "win_rate_pct": 40.0,
+        "profit_factor": 0.44439584129235926,
+        "n_trades": 75,
+        "train_acc": 56.00000000000001,
+        "test_acc": 40.0,
+        "dims": 56
+      },
+      "Plate (return-wt+poly)": {
+        "total_ret_pct": -5.113804437736135,
+        "annual_ret_pct": -16.169473370703212,
+        "sharpe": -2.3529259963789078,
+        "max_dd_pct": 6.991516947341542,
+        "win_rate_pct": 46.666666666666664,
+        "profit_factor": 0.6855042342423863,
+        "n_trades": 75,
+        "train_acc": 59.42857142857143,
+        "test_acc": 46.666666666666664,
+        "dims": 154
+      }
+    },
+    "BTC-USD": {
+      "Random (coin flip)": {
+        "total_ret_pct": -0.09692388227832138,
+        "annual_ret_pct": -0.2260096084501284,
+        "sharpe": 0.22981064909769472,
+        "max_dd_pct": 32.2432474522837,
+        "win_rate_pct": 50.92592592592593,
+        "profit_factor": 1.0440725113179496,
+        "n_trades": 108,
+        "train_acc": 50.0,
+        "test_acc": 50.0,
+        "dims": 0
+      },
+      "Buy & hold": {
+        "total_ret_pct": -14.21362918541158,
+        "annual_ret_pct": -30.073355397963308,
+        "sharpe": -0.525435590227905,
+        "max_dd_pct": 35.311531742601794,
+        "win_rate_pct": 46.2962962962963,
+        "profit_factor": 0.9060776065914175,
+        "n_trades": 108,
+        "train_acc": 49.79919678714859,
+        "test_acc": 46.2962962962963,
+        "dims": 0
+      },
+      "Momentum (last candle)": {
+        "total_ret_pct": 7.310846086128908,
+        "annual_ret_pct": 17.896734934465776,
+        "sharpe": 0.5847536541982346,
+        "max_dd_pct": 26.491066074585497,
+        "win_rate_pct": 54.629629629629626,
+        "profit_factor": 1.1160234653794272,
+        "n_trades": 108,
+        "train_acc": 44.17670682730924,
+        "test_acc": 54.629629629629626,
+        "dims": 1
+      },
+      "Ridge (binary 7-dim)": {
+        "total_ret_pct": -27.42296078656671,
+        "annual_ret_pct": -52.66327113611011,
+        "sharpe": -1.354027162939857,
+        "max_dd_pct": 37.95581815763914,
+        "win_rate_pct": 49.074074074074076,
+        "profit_factor": 0.775268397248102,
+        "n_trades": 108,
+        "train_acc": 61.44578313253012,
+        "test_acc": 49.074074074074076,
+        "dims": 7
+      },
+      "Ridge (binary+poly)": {
+        "total_ret_pct": -37.82079577281296,
+        "annual_ret_pct": -67.00065099274352,
+        "sharpe": -2.1356478634219482,
+        "max_dd_pct": 40.06646695618623,
+        "win_rate_pct": 50.92592592592593,
+        "profit_factor": 0.6686119731472868,
+        "n_trades": 108,
+        "train_acc": 73.09236947791165,
+        "test_acc": 50.92592592592593,
+        "dims": 105
+      },
+      "Plate (raw spectral)": {
+        "total_ret_pct": -27.42296078656671,
+        "annual_ret_pct": -52.66327113611011,
+        "sharpe": -1.354027162939857,
+        "max_dd_pct": 37.95581815763914,
+        "win_rate_pct": 49.074074074074076,
+        "profit_factor": 0.775268397248102,
+        "n_trades": 108,
+        "train_acc": 61.044176706827315,
+        "test_acc": 49.074074074074076,
+        "dims": 56
+      },
+      "Plate (spectral+poly)": {
+        "total_ret_pct": -37.82079577281296,
+        "annual_ret_pct": -67.00065099274352,
+        "sharpe": -2.1356478634219482,
+        "max_dd_pct": 40.06646695618623,
+        "win_rate_pct": 50.92592592592593,
+        "profit_factor": 0.6686119731472868,
+        "n_trades": 108,
+        "train_acc": 73.09236947791165,
+        "test_acc": 50.92592592592593,
+        "dims": 154
+      },
+      "Plate (return-wt raw)": {
+        "total_ret_pct": 66.29280073411645,
+        "annual_ret_pct": 227.62073348792805,
+        "sharpe": 2.7974620311659724,
+        "max_dd_pct": 14.978620854299168,
+        "win_rate_pct": 55.55555555555556,
+        "profit_factor": 1.6972562209067072,
+        "n_trades": 108,
+        "train_acc": 54.21686746987952,
+        "test_acc": 55.55555555555556,
+        "dims": 56
+      },
+      "Plate (return-wt+poly)": {
+        "total_ret_pct": 77.33803755189112,
+        "annual_ret_pct": 280.6604550613256,
+        "sharpe": 3.133933969133085,
+        "max_dd_pct": 15.028639918285352,
+        "win_rate_pct": 56.481481481481474,
+        "profit_factor": 1.8109324717653443,
+        "n_trades": 108,
+        "train_acc": 75.90361445783132,
+        "test_acc": 56.481481481481474,
+        "dims": 154
+      }
+    }
+  },
+  "verdict": "PROMISING \u2014 plate kernel shows meaningful edge. Worth testnet trial on SN8.",
+  "sharpe_note": "Sharpe > 0.5 \u2192 potentially tradeable. Consider SN8 testnet registration (~0.1 TAO)."
+}

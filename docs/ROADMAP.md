@@ -303,7 +303,7 @@ Adapt E27 broadband census to plates:
 - Store as plate fingerprint in users.json (new plate entries)
 - Repeat 3× to establish enrollment repeatability
 
-**Step 4: Re-Excitation Interference (E33 Revisit) — The Big Test**
+**Step 4: Re-Excitation Interference (E33 Revisit) — The Big Test** ✅ NEGATIVE (2026-04-18)
 This is the experiment that most directly benefits from higher Q:
 
 - Drive plate's strongest mode to steady state
@@ -311,6 +311,7 @@ This is the experiment that most directly benefits from higher Q:
 - Re-excite and measure
 - At rod Q ≈ 400, contrast was only 0.27%. At plate Q ≈ 2,000, predict **>5% contrast**
 - If interference fringes are measurable, this is the first direct evidence of coherent phononic memory
+- **Result:** All 5 plates showed contrast 0.11–0.29% (below 2% threshold). CW measurement dominated by electrical crosstalk (~99.9% AWG leakage). Protocol cannot separate acoustic interference from electrical coupling. See lab diary 2026-04-18 (late night).
 
 **Step 5: Phase Stability (E03 Revisit)**
 

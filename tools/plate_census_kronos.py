@@ -64,7 +64,7 @@ N_AVG = 4                 # averages per frequency point
 SETTLE_S = 0.05           # settle time after freq change
 SETTLE_RELAY_S = 0.10     # settle time after relay switch
 CAPTURE_S = 0.04          # recording duration per point (40 ms)
-DRIVE_AMPLITUDE = 0.8     # peak amplitude of TX signal (0–1.0, leave headroom)
+DRIVE_AMPLITUDE = 0.95    # peak amplitude of TX signal (0–1.0, leave headroom)
 
 # ── Flash census config ──
 FLASH_DURATION_S = 1.0    # default recording length for flash mode
@@ -196,11 +196,41 @@ def playrec_capture(tx_signal: np.ndarray, sample_rate: int,
     return rx[:, 0].astype(np.float64)
 
 
+def capture_loopback_reference(tx_signal: np.ndarray, sample_rate: int,
+                               device_idx: int, mux,
+                               n_averages: int = 4) -> np.ndarray:
+    """Capture USB loopback reference with relay OFF (no acoustic path).
+
+    Returns the averaged RX waveform that is pure electronic loopback.
+    This must be subtracted from plate captures to isolate the acoustic
+    component.
+    """
+    mux.off()
+    time.sleep(SETTLE_RELAY_S)
+    print("    Capturing loopback reference (relay OFF)...", flush=True)
+
+    ref_accum = None
+    for i in range(n_averages):
+        rx = playrec_capture(tx_signal, sample_rate, device_idx)
+        if ref_accum is None:
+            ref_accum = np.zeros_like(rx)
+        ref_accum += rx
+    ref_avg = ref_accum / n_averages
+    rms = float(np.sqrt(np.mean(ref_avg ** 2)))
+    print(f"    Loopback ref RMS = {rms:.6f}", flush=True)
+    return ref_avg
+
+
 # ── Step-sweep census (CW tone per frequency) ──
 
 def step_sweep(mux, plate_id: str, relay_ch: int, rx_label: str,
-               sample_rate: int, device_idx: int, f_stop: int) -> list[dict]:
-    """CW sweep: one tone at a time, record response, extract magnitude+phase."""
+               sample_rate: int, device_idx: int, f_stop: int,
+               loopback_ref_fn=None) -> list[dict]:
+    """CW sweep: one tone at a time, record response, extract magnitude+phase.
+
+    loopback_ref_fn: optional callable(tx_signal) -> ref_waveform.
+        If provided, captures a loopback reference for each tone and subtracts.
+    """
     mux.select(relay_ch)
     time.sleep(SETTLE_RELAY_S)
 
@@ -228,6 +258,13 @@ def step_sweep(mux, plate_id: str, relay_ch: int, rx_label: str,
 
             # Discard the settle period, analyze only the capture window
             rx_capture = rx[settle_samples:]
+
+            # Subtract loopback reference if available
+            if loopback_ref_fn is not None:
+                ref = loopback_ref_fn(tx)
+                ref_capture = ref[settle_samples:]
+                min_len = min(len(rx_capture), len(ref_capture))
+                rx_capture = rx_capture[:min_len] - ref_capture[:min_len]
 
             # Window + FFT
             windowed = rx_capture * np.hanning(len(rx_capture))
@@ -275,8 +312,13 @@ def step_sweep(mux, plate_id: str, relay_ch: int, rx_label: str,
 def flash_census(mux, plate_id: str, relay_ch: int, rx_label: str,
                  sample_rate: int, device_idx: int, f_stop: int,
                  duration_s: float = FLASH_DURATION_S,
-                 n_averages: int = FLASH_AVERAGES) -> list[dict]:
-    """Drive all frequencies simultaneously, get full transfer function in one shot."""
+                 n_averages: int = FLASH_AVERAGES,
+                 loopback_ref: np.ndarray | None = None) -> list[dict]:
+    """Drive all frequencies simultaneously, get full transfer function in one shot.
+
+    If loopback_ref is provided, it is subtracted from each raw capture
+    in the time domain to remove USB loopback contamination.
+    """
     mux.select(relay_ch)
     time.sleep(SETTLE_RELAY_S)
 
@@ -329,6 +371,12 @@ def flash_census(mux, plate_id: str, relay_ch: int, rx_label: str,
 
         # Discard settle period
         rx_capture = rx[n_settle:n_settle + int(sample_rate * duration_s)]
+
+        # Subtract USB loopback if reference available
+        if loopback_ref is not None:
+            ref_capture = loopback_ref[n_settle:n_settle + int(sample_rate * duration_s)]
+            min_len = min(len(rx_capture), len(ref_capture))
+            rx_capture = rx_capture[:min_len] - ref_capture[:min_len]
 
         # Window + FFT (no zero-pad needed — we snapped freqs to bin centers)
         windowed = rx_capture * np.hanning(len(rx_capture))
@@ -481,6 +529,30 @@ def run_census(args):
     all_results = {}
     t_start = time.time()
 
+    # ── Capture USB loopback reference (relay OFF, same TX signal) ──
+    loopback_ref = None
+    if args.mode == "flash":
+        # Build the same TX signal used for flash census
+        freqs_ref = np.arange(F_START, f_stop + F_STEP, F_STEP, dtype=np.float64)
+        fft_res_ref = 1.0 / args.duration
+        freqs_ref = np.round(freqs_ref / fft_res_ref) * fft_res_ref
+        freqs_ref = np.unique(freqs_ref)
+        freqs_ref = freqs_ref[freqs_ref >= F_START]
+        rng_ref = np.random.default_rng(42)
+        tx_phases_ref = rng_ref.uniform(0, 2 * np.pi, size=len(freqs_ref))
+        total_dur_ref = FLASH_SETTLE_S + args.duration
+        n_total_ref = int(sample_rate * total_dur_ref)
+        t_ref = np.arange(n_total_ref) / sample_rate
+        tx_ref = np.zeros(n_total_ref, dtype=np.float64)
+        for j, f in enumerate(freqs_ref):
+            tx_ref += np.sin(2 * np.pi * f * t_ref + tx_phases_ref[j])
+        peak_ref = np.max(np.abs(tx_ref))
+        if peak_ref > 0:
+            tx_ref = tx_ref * (DRIVE_AMPLITUDE / peak_ref)
+        tx_ref = tx_ref.astype(np.float32).reshape(-1, 1)
+        loopback_ref = capture_loopback_reference(
+            tx_ref, sample_rate, device_idx, mux, n_averages=args.averages)
+
     for pid in plate_ids:
         name = PLATE_NAMES[pid]
         relays = PLATE_RELAYS[pid]
@@ -498,6 +570,7 @@ def run_census(args):
                     sample_rate, device_idx, f_stop,
                     duration_s=args.duration,
                     n_averages=args.averages,
+                    loopback_ref=loopback_ref,
                 )
             else:  # step
                 sweep_data = step_sweep(
@@ -593,6 +666,7 @@ def run_census(args):
             "audio_device": dev_info["name"],
             "audio_sample_rate": sample_rate,
             "audio_bit_depth": 24,
+            "loopback_subtraction": loopback_ref is not None,
         },
         "results": summary_results,
     }

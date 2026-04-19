@@ -1,0 +1,2938 @@
+{
+  "timestamp": "2026-04-17T15:38:30.764365+00:00",
+  "experiment": "attention_in_glass",
+  "description": "PDP-11/44 vs Plate D on sequence tasks",
+  "n_carriers": 7,
+  "n_modes": 8,
+  "n_test": 2000,
+  "tasks": {
+    "identity": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.37107142857142855,
+          "per_position": [
+            0.436,
+            0.373,
+            0.307,
+            0.414,
+            0.355,
+            0.306,
+            0.4065
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1860714285714286,
+          "per_position": [
+            0.186,
+            0.1785,
+            0.1585,
+            0.1815,
+            0.2275,
+            0.186,
+            0.1845
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.37107142857142855,
+          "per_position": [
+            0.436,
+            0.373,
+            0.307,
+            0.414,
+            0.355,
+            0.306,
+            0.4065
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1685,
+          "per_position": [
+            0.1785,
+            0.171,
+            0.2105,
+            0.1575,
+            0.1505,
+            0.174,
+            0.1375
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0095,
+          "mean_position": 0.5854999999999999,
+          "per_position": [
+            0.647,
+            0.5815,
+            0.526,
+            0.563,
+            0.649,
+            0.5385,
+            0.5935
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.3400714285714285,
+          "per_position": [
+            0.3215,
+            0.336,
+            0.3755,
+            0.339,
+            0.307,
+            0.364,
+            0.3375
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0095,
+          "mean_position": 0.5854999999999999,
+          "per_position": [
+            0.647,
+            0.5815,
+            0.526,
+            0.563,
+            0.649,
+            0.5385,
+            0.5935
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.33799999999999997,
+          "per_position": [
+            0.309,
+            0.3275,
+            0.3625,
+            0.344,
+            0.38,
+            0.336,
+            0.307
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.881,
+          "mean_position": 0.9827857142857143,
+          "per_position": [
+            0.9995,
+            0.9975,
+            0.892,
+            1.0,
+            0.9985,
+            0.998,
+            0.994
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0115,
+          "mean_position": 0.5200714285714286,
+          "per_position": [
+            0.518,
+            0.5345,
+            0.541,
+            0.478,
+            0.547,
+            0.5245,
+            0.4975
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.881,
+          "mean_position": 0.9827857142857143,
+          "per_position": [
+            0.9995,
+            0.9975,
+            0.892,
+            1.0,
+            0.9985,
+            0.998,
+            0.994
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.004,
+          "mean_position": 0.45250000000000007,
+          "per_position": [
+            0.461,
+            0.459,
+            0.4725,
+            0.451,
+            0.463,
+            0.4365,
+            0.4245
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0755,
+          "mean_position": 0.6828571428571427,
+          "per_position": [
+            0.672,
+            0.709,
+            0.6865,
+            0.641,
+            0.7145,
+            0.664,
+            0.693
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0015,
+          "mean_position": 0.42700000000000005,
+          "per_position": [
+            0.438,
+            0.4605,
+            0.417,
+            0.4275,
+            0.428,
+            0.4175,
+            0.4005
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.309,
+          "mean_position": 0.8446428571428571,
+          "per_position": [
+            0.824,
+            0.8695,
+            0.8305,
+            0.881,
+            0.805,
+            0.85,
+            0.8525
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.024,
+          "mean_position": 0.5861428571428571,
+          "per_position": [
+            0.6005,
+            0.5685,
+            0.58,
+            0.598,
+            0.61,
+            0.565,
+            0.581
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.7575,
+          "mean_position": 0.9603571428571429,
+          "per_position": [
+            0.967,
+            0.9655,
+            0.958,
+            0.9415,
+            0.9845,
+            0.9725,
+            0.9335
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.2295,
+          "mean_position": 0.8108571428571427,
+          "per_position": [
+            0.8185,
+            0.7915,
+            0.792,
+            0.8005,
+            0.835,
+            0.8335,
+            0.805
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.9745,
+          "mean_position": 0.9960714285714285,
+          "per_position": [
+            0.991,
+            1.0,
+            0.997,
+            1.0,
+            0.998,
+            0.9925,
+            0.994
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.412,
+          "mean_position": 0.8795,
+          "per_position": [
+            0.85,
+            0.8985,
+            0.8825,
+            0.881,
+            0.878,
+            0.8885,
+            0.878
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.6805,
+          "mean_position": 0.9437857142857143,
+          "per_position": [
+            0.94,
+            0.9285,
+            0.9415,
+            0.9385,
+            0.9675,
+            0.939,
+            0.9515
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.9035,
+          "mean_position": 0.9855714285714285,
+          "per_position": [
+            0.981,
+            0.985,
+            0.9915,
+            0.986,
+            0.9845,
+            0.989,
+            0.982
+          ]
+        }
+      }
+    },
+    "reverse": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3722142857142857,
+          "per_position": [
+            0.4355,
+            0.371,
+            0.412,
+            0.3045,
+            0.4905,
+            0.362,
+            0.23
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.1600714285714286,
+          "per_position": [
+            0.1485,
+            0.179,
+            0.1485,
+            0.1345,
+            0.1445,
+            0.14,
+            0.2255
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3722142857142857,
+          "per_position": [
+            0.4355,
+            0.371,
+            0.412,
+            0.3045,
+            0.4905,
+            0.362,
+            0.23
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.16464285714285715,
+          "per_position": [
+            0.168,
+            0.14,
+            0.1645,
+            0.154,
+            0.2085,
+            0.1365,
+            0.181
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0125,
+          "mean_position": 0.5720714285714286,
+          "per_position": [
+            0.591,
+            0.645,
+            0.4435,
+            0.5155,
+            0.5725,
+            0.6775,
+            0.5595
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.002,
+          "mean_position": 0.2809285714285714,
+          "per_position": [
+            0.267,
+            0.248,
+            0.3255,
+            0.22,
+            0.331,
+            0.268,
+            0.307
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0125,
+          "mean_position": 0.5720714285714286,
+          "per_position": [
+            0.591,
+            0.645,
+            0.4435,
+            0.5155,
+            0.5725,
+            0.6775,
+            0.5595
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3241428571428572,
+          "per_position": [
+            0.302,
+            0.301,
+            0.3545,
+            0.2655,
+            0.402,
+            0.306,
+            0.338
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.974,
+          "mean_position": 0.9961428571428572,
+          "per_position": [
+            0.9955,
+            0.9985,
+            0.9985,
+            0.9955,
+            0.9945,
+            0.9935,
+            0.997
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.009,
+          "mean_position": 0.5139999999999999,
+          "per_position": [
+            0.522,
+            0.5185,
+            0.5605,
+            0.534,
+            0.4825,
+            0.473,
+            0.5075
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.974,
+          "mean_position": 0.9961428571428572,
+          "per_position": [
+            0.9955,
+            0.9985,
+            0.9985,
+            0.9955,
+            0.9945,
+            0.9935,
+            0.997
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.004,
+          "mean_position": 0.45942857142857146,
+          "per_position": [
+            0.457,
+            0.469,
+            0.486,
+            0.431,
+            0.492,
+            0.426,
+            0.455
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.058,
+          "mean_position": 0.668,
+          "per_position": [
+            0.683,
+            0.641,
+            0.689,
+            0.6765,
+            0.6215,
+            0.6505,
+            0.7145
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0015,
+          "mean_position": 0.4279285714285713,
+          "per_position": [
+            0.434,
+            0.433,
+            0.4145,
+            0.426,
+            0.4215,
+            0.4225,
+            0.444
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.284,
+          "mean_position": 0.8322857142857142,
+          "per_position": [
+            0.838,
+            0.877,
+            0.8455,
+            0.8085,
+            0.8225,
+            0.843,
+            0.7915
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.091,
+          "mean_position": 0.7150714285714287,
+          "per_position": [
+            0.7145,
+            0.7105,
+            0.7105,
+            0.683,
+            0.725,
+            0.7525,
+            0.7095
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.8,
+          "mean_position": 0.9697857142857143,
+          "per_position": [
+            0.9985,
+            0.9905,
+            0.9665,
+            0.981,
+            0.9595,
+            0.969,
+            0.9235
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.2415,
+          "mean_position": 0.8157142857142858,
+          "per_position": [
+            0.855,
+            0.8245,
+            0.805,
+            0.8095,
+            0.803,
+            0.828,
+            0.785
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.963,
+          "mean_position": 0.994642857142857,
+          "per_position": [
+            0.9825,
+            0.997,
+            0.9975,
+            0.9995,
+            0.991,
+            0.996,
+            0.999
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.4225,
+          "mean_position": 0.8797857142857143,
+          "per_position": [
+            0.893,
+            0.8875,
+            0.8935,
+            0.8845,
+            0.8825,
+            0.8475,
+            0.87
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.69,
+          "mean_position": 0.9462857142857143,
+          "per_position": [
+            0.9425,
+            0.9555,
+            0.953,
+            0.9525,
+            0.943,
+            0.9345,
+            0.943
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.898,
+          "mean_position": 0.9849285714285714,
+          "per_position": [
+            0.988,
+            0.986,
+            0.9815,
+            0.9765,
+            0.987,
+            0.99,
+            0.9855
+          ]
+        }
+      }
+    },
+    "rotate_3": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3642142857142857,
+          "per_position": [
+            0.439,
+            0.2685,
+            0.347,
+            0.347,
+            0.3665,
+            0.4175,
+            0.364
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.23042857142857143,
+          "per_position": [
+            0.21,
+            0.2345,
+            0.234,
+            0.2365,
+            0.213,
+            0.22,
+            0.265
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3642142857142857,
+          "per_position": [
+            0.439,
+            0.2685,
+            0.347,
+            0.347,
+            0.3665,
+            0.4175,
+            0.364
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.17650000000000002,
+          "per_position": [
+            0.153,
+            0.144,
+            0.194,
+            0.1615,
+            0.18,
+            0.1825,
+            0.2205
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0085,
+          "mean_position": 0.5757857142857142,
+          "per_position": [
+            0.599,
+            0.476,
+            0.5745,
+            0.709,
+            0.613,
+            0.5815,
+            0.4775
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2782857142857143,
+          "per_position": [
+            0.295,
+            0.2735,
+            0.2645,
+            0.284,
+            0.2745,
+            0.254,
+            0.3025
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0085,
+          "mean_position": 0.5757857142857142,
+          "per_position": [
+            0.599,
+            0.476,
+            0.5745,
+            0.709,
+            0.613,
+            0.5815,
+            0.4775
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.27285714285714285,
+          "per_position": [
+            0.2405,
+            0.3065,
+            0.2385,
+            0.27,
+            0.2775,
+            0.264,
+            0.313
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.977,
+          "mean_position": 0.996642857142857,
+          "per_position": [
+            0.9965,
+            0.995,
+            1.0,
+            0.992,
+            0.9975,
+            0.9965,
+            0.999
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.011,
+          "mean_position": 0.5126428571428572,
+          "per_position": [
+            0.506,
+            0.4595,
+            0.5095,
+            0.5335,
+            0.5675,
+            0.5165,
+            0.496
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.977,
+          "mean_position": 0.996642857142857,
+          "per_position": [
+            0.9965,
+            0.995,
+            1.0,
+            0.992,
+            0.9975,
+            0.9965,
+            0.999
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.004,
+          "mean_position": 0.4643571428571428,
+          "per_position": [
+            0.407,
+            0.47,
+            0.476,
+            0.483,
+            0.457,
+            0.467,
+            0.4905
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.084,
+          "mean_position": 0.6909285714285714,
+          "per_position": [
+            0.693,
+            0.683,
+            0.7235,
+            0.708,
+            0.6735,
+            0.667,
+            0.6885
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0425,
+          "mean_position": 0.6221428571428572,
+          "per_position": [
+            0.6195,
+            0.629,
+            0.6275,
+            0.637,
+            0.6145,
+            0.6045,
+            0.623
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.311,
+          "mean_position": 0.8392857142857143,
+          "per_position": [
+            0.841,
+            0.8235,
+            0.818,
+            0.894,
+            0.8355,
+            0.8055,
+            0.8575
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.096,
+          "mean_position": 0.7120714285714286,
+          "per_position": [
+            0.7165,
+            0.6965,
+            0.7025,
+            0.7365,
+            0.6965,
+            0.697,
+            0.739
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.7415,
+          "mean_position": 0.9587857142857145,
+          "per_position": [
+            0.943,
+            0.982,
+            0.9835,
+            0.9645,
+            0.939,
+            0.94,
+            0.9595
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.229,
+          "mean_position": 0.8067857142857143,
+          "per_position": [
+            0.7935,
+            0.836,
+            0.823,
+            0.8025,
+            0.7815,
+            0.8145,
+            0.7965
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.9765,
+          "mean_position": 0.996642857142857,
+          "per_position": [
+            0.9925,
+            1.0,
+            0.998,
+            0.996,
+            0.9985,
+            0.9925,
+            0.999
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.1725,
+          "mean_position": 0.7670714285714285,
+          "per_position": [
+            0.764,
+            0.791,
+            0.771,
+            0.761,
+            0.7705,
+            0.744,
+            0.768
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.645,
+          "mean_position": 0.937142857142857,
+          "per_position": [
+            0.9425,
+            0.941,
+            0.954,
+            0.9195,
+            0.939,
+            0.938,
+            0.926
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.8295,
+          "mean_position": 0.9725714285714285,
+          "per_position": [
+            0.975,
+            0.969,
+            0.9745,
+            0.965,
+            0.982,
+            0.968,
+            0.9745
+          ]
+        }
+      }
+    },
+    "sort": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.28614285714285714,
+          "per_position": [
+            0.333,
+            0.279,
+            0.26,
+            0.2715,
+            0.248,
+            0.233,
+            0.3785
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.26457142857142857,
+          "per_position": [
+            0.2435,
+            0.2275,
+            0.211,
+            0.235,
+            0.267,
+            0.2555,
+            0.4125
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.28614285714285714,
+          "per_position": [
+            0.333,
+            0.279,
+            0.26,
+            0.2715,
+            0.248,
+            0.233,
+            0.3785
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.22864285714285715,
+          "per_position": [
+            0.24,
+            0.165,
+            0.2125,
+            0.1625,
+            0.225,
+            0.218,
+            0.3775
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.29957142857142854,
+          "per_position": [
+            0.393,
+            0.3365,
+            0.2605,
+            0.2645,
+            0.2455,
+            0.247,
+            0.35
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.251,
+          "per_position": [
+            0.3325,
+            0.244,
+            0.1985,
+            0.2215,
+            0.1905,
+            0.2575,
+            0.3125
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.29957142857142854,
+          "per_position": [
+            0.393,
+            0.3365,
+            0.2605,
+            0.2645,
+            0.2455,
+            0.247,
+            0.35
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.2607857142857143,
+          "per_position": [
+            0.403,
+            0.28,
+            0.219,
+            0.231,
+            0.217,
+            0.2165,
+            0.259
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.28771428571428576,
+          "per_position": [
+            0.3385,
+            0.301,
+            0.2565,
+            0.234,
+            0.277,
+            0.324,
+            0.283
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.29707142857142854,
+          "per_position": [
+            0.34,
+            0.295,
+            0.2615,
+            0.255,
+            0.258,
+            0.3235,
+            0.3465
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.28757142857142864,
+          "per_position": [
+            0.3385,
+            0.3005,
+            0.2565,
+            0.2335,
+            0.277,
+            0.324,
+            0.283
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.001,
+          "mean_position": 0.3084285714285714,
+          "per_position": [
+            0.504,
+            0.313,
+            0.2495,
+            0.238,
+            0.2735,
+            0.289,
+            0.292
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.005,
+          "mean_position": 0.42578571428571427,
+          "per_position": [
+            0.462,
+            0.484,
+            0.393,
+            0.3475,
+            0.3735,
+            0.433,
+            0.4875
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0015,
+          "mean_position": 0.37071428571428566,
+          "per_position": [
+            0.413,
+            0.3485,
+            0.347,
+            0.3325,
+            0.3305,
+            0.3785,
+            0.445
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.005,
+          "mean_position": 0.42578571428571427,
+          "per_position": [
+            0.462,
+            0.484,
+            0.393,
+            0.3475,
+            0.3735,
+            0.433,
+            0.4875
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0015,
+          "mean_position": 0.32792857142857146,
+          "per_position": [
+            0.601,
+            0.296,
+            0.2645,
+            0.2475,
+            0.26,
+            0.2865,
+            0.34
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.023,
+          "mean_position": 0.5365,
+          "per_position": [
+            0.619,
+            0.5365,
+            0.4985,
+            0.4625,
+            0.4805,
+            0.549,
+            0.6095
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0035,
+          "mean_position": 0.43464285714285716,
+          "per_position": [
+            0.496,
+            0.415,
+            0.4135,
+            0.3855,
+            0.4015,
+            0.4495,
+            0.4815
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.023,
+          "mean_position": 0.5365,
+          "per_position": [
+            0.619,
+            0.5365,
+            0.4985,
+            0.4625,
+            0.4805,
+            0.549,
+            0.6095
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.20264285714285712,
+          "per_position": [
+            0.199,
+            0.179,
+            0.178,
+            0.1685,
+            0.17,
+            0.2205,
+            0.3035
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.047,
+          "mean_position": 0.6429999999999999,
+          "per_position": [
+            0.6725,
+            0.645,
+            0.5905,
+            0.569,
+            0.59,
+            0.655,
+            0.779
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0095,
+          "mean_position": 0.48535714285714293,
+          "per_position": [
+            0.515,
+            0.454,
+            0.4625,
+            0.461,
+            0.467,
+            0.494,
+            0.544
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.047,
+          "mean_position": 0.6429999999999999,
+          "per_position": [
+            0.6725,
+            0.645,
+            0.5905,
+            0.569,
+            0.59,
+            0.655,
+            0.779
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.005,
+          "mean_position": 0.4457142857142857,
+          "per_position": [
+            0.767,
+            0.3875,
+            0.3775,
+            0.3465,
+            0.3675,
+            0.3945,
+            0.4795
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.061,
+          "mean_position": 0.6759285714285715,
+          "per_position": [
+            0.7965,
+            0.6845,
+            0.6115,
+            0.5695,
+            0.616,
+            0.667,
+            0.7865
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0055,
+          "mean_position": 0.5177142857142858,
+          "per_position": [
+            0.532,
+            0.4995,
+            0.5275,
+            0.467,
+            0.511,
+            0.5215,
+            0.5655
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.061,
+          "mean_position": 0.6759285714285715,
+          "per_position": [
+            0.7965,
+            0.6845,
+            0.6115,
+            0.5695,
+            0.616,
+            0.667,
+            0.7865
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.01,
+          "mean_position": 0.5122142857142856,
+          "per_position": [
+            0.84,
+            0.4365,
+            0.4505,
+            0.413,
+            0.436,
+            0.4615,
+            0.548
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.07,
+          "mean_position": 0.7117857142857144,
+          "per_position": [
+            0.8595,
+            0.687,
+            0.629,
+            0.612,
+            0.6385,
+            0.6965,
+            0.86
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0075,
+          "mean_position": 0.5283571428571429,
+          "per_position": [
+            0.559,
+            0.509,
+            0.518,
+            0.4875,
+            0.5055,
+            0.5545,
+            0.565
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.07,
+          "mean_position": 0.7117857142857144,
+          "per_position": [
+            0.8595,
+            0.687,
+            0.629,
+            0.612,
+            0.6385,
+            0.6965,
+            0.86
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.016,
+          "mean_position": 0.5532857142857143,
+          "per_position": [
+            0.8495,
+            0.479,
+            0.4735,
+            0.478,
+            0.4855,
+            0.5215,
+            0.586
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.068,
+          "mean_position": 0.7222142857142856,
+          "per_position": [
+            0.8555,
+            0.72,
+            0.6445,
+            0.614,
+            0.642,
+            0.716,
+            0.8635
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.01,
+          "mean_position": 0.5339285714285714,
+          "per_position": [
+            0.5535,
+            0.5105,
+            0.5485,
+            0.5135,
+            0.5115,
+            0.538,
+            0.562
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.068,
+          "mean_position": 0.7225714285714285,
+          "per_position": [
+            0.8565,
+            0.72,
+            0.6455,
+            0.615,
+            0.6415,
+            0.7165,
+            0.863
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.017,
+          "mean_position": 0.5784285714285715,
+          "per_position": [
+            0.852,
+            0.5175,
+            0.512,
+            0.5025,
+            0.5275,
+            0.55,
+            0.5875
+          ]
+        }
+      }
+    },
+    "parity": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.5085,
+          "mean_position": 0.5084999999999998,
+          "per_position": [
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.506,
+          "mean_position": 0.5060000000000001,
+          "per_position": [
+            0.506,
+            0.506,
+            0.506,
+            0.506,
+            0.506,
+            0.506,
+            0.506
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.5085,
+          "mean_position": 0.5084999999999998,
+          "per_position": [
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085,
+            0.5085
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.504,
+          "mean_position": 0.504,
+          "per_position": [
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504,
+            0.504
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.51,
+          "mean_position": 0.5099999999999999,
+          "per_position": [
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.51,
+          "mean_position": 0.5099999999999999,
+          "per_position": [
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51,
+            0.51
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.5005,
+          "mean_position": 0.5004999999999998,
+          "per_position": [
+            0.5005,
+            0.5005,
+            0.5005,
+            0.5005,
+            0.5005,
+            0.5005,
+            0.5005
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4955,
+          "mean_position": 0.49549999999999994,
+          "per_position": [
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955,
+            0.4955
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.4915,
+          "mean_position": 0.49149999999999994,
+          "per_position": [
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915,
+            0.4915
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.4965,
+          "mean_position": 0.49650000000000005,
+          "per_position": [
+            0.4965,
+            0.4965,
+            0.4965,
+            0.4965,
+            0.4965,
+            0.4965,
+            0.4965
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.5195,
+          "mean_position": 0.5195,
+          "per_position": [
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.5165,
+          "mean_position": 0.5164999999999998,
+          "per_position": [
+            0.5165,
+            0.5165,
+            0.5165,
+            0.5165,
+            0.5165,
+            0.5165,
+            0.5165
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.5195,
+          "mean_position": 0.5195,
+          "per_position": [
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195,
+            0.5195
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.499,
+          "mean_position": 0.49900000000000005,
+          "per_position": [
+            0.499,
+            0.499,
+            0.499,
+            0.499,
+            0.499,
+            0.499,
+            0.499
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4815,
+          "mean_position": 0.4815,
+          "per_position": [
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.4815,
+          "mean_position": 0.4815,
+          "per_position": [
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815,
+            0.4815
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.5125,
+          "mean_position": 0.5125000000000001,
+          "per_position": [
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125,
+            0.5125
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.497,
+          "mean_position": 0.49699999999999994,
+          "per_position": [
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497,
+            0.497
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.5115,
+          "mean_position": 0.5115,
+          "per_position": [
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115,
+            0.5115
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.4925,
+          "mean_position": 0.49250000000000005,
+          "per_position": [
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.494,
+          "mean_position": 0.4939999999999999,
+          "per_position": [
+            0.494,
+            0.494,
+            0.494,
+            0.494,
+            0.494,
+            0.494,
+            0.494
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.495,
+          "mean_position": 0.49500000000000005,
+          "per_position": [
+            0.495,
+            0.495,
+            0.495,
+            0.495,
+            0.495,
+            0.495,
+            0.495
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.4935,
+          "mean_position": 0.4935,
+          "per_position": [
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.4945,
+          "mean_position": 0.4945,
+          "per_position": [
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945,
+            0.4945
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.4925,
+          "mean_position": 0.49250000000000005,
+          "per_position": [
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925,
+            0.4925
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.49,
+          "mean_position": 0.4900000000000001,
+          "per_position": [
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49,
+            0.49
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.4935,
+          "mean_position": 0.4935,
+          "per_position": [
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935,
+            0.4935
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.5235,
+          "mean_position": 0.5235,
+          "per_position": [
+            0.5235,
+            0.5235,
+            0.5235,
+            0.5235,
+            0.5235,
+            0.5235,
+            0.5235
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.487,
+          "mean_position": 0.48700000000000004,
+          "per_position": [
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.4985,
+          "mean_position": 0.4985,
+          "per_position": [
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985,
+            0.4985
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.487,
+          "mean_position": 0.48700000000000004,
+          "per_position": [
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487,
+            0.487
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.508,
+          "mean_position": 0.508,
+          "per_position": [
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508,
+            0.508
+          ]
+        }
+      }
+    },
+    "swap_ends": {
+      "10": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3521428571428572,
+          "per_position": [
+            0.403,
+            0.328,
+            0.3345,
+            0.423,
+            0.31,
+            0.3615,
+            0.305
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.21992857142857145,
+          "per_position": [
+            0.2315,
+            0.2325,
+            0.215,
+            0.207,
+            0.205,
+            0.227,
+            0.2215
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.3521428571428572,
+          "per_position": [
+            0.403,
+            0.328,
+            0.3345,
+            0.423,
+            0.31,
+            0.3615,
+            0.305
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.17392857142857143,
+          "per_position": [
+            0.264,
+            0.158,
+            0.162,
+            0.147,
+            0.151,
+            0.186,
+            0.1495
+          ]
+        }
+      },
+      "20": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.008,
+          "mean_position": 0.5792142857142856,
+          "per_position": [
+            0.5535,
+            0.4915,
+            0.551,
+            0.587,
+            0.6685,
+            0.5675,
+            0.6355
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.29607142857142854,
+          "per_position": [
+            0.344,
+            0.283,
+            0.266,
+            0.328,
+            0.2605,
+            0.289,
+            0.302
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.008,
+          "mean_position": 0.5792142857142856,
+          "per_position": [
+            0.5535,
+            0.4915,
+            0.551,
+            0.587,
+            0.6685,
+            0.5675,
+            0.6355
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0005,
+          "mean_position": 0.2686428571428571,
+          "per_position": [
+            0.2945,
+            0.2585,
+            0.2425,
+            0.296,
+            0.2535,
+            0.2165,
+            0.319
+          ]
+        }
+      },
+      "50": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 0.971,
+          "mean_position": 0.9955,
+          "per_position": [
+            0.997,
+            0.9985,
+            0.994,
+            1.0,
+            0.9975,
+            0.9975,
+            0.984
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.011,
+          "mean_position": 0.5273571428571427,
+          "per_position": [
+            0.5115,
+            0.5545,
+            0.533,
+            0.5315,
+            0.5155,
+            0.527,
+            0.5185
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 0.971,
+          "mean_position": 0.9955,
+          "per_position": [
+            0.997,
+            0.9985,
+            0.994,
+            1.0,
+            0.9975,
+            0.9975,
+            0.984
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.008,
+          "mean_position": 0.44350000000000006,
+          "per_position": [
+            0.423,
+            0.4785,
+            0.457,
+            0.427,
+            0.453,
+            0.418,
+            0.448
+          ]
+        }
+      },
+      "100": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.0775,
+          "mean_position": 0.6855000000000001,
+          "per_position": [
+            0.7105,
+            0.682,
+            0.6805,
+            0.668,
+            0.689,
+            0.6865,
+            0.682
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0045,
+          "mean_position": 0.4252857142857142,
+          "per_position": [
+            0.417,
+            0.43,
+            0.422,
+            0.4385,
+            0.4355,
+            0.409,
+            0.425
+          ]
+        }
+      },
+      "200": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.313,
+          "mean_position": 0.8467857142857144,
+          "per_position": [
+            0.825,
+            0.8445,
+            0.856,
+            0.847,
+            0.836,
+            0.8695,
+            0.8495
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.0,
+          "mean_position": 0.2002142857142857,
+          "per_position": [
+            0.2095,
+            0.1945,
+            0.2,
+            0.188,
+            0.223,
+            0.206,
+            0.1805
+          ]
+        }
+      },
+      "500": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.8605,
+          "mean_position": 0.9791428571428572,
+          "per_position": [
+            0.9805,
+            0.9795,
+            0.9905,
+            0.968,
+            0.981,
+            0.9775,
+            0.977
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.2835,
+          "mean_position": 0.8292142857142857,
+          "per_position": [
+            0.8465,
+            0.8315,
+            0.8355,
+            0.804,
+            0.8355,
+            0.817,
+            0.8345
+          ]
+        }
+      },
+      "1000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 0.9795,
+          "mean_position": 0.9970714285714285,
+          "per_position": [
+            0.999,
+            0.9995,
+            1.0,
+            0.9925,
+            0.9975,
+            0.995,
+            0.996
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.45,
+          "mean_position": 0.8891428571428571,
+          "per_position": [
+            0.8625,
+            0.8845,
+            0.9045,
+            0.885,
+            0.882,
+            0.921,
+            0.8845
+          ]
+        }
+      },
+      "2000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.646,
+          "mean_position": 0.9387142857142857,
+          "per_position": [
+            0.9345,
+            0.9385,
+            0.931,
+            0.952,
+            0.9265,
+            0.946,
+            0.9425
+          ]
+        }
+      },
+      "5000": {
+        "One-hot (70-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate binary (56-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate 1-hot (560-dim)": {
+          "sequence_acc": 1.0,
+          "mean_position": 1.0,
+          "per_position": [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "Plate interf. (296-dim)": {
+          "sequence_acc": 0.9025,
+          "mean_position": 0.9853571428571428,
+          "per_position": [
+            0.988,
+            0.983,
+            0.991,
+            0.993,
+            0.9765,
+            0.9885,
+            0.9775
+          ]
+        }
+      }
+    }
+  }
+}
