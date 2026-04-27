@@ -1,0 +1,2987 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM Breadboard Wiring — Exact Hole Placement</title>
+		<style>
+			@media print {
+				body {
+					margin: 0;
+				}
+				.no-print {
+					display: none;
+				}
+			}
+			body {
+				font-family: 'Courier New', monospace;
+				background: #fff;
+				margin: 10px;
+				font-size: 11px;
+			}
+			h1 {
+				font-size: 14px;
+				margin: 0 0 2px 0;
+			}
+			.sub {
+				font-size: 10px;
+				color: #666;
+				margin-bottom: 8px;
+			}
+			svg {
+				display: block;
+			}
+			.step-list {
+				columns: 2;
+				column-gap: 20px;
+				font-size: 10px;
+				margin-top: 6px;
+			}
+			.step-list li {
+				margin-bottom: 3px;
+				break-inside: avoid;
+			}
+			.step-list b {
+				font-family: 'Courier New', monospace;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Breadboard Wiring — 2× AD9833 + PicoScope AWG Summing</h1>
+		<p class="sub">
+			Boards in column C (body covers D/E/gap). Jumpers via columns A–B only.
+			Summing network on right half (F–J) below boards.
+		</p>
+
+		<svg
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 820 780"
+			width="820"
+			height="780">
+			<defs>
+				<style>
+					.hole {
+						fill: #ddd;
+						stroke: #bbb;
+						stroke-width: 0.5;
+					}
+					.hole-used {
+						stroke-width: 1.5;
+					}
+					.lbl {
+						font-family: 'Courier New', monospace;
+						font-size: 8px;
+						fill: #999;
+					}
+					.lbl-col {
+						font-family: 'Courier New', monospace;
+						font-size: 9px;
+						fill: #555;
+						font-weight: bold;
+					}
+					.lbl-row {
+						font-family: 'Courier New', monospace;
+						font-size: 8px;
+						fill: #888;
+					}
+					.wire {
+						fill: none;
+						stroke-width: 2.5;
+						stroke-linecap: round;
+						stroke-linejoin: round;
+					}
+					.wire-thin {
+						fill: none;
+						stroke-width: 1.8;
+						stroke-linecap: round;
+					}
+					.comp-label {
+						font-family: 'Courier New', monospace;
+						font-size: 7px;
+						fill: #333;
+					}
+					.board-label {
+						font-family: sans-serif;
+						font-size: 10px;
+						fill: #fff;
+						font-weight: bold;
+					}
+					.resistor {
+						fill: none;
+						stroke-width: 3;
+						stroke-linecap: round;
+					}
+				</style>
+			</defs>
+
+			<!-- ====== BREADBOARD BODY ====== -->
+			<rect
+				x="10"
+				y="10"
+				width="800"
+				height="760"
+				rx="6"
+				fill="#f5f0e8"
+				stroke="#c9b89c"
+				stroke-width="2" />
+
+			<!-- ====== TOP POWER RAILS ====== -->
+			<rect
+				x="20"
+				y="18"
+				width="770"
+				height="10"
+				rx="3"
+				fill="#fcc"
+				stroke="#e00"
+				stroke-width="1" />
+			<text
+				x="25"
+				y="26"
+				class="lbl"
+				fill="#c00"
+				font-weight="bold">
+				+ RAIL (5V)
+			</text>
+			<rect
+				x="20"
+				y="32"
+				width="770"
+				height="10"
+				rx="3"
+				fill="#ccc"
+				stroke="#333"
+				stroke-width="1" />
+			<text
+				x="25"
+				y="40"
+				class="lbl"
+				fill="#333"
+				font-weight="bold">
+				− RAIL (GND)
+			</text>
+
+			<!-- ====== COLUMN HEADERS ====== -->
+			<!-- Left half -->
+			<text
+				x="60"
+				y="62"
+				class="lbl-col">
+				A
+			</text>
+			<text
+				x="80"
+				y="62"
+				class="lbl-col">
+				B
+			</text>
+			<text
+				x="100"
+				y="62"
+				class="lbl-col">
+				C
+			</text>
+			<text
+				x="120"
+				y="62"
+				class="lbl-col"
+				fill="#aaa">
+				D
+			</text>
+			<text
+				x="140"
+				y="62"
+				class="lbl-col"
+				fill="#aaa">
+				E
+			</text>
+			<!-- Gap label -->
+			<text
+				x="160"
+				y="62"
+				class="lbl"
+				fill="#bbb">
+				gap
+			</text>
+			<!-- Right half -->
+			<text
+				x="190"
+				y="62"
+				class="lbl-col">
+				F
+			</text>
+			<text
+				x="210"
+				y="62"
+				class="lbl-col">
+				G
+			</text>
+			<text
+				x="230"
+				y="62"
+				class="lbl-col">
+				H
+			</text>
+			<text
+				x="250"
+				y="62"
+				class="lbl-col">
+				I
+			</text>
+			<text
+				x="270"
+				y="62"
+				class="lbl-col">
+				J
+			</text>
+
+			<!-- ====== DRAW BREADBOARD HOLES (rows 1–50) ====== -->
+			<!-- Left half: A B C D E -->
+			<g id="holes"></g>
+
+			<!-- Generate holes with a script-like manual approach -->
+			<!-- I'll draw rows 1-50 for left (A-E) and right (F-J) halves -->
+			<!-- Row Y = 70 + (row-1)*14 -->
+
+			<!-- Function to compute: row N → y = 70 + (N-1)*14 -->
+			<!-- Col A=60, B=80, C=100, D=120, E=140, F=190, G=210, H=230, I=250, J=270 -->
+
+			<!-- ==== ROW LABELS & HOLES (rows 1-50) ==== -->
+			<!-- I'll draw only the relevant rows to keep it manageable: 1-50 -->
+
+			<!-- Row number labels on left -->
+			<g class="lbl-row">
+				<text
+					x="38"
+					y="73">
+					1
+				</text>
+				<text
+					x="38"
+					y="87">
+					2
+				</text>
+				<text
+					x="38"
+					y="101">
+					3
+				</text>
+				<text
+					x="38"
+					y="115">
+					4
+				</text>
+				<text
+					x="38"
+					y="129">
+					5
+				</text>
+				<text
+					x="38"
+					y="143">
+					6
+				</text>
+				<text
+					x="38"
+					y="157">
+					7
+				</text>
+				<text
+					x="38"
+					y="171">
+					8
+				</text>
+				<text
+					x="38"
+					y="185">
+					9
+				</text>
+				<text
+					x="34"
+					y="199">
+					10
+				</text>
+				<text
+					x="34"
+					y="213">
+					11
+				</text>
+				<text
+					x="34"
+					y="227">
+					12
+				</text>
+				<text
+					x="34"
+					y="241">
+					13
+				</text>
+				<text
+					x="34"
+					y="255">
+					14
+				</text>
+				<text
+					x="34"
+					y="269">
+					15
+				</text>
+				<text
+					x="34"
+					y="283">
+					16
+				</text>
+				<text
+					x="34"
+					y="297">
+					17
+				</text>
+				<text
+					x="34"
+					y="311">
+					18
+				</text>
+				<text
+					x="34"
+					y="325">
+					19
+				</text>
+				<text
+					x="34"
+					y="339">
+					20
+				</text>
+				<text
+					x="34"
+					y="353">
+					21
+				</text>
+				<text
+					x="34"
+					y="367">
+					22
+				</text>
+				<text
+					x="34"
+					y="381">
+					23
+				</text>
+				<text
+					x="34"
+					y="395">
+					24
+				</text>
+				<text
+					x="34"
+					y="409">
+					25
+				</text>
+				<text
+					x="34"
+					y="423">
+					26
+				</text>
+				<text
+					x="34"
+					y="437">
+					27
+				</text>
+				<text
+					x="34"
+					y="451">
+					28
+				</text>
+				<text
+					x="34"
+					y="465">
+					29
+				</text>
+				<text
+					x="34"
+					y="479">
+					30
+				</text>
+				<text
+					x="34"
+					y="493">
+					31
+				</text>
+				<text
+					x="34"
+					y="507">
+					32
+				</text>
+				<text
+					x="34"
+					y="521">
+					33
+				</text>
+				<text
+					x="34"
+					y="535">
+					34
+				</text>
+				<text
+					x="34"
+					y="549">
+					35
+				</text>
+				<text
+					x="34"
+					y="563">
+					36
+				</text>
+				<text
+					x="34"
+					y="577">
+					37
+				</text>
+				<text
+					x="34"
+					y="591">
+					38
+				</text>
+				<text
+					x="34"
+					y="605">
+					39
+				</text>
+				<text
+					x="34"
+					y="619">
+					40
+				</text>
+				<text
+					x="34"
+					y="633">
+					41
+				</text>
+				<text
+					x="34"
+					y="647">
+					42
+				</text>
+				<text
+					x="34"
+					y="661">
+					43
+				</text>
+				<text
+					x="34"
+					y="675">
+					44
+				</text>
+				<text
+					x="34"
+					y="689">
+					45
+				</text>
+				<text
+					x="34"
+					y="703">
+					46
+				</text>
+				<text
+					x="34"
+					y="717">
+					47
+				</text>
+				<text
+					x="34"
+					y="731">
+					48
+				</text>
+				<text
+					x="34"
+					y="745">
+					49
+				</text>
+				<text
+					x="34"
+					y="759">
+					50
+				</text>
+			</g>
+
+			<!-- Draw all empty holes -->
+			<g
+				class="hole"
+				opacity="0.4">
+				<!-- Rows 1-50, left half A(60) B(80) C(100) D(120) E(140), right half F(190) G(210) H(230) I(250) J(270) -->
+				<!-- I'll draw a subset showing the key area. Full grid in lighter dots. -->
+				<!-- Left half grid dots -->
+				<g>
+					<!-- Rows 1-50, columns A B C D E -->
+					<!-- Row 1 -->
+					<circle
+						cx="60"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="70"
+						r="2.5" />
+					<!-- Row 2 -->
+					<circle
+						cx="60"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="84"
+						r="2.5" />
+					<!-- ... sparse for space, key rows filled below ... -->
+					<!-- Row 10 -->
+					<circle
+						cx="60"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="196"
+						r="2.5" />
+					<!-- Row 15 -->
+					<circle
+						cx="60"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="266"
+						r="2.5" />
+					<!-- Row 20 -->
+					<circle
+						cx="60"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="336"
+						r="2.5" />
+					<!-- Row 21 -->
+					<circle
+						cx="60"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="350"
+						r="2.5" />
+					<!-- Rows 22-28: Board #1 area -->
+					<circle
+						cx="60"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="448"
+						r="2.5" />
+					<!-- Row 29-31 gap -->
+					<circle
+						cx="60"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="490"
+						r="2.5" />
+					<!-- Rows 32-38: Board #2 area -->
+					<circle
+						cx="60"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="588"
+						r="2.5" />
+					<!-- Rows 39-50 -->
+					<circle
+						cx="60"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="714"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="714"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="714"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="714"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="714"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="728"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="728"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="728"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="728"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="728"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="742"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="742"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="742"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="742"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="742"
+						r="2.5" />
+					<circle
+						cx="60"
+						cy="756"
+						r="2.5" />
+					<circle
+						cx="80"
+						cy="756"
+						r="2.5" />
+					<circle
+						cx="100"
+						cy="756"
+						r="2.5" />
+					<circle
+						cx="120"
+						cy="756"
+						r="2.5" />
+					<circle
+						cx="140"
+						cy="756"
+						r="2.5" />
+				</g>
+				<!-- Right half grid dots F(190) G(210) H(230) I(250) J(270) -->
+				<g>
+					<circle
+						cx="190"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="70"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="84"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="84"
+						r="2.5" />
+					<!-- rows 10,15,20-50 right half -->
+					<circle
+						cx="190"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="196"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="266"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="336"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="350"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="350"
+						r="2.5" />
+					<!-- Rows 22-28 right half -->
+					<circle
+						cx="190"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="364"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="378"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="392"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="406"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="420"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="434"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="448"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="448"
+						r="2.5" />
+					<!-- Rows 29-31 -->
+					<circle
+						cx="190"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="462"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="476"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="490"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="490"
+						r="2.5" />
+					<!-- Rows 32-38 right half -->
+					<circle
+						cx="190"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="504"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="518"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="532"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="546"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="560"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="574"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="588"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="588"
+						r="2.5" />
+					<!-- Rows 39-50 -->
+					<circle
+						cx="190"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="602"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="616"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="630"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="644"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="658"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="672"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="686"
+						r="2.5" />
+					<circle
+						cx="190"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="210"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="230"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="250"
+						cy="700"
+						r="2.5" />
+					<circle
+						cx="270"
+						cy="700"
+						r="2.5" />
+				</g>
+			</g>
+
+			<!-- ====== BLOCKED ZONE — Board #1 covers D,E,gap rows 22-28 ====== -->
+			<rect
+				x="110"
+				y="358"
+				width="85"
+				height="100"
+				rx="3"
+				fill="#eee"
+				stroke="#ccc"
+				stroke-width="1"
+				stroke-dasharray="3,2" />
+			<text
+				x="150"
+				y="412"
+				text-anchor="middle"
+				class="lbl"
+				fill="#bbb"
+				font-size="7">
+				BLOCKED
+			</text>
+			<text
+				x="150"
+				y="420"
+				text-anchor="middle"
+				class="lbl"
+				fill="#bbb"
+				font-size="7">
+				by board
+			</text>
+
+			<!-- ====== BLOCKED ZONE — Board #2 covers D,E,gap rows 32-38 ====== -->
+			<rect
+				x="110"
+				y="498"
+				width="85"
+				height="100"
+				rx="3"
+				fill="#eee"
+				stroke="#ccc"
+				stroke-width="1"
+				stroke-dasharray="3,2" />
+			<text
+				x="150"
+				y="552"
+				text-anchor="middle"
+				class="lbl"
+				fill="#bbb"
+				font-size="7">
+				BLOCKED
+			</text>
+			<text
+				x="150"
+				y="560"
+				text-anchor="middle"
+				class="lbl"
+				fill="#bbb"
+				font-size="7">
+				by board
+			</text>
+
+			<!-- ====== AD9833 BOARD #1 — pins in column C, rows 22-28 ====== -->
+			<rect
+				x="94"
+				y="358"
+				width="16"
+				height="100"
+				rx="2"
+				fill="#4466aa"
+				stroke="#335599"
+				stroke-width="1.5" />
+			<text
+				x="102"
+				y="412"
+				text-anchor="middle"
+				class="board-label"
+				transform="rotate(-90 102 412)"
+				font-size="8">
+				#1 AD9833
+			</text>
+			<!-- Pin dots (in column C = x:100) -->
+			<circle
+				cx="100"
+				cy="364"
+				r="3.5"
+				fill="#ff0"
+				stroke="#a80"
+				stroke-width="1.5" />
+			<!-- C22 VCC -->
+			<circle
+				cx="100"
+				cy="378"
+				r="3.5"
+				fill="#444"
+				stroke="#222"
+				stroke-width="1.5" />
+			<!-- C23 DGND -->
+			<circle
+				cx="100"
+				cy="392"
+				r="3.5"
+				fill="#0c0"
+				stroke="#080"
+				stroke-width="1.5" />
+			<!-- C24 DAT -->
+			<circle
+				cx="100"
+				cy="406"
+				r="3.5"
+				fill="#08f"
+				stroke="#06a"
+				stroke-width="1.5" />
+			<!-- C25 CLK -->
+			<circle
+				cx="100"
+				cy="420"
+				r="3.5"
+				fill="#f80"
+				stroke="#c60"
+				stroke-width="1.5" />
+			<!-- C26 FSYNC -->
+			<circle
+				cx="100"
+				cy="434"
+				r="3.5"
+				fill="#444"
+				stroke="#222"
+				stroke-width="1.5" />
+			<!-- C27 AGND -->
+			<circle
+				cx="100"
+				cy="448"
+				r="3.5"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1.5" />
+			<!-- C28 OUT -->
+
+			<!-- Pin labels for Board #1 -->
+			<g
+				class="comp-label"
+				fill="#335">
+				<text
+					x="68"
+					y="367"
+					text-anchor="end">
+					VCC
+				</text>
+				<text
+					x="68"
+					y="381"
+					text-anchor="end">
+					DGND
+				</text>
+				<text
+					x="68"
+					y="395"
+					text-anchor="end">
+					DAT
+				</text>
+				<text
+					x="68"
+					y="409"
+					text-anchor="end">
+					CLK
+				</text>
+				<text
+					x="68"
+					y="423"
+					text-anchor="end">
+					FSY
+				</text>
+				<text
+					x="68"
+					y="437"
+					text-anchor="end">
+					AGND
+				</text>
+				<text
+					x="68"
+					y="451"
+					text-anchor="end">
+					OUT
+				</text>
+			</g>
+
+			<!-- ====== AD9833 BOARD #2 — pins in column C, rows 32-38 ====== -->
+			<rect
+				x="94"
+				y="498"
+				width="16"
+				height="100"
+				rx="2"
+				fill="#884488"
+				stroke="#663366"
+				stroke-width="1.5" />
+			<text
+				x="102"
+				y="552"
+				text-anchor="middle"
+				class="board-label"
+				transform="rotate(-90 102 552)"
+				font-size="8">
+				#2 AD9833
+			</text>
+			<!-- Pin dots (in column C = x:100) -->
+			<circle
+				cx="100"
+				cy="504"
+				r="3.5"
+				fill="#ff0"
+				stroke="#a80"
+				stroke-width="1.5" />
+			<!-- C32 VCC -->
+			<circle
+				cx="100"
+				cy="518"
+				r="3.5"
+				fill="#444"
+				stroke="#222"
+				stroke-width="1.5" />
+			<!-- C33 DGND -->
+			<circle
+				cx="100"
+				cy="532"
+				r="3.5"
+				fill="#0c0"
+				stroke="#080"
+				stroke-width="1.5" />
+			<!-- C34 DAT -->
+			<circle
+				cx="100"
+				cy="546"
+				r="3.5"
+				fill="#08f"
+				stroke="#06a"
+				stroke-width="1.5" />
+			<!-- C35 CLK -->
+			<circle
+				cx="100"
+				cy="560"
+				r="3.5"
+				fill="#b0e"
+				stroke="#80a"
+				stroke-width="1.5" />
+			<!-- C36 FSYNC -->
+			<circle
+				cx="100"
+				cy="574"
+				r="3.5"
+				fill="#444"
+				stroke="#222"
+				stroke-width="1.5" />
+			<!-- C37 AGND -->
+			<circle
+				cx="100"
+				cy="588"
+				r="3.5"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1.5" />
+			<!-- C38 OUT -->
+
+			<!-- Pin labels for Board #2 -->
+			<g
+				class="comp-label"
+				fill="#536">
+				<text
+					x="68"
+					y="507"
+					text-anchor="end">
+					VCC
+				</text>
+				<text
+					x="68"
+					y="521"
+					text-anchor="end">
+					DGND
+				</text>
+				<text
+					x="68"
+					y="535"
+					text-anchor="end">
+					DAT
+				</text>
+				<text
+					x="68"
+					y="549"
+					text-anchor="end">
+					CLK
+				</text>
+				<text
+					x="68"
+					y="563"
+					text-anchor="end">
+					FSY
+				</text>
+				<text
+					x="68"
+					y="577"
+					text-anchor="end">
+					AGND
+				</text>
+				<text
+					x="68"
+					y="591"
+					text-anchor="end">
+					OUT
+				</text>
+			</g>
+
+			<!-- ================================================================ -->
+			<!-- ====== WIRES — everything routes through A/B columns ====== -->
+			<!-- ================================================================ -->
+
+			<!-- ===== WIRE 1: A22 → + rail (VCC Board #1) ===== -->
+			<circle
+				cx="60"
+				cy="364"
+				r="3"
+				fill="#e00"
+				stroke="#a00"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,364 60,350 25,350 25,23"
+				class="wire"
+				stroke="#e00" />
+			<circle
+				cx="25"
+				cy="23"
+				r="3"
+				fill="#e00" />
+			<text
+				x="16"
+				y="354"
+				class="comp-label"
+				fill="#c00">
+				①
+			</text>
+
+			<!-- ===== WIRE 2: A23 → − rail (DGND Board #1) ===== -->
+			<circle
+				cx="60"
+				cy="378"
+				r="3"
+				fill="#333"
+				stroke="#111"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,378 55,378 55,345 28,345 28,37"
+				class="wire-thin"
+				stroke="#333" />
+			<circle
+				cx="28"
+				cy="37"
+				r="3"
+				fill="#333" />
+			<text
+				x="16"
+				y="380"
+				class="comp-label"
+				fill="#333">
+				②
+			</text>
+
+			<!-- ===== WIRE 3: B24 → B25 → bus row 20 for DAT (SDATA to D11) ===== -->
+			<!-- DAT bus: B20 holds the D11/MOSI signal. Boards tap into it. -->
+			<circle
+				cx="80"
+				cy="392"
+				r="3"
+				fill="#0a0"
+				stroke="#080"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="80,392 80,336"
+				class="wire"
+				stroke="#0a0" />
+			<circle
+				cx="80"
+				cy="336"
+				r="3"
+				fill="#0a0"
+				stroke="#080"
+				stroke-width="1" />
+			<text
+				x="87"
+				y="340"
+				class="comp-label"
+				fill="#0a0">
+				③ DAT bus (row 20)
+			</text>
+
+			<!-- ===== WIRE 4: B25 → CLK bus row 19 ===== -->
+			<circle
+				cx="80"
+				cy="406"
+				r="3"
+				fill="#07a"
+				stroke="#058"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="80,406 75,406 75,325"
+				class="wire"
+				stroke="#07a" />
+			<circle
+				cx="80"
+				cy="322"
+				r="3"
+				fill="#07a"
+				stroke="#058"
+				stroke-width="1" />
+			<polyline
+				points="75,325 80,322"
+				class="wire"
+				stroke="#07a" />
+			<text
+				x="87"
+				y="326"
+				class="comp-label"
+				fill="#07a">
+				④ CLK bus (row 19)
+			</text>
+
+			<!-- ===== WIRE 5: A26 → orange wire off-board to D10 ===== -->
+			<circle
+				cx="60"
+				cy="420"
+				r="3"
+				fill="#f80"
+				stroke="#c60"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,420 45,420"
+				class="wire"
+				stroke="#f80" />
+			<text
+				x="15"
+				y="423"
+				class="comp-label"
+				fill="#e80">
+				⑤ → D10
+			</text>
+
+			<!-- ===== WIRE 6: A27 → − rail (AGND Board #1) ===== -->
+			<circle
+				cx="60"
+				cy="434"
+				r="3"
+				fill="#333"
+				stroke="#111"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,434 50,434 50,340 31,340 31,37"
+				class="wire-thin"
+				stroke="#555" />
+			<circle
+				cx="31"
+				cy="37"
+				r="3"
+				fill="#555" />
+			<text
+				x="16"
+				y="437"
+				class="comp-label"
+				fill="#555">
+				⑥
+			</text>
+
+			<!-- ===== WIRE 7: A28 → F42 (OUT#1 to right half for summing) ===== -->
+			<circle
+				cx="60"
+				cy="448"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,448 60,460 60,644"
+				class="wire"
+				stroke="#da0" />
+			<polyline
+				points="60,644 190,644"
+				class="wire"
+				stroke="#da0" />
+			<circle
+				cx="190"
+				cy="644"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1" />
+			<text
+				x="87"
+				y="454"
+				class="comp-label"
+				fill="#da0">
+				⑦ OUT1 → row 42 right
+			</text>
+
+			<!-- ===== WIRE 8: A32 → + rail (VCC Board #2) ===== -->
+			<circle
+				cx="60"
+				cy="504"
+				r="3"
+				fill="#e00"
+				stroke="#a00"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,504 52,504 52,490 22,490 22,23"
+				class="wire"
+				stroke="#e00" />
+			<circle
+				cx="22"
+				cy="23"
+				r="3"
+				fill="#e00" />
+			<text
+				x="16"
+				y="494"
+				class="comp-label"
+				fill="#c00">
+				⑧
+			</text>
+
+			<!-- ===== WIRE 9: A33 → − rail (DGND Board #2) ===== -->
+			<circle
+				cx="60"
+				cy="518"
+				r="3"
+				fill="#333"
+				stroke="#111"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,518 48,518 48,485 34,485 34,37"
+				class="wire-thin"
+				stroke="#333" />
+			<circle
+				cx="34"
+				cy="37"
+				r="3"
+				fill="#333" />
+			<text
+				x="16"
+				y="520"
+				class="comp-label"
+				fill="#333">
+				⑨
+			</text>
+
+			<!-- ===== WIRE 10: B34 → DAT bus row 20 ===== -->
+			<circle
+				cx="80"
+				cy="532"
+				r="3"
+				fill="#0a0"
+				stroke="#080"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="80,532 80,476 85,476 85,336 80,336"
+				class="wire"
+				stroke="#0a0"
+				stroke-dasharray="5,3" />
+			<text
+				x="87"
+				y="480"
+				class="comp-label"
+				fill="#0a0">
+				⑩ DAT bus
+			</text>
+
+			<!-- ===== WIRE 11: B35 → CLK bus row 19 ===== -->
+			<circle
+				cx="80"
+				cy="546"
+				r="3"
+				fill="#07a"
+				stroke="#058"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="80,546 73,546 73,470 78,470 78,406 75,325"
+				class="wire"
+				stroke="#07a"
+				stroke-dasharray="5,3" />
+			<text
+				x="87"
+				y="540"
+				class="comp-label"
+				fill="#07a">
+				⑪ CLK bus
+			</text>
+
+			<!-- ===== WIRE 12: A36 → purple wire off-board to D9 ===== -->
+			<circle
+				cx="60"
+				cy="560"
+				r="3"
+				fill="#b0e"
+				stroke="#80a"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,560 45,560"
+				class="wire"
+				stroke="#b0e" />
+			<text
+				x="15"
+				y="563"
+				class="comp-label"
+				fill="#a0d">
+				⑫ → D9
+			</text>
+
+			<!-- ===== WIRE 13: A37 → − rail (AGND Board #2) ===== -->
+			<circle
+				cx="60"
+				cy="574"
+				r="3"
+				fill="#555"
+				stroke="#333"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,574 46,574 46,483 37,483 37,37"
+				class="wire-thin"
+				stroke="#555" />
+			<circle
+				cx="37"
+				cy="37"
+				r="3"
+				fill="#555" />
+			<text
+				x="16"
+				y="577"
+				class="comp-label"
+				fill="#555">
+				⑬
+			</text>
+
+			<!-- ===== WIRE 14: A38 → F43 (OUT#2 to right half for summing) ===== -->
+			<circle
+				cx="60"
+				cy="588"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1"
+				class="hole-used" />
+			<polyline
+				points="60,588 60,658"
+				class="wire"
+				stroke="#da0" />
+			<polyline
+				points="60,658 190,658"
+				class="wire"
+				stroke="#da0" />
+			<circle
+				cx="190"
+				cy="658"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1" />
+			<text
+				x="87"
+				y="594"
+				class="comp-label"
+				fill="#da0">
+				⑭ OUT2 → row 43 right
+			</text>
+
+			<!-- ===== Nano wires into bus rows 19 & 20 ===== -->
+			<!-- WIRE 15: D13 (SCK) comes in to A19 -->
+			<circle
+				cx="60"
+				cy="322"
+				r="3"
+				fill="#07a"
+				stroke="#058"
+				stroke-width="1" />
+			<polyline
+				points="45,322 60,322"
+				class="wire"
+				stroke="#07a" />
+			<text
+				x="15"
+				y="326"
+				class="comp-label"
+				fill="#07a">
+				⑮ D13→A19
+			</text>
+
+			<!-- WIRE 16: D11 (MOSI) comes in to A20 -->
+			<circle
+				cx="60"
+				cy="336"
+				r="3"
+				fill="#0a0"
+				stroke="#080"
+				stroke-width="1" />
+			<polyline
+				points="45,336 60,336"
+				class="wire"
+				stroke="#0a0" />
+			<text
+				x="15"
+				y="340"
+				class="comp-label"
+				fill="#0a0">
+				⑯ D11→A20
+			</text>
+
+			<!-- ===== Nano power wires ===== -->
+			<!-- These come from off-board (Nano) to the rails -->
+			<text
+				x="300"
+				y="26"
+				class="comp-label"
+				fill="#c00"
+				font-size="9">
+				← 5V from Nano
+			</text>
+			<text
+				x="300"
+				y="40"
+				class="comp-label"
+				fill="#333"
+				font-size="9">
+				← GND from Nano
+			</text>
+
+			<!-- ================================================================ -->
+			<!-- ====== SUMMING NETWORK — on right half, rows 42-45 ====== -->
+			<!-- ================================================================ -->
+
+			<!-- Resistor R1: G42 → G45 -->
+			<rect
+				x="206"
+				y="644"
+				width="8"
+				height="42"
+				rx="2"
+				fill="#e8d8a0"
+				stroke="#b80"
+				stroke-width="1.5" />
+			<text
+				x="220"
+				y="667"
+				class="comp-label"
+				fill="#b80"
+				font-size="8">
+				R1 10kΩ
+			</text>
+			<!-- R1 endpoints -->
+			<circle
+				cx="210"
+				cy="644"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1" />
+			<circle
+				cx="210"
+				cy="686"
+				r="3"
+				fill="#c44"
+				stroke="#a22"
+				stroke-width="1" />
+
+			<!-- Resistor R2: H43 → H45 -->
+			<rect
+				x="226"
+				y="658"
+				width="8"
+				height="28"
+				rx="2"
+				fill="#e8d8a0"
+				stroke="#b80"
+				stroke-width="1.5" />
+			<text
+				x="240"
+				y="674"
+				class="comp-label"
+				fill="#b80"
+				font-size="8">
+				R2 10kΩ
+			</text>
+			<circle
+				cx="230"
+				cy="658"
+				r="3"
+				fill="#da0"
+				stroke="#a80"
+				stroke-width="1" />
+			<circle
+				cx="230"
+				cy="686"
+				r="3"
+				fill="#c44"
+				stroke="#a22"
+				stroke-width="1" />
+
+			<!-- AWG input wire → F44 -->
+			<circle
+				cx="190"
+				cy="672"
+				r="3"
+				fill="#888"
+				stroke="#666"
+				stroke-width="1" />
+			<polyline
+				points="175,672 190,672"
+				class="wire"
+				stroke="#888" />
+			<text
+				x="143"
+				y="675"
+				class="comp-label"
+				fill="#888">
+				AWG hot→
+			</text>
+			<text
+				x="143"
+				y="684"
+				class="comp-label"
+				fill="#888">
+				⑰ F44
+			</text>
+
+			<!-- AWG GND → − rail -->
+			<text
+				x="143"
+				y="696"
+				class="comp-label"
+				fill="#555">
+				AWG gnd→
+			</text>
+			<text
+				x="143"
+				y="705"
+				class="comp-label"
+				fill="#555">
+				⑱ − rail
+			</text>
+
+			<!-- Resistor R3: G44 → G45 -->
+			<rect
+				x="206"
+				y="672"
+				width="8"
+				height="14"
+				rx="2"
+				fill="#e8d8a0"
+				stroke="#b80"
+				stroke-width="1.5" />
+			<text
+				x="240"
+				y="684"
+				class="comp-label"
+				fill="#b80"
+				font-size="8">
+				R3 10kΩ
+			</text>
+			<circle
+				cx="210"
+				cy="672"
+				r="3"
+				fill="#888"
+				stroke="#666"
+				stroke-width="1" />
+			<circle
+				cx="210"
+				cy="686"
+				r="3"
+				fill="#c44"
+				stroke="#a22"
+				stroke-width="1" />
+
+			<!-- SUM NODE highlight — row 45, right half -->
+			<rect
+				x="185"
+				y="682"
+				width="95"
+				height="10"
+				rx="3"
+				fill="#fcc"
+				stroke="#c44"
+				stroke-width="2" />
+			<text
+				x="283"
+				y="690"
+				class="comp-label"
+				fill="#c44"
+				font-size="9"
+				font-weight="bold">
+				← ROW 45 = SUM
+			</text>
+
+			<!-- PZT drive output from I45 -->
+			<circle
+				cx="250"
+				cy="686"
+				r="3"
+				fill="#c44"
+				stroke="#a22"
+				stroke-width="1.5" />
+			<polyline
+				points="250,686 250,700 280,700"
+				class="wire"
+				stroke="#c44"
+				stroke-width="2.5" />
+			<text
+				x="283"
+				y="703"
+				class="comp-label"
+				fill="#c44"
+				font-size="9">
+				⑲ → PZT drive wire
+			</text>
+
+			<!-- ================================================================ -->
+			<!-- ====== HOLE-BY-HOLE WIRING TABLE (right side) ====== -->
+			<!-- ================================================================ -->
+			<rect
+				x="340"
+				y="65"
+				width="450"
+				height="700"
+				rx="6"
+				fill="#fafafa"
+				stroke="#ccc"
+				stroke-width="1" />
+
+			<text
+				x="355"
+				y="85"
+				font-family="sans-serif"
+				font-size="13"
+				font-weight="bold"
+				fill="#333">
+				Step-by-Step Wiring
+			</text>
+			<text
+				x="355"
+				y="98"
+				font-family="sans-serif"
+				font-size="9"
+				fill="#888">
+				Do these in order. Check each one before moving on.
+			</text>
+
+			<g
+				font-family="Courier New, monospace"
+				font-size="9.5"
+				fill="#333">
+				<!-- Power rails -->
+				<text
+					x="355"
+					y="120"
+					font-weight="bold"
+					fill="#c00">
+					POWER RAILS (from Nano off-board):
+				</text>
+				<text
+					x="355"
+					y="134">
+					① Red wire: Nano 5V → + rail
+				</text>
+				<text
+					x="355"
+					y="148">
+					② Black wire: Nano GND → − rail
+				</text>
+
+				<!-- Board 1 -->
+				<text
+					x="355"
+					y="172"
+					font-weight="bold"
+					fill="#446">
+					BOARD #1 (pins in C22–C28):
+				</text>
+				<text
+					x="355"
+					y="186"
+					fill="#c00">
+					③ Red jumper: A22 → + rail (VCC)
+				</text>
+				<text
+					x="355"
+					y="200"
+					fill="#333">
+					④ Black jumper: A23 → − rail (DGND)
+				</text>
+				<text
+					x="355"
+					y="214"
+					fill="#0a0">
+					⑤ Green jumper: B24 → B20 (DAT bus)
+				</text>
+				<text
+					x="355"
+					y="228"
+					fill="#07a">
+					⑥ Blue jumper: B25 → A19 (CLK bus)
+				</text>
+				<text
+					x="355"
+					y="242"
+					fill="#e80">
+					⑦ Orange wire: A26 → Nano D10 (FSYNC1)
+				</text>
+				<text
+					x="355"
+					y="256"
+					fill="#555">
+					⑧ Black jumper: A27 → − rail (AGND)
+				</text>
+				<text
+					x="355"
+					y="270"
+					fill="#a80">
+					⑨ Yellow jumper: A28 → A42 (OUT1→sum)
+				</text>
+
+				<!-- Board 2 -->
+				<text
+					x="355"
+					y="298"
+					font-weight="bold"
+					fill="#846">
+					BOARD #2 (pins in C32–C38):
+				</text>
+				<text
+					x="355"
+					y="312"
+					fill="#c00">
+					⑩ Red jumper: A32 → + rail (VCC)
+				</text>
+				<text
+					x="355"
+					y="326"
+					fill="#333">
+					⑪ Black jumper: A33 → − rail (DGND)
+				</text>
+				<text
+					x="355"
+					y="340"
+					fill="#0a0">
+					⑫ Green jumper: B34 → B20 (DAT bus)
+				</text>
+				<text
+					x="355"
+					y="354"
+					fill="#07a">
+					⑬ Blue jumper: B35 → A19 (CLK bus)
+				</text>
+				<text
+					x="355"
+					y="368"
+					fill="#a0d">
+					⑭ Purple wire: A36 → Nano D9 (FSYNC2)
+				</text>
+				<text
+					x="355"
+					y="382"
+					fill="#555">
+					⑮ Black jumper: A37 → − rail (AGND)
+				</text>
+				<text
+					x="355"
+					y="396"
+					fill="#a80">
+					⑯ Yellow jumper: A38 → A43 (OUT2→sum)
+				</text>
+
+				<!-- SPI bus from Nano -->
+				<text
+					x="355"
+					y="424"
+					font-weight="bold"
+					fill="#068">
+					NANO SPI BUS (wires from Nano):
+				</text>
+				<text
+					x="355"
+					y="438"
+					fill="#07a">
+					⑰ Blue wire: Nano D13 → A19 (CLK bus)
+				</text>
+				<text
+					x="355"
+					y="452"
+					fill="#0a0">
+					⑱ Green wire: Nano D11 → A20 (DAT bus)
+				</text>
+
+				<!-- Summing network -->
+				<text
+					x="355"
+					y="480"
+					font-weight="bold"
+					fill="#b80">
+					SUMMING NETWORK (right half, rows 42–45):
+				</text>
+				<text
+					x="355"
+					y="497">
+					First, bridge OUT signals to right half:
+				</text>
+				<text
+					x="355"
+					y="511"
+					fill="#a80">
+					⑲ Jumper: A42 → F42 (OUT1 bridge)
+				</text>
+				<text
+					x="355"
+					y="525"
+					fill="#a80">
+					⑳ Jumper: A43 → F43 (OUT2 bridge)
+				</text>
+				<text
+					x="355"
+					y="542">
+					Then place resistors:
+				</text>
+				<text
+					x="355"
+					y="556"
+					fill="#b80">
+					㉑ R1 (10kΩ): G42 → G45 (OUT1→SUM)
+				</text>
+				<text
+					x="355"
+					y="570"
+					fill="#b80">
+					㉒ R2 (10kΩ): H43 → H45 (OUT2→SUM)
+				</text>
+				<text
+					x="355"
+					y="587">
+					AWG input:
+				</text>
+				<text
+					x="355"
+					y="601"
+					fill="#888">
+					㉓ AWG hot wire: → F44
+				</text>
+				<text
+					x="355"
+					y="615"
+					fill="#555">
+					㉔ AWG gnd wire: → − rail
+				</text>
+				<text
+					x="355"
+					y="632"
+					fill="#b80">
+					㉕ R3 (10kΩ): G44 → G45 (AWG→SUM)
+				</text>
+
+				<!-- Output -->
+				<text
+					x="355"
+					y="660"
+					font-weight="bold"
+					fill="#c44">
+					OUTPUT (from SUM node):
+				</text>
+				<text
+					x="355"
+					y="674"
+					fill="#c44">
+					㉖ PZT drive wire: I45 → rod PZT
+				</text>
+				<text
+					x="355"
+					y="688"
+					fill="#555">
+					㉗ PZT ground: → − rail
+				</text>
+
+				<!-- Sense (unchanged) -->
+				<text
+					x="355"
+					y="716"
+					font-weight="bold"
+					fill="#27a">
+					SENSE (existing, unchanged):
+				</text>
+				<text
+					x="355"
+					y="730"
+					fill="#27a">
+					Sense PZT → relay mux → PicoScope Ch A
+				</text>
+				<text
+					x="355"
+					y="744"
+					fill="#27a">
+					(same wiring as April 8 session)
+				</text>
+			</g>
+
+			<!-- Total wire count -->
+			<rect
+				x="355"
+				y="752"
+				width="420"
+				height="16"
+				rx="3"
+				fill="#ffc"
+				stroke="#aa0"
+				stroke-width="1" />
+			<text
+				x="365"
+				y="764"
+				font-family="sans-serif"
+				font-size="10"
+				font-weight="bold"
+				fill="#555">
+				Total: 16 jumpers + 3 resistors + 4 off-board wires (D10, D9, D13, D11)
+				+ power
+			</text>
+		</svg>
+
+		<p style="font-size: 10px; color: #888; margin-top: 4px">
+			Columns D &amp; E are blocked by board bodies. All connections route
+			through A &amp; B only. Right half (F–J) is clear for summing network.
+		</p>
+	</body>
+</html>

@@ -1,0 +1,153 @@
+{
+  "timestamp": "2026-04-19T18:47:26.193660+00:00",
+  "script": "narma_hw_temporal.py",
+  "concept": "Temporal memory demonstration via time-sliced ringdown",
+  "steps": 1000,
+  "seed": 42,
+  "n_slices": 5,
+  "n_readout": 78,
+  "n_features_per_step": 468,
+  "slice_ms": 2.06,
+  "pass1_time_s": 38.2,
+  "pass2_time_s": 39.9,
+  "results": [
+    {
+      "name": "SW_only: u_window + y_state",
+      "nmse_test": 0.11043,
+      "features": 12,
+      "alpha": 10.0
+    },
+    {
+      "name": "P2_ALL_slices + u_win + y_state",
+      "nmse_test": 0.220991,
+      "features": 480,
+      "alpha": 100.0
+    },
+    {
+      "name": "SW_only: u_window",
+      "nmse_test": 0.284106,
+      "features": 10,
+      "alpha": 10.0
+    },
+    {
+      "name": "P2_slice3 (6.2-8.3ms) + u_win",
+      "nmse_test": 0.298011,
+      "features": 88,
+      "alpha": 10.0
+    },
+    {
+      "name": "P2_memory_signal (early-late) + u_win",
+      "nmse_test": 0.308762,
+      "features": 88,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_full_fft + u_win (12-car)",
+      "nmse_test": 0.328157,
+      "features": 88,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_slice1 (2.1-4.1ms) + u_win",
+      "nmse_test": 0.329918,
+      "features": 88,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_slice2 (4.1-6.2ms) + u_win",
+      "nmse_test": 0.33112,
+      "features": 88,
+      "alpha": 10.0
+    },
+    {
+      "name": "P1_full_fft + u_win (11-car)",
+      "nmse_test": 0.336467,
+      "features": 88,
+      "alpha": 100.0
+    },
+    {
+      "name": "P1_EARLY_2slices + u_win",
+      "nmse_test": 0.343992,
+      "features": 166,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_slice4 (8.3-10.3ms) + u_win",
+      "nmse_test": 0.345361,
+      "features": 88,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_slice0 (0.0-2.1ms) + u_win",
+      "nmse_test": 0.350782,
+      "features": 88,
+      "alpha": 10.0
+    },
+    {
+      "name": "P2_LATE_2slices + u_win",
+      "nmse_test": 0.359559,
+      "features": 166,
+      "alpha": 100.0
+    },
+    {
+      "name": "P1_LATE_2slices + u_win",
+      "nmse_test": 0.365427,
+      "features": 166,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_EARLY_2slices + u_win",
+      "nmse_test": 0.38802,
+      "features": 166,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_EARLY+LATE + u_win",
+      "nmse_test": 0.433841,
+      "features": 322,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_ALL_slices + u_win",
+      "nmse_test": 0.519948,
+      "features": 478,
+      "alpha": 100.0
+    },
+    {
+      "name": "P1_ALL_slices + u_win",
+      "nmse_test": 0.588185,
+      "features": 478,
+      "alpha": 100.0
+    },
+    {
+      "name": "P2_full_fft_only (no u_win)",
+      "nmse_test": 1.029123,
+      "features": 78,
+      "alpha": 1000.0
+    },
+    {
+      "name": "P2_EARLY_only (no u_win)",
+      "nmse_test": 1.043984,
+      "features": 156,
+      "alpha": 1000.0
+    },
+    {
+      "name": "P2_LATE_only (no u_win)",
+      "nmse_test": 1.07247,
+      "features": 156,
+      "alpha": 1000.0
+    },
+    {
+      "name": "P2_ALL_slices_only (no u_win)",
+      "nmse_test": 1.125246,
+      "features": 468,
+      "alpha": 1000.0
+    }
+  ],
+  "key_comparison": {
+    "late_only": 0.359559,
+    "early_only": 0.38802,
+    "all_slices": 0.519948,
+    "memory_detected": false
+  }
+}

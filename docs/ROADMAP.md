@@ -313,12 +313,13 @@ This is the experiment that most directly benefits from higher Q:
 - If interference fringes are measurable, this is the first direct evidence of coherent phononic memory
 - **Result:** All 5 plates showed contrast 0.11–0.29% (below 2% threshold). CW measurement dominated by electrical crosstalk (~99.9% AWG leakage). Protocol cannot separate acoustic interference from electrical coupling. See lab diary 2026-04-18 (late night).
 
-**Step 5: Phase Stability (E03 Revisit)**
+**Step 5: Phase Stability (E03 Revisit)** ✅ PASS (2026-04-19)
 
 - At rods: only 15% of phase measurements were stable (σ = 1.71 rad)
 - Higher Q → narrower linewidth → more stable phase
 - Measure phase at 5 strongest modes, 100 captures each, compute σ
 - **Target: >50% of modes with phase σ < 0.5 rad**
+- **Result:** 25/25 modes stable (100%). Median σ ≈ 0.001 rad (0.06°) — 500× below threshold. Required Ch B AWG reference to cancel DDS free-running phase; v1 without reference showed σ ≈ 2.0 rad (pure DDS noise). Acoustic fraction 89–99% per mode after relay-OFF baseline subtraction. See lab diary 2026-04-19.
 
 **Step 6: Multi-Plate Discrimination**
 If you have 2+ plates:

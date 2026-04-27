@@ -1,0 +1,566 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>CWM Temporal Reservoir — Wiring Guide</title>
+<style>
+  @page { size: letter; margin: 0.6in; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 10pt; line-height: 1.45; color: #1a1a1a;
+    max-width: 7.5in; margin: 0 auto; padding: 0.5in;
+  }
+  h1 { font-size: 16pt; border-bottom: 2.5px solid #111; padding-bottom: 4pt; margin-bottom: 6pt; }
+  h1 small { font-size: 10pt; font-weight: normal; color: #555; }
+  h2 { font-size: 12pt; margin-top: 14pt; margin-bottom: 4pt; color: #222;
+       border-bottom: 1px solid #ccc; padding-bottom: 2pt; }
+  h3 { font-size: 10.5pt; margin-top: 10pt; margin-bottom: 3pt; }
+  p, li { margin-bottom: 3pt; }
+  ul, ol { padding-left: 16pt; }
+  code {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace; font-size: 9pt;
+    background: #f4f4f4; padding: 1px 3px; border-radius: 2px;
+  }
+  table { border-collapse: collapse; width: 100%; margin: 6pt 0 10pt; font-size: 9pt; }
+  th, td { border: 1px solid #999; padding: 3pt 5pt; text-align: left; }
+  th { background: #e8e8e8; font-weight: 600; }
+  tr:nth-child(even) td { background: #fafafa; }
+  .pin-arduino { color: #0055aa; font-weight: 600; }
+  .pin-dds     { color: #7b1fa2; font-weight: 600; }
+  .pin-relay   { color: #aa3300; font-weight: 600; }
+  .pin-pico    { color: #2e7d32; font-weight: 600; }
+  .power { color: #cc0000; font-weight: 600; }
+  .gnd   { color: #333; font-weight: 600; }
+  .note {
+    background: #fffde7; border-left: 3px solid #f9a825;
+    padding: 5pt 8pt; margin: 8pt 0; font-size: 9pt;
+  }
+  .warning {
+    background: #fce4ec; border-left: 3px solid #d32f2f;
+    padding: 5pt 8pt; margin: 8pt 0; font-size: 9pt;
+  }
+  .success {
+    background: #e8f5e9; border-left: 3px solid #388e3c;
+    padding: 5pt 8pt; margin: 8pt 0; font-size: 9pt;
+  }
+  .diagram {
+    font-family: 'SF Mono', 'Menlo', 'Consolas', monospace;
+    font-size: 8pt; line-height: 1.3; background: #f8f8f8;
+    border: 1px solid #ddd; padding: 8pt; margin: 6pt 0 10pt;
+    white-space: pre; overflow-x: auto;
+  }
+  .section-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; }
+  .checklist { list-style: none; padding-left: 4pt; }
+  .checklist li::before { content: '☐ '; font-size: 12pt; }
+  .phase-tag {
+    display: inline-block; padding: 1pt 5pt; border-radius: 3px;
+    font-size: 8pt; font-weight: 600; color: #fff; vertical-align: middle;
+  }
+  .phase-1 { background: #1565c0; }
+  .phase-2 { background: #6a1b9a; }
+  .wire-table td:first-child { width: 20px; text-align: center; }
+  .color-dot {
+    display: inline-block; width: 10px; height: 10px;
+    border-radius: 50%; border: 1px solid #666;
+  }
+  @media print {
+    body { padding: 0; }
+    .page-break { page-break-before: always; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<h1>
+  CWM Temporal Reservoir — Wiring Guide
+  <br/><small>Arduino Nano + AD9833 DDS + 8-CH Relay + PicoScope 2204A</small>
+</h1>
+<p style="color:#555; font-size:9pt">
+  Rev 1 — 2026-04-19 &nbsp;|&nbsp; Print: Cmd+P → PDF or paper
+</p>
+
+<!-- ─── OVERVIEW ─── -->
+<h2>Overview</h2>
+<p>
+  This guide covers the solder-free wiring for the CWM temporal reservoir proof-of-concept.
+  <span class="phase-tag phase-1">Phase 1</span> uses binary ON/OFF drive via the AD9833 DDS (7 new jumper wires).
+  <span class="phase-tag phase-2">Phase 2</span> adds analog amplitude control via an MCP4921 DAC (6 additional wires).
+</p>
+
+<!-- ─── BOM ─── -->
+<h2>1. Bill of Materials</h2>
+
+<h3><span class="phase-tag phase-1">Phase 1</span> Temporal Proof (Binary ON/OFF)</h3>
+<table>
+  <thead>
+    <tr><th>#</th><th>Item</th><th>Qty</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>1</td><td>Arduino Nano (ATmega328P, CH340 USB)</td><td>1</td><td>Already in rig</td></tr>
+    <tr><td>2</td><td>8-CH 5V relay module (active-LOW, opto-isolated)</td><td>1</td><td>Already in rig</td></tr>
+    <tr><td>3</td><td>PicoScope 2204A</td><td>1</td><td>Already in rig — capture only (AWG unused)</td></tr>
+    <tr><td>4</td><td><strong>AD9833 DDS module</strong> (breakout board)</td><td>1</td><td><strong>New part</strong> — ~$9 Amazon</td></tr>
+    <tr><td>5</td><td>DuPont M-to-F jumper wires</td><td>5</td><td>AD9833 → Arduino pins</td></tr>
+    <tr><td>6</td><td>DuPont M-to-M jumper wires</td><td>2</td><td>AD9833 OUT → relay COM</td></tr>
+    <tr><td>7</td><td>Full-size breadboard</td><td>1</td><td>Already in rig — hosts Nano + signal routing</td></tr>
+  </tbody>
+</table>
+
+<h3><span class="phase-tag phase-2">Phase 2</span> Amplitude Encoding (adds MCP4921 DAC)</h3>
+<table>
+  <thead>
+    <tr><th>#</th><th>Item</th><th>Qty</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>8</td><td><strong>MCP4921-E/P</strong> 12-bit SPI DAC (DIP-8)</td><td>1</td><td><strong>New part</strong> — $12.18/2-pack Amazon Prime</td></tr>
+    <tr><td>9</td><td>DuPont M-to-M jumper wires</td><td>4</td><td>MCP4921 → Arduino SPI + power</td></tr>
+    <tr><td>10</td><td>DuPont M-to-F jumper wire</td><td>1</td><td>MCP4921 CS → Arduino D9</td></tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>Total new wires:</strong> Phase 1 = <strong>7 jumpers</strong>. Phase 2 adds <strong>5 more</strong>.
+  Zero soldering — all breadboard or DuPont connections.
+</div>
+
+<!-- ─── SIGNAL PATH ─── -->
+<h2>2. Signal Path</h2>
+
+<h3><span class="phase-tag phase-1">Phase 1</span> Binary ON/OFF Drive</h3>
+<pre class="diagram">
+  ┌───────────────┐      SPI (D10 FSYNC, D11 MOSI, D13 SCK)
+  │  Arduino Nano │─────────────────────────────────────────┐
+  │  (USB serial) │    relay select D2–D9                   │
+  └───────┬───────┘──────────────┐                          │
+          │ USB                  │                          │
+          ▼                      ▼                          ▼
+     ┌─────────┐       ┌──────────────┐           ┌───────────────┐
+     │  macOS  │       │  8-CH Relay  │           │  AD9833 DDS   │
+     │ Python  │       │  Module      │           │  Module       │
+     └─────────┘       │  (active-LOW)│           │  (breakout)   │
+                       └──────┬───────┘           └───────┬───────┘
+                              │                           │
+          ┌───── RX PATH ─────┤         ┌── TX PATH ──────┘
+          │   (relay-switched)│         │  (always driven)
+          │                   │         │
+          │                   │         ▼
+          │                   │  ┌──────────────────┐
+          │                   │  │  TX PZTs (×5)    │ AD9833 OUT → all SW PZTs
+          │                   │  │  (SW corner,     │ wired in parallel
+          │                   │  │   all plates)    │ (replaces PicoScope AWG)
+          │                   │  └──────┬───────────┘
+          │                   │         │ acoustic wave through glass
+          │                   │         ▼
+          │                   │  ┌──────────────────┐
+          │                   └──│  RX PZTs (×8)    │ NE + NW pickups per plate
+          │                      │  relay NO → COM  │ one selected at a time
+          │                      └──────┬───────────┘
+          │                             │ relay COM bus (selected RX signal)
+          │                             ▼
+          │                      ┌──────────────────┐
+          └─────────────────────►│  PicoScope 2204A │ Ch A = capture only
+                                 │  (AWG unused)    │ No sig_gen calls → 431 Hz
+                                 └──────────────────┘
+</pre>
+
+<h3><span class="phase-tag phase-2">Phase 2</span> Amplitude Encoding (insert MCP4921)</h3>
+<pre class="diagram">
+  AD9833 OUT ──→ MCP4921 VREF (pin 6)      ← sine input as reference
+                 MCP4921 VOUT (pin 8) ──→ TX PZT bus (all plates)
+                                            ↑
+                 Vout = Vref × D/4096       │ amplitude-scaled sine
+                 D set by Arduino SPI       │ (12-bit resolution)
+</pre>
+
+<!-- ─── PAGE BREAK ─── -->
+<div class="page-break"></div>
+
+<!-- ─── PHASE 1 WIRING ─── -->
+<h2>3. Phase 1 Wiring — AD9833 DDS Module</h2>
+
+<h3>AD9833 Module Pinout (typical breakout board)</h3>
+<pre class="diagram">
+  AD9833 Breakout (top view, pins along one edge):
+
+  ┌─────────────────────────────┐
+  │                             │
+  │     AD9833 DDS Module       │
+  │     25 MHz crystal          │
+  │                             │
+  ├──┬──┬──┬──┬──┬──────────────┤
+  │VCC│GND│DAT│CLK│FSY│  OUT    │
+  └──┴──┴──┴──┴──┴──────────────┘
+   │   │   │   │   │     │
+   5V GND D11 D13 D10  →TX PZTs
+</pre>
+
+<h3>Wiring Table (7 jumper wires)</h3>
+<table class="wire-table">
+  <thead>
+    <tr><th>Wire</th><th>From</th><th>To</th><th>Color Suggestion</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><span class="pin-dds">AD9833 VCC</span></td>
+      <td><span class="pin-arduino">Arduino 5V</span></td>
+      <td><span class="color-dot" style="background:#cc0000"></span> Red</td>
+      <td>Power — from breadboard 5V rail</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><span class="pin-dds">AD9833 GND</span></td>
+      <td><span class="pin-arduino">Arduino GND</span></td>
+      <td><span class="color-dot" style="background:#333"></span> Black</td>
+      <td>Ground — from breadboard GND rail</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td><span class="pin-dds">AD9833 DAT (SDATA)</span></td>
+      <td><span class="pin-arduino">Arduino D11 (MOSI)</span></td>
+      <td><span class="color-dot" style="background:#1565c0"></span> Blue</td>
+      <td>SPI data — shared bus</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td><span class="pin-dds">AD9833 CLK (SCLK)</span></td>
+      <td><span class="pin-arduino">Arduino D13 (SCK)</span></td>
+      <td><span class="color-dot" style="background:#f9a825"></span> Yellow</td>
+      <td>SPI clock — shared bus (also LED pin)</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td><span class="pin-dds">AD9833 FSY (FSYNC)</span></td>
+      <td><span class="pin-arduino">Arduino D10</span></td>
+      <td><span class="color-dot" style="background:#e65100"></span> Orange</td>
+      <td>SPI chip-select for AD9833</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td><span class="pin-dds">AD9833 OUT</span></td>
+      <td colspan="2"><span class="pin-relay">TX PZT bus (+)</span></td>
+      <td>Sine output → exciter PZTs in parallel (replaces PicoScope AWG)</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td><span class="pin-dds">AD9833 GND</span></td>
+      <td colspan="2"><span class="pin-relay">TX PZT bus (−)</span></td>
+      <td>Signal return — same ground as PZT leads</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="warning">
+  <strong>D13 shared:</strong> Arduino D13 is both the onboard LED and SPI SCK.
+  The LED will flicker during SPI traffic — this is normal. After <code>SPI.begin()</code>,
+  D13 is fully dedicated to the clock.
+</div>
+
+<h3>Existing Relay Wiring (unchanged)</h3>
+<table>
+  <thead>
+    <tr><th>Arduino Pin</th><th>Relay IN</th><th>Assignment</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="pin-arduino">D2</td><td class="pin-relay">IN1</td><td>Plate 1 (A) NE-RX diagonal</td></tr>
+    <tr><td class="pin-arduino">D3</td><td class="pin-relay">IN2</td><td>Plate 2 (B) NE-RX diagonal</td></tr>
+    <tr><td class="pin-arduino">D4</td><td class="pin-relay">IN3</td><td>Plate 3 (G) NE-RX diagonal</td></tr>
+    <tr><td class="pin-arduino">D5</td><td class="pin-relay">IN4</td><td>Plate 3 (G) NW-RX L-path</td></tr>
+    <tr><td class="pin-arduino">D6</td><td class="pin-relay">IN5</td><td>Plate 4 (D) NE-RX diagonal</td></tr>
+    <tr><td class="pin-arduino">D7</td><td class="pin-relay">IN6</td><td>Plate 4 (D) NW-RX L-path</td></tr>
+    <tr><td class="pin-arduino">D8</td><td class="pin-relay">IN7</td><td>Plate 5 (F) NE-RX diagonal</td></tr>
+    <tr><td class="pin-arduino">D9</td><td class="pin-relay">IN8</td><td>Plate 5 (F) NW-RX L-path</td></tr>
+  </tbody>
+</table>
+
+<h3>PicoScope 2204A Connections</h3>
+<table>
+  <thead>
+    <tr><th>PicoScope Port</th><th>Connection</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pin-pico">Channel A (BNC)</td>
+      <td>Relay COM output (selected RX PZT)</td>
+      <td>Capture only — no sig_gen calls</td>
+    </tr>
+    <tr>
+      <td class="pin-pico">AWG (BNC)</td>
+      <td><em>Disconnected</em></td>
+      <td>AD9833 replaces AWG for drive signal</td>
+    </tr>
+    <tr>
+      <td class="pin-pico">USB</td>
+      <td>macOS</td>
+      <td>ps2000 driver via picosdk</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ─── PAGE BREAK ─── -->
+<div class="page-break"></div>
+
+<!-- ─── PHASE 2 WIRING ─── -->
+<h2>4. Phase 2 Wiring — MCP4921 Amplitude Control</h2>
+
+<p>
+  Insert the MCP4921 between the AD9833 output and the relay COM input.
+  The AD9833 sine feeds into VREF; the DAC scales it by a 12-bit code (0–4095).
+</p>
+
+<h3>MCP4921 DIP-8 Pinout</h3>
+<pre class="diagram">
+         ┌────╥────┐
+  VDD  1 │●   ║    │ 8  VOUT  → relay COM input
+   CS  2 │         │ 7  VSS (GND)
+  SCK  3 │ MCP4921 │ 6  VREF  ← AD9833 OUT
+  SDI  4 │         │ 5  LDAC
+         └─────────┘
+</pre>
+
+<h3>Wiring Table (5 new jumper wires + 1 reroute)</h3>
+<table class="wire-table">
+  <thead>
+    <tr><th>Wire</th><th>From</th><th>To</th><th>Color Suggestion</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>8</td>
+      <td><span class="pin-dds">MCP4921 pin 1 (VDD)</span></td>
+      <td><span class="pin-arduino">Arduino 5V</span></td>
+      <td><span class="color-dot" style="background:#cc0000"></span> Red</td>
+      <td>Power</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><span class="pin-dds">MCP4921 pin 7 (VSS)</span></td>
+      <td><span class="pin-arduino">Arduino GND</span></td>
+      <td><span class="color-dot" style="background:#333"></span> Black</td>
+      <td>Ground</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><span class="pin-dds">MCP4921 pin 2 (CS)</span></td>
+      <td><span class="pin-arduino">Arduino D9</span></td>
+      <td><span class="color-dot" style="background:#4caf50"></span> Green</td>
+      <td>SPI chip-select (separate from AD9833 CS on D10)</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td><span class="pin-dds">MCP4921 pin 3 (SCK)</span></td>
+      <td><span class="pin-arduino">Arduino D13 (SCK)</span></td>
+      <td><span class="color-dot" style="background:#f9a825"></span> Yellow</td>
+      <td>Shared SPI clock bus</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td><span class="pin-dds">MCP4921 pin 4 (SDI)</span></td>
+      <td><span class="pin-arduino">Arduino D11 (MOSI)</span></td>
+      <td><span class="color-dot" style="background:#1565c0"></span> Blue</td>
+      <td>Shared SPI data bus</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td><span class="pin-dds">MCP4921 pin 5 (LDAC)</span></td>
+      <td><span class="gnd">GND</span></td>
+      <td><span class="color-dot" style="background:#333"></span> Black</td>
+      <td>Tie low = output updates immediately on CS rising edge</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Signal Reroute for Phase 2</h3>
+<table>
+  <thead>
+    <tr><th>Connection</th><th>Phase 1</th><th>Phase 2</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="pin-dds">AD9833 OUT</span></td>
+      <td>→ TX PZT bus (wire 6)</td>
+      <td>→ <span class="pin-dds">MCP4921 pin 6 (VREF)</span></td>
+    </tr>
+    <tr>
+      <td><span class="pin-dds">MCP4921 pin 8 (VOUT)</span></td>
+      <td>—</td>
+      <td>→ TX PZT bus (replaces wire 6)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>Phase 2 uses Arduino D9:</strong> This pin was Relay IN8 (Plate 5 NW-RX).
+  If you need all 8 relays <em>and</em> the DAC, move relay 8 to pin A0 and update
+  the firmware. For the temporal proof, relay 5 (Plate D NE) is the primary target,
+  so D9 is available.
+</div>
+
+<div class="success">
+  <strong>MCP4921 multiplying-DAC physics check:</strong><br/>
+  V<sub>out</sub> = V<sub>REF</sub> × D / 4096<br/>
+  Max signal frequency: 95 kHz → required slew rate 0.179 V/µs<br/>
+  MCP4921 output slew rate: 0.55 V/µs — <strong>3× headroom, no distortion</strong><br/>
+  SPI update: ~1 µs at 8 MHz — negligible vs 2.3 ms capture step
+</div>
+
+<!-- ─── PAGE BREAK ─── -->
+<div class="page-break"></div>
+
+<!-- ─── COMPLETE PIN MAP ─── -->
+<h2>5. Arduino Nano Complete Pin Map</h2>
+
+<table>
+  <thead>
+    <tr><th>Pin</th><th>Phase 1</th><th>Phase 2</th><th>Type</th></tr>
+  </thead>
+  <tbody>
+    <tr><td class="pin-arduino">D0 (RX)</td><td colspan="2">Serial RX — reserved</td><td>Serial</td></tr>
+    <tr><td class="pin-arduino">D1 (TX)</td><td colspan="2">Serial TX — reserved</td><td>Serial</td></tr>
+    <tr><td class="pin-arduino">D2</td><td colspan="2">Relay IN1 — Plate A NE</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D3</td><td colspan="2">Relay IN2 — Plate B NE</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D4</td><td colspan="2">Relay IN3 — Plate G NE</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D5</td><td colspan="2">Relay IN4 — Plate G NW</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D6</td><td colspan="2">Relay IN5 — Plate D NE ★</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D7</td><td colspan="2">Relay IN6 — Plate D NW</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D8</td><td colspan="2">Relay IN7 — Plate F NE</td><td>Relay</td></tr>
+    <tr><td class="pin-arduino">D9</td><td>Relay IN8 — Plate F NW</td><td style="background:#f3e5f5"><strong>MCP4921 CS</strong></td><td>Relay → SPI CS</td></tr>
+    <tr><td class="pin-arduino">D10</td><td colspan="2"><strong>AD9833 FSYNC</strong> (CS)</td><td>SPI CS</td></tr>
+    <tr><td class="pin-arduino">D11</td><td colspan="2"><strong>SPI MOSI</strong> (AD9833 DAT + MCP4921 SDI)</td><td>SPI Data</td></tr>
+    <tr><td class="pin-arduino">D12</td><td colspan="2"><em>Available</em></td><td>—</td></tr>
+    <tr><td class="pin-arduino">D13</td><td colspan="2"><strong>SPI SCK</strong> (AD9833 CLK + MCP4921 SCK)</td><td>SPI Clock</td></tr>
+    <tr><td class="pin-arduino">5V</td><td colspan="2">AD9833 VCC, relay VCC, MCP4921 VDD</td><td>Power</td></tr>
+    <tr><td class="pin-arduino">GND</td><td colspan="2">AD9833 GND, relay GND, MCP4921 VSS + LDAC</td><td>Ground</td></tr>
+  </tbody>
+</table>
+
+<p style="font-size:9pt; color:#555">★ Relay 5 = Plate D NE-RX — primary target for temporal proof (best Q mode: 29.9 kHz, Q=218, τ=1.99 ms)</p>
+
+<!-- ─── STEP-BY-STEP ─── -->
+<h2>6. Step-by-Step Assembly</h2>
+
+<h3><span class="phase-tag phase-1">Phase 1</span> — AD9833 DDS (Binary ON/OFF)</h3>
+<ol>
+  <li>Seat the <strong>AD9833 breakout module</strong> in the breadboard (any free rows).</li>
+  <li>Connect <strong class="power">VCC → 5V rail</strong> and <strong class="gnd">GND → GND rail</strong> (wires 1–2).</li>
+  <li>Run <strong style="color:#1565c0">DAT → D11</strong> (wire 3 — SPI MOSI).</li>
+  <li>Run <strong style="color:#f9a825">CLK → D13</strong> (wire 4 — SPI SCK).</li>
+  <li>Run <strong style="color:#e65100">FSY → D10</strong> (wire 5 — chip select).</li>
+  <li>Run <strong>AD9833 OUT → TX PZT bus (+)</strong> — the wire pair that drove exciter PZTs (wire 6).</li>
+      <li>Run <strong>AD9833 GND → TX PZT bus (−)</strong> — signal return (wire 7).</li>
+      <li><strong>Disconnect PicoScope AWG BNC</strong> from TX PZT bus (AD9833 replaces it).</li>
+  <li>Flash <code>relay_controller_dds.ino</code> to the Arduino Nano via Arduino IDE.</li>
+  <li>Verify: open serial monitor at 9600 baud, send <code>F29925</code> — expect <code>DDS:29925</code>.</li>
+</ol>
+
+<h3><span class="phase-tag phase-2">Phase 2</span> — MCP4921 Amplitude Control</h3>
+<ol>
+  <li>Seat the <strong>MCP4921 DIP-8</strong> across the breadboard center channel (pin 1 = top-left).</li>
+  <li>Connect <strong class="power">pin 1 (VDD) → 5V rail</strong> and <strong class="gnd">pin 7 (VSS) → GND rail</strong>.</li>
+  <li>Connect <strong class="gnd">pin 5 (LDAC) → GND rail</strong> (auto-update mode).</li>
+  <li>Run <strong style="color:#4caf50">pin 2 (CS) → Arduino D9</strong> (new CS line).</li>
+  <li>Run <strong style="color:#f9a825">pin 3 (SCK) → D13</strong> (shared SPI clock bus).</li>
+  <li>Run <strong style="color:#1565c0">pin 4 (SDI) → D11</strong> (shared SPI data bus).</li>
+  <li><strong>Move wire 6:</strong> AD9833 OUT → <strong>pin 6 (VREF)</strong> instead of TX PZT bus.</li>
+      <li>Run <strong>pin 8 (VOUT) → TX PZT bus</strong> (amplitude-scaled sine output).</li>
+  <li>Flash updated firmware with MCP4921 support, test amplitude sweep.</li>
+</ol>
+
+<!-- ─── FIRMWARE ─── -->
+<h2>7. Firmware &amp; Software</h2>
+
+<div class="section-cols">
+  <div>
+    <h3>Arduino Firmware</h3>
+    <p><code>tools/relay_controller_dds/relay_controller_dds.ino</code></p>
+    <p>Serial commands (9600 baud, newline-terminated):</p>
+    <table>
+      <tr><th>Command</th><th>Action</th></tr>
+      <tr><td><code>1</code>–<code>8</code></td><td>Select relay (break-before-make)</td></tr>
+      <tr><td><code>0</code> or <code>x</code></td><td>All relays off</td></tr>
+      <tr><td><code>?</code></td><td>Report active relay</td></tr>
+      <tr><td><code>F29925</code></td><td>Set DDS to 29925 Hz</td></tr>
+      <tr><td><code>Foff</code></td><td>Silence DDS (reset)</td></tr>
+      <tr><td><code>D?</code></td><td>Query DDS frequency</td></tr>
+    </table>
+  </div>
+  <div>
+    <h3>Python Scripts</h3>
+    <table>
+      <tr><th>File</th><th>Purpose</th></tr>
+      <tr><td><code>tools/dds_ad9833.py</code></td><td>DDS wrapper class (shared serial)</td></tr>
+      <tr><td><code>tools/temporal_proof.py</code></td><td>Phase 1 temporal proof experiment</td></tr>
+      <tr><td><code>tools/relay_mux.py</code></td><td>Relay mux class (unchanged)</td></tr>
+    </table>
+    <h3>Run Command</h3>
+    <pre class="diagram" style="font-size:7.5pt">source .venv/bin/activate
+DYLD_LIBRARY_PATH="/Applications/PicoScope 7 \
+  T&amp;M Early Access.app/Contents/Resources" \
+  python -u tools/temporal_proof.py \
+  /dev/cu.usbserial-11310</pre>
+  </div>
+</div>
+
+<!-- ─── VERIFICATION ─── -->
+<h2>8. Verification Checklist</h2>
+<ul class="checklist">
+  <li>AD9833 module seated in breadboard, no bent pins</li>
+  <li>5V and GND connected (check with multimeter if unsure)</li>
+  <li>D10 (FSYNC), D11 (MOSI), D13 (SCK) wired to correct AD9833 pins</li>
+  <li>AD9833 OUT + GND wired to TX PZT bus (exciter leads)</li>
+      <li>PicoScope AWG BNC disconnected from TX PZT bus</li>
+      <li>PicoScope Ch A BNC still connected to relay COM output (RX path)</li>
+  <li>Firmware flashed: serial monitor shows <code>OK:0</code> on boot</li>
+  <li>Send <code>F29925</code> → responds <code>DDS:29925</code></li>
+  <li>Send <code>5</code> → responds <code>OK:5</code> (Plate D NE relay)</li>
+  <li>PicoScope shows sine wave at ~29.9 kHz on Ch A</li>
+  <li>Send <code>Foff</code> → signal disappears</li>
+  <li>Run <code>temporal_proof.py</code> — warm-up magnitude &gt; 100</li>
+</ul>
+
+<!-- ─── TROUBLESHOOTING ─── -->
+<h2>9. Troubleshooting</h2>
+<table>
+  <thead><tr><th>Symptom</th><th>Likely Cause</th><th>Fix</th></tr></thead>
+  <tbody>
+    <tr>
+      <td>No <code>DDS:xxxx</code> response</td>
+      <td>Old firmware still on Nano</td>
+      <td>Flash <code>relay_controller_dds.ino</code></td>
+    </tr>
+    <tr>
+      <td><code>DDS:29925</code> but no signal on scope</td>
+      <td>AD9833 OUT not connected to TX PZT bus</td>
+      <td>Check wire 6 (OUT → TX PZTs) and wire 7 (GND return)</td>
+    </tr>
+    <tr>
+      <td>Signal on scope but wrong frequency</td>
+      <td>AD9833 module has non-standard MCLK</td>
+      <td>Check crystal marking: should be 25 MHz. If different, update <code>DDS_MCLK</code> in firmware</td>
+    </tr>
+    <tr>
+      <td>Warm-up magnitude &lt; 100</td>
+      <td>Wrong relay selected or PZT disconnected</td>
+      <td>Verify relay 5 = Plate D NE, check PZT leads</td>
+    </tr>
+    <tr>
+      <td>SPI not working (no frequency change)</td>
+      <td>D11/D13 wired to wrong AD9833 pins</td>
+      <td>DAT=D11 (MOSI), CLK=D13 (SCK), FSY=D10 — check all three</td>
+    </tr>
+    <tr>
+      <td>Relay clicks but no signal path</td>
+      <td>TX PZT wiring reversed or disconnected</td>
+      <td>AD9833 OUT → TX PZT (+), AD9833 GND → TX PZT (−)</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr style="margin-top:16pt"/>
+<p style="font-size:8pt; color:#888; text-align:center">
+  CWM Project — Coherent Wave Memory &nbsp;|&nbsp; wcfoma/companion/temporal_reservoir_wiring.html
+</p>
+
+</body>
+</html>

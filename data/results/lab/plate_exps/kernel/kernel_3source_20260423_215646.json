@@ -1,0 +1,99 @@
+{
+  "timestamp": "20260423_215646",
+  "plate": "4_NE",
+  "relay_ch": 5,
+  "sources": [
+    "AD9833_DDS1",
+    "AD9833_DDS2",
+    "PicoScope_AWG"
+  ],
+  "n_carriers": 3,
+  "carrier_freqs": [
+    29300.0,
+    47800.0,
+    34900.0
+  ],
+  "readout_freqs": [
+    5600,
+    10800,
+    12900,
+    18500,
+    22000,
+    23700,
+    29300,
+    34900,
+    40500,
+    47800,
+    60700,
+    64200,
+    66300,
+    77100,
+    82700
+  ],
+  "im_labels": {
+    "29300": "f0",
+    "47800": "f1",
+    "34900": "f2",
+    "18500": "|f0-f1|",
+    "77100": "f0+f1",
+    "10800": "2f0-f1",
+    "5600": "|f0-f2|",
+    "64200": "f0+f2",
+    "23700": "2f0-f2",
+    "66300": "2f1-f0",
+    "12900": "|f1-f2|",
+    "82700": "f1+f2",
+    "60700": "2f1-f2",
+    "40500": "2f2-f0",
+    "22000": "2f2-f1"
+  },
+  "n_readout": 15,
+  "n_live": 5,
+  "live_freqs": [
+    12900,
+    29300,
+    34900,
+    47800,
+    60700
+  ],
+  "n_avg": 20,
+  "prescan_avg": 24,
+  "awg_mvpp": 2000,
+  "results": {
+    "effective_rank": 5,
+    "sv_entropy": 1.0833,
+    "top_svs": [
+      1.0,
+      0.7787,
+      0.5995,
+      0.4784,
+      0.1371
+    ],
+    "kernel_alignment": {
+      "linear": 0.7087,
+      "rbf": 0.7363,
+      "poly_d2": 0.7663,
+      "poly_d3": 0.7264
+    },
+    "classification": {
+      "parity_plate": 0.4286,
+      "parity_linear": 0.0,
+      "parity_quadratic": 0.0,
+      "majority_plate": 0.4286,
+      "majority_linear": 0.5714,
+      "and01_plate": 0.8571,
+      "and01_linear": 0.7143,
+      "parity_rff": 0.2857
+    },
+    "function_approx": {
+      "pairwise_plate": 1.0894,
+      "pairwise_linear": 0.3749,
+      "full_product_plate": 2.8559,
+      "full_product_linear": 1.9223,
+      "sincos_plate": 0.1864,
+      "sincos_linear": 0.0685,
+      "pairwise_rff": 1.2053,
+      "full_product_rff": 2.1001
+    }
+  }
+}

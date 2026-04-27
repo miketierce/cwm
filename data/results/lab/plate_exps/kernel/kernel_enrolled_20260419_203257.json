@@ -1,0 +1,56 @@
+{
+  "timestamp": "20260419_203257",
+  "plate": "4_NE",
+  "n_carriers": 4,
+  "carrier_freqs": [
+    29300.0,
+    29950.0,
+    34900.0,
+    47800.0
+  ],
+  "n_readout": 27,
+  "n_live": 9,
+  "n_avg": 20,
+  "n_reps": 2,
+  "results": {
+    "effective_rank": 9,
+    "sv_entropy": 1.9634,
+    "top_svs": [
+      1.0,
+      0.897,
+      0.8395,
+      0.6826,
+      0.5754,
+      0.513,
+      0.4202,
+      0.2366,
+      0.0121
+    ],
+    "kernel_alignment": {
+      "linear": 0.797,
+      "rbf": 0.8267,
+      "poly_d2": 0.7139,
+      "poly_d3": 0.5756
+    },
+    "classification": {
+      "parity_plate": 0.2,
+      "parity_linear": 0.0,
+      "parity_quadratic": 0.0,
+      "majority_plate": 0.4,
+      "majority_linear": 1.0,
+      "product_plate": 0.7333,
+      "product_linear": 1.0,
+      "parity_rff": 0.0667
+    },
+    "function_approx": {
+      "pairwise_plate": 6.4134,
+      "pairwise_linear": 0.1663,
+      "full_product_plate": 4.2413,
+      "full_product_linear": 1.5299,
+      "nonlinear_plate": 2.3627,
+      "nonlinear_linear": 0.0085,
+      "pairwise_rff": 1.4325,
+      "full_product_rff": 2.4408
+    }
+  }
+}

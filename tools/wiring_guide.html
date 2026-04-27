@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>CWM Breadboard Wiring Guide</title>
+		<style>
+			* {
+				box-sizing: border-box;
+				margin: 0;
+				padding: 0;
+			}
+			body {
+				font-family: 'Segoe UI', system-ui, sans-serif;
+				background: #fff;
+				padding: 20px;
+				max-width: 900px;
+				margin: 0 auto;
+				color: #222;
+				line-height: 1.5;
+			}
+			h1 {
+				font-size: 22px;
+				margin-bottom: 4px;
+			}
+			.intro {
+				color: #666;
+				font-size: 13px;
+				margin-bottom: 16px;
+			}
+			.key-concept {
+				background: #fff3f3;
+				border: 2px solid #c44;
+				border-radius: 8px;
+				padding: 14px 18px;
+				margin-bottom: 20px;
+			}
+			.key-concept h2 {
+				color: #c44;
+				font-size: 16px;
+				margin-bottom: 6px;
+			}
+			.key-concept pre {
+				font-family: 'Courier New', monospace;
+				font-size: 13px;
+				line-height: 1.6;
+				color: #333;
+				white-space: pre;
+			}
+
+			.section {
+				border: 1px solid #ddd;
+				border-radius: 8px;
+				margin-bottom: 16px;
+				overflow: hidden;
+			}
+			.section-header {
+				background: #f5f5f5;
+				padding: 10px 16px;
+				font-weight: bold;
+				font-size: 15px;
+				border-bottom: 1px solid #ddd;
+			}
+			.section-header .num {
+				display: inline-block;
+				width: 28px;
+				height: 28px;
+				background: #333;
+				color: #fff;
+				border-radius: 50%;
+				text-align: center;
+				line-height: 28px;
+				font-size: 14px;
+				margin-right: 8px;
+			}
+			.section-body {
+				padding: 14px 16px;
+			}
+
+			.pin-table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 8px 0;
+				font-size: 14px;
+			}
+			.pin-table th {
+				background: #f0f0f0;
+				text-align: left;
+				padding: 6px 12px;
+				border: 1px solid #ddd;
+				font-size: 12px;
+			}
+			.pin-table td {
+				padding: 6px 12px;
+				border: 1px solid #ddd;
+			}
+			.pin-table .from {
+				font-weight: bold;
+				font-family: 'Courier New', monospace;
+				font-size: 15px;
+			}
+			.pin-table .to {
+				font-weight: bold;
+				font-family: 'Courier New', monospace;
+				font-size: 15px;
+			}
+			.pin-table .wire-red td {
+				background: #fff5f5;
+			}
+			.pin-table .wire-black td {
+				background: #f5f5f5;
+			}
+			.pin-table .wire-blue td {
+				background: #f0f5ff;
+			}
+			.pin-table .wire-green td {
+				background: #f0fff0;
+			}
+			.pin-table .wire-orange td {
+				background: #fff8f0;
+			}
+			.pin-table .wire-purple td {
+				background: #f8f0ff;
+			}
+			.pin-table .wire-yellow td {
+				background: #fffde0;
+			}
+
+			.note {
+				background: #f8f8ff;
+				border-left: 3px solid #48a;
+				padding: 8px 12px;
+				margin: 8px 0;
+				font-size: 13px;
+				color: #336;
+			}
+			.warn {
+				background: #fffde0;
+				border-left: 3px solid #a80;
+				padding: 8px 12px;
+				margin: 8px 0;
+				font-size: 13px;
+				color: #663;
+			}
+
+			.nano-map {
+				font-family: 'Courier New', monospace;
+				font-size: 14px;
+				line-height: 1.7;
+				background: #f8f8f0;
+				padding: 12px 16px;
+				border-radius: 6px;
+				margin: 10px 0;
+				white-space: pre;
+			}
+
+			.flow-diagram {
+				font-family: 'Courier New', monospace;
+				font-size: 14px;
+				line-height: 1.8;
+				background: #f0fff0;
+				padding: 12px 16px;
+				border-radius: 6px;
+				margin: 10px 0;
+				white-space: pre;
+			}
+
+			.breadboard-row {
+				font-family: 'Courier New', monospace;
+				font-size: 14px;
+				line-height: 1.6;
+				background: #f8f8f0;
+				padding: 10px 14px;
+				border-radius: 6px;
+				margin: 8px 0;
+				white-space: pre;
+			}
+
+			.checklist {
+				list-style: none;
+				padding: 0;
+			}
+			.checklist li {
+				padding: 4px 0 4px 28px;
+				position: relative;
+				font-size: 14px;
+			}
+			.checklist li::before {
+				content: '\2610';
+				position: absolute;
+				left: 4px;
+				font-size: 16px;
+			}
+			.checklist li.heading {
+				padding-left: 0;
+				font-weight: bold;
+			}
+			.checklist li.heading::before {
+				content: '';
+			}
+			.checklist li.spacer {
+				padding: 0;
+				height: 8px;
+			}
+			.checklist li.spacer::before {
+				content: '';
+			}
+
+			@media print {
+				body {
+					padding: 10px;
+					font-size: 11px;
+				}
+				.section {
+					break-inside: avoid;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<h1>CWM Breadboard Wiring Guide</h1>
+		<p class="intro">
+			Nano Ard2 (DDS) at D2&#8211;H16 &nbsp;|&nbsp; AD9833 boards pins in col C
+			&nbsp;|&nbsp; Ard1 (relay) is off-board
+		</p>
+
+		<!-- ==================== KEY CONCEPT ==================== -->
+		<div class="key-concept">
+			<h2>How a Breadboard Works</h2>
+			<pre>
+Each row has TWO groups of 5 holes, separated by the center gap:
+
+  LEFT SIDE              GAP           RIGHT SIDE
+  A  B  C  D  E          |          F  G  H  I  J
+  &#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;                     &#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;&#9472;&#9472;&#9679;     &lt;-- Row N
+
+The 5 holes on each side are connected by a metal strip INSIDE.
+  A5, B5, C5, D5, E5 = one electrical node.
+  F5, G5, H5, I5, J5 = another node.
+
+To connect LEFT to RIGHT you must bridge the gap with a wire.
+
+The + and - rails along the top/bottom run the full board length.
+
+IMPORTANT: Only ONE wire fits in each hole!
+If two wires need the same row, use two DIFFERENT holes
+in that row -- the board connects them for you.
+</pre
+			>
+		</div>
+
+		<!-- ==================== NANO PIN MAP ==================== -->
+		<div class="section">
+			<div class="section-header">
+				Your Arduino Nano &#8212; What Pin Is Where
+			</div>
+			<div class="section-body">
+				<p>
+					Nano is plugged in at rows 2&#8211;16, pins in columns D (left) and H
+					(right).
+				</p>
+				<div class="nano-map">
+					D (left) H (right) +------------------+ Row 2 -- |
+					<b style="color: #07a">D13/SCK</b> D12 | Row 3 -- | 3V3
+					<b style="color: #0a0">D11/MOSI</b>| Row 4 -- | AREF
+					<b style="color: #f80">D10/FS1</b> | Row 5 -- | A0
+					<b style="color: #b0e">D9/FS2</b> | Row 6 -- | A1 D8 | Row 7 -- | A2
+					D7 | Row 8 -- | A3 D6 | Row 9 -- | A4 D5 | Row 10 -- | A5 D4 | Row 11
+					-- | A6 D3 | Row 12 -- | A7 D2 | Row 13 -- |
+					<b style="color: #c00">5V</b> GND | Row 14 -- | RST RST | Row 15 -- |
+					<b style="color: #333">GND</b> RX0 | Row 16 -- | VIN TX1 |
+					+------------------+ USB at top (row 2 end)
+				</div>
+				<p class="note">
+					<strong>Left pins (col D)</strong> are accessible from columns A, B, C
+					(same row, left side).<br />
+					<strong>Right pins (col H)</strong> are accessible from columns I, J
+					(same row, right side).<br />
+					Columns E, F, G are under the Nano body &#8212; you can't plug into
+					them.
+				</p>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 1: POWER ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">1</span> Power &#8212; 2 wires
+			</div>
+			<div class="section-body">
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+						<th>Wire Color</th>
+					</tr>
+					<tr class="wire-red">
+						<td>&#9312;</td>
+						<td class="from">C13</td>
+						<td class="to">+ rail</td>
+						<td>Nano 5V &#8594; power rail</td>
+						<td>Red</td>
+					</tr>
+					<tr class="wire-black">
+						<td>&#9313;</td>
+						<td class="from">C15</td>
+						<td class="to">- rail</td>
+						<td>Nano GND &#8594; ground rail</td>
+						<td>Black</td>
+					</tr>
+				</table>
+				<p class="note">
+					C13 is connected to D13 (the Nano's 5V pin) inside the breadboard.<br />
+					C15 is connected to D15 (the Nano's GND pin) inside the breadboard.
+				</p>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 2: SPI BUS ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">2</span> SPI Bus &#8212; 2 wires
+			</div>
+			<div class="section-body">
+				<p>
+					We create a "CLK bus" at row 19 and a "DAT bus" at row 20. Both AD9833
+					boards tap into these later.
+				</p>
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+						<th>Wire Color</th>
+					</tr>
+					<tr class="wire-blue">
+						<td>&#9314;</td>
+						<td class="from">A2</td>
+						<td class="to">A19</td>
+						<td>SCK &#8594; clock bus (straight down col A)</td>
+						<td>Blue</td>
+					</tr>
+					<tr class="wire-green">
+						<td>&#9315;</td>
+						<td class="from">I3</td>
+						<td class="to">A20</td>
+						<td>MOSI &#8594; data bus (right side, around, to left)</td>
+						<td>Green</td>
+					</tr>
+				</table>
+				<p class="note">
+					<strong>&#9314;</strong> &#8212; A2 connects to D2 (SCK) inside the
+					board. Wire runs straight down column A to row 19.<br />
+					<strong>&#9315;</strong> &#8212; I3 connects to H3 (MOSI). Route wire
+					along the right edge, down past the Nano, then across to A20 on the
+					left.
+				</p>
+				<div class="breadboard-row">
+					After step 2, the bus rows look like this: Row 19 (CLK): <b>A19</b> --
+					B19 -- C19 -- D19 -- E19 wire &#9314; is in A19 (&#9314;) Row 20
+					(DAT): <b>A20</b> -- B20 -- C20 -- D20 -- E20 wire &#9315; is in A20
+					(&#9315;) 4 holes free in each row for the AD9833 boards.
+				</div>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 3: FSYNC ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">3</span> FSYNC Wires &#8212; 2 wires
+			</div>
+			<div class="section-body">
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+						<th>Wire Color</th>
+					</tr>
+					<tr class="wire-orange">
+						<td>&#9316;</td>
+						<td class="from">I4</td>
+						<td class="to">A26</td>
+						<td>D10 &#8594; Board #1 FSYNC</td>
+						<td>Orange</td>
+					</tr>
+					<tr class="wire-purple">
+						<td>&#9317;</td>
+						<td class="from">I5</td>
+						<td class="to">A36</td>
+						<td>D9 &#8594; Board #2 FSYNC</td>
+						<td>Purple</td>
+					</tr>
+				</table>
+				<p class="note">
+					<strong>&#9316;</strong> &#8212; I4 connects to H4 (D10). Route along
+					the right edge, down, then across to A26.<br />
+					(A26 connects to C26 where Board #1's FSYNC pin will be.)<br /><br />
+					<strong>&#9317;</strong> &#8212; I5 connects to H5 (D9). Same routing
+					to A36.<br />
+					(A36 connects to C36 where Board #2's FSYNC pin will be.)
+				</p>
+				<p class="warn">
+					These are the longest wires. Route them along the outside edge of the
+					board to keep things tidy.
+				</p>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 4: BOARD #1 ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">4</span> AD9833 Board #1 &#8212; plug in + 6 wires
+			</div>
+			<div class="section-body">
+				<p class="warn">
+					<strong>First:</strong> Plug Board #1's 7-pin header into column C,
+					rows 22&#8211;28. The board body covers columns D, E, and part of F/G.
+					That's fine &#8212; all wires route through columns A and B.
+				</p>
+				<table class="pin-table">
+					<tr>
+						<th>Pin</th>
+						<th>Hole</th>
+						<th>Signal</th>
+					</tr>
+					<tr>
+						<td>1 (top)</td>
+						<td class="from">C22</td>
+						<td>VCC</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td class="from">C23</td>
+						<td>DGND</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td class="from">C24</td>
+						<td>SDATA</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td class="from">C25</td>
+						<td>SCLK</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td class="from">C26</td>
+						<td>FSYNC &#8212; already wired via &#9316; (at A26)</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td class="from">C27</td>
+						<td>AGND</td>
+					</tr>
+					<tr>
+						<td>7 (bottom)</td>
+						<td class="from">C28</td>
+						<td>OUT</td>
+					</tr>
+				</table>
+
+				<br />
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+						<th>Wire Color</th>
+					</tr>
+					<tr class="wire-red">
+						<td>&#9318;</td>
+						<td class="from">A22</td>
+						<td class="to">+ rail</td>
+						<td>VCC &#8594; power</td>
+						<td>Red</td>
+					</tr>
+					<tr class="wire-black">
+						<td>&#9319;</td>
+						<td class="from">A23</td>
+						<td class="to">- rail</td>
+						<td>DGND &#8594; ground</td>
+						<td>Black</td>
+					</tr>
+					<tr class="wire-green">
+						<td>&#9320;</td>
+						<td class="from">B24</td>
+						<td class="to">B20</td>
+						<td>SDATA &#8594; DAT bus</td>
+						<td>Green</td>
+					</tr>
+					<tr class="wire-blue">
+						<td>&#9321;</td>
+						<td class="from">B25</td>
+						<td class="to">B19</td>
+						<td>SCLK &#8594; CLK bus</td>
+						<td>Blue</td>
+					</tr>
+					<tr class="wire-black">
+						<td>&#9322;</td>
+						<td class="from">A27</td>
+						<td class="to">- rail</td>
+						<td>AGND &#8594; ground</td>
+						<td>Black</td>
+					</tr>
+					<tr class="wire-yellow">
+						<td>&#9323;</td>
+						<td class="from">A28</td>
+						<td class="to">A42</td>
+						<td>OUT &#8594; summing row 42</td>
+						<td>Yellow</td>
+					</tr>
+				</table>
+				<p class="note">
+					<strong>No FSYNC wire here</strong> &#8212; already done in step 3
+					(wire &#9316; at A26 connects to C26).
+				</p>
+				<div class="breadboard-row">
+					After step 4, the bus rows: Row 19 (CLK): <b>A19</b> -- <b>B19</b> --
+					C19 -- D19 -- E19 3 holes still free (&#9314;) (&#9321;) Row 20 (DAT):
+					<b>A20</b> -- <b>B20</b> -- C20 -- D20 -- E20 3 holes still free
+					(&#9315;) (&#9320;)
+				</div>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 5: BOARD #2 ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">5</span> AD9833 Board #2 &#8212; plug in + 6 wires
+			</div>
+			<div class="section-body">
+				<p class="warn">
+					<strong>First:</strong> Plug Board #2's 7-pin header into column C,
+					rows 32&#8211;38.
+				</p>
+				<table class="pin-table">
+					<tr>
+						<th>Pin</th>
+						<th>Hole</th>
+						<th>Signal</th>
+					</tr>
+					<tr>
+						<td>1 (top)</td>
+						<td class="from">C32</td>
+						<td>VCC</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td class="from">C33</td>
+						<td>DGND</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td class="from">C34</td>
+						<td>SDATA</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td class="from">C35</td>
+						<td>SCLK</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td class="from">C36</td>
+						<td>FSYNC &#8212; already wired via &#9317; (at A36)</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td class="from">C37</td>
+						<td>AGND</td>
+					</tr>
+					<tr>
+						<td>7 (bottom)</td>
+						<td class="from">C38</td>
+						<td>OUT</td>
+					</tr>
+				</table>
+
+				<br />
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+						<th>Wire Color</th>
+					</tr>
+					<tr class="wire-red">
+						<td>&#9324;</td>
+						<td class="from">A32</td>
+						<td class="to">+ rail</td>
+						<td>VCC &#8594; power</td>
+						<td>Red</td>
+					</tr>
+					<tr class="wire-black">
+						<td>&#9325;</td>
+						<td class="from">A33</td>
+						<td class="to">- rail</td>
+						<td>DGND &#8594; ground</td>
+						<td>Black</td>
+					</tr>
+					<tr class="wire-green">
+						<td>&#9326;</td>
+						<td class="from">B34</td>
+						<td class="to">C20</td>
+						<td>SDATA &#8594; DAT bus</td>
+						<td>Green</td>
+					</tr>
+					<tr class="wire-blue">
+						<td>&#9327;</td>
+						<td class="from">B35</td>
+						<td class="to">C19</td>
+						<td>SCLK &#8594; CLK bus</td>
+						<td>Blue</td>
+					</tr>
+					<tr class="wire-black">
+						<td>&#9328;</td>
+						<td class="from">A37</td>
+						<td class="to">- rail</td>
+						<td>AGND &#8594; ground</td>
+						<td>Black</td>
+					</tr>
+					<tr class="wire-yellow">
+						<td>&#9329;</td>
+						<td class="from">A38</td>
+						<td class="to">A43</td>
+						<td>OUT &#8594; summing row 43</td>
+						<td>Yellow</td>
+					</tr>
+				</table>
+				<p class="warn">
+					<strong>Note the different holes!</strong> Board #2's data goes to
+					<strong>C20</strong> (not B20) and clock goes to
+					<strong>C19</strong> (not B19) because Board #1 already used B20 and
+					B19. Same row = same signal, just a different hole.
+				</p>
+				<div class="breadboard-row">
+					After step 5, the bus rows: Row 19 (CLK): <b>A19</b> -- <b>B19</b> --
+					<b>C19</b> -- D19 -- E19 2 holes still free (&#9314;) (&#9321;)
+					(&#9327;) Row 20 (DAT): <b>A20</b> -- <b>B20</b> -- <b>C20</b> -- D20
+					-- E20 2 holes still free (&#9315;) (&#9320;) (&#9326;) All 3 wires in
+					each row carry the same signal -- the board does it.
+				</div>
+			</div>
+		</div>
+
+		<!-- ==================== STEP 6: SUMMING NETWORK ==================== -->
+		<div class="section">
+			<div class="section-header">
+				<span class="num">6</span> Summing Network &#8212; 2 bridges + 3
+				resistors + PicoScope + PZT
+			</div>
+			<div class="section-body">
+				<p>
+					This is where the 3 signals get combined. Uses the
+					<strong>right half</strong> of rows 42&#8211;45.
+				</p>
+
+				<div
+					class="key-concept"
+					style="margin-top: 10px">
+					<h2>How the Summing Works</h2>
+					<pre>
+The right half of each row (F-G-H-I-J) is one connected strip:
+
+Row 42:  F42 -- G42 -- H42 -- I42 -- J42    OUT1 arrives here
+Row 43:  F43 -- G43 -- H43 -- I43 -- J43    OUT2 arrives here
+Row 44:  F44 -- G44 -- H44 -- I44 -- J44    AWG arrives here
+Row 45:  F45 -- G45 -- H45 -- I45 -- J45    SUM node (to PZT)
+
+Each resistor connects one signal row DOWN to the sum row.
+Each leg goes in its OWN hole. Row 45 ties them together.
+
+               Row 42     Row 43     Row 44
+              (OUT1)     (OUT2)     (AWG)
+                |          |          |
+                R1         R2         R3
+               10k        10k        10k
+                |          |          |
+                +----------+----------+--- Row 45 = SUM
+                                              |
+                                         PZT drive out
+</pre
+					>
+				</div>
+
+				<p style="margin-top: 12px">
+					<strong>6a. Bridge the gap</strong> (OUT signals are on the left,
+					resistors on the right)
+				</p>
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+					</tr>
+					<tr class="wire-yellow">
+						<td>&#9330;</td>
+						<td class="from">E42</td>
+						<td class="to">F42</td>
+						<td>Bridge OUT1 across gap to right side</td>
+					</tr>
+					<tr class="wire-yellow">
+						<td>&#9331;</td>
+						<td class="from">E43</td>
+						<td class="to">F43</td>
+						<td>Bridge OUT2 across gap to right side</td>
+					</tr>
+				</table>
+				<p class="note">
+					Short jumper wires crossing the center gap.<br />
+					E42 is on the left side (connected to A42 where OUT1 arrived via wire
+					&#9323;).<br />
+					F42 is the right side (where the resistor will connect).
+				</p>
+
+				<p style="margin-top: 12px">
+					<strong>6b. Three 10k&#937; resistors</strong>
+				</p>
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>Leg 1 (signal)</th>
+						<th>Leg 2 (sum)</th>
+						<th>What</th>
+					</tr>
+					<tr>
+						<td>&#12881;</td>
+						<td class="from">G42</td>
+						<td class="to">F45</td>
+						<td>R1 &#8212; OUT1 to sum (spans 3 rows)</td>
+					</tr>
+					<tr>
+						<td>&#12882;</td>
+						<td class="from">G43</td>
+						<td class="to">G45</td>
+						<td>R2 &#8212; OUT2 to sum (spans 2 rows)</td>
+					</tr>
+					<tr>
+						<td>&#12883;</td>
+						<td class="from">G44</td>
+						<td class="to">H45</td>
+						<td>R3 &#8212; AWG to sum (spans 1 row)</td>
+					</tr>
+				</table>
+				<p class="note">
+					Bend the resistor leads as needed.<br />
+					The three bottom legs land in <strong>F45, G45, H45</strong> &#8212;
+					three different holes, but all connected because they're in the same
+					row (45, right side).
+				</p>
+
+				<p style="margin-top: 12px"><strong>6c. PicoScope AWG</strong></p>
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+					</tr>
+					<tr>
+						<td>&#12884;</td>
+						<td class="from">PicoScope AWG hot wire</td>
+						<td class="to">F44</td>
+						<td>AWG signal &#8594; row 44 right side</td>
+					</tr>
+					<tr>
+						<td>&#12885;</td>
+						<td class="from">PicoScope AWG gnd wire</td>
+						<td class="to">- rail</td>
+						<td>AWG ground &#8594; ground rail</td>
+					</tr>
+				</table>
+
+				<p style="margin-top: 12px"><strong>6d. Output to PZT</strong></p>
+				<table class="pin-table">
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>What</th>
+					</tr>
+					<tr style="background: #fff0f0">
+						<td>&#12886;</td>
+						<td class="from">I45</td>
+						<td class="to">PZT drive wire (hot)</td>
+						<td>Combined signal &#8594; piezo</td>
+					</tr>
+					<tr>
+						<td>&#12887;</td>
+						<td class="from">PZT gnd wire</td>
+						<td class="to">- rail</td>
+						<td>Piezo ground &#8594; ground rail</td>
+					</tr>
+				</table>
+
+				<div class="breadboard-row">
+					Final state of summing rows (right half only): Row 42: <b>F42</b> --
+					<b>G42</b> -- H42 -- I42 -- J42 (&#9330;) (R1 top) Row 43:
+					<b>F43</b> -- <b>G43</b> -- H43 -- I43 -- J43 (&#9331;) (R2 top) Row
+					44: <b>F44</b> -- <b>G44</b> -- H44 -- I44 -- J44 (&#12884;) (R3 top)
+					Row 45: <b>F45</b> -- <b>G45</b> -- <b>H45</b> -- <b>I45</b> -- J45
+					SUM NODE (R1 bot) (R2 bot) (R3 bot) (&#12886;) Every used hole has
+					exactly ONE thing in it. Row 45 connects them all automatically.
+				</div>
+			</div>
+		</div>
+
+		<!-- ==================== SIGNAL FLOW ==================== -->
+		<div class="section">
+			<div class="section-header">Signal Flow Summary</div>
+			<div class="section-body">
+				<div class="flow-diagram">
+					AD9833 #1 --OUT(C28)--> A28 --> A42 --> E42 --bridge--> F42 then
+					R1(10k): G42 --> F45 --+ | AD9833 #2 --OUT(C38)--> A38 --> A43 --> E43
+					--bridge--> F43 then R2(10k): G43 --> G45 --+-- ROW 45 = SUM |
+					PicoScope AWG hot --> F44 | --> I45 then R3(10k): G44 --> H45 --+ -->
+					PZT drive
+				</div>
+			</div>
+		</div>
+
+		<!-- ==================== FULL CHECKLIST ==================== -->
+		<div class="section">
+			<div class="section-header">
+				Print Checklist &#8212; check off each wire as you go
+			</div>
+			<div class="section-body">
+				<ul class="checklist">
+					<li class="heading">POWER</li>
+					<li>
+						<strong>&#9312;</strong> C13 &#8594; + rail
+						<span style="color: #999">(Nano 5V)</span>
+					</li>
+					<li>
+						<strong>&#9313;</strong> C15 &#8594; - rail
+						<span style="color: #999">(Nano GND)</span>
+					</li>
+					<li class="spacer">&nbsp;</li>
+					<li class="heading">SPI BUS</li>
+					<li>
+						<strong>&#9314;</strong> A2 &#8594; A19
+						<span style="color: #999">(SCK &#8594; CLK bus)</span>
+					</li>
+					<li>
+						<strong>&#9315;</strong> I3 &#8594; A20
+						<span style="color: #999">(MOSI &#8594; DAT bus)</span>
+					</li>
+					<li class="spacer">&nbsp;</li>
+					<li class="heading">FSYNC</li>
+					<li>
+						<strong>&#9316;</strong> I4 &#8594; A26
+						<span style="color: #999">(D10 &#8594; FSYNC #1)</span>
+					</li>
+					<li>
+						<strong>&#9317;</strong> I5 &#8594; A36
+						<span style="color: #999">(D9 &#8594; FSYNC #2)</span>
+					</li>
+					<li class="spacer">&nbsp;</li>
+					<li class="heading">BOARD #1 &#8212; plug header into C22-C28</li>
+					<li>
+						<strong>&#9318;</strong> A22 &#8594; + rail
+						<span style="color: #999">(VCC)</span>
+					</li>
+					<li>
+						<strong>&#9319;</strong> A23 &#8594; - rail
+						<span style="color: #999">(DGND)</span>
+					</li>
+					<li>
+						<strong>&#9320;</strong> B24 &#8594; B20
+						<span style="color: #999">(SDATA &#8594; DAT bus)</span>
+					</li>
+					<li>
+						<strong>&#9321;</strong> B25 &#8594; B19
+						<span style="color: #999">(SCLK &#8594; CLK bus)</span>
+					</li>
+					<li>
+						<strong>&#9322;</strong> A27 &#8594; - rail
+						<span style="color: #999">(AGND)</span>
+					</li>
+					<li>
+						<strong>&#9323;</strong> A28 &#8594; A42
+						<span style="color: #999">(OUT &#8594; summing)</span>
+					</li>
+					<li class="spacer">&nbsp;</li>
+					<li class="heading">BOARD #2 &#8212; plug header into C32-C38</li>
+					<li>
+						<strong>&#9324;</strong> A32 &#8594; + rail
+						<span style="color: #999">(VCC)</span>
+					</li>
+					<li>
+						<strong>&#9325;</strong> A33 &#8594; - rail
+						<span style="color: #999">(DGND)</span>
+					</li>
+					<li>
+						<strong>&#9326;</strong> B34 &#8594; <strong>C20</strong>
+						<span style="color: #c44"
+							>(SDATA &#8594; DAT bus -- different hole than &#9320;)</span
+						>
+					</li>
+					<li>
+						<strong>&#9327;</strong> B35 &#8594; <strong>C19</strong>
+						<span style="color: #c44"
+							>(SCLK &#8594; CLK bus -- different hole than &#9321;)</span
+						>
+					</li>
+					<li>
+						<strong>&#9328;</strong> A37 &#8594; - rail
+						<span style="color: #999">(AGND)</span>
+					</li>
+					<li>
+						<strong>&#9329;</strong> A38 &#8594; A43
+						<span style="color: #999">(OUT &#8594; summing)</span>
+					</li>
+					<li class="spacer">&nbsp;</li>
+					<li class="heading">SUMMING NETWORK (right half of board)</li>
+					<li>
+						<strong>&#9330;</strong> E42 &#8594; F42
+						<span style="color: #999">(bridge OUT1 across gap)</span>
+					</li>
+					<li>
+						<strong>&#9331;</strong> E43 &#8594; F43
+						<span style="color: #999">(bridge OUT2 across gap)</span>
+					</li>
+					<li><strong>&#12881;</strong> R1 10k: G42 &#8594; F45</li>
+					<li><strong>&#12882;</strong> R2 10k: G43 &#8594; G45</li>
+					<li><strong>&#12883;</strong> R3 10k: G44 &#8594; H45</li>
+					<li><strong>&#12884;</strong> AWG hot &#8594; F44</li>
+					<li><strong>&#12885;</strong> AWG gnd &#8594; - rail</li>
+					<li><strong>&#12886;</strong> I45 &#8594; PZT hot wire</li>
+					<li><strong>&#12887;</strong> PZT gnd &#8594; - rail</li>
+				</ul>
+				<p style="margin-top: 16px; color: #666; font-size: 13px">
+					<strong
+						>Total: 22 jumper wires + 3 resistors + 2 external cables (AWG,
+						PZT)</strong
+					>
+				</p>
+			</div>
+		</div>
+	</body>
+</html>

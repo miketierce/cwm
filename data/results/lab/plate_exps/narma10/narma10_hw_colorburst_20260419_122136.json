@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-04-19T17:21:36.456818+00:00",
+  "script": "narma_hw_colorburst.py",
+  "concept": "NTSC colorburst-inspired phase-encoded virtual rewrite",
+  "ntsc_mapping": {
+    "luminance": "10 input carriers (amplitude-encode u)",
+    "chrominance_subcarrier": "feedback carrier (53900 Hz, phase-encode y(t))",
+    "colorburst": "reference carrier (16000 Hz, constant phase)",
+    "frequency_interleaving": "feedback IM products in gaps between input IMs",
+    "phase_encoding": "y(t) \u2192 [0, \u03c0] on feedback carrier phase",
+    "pll_lock": "all FFT phases referenced to reference carrier"
+  },
+  "steps": 1000,
+  "seed": 42,
+  "fast": true,
+  "all_open": true,
+  "plate": "all_NE",
+  "feedback_freq_hz": 53900,
+  "reference_freq_hz": 16000,
+  "carriers_12": [
+    19000,
+    23900,
+    29200,
+    29900,
+    34550,
+    37000,
+    45000,
+    49600,
+    56200,
+    58500,
+    53900,
+    16000
+  ],
+  "n_readout": 33,
+  "n_feedback_im_bins": 19,
+  "n_interleaved_bins": 2,
+  "n_train": 657,
+  "n_test": 282,
+  "pass2_time_s": 72.4,
+  "pass3_time_s": 71.4,
+  "results": [
+    {
+      "name": "A1_baseline_mag+win",
+      "nmse_train": 0.638162,
+      "nmse_test": 0.627989,
+      "features": 43
+    },
+    {
+      "name": "B1_amp_fb_mag+win",
+      "nmse_train": 0.574752,
+      "nmse_test": 0.596749,
+      "features": 43
+    },
+    {
+      "name": "B2_amp_fb_fbIM+win",
+      "nmse_train": 0.637059,
+      "nmse_test": 0.604352,
+      "features": 29
+    },
+    {
+      "name": "C1_burst_mag+win",
+      "nmse_train": 0.632814,
+      "nmse_test": 0.662402,
+      "features": 43
+    },
+    {
+      "name": "D1_burst_complex+win",
+      "nmse_train": 0.55456,
+      "nmse_test": 0.758411,
+      "features": 109
+    },
+    {
+      "name": "D2_burst_complex_nowin",
+      "nmse_train": 0.66581,
+      "nmse_test": 0.970726,
+      "features": 99
+    },
+    {
+      "name": "E1_burst_fbIM_cplx+win",
+      "nmse_train": 0.61048,
+      "nmse_test": 0.689135,
+      "features": 67
+    },
+    {
+      "name": "F1_burst_interleaved+win",
+      "nmse_train": 0.654834,
+      "nmse_test": 0.620989,
+      "features": 16
+    },
+    {
+      "name": "G1_phase_only+win",
+      "nmse_train": 0.586324,
+      "nmse_test": 0.715553,
+      "features": 76
+    },
+    {
+      "name": "H1_phase_fbIM+win",
+      "nmse_train": 0.629888,
+      "nmse_test": 0.659909,
+      "features": 48
+    }
+  ]
+}

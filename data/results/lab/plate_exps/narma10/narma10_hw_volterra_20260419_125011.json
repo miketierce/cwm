@@ -1,0 +1,114 @@
+{
+  "timestamp": "2026-04-19T17:50:11.378731+00:00",
+  "script": "narma_hw_volterra.py",
+  "concept": "Volterra: 12 carriers with y-history summary for y(t)\u00d7\u03a3y(past) product",
+  "steps": 1000,
+  "seed": 42,
+  "all_open": true,
+  "plate": "all_NE",
+  "n_avg": 4,
+  "settle_ms": 50.0,
+  "feedback_freq_hz": 53900,
+  "y_history_freq_hz": 16000,
+  "n_readout": 78,
+  "n_feedback_im": 39,
+  "n_yhistory_im": 30,
+  "n_new_info": 7,
+  "n_volterra_key": 3,
+  "n_train": 657,
+  "n_test": 282,
+  "pass1_time_s": 184.3,
+  "pass2_time_s": 174.0,
+  "results": [
+    {
+      "name": "A1_p1_mag+uwin",
+      "nmse_test": 0.177618,
+      "features": 88,
+      "alpha": 1.0
+    },
+    {
+      "name": "A2_p1_mag+uwin+ystate",
+      "nmse_test": 0.097903,
+      "features": 90,
+      "alpha": 1.0
+    },
+    {
+      "name": "A3_p1_fbIM+uwin",
+      "nmse_test": 0.171401,
+      "features": 49,
+      "alpha": 1.0
+    },
+    {
+      "name": "B1_p2_mag+uwin",
+      "nmse_test": 0.167368,
+      "features": 88,
+      "alpha": 1.0
+    },
+    {
+      "name": "B2_p2_mag+uwin+ystate",
+      "nmse_test": 0.096182,
+      "features": 90,
+      "alpha": 1.0
+    },
+    {
+      "name": "B3_p2_fb+yh_IM+uwin",
+      "nmse_test": 0.16318,
+      "features": 64,
+      "alpha": 1.0
+    },
+    {
+      "name": "B4_p2_yhIM_only+uwin",
+      "nmse_test": 0.160821,
+      "features": 40,
+      "alpha": 1.0
+    },
+    {
+      "name": "B5_p2_volterra_key+uwin",
+      "nmse_test": 0.284342,
+      "features": 13,
+      "alpha": 10.0
+    },
+    {
+      "name": "B6_p2_new_info+uwin",
+      "nmse_test": 0.293562,
+      "features": 17,
+      "alpha": 10.0
+    },
+    {
+      "name": "C1_diff_p2-p1+uwin",
+      "nmse_test": 0.259251,
+      "features": 88,
+      "alpha": 10.0
+    },
+    {
+      "name": "C2_diff_yhIM+uwin",
+      "nmse_test": 0.253718,
+      "features": 40,
+      "alpha": 10.0
+    },
+    {
+      "name": "D1_concat_p1+p2+uwin",
+      "nmse_test": 0.163282,
+      "features": 166,
+      "alpha": 1.0
+    },
+    {
+      "name": "D2_p2_all+ystate+uwin",
+      "nmse_test": 0.096182,
+      "features": 90,
+      "alpha": 1.0
+    },
+    {
+      "name": "E1_software_only",
+      "nmse_test": 0.11043,
+      "features": 12,
+      "alpha": 10.0
+    },
+    {
+      "name": "E2_sw_poly",
+      "nmse_test": 0.0,
+      "features": 15,
+      "alpha": 0.001
+    }
+  ]
+}

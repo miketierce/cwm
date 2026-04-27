@@ -1,0 +1,115 @@
+{
+  "timestamp": "2026-04-19T16:06:22.914613+00:00",
+  "script": "narma_virtual_rewrite.py",
+  "concept": "Track A virtual rewriting for NARMA-10 temporal memory",
+  "steps": 3000,
+  "seed": 42,
+  "simulate": true,
+  "carriers_10": [
+    19000,
+    23900,
+    29200,
+    29900,
+    34550,
+    37000,
+    45000,
+    49600,
+    56200,
+    58500
+  ],
+  "carriers_11": [
+    19000,
+    23900,
+    29200,
+    29900,
+    34550,
+    37000,
+    45000,
+    49600,
+    56200,
+    58500,
+    53900
+  ],
+  "feedback_freq_hz": 53900,
+  "n_readout_10": 33,
+  "n_readout_11": 33,
+  "n_new_im_channels": 0,
+  "n_train": 2057,
+  "n_test": 882,
+  "results": [
+    {
+      "name": "A1_no_feedback_spectrum",
+      "nmse_train": 0.670938,
+      "nmse_test": 0.692264,
+      "features": 33,
+      "best_alpha": 100.0
+    },
+    {
+      "name": "A2_no_feedback_spec_window",
+      "nmse_train": 0.651948,
+      "nmse_test": 0.66674,
+      "features": 43,
+      "best_alpha": 100.0
+    },
+    {
+      "name": "A3_software_esn",
+      "nmse_train": 0.1464,
+      "nmse_test": 0.189651,
+      "features": 64
+    },
+    {
+      "name": "A4_plate_esn_no_fb",
+      "nmse_train": 0.846854,
+      "nmse_test": 1.009497,
+      "features": 64
+    },
+    {
+      "name": "B1_raw_fb_openloop",
+      "nmse_train": 0.0,
+      "nmse_test": 0.0,
+      "features": 44,
+      "best_alpha": 0.001
+    },
+    {
+      "name": "B2_raw_fb_closedloop",
+      "nmse_test": 2.143793,
+      "features": 44
+    },
+    {
+      "name": "C1_im_fb_openloop",
+      "nmse_train": 0.062595,
+      "nmse_test": 0.068742,
+      "features": 43,
+      "best_alpha": 0.001
+    },
+    {
+      "name": "C2_im_fb_closedloop",
+      "nmse_test": 1.909249,
+      "features": 43
+    },
+    {
+      "name": "D_scheduled_closedloop",
+      "nmse_test": 0.712013,
+      "features": 43,
+      "best_alpha": 0.001
+    },
+    {
+      "name": "E1_svd_openloop",
+      "nmse_train": 0.637935,
+      "nmse_test": 0.643591,
+      "features": 22,
+      "best_alpha": 10.0
+    },
+    {
+      "name": "E2_svd_closedloop",
+      "nmse_test": 0.668224,
+      "features": 22
+    },
+    {
+      "name": "F_im_fb_esn",
+      "nmse_train": 0.802514,
+      "nmse_test": 0.952644,
+      "features": 64
+    }
+  ]
+}

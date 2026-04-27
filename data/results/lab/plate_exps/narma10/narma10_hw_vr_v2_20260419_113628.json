@@ -1,0 +1,131 @@
+{
+  "timestamp": "2026-04-19T16:36:28.637031+00:00",
+  "script": "narma_hw_virtual_rewrite_v2.py",
+  "steps": 1000,
+  "seed": 42,
+  "fast": true,
+  "all_open": true,
+  "plate": "all_NE",
+  "feedback_freq_hz": 53900,
+  "n_readout_base": 33,
+  "n_readout_expanded": 68,
+  "n_fb_im_new": 14,
+  "pass1_time_s": 132.7,
+  "pass2_time_s": 70.1,
+  "results": [
+    {
+      "name": "SWEEP_best",
+      "nmse_test": 0.139362,
+      "features": 206,
+      "config": "h=128 lk=0.9 sr=0.9 +resid+win \u03b1=0.1"
+    },
+    {
+      "name": "COMBO_esn64+resid_tf+win",
+      "nmse_test": 0.167888,
+      "features": 142,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+resid_tf",
+      "nmse_test": 0.169393,
+      "features": 132,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+tf_exp+win",
+      "nmse_test": 0.169561,
+      "features": 142,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+tf_exp",
+      "nmse_test": 0.170912,
+      "features": 132,
+      "alpha": 0.1
+    },
+    {
+      "name": "ENSEMBLE_5esn+tf_exp+win",
+      "nmse_test": 0.174536,
+      "features": 398,
+      "alpha": 1.0
+    },
+    {
+      "name": "ENSEMBLE_5esn+tf_exp",
+      "nmse_test": 0.174561,
+      "features": 388,
+      "alpha": 1.0
+    },
+    {
+      "name": "A3_sw_esn_64",
+      "nmse_test": 0.176789,
+      "features": 64,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+fb_ims",
+      "nmse_test": 0.187739,
+      "features": 78,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+diff_exp+win",
+      "nmse_test": 0.188355,
+      "features": 142,
+      "alpha": 0.1
+    },
+    {
+      "name": "COMBO_esn64+diff_exp",
+      "nmse_test": 0.189995,
+      "features": 132,
+      "alpha": 0.1
+    },
+    {
+      "name": "ENSEMBLE_5esn+diff+win",
+      "nmse_test": 0.194507,
+      "features": 398,
+      "alpha": 1.0
+    },
+    {
+      "name": "COMBO_esn64+nf+tf+diff+win",
+      "nmse_test": 0.217113,
+      "features": 278,
+      "alpha": 0.1
+    },
+    {
+      "name": "C1_tf_modes+win",
+      "nmse_test": 0.363172,
+      "features": 43,
+      "alpha": 10.0
+    },
+    {
+      "name": "C1_tf_expanded+win",
+      "nmse_test": 0.394353,
+      "features": 78,
+      "alpha": 10.0
+    },
+    {
+      "name": "E1_diff_expanded+win",
+      "nmse_test": 0.408147,
+      "features": 78,
+      "alpha": 100.0
+    },
+    {
+      "name": "C1_tf_fb_ims_only+win",
+      "nmse_test": 0.606565,
+      "features": 24,
+      "alpha": 10.0
+    },
+    {
+      "name": "A1_nf_modes",
+      "nmse_test": 0.820027,
+      "features": 33,
+      "alpha": 100.0
+    },
+    {
+      "name": "A2_nf_expanded",
+      "nmse_test": 0.832931,
+      "features": 68,
+      "alpha": 100.0
+    }
+  ]
+}

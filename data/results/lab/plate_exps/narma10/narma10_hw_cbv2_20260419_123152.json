@@ -1,0 +1,127 @@
+{
+  "timestamp": "2026-04-19T17:31:52.734306+00:00",
+  "script": "narma_hw_colorburst_v2.py",
+  "concept": "Refined virtual rewrite: amplitude-feedback, implicit phase ref, expanded readout",
+  "steps": 1000,
+  "seed": 42,
+  "all_open": true,
+  "plate": "all_NE",
+  "n_avg": 4,
+  "settle_ms": 50.0,
+  "feedback_freq_hz": 53900,
+  "phase_ref_freq_hz": 19000,
+  "n_readout": 68,
+  "n_feedback_im_bins": 37,
+  "n_interleaved_bins": 5,
+  "n_train": 657,
+  "n_test": 282,
+  "pass1_time_s": 170.5,
+  "pass2_time_s": 166.5,
+  "results": [
+    {
+      "name": "A1_nofb_mag+win",
+      "nmse_train": 0.608378,
+      "nmse_test": 0.642397,
+      "features": 78,
+      "alpha": 100.0
+    },
+    {
+      "name": "A2_nofb_complex+win",
+      "nmse_train": 0.612383,
+      "nmse_test": 0.747522,
+      "features": 214,
+      "alpha": 1000.0
+    },
+    {
+      "name": "B1_fb_mag_all+win",
+      "nmse_train": 0.283634,
+      "nmse_test": 0.292587,
+      "features": 78,
+      "alpha": 10.0
+    },
+    {
+      "name": "B2_fb_mag_fbIM+win",
+      "nmse_train": 0.307644,
+      "nmse_test": 0.299535,
+      "features": 47,
+      "alpha": 10.0
+    },
+    {
+      "name": "B3_fb_mag_interl+win",
+      "nmse_train": 0.661568,
+      "nmse_test": 0.599057,
+      "features": 15,
+      "alpha": 1.0
+    },
+    {
+      "name": "C1_fb_complex_all+win",
+      "nmse_train": 0.252941,
+      "nmse_test": 0.396608,
+      "features": 214,
+      "alpha": 100.0
+    },
+    {
+      "name": "C2_fb_complex_fbIM+win",
+      "nmse_train": 0.264786,
+      "nmse_test": 0.350919,
+      "features": 121,
+      "alpha": 10.0
+    },
+    {
+      "name": "C3_fb_complex_interl+win",
+      "nmse_train": 0.637087,
+      "nmse_test": 0.633948,
+      "features": 25,
+      "alpha": 10.0
+    },
+    {
+      "name": "D1_fb_phase_all+win",
+      "nmse_train": 0.685978,
+      "nmse_test": 0.802123,
+      "features": 146,
+      "alpha": 1000.0
+    },
+    {
+      "name": "D2_fb_phase_fbIM+win",
+      "nmse_train": 0.580286,
+      "nmse_test": 0.69279,
+      "features": 84,
+      "alpha": 100.0
+    },
+    {
+      "name": "E1_diff_mag+win",
+      "nmse_train": 0.351575,
+      "nmse_test": 0.334941,
+      "features": 78,
+      "alpha": 100.0
+    },
+    {
+      "name": "E2_diff_complex+win",
+      "nmse_train": 0.273177,
+      "nmse_test": 0.434124,
+      "features": 214,
+      "alpha": 100.0
+    },
+    {
+      "name": "E3_diff_mag_fbIM+win",
+      "nmse_train": 0.359333,
+      "nmse_test": 0.304222,
+      "features": 47,
+      "alpha": 10.0
+    },
+    {
+      "name": "F1_both_mag+win",
+      "nmse_train": 0.249079,
+      "nmse_test": 0.343338,
+      "features": 146,
+      "alpha": 10.0
+    },
+    {
+      "name": "G1_fb_inputonly+win",
+      "nmse_train": 0.649223,
+      "nmse_test": 0.601782,
+      "features": 23,
+      "alpha": 10.0
+    }
+  ]
+}

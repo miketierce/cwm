@@ -1,0 +1,98 @@
+{
+  "timestamp": "2026-04-19T16:21:23.384529+00:00",
+  "script": "narma_hw_virtual_rewrite.py",
+  "concept": "Track A virtual rewrite on hardware",
+  "steps": 1000,
+  "seed": 42,
+  "fast": true,
+  "all_open": true,
+  "plate": "all_NE",
+  "feedback_freq_hz": 53900,
+  "carriers_10": [
+    19000,
+    23900,
+    29200,
+    29900,
+    34550,
+    37000,
+    45000,
+    49600,
+    56200,
+    58500
+  ],
+  "carriers_11": [
+    19000,
+    23900,
+    29200,
+    29900,
+    34550,
+    37000,
+    45000,
+    49600,
+    56200,
+    58500,
+    53900
+  ],
+  "n_readout_10": 33,
+  "n_readout_11": 33,
+  "n_train": 657,
+  "n_test": 282,
+  "pass1_time_s": 71.0,
+  "pass2_time_s": 68.5,
+  "pass3_time_s": 20.3,
+  "results": [
+    {
+      "name": "A1_no_fb_spectrum",
+      "nmse_train": 0.753368,
+      "nmse_test": 0.790076,
+      "features": 33
+    },
+    {
+      "name": "A2_no_fb_spec_window",
+      "nmse_train": 0.638162,
+      "nmse_test": 0.627989,
+      "features": 43
+    },
+    {
+      "name": "A3_software_esn",
+      "nmse_train": 0.124963,
+      "nmse_test": 0.187407,
+      "features": 64
+    },
+    {
+      "name": "A4_resid_nofb_esn",
+      "nmse_train": 0.673385,
+      "nmse_test": 0.851936,
+      "features": 64
+    },
+    {
+      "name": "C1_teacher_im_openloop",
+      "nmse_train": 0.356213,
+      "nmse_test": 0.372174,
+      "features": 43
+    },
+    {
+      "name": "C2_teacher_im_esn",
+      "nmse_train": 0.746718,
+      "nmse_test": 0.863859,
+      "features": 64
+    },
+    {
+      "name": "C3_teacher_resid_esn",
+      "nmse_train": 0.687046,
+      "nmse_test": 0.851136,
+      "features": 64
+    },
+    {
+      "name": "D1_closedloop_im",
+      "nmse_test": 0.972136,
+      "features": 43
+    },
+    {
+      "name": "E1_feedback_diff",
+      "nmse_train": 0.421094,
+      "nmse_test": 0.37066,
+      "features": 43
+    }
+  ]
+}
