@@ -1,0 +1,3507 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<title>CWM Bench Wiring Guide v3</title>
+		<style>
+			:root {
+				--ink: #111827;
+				--m: #475569;
+				--p: #fff;
+				--l: #cbd5e1;
+				--red: #dc2626;
+				--blue: #2563eb;
+				--grn: #15803d;
+				--org: #ea580c;
+				--vio: #7c3aed;
+				--cyan: #0891b2;
+				--gnd: #334155;
+			}
+			@page {
+				size: letter landscape;
+				margin: 8mm;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: #e2e8f0;
+				color: var(--ink);
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 10pt;
+				line-height: 1.35;
+			}
+			h1,
+			h2,
+			h3 {
+				margin: 0 0 2mm;
+				line-height: 1.15;
+			}
+			h1 {
+				font-size: 20pt;
+			}
+			h2 {
+				font-size: 15pt;
+			}
+			h3 {
+				font-size: 10.5pt;
+				margin-top: 2.5mm;
+			}
+			p {
+				margin: 0 0 2mm;
+			}
+			code {
+				font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+				font-size: 9pt;
+				background: #f1f5f9;
+				padding: 0.3mm 1mm;
+				border-radius: 0.5mm;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1.5mm 0;
+				font-size: 8pt;
+			}
+			th,
+			td {
+				border: 0.2mm solid var(--l);
+				padding: 1mm 1.5mm;
+				vertical-align: top;
+			}
+			th {
+				background: #f1f5f9;
+				text-align: left;
+				font-weight: 600;
+			}
+			.page {
+				width: 263mm;
+				min-height: 195mm;
+				margin: 10mm auto;
+				padding: 5mm;
+				background: var(--p);
+				page-break-after: always;
+				break-after: page;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 8px 25px rgba(15, 23, 42, 0.2);
+			}
+			.g2 {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 4mm;
+				align-items: start;
+			}
+			.g3 {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 3mm;
+				align-items: start;
+			}
+			.note {
+				border-left: 1mm solid var(--blue);
+				background: #eff6ff;
+				padding: 2mm 2.5mm;
+				margin: 2mm 0;
+				font-size: 8.2pt;
+			}
+			.warn {
+				border-left-color: var(--org);
+				background: #fff7ed;
+			}
+			.crit {
+				border-left-color: var(--red);
+				background: #fef2f2;
+			}
+			.sm {
+				color: var(--m);
+				font-size: 7.8pt;
+			}
+			.mono {
+				font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+			}
+			.tag {
+				display: inline-block;
+				padding: 0.5mm 2mm;
+				border-radius: 1mm;
+				font-size: 7.5pt;
+				font-weight: 700;
+				color: #fff;
+				margin-right: 1.5mm;
+				vertical-align: middle;
+			}
+			.t-grn {
+				background: var(--grn);
+			}
+			.t-org {
+				background: var(--org);
+			}
+			.t-cyan {
+				background: var(--cyan);
+			}
+			.t-gnd {
+				background: var(--gnd);
+			}
+			.step-n {
+				display: inline-block;
+				width: 7mm;
+				height: 7mm;
+				line-height: 7mm;
+				text-align: center;
+				border-radius: 50%;
+				background: var(--ink);
+				color: #fff;
+				font-weight: 700;
+				font-size: 9pt;
+				margin-right: 2mm;
+				vertical-align: middle;
+			}
+			.card {
+				border: 0.35mm solid var(--l);
+				border-radius: 2mm;
+				padding: 2.5mm;
+				background: #f8fafc;
+				margin: 1.5mm 0;
+			}
+			.pin-tbl td:first-child {
+				font-weight: 700;
+				white-space: nowrap;
+				width: 22mm;
+			}
+			.pin-tbl td:nth-child(2) {
+				font-weight: 700;
+				white-space: nowrap;
+				width: 18mm;
+			}
+			.board-svg {
+				display: block;
+				width: 165mm;
+				height: 55mm;
+				background: #f8fafc;
+			}
+			.board-wrap {
+				display: inline-block;
+				padding: 2mm;
+				border: 0.3mm solid #94a3b8;
+				background: #f8fafc;
+			}
+			.board-cap {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 1mm;
+				font-size: 7.5pt;
+				color: var(--m);
+			}
+			.cl {
+				columns: 2;
+				column-gap: 6mm;
+				margin: 1mm 0;
+				padding-left: 0;
+				list-style: none;
+			}
+			.cl li {
+				break-inside: avoid;
+				margin: 0 0 1.5mm;
+				padding-left: 6mm;
+				position: relative;
+				font-size: 8.2pt;
+			}
+			.cl li::before {
+				content: '';
+				width: 3.5mm;
+				height: 3.5mm;
+				border: 0.3mm solid var(--ink);
+				position: absolute;
+				left: 0;
+				top: 0.2mm;
+			}
+			.scale {
+				width: 100mm;
+				height: 5mm;
+				border: 0.35mm solid var(--ink);
+				border-left-width: 1mm;
+				border-right-width: 1mm;
+				margin-top: 2mm;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 8pt;
+				background: repeating-linear-gradient(
+					90deg,
+					#fff 0 9.6mm,
+					#e5e7eb 9.6mm 10mm
+				);
+			}
+			.bench-svg {
+				width: 252mm;
+				height: 115mm;
+				border: 0.35mm solid #94a3b8;
+				background: #f8fafc;
+			}
+			@media print {
+				body {
+					background: var(--p);
+				}
+				.page {
+					margin: 0;
+					box-shadow: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ═══════════ PAGE 1 : OVERVIEW ═══════════ -->
+		<section class="page">
+			<h1>
+				CWM Bench Wiring Guide v3
+				<span style="font-size: 11pt; color: var(--m)">— 2026-05-10</span>
+			</h1>
+			<p>
+				<strong>What changed from v2:</strong> only 2 DDS boards (not 3), 16-ch
+				relay connects directly to Arduino&nbsp;1 with F-F jumper cables (not on
+				a breadboard), 8-ch relay set aside for later.
+			</p>
+
+			<div class="note warn">
+				Print <strong>landscape</strong> at <strong>100% actual size</strong>.
+				<div class="scale">100 mm calibration strip</div>
+			</div>
+
+			<h2 style="margin-top: 3mm">Hardware Inventory</h2>
+			<div class="g2">
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Qty</th>
+							<th>Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>PicoScope 2204A</td>
+							<td>1</td>
+							<td>AWG source, Ch&nbsp;A capture, Ch&nbsp;B reference</td>
+						</tr>
+						<tr>
+							<td>BNC tee</td>
+							<td>1</td>
+							<td>Splits AWG → Ch&nbsp;B ref + drive input</td>
+						</tr>
+						<tr>
+							<td>OPA2134PA DIP-8</td>
+							<td>1</td>
+							<td>Analog preamp on Board&nbsp;A</td>
+						</tr>
+						<tr>
+							<td>9&nbsp;V battery + snap</td>
+							<td>2</td>
+							<td>Split supply: +9 / 0 / &minus;9</td>
+						</tr>
+						<tr>
+							<td>Arduino Nano #1 (CH340)</td>
+							<td>1</td>
+							<td>16-ch relay control, serial to PC</td>
+						</tr>
+						<tr>
+							<td>Arduino Nano #2 (CH340)</td>
+							<td>1</td>
+							<td>DDS SPI master (Board&nbsp;S)</td>
+						</tr>
+						<tr>
+							<td>16-ch relay module</td>
+							<td>1</td>
+							<td>RX sensor mux. F-F cables to Arduino&nbsp;1</td>
+						</tr>
+						<tr>
+							<td>8-ch relay module</td>
+							<td>1</td>
+							<td><em>Set aside.</em> Add later for source select.</td>
+						</tr>
+					</tbody>
+				</table>
+				<table>
+					<thead>
+						<tr>
+							<th>Item</th>
+							<th>Qty</th>
+							<th>Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>AD9833 DDS module</td>
+							<td>2</td>
+							<td>Frequency source (Board&nbsp;S, when ready)</td>
+						</tr>
+						<tr>
+							<td>MCP4921-E/P 12-bit DAC</td>
+							<td>2</td>
+							<td>Amplitude control (Board&nbsp;S, one per DDS)</td>
+						</tr>
+						<tr>
+							<td>Full-size breadboard</td>
+							<td>2</td>
+							<td>Board&nbsp;A (preamp), Board&nbsp;S (DDS)</td>
+						</tr>
+						<tr>
+							<td>Half-size breadboard</td>
+							<td>4</td>
+							<td>Board&nbsp;D (drive distrib), 3 spare</td>
+						</tr>
+						<tr>
+							<td>Glass / PZT cassette</td>
+							<td>1</td>
+							<td>Drive PZT + RX PZTs</td>
+						</tr>
+						<tr>
+							<td>F-F jumper cables</td>
+							<td>18+</td>
+							<td>Arduino&nbsp;1 ↔ 16-ch relay</td>
+						</tr>
+						<tr>
+							<td>Resistors</td>
+							<td>various</td>
+							<td>See Board&nbsp;A parts list</td>
+						</tr>
+						<tr>
+							<td>Capacitors</td>
+							<td>various</td>
+							<td>See Board&nbsp;A parts list</td>
+						</tr>
+						<tr>
+							<td>Twisted-pair wire</td>
+							<td>~1m</td>
+							<td>Inter-board analog connections</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h2 style="margin-top: 3mm">Physical Units (what goes where)</h2>
+			<div class="g3">
+				<div
+					class="card"
+					style="border-color: var(--grn)">
+					<h3><span class="tag t-grn">FULL BOARD</span> Board A — Preamp</h3>
+					<p>
+						OPA2134PA, gain resistors, bypass caps, 9V batteries.
+						<strong>Only analog receive path.</strong> Nothing else on this
+						board.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: var(--cyan)">
+					<h3>
+						<span class="tag t-cyan">STANDALONE</span> Arduino 1 + 16-ch Relay
+					</h3>
+					<p>
+						Not on a breadboard. Arduino Nano connected to relay module with 18
+						F-F jumper cables. Sits near cassette. USB to PC for serial control.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: var(--org)">
+					<h3>
+						<span class="tag t-org">FULL BOARD</span> Board S — DDS + DAC
+						Sources
+					</h3>
+					<p>
+						Arduino&nbsp;2 + 2× AD9833 DDS + 2× MCP4921 DAC. Signal source &amp;
+						amplitude control. <em>Build when DDS boards arrive.</em>
+					</p>
+				</div>
+			</div>
+			<div class="g3">
+				<div class="card">
+					<h3>
+						<span class="tag t-gnd">HALF BOARD</span> Board D — Drive Distrib
+					</h3>
+					<p>
+						Physical breakout: source → drive PZT. Dummy-load header. Keep far
+						from Board&nbsp;A.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: #94a3b8">
+					<h3>
+						<span
+							class="tag"
+							style="background: #94a3b8"
+							>HALF</span
+						>
+						X1, X2, X3 — Spare
+					</h3>
+					<p>
+						3 half-size boards available for expansion: second preamp, 8-ch
+						relay (source select), extra sensors.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: var(--red)">
+					<h3>Build Order</h3>
+					<p>
+						<strong>Today:</strong> Wire Arduino 1 ↔ 16-ch relay → flash
+						firmware → test. Build Board A → build Board D → connect mux → first
+						captures.
+					</p>
+					<p>
+						<strong>Later:</strong> Board S (DDS + DAC), source-select relay.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 2 : BENCH MAP ═══════════ -->
+		<section class="page">
+			<h2>Bench Layout</h2>
+			<p class="sm">
+				Noisy sources far-left, cassette center, quiet preamp far-right.
+				Arduino&nbsp;1 + 16-ch relay can sit anywhere near the cassette—they
+				don't need a breadboard.
+			</p>
+
+			<svg
+				class="bench-svg"
+				viewBox="0 0 252 115"
+				xmlns="http://www.w3.org/2000/svg">
+				<defs>
+					<marker
+						id="a"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#111827" />
+					</marker>
+					<marker
+						id="ao"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#ea580c" />
+					</marker>
+					<marker
+						id="ag"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#15803d" />
+					</marker>
+					<marker
+						id="ab"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#2563eb" />
+					</marker>
+				</defs>
+
+				<!-- PicoScope -->
+				<rect
+					x="175"
+					y="5"
+					width="60"
+					height="22"
+					rx="2"
+					fill="#e2e8f0"
+					stroke="#334155" />
+				<text
+					x="205"
+					y="14"
+					text-anchor="middle"
+					font-size="4"
+					font-weight="700">
+					PicoScope 2204A
+				</text>
+				<text
+					x="205"
+					y="21"
+					text-anchor="middle"
+					font-size="3">
+					AWG / Ch A / Ch B
+				</text>
+				<!-- Tee -->
+				<circle
+					cx="148"
+					cy="16"
+					r="5"
+					fill="#fff"
+					stroke="#334155" />
+				<text
+					x="148"
+					y="17.5"
+					text-anchor="middle"
+					font-size="3"
+					font-weight="700">
+					TEE
+				</text>
+
+				<!-- Board S (future) -->
+				<rect
+					x="8"
+					y="35"
+					width="65"
+					height="28"
+					rx="2"
+					fill="#fff7ed"
+					stroke="#ea580c"
+					stroke-dasharray="2,1" />
+				<text
+					x="40.5"
+					y="46"
+					text-anchor="middle"
+					font-size="4"
+					font-weight="700"
+					fill="#ea580c">
+					Board S (future)
+				</text>
+				<text
+					x="40.5"
+					y="53"
+					text-anchor="middle"
+					font-size="3">
+					Arduino 2 + 2×DDS + 2×DAC
+				</text>
+				<text
+					x="40.5"
+					y="59"
+					text-anchor="middle"
+					font-size="2.8"
+					fill="#94a3b8">
+					build when DDS arrives
+				</text>
+
+				<!-- Board D (future) -->
+				<rect
+					x="8"
+					y="72"
+					width="40"
+					height="20"
+					rx="2"
+					fill="#fff7ed"
+					stroke="#ea580c"
+					stroke-dasharray="2,1" />
+				<text
+					x="28"
+					y="82"
+					text-anchor="middle"
+					font-size="3.5"
+					font-weight="700"
+					fill="#ea580c">
+					Board D
+				</text>
+				<text
+					x="28"
+					y="88"
+					text-anchor="middle"
+					font-size="2.8"
+					fill="#94a3b8">
+					drive distrib
+				</text>
+
+				<!-- Arduino 1 + 16ch relay -->
+				<rect
+					x="60"
+					y="72"
+					width="55"
+					height="30"
+					rx="2"
+					fill="#f0fdfa"
+					stroke="#0891b2"
+					stroke-width="0.8" />
+				<text
+					x="87.5"
+					y="81"
+					text-anchor="middle"
+					font-size="3.5"
+					font-weight="700"
+					fill="#0891b2">
+					Arduino 1
+				</text>
+				<text
+					x="87.5"
+					y="86"
+					text-anchor="middle"
+					font-size="2.8">
+					F-F cables
+				</text>
+				<text
+					x="87.5"
+					y="91"
+					text-anchor="middle"
+					font-size="3.5"
+					font-weight="700"
+					fill="#0891b2">
+					16-ch Relay
+				</text>
+				<text
+					x="87.5"
+					y="96"
+					text-anchor="middle"
+					font-size="2.8">
+					standalone (no board)
+				</text>
+
+				<!-- Cassette -->
+				<rect
+					x="125"
+					y="42"
+					width="50"
+					height="35"
+					rx="2"
+					fill="#f8fafc"
+					stroke="#334155" />
+				<text
+					x="150"
+					y="53"
+					text-anchor="middle"
+					font-size="4"
+					font-weight="700">
+					Glass / PZT
+				</text>
+				<text
+					x="150"
+					y="60"
+					text-anchor="middle"
+					font-size="3">
+					cassette
+				</text>
+				<circle
+					cx="133"
+					cy="68"
+					r="4"
+					fill="#fed7aa"
+					stroke="#ea580c" />
+				<text
+					x="133"
+					y="69.5"
+					text-anchor="middle"
+					font-size="2.8">
+					DRV
+				</text>
+				<circle
+					cx="163"
+					cy="68"
+					r="4"
+					fill="#bbf7d0"
+					stroke="#15803d" />
+				<text
+					x="163"
+					y="69.5"
+					text-anchor="middle"
+					font-size="2.8">
+					RX
+				</text>
+
+				<!-- Board A -->
+				<rect
+					x="185"
+					y="42"
+					width="60"
+					height="30"
+					rx="2"
+					fill="#ecfdf5"
+					stroke="#15803d"
+					stroke-width="0.8" />
+				<text
+					x="215"
+					y="53"
+					text-anchor="middle"
+					font-size="4.3"
+					font-weight="700"
+					fill="#15803d">
+					Board A (preamp)
+				</text>
+				<text
+					x="215"
+					y="60"
+					text-anchor="middle"
+					font-size="3">
+					analog ONLY
+				</text>
+				<text
+					x="215"
+					y="66"
+					text-anchor="middle"
+					font-size="3">
+					9V batteries here
+				</text>
+
+				<!-- Connections -->
+				<!-- AWG to tee -->
+				<path
+					d="M175,16 L153,16"
+					stroke="#111827"
+					stroke-width="1"
+					marker-end="url(#a)" />
+				<!-- tee to Ch B -->
+				<path
+					d="M148,21 C148,25 165,27 180,27"
+					stroke="#2563eb"
+					stroke-width="1"
+					fill="none"
+					marker-end="url(#ab)" />
+				<text
+					x="166"
+					y="31"
+					font-size="2.8"
+					fill="#2563eb">
+					direct BNC Ch B
+				</text>
+				<!-- tee to drive PZT (for now, direct) -->
+				<path
+					d="M143,16 C120,16 120,40 129,64"
+					stroke="#ea580c"
+					stroke-width="1.1"
+					fill="none"
+					marker-end="url(#ao)" />
+				<text
+					x="112"
+					y="36"
+					font-size="2.8"
+					fill="#ea580c">
+					AWG → drive PZT
+				</text>
+				<!-- RX PZTs to relay/mux -->
+				<path
+					d="M163,72 C155,85 125,92 115,90"
+					stroke="#15803d"
+					stroke-width="1.1"
+					fill="none"
+					marker-end="url(#ag)" />
+				<text
+					x="145"
+					y="87"
+					font-size="2.8"
+					fill="#15803d">
+					RX sensors
+				</text>
+				<!-- Mux COM to Board A -->
+				<path
+					d="M115,82 C145,75 172,63 185,58"
+					stroke="#15803d"
+					stroke-width="1.2"
+					fill="none"
+					marker-end="url(#ag)" />
+				<text
+					x="155"
+					y="69"
+					font-size="2.8"
+					fill="#15803d"
+					font-weight="700">
+					mux common → Board A
+				</text>
+				<!-- Board A to Ch A -->
+				<path
+					d="M240,50 C248,40 242,30 225,27"
+					stroke="#15803d"
+					stroke-width="1"
+					fill="none"
+					marker-end="url(#ag)" />
+				<text
+					x="244"
+					y="39"
+					font-size="2.8"
+					fill="#15803d">
+					Ch A
+				</text>
+
+				<text
+					x="8"
+					y="110"
+					font-size="3.2"
+					font-weight="700">
+					Signal flow:
+				</text>
+				<text
+					x="30"
+					y="110"
+					font-size="3.2">
+					AWG tee → drive PZT → glass → RX PZTs → 16-ch relay → mux common →
+					Board A preamp → Pico Ch A
+				</text>
+			</svg>
+
+			<h3 style="margin-top: 3mm">
+				Connection Summary (today's setup — AWG mode, no DDS yet)
+			</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Cable</th>
+						<th>Signal</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>Pico AWG OUT</td>
+						<td>BNC tee</td>
+						<td>BNC</td>
+						<td>AWG signal</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>Tee branch 1</td>
+						<td>Pico Ch B</td>
+						<td>BNC coax</td>
+						<td>Reference (±500 mV)</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>Tee branch 2</td>
+						<td>Drive PZT</td>
+						<td>Twisted pair</td>
+						<td>Drive excitation</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>RX PZT sensors</td>
+						<td>
+							Signal leads → relay COM; return leads → separate AGND return bus
+						</td>
+						<td>Twisted pairs</td>
+						<td>Do not put sensor returns on the relay NO signal bus</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Relay NO bus + sensor return bus</td>
+						<td>Board A hole <strong>A20</strong> (sig) + blue rail (ret)</td>
+						<td>Twisted pair</td>
+						<td>Selected RX — keep short!</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>Board A hole <strong>A40</strong></td>
+						<td>Pico Ch A</td>
+						<td>BNC / probe</td>
+						<td>Preamp output</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Battery 1 (+) / midpoint / Battery 2 (−)</td>
+						<td>Board A rails</td>
+						<td>Short leads</td>
+						<td>±9V supply</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Arduino 1 USB</td>
+						<td>PC</td>
+						<td>USB</td>
+						<td>Serial /dev/cu.usbserial-11310</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- ═══════════ PAGE 3 : ARDUINO 1 ↔ 16-CH RELAY WIRING ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">1</span> Wire Arduino 1 → 16-Channel Relay Module
+			</h2>
+			<p>
+				Use <strong>female-to-female</strong> jumper cables. One cable per
+				connection. Both the Arduino Nano header pins and the relay module input
+				pins are male, so F-F bridges them.
+			</p>
+
+			<div class="g2">
+				<div>
+					<h3>Control Pin Wiring (16 cables)</h3>
+					<table class="pin-tbl">
+						<thead>
+							<tr>
+								<th>Arduino Pin</th>
+								<th>Relay Input</th>
+								<th>Relay #</th>
+								<th>Sensor Assignment</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>D2</td>
+								<td>IN1</td>
+								<td>1</td>
+								<td>Plate 1 (A) NE-RX</td>
+							</tr>
+							<tr>
+								<td>D3</td>
+								<td>IN2</td>
+								<td>2</td>
+								<td>Plate 2 (B) NE-RX</td>
+							</tr>
+							<tr>
+								<td>D4</td>
+								<td>IN3</td>
+								<td>3</td>
+								<td>Plate 3 (G) NE-RX</td>
+							</tr>
+							<tr>
+								<td>D5</td>
+								<td>IN4</td>
+								<td>4</td>
+								<td>Plate 3 (G) NW-RX</td>
+							</tr>
+							<tr>
+								<td>D6</td>
+								<td>IN5</td>
+								<td>5</td>
+								<td>Plate 4 (D) NE-RX</td>
+							</tr>
+							<tr>
+								<td>D7</td>
+								<td>IN6</td>
+								<td>6</td>
+								<td>Plate 4 (D) NW-RX</td>
+							</tr>
+							<tr>
+								<td>D8</td>
+								<td>IN7</td>
+								<td>7</td>
+								<td>Plate 5 (F) NE-RX</td>
+							</tr>
+							<tr>
+								<td>D9</td>
+								<td>IN8</td>
+								<td>8</td>
+								<td>Plate 5 (F) NW-RX</td>
+							</tr>
+							<tr style="border-top: 0.5mm solid var(--ink)">
+								<td>D10</td>
+								<td>IN9</td>
+								<td>9</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>D11</td>
+								<td>IN10</td>
+								<td>10</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>D12</td>
+								<td>IN11</td>
+								<td>11</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>D13</td>
+								<td>IN12</td>
+								<td>12</td>
+								<td>Expansion</td>
+							</tr>
+							<tr style="border-top: 0.5mm solid var(--ink)">
+								<td>A0</td>
+								<td>IN13</td>
+								<td>13</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>A1</td>
+								<td>IN14</td>
+								<td>14</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>A2</td>
+								<td>IN15</td>
+								<td>15</td>
+								<td>Input Short (control)</td>
+							</tr>
+							<tr>
+								<td>A3</td>
+								<td>IN16</td>
+								<td>16</td>
+								<td>Terminated Load (control)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>Power Wiring (2 cables)</h3>
+					<table class="pin-tbl">
+						<thead>
+							<tr>
+								<th>Arduino Pin</th>
+								<th>Relay Pin</th>
+								<th>Purpose</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="color: var(--red)">5V</td>
+								<td style="color: var(--red)">VCC</td>
+								<td>Relay module power (from Arduino USB 5V)</td>
+							</tr>
+							<tr>
+								<td style="color: var(--gnd)">GND</td>
+								<td style="color: var(--gnd)">GND</td>
+								<td>Relay module ground (shared with Arduino)</td>
+							</tr>
+						</tbody>
+					</table>
+					<p
+						class="sm"
+						style="margin-top: 2mm">
+						<strong>Total cables:</strong> 18 (16 control + 2 power)
+					</p>
+
+					<h3>Arduino Nano Pin Location Reference</h3>
+					<p class="sm">
+						Hold the Nano with USB port facing up. Pins are numbered from the
+						top.
+					</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Left side (top→bottom)</th>
+								<th>Right side (top→bottom)</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>D13, D12, D11, D10</td>
+								<td>3V3, AREF, A0, A1</td>
+							</tr>
+							<tr>
+								<td>D9, D8, D7, D6</td>
+								<td>A2, A3, A4, A5</td>
+							</tr>
+							<tr>
+								<td>D5, D4, D3, D2</td>
+								<td>A6, A7, 5V, RST</td>
+							</tr>
+							<tr>
+								<td>GND, RST, RX0, TX1</td>
+								<td>GND, VIN</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="note warn">
+						<strong>Active-LOW:</strong> The relay module is opto-isolated,
+						active LOW. Arduino drives pin LOW = relay ON, HIGH = relay OFF. The
+						firmware handles this — you just send <code>"5"</code> over serial
+						to activate relay 5.
+					</div>
+
+					<h3>Relay Screw Terminal Side</h3>
+					<p>Each relay channel has 3 screw terminals:</p>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>COM</strong> (Common)</td>
+								<td>Wire the individual RX PZT signal lead here.</td>
+							</tr>
+							<tr>
+								<td><strong>NO</strong> (Normally Open)</td>
+								<td>
+									Wire all NO terminals together only with jumper/bus wire →
+									this is your
+									<strong>mux common signal</strong> output.
+								</td>
+							</tr>
+							<tr>
+								<td><strong>NC</strong> (Normally Closed)</td>
+								<td>Leave empty.</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="note crit">
+						<strong>Do not wire sensor returns into NO.</strong> NO is the
+						switched signal bus that goes to Board A A20. All sensor
+						return/shield wires go to a separate return bus that goes to Board A
+						blue AGND rail near C24. That return bus is not Arduino GND or
+						relay-module GND.
+					</div>
+					<div class="note crit">
+						<strong>Check your relay module:</strong> Some 16-ch boards label
+						COM/NO/NC differently or use a shared COM bus. Look at the PCB
+						traces. The mux pattern is: each sensor goes to an individual
+						switched terminal, and all outputs join into one common signal line.
+					</div>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 2mm">
+				Relay Control Test (after flashing firmware)
+			</h3>
+			<div class="g3">
+				<div class="card">
+					<p><strong>1. Flash firmware:</strong></p>
+					<p
+						class="mono"
+						style="font-size: 7.5pt">
+						Arduino IDE → Open<br />tools/relay_controller_16ch/<br />relay_controller_16ch.ino<br />→
+						Board: Arduino Nano<br />→ Processor: ATmega328P<br />→ Port:
+						/dev/cu.usbserial-11310<br />→ Upload
+					</p>
+				</div>
+				<div class="card">
+					<p><strong>2. Serial test:</strong></p>
+					<p
+						class="mono"
+						style="font-size: 7.5pt">
+						screen /dev/cu.usbserial-11310 9600<br /><br />Send: ? → expect
+						OK:0<br />Send: 1 → expect OK:1 + click<br />Send: 5 → expect OK:5 +
+						click<br />Send: 16 → expect OK:16 + click<br />Send: 0 → expect
+						OK:0 (all off)<br /><br />Ctrl-A, K to exit screen
+					</p>
+				</div>
+				<div class="card">
+					<p><strong>3. Verify each channel:</strong></p>
+					<p style="font-size: 8pt">
+						With a multimeter on continuity mode, probe each relay's COM↔NO
+						terminals while sending the corresponding channel number. You should
+						hear the relay click and see continuity close.
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 4 : BOARD A PREAMP — VISUAL ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">2</span> Build Board A — Analog Preamp (Full-Size
+				Breadboard)
+			</h2>
+			<div class="note crit">
+				<strong>Board orientation:</strong> Orient your board with
+				<strong>row J at the top</strong> and
+				<strong>row A at the bottom</strong> (matching the diagram below). The
+				center gap runs horizontally between rows E and F. Rows F–J (top half)
+				are connected per column; rows A–E (bottom half) are connected per
+				column. The gap separates them.
+			</div>
+			<p class="sm">
+				Full-size 830 tie-point board. Columns 1–63. Rail assignments:
+				<strong>red +9V rail</strong> on the J-side edge (top),
+				<strong>blue AGND rail</strong> and <strong>purple −9V rail</strong> on
+				the A-side edge (bottom).
+			</p>
+
+			<div class="board-wrap">
+				<svg
+					class="board-svg"
+					viewBox="0 0 165 55"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-label="Board A preamp layout">
+					<defs>
+						<pattern
+							id="hA"
+							width="2.35"
+							height="2.15"
+							patternUnits="userSpaceOnUse">
+							<circle
+								cx="1.1"
+								cy="1.05"
+								r="0.33"
+								fill="#cbd5e1" />
+						</pattern>
+					</defs>
+					<!-- Board outline -->
+					<rect
+						x="0.5"
+						y="0.5"
+						width="164"
+						height="54"
+						rx="2"
+						fill="#f8fafc"
+						stroke="#111827"
+						stroke-width="0.6" />
+					<!-- Rails -->
+					<rect
+						x="5"
+						y="4"
+						width="155"
+						height="2.3"
+						fill="#fecaca"
+						stroke="#dc2626"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="3.5"
+						font-size="2.5"
+						fill="#dc2626"
+						font-weight="700">
+						+9V rail (J-side edge)
+					</text>
+					<rect
+						x="5"
+						y="47"
+						width="155"
+						height="2.3"
+						fill="#dbeafe"
+						stroke="#2563eb"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="46"
+						font-size="2.5"
+						fill="#2563eb"
+						font-weight="700">
+						0V AGND rail (A-side edge)
+					</text>
+					<rect
+						x="5"
+						y="51"
+						width="155"
+						height="2.3"
+						fill="#ede9fe"
+						stroke="#7c3aed"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="54.5"
+						font-size="2.5"
+						fill="#7c3aed"
+						font-weight="700">
+						−9V rail (A-side edge)
+					</text>
+					<!-- Hole areas -->
+					<rect
+						x="12"
+						y="16"
+						width="141"
+						height="9.6"
+						fill="url(#hA)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="30"
+						width="141"
+						height="9.6"
+						fill="url(#hA)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="26.4"
+						width="141"
+						height="2.6"
+						fill="#e2e8f0" />
+					<!-- Row/col labels (J at top, A at bottom — matches physical board) -->
+					<text
+						x="9"
+						y="18"
+						font-size="2">
+						J
+					</text>
+					<text
+						x="9"
+						y="20.5"
+						font-size="2">
+						I
+					</text>
+					<text
+						x="9"
+						y="23"
+						font-size="2">
+						H
+					</text>
+					<text
+						x="9"
+						y="25.5"
+						font-size="2">
+						G
+					</text>
+					<text
+						x="9"
+						y="27"
+						font-size="2">
+						F
+					</text>
+					<text
+						x="9"
+						y="32"
+						font-size="2">
+						E
+					</text>
+					<text
+						x="9"
+						y="34.5"
+						font-size="2">
+						D
+					</text>
+					<text
+						x="9"
+						y="37"
+						font-size="2">
+						C
+					</text>
+					<text
+						x="9"
+						y="39.5"
+						font-size="2">
+						B
+					</text>
+					<text
+						x="9"
+						y="41.5"
+						font-size="2">
+						A
+					</text>
+					<g
+						font-size="2"
+						fill="#64748b">
+						<text
+							x="12"
+							y="29">
+							1
+						</text>
+						<text
+							x="32"
+							y="29">
+							10
+						</text>
+						<text
+							x="50"
+							y="29">
+							20
+						</text>
+						<text
+							x="62"
+							y="29">
+							24
+						</text>
+						<text
+							x="73"
+							y="29">
+							28
+						</text>
+						<text
+							x="85"
+							y="29">
+							32
+						</text>
+						<text
+							x="100"
+							y="29">
+							40
+						</text>
+						<text
+							x="122"
+							y="29">
+							50
+						</text>
+						<text
+							x="145"
+							y="29">
+							60
+						</text>
+					</g>
+					<!-- OPA chip -->
+					<rect
+						x="70"
+						y="18"
+						width="24"
+						height="19.5"
+						rx="1"
+						fill="#111827" />
+					<text
+						x="82"
+						y="26"
+						text-anchor="middle"
+						font-size="3"
+						fill="#fff"
+						font-weight="700">
+						OPA2134
+					</text>
+					<text
+						x="82"
+						y="31"
+						text-anchor="middle"
+						font-size="2.3"
+						fill="#e5e7eb">
+						notch left
+					</text>
+					<path
+						d="M70,27.5 a2,2 0 0 1 0,-4"
+						stroke="#f8fafc"
+						stroke-width="0.5"
+						fill="none" />
+					<!-- Pin labels (chip straddles E-F gap; F-J side is top, A-E side is bottom) -->
+					<g
+						font-size="2"
+						fill="#111827"
+						font-weight="700">
+						<text
+							x="56"
+							y="19.5">
+							F28 p8 +V
+						</text>
+						<text
+							x="56"
+							y="22.5">
+							F29 p7 OUTB
+						</text>
+						<text
+							x="56"
+							y="37">
+							E29 p2 −IN
+						</text>
+						<text
+							x="56"
+							y="40">
+							E28 p1 OUT
+						</text>
+						<text
+							x="95"
+							y="19.5">
+							F31 p5 +INB
+						</text>
+						<text
+							x="95"
+							y="22.5">
+							F30 p6 −INB
+						</text>
+						<text
+							x="95"
+							y="37">
+							E30 p3 +IN
+						</text>
+						<text
+							x="95"
+							y="40">
+							E31 p4 −V
+						</text>
+					</g>
+					<!-- Key nodes -->
+					<circle
+						cx="62"
+						cy="48"
+						r="1.8"
+						fill="#334155" />
+					<text
+						x="66"
+						y="49"
+						font-size="2.3"
+						fill="#334155"
+						font-weight="700">
+						C24 STAR GND
+					</text>
+					<circle
+						cx="50"
+						cy="39"
+						r="1.2"
+						fill="#15803d" />
+					<text
+						x="37"
+						y="43"
+						font-size="2.2"
+						fill="#15803d"
+						font-weight="700">
+						A20 RX IN
+					</text>
+					<circle
+						cx="100"
+						cy="39"
+						r="1.2"
+						fill="#15803d" />
+					<text
+						x="103"
+						y="43"
+						font-size="2.2"
+						fill="#15803d"
+						font-weight="700">
+						A40 CH A OUT
+					</text>
+				</svg>
+				<div class="board-cap">
+					<span
+						>Board A: ONLY analog gain. No Arduino, relay, AWG, or DDS
+						wires.</span
+					>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 2mm">Parts List for Board A</h3>
+			<table style="width: 70%">
+				<thead>
+					<tr>
+						<th>Ref</th>
+						<th>Value</th>
+						<th>Qty</th>
+						<th>Placement</th>
+						<th>Purpose</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>U1</td>
+						<td>OPA2134PA DIP-8</td>
+						<td>1</td>
+						<td>E28–E31 / F28–F31</td>
+						<td>Dual op amp (use half A, park half B)</td>
+					</tr>
+					<tr>
+						<td>R<sub>IN</sub></td>
+						<td>4.7 kΩ</td>
+						<td>1</td>
+						<td>A20 → A30</td>
+						<td>Input protection / isolation</td>
+					</tr>
+					<tr>
+						<td>R<sub>BIAS</sub></td>
+						<td>1 MΩ</td>
+						<td>1</td>
+						<td>C30 → C24</td>
+						<td>DC bias path for +IN to AGND</td>
+					</tr>
+					<tr>
+						<td>R<sub>f</sub></td>
+						<td>100 kΩ</td>
+						<td>1</td>
+						<td>C28 → C29</td>
+						<td>Feedback (gain = 1 + Rf/Rg = 11)</td>
+					</tr>
+					<tr>
+						<td>R<sub>g</sub></td>
+						<td>10 kΩ</td>
+						<td>1</td>
+						<td>D29 → D24</td>
+						<td>Gain set resistor to AGND</td>
+					</tr>
+					<tr>
+						<td>R<sub>OUT</sub></td>
+						<td>47 Ω</td>
+						<td>1</td>
+						<td>A28 → A40</td>
+						<td>Output series isolator</td>
+					</tr>
+					<tr>
+						<td>C<sub>byp1</sub></td>
+						<td>100 nF ceramic</td>
+						<td>1</td>
+						<td>H28 → H24</td>
+						<td>+9V bypass near pin 8 (F–J side!)</td>
+					</tr>
+					<tr>
+						<td>C<sub>byp2</sub></td>
+						<td>100 nF ceramic</td>
+						<td>1</td>
+						<td>B31 → B24</td>
+						<td>−9V bypass near pin 4</td>
+					</tr>
+					<tr>
+						<td>C<sub>bulk1</sub></td>
+						<td>10 µF electrolytic</td>
+						<td>1</td>
+						<td>+ red rail, − blue rail</td>
+						<td>+9V bulk filter</td>
+					</tr>
+					<tr>
+						<td>C<sub>bulk2</sub></td>
+						<td>10 µF electrolytic</td>
+						<td>1</td>
+						<td>+ blue rail, − purple rail</td>
+						<td>−9V bulk (polarity: + is GND side!)</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- ═══════════ PAGE 5 : BOARD A NETLIST ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">2</span> Board A Step-by-Step Wiring (in this
+				order)
+			</h2>
+			<div class="note warn">
+				<strong>Breadboard rule:</strong> Holes A20–E20 are all connected
+				internally. F20–J20 are all connected internally. The center gap
+				separates them. So when you plug a resistor lead into A20 and another
+				into A30, hole E20 is also on the A20 net, and hole E30 (OPA pin 3) is
+				also on the A30 net.
+			</div>
+
+			<div class="g2">
+				<div>
+					<h3>Phase A: Ground &amp; Power (no IC yet)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>1</span
+									>
+								</td>
+								<td>Black jumper wire</td>
+								<td>
+									<strong>C24</strong> →
+									<strong>blue AGND rail (A-side edge)</strong><br /><span
+										class="sm"
+										>Makes column 24 the analog star ground. A24–E24 are now all
+										AGND.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>2</span
+									>
+								</td>
+								<td>Black jumper wire</td>
+								<td>
+									<strong>E24</strong> → <strong>F24</strong> (across center
+									gap)<br /><span class="sm"
+										>Bridges ground across gap. F24–J24 are now also AGND.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>3</span
+									>
+								</td>
+								<td>Red wire (Battery 1 +)</td>
+								<td>
+									Battery 1 positive snap →
+									<strong>red +9V rail (J-side edge)</strong>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>4</span
+									>
+								</td>
+								<td>Black wire (battery midpoint)</td>
+								<td>
+									Battery 1 (−) + Battery 2 (+) twisted →
+									<strong>blue AGND rail (A-side edge)</strong> near col 24<br /><span
+										class="sm"
+										>This junction defines analog 0V.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>5</span
+									>
+								</td>
+								<td>Purple wire (Battery 2 −)</td>
+								<td>
+									Battery 2 negative snap →
+									<strong>purple −9V rail (A-side edge)</strong>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>6</span
+									>
+								</td>
+								<td>10 µF electrolytic</td>
+								<td>
+									<strong>+ lead</strong> in red +9V rail (J-side),
+									<strong>− lead</strong> via jumper to blue AGND rail
+									(A-side)<br /><span class="sm"
+										>+9V bulk cap. Rails are on opposite edges — run a jumper
+										wire from the +9V rail to a column near 24, then cap from
+										that column to the AGND rail. Or span directly if cap leads
+										reach.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>7</span
+									>
+								</td>
+								<td>10 µF electrolytic</td>
+								<td>
+									<strong>+ lead</strong> in blue AGND rail,
+									<strong>− lead</strong> in purple −9V rail<br /><span
+										class="sm"
+										>−9V bulk cap. Both rails on A-side edge — adjacent, easy
+										span. The + lead goes to GROUND — correct for negative
+										supply filtering.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Meter check (steps 3–7):</strong> Connect batteries.
+						Measure: +9V rail to blue rail = +8 to +9.6V. −9V rail to blue rail
+						= −8 to −9.6V. +9V to −9V = 16–19V.
+					</div>
+				</div>
+
+				<div>
+					<h3>Phase B: Install OPA2134PA</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>Detail</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>8</span
+									>
+								</td>
+								<td>Disconnect batteries first!</td>
+								<td>Never insert IC with power on.</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>9</span
+									>
+								</td>
+								<td>Insert OPA2134PA</td>
+								<td>
+									Straddle center gap.
+									<strong>Notch faces left (toward col 1).</strong><br />
+									Pin 1 (OUT A) → <strong>E28</strong><br />
+									Pin 2 (−IN A) → <strong>E29</strong><br />
+									Pin 3 (+IN A) → <strong>E30</strong><br />
+									Pin 4 (−V) → <strong>E31</strong><br />
+									Pin 5 (+IN B) → <strong>F31</strong><br />
+									Pin 6 (−IN B) → <strong>F30</strong><br />
+									Pin 7 (OUT B) → <strong>F29</strong><br />
+									Pin 8 (+V) → <strong>F28</strong>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>10</span
+									>
+								</td>
+								<td>Red jumper</td>
+								<td>
+									<strong>G28</strong> →
+									<strong>red +9V rail (J-side edge)</strong><br /><span
+										class="sm"
+										>G28 connects to F28 (pin 8 +V). Supplies +9V to OPA.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>11</span
+									>
+								</td>
+								<td>Purple jumper</td>
+								<td>
+									<strong>B31</strong> →
+									<strong>purple −9V rail (A-side edge)</strong><br /><span
+										class="sm"
+										>B31 connects to E31 (pin 4 −V). Supplies −9V to OPA.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>12</span
+									>
+								</td>
+								<td>100 nF ceramic cap</td>
+								<td>
+									<strong>H28</strong> → <strong>H24</strong><br /><span
+										class="sm"
+										>+9V bypass cap. H28 is on the F–J side (same as pin 8 at
+										F28). H24 connects to AGND via the step 2 bridge. Place as
+										close to the IC as possible.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>13</span
+									>
+								</td>
+								<td>100 nF ceramic cap</td>
+								<td>
+									<strong>B31</strong> → <strong>B24</strong><br /><span
+										class="sm"
+										>Bypass cap: −9V pin to AGND. B31 is on pin 4 net.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>14</span
+									>
+								</td>
+								<td>Jumper (park op amp B)</td>
+								<td>
+									<strong>H29</strong> → <strong>H30</strong><br /><span
+										class="sm"
+										>Connects OUT B (pin 7) to −IN B (pin 6). Unity
+										follower.</span
+									>
+								</td>
+							</tr>
+
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>15</span
+									>
+								</td>
+								<td>Jumper (park op amp B)</td>
+								<td>
+									<strong>H31</strong> → <strong>H24</strong><br /><span
+										class="sm"
+										>Connects +IN B (pin 5) to AGND. Parks unused half.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Meter check (steps 9–15):</strong> Reconnect batteries.
+						Measure pin 8 to blue rail = +9V. Pin 4 to blue rail = −9V. Pin 1
+						(output) to blue rail = near 0V (±50 mV).
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 6 : BOARD A SIGNAL PATH ═══════════ -->
+		<section class="page">
+			<h2><span class="step-n">2</span> Board A Signal Path (continued)</h2>
+
+			<h3>Phase C: Signal, Gain, and Output Resistors</h3>
+			<p class="sm">Disconnect batteries before inserting resistors.</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>Step</th>
+						<th>Part</th>
+						<th>From → To</th>
+						<th>Why</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>16</span
+							>
+						</td>
+						<td>R<sub>f</sub> 100 kΩ</td>
+						<td><strong>C28</strong> → <strong>C29</strong></td>
+						<td>
+							Feedback resistor: OUT A (col 28) to −IN A (col 29). Sets gain
+							with R<sub>g</sub>.
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>17</span
+							>
+						</td>
+						<td>R<sub>g</sub> 10 kΩ</td>
+						<td><strong>D29</strong> → <strong>D24</strong></td>
+						<td>
+							−IN A (col 29) to AGND (col 24). Gain = 1 + 100k/10k =
+							<strong>11×</strong>.
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>18</span
+							>
+						</td>
+						<td>R<sub>IN</sub> 4.7 kΩ</td>
+						<td><strong>A20</strong> → <strong>A30</strong></td>
+						<td>
+							Input series resistor. A20 = RX signal entry. A30 = same net as
+							OPA pin 3 (+IN A).
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>19</span
+							>
+						</td>
+						<td>R<sub>BIAS</sub> 1 MΩ</td>
+						<td><strong>C30</strong> → <strong>C24</strong></td>
+						<td>
+							DC bias from +IN node to AGND. Provides DC path for OPA input bias
+							current.
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>20</span
+							>
+						</td>
+						<td>R<sub>OUT</sub> 47 Ω</td>
+						<td><strong>A28</strong> → <strong>A40</strong></td>
+						<td>
+							Output series isolator. A28 = OUT A net. A40 = output test point
+							and Ch A connection.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3>Phase D: External Connections</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>Step</th>
+						<th>Cable</th>
+						<th>From → To</th>
+						<th>Why</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>21</span
+							>
+						</td>
+						<td>Mux signal (twisted pair, signal wire)</td>
+						<td>
+							16-ch relay common output → Board A hole <strong>A20</strong>
+						</td>
+						<td>
+							Selected RX PZT signal enters preamp here. Keep this wire
+							<strong>as short as possible</strong>.
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>22</span
+							>
+						</td>
+						<td>Mux return (twisted pair, return wire)</td>
+						<td>
+							Sensor return bus → Board A
+							<strong>blue AGND rail</strong> near C24
+						</td>
+						<td>
+							Return path paired with signal. This is the RX sensor return bus,
+							not Arduino GND or relay-module GND.
+						</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>23</span
+							>
+						</td>
+						<td>Pico Ch A center conductor</td>
+						<td>Board A hole <strong>A40</strong> → scope Ch A BNC center</td>
+						<td>Preamp output to PicoScope.</td>
+					</tr>
+
+					<tr>
+						<td>
+							<span
+								class="step-n"
+								style="
+									width: 5mm;
+									height: 5mm;
+									line-height: 5mm;
+									font-size: 7pt;
+								"
+								>24</span
+							>
+						</td>
+						<td>Pico Ch A shield</td>
+						<td>
+							scope Ch A BNC shield → Board A
+							<strong>blue AGND rail</strong> near C24
+						</td>
+						<td>
+							Single intentional scope ground point. Do not add other scope
+							ground connections.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 style="margin-top: 3mm">Board A Complete Netlist Summary</h3>
+			<div class="g2">
+				<table>
+					<thead>
+						<tr>
+							<th>Net Name</th>
+							<th>Connected Holes</th>
+							<th>External</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td style="color: var(--gnd); font-weight: 700">AGND (star)</td>
+							<td>A24–E24, F24–J24 (via step 2), C24→rail (step 1)</td>
+							<td>Battery midpoint, Ch A shield, mux return</td>
+						</tr>
+						<tr>
+							<td style="color: var(--red); font-weight: 700">+9V</td>
+							<td>Red +9V rail (J-side), G28→rail (step 10)</td>
+							<td>Battery 1 +</td>
+						</tr>
+						<tr>
+							<td style="color: var(--vio); font-weight: 700">−9V</td>
+							<td>Purple −9V rail (A-side), B31→rail (step 11)</td>
+							<td>Battery 2 −</td>
+						</tr>
+						<tr>
+							<td style="font-weight: 700">RX_IN</td>
+							<td>A20–E20</td>
+							<td>Mux common signal</td>
+						</tr>
+						<tr>
+							<td style="font-weight: 700">+IN_A</td>
+							<td>A30–E30 (OPA pin 3)</td>
+							<td>—</td>
+						</tr>
+						<tr>
+							<td style="font-weight: 700">−IN_A</td>
+							<td>A29–E29 (OPA pin 2)</td>
+							<td>—</td>
+						</tr>
+						<tr>
+							<td style="font-weight: 700">OUT_A</td>
+							<td>A28–E28 (OPA pin 1)</td>
+							<td>—</td>
+						</tr>
+						<tr>
+							<td style="color: var(--grn); font-weight: 700">CH_A_OUT</td>
+							<td>A40–E40</td>
+							<td>Pico Ch A center</td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<div class="note warn">
+						<strong>Why column 24 for star ground?</strong> It's 4 columns away
+						from the IC (col 28–31), giving room for the bypass caps and gain
+						resistors while keeping ground connections short. All ground
+						references (battery midpoint, scope shield, mux return, bias
+						resistor, gain resistor) tie to this single column.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 7 : 16-CH RELAY SENSOR WIRING ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">3</span> Connect RX Sensors to 16-Channel Relay
+			</h2>
+
+			<div class="g2">
+				<div>
+					<h3>Relay Screw Terminal Wiring</h3>
+					<p>
+						Each RX PZT sensor has two wires (signal + return). The relay
+						switches only the signal wire; the return wires share a separate
+						AGND return bus.
+					</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>Strip ~5mm from both PZT wires.</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>
+									Insert the <strong>signal</strong> wire into the relay
+									channel's <strong>COM</strong> screw terminal. Tighten.
+								</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>
+									Insert only the <strong>mux signal bus jumper</strong> into
+									the relay's <strong>NO</strong> terminal. Tighten.
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>
+									Chain all NO terminals together with bus wire. This becomes
+									the <strong>mux common signal</strong> line to Board A A20.
+								</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>
+									Tie all sensor <strong>return</strong> wires together on a
+									separate return bus. Bring mux signal + return bus as a
+									twisted pair to Board&nbsp;A.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note crit">
+						<strong>Return bus rule:</strong> Sensor returns go to Board A blue
+						AGND rail near C24. They do <strong>not</strong> go to relay NO,
+						relay COM, Arduino GND, or the relay module GND pin.
+					</div>
+
+					<div class="note crit">
+						<strong>Wait — check your module's terminal layout!</strong> Some
+						16-ch relay modules use COM/NO/NC differently. On many boards:<br />
+						• <strong>COM</strong> = center terminal<br />
+						• <strong>NO</strong> = normally open (connects to COM when relay is
+						ON)<br />
+						• <strong>NC</strong> = normally closed (leave empty for mux use)<br /><br />
+						If your module has a <strong>shared COM bus</strong> (all COMs
+						internally connected), then wire each sensor to the
+						<strong>NO</strong> terminal instead, and take the output from any
+						<strong>COM</strong> terminal. Check with a multimeter: power one
+						relay, check which terminals connect.
+					</div>
+				</div>
+				<div>
+					<h3>Sensor-to-Relay Channel Map</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Relay</th>
+								<th>Arduino Pin</th>
+								<th>Sensor</th>
+								<th>Position</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background: #ecfdf5">
+								<td><strong>1</strong></td>
+								<td>D2</td>
+								<td>Plate 1 (A)</td>
+								<td>NE-RX diagonal</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>2</strong></td>
+								<td>D3</td>
+								<td>Plate 2 (B)</td>
+								<td>NE-RX diagonal</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>3</strong></td>
+								<td>D4</td>
+								<td>Plate 3 (G)</td>
+								<td>NE-RX diagonal</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>4</strong></td>
+								<td>D5</td>
+								<td>Plate 3 (G)</td>
+								<td>NW-RX L-path</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>5</strong></td>
+								<td>D6</td>
+								<td>Plate 4 (D)</td>
+								<td>NE-RX diagonal</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>6</strong></td>
+								<td>D7</td>
+								<td>Plate 4 (D)</td>
+								<td>NW-RX L-path</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>7</strong></td>
+								<td>D8</td>
+								<td>Plate 5 (F)</td>
+								<td>NE-RX diagonal</td>
+								<td>Wire now</td>
+							</tr>
+							<tr style="background: #ecfdf5">
+								<td><strong>8</strong></td>
+								<td>D9</td>
+								<td>Plate 5 (F)</td>
+								<td>NW-RX L-path</td>
+								<td>Wire now</td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>D10</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>10</td>
+								<td>D11</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>11</td>
+								<td>D12</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>D13</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>13</td>
+								<td>A0</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr>
+								<td>14</td>
+								<td>A1</td>
+								<td>—</td>
+								<td>—</td>
+								<td>Expansion</td>
+							</tr>
+							<tr style="background: #fef3c7">
+								<td><strong>15</strong></td>
+								<td>A2</td>
+								<td colspan="2">Input Short → signal tied to return</td>
+								<td>Control</td>
+							</tr>
+							<tr style="background: #fef3c7">
+								<td><strong>16</strong></td>
+								<td>A3</td>
+								<td colspan="2">Terminated → 100Ω dummy load</td>
+								<td>Control</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Controls (ch 15–16):</strong> Relay 15: wire COM to the
+						return bus; NO is already on the mux signal bus. When relay 15 turns
+						on, A20 is shorted to AGND (noise floor test). Relay 16: wire COM
+						through a 100Ω resistor to the return bus; NO is already on the mux
+						signal bus. When relay 16 turns on, A20 sees a 100Ω terminated load.
+					</div>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 3mm">Drive PZT Wiring (AWG mode — no DDS yet)</h3>
+			<table style="width: 70%">
+				<thead>
+					<tr>
+						<th>From</th>
+						<th>To</th>
+						<th>Cable</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>PicoScope AWG OUT</td>
+						<td>BNC tee input</td>
+						<td>BNC</td>
+						<td>Factory Pico cable</td>
+					</tr>
+					<tr>
+						<td>BNC tee branch 1</td>
+						<td>PicoScope Ch B</td>
+						<td>BNC coax</td>
+						<td>Direct reference. Set Ch B range ±500 mV.</td>
+					</tr>
+					<tr>
+						<td>BNC tee branch 2</td>
+						<td>Drive PZT</td>
+						<td>Twisted pair</td>
+						<td>
+							Keep this wire far from mux common wire. Cross at 90° if paths
+							must intersect.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+
+		<!-- ═══════════ PAGE 8 : BRING-UP ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">4</span> Bring-Up Checklist &amp; Test Sequence
+			</h2>
+
+			<div class="g2">
+				<div>
+					<h3>A. Power-Off Visual Inspection</h3>
+					<ul class="cl">
+						<li>OPA pin 8 (F28) connected to +9V rail via G28.</li>
+						<li>OPA pin 4 (E31) connected to −9V rail via B31.</li>
+						<li>C24 jumpered to blue AGND rail (A-side edge).</li>
+						<li>E24–F24 bridge jumper in place.</li>
+						<li>+9V bypass cap: H28 → H24 (or G28 → G24).</li>
+						<li>−9V bypass cap: B31 → B24.</li>
+						<li>
+							10 µF +9V bulk cap: red rail (J-side) to blue rail (A-side).
+						</li>
+						<li>
+							10 µF −9V bulk cap between blue and purple rails (+ on blue).
+						</li>
+						<li>R<sub>f</sub> 100k: C28 → C29.</li>
+						<li>R<sub>g</sub> 10k: D29 → D24.</li>
+						<li>R<sub>IN</sub> 4.7k: A20 → A30.</li>
+						<li>R<sub>BIAS</sub> 1M: C30 → C24.</li>
+						<li>R<sub>OUT</sub> 47Ω: A28 → A40.</li>
+						<li>Park jumper: H29 → H30 (OUT B to −IN B).</li>
+						<li>Park jumper: H31 → H24 (+IN B to AGND).</li>
+						<li>No AWG/DDS/Arduino/relay wires on Board A.</li>
+						<li>16-ch relay has all 18 F-F cables to Arduino 1.</li>
+						<li>Arduino 1 is flashed with relay_controller_16ch.ino.</li>
+					</ul>
+				</div>
+				<div>
+					<h3>B. Multimeter Checks (power on)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Measure</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>+9V rail to blue AGND rail</td>
+								<td>+8 to +9.6 V</td>
+							</tr>
+							<tr>
+								<td>−9V rail to blue AGND rail</td>
+								<td>−8 to −9.6 V</td>
+							</tr>
+							<tr>
+								<td>+9V to −9V</td>
+								<td>16 to 19 V</td>
+							</tr>
+							<tr>
+								<td>OPA pin 1 (E28) output, nothing connected</td>
+								<td>Near 0V (±50 mV)</td>
+							</tr>
+							<tr>
+								<td>A40 output node</td>
+								<td>Near 0V (±50 mV)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>C. Signal Tests (connect scope)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Test</th>
+								<th>Setup</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1. Input short</td>
+								<td>Jumper A20 to blue rail. AWG off.</td>
+								<td>Ch A quiet, no rail.</td>
+							</tr>
+							<tr>
+								<td>2. Feedthrough</td>
+								<td>Input grounded. AWG 10mVpp on.</td>
+								<td>Ch A should show minimal carrier.</td>
+							</tr>
+							<tr>
+								<td>3. Relay short</td>
+								<td>Send <code>15</code> (input-short relay). AWG on.</td>
+								<td>Ch A stays quiet.</td>
+							</tr>
+							<tr>
+								<td>4. Terminated</td>
+								<td>Send <code>16</code> (dummy load). AWG on.</td>
+								<td>Ch A stays quiet.</td>
+							</tr>
+							<tr>
+								<td>5. Acoustic</td>
+								<td>
+									Send <code>5</code> or <code>7</code> (real sensor). AWG on.
+								</td>
+								<td>Ch A shows signal.</td>
+							</tr>
+							<tr>
+								<td>6. Ref-cancel</td>
+								<td>Same as 5 + Ch B reference.</td>
+								<td>Cancellation &gt; 4 dB.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>D. Run Command</h3>
+					<pre
+						class="mono"
+						style="
+							font-size: 8pt;
+							background: #f8fafc;
+							border: 0.2mm solid var(--l);
+							padding: 2mm;
+							white-space: pre-wrap;
+						">
+python tools/awg_preamp_refcancel_2048.py \
+  --mux-channels 5,6,7,8 \
+  --range-a-mv 200 --range-b-mv 500 \
+  --drive-uvpp 10000 \
+  --scan-averages 8 --uncertainty-frames 24</pre
+					>
+
+					<div class="note">
+						<strong>Success criteria:</strong> No clipping. Feedthrough test 2
+						&lt; −40 dB of test 5. After Ch B cancellation, top residual bins
+						aren't all exact harmonics. Mux-channel-specific differences visible
+						between sensors.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 9 : BOARD S PHYSICAL WIRING ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">5</span> Board S — DDS + DAC Physical Wiring (build
+				when DDS boards arrive)
+			</h2>
+			<p class="sm">
+				Full-size breadboard. J row at top, A row at bottom. Arduino Nano #2, 2×
+				AD9833 DDS modules, and 2× MCP4921 DACs. Board S is a local 5V
+				digital/source board; it is not part of Board A analog ground.
+			</p>
+
+			<div class="note crit">
+				<strong>Isolation rule:</strong> Board S GND is Arduino 2 USB ground. Do
+				not connect Board S GND to Board A AGND/C24. The only physical path from
+				Board S to the experiment is the drive twisted pair going through Board
+				D.
+			</div>
+
+			<div class="g2">
+				<div>
+					<h3>Phase A: Board S Rails and Placement</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Part</th>
+								<th>Exact Placement / Wire</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>0</td>
+								<td>Arduino Nano #2</td>
+								<td>
+									Plug into Board S spanning <strong>c1–h15</strong>,
+									<strong>USB jack at column 1</strong>. Columns 1–15 are now
+									occupied; all other components go to the right.
+								</td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Arduino 2 5V</td>
+								<td>
+									Arduino Nano #2 <strong>5V</strong> → Board S
+									<strong>red +5V rail (J-side edge)</strong>.
+								</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Arduino 2 GND</td>
+								<td>
+									Arduino Nano #2 <strong>GND</strong> → Board S
+									<strong>blue GND rail (A-side edge)</strong>.
+								</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>DAC 1 MCP4921</td>
+								<td>
+									Straddle center gap, notch left. Pin 1 at
+									<strong>E36</strong>, pins 2–4 at <strong>E37–E39</strong>.
+									Pins 8–5 at <strong>F36–F39</strong>.
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>DAC 2 MCP4921</td>
+								<td>
+									Straddle center gap, notch left. Pin 1 at
+									<strong>E46</strong>, pins 2–4 at <strong>E47–E49</strong>.
+									Pins 8–5 at <strong>F46–F49</strong>.
+								</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>DDS 1 pinned</td>
+								<td>
+									Pin the AD9833 header into <strong>d20–d26</strong>, OUT
+									facing the Arduino (left). Pin mapping: <br />•
+									<strong>d20</strong> = OUT <br />• <strong>d21</strong> = AGND
+									→ jumper <strong>a21</strong> → blue GND rail <br />•
+									<strong>d22</strong> = FSYNC → jumper <strong>a22</strong> →
+									Arduino D10 column <br />• <strong>d23</strong> = SCLK →
+									jumper <strong>a23</strong> → <strong>B52</strong> (SPI hub)
+									<br />• <strong>d24</strong> = SDATA → jumper
+									<strong>a24</strong> → <strong>B53</strong> (SPI hub) <br />•
+									<strong>d25</strong> = DGND → jumper <strong>a25</strong> →
+									blue GND rail <br />• <strong>d26</strong> = VCC → jumper
+									<strong>a26</strong> → red +5 V rail
+								</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>DDS 2 pinned</td>
+								<td>
+									Pin into <strong>d28–d34</strong> (1 column gap at d27). Same
+									orientation — OUT leftmost: <br />• <strong>d28</strong> = OUT
+									<br />• <strong>d29</strong> = AGND → jumper
+									<strong>a29</strong> → blue GND rail <br />•
+									<strong>d30</strong> = FSYNC → jumper <strong>a30</strong> →
+									Arduino D9 column <br />• <strong>d31</strong> = SCLK → jumper
+									<strong>a31</strong> → <strong>C52</strong> (SPI hub) <br />•
+									<strong>d32</strong> = SDATA → jumper <strong>a32</strong> →
+									<strong>C53</strong> (SPI hub) <br />• <strong>d33</strong> =
+									DGND → jumper <strong>a33</strong> → blue GND rail <br />•
+									<strong>d34</strong> = VCC → jumper <strong>a34</strong> → red
+									+5 V rail
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note warn">
+						<strong>Orientation:</strong> The module's label order is VCC → OUT
+						reading left-to-right on the silkscreen, but we pin it
+						<em>OUT-first</em> (OUT closest to column 1). Double-check that both
+						DGND <em>and</em> AGND go to the blue GND rail.
+					</div>
+				</div>
+
+				<div>
+					<h3>Phase B: MCP4921 Pin-by-Pin Wiring</h3>
+					<table class="pin-tbl">
+						<thead>
+							<tr>
+								<th>DAC Pin</th>
+								<th>DAC 1 Hole</th>
+								<th>DAC 2 Hole</th>
+								<th>Connect To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1 VDD</td>
+								<td>E36 / A36</td>
+								<td>E46 / A46</td>
+								<td>Board S red +5V rail</td>
+							</tr>
+							<tr>
+								<td>2 CS̄</td>
+								<td>E37 / A37</td>
+								<td>E47 / A47</td>
+								<td>Arduino D8 (DAC 1), Arduino D7 (DAC 2)</td>
+							</tr>
+							<tr>
+								<td>3 SCK</td>
+								<td>E38 / A38</td>
+								<td>E48 / A48</td>
+								<td>SPI SCLK hub, column 52</td>
+							</tr>
+							<tr>
+								<td>4 SDI</td>
+								<td>E39 / A39</td>
+								<td>E49 / A49</td>
+								<td>SPI MOSI hub, column 53</td>
+							</tr>
+							<tr>
+								<td>5 LDAC̄</td>
+								<td>F39 / J39</td>
+								<td>F49 / J49</td>
+								<td>Board S blue GND rail</td>
+							</tr>
+							<tr>
+								<td>6 VREF</td>
+								<td>F38 / J38</td>
+								<td>F48 / J48</td>
+								<td>Board S red +5V rail</td>
+							</tr>
+							<tr>
+								<td>7 VSS</td>
+								<td>F37 / J37</td>
+								<td>F47 / J47</td>
+								<td>Board S blue GND rail</td>
+							</tr>
+							<tr>
+								<td>8 VOUT</td>
+								<td>F36 / J36</td>
+								<td>F46 / J46</td>
+								<td>Test pad only for now</td>
+							</tr>
+							<tr>
+								<td>Bypass</td>
+								<td>A36 → J37</td>
+								<td>A46 → J47</td>
+								<td>100 nF ceramic cap, one per DAC</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>LDAC̄ tied to GND</strong> means each DAC updates as soon as
+						the SPI write completes. VOUT pads J36 and J46 are DC control/test
+						outputs; do not wire them directly to DDS OUT or the PZT.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 10 : BOARD S SPI + OUTPUTS ═══════════ -->
+		<section class="page">
+			<h2><span class="step-n">5</span> Board S — SPI, DDS Outputs, Checks</h2>
+
+			<div class="g2">
+				<div>
+					<h3>Phase C: Shared SPI Bus Hubs</h3>
+					<p class="sm">
+						Columns 52 and 53 are shared logic hubs on the A–E side. Each hub
+						has five holes, enough for Arduino + two DDS modules + two DAC
+						jumpers.
+					</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Signal</th>
+								<th>Board S Hub</th>
+								<th>Put These Leads Into the Same Column</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>SCLK</td>
+								<td>A52–E52</td>
+								<td>
+									Arduino D13 → A52; DDS1 a23 → B52; DDS2 a31 → C52; DAC1 pin 3
+									A38 → D52; DAC2 pin 3 A48 → E52.
+								</td>
+							</tr>
+							<tr>
+								<td>MOSI</td>
+								<td>A53–E53</td>
+								<td>
+									Arduino D11 → A53; DDS1 a24 → B53; DDS2 a32 → C53; DAC1 pin 4
+									A39 → D53; DAC2 pin 4 A49 → E53.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Phase D: Chip Selects and DDS Power</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Wire</th>
+								<th>From → To</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>DDS 1 CS</td>
+								<td>Already wired in step 5 (FSYNC d22 → a22 → D10)</td>
+								<td>Active-low select for DDS 1.</td>
+							</tr>
+							<tr>
+								<td>DDS 2 CS</td>
+								<td>Already wired in step 6 (FSYNC d30 → a30 → D9)</td>
+								<td>Active-low select for DDS 2.</td>
+							</tr>
+							<tr>
+								<td>DAC 1 CS</td>
+								<td>Arduino D8 → A37</td>
+								<td>A37 is DAC1 pin 2 net.</td>
+							</tr>
+							<tr>
+								<td>DAC 2 CS</td>
+								<td>Arduino D7 → A47</td>
+								<td>A47 is DAC2 pin 2 net.</td>
+							</tr>
+							<tr>
+								<td>DDS power</td>
+								<td>Already wired: DDS1 VCC a26, DDS2 VCC a34 → +5 V rail</td>
+								<td>Use Arduino USB 5V only.</td>
+							</tr>
+							<tr>
+								<td>DDS ground</td>
+								<td>Already wired: DDS1 a21+a25, DDS2 a29+a33 → GND rail</td>
+								<td>All Board S local ground.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note warn">
+						<strong>Do not power Board S from the 9V batteries.</strong> Board S
+						is 5V USB logic only. The +9/AGND/-9 battery rails exist only on
+						Board A.
+					</div>
+				</div>
+
+				<div>
+					<h3>Phase E: DDS Output and Sum Node</h3>
+					<p class="sm">
+						DDS 1 OUT is at d20 (strip a20–e20). DDS 2 OUT is at d28 (strip
+						a28–e28). Two 10 k resistors merge them into a sum node at
+						<strong>column 35</strong> (A–E side), right before DAC 1.
+					</p>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Part</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>10 k resistor</td>
+								<td><strong>e20</strong> → <strong>b35</strong></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>10 k resistor</td>
+								<td><strong>e28</strong> → <strong>c35</strong></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Sum output wire</td>
+								<td>
+									<strong>a35</strong> → Board D source hot <strong>J5</strong>
+								</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Return wire</td>
+								<td>
+									Board S blue GND rail → Board D source return
+									<strong>A5</strong>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						Column 35 A–E is the DDS sum node. e20 shares a strip with DDS 1 OUT
+						(d20); e28 shares a strip with DDS 2 OUT (d28). With one DDS off, it
+						behaves as a single source through 10 k. With both on, it is a
+						passive two-tone sum.
+					</div>
+
+					<h3>Phase F: Power-On Checks</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Measure</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Board S +5V rail to Board S GND rail</td>
+								<td>4.75–5.15 V</td>
+							</tr>
+							<tr>
+								<td>A36 to J37, A46 to J47 with power off</td>
+								<td>Not a short; cap charges briefly then open/high</td>
+							</tr>
+							<tr>
+								<td>DAC1 VOUT J36 to GND</td>
+								<td>
+									0–5 V after firmware writes; may be undefined before writes
+								</td>
+							</tr>
+							<tr>
+								<td>DAC2 VOUT J46 to GND</td>
+								<td>
+									0–5 V after firmware writes; may be undefined before writes
+								</td>
+							</tr>
+							<tr>
+								<td>DDS OUT to Board S GND on scope</td>
+								<td>~600 mVpp sine when programmed</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note crit">
+						<strong>Park DAC outputs for now:</strong> J36 and J46 are test
+						pads, not drive outputs. A real amplitude-control stage still needs
+						an attenuator, switch, or multiplier between DAC VOUT and the DDS
+						sine.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 11 : BOARD D DRIVE DISTRIBUTION ═══════════ -->
+		<section class="page">
+			<h2><span class="step-n">6</span> Board D — Drive Distribution</h2>
+			<p class="sm">
+				Half-size breadboard, J row at top and A row at bottom. Board D is a
+				patch point for exactly one drive source at a time: Pico AWG now, Board
+				S DDS later. It does not touch the RX relay mux or Board A input.
+			</p>
+
+			<div class="g2">
+				<div>
+					<h3>Physical Nodes</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Node</th>
+								<th>Board D Holes</th>
+								<th>Meaning</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Source hot</td>
+								<td><strong>J5</strong></td>
+								<td>AWG tee center wire now, Board S a35 later.</td>
+							</tr>
+							<tr>
+								<td>Source return</td>
+								<td><strong>A5</strong></td>
+								<td>AWG tee shield/return now, Board S GND later.</td>
+							</tr>
+							<tr>
+								<td>Drive PZT hot</td>
+								<td><strong>J20</strong></td>
+								<td>Marked lead of the drive PZT.</td>
+							</tr>
+							<tr>
+								<td>Drive PZT return</td>
+								<td><strong>A20</strong></td>
+								<td>Other drive PZT lead.</td>
+							</tr>
+							<tr>
+								<td>Dummy load hot</td>
+								<td><strong>J26</strong></td>
+								<td>Use instead of the PZT for source/feedthrough tests.</td>
+							</tr>
+							<tr>
+								<td>Dummy load return</td>
+								<td><strong>A26</strong></td>
+								<td>Return side of dummy load.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Patch Links</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Mode</th>
+								<th>Install These Jumpers</th>
+								<th>Remove / Leave Open</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background: #ecfdf5">
+								<td>Drive PZT</td>
+								<td><strong>J5 → J20</strong>, <strong>A5 → A20</strong></td>
+								<td>Leave J26/A26 unpatched.</td>
+							</tr>
+							<tr style="background: #fef3c7">
+								<td>Dummy load</td>
+								<td><strong>J5 → J26</strong>, <strong>A5 → A26</strong></td>
+								<td>Remove J5→J20 and A5→A20.</td>
+							</tr>
+							<tr>
+								<td>All off</td>
+								<td>None</td>
+								<td>No source-to-load jumpers installed.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						Install a <strong>100Ω resistor from J26 to A26</strong> for the
+						dummy load. Do not leave the dummy load patched in parallel with the
+						PZT.
+					</div>
+				</div>
+
+				<div>
+					<h3>AWG Mode Wiring (use now)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>From</th>
+								<th>To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>PicoScope AWG OUT</td>
+								<td>BNC tee input</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>BNC tee branch 1</td>
+								<td>PicoScope Ch B direct reference coax</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>BNC tee branch 2 center</td>
+								<td>Board D <strong>J5</strong></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>BNC tee branch 2 shield/return</td>
+								<td>Board D <strong>A5</strong></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Drive PZT marked lead</td>
+								<td>Board D <strong>J20</strong></td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>Drive PZT other lead</td>
+								<td>Board D <strong>A20</strong></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Board S Source Mode (future)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Board S DDS sum node <strong>a35</strong></td>
+								<td>→ Board D <strong>J5</strong></td>
+							</tr>
+							<tr>
+								<td>Board S blue GND rail</td>
+								<td>→ Board D <strong>A5</strong></td>
+							</tr>
+							<tr>
+								<td>Pico AWG tee branch 2</td>
+								<td>Disconnected from Board D while Board S is source.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Board D Checks</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Power/source off: J5 to A5</td>
+								<td>Open/high unless dummy load is patched.</td>
+							</tr>
+							<tr>
+								<td>Dummy load mode: J5 to A5</td>
+								<td>About 100Ω through the J26–A26 resistor.</td>
+							</tr>
+							<tr>
+								<td>J5/A5 to Board A C24 or A20</td>
+								<td>No continuity. Board D is not the receive path.</td>
+							</tr>
+							<tr>
+								<td>Drive pair routing</td>
+								<td>Twisted pair; keep far from mux common and Board A A20.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note crit">
+						<strong>One source at a time:</strong> never connect Pico AWG and
+						Board S DDS to J5/A5 together. Pick AWG mode or Board S mode, not
+						both.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 12 : QUICK REFERENCE ═══════════ -->
+		<section class="page">
+			<h2>Quick Reference Card</h2>
+
+			<div class="g3">
+				<div>
+					<h3 style="color: var(--grn)">Board A Key Holes</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>A20</strong></td>
+								<td>RX signal input from mux</td>
+							</tr>
+							<tr>
+								<td><strong>A30 / E30</strong></td>
+								<td>OPA +IN A (pin 3) node</td>
+							</tr>
+							<tr>
+								<td><strong>A40</strong></td>
+								<td>Output to Pico Ch A</td>
+							</tr>
+							<tr>
+								<td><strong>C24</strong></td>
+								<td>Star ground tie point</td>
+							</tr>
+							<tr>
+								<td><strong>C28 / E28</strong></td>
+								<td>OPA OUT A (pin 1) node</td>
+							</tr>
+							<tr>
+								<td><strong>C29 / E29</strong></td>
+								<td>OPA −IN A (pin 2) node</td>
+							</tr>
+							<tr>
+								<td><strong>E28–E31</strong></td>
+								<td>OPA pins 1–4 (A–E side)</td>
+							</tr>
+							<tr>
+								<td><strong>F28–F31</strong></td>
+								<td>OPA pins 8–5 (F–J side)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3 style="color: var(--cyan)">16-ch Relay Quick Map</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>1–8</strong></td>
+								<td>Plates 1–5, NE + NW sensors</td>
+							</tr>
+							<tr>
+								<td><strong>9–14</strong></td>
+								<td>Expansion (unassigned)</td>
+							</tr>
+							<tr>
+								<td><strong>15</strong></td>
+								<td>Input short (noise floor control)</td>
+							</tr>
+							<tr>
+								<td><strong>16</strong></td>
+								<td>Terminated load (100Ω control)</td>
+							</tr>
+							<tr>
+								<td><strong>Serial</strong></td>
+								<td>/dev/cu.usbserial-11310</td>
+							</tr>
+							<tr>
+								<td><strong>Protocol</strong></td>
+								<td>"5\n" → OK:5 (9600 baud)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>PicoScope Settings</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Ch A</strong></td>
+								<td>±200 mV (preamp out)</td>
+							</tr>
+							<tr>
+								<td><strong>Ch B</strong></td>
+								<td>±500 mV (AWG ref)</td>
+							</tr>
+							<tr>
+								<td><strong>Timebase</strong></td>
+								<td>7 (1280 ns, 781 kHz)</td>
+							</tr>
+							<tr>
+								<td><strong>Samples</strong></td>
+								<td>2048 (dual) / 8064 (single)</td>
+							</tr>
+							<tr>
+								<td><strong>AWG</strong></td>
+								<td>10 mVpp sine</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 3mm">Ground Domain Rules</h3>
+			<div class="g3">
+				<div
+					class="card"
+					style="border-color: var(--grn)">
+					<h3 style="color: var(--grn); margin: 0">Analog Ground</h3>
+					<p>
+						<strong>Board A only.</strong> Star point C24. Sources: battery
+						midpoint, Pico Ch A shield, mux return wire. Isolated from all USB
+						grounds.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: var(--cyan)">
+					<h3 style="color: var(--cyan); margin: 0">Digital Ground 1</h3>
+					<p>
+						<strong>Arduino 1 + 16-ch relay.</strong> USB-powered. The mux
+						return wire is the only connection to Board A AGND — it carries the
+						RX signal return.
+					</p>
+				</div>
+				<div
+					class="card"
+					style="border-color: var(--org)">
+					<h3 style="color: var(--org); margin: 0">
+						Digital Ground 2 (future)
+					</h3>
+					<p>
+						<strong>Arduino 2 + DDS + DAC (Board S).</strong> USB-powered. No
+						connection to Board A AGND. Only analog path out: drive twisted
+						pair.
+					</p>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 3mm">Software Checklist</h3>
+			<table style="width: 80%">
+				<thead>
+					<tr>
+						<th>Item</th>
+						<th>File</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>16-ch relay firmware</td>
+						<td>
+							<code>tools/relay_controller_16ch/relay_controller_16ch.ino</code>
+						</td>
+						<td>Flash to Arduino 1 via Arduino IDE</td>
+					</tr>
+					<tr>
+						<td>Python relay interface</td>
+						<td><code>tools/relay_mux.py</code></td>
+						<td>Already updated for 1–16 plus newline-terminated commands</td>
+					</tr>
+					<tr>
+						<td>Capture script</td>
+						<td><code>tools/awg_preamp_refcancel_2048.py</code></td>
+						<td>
+							Already supports any channel via <code>--mux-channels</code>
+						</td>
+					</tr>
+					<tr>
+						<td>DDS+DAC firmware (future)</td>
+						<td>
+							<code>tools/relay_controller_dds/relay_controller_dds.ino</code>
+						</td>
+						<td>Extend with MCP4921 writes, flash to Arduino 2</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 style="margin-top: 3mm">Build Order</h3>
+			<table style="width: 80%">
+				<thead>
+					<tr>
+						<th>Phase</th>
+						<th>What</th>
+						<th>Test</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr style="background: #ecfdf5">
+						<td><strong>Now</strong></td>
+						<td>
+							Wire Arduino 1 ↔ 16-ch relay (18 F-F cables). Flash firmware. Test
+							each relay with multimeter.
+						</td>
+						<td>Send "1"–"16", verify clicks.</td>
+					</tr>
+					<tr style="background: #ecfdf5">
+						<td><strong>Now</strong></td>
+						<td>
+							Build Board A preamp (24 steps above). Connect batteries. Meter
+							check rails and output.
+						</td>
+						<td>±9V rails, output near 0V.</td>
+					</tr>
+					<tr style="background: #ecfdf5">
+						<td><strong>Now</strong></td>
+						<td>
+							Connect sensors to relay screw terminals. Connect mux common to
+							Board A. Build Board D; route AWG tee branch 2 to J5/A5 and drive
+							PZT to J20/A20. Connect Ch A/B.
+						</td>
+						<td>Full signal path test.</td>
+					</tr>
+					<tr>
+						<td>Later</td>
+						<td>
+							Build Board S: Arduino 2 + 2× DDS + 2× MCP4921 DAC. Flash Arduino
+							2.
+						</td>
+						<td>DDS freq on scope, DAC voltage on meter.</td>
+					</tr>
+					<tr>
+						<td>Later</td>
+						<td>Add 8-ch relay to Board S for automated source selection.</td>
+						<td>Switch AWG/DDS without rewiring.</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</body>
+</html>

@@ -55,6 +55,8 @@ class GlassProperties:
     T_anneal: float           # annealing point [K]
     T_strain: float           # strain point [K]
     T_softening: float        # softening point [K]
+    het_gamma: float = 0.0    # HET disorder parameter (Schirmacher 2007, Pan 2021)
+    nu_ioffe_regel_hz: float = 0.0  # Ioffe-Regel frequency [Hz] (Rufflé 2006)
     cost_note: str = ""
     source_note: str = ""
 
@@ -99,6 +101,8 @@ def glass_database() -> Dict[str, GlassProperties]:
             T_anneal=818.0,
             T_strain=773.0,
             T_softening=999.0,
+            het_gamma=0.42,           # Pan et al. PRB 104 (2021)
+            nu_ioffe_regel_hz=0.8e12, # ~0.8 THz (Rufflé 2006)
             cost_note="$2/rod, hardware store",
             source_note="Most common glass; bottles, windows",
         ),
@@ -114,6 +118,8 @@ def glass_database() -> Dict[str, GlassProperties]:
             T_anneal=838.0,
             T_strain=783.0,
             T_softening=1053.0,
+            het_gamma=0.35,           # estimated from SiO₂/soda-lime interpolation
+            nu_ioffe_regel_hz=0.9e12, # ~0.9 THz (estimated)
             cost_note="$8/10-pack, Amazon",
             source_note="Lab glass; low thermal expansion; best price/performance",
         ),
@@ -129,6 +135,8 @@ def glass_database() -> Dict[str, GlassProperties]:
             T_anneal=1413.0,
             T_strain=1353.0,
             T_softening=1938.0,
+            het_gamma=0.30,           # Pan et al. PRB 104 (2021)
+            nu_ioffe_regel_hz=1.0e12, # ~1 THz (Rufflé 2006, Baldi 2010)
             cost_note="$15/rod, optics supplier",
             source_note="Highest Q; used in quartz oscillators",
         ),
@@ -144,6 +152,8 @@ def glass_database() -> Dict[str, GlassProperties]:
             T_anneal=708.0,
             T_strain=673.0,
             T_softening=903.0,
+            het_gamma=0.50,           # estimated (high PbO disorder)
+            nu_ioffe_regel_hz=0.5e12, # ~0.5 THz (estimated, lower v)
             cost_note="$5 (wine glass)",
             source_note="Lower v → denser modes; wine glass demonstrates Q",
         ),

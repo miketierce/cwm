@@ -109,18 +109,6 @@ void setup() {
     digitalWrite(RELAY_PINS[i], RELAY_OFF);
   }
 
-  // Startup blink on pin 13 (also relay 12 — will click once at boot)
-  // Short enough that it's just a momentary tick
-  pinMode(13, OUTPUT);
-  for (int i = 0; i < 3; i++) {
-    digitalWrite(13, HIGH);
-    delay(50);
-    digitalWrite(13, LOW);
-    delay(50);
-  }
-  // Ensure relay 12 is off after blink
-  digitalWrite(13, RELAY_OFF);
-
   Serial.println("OK:0");
 }
 

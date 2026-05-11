@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
-Python interface to the CWM Relay Multiplexer (Arduino Nano + 8-ch relay).
+Python interface to the CWM Relay Multiplexer (Arduino Nano + 16-ch relay).
 
 Provides a simple API to switch individual rod sense PZTs onto PicoScope
-Channel A.  The Arduino firmware uses a single-character serial protocol:
-  '1'–'8' → activate relay N (break-before-make)
-  '0'      → all relays off
-  '?'      → query current state
+Channel A.  The Arduino firmware uses a newline-terminated serial protocol:
+  '1'–'16' → activate relay N (break-before-make)
+  '0'       → all relays off
+  '?'       → query current state
 
 All commands return "OK:N" where N is the active relay (0 = none).
 
@@ -21,9 +21,9 @@ Usage as library:
 
 Usage from CLI:
     python tools/relay_mux.py                 # auto-detect, interactive
-    python tools/relay_mux.py --port /dev/cu.usbserial-1410
+    python tools/relay_mux.py --port /dev/cu.usbserial-11310
     python tools/relay_mux.py --scan          # just list available ports
-    python tools/relay_mux.py --select 3      # activate relay 3 and exit
+    python tools/relay_mux.py --select 3      # pulse relay 3, then all off on exit
 """
 from __future__ import annotations
 
@@ -116,7 +116,7 @@ class RelayMux:
 
     @property
     def active(self) -> int:
-        """Currently active relay (0 = none, 1–8 = relay number)."""
+        """Currently active relay (0 = none, 1–16 = relay number)."""
         return self._active
 
     @property
@@ -178,19 +178,19 @@ class RelayMux:
             self._ser = None
 
     def _send_cmd(self, cmd: str) -> str:
-        """Send a single-character command and read the response line."""
+        """Send a command string and read the response line."""
         if not self.is_open:
             raise RuntimeError("RelayMux is not open")
-        self._ser.write(cmd.encode("ascii"))
+        self._ser.write(f"{cmd}\n".encode("ascii"))
         time.sleep(CMD_SETTLE_S)
         line = self._ser.readline().decode("ascii", errors="replace").strip()
         return line
 
     def select(self, relay: int) -> int:
-        """Activate a single relay (1–8).  Deactivates all others first.
+        """Activate a single relay (1–16).  Deactivates all others first.
 
         Args:
-            relay: Relay number (1–8, corresponding to rod number).
+            relay: Relay number (1–16).
 
         Returns:
             The active relay number (should match input).
@@ -199,8 +199,8 @@ class RelayMux:
             ValueError: if relay is out of range.
             RuntimeError: if the Arduino responds with an error.
         """
-        if not 1 <= relay <= 8:
-            raise ValueError(f"Relay must be 1–8, got {relay}")
+        if not 1 <= relay <= 16:
+            raise ValueError(f"Relay must be 1–16, got {relay}")
         resp = self._send_cmd(str(relay))
         if resp.startswith("OK:"):
             self._active = int(resp.split(":")[1])
@@ -222,26 +222,12 @@ class RelayMux:
         return self._active
 
     def all_ne(self) -> int:
-        """Close all 5 NE relays simultaneously (relays 1,2,3,5,7).
-
-        Returns the superposition of all NE plates on Ch A.
-        Reported as relay 9 (special code for all-NE).
-        """
-        resp = self._send_cmd("A")
-        if resp.startswith("OK:"):
-            self._active = int(resp.split(":")[1])
-        return self._active
+        """Unsupported by the 16-channel break-before-make firmware."""
+        raise RuntimeError("all_ne() is not supported by relay_controller_16ch")
 
     def all_open(self) -> int:
-        """Close all 8 relays simultaneously (all NE + NW).
-
-        Returns the superposition of all plates/paths on Ch A.
-        Reported as relay 10 (special code for all).
-        """
-        resp = self._send_cmd("B")
-        if resp.startswith("OK:"):
-            self._active = int(resp.split(":")[1])
-        return self._active
+        """Unsupported by the 16-channel break-before-make firmware."""
+        raise RuntimeError("all_open() is not supported by relay_controller_16ch")
 
     def query(self) -> int:
         """Query current relay state without changing it."""
@@ -255,12 +241,12 @@ class RelayMux:
         """Cycle through relays with optional callback at each.
 
         Args:
-            relays: List of relay numbers to visit (default: 1–4).
+            relays: List of relay numbers to visit (default: 1–16).
             dwell_s: Time to hold each relay active.
             callback: Optional callable(relay_num) invoked after switching.
         """
         if relays is None:
-            relays = [1, 2, 3, 4]
+            relays = list(range(1, 17))
         for r in relays:
             self.select(r)
             if callback:
@@ -274,7 +260,7 @@ class RelayMux:
 def _interactive(mux: RelayMux):
     """Interactive relay control loop."""
     print(f"Connected to {mux.port}")
-    print("Commands: 1–8 = select relay, 0/x = all off, ? = query, q = quit")
+    print("Commands: 1–16 = select relay, 0/x = all off, ? = query, q = quit")
     while True:
         try:
             cmd = input("relay> ").strip()
@@ -284,7 +270,7 @@ def _interactive(mux: RelayMux):
             continue
         if cmd.lower() in ("q", "quit", "exit"):
             break
-        if cmd in [str(i) for i in range(9)]:
+        if cmd in [str(i) for i in range(17)]:
             if cmd == "0":
                 mux.off()
                 print(f"  All off")
@@ -297,7 +283,7 @@ def _interactive(mux: RelayMux):
             mux.off()
             print(f"  All off")
         elif cmd.lower() == "sweep":
-            print("  Sweeping 1–4...")
+            print("  Sweeping 1–16...")
             mux.sweep(dwell_s=1.0, callback=lambda r: print(f"    → Relay {r}"))
             print("  Done")
         else:
@@ -319,7 +305,7 @@ def main():
     )
     parser.add_argument(
         "--select", type=int, default=None, metavar="N",
-        help="Activate relay N (1–8) and exit"
+        help="Activate relay N (1–16), then turn all relays off on exit"
     )
     parser.add_argument(
         "--off", action="store_true",
@@ -327,7 +313,7 @@ def main():
     )
     parser.add_argument(
         "--sweep", action="store_true",
-        help="Sweep relays 1–4 with 1s dwell and exit"
+        help="Sweep relays 1–16 with 1s dwell and exit"
     )
     args = parser.parse_args()
 
@@ -353,7 +339,7 @@ def main():
             mux.off()
             print(f"All relays off on {mux.port}")
         elif args.sweep:
-            print(f"Sweeping relays 1–4 on {mux.port}...")
+            print(f"Sweeping relays 1–16 on {mux.port}...")
             mux.sweep(dwell_s=1.0, callback=lambda r: print(f"  → Relay {r}"))
             print("Done")
         else:

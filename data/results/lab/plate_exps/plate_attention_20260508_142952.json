@@ -1,0 +1,68 @@
+{
+  "experiment": "plate_attention_head",
+  "timestamp": "2026-05-08T19:29:52.665926+00:00",
+  "mode": "simulate",
+  "config": {
+    "seq_len": 8,
+    "d_model": 16,
+    "vocab_size": 10,
+    "causal": true,
+    "seed": 42,
+    "identity_check": true
+  },
+  "problem": {
+    "input_seq": [
+      0,
+      7,
+      6,
+      4,
+      4,
+      8,
+      0,
+      6
+    ],
+    "target_seq": [
+      6,
+      0,
+      8,
+      4,
+      4,
+      6,
+      7,
+      0
+    ]
+  },
+  "timing": {
+    "software_ms": 0.59,
+    "plate_ms": 0.35
+  },
+  "metrics": {
+    "scores": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 0.0,
+      "max_error": 0.0
+    },
+    "attn_weights": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 0.0,
+      "max_error": 0.0
+    },
+    "context": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 0.0,
+      "max_error": 0.0
+    },
+    "output": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 0.0,
+      "max_error": 0.0
+    }
+  },
+  "verdict": {
+    "attn_weights_r2": 1.0,
+    "output_r2": 1.0,
+    "attn_pass": 

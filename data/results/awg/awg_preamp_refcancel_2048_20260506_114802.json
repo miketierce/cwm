@@ -1,0 +1,5527 @@
+{
+  "timestamp": "20260506_114802",
+  "script": "tools/awg_preamp_refcancel_2048.py",
+  "hardware_state": "Pico AWG drive tee to Ch B, preamp RX on Ch A, DDS disconnected/dead",
+  "n_samples": 2048,
+  "duration_ms": 2.62144,
+  "range_a_mv": 200,
+  "range_b_mv": 50,
+  "drive_uvpp": 10000,
+  "mux_channels": [
+    5,
+    6
+  ],
+  "candidate_freqs": [
+    11400.0,
+    19000.0,
+    23900.0,
+    29200.0,
+    29900.0,
+    33200.0,
+    34500.0,
+    35000.0,
+    37000.0,
+    45000.0,
+    47800.0,
+    49600.0,
+    56200.0,
+    58500.0,
+    68200.0,
+    89400.0
+  ],
+  "noise_rows": [
+    {
+      "mux": 5,
+      "frame_index": 0,
+      "overflow": 2,
+      "rms_a_mv": 1.6935865885237336,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 277.46875873078585,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 24576
+      }
+    },
+    {
+      "mux": 6,
+      "frame_index": 1,
+      "overflow": 2,
+      "rms_a_mv": 1.7002272752976124,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 278.5567356483843,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 24576
+      }
+    }
+  ],
+  "scan_rows": [
+    {
+      "mux": 5,
+      "drive_hz": 11400.0,
+      "frame_index": 0,
+      "overflow": 2,
+      "rms_a_mv": 1.8994636668284268,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 311.1986298548353,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79153.32822643548,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79153.32822643548,
+      "ratio_a": 10.881000537490014,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.881000537490014,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 113868.71337890625,
+          "ratio": 2.512012508907236,
+          "on_mag": 10926.893353213509,
+          "off_mag": 4349.856266427143,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 131.28662109375
+        },
+        {
+          "freq_hz": 113964.08081054688,
+          "ratio": 2.348807125365477,
+          "on_mag": 11606.724815770978,
+          "off_mag": 4941.54019307352,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 35.919189453125
+        },
+        {
+          "freq_hz": 34046.173095703125,
+          "ratio": 2.2853777580563723,
+          "on_mag": 13132.278602609149,
+          "off_mag": 5746.217909190495,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 153.826904296875
+        },
+        {
+          "freq_hz": 34141.54052734375,
+          "ratio": 2.2266300931805683,
+          "on_mag": 14208.552431458997,
+          "off_mag": 6381.191233772998,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 58.45947265625
+        },
+        {
+          "freq_hz": 33950.8056640625,
+          "ratio": 2.22466087343895,
+          "on_mag": 11344.62414927663,
+          "off_mag": 5099.484728087907,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 249.1943359375
+        },
+        {
+          "freq_hz": 113773.34594726562,
+          "ratio": 2.1227107353569683,
+          "on_mag": 9782.197400581555,
+          "off_mag": 4608.351593857898,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 226.654052734375
+        },
+        {
+          "freq_hz": 45490.264892578125,
+          "ratio": 2.1084829495463397,
+          "on_mag": 12536.901984781573,
+          "off_mag": 5945.934724053143,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 109.735107421875
+        },
+        {
+          "freq_hz": 114059.4482421875,
+          "ratio": 2.0986460634867705,
+          "on_mag": 11707.07586452123,
+          "off_mag": 5578.394598406292,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 59.4482421875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 113868.71337890625,
+          "ratio": 2.512012508907236,
+          "on_mag": 10926.893353213509,
+          "off_mag": 4349.856266427143,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 131.28662109375
+        },
+        {
+          "freq_hz": 113964.08081054688,
+          "ratio": 2.348807125365477,
+          "on_mag": 11606.724815770978,
+          "off_mag": 4941.54019307352,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 35.919189453125
+        },
+        {
+          "freq_hz": 34046.173095703125,
+          "ratio": 2.2853777580563723,
+          "on_mag": 13132.278602609149,
+          "off_mag": 5746.217909190495,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 153.826904296875
+        },
+        {
+          "freq_hz": 34141.54052734375,
+          "ratio": 2.2266300931805683,
+          "on_mag": 14208.552431458997,
+          "off_mag": 6381.191233772998,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 58.45947265625
+        },
+        {
+          "freq_hz": 33950.8056640625,
+          "ratio": 2.22466087343895,
+          "on_mag": 11344.62414927663,
+          "off_mag": 5099.484728087907,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 249.1943359375
+        },
+        {
+          "freq_hz": 113773.34594726562,
+          "ratio": 2.1227107353569683,
+          "on_mag": 9782.197400581555,
+          "off_mag": 4608.351593857898,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 226.654052734375
+        },
+        {
+          "freq_hz": 45490.264892578125,
+          "ratio": 2.1084829495463397,
+          "on_mag": 12536.901984781573,
+          "off_mag": 5945.934724053143,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 109.735107421875
+        },
+        {
+          "freq_hz": 114059.4482421875,
+          "ratio": 2.0986460634867705,
+          "on_mag": 11707.07586452123,
+          "off_mag": 5578.394598406292,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 59.4482421875
+        }
+      ],
+      "a_stats": {
+        "min_count": 7144,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 19000.0,
+      "frame_index": 1,
+      "overflow": 2,
+      "rms_a_mv": 1.8484149047372593,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 302.8350559176289,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 84765.33492885687,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 84765.33492885687,
+      "ratio_a": 12.173589904706295,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.173589904706295,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 189971.923828125,
+          "ratio": 3.0377655443861586,
+          "on_mag": 18069.804932287534,
+          "off_mag": 5948.386953588579,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 28.076171875
+        },
+        {
+          "freq_hz": 190067.29125976562,
+          "ratio": 2.9407563413012063,
+          "on_mag": 17419.23805392138,
+          "off_mag": 5923.387058383026,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 67.291259765625
+        },
+        {
+          "freq_hz": 189876.55639648438,
+          "ratio": 2.9309152561815286,
+          "on_mag": 17411.8297008833,
+          "off_mag": 5940.7482574463365,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 123.443603515625
+        },
+        {
+          "freq_hz": 57125.091552734375,
+          "ratio": 2.863537710150809,
+          "on_mag": 17353.85295451363,
+          "off_mag": 6060.284414274288,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 125.091552734375
+        },
+        {
+          "freq_hz": 57029.72412109375,
+          "ratio": 2.8097459861404346,
+          "on_mag": 17763.238549803904,
+          "off_mag": 6322.008693107561,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 29.72412109375
+        },
+        {
+          "freq_hz": 57220.458984375,
+          "ratio": 2.6774386413303777,
+          "on_mag": 15649.273898475898,
+          "off_mag": 5844.86742549589,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 220.458984375
+        },
+        {
+          "freq_hz": 190162.65869140625,
+          "ratio": 2.673128682062767,
+          "on_mag": 15571.213157250551,
+          "off_mag": 5825.089252805724,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 162.65869140625
+        },
+        {
+          "freq_hz": 189781.18896484375,
+          "ratio": 2.586451178958771,
+          "on_mag": 15597.428603968576,
+          "off_mag": 6030.4361168137875,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 218.81103515625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 189971.923828125,
+          "ratio": 3.0377655443861586,
+          "on_mag": 18069.804932287534,
+          "off_mag": 5948.386953588579,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 28.076171875
+        },
+        {
+          "freq_hz": 190067.29125976562,
+          "ratio": 2.9407563413012063,
+          "on_mag": 17419.23805392138,
+          "off_mag": 5923.387058383026,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 67.291259765625
+        },
+        {
+          "freq_hz": 189876.55639648438,
+          "ratio": 2.9309152561815286,
+          "on_mag": 17411.8297008833,
+          "off_mag": 5940.7482574463365,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 123.443603515625
+        },
+        {
+          "freq_hz": 57125.091552734375,
+          "ratio": 2.863537710150809,
+          "on_mag": 17353.85295451363,
+          "off_mag": 6060.284414274288,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 125.091552734375
+        },
+        {
+          "freq_hz": 57029.72412109375,
+          "ratio": 2.8097459861404346,
+          "on_mag": 17763.238549803904,
+          "off_mag": 6322.008693107561,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 29.72412109375
+        },
+        {
+          "freq_hz": 57220.458984375,
+          "ratio": 2.6774386413303777,
+          "on_mag": 15649.273898475898,
+          "off_mag": 5844.86742549589,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 220.458984375
+        },
+        {
+          "freq_hz": 190162.65869140625,
+          "ratio": 2.673128682062767,
+          "on_mag": 15571.213157250551,
+          "off_mag": 5825.089252805724,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 162.65869140625
+        },
+        {
+          "freq_hz": 189781.18896484375,
+          "ratio": 2.586451178958771,
+          "on_mag": 15597.428603968576,
+          "off_mag": 6030.4361168137875,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 218.81103515625
+        }
+      ],
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 23900.0,
+      "frame_index": 2,
+      "overflow": 2,
+      "rms_a_mv": 1.6999009085148016,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 278.50326534652254,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79273.75195868194,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79273.75195868194,
+      "ratio_a": 11.358300339042092,
+      "ratio_b": 0.0,
+      "ratio_clean": 11.358300339042092,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 286865.234375,
+          "ratio": 3.0904649464308136,
+          "on_mag": 15000.216874790729,
+          "off_mag": 4853.708789712862,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 65.234375
+        },
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 3.039050229185743,
+          "on_mag": 15955.659074983061,
+          "off_mag": 5250.212359687811,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 71716.30859375,
+          "ratio": 2.9841790365974736,
+          "on_mag": 15747.316351551775,
+          "off_mag": 5276.934178019923,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 16.30859375
+        },
+        {
+          "freq_hz": 71620.94116210938,
+          "ratio": 2.956875561290189,
+          "on_mag": 15481.062818387594,
+          "off_mag": 5235.6152626296725,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 79.058837890625
+        },
+        {
+          "freq_hz": 286769.8669433594,
+          "ratio": 2.8830746277206614,
+          "on_mag": 15567.903544717436,
+          "off_mag": 5399.757396160539,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 30.133056640625
+        },
+        {
+          "freq_hz": 238990.78369140625,
+          "ratio": 2.8738334178163685,
+          "on_mag": 17104.525266752076,
+          "off_mag": 5951.815147221946,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 9.21630859375
+        },
+        {
+          "freq_hz": 286960.6018066406,
+          "ratio": 2.8721105835659584,
+          "on_mag": 13802.673950323891,
+          "off_mag": 4805.759927665024,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 160.601806640625
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 2.8670373225490153,
+          "on_mag": 15908.212087200132,
+          "off_mag": 5548.658875865807,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 53.533935546875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 286865.234375,
+          "ratio": 3.0904649464308136,
+          "on_mag": 15000.216874790729,
+          "off_mag": 4853.708789712862,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 65.234375
+        },
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 3.039050229185743,
+          "on_mag": 15955.659074983061,
+          "off_mag": 5250.212359687811,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 71716.30859375,
+          "ratio": 2.9841790365974736,
+          "on_mag": 15747.316351551775,
+          "off_mag": 5276.934178019923,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 16.30859375
+        },
+        {
+          "freq_hz": 71620.94116210938,
+          "ratio": 2.956875561290189,
+          "on_mag": 15481.062818387594,
+          "off_mag": 5235.6152626296725,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 79.058837890625
+        },
+        {
+          "freq_hz": 286769.8669433594,
+          "ratio": 2.8830746277206614,
+          "on_mag": 15567.903544717436,
+          "off_mag": 5399.757396160539,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 30.133056640625
+        },
+        {
+          "freq_hz": 238990.78369140625,
+          "ratio": 2.8738334178163685,
+          "on_mag": 17104.525266752076,
+          "off_mag": 5951.815147221946,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 9.21630859375
+        },
+        {
+          "freq_hz": 286960.6018066406,
+          "ratio": 2.8721105835659584,
+          "on_mag": 13802.673950323891,
+          "off_mag": 4805.759927665024,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 160.601806640625
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 2.8670373225490153,
+          "on_mag": 15908.212087200132,
+          "off_mag": 5548.658875865807,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 53.533935546875
+        }
+      ],
+      "a_stats": {
+        "min_count": 8611,
+        "max_count": 17414,
+        "max_abs_count": 17414,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 29200.0,
+      "frame_index": 3,
+      "overflow": 2,
+      "rms_a_mv": 1.8682494479829146,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 306.08464831028084,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 80793.877567632,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 80793.877567632,
+      "ratio_a": 12.210327255195416,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.210327255195416,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 87738.037109375,
+          "ratio": 3.965412741435616,
+          "on_mag": 18763.744509700835,
+          "off_mag": 4731.8515708676805,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 138.037109375
+        },
+        {
+          "freq_hz": 87642.66967773438,
+          "ratio": 3.947995169170759,
+          "on_mag": 19556.590130443084,
+          "off_mag": 4953.549660637192,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 42.669677734375
+        },
+        {
+          "freq_hz": 87833.40454101562,
+          "ratio": 3.597753086742673,
+          "on_mag": 16608.329705384367,
+          "off_mag": 4616.306151354368,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 233.404541015625
+        },
+        {
+          "freq_hz": 87547.30224609375,
+          "ratio": 3.515971293737865,
+          "on_mag": 18787.952401474202,
+          "off_mag": 5343.6023311500185,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 52.69775390625
+        },
+        {
+          "freq_hz": 58364.8681640625,
+          "ratio": 3.2060981920541898,
+          "on_mag": 21446.098635985007,
+          "off_mag": 6689.1583948164125,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 35.1318359375
+        },
+        {
+          "freq_hz": 291919.7082519531,
+          "ratio": 3.12368894578144,
+          "on_mag": 23050.53284619542,
+          "off_mag": 7379.266388647723,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 80.291748046875
+        },
+        {
+          "freq_hz": 291824.3408203125,
+          "ratio": 3.0965255230825717,
+          "on_mag": 20810.919711699382,
+          "off_mag": 6720.732497299826,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 175.6591796875
+        },
+        {
+          "freq_hz": 58269.500732421875,
+          "ratio": 3.0562820801764268,
+          "on_mag": 20314.51245546303,
+          "off_mag": 6646.805472317646,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 130.499267578125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 87738.037109375,
+          "ratio": 3.965412741435616,
+          "on_mag": 18763.744509700835,
+          "off_mag": 4731.8515708676805,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 138.037109375
+        },
+        {
+          "freq_hz": 87642.66967773438,
+          "ratio": 3.947995169170759,
+          "on_mag": 19556.590130443084,
+          "off_mag": 4953.549660637192,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 42.669677734375
+        },
+        {
+          "freq_hz": 87833.40454101562,
+          "ratio": 3.597753086742673,
+          "on_mag": 16608.329705384367,
+          "off_mag": 4616.306151354368,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 233.404541015625
+        },
+        {
+          "freq_hz": 87547.30224609375,
+          "ratio": 3.515971293737865,
+          "on_mag": 18787.952401474202,
+          "off_mag": 5343.6023311500185,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 52.69775390625
+        },
+        {
+          "freq_hz": 58364.8681640625,
+          "ratio": 3.2060981920541898,
+          "on_mag": 21446.098635985007,
+          "off_mag": 6689.1583948164125,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 35.1318359375
+        },
+        {
+          "freq_hz": 291919.7082519531,
+          "ratio": 3.12368894578144,
+          "on_mag": 23050.53284619542,
+          "off_mag": 7379.266388647723,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 80.291748046875
+        },
+        {
+          "freq_hz": 291824.3408203125,
+          "ratio": 3.0965255230825717,
+          "on_mag": 20810.919711699382,
+          "off_mag": 6720.732497299826,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 175.6591796875
+        },
+        {
+          "freq_hz": 58269.500732421875,
+          "ratio": 3.0562820801764268,
+          "on_mag": 20314.51245546303,
+          "off_mag": 6646.805472317646,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 130.499267578125
+        }
+      ],
+      "a_stats": {
+        "min_count": 9198,
+        "max_count": 19175,
+        "max_abs_count": 19175,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 29900.0,
+      "frame_index": 4,
+      "overflow": 2,
+      "rms_a_mv": 1.819456748775427,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 298.090696435622,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79432.2594126933,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79432.2594126933,
+      "ratio_a": 9.589402987092598,
+      "ratio_b": 0.0,
+      "ratio_clean": 9.589402987092598,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 59700.01220703125,
+          "ratio": 3.8868306611105075,
+          "on_mag": 21889.786015007685,
+          "off_mag": 5631.782787458394,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 99.98779296875
+        },
+        {
+          "freq_hz": 59604.644775390625,
+          "ratio": 3.796388117684647,
+          "on_mag": 20324.107427064137,
+          "off_mag": 5353.537835709872,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 195.355224609375
+        },
+        {
+          "freq_hz": 59795.379638671875,
+          "ratio": 3.6452815413386883,
+          "on_mag": 21864.576152689864,
+          "off_mag": 5998.048684234235,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 4.620361328125
+        },
+        {
+          "freq_hz": 119495.39184570312,
+          "ratio": 3.319907087732648,
+          "on_mag": 17675.725009432877,
+          "off_mag": 5324.162557062592,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 104.608154296875
+        },
+        {
+          "freq_hz": 59509.27734375,
+          "ratio": 3.2350631662959572,
+          "on_mag": 17527.37530760212,
+          "off_mag": 5417.93912718879,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 290.72265625
+        },
+        {
+          "freq_hz": 119590.75927734375,
+          "ratio": 3.210561582592076,
+          "on_mag": 19431.015844365837,
+          "off_mag": 6052.217141612349,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 9.24072265625
+        },
+        {
+          "freq_hz": 119400.0244140625,
+          "ratio": 3.140518673999684,
+          "on_mag": 14772.428631853394,
+          "off_mag": 4703.81811582722,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 199.9755859375
+        },
+        {
+          "freq_hz": 59890.7470703125,
+          "ratio": 3.1245936488636423,
+          "on_mag": 20179.43787622721,
+          "off_mag": 6458.259903192885,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.7470703125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 59700.01220703125,
+          "ratio": 3.8868306611105075,
+          "on_mag": 21889.786015007685,
+          "off_mag": 5631.782787458394,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 99.98779296875
+        },
+        {
+          "freq_hz": 59604.644775390625,
+          "ratio": 3.796388117684647,
+          "on_mag": 20324.107427064137,
+          "off_mag": 5353.537835709872,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 195.355224609375
+        },
+        {
+          "freq_hz": 59795.379638671875,
+          "ratio": 3.6452815413386883,
+          "on_mag": 21864.576152689864,
+          "off_mag": 5998.048684234235,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 4.620361328125
+        },
+        {
+          "freq_hz": 119495.39184570312,
+          "ratio": 3.319907087732648,
+          "on_mag": 17675.725009432877,
+          "off_mag": 5324.162557062592,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 104.608154296875
+        },
+        {
+          "freq_hz": 59509.27734375,
+          "ratio": 3.2350631662959572,
+          "on_mag": 17527.37530760212,
+          "off_mag": 5417.93912718879,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 290.72265625
+        },
+        {
+          "freq_hz": 119590.75927734375,
+          "ratio": 3.210561582592076,
+          "on_mag": 19431.015844365837,
+          "off_mag": 6052.217141612349,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 9.24072265625
+        },
+        {
+          "freq_hz": 119400.0244140625,
+          "ratio": 3.140518673999684,
+          "on_mag": 14772.428631853394,
+          "off_mag": 4703.81811582722,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 199.9755859375
+        },
+        {
+          "freq_hz": 59890.7470703125,
+          "ratio": 3.1245936488636423,
+          "on_mag": 20179.43787622721,
+          "off_mag": 6458.259903192885,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.7470703125
+        }
+      ],
+      "a_stats": {
+        "min_count": 7731,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 33200.0,
+      "frame_index": 5,
+      "overflow": 2,
+      "rms_a_mv": 1.7668591196315309,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 289.47336386483187,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 82424.91501221246,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 82424.91501221246,
+      "ratio_a": 13.08195560382397,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.08195560382397,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 66471.09985351562,
+          "ratio": 4.497033713140207,
+          "on_mag": 20772.962841172517,
+          "off_mag": 4619.258864009513,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 71.099853515625
+        },
+        {
+          "freq_hz": 66375.732421875,
+          "ratio": 4.3566343655213355,
+          "on_mag": 20908.230049879086,
+          "off_mag": 4799.170252924612,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.267578125
+        },
+        {
+          "freq_hz": 132656.09741210938,
+          "ratio": 4.3350805387417015,
+          "on_mag": 17668.076816890687,
+          "off_mag": 4075.605207099339,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 143.902587890625
+        },
+        {
+          "freq_hz": 132751.46484375,
+          "ratio": 4.144162210269884,
+          "on_mag": 19273.677984769496,
+          "off_mag": 4650.802021457148,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 48.53515625
+        },
+        {
+          "freq_hz": 66280.36499023438,
+          "ratio": 3.8591193195130002,
+          "on_mag": 19752.509793185993,
+          "off_mag": 5118.3983074352445,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.635009765625
+        },
+        {
+          "freq_hz": 132560.72998046875,
+          "ratio": 3.819181266033366,
+          "on_mag": 14992.4134256395,
+          "off_mag": 3925.5569142468976,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 239.27001953125
+        },
+        {
+          "freq_hz": 66566.46728515625,
+          "ratio": 3.814766808845784,
+          "on_mag": 19362.571576512157,
+          "off_mag": 5075.689431818927,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.46728515625
+        },
+        {
+          "freq_hz": 132846.83227539062,
+          "ratio": 3.731864240479516,
+          "on_mag": 19555.05581384336,
+          "off_mag": 5240.023364657735,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.832275390625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 66471.09985351562,
+          "ratio": 4.497033713140207,
+          "on_mag": 20772.962841172517,
+          "off_mag": 4619.258864009513,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 71.099853515625
+        },
+        {
+          "freq_hz": 66375.732421875,
+          "ratio": 4.3566343655213355,
+          "on_mag": 20908.230049879086,
+          "off_mag": 4799.170252924612,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.267578125
+        },
+        {
+          "freq_hz": 132656.09741210938,
+          "ratio": 4.3350805387417015,
+          "on_mag": 17668.076816890687,
+          "off_mag": 4075.605207099339,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 143.902587890625
+        },
+        {
+          "freq_hz": 132751.46484375,
+          "ratio": 4.144162210269884,
+          "on_mag": 19273.677984769496,
+          "off_mag": 4650.802021457148,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 48.53515625
+        },
+        {
+          "freq_hz": 66280.36499023438,
+          "ratio": 3.8591193195130002,
+          "on_mag": 19752.509793185993,
+          "off_mag": 5118.3983074352445,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.635009765625
+        },
+        {
+          "freq_hz": 132560.72998046875,
+          "ratio": 3.819181266033366,
+          "on_mag": 14992.4134256395,
+          "off_mag": 3925.5569142468976,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 239.27001953125
+        },
+        {
+          "freq_hz": 66566.46728515625,
+          "ratio": 3.814766808845784,
+          "on_mag": 19362.571576512157,
+          "off_mag": 5075.689431818927,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.46728515625
+        },
+        {
+          "freq_hz": 132846.83227539062,
+          "ratio": 3.731864240479516,
+          "on_mag": 19555.05581384336,
+          "off_mag": 5240.023364657735,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.832275390625
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 18294,
+        "max_abs_count": 18294,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 34500.0,
+      "frame_index": 6,
+      "overflow": 2,
+      "rms_a_mv": 1.871999489772008,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 306.69903640679695,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78501.31648497534,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78501.31648497534,
+      "ratio_a": 10.4631169066067,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.4631169066067,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 241470.3369140625,
+          "ratio": 4.392920694929393,
+          "on_mag": 19213.413524692864,
+          "off_mag": 4373.721917372714,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 29.6630859375
+        },
+        {
+          "freq_hz": 241374.96948242188,
+          "ratio": 3.9292152582610838,
+          "on_mag": 18090.411837886815,
+          "off_mag": 4604.077569904613,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 125.030517578125
+        },
+        {
+          "freq_hz": 241565.70434570312,
+          "ratio": 3.8134714258565983,
+          "on_mag": 18974.221577172357,
+          "off_mag": 4975.57722565347,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 65.704345703125
+        },
+        {
+          "freq_hz": 137996.67358398438,
+          "ratio": 3.5014862238999482,
+          "on_mag": 21531.50039598767,
+          "off_mag": 6149.246068432601,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 3.326416015625
+        },
+        {
+          "freq_hz": 138092.041015625,
+          "ratio": 3.495006077421598,
+          "on_mag": 21440.98202321607,
+          "off_mag": 6134.748137271887,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 92.041015625
+        },
+        {
+          "freq_hz": 138187.40844726562,
+          "ratio": 3.1835748130160533,
+          "on_mag": 19728.197483109027,
+          "off_mag": 6196.86944451572,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 187.408447265625
+        },
+        {
+          "freq_hz": 68855.28564453125,
+          "ratio": 3.1553648119928814,
+          "on_mag": 18243.293165156727,
+          "off_mag": 5781.674783155909,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 144.71435546875
+        },
+        {
+          "freq_hz": 137901.30615234375,
+          "ratio": 3.1456018481143095,
+          "on_mag": 19945.138126610385,
+          "off_mag": 6340.642932469942,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 98.69384765625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 241470.3369140625,
+          "ratio": 4.392920694929393,
+          "on_mag": 19213.413524692864,
+          "off_mag": 4373.721917372714,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 29.6630859375
+        },
+        {
+          "freq_hz": 241374.96948242188,
+          "ratio": 3.9292152582610838,
+          "on_mag": 18090.411837886815,
+          "off_mag": 4604.077569904613,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 125.030517578125
+        },
+        {
+          "freq_hz": 241565.70434570312,
+          "ratio": 3.8134714258565983,
+          "on_mag": 18974.221577172357,
+          "off_mag": 4975.57722565347,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 65.704345703125
+        },
+        {
+          "freq_hz": 137996.67358398438,
+          "ratio": 3.5014862238999482,
+          "on_mag": 21531.50039598767,
+          "off_mag": 6149.246068432601,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 3.326416015625
+        },
+        {
+          "freq_hz": 138092.041015625,
+          "ratio": 3.495006077421598,
+          "on_mag": 21440.98202321607,
+          "off_mag": 6134.748137271887,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 92.041015625
+        },
+        {
+          "freq_hz": 138187.40844726562,
+          "ratio": 3.1835748130160533,
+          "on_mag": 19728.197483109027,
+          "off_mag": 6196.86944451572,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 187.408447265625
+        },
+        {
+          "freq_hz": 68855.28564453125,
+          "ratio": 3.1553648119928814,
+          "on_mag": 18243.293165156727,
+          "off_mag": 5781.674783155909,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 144.71435546875
+        },
+        {
+          "freq_hz": 137901.30615234375,
+          "ratio": 3.1456018481143095,
+          "on_mag": 19945.138126610385,
+          "off_mag": 6340.642932469942,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 98.69384765625
+        }
+      ],
+      "a_stats": {
+        "min_count": 6850,
+        "max_count": 19468,
+        "max_abs_count": 19468,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 35000.0,
+      "frame_index": 7,
+      "overflow": 2,
+      "rms_a_mv": 1.8204805555910522,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 298.25843182526,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 80709.12696851847,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 80709.12696851847,
+      "ratio_a": 12.720509605453723,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.720509605453723,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 244903.564453125,
+          "ratio": 3.377913813580726,
+          "on_mag": 18320.77923066072,
+          "off_mag": 5423.696471177856,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 96.435546875
+        },
+        {
+          "freq_hz": 349903.1066894531,
+          "ratio": 3.3118335920065736,
+          "on_mag": 18428.413395490094,
+          "off_mag": 5564.414057508453,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 96.893310546875
+        },
+        {
+          "freq_hz": 349807.7392578125,
+          "ratio": 3.305833492273965,
+          "on_mag": 17410.39230315084,
+          "off_mag": 5266.566614392563,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 192.2607421875
+        },
+        {
+          "freq_hz": 244808.19702148438,
+          "ratio": 3.2283240587583517,
+          "on_mag": 16855.965272466085,
+          "off_mag": 5221.274248084336,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 191.802978515625
+        },
+        {
+          "freq_hz": 349998.47412109375,
+          "ratio": 3.2092118510035643,
+          "on_mag": 18381.67255384157,
+          "off_mag": 5727.784081344886,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 1.52587890625
+        },
+        {
+          "freq_hz": 244998.93188476562,
+          "ratio": 3.1983486065863675,
+          "on_mag": 18571.60539813229,
+          "off_mag": 5806.623255478698,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.068115234375
+        },
+        {
+          "freq_hz": 139999.3896484375,
+          "ratio": 3.1042269049870534,
+          "on_mag": 22846.154140831073,
+          "off_mag": 7359.692071519609,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 0.6103515625
+        },
+        {
+          "freq_hz": 140094.75708007812,
+          "ratio": 3.016466851624845,
+          "on_mag": 21886.84418443432,
+          "off_mag": 7255.788066308366,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 94.757080078125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 244903.564453125,
+          "ratio": 3.377913813580726,
+          "on_mag": 18320.77923066072,
+          "off_mag": 5423.696471177856,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 96.435546875
+        },
+        {
+          "freq_hz": 349903.1066894531,
+          "ratio": 3.3118335920065736,
+          "on_mag": 18428.413395490094,
+          "off_mag": 5564.414057508453,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 96.893310546875
+        },
+        {
+          "freq_hz": 349807.7392578125,
+          "ratio": 3.305833492273965,
+          "on_mag": 17410.39230315084,
+          "off_mag": 5266.566614392563,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 192.2607421875
+        },
+        {
+          "freq_hz": 244808.19702148438,
+          "ratio": 3.2283240587583517,
+          "on_mag": 16855.965272466085,
+          "off_mag": 5221.274248084336,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 191.802978515625
+        },
+        {
+          "freq_hz": 349998.47412109375,
+          "ratio": 3.2092118510035643,
+          "on_mag": 18381.67255384157,
+          "off_mag": 5727.784081344886,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 1.52587890625
+        },
+        {
+          "freq_hz": 244998.93188476562,
+          "ratio": 3.1983486065863675,
+          "on_mag": 18571.60539813229,
+          "off_mag": 5806.623255478698,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.068115234375
+        },
+        {
+          "freq_hz": 139999.3896484375,
+          "ratio": 3.1042269049870534,
+          "on_mag": 22846.154140831073,
+          "off_mag": 7359.692071519609,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 0.6103515625
+        },
+        {
+          "freq_hz": 140094.75708007812,
+          "ratio": 3.016466851624845,
+          "on_mag": 21886.84418443432,
+          "off_mag": 7255.788066308366,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 94.757080078125
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 37000.0,
+      "frame_index": 8,
+      "overflow": 2,
+      "rms_a_mv": 1.8956194631313057,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 310.56881474211747,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 82780.79063282709,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 82780.79063282709,
+      "ratio_a": 13.513697941690737,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.513697941690737,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 74005.126953125,
+          "ratio": 4.577978230825392,
+          "on_mag": 24336.462768374913,
+          "off_mag": 5315.984817163961,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 5.126953125
+        },
+        {
+          "freq_hz": 74100.49438476562,
+          "ratio": 4.490473114659499,
+          "on_mag": 23716.034257253756,
+          "off_mag": 5281.411034358699,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 100.494384765625
+        },
+        {
+          "freq_hz": 73909.75952148438,
+          "ratio": 4.085947700409327,
+          "on_mag": 23098.09530577309,
+          "off_mag": 5653.057013788782,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.240478515625
+        },
+        {
+          "freq_hz": 111007.6904296875,
+          "ratio": 3.898308856844242,
+          "on_mag": 21010.07259761431,
+          "off_mag": 5389.535146946356,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 7.6904296875
+        },
+        {
+          "freq_hz": 111103.05786132812,
+          "ratio": 3.7694786326495366,
+          "on_mag": 20226.255089433616,
+          "off_mag": 5365.79645637008,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 103.057861328125
+        },
+        {
+          "freq_hz": 74195.86181640625,
+          "ratio": 3.7469061805448667,
+          "on_mag": 21381.545885278654,
+          "off_mag": 5706.453499235841,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 195.86181640625
+        },
+        {
+          "freq_hz": 110912.32299804688,
+          "ratio": 3.6658895723014107,
+          "on_mag": 20377.479168798363,
+          "off_mag": 5558.672395034959,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 87.677001953125
+        },
+        {
+          "freq_hz": 148010.25390625,
+          "ratio": 3.6211839279224867,
+          "on_mag": 23356.607644062602,
+          "off_mag": 6449.9920768903185,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 10.25390625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 74005.126953125,
+          "ratio": 4.577978230825392,
+          "on_mag": 24336.462768374913,
+          "off_mag": 5315.984817163961,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 5.126953125
+        },
+        {
+          "freq_hz": 74100.49438476562,
+          "ratio": 4.490473114659499,
+          "on_mag": 23716.034257253756,
+          "off_mag": 5281.411034358699,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 100.494384765625
+        },
+        {
+          "freq_hz": 73909.75952148438,
+          "ratio": 4.085947700409327,
+          "on_mag": 23098.09530577309,
+          "off_mag": 5653.057013788782,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.240478515625
+        },
+        {
+          "freq_hz": 111007.6904296875,
+          "ratio": 3.898308856844242,
+          "on_mag": 21010.07259761431,
+          "off_mag": 5389.535146946356,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 7.6904296875
+        },
+        {
+          "freq_hz": 111103.05786132812,
+          "ratio": 3.7694786326495366,
+          "on_mag": 20226.255089433616,
+          "off_mag": 5365.79645637008,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 103.057861328125
+        },
+        {
+          "freq_hz": 74195.86181640625,
+          "ratio": 3.7469061805448667,
+          "on_mag": 21381.545885278654,
+          "off_mag": 5706.453499235841,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 195.86181640625
+        },
+        {
+          "freq_hz": 110912.32299804688,
+          "ratio": 3.6658895723014107,
+          "on_mag": 20377.479168798363,
+          "off_mag": 5558.672395034959,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 87.677001953125
+        },
+        {
+          "freq_hz": 148010.25390625,
+          "ratio": 3.6211839279224867,
+          "on_mag": 23356.607644062602,
+          "off_mag": 6449.9920768903185,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 10.25390625
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 45000.0,
+      "frame_index": 9,
+      "overflow": 2,
+      "rms_a_mv": 1.7957327215146504,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 294.2038704293527,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 80591.0436060681,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 80591.0436060681,
+      "ratio_a": 12.132025565799024,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.132025565799024,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 180053.7109375,
+          "ratio": 4.75829833105374,
+          "on_mag": 24861.384587515215,
+          "off_mag": 5224.847804364042,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 53.7109375
+        },
+        {
+          "freq_hz": 179958.34350585938,
+          "ratio": 4.4555891997685695,
+          "on_mag": 24624.888906999033,
+          "off_mag": 5526.7413136467085,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 41.656494140625
+        },
+        {
+          "freq_hz": 180149.07836914062,
+          "ratio": 4.352299939962788,
+          "on_mag": 23242.485590903023,
+          "off_mag": 5340.276615012371,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 149.078369140625
+        },
+        {
+          "freq_hz": 315093.994140625,
+          "ratio": 4.1558132016531015,
+          "on_mag": 20970.740308075092,
+          "off_mag": 5046.121971924374,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 93.994140625
+        },
+        {
+          "freq_hz": 90026.85546875,
+          "ratio": 3.9988746148515264,
+          "on_mag": 27514.91707100961,
+          "off_mag": 6880.665117336071,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 26.85546875
+        },
+        {
+          "freq_hz": 314998.6267089844,
+          "ratio": 3.8880783748690284,
+          "on_mag": 21091.329097036345,
+          "off_mag": 5424.615211813166,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.373291015625
+        },
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 3.828805746315853,
+          "on_mag": 26551.212822182635,
+          "off_mag": 6934.5938606916,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 68.511962890625
+        },
+        {
+          "freq_hz": 315189.3615722656,
+          "ratio": 3.8277754098629333,
+          "on_mag": 19401.66717879493,
+          "off_mag": 5068.653487036659,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 189.361572265625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 180053.7109375,
+          "ratio": 4.75829833105374,
+          "on_mag": 24861.384587515215,
+          "off_mag": 5224.847804364042,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 53.7109375
+        },
+        {
+          "freq_hz": 179958.34350585938,
+          "ratio": 4.4555891997685695,
+          "on_mag": 24624.888906999033,
+          "off_mag": 5526.7413136467085,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 41.656494140625
+        },
+        {
+          "freq_hz": 180149.07836914062,
+          "ratio": 4.352299939962788,
+          "on_mag": 23242.485590903023,
+          "off_mag": 5340.276615012371,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 149.078369140625
+        },
+        {
+          "freq_hz": 315093.994140625,
+          "ratio": 4.1558132016531015,
+          "on_mag": 20970.740308075092,
+          "off_mag": 5046.121971924374,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 93.994140625
+        },
+        {
+          "freq_hz": 90026.85546875,
+          "ratio": 3.9988746148515264,
+          "on_mag": 27514.91707100961,
+          "off_mag": 6880.665117336071,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 26.85546875
+        },
+        {
+          "freq_hz": 314998.6267089844,
+          "ratio": 3.8880783748690284,
+          "on_mag": 21091.329097036345,
+          "off_mag": 5424.615211813166,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.373291015625
+        },
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 3.828805746315853,
+          "on_mag": 26551.212822182635,
+          "off_mag": 6934.5938606916,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 68.511962890625
+        },
+        {
+          "freq_hz": 315189.3615722656,
+          "ratio": 3.8277754098629333,
+          "on_mag": 19401.66717879493,
+          "off_mag": 5068.653487036659,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 189.361572265625
+        }
+      ],
+      "a_stats": {
+        "min_count": 10078,
+        "max_count": 19468,
+        "max_abs_count": 19468,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 47800.0,
+      "frame_index": 10,
+      "overflow": 2,
+      "rms_a_mv": 1.885797351653585,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 308.95960910816507,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79579.51933941466,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79579.51933941466,
+      "ratio_a": 9.605893537395648,
+      "ratio_b": 0.0,
+      "ratio_clean": 9.605893537395648,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 5.560231561529029,
+          "on_mag": 29192.396467065966,
+          "off_mag": 5250.212359687811,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 5.324347891670513,
+          "on_mag": 29542.990187314987,
+          "off_mag": 5548.658875865807,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 53.533935546875
+        },
+        {
+          "freq_hz": 95462.79907226562,
+          "ratio": 5.090358947281231,
+          "on_mag": 26524.51388746903,
+          "off_mag": 5210.73546328905,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 137.200927734375
+        },
+        {
+          "freq_hz": 95748.9013671875,
+          "ratio": 4.78058975688823,
+          "on_mag": 27510.996748499092,
+          "off_mag": 5754.728631307297,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 148.9013671875
+        },
+        {
+          "freq_hz": 95367.431640625,
+          "ratio": 4.138743141208544,
+          "on_mag": 22056.68895471814,
+          "off_mag": 5329.3205695962615,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 232.568359375
+        },
+        {
+          "freq_hz": 95844.26879882812,
+          "ratio": 4.0804118791422015,
+          "on_mag": 23510.32843032059,
+          "off_mag": 5761.75374611031,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 244.268798828125
+        },
+        {
+          "freq_hz": 191307.06787109375,
+          "ratio": 3.52617802988368,
+          "on_mag": 24666.663140927587,
+          "off_mag": 6995.297155130106,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 107.06787109375
+        },
+        {
+          "freq_hz": 191402.43530273438,
+          "ratio": 3.523342049975853,
+          "on_mag": 22001.301627882185,
+          "off_mag": 6244.441020999641,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 202.435302734375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 5.560231561529029,
+          "on_mag": 29192.396467065966,
+          "off_mag": 5250.212359687811,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 5.324347891670513,
+          "on_mag": 29542.990187314987,
+          "off_mag": 5548.658875865807,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 53.533935546875
+        },
+        {
+          "freq_hz": 95462.79907226562,
+          "ratio": 5.090358947281231,
+          "on_mag": 26524.51388746903,
+          "off_mag": 5210.73546328905,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 137.200927734375
+        },
+        {
+          "freq_hz": 95748.9013671875,
+          "ratio": 4.78058975688823,
+          "on_mag": 27510.996748499092,
+          "off_mag": 5754.728631307297,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 148.9013671875
+        },
+        {
+          "freq_hz": 95367.431640625,
+          "ratio": 4.138743141208544,
+          "on_mag": 22056.68895471814,
+          "off_mag": 5329.3205695962615,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 232.568359375
+        },
+        {
+          "freq_hz": 95844.26879882812,
+          "ratio": 4.0804118791422015,
+          "on_mag": 23510.32843032059,
+          "off_mag": 5761.75374611031,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 244.268798828125
+        },
+        {
+          "freq_hz": 191307.06787109375,
+          "ratio": 3.52617802988368,
+          "on_mag": 24666.663140927587,
+          "off_mag": 6995.297155130106,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 107.06787109375
+        },
+        {
+          "freq_hz": 191402.43530273438,
+          "ratio": 3.523342049975853,
+          "on_mag": 22001.301627882185,
+          "off_mag": 6244.441020999641,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 202.435302734375
+        }
+      ],
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 19175,
+        "max_abs_count": 19175,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 49600.0,
+      "frame_index": 11,
+      "overflow": 2,
+      "rms_a_mv": 1.815723076034031,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 297.4789901620355,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 82515.9778752721,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 82515.9778752721,
+      "ratio_a": 10.181940750696679,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.181940750696679,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 99182.12890625,
+          "ratio": 5.161639500716845,
+          "on_mag": 29339.33310006293,
+          "off_mag": 5684.111239459537,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 17.87109375
+        },
+        {
+          "freq_hz": 99277.49633789062,
+          "ratio": 5.154468929221804,
+          "on_mag": 29084.455411462393,
+          "off_mag": 5642.570711131131,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 77.496337890625
+        },
+        {
+          "freq_hz": 198554.99267578125,
+          "ratio": 5.0297584080054865,
+          "on_mag": 26127.70492342487,
+          "off_mag": 5194.624235199722,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 154.99267578125
+        },
+        {
+          "freq_hz": 198459.62524414062,
+          "ratio": 5.010593779899215,
+          "on_mag": 27763.471225134555,
+          "off_mag": 5540.9543149381,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 59.625244140625
+        },
+        {
+          "freq_hz": 99086.76147460938,
+          "ratio": 4.919858461710424,
+          "on_mag": 27495.723765546198,
+          "off_mag": 5588.722517026864,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 113.238525390625
+        },
+        {
+          "freq_hz": 99372.86376953125,
+          "ratio": 4.841111820936887,
+          "on_mag": 26769.915912299835,
+          "off_mag": 5529.70410568189,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 172.86376953125
+        },
+        {
+          "freq_hz": 198364.2578125,
+          "ratio": 4.575418754516614,
+          "on_mag": 27283.290629615247,
+          "off_mag": 5963.014992383509,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 35.7421875
+        },
+        {
+          "freq_hz": 98991.39404296875,
+          "ratio": 4.480414385105015,
+          "on_mag": 23949.091382286075,
+          "off_mag": 5345.28490532126,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 208.60595703125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 99182.12890625,
+          "ratio": 5.161639500716845,
+          "on_mag": 29339.33310006293,
+          "off_mag": 5684.111239459537,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 17.87109375
+        },
+        {
+          "freq_hz": 99277.49633789062,
+          "ratio": 5.154468929221804,
+          "on_mag": 29084.455411462393,
+          "off_mag": 5642.570711131131,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 77.496337890625
+        },
+        {
+          "freq_hz": 198554.99267578125,
+          "ratio": 5.0297584080054865,
+          "on_mag": 26127.70492342487,
+          "off_mag": 5194.624235199722,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 154.99267578125
+        },
+        {
+          "freq_hz": 198459.62524414062,
+          "ratio": 5.010593779899215,
+          "on_mag": 27763.471225134555,
+          "off_mag": 5540.9543149381,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 59.625244140625
+        },
+        {
+          "freq_hz": 99086.76147460938,
+          "ratio": 4.919858461710424,
+          "on_mag": 27495.723765546198,
+          "off_mag": 5588.722517026864,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 113.238525390625
+        },
+        {
+          "freq_hz": 99372.86376953125,
+          "ratio": 4.841111820936887,
+          "on_mag": 26769.915912299835,
+          "off_mag": 5529.70410568189,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 172.86376953125
+        },
+        {
+          "freq_hz": 198364.2578125,
+          "ratio": 4.575418754516614,
+          "on_mag": 27283.290629615247,
+          "off_mag": 5963.014992383509,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 35.7421875
+        },
+        {
+          "freq_hz": 98991.39404296875,
+          "ratio": 4.480414385105015,
+          "on_mag": 23949.091382286075,
+          "off_mag": 5345.28490532126,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 208.60595703125
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 56200.0,
+      "frame_index": 12,
+      "overflow": 2,
+      "rms_a_mv": 1.8862327533020413,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 309.03094313723994,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78810.99644071673,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78810.99644071673,
+      "ratio_a": 10.615980889571688,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.615980889571688,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 112342.83447265625,
+          "ratio": 5.8423053546216535,
+          "on_mag": 32839.248425515354,
+          "off_mag": 5620.940096795406,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 57.16552734375
+        },
+        {
+          "freq_hz": 112438.20190429688,
+          "ratio": 5.809422778504294,
+          "on_mag": 33244.04405415417,
+          "off_mag": 5722.434968438164,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 38.201904296875
+        },
+        {
+          "freq_hz": 224781.03637695312,
+          "ratio": 5.529346667174041,
+          "on_mag": 29282.03638563022,
+          "off_mag": 5295.749778082877,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 18.963623046875
+        },
+        {
+          "freq_hz": 112247.46704101562,
+          "ratio": 5.339498908667526,
+          "on_mag": 29959.757235365432,
+          "off_mag": 5610.967948084458,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 152.532958984375
+        },
+        {
+          "freq_hz": 112533.5693359375,
+          "ratio": 5.236537426816671,
+          "on_mag": 31108.98099922454,
+          "off_mag": 5940.7540639188965,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 133.5693359375
+        },
+        {
+          "freq_hz": 224876.40380859375,
+          "ratio": 5.211126644045808,
+          "on_mag": 28455.798625710777,
+          "off_mag": 5460.584739045663,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 76.40380859375
+        },
+        {
+          "freq_hz": 224685.6689453125,
+          "ratio": 5.1478243141092355,
+          "on_mag": 27846.104853142613,
+          "off_mag": 5409.2958799743,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 114.3310546875
+        },
+        {
+          "freq_hz": 224971.77124023438,
+          "ratio": 4.58744238917331,
+          "on_mag": 25587.127668428704,
+          "off_mag": 5577.64555884476,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 171.771240234375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 112342.83447265625,
+          "ratio": 5.8423053546216535,
+          "on_mag": 32839.248425515354,
+          "off_mag": 5620.940096795406,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 57.16552734375
+        },
+        {
+          "freq_hz": 112438.20190429688,
+          "ratio": 5.809422778504294,
+          "on_mag": 33244.04405415417,
+          "off_mag": 5722.434968438164,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 38.201904296875
+        },
+        {
+          "freq_hz": 224781.03637695312,
+          "ratio": 5.529346667174041,
+          "on_mag": 29282.03638563022,
+          "off_mag": 5295.749778082877,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 18.963623046875
+        },
+        {
+          "freq_hz": 112247.46704101562,
+          "ratio": 5.339498908667526,
+          "on_mag": 29959.757235365432,
+          "off_mag": 5610.967948084458,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 152.532958984375
+        },
+        {
+          "freq_hz": 112533.5693359375,
+          "ratio": 5.236537426816671,
+          "on_mag": 31108.98099922454,
+          "off_mag": 5940.7540639188965,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 133.5693359375
+        },
+        {
+          "freq_hz": 224876.40380859375,
+          "ratio": 5.211126644045808,
+          "on_mag": 28455.798625710777,
+          "off_mag": 5460.584739045663,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 76.40380859375
+        },
+        {
+          "freq_hz": 224685.6689453125,
+          "ratio": 5.1478243141092355,
+          "on_mag": 27846.104853142613,
+          "off_mag": 5409.2958799743,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 114.3310546875
+        },
+        {
+          "freq_hz": 224971.77124023438,
+          "ratio": 4.58744238917331,
+          "on_mag": 25587.127668428704,
+          "off_mag": 5577.64555884476,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 171.771240234375
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18001,
+        "max_abs_count": 18001,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 58500.0,
+      "frame_index": 13,
+      "overflow": 2,
+      "rms_a_mv": 1.7951556232749588,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 294.10932153925285,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78695.41168512384,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78695.41168512384,
+      "ratio_a": 9.637709693657763,
+      "ratio_b": 0.0,
+      "ratio_clean": 9.637709693657763,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 117015.83862304688,
+          "ratio": 5.793343063072078,
+          "on_mag": 36181.933069153754,
+          "off_mag": 6245.432503347609,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 15.838623046875
+        },
+        {
+          "freq_hz": 117111.2060546875,
+          "ratio": 5.752766447460236,
+          "on_mag": 34210.246669310734,
+          "off_mag": 5946.747009765027,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 111.2060546875
+        },
+        {
+          "freq_hz": 116920.47119140625,
+          "ratio": 5.5067325491020895,
+          "on_mag": 35504.02966620918,
+          "off_mag": 6447.385877129324,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 79.52880859375
+        },
+        {
+          "freq_hz": 117206.57348632812,
+          "ratio": 5.348248104638526,
+          "on_mag": 29937.322019973075,
+          "off_mag": 5597.59409702936,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 206.573486328125
+        },
+        {
+          "freq_hz": 116825.10375976562,
+          "ratio": 4.948562591139998,
+          "on_mag": 32322.523523831267,
+          "off_mag": 6531.699443733851,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 174.896240234375
+        },
+        {
+          "freq_hz": 117301.94091796875,
+          "ratio": 4.5617755666467215,
+          "on_mag": 24117.408041502244,
+          "off_mag": 5286.8466870303555,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 301.94091796875
+        },
+        {
+          "freq_hz": 234031.67724609375,
+          "ratio": 4.334600046652165,
+          "on_mag": 27210.642787976252,
+          "off_mag": 6277.544062915894,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 31.67724609375
+        },
+        {
+          "freq_hz": 233936.30981445312,
+          "ratio": 4.281814035460475,
+          "on_mag": 26703.48414472103,
+          "off_mag": 6236.488535833687,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 63.690185546875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 117015.83862304688,
+          "ratio": 5.793343063072078,
+          "on_mag": 36181.933069153754,
+          "off_mag": 6245.432503347609,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 15.838623046875
+        },
+        {
+          "freq_hz": 117111.2060546875,
+          "ratio": 5.752766447460236,
+          "on_mag": 34210.246669310734,
+          "off_mag": 5946.747009765027,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 111.2060546875
+        },
+        {
+          "freq_hz": 116920.47119140625,
+          "ratio": 5.5067325491020895,
+          "on_mag": 35504.02966620918,
+          "off_mag": 6447.385877129324,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 79.52880859375
+        },
+        {
+          "freq_hz": 117206.57348632812,
+          "ratio": 5.348248104638526,
+          "on_mag": 29937.322019973075,
+          "off_mag": 5597.59409702936,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 206.573486328125
+        },
+        {
+          "freq_hz": 116825.10375976562,
+          "ratio": 4.948562591139998,
+          "on_mag": 32322.523523831267,
+          "off_mag": 6531.699443733851,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 174.896240234375
+        },
+        {
+          "freq_hz": 117301.94091796875,
+          "ratio": 4.5617755666467215,
+          "on_mag": 24117.408041502244,
+          "off_mag": 5286.8466870303555,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 301.94091796875
+        },
+        {
+          "freq_hz": 234031.67724609375,
+          "ratio": 4.334600046652165,
+          "on_mag": 27210.642787976252,
+          "off_mag": 6277.544062915894,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 31.67724609375
+        },
+        {
+          "freq_hz": 233936.30981445312,
+          "ratio": 4.281814035460475,
+          "on_mag": 26703.48414472103,
+          "off_mag": 6236.488535833687,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 63.690185546875
+        }
+      ],
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 18294,
+        "max_abs_count": 18294,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 68200.0,
+      "frame_index": 14,
+      "overflow": 2,
+      "rms_a_mv": 1.94536173806661,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 318.718340356143,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79154.37763527584,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79154.37763527584,
+      "ratio_a": 12.719434012726945,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.719434012726945,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 136375.42724609375,
+          "ratio": 5.890178393441773,
+          "on_mag": 39467.42716797111,
+          "off_mag": 6700.548698476574,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.57275390625
+        },
+        {
+          "freq_hz": 136470.79467773438,
+          "ratio": 5.827407743267527,
+          "on_mag": 39437.9925806427,
+          "off_mag": 6767.673435277612,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 70.794677734375
+        },
+        {
+          "freq_hz": 136280.05981445312,
+          "ratio": 5.519194565052745,
+          "on_mag": 36462.82270337435,
+          "off_mag": 6606.547798523912,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.940185546875
+        },
+        {
+          "freq_hz": 136566.162109375,
+          "ratio": 5.3929555347549645,
+          "on_mag": 36482.47553332647,
+          "off_mag": 6764.838927043757,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.162109375
+        },
+        {
+          "freq_hz": 136661.52954101562,
+          "ratio": 4.719170846758101,
+          "on_mag": 31247.781461449107,
+          "off_mag": 6621.455860814024,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 261.529541015625
+        },
+        {
+          "freq_hz": 136184.6923828125,
+          "ratio": 4.667906077017945,
+          "on_mag": 30892.2595059651,
+          "off_mag": 6618.0122299505165,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 215.3076171875
+        },
+        {
+          "freq_hz": 272941.58935546875,
+          "ratio": 4.043005704126221,
+          "on_mag": 30038.149493383215,
+          "off_mag": 7429.657955398579,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 141.58935546875
+        },
+        {
+          "freq_hz": 272846.2219238281,
+          "ratio": 4.011572785703722,
+          "on_mag": 32078.88134510877,
+          "off_mag": 7996.584646159274,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.221923828125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 136375.42724609375,
+          "ratio": 5.890178393441773,
+          "on_mag": 39467.42716797111,
+          "off_mag": 6700.548698476574,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.57275390625
+        },
+        {
+          "freq_hz": 136470.79467773438,
+          "ratio": 5.827407743267527,
+          "on_mag": 39437.9925806427,
+          "off_mag": 6767.673435277612,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 70.794677734375
+        },
+        {
+          "freq_hz": 136280.05981445312,
+          "ratio": 5.519194565052745,
+          "on_mag": 36462.82270337435,
+          "off_mag": 6606.547798523912,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.940185546875
+        },
+        {
+          "freq_hz": 136566.162109375,
+          "ratio": 5.3929555347549645,
+          "on_mag": 36482.47553332647,
+          "off_mag": 6764.838927043757,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.162109375
+        },
+        {
+          "freq_hz": 136661.52954101562,
+          "ratio": 4.719170846758101,
+          "on_mag": 31247.781461449107,
+          "off_mag": 6621.455860814024,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 261.529541015625
+        },
+        {
+          "freq_hz": 136184.6923828125,
+          "ratio": 4.667906077017945,
+          "on_mag": 30892.2595059651,
+          "off_mag": 6618.0122299505165,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 215.3076171875
+        },
+        {
+          "freq_hz": 272941.58935546875,
+          "ratio": 4.043005704126221,
+          "on_mag": 30038.149493383215,
+          "off_mag": 7429.657955398579,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 141.58935546875
+        },
+        {
+          "freq_hz": 272846.2219238281,
+          "ratio": 4.011572785703722,
+          "on_mag": 32078.88134510877,
+          "off_mag": 7996.584646159274,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.221923828125
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 5,
+      "drive_hz": 89400.0,
+      "frame_index": 15,
+      "overflow": 2,
+      "rms_a_mv": 1.81719035425995,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 297.7193816901789,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 80664.53331982711,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 80664.53331982711,
+      "ratio_a": 11.25227048687778,
+      "ratio_b": 0.0,
+      "ratio_clean": 11.25227048687778,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 178718.56689453125,
+          "ratio": 7.693276642139038,
+          "on_mag": 42576.67089970236,
+          "off_mag": 5534.270101050773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 81.43310546875
+        },
+        {
+          "freq_hz": 178813.93432617188,
+          "ratio": 7.658186490770943,
+          "on_mag": 44198.16822525933,
+          "off_mag": 5771.3622250546605,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 13.934326171875
+        },
+        {
+          "freq_hz": 178623.19946289062,
+          "ratio": 7.35918605584993,
+          "on_mag": 37641.31954290725,
+          "off_mag": 5114.875375787732,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 176.800537109375
+        },
+        {
+          "freq_hz": 178909.3017578125,
+          "ratio": 7.186229392551409,
+          "on_mag": 42253.768070516315,
+          "off_mag": 5879.824559220545,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 109.3017578125
+        },
+        {
+          "freq_hz": 178527.83203125,
+          "ratio": 6.541874703109319,
+          "on_mag": 30273.804016725906,
+          "off_mag": 4627.695483427239,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 272.16796875
+        },
+        {
+          "freq_hz": 179004.66918945312,
+          "ratio": 6.1461271146232255,
+          "on_mag": 37177.958482397604,
+          "off_mag": 6049.00578674034,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 204.669189453125
+        },
+        {
+          "freq_hz": 178432.46459960938,
+          "ratio": 4.973735870840411,
+          "on_mag": 21776.818347193246,
+          "off_mag": 4378.362444790142,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 367.535400390625
+        },
+        {
+          "freq_hz": 179100.03662109375,
+          "ratio": 4.788545355927547,
+          "on_mag": 29974.465172285054,
+          "off_mag": 6259.6180978386,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 300.03662109375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 178718.56689453125,
+          "ratio": 7.693276642139038,
+          "on_mag": 42576.67089970236,
+          "off_mag": 5534.270101050773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 81.43310546875
+        },
+        {
+          "freq_hz": 178813.93432617188,
+          "ratio": 7.658186490770943,
+          "on_mag": 44198.16822525933,
+          "off_mag": 5771.3622250546605,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 13.934326171875
+        },
+        {
+          "freq_hz": 178623.19946289062,
+          "ratio": 7.35918605584993,
+          "on_mag": 37641.31954290725,
+          "off_mag": 5114.875375787732,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 176.800537109375
+        },
+        {
+          "freq_hz": 178909.3017578125,
+          "ratio": 7.186229392551409,
+          "on_mag": 42253.768070516315,
+          "off_mag": 5879.824559220545,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 109.3017578125
+        },
+        {
+          "freq_hz": 178527.83203125,
+          "ratio": 6.541874703109319,
+          "on_mag": 30273.804016725906,
+          "off_mag": 4627.695483427239,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 272.16796875
+        },
+        {
+          "freq_hz": 179004.66918945312,
+          "ratio": 6.1461271146232255,
+          "on_mag": 37177.958482397604,
+          "off_mag": 6049.00578674034,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 204.669189453125
+        },
+        {
+          "freq_hz": 178432.46459960938,
+          "ratio": 4.973735870840411,
+          "on_mag": 21776.818347193246,
+          "off_mag": 4378.362444790142,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 367.535400390625
+        },
+        {
+          "freq_hz": 179100.03662109375,
+          "ratio": 4.788545355927547,
+          "on_mag": 29974.465172285054,
+          "off_mag": 6259.6180978386,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 300.03662109375
+        }
+      ],
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 18294,
+        "max_abs_count": 18294,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 11400.0,
+      "frame_index": 16,
+      "overflow": 2,
+      "rms_a_mv": 1.764038810009747,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 289.01129843794695,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78206.08412087793,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78206.08412087793,
+      "ratio_a": 11.115276807725744,
+      "ratio_b": 0.0,
+      "ratio_clean": 11.115276807725744,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 34141.54052734375,
+          "ratio": 2.941856773991165,
+          "on_mag": 17068.12992783774,
+          "off_mag": 5801.822195674642,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 58.45947265625
+        },
+        {
+          "freq_hz": 34046.173095703125,
+          "ratio": 2.8564720187007295,
+          "on_mag": 15742.855875216525,
+          "off_mag": 5511.293571983661,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 153.826904296875
+        },
+        {
+          "freq_hz": 34236.907958984375,
+          "ratio": 2.843994729723269,
+          "on_mag": 17124.307412915034,
+          "off_mag": 6021.216296199428,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 36.907958984375
+        },
+        {
+          "freq_hz": 267124.1760253906,
+          "ratio": 2.61866372504618,
+          "on_mag": 8139.273306758052,
+          "off_mag": 3108.1781249383275,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 4924.176025390625
+        },
+        {
+          "freq_hz": 33950.8056640625,
+          "ratio": 2.5916551208236585,
+          "on_mag": 13631.579119999273,
+          "off_mag": 5259.796726219883,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 249.1943359375
+        },
+        {
+          "freq_hz": 34332.275390625,
+          "ratio": 2.548526812261298,
+          "on_mag": 15842.787847307702,
+          "off_mag": 6216.449350693884,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 132.275390625
+        },
+        {
+          "freq_hz": 267028.80859375,
+          "ratio": 2.4438409646318697,
+          "on_mag": 8284.054176087346,
+          "off_mag": 3389.7681133826245,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 4828.80859375
+        },
+        {
+          "freq_hz": 267219.54345703125,
+          "ratio": 2.340937837453102,
+          "on_mag": 7841.3652794688805,
+          "off_mag": 3349.668305588219,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 5019.54345703125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 34141.54052734375,
+          "ratio": 2.941856773991165,
+          "on_mag": 17068.12992783774,
+          "off_mag": 5801.822195674642,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 58.45947265625
+        },
+        {
+          "freq_hz": 34046.173095703125,
+          "ratio": 2.8564720187007295,
+          "on_mag": 15742.855875216525,
+          "off_mag": 5511.293571983661,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 153.826904296875
+        },
+        {
+          "freq_hz": 34236.907958984375,
+          "ratio": 2.843994729723269,
+          "on_mag": 17124.307412915034,
+          "off_mag": 6021.216296199428,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 36.907958984375
+        },
+        {
+          "freq_hz": 267124.1760253906,
+          "ratio": 2.61866372504618,
+          "on_mag": 8139.273306758052,
+          "off_mag": 3108.1781249383275,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 4924.176025390625
+        },
+        {
+          "freq_hz": 33950.8056640625,
+          "ratio": 2.5916551208236585,
+          "on_mag": 13631.579119999273,
+          "off_mag": 5259.796726219883,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 249.1943359375
+        },
+        {
+          "freq_hz": 34332.275390625,
+          "ratio": 2.548526812261298,
+          "on_mag": 15842.787847307702,
+          "off_mag": 6216.449350693884,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 132.275390625
+        },
+        {
+          "freq_hz": 267028.80859375,
+          "ratio": 2.4438409646318697,
+          "on_mag": 8284.054176087346,
+          "off_mag": 3389.7681133826245,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 4828.80859375
+        },
+        {
+          "freq_hz": 267219.54345703125,
+          "ratio": 2.340937837453102,
+          "on_mag": 7841.3652794688805,
+          "off_mag": 3349.668305588219,
+          "nearest_harmonic": 23,
+          "harmonic_error_hz": 5019.54345703125
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 19175,
+        "max_abs_count": 19175,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 19000.0,
+      "frame_index": 17,
+      "overflow": 2,
+      "rms_a_mv": 1.8204851864712999,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 298.25919052552547,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78577.17608181354,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78577.17608181354,
+      "ratio_a": 12.068005183390124,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.068005183390124,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 57029.72412109375,
+          "ratio": 3.9496315193722022,
+          "on_mag": 17500.87473482865,
+          "off_mag": 4431.014551355016,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 29.72412109375
+        },
+        {
+          "freq_hz": 57125.091552734375,
+          "ratio": 3.7212661925092676,
+          "on_mag": 16642.085758702775,
+          "off_mag": 4472.156760030364,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 125.091552734375
+        },
+        {
+          "freq_hz": 56934.356689453125,
+          "ratio": 3.687105062290814,
+          "on_mag": 17092.289498799433,
+          "off_mag": 4635.693643126057,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 65.643310546875
+        },
+        {
+          "freq_hz": 56838.9892578125,
+          "ratio": 3.0737301066953937,
+          "on_mag": 15510.237738412463,
+          "off_mag": 5046.0636425517905,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 161.0107421875
+        },
+        {
+          "freq_hz": 57220.458984375,
+          "ratio": 3.031729535490361,
+          "on_mag": 14681.409360259735,
+          "off_mag": 4842.585457704795,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 220.458984375
+        },
+        {
+          "freq_hz": 228023.52905273438,
+          "ratio": 3.0236168966479178,
+          "on_mag": 15561.914451779663,
+          "off_mag": 5146.7877656829205,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 23.529052734375
+        },
+        {
+          "freq_hz": 227928.16162109375,
+          "ratio": 2.935996659446317,
+          "on_mag": 15373.30176007553,
+          "off_mag": 5236.144159297066,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 71.83837890625
+        },
+        {
+          "freq_hz": 228118.896484375,
+          "ratio": 2.8817580260361733,
+          "on_mag": 14668.975953352607,
+          "off_mag": 5090.287186093005,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 118.896484375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 57029.72412109375,
+          "ratio": 3.9496315193722022,
+          "on_mag": 17500.87473482865,
+          "off_mag": 4431.014551355016,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 29.72412109375
+        },
+        {
+          "freq_hz": 57125.091552734375,
+          "ratio": 3.7212661925092676,
+          "on_mag": 16642.085758702775,
+          "off_mag": 4472.156760030364,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 125.091552734375
+        },
+        {
+          "freq_hz": 56934.356689453125,
+          "ratio": 3.687105062290814,
+          "on_mag": 17092.289498799433,
+          "off_mag": 4635.693643126057,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 65.643310546875
+        },
+        {
+          "freq_hz": 56838.9892578125,
+          "ratio": 3.0737301066953937,
+          "on_mag": 15510.237738412463,
+          "off_mag": 5046.0636425517905,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 161.0107421875
+        },
+        {
+          "freq_hz": 57220.458984375,
+          "ratio": 3.031729535490361,
+          "on_mag": 14681.409360259735,
+          "off_mag": 4842.585457704795,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 220.458984375
+        },
+        {
+          "freq_hz": 228023.52905273438,
+          "ratio": 3.0236168966479178,
+          "on_mag": 15561.914451779663,
+          "off_mag": 5146.7877656829205,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 23.529052734375
+        },
+        {
+          "freq_hz": 227928.16162109375,
+          "ratio": 2.935996659446317,
+          "on_mag": 15373.30176007553,
+          "off_mag": 5236.144159297066,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 71.83837890625
+        },
+        {
+          "freq_hz": 228118.896484375,
+          "ratio": 2.8817580260361733,
+          "on_mag": 14668.975953352607,
+          "off_mag": 5090.287186093005,
+          "nearest_harmonic": 12,
+          "harmonic_error_hz": 118.896484375
+        }
+      ],
+      "a_stats": {
+        "min_count": 7731,
+        "max_count": 19175,
+        "max_abs_count": 19175,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 23900.0,
+      "frame_index": 18,
+      "overflow": 2,
+      "rms_a_mv": 1.9260916136477104,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 315.5612195219726,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 83771.59321658462,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 83771.59321658462,
+      "ratio_a": 11.546657828518859,
+      "ratio_b": 0.0,
+      "ratio_clean": 11.546657828518859,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 71620.94116210938,
+          "ratio": 3.94675990095357,
+          "on_mag": 18807.8067003731,
+          "off_mag": 4765.378987414202,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 79.058837890625
+        },
+        {
+          "freq_hz": 71716.30859375,
+          "ratio": 3.717851433719009,
+          "on_mag": 18574.16993132888,
+          "off_mag": 4995.941947241536,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 16.30859375
+        },
+        {
+          "freq_hz": 71525.57373046875,
+          "ratio": 3.622424581009862,
+          "on_mag": 17795.308790932864,
+          "off_mag": 4912.540866750599,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 174.42626953125
+        },
+        {
+          "freq_hz": 71811.67602539062,
+          "ratio": 3.142207212916373,
+          "on_mag": 17094.61794209005,
+          "off_mag": 5440.321654097422,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 111.676025390625
+        },
+        {
+          "freq_hz": 238990.78369140625,
+          "ratio": 3.074518981880867,
+          "on_mag": 17123.143781038267,
+          "off_mag": 5569.373252190174,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 9.21630859375
+        },
+        {
+          "freq_hz": 238895.41625976562,
+          "ratio": 3.0246583606211987,
+          "on_mag": 15923.309231800618,
+          "off_mag": 5264.498443563166,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 104.583740234375
+        },
+        {
+          "freq_hz": 47683.7158203125,
+          "ratio": 2.970389676135617,
+          "on_mag": 15691.580665094505,
+          "off_mag": 5282.6673857514725,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 116.2841796875
+        },
+        {
+          "freq_hz": 47779.083251953125,
+          "ratio": 2.9659505046902974,
+          "on_mag": 16763.140152381457,
+          "off_mag": 5651.861056303046,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 20.916748046875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 71620.94116210938,
+          "ratio": 3.94675990095357,
+          "on_mag": 18807.8067003731,
+          "off_mag": 4765.378987414202,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 79.058837890625
+        },
+        {
+          "freq_hz": 71716.30859375,
+          "ratio": 3.717851433719009,
+          "on_mag": 18574.16993132888,
+          "off_mag": 4995.941947241536,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 16.30859375
+        },
+        {
+          "freq_hz": 71525.57373046875,
+          "ratio": 3.622424581009862,
+          "on_mag": 17795.308790932864,
+          "off_mag": 4912.540866750599,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 174.42626953125
+        },
+        {
+          "freq_hz": 71811.67602539062,
+          "ratio": 3.142207212916373,
+          "on_mag": 17094.61794209005,
+          "off_mag": 5440.321654097422,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 111.676025390625
+        },
+        {
+          "freq_hz": 238990.78369140625,
+          "ratio": 3.074518981880867,
+          "on_mag": 17123.143781038267,
+          "off_mag": 5569.373252190174,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 9.21630859375
+        },
+        {
+          "freq_hz": 238895.41625976562,
+          "ratio": 3.0246583606211987,
+          "on_mag": 15923.309231800618,
+          "off_mag": 5264.498443563166,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 104.583740234375
+        },
+        {
+          "freq_hz": 47683.7158203125,
+          "ratio": 2.970389676135617,
+          "on_mag": 15691.580665094505,
+          "off_mag": 5282.6673857514725,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 116.2841796875
+        },
+        {
+          "freq_hz": 47779.083251953125,
+          "ratio": 2.9659505046902974,
+          "on_mag": 16763.140152381457,
+          "off_mag": 5651.861056303046,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 20.916748046875
+        }
+      ],
+      "a_stats": {
+        "min_count": 7731,
+        "max_count": 19468,
+        "max_abs_count": 19468,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 29200.0,
+      "frame_index": 19,
+      "overflow": 2,
+      "rms_a_mv": 1.8130789259589326,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 297.04578583448176,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 81530.96200651414,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 81530.96200651414,
+      "ratio_a": 10.565020503643686,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.565020503643686,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 87547.30224609375,
+          "ratio": 3.8334495973132543,
+          "on_mag": 21711.70485213749,
+          "off_mag": 5663.75122483795,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 52.69775390625
+        },
+        {
+          "freq_hz": 87451.93481445312,
+          "ratio": 3.8272738140675493,
+          "on_mag": 20125.946243361534,
+          "off_mag": 5258.559282951351,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 148.065185546875
+        },
+        {
+          "freq_hz": 87642.66967773438,
+          "ratio": 3.6826318553039887,
+          "on_mag": 21812.243723793512,
+          "off_mag": 5923.00413965571,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 42.669677734375
+        },
+        {
+          "freq_hz": 87738.037109375,
+          "ratio": 3.453613654755149,
+          "on_mag": 20336.756008287644,
+          "off_mag": 5888.54401252634,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 138.037109375
+        },
+        {
+          "freq_hz": 87356.5673828125,
+          "ratio": 3.2130483038016378,
+          "on_mag": 17445.093811023755,
+          "off_mag": 5429.452707070399,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 243.4326171875
+        },
+        {
+          "freq_hz": 87833.40454101562,
+          "ratio": 3.1020875519196416,
+          "on_mag": 17504.86092796891,
+          "off_mag": 5642.929361273672,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 233.404541015625
+        },
+        {
+          "freq_hz": 291919.7082519531,
+          "ratio": 3.0555270440260687,
+          "on_mag": 20951.02007703109,
+          "off_mag": 6856.761460512324,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 80.291748046875
+        },
+        {
+          "freq_hz": 116729.736328125,
+          "ratio": 2.883740366137376,
+          "on_mag": 21926.712049542555,
+          "off_mag": 7603.566641095458,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 70.263671875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 87547.30224609375,
+          "ratio": 3.8334495973132543,
+          "on_mag": 21711.70485213749,
+          "off_mag": 5663.75122483795,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 52.69775390625
+        },
+        {
+          "freq_hz": 87451.93481445312,
+          "ratio": 3.8272738140675493,
+          "on_mag": 20125.946243361534,
+          "off_mag": 5258.559282951351,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 148.065185546875
+        },
+        {
+          "freq_hz": 87642.66967773438,
+          "ratio": 3.6826318553039887,
+          "on_mag": 21812.243723793512,
+          "off_mag": 5923.00413965571,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 42.669677734375
+        },
+        {
+          "freq_hz": 87738.037109375,
+          "ratio": 3.453613654755149,
+          "on_mag": 20336.756008287644,
+          "off_mag": 5888.54401252634,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 138.037109375
+        },
+        {
+          "freq_hz": 87356.5673828125,
+          "ratio": 3.2130483038016378,
+          "on_mag": 17445.093811023755,
+          "off_mag": 5429.452707070399,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 243.4326171875
+        },
+        {
+          "freq_hz": 87833.40454101562,
+          "ratio": 3.1020875519196416,
+          "on_mag": 17504.86092796891,
+          "off_mag": 5642.929361273672,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 233.404541015625
+        },
+        {
+          "freq_hz": 291919.7082519531,
+          "ratio": 3.0555270440260687,
+          "on_mag": 20951.02007703109,
+          "off_mag": 6856.761460512324,
+          "nearest_harmonic": 10,
+          "harmonic_error_hz": 80.291748046875
+        },
+        {
+          "freq_hz": 116729.736328125,
+          "ratio": 2.883740366137376,
+          "on_mag": 21926.712049542555,
+          "off_mag": 7603.566641095458,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 70.263671875
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 29900.0,
+      "frame_index": 20,
+      "overflow": 2,
+      "rms_a_mv": 1.895470845589256,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 310.54446598711576,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78694.90132721973,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78694.90132721973,
+      "ratio_a": 13.021049231761003,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.021049231761003,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 209331.51245117188,
+          "ratio": 3.8242403296297414,
+          "on_mag": 19496.29300865784,
+          "off_mag": 5098.082580637773,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 31.512451171875
+        },
+        {
+          "freq_hz": 209426.8798828125,
+          "ratio": 3.701961414090923,
+          "on_mag": 18296.99499470983,
+          "off_mag": 4942.513696945962,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 126.8798828125
+        },
+        {
+          "freq_hz": 209236.14501953125,
+          "ratio": 3.6271754235274036,
+          "on_mag": 19366.28478447593,
+          "off_mag": 5339.219233472405,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 63.85498046875
+        },
+        {
+          "freq_hz": 89836.12060546875,
+          "ratio": 3.406589062598843,
+          "on_mag": 18061.403743502087,
+          "off_mag": 5301.902698449714,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 136.12060546875
+        },
+        {
+          "freq_hz": 89740.75317382812,
+          "ratio": 3.3690765890487153,
+          "on_mag": 18267.653305121396,
+          "off_mag": 5422.1543566272585,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 40.753173828125
+        },
+        {
+          "freq_hz": 209522.24731445312,
+          "ratio": 3.2286343242722553,
+          "on_mag": 15999.980684817878,
+          "off_mag": 4955.649688951481,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 222.247314453125
+        },
+        {
+          "freq_hz": 209140.77758789062,
+          "ratio": 3.1905699601766493,
+          "on_mag": 17958.24477494853,
+          "off_mag": 5628.538160609477,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 159.222412109375
+        },
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 2.973600727181034,
+          "on_mag": 16613.09888070096,
+          "off_mag": 5586.8626641244255,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 231.488037109375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 209331.51245117188,
+          "ratio": 3.8242403296297414,
+          "on_mag": 19496.29300865784,
+          "off_mag": 5098.082580637773,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 31.512451171875
+        },
+        {
+          "freq_hz": 209426.8798828125,
+          "ratio": 3.701961414090923,
+          "on_mag": 18296.99499470983,
+          "off_mag": 4942.513696945962,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 126.8798828125
+        },
+        {
+          "freq_hz": 209236.14501953125,
+          "ratio": 3.6271754235274036,
+          "on_mag": 19366.28478447593,
+          "off_mag": 5339.219233472405,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 63.85498046875
+        },
+        {
+          "freq_hz": 89836.12060546875,
+          "ratio": 3.406589062598843,
+          "on_mag": 18061.403743502087,
+          "off_mag": 5301.902698449714,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 136.12060546875
+        },
+        {
+          "freq_hz": 89740.75317382812,
+          "ratio": 3.3690765890487153,
+          "on_mag": 18267.653305121396,
+          "off_mag": 5422.1543566272585,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 40.753173828125
+        },
+        {
+          "freq_hz": 209522.24731445312,
+          "ratio": 3.2286343242722553,
+          "on_mag": 15999.980684817878,
+          "off_mag": 4955.649688951481,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 222.247314453125
+        },
+        {
+          "freq_hz": 209140.77758789062,
+          "ratio": 3.1905699601766493,
+          "on_mag": 17958.24477494853,
+          "off_mag": 5628.538160609477,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 159.222412109375
+        },
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 2.973600727181034,
+          "on_mag": 16613.09888070096,
+          "off_mag": 5586.8626641244255,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 231.488037109375
+        }
+      ],
+      "a_stats": {
+        "min_count": 7144,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 33200.0,
+      "frame_index": 21,
+      "overflow": 2,
+      "rms_a_mv": 1.6927455811033698,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 277.3309722800706,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 81888.80134083956,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 81888.80134083956,
+      "ratio_a": 14.203135491024156,
+      "ratio_b": 0.0,
+      "ratio_clean": 14.203135491024156,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 232410.43090820312,
+          "ratio": 4.296474281757069,
+          "on_mag": 19392.469698402212,
+          "off_mag": 4513.577511855033,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 10.430908203125
+        },
+        {
+          "freq_hz": 232505.79833984375,
+          "ratio": 4.199335547332832,
+          "on_mag": 18855.103115294398,
+          "off_mag": 4490.020600347128,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 105.79833984375
+        },
+        {
+          "freq_hz": 232315.0634765625,
+          "ratio": 3.9648916136562997,
+          "on_mag": 18606.07800156558,
+          "off_mag": 4692.707850444273,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 84.9365234375
+        },
+        {
+          "freq_hz": 232601.16577148438,
+          "ratio": 3.7453810008338473,
+          "on_mag": 17149.703885412586,
+          "off_mag": 4578.894345220016,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 201.165771484375
+        },
+        {
+          "freq_hz": 232219.69604492188,
+          "ratio": 3.426705692318212,
+          "on_mag": 16753.467680667167,
+          "off_mag": 4889.088583890968,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 180.303955078125
+        },
+        {
+          "freq_hz": 66375.732421875,
+          "ratio": 3.3320126536403727,
+          "on_mag": 19753.98697573287,
+          "off_mag": 5928.5450054191,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.267578125
+        },
+        {
+          "freq_hz": 66280.36499023438,
+          "ratio": 3.3036371170567467,
+          "on_mag": 18549.582330922058,
+          "off_mag": 5614.897058502636,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.635009765625
+        },
+        {
+          "freq_hz": 232696.533203125,
+          "ratio": 3.186163573623974,
+          "on_mag": 14701.031089311758,
+          "off_mag": 4614.022710890094,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 296.533203125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 232410.43090820312,
+          "ratio": 4.296474281757069,
+          "on_mag": 19392.469698402212,
+          "off_mag": 4513.577511855033,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 10.430908203125
+        },
+        {
+          "freq_hz": 232505.79833984375,
+          "ratio": 4.199335547332832,
+          "on_mag": 18855.103115294398,
+          "off_mag": 4490.020600347128,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 105.79833984375
+        },
+        {
+          "freq_hz": 232315.0634765625,
+          "ratio": 3.9648916136562997,
+          "on_mag": 18606.07800156558,
+          "off_mag": 4692.707850444273,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 84.9365234375
+        },
+        {
+          "freq_hz": 232601.16577148438,
+          "ratio": 3.7453810008338473,
+          "on_mag": 17149.703885412586,
+          "off_mag": 4578.894345220016,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 201.165771484375
+        },
+        {
+          "freq_hz": 232219.69604492188,
+          "ratio": 3.426705692318212,
+          "on_mag": 16753.467680667167,
+          "off_mag": 4889.088583890968,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 180.303955078125
+        },
+        {
+          "freq_hz": 66375.732421875,
+          "ratio": 3.3320126536403727,
+          "on_mag": 19753.98697573287,
+          "off_mag": 5928.5450054191,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.267578125
+        },
+        {
+          "freq_hz": 66280.36499023438,
+          "ratio": 3.3036371170567467,
+          "on_mag": 18549.582330922058,
+          "off_mag": 5614.897058502636,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 119.635009765625
+        },
+        {
+          "freq_hz": 232696.533203125,
+          "ratio": 3.186163573623974,
+          "on_mag": 14701.031089311758,
+          "off_mag": 4614.022710890094,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 296.533203125
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 17707,
+        "max_abs_count": 17707,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 34500.0,
+      "frame_index": 22,
+      "overflow": 2,
+      "rms_a_mv": 1.8908189932317923,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 309.7823297561307,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 80873.22655962608,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 80873.22655962608,
+      "ratio_a": 12.969051378481947,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.969051378481947,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 103473.66333007812,
+          "ratio": 3.951241306539715,
+          "on_mag": 21720.269895364447,
+          "off_mag": 5497.075022832734,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 26.336669921875
+        },
+        {
+          "freq_hz": 103569.03076171875,
+          "ratio": 3.9234947530740727,
+          "on_mag": 21807.069504221097,
+          "off_mag": 5558.072809230897,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 69.03076171875
+        },
+        {
+          "freq_hz": 103378.2958984375,
+          "ratio": 3.7026900367107816,
+          "on_mag": 19969.74984524827,
+          "off_mag": 5393.308553310079,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 121.7041015625
+        },
+        {
+          "freq_hz": 103664.39819335938,
+          "ratio": 3.6608327367191897,
+          "on_mag": 20262.86539109327,
+          "off_mag": 5535.042666071844,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 164.398193359375
+        },
+        {
+          "freq_hz": 241374.96948242188,
+          "ratio": 3.4156893744772923,
+          "on_mag": 16176.013877968839,
+          "off_mag": 4735.797698361924,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 125.030517578125
+        },
+        {
+          "freq_hz": 241470.3369140625,
+          "ratio": 3.3653651830769915,
+          "on_mag": 17377.105679247194,
+          "off_mag": 5163.512645411964,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 29.6630859375
+        },
+        {
+          "freq_hz": 68950.65307617188,
+          "ratio": 3.3634633635091116,
+          "on_mag": 21430.51285695502,
+          "off_mag": 6371.561257202607,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 49.346923828125
+        },
+        {
+          "freq_hz": 68855.28564453125,
+          "ratio": 3.2734335999116695,
+          "on_mag": 19835.75571549032,
+          "off_mag": 6059.617557547393,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 144.71435546875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 103473.66333007812,
+          "ratio": 3.951241306539715,
+          "on_mag": 21720.269895364447,
+          "off_mag": 5497.075022832734,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 26.336669921875
+        },
+        {
+          "freq_hz": 103569.03076171875,
+          "ratio": 3.9234947530740727,
+          "on_mag": 21807.069504221097,
+          "off_mag": 5558.072809230897,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 69.03076171875
+        },
+        {
+          "freq_hz": 103378.2958984375,
+          "ratio": 3.7026900367107816,
+          "on_mag": 19969.74984524827,
+          "off_mag": 5393.308553310079,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 121.7041015625
+        },
+        {
+          "freq_hz": 103664.39819335938,
+          "ratio": 3.6608327367191897,
+          "on_mag": 20262.86539109327,
+          "off_mag": 5535.042666071844,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 164.398193359375
+        },
+        {
+          "freq_hz": 241374.96948242188,
+          "ratio": 3.4156893744772923,
+          "on_mag": 16176.013877968839,
+          "off_mag": 4735.797698361924,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 125.030517578125
+        },
+        {
+          "freq_hz": 241470.3369140625,
+          "ratio": 3.3653651830769915,
+          "on_mag": 17377.105679247194,
+          "off_mag": 5163.512645411964,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 29.6630859375
+        },
+        {
+          "freq_hz": 68950.65307617188,
+          "ratio": 3.3634633635091116,
+          "on_mag": 21430.51285695502,
+          "off_mag": 6371.561257202607,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 49.346923828125
+        },
+        {
+          "freq_hz": 68855.28564453125,
+          "ratio": 3.2734335999116695,
+          "on_mag": 19835.75571549032,
+          "off_mag": 6059.617557547393,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 144.71435546875
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 19175,
+        "max_abs_count": 19175,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 35000.0,
+      "frame_index": 23,
+      "overflow": 2,
+      "rms_a_mv": 1.954586585429591,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 320.229693223857,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78787.29397370422,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78787.29397370422,
+      "ratio_a": 15.77246219644439,
+      "ratio_b": 0.0,
+      "ratio_clean": 15.77246219644439,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 139999.3896484375,
+          "ratio": 3.527874448044242,
+          "on_mag": 21558.541808695023,
+          "off_mag": 6110.915262488011,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 0.6103515625
+        },
+        {
+          "freq_hz": 140094.75708007812,
+          "ratio": 3.3981404362560474,
+          "on_mag": 21800.07522410333,
+          "off_mag": 6415.295551505191,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 94.757080078125
+        },
+        {
+          "freq_hz": 139904.02221679688,
+          "ratio": 3.2895857344500032,
+          "on_mag": 19740.82664973186,
+          "off_mag": 6001.006887583792,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 95.977783203125
+        },
+        {
+          "freq_hz": 244903.564453125,
+          "ratio": 3.239429947456625,
+          "on_mag": 21223.8047355564,
+          "off_mag": 6551.709738998942,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 96.435546875
+        },
+        {
+          "freq_hz": 244808.19702148438,
+          "ratio": 3.2152759397438797,
+          "on_mag": 19751.42348120335,
+          "off_mag": 6142.994831969755,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 191.802978515625
+        },
+        {
+          "freq_hz": 244998.93188476562,
+          "ratio": 3.1859464017044257,
+          "on_mag": 21457.98810529764,
+          "off_mag": 6735.2005965379685,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.068115234375
+        },
+        {
+          "freq_hz": 245094.29931640625,
+          "ratio": 3.0715899782866667,
+          "on_mag": 20404.903901995873,
+          "off_mag": 6643.107981937658,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 94.29931640625
+        },
+        {
+          "freq_hz": 244712.82958984375,
+          "ratio": 3.0452639028046544,
+          "on_mag": 17302.379608827207,
+          "off_mag": 5681.734050336953,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 287.17041015625
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 139999.3896484375,
+          "ratio": 3.527874448044242,
+          "on_mag": 21558.541808695023,
+          "off_mag": 6110.915262488011,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 0.6103515625
+        },
+        {
+          "freq_hz": 140094.75708007812,
+          "ratio": 3.3981404362560474,
+          "on_mag": 21800.07522410333,
+          "off_mag": 6415.295551505191,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 94.757080078125
+        },
+        {
+          "freq_hz": 139904.02221679688,
+          "ratio": 3.2895857344500032,
+          "on_mag": 19740.82664973186,
+          "off_mag": 6001.006887583792,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 95.977783203125
+        },
+        {
+          "freq_hz": 244903.564453125,
+          "ratio": 3.239429947456625,
+          "on_mag": 21223.8047355564,
+          "off_mag": 6551.709738998942,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 96.435546875
+        },
+        {
+          "freq_hz": 244808.19702148438,
+          "ratio": 3.2152759397438797,
+          "on_mag": 19751.42348120335,
+          "off_mag": 6142.994831969755,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 191.802978515625
+        },
+        {
+          "freq_hz": 244998.93188476562,
+          "ratio": 3.1859464017044257,
+          "on_mag": 21457.98810529764,
+          "off_mag": 6735.2005965379685,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 1.068115234375
+        },
+        {
+          "freq_hz": 245094.29931640625,
+          "ratio": 3.0715899782866667,
+          "on_mag": 20404.903901995873,
+          "off_mag": 6643.107981937658,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 94.29931640625
+        },
+        {
+          "freq_hz": 244712.82958984375,
+          "ratio": 3.0452639028046544,
+          "on_mag": 17302.379608827207,
+          "off_mag": 5681.734050336953,
+          "nearest_harmonic": 7,
+          "harmonic_error_hz": 287.17041015625
+        }
+      ],
+      "a_stats": {
+        "min_count": 8904,
+        "max_count": 19468,
+        "max_abs_count": 19468,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 37000.0,
+      "frame_index": 24,
+      "overflow": 2,
+      "rms_a_mv": 1.923328942323947,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 315.1085972656439,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 84062.63746230211,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 84062.63746230211,
+      "ratio_a": 13.501235593584637,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.501235593584637,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 73909.75952148438,
+          "ratio": 4.263731733279733,
+          "on_mag": 21133.769631085594,
+          "off_mag": 4956.63680388943,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.240478515625
+        },
+        {
+          "freq_hz": 74005.126953125,
+          "ratio": 4.228123299992474,
+          "on_mag": 22148.798475488587,
+          "off_mag": 5238.446682841064,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 5.126953125
+        },
+        {
+          "freq_hz": 147914.88647460938,
+          "ratio": 3.9604895828583664,
+          "on_mag": 23437.030310341946,
+          "off_mag": 5917.710378984752,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 85.113525390625
+        },
+        {
+          "freq_hz": 148010.25390625,
+          "ratio": 3.905697079483616,
+          "on_mag": 23796.27643050164,
+          "off_mag": 6092.709174887627,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 10.25390625
+        },
+        {
+          "freq_hz": 73814.39208984375,
+          "ratio": 3.847131434817237,
+          "on_mag": 18658.8334755146,
+          "off_mag": 4850.0639480753825,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 185.60791015625
+        },
+        {
+          "freq_hz": 111007.6904296875,
+          "ratio": 3.784995002613778,
+          "on_mag": 19771.757464925475,
+          "off_mag": 5223.720890323984,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 7.6904296875
+        },
+        {
+          "freq_hz": 74100.49438476562,
+          "ratio": 3.736801191350793,
+          "on_mag": 21500.233654391053,
+          "off_mag": 5753.64664948072,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 100.494384765625
+        },
+        {
+          "freq_hz": 110912.32299804688,
+          "ratio": 3.672759965879324,
+          "on_mag": 19760.51701180516,
+          "off_mag": 5380.290897141203,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 87.677001953125
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 73909.75952148438,
+          "ratio": 4.263731733279733,
+          "on_mag": 21133.769631085594,
+          "off_mag": 4956.63680388943,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 90.240478515625
+        },
+        {
+          "freq_hz": 74005.126953125,
+          "ratio": 4.228123299992474,
+          "on_mag": 22148.798475488587,
+          "off_mag": 5238.446682841064,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 5.126953125
+        },
+        {
+          "freq_hz": 147914.88647460938,
+          "ratio": 3.9604895828583664,
+          "on_mag": 23437.030310341946,
+          "off_mag": 5917.710378984752,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 85.113525390625
+        },
+        {
+          "freq_hz": 148010.25390625,
+          "ratio": 3.905697079483616,
+          "on_mag": 23796.27643050164,
+          "off_mag": 6092.709174887627,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 10.25390625
+        },
+        {
+          "freq_hz": 73814.39208984375,
+          "ratio": 3.847131434817237,
+          "on_mag": 18658.8334755146,
+          "off_mag": 4850.0639480753825,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 185.60791015625
+        },
+        {
+          "freq_hz": 111007.6904296875,
+          "ratio": 3.784995002613778,
+          "on_mag": 19771.757464925475,
+          "off_mag": 5223.720890323984,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 7.6904296875
+        },
+        {
+          "freq_hz": 74100.49438476562,
+          "ratio": 3.736801191350793,
+          "on_mag": 21500.233654391053,
+          "off_mag": 5753.64664948072,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 100.494384765625
+        },
+        {
+          "freq_hz": 110912.32299804688,
+          "ratio": 3.672759965879324,
+          "on_mag": 19760.51701180516,
+          "off_mag": 5380.290897141203,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 87.677001953125
+        }
+      ],
+      "a_stats": {
+        "min_count": 7144,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 45000.0,
+      "frame_index": 25,
+      "overflow": 2,
+      "rms_a_mv": 1.8593776535497846,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 304.63113786932894,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 82248.17638908314,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 82248.17638908314,
+      "ratio_a": 12.995379906674629,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.995379906674629,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 5.124049034891695,
+          "on_mag": 28627.35824217921,
+          "off_mag": 5586.8626641244255,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 68.511962890625
+        },
+        {
+          "freq_hz": 90026.85546875,
+          "ratio": 4.8758561161999445,
+          "on_mag": 29415.221733948958,
+          "off_mag": 6032.832190477773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 26.85546875
+        },
+        {
+          "freq_hz": 89836.12060546875,
+          "ratio": 4.846144093172169,
+          "on_mag": 25693.784444665667,
+          "off_mag": 5301.902698449714,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 163.87939453125
+        },
+        {
+          "freq_hz": 90122.22290039062,
+          "ratio": 4.377524760693413,
+          "on_mag": 27931.392202429728,
+          "off_mag": 6380.636028202684,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 122.222900390625
+        },
+        {
+          "freq_hz": 134944.91577148438,
+          "ratio": 4.1467823819025735,
+          "on_mag": 23177.143841392117,
+          "off_mag": 5589.187400463074,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 55.084228515625
+        },
+        {
+          "freq_hz": 135040.283203125,
+          "ratio": 4.11038378336883,
+          "on_mag": 23227.597716933717,
+          "off_mag": 5650.955954749464,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 40.283203125
+        },
+        {
+          "freq_hz": 134849.54833984375,
+          "ratio": 3.9304588877379167,
+          "on_mag": 21588.4291970304,
+          "off_mag": 5492.597636469647,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 150.45166015625
+        },
+        {
+          "freq_hz": 89740.75317382812,
+          "ratio": 3.903241183321097,
+          "on_mag": 21163.97618711142,
+          "off_mag": 5422.1543566272585,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 259.246826171875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 89931.48803710938,
+          "ratio": 5.124049034891695,
+          "on_mag": 28627.35824217921,
+          "off_mag": 5586.8626641244255,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 68.511962890625
+        },
+        {
+          "freq_hz": 90026.85546875,
+          "ratio": 4.8758561161999445,
+          "on_mag": 29415.221733948958,
+          "off_mag": 6032.832190477773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 26.85546875
+        },
+        {
+          "freq_hz": 89836.12060546875,
+          "ratio": 4.846144093172169,
+          "on_mag": 25693.784444665667,
+          "off_mag": 5301.902698449714,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 163.87939453125
+        },
+        {
+          "freq_hz": 90122.22290039062,
+          "ratio": 4.377524760693413,
+          "on_mag": 27931.392202429728,
+          "off_mag": 6380.636028202684,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 122.222900390625
+        },
+        {
+          "freq_hz": 134944.91577148438,
+          "ratio": 4.1467823819025735,
+          "on_mag": 23177.143841392117,
+          "off_mag": 5589.187400463074,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 55.084228515625
+        },
+        {
+          "freq_hz": 135040.283203125,
+          "ratio": 4.11038378336883,
+          "on_mag": 23227.597716933717,
+          "off_mag": 5650.955954749464,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 40.283203125
+        },
+        {
+          "freq_hz": 134849.54833984375,
+          "ratio": 3.9304588877379167,
+          "on_mag": 21588.4291970304,
+          "off_mag": 5492.597636469647,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 150.45166015625
+        },
+        {
+          "freq_hz": 89740.75317382812,
+          "ratio": 3.903241183321097,
+          "on_mag": 21163.97618711142,
+          "off_mag": 5422.1543566272585,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 259.246826171875
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 47800.0,
+      "frame_index": 26,
+      "overflow": 2,
+      "rms_a_mv": 1.7695521954047662,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 289.9145839341399,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 83828.61893286365,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 83828.61893286365,
+      "ratio_a": 13.131957004256117,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.131957004256117,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 191211.70043945312,
+          "ratio": 6.411574095232698,
+          "on_mag": 25814.10551256917,
+          "off_mag": 4026.1728444756104,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 11.700439453125
+        },
+        {
+          "freq_hz": 191307.06787109375,
+          "ratio": 6.30839258682863,
+          "on_mag": 24292.58544874701,
+          "off_mag": 3850.8360274640795,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 107.06787109375
+        },
+        {
+          "freq_hz": 191116.3330078125,
+          "ratio": 5.303313971073134,
+          "on_mag": 25291.935274493917,
+          "off_mag": 4769.081259840261,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 83.6669921875
+        },
+        {
+          "freq_hz": 191402.43530273438,
+          "ratio": 4.881018987624087,
+          "on_mag": 21031.051677028125,
+          "off_mag": 4308.7420332419815,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 202.435302734375
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 4.488350392028375,
+          "on_mag": 27884.361435658237,
+          "off_mag": 6212.607974008183,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 53.533935546875
+        },
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 4.472087432833091,
+          "on_mag": 27830.26476181805,
+          "off_mag": 6223.103903893808,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 95748.9013671875,
+          "ratio": 4.192289149441691,
+          "on_mag": 25702.514589842485,
+          "off_mag": 6130.902157181936,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 148.9013671875
+        },
+        {
+          "freq_hz": 95462.79907226562,
+          "ratio": 4.151332518868318,
+          "on_mag": 25611.74211125158,
+          "off_mag": 6169.523157887993,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 137.200927734375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 191211.70043945312,
+          "ratio": 6.411574095232698,
+          "on_mag": 25814.10551256917,
+          "off_mag": 4026.1728444756104,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 11.700439453125
+        },
+        {
+          "freq_hz": 191307.06787109375,
+          "ratio": 6.30839258682863,
+          "on_mag": 24292.58544874701,
+          "off_mag": 3850.8360274640795,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 107.06787109375
+        },
+        {
+          "freq_hz": 191116.3330078125,
+          "ratio": 5.303313971073134,
+          "on_mag": 25291.935274493917,
+          "off_mag": 4769.081259840261,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 83.6669921875
+        },
+        {
+          "freq_hz": 191402.43530273438,
+          "ratio": 4.881018987624087,
+          "on_mag": 21031.051677028125,
+          "off_mag": 4308.7420332419815,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 202.435302734375
+        },
+        {
+          "freq_hz": 95653.53393554688,
+          "ratio": 4.488350392028375,
+          "on_mag": 27884.361435658237,
+          "off_mag": 6212.607974008183,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 53.533935546875
+        },
+        {
+          "freq_hz": 95558.16650390625,
+          "ratio": 4.472087432833091,
+          "on_mag": 27830.26476181805,
+          "off_mag": 6223.103903893808,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 41.83349609375
+        },
+        {
+          "freq_hz": 95748.9013671875,
+          "ratio": 4.192289149441691,
+          "on_mag": 25702.514589842485,
+          "off_mag": 6130.902157181936,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 148.9013671875
+        },
+        {
+          "freq_hz": 95462.79907226562,
+          "ratio": 4.151332518868318,
+          "on_mag": 25611.74211125158,
+          "off_mag": 6169.523157887993,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 137.200927734375
+        }
+      ],
+      "a_stats": {
+        "min_count": 9198,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 49600.0,
+      "frame_index": 27,
+      "overflow": 2,
+      "rms_a_mv": 1.8088876115650563,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 296.359101840761,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 81833.92704754425,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 81833.92704754425,
+      "ratio_a": 13.279842702612486,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.279842702612486,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 99182.12890625,
+          "ratio": 4.964172713283873,
+          "on_mag": 29683.999613044136,
+          "off_mag": 5979.646826874348,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 17.87109375
+        },
+        {
+          "freq_hz": 99086.76147460938,
+          "ratio": 4.853450769661805,
+          "on_mag": 27944.47220504094,
+          "off_mag": 5757.650284559938,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 113.238525390625
+        },
+        {
+          "freq_hz": 198459.62524414062,
+          "ratio": 4.695389273307026,
+          "on_mag": 26441.23437021958,
+          "off_mag": 5631.318902681025,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 59.625244140625
+        },
+        {
+          "freq_hz": 99277.49633789062,
+          "ratio": 4.680169968939774,
+          "on_mag": 29036.376807998146,
+          "off_mag": 6204.1286963293605,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 77.496337890625
+        },
+        {
+          "freq_hz": 198554.99267578125,
+          "ratio": 4.616063337786749,
+          "on_mag": 24482.610699956665,
+          "off_mag": 5303.785695387636,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 154.99267578125
+        },
+        {
+          "freq_hz": 198364.2578125,
+          "ratio": 4.468089605822388,
+          "on_mag": 26413.814762010432,
+          "off_mag": 5911.65735073676,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 35.7421875
+        },
+        {
+          "freq_hz": 98991.39404296875,
+          "ratio": 4.33265943979189,
+          "on_mag": 24189.282522192836,
+          "off_mag": 5583.010356187773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 208.60595703125
+        },
+        {
+          "freq_hz": 198650.36010742188,
+          "ratio": 4.182797336229822,
+          "on_mag": 20894.51144303891,
+          "off_mag": 4995.3439680327065,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 250.360107421875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 99182.12890625,
+          "ratio": 4.964172713283873,
+          "on_mag": 29683.999613044136,
+          "off_mag": 5979.646826874348,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 17.87109375
+        },
+        {
+          "freq_hz": 99086.76147460938,
+          "ratio": 4.853450769661805,
+          "on_mag": 27944.47220504094,
+          "off_mag": 5757.650284559938,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 113.238525390625
+        },
+        {
+          "freq_hz": 198459.62524414062,
+          "ratio": 4.695389273307026,
+          "on_mag": 26441.23437021958,
+          "off_mag": 5631.318902681025,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 59.625244140625
+        },
+        {
+          "freq_hz": 99277.49633789062,
+          "ratio": 4.680169968939774,
+          "on_mag": 29036.376807998146,
+          "off_mag": 6204.1286963293605,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 77.496337890625
+        },
+        {
+          "freq_hz": 198554.99267578125,
+          "ratio": 4.616063337786749,
+          "on_mag": 24482.610699956665,
+          "off_mag": 5303.785695387636,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 154.99267578125
+        },
+        {
+          "freq_hz": 198364.2578125,
+          "ratio": 4.468089605822388,
+          "on_mag": 26413.814762010432,
+          "off_mag": 5911.65735073676,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 35.7421875
+        },
+        {
+          "freq_hz": 98991.39404296875,
+          "ratio": 4.33265943979189,
+          "on_mag": 24189.282522192836,
+          "off_mag": 5583.010356187773,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 208.60595703125
+        },
+        {
+          "freq_hz": 198650.36010742188,
+          "ratio": 4.182797336229822,
+          "on_mag": 20894.51144303891,
+          "off_mag": 4995.3439680327065,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 250.360107421875
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 56200.0,
+      "frame_index": 28,
+      "overflow": 2,
+      "rms_a_mv": 1.9505645221206713,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 319.57073848164015,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79855.09469455737,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79855.09469455737,
+      "ratio_a": 11.063151410415195,
+      "ratio_b": 0.0,
+      "ratio_clean": 11.063151410415195,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 112342.83447265625,
+          "ratio": 5.847433967627577,
+          "on_mag": 35411.27951489761,
+          "off_mag": 6055.866506734524,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 57.16552734375
+        },
+        {
+          "freq_hz": 112438.20190429688,
+          "ratio": 5.744793942776753,
+          "on_mag": 35748.60651387506,
+          "off_mag": 6222.783074547653,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 38.201904296875
+        },
+        {
+          "freq_hz": 112247.46704101562,
+          "ratio": 5.3915292682547955,
+          "on_mag": 32274.62653220567,
+          "off_mag": 5986.172925414307,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 152.532958984375
+        },
+        {
+          "freq_hz": 224781.03637695312,
+          "ratio": 5.220930880961803,
+          "on_mag": 29072.691336103948,
+          "off_mag": 5568.488072140147,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 18.963623046875
+        },
+        {
+          "freq_hz": 112533.5693359375,
+          "ratio": 5.145157973420246,
+          "on_mag": 33235.019914555494,
+          "off_mag": 6459.47511937374,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 133.5693359375
+        },
+        {
+          "freq_hz": 224876.40380859375,
+          "ratio": 5.043010549346909,
+          "on_mag": 29217.35819706864,
+          "off_mag": 5793.634161810827,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 76.40380859375
+        },
+        {
+          "freq_hz": 224685.6689453125,
+          "ratio": 4.834430561446095,
+          "on_mag": 26689.73444643262,
+          "off_mag": 5520.760740526403,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 114.3310546875
+        },
+        {
+          "freq_hz": 224971.77124023438,
+          "ratio": 4.566186047619222,
+          "on_mag": 27168.161497201276,
+          "off_mag": 5949.858637793913,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 171.771240234375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 112342.83447265625,
+          "ratio": 5.847433967627577,
+          "on_mag": 35411.27951489761,
+          "off_mag": 6055.866506734524,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 57.16552734375
+        },
+        {
+          "freq_hz": 112438.20190429688,
+          "ratio": 5.744793942776753,
+          "on_mag": 35748.60651387506,
+          "off_mag": 6222.783074547653,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 38.201904296875
+        },
+        {
+          "freq_hz": 112247.46704101562,
+          "ratio": 5.3915292682547955,
+          "on_mag": 32274.62653220567,
+          "off_mag": 5986.172925414307,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 152.532958984375
+        },
+        {
+          "freq_hz": 224781.03637695312,
+          "ratio": 5.220930880961803,
+          "on_mag": 29072.691336103948,
+          "off_mag": 5568.488072140147,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 18.963623046875
+        },
+        {
+          "freq_hz": 112533.5693359375,
+          "ratio": 5.145157973420246,
+          "on_mag": 33235.019914555494,
+          "off_mag": 6459.47511937374,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 133.5693359375
+        },
+        {
+          "freq_hz": 224876.40380859375,
+          "ratio": 5.043010549346909,
+          "on_mag": 29217.35819706864,
+          "off_mag": 5793.634161810827,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 76.40380859375
+        },
+        {
+          "freq_hz": 224685.6689453125,
+          "ratio": 4.834430561446095,
+          "on_mag": 26689.73444643262,
+          "off_mag": 5520.760740526403,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 114.3310546875
+        },
+        {
+          "freq_hz": 224971.77124023438,
+          "ratio": 4.566186047619222,
+          "on_mag": 27168.161497201276,
+          "off_mag": 5949.858637793913,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 171.771240234375
+        }
+      ],
+      "a_stats": {
+        "min_count": 8317,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 58500.0,
+      "frame_index": 29,
+      "overflow": 2,
+      "rms_a_mv": 1.965626599995313,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 322.03843401023215,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 78962.03830403349,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 78962.03830403349,
+      "ratio_a": 12.6708433181909,
+      "ratio_b": 0.0,
+      "ratio_clean": 12.6708433181909,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 196361.54174804688,
+          "ratio": 4.619109549237859,
+          "on_mag": 17982.32414601024,
+          "off_mag": 3893.0282891812512,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 20861.541748046875
+        },
+        {
+          "freq_hz": 175571.44165039062,
+          "ratio": 4.5108129195985835,
+          "on_mag": 23333.479283205364,
+          "off_mag": 5172.788075919984,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 71.441650390625
+        },
+        {
+          "freq_hz": 175666.80908203125,
+          "ratio": 4.499289547989246,
+          "on_mag": 21729.181169365358,
+          "off_mag": 4829.469394579469,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 166.80908203125
+        },
+        {
+          "freq_hz": 117111.2060546875,
+          "ratio": 4.497442279920416,
+          "on_mag": 30054.018613372315,
+          "off_mag": 6682.46899966977,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 111.2060546875
+        },
+        {
+          "freq_hz": 117015.83862304688,
+          "ratio": 4.494886179505207,
+          "on_mag": 31288.695569083295,
+          "off_mag": 6960.953919533403,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 15.838623046875
+        },
+        {
+          "freq_hz": 234031.67724609375,
+          "ratio": 4.491224435650543,
+          "on_mag": 30993.825254669708,
+          "off_mag": 6900.974488971475,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 31.67724609375
+        },
+        {
+          "freq_hz": 234127.04467773438,
+          "ratio": 4.4277855229911856,
+          "on_mag": 29827.319575791436,
+          "off_mag": 6736.396652663886,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 127.044677734375
+        },
+        {
+          "freq_hz": 233936.30981445312,
+          "ratio": 4.423312707666118,
+          "on_mag": 29808.485710906083,
+          "off_mag": 6738.950574135193,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 63.690185546875
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 196361.54174804688,
+          "ratio": 4.619109549237859,
+          "on_mag": 17982.32414601024,
+          "off_mag": 3893.0282891812512,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 20861.541748046875
+        },
+        {
+          "freq_hz": 175571.44165039062,
+          "ratio": 4.5108129195985835,
+          "on_mag": 23333.479283205364,
+          "off_mag": 5172.788075919984,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 71.441650390625
+        },
+        {
+          "freq_hz": 175666.80908203125,
+          "ratio": 4.499289547989246,
+          "on_mag": 21729.181169365358,
+          "off_mag": 4829.469394579469,
+          "nearest_harmonic": 3,
+          "harmonic_error_hz": 166.80908203125
+        },
+        {
+          "freq_hz": 117111.2060546875,
+          "ratio": 4.497442279920416,
+          "on_mag": 30054.018613372315,
+          "off_mag": 6682.46899966977,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 111.2060546875
+        },
+        {
+          "freq_hz": 117015.83862304688,
+          "ratio": 4.494886179505207,
+          "on_mag": 31288.695569083295,
+          "off_mag": 6960.953919533403,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 15.838623046875
+        },
+        {
+          "freq_hz": 234031.67724609375,
+          "ratio": 4.491224435650543,
+          "on_mag": 30993.825254669708,
+          "off_mag": 6900.974488971475,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 31.67724609375
+        },
+        {
+          "freq_hz": 234127.04467773438,
+          "ratio": 4.4277855229911856,
+          "on_mag": 29827.319575791436,
+          "off_mag": 6736.396652663886,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 127.044677734375
+        },
+        {
+          "freq_hz": 233936.30981445312,
+          "ratio": 4.423312707666118,
+          "on_mag": 29808.485710906083,
+          "off_mag": 6738.950574135193,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 63.690185546875
+        }
+      ],
+      "a_stats": {
+        "min_count": 7437,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 68200.0,
+      "frame_index": 30,
+      "overflow": 2,
+      "rms_a_mv": 1.9588328835767554,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 320.92538548079773,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 84986.24200532747,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 84986.24200532747,
+      "ratio_a": 13.985130326545109,
+      "ratio_b": 0.0,
+      "ratio_clean": 13.985130326545109,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 272846.2219238281,
+          "ratio": 7.223865115701343,
+          "on_mag": 33196.85675451005,
+          "off_mag": 4595.442498276364,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.221923828125
+        },
+        {
+          "freq_hz": 272750.8544921875,
+          "ratio": 7.02814247814257,
+          "on_mag": 33160.12376598312,
+          "off_mag": 4718.191736879362,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 49.1455078125
+        },
+        {
+          "freq_hz": 272941.58935546875,
+          "ratio": 6.022529662235059,
+          "on_mag": 30628.301608099402,
+          "off_mag": 5085.620715188431,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 141.58935546875
+        },
+        {
+          "freq_hz": 272655.4870605469,
+          "ratio": 6.022255708841811,
+          "on_mag": 30576.20133212895,
+          "off_mag": 5077.200771670538,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 144.512939453125
+        },
+        {
+          "freq_hz": 136470.79467773438,
+          "ratio": 5.17161791229192,
+          "on_mag": 36164.85246222817,
+          "off_mag": 6992.947482889526,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 70.794677734375
+        },
+        {
+          "freq_hz": 136375.42724609375,
+          "ratio": 5.036582242488734,
+          "on_mag": 36630.43126287452,
+          "off_mag": 7272.874639841931,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.57275390625
+        },
+        {
+          "freq_hz": 136566.162109375,
+          "ratio": 4.799998547911897,
+          "on_mag": 32903.565508119274,
+          "off_mag": 6854.911554594749,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.162109375
+        },
+        {
+          "freq_hz": 272560.11962890625,
+          "ratio": 4.648843223035571,
+          "on_mag": 25988.343796971876,
+          "off_mag": 5590.281829293907,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 239.88037109375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 272846.2219238281,
+          "ratio": 7.223865115701343,
+          "on_mag": 33196.85675451005,
+          "off_mag": 4595.442498276364,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 46.221923828125
+        },
+        {
+          "freq_hz": 272750.8544921875,
+          "ratio": 7.02814247814257,
+          "on_mag": 33160.12376598312,
+          "off_mag": 4718.191736879362,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 49.1455078125
+        },
+        {
+          "freq_hz": 272941.58935546875,
+          "ratio": 6.022529662235059,
+          "on_mag": 30628.301608099402,
+          "off_mag": 5085.620715188431,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 141.58935546875
+        },
+        {
+          "freq_hz": 272655.4870605469,
+          "ratio": 6.022255708841811,
+          "on_mag": 30576.20133212895,
+          "off_mag": 5077.200771670538,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 144.512939453125
+        },
+        {
+          "freq_hz": 136470.79467773438,
+          "ratio": 5.17161791229192,
+          "on_mag": 36164.85246222817,
+          "off_mag": 6992.947482889526,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 70.794677734375
+        },
+        {
+          "freq_hz": 136375.42724609375,
+          "ratio": 5.036582242488734,
+          "on_mag": 36630.43126287452,
+          "off_mag": 7272.874639841931,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 24.57275390625
+        },
+        {
+          "freq_hz": 136566.162109375,
+          "ratio": 4.799998547911897,
+          "on_mag": 32903.565508119274,
+          "off_mag": 6854.911554594749,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 166.162109375
+        },
+        {
+          "freq_hz": 272560.11962890625,
+          "ratio": 4.648843223035571,
+          "on_mag": 25988.343796971876,
+          "off_mag": 5590.281829293907,
+          "nearest_harmonic": 4,
+          "harmonic_error_hz": 239.88037109375
+        }
+      ],
+      "a_stats": {
+        "min_count": 8024,
+        "max_count": 18588,
+        "max_abs_count": 18588,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    },
+    {
+      "mux": 6,
+      "drive_hz": 89400.0,
+      "frame_index": 31,
+      "overflow": 2,
+      "rms_a_mv": 1.8813386149469813,
+      "rms_b_mv": 0.0,
+      "rms_clean_counts": 308.22911197983865,
+      "alpha_mean": 0.0,
+      "alpha_std": 0.0,
+      "carrier_mag_a": 79346.63147540174,
+      "carrier_mag_b": 0.0,
+      "carrier_mag_clean": 79346.63147540174,
+      "ratio_a": 10.679087807270747,
+      "ratio_b": 0.0,
+      "ratio_clean": 10.679087807270747,
+      "clean_vs_a_carrier_db": 0.0,
+      "top_a_bins": [
+        {
+          "freq_hz": 178813.93432617188,
+          "ratio": 9.19928071542401,
+          "on_mag": 48252.031055241,
+          "off_mag": 5245.196069986107,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 13.934326171875
+        },
+        {
+          "freq_hz": 178909.3017578125,
+          "ratio": 9.140310932012097,
+          "on_mag": 47018.12211210164,
+          "off_mag": 5144.03967893807,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 109.3017578125
+        },
+        {
+          "freq_hz": 178718.56689453125,
+          "ratio": 8.004625840630151,
+          "on_mag": 45585.55014555206,
+          "off_mag": 5694.900805252805,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 81.43310546875
+        },
+        {
+          "freq_hz": 179004.66918945312,
+          "ratio": 7.91431868384619,
+          "on_mag": 42130.76366020476,
+          "off_mag": 5323.359513712443,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 204.669189453125
+        },
+        {
+          "freq_hz": 178623.19946289062,
+          "ratio": 6.359806872756985,
+          "on_mag": 39519.21447421525,
+          "off_mag": 6213.90165847656,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 176.800537109375
+        },
+        {
+          "freq_hz": 179100.03662109375,
+          "ratio": 6.13020509188022,
+          "on_mag": 34509.28705732274,
+          "off_mag": 5629.385402297896,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 300.03662109375
+        },
+        {
+          "freq_hz": 178527.83203125,
+          "ratio": 4.71502933823349,
+          "on_mag": 31187.29829127306,
+          "off_mag": 6614.444164404191,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 272.16796875
+        },
+        {
+          "freq_hz": 179195.40405273438,
+          "ratio": 4.279935564100361,
+          "on_mag": 25504.26562082899,
+          "off_mag": 5959.030279510754,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 395.404052734375
+        }
+      ],
+      "top_clean_bins": [
+        {
+          "freq_hz": 178813.93432617188,
+          "ratio": 9.19928071542401,
+          "on_mag": 48252.031055241,
+          "off_mag": 5245.196069986107,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 13.934326171875
+        },
+        {
+          "freq_hz": 178909.3017578125,
+          "ratio": 9.140310932012097,
+          "on_mag": 47018.12211210164,
+          "off_mag": 5144.03967893807,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 109.3017578125
+        },
+        {
+          "freq_hz": 178718.56689453125,
+          "ratio": 8.004625840630151,
+          "on_mag": 45585.55014555206,
+          "off_mag": 5694.900805252805,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 81.43310546875
+        },
+        {
+          "freq_hz": 179004.66918945312,
+          "ratio": 7.91431868384619,
+          "on_mag": 42130.76366020476,
+          "off_mag": 5323.359513712443,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 204.669189453125
+        },
+        {
+          "freq_hz": 178623.19946289062,
+          "ratio": 6.359806872756985,
+          "on_mag": 39519.21447421525,
+          "off_mag": 6213.90165847656,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 176.800537109375
+        },
+        {
+          "freq_hz": 179100.03662109375,
+          "ratio": 6.13020509188022,
+          "on_mag": 34509.28705732274,
+          "off_mag": 5629.385402297896,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 300.03662109375
+        },
+        {
+          "freq_hz": 178527.83203125,
+          "ratio": 4.71502933823349,
+          "on_mag": 31187.29829127306,
+          "off_mag": 6614.444164404191,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 272.16796875
+        },
+        {
+          "freq_hz": 179195.40405273438,
+          "ratio": 4.279935564100361,
+          "on_mag": 25504.26562082899,
+          "off_mag": 5959.030279510754,
+          "nearest_harmonic": 2,
+          "harmonic_error_hz": 395.404052734375
+        }
+      ],
+      "a_stats": {
+        "min_count": 7144,
+        "max_count": 18881,
+        "max_abs_count": 18881,
+        "near_clip_samples": 0
+      },
+      "b_stats": {
+        "min_count": 32767,
+        "max_count": 32767,
+        "max_abs_count": 32767,
+        "near_clip_samples": 16384
+      }
+    }
+  ],
+  "best": {
+    "mux": 6,
+    "drive_hz": 35000.0,
+    "frame_index": 23,
+    "overflow": 2,
+    "rms_a_mv": 1.954586585429591,
+    "rms_b_mv": 0.0,
+    "rms_clean_counts": 320.229693223857,
+    "alpha_mean": 0.0,
+    "alpha_std": 0.0,
+    "carrier_mag_a": 78787.29397370422,
+    "carrier_mag_b": 0.0,
+    "carrier_mag_clean": 78787.29397370422,
+    "ratio_a": 15.77246219644439,
+    "ratio_b": 0.0,
+    "ratio_clean": 15.77246219644439,
+    "clean_vs_a_carrier_db": 0.0,
+    "top_a_bins": [
+      {
+        "freq_hz": 139999.3896484375,
+        "ratio": 3.527874448044242,
+        "on_mag": 21558.541808695023,
+        "off_mag": 6110.915262488011,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 0.6103515625
+      },
+      {
+        "freq_hz": 140094.75708007812,
+        "ratio": 3.3981404362560474,
+        "on_mag": 21800.07522410333,
+        "off_mag": 6415.295551505191,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 94.757080078125
+      },
+      {
+        "freq_hz": 139904.02221679688,
+        "ratio": 3.2895857344500032,
+        "on_mag": 19740.82664973186,
+        "off_mag": 6001.006887583792,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 95.977783203125
+      },
+      {
+        "freq_hz": 244903.564453125,
+        "ratio": 3.239429947456625,
+        "on_mag": 21223.8047355564,
+        "off_mag": 6551.709738998942,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 96.435546875
+      },
+      {
+        "freq_hz": 244808.19702148438,
+        "ratio": 3.2152759397438797,
+        "on_mag": 19751.42348120335,
+        "off_mag": 6142.994831969755,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 191.802978515625
+      },
+      {
+        "freq_hz": 244998.93188476562,
+        "ratio": 3.1859464017044257,
+        "on_mag": 21457.98810529764,
+        "off_mag": 6735.2005965379685,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 1.068115234375
+      },
+      {
+        "freq_hz": 245094.29931640625,
+        "ratio": 3.0715899782866667,
+        "on_mag": 20404.903901995873,
+        "off_mag": 6643.107981937658,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 94.29931640625
+      },
+      {
+        "freq_hz": 244712.82958984375,
+        "ratio": 3.0452639028046544,
+        "on_mag": 17302.379608827207,
+        "off_mag": 5681.734050336953,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 287.17041015625
+      }
+    ],
+    "top_clean_bins": [
+      {
+        "freq_hz": 139999.3896484375,
+        "ratio": 3.527874448044242,
+        "on_mag": 21558.541808695023,
+        "off_mag": 6110.915262488011,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 0.6103515625
+      },
+      {
+        "freq_hz": 140094.75708007812,
+        "ratio": 3.3981404362560474,
+        "on_mag": 21800.07522410333,
+        "off_mag": 6415.295551505191,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 94.757080078125
+      },
+      {
+        "freq_hz": 139904.02221679688,
+        "ratio": 3.2895857344500032,
+        "on_mag": 19740.82664973186,
+        "off_mag": 6001.006887583792,
+        "nearest_harmonic": 4,
+        "harmonic_error_hz": 95.977783203125
+      },
+      {
+        "freq_hz": 244903.564453125,
+        "ratio": 3.239429947456625,
+        "on_mag": 21223.8047355564,
+        "off_mag": 6551.709738998942,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 96.435546875
+      },
+      {
+        "freq_hz": 244808.19702148438,
+        "ratio": 3.2152759397438797,
+        "on_mag": 19751.42348120335,
+        "off_mag": 6142.994831969755,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 191.802978515625
+      },
+      {
+        "freq_hz": 244998.93188476562,
+        "ratio": 3.1859464017044257,
+        "on_mag": 21457.98810529764,
+        "off_mag": 6735.2005965379685,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 1.068115234375
+      },
+      {
+        "freq_hz": 245094.29931640625,
+        "ratio": 3.0715899782866667,
+        "on_mag": 20404.903901995873,
+        "off_mag": 6643.107981937658,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 94.29931640625
+      },
+      {
+        "freq_hz": 244712.82958984375,
+        "ratio": 3.0452639028046544,
+        "on_mag": 17302.379608827207,
+        "off_mag": 5681.734050336953,
+        "nearest_harmonic": 7,
+        "harmonic_error_hz": 287.17041015625
+      }
+    ],
+    "a_stats": {
+      "min_count": 8904,
+      "max_count": 19468,
+      "max_abs_count": 19468,
+      "near_clip_samples": 0
+    },
+    "b_stats": {
+      "min_count": 32767,
+      "max_count": 32767,
+      "max_abs_count": 32767,
+      "near_clip_samples": 16384
+    }
+  },
+  "uncertainty_rows": [
+    {
+      "label": "A_raw",
+      "samples": 256,
+      "duration_ms": 0.32768,
+      "peak_hz": 35095.21484375,
+      "fwhm_hz": 4577.63671875,
+      "duration_x_fwhm": 1.5
+    },
+    {
+      "label": "A_raw",
+      "samples": 512,
+      "duration_ms": 0.65536,
+      "peak_hz": 35095.21484375,
+      "fwhm_hz": 2479.55322265625,
+      "duration_x_fwhm": 1.625
+    },
+    {
+      "label": "A_raw",
+      "samples": 1024,
+      "duration_ms": 1.31072,
+      "peak_hz": 34999.847412109375,
+      "fwhm_hz": 1335.14404296875,
+      "duration_x_fwhm": 1.75
+    },
+    {
+      "label": "A_raw",
+      "samples": 2048,
+      "duration_ms": 2.62144,
+      "peak_hz": 34999.847412109375,
+      "fwhm_hz": 667.572021484375,
+      "duration_x_fwhm": 1.75
+    },
+    {
+      "label": "B_ref",
+      "samples": 256,
+      "duration_ms": 0.32768,
+      "peak_hz": 30136.1083984375,
+      "fwhm_hz": 9536.7431640625,
+      "duration_x_fwhm": 3.125
+    },
+    {
+      "label": "B_ref",
+      "samples": 512,
+      "duration_ms": 0.65536,
+      "peak_hz": 30136.1083984375,
+      "fwhm_hz": 9727.47802734375,
+      "duration_x_fwhm": 6.375
+    },
+    {
+      "label": "B_ref",
+      "samples": 1024,
+      "duration_ms": 1.31072,
+      "peak_hz": 30040.740966796875,
+      "fwhm_hz": 9918.212890625,
+      "duration_x_fwhm": 13.0
+    },
+    {
+      "label": "B_ref",
+      "samples": 2048,
+      "duration_ms": 2.62144,
+      "peak_hz": 30040.740966796875,
+      "fwhm_hz": 9918.212890625,
+      "duration_x_fwhm": 26.0
+    },
+    {
+      "label": "A_refcancel",
+      "samples": 256,
+      "duration_ms": 0.32768,
+      "peak_hz": 35095.21484375,
+      "fwhm_hz": 4577.63671875,
+      "duration_x_fwhm": 1.5
+    },
+    {
+      "label": "A_refcancel",
+      "samples": 512,
+      "duration_ms": 0.65536,
+      "peak_hz": 35095.21484375,
+      "fwhm_hz": 2479.55322265625,
+      "duration_x_fwhm": 1.625
+    },
+    {
+      "label": "A_refcancel",
+      "samples": 1024,
+      "duration_ms": 1.31072,
+      "peak_hz": 34999.847412109375,
+      "fwhm_hz": 1335.14404296875,
+      "duration_x_fwhm": 1.75
+    },
+    {
+      "label": "A_refcancel",
+      "samples": 2048,
+      "duration_ms": 2.62144,
+      "peak_hz": 34999.847412109375,
+      "fwhm_hz": 667.572021484375,
+      "duration_x_fwhm": 1.75
+    }
+  ],
+  "uncertainty_alpha_mean": 0.0,
+  "uncertainty_alpha_std": 0.0,
+  "data_file": "data/results/awg/awg_preamp_refcancel_2048_20260506_114802.npz"
+}

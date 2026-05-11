@@ -36,8 +36,11 @@ print(f"PicoScope handle: {handle}")
 if handle <= 0:
     sys.exit(1)
 
-ps.ps2000_set_channel(handle, 0, 1, 1, 7)  # Ch A, DC, ±5V
-ps.ps2000_set_channel(handle, 1, 0, 1, 7)
+RANGE = 3  # ±100mV (range 7=±2V, 3=±100mV, 4=±200mV)
+RANGE_MV = 100.0
+MV_PER_COUNT = RANGE_MV / 32767.0  # 0.00305 mV/count
+ps.ps2000_set_channel(handle, 0, 1, 1, RANGE)  # Ch A, DC, ±100mV
+ps.ps2000_set_channel(handle, 1, 0, 1, RANGE)
 ps.ps2000_set_sig_gen_built_in(handle, 0, 0, 0, 1000.0, 1000.0, 0.0, 0.0, 0, 0)
 
 mux = serial.Serial('/dev/cu.usbserial-11310', 9600, timeout=1)
@@ -110,8 +113,7 @@ for _ in range(20):
 rms_mean = np.mean(rms_vals)
 rms_std = np.std(rms_vals)
 print(f"  RMS: {rms_mean:.1f} ± {rms_std:.1f} (ADC counts)")
-# ±5V / 32768 = 0.153 mV/count
-rms_mv = rms_mean * 0.153
+rms_mv = rms_mean * MV_PER_COUNT
 print(f"  RMS: {rms_mv:.2f} mV")
 
 if rms_mv > 100:  # >100 mV would indicate oscillation or saturation

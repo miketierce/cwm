@@ -1,0 +1,2925 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1" />
+		<title>CWM Breadboard Layout v2 - Full Hardware Guide</title>
+		<style>
+			:root {
+				--ink: #111827;
+				--muted: #475569;
+				--paper: #ffffff;
+				--line: #cbd5e1;
+				--red: #dc2626;
+				--blue: #2563eb;
+				--green: #15803d;
+				--orange: #ea580c;
+				--violet: #7c3aed;
+				--cyan: #0891b2;
+				--ground: #334155;
+			}
+			@page {
+				size: letter landscape;
+				margin: 8mm;
+			}
+			* {
+				box-sizing: border-box;
+			}
+			body {
+				margin: 0;
+				background: #e2e8f0;
+				color: var(--ink);
+				font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+				font-size: 10pt;
+				line-height: 1.35;
+			}
+			h1,
+			h2,
+			h3 {
+				margin: 0 0 2mm;
+				line-height: 1.12;
+			}
+			h1 {
+				font-size: 22pt;
+			}
+			h2 {
+				font-size: 16pt;
+			}
+			h3 {
+				font-size: 11pt;
+				margin-top: 3mm;
+			}
+			p {
+				margin: 0 0 2mm;
+			}
+			code {
+				font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+				font-size: 9pt;
+			}
+			table {
+				width: 100%;
+				border-collapse: collapse;
+				margin: 1.5mm 0;
+				font-size: 8.2pt;
+			}
+			th,
+			td {
+				border: 0.25mm solid var(--line);
+				padding: 1mm 1.5mm;
+				vertical-align: top;
+			}
+			th {
+				background: #f1f5f9;
+				text-align: left;
+				font-weight: 600;
+			}
+			.page {
+				width: 263mm;
+				min-height: 195mm;
+				margin: 10mm auto;
+				padding: 5mm;
+				background: var(--paper);
+				page-break-after: always;
+				break-after: page;
+				position: relative;
+				overflow: hidden;
+				box-shadow: 0 10px 30px rgba(15, 23, 42, 0.2);
+			}
+			.grid2 {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 4mm;
+				align-items: start;
+			}
+			.grid3 {
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				gap: 3mm;
+				align-items: start;
+			}
+			.note {
+				border-left: 1mm solid var(--blue);
+				background: #eff6ff;
+				padding: 2mm 2.5mm;
+				margin: 2mm 0;
+				font-size: 8.5pt;
+			}
+			.warn {
+				border-left-color: var(--orange);
+				background: #fff7ed;
+			}
+			.small {
+				color: var(--muted);
+				font-size: 8pt;
+			}
+			.mono {
+				font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+			}
+			.scale-strip {
+				width: 100mm;
+				height: 5mm;
+				border: 0.35mm solid var(--ink);
+				border-left-width: 1mm;
+				border-right-width: 1mm;
+				margin-top: 2mm;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 8pt;
+				background: repeating-linear-gradient(
+					90deg,
+					#fff 0 9.6mm,
+					#e5e7eb 9.6mm 10mm
+				);
+			}
+			.board-card {
+				border: 0.4mm solid var(--line);
+				border-radius: 2mm;
+				padding: 2.5mm;
+				background: #f8fafc;
+				margin: 1.5mm 0;
+			}
+			.board-card h3 {
+				margin: 0 0 1mm;
+			}
+			.board-tag {
+				display: inline-block;
+				padding: 0.5mm 2mm;
+				border-radius: 1mm;
+				font-size: 7.5pt;
+				font-weight: 700;
+				color: #fff;
+				margin-right: 2mm;
+			}
+			.tag-full {
+				background: var(--green);
+			}
+			.tag-half {
+				background: var(--cyan);
+			}
+			.board-svg {
+				display: block;
+				width: 165mm;
+				height: 55mm;
+				background: #f8fafc;
+			}
+			.board-svg-half {
+				display: block;
+				width: 85mm;
+				height: 55mm;
+				background: #f8fafc;
+			}
+			.board-wrap {
+				display: inline-block;
+				padding: 2mm;
+				border: 0.3mm solid #94a3b8;
+				background: #f8fafc;
+			}
+			.board-caption {
+				display: flex;
+				justify-content: space-between;
+				margin-top: 1mm;
+				font-size: 7.5pt;
+				color: var(--muted);
+			}
+			.checklist {
+				columns: 2;
+				column-gap: 6mm;
+				margin: 1mm 0;
+				padding-left: 0;
+				list-style: none;
+			}
+			.checklist li {
+				break-inside: avoid;
+				margin: 0 0 1.5mm;
+				padding-left: 6mm;
+				position: relative;
+				font-size: 8.5pt;
+			}
+			.checklist li::before {
+				content: '';
+				width: 3.5mm;
+				height: 3.5mm;
+				border: 0.3mm solid var(--ink);
+				position: absolute;
+				left: 0;
+				top: 0.2mm;
+			}
+			.bench-svg {
+				width: 252mm;
+				height: 140mm;
+				border: 0.35mm solid #94a3b8;
+				background: #f8fafc;
+			}
+			.legend {
+				display: grid;
+				grid-template-columns: repeat(4, auto);
+				gap: 1mm 4mm;
+				align-items: center;
+				justify-content: start;
+				margin: 2mm 0;
+				font-size: 8pt;
+			}
+			.swatch {
+				width: 7mm;
+				height: 2mm;
+				border-radius: 0.4mm;
+				display: inline-block;
+				vertical-align: middle;
+			}
+			@media print {
+				body {
+					background: var(--paper);
+				}
+				.page {
+					margin: 0;
+					box-shadow: none;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<!-- ============================================================ PAGE 1: OVERVIEW ============================================================ -->
+		<section class="page">
+			<h1>CWM Breadboard Layout v2</h1>
+			<p>
+				<strong>Hardware inventory:</strong> 2 full-size breadboards, 4
+				half-size breadboards, PicoScope 2204A, OPA2134PA preamp, 2&times;
+				Arduino, 16-ch relay, 8-ch relay, 3&times; DDS (incoming), 2&times; 9V
+				batteries, glass/PZT cassette.
+			</p>
+
+			<div class="note warn">
+				Print in <strong>landscape</strong> at
+				<strong>100% actual size</strong>. Do not use "fit to page."
+				<div class="scale-strip">100 mm calibration strip</div>
+			</div>
+
+			<h2 style="margin-top: 4mm">Board Allocation</h2>
+			<div class="grid2">
+				<div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-full">FULL</span> Board A &mdash;
+							Analog Preamp
+						</h3>
+						<p>
+							OPA2134PA, gain resistors, bypass caps, 9V batteries. Only analog
+							receive path. <strong>Nothing else touches this board.</strong>
+						</p>
+					</div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-full">FULL</span> Board S &mdash;
+							Source Generation
+						</h3>
+						<p>
+							Arduino 2 (DDS SPI master), 3&times; DDS modules, 8-ch relay
+							(source selector: routes AWG or any DDS to drive output). All
+							signal sources live here.
+						</p>
+					</div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-half">HALF</span> Board M &mdash; Read
+							Mux
+						</h3>
+						<p>
+							Arduino 1, 16-ch relay module. Selects which RX PZT connects to
+							preamp. Mux common exits as twisted pair to Board A.
+						</p>
+					</div>
+				</div>
+				<div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-half">HALF</span> Board D &mdash; Drive
+							Distribution
+						</h3>
+						<p>
+							AWG BNC input, drive PZT output, dummy-load header. Physical
+							breakout between source board and the cassette.
+						</p>
+					</div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-half">HALF</span> Board X1 &mdash;
+							Expansion
+						</h3>
+						<p>
+							Spare for additional RX sensors, second preamp, or extra relay
+							channels as the experiment grows.
+						</p>
+					</div>
+					<div class="board-card">
+						<h3>
+							<span class="board-tag tag-half">HALF</span> Board X2 &mdash;
+							Expansion
+						</h3>
+						<p>
+							Spare. Can hold a second mux bank, additional DDS, or
+							reference/calibration hardware.
+						</p>
+					</div>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 3mm">Separation Rules</h3>
+			<table>
+				<thead>
+					<tr>
+						<th>Zone</th>
+						<th>Boards</th>
+						<th>Rule</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td style="color: var(--green); font-weight: 700">Quiet Analog</td>
+						<td>Board A only</td>
+						<td>
+							No digital signals, no relay coils, no USB ground, no AWG/DDS
+							wires.
+						</td>
+					</tr>
+					<tr>
+						<td style="color: var(--orange); font-weight: 700">Noisy Source</td>
+						<td>Board S, Board D</td>
+						<td>
+							All drive generation. Keep physically far from Board A (opposite
+							side of bench).
+						</td>
+					</tr>
+					<tr>
+						<td style="color: var(--cyan); font-weight: 700">Digital / Mux</td>
+						<td>Board M</td>
+						<td>
+							Arduino 1 + 16-ch relay. Only analog leaving this board: mux
+							common twisted pair.
+						</td>
+					</tr>
+					<tr>
+						<td style="color: var(--muted)">Expansion</td>
+						<td>X1, X2</td>
+						<td>
+							Unpopulated until needed. Follow zone rules when adding hardware.
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<div
+				class="legend"
+				style="margin-top: 3mm">
+				<span
+					class="swatch"
+					style="background: var(--orange)"></span
+				><span>AWG / DDS drive</span>
+				<span
+					class="swatch"
+					style="background: var(--blue)"></span
+				><span>Ch B reference</span>
+				<span
+					class="swatch"
+					style="background: var(--green)"></span
+				><span>RX / preamp signal</span>
+				<span
+					class="swatch"
+					style="background: var(--ground)"></span
+				><span>Analog ground</span>
+				<span
+					class="swatch"
+					style="background: var(--red)"></span
+				><span>+9 V</span>
+				<span
+					class="swatch"
+					style="background: var(--violet)"></span
+				><span>&minus;9 V</span>
+				<span
+					class="swatch"
+					style="background: var(--cyan)"></span
+				><span>SPI / digital</span>
+				<span
+					class="swatch"
+					style="background: #facc15"></span
+				><span>USB / relay coil power</span>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 2: BENCH MAP ============================================================ -->
+		<section class="page">
+			<h2>Bench Placement Map</h2>
+			<p class="small">
+				Signal flow: sources (left) &rarr; cassette (center) &rarr; preamp
+				(right) &rarr; PicoScope (top-right). Keep noisy boards left/back, quiet
+				analog right/front.
+			</p>
+
+			<svg
+				class="bench-svg"
+				viewBox="0 0 252 140"
+				xmlns="http://www.w3.org/2000/svg"
+				aria-label="Bench placement">
+				<defs>
+					<marker
+						id="arr"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#111827" />
+					</marker>
+					<marker
+						id="arr-o"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#ea580c" />
+					</marker>
+					<marker
+						id="arr-g"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#15803d" />
+					</marker>
+					<marker
+						id="arr-b"
+						markerWidth="4"
+						markerHeight="4"
+						refX="3"
+						refY="2"
+						orient="auto">
+						<path
+							d="M0,0 L4,2 L0,4 Z"
+							fill="#2563eb" />
+					</marker>
+				</defs>
+
+				<!-- PicoScope -->
+				<rect
+					x="180"
+					y="5"
+					width="55"
+					height="22"
+					rx="2"
+					fill="#e2e8f0"
+					stroke="#334155" />
+				<text
+					x="207"
+					y="14"
+					text-anchor="middle"
+					font-size="4"
+					font-weight="700">
+					PicoScope 2204A
+				</text>
+				<text
+					x="207"
+					y="21"
+					text-anchor="middle"
+					font-size="3">
+					AWG out / Ch A / Ch B
+				</text>
+
+				<!-- BNC Tee -->
+				<circle
+					cx="155"
+					cy="16"
+					r="5"
+					fill="#fff"
+					stroke="#334155" />
+				<text
+					x="155"
+					y="17.5"
+					text-anchor="middle"
+					font-size="3"
+					font-weight="700">
+					TEE
+				</text>
+
+				<!-- Board S (full) -->
+				<rect
+					x="8"
+					y="35"
+					width="80"
+					height="32"
+					rx="2"
+					fill="#fff7ed"
+					stroke="#ea580c"
+					stroke-width="0.8" />
+				<text
+					x="48"
+					y="47"
+					text-anchor="middle"
+					font-size="4.5"
+					font-weight="700"
+					fill="#ea580c">
+					Board S (full)
+				</text>
+				<text
+					x="48"
+					y="54"
+					text-anchor="middle"
+					font-size="3">
+					Arduino 2 + 3&times;DDS + 8-ch relay
+				</text>
+				<text
+					x="48"
+					y="60"
+					text-anchor="middle"
+					font-size="3">
+					source selector
+				</text>
+
+				<!-- Board D (half) -->
+				<rect
+					x="8"
+					y="75"
+					width="45"
+					height="25"
+					rx="2"
+					fill="#fff7ed"
+					stroke="#ea580c" />
+				<text
+					x="30.5"
+					y="86"
+					text-anchor="middle"
+					font-size="3.8"
+					font-weight="700"
+					fill="#ea580c">
+					Board D (half)
+				</text>
+				<text
+					x="30.5"
+					y="93"
+					text-anchor="middle"
+					font-size="2.8">
+					drive distrib / dummy load
+				</text>
+
+				<!-- Board M (half) -->
+				<rect
+					x="65"
+					y="75"
+					width="45"
+					height="25"
+					rx="2"
+					fill="#f0fdfa"
+					stroke="#0891b2" />
+				<text
+					x="87.5"
+					y="86"
+					text-anchor="middle"
+					font-size="3.8"
+					font-weight="700"
+					fill="#0891b2">
+					Board M (half)
+				</text>
+				<text
+					x="87.5"
+					y="93"
+					text-anchor="middle"
+					font-size="2.8">
+					Arduino 1 + 16-ch relay
+				</text>
+
+				<!-- Cassette -->
+				<rect
+					x="105"
+					y="42"
+					width="55"
+					height="35"
+					rx="2"
+					fill="#f8fafc"
+					stroke="#334155" />
+				<text
+					x="132.5"
+					y="53"
+					text-anchor="middle"
+					font-size="4"
+					font-weight="700">
+					Glass / PZT
+				</text>
+				<text
+					x="132.5"
+					y="60"
+					text-anchor="middle"
+					font-size="3">
+					cassette
+				</text>
+				<circle
+					cx="113"
+					cy="68"
+					r="4"
+					fill="#fed7aa"
+					stroke="#ea580c" />
+				<text
+					x="113"
+					y="69.5"
+					text-anchor="middle"
+					font-size="2.8">
+					DRV
+				</text>
+				<circle
+					cx="150"
+					cy="68"
+					r="4"
+					fill="#bbf7d0"
+					stroke="#15803d" />
+				<text
+					x="150"
+					y="69.5"
+					text-anchor="middle"
+					font-size="2.8">
+					RX
+				</text>
+
+				<!-- Board A (full) -->
+				<rect
+					x="175"
+					y="42"
+					width="65"
+					height="32"
+					rx="2"
+					fill="#ecfdf5"
+					stroke="#15803d"
+					stroke-width="0.8" />
+				<text
+					x="207.5"
+					y="54"
+					text-anchor="middle"
+					font-size="4.5"
+					font-weight="700"
+					fill="#15803d">
+					Board A (full)
+				</text>
+				<text
+					x="207.5"
+					y="61"
+					text-anchor="middle"
+					font-size="3">
+					Analog preamp ONLY
+				</text>
+				<text
+					x="207.5"
+					y="68"
+					text-anchor="middle"
+					font-size="3">
+					9V batteries nearby
+				</text>
+
+				<!-- Expansion boards -->
+				<rect
+					x="125"
+					y="110"
+					width="40"
+					height="20"
+					rx="2"
+					fill="#f1f5f9"
+					stroke="#94a3b8"
+					stroke-dasharray="2,1" />
+				<text
+					x="145"
+					y="122"
+					text-anchor="middle"
+					font-size="3.2"
+					fill="#64748b">
+					Board X1 (half)
+				</text>
+				<rect
+					x="175"
+					y="110"
+					width="40"
+					height="20"
+					rx="2"
+					fill="#f1f5f9"
+					stroke="#94a3b8"
+					stroke-dasharray="2,1" />
+				<text
+					x="195"
+					y="122"
+					text-anchor="middle"
+					font-size="3.2"
+					fill="#64748b">
+					Board X2 (half)
+				</text>
+
+				<!-- Signal paths -->
+				<!-- AWG to tee -->
+				<path
+					d="M180,16 L160,16"
+					stroke="#111827"
+					stroke-width="1"
+					marker-end="url(#arr)" />
+				<!-- Tee to Ch B (direct BNC) -->
+				<path
+					d="M155,21 C155,24 170,26 185,26"
+					stroke="#2563eb"
+					stroke-width="1.1"
+					fill="none"
+					marker-end="url(#arr-b)" />
+				<text
+					x="172"
+					y="30"
+					font-size="2.8"
+					fill="#2563eb">
+					direct BNC to Ch B
+				</text>
+				<!-- Tee to Board S -->
+				<path
+					d="M150,16 C130,16 100,25 70,35"
+					stroke="#ea580c"
+					stroke-width="1.1"
+					fill="none"
+					marker-end="url(#arr-o)" />
+				<text
+					x="105"
+					y="23"
+					font-size="2.8"
+					fill="#ea580c">
+					AWG to Board S input
+				</text>
+				<!-- Board S to Board D -->
+				<path
+					d="M48,67 L30.5,75"
+					stroke="#ea580c"
+					stroke-width="1"
+					fill="none"
+					marker-end="url(#arr-o)" />
+				<!-- Board D to drive PZT -->
+				<path
+					d="M53,87 C70,82 95,72 109,68"
+					stroke="#ea580c"
+					stroke-width="1.2"
+					fill="none"
+					marker-end="url(#arr-o)" />
+				<text
+					x="78"
+					y="74"
+					font-size="2.8"
+					fill="#ea580c">
+					drive pair
+				</text>
+				<!-- RX PZT to Board M -->
+				<path
+					d="M150,72 C140,85 115,88 110,87"
+					stroke="#15803d"
+					stroke-width="1.1"
+					fill="none"
+					marker-end="url(#arr-g)" />
+				<text
+					x="135"
+					y="84"
+					font-size="2.8"
+					fill="#15803d">
+					RX to mux
+				</text>
+				<!-- Board M to Board A -->
+				<path
+					d="M110,85 C140,78 165,68 175,60"
+					stroke="#15803d"
+					stroke-width="1.2"
+					fill="none"
+					marker-end="url(#arr-g)" />
+				<text
+					x="148"
+					y="72"
+					font-size="2.8"
+					fill="#15803d">
+					mux common twisted pair
+				</text>
+				<!-- Board A to Pico Ch A -->
+				<path
+					d="M235,50 C242,40 237,30 225,27"
+					stroke="#15803d"
+					stroke-width="1"
+					fill="none"
+					marker-end="url(#arr-g)" />
+				<text
+					x="238"
+					y="38"
+					font-size="2.8"
+					fill="#15803d">
+					Ch A
+				</text>
+
+				<!-- Labels -->
+				<text
+					x="8"
+					y="133"
+					font-size="3.2"
+					font-weight="700">
+					Layout principle:
+				</text>
+				<text
+					x="38"
+					y="133"
+					font-size="3.2">
+					Noisy sources far-left. Cassette center. Quiet preamp far-right. No
+					drive wires near Board A.
+				</text>
+			</svg>
+		</section>
+
+		<!-- ============================================================ PAGE 3: BOARD A PREAMP (full-size) ============================================================ -->
+		<section class="page">
+			<h2>
+				<span class="board-tag tag-full">FULL</span> Board A &mdash; Analog
+				Preamp
+			</h2>
+			<p class="small">
+				Full-size 830 tie-point. Columns 1-63, rows A-E (top half) / F-J (bottom
+				half). OPA2134PA straddles center gap, notch left, pins on columns
+				28-31.
+			</p>
+
+			<div class="board-wrap">
+				<svg
+					class="board-svg"
+					viewBox="0 0 165 55"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-label="Board A preamp layout">
+					<defs>
+						<pattern
+							id="hA"
+							width="2.35"
+							height="2.15"
+							patternUnits="userSpaceOnUse">
+							<circle
+								cx="1.1"
+								cy="1.05"
+								r="0.33"
+								fill="#cbd5e1" />
+						</pattern>
+					</defs>
+					<rect
+						x="0.5"
+						y="0.5"
+						width="164"
+						height="54"
+						rx="2"
+						fill="#f8fafc"
+						stroke="#111827"
+						stroke-width="0.6" />
+					<!-- Rails -->
+					<rect
+						x="5"
+						y="4"
+						width="155"
+						height="2.3"
+						fill="#fecaca"
+						stroke="#dc2626"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="3.5"
+						font-size="2.5"
+						fill="#dc2626"
+						font-weight="700">
+						+9 V rail
+					</text>
+					<rect
+						x="5"
+						y="8"
+						width="155"
+						height="2.3"
+						fill="#dbeafe"
+						stroke="#2563eb"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="12.5"
+						font-size="2.5"
+						fill="#2563eb"
+						font-weight="700">
+						0 V AGND rail
+					</text>
+					<rect
+						x="5"
+						y="49"
+						width="155"
+						height="2.3"
+						fill="#ede9fe"
+						stroke="#7c3aed"
+						stroke-width="0.2" />
+					<text
+						x="7"
+						y="53.5"
+						font-size="2.5"
+						fill="#7c3aed"
+						font-weight="700">
+						&minus;9 V rail
+					</text>
+					<!-- Hole areas -->
+					<rect
+						x="12"
+						y="16"
+						width="141"
+						height="9.6"
+						fill="url(#hA)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="30"
+						width="141"
+						height="9.6"
+						fill="url(#hA)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="26.4"
+						width="141"
+						height="2.6"
+						fill="#e2e8f0" />
+					<!-- Row/col labels -->
+					<text
+						x="13"
+						y="15"
+						font-size="2.2">
+						A B C D E
+					</text>
+					<text
+						x="13"
+						y="42.5"
+						font-size="2.2">
+						F G H I J
+					</text>
+					<g
+						font-size="2"
+						fill="#64748b">
+						<text
+							x="12"
+							y="25">
+							1
+						</text>
+						<text
+							x="32"
+							y="25">
+							10
+						</text>
+						<text
+							x="55"
+							y="25">
+							20
+						</text>
+						<text
+							x="78"
+							y="25">
+							30
+						</text>
+						<text
+							x="100"
+							y="25">
+							40
+						</text>
+						<text
+							x="122"
+							y="25">
+							50
+						</text>
+						<text
+							x="145"
+							y="25">
+							60
+						</text>
+					</g>
+					<!-- OPA chip -->
+					<rect
+						x="70"
+						y="18"
+						width="24"
+						height="19.5"
+						rx="1"
+						fill="#111827" />
+					<text
+						x="82"
+						y="26"
+						text-anchor="middle"
+						font-size="3"
+						fill="#fff"
+						font-weight="700">
+						OPA2134
+					</text>
+					<text
+						x="82"
+						y="31"
+						text-anchor="middle"
+						font-size="2.3"
+						fill="#e5e7eb">
+						notch left
+					</text>
+					<path
+						d="M70,27.5 a2,2 0 0 1 0,-4"
+						stroke="#f8fafc"
+						stroke-width="0.5"
+						fill="none" />
+					<!-- Pin labels -->
+					<g
+						font-size="2"
+						fill="#111827"
+						font-weight="700">
+						<text
+							x="56"
+							y="19.5">
+							E28 p1 OUT
+						</text>
+						<text
+							x="56"
+							y="22.5">
+							E29 p2 -IN
+						</text>
+						<text
+							x="56"
+							y="37">
+							E30 p3 +IN
+						</text>
+						<text
+							x="56"
+							y="40">
+							E31 p4 -V
+						</text>
+						<text
+							x="95"
+							y="19.5">
+							F28 p8 +V
+						</text>
+						<text
+							x="95"
+							y="22.5">
+							F29 p7 OUTB
+						</text>
+						<text
+							x="95"
+							y="37">
+							F30 p6 -INB
+						</text>
+						<text
+							x="95"
+							y="40">
+							F31 p5 +INB
+						</text>
+					</g>
+					<!-- Key nodes -->
+					<circle
+						cx="55"
+						cy="9"
+						r="1.5"
+						fill="#334155" />
+					<text
+						x="58"
+						y="10"
+						font-size="2.3"
+						fill="#334155"
+						font-weight="700">
+						C24 = STAR GND
+					</text>
+					<circle
+						cx="38"
+						cy="21"
+						r="1.2"
+						fill="#15803d" />
+					<text
+						x="28"
+						y="18"
+						font-size="2.2"
+						fill="#15803d"
+						font-weight="700">
+						A20 = RX IN
+					</text>
+					<circle
+						cx="120"
+						cy="21"
+						r="1.2"
+						fill="#15803d" />
+					<text
+						x="122"
+						y="18"
+						font-size="2.2"
+						fill="#15803d"
+						font-weight="700">
+						A40 = CH A OUT
+					</text>
+				</svg>
+				<div class="board-caption">
+					<span>Board A is the ONLY board with analog gain.</span
+					><span>No AWG, DDS, Arduino, or relay wires here.</span>
+				</div>
+			</div>
+
+			<h3>Board A Exact Wiring Netlist</h3>
+			<div class="grid2">
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Part / Wire</th>
+								<th>From</th>
+								<th>To</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>OPA2134PA IC</td>
+								<td>E28-E31</td>
+								<td>F28-F31</td>
+								<td>Straddle gap, notch left.</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Black jumper</td>
+								<td>C24</td>
+								<td>Top blue AGND rail</td>
+								<td>Star ground node. All ground refs tie here.</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Black jumper</td>
+								<td>E24</td>
+								<td>F24</td>
+								<td>Bridge star ground across center gap.</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Red jumper</td>
+								<td>F28</td>
+								<td>Top red +9V rail</td>
+								<td>OPA pin 8 power.</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Purple jumper</td>
+								<td>E31</td>
+								<td>Bottom purple &minus;9V rail</td>
+								<td>OPA pin 4 power.</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>100nF ceramic</td>
+								<td>D28</td>
+								<td>D24</td>
+								<td>+9V bypass. D28 is same node as F28/pin8.</td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>100nF ceramic</td>
+								<td>B31</td>
+								<td>B24</td>
+								<td>&minus;9V bypass. B31 is same node as E31/pin4.</td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td>10&micro;F electrolytic</td>
+								<td>+ to top red rail</td>
+								<td>&minus; to top blue rail</td>
+								<td>Bulk +9V. Place near col 24.</td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>10&micro;F electrolytic</td>
+								<td>+ to top blue rail</td>
+								<td>&minus; to bottom purple rail</td>
+								<td>Bulk &minus;9V. Polarity: + is GND side.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<table>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Part / Wire</th>
+								<th>From</th>
+								<th>To</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>10</td>
+								<td>RX signal wire</td>
+								<td>Mux common</td>
+								<td>A20</td>
+								<td>Twisted pair from Board M.</td>
+							</tr>
+							<tr>
+								<td>11</td>
+								<td>RX return wire</td>
+								<td>Mux return</td>
+								<td>C24 / blue rail</td>
+								<td>Pair with #10, tie to star ground.</td>
+							</tr>
+							<tr>
+								<td>12</td>
+								<td>R<sub>IN</sub> 4.7k&Omega;</td>
+								<td>A20</td>
+								<td>A30</td>
+								<td>Series input protection. A30 = pin3 node.</td>
+							</tr>
+							<tr>
+								<td>13</td>
+								<td>R<sub>BIAS</sub> 1M&Omega;</td>
+								<td>C30</td>
+								<td>C24</td>
+								<td>DC bias for +IN to AGND.</td>
+							</tr>
+							<tr>
+								<td>14</td>
+								<td>R<sub>f</sub> 100k&Omega;</td>
+								<td>C28</td>
+								<td>C29</td>
+								<td>Feedback OUT&rarr;&minus;IN. Gain = 1 + Rf/Rg.</td>
+							</tr>
+							<tr>
+								<td>15</td>
+								<td>R<sub>g</sub> 10k&Omega;</td>
+								<td>D29</td>
+								<td>D24</td>
+								<td>&minus;IN to AGND. Gain = 11.</td>
+							</tr>
+							<tr>
+								<td>16</td>
+								<td>R<sub>OUT</sub> 47&Omega;</td>
+								<td>A28</td>
+								<td>A40</td>
+								<td>Output series isolator.</td>
+							</tr>
+							<tr>
+								<td>17</td>
+								<td>Pico Ch A center</td>
+								<td>A40</td>
+								<td>BNC center</td>
+								<td>Preamp output to scope.</td>
+							</tr>
+							<tr>
+								<td>18</td>
+								<td>Pico Ch A shield</td>
+								<td>BNC shield</td>
+								<td>Top blue rail near C24</td>
+								<td>Single scope ground point.</td>
+							</tr>
+							<tr>
+								<td>19</td>
+								<td>Jumper (park B)</td>
+								<td>H29</td>
+								<td>H30</td>
+								<td>OUT B to &minus;IN B (follower).</td>
+							</tr>
+							<tr>
+								<td>20</td>
+								<td>Jumper (park B)</td>
+								<td>H31</td>
+								<td>H24</td>
+								<td>+IN B to AGND.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div
+				class="grid2"
+				style="margin-top: 2mm">
+				<div class="note">
+					<strong>Battery wiring:</strong> Battery 1 (+) &rarr; top red rail.
+					Battery 1 (&minus;) + Battery 2 (+) &rarr; top blue rail near C24.
+					Battery 2 (&minus;) &rarr; bottom purple rail. Keep battery leads
+					twisted and short.
+				</div>
+				<div class="note warn">
+					<strong>Column connectivity reminder:</strong> A20 through E20 are
+					internally connected. F20 through J20 are internally connected. The
+					center gap separates them. That's why R<sub>IN</sub> from A20 to A30
+					works: A30=B30=C30=D30=E30 = OPA pin 3.
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 4: BOARD S SOURCE GENERATION (full-size) ============================================================ -->
+		<section class="page">
+			<h2>
+				<span class="board-tag tag-full">FULL</span> Board S &mdash; Source
+				Generation
+			</h2>
+			<p class="small">
+				Full-size 830 tie-point. Houses Arduino 2 (DDS SPI), up to 3 DDS modules
+				(AD9833 or similar), and the 8-channel relay used as a source selector.
+			</p>
+
+			<div class="board-wrap">
+				<svg
+					class="board-svg"
+					viewBox="0 0 165 55"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-label="Board S source layout">
+					<defs>
+						<pattern
+							id="hS"
+							width="2.35"
+							height="2.15"
+							patternUnits="userSpaceOnUse">
+							<circle
+								cx="1.1"
+								cy="1.05"
+								r="0.33"
+								fill="#cbd5e1" />
+						</pattern>
+					</defs>
+					<rect
+						x="0.5"
+						y="0.5"
+						width="164"
+						height="54"
+						rx="2"
+						fill="#fff7ed"
+						stroke="#111827"
+						stroke-width="0.6" />
+					<rect
+						x="12"
+						y="16"
+						width="141"
+						height="9.6"
+						fill="url(#hS)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="30"
+						width="141"
+						height="9.6"
+						fill="url(#hS)"
+						stroke="#cbd5e1"
+						stroke-width="0.2" />
+					<rect
+						x="12"
+						y="26.4"
+						width="141"
+						height="2.6"
+						fill="#fed7aa"
+						opacity="0.35" />
+					<text
+						x="7"
+						y="8"
+						font-size="3"
+						font-weight="700"
+						fill="#ea580c">
+						SOURCE BOARD. All drive signals generated/selected here.
+					</text>
+
+					<!-- Arduino 2 -->
+					<rect
+						x="12"
+						y="17"
+						width="28"
+						height="22"
+						rx="1"
+						fill="#fff"
+						stroke="#0891b2" />
+					<text
+						x="26"
+						y="26"
+						text-anchor="middle"
+						font-size="2.8"
+						font-weight="700"
+						fill="#0891b2">
+						Arduino 2
+					</text>
+					<text
+						x="26"
+						y="30"
+						text-anchor="middle"
+						font-size="2.2">
+						DDS SPI master
+					</text>
+					<text
+						x="26"
+						y="34"
+						text-anchor="middle"
+						font-size="2.2">
+						+ relay ctrl
+					</text>
+
+					<!-- DDS 1 -->
+					<rect
+						x="45"
+						y="17"
+						width="22"
+						height="11"
+						rx="1"
+						fill="#fff"
+						stroke="#ea580c" />
+					<text
+						x="56"
+						y="24"
+						text-anchor="middle"
+						font-size="2.6"
+						font-weight="700">
+						DDS 1
+					</text>
+
+					<!-- DDS 2 -->
+					<rect
+						x="45"
+						y="30"
+						width="22"
+						height="11"
+						rx="1"
+						fill="#fff"
+						stroke="#ea580c" />
+					<text
+						x="56"
+						y="37"
+						text-anchor="middle"
+						font-size="2.6"
+						font-weight="700">
+						DDS 2
+					</text>
+
+					<!-- DDS 3 -->
+					<rect
+						x="70"
+						y="17"
+						width="22"
+						height="11"
+						rx="1"
+						fill="#fff"
+						stroke="#ea580c" />
+					<text
+						x="81"
+						y="24"
+						text-anchor="middle"
+						font-size="2.6"
+						font-weight="700">
+						DDS 3
+					</text>
+
+					<!-- 8-ch relay -->
+					<rect
+						x="100"
+						y="17"
+						width="50"
+						height="22"
+						rx="1"
+						fill="#fff"
+						stroke="#ea580c" />
+					<text
+						x="125"
+						y="25"
+						text-anchor="middle"
+						font-size="3"
+						font-weight="700">
+						8-ch Relay
+					</text>
+					<text
+						x="125"
+						y="30"
+						text-anchor="middle"
+						font-size="2.4">
+						(source selector)
+					</text>
+					<text
+						x="125"
+						y="35"
+						text-anchor="middle"
+						font-size="2.2">
+						COM &rarr; Board D drive
+					</text>
+
+					<!-- AWG input header -->
+					<rect
+						x="70"
+						y="30"
+						width="22"
+						height="11"
+						rx="1"
+						fill="#fff"
+						stroke="#334155" />
+					<text
+						x="81"
+						y="37"
+						text-anchor="middle"
+						font-size="2.5"
+						font-weight="700">
+						AWG IN
+					</text>
+
+					<!-- SPI bus lines -->
+					<path
+						d="M40,24 L45,22"
+						stroke="#0891b2"
+						stroke-width="0.6" />
+					<path
+						d="M40,26 L45,35"
+						stroke="#0891b2"
+						stroke-width="0.6" />
+					<path
+						d="M40,28 L70,22"
+						stroke="#0891b2"
+						stroke-width="0.6" />
+					<text
+						x="42"
+						y="14"
+						font-size="2.2"
+						fill="#0891b2">
+						SPI: CLK, MOSI, CS1, CS2, CS3
+					</text>
+
+					<!-- Relay control -->
+					<path
+						d="M40,32 L100,28"
+						stroke="#0891b2"
+						stroke-width="0.6"
+						stroke-dasharray="1.5,0.8" />
+					<text
+						x="68"
+						y="45"
+						font-size="2.2"
+						fill="#0891b2">
+						relay IN1-IN8 from Arduino 2
+					</text>
+
+					<!-- Output -->
+					<path
+						d="M150,28 L160,28"
+						stroke="#ea580c"
+						stroke-width="1.2" />
+					<text
+						x="152"
+						y="45"
+						font-size="2.5"
+						fill="#ea580c"
+						font-weight="700">
+						DRIVE OUT &rarr; Board D
+					</text>
+				</svg>
+				<div class="board-caption">
+					<span>DDS modules share SPI bus with individual CS lines.</span
+					><span
+						>8-ch relay selects which source reaches the drive output.</span
+					>
+				</div>
+			</div>
+
+			<div class="grid2">
+				<div>
+					<h3>Source Selector (8-ch Relay)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Relay Ch</th>
+								<th>Input Source</th>
+								<th>Use Case</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1</td>
+								<td>AWG (from Pico tee)</td>
+								<td>Default fallback; reference-cancel via Ch B tee.</td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>DDS 1 output</td>
+								<td>Primary DDS drive. Replace AWG when DDS boards arrive.</td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>DDS 2 output</td>
+								<td>Second frequency or phase reference.</td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>DDS 3 output</td>
+								<td>Third frequency for multi-tone experiments.</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Combined DDS 1+2</td>
+								<td>Summed output via resistor network for dual-tone.</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>Dummy load only</td>
+								<td>Silence drive for baseline/control measurements.</td>
+							</tr>
+							<tr>
+								<td>7-8</td>
+								<td>Spare</td>
+								<td>Future: external source, calibration signal.</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="note">
+						<strong>Switching rule:</strong> Only one relay channel ON at a time
+						for single-source drive. For multi-DDS simultaneous, use the
+						resistor summing node on Ch 5 and route multiple DDS outputs in
+						parallel.
+					</div>
+				</div>
+				<div>
+					<h3>DDS SPI Wiring (Arduino 2)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Arduino Pin</th>
+								<th>Signal</th>
+								<th>Destination</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>D13</td>
+								<td>SCK</td>
+								<td>All 3 DDS CLK (shared bus)</td>
+							</tr>
+							<tr>
+								<td>D11</td>
+								<td>MOSI</td>
+								<td>All 3 DDS DATA (shared bus)</td>
+							</tr>
+							<tr>
+								<td>D10</td>
+								<td>CS1</td>
+								<td>DDS 1 FSYNC</td>
+							</tr>
+							<tr>
+								<td>D9</td>
+								<td>CS2</td>
+								<td>DDS 2 FSYNC</td>
+							</tr>
+							<tr>
+								<td>D8</td>
+								<td>CS3</td>
+								<td>DDS 3 FSYNC</td>
+							</tr>
+							<tr>
+								<td>D2-D7</td>
+								<td>Relay IN1-IN6</td>
+								<td>8-ch relay control inputs</td>
+							</tr>
+							<tr>
+								<td>5V</td>
+								<td>VCC</td>
+								<td>DDS VCC + relay VCC</td>
+							</tr>
+							<tr>
+								<td>GND</td>
+								<td>GND</td>
+								<td>DDS GND + relay GND (local to Board S)</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="note warn">
+						<strong>Ground isolation:</strong> Board S GND is Arduino USB
+						ground. Do NOT connect Board S GND to Board A AGND. They are
+						separate ground domains.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 5: BOARD M READ MUX (half-size) ============================================================ -->
+		<section class="page">
+			<h2>
+				<span class="board-tag tag-half">HALF</span> Board M &mdash; Read Mux
+			</h2>
+			<p class="small">
+				Half-size ~400 tie-point board. Houses Arduino 1 and the 16-channel
+				relay module. Selects which RX PZT sensor feeds the preamp.
+			</p>
+
+			<div class="grid2">
+				<div>
+					<div class="board-wrap">
+						<svg
+							class="board-svg-half"
+							viewBox="0 0 85 55"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-label="Board M mux layout">
+							<defs>
+								<pattern
+									id="hM"
+									width="2.35"
+									height="2.15"
+									patternUnits="userSpaceOnUse">
+									<circle
+										cx="1.1"
+										cy="1.05"
+										r="0.33"
+										fill="#cbd5e1" />
+								</pattern>
+							</defs>
+							<rect
+								x="0.5"
+								y="0.5"
+								width="84"
+								height="54"
+								rx="2"
+								fill="#f0fdfa"
+								stroke="#111827"
+								stroke-width="0.6" />
+							<rect
+								x="5"
+								y="16"
+								width="75"
+								height="9.6"
+								fill="url(#hM)"
+								stroke="#cbd5e1"
+								stroke-width="0.2" />
+							<rect
+								x="5"
+								y="30"
+								width="75"
+								height="9.6"
+								fill="url(#hM)"
+								stroke="#cbd5e1"
+								stroke-width="0.2" />
+							<rect
+								x="5"
+								y="26.4"
+								width="75"
+								height="2.6"
+								fill="#e2e8f0" />
+							<text
+								x="5"
+								y="8"
+								font-size="2.8"
+								font-weight="700"
+								fill="#0891b2">
+								READ MUX. No preamp, no drive.
+							</text>
+							<!-- Arduino 1 -->
+							<rect
+								x="7"
+								y="17"
+								width="25"
+								height="22"
+								rx="1"
+								fill="#fff"
+								stroke="#0891b2" />
+							<text
+								x="19.5"
+								y="26"
+								text-anchor="middle"
+								font-size="2.6"
+								font-weight="700">
+								Arduino 1
+							</text>
+							<text
+								x="19.5"
+								y="30"
+								text-anchor="middle"
+								font-size="2.2">
+								relay control
+							</text>
+							<text
+								x="19.5"
+								y="34"
+								text-anchor="middle"
+								font-size="2.2">
+								serial to PC
+							</text>
+							<!-- 16-ch relay -->
+							<rect
+								x="37"
+								y="17"
+								width="40"
+								height="22"
+								rx="1"
+								fill="#fff"
+								stroke="#0891b2" />
+							<text
+								x="57"
+								y="25"
+								text-anchor="middle"
+								font-size="2.8"
+								font-weight="700">
+								16-ch Relay
+							</text>
+							<text
+								x="57"
+								y="30"
+								text-anchor="middle"
+								font-size="2.3">
+								RX sensor select
+							</text>
+							<text
+								x="57"
+								y="35"
+								text-anchor="middle"
+								font-size="2.3">
+								COM &rarr; Board A
+							</text>
+							<!-- Output -->
+							<text
+								x="42"
+								y="48"
+								font-size="2.5"
+								fill="#15803d"
+								font-weight="700">
+								MUX COMMON: twisted pair out &rarr; Board A
+							</text>
+						</svg>
+					</div>
+				</div>
+				<div>
+					<h3>16-ch Relay Usage</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Relay Ch</th>
+								<th>Connected To</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1-4</td>
+								<td>RX PZT sensors 1-4</td>
+								<td>Available when wired</td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>RX PZT sensor 5</td>
+								<td>Currently active</td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>RX PZT sensor 6</td>
+								<td>Currently active</td>
+							</tr>
+							<tr>
+								<td>7-14</td>
+								<td>RX PZT sensors 7-14</td>
+								<td>Future expansion</td>
+							</tr>
+							<tr>
+								<td>15</td>
+								<td>Input short (signal to return)</td>
+								<td>Control: noise floor test</td>
+							</tr>
+							<tr>
+								<td>16</td>
+								<td>Dummy termination</td>
+								<td>Control: mux terminated</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Arduino 1 Wiring</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Arduino Pin</th>
+								<th>Signal</th>
+								<th>Destination</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>D2-D5</td>
+								<td>Relay address / IN1-IN4</td>
+								<td>16-ch relay control</td>
+							</tr>
+							<tr>
+								<td>D6-D9</td>
+								<td>IN5-IN8</td>
+								<td>16-ch relay (if directly driven)</td>
+							</tr>
+							<tr>
+								<td>USB</td>
+								<td>Serial</td>
+								<td>PC (/dev/cu.usbserial-11310)</td>
+							</tr>
+							<tr>
+								<td>5V</td>
+								<td>VCC</td>
+								<td>16-ch relay VCC</td>
+							</tr>
+							<tr>
+								<td>GND</td>
+								<td>GND</td>
+								<td>16-ch relay GND (Board M local only)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note warn">
+						<strong>The ONLY wire from Board M to Board A:</strong> Mux common
+						signal + mux common return as a short twisted pair. Signal goes to
+						Board A hole A20. Return goes to Board A top blue rail near C24. No
+						other Board M wire touches Board A.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 6: BOARD D DRIVE DISTRIBUTION (half-size) ============================================================ -->
+		<section class="page">
+			<h2>
+				<span class="board-tag tag-half">HALF</span> Board D &mdash; Drive
+				Distribution
+			</h2>
+			<p class="small">
+				Half-size board. Physical breakout point between Board S source selector
+				output and the drive PZT on the cassette. Also provides BNC tee point
+				for Ch B reference and dummy-load header.
+			</p>
+
+			<div class="grid2">
+				<div>
+					<div class="board-wrap">
+						<svg
+							class="board-svg-half"
+							viewBox="0 0 85 55"
+							xmlns="http://www.w3.org/2000/svg"
+							aria-label="Board D drive layout">
+							<defs>
+								<pattern
+									id="hD"
+									width="2.35"
+									height="2.15"
+									patternUnits="userSpaceOnUse">
+									<circle
+										cx="1.1"
+										cy="1.05"
+										r="0.33"
+										fill="#cbd5e1" />
+								</pattern>
+							</defs>
+							<rect
+								x="0.5"
+								y="0.5"
+								width="84"
+								height="54"
+								rx="2"
+								fill="#fff7ed"
+								stroke="#111827"
+								stroke-width="0.6" />
+							<rect
+								x="5"
+								y="16"
+								width="75"
+								height="9.6"
+								fill="url(#hD)"
+								stroke="#cbd5e1"
+								stroke-width="0.2" />
+							<rect
+								x="5"
+								y="30"
+								width="75"
+								height="9.6"
+								fill="url(#hD)"
+								stroke="#cbd5e1"
+								stroke-width="0.2" />
+							<rect
+								x="5"
+								y="26.4"
+								width="75"
+								height="2.6"
+								fill="#fed7aa"
+								opacity="0.4" />
+							<text
+								x="5"
+								y="8"
+								font-size="2.8"
+								font-weight="700"
+								fill="#ea580c">
+								DRIVE ONLY. No preamp. No digital.
+							</text>
+							<!-- AWG/Source in -->
+							<rect
+								x="7"
+								y="18"
+								width="24"
+								height="11"
+								rx="1"
+								fill="#fff"
+								stroke="#ea580c" />
+							<text
+								x="19"
+								y="24"
+								text-anchor="middle"
+								font-size="2.5"
+								font-weight="700">
+								SOURCE IN
+							</text>
+							<text
+								x="19"
+								y="27"
+								text-anchor="middle"
+								font-size="2">
+								from Board S
+							</text>
+							<!-- Drive out -->
+							<rect
+								x="55"
+								y="18"
+								width="24"
+								height="11"
+								rx="1"
+								fill="#fff"
+								stroke="#ea580c" />
+							<text
+								x="67"
+								y="24"
+								text-anchor="middle"
+								font-size="2.5"
+								font-weight="700">
+								DRIVE PZT
+							</text>
+							<text
+								x="67"
+								y="27"
+								text-anchor="middle"
+								font-size="2">
+								twisted pair
+							</text>
+							<!-- Dummy load -->
+							<rect
+								x="30"
+								y="34"
+								width="24"
+								height="9"
+								rx="1"
+								fill="#fff"
+								stroke="#94a3b8" />
+							<text
+								x="42"
+								y="39.5"
+								text-anchor="middle"
+								font-size="2.3">
+								Dummy Load
+							</text>
+							<!-- Ch B tee note -->
+							<rect
+								x="7"
+								y="44"
+								width="70"
+								height="8"
+								rx="1"
+								fill="#eff6ff"
+								stroke="#2563eb"
+								stroke-width="0.4" />
+							<text
+								x="42"
+								y="49"
+								text-anchor="middle"
+								font-size="2.4"
+								fill="#2563eb"
+								font-weight="700">
+								Ch B: use direct BNC tee from AWG, not this board
+							</text>
+						</svg>
+					</div>
+
+					<div class="note">
+						<strong>Purpose:</strong> Board D is just a physical breakout. When
+						using DDS instead of AWG, the selected source from Board S 8-ch
+						relay COM goes here. When using AWG, the AWG tee branch goes to
+						Board S input first (so it can be selected by the relay alongside
+						DDS options).
+					</div>
+				</div>
+				<div>
+					<h3>Connections</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Wire</th>
+								<th>From</th>
+								<th>To</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Source input</td>
+								<td>Board S relay COM output</td>
+								<td>Board D input header</td>
+								<td>Carries selected drive signal.</td>
+							</tr>
+							<tr>
+								<td>Drive signal</td>
+								<td>Board D signal node</td>
+								<td>Drive PZT (+)</td>
+								<td>Twisted pair to cassette.</td>
+							</tr>
+							<tr>
+								<td>Drive return</td>
+								<td>Board D ground</td>
+								<td>Drive PZT (&minus;)</td>
+								<td>Paired with signal wire.</td>
+							</tr>
+							<tr>
+								<td>Dummy load</td>
+								<td>Signal node</td>
+								<td>100&Omega; to ground</td>
+								<td>Jumper-selectable alternative to PZT.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>AWG Reference (Ch B)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Configuration</th>
+								<th>Ch B Wiring</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>AWG drive mode</td>
+								<td>
+									BNC tee: one branch to Ch B, one to Board S AWG input. Direct
+									coax, not through Board D.
+								</td>
+							</tr>
+							<tr>
+								<td>DDS drive mode</td>
+								<td>
+									Ch B not needed for reference cancel (DDS is phase-locked
+									digitally). Can repurpose Ch B for second RX.
+								</td>
+							</tr>
+							<tr>
+								<td>Hybrid</td>
+								<td>
+									AWG on Ch B as reference even when DDS drives. Useful for
+									independent timing check.
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Dummy-Load Control</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Normal</strong></td>
+								<td>
+									Source &rarr; drive PZT. Jumper connecting signal to PZT.
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Dummy</strong></td>
+								<td>
+									Source &rarr; 100&Omega; resistor. Move jumper. PZT
+									disconnected.
+								</td>
+							</tr>
+							<tr>
+								<td><strong>Open</strong></td>
+								<td>Source disconnected. Baseline for Board A noise floor.</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 7: INTER-BOARD CONNECTIONS ============================================================ -->
+		<section class="page">
+			<h2>Inter-Board Connections &amp; Cable Schedule</h2>
+			<p class="small">
+				This page lists every wire that crosses between boards. Each connection
+				is a discrete cable/twisted pair. No shared ground between digital and
+				analog boards.
+			</p>
+
+			<table>
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Cable Type</th>
+						<th>Signal</th>
+						<th>Notes</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>1</td>
+						<td>PicoScope AWG OUT</td>
+						<td>BNC Tee</td>
+						<td>BNC coax</td>
+						<td>AWG signal</td>
+						<td>Factory Pico cable.</td>
+					</tr>
+					<tr>
+						<td>2</td>
+						<td>BNC Tee branch 1</td>
+						<td>PicoScope Ch B</td>
+						<td>BNC coax</td>
+						<td>Reference</td>
+						<td>Direct. Ch B +/-500mV range.</td>
+					</tr>
+					<tr>
+						<td>3</td>
+						<td>BNC Tee branch 2</td>
+						<td>Board S AWG input</td>
+						<td>Short coax or twisted pair</td>
+						<td>AWG to source selector</td>
+						<td>Goes to 8-ch relay input ch 1.</td>
+					</tr>
+					<tr>
+						<td>4</td>
+						<td>Board S relay COM</td>
+						<td>Board D source input</td>
+						<td>Twisted pair (sig + return)</td>
+						<td>Selected drive signal</td>
+						<td>Whichever source is active.</td>
+					</tr>
+					<tr>
+						<td>5</td>
+						<td>Board D drive output</td>
+						<td>Drive PZT on cassette</td>
+						<td>Twisted pair</td>
+						<td>Drive excitation</td>
+						<td>Keep far from RX path.</td>
+					</tr>
+					<tr>
+						<td>6</td>
+						<td>RX PZT sensors</td>
+						<td>Board M relay inputs</td>
+						<td>Twisted pairs (per sensor)</td>
+						<td>RX signals</td>
+						<td>One pair per sensor channel.</td>
+					</tr>
+					<tr>
+						<td>7</td>
+						<td>Board M relay COM</td>
+						<td>Board A hole A20 + blue rail</td>
+						<td>Twisted pair (sig + return)</td>
+						<td>Selected RX signal</td>
+						<td><strong>Critical path.</strong> Short as possible.</td>
+					</tr>
+					<tr>
+						<td>8</td>
+						<td>Board A hole A40</td>
+						<td>PicoScope Ch A</td>
+						<td>BNC/coax or scope probe</td>
+						<td>Preamp output</td>
+						<td>Shield to Board A blue rail near C24.</td>
+					</tr>
+					<tr>
+						<td>9</td>
+						<td>Battery 1 (+)</td>
+						<td>Board A top red rail</td>
+						<td>Twisted pair with GND lead</td>
+						<td>+9V supply</td>
+						<td>Batteries live near Board A.</td>
+					</tr>
+					<tr>
+						<td>10</td>
+						<td>Battery midpoint</td>
+						<td>Board A top blue rail near C24</td>
+						<td>Short lead</td>
+						<td>0V analog</td>
+						<td>Battery 1(&minus;) + Battery 2(+) joined.</td>
+					</tr>
+					<tr>
+						<td>11</td>
+						<td>Battery 2 (&minus;)</td>
+						<td>Board A bottom purple rail</td>
+						<td>Twisted pair with GND lead</td>
+						<td>&minus;9V supply</td>
+						<td>Keep twisted with midpoint lead.</td>
+					</tr>
+					<tr>
+						<td>12</td>
+						<td>Arduino 1 USB</td>
+						<td>PC</td>
+						<td>USB cable</td>
+						<td>Serial control</td>
+						<td>Mux commands. /dev/cu.usbserial-11310</td>
+					</tr>
+					<tr>
+						<td>13</td>
+						<td>Arduino 2 USB</td>
+						<td>PC</td>
+						<td>USB cable</td>
+						<td>DDS + source select</td>
+						<td>Second serial port for DDS control.</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 style="margin-top: 4mm">Ground Domain Map</h3>
+			<div class="grid3">
+				<div
+					class="board-card"
+					style="border-color: var(--green)">
+					<h3 style="color: var(--green)">Analog Ground Domain</h3>
+					<p><strong>Board A only.</strong></p>
+					<p>Star point: C24 on Board A.</p>
+					<p>
+						Sources: battery midpoint, Pico Ch A shield, mux return (from Board
+						M).
+					</p>
+					<p><strong>Isolated from USB ground.</strong></p>
+				</div>
+				<div
+					class="board-card"
+					style="border-color: var(--cyan)">
+					<h3 style="color: var(--cyan)">Digital Ground Domain 1</h3>
+					<p><strong>Board M</strong> (Arduino 1 + 16-ch relay).</p>
+					<p>Powered by Arduino 1 USB.</p>
+					<p>GND shared between Arduino 1 and relay module only.</p>
+					<p><strong>No wire to Board A GND.</strong></p>
+				</div>
+				<div
+					class="board-card"
+					style="border-color: var(--orange)">
+					<h3 style="color: var(--orange)">Digital Ground Domain 2</h3>
+					<p>
+						<strong>Board S + Board D</strong> (Arduino 2, DDS, 8-ch relay,
+						drive distribution).
+					</p>
+					<p>Powered by Arduino 2 USB.</p>
+					<p>Board D return = Board S GND via cable #4 return wire.</p>
+					<p><strong>No wire to Board A GND.</strong></p>
+				</div>
+			</div>
+
+			<div class="note warn">
+				<strong>Ground coupling rule:</strong> The mux return wire (#7) carries
+				the RX signal return from Board M to Board A star ground. This is the
+				ONLY intentional path where a "digital board" wire touches analog
+				ground. It works because the mux common output is the analog signal
+				itself. Do not add any other ground connections between boards.
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 8: DDS TRANSITION PLAN ============================================================ -->
+		<section class="page">
+			<h2>DDS Transition &amp; Multi-Source Modes</h2>
+			<p>
+				When the 3 DDS boards arrive, attach them to Board S without disturbing
+				Board A or Board M. The 8-ch relay on Board S lets you switch sources
+				without rewiring.
+			</p>
+
+			<div class="grid2">
+				<div>
+					<h3>Mode 1: AWG Only (current)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Board S relay ch 1</td>
+								<td>ON (AWG selected)</td>
+							</tr>
+							<tr>
+								<td>Ch B</td>
+								<td>Direct BNC tee reference</td>
+							</tr>
+							<tr>
+								<td>DDS modules</td>
+								<td>Not installed or powered off</td>
+							</tr>
+							<tr>
+								<td>Scripts</td>
+								<td><code>awg_preamp_refcancel_2048.py</code></td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Mode 2: Single DDS Drive</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Board S relay ch 2</td>
+								<td>ON (DDS 1 selected)</td>
+							</tr>
+							<tr>
+								<td>Ch B</td>
+								<td>
+									Optional: AWG as timing reference, or repurpose for second RX
+								</td>
+							</tr>
+							<tr>
+								<td>Advantage</td>
+								<td>Phase-coherent frequency control, no AWG jitter</td>
+							</tr>
+							<tr>
+								<td>Scripts</td>
+								<td>New DDS driver + existing capture logic</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Mode 3: Multi-DDS Simultaneous</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Board S relay ch 5</td>
+								<td>ON (summed DDS 1+2)</td>
+							</tr>
+							<tr>
+								<td>DDS 1</td>
+								<td>Frequency f1</td>
+							</tr>
+							<tr>
+								<td>DDS 2</td>
+								<td>Frequency f2</td>
+							</tr>
+							<tr>
+								<td>Summing</td>
+								<td>Each DDS output through 10k into shared node</td>
+							</tr>
+							<tr>
+								<td>Use case</td>
+								<td>Two-tone interference, beat frequency measurement</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>Mode 4: DDS + AWG Comparison</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>Procedure</td>
+								<td>
+									Run capture with relay ch 1 (AWG), then ch 2 (DDS 1), same
+									frequency
+								</td>
+							</tr>
+							<tr>
+								<td>Compare</td>
+								<td>
+									Residual spectrum should differ if DDS has lower
+									jitter/feedthrough
+								</td>
+							</tr>
+							<tr>
+								<td>No rewiring</td>
+								<td>Just relay command change between captures</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>DDS Module Connections (each)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>DDS Pin</th>
+								<th>Connects To</th>
+								<th>Notes</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>VCC</td>
+								<td>Arduino 2 5V rail (Board S)</td>
+								<td>Or 3.3V if module requires</td>
+							</tr>
+							<tr>
+								<td>GND</td>
+								<td>Board S GND rail</td>
+								<td>Local to Board S only</td>
+							</tr>
+							<tr>
+								<td>CLK (SCLK)</td>
+								<td>Arduino 2 D13</td>
+								<td>Shared SPI clock</td>
+							</tr>
+							<tr>
+								<td>DATA (MOSI)</td>
+								<td>Arduino 2 D11</td>
+								<td>Shared SPI data</td>
+							</tr>
+							<tr>
+								<td>FSYNC (CS)</td>
+								<td>Arduino 2 D10/D9/D8</td>
+								<td>Individual chip select per DDS</td>
+							</tr>
+							<tr>
+								<td>OUT</td>
+								<td>Board S 8-ch relay input (ch 2/3/4)</td>
+								<td>DDS analog output to selector</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Summing Network (for Mode 3)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td>DDS 1 OUT</td>
+								<td>Through 10k resistor to sum node</td>
+							</tr>
+							<tr>
+								<td>DDS 2 OUT</td>
+								<td>Through 10k resistor to sum node</td>
+							</tr>
+							<tr>
+								<td>Sum node</td>
+								<td>To 8-ch relay input ch 5</td>
+							</tr>
+							<tr>
+								<td>Optional: DDS 3</td>
+								<td>Through 10k to same sum node for triple-tone</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Attach DDS boards with header pins</strong> into Board S
+						breadboard holes. Each DDS breakout is typically 5-6 pins wide.
+						Place them in columns 18-22, 18-22 (lower half), and 28-32 as shown
+						on the Board S diagram. Exact placement depends on your specific
+						breakout board pin spacing.
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 9: BRING-UP CHECKLIST ============================================================ -->
+		<section class="page">
+			<h2>Bring-Up Checklist &amp; Test Sequence</h2>
+
+			<div class="grid2">
+				<div>
+					<h3>Phase 1: Board A Power-Off Checks</h3>
+					<ul class="checklist">
+						<li>OPA pin 8 (F28) &rarr; +9V rail. Confirm with meter.</li>
+						<li>OPA pin 4 (E31) &rarr; &minus;9V rail. Confirm with meter.</li>
+						<li>C24 &rarr; top blue rail (star ground jumper in place).</li>
+						<li>E24 &rarr; F24 bridge jumper in place.</li>
+						<li>100nF from D28 to D24 (close to pin 8).</li>
+						<li>100nF from B31 to B24 (close to pin 4).</li>
+						<li>
+							10&micro;F +9V bulk cap: + to red rail, &minus; to blue rail.
+						</li>
+						<li>
+							10&micro;F &minus;9V bulk cap: + to blue rail, &minus; to purple
+							rail.
+						</li>
+						<li>R<sub>f</sub> 100k from C28 to C29.</li>
+						<li>R<sub>g</sub> 10k from D29 to D24.</li>
+						<li>R<sub>IN</sub> 4.7k from A20 to A30.</li>
+						<li>R<sub>BIAS</sub> 1M from C30 to C24.</li>
+						<li>R<sub>OUT</sub> 47&Omega; from A28 to A40.</li>
+						<li>Park jumper H29&rarr;H30 (OPA B follower).</li>
+						<li>Park jumper H31&rarr;H24 (OPA B +IN to GND).</li>
+						<li>No AWG/DDS/Arduino/relay wires on Board A.</li>
+					</ul>
+				</div>
+				<div>
+					<h3>Phase 2: Power-On Meter Checks</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Test</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>+9V rail to blue rail</td>
+								<td>+8 to +9.6V</td>
+							</tr>
+							<tr>
+								<td>&minus;9V rail to blue rail</td>
+								<td>&minus;8 to &minus;9.6V</td>
+							</tr>
+							<tr>
+								<td>+9V to &minus;9V</td>
+								<td>16 to 19V total</td>
+							</tr>
+							<tr>
+								<td>OPA output (A40) with input grounded</td>
+								<td>Near 0V (within &plusmn;50mV)</td>
+							</tr>
+							<tr>
+								<td>OPA +IN (A30) with nothing connected</td>
+								<td>Near 0V via 1M bias</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Phase 3: Signal Tests</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Setup</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1. Input short</td>
+								<td>Jumper A20 to blue rail. AWG off.</td>
+								<td>Ch A quiet, no rail.</td>
+							</tr>
+							<tr>
+								<td>2. Layout feedthrough</td>
+								<td>Input still grounded. AWG 10mVpp on.</td>
+								<td>Ch A should show minimal carrier.</td>
+							</tr>
+							<tr>
+								<td>3. Mux terminated</td>
+								<td>Board M relay ch 15 (input short). AWG on.</td>
+								<td>Ch A stays quiet.</td>
+							</tr>
+							<tr>
+								<td>4. Normal acoustic</td>
+								<td>Board M relay ch 5 or 6. AWG on.</td>
+								<td>Ch A shows signal + preamp gain.</td>
+							</tr>
+							<tr>
+								<td>5. Ref-cancel</td>
+								<td>Same as 4 + Ch B reference.</td>
+								<td>Cancellation &gt; 4dB improvement.</td>
+							</tr>
+							<tr>
+								<td>6. DDS swap</td>
+								<td>Board S relay ch 2 instead of ch 1.</td>
+								<td>DDS-driven signal, compare to AWG.</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Phase 4: Run Command</h3>
+					<pre
+						class="mono"
+						style="
+							font-size: 8pt;
+							background: #f8fafc;
+							border: 0.25mm solid #cbd5e1;
+							padding: 2mm;
+							white-space: pre-wrap;
+						">
+# AWG mode (current)
+python tools/awg_preamp_refcancel_2048.py \
+  --mux-channels 5,6 \
+  --range-a-mv 200 --range-b-mv 500 \
+  --drive-uvpp 10000 \
+  --scan-averages 8 --uncertainty-frames 24
+
+# DDS mode (future - script TBD)
+python tools/dds_drive_capture.py \
+  --dds-freq-hz 85000 \
+  --source-relay 2 \
+  --mux-channels 5,6</pre
+					>
+				</div>
+			</div>
+
+			<div
+				class="note"
+				style="margin-top: 3mm">
+				<strong>Success criteria after rewiring:</strong> (1) No clipping at
+				&plusmn;200mV Ch A range. (2) Step 2 feedthrough &lt; &minus;40dB of
+				step 4 signal. (3) After Ch B cancellation, top residual bins are NOT
+				mostly drive harmonics. (4) Mux-channel-specific spectral differences
+				visible.
+			</div>
+		</section>
+
+		<!-- ============================================================ PAGE 10: QUICK REFERENCE CARD ============================================================ -->
+		<section class="page">
+			<h2>Quick Reference Card</h2>
+
+			<div class="grid3">
+				<div>
+					<h3>Board A (Preamp)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>A20</strong></td>
+								<td>RX signal input</td>
+							</tr>
+							<tr>
+								<td><strong>A30/E30</strong></td>
+								<td>OPA +IN node</td>
+							</tr>
+							<tr>
+								<td><strong>A40</strong></td>
+								<td>Output to Pico Ch A</td>
+							</tr>
+							<tr>
+								<td><strong>C24</strong></td>
+								<td>Star ground</td>
+							</tr>
+							<tr>
+								<td><strong>C28</strong></td>
+								<td>OPA OUT A node</td>
+							</tr>
+							<tr>
+								<td><strong>C29</strong></td>
+								<td>OPA &minus;IN A node</td>
+							</tr>
+							<tr>
+								<td><strong>E28-E31</strong></td>
+								<td>OPA pins 1-4</td>
+							</tr>
+							<tr>
+								<td><strong>F28-F31</strong></td>
+								<td>OPA pins 8-5</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>Board S (Sources)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Relay ch 1</strong></td>
+								<td>AWG</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 2</strong></td>
+								<td>DDS 1</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 3</strong></td>
+								<td>DDS 2</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 4</strong></td>
+								<td>DDS 3</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 5</strong></td>
+								<td>DDS sum</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 6</strong></td>
+								<td>Silence</td>
+							</tr>
+							<tr>
+								<td><strong>Relay COM</strong></td>
+								<td>&rarr; Board D</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3>Board M (Mux)</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>Relay ch 5</strong></td>
+								<td>RX PZT 5</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 6</strong></td>
+								<td>RX PZT 6</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 15</strong></td>
+								<td>Input short</td>
+							</tr>
+							<tr>
+								<td><strong>Relay ch 16</strong></td>
+								<td>Terminated</td>
+							</tr>
+							<tr>
+								<td><strong>COM</strong></td>
+								<td>&rarr; Board A, A20</td>
+							</tr>
+							<tr>
+								<td><strong>Serial</strong></td>
+								<td>/dev/cu.usbserial-11310</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<h3 style="margin-top: 4mm">PicoScope Ranges</h3>
+			<table style="width: 60%">
+				<thead>
+					<tr>
+						<th>Channel</th>
+						<th>Range</th>
+						<th>Timebase</th>
+						<th>Samples</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Ch A (preamp out)</td>
+						<td>&plusmn;200 mV</td>
+						<td>7 (1280ns, 781kHz)</td>
+						<td>2048 (dual) / 8064 (single)</td>
+					</tr>
+					<tr>
+						<td>Ch B (AWG ref)</td>
+						<td>&plusmn;500 mV</td>
+						<td>7</td>
+						<td>2048</td>
+					</tr>
+					<tr>
+						<td>AWG output</td>
+						<td>10 mVpp sine</td>
+						<td>&mdash;</td>
+						<td>&mdash;</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<h3 style="margin-top: 4mm">Hardware Inventory Checklist</h3>
+			<div class="grid2">
+				<ul class="checklist">
+					<li>PicoScope 2204A + USB cable</li>
+					<li>BNC tee adapter</li>
+					<li>2&times; BNC cables (Ch A, Ch B)</li>
+					<li>OPA2134PA DIP-8</li>
+					<li>2&times; 9V batteries + snap connectors</li>
+					<li>2&times; full-size breadboards</li>
+					<li>4&times; half-size breadboards</li>
+				</ul>
+				<ul class="checklist">
+					<li>Arduino 1 (relay control) + USB</li>
+					<li>Arduino 2 (DDS SPI) + USB</li>
+					<li>16-channel relay module</li>
+					<li>8-channel relay module</li>
+					<li>3&times; DDS modules (incoming)</li>
+					<li>Glass/PZT cassette + sensor wires</li>
+					<li>Jumper wires, resistors, capacitors</li>
+				</ul>
+			</div>
+
+			<h3 style="margin-top: 3mm">Parts for Board A</h3>
+			<table style="width: 70%">
+				<thead>
+					<tr>
+						<th>Part</th>
+						<th>Value</th>
+						<th>Qty</th>
+						<th>Location</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>R<sub>IN</sub></td>
+						<td>4.7k&Omega;</td>
+						<td>1</td>
+						<td>A20 &rarr; A30</td>
+					</tr>
+					<tr>
+						<td>R<sub>BIAS</sub></td>
+						<td>1M&Omega;</td>
+						<td>1</td>
+						<td>C30 &rarr; C24</td>
+					</tr>
+					<tr>
+						<td>R<sub>f</sub></td>
+						<td>100k&Omega;</td>
+						<td>1</td>
+						<td>C28 &rarr; C29</td>
+					</tr>
+					<tr>
+						<td>R<sub>g</sub></td>
+						<td>10k&Omega;</td>
+						<td>1</td>
+						<td>D29 &rarr; D24</td>
+					</tr>
+					<tr>
+						<td>R<sub>OUT</sub></td>
+						<td>47&Omega;</td>
+						<td>1</td>
+						<td>A28 &rarr; A40</td>
+					</tr>
+					<tr>
+						<td>C<sub>bypass</sub></td>
+						<td>100nF ceramic</td>
+						<td>2</td>
+						<td>D28&rarr;D24, B31&rarr;B24</td>
+					</tr>
+					<tr>
+						<td>C<sub>bulk</sub></td>
+						<td>10&micro;F electrolytic</td>
+						<td>2</td>
+						<td>Rails near col 24</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</body>
+</html>

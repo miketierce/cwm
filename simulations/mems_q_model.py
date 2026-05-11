@@ -11,9 +11,10 @@ Loss mechanisms modeled:
     3. Thermoelastic damping (TED) — Zener/Lifshitz-Roukes model
     4. Surface loss — defect layer on free surfaces
     5. Gas damping — squeeze-film and molecular regime
+    6. Rayleigh scattering — bulk acoustic ν⁴ attenuation (Festi 2026)
 
 Total Q:
-    1/Q_total = 1/Q_material + 1/Q_anchor + 1/Q_TED + 1/Q_surface + 1/Q_gas
+    1/Q_total = 1/Q_material + 1/Q_anchor + 1/Q_TED + 1/Q_surface + 1/Q_gas + 1/Q_rayleigh
 
 References:
     - Hao, Erbil, Ayazi (2003): anchor loss in MEMS beam resonators
@@ -612,6 +613,69 @@ def compute_Q_gas(
 
 
 # ──────────────────────────────────────────────────────────────────────────
+# Rayleigh scattering loss
+# ──────────────────────────────────────────────────────────────────────────
+
+def compute_Q_rayleigh(glass: GlassProperties, frequency: float) -> QComponentResult:
+    """
+    Rayleigh scattering Q limit from bulk acoustic attenuation.
+
+    Sound attenuation in glasses follows Γ ~ A_R · ν⁴ at frequencies
+    well below the Ioffe-Regel limit (Rayleigh scattering regime).
+    This sets a fundamental physics ceiling on Q at high frequencies.
+
+    Based on Festi et al., PRX 16, 021021 (2026); Baldi et al.,
+    PRL 112, 125502 (2014); Wang et al., PRL 134, 196101 (2025).
+
+    At the Ioffe-Regel frequency ν_IR, Γ ≈ ν_IR (modes become
+    diffusive). We use this to calibrate A_R = ν_IR / ν_IR⁴ = 1/ν_IR³.
+
+    Parameters
+    ----------
+    glass : GlassProperties
+        Must have nu_ioffe_regel_hz set.
+    frequency : float [Hz]
+
+    Returns
+    -------
+    QComponentResult
+    """
+    nu_IR = glass.nu_ioffe_regel_hz
+    if nu_IR <= 0:
+        return QComponentResult(
+            name="Rayleigh scattering",
+            Q_value=np.inf,
+            loss=0.0,
+            description="Ioffe-Regel frequency not set; Rayleigh loss not computed",
+        )
+
+    # A_R calibrated from Ioffe-Regel crossover: Γ(ν_IR) ≈ ν_IR
+    A_R = 1.0 / nu_IR**3
+    Gamma = A_R * frequency**4  # Hz (half-width of attenuation)
+
+    if Gamma <= 0:
+        Q_ray = np.inf
+        loss = 0.0
+    else:
+        Q_ray = np.pi * frequency / Gamma
+        loss = 1.0 / Q_ray
+
+    ratio = frequency / nu_IR
+
+    desc = (
+        f"Rayleigh: Γ={Gamma:.2e} Hz, ν/ν_IR={ratio:.2e}, "
+        f"{'NEGLIGIBLE' if ratio < 1e-3 else 'RELEVANT' if ratio > 0.01 else 'small'}"
+    )
+
+    return QComponentResult(
+        name="Rayleigh scattering",
+        Q_value=Q_ray,
+        loss=loss,
+        description=desc,
+    )
+
+
+# ──────────────────────────────────────────────────────────────────────────
 # Total Q budget
 # ──────────────────────────────────────────────────────────────────────────
 
@@ -668,8 +732,9 @@ def compute_Q_budget(
     q_ted = compute_Q_TED(rod, glass, freq, conditions)
     q_sur = compute_Q_surface(rod, surface)
     q_gas = compute_Q_gas(rod, glass, freq, conditions)
+    q_ray = compute_Q_rayleigh(glass, freq)
 
-    components = [q_mat, q_anc, q_ted, q_sur, q_gas]
+    components = [q_mat, q_anc, q_ted, q_sur, q_gas, q_ray]
 
     # Total loss
     total_loss = sum(c.loss for c in components)
