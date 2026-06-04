@@ -1,0 +1,55 @@
+{
+  "test": "narma10_ringup_reservoir",
+  "timestamp": "2026-06-02T22:31:35.082793",
+  "config": {
+    "drive_freq_hz": 35840,
+    "gap_max_ms": 4.0,
+    "n_steps": 500,
+    "navg": 1,
+    "seed": 42,
+    "modes_hz": [
+      35840,
+      54920,
+      57037,
+      97011,
+      42000,
+      45000,
+      71000,
+      88000,
+      108000
+    ],
+    "method": "continuous_drive_gap_encoded_ringup_readout"
+  },
+  "results": {
+    "nmse_train": 0.9771880295983728,
+    "nmse_test": 1.0479618107563629,
+    "correlation": -0.07776098261738407,
+    "memory_capacity": 0.4586350680362662,
+    "mc_per_delay": [
+      0.441120914348648,
+      0,
+      0,
+      0,
+      0,
+      0.0003623489363880905,
+      0,
+      0,
+      0.004546322227629185,
+      0,
+      0,
+      0.012605482523600942
+    ],
+    "best_alpha": 1000.0,
+    "step_rate_hz": 81.03837841631031,
+    "step_time_ms": 12.339832305908203
+  },
+  "signal_stats": {
+    "drive_mean": 92134.65814293882,
+    "drive_std": 65479.04801926059,
+    "drive_cv_pct": 71.06885654003905,
+    "corr_u_vs_amp": -0.7875495025188387,
+    "steady_state_a": 31290.691221869303,
+    "steady_state_b": 229351.31534601914
+  },
+  "verdict": "FAIL"
+}

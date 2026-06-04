@@ -1,0 +1,109 @@
+{
+  "test": "NARMA10_temporal_reservoir",
+  "timestamp": "2026-06-02T22:09:42.460178",
+  "config": {
+    "modes_hz": [
+      35000,
+      45000,
+      55000,
+      57000,
+      71000,
+      88000,
+      97000,
+      108000
+    ],
+    "n_steps": 1000,
+    "navg": 4,
+    "seed": 42
+  },
+  "ringdown": [
+    {
+      "freq_hz": 35000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 182088.58506330597,
+      "noise_floor": 540.3349045448765,
+      "n_blocks_above_noise": 1,
+      "decay_start_idx": 5,
+      "t_off_s": 0.06530404090881348,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 45000,
+      "tau_ms": 87.30649666261374,
+      "Q_est": 12342.665183666812,
+      "mag_driven": 310309.1895419778,
+      "noise_floor": 391.5268115943233,
+      "n_blocks_above_noise": 3,
+      "decay_start_idx": 5,
+      "t_off_s": 0.05318188667297363,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 55000,
+      "tau_ms": 54.71840487574279,
+      "Q_est": 9454.6616325582,
+      "mag_driven": 421103.06731171126,
+      "noise_floor": 281.33456285088835,
+      "n_blocks_above_noise": 5,
+      "decay_start_idx": 5,
+      "t_off_s": 0.05839109420776367,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 57000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 559328.8860226803,
+      "noise_floor": 334.45211679188645,
+      "n_blocks_above_noise": 2,
+      "decay_start_idx": 5,
+      "t_off_s": 0.052896976470947266,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 71000,
+      "tau_ms": 121.39202244341452,
+      "Q_est": 27076.86429979732,
+      "mag_driven": 305398.5445474995,
+      "noise_floor": 359.2948965968148,
+      "n_blocks_above_noise": 4,
+      "decay_start_idx": 5,
+      "t_off_s": 0.05232405662536621,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 88000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 126813.853693396,
+      "noise_floor": 389.5068487783672,
+      "n_blocks_above_noise": 2,
+      "decay_start_idx": 5,
+      "t_off_s": 0.05226922035217285,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 97000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 444289.2926845276,
+      "noise_floor": 406.00868997444843,
+      "n_blocks_above_noise": 2,
+      "decay_start_idx": 5,
+      "t_off_s": 0.05157780647277832,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 108000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 75282.25720272769,
+      "noise_floor": 389.1550888607322,
+      "n_blocks_above_noise": 2,
+      "decay_start_idx": 5,
+      "t_off_s": 0.044638872146606445,
+      "channel": "B (NE)"
+    }
+  ]
+}

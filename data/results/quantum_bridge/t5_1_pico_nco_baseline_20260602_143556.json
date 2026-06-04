@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-06-02T14:35:26.014142",
+  "hardware": "Pico NCO (PIO, 126 MHz)",
+  "rx_relay": 7,
+  "range": "\u00b12V AC",
+  "nsamples": 3968,
+  "navg": 16,
+  "noise_floor": 455.05396349613585,
+  "modes": [
+    35840,
+    54920,
+    57037,
+    97011
+  ],
+  "ch1_single": {
+    "35840": {
+      "peak": 96331.93132023144,
+      "snr_db": 46.514147319344005,
+      "pass": 

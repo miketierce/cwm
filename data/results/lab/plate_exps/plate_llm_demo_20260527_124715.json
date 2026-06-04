@@ -1,0 +1,131 @@
+{
+  "experiment": "plate_llm_demo",
+  "timestamp": "2026-05-27T17:50:45.988406+00:00",
+  "mode": "hardware",
+  "config": {
+    "d_model": 4,
+    "vocab_size": 8,
+    "vocab": [
+      "_",
+      "e",
+      "t",
+      "i",
+      "n",
+      "o",
+      "h",
+      "s"
+    ],
+    "context_len": 4,
+    "epochs": 1000,
+    "lr": 0.005,
+    "batch_size": 32,
+    "temperature": 0.7,
+    "gen_length": 40,
+    "param_count": 152,
+    "n_training_pairs": 735
+  },
+  "training": {
+    "final_loss": 1.2311976169454288,
+    "loss_history": [
+      2.076330079694757,
+      1.9315958346824023,
+      1.7391657745525972,
+      1.6116063227493755,
+      1.5352604370458873,
+      1.4773208748569795,
+      1.4426286181970096,
+      1.4246136483194949,
+      1.3725530072827248,
+      1.3202221113467956,
+      1.2832828161010068,
+      1.2770198562583905,
+      1.2594815029018944,
+      1.271186630036113,
+      1.2526526371182856,
+      1.250215541698449,
+      1.2461296047399035,
+      1.2341265081910764,
+      1.2426010202220825,
+      1.2327004295318833,
+      1.2311976169454288
+    ]
+  },
+  "evaluation": {
+    "software": {
+      "accuracy": 0.5197278911564626,
+      "perplexity": 3.425329313247693,
+      "label": "software"
+    },
+    "plate": {
+      "accuracy": 0.5238095238095238,
+      "perplexity": 3.426854846805217,
+      "label": "plate"
+    },
+    "logit_r2_mean": 0.9999308990166978,
+    "logit_r2_samples": [
+      0.9999787100852701,
+      0.9999067632918647,
+      0.9999476558986755,
+      0.9999650564885589,
+      0.9998563093191196
+    ]
+  },
+  "generation": [
+    {
+      "prompt": "the ",
+      "software": "net thine ine ont hin in this she one th",
+      "plate": "net thine ine ont hin in this she one th",
+      "match": true
+    },
+    {
+      "prompt": "is n",
+      "software": "ot this she ste sest the this she one th",
+      "plate": "ot this she ste sest the this she one th",
+      "match": true
+    },
+    {
+      "prompt": "tone",
+      "software": " the she sine ont hin in this she one th",
+      "plate": " the she sine ont hin in this she one th",
+      "match": true
+    },
+    {
+      "prompt": "shin",
+      "software": "e tote iste henthe in in this she one th",
+      "plate": "e tote iste henthe in in this she one th",
+      "match": true
+    }
+  ],
+  "transfer_matrix_H": [
+    [
+      1.0,
+      0.004337982005746844,
+      0.00529990982792373,
+      0.004180457460649607
+    ],
+    [
+      0.0019022384784637735,
+      1.0,
+      0.0031388442967974937,
+      0.0017016166019421831
+    ],
+    [
+      0.0026596610021070734,
+      0.004705523376171487,
+      1.0,
+      0.002294839795430918
+    ],
+    [
+      0.0024197873443687124,
+      0.004198703209543853,
+      0.003547100523136324,
+      1.0
+    ]
+  ],
+  "verdict": {
+    "overall_pass": true,
+    "accuracy_match": false,
+    "generation_matches": 4,
+    "total_prompts": 4
+  }
+}

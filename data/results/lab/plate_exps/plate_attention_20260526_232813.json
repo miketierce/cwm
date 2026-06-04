@@ -1,0 +1,115 @@
+{
+  "experiment": "plate_attention_head",
+  "timestamp": "2026-05-27T04:28:19.522916+00:00",
+  "mode": "hardware",
+  "config": {
+    "seq_len": 4,
+    "d_model": 4,
+    "vocab_size": 10,
+    "causal": true,
+    "seed": 42,
+    "identity_check": false
+  },
+  "problem": {
+    "input_seq": [
+      0,
+      7,
+      6,
+      4
+    ],
+    "target_seq": [
+      4,
+      6,
+      7,
+      0
+    ]
+  },
+  "timing": {
+    "software_ms": 0.12,
+    "plate_ms": 0.31
+  },
+  "metrics": {
+    "scores": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 1e-06,
+      "max_error": 3e-06
+    },
+    "attn_weights": {
+      "r_squared": 1.0,
+      "correlation": 1.0,
+      "rmse": 0.0,
+      "max_error": 1e-06
+    },
+    "context": {
+      "r_squared": 0.999929,
+      "correlation": 0.999979,
+      "rmse": 8e-05,
+      "max_error": 0.000169
+    },
+    "output": {
+      "r_squared": 0.999968,
+      "correlation": 0.99999,
+      "rmse": 1.2e-05,
+      "max_error": 2.3e-05
+    }
+  },
+  "verdict": {
+    "attn_weights_r2": 1.0,
+    "output_r2": 0.999968,
+    "attn_pass": true,
+    "output_pass": true
+  },
+  "sw_attn_matrix": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.499720375135577,
+      0.5002796248644231,
+      0.0,
+      0.0
+    ],
+    [
+      0.3332497362055249,
+      0.33345178125826663,
+      0.3332984825362084,
+      0.0
+    ],
+    [
+      0.24994152140489093,
+      0.25006151328659376,
+      0.24997280693563392,
+      0.25002415837288144
+    ]
+  ],
+  "plate_attn_matrix": [
+    [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.4997210648658586,
+      0.5002789351341415,
+      0.0,
+      0.0
+    ],
+    [
+      0.3332500305398824,
+      0.3334513290319747,
+      0.3332986404281429,
+      0.0
+    ],
+    [
+      0.24994147540264952,
+      0.25006150831481627,
+      0.2499727702751243,
+      0.25002424600740997
+    ]
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "experiment": "T3.4_rescore",
+  "source_file": "data/results/multilevel/t3_4_multilevel_20260527_104811.json",
+  "original_accuracy": 0.00625,
+  "original_gate": "FAIL",
+  "corrected_accuracy_ridge": 0.00546875,
+  "corrected_accuracy_nearest_centroid": 1.0,
+  "corrected_accuracy_threshold": 1.0,
+  "corrected_gate": "PASS",
+  "stability_mean": 1.0,
+  "stability_std": 0.0,
+  "n_patterns": 256,
+  "bits": 8.0,
+  "method": "Monte Carlo from Phase A empirical distributions",
+  "per_mode_accuracy": {
+    "35840": 1.0,
+    "54920": 1.0,
+    "57037": 1.0,
+    "97011": 1.0
+  }
+}

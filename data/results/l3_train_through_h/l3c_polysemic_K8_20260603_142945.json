@@ -1,0 +1,83 @@
+{
+  "test": "L3c_polysemic_train_through_H",
+  "timestamp": "2026-06-03T14:29:45.001901",
+  "config": {
+    "h_matrix_path": "data/results/h_matrix/l1_h_matrix_20260602_220004.json",
+    "K": 8,
+    "partition_strategy": "max_diversity",
+    "output_dim": 16,
+    "partition_sizes": [
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3
+    ],
+    "d_model": 128,
+    "seq_len": 64,
+    "batch_size": 64,
+    "epochs": 30,
+    "lr": 0.001,
+    "vocab_size": 65
+  },
+  "results": {
+    "physical_poly": {
+      "ppl": 11.949571862214327,
+      "val_loss": 2.4806954503059386,
+      "params": 88667
+    },
+    "trainable_poly": {
+      "ppl": 11.976261282804865,
+      "val_loss": 2.4829264640808106,
+      "params": 88719
+    },
+    "random_poly": {
+      "ppl_mean": 11.980726445856133,
+      "ppl_std": 0.035875730405113875,
+      "ppls": [
+        12.023061517658181,
+        11.971159264763841,
+        12.021960967200155,
+        11.951244769621907,
+        11.93620571003658
+      ]
+    },
+    "shuffled_poly": {
+      "ppl_mean": 11.984959058013843,
+      "ppl_std": 0.040284403924547935,
+      "ppls": [
+        12.03088378778725,
+        11.973134069082446,
+        11.939622882422322,
+        11.947294731103476,
+        12.033859819673722
+      ]
+    },
+    "single_H": {
+      "ppl": 12.064473355823731,
+      "val_loss": 2.4902650475502015,
+      "params": 86875
+    }
+  },
+  "diagnostics": {
+    "A_polysemic_vs_single": {
+      "improvement_pct": 0.9523954359262501,
+      "helps": true
+    },
+    "B_physical_vs_random": {
+      "sigma": 0.8684027695047289,
+      "useful_structure": false
+    },
+    "C_physical_vs_shuffled": {
+      "sigma": 0.8784341420514747,
+      "partition_matters": false
+    },
+    "D_gap_to_optimal": {
+      "gap_pct": -0.22285269133913696
+    }
+  },
+  "verdict": "PARTIAL"
+}

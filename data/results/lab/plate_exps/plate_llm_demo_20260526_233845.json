@@ -1,0 +1,121 @@
+{
+  "experiment": "plate_llm_demo",
+  "timestamp": "2026-05-27T04:39:37.332930+00:00",
+  "mode": "simulate",
+  "config": {
+    "d_model": 4,
+    "vocab_size": 8,
+    "vocab": [
+      "_",
+      "e",
+      "t",
+      "i",
+      "n",
+      "o",
+      "h",
+      "s"
+    ],
+    "context_len": 4,
+    "epochs": 500,
+    "lr": 0.005,
+    "batch_size": 16,
+    "temperature": 0.7,
+    "gen_length": 40,
+    "param_count": 152,
+    "n_training_pairs": 393
+  },
+  "training": {
+    "final_loss": 1.4128526459891009,
+    "loss_history": [
+      2.0752402346084122,
+      1.9622077324660219,
+      1.8373188489630679,
+      1.7456012414460707,
+      1.6613080376953018,
+      1.5962667117723055,
+      1.5412535367355473,
+      1.4918054446157576,
+      1.4483470380955563,
+      1.4218036324247918,
+      1.4128526459891009
+    ]
+  },
+  "evaluation": {
+    "software": {
+      "accuracy": 0.46055979643765904,
+      "perplexity": 4.107656396285569,
+      "label": "software"
+    },
+    "plate": {
+      "accuracy": 0.46055979643765904,
+      "perplexity": 4.109339230757718,
+      "label": "plate"
+    },
+    "logit_r2_mean": 0.9999891193931593,
+    "logit_r2_samples": [
+      0.999998987452957,
+      0.9999783175347432,
+      0.9999911837754577,
+      0.9999797896374437,
+      0.9999973185651948
+    ]
+  },
+  "generation": [
+    {
+      "prompt": "the ",
+      "software": "ne itis ose otonotone in this she he se ",
+      "plate": "ne itis ose otonotone in this she he se ",
+      "match": true
+    },
+    {
+      "prompt": "is n",
+      "software": "it this honet onotone in this she he se ",
+      "plate": "it this honet onotone in this she he se ",
+      "match": true
+    },
+    {
+      "prompt": "tone",
+      "software": " the she sint nis nin the nis she he se ",
+      "plate": " the she sint nis nin the nis she he se ",
+      "match": true
+    },
+    {
+      "prompt": "shin",
+      "software": "e the se he se is nin the nis she he se ",
+      "plate": "e the se he se is nin the nis she he se ",
+      "match": true
+    }
+  ],
+  "transfer_matrix_H": [
+    [
+      1.0,
+      0.0010891602626216953,
+      0.001429964569889167,
+      0.0035913242701907655
+    ],
+    [
+      0.004842792602864669,
+      1.0,
+      0.004081196877324041,
+      0.004633010438124759
+    ],
+    [
+      0.001911767064677775,
+      0.0020152103742768278,
+      1.0,
+      0.0023978410383752365
+    ],
+    [
+      0.002827482439884659,
+      0.0032142280457583055,
+      0.004230415177604902,
+      1.0
+    ]
+  ],
+  "verdict": {
+    "overall_pass": true,
+    "accuracy_match": true,
+    "generation_matches": 4,
+    "total_prompts": 4
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "test": "NARMA10_temporal_reservoir",
+  "timestamp": "2026-06-02T22:07:28.970509",
+  "config": {
+    "modes_hz": [
+      35000,
+      45000,
+      55000,
+      57000,
+      71000,
+      88000,
+      97000,
+      108000
+    ],
+    "n_steps": 1000,
+    "navg": 4,
+    "seed": 42
+  },
+  "ringdown": [
+    {
+      "freq_hz": 35000,
+      "tau_ms": 2178.421729214154,
+      "Q_est": 239529.97953218454,
+      "mag_driven": 181616.46527292015,
+      "noise_floor": 414.29859844764525,
+      "n_blocks_above_noise": 5,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 45000,
+      "tau_ms": 0,
+      "Q_est": 0,
+      "mag_driven": 309496.67482447927,
+      "noise_floor": 492.79725964174594,
+      "n_blocks_above_noise": 1,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 55000,
+      "tau_ms": 524.4879996208429,
+      "Q_est": 90625.02055776653,
+      "mag_driven": 421190.6002069032,
+      "noise_floor": 387.2189466502308,
+      "n_blocks_above_noise": 4,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 57000,
+      "tau_ms": 0,
+      "Q_est": 0,
+      "mag_driven": 557443.853146486,
+      "noise_floor": 390.8930860651701,
+      "n_blocks_above_noise": 2,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 71000,
+      "tau_ms": 4732.278532313246,
+      "Q_est": 1055549.2945017747,
+      "mag_driven": 305668.10229989194,
+      "noise_floor": 441.7938126443739,
+      "n_blocks_above_noise": 3,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 88000,
+      "tau_ms": 0,
+      "Q_est": 0,
+      "mag_driven": 127009.86337078974,
+      "noise_floor": 387.3378950601965,
+      "n_blocks_above_noise": 2,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 97000,
+      "tau_ms": 0,
+      "Q_est": 0,
+      "mag_driven": 441542.2622675821,
+      "noise_floor": 426.23347277388274,
+      "n_blocks_above_noise": 0,
+      "channel": "B (NE)"
+    },
+    {
+      "freq_hz": 108000,
+      "tau_ms": 0.0,
+      "Q_est": 0.0,
+      "mag_driven": 75789.67142457659,
+      "noise_floor": 333.77564480938855,
+      "n_blocks_above_noise": 3,
+      "channel": "B (NE)"
+    }
+  ]
+}

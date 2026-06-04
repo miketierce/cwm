@@ -1,0 +1,100 @@
+{
+  "timestamp": "2026-06-02T14:36:20",
+  "hardware": "Pico NCO (PIO, 126 MHz)",
+  "rx_relay": 7,
+  "range": "\u00b12V AC",
+  "nsamples": 3968,
+  "navg": 16,
+  "noise_floor": 455.05,
+  "modes": [
+    35840,
+    54920,
+    57037,
+    97011
+  ],
+  "ch1_single": {
+    "35840": {
+      "peak": 96331.9,
+      "snr_db": 46.5,
+      "pass": true
+    },
+    "54920": {
+      "peak": 272801.2,
+      "snr_db": 55.6,
+      "pass": true
+    },
+    "57037": {
+      "peak": 248043.7,
+      "snr_db": 54.7,
+      "pass": true
+    },
+    "97011": {
+      "peak": 227454.2,
+      "snr_db": 54.0,
+      "pass": true
+    }
+  },
+  "ch2_single": {
+    "35840": {
+      "peak": 218555.5,
+      "snr_db": 53.6,
+      "pass": true
+    },
+    "54920": {
+      "peak": 263928.1,
+      "snr_db": 55.3,
+      "pass": true
+    },
+    "57037": {
+      "peak": 148044.4,
+      "snr_db": 50.2,
+      "pass": true
+    },
+    "97011": {
+      "peak": 222745.8,
+      "snr_db": 53.8,
+      "pass": true
+    }
+  },
+  "ch1_ch2_simultaneous": {
+    "35840+97011": {
+      "snr_f1_db": 46.6,
+      "snr_f2_db": 53.7,
+      "both_pass": true
+    },
+    "54920+97011": {
+      "snr_f1_db": 55.5,
+      "snr_f2_db": 53.7,
+      "both_pass": true
+    },
+    "35840+54920": {
+      "snr_f1_db": 46.5,
+      "snr_f2_db": 55.3,
+      "both_pass": true
+    }
+  },
+  "gate_decision": "PASS",
+  "recommended_pair": "54920+97011",
+  "comparison_vs_ad9833": {
+    "35840": {
+      "ad9833_snr": 9.3,
+      "pico_nco_snr": 46.5,
+      "improvement_db": 37.2
+    },
+    "54920": {
+      "ad9833_snr": 4.8,
+      "pico_nco_snr": 55.6,
+      "improvement_db": 50.7
+    },
+    "57037": {
+      "ad9833_snr": 3.5,
+      "pico_nco_snr": 54.7,
+      "improvement_db": 51.2
+    },
+    "97011": {
+      "ad9833_snr": 17.8,
+      "pico_nco_snr": 54.0,
+      "improvement_db": 36.1
+    }
+  }
+}

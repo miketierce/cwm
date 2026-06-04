@@ -1,0 +1,304 @@
+{
+  "experiment": "T2.2_intermodulation_products",
+  "timestamp": "2026-05-26T19:07:59.833397",
+  "plate": "100x100mm_fused_silica",
+  "relay_channel": 8,
+  "t_burst_ms": 15,
+  "awg_amplitude_uvpp": 500000,
+  "n_avg": 20,
+  "pairs": [
+    {
+      "pair": [
+        35840.0,
+        57037.0
+      ],
+      "relay_on": {
+        "f1_hz": 35840.0,
+        "f2_hz": 57037.0,
+        "f1_amplitude_mv": 0.36205580755591327,
+        "f2_amplitude_mv": 0.3703234433391221,
+        "noise_floor_mv": 0.32639644619875874,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 21197.0,
+            "bin": 56,
+            "amplitude_mv": 0.3609099167721851,
+            "snr_vs_noise": 1.1057409508448184
+          },
+          "f1+f2": {
+            "freq_hz": 92877.0,
+            "bin": 243,
+            "amplitude_mv": 0.3783833025420642,
+            "snr_vs_noise": 1.1592751911019525
+          },
+          "2f1-f2": {
+            "freq_hz": 14643.0,
+            "bin": 38,
+            "amplitude_mv": 0.3737339173309983,
+            "snr_vs_noise": 1.1450305960237492
+          },
+          "2f2-f1": {
+            "freq_hz": 78234.0,
+            "bin": 205,
+            "amplitude_mv": 0.4068772237003901,
+            "snr_vs_noise": 1.2465736941652321
+          },
+          "3f1-2f2": {
+            "freq_hz": 6554.0,
+            "bin": 17,
+            "amplitude_mv": 0.4476106919128274,
+            "snr_vs_noise": 1.3713712178111626
+          },
+          "3f2-2f1": {
+            "freq_hz": 99431.0,
+            "bin": 261,
+            "amplitude_mv": 0.3976370128803772,
+            "snr_vs_noise": 1.2182639165079532
+          }
+        }
+      },
+      "relay_off": {
+        "f1_hz": 35840.0,
+        "f2_hz": 57037.0,
+        "f1_amplitude_mv": 0.43353162777925336,
+        "f2_amplitude_mv": 0.36756574365321726,
+        "noise_floor_mv": 0.34797533500781586,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 21197.0,
+            "bin": 56,
+            "amplitude_mv": 0.4030720026036921,
+            "snr_vs_noise": 1.1583349796750355
+          },
+          "f1+f2": {
+            "freq_hz": 92877.0,
+            "bin": 243,
+            "amplitude_mv": 0.4175580444463069,
+            "snr_vs_noise": 1.1999644872442703
+          },
+          "2f1-f2": {
+            "freq_hz": 14643.0,
+            "bin": 38,
+            "amplitude_mv": 0.4045605777836297,
+            "snr_vs_noise": 1.1626127977563205
+          },
+          "2f2-f1": {
+            "freq_hz": 78234.0,
+            "bin": 205,
+            "amplitude_mv": 0.3625562520490993,
+            "snr_vs_noise": 1.0419021567748643
+          },
+          "3f1-2f2": {
+            "freq_hz": 6554.0,
+            "bin": 17,
+            "amplitude_mv": 0.5483620979003437,
+            "snr_vs_noise": 1.5758648465358243
+          },
+          "3f2-2f1": {
+            "freq_hz": 99431.0,
+            "bin": 261,
+            "amplitude_mv": 0.4064373317913085,
+            "snr_vs_noise": 1.1680061513043145
+          }
+        }
+      },
+      "n_acoustic_im": 0
+    },
+    {
+      "pair": [
+        35840.0,
+        97011.0
+      ],
+      "relay_on": {
+        "f1_hz": 35840.0,
+        "f2_hz": 97011.0,
+        "f1_amplitude_mv": 0.3349342711537851,
+        "f2_amplitude_mv": 0.3621385976991077,
+        "noise_floor_mv": 0.3216225356457245,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 61171.0,
+            "bin": 160,
+            "amplitude_mv": 0.33669728092177575,
+            "snr_vs_noise": 1.046870923537076
+          },
+          "f1+f2": {
+            "freq_hz": 132851.0,
+            "bin": 348,
+            "amplitude_mv": 0.33153244755004857,
+            "snr_vs_noise": 1.0308122435650469
+          },
+          "2f1-f2": {
+            "freq_hz": 25331.0,
+            "bin": 66,
+            "amplitude_mv": 0.3665809965050929,
+            "snr_vs_noise": 1.1397864138130274
+          },
+          "2f2-f1": {
+            "freq_hz": 158182.0,
+            "bin": 415,
+            "amplitude_mv": 0.35601586104159194,
+            "snr_vs_noise": 1.1069369263158617
+          },
+          "3f1-2f2": {
+            "freq_hz": 86502.0,
+            "bin": 227,
+            "amplitude_mv": 0.40681808235003,
+            "snr_vs_noise": 1.264892963838052
+          },
+          "3f2-2f1": {
+            "freq_hz": 219353.0,
+            "bin": 575,
+            "amplitude_mv": 0.35853747513683926,
+            "snr_vs_noise": 1.1147772167674765
+          }
+        }
+      },
+      "relay_off": {
+        "f1_hz": 35840.0,
+        "f2_hz": 97011.0,
+        "f1_amplitude_mv": 0.489193527158298,
+        "f2_amplitude_mv": 0.43735047240611324,
+        "noise_floor_mv": 0.35366168636038087,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 61171.0,
+            "bin": 160,
+            "amplitude_mv": 0.4369704190696436,
+            "snr_vs_noise": 1.2355605255593654
+          },
+          "f1+f2": {
+            "freq_hz": 132851.0,
+            "bin": 348,
+            "amplitude_mv": 0.4019169582948928,
+            "snr_vs_noise": 1.136444726119809
+          },
+          "2f1-f2": {
+            "freq_hz": 25331.0,
+            "bin": 66,
+            "amplitude_mv": 0.4662282252413692,
+            "snr_vs_noise": 1.3182887579354106
+          },
+          "2f2-f1": {
+            "freq_hz": 158182.0,
+            "bin": 415,
+            "amplitude_mv": 0.37670204073074276,
+            "snr_vs_noise": 1.065148007994521
+          },
+          "3f1-2f2": {
+            "freq_hz": 86502.0,
+            "bin": 227,
+            "amplitude_mv": 0.3937478824453625,
+            "snr_vs_noise": 1.1133461656463794
+          },
+          "3f2-2f1": {
+            "freq_hz": 219353.0,
+            "bin": 575,
+            "amplitude_mv": 0.35286737435250254,
+            "snr_vs_noise": 0.9977540343257061
+          }
+        }
+      },
+      "n_acoustic_im": 0
+    },
+    {
+      "pair": [
+        54920.0,
+        97011.0
+      ],
+      "relay_on": {
+        "f1_hz": 54920.0,
+        "f2_hz": 97011.0,
+        "f1_amplitude_mv": 0.3593468581748566,
+        "f2_amplitude_mv": 0.38094209644711524,
+        "noise_floor_mv": 0.3090543158381992,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 42091.0,
+            "bin": 110,
+            "amplitude_mv": 0.3806661406272508,
+            "snr_vs_noise": 1.2317127479512142
+          },
+          "f1+f2": {
+            "freq_hz": 151931.0,
+            "bin": 398,
+            "amplitude_mv": 0.37255455853505487,
+            "snr_vs_noise": 1.2054662868066863
+          },
+          "2f1-f2": {
+            "freq_hz": 12829.0,
+            "bin": 34,
+            "amplitude_mv": 0.3352206368035502,
+            "snr_vs_noise": 1.0846657678744405
+          },
+          "2f2-f1": {
+            "freq_hz": 139102.0,
+            "bin": 365,
+            "amplitude_mv": 0.32911300792328285,
+            "snr_vs_noise": 1.0649034524260943
+          },
+          "3f1-2f2": {
+            "freq_hz": 29262.0,
+            "bin": 77,
+            "amplitude_mv": 0.3620431718717619,
+            "snr_vs_noise": 1.171454832752778
+          },
+          "3f2-2f1": {
+            "freq_hz": 181193.0,
+            "bin": 475,
+            "amplitude_mv": 0.3153259046592202,
+            "snr_vs_noise": 1.0202928368885955
+          }
+        }
+      },
+      "relay_off": {
+        "f1_hz": 54920.0,
+        "f2_hz": 97011.0,
+        "f1_amplitude_mv": 0.44002497481760505,
+        "f2_amplitude_mv": 0.38030331618103175,
+        "noise_floor_mv": 0.35306096957748223,
+        "im_products": {
+          "f2-f1": {
+            "freq_hz": 42091.0,
+            "bin": 110,
+            "amplitude_mv": 0.4877003920462153,
+            "snr_vs_noise": 1.381348928571345
+          },
+          "f1+f2": {
+            "freq_hz": 151931.0,
+            "bin": 398,
+            "amplitude_mv": 0.4137371088258785,
+            "snr_vs_noise": 1.1718573970977564
+          },
+          "2f1-f2": {
+            "freq_hz": 12829.0,
+            "bin": 34,
+            "amplitude_mv": 0.385639779908485,
+            "snr_vs_noise": 1.0922753097573792
+          },
+          "2f2-f1": {
+            "freq_hz": 139102.0,
+            "bin": 365,
+            "amplitude_mv": 0.4017380353397404,
+            "snr_vs_noise": 1.1378715574834322
+          },
+          "3f1-2f2": {
+            "freq_hz": 29262.0,
+            "bin": 77,
+            "amplitude_mv": 0.4366222575726342,
+            "snr_vs_noise": 1.2366766513306526
+          },
+          "3f2-2f1": {
+            "freq_hz": 181193.0,
+            "bin": 475,
+            "amplitude_mv": 0.37059128822794996,
+            "snr_vs_noise": 1.0496523834720295
+          }
+        }
+      },
+      "n_acoustic_im": 0
+    }
+  ],
+  "total_acoustic_im": 0,
+  "gate_decision": "FAIL"
+}

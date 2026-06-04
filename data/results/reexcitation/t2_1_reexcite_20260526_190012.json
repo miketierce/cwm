@@ -1,0 +1,78 @@
+{
+  "experiment": "T2.1_reexcitation_interference",
+  "timestamp": "2026-05-26T19:00:12.483063",
+  "plate": "100x100mm_fused_silica",
+  "relay_channel": 8,
+  "frequency_hz": 57037.0,
+  "t_write_ms": 100,
+  "t_read_ms": 5,
+  "awg_amplitude_uvpp": 500000,
+  "n_avg": 30,
+  "baseline": {
+    "mean_mv": 335.581530198065,
+    "std_mv": 152.68600915959868,
+    "n_samples": 10
+  },
+  "gap_sweep": [
+    {
+      "gap_ms": 2,
+      "reexcite_mean_mv": 310.2359080782493,
+      "reexcite_std_mv": 140.4834282671885,
+      "contrast_pct": -7.552746453255754,
+      "sigma_from_baseline": -0.16599832728172645
+    },
+    {
+      "gap_ms": 5,
+      "reexcite_mean_mv": 325.1492863755201,
+      "reexcite_std_mv": 143.3234309168486,
+      "contrast_pct": -3.108706196192524,
+      "sigma_from_baseline": -0.06832481823295533
+    },
+    {
+      "gap_ms": 10,
+      "reexcite_mean_mv": 383.29213334554066,
+      "reexcite_std_mv": 105.66260436140985,
+      "contrast_pct": 14.21729113617074,
+      "sigma_from_baseline": 0.31247527792546465
+    },
+    {
+      "gap_ms": 15,
+      "reexcite_mean_mv": 287.8810998870814,
+      "reexcite_std_mv": 145.97584345354804,
+      "contrast_pct": -14.21425973081121,
+      "sigma_from_baseline": -0.3124086520666318
+    },
+    {
+      "gap_ms": 20,
+      "reexcite_mean_mv": 304.26953947569194,
+      "reexcite_std_mv": 136.39658213454834,
+      "contrast_pct": -9.330665696616943,
+      "sigma_from_baseline": -0.20507439348711695
+    },
+    {
+      "gap_ms": 30,
+      "reexcite_mean_mv": 299.7985778374583,
+      "reexcite_std_mv": 150.23731014340612,
+      "contrast_pct": -10.662968352128052,
+      "sigma_from_baseline": -0.2343564584440984
+    },
+    {
+      "gap_ms": 50,
+      "reexcite_mean_mv": 329.62024801375355,
+      "reexcite_std_mv": 133.45394277499614,
+      "contrast_pct": -1.7764035406814662,
+      "sigma_from_baseline": -0.039042753275975006
+    },
+    {
+      "gap_ms": 80,
+      "reexcite_mean_mv": 314.696696879991,
+      "reexcite_std_mv": 150.83659890649196,
+      "contrast_pct": -6.223475203104142,
+      "sigma_from_baseline": -0.1367828881835771
+    }
+  ],
+  "max_contrast_pct": 14.21729113617074,
+  "max_sigma_from_baseline": 0.31247527792546465,
+  "expected_tau_ms": 15.397320616110218,
+  "gate_decision": "PASS"
+}

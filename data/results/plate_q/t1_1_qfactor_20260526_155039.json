@@ -1,0 +1,48 @@
+{
+  "experiment": "T1.1_qfactor_plate",
+  "timestamp": "2026-05-26T15:50:39.095194",
+  "plate": "100x100mm_fused_silica",
+  "signal_chain": "AWG\u2192BoardD(3.69x)\u2192TX_PZT\u2192plate\u2192RX_PZT\u2192relay\u2192BoardA(11x)\u2192ChA",
+  "awg_amplitude_uvpp": 1000000,
+  "ch_a_range_index": 8,
+  "relay_channel": 8,
+  "ring_up_s": 1.0,
+  "n_averages": 5,
+  "results": [
+    {
+      "tau_ms": 0.862,
+      "Q": 0.8,
+      "R_squared": 0.0004,
+      "peak_mv": 35.37,
+      "decay_points": 29,
+      "slope": -1160.28,
+      "error": null,
+      "freq_hz": 291,
+      "steady_state_pp_mv": 134.1,
+      "n_averages": 5
+    },
+    {
+      "tau_ms": null,
+      "Q": null,
+      "R_squared": null,
+      "peak_mv": 306.5269040342837,
+      "error": "Insufficient decay points above threshold",
+      "freq_hz": 388,
+      "steady_state_pp_mv": 134.1,
+      "n_averages": 5
+    },
+    {
+      "tau_ms": null,
+      "Q": null,
+      "R_squared": null,
+      "peak_mv": 221.0020666360165,
+      "error": "Insufficient decay points above threshold",
+      "freq_hz": 484,
+      "steady_state_pp_mv": 223.7,
+      "n_averages": 5
+    }
+  ],
+  "best_Q": 0.8,
+  "median_Q": 0.8,
+  "gate_decision": "KILL"
+}

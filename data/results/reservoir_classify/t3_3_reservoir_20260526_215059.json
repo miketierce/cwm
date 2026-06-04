@@ -1,0 +1,98 @@
+{
+  "experiment": "T3.3",
+  "timestamp": "20260526_215059",
+  "gate_decision": "PASS",
+  "modes_hz": [
+    35840,
+    54920,
+    57037,
+    97011
+  ],
+  "classes": [
+    [
+      3,
+      0
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      3
+    ]
+  ],
+  "n_samples_per_class": 30,
+  "burst_ms": 20,
+  "accuracy_raw": 1.0,
+  "accuracy_phase": 1.0,
+  "accuracy_poly": 1.0,
+  "best_accuracy": 1.0,
+  "best_feature_set": "Amplitude only",
+  "per_class_accuracy": [
+    1.0,
+    1.0,
+    1.0,
+    1.0
+  ],
+  "confusion_matrix": [
+    [
+      30,
+      0,
+      0,
+      0
+    ],
+    [
+      0,
+      30,
+      0,
+      0
+    ],
+    [
+      0,
+      0,
+      30,
+      0
+    ],
+    [
+      0,
+      0,
+      0,
+      30
+    ]
+  ],
+  "snr_sweep": [
+    {
+      "drive_mvpp": 500.0,
+      "accuracy": 1.0
+    },
+    {
+      "drive_mvpp": 250.0,
+      "accuracy": 1.0
+    },
+    {
+      "drive_mvpp": 100.0,
+      "accuracy": 1.0
+    },
+    {
+      "drive_mvpp": 50.0,
+      "accuracy": 1.0
+    }
+  ],
+  "feature_means": [
+    29628.62863814384,
+    65027.884637459174,
+    47953.87967748786,
+    45258.89327798898
+  ],
+  "feature_stds": [
+    50414.58967544083,
+    111662.67536239173,
+    82012.57873301349,
+    77033.6259749016
+  ]
+}

@@ -20,21 +20,25 @@ Everything else stays digital (laptop CPU).
 
 Two modes:
   --simulate   Use census-derived synthetic transfer matrix (no hardware)
-  --hardware   Drive real plate via Kronos, characterize H, then use it
+  --hardware   Drive real plate via PicoScope AWG, measure H, then use it
 
 The sequence reversal task from Dave's PDP-11 video is used as the test
-problem: input [4,7,4,9,6,3,5,X] → predict reversed output.
+problem: input [4,7,4,9] → predict reversed output.
+
+Hardware signal chain (v3):
+  PicoScope AWG (0.5Vpp) → Board D (×3.69) → TX PZT (SW corner)
+  → fused silica plate →
+  RX PZT (NE, relay 8) → Board A (×11 preamp) → PicoScope Ch A (AC, ±5V)
 
 Usage:
   # Software validation (no hardware needed):
   python tools/plate_attention_head.py --simulate
 
   # Full hardware run:
-  python tools/plate_attention_head.py --hardware --device KRONOS \\
-      --port /dev/cu.usbserial-11310 --plate 5
+  python tools/plate_attention_head.py --hardware
 
-  # Custom sequence length and embedding dim:
-  python tools/plate_attention_head.py --simulate --seq-len 4 --d-model 8
+  # Custom config:
+  python tools/plate_attention_head.py --simulate --seq-len 4 --d-model 4
 """
 from __future__ import annotations
 
@@ -65,12 +69,26 @@ PLATE_RELAYS = {
     "5": [(7, "NE"), (8, "NW")],
 }
 
-# Audio config
-DRIVE_AMPLITUDE = 0.8
+# PicoScope v3 hardware config (from validated T1-T3 campaign)
+PICO_SAMPLE_RATE_HZ = 781_250
+PICO_N_SAMPLES = 2048
+PICO_TIMEBASE = 7
+PICO_RANGE_INDEX = 8        # ±5V
+PICO_RANGE_MV = 5000.0
+PICO_N_FFT_PAD = 4
+PICO_AWG_UVPP = 500_000     # 0.5 Vpp
+PICO_SETTLE_MS = 100        # settle time per mode drive
+PICO_N_AVG = 10             # averages per H column measurement
+PICO_TRIGGER_AUTO_MS = 2000
+
+# Confirmed acoustic modes (from T1.2/T1.3 campaign 2026-05-26)
+CONFIRMED_MODES_HZ = [35_840, 54_920, 57_037, 97_011]
+
+# Relay config
+RELAY_RX_NE = 8             # Best sensor (6× signal vs NW)
 SETTLE_RELAY_S = 0.10
-USB_LATENCY_S = 0.25
-AUDIO_DTYPE = "float32"
-PREFERRED_SAMPLE_RATES = [192000, 96000, 48000, 44100]
+
+# Legacy audio config (kept for --simulate mode census loading)
 FIXTURE_FREQ_HZ = 6700.0
 FIXTURE_GUARD_HZ = 200.0
 N_AVG = 4
@@ -351,43 +369,100 @@ def identity_like_transfer_matrix(n: int) -> np.ndarray:
 
 
 # ═══════════════════════════════════════════════════════════════════════
-#  HARDWARE INTERFACE (Kronos)
+#  HARDWARE INTERFACE (PicoScope 2204A — v3 signal chain)
 # ═══════════════════════════════════════════════════════════════════════
 
-def find_audio_device(name_hint: str) -> int:
-    import sounddevice as sd
-    for i, dev in enumerate(sd.query_devices()):
-        if (name_hint.lower() in dev["name"].lower()
-                and dev["max_input_channels"] > 0
-                and dev["max_output_channels"] > 0):
-            return i
-    raise RuntimeError(f"No audio device matching '{name_hint}' with I/O.")
+import ctypes as ct
+import os
+
+os.environ['DYLD_LIBRARY_PATH'] = (
+    '/Applications/PicoScope 7 T&M Early Access.app/Contents/Resources'
+)
 
 
-def detect_sample_rate(device_idx: int) -> int:
-    import sounddevice as sd
-    for rate in PREFERRED_SAMPLE_RATES:
-        try:
-            sd.check_input_settings(device=device_idx, channels=1,
-                                    dtype=AUDIO_DTYPE, samplerate=rate)
-            sd.check_output_settings(device=device_idx, channels=1,
-                                     dtype=AUDIO_DTYPE, samplerate=rate)
-            return rate
-        except Exception:
-            continue
-    return int(sd.query_devices(device_idx)["default_samplerate"])
+def open_scope():
+    """Open PicoScope 2204A and configure Ch A (AC coupled, ±5V)."""
+    from picosdk.ps2000 import ps2000
+    handle = ps2000.ps2000_open_unit()
+    if handle <= 0:
+        raise RuntimeError(f"Failed to open PicoScope (handle={handle})")
+    # AC coupling removes Board A DC offset (~3V)
+    ps2000.ps2000_set_channel(handle, 0, 1, 0, PICO_RANGE_INDEX)
+    return handle, ps2000
 
 
-def characterize_plate_H(mode_freqs: list[float], sample_rate: int,
-                         device_idx: int, mux, relay_ch: int,
-                         n_avg: int = N_AVG) -> np.ndarray:
-    """Measure the plate's transfer matrix H via Kronos.
+def close_scope(handle, ps2000):
+    """Close PicoScope."""
+    ps2000.ps2000_close_unit(handle)
+
+
+def set_awg(handle, ps2000, freq_hz: float, uvpp: int = PICO_AWG_UVPP):
+    """Set AWG to single-tone sine."""
+    ps2000.ps2000_set_sig_gen_built_in(
+        handle, 0, uvpp, 0,
+        float(freq_hz), float(freq_hz), 0, 0, 0, 0
+    )
+
+
+def stop_awg(handle, ps2000):
+    """Stop AWG output."""
+    ps2000.ps2000_set_sig_gen_built_in(
+        handle, 0, 0, 0, 1000.0, 1000.0, 0, 0, 0, 0
+    )
+
+
+def capture_triggered(handle, ps2000):
+    """Single triggered capture → mV array (2048 samples, AC coupled)."""
+    ps2000.ps2000_set_trigger(
+        handle, 0, 0, 0, 0, PICO_TRIGGER_AUTO_MS
+    )
+    ps2000.ps2000_run_block(
+        handle, PICO_N_SAMPLES, PICO_TIMEBASE, 1, ct.byref(ct.c_int32())
+    )
+    time.sleep(0.005)
+    for _ in range(500):
+        if ps2000.ps2000_ready(handle):
+            break
+        time.sleep(0.005)
+    else:
+        raise TimeoutError("PicoScope capture timed out")
+    buf = (ct.c_int16 * PICO_N_SAMPLES)()
+    ov = ct.c_int16(0)
+    ps2000.ps2000_get_values(
+        handle, ct.byref(buf), None, None, None, ct.byref(ov),
+        PICO_N_SAMPLES, 0
+    )
+    return np.array(buf, dtype=np.float64) * (PICO_RANGE_MV / 32767.0)
+
+
+def extract_mode_amplitudes(mv: np.ndarray, mode_freqs: list[float]) -> np.ndarray:
+    """Extract FFT amplitudes at each mode frequency from a capture."""
+    ac = mv - mv.mean()
+    window = np.hanning(PICO_N_SAMPLES)
+    fft_c = np.fft.rfft(ac * window, n=PICO_N_SAMPLES * PICO_N_FFT_PAD)
+    bin_width = PICO_SAMPLE_RATE_HZ / (PICO_N_SAMPLES * PICO_N_FFT_PAD)
+
+    amps = np.zeros(len(mode_freqs))
+    for i, freq in enumerate(mode_freqs):
+        bin_idx = int(round(freq / bin_width))
+        lo = max(0, bin_idx - 3)
+        hi = min(len(fft_c) - 1, bin_idx + 3)
+        peak_bin = lo + np.argmax(np.abs(fft_c[lo:hi + 1]))
+        amps[i] = np.abs(fft_c[peak_bin])
+    return amps
+
+
+def characterize_plate_H(mode_freqs: list[float], handle, ps2000,
+                         mux, relay_ch: int,
+                         n_avg: int = PICO_N_AVG) -> np.ndarray:
+    """Measure the plate's transfer matrix H via PicoScope AWG.
 
     Drive each mode frequency solo, measure response at all mode frequencies.
     H[i,j] = response at mode_freq[i] when driving mode_freq[j].
-    """
-    import sounddevice as sd
 
+    Signal chain: AWG → Board D (×3.69) → TX PZT → plate → RX PZT →
+                  relay mux → Board A (×11) → PicoScope Ch A (AC coupled)
+    """
     n = len(mode_freqs)
     H = np.zeros((n, n))
 
@@ -398,93 +473,26 @@ def characterize_plate_H(mode_freqs: list[float], sample_rate: int,
     t0 = time.time()
 
     for j, drive_f in enumerate(mode_freqs):
-        # Build single-tone TX signal
-        total_dur = USB_LATENCY_S + 0.2
-        n_samples = int(sample_rate * total_dur)
-        t = np.arange(n_samples) / sample_rate
-        sig = DRIVE_AMPLITUDE * np.sin(2 * np.pi * drive_f * t)
-        tx = sig.astype(np.float32).reshape(-1, 1)
+        # Drive single tone at this mode frequency
+        set_awg(handle, ps2000, drive_f)
+        time.sleep(PICO_SETTLE_MS / 1000.0)  # wait for steady-state
 
+        # Average multiple captures
         mags_sum = np.zeros(n)
         for _ in range(n_avg):
-            rx = sd.playrec(tx, samplerate=sample_rate,
-                            input_mapping=[1], output_mapping=[1],
-                            device=device_idx, dtype=AUDIO_DTYPE, blocking=True)
-            rx_mono = rx[:, 0].astype(np.float64)
-            settle = int(sample_rate * USB_LATENCY_S)
-            rx_capture = rx_mono[settle:]
-
-            windowed = rx_capture * np.hanning(len(rx_capture))
-            nfft = len(rx_capture) * 4
-            spectrum = np.abs(np.fft.rfft(windowed, n=nfft))
-            freq_axis = np.fft.rfftfreq(nfft, d=1.0 / sample_rate)
-            bin_hz = freq_axis[1]
-
-            for i, read_f in enumerate(mode_freqs):
-                tb = int(round(read_f / bin_hz))
-                lo = max(0, tb - 3)
-                hi = min(len(spectrum) - 1, tb + 3)
-                mags_sum[i] += float(np.max(spectrum[lo:hi + 1]))
+            mv = capture_triggered(handle, ps2000)
+            amps = extract_mode_amplitudes(mv, mode_freqs)
+            mags_sum += amps
 
         H[:, j] = mags_sum / n_avg
+        elapsed = time.time() - t0
+        print(f"    [{j+1}/{n}] driving {drive_f:.0f} Hz, "
+              f"response: diag={H[j,j]:.0f}, "
+              f"elapsed {elapsed:.1f}s", flush=True)
 
-        if (j + 1) % 10 == 0 or j == n - 1:
-            elapsed = time.time() - t0
-            print(f"    [{j+1}/{n}] {elapsed:.0f}s", flush=True)
-
+    stop_awg(handle, ps2000)
     print(f"  H characterized in {time.time()-t0:.1f}s")
     return H
-
-
-def make_hardware_fn(mode_freqs: list[float], sample_rate: int,
-                     device_idx: int) -> callable:
-    """Create a function that drives the plate with an amplitude vector
-    and returns the measured response vector."""
-    import sounddevice as sd
-
-    def hw_fn(x_vec: np.ndarray) -> np.ndarray:
-        n = len(mode_freqs)
-        # Truncate or pad
-        amps = np.zeros(n)
-        amps[:min(len(x_vec), n)] = x_vec[:min(len(x_vec), n)]
-
-        # Build multitone TX
-        total_dur = USB_LATENCY_S + 0.2
-        n_samples = int(sample_rate * total_dur)
-        t = np.arange(n_samples) / sample_rate
-        sig = np.zeros(n_samples, dtype=np.float64)
-        for i, (f, a) in enumerate(zip(mode_freqs, amps)):
-            if abs(a) > 0.001:
-                sig += a * np.sin(2 * np.pi * f * t)
-        peak = np.max(np.abs(sig))
-        if peak > 0:
-            sig *= DRIVE_AMPLITUDE / peak
-        tx = sig.astype(np.float32).reshape(-1, 1)
-
-        mags_sum = np.zeros(n)
-        for _ in range(N_AVG):
-            rx = sd.playrec(tx, samplerate=sample_rate,
-                            input_mapping=[1], output_mapping=[1],
-                            device=device_idx, dtype=AUDIO_DTYPE, blocking=True)
-            rx_mono = rx[:, 0].astype(np.float64)
-            settle = int(sample_rate * USB_LATENCY_S)
-            rx_capture = rx_mono[settle:]
-
-            windowed = rx_capture * np.hanning(len(rx_capture))
-            nfft = len(rx_capture) * 4
-            spectrum = np.abs(np.fft.rfft(windowed, n=nfft))
-            freq_axis = np.fft.rfftfreq(nfft, d=1.0 / sample_rate)
-            bin_hz = freq_axis[1]
-
-            for i, read_f in enumerate(mode_freqs):
-                tb = int(round(read_f / bin_hz))
-                lo = max(0, tb - 3)
-                hi = min(len(spectrum) - 1, tb + 3)
-                mags_sum[i] += float(np.max(spectrum[lo:hi + 1]))
-
-        return mags_sum / N_AVG
-
-    return hw_fn
 
 
 # ═══════════════════════════════════════════════════════════════════════
@@ -612,34 +620,27 @@ def run_experiment(args):
     # ── Step 3: Build or measure plate transfer matrix ──
     H_attn = None
     H_context = None
-    hardware_fn = None
 
     if args.hardware:
-        print(f"\n  Step 3: Characterizing real plate via Kronos...")
+        print(f"\n  Step 3: Characterizing real plate via PicoScope...")
         from relay_mux import RelayMux
 
-        device_idx = find_audio_device(args.device)
-        sample_rate = detect_sample_rate(device_idx)
-        print(f"    Audio device: {args.device}, {sample_rate} Hz")
+        # Open PicoScope
+        handle, ps2000_lib = open_scope()
+        print(f"    PicoScope opened (handle={handle})")
+        print(f"    Signal chain: AWG (0.5Vpp) → Board D (×3.69) → "
+              f"TX PZT → plate → RX PZT (relay {RELAY_RX_NE}) → "
+              f"Board A (×11) → Ch A (AC, ±5V)")
 
-        # Load census modes
-        census_path = args.census
-        if census_path is None:
-            # Find latest census
-            census_files = sorted(RESULTS_DIR.glob("plate_census_2*.json"))
-            if not census_files:
-                print("ERROR: No census file found. Run plate_census_kronos.py first.")
-                sys.exit(1)
-            census_path = str(census_files[-1])
-        plate_key = args.plate
-        mode_freqs = load_census_modes(census_path, plate_key)
+        # Use the 4 confirmed acoustic modes
+        mode_freqs = list(CONFIRMED_MODES_HZ)
+        n_modes = len(mode_freqs)
 
-        # Limit modes to d_model (we need at least d_model modes)
-        if len(mode_freqs) < d_model:
-            print(f"  WARNING: plate has {len(mode_freqs)} modes but "
-                  f"d_model={d_model}. Reducing d_model.")
-            d_model = len(mode_freqs)
-            # Rebuild problem with reduced d_model
+        # Constrain d_model to available modes
+        if d_model > n_modes:
+            print(f"  NOTE: d_model={d_model} > {n_modes} modes. "
+                  f"Setting d_model={n_modes}.")
+            d_model = n_modes
             problem = build_reversal_problem(
                 seq_len=seq_len, vocab_size=10, d_model=d_model, seed=args.seed
             )
@@ -648,24 +649,33 @@ def run_experiment(args):
                 problem["W_v"], problem["W_o"], causal=not args.no_causal
             )
 
-        mode_freqs = mode_freqs[:d_model]
-        print(f"    Using {len(mode_freqs)} modes (d_model={d_model})")
-        print(f"    Freq range: {mode_freqs[0]/1000:.1f} – "
-              f"{mode_freqs[-1]/1000:.1f} kHz")
+        # Also constrain seq_len to d_model for hardware
+        if seq_len > n_modes:
+            print(f"  NOTE: seq_len={seq_len} > {n_modes} modes. "
+                  f"Setting seq_len={n_modes}.")
+            seq_len = n_modes
+            problem = build_reversal_problem(
+                seq_len=seq_len, vocab_size=10, d_model=d_model, seed=args.seed
+            )
+            sw_result = software_attention_head(
+                problem["X"], problem["W_q"], problem["W_k"],
+                problem["W_v"], problem["W_o"], causal=not args.no_causal
+            )
 
-        relay_ch = PLATE_RELAYS[plate_key][0][0]
+        print(f"    Using {n_modes} confirmed modes: "
+              f"{[f'{f/1000:.1f}k' for f in mode_freqs]}")
+        print(f"    d_model={d_model}, seq_len={seq_len}")
+
+        # Open relay mux
+        relay_ch = RELAY_RX_NE
         mux = RelayMux(port=args.port)
         mux.open()
 
         # Characterize transfer matrix
         H_attn = characterize_plate_H(
-            mode_freqs, sample_rate, device_idx, mux, relay_ch
+            mode_freqs, handle, ps2000_lib, mux, relay_ch
         )
         H_context = H_attn  # Same plate for both operations
-
-        if args.live:
-            hardware_fn = make_hardware_fn(mode_freqs, sample_rate, device_idx)
-            print(f"    Live hardware mode: each mat-vec drives the plate")
 
         # Normalize H to have unit diagonal (so it approximates identity)
         diag = np.diag(H_attn)
@@ -674,7 +684,19 @@ def run_experiment(args):
             H_attn = D_inv @ H_attn
             H_context = D_inv @ H_context
             print(f"    H normalized (diag→1, off-diag mean: "
-                  f"{np.mean(np.abs(H_attn - np.eye(d_model))):.4f})")
+                  f"{np.mean(np.abs(H_attn - np.eye(n_modes))):.4f})")
+        else:
+            print(f"    WARNING: zero on diagonal — H not normalizable")
+
+        # Print raw H for diagnostics
+        print(f"\n    Raw H (normalized):")
+        for i in range(n_modes):
+            row = " ".join(f"{H_attn[i,j]:7.4f}" for j in range(n_modes))
+            print(f"      [{row}]")
+
+        # Stop AWG, close scope
+        stop_awg(handle, ps2000_lib)
+        close_scope(handle, ps2000_lib)
     else:
         print(f"\n  Step 3: Building synthetic plate transfer matrix...")
 
@@ -705,7 +727,6 @@ def run_experiment(args):
         problem["W_v"], problem["W_o"],
         H_attn, H_context,
         causal=not args.no_causal,
-        hardware_fn=hardware_fn,
     )
     plate_time = time.time() - t0
     print(f"    Done in {plate_time*1000:.1f} ms")
@@ -813,13 +834,13 @@ def main():
     mode_group.add_argument("--simulate", action="store_true",
                             help="Use synthetic transfer matrix (no hardware)")
     mode_group.add_argument("--hardware", action="store_true",
-                            help="Drive real plate via Kronos")
+                            help="Drive real plate via PicoScope AWG")
 
     # Model config
-    parser.add_argument("--seq-len", type=int, default=8,
-                        help="Sequence length (default: 8, matching Attention-11)")
-    parser.add_argument("--d-model", type=int, default=16,
-                        help="Model/embedding dimension (default: 16)")
+    parser.add_argument("--seq-len", type=int, default=4,
+                        help="Sequence length (default: 4, max for hardware)")
+    parser.add_argument("--d-model", type=int, default=4,
+                        help="Model/embedding dimension (default: 4 = n_modes)")
     parser.add_argument("--no-causal", action="store_true",
                         help="Disable causal masking (bidirectional attention)")
     parser.add_argument("--seed", type=int, default=42,
@@ -830,17 +851,8 @@ def main():
                         help="Use identity transfer matrix (sanity check)")
 
     # Hardware options
-    parser.add_argument("--device", type=str, default="KRONOS",
-                        help="Audio device name hint")
     parser.add_argument("--port", type=str, default=None,
                         help="Arduino serial port (auto-detect if omitted)")
-    parser.add_argument("--plate", type=str, default="5",
-                        help="Plate ID (1-5)")
-    parser.add_argument("--census", type=str, default=None,
-                        help="Path to census JSON (auto-detect if omitted)")
-    parser.add_argument("--live", action="store_true",
-                        help="Use live plate for every mat-vec (slow, "
-                             "highest fidelity)")
 
     args = parser.parse_args()
 

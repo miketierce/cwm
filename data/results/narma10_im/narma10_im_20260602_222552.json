@@ -1,0 +1,165 @@
+{
+  "test": "NARMA10_IM_reservoir",
+  "timestamp": "2026-06-02T22:25:55.796341",
+  "config": {
+    "f1_hz": 54920,
+    "f2_hz": 35840,
+    "im_freqs": [
+      2320,
+      16760,
+      19080,
+      71680,
+      74000,
+      90760,
+      93080,
+      109840
+    ],
+    "readout_freqs": [
+      2320,
+      16760,
+      19080,
+      35840,
+      54920,
+      71680,
+      74000,
+      90760,
+      93080,
+      109840
+    ],
+    "n_steps": 500,
+    "navg": 1,
+    "seed": 42
+  },
+  "im_characterization": [
+    {
+      "freq_hz": 2320,
+      "mag_a_both": 53449.91330840757,
+      "mag_a_baseline": 38923.685881468286,
+      "mag_b_both": 505.5960199020992,
+      "mag_b_baseline": 341.212462299893,
+      "ratio_a": 1.3731976327004345,
+      "ratio_b": 1.481763053125911
+    },
+    {
+      "freq_hz": 16760,
+      "mag_a_both": 1728.3139833348032,
+      "mag_a_baseline": 1504.3931035345934,
+      "mag_b_both": 355.28721971320454,
+      "mag_b_baseline": 219.4356590555626,
+      "ratio_a": 1.1488446598658983,
+      "ratio_b": 1.619095188276776
+    },
+    {
+      "freq_hz": 19080,
+      "mag_a_both": 951.4145499152071,
+      "mag_a_baseline": 706.8415657187504,
+      "mag_b_both": 990.740965643083,
+      "mag_b_baseline": 302.33860906866823,
+      "ratio_a": 1.34600820899343,
+      "ratio_b": 3.2769250632427904
+    },
+    {
+      "freq_hz": 71680,
+      "mag_a_both": 581.4355339177594,
+      "mag_a_baseline": 458.17879000856084,
+      "mag_b_both": 297.0335587541537,
+      "mag_b_baseline": 280.5648947460515,
+      "ratio_a": 1.2690145126685055,
+      "ratio_b": 1.0586982345849383
+    },
+    {
+      "freq_hz": 74000,
+      "mag_a_both": 432.9101508169083,
+      "mag_a_baseline": 390.8098089414115,
+      "mag_b_both": 317.67231369390436,
+      "mag_b_baseline": 228.11779956591826,
+      "ratio_a": 1.1077259089006342,
+      "ratio_b": 1.3925801243848484
+    },
+    {
+      "freq_hz": 90760,
+      "mag_a_both": 718.1650518136612,
+      "mag_a_baseline": 451.2866278336377,
+      "mag_b_both": 3056.619239842342,
+      "mag_b_baseline": 368.2600520216259,
+      "ratio_a": 1.5913723286265986,
+      "ratio_b": 8.300165122615155
+    },
+    {
+      "freq_hz": 93080,
+      "mag_a_both": 399.4254829421569,
+      "mag_a_baseline": 512.7816498115153,
+      "mag_b_both": 394.8104500101771,
+      "mag_b_baseline": 279.38969416141623,
+      "ratio_a": 0.7789387219471972,
+      "ratio_b": 1.4131174422707125
+    },
+    {
+      "freq_hz": 109840,
+      "mag_a_both": 753.5094299741472,
+      "mag_a_baseline": 746.7810484595062,
+      "mag_b_both": 325.03761234892784,
+      "mag_b_baseline": 787.5728911190502,
+      "ratio_a": 1.0090098450255542,
+      "ratio_b": 0.4127079740988633
+    }
+  ],
+  "im_ringdown": [
+    {
+      "freq_hz": 2320,
+      "tau_ms": 0.0,
+      "driven_level": 343.4322193603964,
+      "noise_level": 414.2216192335348,
+      "blocks_above_noise": 0
+    },
+    {
+      "freq_hz": 16760,
+      "tau_ms": 0.0,
+      "driven_level": 409.66052483470094,
+      "noise_level": 352.9842349526847,
+      "blocks_above_noise": 1
+    },
+    {
+      "freq_hz": 19080,
+      "tau_ms": 0.0,
+      "driven_level": 949.6117966739341,
+      "noise_level": 456.45206161504,
+      "blocks_above_noise": 1
+    },
+    {
+      "freq_hz": 71680,
+      "tau_ms": 0.0,
+      "driven_level": 441.3464529451083,
+      "noise_level": 362.82626918205864,
+      "blocks_above_noise": 1
+    },
+    {
+      "freq_hz": 74000,
+      "tau_ms": 0.0,
+      "driven_level": 548.655052058282,
+      "noise_level": 368.218534204828,
+      "blocks_above_noise": 1
+    },
+    {
+      "freq_hz": 90760,
+      "tau_ms": 0.0,
+      "driven_level": 3011.5800253554953,
+      "noise_level": 380.4262662584758,
+      "blocks_above_noise": 1
+    },
+    {
+      "freq_hz": 93080,
+      "tau_ms": 0.0,
+      "driven_level": 373.9725564467537,
+      "noise_level": 408.38052437015614,
+      "blocks_above_noise": 0
+    },
+    {
+      "freq_hz": 109840,
+      "tau_ms": 0.0,
+      "driven_level": 395.2384353514698,
+      "noise_level": 483.2471266271903,
+      "blocks_above_noise": 0
+    }
+  ]
+}

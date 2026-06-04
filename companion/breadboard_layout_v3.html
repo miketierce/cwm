@@ -2,7 +2,7 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<title>CWM Bench Wiring Guide v3</title>
+		<title>CWM Bench Wiring Guide v3.1</title>
 		<style>
 			:root {
 				--ink: #111827;
@@ -254,13 +254,14 @@
 		<!-- ═══════════ PAGE 1 : OVERVIEW ═══════════ -->
 		<section class="page">
 			<h1>
-				CWM Bench Wiring Guide v3
-				<span style="font-size: 11pt; color: var(--m)">— 2026-05-10</span>
+				CWM Bench Wiring Guide v3.1
+				<span style="font-size: 11pt; color: var(--m)">— 2026-05-22</span>
 			</h1>
 			<p>
-				<strong>What changed from v2:</strong> only 2 DDS boards (not 3), 16-ch
-				relay connects directly to Arduino&nbsp;1 with F-F jumper cables (not on
-				a breadboard), 8-ch relay set aside for later.
+				<strong>What changed from v3:</strong> Board&nbsp;D upgraded from
+				passive patch panel to active OPA2134PA gain-of-3 buffer. DDS sum node
+				now delivers 2&nbsp;Vpp at 47&nbsp;Ω to drive PZT (14× improvement over
+				unbuffered path).
 			</p>
 
 			<div class="note warn">
@@ -291,8 +292,8 @@
 						</tr>
 						<tr>
 							<td>OPA2134PA DIP-8</td>
-							<td>1</td>
-							<td>Analog preamp on Board&nbsp;A</td>
+							<td>2</td>
+							<td>Preamp (Board&nbsp;A) + Drive buffer (Board&nbsp;D)</td>
 						</tr>
 						<tr>
 							<td>9&nbsp;V battery + snap</td>
@@ -418,11 +419,12 @@
 			<div class="g3">
 				<div class="card">
 					<h3>
-						<span class="tag t-gnd">HALF BOARD</span> Board D — Drive Distrib
+						<span class="tag t-gnd">HALF BOARD</span> Board D — Drive Buffer
 					</h3>
 					<p>
-						Physical breakout: source → drive PZT. Dummy-load header. Keep far
-						from Board&nbsp;A.
+						OPA2134PA gain-of-3 buffer: DDS sum → 2&nbsp;Vpp at 47&nbsp;Ω into
+						drive PZT. Powered from Board&nbsp;S +5V. Keep far from
+						Board&nbsp;A.
 					</p>
 				</div>
 				<div
@@ -2783,18 +2785,19 @@ python tools/awg_preamp_refcancel_2048.py \
 								<td>5</td>
 								<td>DDS 1 pinned</td>
 								<td>
-									Pin the AD9833 header into <strong>d20–d26</strong>, OUT
-									facing the Arduino (left). Pin mapping: <br />•
-									<strong>d20</strong> = OUT <br />• <strong>d21</strong> = AGND
-									→ jumper <strong>a21</strong> → blue GND rail <br />•
-									<strong>d22</strong> = FSYNC → jumper <strong>a22</strong> →
-									Arduino D10 column <br />• <strong>d23</strong> = SCLK →
-									jumper <strong>a23</strong> → <strong>B52</strong> (SPI hub)
-									<br />• <strong>d24</strong> = SDATA → jumper
-									<strong>a24</strong> → <strong>B53</strong> (SPI hub) <br />•
-									<strong>d25</strong> = DGND → jumper <strong>a25</strong> →
-									blue GND rail <br />• <strong>d26</strong> = VCC → jumper
-									<strong>a26</strong> → red +5 V rail
+									Pin the AD9833 header into <strong>d20–d26</strong>, VCC at
+									the left (silkscreen reading order): <br />•
+									<strong>d20</strong> = VCC → jumper <strong>a20</strong> → red
+									+5 V rail <br />• <strong>d21</strong> = DGND → jumper
+									<strong>a21</strong> → blue GND rail <br />•
+									<strong>d22</strong> = SDATA → jumper <strong>a22</strong> →
+									<strong>B53</strong> (SPI MOSI hub) <br />•
+									<strong>d23</strong> = SCLK → jumper <strong>a23</strong> →
+									<strong>B52</strong> (SPI SCLK hub) <br />•
+									<strong>d24</strong> = FSYNC → jumper <strong>a24</strong> →
+									Arduino D10 column <br />• <strong>d25</strong> = AGND →
+									jumper <strong>a25</strong> → blue GND rail <br />•
+									<strong>d26</strong> = <strong>OUT</strong>
 								</td>
 							</tr>
 							<tr>
@@ -2802,27 +2805,28 @@ python tools/awg_preamp_refcancel_2048.py \
 								<td>DDS 2 pinned</td>
 								<td>
 									Pin into <strong>d28–d34</strong> (1 column gap at d27). Same
-									orientation — OUT leftmost: <br />• <strong>d28</strong> = OUT
-									<br />• <strong>d29</strong> = AGND → jumper
-									<strong>a29</strong> → blue GND rail <br />•
-									<strong>d30</strong> = FSYNC → jumper <strong>a30</strong> →
-									Arduino D9 column <br />• <strong>d31</strong> = SCLK → jumper
-									<strong>a31</strong> → <strong>C52</strong> (SPI hub) <br />•
-									<strong>d32</strong> = SDATA → jumper <strong>a32</strong> →
-									<strong>C53</strong> (SPI hub) <br />• <strong>d33</strong> =
-									DGND → jumper <strong>a33</strong> → blue GND rail <br />•
-									<strong>d34</strong> = VCC → jumper <strong>a34</strong> → red
-									+5 V rail
+									orientation — VCC leftmost: <br />• <strong>d28</strong> = VCC
+									→ jumper <strong>a28</strong> → red +5 V rail <br />•
+									<strong>d29</strong> = DGND → jumper <strong>a29</strong> →
+									blue GND rail <br />• <strong>d30</strong> = SDATA → jumper
+									<strong>a30</strong> → <strong>C53</strong> (SPI MOSI hub)
+									<br />• <strong>d31</strong> = SCLK → jumper
+									<strong>a31</strong> → <strong>C52</strong> (SPI SCLK hub)
+									<br />• <strong>d32</strong> = FSYNC → jumper
+									<strong>a32</strong> → Arduino D9 column <br />•
+									<strong>d33</strong> = AGND → jumper <strong>a33</strong> →
+									blue GND rail <br />• <strong>d34</strong> =
+									<strong>OUT</strong>
 								</td>
 							</tr>
 						</tbody>
 					</table>
 
 					<div class="note warn">
-						<strong>Orientation:</strong> The module's label order is VCC → OUT
-						reading left-to-right on the silkscreen, but we pin it
-						<em>OUT-first</em> (OUT closest to column 1). Double-check that both
-						DGND <em>and</em> AGND go to the blue GND rail.
+						<strong>Silkscreen order:</strong> The module reads VCC, DGND,
+						SDATA, SCLK, FSYNC, AGND, OUT left-to-right. Pin it in that natural
+						order — VCC closest to column 1, OUT at the right end. Both DGND
+						<em>and</em> AGND go to the blue GND rail.
 					</div>
 				</div>
 
@@ -2929,16 +2933,16 @@ python tools/awg_preamp_refcancel_2048.py \
 								<td>SCLK</td>
 								<td>A52–E52</td>
 								<td>
-									Arduino D13 → A52; DDS1 a23 → B52; DDS2 a31 → C52; DAC1 pin 3
-									A38 → D52; DAC2 pin 3 A48 → E52.
+									Arduino D13 → A52; DDS1 SCLK a23 → B52; DDS2 SCLK a31 → C52;
+									DAC1 pin 3 A38 → D52; DAC2 pin 3 A48 → E52.
 								</td>
 							</tr>
 							<tr>
 								<td>MOSI</td>
 								<td>A53–E53</td>
 								<td>
-									Arduino D11 → A53; DDS1 a24 → B53; DDS2 a32 → C53; DAC1 pin 4
-									A39 → D53; DAC2 pin 4 A49 → E53.
+									Arduino D11 → A53; DDS1 SDATA a22 → B53; DDS2 SDATA a30 → C53;
+									DAC1 pin 4 A39 → D53; DAC2 pin 4 A49 → E53.
 								</td>
 							</tr>
 						</tbody>
@@ -2956,12 +2960,12 @@ python tools/awg_preamp_refcancel_2048.py \
 						<tbody>
 							<tr>
 								<td>DDS 1 CS</td>
-								<td>Already wired in step 5 (FSYNC d22 → a22 → D10)</td>
+								<td>Already wired in step 5 (FSYNC d24 → a24 → D10)</td>
 								<td>Active-low select for DDS 1.</td>
 							</tr>
 							<tr>
 								<td>DDS 2 CS</td>
-								<td>Already wired in step 6 (FSYNC d30 → a30 → D9)</td>
+								<td>Already wired in step 6 (FSYNC d32 → a32 → D9)</td>
 								<td>Active-low select for DDS 2.</td>
 							</tr>
 							<tr>
@@ -2976,7 +2980,7 @@ python tools/awg_preamp_refcancel_2048.py \
 							</tr>
 							<tr>
 								<td>DDS power</td>
-								<td>Already wired: DDS1 VCC a26, DDS2 VCC a34 → +5 V rail</td>
+								<td>Already wired: DDS1 VCC a20, DDS2 VCC a28 → +5 V rail</td>
 								<td>Use Arduino USB 5V only.</td>
 							</tr>
 							<tr>
@@ -2997,9 +3001,10 @@ python tools/awg_preamp_refcancel_2048.py \
 				<div>
 					<h3>Phase E: DDS Output and Sum Node</h3>
 					<p class="sm">
-						DDS 1 OUT is at d20 (strip a20–e20). DDS 2 OUT is at d28 (strip
-						a28–e28). Two 10 k resistors merge them into a sum node at
-						<strong>column 35</strong> (A–E side), right before DAC 1.
+						DDS 1 OUT is at <strong>d26</strong> (strip a26–e26). DDS 2 OUT is
+						at <strong>d34</strong> (strip a34–e34). Two 10 k resistors merge
+						them into a sum node at <strong>column 35</strong> (A–E side), right
+						before DAC 1.
 					</p>
 					<table>
 						<thead>
@@ -3013,12 +3018,12 @@ python tools/awg_preamp_refcancel_2048.py \
 							<tr>
 								<td>1</td>
 								<td>10 k resistor</td>
-								<td><strong>e20</strong> → <strong>b35</strong></td>
+								<td><strong>e26</strong> → <strong>b35</strong></td>
 							</tr>
 							<tr>
 								<td>2</td>
 								<td>10 k resistor</td>
-								<td><strong>e28</strong> → <strong>c35</strong></td>
+								<td><strong>e34</strong> → <strong>c35</strong></td>
 							</tr>
 							<tr>
 								<td>3</td>
@@ -3039,8 +3044,8 @@ python tools/awg_preamp_refcancel_2048.py \
 					</table>
 
 					<div class="note">
-						Column 35 A–E is the DDS sum node. e20 shares a strip with DDS 1 OUT
-						(d20); e28 shares a strip with DDS 2 OUT (d28). With one DDS off, it
+						Column 35 A–E is the DDS sum node. e26 shares a strip with DDS 1 OUT
+						(d26); e34 shares a strip with DDS 2 OUT (d34). With one DDS off, it
 						behaves as a single source through 10 k. With both on, it is a
 						passive two-tone sum.
 					</div>
@@ -3273,7 +3278,1025 @@ python tools/awg_preamp_refcancel_2048.py \
 			</div>
 		</section>
 
-		<!-- ═══════════ PAGE 12 : QUICK REFERENCE ═══════════ -->
+		<!-- ═══════════ PAGE 12 : BOARD D BUFFER AMPLIFIER UPGRADE ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">7</span> Board D — Drive Buffer Amplifier
+				(OPA2134PA) <span class="tag t-vio">DUAL ±9V SUPPLY</span>
+			</h2>
+			<p class="sm">
+				Upgrade Board&nbsp;D from a passive patch panel to an active gain stage.
+				Installs a second OPA2134PA on Board&nbsp;D to amplify the DDS sum-node
+				signal from ~670&nbsp;mVpp to ~2&nbsp;Vpp at low output impedance
+				(47&nbsp;Ω). Uses dual ±9V battery supply for symmetric operation.
+				<strong>Validated May 26, 2026: 3.69× gain, 3.47 Vpp output verified.</strong>
+			</p>
+
+			<div class="note crit">
+				<strong>Why ±9V dual supply:</strong> The OPA2134PA requires symmetric
+				supply for stable gain and to avoid oscillation. A single +5V supply
+				caused 388&nbsp;Hz oscillation with gain >1 (verified May 22–23). Dual
+				±9V (one battery → +9V rail, one battery → −9V rail) eliminates
+				oscillation and provides headroom for 3.5&nbsp;Vpp output without
+				clipping.
+			</div>
+
+			<div class="g2">
+				<div>
+					<h3>Circuit Summary</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Parameter</th>
+								<th>Value</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Op amp channel used</td>
+								<td><strong>B</strong> (pins 5–7, F-J side output)</td>
+							</tr>
+							<tr>
+								<td>Topology</td>
+								<td>Non-inverting amplifier, AC-coupled input</td>
+							</tr>
+							<tr>
+								<td>Gain</td>
+								<td>1 + 22k/10k = <strong>3.2×</strong> (measured <strong>3.69×</strong> with tolerance)</td>
+							</tr>
+							<tr>
+								<td>Power supply</td>
+								<td><strong>±9V dual supply</strong> (one 9V battery → +9V rail, one 9V battery → −9V rail)</td>
+							</tr>
+							<tr>
+								<td>DC bias point at +IN B</td>
+								<td>~0&nbsp;V (100k resistor to AGND, no divider)</td>
+							</tr>
+							<tr>
+								<td>Output DC operating point</td>
+								<td>~+4&nbsp;V (acceptable; PZT AC couples anyway)</td>
+							</tr>
+							<tr>
+								<td>DDS in → PZT out</td>
+								<td>670&nbsp;mVpp → <strong>3.47&nbsp;Vpp</strong> (3.69× measured)</td>
+							</tr>
+							<tr>
+								<td>Source impedance to PZT</td>
+								<td>47&nbsp;Ω (vs prior 10&nbsp;kΩ)</td>
+							</tr>
+							<tr>
+								<td>Max output swing</td>
+								<td>~±8&nbsp;V (−9V to +9V supply rails)</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+
+				<div>
+					<h3>Parts List for Board D Upgrade</h3>
+					<table style="width: 100%">
+						<thead>
+							<tr>
+								<th>Ref</th>
+								<th>Value</th>
+								<th>Qty</th>
+								<th>Placement</th>
+								<th>Purpose</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>U2</td>
+								<td>OPA2134PA DIP-8</td>
+								<td>1</td>
+								<td>E10–E13 / F10–F13</td>
+								<td>Drive buffer (channel B active, A parked)</td>
+							</tr>
+							<tr>
+								<td>R<sub>f</sub></td>
+								<td>22 kΩ</td>
+								<td>1</td>
+								<td>G11 → G12</td>
+								<td>Feedback (gain = 1 + Rf/Rg = 3.2×)</td>
+							</tr>
+							<tr>
+								<td>R<sub>g</sub></td>
+								<td>10 kΩ</td>
+								<td>1</td>
+								<td>H12 → H14</td>
+								<td>Gain set to AGND ref (direct, no capacitor)</td>
+							</tr>
+							<tr>
+								<td>R<sub>BIAS</sub></td>
+								<td>100 kΩ</td>
+								<td>1</td>
+								<td>J13 → AGND rail</td>
+								<td>+IN B bias to ground (single resistor, no divider)</td>
+							</tr>
+							<tr>
+								<td>R<sub>OUT</sub></td>
+								<td>47 Ω</td>
+								<td>1</td>
+								<td>I11 → I20</td>
+								<td>Output series isolator to PZT</td>
+							</tr>
+							<tr>
+								<td>C<sub>IN</sub></td>
+								<td>100 nF film</td>
+								<td>1</td>
+								<td>G9 → G13</td>
+								<td>Input AC coupling cap</td>
+							</tr>
+							<tr>
+								<td>C<sub>byp+</sub></td>
+								<td>100 nF ceramic</td>
+								<td>1</td>
+								<td>H10 → H14</td>
+								<td>+9V to AGND decoupling</td>
+							</tr>
+							<tr>
+								<td>C<sub>byp−</sub></td>
+								<td>100 nF ceramic</td>
+								<td>1</td>
+								<td>D13 → D14</td>
+								<td>−9V to AGND decoupling</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 13 : BOARD D BUFFER STEP-BY-STEP ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">7</span> Board D Buffer — Step-by-Step Wiring
+			</h2>
+			<div class="note warn">
+				<strong>Board D orientation:</strong> Half-size breadboard (30 columns).
+				<strong>Row J at top</strong>, <strong>row A at bottom</strong>. Red +5V
+				rail on J-side edge (top). Blue GND rail on A-side edge (bottom). This
+				is the same board already used for drive distribution — you are
+				upgrading it in place.
+			</div>
+
+			<div class="g2">
+				<div>
+					<h3>Phase A: Power Rails</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>1</span
+									>
+								</td>
+								<td>Red wire (+9V battery)</td>
+								<td>
+									<strong>+9V battery positive terminal</strong> → Board D
+									<strong>red rail (J-side edge)</strong><br />
+									<span class="sm"
+										>One 9V battery powers +9V rail (op-amp pin 8 V+). Dedicated battery, not Board S.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>1b</span
+									>
+								</td>
+								<td>Black wire (−9V battery)</td>
+								<td>
+									<strong>−9V battery negative terminal</strong> → Board D
+									<strong>black rail (A-side edge)</strong><br />
+									<span class="sm"
+										>Second 9V battery powers −9V rail (op-amp pin 4 V−). CRITICAL: Must be a separate battery from +9V, not just GND. This dual supply eliminates oscillation.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>2</span
+									>
+								</td>
+								<td>Black wire (Board S GND)</td>
+								<td>
+									Board S <strong>blue GND rail</strong> → Board D
+									<strong>AGND reference (A-side edge)</strong><br />
+									<span class="sm"
+										>Shared digital ground (AGND). This is the 0V reference between +9V and −9V batteries (the "midpoint"). Same wire that previously carried the source return signal to A5.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>3</span
+									>
+								</td>
+								<td>Black jumper (AGND to col 5)</td>
+								<td>
+									<strong>C5</strong> →
+									<strong>AGND rail (A-side edge)</strong><br />
+									<span class="sm"
+										>Connects source return column (A5–E5) to AGND rail. Source
+										return wire from Board S still lands at A5.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>4</span
+									>
+								</td>
+								<td>Black jumper (AGND to F-J side)</td>
+								<td>
+									<strong>J14</strong> →
+									<strong>AGND rail (A-side edge)</strong><br />
+									<span class="sm"
+										>Creates an AGND reference on the F-J side at column 14.
+										F14–J14 are now AGND. Needed for bypass caps, bias, and
+										gain-set resistor. Wire spans ~18 mm from top row J down to
+										bottom rail.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+					<strong>Meter check (steps 1–4):</strong> With both batteries connected, measure Board D red rail to AGND rail = +9V. Blue rail to AGND = −9V. Confirm J14 to AGND rail = 0&nbsp;Ω (continuity).
+
+					<h3>Phase B: Remove Old Passthrough</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>Detail</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>5</span
+									>
+								</td>
+								<td>Remove jumper J5 → J20</td>
+								<td>
+									Old direct source-hot-to-PZT-hot connection. The buffer
+									replaces this path.
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>6</span
+									>
+								</td>
+								<td>Remove jumper A5 → A20</td>
+								<td>
+									Old source-return-to-PZT-return jumper. Will be replaced with
+									a direct GND rail connection (step 21).
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+				<div>
+					<h3>Phase C: Install OPA2134PA</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>Detail</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>7</span
+									>
+								</td>
+								<td>Disconnect Board S USB first!</td>
+								<td>Never insert IC with power on.</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>8</span
+									>
+								</td>
+								<td>Insert OPA2134PA</td>
+								<td>
+									Straddle center gap.
+									<strong>Notch faces left (toward col 1).</strong><br />
+									Pin 1 (OUT A) → <strong>E10</strong><br />
+									Pin 2 (−IN A) → <strong>E11</strong><br />
+									Pin 3 (+IN A) → <strong>E12</strong><br />
+									Pin 4 (V−) → <strong>E13</strong><br />
+									Pin 5 (+IN B) → <strong>F13</strong><br />
+									Pin 6 (−IN B) → <strong>F12</strong><br />
+									Pin 7 (OUT B) → <strong>F11</strong><br />
+									Pin 8 (V+) → <strong>F10</strong>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>9</span
+									>
+								</td>
+								<td>Red jumper (+9V to op-amp V+)</td>
+								<td>
+									<strong>G10</strong> →
+									<strong>red +9V rail (J-side edge)</strong><br />
+									<span class="sm"
+										>G10 connects to F10 (pin 8 V+). Supplies +9V to OPA from step 1 battery.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>10</span
+									>
+								</td>
+								<td>Black jumper (−9V to op-amp V−)</td>
+								<td>
+									<strong>B13</strong> →
+									<strong>black −9V rail (A-side edge)</strong><br />
+									<span class="sm"
+										>B13 connects to E13 (pin 4 V−). Supplies −9V to OPA from step 1b battery. CRITICAL: Separate battery.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>11</span
+									>
+								</td>
+								<td>100 nF ceramic bypass cap (+9V side)</td>
+								<td>
+									<strong>H10</strong> → <strong>H14</strong><br />
+									<span class="sm"
+										>+9V decoupling. H10 is on pin 8 net (V+). H14 is AGND (from
+										step 4). 4 cols = 10 mm — bend leads to fit.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>11b</span
+									>
+								</td>
+								<td>100 nF ceramic bypass cap (−9V side)</td>
+								<td>
+									<strong>D13</strong> → <strong>D14</strong><br />
+									<span class="sm"
+										>−9V decoupling. D13 is on pin 4 net (V−). D14 is AGND (from
+										step 4). 1 col = 2.5 mm — stand vertically.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Meter check (steps 8–11b):</strong> With both batteries connected. Pin 8
+						(G10) to AGND rail = +9V. Pin 4 (B13) to AGND rail = −9V (or −9V to AGND = 9V). Pin 7 output
+						(H11) to AGND rail ≈ 0V initially (will shift after bias resistor is
+						installed).
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 14 : BOARD D BUFFER CONTINUED ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">7</span> Board D Buffer — Signal Path (continued)
+			</h2>
+
+			<div class="g2">
+				<div>
+					<h3>Phase D: Park Channel A (unused half)</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>12</span
+									>
+								</td>
+								<td>Short jumper wire</td>
+								<td>
+									<strong>C10</strong> → <strong>C11</strong><br />
+									<span class="sm"
+										>Connects OUT A (pin 1, col 10) to −IN A (pin 2, col 11).
+										Unity follower parks the unused channel. Adjacent columns —
+										use a tiny wire snippet.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>13</span
+									>
+								</td>
+								<td>Short jumper wire</td>
+								<td>
+									<strong>D12</strong> → <strong>D13</strong><br />
+									<span class="sm"
+										>Connects +IN A (pin 3, col 12) to GND (pin 4, col 13).
+										Parks input at ground. Adjacent columns — tiny wire.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Phase E: Input AC Coupling and Bias</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>14</span
+									>
+								</td>
+								<td>Jumper wire (source hot route)</td>
+								<td>
+									<strong>I5</strong> → <strong>I9</strong><br />
+									<span class="sm"
+										>Brings source hot signal from input column (F-J col 5) to
+										an intermediate column (F-J col 9) for the coupling cap.
+										Both holes on F-J side. 4 cols = 10 mm wire.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>15</span
+									>
+								</td>
+								<td>100 nF film coupling cap (C<sub>IN</sub>)</td>
+								<td>
+									<strong>G9</strong> → <strong>G13</strong><br />
+									<span class="sm"
+										>AC-couples source hot to pin 5 (+IN B). G9 is on the
+										source-hot net (col 9, via step 14). G13 connects to F13
+										(pin 5 +IN B). 4 cols = 10 mm on F-J side — use a film cap
+										with 10 mm lead pitch, or bend ceramic cap leads.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>16</span
+									>
+								</td>
+								<td>100 kΩ (bias to AGND)</td>
+								<td>
+									<strong>J13</strong> →
+									<strong>AGND rail (A-side edge)</strong><br />
+									<span class="sm"
+										>J13 is on the pin 5 (+IN B) net. The AGND rail is immediately
+										adjacent to row J — very short hop (~3 mm). Single resistor (not a divider). Sets DC reference at +IN B.</span
+									>
+								</td>
+							</tr>
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Meter check (step 16):</strong> With batteries connected and input
+						disconnected. Pin 5 (+IN B, J13) to AGND rail should measure near 0V (within ±100 mV of AGND).
+						When AWG input is connected (670 mVpp), AC signal should pass through C_IN
+						to col 13, and output should amplify it 3.2× to ~2.1 Vpp.
+					</div>
+				</div>
+
+				<div>
+					<h3>Phase F: Gain Network</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>17</span
+									>
+								</td>
+								<td>R<sub>f</sub> 22 kΩ</td>
+								<td>
+									<strong>G11</strong> → <strong>G12</strong><br />
+									<span class="sm"
+										>Feedback: OUT B (pin 7, col 11) to −IN B (pin 6, col 12). 1
+										col = 2.5 mm — stand vertically. Gain = 1 + 22k/10k = <strong>3.2× (measured 3.69× with tolerance)</strong>.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>18</span
+									>
+								</td>
+								<td>R<sub>g</sub> 10 kΩ</td>
+								<td>
+									<strong>H12</strong> → <strong>H14</strong><br />
+									<span class="sm"
+										>Gain-set: −IN B (pin 6, col 12) to AGND (col 14). 2 cols = 5
+										mm — easy fit for standard 1/4W resistor body. <strong>Direct connection (no series capacitor)</strong>.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3>Phase G: Output and PZT Connection</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Step</th>
+								<th>Action</th>
+								<th>From → To</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>19</span
+									>
+								</td>
+								<td>R<sub>OUT</sub> 47 Ω</td>
+								<td>
+									<strong>I11</strong> → <strong>I20</strong><br />
+									<span class="sm"
+										>Output series isolator. I11 is on OUT B net (pin 7, col
+										11). I20 connects to J20 (drive PZT hot). 9 cols = 23 mm —
+										fits a standard resistor with leads at mild angle.</span
+									>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<span
+										class="step-n"
+										style="
+											width: 5mm;
+											height: 5mm;
+											line-height: 5mm;
+											font-size: 7pt;
+										"
+										>20</span
+									>
+								</td>
+								<td>Black jumper (PZT return)</td>
+								<td>
+									<strong>A20</strong> →
+									<strong>AGND rail (A-side edge)</strong><br />
+									<span class="sm"
+										>Connects drive PZT return to AGND. Short hop from row A to
+										the adjacent rail (~3 mm). Replaces the old A5→A20 jumper
+										with a direct ground tie.</span
+									>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<div class="note">
+						<strong>Meter check (steps 18–21):</strong> Power on. Measure pin 7
+						output (H11) to GND = ~2.5V DC (quiescent). J20 to A20 = ~2.5V DC
+						(through 47Ω). With DDS running 4567 Hz: J20 to A20 shows ~2.0 Vpp
+						AC riding on 2.5V DC. On an AC-coupled scope: 2.0 Vpp clean sine.
+					</div>
+
+					<h3>Phase H: Source Input (no change)</h3>
+					<p class="sm">
+						Source hot still enters at <strong>J5</strong> from Board&nbsp;S a35
+						(DDS sum node). Source return still enters at
+						<strong>A5</strong> from Board&nbsp;S GND rail. No change to the
+						Board S → Board D cable pair. The PicoScope AWG at Board&nbsp;S c43
+						still feeds through the sum network as before.
+					</p>
+
+					<h3 style="margin-top: 3mm">Board D Complete Netlist Summary</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Net Name</th>
+								<th>Connected Holes (Board D)</th>
+								<th>External</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td style="color: var(--red); font-weight: 700">+5V</td>
+								<td>Red rail (J-side), G10, H10, J13 (via R), J14 (no—GND)</td>
+								<td>Board S +5V rail</td>
+							</tr>
+							<tr>
+								<td style="color: var(--gnd); font-weight: 700">GND</td>
+								<td>Blue rail (A-side), A5–E5, B13, J14 (F14–J14), A20</td>
+								<td>Board S GND rail</td>
+							</tr>
+							<tr>
+								<td style="font-weight: 700">SRC_HOT</td>
+								<td>F5–J5, I9 (via jumper), F9–J9</td>
+								<td>Board S a35 (DDS sum node)</td>
+							</tr>
+							<tr>
+								<td style="font-weight: 700">+IN_B (bias)</td>
+								<td>F13, G13, I13, J13</td>
+								<td>—</td>
+							</tr>
+							<tr>
+								<td style="font-weight: 700">−IN_B (FB)</td>
+								<td>F12, G12, H12</td>
+								<td>—</td>
+							</tr>
+							<tr>
+								<td style="font-weight: 700">OUT_B</td>
+								<td>F11, G11, H11, I11</td>
+								<td>—</td>
+							</tr>
+							<tr>
+								<td style="color: var(--org); font-weight: 700">PZT_HOT</td>
+								<td>I20, J20</td>
+								<td>Drive PZT marked lead</td>
+							</tr>
+							<tr>
+								<td style="font-weight: 700">PZT_RTN</td>
+								<td>A20 (tied to GND rail)</td>
+								<td>Drive PZT other lead</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 15 : BOARD D BUFFER CHECKS ═══════════ -->
+		<section class="page">
+			<h2>
+				<span class="step-n">7</span> Board D Buffer — Verification &amp; Checks
+			</h2>
+
+			<div class="g2">
+				<div>
+					<h3>Visual Inspection Checklist</h3>
+					<ul class="cl">
+						<li>OPA pin 8 (F10) connected to +5V rail via G10.</li>
+						<li>OPA pin 4 (E13) connected to GND rail via B13.</li>
+						<li>Bypass cap: H10 → H14 (V+ to GND, F-J side).</li>
+						<li>GND reference on F-J side: J14 → blue GND rail.</li>
+						<li>Source return column: C5 → blue GND rail.</li>
+						<li>Park A: C10 → C11 (OUT A to −IN A).</li>
+						<li>Park A: D12 → D13 (+IN A to GND).</li>
+						<li>Input jumper: I5 → I9 (source hot routing).</li>
+						<li>Coupling cap: G9 → G13 (AC couples to +IN B).</li>
+						<li>Upper bias: J13 → +5V rail (100kΩ).</li>
+						<li>Lower bias: I13 → I14 (100kΩ).</li>
+						<li>Rf 20k: G11 → G12 (OUT B to −IN B).</li>
+						<li>Rg 10k: H12 → H14 (−IN B to GND).</li>
+						<li>R_OUT 47Ω: I11 → I20 (OUT B to PZT hot).</li>
+						<li>PZT return: A20 → blue GND rail.</li>
+						<li>No direct J5→J20 jumper (old passthrough removed).</li>
+						<li>No direct A5→A20 jumper (replaced by step 21).</li>
+						<li>Drive PZT connected: marked lead J20, other lead A20.</li>
+					</ul>
+				</div>
+
+				<div>
+					<h3>Electrical Tests</h3>
+					<table>
+						<thead>
+							<tr>
+								<th>Test</th>
+								<th>Measure</th>
+								<th>Expected</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>1. Supply</td>
+								<td>+5V rail to GND rail</td>
+								<td>4.75–5.15 V</td>
+							</tr>
+							<tr>
+								<td>2. Bias</td>
+								<td>Pin 5 (J13) to GND</td>
+								<td>~2.5 V (±0.2V)</td>
+							</tr>
+							<tr>
+								<td>3. Output DC</td>
+								<td>Pin 7 output (H11) to GND</td>
+								<td>~2.5 V (±0.1V)</td>
+							</tr>
+							<tr>
+								<td>4. PZT DC</td>
+								<td>J20 to A20</td>
+								<td>~2.5 V (through 47Ω R<sub>OUT</sub>)</td>
+							</tr>
+							<tr>
+								<td>5. DDS signal</td>
+								<td>J20 scope, AC coupled, DDS at 4567 Hz</td>
+								<td>~2.0 Vpp sine</td>
+							</tr>
+							<tr>
+								<td>6. Gain check</td>
+								<td>J20 Vpp / J5 Vpp (both AC)</td>
+								<td>~3× (±10%)</td>
+							</tr>
+							<tr>
+								<td>7. Acoustic</td>
+								<td>Board A Ch A, relay on, DDS at glass resonance</td>
+								<td>Signal above noise floor (tap test baseline)</td>
+							</tr>
+						</tbody>
+					</table>
+
+					<h3 style="margin-top: 3mm">Signal Flow (updated)</h3>
+					<p
+						style="
+							font-family: ui-monospace, monospace;
+							font-size: 8pt;
+							background: #f8fafc;
+							border: 0.2mm solid var(--l);
+							padding: 2mm;
+							line-height: 1.6;
+						">
+						Board S DDS sum (a35)<br />
+						&nbsp;&nbsp;→ wire → Board D <strong>J5</strong> (source hot)<br />
+						&nbsp;&nbsp;→ jumper I5→I9 → coupling cap G9→G13<br />
+						&nbsp;&nbsp;→ OPA pin 5 (+IN B) → ×3 gain → pin 7 (OUT B)<br />
+						&nbsp;&nbsp;→ 47Ω (I11→I20) → <strong>J20</strong> (PZT hot)<br />
+						&nbsp;&nbsp;→ drive PZT → glass<br />
+						&nbsp;&nbsp;→ RX PZTs → 16-ch relay → Board A → Pico Ch A
+					</p>
+
+					<div class="note crit">
+						<strong>Isolation rules still apply:</strong> Board D shares Board
+						S's digital ground domain. Board D GND rail must NOT connect to
+						Board A AGND/C24. The only path from Board D to the analog domain is
+						through the glass (acoustic coupling via PZTs).
+					</div>
+
+					<div class="note warn">
+						<strong>Dummy load mode:</strong> To test without PZT, install a
+						100Ω resistor from <strong>J26</strong> to
+						<strong>A26</strong> (same as before). Patch with jumpers:
+						<strong>I20 → I26</strong> (hot) and <strong>A20 → A26</strong>
+						is already shared via GND rail. Drive should show ~2 Vpp across the
+						100Ω load.
+					</div>
+
+					<h3 style="margin-top: 3mm">Gain Adjustment Options</h3>
+					<table style="width: 85%">
+						<thead>
+							<tr>
+								<th>Desired Gain</th>
+								<th>R<sub>f</sub></th>
+								<th>R<sub>g</sub></th>
+								<th>DDS Output</th>
+								<th>Max Input</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr style="background: #ecfdf5">
+								<td><strong>3×</strong> (default)</td>
+								<td>20 kΩ</td>
+								<td>10 kΩ</td>
+								<td>2.0 Vpp</td>
+								<td>1.3 Vpp</td>
+							</tr>
+							<tr>
+								<td>2×</td>
+								<td>10 kΩ</td>
+								<td>10 kΩ</td>
+								<td>1.3 Vpp</td>
+								<td>2.0 Vpp</td>
+							</tr>
+							<tr>
+								<td>4×</td>
+								<td>30 kΩ</td>
+								<td>10 kΩ</td>
+								<td>2.7 Vpp</td>
+								<td>1.0 Vpp</td>
+							</tr>
+							<tr>
+								<td>6×</td>
+								<td>47 kΩ</td>
+								<td>10 kΩ</td>
+								<td>4.0 Vpp (clips!)</td>
+								<td>0.7 Vpp</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="sm">
+						The output swing is limited by the +5V single supply to ~4.0 Vpp
+						(0.5 V to 4.5 V). Gains above 3× will clip with full-amplitude DDS
+						or AWG input. Gain of 3× is optimal for DDS (670 mV × 3 = 2 Vpp).
+					</p>
+				</div>
+			</div>
+		</section>
+
+		<!-- ═══════════ PAGE 16 : QUICK REFERENCE ═══════════ -->
 		<section class="page">
 			<h2>Quick Reference Card</h2>
 
@@ -3312,6 +4335,45 @@ python tools/awg_preamp_refcancel_2048.py \
 							</tr>
 							<tr>
 								<td><strong>F28–F31</strong></td>
+								<td>OPA pins 8–5 (F–J side)</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div>
+					<h3 style="color: var(--gnd)">Board D Key Holes</h3>
+					<table>
+						<tbody>
+							<tr>
+								<td><strong>J5</strong></td>
+								<td>Source hot input (from Board S a35)</td>
+							</tr>
+							<tr>
+								<td><strong>A5</strong></td>
+								<td>Source return (GND)</td>
+							</tr>
+							<tr>
+								<td><strong>F13 / G13</strong></td>
+								<td>OPA +IN B (pin 5) — buffer input</td>
+							</tr>
+							<tr>
+								<td><strong>F11 / I11</strong></td>
+								<td>OPA OUT B (pin 7) — buffer output</td>
+							</tr>
+							<tr>
+								<td><strong>J20</strong></td>
+								<td>Drive PZT hot (buffered)</td>
+							</tr>
+							<tr>
+								<td><strong>A20</strong></td>
+								<td>Drive PZT return (GND)</td>
+							</tr>
+							<tr>
+								<td><strong>E10–E13</strong></td>
+								<td>OPA pins 1–4 (A–E side)</td>
+							</tr>
+							<tr>
+								<td><strong>F10–F13</strong></td>
 								<td>OPA pins 8–5 (F–J side)</td>
 							</tr>
 						</tbody>
@@ -3402,13 +4464,11 @@ python tools/awg_preamp_refcancel_2048.py \
 				<div
 					class="card"
 					style="border-color: var(--org)">
-					<h3 style="color: var(--org); margin: 0">
-						Digital Ground 2 (future)
-					</h3>
+					<h3 style="color: var(--org); margin: 0">Digital Ground 2</h3>
 					<p>
-						<strong>Arduino 2 + DDS + DAC (Board S).</strong> USB-powered. No
-						connection to Board A AGND. Only analog path out: drive twisted
-						pair.
+						<strong>Arduino 2 + DDS + DAC (Board S) + Board D buffer.</strong>
+						USB-powered. No connection to Board A AGND. Only analog path out:
+						acoustic coupling through glass via PZTs.
 					</p>
 				</div>
 			</div>
@@ -3482,8 +4542,8 @@ python tools/awg_preamp_refcancel_2048.py \
 						<td><strong>Now</strong></td>
 						<td>
 							Connect sensors to relay screw terminals. Connect mux common to
-							Board A. Build Board D; route AWG tee branch 2 to J5/A5 and drive
-							PZT to J20/A20. Connect Ch A/B.
+							Board A. Build Board D buffer (OPA2134PA gain-3 stage); route
+							Board S a35 to J5 and drive PZT to J20/A20. Connect Ch A/B.
 						</td>
 						<td>Full signal path test.</td>
 					</tr>

@@ -1,0 +1,144 @@
+{
+  "test": "L3b_polysemic_capacity",
+  "timestamp": "2026-06-03T14:03:21.235057",
+  "h_matrix_path": "data/results/h_matrix/l1_h_matrix_20260602_220004.json",
+  "n_modes": 26,
+  "n_channels": 2,
+  "ratio_range": [
+    1.3003033050157047,
+    11.153067255365796
+  ],
+  "angle_spread_deg": 32.4386112962145,
+  "shannon_capacity_bits": 422.62464432159163,
+  "practical_capacity_bits": 156,
+  "polysemic_results": [
+    {
+      "K": 1,
+      "strategy": "interleave",
+      "mean_corr": 0,
+      "independence": 1,
+      "eff_dim": 2,
+      "vocab_log2": 6.0
+    },
+    {
+      "K": 1,
+      "strategy": "max_diversity",
+      "mean_corr": 0,
+      "independence": 1,
+      "eff_dim": 2,
+      "vocab_log2": 6.0
+    },
+    {
+      "K": 2,
+      "strategy": "interleave",
+      "mean_corr": 0.052130387814805106,
+      "independence": 0.9478696121851949,
+      "eff_dim": 3.7914784487407798,
+      "vocab_log2": 11.37443534622234
+    },
+    {
+      "K": 2,
+      "strategy": "max_diversity",
+      "mean_corr": 0.05289658056457059,
+      "independence": 0.9471034194354294,
+      "eff_dim": 3.7884136777417177,
+      "vocab_log2": 11.365241033225153
+    },
+    {
+      "K": 3,
+      "strategy": "interleave",
+      "mean_corr": 0.03905551583722338,
+      "independence": 0.9609444841627767,
+      "eff_dim": 5.76566690497666,
+      "vocab_log2": 17.29700071492998
+    },
+    {
+      "K": 3,
+      "strategy": "max_diversity",
+      "mean_corr": 0.03695157802790362,
+      "independence": 0.9630484219720964,
+      "eff_dim": 5.778290531832578,
+      "vocab_log2": 17.334871595497734
+    },
+    {
+      "K": 4,
+      "strategy": "interleave",
+      "mean_corr": 0.04153323091914154,
+      "independence": 0.9584667690808585,
+      "eff_dim": 7.667734152646868,
+      "vocab_log2": 23.003202457940603
+    },
+    {
+      "K": 4,
+      "strategy": "max_diversity",
+      "mean_corr": 0.039047067421689334,
+      "independence": 0.9609529325783107,
+      "eff_dim": 7.687623460626486,
+      "vocab_log2": 23.062870381879456
+    },
+    {
+      "K": 6,
+      "strategy": "interleave",
+      "mean_corr": 0.036019091009626296,
+      "independence": 0.9639809089903737,
+      "eff_dim": 11.567770907884483,
+      "vocab_log2": 34.70331272365345
+    },
+    {
+      "K": 6,
+      "strategy": "max_diversity",
+      "mean_corr": 0.03622825882170137,
+      "independence": 0.9637717411782987,
+      "eff_dim": 11.565260894139584,
+      "vocab_log2": 34.69578268241875
+    },
+    {
+      "K": 8,
+      "strategy": "interleave",
+      "mean_corr": 0.03549721974860378,
+      "independence": 0.9645027802513962,
+      "eff_dim": 15.43204448402234,
+      "vocab_log2": 46.29613345206702
+    },
+    {
+      "K": 8,
+      "strategy": "max_diversity",
+      "mean_corr": 0.03661606446798692,
+      "independence": 0.9633839355320131,
+      "eff_dim": 15.414142968512209,
+      "vocab_log2": 46.24242890553663
+    },
+    {
+      "K": 13,
+      "strategy": "interleave",
+      "mean_corr": 0.037034304774065344,
+      "independence": 0.9629656952259347,
+      "eff_dim": 25.0371080758743,
+      "vocab_log2": 75.1113242276229
+    },
+    {
+      "K": 13,
+      "strategy": "max_diversity",
+      "mean_corr": 0.03545492312572362,
+      "independence": 0.9645450768742764,
+      "eff_dim": 25.078171998731186,
+      "vocab_log2": 75.23451599619355
+    }
+  ],
+  "physical_vs_random": {
+    "K": 4,
+    "physical_corr": 0.039047067421689334,
+    "random_corr_mean": 0.06305070551733896,
+    "random_corr_std": 0.006100351200714119,
+    "advantage_sigma": 3.934796097123017,
+    "eff_dim_phys": 7.687623460626486,
+    "eff_dim_rand": 7.4955943558612885
+  },
+  "recommendations": [
+    "Add relay mux scanning (8 positions) for 208-dim readout",
+    "Polysemic K=4 with max_diversity partition is optimal for 2-ch",
+    "Physical H outperforms random due to ratio spread 1.3-11.2\u00d7",
+    "GPT-2 vocab (50k) needs ~16 effective dims at L=8",
+    "Relay mux provides 624 bits \u2014 unlimited for any vocab"
+  ]
+}

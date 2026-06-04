@@ -1,0 +1,21 @@
+{
+  "experiment": "T3.3b",
+  "timestamp": "20260526_220839",
+  "gate_decision": "FAIL",
+  "mode_hz": 35840.0,
+  "offset_hz": 5.0,
+  "drive_freq_hz": 35845.0,
+  "t_step_ms": 12,
+  "n_steps": 300,
+  "nrmse_linear": 5.548609662149904,
+  "nrmse_poly": 1.7484085871725197,
+  "nrmse_input_baseline": 0.7441587548559645,
+  "nrmse_input_poly_baseline": 0.6487366914588232,
+  "best_nrmse": 1.7484085871725197,
+  "improvement_pct": 0.0,
+  "alpha_per_step": 0.6127514327377497,
+  "delta_phi_per_step_deg": 21.6,
+  "amplitude_mean": 61330.18142563815,
+  "amplitude_std": 31770.98477393404,
+  "input_correlation": 0.9991658816218936
+}
