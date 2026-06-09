@@ -116,7 +116,7 @@ def find_peaks(freq_arr, mag_arr, threshold_factor=5.0, min_sep_hz=2000):
     A peak must be >2× the average of its nearest local minima, OR
     >threshold_factor × global median (whichever is less restrictive)."""
     median = np.median(mag_arr)
-    
+
     peaks = []
     for i in range(1, len(mag_arr) - 1):
         if mag_arr[i] > mag_arr[i-1] and mag_arr[i] > mag_arr[i+1]:
@@ -125,11 +125,11 @@ def find_peaks(freq_arr, mag_arr, threshold_factor=5.0, min_sep_hz=2000):
             right_min = min(mag_arr[i+1:min(len(mag_arr), i+6)])
             local_floor = (left_min + right_min) / 2
             prominence = mag_arr[i] / max(local_floor, 0.01)
-            
+
             # Accept if prominence > 2× local floor OR > threshold × global median
             if prominence > 2.0 or mag_arr[i] > median * threshold_factor:
                 peaks.append((freq_arr[i], mag_arr[i], prominence))
-    
+
     # Remove peaks too close together (keep stronger one)
     if not peaks:
         return [(f, m) for f, m, _ in peaks]
@@ -147,7 +147,7 @@ def measure_q(ps, handle, nco, mux, relay_ch, center_freq, fs):
     start = int(center_freq - FINE_HALFWIDTH)
     stop = int(center_freq + FINE_HALFWIDTH)
     fine_freqs = list(range(start, stop + 1, FINE_STEP))
-    
+
     magnitudes = []
     for freq in fine_freqs:
         set_freq(nco, freq)
@@ -157,55 +157,55 @@ def measure_q(ps, handle, nco, mux, relay_ch, center_freq, fs):
             continue
         _, mag = fft_magnitude_at(data, freq, fs)
         magnitudes.append(mag)
-    
+
     mag_arr = np.array(magnitudes)
     freq_arr = np.array(fine_freqs, dtype=np.float64)
-    
+
     # Find peak
     peak_idx = np.argmax(mag_arr)
     peak_mag = mag_arr[peak_idx]
     f0 = freq_arr[peak_idx]
-    
+
     # -3dB level
     half_power = peak_mag / np.sqrt(2)
-    
+
     # Find -3dB crossings
     above = mag_arr >= half_power
     if not np.any(above):
         return None
-    
+
     # Left crossing
     left_idx = peak_idx
     while left_idx > 0 and mag_arr[left_idx] >= half_power:
         left_idx -= 1
     if left_idx == 0 and mag_arr[0] >= half_power:
         return None  # didn't cross on left (peak too wide for window)
-    
+
     # Interpolate left
     if left_idx < peak_idx:
         f_left = freq_arr[left_idx] + (half_power - mag_arr[left_idx]) / \
                  (mag_arr[left_idx + 1] - mag_arr[left_idx]) * FINE_STEP
     else:
         f_left = freq_arr[0]
-    
+
     # Right crossing
     right_idx = peak_idx
     while right_idx < len(mag_arr) - 1 and mag_arr[right_idx] >= half_power:
         right_idx += 1
     if right_idx == len(mag_arr) - 1 and mag_arr[-1] >= half_power:
         return None  # didn't cross on right
-    
+
     # Interpolate right
     if right_idx > peak_idx:
         f_right = freq_arr[right_idx - 1] + (mag_arr[right_idx - 1] - half_power) / \
                   (mag_arr[right_idx - 1] - mag_arr[right_idx]) * FINE_STEP
     else:
         f_right = freq_arr[-1]
-    
+
     bw = f_right - f_left
     if bw <= 0:
         return None
-    
+
     Q = f0 / bw
     return f0, Q, bw, peak_mag
 
@@ -215,12 +215,12 @@ def main():
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
     outdir = 'data/results/lab/100mm_plates'
     os.makedirs(outdir, exist_ok=True)
-    
+
     fs = 1e9 / 1280.0  # 781250 Hz
 
     coarse_freqs = list(range(FREQ_START, FREQ_STOP + 1, FREQ_STEP))
     n_freqs = len(coarse_freqs)
-    
+
     print("=" * 60)
     print("100mm Plate Q-Factor Measurement — Plates I & H")
     print("=" * 60)
@@ -251,12 +251,12 @@ def main():
     # ─── Phase 1: Coarse Sweep ─────────────────────────────────────
     print("PHASE 1: Coarse Mode Census")
     print("-" * 40)
-    
+
     coarse_data = {}  # relay_label → list of (freq, mag)
     for relay_ch, relay_label in RELAY_CHANNELS:
         mux.select(relay_ch)
         time.sleep(RELAY_SETTLE_MS / 1000.0)
-        
+
         mags = []
         for i, freq in enumerate(coarse_freqs):
             set_freq(nco, freq)
@@ -266,20 +266,20 @@ def main():
                 continue
             _, mag = fft_magnitude_at(data, freq, fs)
             mags.append(mag)
-        
+
         coarse_data[relay_label] = mags
-        
+
         # Find peaks for this channel
-        peaks = find_peaks(np.array(coarse_freqs), np.array(mags), 
+        peaks = find_peaks(np.array(coarse_freqs), np.array(mags),
                           threshold_factor=NOISE_THRESHOLD_FACTOR)
         median_mag = np.median(mags)
         max_mag = max(mags)
         print(f"  {relay_label}: {len(peaks)} modes, median={median_mag:.2f} mV, max={max_mag:.2f} mV")
         for f, m in peaks[:5]:
             print(f"    {f/1000:.0f} kHz: {m:.2f} mV ({m/median_mag:.0f}× noise)")
-    
+
     print()
-    
+
     # ─── Decide if Plate H has signal ──────────────────────────────
     # Check if Plate H channels show ANY peaks (not just raw amplitude)
     plate_h_nw_peaks = find_peaks(np.array(coarse_freqs), np.array(coarse_data['Plate H NW']),
@@ -288,7 +288,7 @@ def main():
                                    threshold_factor=NOISE_THRESHOLD_FACTOR)
     plate_i_max = max(max(coarse_data['Plate I NW']), max(coarse_data['Plate I NE']))
     plate_h_max = max(max(coarse_data['Plate H NW']), max(coarse_data['Plate H NE']))
-    
+
     if len(plate_h_nw_peaks) == 0 and len(plate_h_ne_peaks) == 0:
         print("WARNING: Plate H shows NO modes above threshold.")
         print("         Cascade wiring may be needed to drive Plate H.")
@@ -302,23 +302,23 @@ def main():
     print()
     print("PHASE 2: Selecting modes for Q measurement")
     print("-" * 40)
-    
+
     # Combine channels per plate, pick strongest modes
     plate_modes = {}  # plate_name → [(freq, mag, relay_label)]
-    
+
     for relay_ch, relay_label in active_relays:
         plate_name = 'Plate I' if 'I' in relay_label else 'Plate H'
         if plate_name not in plate_modes:
             plate_modes[plate_name] = []
-        
+
         peaks = find_peaks(np.array(coarse_freqs), np.array(coarse_data[relay_label]),
                           threshold_factor=NOISE_THRESHOLD_FACTOR, min_sep_hz=2000)
         for f, m in peaks:
             plate_modes[plate_name].append((f, m, relay_label, relay_ch))
-    
+
     # For each plate, pick top N unique frequencies
     q_targets = []  # (freq, relay_ch, relay_label, plate_name, coarse_mag)
-    
+
     for plate_name, modes in plate_modes.items():
         # Sort by magnitude, deduplicate by frequency
         modes.sort(key=lambda x: x[1], reverse=True)
@@ -332,7 +332,7 @@ def main():
                 seen_freqs.add(freq)
                 count += 1
         print(f"  {plate_name}: {count} modes selected for Q measurement")
-    
+
     q_targets.sort(key=lambda x: x[0])
     print(f"  Total Q measurements: {len(q_targets)}")
     print()
@@ -340,15 +340,15 @@ def main():
     # ─── Phase 3: Fine Sweep Q Measurement ─────────────────────────
     print("PHASE 3: Q-Factor Fine Sweeps")
     print("-" * 40)
-    
+
     q_results = []
-    
+
     for freq, relay_ch, relay_label, plate_name, coarse_mag in q_targets:
         mux.select(relay_ch)
         time.sleep(RELAY_SETTLE_MS / 1000.0)
-        
+
         result = measure_q(ps, handle, nco, mux, relay_ch, freq, fs)
-        
+
         if result is None:
             print(f"  {freq/1000:.0f} kHz ({relay_label}): FAILED (peak too wide or not found)")
             q_results.append({
@@ -372,39 +372,39 @@ def main():
                 'plate': plate_name,
                 'status': 'ok'
             })
-    
+
     # ─── Cleanup ───────────────────────────────────────────────────
     nco.write(b'Foff\n')
     nco.close()
     ps.ps2000_close_unit(handle)
-    
+
     # ─── Summary ───────────────────────────────────────────────────
     print()
     print("=" * 60)
     print("RESULTS SUMMARY")
     print("=" * 60)
-    
+
     ok_results = [r for r in q_results if r['status'] == 'ok']
-    
+
     if ok_results:
         # Group by plate
         for plate_name in sorted(set(r['plate'] for r in ok_results)):
             plate_q = [r for r in ok_results if r['plate'] == plate_name]
             plate_q.sort(key=lambda r: r['f0_hz'])
-            
+
             print(f"\n  {plate_name}:")
             print(f"  {'Freq':>8} | {'Channel':>12} | {'Q':>6} | {'BW (Hz)':>8} | {'Peak mV':>8}")
             print(f"  {'-'*8}-+-{'-'*12}-+-{'-'*6}-+-{'-'*8}-+-{'-'*8}")
-            
+
             qs = []
             for r in plate_q:
                 print(f"  {r['f0_hz']/1000:7.2f}k | {r['channel']:>12} | {r['Q']:6d} | {r['bw_hz']:8.1f} | {r['peak_mag_mV']:8.3f}")
                 qs.append(r['Q'])
-            
+
             print(f"  → Median Q = {int(np.median(qs))}, Max Q = {max(qs)}, Min Q = {min(qs)}")
     else:
         print("  No successful Q measurements!")
-    
+
     # ─── Save ──────────────────────────────────────────────────────
     output = {
         'timestamp': datetime.now().isoformat(),
@@ -417,12 +417,12 @@ def main():
             'timebase': TIMEBASE,
             'n_samples': N_SAMPLES,
         },
-        'coarse_sweep': {label: list(map(float, mags)) 
+        'coarse_sweep': {label: list(map(float, mags))
                         for label, mags in coarse_data.items()},
         'coarse_freqs': coarse_freqs,
         'q_results': q_results,
     }
-    
+
     json_path = os.path.join(outdir, f'q_factor_{timestamp}.json')
     with open(json_path, 'w') as f:
         json.dump(output, f, indent=2)

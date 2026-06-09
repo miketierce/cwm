@@ -9,7 +9,7 @@ Read:  Relay 5 = 25mm NW RX, Relay 6 = 25mm NE RX
 
 Usage:
     python tools/e3_perturbation.py [label]
-    
+
     label = bare | A | B | C | bare2 (default: bare)
 """
 
