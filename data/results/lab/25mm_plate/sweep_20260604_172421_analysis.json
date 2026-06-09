@@ -1,0 +1,213 @@
+{
+  "timestamp": "20260604_172421",
+  "config": {
+    "freq_start": 50000,
+    "freq_stop": 350000,
+    "freq_step": 2000,
+    "timebase": 7,
+    "n_samples": 8064,
+    "sample_rate_hz": 781250.0
+  },
+  "noise_floors_mV": {
+    "NW": 1.612753,
+    "NE": 0.882681,
+    "SE": 0.161152
+  },
+  "peaks": [
+    {
+      "freq_kHz": 56.0,
+      "NW_mV": 8.7124,
+      "NE_mV": 6.3148,
+      "SE_mV": 0.16,
+      "ratio": 54.45,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 84.0,
+      "NW_mV": 2.7553,
+      "NE_mV": 7.2267,
+      "SE_mV": 0.2528,
+      "ratio": 28.59,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 90.0,
+      "NW_mV": 7.5543,
+      "NE_mV": 4.1551,
+      "SE_mV": 0.1622,
+      "ratio": 46.59,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 172.0,
+      "NW_mV": 0.4114,
+      "NE_mV": 0.732,
+      "SE_mV": 0.6463,
+      "ratio": 1.78,
+      "classification": "NOISE"
+    },
+    {
+      "freq_kHz": 246.0,
+      "NW_mV": 5.1849,
+      "NE_mV": 0.6104,
+      "SE_mV": 0.1498,
+      "ratio": 34.62,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 262.0,
+      "NW_mV": 4.1372,
+      "NE_mV": 1.1362,
+      "SE_mV": 0.5557,
+      "ratio": 7.44,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 290.0,
+      "NW_mV": 2.2278,
+      "NE_mV": 4.1004,
+      "SE_mV": 0.3567,
+      "ratio": 11.5,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 294.0,
+      "NW_mV": 2.9296,
+      "NE_mV": 3.0159,
+      "SE_mV": 0.0972,
+      "ratio": 31.02,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 312.0,
+      "NW_mV": 3.555,
+      "NE_mV": 3.2752,
+      "SE_mV": 0.2323,
+      "ratio": 15.3,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 320.0,
+      "NW_mV": 5.4124,
+      "NE_mV": 5.31,
+      "SE_mV": 0.1559,
+      "ratio": 34.71,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 328.0,
+      "NW_mV": 1.7388,
+      "NE_mV": 5.3684,
+      "SE_mV": 0.1823,
+      "ratio": 29.45,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 342.0,
+      "NW_mV": 0.4131,
+      "NE_mV": 4.1948,
+      "SE_mV": 0.1928,
+      "ratio": 21.75,
+      "classification": "NOISE"
+    },
+    {
+      "freq_kHz": 346.0,
+      "NW_mV": 1.8531,
+      "NE_mV": 3.6249,
+      "SE_mV": 0.1485,
+      "ratio": 24.4,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "acoustic_modes": [
+    {
+      "freq_kHz": 56.0,
+      "NW_mV": 8.7124,
+      "NE_mV": 6.3148,
+      "SE_mV": 0.16,
+      "ratio": 54.45,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 84.0,
+      "NW_mV": 2.7553,
+      "NE_mV": 7.2267,
+      "SE_mV": 0.2528,
+      "ratio": 28.59,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 90.0,
+      "NW_mV": 7.5543,
+      "NE_mV": 4.1551,
+      "SE_mV": 0.1622,
+      "ratio": 46.59,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 246.0,
+      "NW_mV": 5.1849,
+      "NE_mV": 0.6104,
+      "SE_mV": 0.1498,
+      "ratio": 34.62,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 262.0,
+      "NW_mV": 4.1372,
+      "NE_mV": 1.1362,
+      "SE_mV": 0.5557,
+      "ratio": 7.44,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 290.0,
+      "NW_mV": 2.2278,
+      "NE_mV": 4.1004,
+      "SE_mV": 0.3567,
+      "ratio": 11.5,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 294.0,
+      "NW_mV": 2.9296,
+      "NE_mV": 3.0159,
+      "SE_mV": 0.0972,
+      "ratio": 31.02,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 312.0,
+      "NW_mV": 3.555,
+      "NE_mV": 3.2752,
+      "SE_mV": 0.2323,
+      "ratio": 15.3,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 320.0,
+      "NW_mV": 5.4124,
+      "NE_mV": 5.31,
+      "SE_mV": 0.1559,
+      "ratio": 34.71,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 328.0,
+      "NW_mV": 1.7388,
+      "NE_mV": 5.3684,
+      "SE_mV": 0.1823,
+      "ratio": 29.45,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 346.0,
+      "NW_mV": 1.8531,
+      "NE_mV": 3.6249,
+      "SE_mV": 0.1485,
+      "ratio": 24.4,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "interference_peaks": []
+}

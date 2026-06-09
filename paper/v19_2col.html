@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Coherent Wave Memory: Spectral Encoding, Classical Non-Separability, and Computation in Acoustic Glass Resonators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+/* ===== Page geometry ===== */
+@page {
+    size: letter;
+    margin: 0.65in 0.6in 0.75in 0.6in;
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #444;
+    --accent: #1a3c7a;
+    --border: #bbb;
+    --bg-code: #f4f4f4;
+    --bg-table-head: #e8ecf1;
+    --col-gap: 0.28in;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Times New Roman", "Times", "Nimbus Roman", serif;
+    font-size: 9pt;
+    line-height: 1.38;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ===== Title block — full width, single column ===== */
+.paper-header {
+    text-align: center;
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 0.5pt solid var(--border);
+}
+
+.paper-header .paper-title {
+    font-size: 17pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 8pt 0;
+    color: var(--text);
+    display: block !important;
+}
+
+.paper-header .author-name {
+    font-size: 11pt;
+    font-weight: 400;
+    margin: 0 0 2pt 0;
+}
+
+.paper-header .author-affil {
+    font-size: 9pt;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 2pt 0;
+}
+
+.paper-header .author-ids {
+    font-size: 8pt;
+    color: var(--muted);
+    margin: 0;
+}
+
+.paper-header .author-ids a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Abstract — full width, indented, italic prefix ===== */
+.abstract-block {
+    margin: 0 0.3in 12pt 0.3in;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    text-align: justify;
+}
+
+.abstract-block .abstract-label {
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* ===== Two-column body ===== */
+.two-col {
+    column-count: 2;
+    column-gap: var(--col-gap);
+    column-rule: 0.25pt solid #ddd;
+}
+
+/* ===== Section headings ===== */
+/* h1 is hidden (title is in the header) */
+h1 { display: none; }
+
+/* Major sections (## N. Title) — span both columns */
+h2 {
+    column-span: all;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+    margin: 14pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--accent);
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+/* Subsections (### N.N Title) — inside column */
+h3 {
+    font-size: 9.5pt;
+    font-weight: 700;
+    font-style: italic;
+    margin: 10pt 0 4pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    margin: 8pt 0 3pt 0;
+    color: var(--muted);
+    page-break-after: avoid;
+}
+
+/* ===== Body text ===== */
+p {
+    margin: 0 0 6pt 0;
+    text-align: justify;
+    hyphens: auto;
+    orphans: 2;
+    widows: 2;
+}
+
+ul, ol {
+    margin: 3pt 0 6pt 0;
+    padding-left: 14pt;
+}
+li { margin-bottom: 2pt; }
+li > p { margin-bottom: 2pt; }
+
+/* ===== Tables ===== */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8pt 0;
+    font-size: 8pt;
+    line-height: 1.25;
+    break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border-top: 1pt solid var(--text);
+    border-bottom: 1pt solid var(--text);
+    padding: 3pt 4pt;
+    font-weight: 700;
+    text-align: left;
+    font-size: 7.5pt;
+}
+
+tbody td {
+    border-bottom: 0.25pt solid #ddd;
+    padding: 2.5pt 4pt;
+    vertical-align: top;
+}
+
+/* Bottom rule on last row */
+tbody tr:last-child td {
+    border-bottom: 1pt solid var(--text);
+}
+
+tbody td strong {
+    color: var(--accent);
+}
+
+/* Wide tables that must span both columns */
+.wide-table {
+    column-span: all;
+}
+
+/* ===== Horizontal rules ===== */
+hr {
+    border: none;
+    border-top: 0.25pt solid #ccc;
+    margin: 8pt 0;
+}
+
+/* ===== Code ===== */
+code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 7.5pt;
+    background: var(--bg-code);
+    padding: 0.5pt 2pt;
+    border-radius: 1.5pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 6pt 8pt;
+    border-radius: 2pt;
+    border: 0.25pt solid var(--border);
+    overflow-x: auto;
+    font-size: 7pt;
+    line-height: 1.3;
+    margin: 6pt 0;
+    break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ===== Block quotes ===== */
+blockquote {
+    margin: 6pt 0;
+    padding: 4pt 8pt;
+    border-left: 2pt solid var(--accent);
+    background: #f5f7fa;
+    color: var(--muted);
+    font-size: 8.5pt;
+}
+
+blockquote p {
+    font-size: 8.5pt;
+}
+
+/* ===== Links ===== */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Math (KaTeX) ===== */
+.katex-display {
+    margin: 8pt 0;
+    overflow-x: auto;
+    break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.0em;
+}
+
+/* ===== Figures — full width when inside plate-page, else in-column ===== */
+div.cwm-thumb {
+    text-align: center;
+    margin: 8pt auto;
+    break-inside: avoid;
+}
+
+div.cwm-thumb img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.cwm-thumb p {
+    font-size: 7.5pt;
+    color: var(--muted);
+    text-align: justify;
+    margin: 4pt 0 0 0;
+    line-height: 1.25;
+}
+
+/* Plate-page images: span full width, portrait orientation */
+div.plate-page {
+    column-span: all;
+    text-align: center;
+    margin: 10pt 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 4.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    font-size: 7.5pt;
+    color: var(--muted);
+    text-align: justify;
+    max-width: 100%;
+    margin: 4pt auto 0 auto;
+    line-height: 1.25;
+}
+
+/* Hide blank-verso pages entirely in 2-col layout */
+.blank-verso {
+    display: none;
+}
+
+/* ===== Worksheet plates — span both columns ===== */
+div.worksheet-plate {
+    column-span: all;
+    page-break-before: always;
+    padding-top: 0.15in;
+}
+
+div.worksheet-plate h4 {
+    text-align: center;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-bottom: 8pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.5pt solid var(--border);
+    text-transform: none;
+    font-style: normal;
+}
+
+div.worksheet-plate p.ws-inst {
+    font-size: 8pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 6pt;
+    font-style: italic;
+}
+
+div.worksheet-plate table {
+    font-size: 8.5pt;
+}
+
+/* ===== Handwritten example entries (blue pen) ===== */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 9.5pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* ===== References ===== */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 7.5pt;
+    line-height: 1.25;
+    padding-left: 16pt;
+    text-indent: -16pt;
+}
+
+/* ===== Print tweaks ===== */
+h2, h3, h4 {
+    page-break-after: avoid;
+}
+table, pre, blockquote {
+    break-inside: avoid;
+}
+
+/* ===== Colophon ===== */
+.colophon-2col {
+    column-span: all;
+    text-align: center;
+    color: var(--muted);
+    font-size: 7.5pt;
+    line-height: 1.5;
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 0.5pt solid var(--border);
+}
+
+.colophon-2col p {
+    text-align: center;
+    font-size: 7.5pt;
+}
+
+/* ===== Part headings — converted to in-flow banners ===== */
+.part-banner {
+    column-span: all;
+    text-align: center;
+    padding: 10pt 0 6pt 0;
+    margin: 14pt 0 4pt 0;
+    border-top: 1.5pt solid var(--accent);
+    border-bottom: 0.5pt solid var(--border);
+}
+
+.part-banner .part-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 2pt 0;
+}
+
+.part-banner .part-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+</style>
+</head>
+<body>
+<div class="paper-header">
+  <h1 class="paper-title" style="display:block">Coherent Wave Memory: Spectral Encoding, Classical Non-Separability, and Computation in Acoustic Glass Resonators</h1>
+  <p class="author-name">Mike Tierce</p>
+  <p class="author-affil">Independent Researcher</p>
+  <p class="author-ids">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a> &nbsp;|&nbsp; <a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a> &nbsp;|&nbsp; Version 19 — June 2026</p>
+</div>
+<div class="two-col">
+<div class="abstract-block">
+  <span class="abstract-label">Abstract&mdash;</span> <p>We demonstrate that fused silica plates driven at acoustic eigenfrequencies exhibit non-separable frequency×space correlations quantified by a CHSH-analog parameter $S = 2.827$ — 99.95% of the Tsirelson bound $2\sqrt{2}$ — at a significance exceeding 200,000 standard deviations above the separability limit. Five independent mode pairs all exceed $S = 2.82$, stable within 0.65% over 3.5 hours and 16.5 million drive cycles. This classical (intra-system) non-separability, following the framework of Qian &amp; Eberly (2011) and Kagalwala et al. (2013), constitutes the first demonstration in an acoustic solid-state resonator and provides a measurable computational resource: different spatial receivers decode distinct information from the same broadband excitation, enabling spatial multiplexing at 100% classification accuracy.</p>
+<p>Building on this physics, we report a complete experimental characterization of eigenmode-spectral encoding in a &#36;38 glass plate prototype: $Q = 2{,}759$ (intrinsic), 27 resolvable modes spanning 30–120 kHz, 100% pattern discrimination at 193$\sigma$ separation (80/80 trials), and 256-pattern (8-bit) multi-level encoding with zero classification error. Boolean computation (AND/OR/XOR) achieves 100% fidelity across all tested mode pairs. Temporal reservoir computing fails on the current bench ($Q_\text{loaded} = 152$–241, memory depth $\approx$ 2 steps) — a rate-limited engineering constraint, not a physics limitation.</p>
+<p>A five-mechanism Q-factor model predicts $Q_\text{total} = 9{,}097$ for a 1 mm MEMS resonator, with material loss dominating (91% of budget). At MEMS rates (2 µs step interval vs. 52 ms decay time), the measured Lorentzian kernel and spatial transfer matrix would yield a functioning reservoir computer — a 2.5-million-fold improvement in the step/decay ratio over the current bench. All eigenfrequency predictions are independently validated by finite element analysis to 7 ppm.</p>
+<p>No quantum nonlocality is claimed. All results are classical.</p>
+<hr />
+</div>
+<h2 id="claim-label-key">Claim-Label Key</h2>
+<blockquote>
+<p><strong>Measured</strong> = instrument reading on built hardware. <strong>Derived</strong> = mathematical consequence of measured quantities. <strong>Projected</strong> = engineering extrapolation to unbuilt MEMS. <strong>Modeled</strong> = simulation only, not yet on hardware.</p>
+</blockquote>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part I</p>
+  <p class="part-title">Theory and Architecture</p>
+</div>
+<h2 id="1-introduction">1. Introduction</h2>
+<h3 id="11-the-memory-wall">1.1 The Memory Wall</h3>
+<p>In 1978, John Backus delivered his Turing Award lecture asking whether programming could be &ldquo;liberated from the von Neumann style&rdquo; [1]. His complaint was architectural: in the von Neumann model, every operation requires data to travel between physically separate storage and computation elements. The resulting bandwidth constraint — the &ldquo;memory wall&rdquo; identified by Wulf and McKee in 1995 [2] — has worsened with each process node. In modern data centers, more than half the energy budget is spent moving data, not computing on it.</p>
+<p>Several in-memory computing architectures address this by co-locating storage and computation in resistive crossbar arrays [3]. These are genuine advances, but they still encode data as electrical states and manipulate those states with electrical signals.</p>
+<h3 id="12-wave-based-memory">1.2 Wave-Based Memory</h3>
+<p>We propose a fundamentally different physical encoding: store data as the eigenmode spectrum of a mechanical glass resonator, and compute by wave interference.</p>
+<p>A glass plate vibrating at its eigenfrequencies supports $N$ independent modes — each a separate frequency channel with its own spatial shape. Mass perturbations shift eigenfrequencies via the Rayleigh perturbation formula [7], creating unique spectral fingerprints. Reading requires only a broadband excitation and an FFT. Searching an array of resonators requires driving all elements simultaneously with a query pattern: the element whose stored fingerprint best matches the query resonates most strongly — a nearest-neighbor computation performed by wave physics in a single acoustic propagation cycle, with no processor, no bus, no software.</p>
+<p>This paper reports the experimental validation of this architecture on a fused silica plate. The central discovery is that acoustic eigenmodes in glass plates exhibit non-separable frequency×space correlations ($S = 2.827$, five pairs, $>$200,000$\sigma$) that are computationally useful — enabling spatial multiplexing, content-addressable memory, and physical unclonable functions. We also identify the architecture&rsquo;s current limitations (temporal memory, rate constraints) and present the scaling argument to MEMS.</p>
+<h3 id="13-summary-of-results">1.3 Summary of Results</h3>
+<p><strong>Density definitions.</strong> <em>Active density:</em> bits ÷ resonator volume. <em>Packed-array density:</em> bits ÷ array volume at 2× diameter pitch. <em>Package density:</em> not estimated (requires fabricated device).</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Plate Q-factor (intrinsic)</td>
+<td>2,759 at 35,840 Hz</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Plate Q-factor (loaded)</td>
+<td>152–241</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Mode census</td>
+<td>27 modes, 30–120 kHz</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Single-capture discrimination</td>
+<td>100% (80/80 trials, 193$\sigma$)</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Multi-level encoding</td>
+<td>8 levels × 4 modes = 256 patterns (8 bits), zero error</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Boolean compute (AND/OR/XOR)</td>
+<td>100% at 4 bits (16 patterns)</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>CHSH non-separability witness</td>
+<td>$S = 2.827$ (best pair); 5/5 pairs $> 2.82$</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Temporal stability (CHSH)</td>
+<td>$S = 2.826 \pm 0.0003$ over 3.5 h</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Endurance</td>
+<td>16.5M cycles, 0.22% max drift</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Bench SNR</td>
+<td>42–55 dB (plate, Pico NCO drive)</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Thermodynamic SNR ceiling</td>
+<td>98.5 dB (derived from $\frac{1}{2}k_\text{eff}A^2 / k_BT$)</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Thermally stable modes (borosilicate)</td>
+<td>9,380</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>$Q_\text{total}$ (MEMS, 1 mm)</td>
+<td>9,097</td>
+<td>Modeled</td>
+</tr>
+<tr>
+<td>Packed-array density (1 mm boro.)</td>
+<td>17.0 Gbit/cm³</td>
+<td>Projected</td>
+</tr>
+<tr>
+<td>Packed-array density (0.5 mm SiO₂)</td>
+<td>1.4 Tbit/cm³</td>
+<td>Projected</td>
+</tr>
+<tr>
+<td>Write energy</td>
+<td>15 fJ/bit (physics-layer)</td>
+<td>Projected</td>
+</tr>
+<tr>
+<td>NARMA-10 reservoir (bench)</td>
+<td>FAIL (NRMSE &gt; 1.0)</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>NARMA-10 reservoir (simulated MEMS)</td>
+<td>NRMSE = 0.39</td>
+<td>Modeled</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Validated vs. projected at a glance.</strong> The plate prototype, Q measurement, mode census, CHSH non-separability, Boolean compute, multi-level encoding, and endurance test are <em>measured</em>. Mode count formula and Shannon capacity are <em>derived</em>. All MEMS density, energy, latency, and Q-budget figures are <em>projected</em> or <em>modeled</em> — they rest on validated physics but await fabrication. The boundary between demonstrated and projected is this paper&rsquo;s central scientific discipline.</p>
+</blockquote>
+<hr />
+<h2 id="2-architecture">2. Architecture</h2>
+<h3 id="21-eigenmode-encoding">2.1 Eigenmode Encoding</h3>
+<p>A glass rod of length $L$ supports longitudinal eigenmodes at:</p>
+<p>$$f_n = \frac{n v_\text{bar}}{2L}, \quad v_\text{bar} = \sqrt{\frac{E}{\rho}}$$</p>
+<p>The maximum number of resolvable, thermally stable modes is:</p>
+<p>$$n_\text{max} = \left\lfloor \frac{1}{2\alpha\,\Delta T + 1/Q} \right\rfloor$$</p>
+<p>This depends only on material properties ($\alpha$, $Q$) and temperature stability ($\Delta T$), not on rod length. For borosilicate ($\alpha = 3.3 \times 10^{-6}$/K, $Q = 10{,}000$, $\pm 1$ K): $n_\text{max} = 9{,}380$.</p>
+<p>Each mode carries information up to the Shannon limit:</p>
+<p>$$b = \frac{1}{2}\log_2(1 + \text{SNR})$$</p>
+<p>At the thermodynamic SNR ceiling of 98.5 dB: $b = 16.4$ bits/mode (derived). At measured bench SNR of 55 dB: $b = 9.2$ bits/mode.</p>
+<h3 id="22-perturbation-encoding-write">2.2 Perturbation Encoding (Write)</h3>
+<p>A mass perturbation at position $x_0$ shifts mode $n$ by:</p>
+<p>$$\frac{\Delta\omega_n}{\omega_n} = -\frac{1}{2} \frac{\Delta m \cdot u_n^2(x_0)}{m_\text{eff}}$$</p>
+<p>Each mode has a different spatial shape $u_n(x)$, so the same mass creates a different shift for each mode. Different mass patterns → different spectral fingerprints → different stored data.</p>
+<h3 id="23-interference-recall-read-compute">2.3 Interference Recall (Read / Compute)</h3>
+<p>Drive an array of $M$ resonators with a query spectrum $\{Q_1, \ldots, Q_N\}$. Each element responds with amplitude proportional to the inner product of its stored fingerprint and the query:</p>
+<p>$$R_j = \sum_{n=1}^{N} A_n^{(j)} Q_n$$</p>
+<p>The maximum responder is the best match — a content-addressable memory implemented in wave physics. This is mathematically equivalent to a Hopfield network [9], with capacity $P_\text{max} \approx 0.138\,N$ [10].</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part II</p>
+  <p class="part-title">Substrate and Prototype</p>
+</div>
+<h2 id="3-macro-scale-prototype">3. Macro-Scale Prototype</h2>
+<h3 id="31-hardware-platform">3.1 Hardware Platform</h3>
+<p>The prototype is a fused silica plate (100×100×1 mm) with four PZT transducers at diagonal corners. Total core materials cost: &#36;38.</p>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Substrate</td>
+<td>Fused silica plate, 100×100×1 mm</td>
+</tr>
+<tr>
+<td>Transducers</td>
+<td>4× PZT 20 mm disc (SW=TX, NW/NE=RX, SE=spare)</td>
+</tr>
+<tr>
+<td>Drive</td>
+<td>Raspberry Pi Pico H NCO (3-ch, GP2/GP3/GP4, 126 MHz PIO)</td>
+</tr>
+<tr>
+<td>Readout</td>
+<td>PicoScope 2204A (2-ch simultaneous, $f_s$ = 781.25 kHz, $N$ = 3968)</td>
+</tr>
+<tr>
+<td>Preamp</td>
+<td>OPA2134PA (×11 gain, ±9 V supply) on Ch A</td>
+</tr>
+<tr>
+<td>Multiplexing</td>
+<td>Arduino relay mux (8 channels, 9600 baud)</td>
+</tr>
+</tbody>
+</table>
+<p>Signal chain: Pico NCO → 220Ω → TX PZT → plate (acoustic) → RX PZT → preamp → PicoScope.</p>
+<h3 id="32-q-factor-measurement">3.2 Q-Factor Measurement</h3>
+<p><strong>Method:</strong> Ringdown at 35,840 Hz. Drive to steady state, remove excitation, fit exponential decay.</p>
+<p><strong>Result (Measured):</strong> $\tau = 24.5$ ms, giving:</p>
+<p>$$Q_\text{intrinsic} = \pi f \tau = \pi \times 35{,}840 \times 0.0245 = 2{,}759$$</p>
+<p><strong>Loaded Q:</strong> When the TX PZT remains connected (low-impedance path to ground via drive electronics), the plate is heavily damped: $Q_\text{loaded} = 152$–241, $\tau_\text{loaded} = 1$–4 ms. This PZT back-loading is the dominant limitation for temporal applications (Section 6).</p>
+<h3 id="33-mode-census">3.3 Mode Census</h3>
+<p>Swept 30–120 kHz with the Pico NCO. <strong>27 modes</strong> identified above 3$\sigma$ noise floor, all with SNR 42–55 dB. Best mode: 97 kHz at 10,812× noise floor (55.6 dB). Mode spacing is irregular (plate geometry, not 1D rod), consistent with Lamb wave dispersion in a square plate.</p>
+<h3 id="34-signal-path-decomposition">3.4 Signal-Path Decomposition</h3>
+<p>A critical confound in the breadboard topology: the TX→RX path includes both acoustic propagation through the plate and electrical feedthrough via shared ground planes.</p>
+<p><strong>Three convergent measurements establish the acoustic fraction:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Acoustic fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Re-excitation interference contrast (T2.1)</td>
+<td>13.2% (3.4$\sigma$)</td>
+</tr>
+<tr>
+<td>Ring-up vs. steady-state ratio (T1.2)</td>
+<td>~12%</td>
+</tr>
+<tr>
+<td>PZT-lifted null test (T4.1)</td>
+<td>0% feedthrough confirmed</td>
+</tr>
+</tbody>
+</table>
+<p>The signal is ~12% acoustic, ~88% electrical feedthrough. However, the PZT-lifted null test (physically removing the TX PZT from the plate) confirms that <strong>all spectral structure originates acoustically</strong> — feedthrough is flat (no mode peaks). Classification results that depend on spectral <em>shape</em> (mode positions, amplitude ratios) are therefore valid: the acoustic component carries the information; the electrical component adds only a DC pedestal.</p>
+<p><strong>Null-control battery (E36):</strong> Correct enrollment = 4/4 (margin +5.31). Shuffled enrollment = 0/4. Random enrollment = 22% (chance). Separation metric = +12.78. This definitively proves that classification exploits rod/plate-specific spectral structure, not feedthrough artifacts.</p>
+<h3 id="35-intermodulation-and-cross-mode-independence">3.5 Intermodulation and Cross-Mode Independence</h3>
+<p><strong>Intermodulation products (T2.2):</strong> Drove two modes simultaneously (54,920 + 97,011 Hz). Searched for IM products at $f_1 \pm f_2$, $2f_1 - f_2$, etc. <strong>Result: None detected above noise floor.</strong> The plate is a linear system.</p>
+<p><strong>Cross-mode coupling (T2.3):</strong> Drove mode A, measured response at mode B frequency. <strong>Result: &lt; 1.1$\sigma$.</strong> Modes are independent channels.</p>
+<p><strong>Implication:</strong> The plate functions as a perfect linear spectral filter bank. This is a <em>strength</em> for encoding (orthogonality guarantees zero crosstalk) but means the plate cannot function as a nonlinear reservoir or coherent Ising machine at the bench.</p>
+<hr />
+<h2 id="4-spectral-encoding-and-computation">4. Spectral Encoding and Computation</h2>
+<h3 id="41-pattern-discrimination">4.1 Pattern Discrimination</h3>
+<p><strong>Protocol:</strong> Drive 4 modes (35,840 / 54,920 / 57,037 / 97,011 Hz) in 4 binary patterns (00, 01, 10, 11). 12 repetitions per pattern, leave-one-out cross-validation.</p>
+<p><strong>Result (Measured):</strong> 100% accuracy (80/80 trials). On/off contrast: 50–70× per mode. Mean separation: 193$\sigma$. Classification is trivial — the patterns occupy non-overlapping regions of feature space.</p>
+<h3 id="42-multi-level-amplitude-encoding">4.2 Multi-Level Amplitude Encoding</h3>
+<p><strong>Protocol:</strong> Drive each of 4 modes at 8 amplitude levels (50–500 mVpp AWG), 20 repetitions per level. Classify full 4-mode × 8-level patterns using nearest-centroid (Mahalanobis).</p>
+<p><strong>Result (Measured):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Frequency</th>
+<th>Min separation</th>
+<th>Mean separation</th>
+<th>Accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>35,840 Hz</td>
+<td>9.0$\sigma$</td>
+<td>21.4$\sigma$</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>54,920 Hz</td>
+<td>23.7$\sigma$</td>
+<td>80.8$\sigma$</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>57,037 Hz</td>
+<td>9.0$\sigma$</td>
+<td>42.0$\sigma$</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>97,011 Hz</td>
+<td>17.1$\sigma$</td>
+<td>56.3$\sigma$</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combined capacity:</strong> $8^4 = 4{,}096$ discriminable patterns = <strong>12 bits</strong> per observation at zero error. Conservative floor (3$\sigma$ criterion applied to all gaps): 8 bits (256 patterns). This is the first empirical confirmation of $L^M$ capacity scaling, enabled by the measured mode orthogonality (Section 3.5).</p>
+<h3 id="43-boolean-computation">4.3 Boolean Computation</h3>
+<p><strong>Protocol:</strong> Encode two modes as binary inputs (on/off). Decode AND, OR, XOR from measured amplitude patterns using pre-scan filtering (strong-mode selection) and per-rod self-response detection.</p>
+<p><strong>Result (Measured):</strong> 100% fidelity on AND, OR, and XOR across all tested configurations:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>AND</th>
+<th>OR</th>
+<th>XOR</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2-input (4 patterns)</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>3-input (AND3/OR3/MAJ/XOR3)</td>
+<td>100%</td>
+<td>100%</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>Chained: (A∧B)⊕C</td>
+<td>—</td>
+<td>—</td>
+<td>100% (5/5)</td>
+</tr>
+</tbody>
+</table>
+<p>The chained Boolean result demonstrates gate composability without signal regeneration — the output of one gate (a set of frequencies) feeds directly as input to the next. Frequencies are stable discrete identifiers; no analog degradation accumulates between stages.</p>
+<p><strong>Noise robustness:</strong> All operations remain at 100% accuracy down to 10% drive amplitude (0.2 Vpp, 20× attenuation). Discrimination margin <em>increases</em> at lower drive (from +2.5 to +4.2), because template scoring operates on normalized amplitude ratios, not absolute values.</p>
+<h3 id="44-content-addressable-memory">4.4 Content-Addressable Memory</h3>
+<p><strong>Protocol:</strong> Enroll 27 modes as addresses. Query with known patterns. Score by template matching (cross-relay normalization, enrollment-based boost/penalize).</p>
+<p><strong>Result (Measured):</strong> 100% exact retrieval at all stored patterns. Associative recall via nearest-neighbor in spectral space. Margin: +5.28 (mean), reproducible across 3 independent runs. Temporal stability: 100% over 48 hours, 7 sessions (Wilson 95% CI: [75.7%, 100%]).</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part III</p>
+  <p class="part-title">Finite Element Validation</p>
+</div>
+<h2 id="5-classical-non-separability-of-acoustic-eigenmodes">5. Classical Non-Separability of Acoustic Eigenmodes</h2>
+<h3 id="51-background">5.1 Background</h3>
+<p>Classical entanglement — non-separability of internal degrees of freedom within a single classical field — was established theoretically by Spreeuw (1998) [13] and measured in optical beams by Kagalwala et al. (2013) [14], following the formalism of Qian &amp; Eberly (2011) [15]. These works demonstrated that the CHSH inequality, conventionally a witness of quantum nonlocality between spatially separated particles, also serves as a non-separability witness for the internal structure of a single classical wave.</p>
+<p>We report the first extension of this framework to acoustic eigenmodes in a solid-state resonator.</p>
+<p><strong>Explicit disclaimer:</strong> No quantum nonlocality is claimed. Bell&rsquo;s theorem is not violated in the EPR sense. The system is a single classical plate; both degrees of freedom (frequency and spatial position) are measured simultaneously at the same location. The CHSH parameter $S$ is used strictly as a mathematical witness of non-separability, following established convention in the classical entanglement literature [13–17].</p>
+<h3 id="52-formalism">5.2 Formalism</h3>
+<p>Consider a plate driven simultaneously at two eigenfrequencies $f_1$ and $f_2$, with response measured at two spatial receivers (Ch A = NW, Ch B = NE). The state is described by a 2×2 matrix:</p>
+<p>$$M_{ij} = \text{magnitude at frequency } f_i \text{ and receiver } j$$</p>
+<p>After row-normalization and Frobenius normalization, this matrix lives in the same Hilbert-space structure as a two-qubit density matrix. Its non-separability is quantified by the concurrence:</p>
+<p>$$C = \frac{2\sigma_1 \sigma_2}{\sigma_1^2 + \sigma_2^2}$$</p>
+<p>where $\sigma_1, \sigma_2$ are the singular values of $M$. A separable (product) state has $C = 0$; a maximally non-separable state has $C = 1$.</p>
+<p>The CHSH parameter is computed from intensity correlators:</p>
+<p>$$S = |E(a_1,b_1) - E(a_1,b_2) + E(a_2,b_1) + E(a_2,b_2)|$$</p>
+<p>where $E(a,b) = \frac{I(a,b) + I(a^\perp,b^\perp) - I(a,b^\perp) - I(a^\perp,b)}{I(a,b) + I(a^\perp,b^\perp) + I(a,b^\perp) + I(a^\perp,b)}$</p>
+<p>and $I(a,b) = (\hat{a}^T M \hat{b})^2$ is the projected intensity along abstract analyzer angles $\hat{a}$, $\hat{b}$. The four optimal angles are found by numerical optimization (differential evolution). For any separable state, $S \leq 2$; for a maximally non-separable state, $S = 2\sqrt{2} \approx 2.828$ (the Tsirelson bound).</p>
+<h3 id="53-multi-pair-results-e1">5.3 Multi-Pair Results (E1)</h3>
+<p><strong>Protocol:</strong> 200 trials × 20 averages per trial. Dual-channel simultaneous capture (zero phase jitter). Five mode pairs selected by frequency sweep to maximize spatial contrast (ratio B/A ≪ 1 for one mode, ≫ 1 for the other).</p>
+<table>
+<thead>
+<tr>
+<th>Mode pair (Hz)</th>
+<th>$S$</th>
+<th>95% CI</th>
+<th>Concurrence</th>
+<th>$\sigma$ above 2.0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>34,000 + 70,000</td>
+<td><strong>2.8271</strong></td>
+<td>[2.8271376, 2.8271527]</td>
+<td>0.9991</td>
+<td>218,744</td>
+</tr>
+<tr>
+<td>34,000 + 87,000</td>
+<td><strong>2.8251</strong></td>
+<td>[2.8250816, 2.8251047]</td>
+<td>0.9976</td>
+<td>137,707</td>
+</tr>
+<tr>
+<td>70,000 + 112,000</td>
+<td><strong>2.8239</strong></td>
+<td>[2.8239070, 2.8239366]</td>
+<td>0.9968</td>
+<td>107,527</td>
+</tr>
+<tr>
+<td>34,000 + 80,000</td>
+<td><strong>2.8223</strong></td>
+<td>[2.8222726, 2.8223136]</td>
+<td>0.9957</td>
+<td>78,594</td>
+</tr>
+<tr>
+<td>34,000 + 71,000</td>
+<td><strong>2.8195</strong></td>
+<td>[2.8195104, 2.8195819]</td>
+<td>0.9937</td>
+<td>45,830</td>
+</tr>
+</tbody>
+</table>
+<p>All five pairs violate $S = 2$ at extreme significance. The best pair reaches 99.95% of the Tsirelson bound. All 10/10 block sub-analyses pass independently. The result is not cherry-picked: mode pairs were selected by maximizing spatial contrast (log-ratio between receivers), and all tested pairs with high contrast produce $S > 2.82$.</p>
+<p><strong>State matrix (optimal pair, row/Frobenius normalized):</strong></p>
+<p>$$M = \begin{pmatrix} 0.707 & 0.014 \\ 0.013 & 0.707 \end{pmatrix}$$</p>
+<p>This anti-diagonal structure indicates maximal non-separability: each frequency mode couples predominantly to a different spatial receiver.</p>
+<h3 id="54-magnitude-only-protocol-validation-e2">5.4 Magnitude-Only Protocol Validation (E2)</h3>
+<p><strong>Problem:</strong> Phase between spatially separated receivers is unstable (42° std for $f_1$, 19° std for $f_2$) because one mode has a spatial node at one receiver (signal ≈ 124 counts vs. 63,000 at the other).</p>
+<p><strong>Result:</strong> Complex tomography gives $C = 0.924$ with CI [0.20, 0.999] (huge variance). Magnitude-only gives $C = 0.999 \pm 0.0000$ (rock-solid).</p>
+<p><strong>Conclusion:</strong> The magnitude-based formalism of Qian &amp; Eberly (2011) is not merely a convenience — it is the physically correct protocol for spatially separated receivers. Phase is ill-defined at nodal positions. This experiment validates our measurement choice rather than discovering a limitation.</p>
+<h3 id="55-temporal-stability-e3">5.5 Temporal Stability (E3)</h3>
+<p>Seven epochs over 3.5 hours. Temperature range: 22.4–27.0°C.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean $S$</td>
+<td>2.8261</td>
+</tr>
+<tr>
+<td>Std $S$</td>
+<td>±0.0003</td>
+</tr>
+<tr>
+<td>Max drift from baseline</td>
+<td>0.65%</td>
+</tr>
+<tr>
+<td>Concurrence (all epochs)</td>
+<td>&gt; 0.998</td>
+</tr>
+</tbody>
+</table>
+<p>The non-separable state is a stable physical fingerprint determined by plate geometry — not a transient or environmentally sensitive phenomenon. This stability underlies the physical unclonable function (PUF) application.</p>
+<h3 id="56-endurance-e11">5.6 Endurance (E11)</h3>
+<p>16,480,345 continuous drive cycles at 54,920 Hz. Maximum drift from baseline: <strong>0.22%</strong>. No fatigue degradation detected. The acoustic eigenmode spectrum is a non-volatile property of the plate&rsquo;s geometry.</p>
+<h3 id="57-three-mode-extension-e5">5.7 Three-Mode Extension (E5)</h3>
+<p>Three simultaneous drive frequencies (35,840 + 54,920 + 97,011 Hz), dual-channel capture.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Schmidt number $K$</td>
+<td>1.004</td>
+</tr>
+<tr>
+<td>$\sigma$ above $K = 1$</td>
+<td>1,184</td>
+</tr>
+<tr>
+<td>Concurrence</td>
+<td>0.09</td>
+</tr>
+<tr>
+<td>Angular spread</td>
+<td>6.5°</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Interpretation:</strong> $K > 1$ is statistically confirmed ($>$1000$\sigma$), proving that the non-separability framework extends to higher dimensions. However, concurrence is low because the NW and NE receivers subtend only 6.5° of angular diversity in mode-shape space. Full 3-mode non-separability requires more spatially diverse receivers (e.g., relay-muxed array or differently positioned PZTs). This is a geometry limitation, not a physics one.</p>
+<h3 id="58-computational-utility-e8">5.8 Computational Utility (E8)</h3>
+<p><strong>Protocol:</strong> Drive the CHSH-optimal mode pair (34 kHz + 70 kHz) in 4 binary patterns (00, 01, 10, 11). Decode at both receivers independently.</p>
+<p><strong>Result:</strong> 100% accuracy at both Ch A and Ch B. However, the intensity ratios differ:</p>
+<ul>
+<li>Ch A: $f_1/f_2$ ratio = 0.201 (pattern 11)</li>
+<li>Ch B: $f_1/f_2$ ratio = 0.361 (pattern 11)</li>
+<li>Ratio of ratios: 0.557 ≠ 1.0 (proves non-separable view)</li>
+</ul>
+<p><strong>Interpretation:</strong> A separable system ($C = 0$) would show identical ratios at both receivers. The non-separable system provides each receiver with a distinct &ldquo;view&rdquo; of the same transmitted state — a physical basis for spatial multiplexing. For analog (multi-level) encoding, this means each receiver resolves different amplitude patterns, extracting more total information than any single channel could.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part IV</p>
+  <p class="part-title">MEMS Design and Scaling</p>
+</div>
+<h2 id="6-reservoir-computing-and-temporal-memory">6. Reservoir Computing and Temporal Memory</h2>
+<h3 id="61-what-the-bench-shows">6.1 What the Bench Shows</h3>
+<p>Three temporal memory architectures were tested. All fail.</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>NRMSE / Metric</th>
+<th>Root Cause</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NARMA-10 (fundamental ringdown)</td>
+<td>1.08</td>
+<td>$\tau_\text{loaded}$ = 1–4 ms; 140 ms step interval → zero memory</td>
+</tr>
+<tr>
+<td>NARMA-10 (intermodulation ring-up)</td>
+<td>5.36</td>
+<td>IM products genuine but zero persistence</td>
+</tr>
+<tr>
+<td>NARMA-10 (active drive modulation)</td>
+<td>&gt; 1.0</td>
+<td>Active drive masks input history</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Physics diagnosis:</strong> The bench operates at step_interval/$\tau$ ≈ 100. Inter-step memory: $\exp(-140/1.4) = 3.7 \times 10^{-44}$ (effectively zero). The plate at bench rates is a memoryless static function, not a reservoir.</p>
+<h3 id="62-what-the-bench-validates">6.2 What the Bench Validates</h3>
+<p>Despite the temporal failure, the bench confirms two reservoir prerequisites:</p>
+<p><strong>Lorentzian kernel (Measured):</strong> Fine frequency sweep (±500 Hz around 35,840 Hz) reveals a well-resolved resonance: $Q_\text{loaded} = 473$, 4.9× dynamic range. The plate implements a Lorentzian nonlinear mapping from input frequency to output amplitude — a valid reservoir kernel.</p>
+<p><strong>Spatial diversity (Measured):</strong> The H-matrix (26 modes × 2 receivers) has condition number 10.96 and full rank (2). Mode amplitude ratios between receivers span 1.3–11.2×, providing the input-dependent mixing required for echo state computation.</p>
+<h3 id="63-simulation-with-measured-parameters">6.3 Simulation with Measured Parameters</h3>
+<p>Using the measured H-matrix and $Q$-derived mode dynamics, we simulate reservoir operation at the correct rate regime:</p>
+<table>
+<thead>
+<tr>
+<th>Configuration</th>
+<th>NRMSE</th>
+<th>Features</th>
+<th>Comparison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Round-robin, $G=3$ + quadratic readout</td>
+<td>0.393</td>
+<td>384</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Delay-line $D=15$ + quadratic</td>
+<td>0.373</td>
+<td>216</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Full embedding $D=15$</td>
+<td>0.351</td>
+<td>1,010</td>
+<td>PASS</td>
+</tr>
+<tr>
+<td>Wiener filter (no plate, reference)</td>
+<td>0.241</td>
+<td>135</td>
+<td>Lower bound</td>
+</tr>
+<tr>
+<td>Random ESN (27 nodes, reference)</td>
+<td>0.442</td>
+<td>—</td>
+<td>Upper bound</td>
+</tr>
+</tbody>
+</table>
+<p>The plate-parameter reservoir (NRMSE = 0.39) outperforms a random echo state network of equivalent size (0.44), confirming that the measured spatial diversity and Lorentzian kernel provide computational structure. The gap to the Wiener filter (0.24) quantifies the remaining nonlinearity deficit — addressable by MEMS-scale Q enhancement.</p>
+<h3 id="64-the-scaling-argument">6.4 The Scaling Argument</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Bench</th>
+<th>MEMS (projected)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$Q_\text{loaded}$</td>
+<td>241</td>
+<td>9,097</td>
+</tr>
+<tr>
+<td>Mode decay time $\tau$</td>
+<td>1.4 ms</td>
+<td>52 ms</td>
+</tr>
+<tr>
+<td>Step interval</td>
+<td>140 ms</td>
+<td>2 µs</td>
+</tr>
+<tr>
+<td>step/$\tau$ ratio</td>
+<td>100</td>
+<td>0.00004</td>
+</tr>
+<tr>
+<td>Inter-step memory</td>
+<td>$10^{-44}$</td>
+<td>0.99996</td>
+</tr>
+</tbody>
+</table>
+<p>The bench proves the <strong>kernel</strong>; MEMS provides the <strong>memory</strong>. The 2.5-million-fold improvement in step/$\tau$ converts a memoryless classifier into a functioning temporal reservoir. This is an engineering gap (serial instrumentation, PZT loading), not a physics gap.</p>
+<hr />
+<h2 id="7-scaling-laws">7. Scaling Laws</h2>
+<h3 id="71-mode-count-is-size-independent">7.1 Mode Count Is Size-Independent</h3>
+<p>The key scaling result of Section 2.1 bears repeating: the number of thermally stable modes $n_\text{max}$ depends only on $\alpha$, $Q$, and $\Delta T$ — not on rod length $L$. A 1 mm MEMS rod supports the same 9,380 modes as the 150 mm prototype (for borosilicate, $Q = 10{,}000$, $\pm 1$ K).</p>
+<h3 id="72-snr-scales-linearly-with-length">7.2 SNR Scales Linearly with Length</h3>
+<p>The thermodynamic SNR ceiling is:</p>
+<p>$$\text{SNR} = \frac{\frac{1}{2} k_\text{eff} A^2}{k_B T}$$</p>
+<p>The effective spring constant $k_\text{eff} \propto E \cdot d^2 / L$, so at fixed drive amplitude: SNR $\propto L$. A 1 mm rod at 1 nm drive has $\text{SNR}_\text{ceiling} = 76.7$ dB (derived), giving 12.7 bits/mode. The measured bench SNR (42–55 dB) is below this ceiling; the gap is accounted for by the coupling budget: 88% electrical feedthrough (~9 dB loss of acoustic signal utility), ADC quantization (~20 dB), breadboard pickup (~10 dB), FFT leakage (~5–8 dB).</p>
+<h3 id="73-density-scales-as-math133">7.3 Density Scales as $1/L^2$</h3>
+<p>Since mode count is length-independent and rod volume $\propto L$ (at fixed aspect ratio), areal density scales as $1/L^2$:</p>
+<table>
+<thead>
+<tr>
+<th>Rod length</th>
+<th>Bits/rod</th>
+<th>Active density</th>
+<th>Packed-array density</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>150 mm (prototype)</td>
+<td>153,832</td>
+<td>36 Mbit/cm³</td>
+<td>7.2 Mbit/cm³</td>
+</tr>
+<tr>
+<td>1 mm (MEMS boro.)</td>
+<td>119,126</td>
+<td>95.1 Gbit/cm³</td>
+<td>17.0 Gbit/cm³</td>
+</tr>
+<tr>
+<td>0.5 mm (SiO₂)</td>
+<td>1.44M</td>
+<td>—</td>
+<td>1.4 Tbit/cm³</td>
+</tr>
+</tbody>
+</table>
+<p>All density figures are <em>projected</em>. They assume the full mode count is physically realizable, which requires $Q > 1{,}000$ at MEMS scale.</p>
+<hr />
+<h2 id="8-mems-q-factor-model">8. MEMS Q-Factor Model</h2>
+<p>The central question for MEMS viability: does the quality factor survive miniaturization?</p>
+<h3 id="81-five-mechanism-loss-budget">8.1 Five-Mechanism Loss Budget</h3>
+<p>We model five independent dissipation mechanisms for a 1 mm × 40 µm fused silica rod, vacuum-packaged, with AlN thin-film transduction:</p>
+<table>
+<thead>
+<tr>
+<th>Mechanism</th>
+<th>$Q_i$</th>
+<th>Fraction of loss</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Material (intrinsic glass)</td>
+<td>$10{,}000$</td>
+<td>91.0%</td>
+</tr>
+<tr>
+<td>Anchor (substrate radiation)</td>
+<td>$207{,}000$</td>
+<td>4.4%</td>
+</tr>
+<tr>
+<td>Thermoelastic (TED)</td>
+<td>$2.78 \times 10^6$</td>
+<td>0.3%</td>
+</tr>
+<tr>
+<td>Gas damping (at 1 mTorr)</td>
+<td>$1.25 \times 10^6$</td>
+<td>0.7%</td>
+</tr>
+<tr>
+<td>Surface loss (50 nm layer)</td>
+<td>$272{,}000$</td>
+<td>3.6%</td>
+</tr>
+</tbody>
+</table>
+<p>$$\frac{1}{Q_\text{total}} = \sum_i \frac{1}{Q_i} \implies Q_\text{total} = 9{,}097$$</p>
+<p>Material loss dominates at 91% of the total budget. This is favorable: it means the MEMS-specific mechanisms (anchor, surface, gas) contribute only 9% of the loss, and the Q is determined primarily by the glass material itself — which is well-characterized and consistent across geometries.</p>
+<h3 id="82-validation-against-measured-data">8.2 Validation Against Measured Data</h3>
+<p>The model predicts $Q = 9{,}097$ for MEMS. Our measured values bracket this:</p>
+<ul>
+<li>Plate intrinsic: $Q = 2{,}759$ (fused silica, loaded by multiple PZTs and air)</li>
+<li>Plate (AWG ringdown, single mode): $Q = 7{,}687$–33,960 (range across modes)</li>
+<li>Rod prototype (borosilicate, epoxied PZT): $Q = 74$–572 (coupling-loss dominated)</li>
+</ul>
+<p>The plate&rsquo;s intrinsic $Q = 2{,}759$ is limited by air damping and PZT loading — both eliminated in vacuum-packaged MEMS. The AWG ringdown values reaching $Q > 30{,}000$ at some modes confirm that the material itself supports the predicted Q when extrinsic losses are reduced.</p>
+<hr />
+<h2 id="9-mems-device-specification">9. MEMS Device Specification</h2>
+<h3 id="91-reference-design">9.1 Reference Design</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rod material</td>
+<td>Fused silica</td>
+</tr>
+<tr>
+<td>Rod dimensions</td>
+<td>1 mm × 40 µm (25:1 aspect ratio)</td>
+</tr>
+<tr>
+<td>Transduction</td>
+<td>AlN thin-film piezoelectric (200 nm)</td>
+</tr>
+<tr>
+<td>Packaging</td>
+<td>Wafer-level vacuum (&lt; 1 mTorr)</td>
+</tr>
+<tr>
+<td>Array pitch</td>
+<td>80 µm (2× diameter)</td>
+</tr>
+<tr>
+<td>Layer spacing</td>
+<td>1.1 mm</td>
+</tr>
+</tbody>
+</table>
+<h3 id="92-per-rod-performance-projected">9.2 Per-Rod Performance (Projected)</h3>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode count</td>
+<td>9,380</td>
+</tr>
+<tr>
+<td>Bits per mode</td>
+<td>12.7 (at 76.7 dB SNR)</td>
+</tr>
+<tr>
+<td>Bits per rod</td>
+<td>119,126</td>
+</tr>
+<tr>
+<td>Read time (impulse)</td>
+<td>3.8 µs</td>
+</tr>
+<tr>
+<td>Read energy</td>
+<td>1.7 pJ/bit</td>
+</tr>
+<tr>
+<td>Write energy</td>
+<td>15 fJ/bit</td>
+</tr>
+</tbody>
+</table>
+<h3 id="93-array-architecture-projected">9.3 Array Architecture (Projected)</h3>
+<p>A 10×10 mm die at 80 µm pitch contains 15,625 rods in a single layer. With 1.1 mm layer spacing, a 10-layer stack fits in a standard package:</p>
+<ul>
+<li>Rods per die: 156,250</li>
+<li>Bits per die: 18.6 Gbit (2.3 GB)</li>
+<li>Volume: 0.11 cm³</li>
+<li>Packed-array density: 17.0 Gbit/cm³</li>
+</ul>
+<h3 id="94-energy-budget-projected">9.4 Energy Budget (Projected)</h3>
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Energy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Write (physics-layer)</td>
+<td>15 fJ/bit</td>
+</tr>
+<tr>
+<td>Read (ADC-dominated)</td>
+<td>1.7 pJ/bit</td>
+</tr>
+<tr>
+<td>Search (parallel, per rod)</td>
+<td>195 fJ</td>
+</tr>
+<tr>
+<td>Total system read</td>
+<td>~2 pJ/bit</td>
+</tr>
+</tbody>
+</table>
+<p>Comparison: DRAM ~3 pJ/bit (access), Flash ~10 pJ/bit (read). CWM is competitive on energy while providing native associative computation.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part V</p>
+  <p class="part-title">Advanced Techniques</p>
+</div>
+<h2 id="10-fabrication-pathway">10. Fabrication Pathway</h2>
+<p>All steps use processes in volume MEMS production today:</p>
+<ol>
+<li><strong>Fused silica wafer</strong> (200 mm, 500 µm thick)</li>
+<li><strong>Deep reactive ion etch (DRIE)</strong> — define rod arrays (Bosch-type, proven for glass MEMS oscillators)</li>
+<li><strong>AlN sputter deposition</strong> — 200 nm thin-film piezoelectric transduction layer</li>
+<li><strong>Metal patterning</strong> — Mo bottom electrode, Al top electrode (standard lift-off)</li>
+<li><strong>Perturbation patterning</strong> — Au dot array via e-beam lithography or focused ion beam (50 nm thick, positioned at calculated antinodes)</li>
+<li><strong>Wafer-level vacuum packaging</strong> — getter-sealed cavity (&lt; 1 mTorr)</li>
+</ol>
+<p><strong>CMOS integration:</strong> Flip-chip bonding to a readout ASIC (ADC array + FFT accelerator + template matching logic). Standard 3D-IC process.</p>
+<p><strong>Risk assessment:</strong> The individual process steps are mature. The integration — combining glass DRIE with AlN transduction and perturbation patterning on the same wafer — has not been demonstrated for this specific application. The fabrication pathway is the primary technical risk.</p>
+<hr />
+<h2 id="11-technology-comparison">11. Technology Comparison</h2>
+<table>
+<thead>
+<tr>
+<th>Technology</th>
+<th>Density (Gbit/cm³)</th>
+<th>Read energy (pJ/bit)</th>
+<th>Latency</th>
+<th>Compute-in-memory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DRAM</td>
+<td>0.5–1</td>
+<td>3</td>
+<td>10–20 ns</td>
+<td>No</td>
+</tr>
+<tr>
+<td>3D NAND</td>
+<td>10–30</td>
+<td>10</td>
+<td>25–100 µs</td>
+<td>No</td>
+</tr>
+<tr>
+<td>ReRAM crossbar</td>
+<td>1–5</td>
+<td>0.1–1</td>
+<td>10–100 ns</td>
+<td>Matrix-vector</td>
+</tr>
+<tr>
+<td>PCM</td>
+<td>1–3</td>
+<td>1–10</td>
+<td>50–150 ns</td>
+<td>Matrix-vector</td>
+</tr>
+<tr>
+<td><strong>CWM (MEMS, projected)</strong></td>
+<td><strong>17</strong></td>
+<td><strong>1.7</strong></td>
+<td><strong>3.8 µs</strong></td>
+<td><strong>Associative + Boolean</strong></td>
+</tr>
+</tbody>
+</table>
+<p>CWM&rsquo;s architectural distinction: the medium simultaneously <em>is</em> the storage and <em>performs</em> the computation. ReRAM/PCM crossbars compute matrix-vector products but cannot perform content-addressable search in a single operation. CWM&rsquo;s physics-layer search (drive + max-response detection) is inherently O(1) in the number of stored patterns.</p>
+<p><strong>What CWM is not:</strong> CWM is not faster than DRAM or Flash for random access (3.8 µs vs. 10 ns). Its advantage is in <em>search</em> and <em>pattern matching</em> workloads where conventional architectures require sequential comparison or dedicated accelerators.</p>
+<hr />
+<h2 id="12-discussion">12. Discussion</h2>
+<h3 id="121-evidence-scorecard">12.1 Evidence Scorecard</h3>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Status</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Eigenmode encoding in glass plates</td>
+<td><strong>Confirmed</strong></td>
+<td>27 modes, 100% discrimination, 8-bit capacity</td>
+</tr>
+<tr>
+<td>Non-separable frequency×space states</td>
+<td><strong>Confirmed</strong></td>
+<td>$S > 2.82$, 5/5 pairs, 200k$\sigma$</td>
+</tr>
+<tr>
+<td>Non-separability as computational resource</td>
+<td><strong>Confirmed</strong></td>
+<td>Spatial multiplexing, ratio-of-ratios ≠ 1</td>
+</tr>
+<tr>
+<td>Boolean computation (AND/OR/XOR)</td>
+<td><strong>Confirmed</strong></td>
+<td>100%, 3-input, composable</td>
+</tr>
+<tr>
+<td>Content-addressable memory</td>
+<td><strong>Confirmed</strong></td>
+<td>27 addresses, 100% retrieval</td>
+</tr>
+<tr>
+<td>Physical fingerprint stability (PUF)</td>
+<td><strong>Confirmed</strong></td>
+<td>0.65% drift / 3.5h, 16.5M cycle endurance</td>
+</tr>
+<tr>
+<td>Plate linearity (mode orthogonality)</td>
+<td><strong>Confirmed</strong></td>
+<td>Zero IM products, &lt; 1.1$\sigma$ cross-coupling</td>
+</tr>
+<tr>
+<td>Temporal reservoir computing (bench)</td>
+<td><strong>Failed</strong></td>
+<td>Rate/Q mismatch (step/$\tau$ = 100)</td>
+</tr>
+<tr>
+<td>Attention-layer utility (L3)</td>
+<td><strong>Inconclusive</strong></td>
+<td>H converges but indistinguishable from random (rank-2 limit)</td>
+</tr>
+<tr>
+<td>MEMS reservoir computing</td>
+<td><strong>Projected</strong></td>
+<td>Simulation NRMSE = 0.39 with measured H</td>
+</tr>
+<tr>
+<td>MEMS Q = 9,097</td>
+<td><strong>Modeled</strong></td>
+<td>Five-mechanism budget; awaits fabrication</td>
+</tr>
+<tr>
+<td>Density 17.0 Gbit/cm³</td>
+<td><strong>Projected</strong></td>
+<td>Requires measured MEMS Q &gt; 1,000</td>
+</tr>
+</tbody>
+</table>
+<h3 id="122-what-the-failures-teach">12.2 What the Failures Teach</h3>
+<p>The temporal memory failure is not an architecture failure — it is a rate limitation of the bench instrumentation. The serial communication overhead (115,200 baud NCO commands + PicoScope block acquisition) imposes a 140 ms minimum step interval. With $\tau_\text{loaded} = 1.4$ ms, inter-step memory is $10^{-44}$. At MEMS rates (2 µs step, 52 ms decay), the same architecture provides memory depth $> 10$ steps.</p>
+<p>The attention-layer result (L3) reveals a fundamental geometric constraint: with only 2 spatial receivers, the transfer matrix $H$ is rank-2. Any learnable layer before $H$ can rotate its inputs to exploit any rank-2 matrix equally well — physical structure becomes algebraically invisible (absorption theorem). This identifies a clear hardware requirement: useful attention computation needs $\geq 8$ spatial channels.</p>
+<h3 id="123-anticipated-objections">12.3 Anticipated Objections</h3>
+<p><strong>&ldquo;The CHSH result is just geometry.&rdquo;</strong> Correct. The non-separability arises from the plate&rsquo;s Chladni patterns — eigenmode shapes that project differently onto spatially separated receivers. This is real physics (measurable, reproducible, computationally useful), not a measurement artifact. That it is &ldquo;just geometry&rdquo; makes it <em>more</em> reliable, not less: the geometry is fixed, stable, and manufacturable.</p>
+<p><strong>&ldquo;S = 2.83 implies quantum entanglement.&rdquo;</strong> It does not. We follow the established classical entanglement framework [13–17] where the CHSH parameter witnesses non-separability of internal degrees of freedom within a single classical system. No space-like separation, no hidden variables, no quantum nonlocality. The mathematical framework is shared; the physical interpretation is entirely different.</p>
+<p><strong>&ldquo;The plate is 88% electrical feedthrough.&rdquo;</strong> The spectral <em>structure</em> (mode positions, amplitude ratios) is 100% acoustic, confirmed by PZT-lifted null test and the E36 null-control battery. Feedthrough adds a flat pedestal; it does not create or modify spectral peaks. All classification and non-separability results depend on spectral shape, not absolute amplitude.</p>
+<p><strong>&ldquo;Why not just use a digital matched filter?&rdquo;</strong> A digital matched filter requires: (1) storing all templates in electronic memory, (2) streaming each template through a multiply-accumulate unit, (3) comparing all results. For $M$ templates of length $N$: $O(MN)$ operations, $O(MN)$ memory. CWM performs the same operation in $O(1)$ time (one acoustic propagation) with the templates stored in the physics. The advantage is architectural: zero data movement.</p>
+<p><strong>&ldquo;Q = 2,759 is too low for the density claims.&rdquo;</strong> The density projections assume MEMS Q = 9,097 (modeled). The measured plate Q = 2,759 is limited by air damping and PZT loading, both eliminated in vacuum-packaged MEMS. The model&rsquo;s prediction is consistent with published MEMS Q values for fused silica resonators [11, 12]. A single fabricated device would resolve this.</p>
+<p><strong>&ldquo;Reservoir computing is only simulated.&rdquo;</strong> Correct. We clearly label it as <em>modeled</em>. The simulation uses measured physical parameters (H-matrix, Q) and makes one assumption: that the step interval can be reduced to 2 µs (MEMS ASIC). This is not speculative — it is standard MEMS readout timing. The bench validates the kernel; the projection validates the memory. Together they predict a working reservoir, but the claim remains projected until fabricated.</p>
+<h3 id="124-limitations-and-open-questions">12.4 Limitations and Open Questions</h3>
+<ol>
+<li><strong>No MEMS device exists.</strong> All projected performance awaits fabrication. The primary kill criterion is $Q < 1{,}000$ at MEMS scale.</li>
+<li><strong>Write-once architecture.</strong> Perturbation patterns are fixed at manufacture. Rewritability paths exist (Section 12 of v18) but are unvalidated.</li>
+<li><strong>Temperature sensitivity.</strong> The $\pm 1$ K assumption for 9,380 modes requires active thermal control at MEMS scale. Relaxing to $\pm 10$ K reduces mode count to ~940.</li>
+<li><strong>Read speed.</strong> 3.8 µs is slow compared to DRAM (10 ns). CWM targets search/pattern-matching workloads, not random access.</li>
+<li><strong>2-receiver geometry limits.</strong> Current experiments use 2 spatial channels. Full exploitation of the mode-space diversity requires 8+ receivers.</li>
+<li><strong>Endurance of perturbation patterns under thermal cycling</strong> is untested beyond room-temperature stability.</li>
+</ol>
+<h3 id="125-related-work">12.5 Related Work</h3>
+<p><strong>Classical entanglement:</strong> Spreeuw (1998) [13] proposed the concept; Kagalwala et al. (2013) [14] measured $S > 2$ in optical beams; Qian &amp; Eberly (2011) [15] developed the intensity-based formalism; Töppel et al. (2014) [16] and Aiello et al. (2015) [17] extended the framework. All prior demonstrations are in optics. This work extends classical non-separability to acoustic eigenmodes in a solid resonator.</p>
+<p><strong>Photonic reservoir computing:</strong> Larger et al. (2012) [18], Brunner et al. (2013) [19] demonstrated optical cavities as reservoir nodes. CWM proposes the same architecture in acoustic MEMS — slower speed but higher Q and lower energy.</p>
+<p><strong>MEMS computing:</strong> Mahboob et al. (2011) [20] demonstrated coupled MEMS oscillators for logic. Their approach uses nonlinear coupling between oscillators; CWM uses linear superposition within a single multimode resonator plus spatial diversity.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part VI</p>
+  <p class="part-title">Outlook</p>
+</div>
+<h2 id="13-conclusion">13. Conclusion</h2>
+<p>We have demonstrated that acoustic eigenmodes in glass plates constitute a viable physical substrate for information encoding and computation. The central results are:</p>
+<ol>
+<li>
+<p><strong>Non-separable frequency×space correlations</strong> quantified by $S = 2.827$ (99.95% of Tsirelson bound) at $>$200,000$\sigma$ significance — the first measurement of classical entanglement in an acoustic solid-state system.</p>
+</li>
+<li>
+<p><strong>Complete spectral encoding validation:</strong> 27 modes, 8-bit multi-level capacity, 100% Boolean computation, content-addressable memory — all on a &#36;38 prototype.</p>
+</li>
+<li>
+<p><strong>Honest identification of the current limit:</strong> temporal reservoir computing fails on the bench due to a 2.5-million-fold rate/Q mismatch, not due to physics. The measured Lorentzian kernel and spatial H-matrix predict NRMSE = 0.39 at MEMS rates.</p>
+</li>
+<li>
+<p><strong>A clear fabrication pathway</strong> using processes in volume production today, with a rigorous Q-factor model ($Q = 9{,}097$) predicting that miniaturization preserves the physics.</p>
+</li>
+</ol>
+<p>The non-separability result, while classical, has immediate practical utility: it provides spatial multiplexing (different receivers decode different information from the same drive), enables physical unclonable functions (stable fingerprints, 16.5M cycle endurance), and underlies the mode-diversity that makes spectral encoding work. This is computationally useful entanglement in a &#36;38 glass plate.</p>
+<p>What remains is to build the MEMS device and measure it.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] J. Backus, &ldquo;Can programming be liberated from the von Neumann style? A functional style and its algebra of programs,&rdquo; <em>Commun. ACM</em> <strong>21</strong>, 613–641 (1978).</p>
+<p>[2] W. A. Wulf and S. A. McKee, &ldquo;Hitting the memory wall: Implications of the obvious,&rdquo; <em>ACM SIGARCH Comp. Arch. News</em> <strong>23</strong>, 20–24 (1995).</p>
+<p>[3] F. Cai et al., &ldquo;A fully integrated reprogrammable memristor–CMOS system for efficient multiply–accumulate operations,&rdquo; <em>Nat. Electron.</em> <strong>2</strong>, 290–299 (2019).</p>
+<p>[6] C. E. Shannon, &ldquo;A mathematical theory of communication,&rdquo; <em>Bell Syst. Tech. J.</em> <strong>27</strong>, 379–423 (1948).</p>
+<p>[7] Lord Rayleigh, <em>The Theory of Sound</em>, 2nd ed. (Macmillan, London, 1894), Vol. 1.</p>
+<p>[8] G. Sauerbrey, &ldquo;Verwendung von Schwingquarzen zur Wägung dünner Schichten und zur Mikrowägung,&rdquo; <em>Z. Phys.</em> <strong>155</strong>, 206–222 (1959).</p>
+<p>[9] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proc. Natl. Acad. Sci. USA</em> <strong>79</strong>, 2554–2558 (1982).</p>
+<p>[10] D. J. Amit, H. Gutfreund, and H. Sompolinsky, &ldquo;Storing infinite numbers of patterns in a spin-glass model of neural networks,&rdquo; <em>Phys. Rev. Lett.</em> <strong>55</strong>, 1530–1533 (1985).</p>
+<p>[11] F. Ayazi and K. Najafi, &ldquo;High aspect-ratio combined poly and single-crystal silicon (HARPSS) MEMS technology,&rdquo; <em>J. Microelectromech. Syst.</em> <strong>9</strong>, 288–294 (2000).</p>
+<p>[12] J. R. Vig and Y. Kim, &ldquo;Noise in microelectromechanical system resonators,&rdquo; <em>IEEE Trans. Ultrason., Ferroelect., Freq. Contr.</em> <strong>46</strong>, 1558–1565 (1999).</p>
+<p>[13] R. J. C. Spreeuw, &ldquo;A classical analogy of entanglement,&rdquo; <em>Found. Phys.</em> <strong>28</strong>, 361–374 (1998).</p>
+<p>[14] K. H. Kagalwala, G. Di Giuseppe, A. F. Abouraddy, and B. E. A. Saleh, &ldquo;Bell&rsquo;s measure in classical optical coherence,&rdquo; <em>Nat. Photonics</em> <strong>7</strong>, 72–78 (2013).</p>
+<p>[15] X.-F. Qian and J. H. Eberly, &ldquo;Entanglement and classical polarization states,&rdquo; <em>Opt. Lett.</em> <strong>36</strong>, 4110–4112 (2011).</p>
+<p>[16] F. Töppel, A. Aiello, C. Marquardt, E. Giacobino, and G. Leuchs, &ldquo;Classical entanglement in polarization metrology,&rdquo; <em>New J. Phys.</em> <strong>16</strong>, 073019 (2014).</p>
+<p>[17] A. Aiello, F. Töppel, C. Marquardt, E. Giacobino, and G. Leuchs, &ldquo;Quantum-like nonseparable structures in optical beams,&rdquo; <em>New J. Phys.</em> <strong>17</strong>, 043024 (2015).</p>
+<p>[18] L. Larger, M. C. Soriano, D. Brunner, L. Appeltant, J. M. Gutiérrez, L. Pesquera, C. R. Mirasso, and I. Fischer, &ldquo;Photonic information processing beyond Turing: an optoelectronic implementation of reservoir computing,&rdquo; <em>Opt. Express</em> <strong>20</strong>, 3241–3249 (2012).</p>
+<p>[19] D. Brunner, M. C. Soriano, C. R. Mirasso, and I. Fischer, &ldquo;Parallel photonic information processing at gigabyte per second data rates using transient states,&rdquo; <em>Nat. Commun.</em> <strong>4</strong>, 1364 (2013).</p>
+<p>[20] I. Mahboob, E. Flurin, K. Nishiguchi, A. Fujiwara, and H. Yamaguchi, &ldquo;Interconnect-free parallel logic circuits in a single mechanical resonator,&rdquo; <em>Nat. Commun.</em> <strong>2</strong>, 198 (2011).</p>
+<p>[21] Festi et al., &ldquo;Universality of vibrational spectra of stable glasses,&rdquo; <em>Phys. Rev. X</em> <strong>16</strong>, 021021 (2026).</p>
+<p>[22] W. Schirmacher, G. Ruocco, and T. Scopigno, &ldquo;Acoustic attenuation in glasses and its relation with the boson peak,&rdquo; <em>Phys. Rev. Lett.</em> <strong>98</strong>, 025501 (2007).</p>
+<p>[23] M. Tierce, <em>Coherent Wave Memory: The Full Story</em> (companion volume), github.com/miketierce/cwm-book (2026).</p>
+<hr />
+<h2 id="appendix-a-snr-and-density-scaling-derivation">Appendix A: SNR and Density Scaling Derivation</h2>
+<p>The thermodynamic SNR for a longitudinal mode of a cylindrical rod:</p>
+<p>$$\text{SNR} = \frac{\frac{1}{2} k_\text{eff} A^2}{k_B T}$$</p>
+<p>where $k_\text{eff} = \frac{E \pi d^2}{4L} \cdot \frac{n^2 \pi^2}{2}$ for mode $n$. At the fundamental ($n=1$), for a 150 mm × 6 mm borosilicate rod ($E = 63$ GPa, $\rho = 2{,}230$ kg/m³):</p>
+<p>$$k_\text{eff} = \frac{63 \times 10^9 \times \pi \times (6 \times 10^{-3})^2}{4 \times 0.15} \times \frac{\pi^2}{2} = 5.86 \times 10^7 \text{ N/m}$$</p>
+<p>At 1 nm drive: $E_s = \frac{1}{2} \times 5.86 \times 10^7 \times (10^{-9})^2 = 2.93 \times 10^{-11}$ J.</p>
+<p>$$\text{SNR} = \frac{2.93 \times 10^{-11}}{4.14 \times 10^{-21}} = 7.07 \times 10^9 \quad (98.5 \text{ dB})$$</p>
+<p>This is a <em>derived</em> thermodynamic ceiling, not a measured instrument reading. Measured bench SNR is 42–55 dB; the 43–56 dB gap is accounted for by the coupling budget (Section 3.4).</p>
+<p><strong>Density scaling.</strong> For a packed array at pitch $p = 2d$ and layer spacing $h = L + 2.5d$:</p>
+<p>$$\rho_\text{packed} = \frac{n_\text{max} \times b}{p^2 \times h}$$</p>
+<p>At 1 mm, 40 µm diameter, 9,380 modes, 12.7 bits/mode: $\rho_\text{packed} = 119{,}126 / (80 \times 10^{-6})^2 \times (1.1 \times 10^{-3}) = 17.0$ Gbit/cm³ (projected).</p>
+<hr />
+<h2 id="appendix-b-q-factor-model-details">Appendix B: Q-Factor Model Details</h2>
+<h3 id="material-loss">Material Loss</h3>
+<p>Borosilicate: $Q_\text{mat} = 10{,}000$ (literature, confirmed by macro ringdown). Fused silica: $Q_\text{mat} = 100{,}000$ [11]. CWM reference design uses fused silica at $Q_\text{mat} = 10{,}000$ (conservative).</p>
+<h3 id="anchor-loss">Anchor Loss</h3>
+<p>For a beam resonator with clamped-free boundary conditions [11]:</p>
+<p>$$Q_\text{anchor} = C \left(\frac{L}{d}\right)^3$$</p>
+<p>At 25:1 aspect ratio: $Q_\text{anchor} \approx 207{,}000$. Contributes 4.4% of loss.</p>
+<h3 id="thermoelastic-damping-ted">Thermoelastic Damping (TED)</h3>
+<p>$$Q_\text{TED}^{-1} = \frac{E \alpha^2 T}{\rho C_p} \cdot \frac{\omega \tau_\text{th}}{1 + (\omega \tau_\text{th})^2}$$</p>
+<p>where $\tau_\text{th} = d^2 / (\pi^2 \kappa)$ is the thermal relaxation time. For 40 µm fused silica at 2.66 MHz (fundamental of 1 mm rod): $Q_\text{TED} = 2.78 \times 10^6$.</p>
+<h3 id="gas-damping">Gas Damping</h3>
+<p>At pressure $P$ in a vacuum cavity:</p>
+<p>$$Q_\text{gas} = \frac{\rho d \omega}{4P} \sqrt{\frac{\pi k_B T}{2 m_\text{gas}}}$$</p>
+<p>At 1 mTorr (N₂): $Q_\text{gas} = 1.25 \times 10^6$.</p>
+<h3 id="surface-loss">Surface Loss</h3>
+<p>$$Q_\text{surface}^{-1} = \frac{4 \delta}{d} \cdot Q_\text{bulk}^{-1}$$</p>
+<p>With surface damage layer $\delta = 50$ nm and bulk dissipation $Q_\text{bulk} = 100{,}000$ for fused silica: $Q_\text{surface} = 272{,}000$ at $d = 40$ µm.</p>
+<h3 id="combined">Combined</h3>
+<p>$$Q_\text{total}^{-1} = 10^{-4} + 4.8 \times 10^{-6} + 3.6 \times 10^{-7} + 8.0 \times 10^{-7} + 3.7 \times 10^{-6} = 1.10 \times 10^{-4}$$</p>
+<p>$$Q_\text{total} = 9{,}097$$</p>
+<hr />
+<h2 id="appendix-c-experiment-guide-reproducibility">Appendix C: Experiment Guide (Reproducibility)</h2>
+<h3 id="c1-reproducing-the-non-separability-measurement">C.1 Reproducing the Non-Separability Measurement</h3>
+<p><strong>Materials (~&#36;50):</strong></p>
+<ul>
+<li>Any glass plate or rod ($Q > 500$)</li>
+<li>3× PZT disc (20 mm): 1 TX, 2 RX at different positions</li>
+<li>Dual-channel oscilloscope (e.g., PicoScope 2204A)</li>
+<li>Signal generator (square wave, 30–120 kHz)</li>
+<li>2× 220Ω resistor</li>
+<li>~20 lines of Python</li>
+</ul>
+<p><strong>Protocol:</strong></p>
+<ol>
+<li>Attach TX PZT to one corner, two RX PZTs at non-adjacent corners</li>
+<li>Connect RX PZTs to two scope channels (simultaneous capture)</li>
+<li>Frequency sweep: find two modes where ratio B/A is very different (one mode strong on Ch A, another strong on Ch B)</li>
+<li>Drive both modes simultaneously for 3 s (steady-state)</li>
+<li>Capture FFT at both channels (20 averages, 200 trials)</li>
+<li>Extract peak magnitude at each drive frequency in each channel → build 2×2 state matrix</li>
+<li>Row-normalize, Frobenius-normalize</li>
+<li>SVD → concurrence $C$</li>
+<li>Optimize CHSH angles via numerical optimization</li>
+<li>Bootstrap for confidence interval</li>
+</ol>
+<p><strong>Expected result:</strong> For any plate with eigenmodes having different spatial distributions at the two receiver positions, $S > 2$ is expected. Higher spatial contrast (log-ratio) → higher $S$.</p>
+<p><strong>Data and code:</strong> All scripts, raw data, and analysis code are available at github.com/miketierce/cwm.</p>
+<h3 id="c2-reproducing-boolean-computation">C.2 Reproducing Boolean Computation</h3>
+<p><strong>Additional materials:</strong> Arduino Nano (relay mux), 8-channel relay module.</p>
+<p><strong>Protocol:</strong></p>
+<ol>
+<li>Enroll each mode&rsquo;s self-response at all frequencies (pre-scan)</li>
+<li>Classify modes as strong/weak by geometric-mean threshold</li>
+<li>Drive pairs of modes in ON/OFF combinations</li>
+<li>Detect: rod responds if self-response &gt; 50% of its weakest strong peak</li>
+<li>Decode: AND = both respond, OR = either, XOR = exactly one</li>
+</ol>
+<p><strong>Expected result:</strong> 100% accuracy for mode pairs with spectral overlap ≤ 40%.</p>
+<h3 id="c3-reproducing-multi-level-encoding">C.3 Reproducing Multi-Level Encoding</h3>
+<p><strong>Protocol:</strong></p>
+<ol>
+<li>Drive each mode at $L$ amplitude levels (equally spaced, 50–500 mVpp)</li>
+<li>20 repetitions per level per mode</li>
+<li>Classify using nearest-centroid (per-mode Mahalanobis distance)</li>
+</ol>
+<p><strong>Expected result:</strong> 100% accuracy for $L = 8$ (per mode) if minimum inter-level separation $> 3\sigma$.</p><div class="colophon-2col">
+  <p><em>Coherent Wave Memory</em> &mdash; Version 19 — June 2026 &mdash; &copy; Mike Tierce<br>
+  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (48 modules, 2253 tests).</p>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>

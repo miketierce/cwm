@@ -1,0 +1,88 @@
+{
+  "timestamp": "2026-06-05T11:45:25.891301",
+  "experiment": "q_factor_plate_I_NE",
+  "plate": "I",
+  "channel": "NE (relay 2)",
+  "drive": "F1 (GP2 \u2192 Plate I SW TX)",
+  "config": {
+    "fine_half_hz": 3000,
+    "fine_step_hz": 50,
+    "n_avg": 8,
+    "timebase": 7,
+    "n_samples": 8064
+  },
+  "results": [
+    {
+      "target_hz": 42000,
+      "f0_hz": 41200.0,
+      "Q": 296,
+      "bw_hz": 139.4,
+      "peak_mV": 42.387,
+      "status": "ok"
+    },
+    {
+      "target_hz": 48000,
+      "f0_hz": 47850.0,
+      "Q": 54,
+      "bw_hz": 885.0,
+      "peak_mV": 18.868,
+      "status": "ok"
+    },
+    {
+      "target_hz": 56000,
+      "f0_hz": 57050.0,
+      "Q": 304,
+      "bw_hz": 187.5,
+      "peak_mV": 8.44,
+      "status": "ok"
+    },
+    {
+      "target_hz": 64000,
+      "f0_hz": 62350.0,
+      "Q": 203,
+      "bw_hz": 306.8,
+      "peak_mV": 3.073,
+      "status": "ok"
+    },
+    {
+      "target_hz": 70000,
+      "f0_hz": 72150.0,
+      "Q": 270,
+      "bw_hz": 267.2,
+      "peak_mV": 2.665,
+      "status": "ok"
+    },
+    {
+      "target_hz": 78000,
+      "f0_hz": 80300.0,
+      "Q": 420,
+      "bw_hz": 191.0,
+      "peak_mV": 3.064,
+      "status": "ok"
+    },
+    {
+      "target_hz": 82000,
+      "f0_hz": 80300.0,
+      "Q": 420,
+      "bw_hz": 191.4,
+      "peak_mV": 2.846,
+      "status": "ok"
+    },
+    {
+      "target_hz": 86000,
+      "f0_hz": 83450.0,
+      "Q": 242,
+      "bw_hz": 344.6,
+      "peak_mV": 0.727,
+      "status": "ok"
+    },
+    {
+      "target_hz": 98000,
+      "f0_hz": 99200.0,
+      "Q": 51,
+      "bw_hz": 1943.2,
+      "peak_mV": 0.197,
+      "status": "ok"
+    }
+  ]
+}

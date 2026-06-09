@@ -1,0 +1,103 @@
+{
+  "timestamp": "2026-06-05T12:16:17.874474",
+  "experiment": "q_factor_25mm_short_wire",
+  "plate": "25mm",
+  "drive": "F4 (GP5/pin7 \u2192 25mm SW TX, shortened wire)",
+  "config": {
+    "fine_half_hz": 5000,
+    "fine_step_hz": 100,
+    "n_avg": 8,
+    "timebase": 7,
+    "n_samples": 8064
+  },
+  "results": [
+    {
+      "target_hz": 56000,
+      "f0_hz": 56400.0,
+      "Q": 94,
+      "bw_hz": 601.8,
+      "peak_mV": 68.382,
+      "channel": "25mm NW",
+      "status": "ok"
+    },
+    {
+      "target_hz": 56000,
+      "f0_hz": 56500.0,
+      "Q": 93,
+      "bw_hz": 607.1,
+      "peak_mV": 57.459,
+      "channel": "25mm NE",
+      "status": "ok"
+    },
+    {
+      "target_hz": 86000,
+      "f0_hz": 91000.0,
+      "peak_mV": 44.242,
+      "channel": "25mm NW",
+      "status": "too_wide"
+    },
+    {
+      "target_hz": 86000,
+      "f0_hz": 85100.0,
+      "Q": 74,
+      "bw_hz": 1146.8,
+      "peak_mV": 49.303,
+      "channel": "25mm NE",
+      "status": "ok"
+    },
+    {
+      "target_hz": 91000,
+      "f0_hz": 91000.0,
+      "Q": 79,
+      "bw_hz": 1147.9,
+      "peak_mV": 41.876,
+      "channel": "25mm NW",
+      "status": "ok"
+    },
+    {
+      "target_hz": 91000,
+      "f0_hz": 92700.0,
+      "Q": 151,
+      "bw_hz": 611.9,
+      "peak_mV": 33.644,
+      "channel": "25mm NE",
+      "status": "ok"
+    },
+    {
+      "target_hz": 232000,
+      "f0_hz": 232700.0,
+      "Q": 44,
+      "bw_hz": 5255.8,
+      "peak_mV": 9.247,
+      "channel": "25mm NW",
+      "status": "ok"
+    },
+    {
+      "target_hz": 232000,
+      "f0_hz": 232900.0,
+      "Q": 102,
+      "bw_hz": 2273.5,
+      "peak_mV": 2.418,
+      "channel": "25mm NE",
+      "status": "ok"
+    },
+    {
+      "target_hz": 321000,
+      "f0_hz": 321200.0,
+      "Q": 512,
+      "bw_hz": 627.1,
+      "peak_mV": 8.921,
+      "channel": "25mm NW",
+      "status": "ok"
+    },
+    {
+      "target_hz": 321000,
+      "f0_hz": 325000.0,
+      "Q": 535,
+      "bw_hz": 606.9,
+      "peak_mV": 8.838,
+      "channel": "25mm NE",
+      "status": "ok"
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "timestamp": "20260604_153857",
+  "config": {
+    "freq_start": 50000,
+    "freq_stop": 350000,
+    "freq_step": 2000,
+    "timebase": 7,
+    "n_samples": 8064,
+    "sample_rate_hz": 781250.0
+  },
+  "noise_floors_mV": {
+    "NW": 0.151101,
+    "NE": 0.164177,
+    "SE": 0.155063
+  },
+  "peaks": [
+    {
+      "freq_kHz": 172.0,
+      "NW_mV": 0.7292,
+      "NE_mV": 0.244,
+      "SE_mV": 0.6934,
+      "ratio": 2.99,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "acoustic_modes": [
+    {
+      "freq_kHz": 172.0,
+      "NW_mV": 0.7292,
+      "NE_mV": 0.244,
+      "SE_mV": 0.6934,
+      "ratio": 2.99,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "interference_peaks": []
+}

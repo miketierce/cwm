@@ -1,0 +1,247 @@
+{
+  "test": "D3b_timemux_reservoir",
+  "timestamp": "2026-06-03T21:08:13.690375",
+  "concept": "Time-multiplexed ringdown: K samples per input step convert temporal decay (mode-specific rates) into spatial features. Combined with cascade H (2-plate system with direct+cascade temporal responses) and quadratic cross-products (beat patterns across time slices).",
+  "hardware_params": {
+    "n_modes": 27,
+    "Q_loaded": 241.0,
+    "freq_range_hz": [
+      33000,
+      119000
+    ],
+    "H_orig_shape": [
+      27,
+      4
+    ],
+    "H_cascade_shape": [
+      27,
+      4
+    ]
+  },
+  "phase1_linear_timemux": [
+    {
+      "f_step": 1000,
+      "n_slices": 5,
+      "n_features": 20,
+      "nrmse": 0.7986263830751661
+    },
+    {
+      "f_step": 1000,
+      "n_slices": 10,
+      "n_features": 40,
+      "nrmse": 0.7940792006288074
+    },
+    {
+      "f_step": 1000,
+      "n_slices": 20,
+      "n_features": 80,
+      "nrmse": 0.790795918774803
+    },
+    {
+      "f_step": 2000,
+      "n_slices": 5,
+      "n_features": 20,
+      "nrmse": 0.696253789239218
+    },
+    {
+      "f_step": 2000,
+      "n_slices": 10,
+      "n_features": 40,
+      "nrmse": 0.6934116500071249
+    },
+    {
+      "f_step": 2000,
+      "n_slices": 20,
+      "n_features": 80,
+      "nrmse": 0.6905029538989157
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 5,
+      "n_features": 20,
+      "nrmse": 0.814149819510897
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 10,
+      "n_features": 40,
+      "nrmse": 0.8112071418904666
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 20,
+      "n_features": 80,
+      "nrmse": 0.8069695095379826
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 5,
+      "n_features": 20,
+      "nrmse": 0.812942325233776
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 10,
+      "n_features": 40,
+      "nrmse": 0.811888837315103
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 20,
+      "n_features": 80,
+      "nrmse": 0.811484674511069
+    }
+  ],
+  "phase2_quad_timemux": [
+    {
+      "n_slices": 5,
+      "mode": "full_quad",
+      "n_features": 230,
+      "nrmse": 0.6297234994559638
+    },
+    {
+      "n_slices": 5,
+      "mode": "selective_quad",
+      "n_features": 90,
+      "nrmse": 0.6304253420452596
+    },
+    {
+      "n_slices": 8,
+      "mode": "full_quad",
+      "n_features": 560,
+      "nrmse": 0.6285857982763448
+    },
+    {
+      "n_slices": 8,
+      "mode": "selective_quad",
+      "n_features": 192,
+      "nrmse": 0.6294804120412646
+    },
+    {
+      "n_slices": 10,
+      "mode": "full_quad",
+      "n_features": 860,
+      "nrmse": 0.6279076214011549
+    },
+    {
+      "n_slices": 10,
+      "mode": "selective_quad",
+      "n_features": 280,
+      "nrmse": 0.6292599905851092
+    }
+  ],
+  "phase3_cascade_timemux": [
+    {
+      "f_step": 2000,
+      "n_slices": 8,
+      "n_features": 136,
+      "nrmse": 0.8646471388206093
+    },
+    {
+      "f_step": 2000,
+      "n_slices": 12,
+      "n_features": 216,
+      "nrmse": 0.8644997040714582
+    },
+    {
+      "f_step": 2000,
+      "n_slices": 16,
+      "n_features": 296,
+      "nrmse": 0.8643703163660975
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 8,
+      "n_features": 136,
+      "nrmse": 0.8041410655500709
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 12,
+      "n_features": 216,
+      "nrmse": 0.8034766591280719
+    },
+    {
+      "f_step": 5000,
+      "n_slices": 16,
+      "n_features": 296,
+      "nrmse": 0.8029272785333319
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 8,
+      "n_features": 136,
+      "nrmse": 0.8079462957316349
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 12,
+      "n_features": 216,
+      "nrmse": 0.8077468906041942
+    },
+    {
+      "f_step": 10000,
+      "n_slices": 16,
+      "n_features": 296,
+      "nrmse": 0.8075501621481963
+    }
+  ],
+  "phase4_alpha_sweep": [
+    {
+      "alpha": 1e-08,
+      "nrmse": 0.7965182318937912
+    },
+    {
+      "alpha": 1e-07,
+      "nrmse": 0.7971377027433494
+    },
+    {
+      "alpha": 1e-06,
+      "nrmse": 0.7968140338867608
+    },
+    {
+      "alpha": 1e-05,
+      "nrmse": 0.7971288186398131
+    },
+    {
+      "alpha": 0.0001,
+      "nrmse": 0.8029272785333319
+    },
+    {
+      "alpha": 0.001,
+      "nrmse": 0.8057312975929459
+    },
+    {
+      "alpha": 0.01,
+      "nrmse": 0.8076082778680286
+    }
+  ],
+  "phase5_mask_ensemble": {
+    "nrmses": [
+      0.7989160536063401,
+      0.7993219272423548,
+      0.7961722189998492,
+      0.79627213235558,
+      0.7953875943624712,
+      0.8015038066926033,
+      0.7968986926072869,
+      0.792967871963,
+      0.7928545252637983,
+      0.7928717851766726
+    ],
+    "mean": 0.7963166608269956,
+    "std": 0.002810474350610943
+  },
+  "best_config": {
+    "f_step": 5000,
+    "n_slices": 16,
+    "alpha": 1e-08,
+    "nrmse": 0.7928545252637983
+  },
+  "baselines": {
+    "gram_d2": 0.7036,
+    "beat_d3": 0.6377,
+    "random_esn": 0.4417
+  },
+  "verdict": "FAIL"
+}

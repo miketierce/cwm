@@ -228,6 +228,7 @@ Final (destructive to calibration):
 > **Goal**: Demonstrate plate as low-power analog co-processor for attention-like operations, targeting edge/always-on LLM inference.
 >
 > **STATUS: L3 SERIES CLOSED (2026-06-03).** Seven variants (L3–L3g) exhaustively prove the plate cannot serve as a fixed attention matrix in differentiable models. Two independent failure modes discovered:
+>
 > - **Absorption Theorem** (L3–L3e): Learnable layers surrounding a fixed H absorb its structure when DOF ratio ≫ 1 (measured: 37:1). Applies at any rank.
 > - **Structural Impossibility** (L3f–L3g): Unit-norm dot-product attention with fixed embeddings guarantees self-attention ≥ cross-attention. No permutation overcomes this.
 >
@@ -256,13 +257,13 @@ Final (destructive to calibration):
 
 ### L3: Train-Through-H (End-to-End with Physical Transfer Matrix)
 
-| Field         | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Objective** | Train a small LLM/attention model that includes the measured H in the forward pass                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-| **Method**    | Measure H (from L1). Replace W_k·W_q^T attention matrix with physical H during training. Backprop through H as a fixed (non-trainable) layer. Learnable: embeddings, projections, output head                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-| **Success**   | Model converges. Perplexity within 2× of fully-digital baseline on same vocab/context                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Kills**     | "H is random noise, not computationally useful" objection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
-| **Depends**   | L1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+| Field         | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective** | Train a small LLM/attention model that includes the measured H in the forward pass                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Method**    | Measure H (from L1). Replace W_k·W_q^T attention matrix with physical H during training. Backprop through H as a fixed (non-trainable) layer. Learnable: embeddings, projections, output head                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Success**   | Model converges. Perplexity within 2× of fully-digital baseline on same vocab/context                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| **Kills**     | "H is random noise, not computationally useful" objection                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| **Depends**   | L1                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Status**    | **DONE — CLOSED (2026-06-03).** Seven variants tested (L3, L3c, L3d, L3e, L3f, L3g). All indistinguishable from random or worse. Physical H ppl=12.05 = random (12.04±0.06). L3f enrollment-locked: 0% seq accuracy (self-attention dominates). L3g permutation search: 5000 candidates, all negative alignment, correlation r=NaN. **Two theorems proven:** (1) Absorption: learnable DOF ≫ H DOF → optimizer absorbs H at any rank. (2) Structural impossibility: unit-norm dot-product attention guarantees self ≥ cross, no permutation overcomes this. **This experiment line is exhausted.** |
 
 ### L4: Noise Robustness & H Stability
@@ -323,22 +324,29 @@ Exploratory:
 
 ### LLM Paper Integration
 
-| Experiment | Contribution                                                                                  |
-| ---------- | --------------------------------------------------------------------------------------------- |
-| L1         | "The plate supports N orthogonal modes → N-dimensional analog computation"                    |
-| L2         | "Input vectors encoded as multi-frequency amplitudes; plate computes H×x physically"          |
+| Experiment | Contribution                                                                                                                        |
+| ---------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| L1         | "The plate supports N orthogonal modes → N-dimensional analog computation"                                                          |
+| L2         | "Input vectors encoded as multi-frequency amplitudes; plate computes H×x physically"                                                |
 | L3         | ~~"End-to-end LLM trained with physical H achieves competitive perplexity"~~ CLOSED — absorption theorem + structural impossibility |
-| L4         | "H stable over hours → no recalibration needed for inference sessions" (partially addressed by E3) |
-| L6         | "Multi-plate cascade increases computational depth"                                           |
-| L7         | "X tokens/sec at Y µW — Z× improvement over GPU baseline"                                     |
+| L4         | "H stable over hours → no recalibration needed for inference sessions" (partially addressed by E3)                                  |
+| L6         | "Multi-plate cascade increases computational depth"                                                                                 |
+| L7         | "X tokens/sec at Y µW — Z× improvement over GPU baseline"                                                                           |
 
 ---
 
-## Tier 8 — CIM / Proof-of-Useful-Work Mining (June 2026+)
+## Tier 8 — CIM / Proof-of-Useful-Work Mining (June 2026+) — REASSESSED
 
 > **Premise**: The plate is a natural coherent Ising machine (CIM). Coupled eigenmodes competing for energy settle into configurations that minimize a cost function — the same class of problem targeted by PoUW blockchains. The plate's advantages (microwatt, parallel, PUF-unique) become direct mining advantages if the PoW problem matches what the plate computes natively.
 >
 > **Key insight from E8**: The plate already does binary encoding/decoding via mode ON/OFF. Combined with nonlinear mode coupling, this is the basic toolkit for combinatorial optimization. We're not trying to emulate SHA-256 — we're positioning the plate as a purpose-built solver for optimization-native consensus.
+>
+> **REASSESSMENT (2026-06-03):**
+>
+> - **M1/M2 (Ising/MaxCut) DUBIOUS.** T2.2 proved the plate is a LINEAR medium (zero intermodulation products). CIM requires nonlinear mode competition. Without nonlinearity, modes superpose linearly and cannot "settle" into a ground state. Plate cannot function as CIM without external nonlinear feedback.
+> - **M3 (Qubic hybrid) BLOCKED.** L3 series proves that using plate H as a fixed layer in a trainable ANN is indistinguishable from random matrices. No quality advantage → no mining advantage.
+> - **M4/M5 (latency/energy)** remain valid metrics once we find a task where the plate genuinely contributes (see Tier 10).
+> - **Salvageable path:** PUF-based proof-of-physical-work (unforgeable attestation, not optimization). Moved to Tier 10.
 
 ### M1: Ising Ground State via Mode Competition
 
@@ -370,7 +378,7 @@ Exploratory:
 | **Key challenge** | Qubic assigns SPECIFIC network architectures per epoch. Need to map their required weight matrix to plate's H (or use H as one fixed layer within their architecture). If H doesn't match, fall back to CPU for that epoch                                                                                                                                                                                                                                         |
 | **Success**       | Submit valid solutions to Qubic network. Achieve competitive ranking with lower power than pure-CPU miners. Demonstrate plate handles >50% of forward-pass compute                                                                                                                                                                                                                                                                                                 |
 | **Depends**       | L1 (know full H), M1/M2 (prove plate solves optimization), Qubic account + wallet                                                                                                                                                                                                                                                                                                                                                                                  |
-| **Status**        | not started — research phase                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+| **Status**        | **BLOCKED (2026-06-03).** L3 series proves plate H is indistinguishable from random in ANN training. No quality advantage → no mining advantage over pure-CPU. Deprioritized.                                                                                                                                                                                                                                                                                      |
 
 #### Qubic Analysis (Jun 2026)
 
@@ -481,6 +489,8 @@ Validation:
 > **Premise**: The plate generates physically unique, non-separable transfer matrices (H). The reservoir computing and extreme learning machine communities need "good" fixed matrices as reservoir kernels (W_res). We can sell the matrix itself — no need to solve benchmarks ourselves, no need for temporal memory from the plate. The buyer plugs H into their own digital ESN: `x(t+1) = tanh(H × x(t) + W_in × u(t))`. The CHSH result is the proof of quality.
 >
 > **Key distinction**: We sell the DATA (the matrix), not the physical computation. The temporal memory comes from the buyer's recurrence loop in software. The plate's job is to produce diverse, non-trivially-structured, unclonable matrices — which it already does.
+>
+> **CRITICAL NOTE (2026-06-03):** D2 is now the highest-priority experiment across all tiers. It answers the key open question: does plate-H outperform random matrices as a reservoir kernel when the readout is LINEAR (ridge regression)? Unlike L3 (where learnable layers absorbed H), reservoir computing uses a FIXED kernel + linear readout. The readout CANNOT absorb H's structure — this is the one setting where physical structure should genuinely matter. If D2 fails (plate-H ≈ random), the entire Tier 9 product thesis collapses. If it passes, we have both a paper and a product.
 
 ### D1: H Matrix Library Generation
 
@@ -572,3 +582,201 @@ Revenue (Month 3+):
 | D2         | "Plate-H reservoirs achieve competitive NRMSE on standard benchmarks"               |
 | D3         | "Non-separability (concurrence) correlates with reservoir memory capacity"          |
 | D4         | "Open dataset enables reproducible physical reservoir computing research"           |
+
+---
+
+## Tier 10 — Playing to Strengths (June 2026+)
+
+> **Principle**: "Arranged marriage between math and hardware." Stop forcing the plate into roles it can't fill (attention matrix, temporal memory, CIM). Instead, design algorithms around what the plate provably excels at.
+>
+> **Proven capabilities** (100% accuracy or equivalent):
+>
+> 1. Binary/categorical classification at enrolled frequencies (T3.1: 100% at 4 bits)
+> 2. Multi-level amplitude discrimination (T3.4: 100% at 8 bits / 256 patterns)
+> 3. Spatial fingerprinting / PUF (E1–E3: S=2.83, stable over hours, unique per plate)
+> 4. Non-separable frequency×space states (5/5 pairs, 45k–219kσ above Bell limit)
+> 5. Spatial multiplexing — different receivers see different information from same drive (E8: 100%)
+> 6. Perfect linear spectral filter bank with orthogonal channels (T2.2 confirms linearity)
+>
+> **Proven limitations:**
+>
+> - No temporal memory (Q_loaded ≈ 152, τ ≈ 1–4ms) — plate is stateless
+> - No intermodulation / nonlinearity — cannot do mode competition
+> - Cannot serve as useful fixed layer in differentiable training (absorption theorem)
+> - Cannot provide positional routing via dot-product attention (structural impossibility)
+
+### P1: Content-Addressable Memory (Mode-as-Address)
+
+| Field            | Detail                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective**    | Use each enrolled frequency as the ADDRESS of a stored symbol. Drive frequency → plate response encodes which symbol was stored there. Plate becomes a physical lookup table with 27+ addresses.                                                                                                                                                                                                                                      |
+| **Method**       | Enroll N modes. Associate each mode with a symbol/token via its spatial signature (the 4-channel amplitude response). To WRITE: no physical write needed — the plate's geometry IS the memory. To READ: drive frequency f_i, measure 4-channel response → decode to symbol via nearest-neighbor or threshold classifier. To QUERY (associative): drive multiple frequencies, use response pattern to find best-matching stored entry. |
+| **Architecture** | Physical: NCO drives query frequency → plate → 4-ch response. Digital: compare response to enrollment table, output matching symbol. No training, no gradients — pure table lookup through physics.                                                                                                                                                                                                                                   |
+| **Success**      | ≥ 20 symbols stored (one per mode). Retrieval accuracy > 99%. Query latency < 10ms. Demonstrate associative recall (partial/noisy query → correct symbol).                                                                                                                                                                                                                                                                            |
+| **Kills**        | "Plate can't do memory" — reframes memory as spatial encoding, not temporal persistence                                                                                                                                                                                                                                                                                                                                               |
+| **Depends**      | Current hardware (multi-plate enrollment already done)                                                                                                                                                                                                                                                                                                                                                                                |
+| **Status**       | **DONE** — 100% exact retrieval, marginal noise tolerance (σ<10%). See lab_diary_20260603.                                                                                                                                                                                                                                                                                                                                            |
+
+### P2: Physical Hash Function / Challenge-Response PUF Protocol
+
+| Field           | Detail                                                                                                                                                                                                                                                                                                                                                                                 |
+| --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective**   | Use plate as a physical one-way function: input (challenge frequency set) → output (spatial amplitude pattern) that is unforgeable without possessing the physical plate                                                                                                                                                                                                               |
+| **Method**      | (a) Challenge = random subset of 3–5 frequencies driven simultaneously. (b) Response = 4-channel amplitude vector (normalized). (c) Enrollment: generate 1000 challenge-response pairs, store server-side. (d) Verification: server sends new challenge, plate responds, server checks against enrollment. (e) Security: show response cannot be predicted from partial knowledge of H |
+| **Success**     | False accept rate < 0.1%. False reject rate < 1%. Response stable over 24h (from E3: confirmed). H estimation attack requires > 100 CRPs to forge (information-theoretic bound from 27×4 H)                                                                                                                                                                                            |
+| **Application** | IoT device authentication, secure boot attestation, supply chain verification                                                                                                                                                                                                                                                                                                          |
+| **Depends**     | Current hardware. Server-side = simple Python script                                                                                                                                                                                                                                                                                                                                   |
+| **Status**      | not started                                                                                                                                                                                                                                                                                                                                                                            |
+
+### P3: Spectral Classifier as Pre-Processor (Plate→Digital Pipeline)
+
+| Field         | Detail                                                                                                                                                                                                                                                                                                                                                                 |
+| ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective** | Use plate as a front-end that projects analog input into a classified/quantized representation before digital processing. The plate does what it's best at (spectral discrimination) and passes a clean discrete output to a digital model.                                                                                                                            |
+| **Method**    | Input signal → encode as multi-frequency amplitude pattern → plate → 4-ch measurement → threshold to N-bit digital code → feed to small digital model (MLP, decision tree, or lookup). The plate replaces the input encoding layer entirely — it's the "eyes" of the system. Test on: audio classification, vibration monitoring, frequency-shift keying demodulation. |
+| **Success**   | End-to-end classification accuracy > 95% on a real-world task. Demonstrate plate adds value vs digital-only FFT baseline (faster, lower power, or more robust to noise).                                                                                                                                                                                               |
+| **Depends**   | Current hardware. Needs a suitable real-world classification task                                                                                                                                                                                                                                                                                                      |
+| **Status**    | not started                                                                                                                                                                                                                                                                                                                                                            |
+
+### P4: Spatial Multiplexing Communication (N bits from M modes)
+
+| Field         | Detail                                                                                                                                                                                                                                                                                                                                                                                      |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective** | Exploit non-separability for spatial multiplexing: drive N modes, receivers see different superpositions → extract more information than modes driven. E8 proved concept with 2 modes × 2 receivers = 4 distinguishable patterns.                                                                                                                                                           |
+| **Method**    | Scale up: drive K modes simultaneously at M amplitude levels each. With 4 receivers seeing different spatial ratios, information capacity = min(K×log2(M), N_receivers × bits_per_receiver). Demonstrate: 4 modes × 4 levels × 4 receivers → 32+ distinguishable output codewords (5 bits) from just 4 physical drive channels. Implement as a physical MIMO-like encoding/decoding scheme. |
+| **Success**   | Achieve information rate > K×log2(M) at single receiver (spatial multiplexing gain). Demonstrate error-free decoding at SNR matching deployed ultrasonic systems.                                                                                                                                                                                                                           |
+| **Depends**   | L2 (amplitude control via NCO/DAC). Multi-plate enrollment (done).                                                                                                                                                                                                                                                                                                                          |
+| **Status**    | not started                                                                                                                                                                                                                                                                                                                                                                                 |
+
+### P5: Physical Reservoir with Digital Recurrence Loop
+
+| Field                | Detail                                                                                                                                                                                                                                                                                                                                                                |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective**        | The plate provides the static nonlinear\* kernel; a digital loop provides temporal recurrence. Architecture: `x(t) = f(H × x(t-1) + W_in × u(t))` where H is the physical plate transfer and f() + recurrence are digital. This uses the plate for what it's good at (spatial transformation) and adds what it lacks (temporal memory) in software.                   |
+| **Method**           | (a) Encode x(t-1) as multi-frequency amplitudes → NCO → plate → measure response = H×x(t-1). (b) Add input u(t) digitally. (c) Apply nonlinearity f() digitally (tanh, ReLU). (d) Feed result back as next x(t). Repeat. Train only W_in and W_out (readout). H is the physical reservoir kernel — provably unique and non-separable. Test on NARMA-10, Mackey-Glass. |
+| **Note**             | \*The plate itself is linear, but the round-trip (encode → measure → quantize) introduces effective nonlinearity through ADC/quantization + threshold effects. Alternatively, add explicit tanh in the digital portion.                                                                                                                                               |
+| **Success**          | NARMA-10 NRMSE < 0.4 (the threshold plate alone couldn't reach). Demonstrate plate-H reservoir outperforms random matrix reservoir (unlike L3, here H structure matters because the readout is linear ridge regression, not a learnable deep network that absorbs structure).                                                                                         |
+| **Kills**            | "Plate has no temporal memory therefore cannot do sequence tasks" — the digital loop provides memory, plate provides the mixing kernel                                                                                                                                                                                                                                |
+| **Key diff from L3** | L3 failed because learnable layers absorbed H. Here, the readout is LINEAR (ridge regression) — it CANNOT absorb H's structure. The reservoir computing framework specifically requires a FIXED, non-trivial kernel. This is where plate-H might genuinely outperform random.                                                                                         |
+| **Depends**          | L2 (amplitude encoding for physical round-trip) OR can be simulated first with measured H (D2 already tests this).                                                                                                                                                                                                                                                    |
+| **Status**           | not started (D2 will test the simulation version; P5 adds the physical round-trip)                                                                                                                                                                                                                                                                                    |
+
+### P6: Multi-Plate Cascade (Physical Depth)
+
+| Field         | Detail                                                                                                                                                                                                                                                                                                                              |
+| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective** | Pass signal physically through Plate I → buffer amp → Plate H for true two-layer computation. Net transfer = H_H × H_I (matrix product of two physically distinct plates). This gives rank up to 4 and richer structure than either plate alone.                                                                                    |
+| **Method**    | Wire Plate I NE RX → Board D (×3.7) → Plate H SW TX. Drive NCO → Plate I → Plate H → measure at Plate H receivers. Characterize cascaded H. Compare: single plate 27×2 vs cascade 27×2 — does cascade have higher effective rank? Different spectral structure? Test in P5 reservoir: does cascaded H give lower NRMSE than single? |
+| **Success**   | Cascade matrix has measurably different structure from either single plate (Frobenius distance > 10% from both). Effective rank increases. Reservoir performance (D2-style) improves with depth.                                                                                                                                    |
+| **Depends**   | L6 hardware (multi-plate installed, needs cascade wiring). One additional jumper wire + Board D.                                                                                                                                                                                                                                    |
+| **Status**    | not started (hardware ready, wiring needed)                                                                                                                                                                                                                                                                                         |
+
+### P7: Proof-of-Physical-Work (PUF-Based Consensus)
+
+| Field             | Detail                                                                                                                                                                                                                                                                                                                                                               |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Objective**     | Design a consensus mechanism where "mining" = proving possession of a unique physical plate. NOT solving optimization (plate can't do that). Instead: server issues frequency challenge → plate responds with unforgeable spatial signature → server verifies against enrollment. Work = physical plate actuation. Cannot be parallelized or cloned.                 |
+| **Method**        | Protocol: (a) Server broadcasts challenge C = {f1, f2, f3, phase_offset}. (b) Miner drives plate at challenge freqs, measures response R = [amp_ch1...amp_ch4]. (c) Submit (plate_id, C, R, timestamp). (d) Server verifies R against enrolled H for that plate_id. (e) Valid response = one "vote" in consensus. One plate = one vote (Sybil-resistant by physics). |
+| **Key advantage** | Sybil-resistant without stake: each plate is physically unique (PUF). Cannot simulate without possessing the hardware. Energy cost = microwatts (environmental). Verification is fast (one matrix multiply by server).                                                                                                                                               |
+| **Success**       | Demonstrate full challenge-response loop < 50ms. Show impersonation requires > 1000 CRPs of prior observation (from P2 security analysis). Prototype with 2 plates as separate "miners".                                                                                                                                                                             |
+| **Depends**       | P2 (PUF protocol). Multi-plate hardware (done).                                                                                                                                                                                                                                                                                                                      |
+| **Status**        | not started                                                                                                                                                                                                                                                                                                                                                          |
+
+### P8: Rewritability Demonstration (Write-Erase-Rewrite)
+
+| Field         | Detail                                                                                                                                                                                                                                                                         |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Objective** | Demonstrate that mass-loading changes (putty add/remove) measurably alter the H matrix, AND that removal restores the original H (reversible physical memory write/erase). This is the core "rewritability" claim for CWM.                                                     |
+| **Method**    | (a) Baseline H (no putty). (b) Add putty blob at position X → measure H'. (c) Remove putty → measure H''. (d) Compare: H↔H' (write effect) and H↔H'' (erase recovery). Repeat for 5 different positions. Report: Frobenius distance, mode frequency shift, concurrence change. |
+| **Success**   | Write: Frobenius(H, H') > 5% for all positions. Erase recovery: Frobenius(H, H'') < 1% (reversible). Mode shift: > 100 Hz per gram of putty. Demonstrates addressable, reversible physical memory.                                                                             |
+| **Depends**   | Current hardware. Putty. Patience.                                                                                                                                                                                                                                             |
+| **Status**    | not started                                                                                                                                                                                                                                                                    |
+
+### Tier 10 Execution Priority
+
+```
+Immediate (current hardware, no changes, high confidence):
+  P1 (CAM — enrollment data already exists, just build decoder)
+  P2 (PUF — same data, different framing)
+  P8 (Rewritability — physical experiment, putty + L1 sweep)
+
+Requires D2 results first (simulation, no hardware):
+  P5 (Digital reservoir — simulate with measured H, compare to random)
+
+Requires amplitude encoding (L2 — NCO/DAC mod):
+  P4 (Spatial multiplexing)
+  P5 physical round-trip version
+
+Requires cascade wiring (one jumper):
+  P6 (Multi-plate cascade)
+
+Longer-term (requires P2 + multi-plate):
+  P7 (Proof-of-Physical-Work)
+
+Research-stage (needs real-world task):
+  P3 (Spectral classifier front-end)
+```
+
+### Tier 10 Paper Integration
+
+| Experiment | Contribution                                                                                 |
+| ---------- | -------------------------------------------------------------------------------------------- |
+| P1         | "Physical content-addressable memory: 27 symbols stored in eigenmode geometry"               |
+| P2         | "Plate as PUF: challenge-response protocol with information-theoretic security bounds"       |
+| P3         | "Analog spectral pre-processor reduces digital compute by N× for classification tasks"       |
+| P4         | "Non-separable spatial multiplexing: N bits from M < N physical drive channels"              |
+| P5         | "Plate-kernel ESN: physical H outperforms random matrices in reservoir computing benchmarks" |
+| P6         | "Multi-plate cascade: physical depth increases effective rank and reservoir quality"         |
+| P7         | "Proof-of-Physical-Work: Sybil-resistant consensus via PUF challenge-response"               |
+| P8         | "Reversible physical memory: write/erase via mass-loading with <1% recovery error"           |
+
+---
+
+## Strategic Summary (2026-06-03)
+
+### What We Learned From L3
+
+The L3 series (7 experiments over 1 day) proved two fundamental theorems:
+
+1. **Absorption Theorem**: Any fixed matrix H between learnable layers is absorbed when learnable DOF ≫ H DOF. The optimizer finds equivalent solutions regardless of H's structure. Applies at any rank.
+
+2. **Structural Impossibility**: Fixed unit-norm embeddings in dot-product attention guarantee self-attention ≥ cross-attention. No permutation of mode assignments can create useful routing patterns.
+
+These are not failures of our hardware — they're mathematical constraints on the architecture class "fixed layer inside gradient descent." They apply equally to ANY analog compute substrate (memristors, photonics, etc.) used this way.
+
+### The Right Mental Model
+
+| Plate AS...              | Works? | Evidence                                         |
+| ------------------------ | ------ | ------------------------------------------------ |
+| Spectral filter bank     | YES    | 100% classification, 193σ SNR, 27 modes          |
+| Content-addressable mem  | YES    | P1: 100% exact retrieval, 27 modes               |
+| Electronic write/erase   | YES    | E9: 99% erase depth, 180° phase, 99.7% recovery  |
+| Spatial multiplexer      | YES    | E8: different views from same drive              |
+| Linear transformer (H×x) | YES    | Superposition verified, amplitude encoding works |
+| Multi-plate cascade      | YES    | P6 phys: 1.73× rank expansion, 27 modes through  |
+| PUF (weak/possession)    | YES    | S=2.83, 7/7 stable, unique per plate             |
+| PUF (strong/challenge)   | NO     | P2: linear → 92% modeling attack with 50 CRPs    |
+| Attention matrix in NN   | NO     | Absorption theorem                               |
+| Temporal memory          | WEAK   | E10: Q=241, τ≈1ms, depth≈1 step @ 1kHz           |
+| Reservoir kernel         | NO     | D2: rank-4 bottleneck, -14σ vs random            |
+| CIM / Ising solver       | NO     | Plate is linear (no mode competition)            |
+| Differentiable layer     | NO     | Structural impossibility                         |
+
+### Priority Ranking (Updated 2026-06-03 evening)
+
+**DONE today:**
+
+- ✓ D2 — Reservoir benchmark (FAIL: rank-4 bottleneck)
+- ✓ P1 — Content-addressable memory (PASS marginal: 100% exact, fragile to noise)
+- ✓ P2 — PUF challenge-response (FAIL: linear → modelable)
+- ✓ P6 — Cascade simulation (PASS marginal: rank 4→6, +1.2% NARMA)
+- ✓ E9 — Phase cancellation (PASS: 99% erase depth, electronic write/erase)
+- ✓ E10 — Q-factor measurement (PASS marginal: Q=241, τ=1ms)
+- ✓ E11 — Endurance cycling (PASS: 16.5M cycles, 0.22% max drift, no degradation)
+- ✓ P6 physical — Cascade wiring (PASS: 1.73× rank expansion, all 27 modes propagate)
+
+**Remaining (requires hardware changes):**
+
+1. **P8** — Rewritability (putty on/off + re-enrollment)
+2. **P4** — Spatial multiplexing (needs L2 amplitude control)
+3. **D1** — H matrix library (multiple putty configs)

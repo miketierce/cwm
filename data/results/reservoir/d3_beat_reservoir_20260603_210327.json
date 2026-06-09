@@ -1,0 +1,62 @@
+{
+  "test": "D3_beat_pattern_reservoir",
+  "timestamp": "2026-06-03T21:03:27.131626",
+  "concept": "Envelope detection provides quadratic nonlinearity on linear plate modes. Beat frequencies |f_i-f_j| at each receiver give products a_i*a_j carrying different temporal histories (CDMA/colorburst analogy).",
+  "hardware_params": {
+    "n_modes": 27,
+    "n_receivers": 4,
+    "Q_loaded": 241.0,
+    "freq_range_hz": [
+      33000,
+      119000
+    ]
+  },
+  "best_config": {
+    "f_step_hz": 2000,
+    "feature_mode": "linear+quadratic",
+    "mask": "unit_normal_random"
+  },
+  "results_by_fstep": [
+    {
+      "f_step": 500,
+      "nrmse_quad_compact": 1.4644028209961402,
+      "nrmse_full": 0.8597801258518788,
+      "n_features_compact": 378,
+      "n_features_full": 1516
+    },
+    {
+      "f_step": 1000,
+      "nrmse_quad_compact": 1.0318705207261665,
+      "nrmse_full": 0.7879411923080509,
+      "n_features_compact": 378,
+      "n_features_full": 1516
+    },
+    {
+      "f_step": 2000,
+      "nrmse_quad_compact": 0.6600990489801214,
+      "nrmse_full": 0.6376893461966423,
+      "n_features_compact": 378,
+      "n_features_full": 1516
+    },
+    {
+      "f_step": 5000,
+      "nrmse_quad_compact": 0.7992560067425459,
+      "nrmse_full": 0.7900116790131632,
+      "n_features_compact": 378,
+      "n_features_full": 1516
+    }
+  ],
+  "mask_ensemble": {
+    "n_masks": 10,
+    "nrmse_mean": 0.6425893044330722,
+    "nrmse_std": 0.006691551771027839,
+    "nrmse_best": 0.6318782969899779,
+    "nrmse_worst": 0.6566288983720326
+  },
+  "baselines": {
+    "gram_reservoir_d2": 0.7036,
+    "random_esn_d2": 0.4417
+  },
+  "best_nrmse": 0.6376893461966423,
+  "verdict": "PARTIAL"
+}

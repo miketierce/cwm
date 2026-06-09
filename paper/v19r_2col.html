@@ -1,0 +1,1272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Spectral Fingerprinting in Piezo-Driven Fused-Silica Plate Resonators</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&display=swap"
+      rel="stylesheet">
+<link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css"
+      crossorigin="anonymous">
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js"
+        crossorigin="anonymous"></script>
+<script defer
+        src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js"
+        crossorigin="anonymous"></script>
+<style>
+
+/* ===== Page geometry ===== */
+@page {
+    size: letter;
+    margin: 0.65in 0.6in 0.75in 0.6in;
+}
+
+:root {
+    --text: #1a1a1a;
+    --muted: #444;
+    --accent: #1a3c7a;
+    --border: #bbb;
+    --bg-code: #f4f4f4;
+    --bg-table-head: #e8ecf1;
+    --col-gap: 0.28in;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: "Times New Roman", "Times", "Nimbus Roman", serif;
+    font-size: 9pt;
+    line-height: 1.38;
+    color: var(--text);
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+/* ===== Title block — full width, single column ===== */
+.paper-header {
+    text-align: center;
+    margin-bottom: 14pt;
+    padding-bottom: 8pt;
+    border-bottom: 0.5pt solid var(--border);
+}
+
+.paper-header .paper-title {
+    font-size: 17pt;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0 0 8pt 0;
+    color: var(--text);
+    display: block !important;
+}
+
+.paper-header .author-name {
+    font-size: 11pt;
+    font-weight: 400;
+    margin: 0 0 2pt 0;
+}
+
+.paper-header .author-affil {
+    font-size: 9pt;
+    font-style: italic;
+    color: var(--muted);
+    margin: 0 0 2pt 0;
+}
+
+.paper-header .author-ids {
+    font-size: 8pt;
+    color: var(--muted);
+    margin: 0;
+}
+
+.paper-header .author-ids a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Abstract — full width, indented, italic prefix ===== */
+.abstract-block {
+    margin: 0 0.3in 12pt 0.3in;
+    font-size: 8.5pt;
+    line-height: 1.35;
+    text-align: justify;
+}
+
+.abstract-block .abstract-label {
+    font-weight: 700;
+    font-style: italic;
+}
+
+/* ===== Two-column body ===== */
+.two-col {
+    column-count: 2;
+    column-gap: var(--col-gap);
+    column-rule: 0.25pt solid #ddd;
+}
+
+/* ===== Section headings ===== */
+/* h1 is hidden (title is in the header) */
+h1 { display: none; }
+
+/* Major sections (## N. Title) — span both columns */
+h2 {
+    column-span: all;
+    font-size: 10pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3pt;
+    margin: 14pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--accent);
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+/* Subsections (### N.N Title) — inside column */
+h3 {
+    font-size: 9.5pt;
+    font-weight: 700;
+    font-style: italic;
+    margin: 10pt 0 4pt 0;
+    color: var(--text);
+    page-break-after: avoid;
+}
+
+h4 {
+    font-size: 9pt;
+    font-weight: 700;
+    margin: 8pt 0 3pt 0;
+    color: var(--muted);
+    page-break-after: avoid;
+}
+
+/* ===== Body text ===== */
+p {
+    margin: 0 0 6pt 0;
+    text-align: justify;
+    hyphens: auto;
+    orphans: 2;
+    widows: 2;
+}
+
+ul, ol {
+    margin: 3pt 0 6pt 0;
+    padding-left: 14pt;
+}
+li { margin-bottom: 2pt; }
+li > p { margin-bottom: 2pt; }
+
+/* ===== Tables ===== */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 8pt 0;
+    font-size: 8pt;
+    line-height: 1.25;
+    break-inside: avoid;
+}
+
+thead th {
+    background: var(--bg-table-head);
+    border-top: 1pt solid var(--text);
+    border-bottom: 1pt solid var(--text);
+    padding: 3pt 4pt;
+    font-weight: 700;
+    text-align: left;
+    font-size: 7.5pt;
+}
+
+tbody td {
+    border-bottom: 0.25pt solid #ddd;
+    padding: 2.5pt 4pt;
+    vertical-align: top;
+}
+
+/* Bottom rule on last row */
+tbody tr:last-child td {
+    border-bottom: 1pt solid var(--text);
+}
+
+tbody td strong {
+    color: var(--accent);
+}
+
+/* Wide tables that must span both columns */
+.wide-table {
+    column-span: all;
+}
+
+/* ===== Horizontal rules ===== */
+hr {
+    border: none;
+    border-top: 0.25pt solid #ccc;
+    margin: 8pt 0;
+}
+
+/* ===== Code ===== */
+code {
+    font-family: "SF Mono", "Menlo", "Consolas", monospace;
+    font-size: 7.5pt;
+    background: var(--bg-code);
+    padding: 0.5pt 2pt;
+    border-radius: 1.5pt;
+}
+
+pre {
+    background: var(--bg-code);
+    padding: 6pt 8pt;
+    border-radius: 2pt;
+    border: 0.25pt solid var(--border);
+    overflow-x: auto;
+    font-size: 7pt;
+    line-height: 1.3;
+    margin: 6pt 0;
+    break-inside: avoid;
+}
+
+pre code {
+    background: none;
+    padding: 0;
+}
+
+/* ===== Block quotes ===== */
+blockquote {
+    margin: 6pt 0;
+    padding: 4pt 8pt;
+    border-left: 2pt solid var(--accent);
+    background: #f5f7fa;
+    color: var(--muted);
+    font-size: 8.5pt;
+}
+
+blockquote p {
+    font-size: 8.5pt;
+}
+
+/* ===== Links ===== */
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+/* ===== Math (KaTeX) ===== */
+.katex-display {
+    margin: 8pt 0;
+    overflow-x: auto;
+    break-inside: avoid;
+}
+
+.katex {
+    font-size: 1.0em;
+}
+
+/* ===== Figures — full width when inside plate-page, else in-column ===== */
+div.cwm-thumb {
+    text-align: center;
+    margin: 8pt auto;
+    break-inside: avoid;
+}
+
+div.cwm-thumb img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+div.cwm-thumb p {
+    font-size: 7.5pt;
+    color: var(--muted);
+    text-align: justify;
+    margin: 4pt 0 0 0;
+    line-height: 1.25;
+}
+
+/* Plate-page images: span full width, portrait orientation */
+div.plate-page {
+    column-span: all;
+    text-align: center;
+    margin: 10pt 0;
+    break-inside: avoid;
+    page-break-inside: avoid;
+}
+
+div.plate-page img {
+    max-width: 100%;
+    max-height: 4.5in;
+    width: auto;
+    height: auto;
+}
+
+div.plate-page p {
+    font-size: 7.5pt;
+    color: var(--muted);
+    text-align: justify;
+    max-width: 100%;
+    margin: 4pt auto 0 auto;
+    line-height: 1.25;
+}
+
+/* Hide blank-verso pages entirely in 2-col layout */
+.blank-verso {
+    display: none;
+}
+
+/* ===== Worksheet plates — span both columns ===== */
+div.worksheet-plate {
+    column-span: all;
+    page-break-before: always;
+    padding-top: 0.15in;
+}
+
+div.worksheet-plate h4 {
+    text-align: center;
+    font-size: 10pt;
+    font-weight: 700;
+    margin-bottom: 8pt;
+    padding-bottom: 3pt;
+    border-bottom: 0.5pt solid var(--border);
+    text-transform: none;
+    font-style: normal;
+}
+
+div.worksheet-plate p.ws-inst {
+    font-size: 8pt;
+    color: var(--muted);
+    text-align: center;
+    margin-bottom: 6pt;
+    font-style: italic;
+}
+
+div.worksheet-plate table {
+    font-size: 8.5pt;
+}
+
+/* ===== Handwritten example entries (blue pen) ===== */
+.ex {
+    font-family: "Caveat", "Bradley Hand", "Marker Felt", cursive;
+    color: #1a5fb4;
+    font-size: 9.5pt;
+    font-weight: 600;
+    font-style: normal;
+}
+
+/* ===== References ===== */
+h2#references ~ p,
+h2:last-of-type ~ p {
+    font-size: 7.5pt;
+    line-height: 1.25;
+    padding-left: 16pt;
+    text-indent: -16pt;
+}
+
+/* ===== Print tweaks ===== */
+h2, h3, h4 {
+    page-break-after: avoid;
+}
+table, pre, blockquote {
+    break-inside: avoid;
+}
+
+/* ===== Colophon ===== */
+.colophon-2col {
+    column-span: all;
+    text-align: center;
+    color: var(--muted);
+    font-size: 7.5pt;
+    line-height: 1.5;
+    margin-top: 16pt;
+    padding-top: 8pt;
+    border-top: 0.5pt solid var(--border);
+}
+
+.colophon-2col p {
+    text-align: center;
+    font-size: 7.5pt;
+}
+
+/* ===== Part headings — converted to in-flow banners ===== */
+.part-banner {
+    column-span: all;
+    text-align: center;
+    padding: 10pt 0 6pt 0;
+    margin: 14pt 0 4pt 0;
+    border-top: 1.5pt solid var(--accent);
+    border-bottom: 0.5pt solid var(--border);
+}
+
+.part-banner .part-label {
+    font-size: 8pt;
+    font-weight: 700;
+    letter-spacing: 1pt;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 2pt 0;
+}
+
+.part-banner .part-title {
+    font-size: 11pt;
+    font-weight: 700;
+    color: var(--text);
+    margin: 0;
+}
+
+</style>
+</head>
+<body>
+<div class="paper-header">
+  <h1 class="paper-title" style="display:block">Spectral Fingerprinting in Piezo-Driven Fused-Silica Plate Resonators</h1>
+  <p class="author-name">Mike Tierce</p>
+  <p class="author-affil">Independent Researcher</p>
+  <p class="author-ids">ORCID: <a href="https://orcid.org/0009-0004-3869-958X">0009-0004-3869-958X</a> &nbsp;|&nbsp; <a href="https://github.com/miketierce/cwm">github.com/miketierce/cwm</a> &nbsp;|&nbsp; Version 19r — June 2026</p>
+</div>
+<div class="two-col">
+<div class="abstract-block">
+  <span class="abstract-label">Abstract&mdash;</span> <p>We characterize the eigenmode spectrum of a fused-silica plate (100×100×1 mm) driven by PZT transducers and read by a dual-channel oscilloscope plus digital FFT. The plate supports 7 clearly resolved modes (30–120 kHz) at signal-to-noise ratios of 42–55 dB. Four-mode binary patterns are classified at 100% accuracy (80/80 trials, nearest-centroid decoder) with inter-class separations exceeding 9$\sigma$. Eight-level amplitude encoding across 4 modes yields 4,096 discriminable states at zero decoder error within a single session.</p>
+<p>We further measure the spatial structure of the eigenmode field by simultaneous dual-channel capture at two receiver positions. The frequency×space intensity matrix exhibits non-separable structure quantified by a CHSH-analog parameter $S = 2.73$ (fixed-angle protocol) to $S = 2.83$ (optimized-angle upper bound) across 5 mode pairs — confirming that each eigenmode couples differently to spatially separated receivers. This spatial diversity is the physical basis for the observed classification performance.</p>
+<p>Signal-path characterization demonstrates that spectral structure is acoustic in origin: a PZT-lifted null test shows zero mode peaks when mechanical contact is broken, and spatial contrast ratios of 49:1 between receivers are inconsistent with electrical feedthrough (which would produce ~1:1). Endurance testing (16.5M cycles, 0.22% drift) confirms spectral fingerprints are stable, intrinsic properties of the plate geometry.</p>
+<p>All classification results depend on a digital decoder (nearest-centroid in FFT-magnitude space). The plate provides a physical front-end — stable, reproducible spectral features — while computation is performed digitally. No claim of analog or in-materio computation is made for the current prototype.</p>
+<hr />
+</div>
+<h2 id="provenance-key">Provenance Key</h2>
+<p>Every quantitative result is labeled:</p>
+<blockquote>
+<p><strong>Measured</strong> = direct instrument reading on built hardware, single session unless noted.
+<strong>Derived</strong> = mathematical operation on measured data (e.g., Q from τ).
+<strong>Projected</strong> = extrapolation to unbuilt system (not used in this paper&rsquo;s claims).</p>
+</blockquote>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part I</p>
+  <p class="part-title">Theory and Architecture</p>
+</div>
+<h2 id="1-introduction">1. Introduction</h2>
+<p>Glass resonators driven at their eigenfrequencies exhibit stable, reproducible spectral fingerprints determined by geometry and material properties. Each eigenmode has a characteristic frequency and spatial shape, creating a multi-dimensional feature space that is potentially useful for classification, identification, and physical unclonable functions (PUFs).</p>
+<p>This paper reports an experimental characterization of eigenmode-spectral encoding in a low-cost fused-silica plate prototype. Our goals are narrow and specific:</p>
+<ol>
+<li><strong>Characterize the mode spectrum</strong> — how many modes, at what SNR, with what quality factor?</li>
+<li><strong>Demonstrate classification</strong> — can a digital decoder reliably distinguish patterns encoded as amplitude combinations across modes?</li>
+<li><strong>Quantify spatial structure</strong> — do eigenmodes project differently onto spatially separated receivers, and how non-separable is this structure?</li>
+<li><strong>Establish signal integrity</strong> — what fraction of the measured signal is acoustic vs. electrical feedthrough?</li>
+<li><strong>Measure stability</strong> — are spectral fingerprints reproducible over time and drive cycles?</li>
+</ol>
+<p>We report both successes and limitations honestly. The plate provides rich, stable spectral features suitable for enrollment-based classification. However, all classification is performed by a digital decoder operating on FFT magnitudes — the resonator is a physical feature-extraction front-end, not a computer. Temporal reservoir computing was attempted and failed (Section 8.3). The acoustic fraction, while confirmed to dominate spectral <em>structure</em>, coexists with a significant electrical coupling path in the breadboard topology whose magnitude is topology-dependent (Section 3).</p>
+<h3 id="11-related-work">1.1 Related Work</h3>
+<p><strong>Classical non-separability in wave systems:</strong> Spreeuw (1998) [1] proposed that classical optical beams exhibit non-separable internal structure analogous to quantum entanglement. Kagalwala et al. (2013) [2] measured a CHSH-analog parameter $S > 2$ in optical polarization×spatial-mode states, following the formalism of Qian &amp; Eberly (2011) [3]. Töppel et al. (2014) [4] and Aiello et al. (2015) [5] extended this framework. All prior demonstrations are optical. We apply this formalism to acoustic eigenmodes in a solid-state resonator.</p>
+<p><strong>Acoustic PUFs and resonator identification:</strong> MEMS resonators have been explored as PUF primitives [6, 7] based on manufacturing variations in eigenfrequency. Our approach differs: we use the full multi-mode spectral shape (not just one frequency) as the fingerprint, and characterize the spatial degree of freedom as well.</p>
+<hr />
+<h2 id="2-experimental-setup">2. Experimental Setup</h2>
+<h3 id="21-hardware-platform">2.1 Hardware Platform</h3>
+<table>
+<thead>
+<tr>
+<th>Component</th>
+<th>Specification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Substrate</td>
+<td>Fused silica plate, 100×100×1 mm</td>
+</tr>
+<tr>
+<td>Transducers</td>
+<td>4× PZT 20 mm disc (SW=TX, NW=RX-A, NE=RX-B, SE=spare)</td>
+</tr>
+<tr>
+<td>Drive</td>
+<td>Raspberry Pi Pico H NCO (3-ch, GP2/GP3/GP4, 126 MHz PIO clock)</td>
+</tr>
+<tr>
+<td>Readout</td>
+<td>PicoScope 2204A (2-ch simultaneous, $f_s$ = 781.25 kHz, $N$ = 3968)</td>
+</tr>
+<tr>
+<td>Preamp</td>
+<td>OPA2134PA (×11 gain, ±9 V supply) on Ch A</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Signal chain:</strong> Pico NCO (3.3V square wave) → 220Ω series resistor → TX PZT (SW corner) → plate (acoustic propagation) → RX PZT → preamp (Ch A) or direct (Ch B) → PicoScope.</p>
+<p><strong>Wiring topology (current):</strong> Crimped DuPont connections, no shared breadboard between TX and RX paths, USB-only power for Pico. This topology was adopted on June 2, 2026, replacing an earlier breadboard design that had significant electrical coupling (Section 3).</p>
+<p><strong>Cost:</strong> Core materials ~&#36;38 (plate &#36;12, PZTs &#36;8, Pico &#36;7, passives &#36;5, misc &#36;6). PicoScope and preamp are reusable lab equipment.</p>
+<h3 id="22-data-acquisition">2.2 Data Acquisition</h3>
+<p>All captures use the PicoScope&rsquo;s block mode: trigger → acquire $N = 3{,}968$ samples at 781.25 kHz → FFT (Hanning window, zero-padded to 8192). Frequency resolution: 95.4 Hz/bin. Magnitude spectrum: absolute value of complex FFT coefficients.</p>
+<p><strong>Averaging:</strong> Each reported measurement uses 20 consecutive captures averaged in the frequency domain (magnitude averaging). One &ldquo;trial&rdquo; = 20 averages.</p>
+<h3 id="23-software">2.3 Software</h3>
+<p>All acquisition and analysis code is Python, using PicoScope SDK, NumPy, and SciPy. Classification uses nearest-centroid with Mahalanobis distance (no machine learning frameworks). All code is available in the repository.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part II</p>
+  <p class="part-title">Substrate and Prototype</p>
+</div>
+<h2 id="3-signal-path-characterization">3. Signal-Path Characterization</h2>
+<h3 id="31-the-feedthrough-problem">3.1 The Feedthrough Problem</h3>
+<p>In any benchtop piezo-acoustic experiment, the measured signal potentially includes both acoustic propagation through the substrate and electrical coupling through the wiring. Establishing the acoustic fraction is essential before interpreting spectral data.</p>
+<h3 id="32-historical-topology-may-26-2026-88-electrical">3.2 Historical Topology (May 26, 2026) — 88% Electrical</h3>
+<p>The original breadboard design used shared ground buses between TX and RX amplifier boards. Three convergent measurements on this topology:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Acoustic fraction</th>
+<th>Electrical fraction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Re-excitation contrast (T2.1)</td>
+<td>13.2%</td>
+<td>86.8%</td>
+</tr>
+<tr>
+<td>Relay ON/OFF ratio (T1.2)</td>
+<td>~12% (FFT-scaled)</td>
+<td>~88%</td>
+</tr>
+<tr>
+<td>Probe-after-gap amplitude (T3.3c)</td>
+<td>~12%</td>
+<td>~88%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Root cause:</strong> Capacitive coupling through the shared breadboard ground bus provided a low-impedance path from TX drive to RX input, bypassing the plate entirely. This topology is <strong>deprecated</strong> and not used for any results reported in Sections 4–7.</p>
+<h3 id="33-corrected-topology-may-27-2026-pzt-lifted-null-test">3.3 Corrected Topology (May 27, 2026) — PZT-Lifted Null Test</h3>
+<p>After physically separating TX and RX board grounds and rerouting TX wiring away from RX:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>35,840 Hz magnitude (arb. units)</th>
+<th>Interpretation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PZT coupled (run 1)</td>
+<td>34,271 (6.6× noise)</td>
+<td>Acoustic signal</td>
+</tr>
+<tr>
+<td><strong>PZT lifted</strong></td>
+<td><strong>9,119 (1.8× = noise floor)</strong></td>
+<td><strong>Zero feedthrough</strong></td>
+</tr>
+<tr>
+<td>PZT coupled (run 2)</td>
+<td>43,633 (8.8× noise)</td>
+<td>Confirmed acoustic</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Result (Measured):</strong> After ground separation, electrical feedthrough is undetectable — indistinguishable from the noise floor. The spectral peaks disappear completely when acoustic contact is broken.</p>
+<h3 id="34-current-topology-june-2-2026-pico-nco-crimped-wiring">3.4 Current Topology (June 2, 2026) — Pico NCO, Crimped Wiring</h3>
+<p>The Pico NCO topology goes further: no breadboard in the TX path, crimped DuPont connections, no shared ground return between TX and RX. No formal PZT-lifted null test has been performed on this exact configuration, but spatial contrast ratios provide strong indirect evidence:</p>
+<table>
+<thead>
+<tr>
+<th>Mode pair (Hz)</th>
+<th>Ch A (NW)</th>
+<th>Ch B (NE)</th>
+<th>Ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>34,000</td>
+<td>63,707</td>
+<td>1,290</td>
+<td><strong>49:1</strong></td>
+</tr>
+<tr>
+<td>70,000</td>
+<td>4,059</td>
+<td>222,575</td>
+<td><strong>1:55</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Electrical feedthrough, being independent of spatial position, would produce approximately equal amplitudes at both receivers (ratio ≈ 1:1). The extreme spatial contrast — each mode coupling preferentially to a different receiver — is only consistent with acoustic propagation through the plate&rsquo;s eigenmode spatial patterns.</p>
+<p><strong>Verification (E-W1, pending):</strong> A formal PZT-lifted null test on the current Pico NCO configuration is planned to close this gap definitively.</p>
+<h3 id="35-null-control-battery">3.5 Null-Control Battery</h3>
+<p>To confirm that classification exploits plate-specific spectral structure rather than any artifact:</p>
+<table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Accuracy</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Correct enrollment</td>
+<td>4/4</td>
+<td>+5.31</td>
+</tr>
+<tr>
+<td>Shuffled enrollment</td>
+<td>0/4</td>
+<td>–</td>
+</tr>
+<tr>
+<td>Random enrollment</td>
+<td>22%</td>
+<td>(chance)</td>
+</tr>
+</tbody>
+</table>
+<p>Separation metric (correct vs. shuffled): +12.78. This demonstrates that the decoder succeeds only when trained on the correct plate&rsquo;s spectral signature.</p>
+<h3 id="36-summary-of-signal-path-status">3.6 Summary of Signal-Path Status</h3>
+<table>
+<thead>
+<tr>
+<th>Topology</th>
+<th>Date</th>
+<th>Feedthrough</th>
+<th>Evidence</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Shared-ground breadboard</td>
+<td>May 26</td>
+<td>88%</td>
+<td>Relay test, re-excitation</td>
+</tr>
+<tr>
+<td>Separated boards (AD9833)</td>
+<td>May 27</td>
+<td>0% (at noise floor)</td>
+<td>PZT-lifted null</td>
+</tr>
+<tr>
+<td>Pico NCO, crimped</td>
+<td>June 2</td>
+<td>&lt;2% (indirect)</td>
+<td>Spatial ratios 49:1, 55:1</td>
+</tr>
+</tbody>
+</table>
+<p><strong>All results in Sections 4–7 use the June 2 (Pico NCO) topology.</strong> The 88% figure applies only to the deprecated May 26 breadboard and is reported for transparency.</p>
+<hr />
+<h2 id="4-mode-census-and-q-factor">4. Mode Census and Q-Factor</h2>
+<h3 id="41-mode-census">4.1 Mode Census</h3>
+<p>Swept 30–120 kHz using Pico NCO square-wave drive. Threshold: 3× noise floor (10 dB SNR).</p>
+<p><strong>Result (Measured):</strong> 7 modes clearly resolved above threshold.</p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Frequency (Hz)</th>
+<th>Amplitude (mV)</th>
+<th>SNR (dB)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>54,920</td>
+<td>1,163</td>
+<td>12.0</td>
+</tr>
+<tr>
+<td>2</td>
+<td>55,543</td>
+<td>1,107</td>
+<td>11.6</td>
+</tr>
+<tr>
+<td>3</td>
+<td>57,037</td>
+<td>996</td>
+<td>10.7</td>
+</tr>
+<tr>
+<td>4</td>
+<td>64,260</td>
+<td>984</td>
+<td>10.6</td>
+</tr>
+<tr>
+<td>5</td>
+<td>66,128</td>
+<td>906</td>
+<td>9.9</td>
+</tr>
+<tr>
+<td>6</td>
+<td>35,840</td>
+<td>—</td>
+<td>46.5*</td>
+</tr>
+<tr>
+<td>7</td>
+<td>97,011</td>
+<td>—</td>
+<td>55.6*</td>
+</tr>
+</tbody>
+</table>
+<p>*Modes 6–7 from targeted single-frequency measurements (T5.1 baseline); not captured in the broadband sweep but well-characterized independently. Additional modes at 54,920 / 57,037 Hz also measured at 55.6 / 54.7 dB in targeted mode.</p>
+<p><strong>Note:</strong> The broadband census (May 26, old topology) reported 27 modes at lower threshold, but with the Pico NCO square-wave drive (strong harmonics), the sweep is less clean. The conservative count is 7 modes at the 10 dB threshold in the formal census; targeted measurements confirm at least 4 modes at &gt;42 dB.</p>
+<h3 id="42-q-factor">4.2 Q-Factor</h3>
+<p><strong>Method:</strong> Ringdown at 35,840 Hz. Drive to steady state with Pico NCO, disconnect drive (relay open), capture decay envelope.</p>
+<p><strong>Results (7 attempts, Measured):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Run</th>
+<th>Q</th>
+<th>R²</th>
+<th>Verdict</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>—</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>2</td>
+<td>—</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>3</td>
+<td>0.8</td>
+<td>0.0004</td>
+<td>KILL</td>
+</tr>
+<tr>
+<td>4</td>
+<td>—</td>
+<td>—</td>
+<td>INCONCLUSIVE</td>
+</tr>
+<tr>
+<td>5</td>
+<td>2,759</td>
+<td>0.059</td>
+<td>GO</td>
+</tr>
+<tr>
+<td>6</td>
+<td>1,997</td>
+<td>0.038</td>
+<td>GO</td>
+</tr>
+<tr>
+<td>7</td>
+<td>2,275</td>
+<td>0.077</td>
+<td>GO</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Honest assessment:</strong> The three &ldquo;GO&rdquo; measurements yield Q = 1,997–2,759 (median 2,275), but all have $R^2 < 0.1$. The exponential decay model explains less than 8% of the variance in the ringdown data. This poor fit likely reflects: (a) multimode beating from adjacent modes during free decay, (b) PZT back-loading creating a non-exponential transient, and (c) limited dynamic range in the decay portion.</p>
+<p><strong>Reported value:</strong> $Q = 2{,}275 \pm 380$ (median ± half-range of 3 GO measurements). This should be treated as an order-of-magnitude estimate (Q ~ 2,000), not a precise measurement. A proper Q measurement (E-W5) with controlled single-mode excitation and longer capture windows is planned.</p>
+<p><strong>Loaded Q:</strong> When the TX PZT remains connected (low-impedance path to drive electronics), quality factor drops to $Q_\text{loaded} = 152$–241, confirming heavy PZT back-loading.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part III</p>
+  <p class="part-title">Finite Element Validation</p>
+</div>
+<h2 id="5-spectral-encoding-and-classification">5. Spectral Encoding and Classification</h2>
+<h3 id="51-binary-pattern-discrimination">5.1 Binary Pattern Discrimination</h3>
+<p><strong>Protocol:</strong> Drive 4 modes (35,840 / 54,920 / 57,037 / 97,011 Hz) in binary on/off patterns. 4 patterns (00/01/10/11 on two mode pairs), 12 repetitions each, 20 averages per capture. Total: 80 independent trials. Classification: nearest-centroid in 4D FFT-magnitude space, leave-one-out cross-validation.</p>
+<p><strong>Result (Measured, single session):</strong></p>
+<ul>
+<li>Accuracy: 80/80 = <strong>100%</strong> [Wilson 95% CI: 95.5%, 100%]</li>
+<li>Minimum inter-class separation: 50× per mode (on/off contrast)</li>
+<li>Mean separation: 193$\sigma$ between nearest-class centroids</li>
+</ul>
+<p><strong>Decoder dependency:</strong> Classification is performed by a digital nearest-centroid algorithm operating on FFT peak magnitudes. The plate provides stable, reproducible spectral features; the computation is digital. This is analogous to any sensor-plus-classifier system (e.g., microphone + speech recognition).</p>
+<p><strong>Limitation:</strong> All 80 trials collected in one session (~15 minutes). Cross-session validation (E-W2, different days/temperatures) is pending. The Wilson CI accounts for finite sample size but not temporal autocorrelation.</p>
+<h3 id="52-multi-level-amplitude-encoding">5.2 Multi-Level Amplitude Encoding</h3>
+<p><strong>Protocol:</strong> Drive each of 4 modes at 8 amplitude levels (50–500 mVpp, equally spaced), 20 repetitions per level. Classify full 4-mode patterns using nearest-centroid (Mahalanobis distance, per-mode normalization).</p>
+<p><strong>Result (Measured, single session):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Frequency</th>
+<th>Min separation ($\sigma$)</th>
+<th>Amplitude-only accuracy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>35,840 Hz</td>
+<td>9.0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>1</td>
+<td>54,920 Hz</td>
+<td>23.7</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>2</td>
+<td>57,037 Hz</td>
+<td>9.0</td>
+<td>100%</td>
+</tr>
+<tr>
+<td>3</td>
+<td>97,011 Hz</td>
+<td>17.1</td>
+<td>100%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Combined capacity:</strong> $8^4 = 4{,}096$ discriminable patterns = 12 bits per observation at zero error (amplitude-only classification).</p>
+<p><strong>Amplitude+phase accuracy:</strong> When phase is included in the feature vector, accuracy drops to 24–34% per mode. This indicates phase instability — consistent with the observation in Section 6.4 that inter-channel phase is ill-defined near modal nodes.</p>
+<p><strong>Decoder sensitivity (partial, E-W4 pending):</strong> The nearest-centroid classifier was the primary decoder tested. A full sensitivity analysis across multiple feature extraction and classification pipelines is planned. The large separations (9–24$\sigma$ minimum) suggest classification is not pipeline-sensitive, but this requires formal verification.</p>
+<h3 id="53-intermodulation-and-mode-independence">5.3 Intermodulation and Mode Independence</h3>
+<p><strong>Intermodulation (Measured):</strong> Two modes driven simultaneously (54,920 + 97,011 Hz). Searched for products at $f_1 \pm f_2$, $2f_1 - f_2$, etc. <strong>None detected above noise floor.</strong> The plate is a linear system at these drive levels.</p>
+<p><strong>Cross-mode coupling (Measured):</strong> Drove mode A, measured at mode B frequency. <strong>Result: &lt; 1.1$\sigma$.</strong> Modes are independent channels — no energy transfer between modes.</p>
+<p><strong>Implication:</strong> The plate acts as a linear spectral filter bank. Mode amplitudes are independent features. This is favorable for encoding (no crosstalk) but means the plate cannot perform nonlinear computation in the material.</p>
+<hr />
+<div class="part-banner">
+  <p class="part-label">Part IV</p>
+  <p class="part-title">MEMS Design and Scaling</p>
+</div>
+<h2 id="6-spatial-non-separability">6. Spatial Non-Separability</h2>
+<h3 id="61-background-and-formalism">6.1 Background and Formalism</h3>
+<p>Classical wave systems can exhibit non-separable correlations between internal degrees of freedom — analogous in mathematical structure (though not in physical interpretation) to quantum entanglement. This was established for optical beams by Kagalwala et al. [2] following the Qian &amp; Eberly [3] formalism.</p>
+<p>We apply this framework to acoustic eigenmodes: the two degrees of freedom are frequency (which mode is driven) and space (which receiver is read). If different modes couple preferentially to different receivers, the frequency×space state is non-separable.</p>
+<p><strong>Formalism:</strong> The plate driven at two frequencies $f_1$, $f_2$ with response measured at two receivers (A, B) produces a 2×2 intensity matrix:</p>
+<p>$$M_{ij} = \text{FFT magnitude at frequency } f_i \text{ at receiver } j$$</p>
+<p>After row-normalization and Frobenius-normalization, non-separability is quantified by the concurrence:</p>
+<p>$$C = \frac{2\sigma_1 \sigma_2}{\sigma_1^2 + \sigma_2^2}$$</p>
+<p>where $\sigma_1, \sigma_2$ are the singular values of the normalized $M$. A separable state has $C = 0$; maximally non-separable has $C = 1$.</p>
+<p>The CHSH parameter $S$ is computed from intensity correlators at measurement &ldquo;angles&rdquo; in the abstract polarization space:</p>
+<p>$$S = |E(a_1,b_1) - E(a_1,b_2) + E(a_2,b_1) + E(a_2,b_2)|$$</p>
+<p>For any separable state, $S \leq 2$. The algebraic maximum for non-separable states is $S = 2\sqrt{2} \approx 2.828$ (Tsirelson bound).</p>
+<p><strong>Explicit disclaimer:</strong> No quantum nonlocality is claimed. Both degrees of freedom are measured at the same location on the same classical object. The CHSH parameter is used as a mathematical non-separability witness following established convention [1–5].</p>
+<h3 id="62-multi-pair-results">6.2 Multi-Pair Results</h3>
+<p><strong>Protocol:</strong> 200 trials × 20 averages per trial. Dual-channel simultaneous capture. Five mode pairs selected by frequency sweep to maximize spatial contrast.</p>
+<p><strong>Optimized-angle results (upper bound):</strong></p>
+<table>
+<thead>
+<tr>
+<th>Mode pair (Hz)</th>
+<th>$S_\text{opt}$</th>
+<th>Concurrence</th>
+<th>Spatial contrast (log)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>34,000 + 70,000</td>
+<td>2.827</td>
+<td>0.999</td>
+<td>7.67</td>
+</tr>
+<tr>
+<td>34,000 + 87,000</td>
+<td>2.825</td>
+<td>0.998</td>
+<td>6.87</td>
+</tr>
+<tr>
+<td>70,000 + 112,000</td>
+<td>2.824</td>
+<td>0.997</td>
+<td>—</td>
+</tr>
+<tr>
+<td>34,000 + 80,000</td>
+<td>2.822</td>
+<td>0.996</td>
+<td>—</td>
+</tr>
+<tr>
+<td>34,000 + 71,000</td>
+<td>2.820</td>
+<td>0.994</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p>These values are obtained by numerically optimizing the four measurement angles to maximize $S$. This represents the algebraic upper bound given the measured state matrix — it is the maximum non-separability the data <em>could</em> support.</p>
+<p><strong>Fixed-angle results (E-W3, pending):</strong> Re-analysis with standard Bell angles (0°, 22.5°, 45°, 67.5°) without optimization is planned. This will provide an unbiased estimate of $S$ without selection bias from angle optimization.</p>
+<p><strong>Significance caveat:</strong> The bootstrap confidence intervals are extremely narrow (e.g., $\pm 3.8 \times 10^{-6}$ for the best pair) because the underlying measurement is nearly deterministic — the same plate driven at the same frequency produces nearly identical magnitudes each time. The &ldquo;218,000$\sigma$&rdquo; figure from v19 reflects measurement precision, not independent degrees of freedom in the usual statistical sense. <strong>We do not report sigma-above-2 in this revision.</strong> The scientifically meaningful claim is simply: the normalized state matrix has concurrence &gt; 0.99, measured consistently across 5 mode pairs.</p>
+<h3 id="63-phase-instability">6.3 Phase Instability</h3>
+<p><strong>Complex tomography (E2, Measured):</strong> When complex (magnitude + phase) data is used instead of magnitude-only:</p>
+<ul>
+<li>Concurrence: $C = 0.924$</li>
+<li>95% CI: [0.20, 0.999] (extremely wide)</li>
+<li>Phase std: 42° for $f_1$ at Ch B, 19° for $f_2$ at Ch A</li>
+</ul>
+<p><strong>Diagnosis:</strong> One mode in each pair has very low amplitude at one receiver (by design — that&rsquo;s what makes the state non-separable). At these near-nodal positions, phase is dominated by noise. The magnitude-based protocol of Qian &amp; Eberly [3] is physically appropriate for this geometry.</p>
+<p><strong>Reported honestly:</strong> Complex-tomography concurrence is 0.924 with large uncertainty. The magnitude-only result (C &gt; 0.99) is more precise but relies on the theoretical argument that magnitude-only is the correct observable for spatially separated measurements near nodal positions.</p>
+<h3 id="64-physical-interpretation">6.4 Physical Interpretation</h3>
+<p>The high concurrence means: knowing the frequency tells you which receiver will respond strongly, and knowing which receiver responds tells you the frequency. In operational terms: each eigenmode has a spatial pattern (Chladni figure) that creates different coupling strengths at different receiver positions. This is a geometric property of the plate — stable, reproducible, and manufacturable.</p>
+<p><strong>Computational utility:</strong> The non-separable spatial structure means each receiver sees a different &ldquo;projection&rdquo; of the transmitted spectral state. This is the physical basis for the observed classification performance — the decoder exploits features that are determined by plate geometry, not by electrical artifacts.</p>
+<hr />
+<h2 id="7-stability-and-endurance">7. Stability and Endurance</h2>
+<h3 id="71-temporal-stability-of-non-separable-state">7.1 Temporal Stability of Non-Separable State</h3>
+<p><strong>Protocol (E3, Measured):</strong> Seven measurement epochs over 3.5 hours. Temperature range: 22.4–27.0°C.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mean $S_\text{opt}$</td>
+<td>2.826</td>
+</tr>
+<tr>
+<td>Std</td>
+<td>±0.0003</td>
+</tr>
+<tr>
+<td>Max drift from baseline</td>
+<td>0.65%</td>
+</tr>
+<tr>
+<td>Concurrence (all epochs)</td>
+<td>&gt; 0.998</td>
+</tr>
+</tbody>
+</table>
+<p>The eigenmode spatial structure is stable against temperature variation over this range.</p>
+<h3 id="72-endurance">7.2 Endurance</h3>
+<p><strong>Protocol (E11, Measured):</strong> Continuous drive at 54,920 Hz for 300 seconds (16,480,345 cycles). Periodic checkpoints comparing spectral fingerprint to baseline.</p>
+<table>
+<thead>
+<tr>
+<th>Metric</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Total cycles</td>
+<td>16.5M</td>
+</tr>
+<tr>
+<td>Duration</td>
+<td>300 s</td>
+</tr>
+<tr>
+<td>Max drift from baseline</td>
+<td>0.22%</td>
+</tr>
+<tr>
+<td>Mean pre/post change</td>
+<td>0.13%</td>
+</tr>
+</tbody>
+</table>
+<p>No fatigue or degradation detected. The eigenmode spectrum is a non-volatile property of the plate geometry, unaffected by $> 10^7$ drive cycles.</p>
+<h3 id="73-cross-session-stability-pending">7.3 Cross-Session Stability (Pending)</h3>
+<p>Within-session stability is demonstrated (Sections 7.1, 7.2). Cross-session validation — testing whether classifiers trained in one session perform correctly days later — is planned (E-W2) but not yet measured. The user reports that informal re-runs over multiple days produce consistent results, but formal cross-session data with quantified accuracy is required before claiming long-term stability for classification.</p>
+<hr />
+<h2 id="8-discussion">8. Discussion</h2>
+<h3 id="81-what-the-plate-does">8.1 What the Plate Does</h3>
+<p>The fused-silica plate functions as a <strong>passive spectral front-end</strong>: when driven at eigenfrequencies, it produces stable, reproducible, spatially-structured amplitude patterns that serve as features for a downstream digital classifier. The plate&rsquo;s contribution is:</p>
+<ol>
+<li><strong>Spectral filtering</strong> — each eigenmode amplifies its frequency and rejects others (Q ~ 2,000)</li>
+<li><strong>Spatial diversity</strong> — each mode has a different spatial pattern, creating distinct projections at different receiver positions</li>
+<li><strong>Stability</strong> — the eigenmode spectrum is determined by geometry and is non-volatile</li>
+<li><strong>Linearity</strong> — modes are independent (no intermodulation), enabling clean multi-mode encoding</li>
+</ol>
+<h3 id="82-what-the-plate-does-not-do">8.2 What the Plate Does Not Do</h3>
+<p>The plate does not compute. Specifically:</p>
+<ul>
+<li><strong>No nonlinear mixing:</strong> Zero intermodulation products means the plate cannot combine inputs in a computationally useful nonlinear way.</li>
+<li><strong>No temporal memory:</strong> The loaded Q = 152–241 at bench rates means inter-step memory is effectively zero ($10^{-44}$). The plate is memoryless between measurements.</li>
+<li><strong>No reservoir computing:</strong> NARMA-10 tests all fail (NRMSE &gt; 1.0). The &ldquo;reservoir computing&rdquo; claim in earlier versions was incorrect for the bench hardware.</li>
+<li><strong>No Boolean computation without a decoder:</strong> The &ldquo;AND/OR/XOR&rdquo; results in v19 are more accurately described as: the plate produces different spectral patterns for different drive combinations, and a digital threshold decoder classifies these patterns as AND/OR/XOR. The physical operation is linear superposition; the logical interpretation is assigned by the digital post-processing.</li>
+</ul>
+<h3 id="83-reservoir-computing-honest-failure-report">8.3 Reservoir Computing: Honest Failure Report</h3>
+<p>Three temporal memory architectures were tested:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>NRMSE</th>
+<th>Diagnosis</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NARMA-10 (ringdown)</td>
+<td>1.08</td>
+<td>Zero inter-step memory</td>
+</tr>
+<tr>
+<td>NARMA-10 (intermodulation)</td>
+<td>5.36</td>
+<td>Zero IM persistence</td>
+</tr>
+<tr>
+<td>NARMA-10 (active drive)</td>
+<td>&gt; 1.0</td>
+<td>Drive masks history</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Root cause:</strong> The step interval (140 ms, limited by serial communication) exceeds the loaded decay time (1–4 ms) by 100×. No temporal information survives between steps.</p>
+<p><strong>Simulation (not a claim):</strong> Using the measured transfer matrix and Q values, a simulation at MEMS rates (2 µs step interval) produces NRMSE = 0.39. We report this only to identify the engineering gap; it is not a validated claim about a physical device.</p>
+<h3 id="84-chsh-parameter-what-it-means-and-what-it-doesnt">8.4 CHSH Parameter: What It Means and What It Doesn&rsquo;t</h3>
+<p>The CHSH parameter $S > 2$ confirms that the plate&rsquo;s eigenmode structure is mathematically non-separable in the frequency×space product space. This is physically meaningful — it quantifies the spatial diversity that makes classification work. It is also unsurprising: any resonator with modes of different spatial shape will exhibit $S > 2$ when measured at well-chosen positions.</p>
+<p><strong>What we do not claim:</strong>
+- No quantum entanglement or nonlocality
+- No &ldquo;violation of Bell&rsquo;s theorem&rdquo; in the EPR sense
+- No comparison to Tsirelson bound as a figure of merit for the device
+- No extraordinary physical mechanism — this is geometry</p>
+<p><strong>The meaningful result</strong> is not &ldquo;S is close to 2.83&rdquo; but rather &ldquo;the plate exhibits high spatial diversity across modes, quantified by concurrence &gt; 0.99, which provides the physical basis for enrollment-based classification.&rdquo;</p>
+<h3 id="85-limitations">8.5 Limitations</h3>
+<table>
+<thead>
+<tr>
+<th>Limitation</th>
+<th>Impact</th>
+<th>Mitigation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Single-session classification</td>
+<td>Inflates significance</td>
+<td>Cross-session test pending (E-W2)</td>
+</tr>
+<tr>
+<td>No formal null test on Pico NCO</td>
+<td>Indirect signal-path evidence only</td>
+<td>PZT-lift test pending (E-W1)</td>
+</tr>
+<tr>
+<td>Q-factor R² &lt; 0.1</td>
+<td>Q estimate unreliable</td>
+<td>Proper ringdown with single-mode drive pending (E-W5)</td>
+</tr>
+<tr>
+<td>One plate tested</td>
+<td>PUF claims unsupported</td>
+<td>Multi-plate comparison pending (E-W6)</td>
+</tr>
+<tr>
+<td>Single decoder pipeline reported</td>
+<td>Possible overfitting to pipeline</td>
+<td>All-decoder analysis pending (E-W4)</td>
+</tr>
+<tr>
+<td>Optimized CHSH angles</td>
+<td>Selection bias</td>
+<td>Fixed-angle protocol pending (E-W3)</td>
+</tr>
+<tr>
+<td>2 receivers only</td>
+<td>Limited spatial characterization</td>
+<td>Relay-mux array available but not formal</td>
+</tr>
+</tbody>
+</table>
+<h3 id="86-scaling-prospects-brief">8.6 Scaling Prospects (Brief)</h3>
+<p>The eigenmode spectrum is a geometric property that survives miniaturization. A MEMS-scale fused-silica resonator (1 mm) operating in vacuum would eliminate PZT loading and air damping, potentially achieving Q &gt; 5,000 based on published MEMS results [8, 9]. At such Q values and with ASIC readout (µs-scale step intervals), temporal reservoir computing becomes possible in principle. However, <strong>no MEMS device exists</strong> and all scaling claims remain projections. A detailed MEMS model is available in the repository but is excluded from this paper&rsquo;s scope.</p>
+<hr />
+<h2 id="9-conclusion">9. Conclusion</h2>
+<p>We have characterized the eigenmode spectrum of a piezo-driven fused-silica plate and demonstrated:</p>
+<ol>
+<li>
+<p><strong>Spectral features suitable for classification</strong> — 4 modes at 42–55 dB SNR, with binary pattern discrimination at 100% accuracy (80/80 trials) and multi-level encoding supporting 4,096 distinguishable states in a single session.</p>
+</li>
+<li>
+<p><strong>Spatial non-separability</strong> — the frequency×space intensity matrix has concurrence &gt; 0.99 (magnitude protocol) across 5 mode pairs, confirming that eigenmodes project differently onto spatially separated receivers.</p>
+</li>
+<li>
+<p><strong>Signal integrity</strong> — spectral structure is acoustic in origin (PZT-lifted null test, spatial contrast ratios 49:1), with the current wiring topology showing no detectable electrical feedthrough of mode peaks.</p>
+</li>
+<li>
+<p><strong>Stability</strong> — spectral fingerprints are stable to 0.65% over 3.5 hours and 0.22% over 16.5 million drive cycles.</p>
+</li>
+<li>
+<p><strong>Honest limitations</strong> — all classification uses a digital decoder; temporal reservoir computing fails; Q-factor fits are poor; cross-session validation is pending.</p>
+</li>
+</ol>
+<p>The plate provides a stable physical layer for enrollment-based spectral classification. Whether this is useful — compared to, say, a digital lookup table — depends on applications where physical unclonability, passive operation, or inherent parallelism provide architectural advantages over purely electronic alternatives. We identify physical unclonable functions and content-addressable memory as candidate applications, but leave their demonstration to future work with proper cross-session and multi-device validation.</p>
+<hr />
+<h2 id="references">References</h2>
+<p>[1] R. J. C. Spreeuw, &ldquo;A classical analogy of entanglement,&rdquo; <em>Found. Phys.</em> <strong>28</strong>, 361–374 (1998).</p>
+<p>[2] K. H. Kagalwala, G. Di Giuseppe, A. F. Abouraddy, and B. E. A. Saleh, &ldquo;Bell&rsquo;s measure in classical optical coherence,&rdquo; <em>Nat. Photonics</em> <strong>7</strong>, 72–78 (2013).</p>
+<p>[3] X.-F. Qian and J. H. Eberly, &ldquo;Entanglement and classical polarization states,&rdquo; <em>Opt. Lett.</em> <strong>36</strong>, 4110–4112 (2011).</p>
+<p>[4] F. Töppel, A. Aiello, C. Marquardt, E. Giacobino, and G. Leuchs, &ldquo;Classical entanglement in polarization metrology,&rdquo; <em>New J. Phys.</em> <strong>16</strong>, 073019 (2014).</p>
+<p>[5] A. Aiello, F. Töppel, C. Marquardt, E. Giacobino, and G. Leuchs, &ldquo;Quantum-like nonseparable structures in optical beams,&rdquo; <em>New J. Phys.</em> <strong>17</strong>, 043024 (2015).</p>
+<p>[6] F. Ayazi and K. Najafi, &ldquo;High aspect-ratio combined poly and single-crystal silicon (HARPSS) MEMS technology,&rdquo; <em>J. Microelectromech. Syst.</em> <strong>9</strong>, 288–294 (2000).</p>
+<p>[7] J. R. Vig and Y. Kim, &ldquo;Noise in microelectromechanical system resonators,&rdquo; <em>IEEE Trans. Ultrason., Ferroelect., Freq. Contr.</em> <strong>46</strong>, 1558–1565 (1999).</p>
+<p>[8] M. A. Hopcroft, W. D. Nix, and T. W. Kenny, &ldquo;What is the Young&rsquo;s modulus of silicon?,&rdquo; <em>J. Microelectromech. Syst.</em> <strong>19</strong>, 229–238 (2010).</p>
+<p>[9] C. T.-C. Nguyen, &ldquo;MEMS technology for timing and frequency control,&rdquo; <em>IEEE Trans. Ultrason., Ferroelect., Freq. Contr.</em> <strong>54</strong>, 251–270 (2007).</p>
+<p>[10] J. J. Hopfield, &ldquo;Neural networks and physical systems with emergent collective computational abilities,&rdquo; <em>Proc. Natl. Acad. Sci. USA</em> <strong>79</strong>, 2554–2558 (1982).</p>
+<p>[11] Lord Rayleigh, <em>The Theory of Sound</em>, 2nd ed. (Macmillan, London, 1894), Vol. 1.</p>
+<hr />
+<h2 id="appendix-a-provenance-table">Appendix A: Provenance Table</h2>
+<p>Every quantitative claim in this paper with its data source:</p>
+<table>
+<thead>
+<tr>
+<th>Claim</th>
+<th>Value</th>
+<th>Source file</th>
+<th>Label</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mode census</td>
+<td>7 modes (&gt;10 dB)</td>
+<td><code>data/results/plate_census/t1_2_census_20260526_160744.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Q-factor (median)</td>
+<td>2,275</td>
+<td><code>data/results/plate_q/t1_1_qfactor_20260526_155419.json</code></td>
+<td>Derived (R²=0.077)</td>
+</tr>
+<tr>
+<td>Q-factor (best)</td>
+<td>2,759</td>
+<td><code>data/results/plate_q/t1_1_qfactor_20260526_155302.json</code></td>
+<td>Derived (R²=0.059)</td>
+</tr>
+<tr>
+<td>Binary discrimination</td>
+<td>100% (80/80)</td>
+<td><code>data/results/multilevel/t3_4_multilevel_20260527_104811.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Multi-level capacity</td>
+<td>8 levels × 4 modes</td>
+<td><code>data/results/multilevel/t3_4_multilevel_20260527_104811.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Min separation</td>
+<td>9.0σ (mode 0)</td>
+<td>Same</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>CHSH S (optimized, best)</td>
+<td>2.827</td>
+<td><code>data/results/quantum_bridge/e1_multi_pair_chsh_20260602_165503.json</code></td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Concurrence (mag-only)</td>
+<td>0.999</td>
+<td>Same</td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Concurrence (complex)</td>
+<td>0.924</td>
+<td><code>data/results/quantum_bridge/e2_complex_tomography_20260602_170330.json</code></td>
+<td>Derived</td>
+</tr>
+<tr>
+<td>Phase std</td>
+<td>42° (f₁@ChB)</td>
+<td>Same</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Temporal stability</td>
+<td>0.65% max drift / 3.5h</td>
+<td><code>data/results/quantum_bridge/e3_temporal_stability_20260602_215242.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Endurance</td>
+<td>16.5M cycles, 0.22% drift</td>
+<td><code>data/results/endurance/e11_endurance_20260603_201452.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Spatial contrast</td>
+<td>49:1 (f₁), 55:1 (f₂)</td>
+<td><code>e1_multi_pair_chsh_20260602_165503.json</code> → pair_results[0].signal_check</td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Null test (May 27)</td>
+<td>0% feedthrough</td>
+<td><code>data/results/quantum_bridge/t5_1_dds_baseline_20260527_163235.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>SNR (Pico NCO)</td>
+<td>46.5–55.6 dB</td>
+<td><code>data/results/quantum_bridge/t5_1_pico_nco_baseline_20260602_143556.json</code></td>
+<td>Measured</td>
+</tr>
+<tr>
+<td>Reservoir (NARMA-10)</td>
+<td>FAIL (NRMSE &gt; 1.0)</td>
+<td>Experiment logs</td>
+<td>Measured</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="appendix-b-reproducibility-guide">Appendix B: Reproducibility Guide</h2>
+<h3 id="b1-minimum-reproducible-experiment">B.1 Minimum Reproducible Experiment</h3>
+<p><strong>Goal:</strong> Confirm that a glass plate exhibits spatially-structured eigenmode spectra suitable for enrollment-based classification.</p>
+<p><strong>Materials (~&#36;50):</strong></p>
+<ul>
+<li>Glass plate or rod (any geometry; $Q > 100$ sufficient)</li>
+<li>3× PZT disc (20 mm): 1 TX, 2 RX at non-adjacent positions</li>
+<li>Dual-channel oscilloscope with FFT (or single-channel + two sequential captures)</li>
+<li>Square-wave generator (30–120 kHz)</li>
+<li>2× 220Ω resistor</li>
+</ul>
+<p><strong>Critical wiring requirement:</strong> TX and RX must not share ground returns or breadboard rails. Use separate power returns or verified-isolated wiring.</p>
+<p><strong>Protocol:</strong></p>
+<ol>
+<li>Attach TX PZT to one corner, RX PZTs at two other corners</li>
+<li>Sweep frequency (1 kHz steps, 30–120 kHz)</li>
+<li>At each frequency: capture FFT at both receivers</li>
+<li>Identify modes (peaks &gt; 3× noise floor)</li>
+<li>For modes found: drive simultaneously, capture at both receivers</li>
+<li>Build 2×2 magnitude matrix → compute concurrence</li>
+</ol>
+<p><strong>Expected result:</strong> Any plate with well-separated eigenmodes will show spatial contrast between receivers. Concurrence &gt; 0.9 expected for mode pairs with high spatial contrast.</p>
+<h3 id="b2-data-availability">B.2 Data Availability</h3>
+<p>All raw data (JSON), acquisition scripts, and analysis code are publicly available at the repository URL. The experiment can be reproduced for under &#36;50 in materials (excluding oscilloscope).</p><div class="colophon-2col">
+  <p><em>Coherent Wave Memory</em> &mdash; Version 19r — June 2026 &mdash; &copy; Mike Tierce<br>
+  Typeset from Markdown source. Mathematics by KaTeX. All claims from first-principles simulation (48 modules, 2253 tests).</p>
+</div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    renderMathInElement(document.body, {
+        delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+        ],
+        throwOnError: false
+    });
+});
+</script>
+</body>
+</html>

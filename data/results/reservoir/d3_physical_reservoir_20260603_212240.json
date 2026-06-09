@@ -1,0 +1,128 @@
+{
+  "test": "D3_physical_round_robin_reservoir",
+  "timestamp": "2026-06-03T21:22:40.696664",
+  "config": {
+    "n_steps": 300,
+    "n_groups": 3,
+    "group_drive_freqs_hz": [
+      33000,
+      79000,
+      91000
+    ],
+    "groups_mode_indices": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    ],
+    "relay_order": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relay_names": [
+      "PI_NW",
+      "PI_NE",
+      "PH_NW_cascade",
+      "PH_NE_cascade"
+    ],
+    "n_avg": 8,
+    "narma_seed": 42,
+    "wiring": "cascade (PI_NE_RX -> jumper -> PH_SW_TX)"
+  },
+  "collection_time_s": 182.5790729522705,
+  "readout_shape": [
+    300,
+    27,
+    4
+  ],
+  "results": {
+    "full_D5_linear": {
+      "n_features": 540,
+      "nrmse": 9.97245809054432
+    },
+    "full_D5_quad": {
+      "n_features": 720,
+      "nrmse": 1.394913502839403
+    },
+    "full_D10_linear": {
+      "n_features": 1080,
+      "nrmse": 9.112340710312235
+    },
+    "full_D10_quad": {
+      "n_features": 1560,
+      "nrmse": 1.247665131946195
+    },
+    "full_D15_linear": {
+      "n_features": 1620,
+      "nrmse": 9.032105584503471
+    },
+    "full_D15_quad": {
+      "n_features": 2400,
+      "nrmse": 1.1536099019929358
+    },
+    "4ch_D10_quad": {
+      "n_features": 136,
+      "nrmse": 1.545152301921258
+    },
+    "4ch_D15_quad": {
+      "n_features": 216,
+      "nrmse": 2.9740461028611183
+    },
+    "4ch_D20_quad": {
+      "n_features": 296,
+      "nrmse": 4.28041325146688
+    },
+    "alpha_1e-07": 1.153609914253331,
+    "alpha_1e-06": 1.1536099141428773,
+    "alpha_1e-05": 1.1536099130383368,
+    "alpha_1e-04": 1.1536099019929358,
+    "alpha_1e-03": 1.153609791539115,
+    "alpha_1e-02": 1.1536086870200897,
+    "random_baseline": {
+      "mean": 3.9734963537397094,
+      "std": 0.5717287266812885,
+      "values": [
+        4.879843591924985,
+        4.308949024398101,
+        3.5941950583439306,
+        3.8460179083211514,
+        3.2384761857103785
+      ]
+    }
+  },
+  "best_nrmse": 1.1536099019929358,
+  "best_config": "full_D15_quad",
+  "random_baseline_mean": 3.9734963537397094,
+  "verdict": "FAIL"
+}

@@ -236,6 +236,31 @@ class RelayMux:
             self._active = int(resp.split(":")[1])
         return self._active
 
+    def tx_on(self):
+        """Energize TX isolation relay 8 (NC opens → TX isolated).
+
+        Independent of RX mux — does not disturb relay 1–7 state.
+        """
+        resp = self._send_cmd("T1")
+        if resp != "OK:T1":
+            raise RuntimeError(f"TX relay error: {resp!r}")
+
+    def tx_off(self):
+        """De-energize TX isolation relay 8 (NC closes → TX connected).
+
+        Independent of RX mux — does not disturb relay 1–7 state.
+        """
+        resp = self._send_cmd("T0")
+        if resp != "OK:T0":
+            raise RuntimeError(f"TX relay error: {resp!r}")
+
+    def tx_query(self) -> int:
+        """Query TX isolation relay state (0=connected, 1=isolated)."""
+        resp = self._send_cmd("T?")
+        if resp.startswith("OK:T"):
+            return int(resp[4:])
+        raise RuntimeError(f"TX query error: {resp!r}")
+
     def sweep(self, relays: list[int] | None = None,
               dwell_s: float = 0.5, callback=None):
         """Cycle through relays with optional callback at each.

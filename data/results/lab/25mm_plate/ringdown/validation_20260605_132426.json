@@ -1,0 +1,29 @@
+{
+  "timestamp": "20260605_132426",
+  "experiment": "ringdown_validation",
+  "tests": {
+    "null_300kHz": {
+      "freq_hz": 300000,
+      "delay_ms": 0,
+      "bandpass": "290-310 kHz",
+      "first_2ms_rms_mV": 4.855,
+      "after_3ms_rms_mV": 0.7729,
+      "verdict": "FAIL"
+    },
+    "delayed_321kHz": {
+      "freq_hz": 320650,
+      "delay_ms": 5,
+      "bandpass": "310-335 kHz",
+      "first_2ms_rms_mV": 0.9612,
+      "after_5ms_rms_mV": 0.8606,
+      "verdict": "UNCLEAR"
+    },
+    "repeat_321kHz": {
+      "freq_hz": 320650,
+      "delay_ms": 0,
+      "bandpass": "310-335 kHz",
+      "first_2ms_rms_mV": 5.8137,
+      "after_3ms_rms_mV": 0.9377
+    }
+  }
+}

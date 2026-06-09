@@ -1,0 +1,37 @@
+{
+  "experiment": "P2_PUF_challenge_response",
+  "timestamp": "2026-06-03T19:34:02.233357",
+  "config": {
+    "n_challenges": 1000,
+    "challenge_size": 3,
+    "n_modes": 27,
+    "n_channels": 4,
+    "noise_cv": 0.002,
+    "n_attack_samples": 50
+  },
+  "challenge_space": 2925,
+  "intra_plate": {
+    "mean_cosine_dist": 1.3982313410241475e-06,
+    "std": 1.2519143183655857e-06,
+    "max": 1.3429626331551425e-05
+  },
+  "inter_plate": {
+    "mean_cosine_dist": 0.01781501043413746,
+    "std": 0.02552919591342816,
+    "min": 7.1064265583231645e-12
+  },
+  "separation_ratio": 5.29160408702318e-07,
+  "collision_rate": 0.0006003602161296778,
+  "hamming_distances": {
+    "intra_mean": 0.04296875,
+    "inter_plate_mean": 0.421375,
+    "inter_challenge_mean": 0.457
+  },
+  "far": 0.067,
+  "frr": 0.0,
+  "modeling_attack": {
+    "n_observed_crps": 50,
+    "attack_success_rate": 0.61
+  },
+  "verdict": "FAIL"
+}

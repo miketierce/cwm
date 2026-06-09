@@ -1,0 +1,143 @@
+{
+  "experiment": "E10_qfactor_temporal_memory",
+  "timestamp": "2026-06-03T20:09:02.867685",
+  "method": "frequency_domain_bandwidth",
+  "config": {
+    "fine_step_hz": 20,
+    "sweep_half_pct": 3.0,
+    "n_avg": 16,
+    "relay_rx": 1
+  },
+  "summary": {
+    "n_modes_tested": 10,
+    "n_modes_valid": 10,
+    "Q_mean": 240.8162160855048,
+    "Q_std": 120.18494453055223,
+    "tau_mean_ms": 1.0638012025867782,
+    "tau_std_ms": 0.41924727225948255,
+    "total_temporal_capacity_mode_ms": 10.63801202586778
+  },
+  "per_mode": {
+    "33000": {
+      "frequency_hz": 33000.0,
+      "peak_frequency_hz": 33290.0,
+      "peak_amplitude_mV": 363403.10790667456,
+      "bandwidth_3dB_hz": 536.540497197595,
+      "f_low_hz": 33239.924108684085,
+      "f_high_hz": 33776.46460588168,
+      "Q": 62.04564273130737,
+      "tau_s": 0.0005932634868129345,
+      "tau_ms": 0.5932634868129345,
+      "n_sweep_points": 100
+    },
+    "39000": {
+      "frequency_hz": 39000.0,
+      "peak_frequency_hz": 38910.0,
+      "peak_amplitude_mV": 1398364.4239900822,
+      "bandwidth_3dB_hz": 171.60184210928128,
+      "f_low_hz": 38843.60278032247,
+      "f_high_hz": 39015.20462243175,
+      "Q": 226.7458176539907,
+      "tau_s": 0.0018549328041658274,
+      "tau_ms": 1.8549328041658273,
+      "n_sweep_points": 118
+    },
+    "48000": {
+      "frequency_hz": 48000.0,
+      "peak_frequency_hz": 48700.0,
+      "peak_amplitude_mV": 2100431.3563464833,
+      "bandwidth_3dB_hz": 188.34182469383813,
+      "f_low_hz": 48639.60704452817,
+      "f_high_hz": 48827.94886922201,
+      "Q": 258.5724125757251,
+      "tau_s": 0.0016900647888551791,
+      "tau_ms": 1.6900647888551792,
+      "n_sweep_points": 145
+    },
+    "57000": {
+      "frequency_hz": 57000.0,
+      "peak_frequency_hz": 56990.0,
+      "peak_amplitude_mV": 2454185.8509702147,
+      "bandwidth_3dB_hz": 417.0188813374989,
+      "f_low_hz": 56765.97789640972,
+      "f_high_hz": 57182.99677774722,
+      "Q": 136.66047881864907,
+      "tau_s": 0.0007632984990101161,
+      "tau_ms": 0.7632984990101161,
+      "n_sweep_points": 172
+    },
+    "66000": {
+      "frequency_hz": 66000.0,
+      "peak_frequency_hz": 66200.0,
+      "peak_amplitude_mV": 2356455.997189354,
+      "bandwidth_3dB_hz": 333.1638383057434,
+      "f_low_hz": 66034.21306060166,
+      "f_high_hz": 66367.3768989074,
+      "Q": 198.70103651299775,
+      "tau_s": 0.0009554154730672742,
+      "tau_ms": 0.9554154730672741,
+      "n_sweep_points": 199
+    },
+    "79000": {
+      "frequency_hz": 79000.0,
+      "peak_frequency_hz": 79490.0,
+      "peak_amplitude_mV": 2379620.014625421,
+      "bandwidth_3dB_hz": 397.18170006538276,
+      "f_low_hz": 79277.7631532614,
+      "f_high_hz": 79674.94485332679,
+      "Q": 200.13510186122528,
+      "tau_s": 0.0008014213296619445,
+      "tau_ms": 0.8014213296619446,
+      "n_sweep_points": 238
+    },
+    "89000": {
+      "frequency_hz": 89000.0,
+      "peak_frequency_hz": 89190.0,
+      "peak_amplitude_mV": 2244515.5496216738,
+      "bandwidth_3dB_hz": 505.28934910023236,
+      "f_low_hz": 88885.7232272806,
+      "f_high_hz": 89391.01257638083,
+      "Q": 176.51272515207464,
+      "tau_s": 0.0006299556615444288,
+      "tau_ms": 0.6299556615444288,
+      "n_sweep_points": 268
+    },
+    "97000": {
+      "frequency_hz": 97000.0,
+      "peak_frequency_hz": 97090.0,
+      "peak_amplitude_mV": 2347025.8103739033,
+      "bandwidth_3dB_hz": 381.8778172320599,
+      "f_low_hz": 96873.6912445732,
+      "f_high_hz": 97255.56906180526,
+      "Q": 254.2436235331267,
+      "tau_s": 0.0008335385608176341,
+      "tau_ms": 0.8335385608176341,
+      "n_sweep_points": 292
+    },
+    "109000": {
+      "frequency_hz": 109000.0,
+      "peak_frequency_hz": 107610.0,
+      "peak_amplitude_mV": 1520614.0737921637,
+      "bandwidth_3dB_hz": 280.59201524796663,
+      "f_low_hz": 107463.85680617567,
+      "f_high_hz": 107744.44882142363,
+      "Q": 383.5105567950755,
+      "tau_s": 0.001134422467091559,
+      "tau_ms": 1.134422467091559,
+      "n_sweep_points": 328
+    },
+    "119000": {
+      "frequency_hz": 119000.0,
+      "peak_frequency_hz": 117730.0,
+      "peak_amplitude_mV": 1848996.8296572235,
+      "bandwidth_3dB_hz": 230.3757161200483,
+      "f_low_hz": 117599.20676838582,
+      "f_high_hz": 117829.58248450587,
+      "Q": 511.0347652208757,
+      "tau_s": 0.001381698954840883,
+      "tau_ms": 1.381698954840883,
+      "n_sweep_points": 358
+    }
+  },
+  "verdict": "PASS_MARGINAL"
+}

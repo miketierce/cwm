@@ -1,0 +1,114 @@
+{
+  "experiment": "E10_ringdown_temporal_memory",
+  "timestamp": "2026-06-03T19:53:59.231093",
+  "config": {
+    "n_samples_per_block": 3968,
+    "n_blocks": 8,
+    "total_capture_ms": 40.63232,
+    "sample_rate_hz": 781250.0,
+    "drive_time_ms": 100,
+    "n_repeats": 5,
+    "relay_rx": 1
+  },
+  "summary": {
+    "n_modes_tested": 10,
+    "n_modes_valid": 10,
+    "tau_mean_ms": 1028.5763035418888,
+    "tau_std_ms": 1495.9243374403516,
+    "Q_mean": 320572.3325546963,
+    "total_temporal_capacity_mode_ms": 10285.763035418888
+  },
+  "per_mode": {
+    "33000": {
+      "frequency_hz": 33000.0,
+      "tau_s": 0.3110638338860069,
+      "tau_std_s": 0.3304838935967704,
+      "Q_measured": 32248.783226013915,
+      "r_squared": 0.012423155375046502,
+      "n_valid_repeats": 5,
+      "memory_persistence_ms": 311.0638338860069
+    },
+    "39000": {
+      "frequency_hz": 39000.0,
+      "tau_s": 0.11856975125816335,
+      "tau_std_s": 0.041680999617062994,
+      "Q_measured": 14527.416520133991,
+      "r_squared": 0.01489703317356822,
+      "n_valid_repeats": 4,
+      "memory_persistence_ms": 118.56975125816335
+    },
+    "48000": {
+      "frequency_hz": 48000.0,
+      "tau_s": 0.6532367269339012,
+      "tau_std_s": 0.8147857720738344,
+      "Q_measured": 98505.77771474812,
+      "r_squared": 0.006540063742249802,
+      "n_valid_repeats": 4,
+      "memory_persistence_ms": 653.2367269339012
+    },
+    "57000": {
+      "frequency_hz": 57000.0,
+      "tau_s": 0.18847004916412577,
+      "tau_std_s": 0.024244777196690485,
+      "Q_measured": 33749.4789469163,
+      "r_squared": 0.009470573587867293,
+      "n_valid_repeats": 3,
+      "memory_persistence_ms": 188.47004916412578
+    },
+    "66000": {
+      "frequency_hz": 66000.0,
+      "tau_s": 0.35470906870230967,
+      "tau_std_s": 0.0,
+      "Q_measured": 73547.19269019231,
+      "r_squared": 0.0015112842964428719,
+      "n_valid_repeats": 1,
+      "memory_persistence_ms": 354.70906870230965
+    },
+    "79000": {
+      "frequency_hz": 79000.0,
+      "tau_s": 0.9617750658807698,
+      "tau_std_s": 0.8811284841421135,
+      "Q_measured": 238698.9330287724,
+      "r_squared": 0.003010284834285093,
+      "n_valid_repeats": 5,
+      "memory_persistence_ms": 961.7750658807698
+    },
+    "89000": {
+      "frequency_hz": 89000.0,
+      "tau_s": 1.1444717763533874,
+      "tau_std_s": 0.7179160334375415,
+      "Q_measured": 319996.307110107,
+      "r_squared": 0.004489813333567794,
+      "n_valid_repeats": 5,
+      "memory_persistence_ms": 1144.4717763533874
+    },
+    "97000": {
+      "frequency_hz": 97000.0,
+      "tau_s": 0.5294474050333472,
+      "tau_std_s": 0.507477051802432,
+      "Q_measured": 161340.88357714948,
+      "r_squared": 0.0060032104390393085,
+      "n_valid_repeats": 5,
+      "memory_persistence_ms": 529.4474050333472
+    },
+    "109000": {
+      "frequency_hz": 109000.0,
+      "tau_s": 0.6037774370149869,
+      "tau_std_s": 0.20757468058115316,
+      "Q_measured": 206753.6808977217,
+      "r_squared": 0.0019165776454544536,
+      "n_valid_repeats": 5,
+      "memory_persistence_ms": 603.7774370149868
+    },
+    "119000": {
+      "frequency_hz": 119000.0,
+      "tau_s": 5.42024192119189,
+      "tau_std_s": 7.660977734563961,
+      "Q_measured": 2026354.8718352083,
+      "r_squared": 0.0024264857434513343,
+      "n_valid_repeats": 4,
+      "memory_persistence_ms": 5420.24192119189
+    }
+  },
+  "verdict": "PASS"
+}

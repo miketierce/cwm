@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>E3 Putty Placement Guide — 25mm Plate (1:1 Scale)</title>
+  <style>
+    @page {
+      size: A4 portrait;
+      margin: 15mm;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      font-family: 'Courier New', monospace;
+      font-size: 9pt;
+    }
+    h1 { font-size: 14pt; margin: 0 0 3mm; }
+    h2 { font-size: 11pt; margin: 8mm 0 2mm; }
+    .info { margin: 3mm 0; line-height: 1.4; }
+    .plate-container {
+      display: inline-block;
+      margin: 5mm;
+      text-align: center;
+      vertical-align: top;
+    }
+    .plate-label {
+      font-size: 8pt;
+      margin-bottom: 2mm;
+      font-weight: bold;
+    }
+    .plate {
+      position: relative;
+      width: 25mm;
+      height: 25mm;
+      border: 0.3mm solid #000;
+      background: #f8f8ff;
+    }
+    /* PZT discs — 10mm diameter circles at corners */
+    .pzt {
+      position: absolute;
+      width: 10mm;
+      height: 10mm;
+      border-radius: 50%;
+      border: 0.2mm solid #666;
+      background: rgba(180, 180, 200, 0.3);
+    }
+    .pzt-sw { bottom: 0; left: 0; }
+    .pzt-nw { top: 0; left: 0; }
+    .pzt-ne { top: 0; right: 0; }
+    .pzt-se { bottom: 0; right: 0; }
+    .pzt-label {
+      position: absolute;
+      font-size: 5pt;
+      color: #666;
+    }
+    .pzt-sw .pzt-label { bottom: -3mm; left: 0; }
+    .pzt-nw .pzt-label { top: -3mm; left: 0; }
+    .pzt-ne .pzt-label { top: -3mm; right: 0; }
+    .pzt-se .pzt-label { bottom: -3mm; right: 0; }
+
+    /* Putty placement markers */
+    .putty {
+      position: absolute;
+      width: 2mm;
+      height: 2mm;
+      border-radius: 50%;
+      background: #e00;
+      border: 0.15mm solid #900;
+      transform: translate(-50%, -50%);
+    }
+    .putty-guide {
+      position: absolute;
+      width: 3mm;
+      height: 3mm;
+      border-radius: 50%;
+      border: 0.2mm dashed #c00;
+      background: rgba(255, 0, 0, 0.08);
+      transform: translate(-50%, -50%);
+    }
+
+    /* Crosshairs */
+    .crosshair-h, .crosshair-v {
+      position: absolute;
+      background: rgba(200, 0, 0, 0.2);
+    }
+    .crosshair-h {
+      height: 0.1mm;
+      width: 25mm;
+      left: 0;
+    }
+    .crosshair-v {
+      width: 0.1mm;
+      height: 25mm;
+      top: 0;
+    }
+
+    /* Nodal line overlays */
+    .nodal {
+      position: absolute;
+      background: rgba(0, 0, 200, 0.12);
+    }
+    .nodal-h { height: 0.3mm; width: 25mm; left: 0; }
+    .nodal-v { width: 0.3mm; height: 25mm; top: 0; }
+    .nodal-d1, .nodal-d2 {
+      position: absolute;
+      width: 35.4mm; /* 25√2 */
+      height: 0.3mm;
+      background: rgba(0, 0, 200, 0.08);
+      left: -5.2mm;
+      transform-origin: center;
+    }
+    .nodal-d1 { top: 12.5mm; transform: rotate(45deg); }
+    .nodal-d2 { top: 12.5mm; transform: rotate(-45deg); }
+
+    /* Position labels */
+    .pos-label {
+      position: absolute;
+      font-size: 6pt;
+      color: #c00;
+      font-weight: bold;
+      transform: translate(-50%, -50%);
+    }
+
+    .legend {
+      margin: 5mm 0;
+      padding: 3mm;
+      border: 0.2mm solid #ccc;
+      font-size: 8pt;
+      line-height: 1.5;
+    }
+    .legend-item {
+      display: inline-block;
+      margin-right: 5mm;
+    }
+    .legend-swatch {
+      display: inline-block;
+      width: 3mm;
+      height: 3mm;
+      vertical-align: middle;
+      margin-right: 1mm;
+    }
+
+    table { border-collapse: collapse; margin: 3mm 0; font-size: 8pt; }
+    td, th { border: 0.2mm solid #ccc; padding: 1mm 2mm; }
+    th { background: #f0f0f0; }
+
+    .grid-row { display: flex; flex-wrap: wrap; gap: 3mm; margin: 3mm 0; }
+
+    @media print {
+      .no-print { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>E3 Perturbation Encoding — Putty Placement Guide</h1>
+<div class="info">
+  <strong>Plate:</strong> Fused silica 25×25×1mm | <strong>Putty:</strong> 0.05g wax, ~2mm ball<br>
+  <strong>All diagrams print at 1:1 scale</strong> — place plate directly on diagram to align putty position.<br>
+  <strong>Modes:</strong> 56, 91, 232, 321 kHz (Q = 94, 151, 102, 535)
+</div>
+
+<h2>Position A — Maximum Mode Count (1/3, 1/3)</h2>
+<div class="grid-row">
+  <div class="plate-container">
+    <div class="plate-label">Position A: (8.3, 8.3) mm from SW corner</div>
+    <div class="plate">
+      <!-- PZTs -->
+      <div class="pzt pzt-sw"><span class="pzt-label">TX</span></div>
+      <div class="pzt pzt-nw"><span class="pzt-label">NW</span></div>
+      <div class="pzt pzt-ne"><span class="pzt-label">NE</span></div>
+      <div class="pzt pzt-se"><span class="pzt-label">SE✗</span></div>
+      <!-- Nodal lines for reference (center + diagonals) -->
+      <div class="nodal nodal-h" style="top: 12.5mm;"></div>
+      <div class="nodal nodal-v" style="left: 12.5mm;"></div>
+      <div class="nodal-d1"></div>
+      <div class="nodal-d2"></div>
+      <!-- Crosshairs at putty position -->
+      <div class="crosshair-h" style="top: calc(25mm - 8.3mm);"></div>
+      <div class="crosshair-v" style="left: 8.3mm;"></div>
+      <!-- Putty placement -->
+      <div class="putty-guide" style="left: 8.3mm; top: calc(25mm - 8.3mm);"></div>
+      <div class="putty" style="left: 8.3mm; top: calc(25mm - 8.3mm);"></div>
+      <div class="pos-label" style="left: 8.3mm; top: calc(25mm - 8.3mm - 2.5mm);">A</div>
+    </div>
+  </div>
+</div>
+<div class="info" style="font-size: 8pt;">
+  <strong>Rationale:</strong> 1/3 from corner avoids all primary nodal lines (center, quarter-points, diagonals).<br>
+  At this position, modes (1,1), (2,1), (1,2), and (2,2) all have significant displacement → maximum Δf for maximum modes.<br>
+  <strong>Prediction:</strong> Δf/f ≈ −Δm/(2·m_eff) at antinode. With 50mg on 1375mg plate: Δf/f ≈ −1.8% if pure antinode.
+</div>
+
+<h2>Position B — Center (Node Discrimination)</h2>
+<div class="grid-row">
+  <div class="plate-container">
+    <div class="plate-label">Position B: (12.5, 12.5) mm — plate center</div>
+    <div class="plate">
+      <div class="pzt pzt-sw"><span class="pzt-label">TX</span></div>
+      <div class="pzt pzt-nw"><span class="pzt-label">NW</span></div>
+      <div class="pzt pzt-ne"><span class="pzt-label">NE</span></div>
+      <div class="pzt pzt-se"><span class="pzt-label">SE✗</span></div>
+      <div class="nodal nodal-h" style="top: 12.5mm;"></div>
+      <div class="nodal nodal-v" style="left: 12.5mm;"></div>
+      <div class="nodal-d1"></div>
+      <div class="nodal-d2"></div>
+      <div class="crosshair-h" style="top: 12.5mm;"></div>
+      <div class="crosshair-v" style="left: 12.5mm;"></div>
+      <div class="putty-guide" style="left: 12.5mm; top: 12.5mm;"></div>
+      <div class="putty" style="left: 12.5mm; top: 12.5mm;"></div>
+      <div class="pos-label" style="left: 12.5mm; top: 9.5mm;">B</div>
+    </div>
+  </div>
+</div>
+<div class="info" style="font-size: 8pt;">
+  <strong>Rationale:</strong> Center is antinode for odd-odd modes (1,1), (3,1), (1,3), (3,3) but NODE for even modes (2,2), (4,2), (2,4).<br>
+  <strong>Expected:</strong> Some modes shift (odd-odd), others don't (even) → proves spatial sensitivity.<br>
+  Comparing A vs B patterns uniquely identifies mode symmetry class.
+</div>
+
+<h2>Position C — Off-Diagonal (Maximum Asymmetry)</h2>
+<div class="grid-row">
+  <div class="plate-container">
+    <div class="plate-label">Position C: (5.0, 12.5) mm — 1/5 from W edge, centered N-S</div>
+    <div class="plate">
+      <div class="pzt pzt-sw"><span class="pzt-label">TX</span></div>
+      <div class="pzt pzt-nw"><span class="pzt-label">NW</span></div>
+      <div class="pzt pzt-ne"><span class="pzt-label">NE</span></div>
+      <div class="pzt pzt-se"><span class="pzt-label">SE✗</span></div>
+      <div class="nodal nodal-h" style="top: 12.5mm;"></div>
+      <div class="nodal nodal-v" style="left: 12.5mm;"></div>
+      <div class="nodal-d1"></div>
+      <div class="nodal-d2"></div>
+      <div class="crosshair-h" style="top: 12.5mm;"></div>
+      <div class="crosshair-v" style="left: 5.0mm;"></div>
+      <div class="putty-guide" style="left: 5.0mm; top: 12.5mm;"></div>
+      <div class="putty" style="left: 5.0mm; top: 12.5mm;"></div>
+      <div class="pos-label" style="left: 5.0mm; top: 9.5mm;">C</div>
+    </div>
+  </div>
+</div>
+<div class="info" style="font-size: 8pt;">
+  <strong>Rationale:</strong> Asymmetric position breaks x-y equivalence → different shift pattern from A and B.<br>
+  Creates third distinct fingerprint. Located between NW PZT and center, near the NW RX sensor → maximizes coupling visibility on relay 5.
+</div>
+
+<h2>Position D — Bare Plate Reference (No Putty)</h2>
+<div class="grid-row">
+  <div class="plate-container">
+    <div class="plate-label">Position D: BARE — no putty (baseline)</div>
+    <div class="plate">
+      <div class="pzt pzt-sw"><span class="pzt-label">TX</span></div>
+      <div class="pzt pzt-nw"><span class="pzt-label">NW</span></div>
+      <div class="pzt pzt-ne"><span class="pzt-label">NE</span></div>
+      <div class="pzt pzt-se"><span class="pzt-label">SE✗</span></div>
+      <div class="nodal nodal-h" style="top: 12.5mm;"></div>
+      <div class="nodal nodal-v" style="left: 12.5mm;"></div>
+    </div>
+  </div>
+</div>
+<div class="info" style="font-size: 8pt;">
+  <strong>Run baseline FIRST</strong>, then A, then B, then C, then bare again to confirm reversibility.
+</div>
+
+<h2>E3 Experiment Protocol</h2>
+<table>
+  <tr><th>Step</th><th>Config</th><th>Measurement</th><th>Expected Result</th></tr>
+  <tr><td>1</td><td>Bare plate (D)</td><td>Fine sweep all 5 modes</td><td>Baseline f₀ values</td></tr>
+  <tr><td>2</td><td>Putty at A (8.3, 8.3)</td><td>Fine sweep all 5 modes</td><td>All modes shift down (antinode for most)</td></tr>
+  <tr><td>3</td><td>Putty at B (12.5, 12.5)</td><td>Fine sweep all 5 modes</td><td>Odd-odd shift; even modes unchanged</td></tr>
+  <tr><td>4</td><td>Putty at C (5.0, 12.5)</td><td>Fine sweep all 5 modes</td><td>Different shift pattern (asymmetric)</td></tr>
+  <tr><td>5</td><td>Bare plate (D) again</td><td>Fine sweep all 5 modes</td><td>Return to baseline (reversibility proof)</td></tr>
+</table>
+
+<div class="legend">
+  <strong>Legend:</strong>
+  <span class="legend-item"><span class="legend-swatch" style="background: #e00; border-radius: 50%;"></span> Putty target (2mm)</span>
+  <span class="legend-item"><span class="legend-swatch" style="border: 0.3mm dashed #c00; border-radius: 50%;"></span> Placement zone (3mm)</span>
+  <span class="legend-item"><span class="legend-swatch" style="background: rgba(0,0,200,0.15);"></span> Nodal lines (avoid!)</span>
+  <span class="legend-item"><span class="legend-swatch" style="background: rgba(180,180,200,0.3); border: 0.2mm solid #666; border-radius: 50%;"></span> PZT disc (10mm)</span>
+</div>
+
+<h2>Predictions (Rayleigh perturbation theory)</h2>
+<div class="info" style="font-size: 8pt;">
+  <strong>Δf/f = −(Δm · |ψ(x,y)|²) / (2 · m_eff)</strong> where ψ is mode shape amplitude at putty position.<br><br>
+  Plate mass = 1.375g, 4× PZT mass ≈ 1.2g → m_eff ≈ 2.6g (effective).<br>
+  Putty Δm = 0.050g → Δm/m_eff = 1.9%<br>
+  At pure antinode (|ψ|²=1): <strong>Δf/f ≈ −0.96%</strong><br><br>
+  <table>
+    <tr><th>Mode</th><th>f₀ (Hz)</th><th>Max Δf at antinode</th><th>BW (Hz)</th><th>Δf/BW (resolvable?)</th></tr>
+    <tr><td>56 kHz</td><td>56,400</td><td>−540 Hz</td><td>602</td><td>0.9× ✓ marginal</td></tr>
+    <tr><td>91 kHz</td><td>91,000</td><td>−874 Hz</td><td>612</td><td>1.4× ✓ clear</td></tr>
+    <tr><td>232 kHz</td><td>232,700</td><td>−2,234 Hz</td><td>2,274</td><td>1.0× ✓ marginal</td></tr>
+    <tr><td>321 kHz</td><td>321,200</td><td>−3,084 Hz</td><td>627</td><td><strong>4.9× ✓✓ excellent</strong></td></tr>
+  </table>
+  <br>
+  <strong>321 kHz mode is the best candidate</strong> — highest Q (535) means narrowest BW relative to expected shift.<br>
+  Even at 50% antinode coupling, shift is 2.5× BW → easily resolved.
+</div>
+
+</body>
+</html>

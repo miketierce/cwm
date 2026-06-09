@@ -1,0 +1,285 @@
+{
+  "timestamp": "20260604_225109",
+  "config": {
+    "freq_start": 50000,
+    "freq_stop": 350000,
+    "freq_step": 2000,
+    "timebase": 7,
+    "n_samples": 8064,
+    "sample_rate_hz": 781250.0
+  },
+  "noise_floors_mV": {
+    "NW": 1.297956,
+    "NE": 0.995564,
+    "SE": 0.16166
+  },
+  "peaks": [
+    {
+      "freq_kHz": 56.0,
+      "NW_mV": 7.5226,
+      "NE_mV": 5.5043,
+      "SE_mV": 0.1236,
+      "ratio": 60.88,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 86.0,
+      "NW_mV": 3.2954,
+      "NE_mV": 7.5933,
+      "SE_mV": 0.4891,
+      "ratio": 15.52,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 91.0,
+      "NW_mV": 7.3596,
+      "NE_mV": 4.8729,
+      "SE_mV": 0.1378,
+      "ratio": 53.39,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 172.0,
+      "NW_mV": 0.6833,
+      "NE_mV": 0.4766,
+      "SE_mV": 0.6971,
+      "ratio": 1.46,
+      "classification": "NOISE"
+    },
+    {
+      "freq_kHz": 232.0,
+      "NW_mV": 7.4293,
+      "NE_mV": 1.1066,
+      "SE_mV": 0.3518,
+      "ratio": 21.11,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 248.0,
+      "NW_mV": 4.9292,
+      "NE_mV": 0.8407,
+      "SE_mV": 0.1337,
+      "ratio": 36.87,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 252.0,
+      "NW_mV": 4.3127,
+      "NE_mV": 0.2048,
+      "SE_mV": 0.1785,
+      "ratio": 24.16,
+      "classification": "NOISE"
+    },
+    {
+      "freq_kHz": 268.0,
+      "NW_mV": 3.8991,
+      "NE_mV": 0.4975,
+      "SE_mV": 0.2758,
+      "ratio": 14.14,
+      "classification": "NOISE"
+    },
+    {
+      "freq_kHz": 294.0,
+      "NW_mV": 4.6012,
+      "NE_mV": 3.1507,
+      "SE_mV": 0.2223,
+      "ratio": 20.7,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 300.0,
+      "NW_mV": 5.7644,
+      "NE_mV": 3.5741,
+      "SE_mV": 0.1046,
+      "ratio": 55.1,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 307.0,
+      "NW_mV": 4.0175,
+      "NE_mV": 3.7983,
+      "SE_mV": 0.2274,
+      "ratio": 17.67,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 310.0,
+      "NW_mV": 1.5267,
+      "NE_mV": 3.282,
+      "SE_mV": 0.1324,
+      "ratio": 24.79,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 316.0,
+      "NW_mV": 6.2131,
+      "NE_mV": 3.3515,
+      "SE_mV": 0.1904,
+      "ratio": 32.64,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 321.0,
+      "NW_mV": 7.0642,
+      "NE_mV": 5.6085,
+      "SE_mV": 0.1762,
+      "ratio": 40.09,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 324.0,
+      "NW_mV": 6.627,
+      "NE_mV": 5.6027,
+      "SE_mV": 0.2099,
+      "ratio": 31.57,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 332.0,
+      "NW_mV": 2.8546,
+      "NE_mV": 7.7732,
+      "SE_mV": 0.3596,
+      "ratio": 21.61,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 340.0,
+      "NW_mV": 0.8609,
+      "NE_mV": 4.1287,
+      "SE_mV": 0.1107,
+      "ratio": 37.29,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 346.0,
+      "NW_mV": 0.5759,
+      "NE_mV": 4.7161,
+      "SE_mV": 0.0919,
+      "ratio": 51.3,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "acoustic_modes": [
+    {
+      "freq_kHz": 56.0,
+      "NW_mV": 7.5226,
+      "NE_mV": 5.5043,
+      "SE_mV": 0.1236,
+      "ratio": 60.88,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 86.0,
+      "NW_mV": 3.2954,
+      "NE_mV": 7.5933,
+      "SE_mV": 0.4891,
+      "ratio": 15.52,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 91.0,
+      "NW_mV": 7.3596,
+      "NE_mV": 4.8729,
+      "SE_mV": 0.1378,
+      "ratio": 53.39,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 232.0,
+      "NW_mV": 7.4293,
+      "NE_mV": 1.1066,
+      "SE_mV": 0.3518,
+      "ratio": 21.11,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 248.0,
+      "NW_mV": 4.9292,
+      "NE_mV": 0.8407,
+      "SE_mV": 0.1337,
+      "ratio": 36.87,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 294.0,
+      "NW_mV": 4.6012,
+      "NE_mV": 3.1507,
+      "SE_mV": 0.2223,
+      "ratio": 20.7,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 300.0,
+      "NW_mV": 5.7644,
+      "NE_mV": 3.5741,
+      "SE_mV": 0.1046,
+      "ratio": 55.1,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 307.0,
+      "NW_mV": 4.0175,
+      "NE_mV": 3.7983,
+      "SE_mV": 0.2274,
+      "ratio": 17.67,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 310.0,
+      "NW_mV": 1.5267,
+      "NE_mV": 3.282,
+      "SE_mV": 0.1324,
+      "ratio": 24.79,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 316.0,
+      "NW_mV": 6.2131,
+      "NE_mV": 3.3515,
+      "SE_mV": 0.1904,
+      "ratio": 32.64,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 321.0,
+      "NW_mV": 7.0642,
+      "NE_mV": 5.6085,
+      "SE_mV": 0.1762,
+      "ratio": 40.09,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 324.0,
+      "NW_mV": 6.627,
+      "NE_mV": 5.6027,
+      "SE_mV": 0.2099,
+      "ratio": 31.57,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 332.0,
+      "NW_mV": 2.8546,
+      "NE_mV": 7.7732,
+      "SE_mV": 0.3596,
+      "ratio": 21.61,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 340.0,
+      "NW_mV": 0.8609,
+      "NE_mV": 4.1287,
+      "SE_mV": 0.1107,
+      "ratio": 37.29,
+      "classification": "ACOUSTIC"
+    },
+    {
+      "freq_kHz": 346.0,
+      "NW_mV": 0.5759,
+      "NE_mV": 4.7161,
+      "SE_mV": 0.0919,
+      "ratio": 51.3,
+      "classification": "ACOUSTIC"
+    }
+  ],
+  "interference_peaks": []
+}

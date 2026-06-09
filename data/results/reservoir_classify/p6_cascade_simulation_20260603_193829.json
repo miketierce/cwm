@@ -1,0 +1,91 @@
+{
+  "experiment": "P6_cascade_simulation",
+  "timestamp": "2026-06-03T19:38:29.116261",
+  "note": "SIMULATION ONLY \u2014 predicts physical cascade from enrollment data",
+  "matrix_analysis": {
+    "original": {
+      "svd": [
+        4.897823666238013,
+        1.2444731797799702,
+        1.036295313093525,
+        0.6234595923614805
+      ],
+      "condition": 7.855879877774445,
+      "effective_rank": 2.8723757488904433,
+      "shape": [
+        27,
+        4
+      ]
+    },
+    "cascade_4ch": {
+      "svd": [
+        5.952837149569582,
+        1.612303308038755,
+        1.106975597870759,
+        0.6189825382493193
+      ],
+      "condition": 9.617132603459398,
+      "effective_rank": 2.781762503991231,
+      "shape": [
+        27,
+        4
+      ]
+    },
+    "combined_6ch": {
+      "svd": [
+        7.487202811827925,
+        1.983688768861325,
+        1.3349163233886083,
+        1.0065116106497363,
+        0.41287181619307745,
+        0.21240899049085404
+      ],
+      "condition": 35.24899202489412,
+      "effective_rank": 3.4003126179418013,
+      "shape": [
+        27,
+        6
+      ]
+    }
+  },
+  "gram_ranks": {
+    "original_4ch": 4,
+    "cascade_4ch": 4,
+    "combined_6ch": 6
+  },
+  "frobenius_distance_pct": 36.848470490806235,
+  "reservoir_results": {
+    "Physical 4ch (original)": {
+      "narma10_nrmse": 1.4106723215938786,
+      "mackey_glass_nrmse": 0.030781814387703242,
+      "memory_capacity": 1.7692419970425588
+    },
+    "Cascade 4ch (polynomial)": {
+      "narma10_nrmse": 1.3938070655874615,
+      "mackey_glass_nrmse": 0.037886012506346815,
+      "memory_capacity": 1.7872760386141202
+    },
+    "Combined 6ch (direct+cascade)": {
+      "narma10_nrmse": 1.3931630284774434,
+      "mackey_glass_nrmse": 0.0434905989688105,
+      "memory_capacity": 1.8034028386528833
+    },
+    "Random 4ch": {
+      "narma10_nrmse": 1.3599202729973852,
+      "mackey_glass_nrmse": 0.026414263575737066,
+      "memory_capacity": 2.7267178647912313
+    },
+    "Random 6ch": {
+      "narma10_nrmse": 1.226941121376406,
+      "mackey_glass_nrmse": 0.016648508051038582,
+      "memory_capacity": 3.588908574009989
+    }
+  },
+  "cascade_helps": {
+    "rank_increase": true,
+    "structure_different": true,
+    "narma_improved": true,
+    "mc_improved": true
+  },
+  "verdict": "PASS"
+}

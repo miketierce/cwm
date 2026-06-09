@@ -1,0 +1,137 @@
+{
+  "test": "D3_physical_v2_frequency_detuning_reservoir",
+  "timestamp": "2026-06-03T21:32:51.797155",
+  "concept": "Input u[t] encoded as drive frequency within spectral group. Plate Lorentzian response provides nonlinear kernel. Round-robin across 3 groups with digital delay buffer.",
+  "config": {
+    "n_steps": 300,
+    "n_groups": 3,
+    "group_freq_ranges": [
+      [
+        31800,
+        58200
+      ],
+      [
+        59600,
+        90400
+      ],
+      [
+        89600,
+        120400
+      ]
+    ],
+    "groups_mode_indices": [
+      [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      [
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      [
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26
+      ]
+    ],
+    "relay_order": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "relay_names": [
+      "PI_NW",
+      "PI_NE",
+      "PH_NW_cascade",
+      "PH_NE_cascade"
+    ],
+    "n_avg": 8,
+    "narma_seed": 42,
+    "wiring": "cascade (PI_NE_RX -> jumper -> PH_SW_TX)"
+  },
+  "calibration": {
+    "cal_mode_idx": 13,
+    "cal_freq_hz": 71000,
+    "bandwidth_hz": 150,
+    "q_measured": 473.3333333333333,
+    "dynamic_range": 4.879967958780376
+  },
+  "encoding_quality": {
+    "mean_abs_corr": 0.19026984855781628,
+    "max_abs_corr": 0.4439556539662585
+  },
+  "collection_time_s": 168.97683882713318,
+  "results": {
+    "active_D5_linear": {
+      "n_feat": 540,
+      "nrmse": 15.522650897311873
+    },
+    "active_D5_quad": {
+      "n_feat": 720,
+      "nrmse": 14.646567110382222
+    },
+    "active_D10_linear": {
+      "n_feat": 1080,
+      "nrmse": 12.343746756307407
+    },
+    "active_D10_quad": {
+      "n_feat": 1560,
+      "nrmse": 11.733125848911534
+    },
+    "active_D15_linear": {
+      "n_feat": 1620,
+      "nrmse": 10.708715875453473
+    },
+    "active_D15_quad": {
+      "n_feat": 2400,
+      "nrmse": 10.244049645936709
+    },
+    "alpha_1e-08": 10.244050819826333,
+    "alpha_1e-07": 10.244050818769725,
+    "alpha_1e-06": 10.244050808203662,
+    "alpha_1e-05": 10.244050702543012,
+    "alpha_1e-04": 10.244049645936709,
+    "alpha_1e-03": 10.244039079894439,
+    "alpha_1e-02": 10.243933421545737,
+    "driven_D10_quad": {
+      "n_feat": 840,
+      "nrmse": 5.368932275703817
+    },
+    "driven_D15_quad": {
+      "n_feat": 1320,
+      "nrmse": 5.356150510499809
+    },
+    "driven_D20_quad": {
+      "n_feat": 1800,
+      "nrmse": 5.927083597340216
+    }
+  },
+  "best_nrmse": 5.356150510499809,
+  "best_config": "driven_D15_quad",
+  "random_baseline": {
+    "mean": 4.287944336465967,
+    "std": 0.6295158992326615
+  },
+  "verdict": "FAIL"
+}

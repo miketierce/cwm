@@ -1,17 +1,17 @@
 # v19 Rewrite Instructions — Coherent Wave Memory
 
-**Purpose.** Build `v19.md` *from scratch* (do not edit v18 in place) using v18 as the
+**Purpose.** Build `v19.md` _from scratch_ (do not edit v18 in place) using v18 as the
 structural skeleton and folding in every hardware result accumulated in
 `paper/rewrite_notes.md` plus the lab diary (`docs/lab_diary_*.md`, `docs/LAB_DIARY.md`,
-`docs/WORKLIST.md`). The goal is a paper that is (a) a *valid* scientific contribution and
+`docs/WORKLIST.md`). The goal is a paper that is (a) a _valid_ scientific contribution and
 (b) clean enough to clear arXiv moderation and survive a skeptical referee.
 
 **Audience for v19.** arXiv preprint in `physics.app-ph` (cross-list `cond-mat.mes-hall`,
 `cs.ET`). Write for a reviewer who is sympathetic to engineering-physics proposals but
 allergic to overclaiming.
 
-**The single governing principle.** *Never let a derived or projected number wear the word
-"measured."* Every quantitative claim must carry one of four labels — **Measured**,
+**The single governing principle.** _Never let a derived or projected number wear the word
+"measured."_ Every quantitative claim must carry one of four labels — **Measured**,
 **Derived**, **Projected**, **Modeled** — and the label must be correct. This is the change
 that most determines whether v19 is taken seriously.
 
@@ -25,15 +25,15 @@ must be resolved before any new content is added.
 ### 0.1 The 98.5 dB SNR must be relabeled and contextualized
 
 - **Problem:** v18 abstract, §1.3 table, §4.3, §16, and the appendix present **98.5 dB** as a
-  *measured* SNR. It is not. It is a thermodynamic bound: `SNR = ½k_eff·A² / k_BT` assuming a
+  _measured_ SNR. It is not. It is a thermodynamic bound: `SNR = ½k_eff·A² / k_BT` assuming a
   1 nm drive amplitude. The lab record (rewrite_notes E18; lab_diary 20260602 T5.1) shows
   **actually measured** SNRs of **34 dB mean / 75 dB max** (rod bench) and **42–55 dB**
   (plate, Pico NCO).
 - **Fix:**
   - Relabel everywhere as **"thermal-noise-limited SNR (derived)"** or
     **"thermodynamic SNR ceiling."** Never "measured."
-  - Add a measured-SNR row to the §1.3 results table: *Measured bench SNR: 42–55 dB
-    (plate, Pico NCO drive); 34 dB mean / 75 dB max (4-rod borosilicate).*
+  - Add a measured-SNR row to the §1.3 results table: _Measured bench SNR: 42–55 dB
+    (plate, Pico NCO drive); 34 dB mean / 75 dB max (4-rod borosilicate)._
   - In §4.3, keep the energy-ratio derivation but state plainly: "This is the thermodynamic
     ceiling, not an instrument reading; our bench electronics measure 42–55 dB (§4.x), and the
     gap is fully accounted for by the coupling budget of §4.y."
@@ -46,14 +46,14 @@ must be resolved before any new content is added.
 - **Problem:** The May 26 campaign (LAB_DIARY, WORKLIST T3.3b/c, T4.2) established that the
   bench signal path is **~88% electrical feedthrough, 12% acoustic** in the shared-PZT
   breadboard topology. The rewrite-notes CIM results (100% Boolean, recall, NNS) are real
-  *classification* results but were obtained through that confounded path.
+  _classification_ results but were obtained through that confounded path.
 - **Fix:**
   - Add a dedicated subsection (proposed §4.7 "Signal-Path Decomposition and the Acoustic
     Fraction") that states the 12%/88% split up front, names the three convergent
     measurements (T2.1 13.2%, T1.2 ~12%, T3.3c ~12%), and explains the null test
     (PZT-lifted → 0% feedthrough; WORKLIST T4.1) that isolates the acoustic component.
   - Every hardware result table must note whether it survives the confound. Classification
-    results (recall, Boolean, NNS, multi-level) do — they depend on spectral *shape*, which
+    results (recall, Boolean, NNS, multi-level) do — they depend on spectral _shape_, which
     the E36 null-control battery proves is rod-specific (shuffle=0/4, random=22%, separation
     +12.78). Temporal-memory results do **not** — disclose them as FAILs that quantify the
     coupling limit, not as architecture failures.
@@ -67,7 +67,7 @@ must be resolved before any new content is added.
   violating a Bell inequality is the single highest-risk pseudoscience signal a moderator
   screens for. As written it would endanger the entire submission.
 - **What is actually true and defensible:** the plate exhibits **non-separability of its
-  frequency × space (or frequency × phase) degrees of freedom** — *classical entanglement* in
+  frequency × space (or frequency × phase) degrees of freedom** — _classical entanglement_ in
   the established sense (Spreeuw 1998; Qian & Eberly 2011; Kagalwala 2013; Aiello 2015). This
   is real, publishable physics. It is **not** quantum nonlocality and does **not** violate
   Bell's theorem in the EPR sense.
@@ -75,7 +75,7 @@ must be resolved before any new content is added.
   - **Preferred for v19 arXiv:** include it as a clearly bounded subsection titled
     **"Classical Non-Separability of Frequency and Spatial Modes"** with: (1) explicit
     statement that no quantum nonlocality is claimed and Bell's theorem is not violated; (2)
-    the CHSH-like S parameter framed strictly as a *non-separability witness* for a single
+    the CHSH-like S parameter framed strictly as a _non-separability witness_ for a single
     classical field, with citations to the classical-entanglement literature; (3) the honest
     caveats from the diary (phase instability, magnitude-only protocol, dependence on mode-pair
     selection); (4) the multi-pair E1 result (5/5 pairs S = 2.82–2.83) to defeat the
@@ -89,10 +89,10 @@ must be resolved before any new content is added.
 
 - Remove marketing superlatives: "scaling miracle," "the money shot," "on the offensive,"
   "★★," emoji verdicts. Convert to neutral scientific register.
-- Keep "exceeds 3D NAND" only with the explicit *projected* label and the packing/packaging
+- Keep "exceeds 3D NAND" only with the explicit _projected_ label and the packing/packaging
   caveats already in v18's density-definitions box.
 - The companion book [23] (with chapters like "The Dogon Connection") may be cited for
-  *narrative context only*, never as evidence for any scientific claim. v19 must be fully
+  _narrative context only_, never as evidence for any scientific claim. v19 must be fully
   self-contained for every claim.
 
 ---
@@ -120,6 +120,7 @@ must be resolved before any new content is added.
 Keep v18 Parts I–VI. Insert/modify as follows:
 
 **Part II — Substrate and Prototype**
+
 - §4 Macro-Scale Prototype — **expand** with the plate campaign and CIM hardware.
   - 4.1–4.6 as in v18 (with §0.1 SNR relabeling).
   - **NEW 4.7** Signal-Path Decomposition and the Acoustic Fraction (§0.2).
@@ -129,15 +130,17 @@ Keep v18 Parts I–VI. Insert/modify as follows:
   - **NEW 4.11** Falsification and Null Controls (Round 7 inoculation suite — Part 3.D).
 
 **Part V — Advanced Techniques**
+
 - §11 Advanced Encoding — keep as Modeled, but add a "hardware status" column to every
   sub-claim table mapping to the rewrite-notes scorecard (Part 6).
 - §12 Rewritability — unchanged except hardware-status annotations.
 
 **Part VI — Outlook**
+
 - §13 Ultimate Limits — add the Festi/Rayleigh ν⁴ ceiling material (Part 4).
 - **NEW §14 Glass Vibrational Physics Context** (short): deep-Debye operating regime,
   HET basis for PUF, Rayleigh Q ceiling. (Part 4.)
-- **NEW §15 Quantum-Classical Bridge** — *heavily caveated* (Part 5). Contains the classical
+- **NEW §15 Quantum-Classical Bridge** — _heavily caveated_ (Part 5). Contains the classical
   non-separability subsection (§0.3) and the honest-boundaries subsection. Only include if
   §0.3 framing is followed exactly.
 - §16 Discussion / §17 Roadmap / §18 Conclusion — renumber, update.
@@ -157,15 +160,15 @@ the relevant section table. Do **not** inflate; quote the numbers as recorded.
 Source: rewrite_notes "CIM Suite Results," Rounds 1–7; data in
 `data/results/lab/cim_suite/suite_20260409_110727.json` and `_122740.json`.
 
-| Result | Measured value | Note |
-| --- | --- | --- |
-| Associative recall | 4/4 rods, 100%, 3/3 reproducible, margin +5.22→+5.28 | template matching |
-| Nearest-neighbor search | 66/66 across 6 pairs, Kendall τ = 1.000 | universal α=0.3→0.6 crossover |
-| Boolean AND/OR/XOR | 100% on 5/6 pairs; 6/6 with 5% guard band | exceeds v18's ">90%" |
-| 3-input Boolean (AND3/OR3/MAJ/XOR3) | 100% | **new claim**, not in v18 |
-| Chained Boolean (A∧B)⊕C | 5/5 (100%) | gate composability without regeneration |
-| Noise robustness | 100% recall+Boolean at 20× attenuation (0.2 Vpp) | margin *increases* as drive drops |
-| Temporal stability | 100% across 7 sessions / 48 h, Wilson CI [75.7%,100%] | E28, E37 |
+| Result                              | Measured value                                        | Note                                    |
+| ----------------------------------- | ----------------------------------------------------- | --------------------------------------- |
+| Associative recall                  | 4/4 rods, 100%, 3/3 reproducible, margin +5.22→+5.28  | template matching                       |
+| Nearest-neighbor search             | 66/66 across 6 pairs, Kendall τ = 1.000               | universal α=0.3→0.6 crossover           |
+| Boolean AND/OR/XOR                  | 100% on 5/6 pairs; 6/6 with 5% guard band             | exceeds v18's ">90%"                    |
+| 3-input Boolean (AND3/OR3/MAJ/XOR3) | 100%                                                  | **new claim**, not in v18               |
+| Chained Boolean (A∧B)⊕C             | 5/5 (100%)                                            | gate composability without regeneration |
+| Noise robustness                    | 100% recall+Boolean at 20× attenuation (0.2 Vpp)      | margin _increases_ as drive drops       |
+| Temporal stability                  | 100% across 7 sessions / 48 h, Wilson CI [75.7%,100%] | E28, E37                                |
 
 - Add the **"filter first, then threshold"** design rule (pre-scan V1→V5 path, 51%→100%).
 - Add the **"enrollment is the decoder ring"** cross-cutting insight.
@@ -222,7 +225,7 @@ Source: rewrite_notes Round 7 (E34–E37), Round 8 (E38);
   projected >40 dB.
 - E38 perturbation removal: rods remain distinguishable without perturbation (gap +0.062);
   perturbation adds 1–7% band changes. Upgrade Rayleigh-perturbation claim from ❌ to ⚠️ and
-  state the nuance: *location* matters more than mass at macro scale.
+  state the nuance: _location_ matters more than mass at macro scale.
 
 ### 3.E Q-factor reconciliation (update §4.5, §7)
 
@@ -241,7 +244,7 @@ Source: rewrite_notes Round 7 (E34–E37), Round 8 (E38);
 Source: rewrite_notes "Festi et al. (2026)."
 
 - **Operating regime:** CWM runs ~10⁷× below the Ioffe–Regel limit and the ~1 THz boson peak.
-  State that Kirchhoff/continuum theory is *exact* (not approximate) in the kHz–MHz band.
+  State that Kirchhoff/continuum theory is _exact_ (not approximate) in the kHz–MHz band.
 - **Rayleigh ν⁴ ceiling:** Γ ∝ ν⁴ ⇒ Q_Rayleigh ≈ 10²³ at 100 kHz (irrelevant) but ≈ 10⁶ at
   ~25 GHz. Add as a **Projected** MEMS bandwidth ceiling in §6/§13 and as a kill criterion in
   the roadmap: modes above ~10 GHz must include a per-mode Rayleigh term.
@@ -268,10 +271,10 @@ Only build this section if every guardrail in §0.3 is honored. Structure:
 - **§15.3 Classical non-separability of frequency and spatial/phase modes.** The reframed
   CHSH-analog (§0.3). Lead with the explicit disclaimer. Report E1 multi-pair (5/5,
   S=2.82–2.83) and E2 (magnitude protocol validated; phase unstable). Cite Spreeuw, Kagalwala,
-  Aiello, Qian & Eberly, Wang/path-identity. Novelty claim allowed: *first demonstration of
-  classical (intra-system) non-separability in an acoustic resonator* — **not** entanglement.
+  Aiello, Qian & Eberly, Wang/path-identity. Novelty claim allowed: _first demonstration of
+  classical (intra-system) non-separability in an acoustic resonator_ — **not** entanglement.
 - **§15.4 Physical security primitives (PUF, one-way function, TRNG).** Keep but mark security
-  claims as *qualitative/conjectural* — they are not formally analyzed in this paper. Soften
+  claims as _qualitative/conjectural_ — they are not formally analyzed in this paper. Soften
   "immune to Shor's" to "security rests on physical unclonability rather than computational
   hardness." Cite the Jaccard 0.10–0.20 plate-independence data as supporting, not proof.
 - **§15.5 Honest boundaries.** No 2^N state space, no Bell/nonlocality, classical decoherence
@@ -289,10 +292,11 @@ running total (post Round 7/8): **17 confirmed ✅ | 9 partial/disclosed ⚠️ 
 (Confirmed/Partial/Not-at-macro/Inconclusive/Deferred).
 
 Mandatory honesty rows (do not omit the failures — they are the paper's credibility):
+
 - SNR 98.5 dB → **not at macro** (34 dB mean / 75 dB max measured).
 - Q = 10,000 → **not at macro** (74–572 rod; 2,759–33,960 plate).
 - v_bar = 5,315 m/s → **not confirmed at macro** (~190 m/s from irregular rod spacing; thin-bar
-  assumption violated by 6 mm rod). *Note:* this is FEM-validated to 7 ppm, which is the real
+  assumption violated by 6 mm rod). _Note:_ this is FEM-validated to 7 ppm, which is the real
   support — present FEM as the validation, not the bench.
 - Phase-spectral +84% → **negative at macro** (6/40 stable).
 - Parametric +12 dB → **not at macro**.
@@ -321,6 +325,7 @@ Verify every DOI before submission. Drop any reference not actually cited in v19
 ## PART 8 — Figures
 
 Reuse v18 figures. Add:
+
 - **Fig A:** Signal-path decomposition bar (12% acoustic / 88% electrical) with the null-test.
 - **Fig B:** Multi-level encoding grid — 4 modes × 8 levels, showing 9σ separation.
 - **Fig C:** CIM scorecard summary (recall/NNS/Boolean) across pairs.
@@ -356,5 +361,5 @@ macro demonstration of spectral classification, associative recall, O(1) nearest
 Boolean compute, multi-level encoding, and reservoir computing; FEM validation to 7 ppm;
 a rigorous five-mechanism MEMS Q model; and a documented falsification record. v19 may **not**
 claim: measured MEMS performance, measured 98.5 dB SNR, quantum entanglement or Bell
-violation, or proven cryptographic security. Keep the boundary between *demonstrated* and
-*projected* visible on every page — that boundary is the paper's chief scientific asset.
+violation, or proven cryptographic security. Keep the boundary between _demonstrated_ and
+_projected_ visible on every page — that boundary is the paper's chief scientific asset.

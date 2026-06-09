@@ -1,13 +1,14 @@
 """
-Pico PIO NCO — Dual-channel phase-locked signal generator
+Pico PIO NCO — Multi-channel phase-locked signal generator
 ==========================================================
 Firmware for Raspberry Pi Pico H (RP2040).
 Replaces two dead AD9833 DDS modules for CWM experiments.
 
 Architecture:
   - System clock: 126 MHz (optimal for all four glass plate eigenmodes)
-  - Three PIO state machines share the same clock → guaranteed phase lock
-  - GP2 = Channel 1 (SW PZT), GP3 = Channel 2 (NE PZT), GP4 = Channel 3 (SW PZT)
+  - Four PIO state machines share the same clock → guaranteed phase lock
+  - GP2 = Channel 1 (100mm SW PZT), GP3 = Channel 2 (100mm NE PZT)
+  - GP4 = Channel 3 (100mm SW PZT, 3-mode), GP5 = Channel 4 (25mm SW PZT)
   - 3.3 V square wave output → 220 Ω → PZT (fundamental ≈ 2.1 Vpp)
 
 Frequency accuracy (all within resonance bandwidth at Q≈3500):
@@ -20,8 +21,9 @@ Serial protocol (USB CDC, appears as /dev/cu.usbmodem*):
   F1:<freq>       Set CH1 frequency (Hz), 0 = off
   F2:<freq>       Set CH2 frequency (Hz), 0 = off
   F3:<freq>       Set CH3 frequency (Hz), 0 = off
+  F4:<freq>       Set CH4 frequency (Hz), 0 = off (25mm plate)
   F<freq>         Set CH1 frequency (legacy single-channel mode)
-  Foff            Stop both outputs (pins LOW)
+  Foff            Stop all outputs (pins LOW)
   PHASE:<deg>     Set CH2 phase offset relative to CH1 (degrees)
   P1:<reg>        Set CH1 phase (legacy AD9833 12-bit register format)
   P2:<reg>        Set CH2 phase (legacy AD9833 12-bit register format)
@@ -53,9 +55,10 @@ machine.freq(126_000_000)
 SYS_CLK = machine.freq()
 
 # ─── Pin Assignments ─────────────────────────────────────────────
-PIN_CH1 = 2    # GP2 — TX1 (SW PZT)
-PIN_CH2 = 3    # GP3 — TX2 (NE PZT)
-PIN_CH3 = 4    # GP4 — TX3 (SW PZT, 3-mode experiments)
+PIN_CH1 = 2    # GP2 — TX1 (100mm plate SW PZT)
+PIN_CH2 = 3    # GP3 — TX2 (100mm plate NE PZT)
+PIN_CH3 = 4    # GP4 — TX3 (100mm plate SW PZT, 3-mode experiments)
+PIN_CH4 = 5    # GP5 — TX4 (25mm plate SW PZT)
 LED_PIN = 25   # Onboard LED — blinks on command receipt
 
 led = machine.Pin(LED_PIN, machine.Pin.OUT)
@@ -144,9 +147,11 @@ def counts_to_period(high, low):
 sm0 = None
 sm1 = None
 sm2 = None
+sm3 = None
 current_freq1 = 0
 current_freq2 = 0
 current_freq3 = 0
+current_freq4 = 0
 current_phase = 0.0    # degrees, CH2 relative to CH1
 running = False
 
@@ -158,16 +163,17 @@ PIO_CTRL = PIO0_BASE + 0x000
 # ─── Oscillator Control ──────────────────────────────────────────
 def start_oscillators():
     """Start all active channels with current freq/phase settings."""
-    global sm0, sm1, sm2, running
+    global sm0, sm1, sm2, sm3, running
 
     stop_oscillators()
 
-    if current_freq1 <= 0 and current_freq2 <= 0 and current_freq3 <= 0:
+    if current_freq1 <= 0 and current_freq2 <= 0 and current_freq3 <= 0 and current_freq4 <= 0:
         return
 
     h1, l1 = freq_to_counts(current_freq1) if current_freq1 > 0 else (1, 1)
     h2, l2 = freq_to_counts(current_freq2) if current_freq2 > 0 else (1, 1)
     h3, l3 = freq_to_counts(current_freq3) if current_freq3 > 0 else (1, 1)
+    h4, l4 = freq_to_counts(current_freq4) if current_freq4 > 0 else (1, 1)
 
     # Phase delay for CH2 (in clock ticks)
     delay_ticks = 0
@@ -199,6 +205,13 @@ def start_oscillators():
         sm2.put(l3)              # low_count
         sm2.put(h3)              # normal_high
 
+    if current_freq4 > 0:
+        sm3 = StateMachine(3, nco_prog, freq=SYS_CLK,
+                           set_base=machine.Pin(PIN_CH4))
+        sm3.put(h4)              # first_high = normal (no delay for CH4)
+        sm3.put(l4)              # low_count
+        sm3.put(h4)              # normal_high
+
     # Start all simultaneously via direct register write
     enable_mask = 0
     if sm0:
@@ -207,6 +220,8 @@ def start_oscillators():
         enable_mask |= 0x02   # SM1 enable
     if sm2:
         enable_mask |= 0x04   # SM2 enable
+    if sm3:
+        enable_mask |= 0x08   # SM3 enable
 
     machine.mem32[PIO_CTRL] = enable_mask
     running = True
@@ -214,13 +229,13 @@ def start_oscillators():
 
 def stop_oscillators():
     """Stop all channels, force outputs LOW."""
-    global sm0, sm1, sm2, running
+    global sm0, sm1, sm2, sm3, running
 
     # Disable all state machines in PIO 0
     machine.mem32[PIO_CTRL] = 0x00
 
     # Force outputs LOW via exec (works even when SM disabled)
-    for sm in (sm0, sm1, sm2):
+    for sm in (sm0, sm1, sm2, sm3):
         if sm:
             try:
                 sm.exec(0xE000)    # set(pins, 0)
@@ -229,11 +244,13 @@ def stop_oscillators():
     sm0 = None
     sm1 = None
     sm2 = None
+    sm3 = None
 
     # Belt-and-suspenders: set pins LOW from CPU
     machine.Pin(PIN_CH1, machine.Pin.OUT).value(0)
     machine.Pin(PIN_CH2, machine.Pin.OUT).value(0)
     machine.Pin(PIN_CH3, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH4, machine.Pin.OUT).value(0)
 
     running = False
 
@@ -241,7 +258,7 @@ def stop_oscillators():
 # ─── Command Handler ─────────────────────────────────────────────
 def handle_command(cmd):
     """Parse and execute a serial command. Returns response string."""
-    global current_freq1, current_freq2, current_freq3, current_phase
+    global current_freq1, current_freq2, current_freq3, current_freq4, current_phase
 
     cmd = cmd.strip()
     if not cmd:
@@ -302,12 +319,27 @@ def handle_command(cmd):
         except ValueError:
             return "ERR:bad_freq"
 
+    # ── F4:<freq> — Set channel 4 (25mm plate TX) ──
+    elif cmd.startswith("F4:"):
+        try:
+            freq = int(cmd[3:])
+            current_freq4 = freq
+            start_oscillators()
+            if freq > 0:
+                actual = counts_to_freq(*freq_to_counts(freq))
+                return f"DDS4:{freq}"
+            else:
+                return "DDS4:0"
+        except ValueError:
+            return "ERR:bad_freq"
+
     # ── Foff / FOFF — Stop all ──
     elif cmd in ("Foff", "FOFF", "foff"):
         stop_oscillators()
         current_freq1 = 0
         current_freq2 = 0
         current_freq3 = 0
+        current_freq4 = 0
         return "DDS:0"
 
     # ── PHASE:<degrees> — Set CH2 phase offset ──
@@ -351,9 +383,11 @@ def handle_command(cmd):
         h1, l1 = freq_to_counts(current_freq1) if current_freq1 > 0 else (0, 0)
         h2, l2 = freq_to_counts(current_freq2) if current_freq2 > 0 else (0, 0)
         h3, l3 = freq_to_counts(current_freq3) if current_freq3 > 0 else (0, 0)
+        h4, l4 = freq_to_counts(current_freq4) if current_freq4 > 0 else (0, 0)
         actual1 = counts_to_freq(h1, l1) if current_freq1 > 0 else 0.0
         actual2 = counts_to_freq(h2, l2) if current_freq2 > 0 else 0.0
         actual3 = counts_to_freq(h3, l3) if current_freq3 > 0 else 0.0
+        actual4 = counts_to_freq(h4, l4) if current_freq4 > 0 else 0.0
         period2 = counts_to_period(h2, l2) if current_freq2 > 0 else 0
         phase_ticks = round(current_phase / 360.0 * period2) if period2 > 0 else 0
         return (
@@ -361,6 +395,7 @@ def handle_command(cmd):
             f"CH1:{current_freq1}({actual1:.1f}Hz) "
             f"CH2:{current_freq2}({actual2:.1f}Hz) "
             f"CH3:{current_freq3}({actual3:.1f}Hz) "
+            f"CH4:{current_freq4}({actual4:.1f}Hz) "
             f"PH:{current_phase:.2f}deg({phase_ticks}ticks) "
             f"RUN:{'Y' if running else 'N'}"
         )
@@ -423,14 +458,15 @@ def handle_command(cmd):
 def main():
     # Startup banner
     print("")
-    print("CWM Pico NCO v1.0")
-    print(f"CLK:{SYS_CLK/1e6:.0f}MHz GP{PIN_CH1}+GP{PIN_CH2}+GP{PIN_CH3}")
+    print("CWM Pico NCO v1.1")
+    print(f"CLK:{SYS_CLK/1e6:.0f}MHz GP{PIN_CH1}+GP{PIN_CH2}+GP{PIN_CH3}+GP{PIN_CH4}")
     print("OK")
 
     # Ensure outputs start LOW
     machine.Pin(PIN_CH1, machine.Pin.OUT).value(0)
     machine.Pin(PIN_CH2, machine.Pin.OUT).value(0)
     machine.Pin(PIN_CH3, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH4, machine.Pin.OUT).value(0)
 
     # Non-blocking serial read via poll
     poll = select.poll()
