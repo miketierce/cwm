@@ -1,136 +1,61 @@
 # CWM — Coherent Wave Memory
 
-**Wave-based storage and computation in acoustic glass resonators.**
+**Physics validation of wave-interference information processing in glass acoustic resonators.**
 
-CWM encodes information in the acoustic eigenmode spectrum of solid glass resonators and computes via wave interference. A mass perturbation pattern on a glass rod creates a unique spectral fingerprint; driving an array of rods with a query spectrum performs associative recall — a physical dot product at the speed of sound — in constant time.
+CWM investigates how much information can be encoded in, and recovered from, the acoustic eigenmode spectrum of solid glass resonators — and how far the interference structure of those modes can be pushed toward physical computation. The program is **falsification-first**: every claim is either backed by bench measurement, labeled as a model projection with error bars, or published on our kill list.
 
-## Key Results
+**Current paper (canonical):** _Spectral Fingerprinting in Piezo-Driven Fused-Silica Plate Resonators_ (v19r) — see [paper/](paper/).
+**Forward plan:** [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md).
 
-| Metric                             | Value                              |
-| ---------------------------------- | ---------------------------------- |
-| Thermally stable modes             | 9,380 (borosilicate, ±1 K)         |
-| Capacity per rod (1 mm MEMS)       | 15 KB (119,126 bits)               |
-| Active density                     | 95.1 Gbit/cm³ (9.5× DRAM)          |
-| Packed-array density (0.5 mm SiO₂) | 1.4 Tbit/cm³ (1.4× NAND Flash)     |
-| Associative search latency         | 3.8 µs (100k patterns in parallel) |
-| Write energy                       | 15 fJ/bit                          |
-| Endurance                          | >10¹⁵ cycles                       |
-| Macro prototype SNR                | 98.5 dB                            |
+## What Is Measured (bench hardware, fused-silica plates, 2026)
 
-## Simulation Apparatus
+| Result                              | Value                                                                         | Evidence                         |
+| ----------------------------------- | ----------------------------------------------------------------------------- | -------------------------------- |
+| Resolved acoustic modes             | 7–15 per plate (30–350 kHz) at 42–56 dB SNR                                   | Frequency sweeps, Pico NCO drive |
+| Acoustic (not electrical) origin    | PZT-lifted null = 0% feedthrough; spatial contrast 49–60:1; tape-vs-glue null | 3 independent null tests         |
+| Spectral fingerprint classification | 100% (80/80 trials), 193σ inter-class separation, single session              | Nearest-centroid decoder         |
+| Multi-level encoding                | 8 levels × 4 modes = 4,096 states (12 bits), zero error                       | Min 9σ level separation          |
+| Frequency×space non-separability    | CHSH S = 2.73 (fixed-angle) to 2.83 (optimized), 5/5 mode pairs               | Qian–Eberly classical framework  |
+| Spectral stability                  | 0.22% drift over 16.5M cycles; 0.65% over 3.5 h                               | Endurance monitoring             |
+| Loaded Q-factor                     | 150–743 (PZT-loaded; intrinsic Q higher but masked)                           | Lorentzian bandwidth fits        |
 
-The research is backed by a falsification-first computational framework:
+## What Is _Not_ Claimed
 
-- **48 simulation modules** in `simulations/`
-- **2,253 automated tests** in `tests/`
-- **99 hypotheses tested**: 67 confirmed, 32 killed (67.7% confirmation rate)
-- **22 sidebars** — advanced encoding techniques and cross-domain investigations (§11 of the paper)
+This project previously made broader claims that did not survive validation or peer review. They are retracted, documented, and preserved — transparency about dead ends is part of the method:
 
-Every “confirmed” result passes automated regression tests. Every “killed” result is preserved with its kill mechanism documented.
+- **The plate does not compute** (at macro scale). Boolean logic, associative recall, and nearest-neighbor results are produced by digital decoders operating on spectral features; the plate is a linear spectral transformer.
+- **Temporal reservoir computing fails at bench.** Mode decay (τ ≈ 1–4 ms loaded) is ~100× shorter than the achievable drive-update interval. NARMA-10 fails in all three attempted configurations. This is an engineering wall the MEMS roadmap addresses, not a hidden success.
+- **No quantum claims.** The CHSH result demonstrates classical non-separability of degrees of freedom — a geometric property of plate eigenmodes — not entanglement.
+- **MEMS density projections** (Gbit/cm³-class figures from earlier paper versions) are model extrapolations, not measurements, and live only in the roadmap with explicit assumptions.
+- **Killed outright:** ferrofluid substrates (phase diffusion), cymatics–script correlation, audio-interface capture, phase-channel encoding at bench, and ~36 of 87 modeled extension hypotheses. Kill mechanisms are documented in the companion papers.
+
+## Why It Still Matters
+
+The two failures above reduce to two numbers — readout rank (2 receivers) and the Q·f time constant — and both are engineering limits, not physics limits. The near-term scientific products are real today:
+
+1. **Acoustic PUFs** — manufacturing variance gives every plate a unique, stable spectral fingerprint.
+2. **Multi-mode perturbation sensing** — Rayleigh frequency shifts encode mass _and position_ across the mode spectrum.
+3. **A $50 classical non-separability demo** — anyone can measure Tsirelson-bound CHSH correlations on a desk; full replication protocol ships with the paper.
+4. **MEMS-scale reservoir & parametric computation** — the validated scaling path where τ, Q, and transducer count all move in our favor. See the [roadmap](docs/ROADMAP_FULL_POTENTIAL.md).
 
 ## Repository Structure
 
 ```
-cwm/
-├── paper/              # Canonical paper (v18) + figures
-│   ├── v18.md          # The definitive CWM paper
-│   └── figures/
+wcfoma/
+├── paper/              # Canonical paper (v19r) + BUILD_AND_EXPERIMENT_PLAN (E1–E8)
+├── docs/               # Lab diaries, ROADMAP_FULL_POTENTIAL, protocols
 ├── simulations/        # 48 physics simulation modules
 ├── tests/              # 2,253 automated tests
-├── experiments/        # Standalone experiment scripts (exp01–exp05)
+├── experiments/        # Standalone simulation experiments (exp01–exp11)
+├── tools/              # Bench drivers (PicoScope, Pico NCO, relay mux) + 160 experiment scripts
+├── data/               # Raw captures and results (data/results/lab/ = bench data)
 ├── notebooks/          # 12 Jupyter analysis notebooks
-├── analysis/           # Plotting, comparison, and export tools
-├── companion/          # Experiment guide, letter to Scranton, TN1 rewritability
-├── prototypes/         # Prototype designs (prototype_a, prototype_b, glass_rod)
-├── data/               # Raw data and results
-├── docs/               # SIDEBARS.md, ROADMAP.md, PROTOCOLS.md, CONTRIBUTING.md
-├── tools/              # CWM Lab, PicoScope driver, AWG generator, md2pdf converters
-└── archive/            # Old paper versions (v9–v15), original corpus, verification scripts
+├── analysis/           # Plotting, comparison, export
+├── companion/          # Replication guides, wiring guides, TN1 rewritability
+├── prototypes/         # Rod and plate prototype designs
+├── patent/             # U.S. Provisional No. 64/023,264 (filed 2026-03-31)
+└── archive/            # All prior paper versions (v9–v19) and original corpus
 ```
-
-## CWM Lab
-
-An interactive browser-based experiment platform that connects to a PicoScope 2204A and a 4-rod glass array. Falls back to deterministic Rayleigh simulation when no hardware is attached.
-
-### Quick Launch
-
-```bash
-source .venv/bin/activate
-PYTHONPATH=. python tools/cwm_lab.py --port 8200
-# open http://localhost:8200
-```
-
-### Tabs
-
-| Tab                   | What It Does                                                                                                                                                                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **🔬 Experiments**    | Wizard for all 14 experiments. Select a preset from Table D.2a, configure the PicoScope with one click, capture waveform + FFT spectrum, detect peaks, and export results to the community Firebase database.                                                                                                                               |
-| **💻 CIM Demo**       | Compute-in-memory playground. Store 16-bit patterns as eigenmode amplitudes, run associative recall (Hopfield), Boolean logic (AND / OR / XOR via superposition), and inner-product operations — all computed by wave-interference physics.                                                                                                 |
-| **⚛️ Quantum Bridge** | Five interactive demos mapping quantum-computing capabilities to their CWM classical equivalents: (1) Classical superposition, (2) Non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) Room-temperature coherence vs qubit decoherence, (5) Eigenmode orthogonality matrix. Runs on real PicoScope hardware or simulation. |
-| **🔐 Auth Demo**      | Password vault (Exp 12), image search (Exp 13), face recognition, and content-addressable memory (Exp 14) — demonstrating CWM as a biometric and security substrate.                                                                                                                                                                        |
-
-### API Endpoints
-
-| Method | Path                       | Description                                          |
-| ------ | -------------------------- | ---------------------------------------------------- |
-| `GET`  | `/`                        | Web UI                                               |
-| `GET`  | `/api/scope/status`        | PicoScope connection status                          |
-| `GET`  | `/api/scope/presets`       | Experiment preset definitions (Table D.2a)           |
-| `POST` | `/api/scope/configure`     | Configure scope for an experiment                    |
-| `POST` | `/api/scope/capture`       | Block capture + FFT + peak detection                 |
-| `POST` | `/api/scope/close`         | Release PicoScope handle                             |
-| `POST` | `/api/scope/export`        | Submit results to community Firebase                 |
-| `POST` | `/api/qcb/multi-capture`   | N consecutive captures for QND stability tests       |
-| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods       |
-| `POST` | `/api/register`            | Register a user                                      |
-| `POST` | `/api/authenticate`        | Authenticate by spectral correlation                 |
-| `POST` | `/api/enroll-image`        | Enroll an image                                      |
-| `POST` | `/api/query-image`         | Query for nearest image match                        |
-| `POST` | `/api/enroll-face`         | Enroll a face selfie                                 |
-| `POST` | `/api/face-auth`           | Authenticate via face scan                           |
-| `GET`  | `/api/proof`               | Full physics state (rod spectra, cross-correlations) |
-
-## CWM Lab
-
-An interactive browser-based experiment platform that connects to a PicoScope 2204A and a 4-rod glass array. Falls back to deterministic Rayleigh simulation when no hardware is attached.
-
-### Quick Launch
-
-```bash
-source .venv/bin/activate
-PYTHONPATH=. python tools/cwm_lab.py --port 8200
-# open http://localhost:8200
-```
-
-### Tabs
-
-| Tab                   | What It Does                                                                                                                                                                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **🔬 Experiments**    | Wizard for all 14 experiments. Select a preset from Table D.2a, configure the PicoScope with one click, capture waveform + FFT spectrum, detect peaks, and export results to the community Firebase database.                                                                                                                               |
-| **💻 CIM Demo**       | Compute-in-memory playground. Store 16-bit patterns as eigenmode amplitudes, run associative recall (Hopfield), Boolean logic (AND / OR / XOR via superposition), and inner-product operations — all computed by wave-interference physics.                                                                                                 |
-| **⚛️ Quantum Bridge** | Five interactive demos mapping quantum-computing capabilities to their CWM classical equivalents: (1) Classical superposition, (2) Non-destructive QND readout, (3) O(1) parallel search vs Grover, (4) Room-temperature coherence vs qubit decoherence, (5) Eigenmode orthogonality matrix. Runs on real PicoScope hardware or simulation. |
-| **🔐 Auth Demo**      | Password vault (Exp 12), image search (Exp 13), face recognition, and content-addressable memory (Exp 14) — demonstrating CWM as a biometric and security substrate.                                                                                                                                                                        |
-
-### API Endpoints
-
-| Method | Path                       | Description                                          |
-| ------ | -------------------------- | ---------------------------------------------------- |
-| `GET`  | `/`                        | Web UI                                               |
-| `GET`  | `/api/scope/status`        | PicoScope connection status                          |
-| `GET`  | `/api/scope/presets`       | Experiment preset definitions (Table D.2a)           |
-| `POST` | `/api/scope/configure`     | Configure scope for an experiment                    |
-| `POST` | `/api/scope/capture`       | Block capture + FFT + peak detection                 |
-| `POST` | `/api/scope/close`         | Release PicoScope handle                             |
-| `POST` | `/api/scope/export`        | Submit results to community Firebase                 |
-| `POST` | `/api/qcb/multi-capture`   | N consecutive captures for QND stability tests       |
-| `POST` | `/api/qcb/parallel-search` | Parallel matched-filter search across all rods       |
-| `POST` | `/api/register`            | Register a user                                      |
-| `POST` | `/api/authenticate`        | Authenticate by spectral correlation                 |
-| `POST` | `/api/enroll-image`        | Enroll an image                                      |
-| `POST` | `/api/query-image`         | Query for nearest image match                        |
-| `POST` | `/api/enroll-face`         | Enroll a face selfie                                 |
-| `POST` | `/api/face-auth`           | Authenticate via face scan                           |
-| `GET`  | `/api/proof`               | Full physics state (rod spectra, cross-correlations) |
 
 ## Quick Start
 
@@ -142,55 +67,41 @@ pip install -r requirements.txt
 python -m pytest tests/ -q          # run all 2,253 tests
 ```
 
-## Tools
+## CWM Lab
 
-### AWG Waveform Generator
-
-Generates multi-tone query waveforms for the PicoScope 2204A's arbitrary waveform generator. Computes Rayleigh-shifted mode frequencies from first principles and exports CSV and WAV files ready for import.
+Interactive browser-based experiment platform. Connects to a PicoScope 2204A and the glass resonator bench; falls back to deterministic Rayleigh simulation when no hardware is attached.
 
 ```bash
-# Generate Query A (Pattern A: L/4 + 3L/4, 5 modes × 0.1 V)
+source .venv/bin/activate
+PYTHONPATH=. python tools/cwm_lab.py --port 8200
+# open http://localhost:8200
+```
+
+Tabs: **Experiments** (guided capture wizard with Firebase export), **CIM Demo** (spectral pattern store/recall playground — decoder-based, see honesty note above), **Quantum Bridge** (classical-wave analogs of quantum-information demos), **Auth Demo** (spectral-correlation authentication).
+
+## Key Tools
+
+```bash
+# Multi-tone AWG waveform generation (PicoScope 2204A)
 PYTHONPATH=. python tools/awg_waveform.py --pattern A
 
-# All four patterns at once
-PYTHONPATH=. python tools/awg_waveform.py --all --output data/results/awg
-
-# Custom rod geometry
-PYTHONPATH=. python tools/awg_waveform.py --pattern A --mass 1.2 --rod-length 120
+# Markdown → duplex PDF (paper / guides)
+PYTHONPATH=. python tools/md2pdf.py paper/v19r.md
 ```
 
-Import the generated CSV into PicoScope 7: Tools → Signal Generator → Arbitrary → Import. Set amplitude to the value printed by the script (~0.40 Vpp) and sample rate to 1 MS/s. See Section D.17 of the Experiment Guide for full instructions.
+## Reproducing the CHSH Result
 
-### PDF Builder
-
-Converts the experiment guide or paper from Markdown to a book-quality duplex PDF.
-
-```bash
-PYTHONPATH=. python tools/md2pdf.py companion/experiment_guide.md
-PYTHONPATH=. python tools/md2pdf.py paper/v18.md
-```
-
-## The Glass Rod Breakthrough
-
-The critical insight: a borosilicate glass rod at MEMS scale (1 mm × 40 µm) supports 9,380 thermally stable eigenmodes — each an independent information channel. The mode count depends only on material Q and thermal expansion, not on rod length. Shrinking the rod increases density as 1/L² while capacity falls only as log(L). At 1 mm, CWM crosses DRAM density; at 0.45 mm, it crosses NAND Flash.
-
-Every fabrication step borrows from an existing MEMS production line: glass DRIE (Schott Borofloat 33), AlN thin-film piezo (smartphone FBAR filters), MEMS vacuum packaging (SiTime oscillators), CMOS-MEMS flip-chip bonding (Bosch accelerometers). The innovation is the architectural combination, not the fabrication.
-
-## Honest Assessment
-
-CWM's strongest claims — mode count, Q factor, Rayleigh perturbation encoding, associative recall — are validated by 2,253 tests against first-principles physics. The weakest link is the gap between simulation and silicon: no MEMS device exists yet. The paper is transparent about this, killing 32 of 99 hypotheses and documenting every failure mechanism.
+Requirements: any resonant plate or rod (loaded Q > 100), two PZT pickups at different positions, a dual-channel scope, a signal generator, and ~20 lines of Python. The effect is a geometric property of Chladni patterns — any plate whose modes have different spatial distributions at two measurement points yields S > 2. See the companion experiment guide in [companion/](companion/).
 
 ## Citation
 
 ```bibtex
 @article{tierce2026cwm,
-  title   = {Coherent Wave Memory: Wave-Based Storage and Computation
-             in Acoustic Glass Resonators},
+  title   = {Spectral Fingerprinting in Piezo-Driven Fused-Silica
+             Plate Resonators},
   author  = {Tierce, William Michael},
   year    = {2026},
-  note    = {v18, 48 simulation modules, 2,253 automated tests,
-             99 hypotheses (67 confirmed, 32 killed).
-             U.S. Provisional Patent Application No. 64/023,264}
+  note    = {v19r. U.S. Provisional Patent Application No. 64/023,264}
 }
 ```
 
