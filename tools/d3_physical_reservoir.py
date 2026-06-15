@@ -18,7 +18,7 @@ Hardware protocol:
   - PicoScope captures full spectrum (all 27 modes visible)
   - Relay fixed per pass (4 sequential passes to build full feature set)
   - Step rate ~15-20 Hz (NCO-latency-limited)
-
+  
 Note: At bench step rate (~20 Hz), plate temporal memory is negligible
 (modes decay in ~1ms). The plate's contribution is SPATIAL DIVERSITY —
 converting a 1D input into a high-dimensional spectral fingerprint.
