@@ -153,6 +153,44 @@ This is the architecture's "full potential" in one sentence: **a room-temperatur
 
 ---
 
+## 8.5 Competitive Landscape: Akhetonics Comparison (June 2026)
+
+Akhetonics (Berlin) is building the first all-optical cross-domain processor — a Photonic Integrated Circuit (PIC) that combines digital logic, analog matrix-vector multiplication, and continuous-variable quantum feedforward in a single silicon-nitride platform. Their target is a "Reasoning Processing Unit" (RPU) for AI inference and combinatorial optimization, operating at THz clock rates with 10–100× the energy efficiency of electronic GPUs. Their key technical enablers: (1) optical nonlinearities via 2D/III-V materials enabling all-optical switches and logic gates; (2) wavelength-division multiplexing for parallel compute channels; (3) a URISC ISA (lambda-calculus-based) giving general-purpose Turing completeness all-optically; (4) an in-house VLSI design tool (AtetDesigner) for RTL-to-GDSII PIC layout.
+
+The CWM phononic architecture is the acoustic analog of Akhetonics' photonic architecture. The table below maps each Akhetonics capability to its CWM phononic equivalent, identifies the current gap, and cross-references the new worklist experiments added to close it.
+
+| Akhetonics capability                                                | CWM phononic analog                                                     | Current CWM status                                                         | Gap-closing experiments                  |
+| -------------------------------------------------------------------- | ----------------------------------------------------------------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
+| Wavelength-division multiplexing (parallel channels via λ)           | Mode-division multiplexing (parallel channels via f_n)                  | Linear superposition proven (T2.2, T2.3); 4 simultaneous channels untested | **WL-B7** (MDM write-read)               |
+| All-optical ADC (analog → digital bridge)                            | Phononic decision gate (mode amplitude → bit)                           | T3.4 proves 8 levels at 9σ; threshold protocol undefined                   | **WL-B8** (decision gate)                |
+| All-optical switch (one beam gates another)                          | Phononic interference switch (phase-controlled mode gating)             | Phase lock proven (T5.2b, CHSH); switch demo not attempted                 | **WL-B9** (interference switch)          |
+| Volatile (stack/local) + non-volatile (code/global) memory hierarchy | Ringdown = volatile; eigenfrequency shift (mass loading) = non-volatile | Both mechanisms exist; no integrated W/R/E/verify protocol                 | **WL-C5** (memory hierarchy)             |
+| Optical waveguides + chip-to-chip interconnects                      | Phononic coupling through shared elastic medium                         | Two plates on bench; no coupling bridge attempted                          | **WL-C6** (phononic interconnect)        |
+| URISC ISA / Turing-complete digital control flow                     | Phononic FSM (mode amplitude → conditional drive)                       | Decision gate (WL-B8) needed first; FSM not attempted                      | **WL-C7** (phononic FSM)                 |
+| All-optical logic gates (AND/OR/NOT in PIC via nonlinearities)       | Acoustic nonlinear mode coupling (Duffing / parametric IM)              | F10 observed at macro (unexplained); linear at bench drive levels          | **WL-D4** (MEMS phononic logic gate)     |
+| Optical activation function (sigmoid/ReLU for neural nets)           | Duffing saturation map (input clip at nonlinear threshold)              | No saturation observed at bench; MEMS Q needed                             | **WL-D5** (phononic activation function) |
+| AtetDesigner VLSI tool (RTL-to-GDSII for PICs)                       | Phononic compute-graph design tool (mode placement → transducer layout) | FEM simulations exist; no design automation                                | **WL-D6** (phononic design tool)         |
+| RPU: reasoning + optimization (MaxCut, SAT, AI inference)            | N-spin phononic Ising optimizer                                         | Phase E planned (WL-E1 = 4-spin); N≥8 not designed                         | **WL-E2** (N-spin optimizer)             |
+| Analog acceleration for AI (matrix-vector multiply, eigenvector ops) | Phononic eigencomputation (plate self-localizes in mode space)          | Never attempted; theory supports it (Rayleigh perturbation)                | **WL-E3** (phononic eigencomputation)    |
+
+**Key differentiators where CWM is ahead of the photonic approach:**
+
+- **Room-temperature quantum-like correlations proven** (CHSH S = 2.83 at bench; Akhetonics' quantum domain requires cryogenics for CV-QC feedforward)
+- **Physical unclonable function** (manufacturing variance gives free device identity; photonic PUFs exist but require complex speckle measurement)
+- **Extreme low cost** ($30–60/device vs $100k+ per PIC run at a foundry)
+- **Write mechanism** (mass loading rewrites the eigenspectrum; photonic PICs are fixed post-fabrication geometry)
+
+**Key differentiators where Akhetonics is ahead:**
+
+- **Nonlinear operations demonstrated** (all-optical logic gates in PIC; CWM has only linear substrate at bench)
+- **General-purpose Turing completeness** (URISC running Doom; CWM FSM is 3-state only)
+- **Clock speed** (THz optical vs kHz acoustic)
+- **Scalability** (VLSI design flow, foundry-compatible; CWM MEMS is one-off prototype)
+
+The gap-closing program above does not require catching Akhetonics on speed or scale. It requires demonstrating that the phononic domain offers the **same computational completeness** (logic + memory + analog + quantum-like) in a platform that is radically cheaper, physically unclonable, writable at room temperature, and potentially deployable in environments where photonic PICs are too fragile or power-hungry.
+
+---
+
 ## 9. Public Engagement Track (parallel, continuous)
 
 | Asset                     | Action                                                                                                                                                                         |
