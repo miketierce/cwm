@@ -4,6 +4,8 @@
 
 **Execution detail:** every experiment below is fully specified — objectives, bench procedures, agent prompts, kill criteria, and bill of materials — in [FULL_POTENTIAL_WORKLIST.md](FULL_POTENTIAL_WORKLIST.md).
 
+**Machine architecture:** the processor stack (data representation, memory hierarchy, instruction set, PFUs, control stack, path to general-purpose logic) is defined in [CWM_PHONONIC_PROCESSOR_ARCHITECTURE.md](CWM_PHONONIC_PROCESSOR_ARCHITECTURE.md).
+
 **Governing rule (anti-sci-fi clause):** Every forward claim must be bounded by (a) the wave equation and Rayleigh perturbation theory, (b) measured Q-factors and energy budgets, and (c) at least one peer-reviewed precedent for the underlying physical mechanism. Every phase carries kill criteria. We do not back down from the frontier; we also do not cross it without data.
 
 ---

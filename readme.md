@@ -6,6 +6,7 @@ CWM investigates how much information can be encoded in, and recovered from, the
 
 **Current paper (canonical):** _Spectral Fingerprinting in Piezo-Driven Fused-Silica Plate Resonators_ (v19r) — see [paper/](paper/).
 **Forward plan:** [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md).
+**Public index:** [INDEX.md](INDEX.md). **Claim ledger:** [paper/CLAIMS_STATUS.md](paper/CLAIMS_STATUS.md).
 
 ## What Is Measured (bench hardware, fused-silica plates, 2026)
 
@@ -27,7 +28,7 @@ This project previously made broader claims that did not survive validation or p
 - **Temporal reservoir computing fails at bench.** Mode decay (τ ≈ 1–4 ms loaded) is ~100× shorter than the achievable drive-update interval. NARMA-10 fails in all three attempted configurations. This is an engineering wall the MEMS roadmap addresses, not a hidden success.
 - **No quantum claims.** The CHSH result demonstrates classical non-separability of degrees of freedom — a geometric property of plate eigenmodes — not entanglement.
 - **MEMS density projections** (Gbit/cm³-class figures from earlier paper versions) are model extrapolations, not measurements, and live only in the roadmap with explicit assumptions.
-- **Killed outright:** ferrofluid substrates (phase diffusion), cymatics–script correlation, audio-interface capture, phase-channel encoding at bench, and ~36 of 87 modeled extension hypotheses. Kill mechanisms are documented in the companion papers.
+- **Killed outright:** ferrofluid substrates (phase diffusion), cymatics–script correlation, audio-interface capture, phase-channel encoding at bench, and multiple modeled extension hypotheses. Kill mechanisms are documented in the companion papers and hypothesis ledgers.
 
 ## Why It Still Matters
 
@@ -58,6 +59,8 @@ wcfoma/
 ```
 
 ## Quick Start
+
+For a guided reading path across the research repo, public site, and book manuscript, start with [INDEX.md](INDEX.md) and [docs/PUBLIC_ARCHITECTURE_PACKAGE.md](docs/PUBLIC_ARCHITECTURE_PACKAGE.md).
 
 ```bash
 git clone https://github.com/miketierce/cwm.git
