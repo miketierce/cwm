@@ -1,0 +1,55 @@
+{
+  "timestamp": "20260621_011239",
+  "census_file": "data/results/direct_wire_census/direct_wire_census_20260621_003918.json",
+  "n_states": 256,
+  "navg": 16,
+  "baselines": {
+    "random_pct": 36.220703125,
+    "stationary_pct": 50.0
+  },
+  "feature_sets_allfeatures": {
+    "(a) drive-window [winner]": {
+      "dim": 21,
+      "alpha": 0.5,
+      "intercept": 51.171875
+    },
+    "(b) 40 non-collision (all)": {
+      "dim": 40,
+      "alpha": 20.0,
+      "intercept": 46.875
+    },
+    "(c) 160 all modes (all)": {
+      "dim": 160,
+      "alpha": 100.0,
+      "intercept": 35.546875
+    },
+    "(d) collision modes only": {
+      "dim": 120,
+      "alpha": 100.0,
+      "intercept": 44.140625
+    },
+    "(e) drive-window + all modes": {
+      "dim": 181,
+      "alpha": 100.0,
+      "intercept": 36.328125
+    }
+  },
+  "feature_selection": {
+    "K=10": {
+      "noncollision_pool": 49.609375,
+      "all_pool": 64.0625,
+      "collision_picked": 8.25
+    },
+    "K=20": {
+      "noncollision_pool": 50.390625,
+      "all_pool": 65.234375,
+      "collision_picked": 16.0
+    }
+  },
+  "mode_corr": {
+    "noncollision_mean": 0.06471634332819129,
+    "noncollision_max": 0.566895670340788,
+    "collision_mean": 0.06078277856193875,
+    "collision_max": 0.2730788552752723
+  }
+}

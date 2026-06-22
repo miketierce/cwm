@@ -1,0 +1,48 @@
+{
+  "timestamp": "20260621_144742",
+  "freq": 54920,
+  "patterns": [
+    0,
+    72,
+    144,
+    216,
+    288
+  ],
+  "repeats": 4,
+  "navg": 6,
+  "base_duty": 250,
+  "phi_null": 110.0,
+  "phi_peak": 290.0,
+  "noise_levels": [
+    0.0,
+    0.3,
+    0.6,
+    1.0
+  ],
+  "results": [
+    {
+      "noise": 0.0,
+      "cancel": 100.0,
+      "amp": 100.0
+    },
+    {
+      "noise": 0.3,
+      "cancel": 100.0,
+      "amp": 60.0
+    },
+    {
+      "noise": 0.6,
+      "cancel": 95.0,
+      "amp": 55.0
+    },
+    {
+      "noise": 1.0,
+      "cancel": 80.0,
+      "amp": 40.0
+    }
+  ],
+  "cancel_minus_amp_noisy": 40.0,
+  "fully_measured": true,
+  "dry_run": true,
+  "note": "physical common-mode gain via balanced duty scaling; no modeled noise; classical acoustic interference"
+}

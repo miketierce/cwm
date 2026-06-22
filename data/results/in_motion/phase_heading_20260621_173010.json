@@ -1,0 +1,49 @@
+{
+  "timestamp": "20260621_173010",
+  "headings": [
+    0,
+    30,
+    60,
+    90,
+    120,
+    150,
+    180,
+    210,
+    240,
+    270,
+    300,
+    330
+  ],
+  "modes": [
+    91000,
+    86000,
+    56000
+  ],
+  "repeats": 6,
+  "navg": 8,
+  "wall_normal": 90.0,
+  "heading_acc_1mode": 55.55555555555556,
+  "heading_acc_allmodes": 100.0,
+  "heading_acc_2mode": 100.0,
+  "heading_ang_err_allmodes": 0.0,
+  "reflection_acc": 100.0,
+  "reflection_ang_err": 0.0,
+  "noise": [
+    {
+      "sigma": 0.0,
+      "acc": 100.0,
+      "ang_err": 0.0
+    },
+    {
+      "sigma": 0.5,
+      "acc": 69.44444444444444,
+      "ang_err": 9.583333333333334
+    },
+    {
+      "sigma": 1.0,
+      "acc": 37.5,
+      "ang_err": 30.0
+    }
+  ],
+  "note": "heading=relative phase read as interference energy (jitter-free); multi-mode=I/Q for 360; classical"
+}

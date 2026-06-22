@@ -13,6 +13,23 @@
 
 ---
 
+## ⚠️ Wave-Native Design Principle (read before specifying ANY demo or readout)
+
+**The first algorithm you reach for is the silicon one. It will usually fail on the glass. Stop and ask: what is the WAVE-NATIVE form?** The glass is a smooth, low-dimensional, analog **kernel + content-addressable memory** — not a von Neumann machine. Forcing the silicon mold is the single most repeated mistake in this project. Map of traps hit and the proven wave-native fix (all MEASURED 2026-06):
+
+| Silicon instinct (fails on glass)                                                          | Wave-native form (proven)                                                                       |
+| ------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------- |
+| Predict the future / branch (bounce-predict, raycast first-hit) — _discontinuous_          | Track the present / integrate (Pong ball-y r=0.69; volumetric fog render) — _smooth_            |
+| Ridge **regression** on many features                                                      | Nearest-**centroid** / Mahalanobis classification (T3.4: 4096 states 100%; ridge there = 0.55%) |
+| Encode a value as a **frequency position** in a band — _bumpy transfer fn, ~2 levels/axis_ | Encode as the **amplitude of a fixed resonant mode** — _monotonic, 8 levels/mode @ 100σ (T3.4)_ |
+| Resolve 1-of-N jointly                                                                     | **Factor** the state; resolve each axis independently, then look up (T3.4 factored 8×4)         |
+| Discard "colliding"/messy modes                                                            | Keep all as candidates; select by repeatability × separability (collisions carry equal signal)  |
+| Treat the kernel/Gram matrix as noise                                                      | Build the **Gram matrix K**; success = diagonal-dominant; pick modes that make it so            |
+
+**Before specifying a demo, answer:** is the target _smooth_? is it _low-dimensional_? is it a _recall/classification_ (centroid) rather than a regression? am I encoding by _amplitude-of-fixed-mode_, not frequency-position? Any "no" → expect a silicon-shaped failure. Diagnostics: [tools/cam_analysis.py](../tools/cam_analysis.py), [tools/cam_recall.py](../tools/cam_recall.py).
+
+---
+
 ## 1. Phase A — Validation Closeout
 
 ### WL-A1 — PZT-Lifted Null on Pico NCO Topology _(= E-W1, CRITICAL)_
@@ -284,6 +301,101 @@
 **Success:** acoustic contrast ratio ≥ 3× (i.e., max amplitude ≥ 3× min at some phase pair), and acoustic contrast > 5× null contrast.
 **Kill:** contrast < 1.5× or indistinguishable from electrical null ⇒ phase control at macro bench is insufficient; arc deferred to MEMS where per-element phase control enables genuine switching. Document the measured phase sensitivity.
 **Time:** 1 session. **Hardware:** existing only.
+
+---
+
+### WL-B10 — Array Design Optimization: Max Usable Features from One NCO _(feeds Pong/DOOM kernel + spectral-port multiplexing)_
+
+> **STATUS 2026-06-21 — OPTIMIZER BUILT + RUN ([tools/array_design.py](../tools/array_design.py)).** Winner across all three regimes (tracking/classification/balanced): **3 band-separated plates × 2 phase-locked TX = 6 tones, ≈48 usable modes, 7 clean carriers.** Confirmed measured lessons: 2 TX > 2nd RX (multipoint), the cost penalty kills the 7th/8th tone (6 = sweet spot), band-DIVERSITY (different sizes/masses) beats band-tiling (same-size slides collide). Concrete build: LOW=100 mm (F1+F2, PIO0), MID=one microscope slide (F3+F4, PIO0), HIGH=25 mm 232–321 kHz cluster (F5+F6, PIO1); 3 RX→preamp→Ch A, Ch B=drive reference. Firmware rethought to two symmetric phase-locked groups (PIO0=CH1-4, PIO1=CH5-6 via new PH5/PH6) so each band is interference-capable. **Wire-length rule is the #1 SNR driver (measured 8–260×): NCO central, all TX leads short.** Remaining open step = install + per-plate solo censuses → re-run the optimizer on real catalogs (it ingests `data/results/array_design/catalogs/`) → validate ≈48/7 prediction. Full write-up in `docs/lab_diary_20260620.md` (2026-06-21 20:10).
+
+**Objective:** From a **single Pico NCO** and the plates on hand (microscope slides ≈75×25×1 mm, 25 mm, and 100 mm fused-silica), find the array + drive topology that **maximizes the quality-weighted count of usable readout features** on one direct-wired RX bus. The drive topology is itself a design variable — **do not assume one plate per drive channel, and do not assume every channel must be used.** Adding a channel that only piles on collisions makes the array _worse_; the optimum may use fewer tones than the NCO can produce.
+
+**Three drive topologies are all on the table** (the optimizer chooses, per plate group):
+
+- **One tone → one plate** (today's default): independent drive, full amplitude, one input axis per channel.
+- **One tone → many plates (broadcast on a shared TX rail):** if the plates occupy _non-overlapping bands_, a single channel sweeping/encoding still resolves each plate's modes by frequency on the RX bus — physics separates them, no extra channel spent. Cost: the parallel PZT load drops drive amplitude per plate (current budget per GPIO), so SNR falls — quantify it.
+- **Many tones → one plate (multi-point TX):** two TX PZTs at different positions on the _same_ plate excite different mode symmetries (a corner TX reaches modes a center TX can't, and enables same-plate intermodulation). This can raise usable modes per plate **without adding a plate**, at the cost of a second channel.
+
+**Why now (lessons that change the design rule):**
+
+- **A single clean high-SNR mode can beat ten weak ones for a 1-D task.** Pong tracking (2026-06-21): ball_y on F2 (1 mode, SNR 13 @ 85 kHz) scored **68%** vs F5 (10 modes, SNR 3–7) at **43%**. For a continuous variable encoded as a frequency sweep, SNR + monotonic isolation dominate; raw mode count does not.
+- **Many modes still help multi-class capacity** (kernel dimension for classification/DOOM-style readout). So the array must be designed for a **task mix**, not a single metric.
+- **Collisions are the real efficiency killer.** The 2026-06-20 census found 87 raw modes but **rejected 52 as collisions** (modes from different channels within `collision_bw` = 500 Hz on the shared RX bus) → only 21 usable (24%). Two 100 mm plates sharing the low band collided heavily. More channels in the same band = more collisions, not more features.
+- **Plate size sets the band (physics).** Thin-plate flexural modes scale f ∝ h/L²: 100 mm → low/dense comb (30–100 kHz), 75×25 slide → mid/asymmetric comb, 25 mm → high/sparse comb (150–350 kHz). Spreading plate _types_ across **non-overlapping bands** is the main lever that both minimizes collisions and lets one tone serve several plates.
+
+**Tone-generator budget (not a GPIO limit):** the ceiling is the NCO's count of _independent frequency generators_, not the RP2040's 30 GPIO. Each independent tone needs its own timing peripheral:
+
+- **8 PIO state machines** (2 PIO blocks × 4) — the current firmware uses one SM per tone → **8 independent tones today.** 5 are wired (GP2–GP6 = F1–F5); 3 free (PIO1 SM1–3 → GP7/GP8/GP9, pins 10/11/12).
+- **+8 PWM slices** — each of the 8 PWM slices can emit one more independent frequency (the "16 PWM channels" share a counter in pairs, so it's 8 distinct frequencies, not 16). A firmware addition would take one Pico to **16 independent tones**, with coarser frequency resolution at the top of the band (good enough for low/mid-band plates).
+- **> 16 tones** ⇒ a second Pico.
+
+**Key point: features are not maximized by maxing tones.** Because one tone can serve several band-separated plates (broadcast), and because extra in-band tones only add collisions, the best array often uses **fewer than 8** independent tones. The optimizer must be free to choose the tone count.
+
+**Design model (what the optimizer computes):**
+
+Per candidate plate `p`, from an individual full-band census: mode set `M_p = {(f_i, SNR_i, Q_i)}`. The decision variable is a **grouping**: a set of drive channels, each assigned one-or-more plates (broadcast) or one plate assigned one-or-more channels (multi-point), using **up to** the available tone budget (8 now / 16 with PWM). On the shared RX bus a mode survives only if no other _active_ mode lies within `collision_bw`. Broadcast groups also apply an SNR penalty for the parallel-load amplitude drop. Maximize a **quality-weighted feature score** for the whole array:
+
+$$\text{score} = w_\text{dim}\, N_\text{usable} \;+\; w_\text{clean}\, N_\text{clean} \;-\; w_\text{cost}\, N_\text{tones}$$
+
+where `N_usable` = collision-survivor count over the whole array (kernel dimension), `N_clean` = count of _isolated high-SNR_ modes (SNR ≥ S_hi **and** nearest neighbour ≥ Δf_iso) — the modes good for precise 1-D tracking, and `N_tones` = independent tones used. The small `w_cost` term breaks ties toward simpler arrays so the optimizer doesn't spend a channel for a marginal mode. `w_dim`/`w_clean` set the task balance (classification-heavy vs tracking-heavy).
+
+**Bench procedure:**
+
+1. **Catalog every candidate plate individually.** For each plate on hand (all 100 mm, all 25 mm, a sample of slides), run `tools/direct_wire_census.py --force --start 30000 --stop 350000` driving _only that plate_ (no collisions). Save each as a per-plate catalog `M_p`.
+2. **Characterize the slide** (untested substrate): confirm it yields ≥7 resolvable modes and note its band (expected mid-range, asymmetric comb from the 3:1 aspect ratio).
+3. **Measure the two topology effects** so the model is grounded, not assumed:
+   - **Broadcast penalty:** wire 2–3 band-separated plates to one channel; census; compare each plate's mode SNR to its solo catalog → the parallel-load amplitude drop to feed the optimizer.
+   - **Multi-point gain:** drive one plate from a second TX position; census; count how many _new_ modes appear that the first position didn't excite.
+4. **Build the optimizer** `tools/array_design.py`: input = per-plate catalogs + measured broadcast penalty + multi-point gain + (`collision_bw`, `S_hi`, `Δf_iso`, `w_dim`, `w_clean`, `w_cost`, `tone_budget`). It searches **groupings** (plates-per-channel and channels-per-plate), free to use fewer than the budget, and returns the best topology with predicted usable/clean counts and tones used.
+5. **Sweep the task mix:** report the optimal array for tracking-heavy (`w_clean` high), classification-heavy (`w_dim` high), and balanced weights, and for tone budgets 8 (PIO-only) and 16 (PIO+PWM). Show how the recommended plate mix and tone count shift.
+6. **Validate the prediction:** physically wire the top-ranked topology, run a full `--force` census of the assembled array, and compare measured usable/clean features to the optimizer's prediction.
+
+**Agent prompt:**
+
+> Run the array-design study. (1) For each plate I mount and name, run direct_wire_census.py with --force over 30–350 kHz driving only that plate; save its catalog to data/results/array_design/catalogs/<plate_id>.json. (2) Measure the broadcast penalty (one channel → 2–3 band-separated plates, SNR vs solo) and the multi-point gain (second TX position on one plate, new modes excited). (3) Build tools/array_design.py: load catalogs + those two measured effects; over groupings of plates to drive channels — allowing one-tone→many-plates (broadcast) and many-tones→one-plate (multi-point), and using up to the tone budget but free to use fewer — maximize score = w_dim·N_usable + w_clean·N_clean − w_cost·N_tones. Report the best topology for three weight regimes (tracking/classification/balanced) and two tone budgets (8 PIO, 16 PIO+PWM), each as a plate↔channel↔GP-pin map with predicted usable/clean counts, tones used, and the band each plate occupies. (4) After I wire the top balanced topology, run a full --force census and report measured vs predicted. Save everything under data/results/array_design/.
+
+**Success:** an assembled array whose **measured usable features exceed the current 21** and whose collision efficiency exceeds the current 24%, with at least 2–3 isolated high-SNR "clean" channels reserved for tracking axes — achieved with **as few tones as the optimizer finds sufficient** (maxing the NCO is not the goal). Optimizer prediction within ±20% of measured.
+
+> **Caveat — "collision" ≠ "useless" (see [tools/collision_value_test.py](../tools/collision_value_test.py)).** The collision filter drops any bin two channels share, but a collision bin holds the _coherent interference sum_ of two plates, which can be a repeatable, target-correlated feature for a **learned** readout. On 2026-06-21 the discarded pile had _higher_ mean SNR than the kept pile (the strongest 11 of the top 12 modes were collisions). So "efficiency" here is only the right objective for a one-bin-one-plate _attribution_ readout; for a kernel/regression readout, prefer ranking modes by **repeatability × |corr with target|** (census `--keep-collisions --repeat-passes N`) and let the weights decide. Treat the efficiency target as a proxy, not the goal.
+
+**Kill:** even after keeping collision modes and ranking by repeatability, the assembled array cannot beat the current 40-usable kernel on a downstream task ⇒ the shared bus is genuinely saturated; split into 2–3 relay-gated RX port-groups (the spectral-port-multiplexing fallback) and re-optimize per group. Document the saturation point.
+**Time:** 1 session to catalog + measure topology effects + build optimizer; 1 session to wire and validate. **Hardware:** existing plates + NCO; **add** 220 Ω + TX PZTs only for whatever channels the optimum actually uses (GP7/GP8/GP9 available now); a few microscope slides (BOM DD6) if not already mounted.
+
+---
+
+### WL-B11 — CAM-DOOM Scale-Up: 8×8 Maze via Amplitude-Encoded Associative Recall _(builds on the MEASURED 4×4 demo)_
+
+**Objective:** Scale the **compute-via-recall** maze (MEASURED 2026-06-21: 4×4×4 = 16 states, 90% joint / 97% position recall, 100% live, noise-robust to σ=1) up to the full **8×8 maze** by adding more amplitude-encoded channels and choosing the plate geometry that maximizes per-axis level resolution. This is the genuine "DOOM on glass" — the glass is a content-addressable memory (the deck of cards), recalling the stored view; it is **not** the loopback amplitude-Pong and **not** the failed regression raycaster.
+
+**What is already MEASURED (the foundation):**
+
+- NCO duty-cycle amplitude firmware (`A<ch>:<permille>`) gives a monotonic amplitude knob; F5@89kHz = 8.1×, F4@48kHz = 5.0× clean ramps.
+- Factored per-axis nearest-centroid + **Fisher separability selection** + **per-capture mean normalization** (drift cancellation) → 4 levels/axis at 97–99% per axis.
+- Pattern completion (the irrefutable "not a wire" proof): 95% position recall under query noise σ=1; G-toggle scrambles recall when glass is removed.
+
+**The scaling problem (honest):** an 8×8×8 maze = 512 states. The proven recipe resolves ~**4–8 levels per axis per channel**. Two scaling levers:
+
+1. **One channel per axis, more levels.** x needs 8 levels, y needs 8, facing 8. The validated clean channels (F4@48k, F5@89k) already showed 8.1×/5.0× monotonic range → ~8 levels feasible on a clean channel. The bumpy F1 (facing) capped joint recall at 90% → **swap F1 for a clean channel** (the array work below).
+2. **More channels = more independent axes / finer factoring.** With the 3 free NCO slots (GP7/8/9, pins 10–12; or the 8-PIO / 16-PWM ceiling from WL-B10) each new clean plate adds an amplitude axis or a redundant vote that lifts recall by ensemble.
+
+**Bench procedure:**
+
+1. **Per-channel amplitude-resolution census.** For each drive channel (existing + the 3 free GP7–9), run an amplitude sweep ([tools/amp_validate.py](../tools/amp_validate.py) pattern) at its strongest mode; record the monotonic level count (how many distinguishable amplitude levels at ≥3σ). This is the per-axis resolution budget — the analogue of the frequency census but for amplitude.
+2. **Pick the geometry chain (ties to WL-B10).** From the per-plate catalogs, choose the plate→channel assignment whose **strongest isolated mode gives the most monotonic amplitude levels** (NOT the most modes — recall wants one clean monotonic carrier per axis, the opposite of the kernel/regression objective). Large 100mm plates (dense low-band comb) vs 25mm (sparse high-band) vs slides (mid): pick the cleanest single-mode carrier per axis. Reserve ≥3 clean channels (x, y, facing).
+3. **Enroll the 8×8 deck.** Extend [tools/cam_doom_train.py](../tools/cam_doom_train.py) `--maze-size 8 --dirs 8`; enroll all 512 (or the open-cell subset) state fingerprints with drift normalization, ≥8 repeats.
+4. **Measure factored recall** per axis and joint; sweep query noise. Target: position recall ≥90%, joint ≥80%.
+5. **If joint < 80%:** add a redundant channel per weak axis (ensemble vote across 2 plates) or coarsen that axis (6 levels not 8). Re-measure.
+6. **Live demo:** [tools/cam_doom_live.py](../tools/cam_doom_live.py) with the 8×8 model; verify live recall + G-toggle proof + live spectrum.
+
+**Agent prompt:**
+
+> Scale CAM-DOOM to 8×8. (1) For each drive channel I name, amplitude-sweep its strongest mode and report the monotonic distinguishable-level count (≥3σ). (2) Recommend a plate→channel geometry that gives ≥3 clean axes each with ≥6 monotonic levels, reusing GP7–9 for new channels. (3) After I wire it, run cam_doom_train.py --maze-size 8 --dirs 8 with drift normalization and ≥8 repeats; report per-axis + joint recall and noise robustness. (4) If joint <80%, add a redundant channel to the weakest axis and re-measure. Save under data/results/cam_doom/.
+
+**Success:** 8×8 maze with **position recall ≥90%, joint ≥80%**, noise-robust (≥85% position at σ=1), live G-toggle proof. **Kill:** even with redundant channels and 6-level axes, joint recall stays < 60% ⇒ per-axis amplitude resolution is the hard ceiling at desk scale; ship the 4×4 (MEASURED) demo and document the resolution wall for the MEMS pitch.
+
+**Time:** 1 session amplitude-census + geometry pick; 1 session wire GP7–9 + enroll + validate. **Hardware:** existing plates + NCO (amplitude firmware already flashed); **add** 220 Ω + clean-mode TX PZTs for the new axes (GP7–9); the WL-B10 optimizer informs the geometry choice.
+
+**Design note — recall vs kernel want OPPOSITE geometries.** WL-B10 (kernel/regression) maximizes _usable mode count_. WL-B11 (recall) maximizes _monotonic amplitude levels on one clean carrier per axis_. A plate that is great for the kernel (dense comb) can be poor for recall (no single clean monotonic mode), and vice-versa. Build the array for the demo you are shipping; the two demos may want different plates on the same NCO.
 
 ---
 
@@ -661,6 +773,7 @@ flowchart LR
     B6[WL-B6 multilevel] --> B7[WL-B7 MDM]
     B7 --> B8[WL-B8 decision gate]
     B8 --> B9[WL-B9 interference switch]
+    B7 --> B10[WL-B10 array design]
     B8 --> C7[WL-C7 FSM]
     A2 & B4 --> C5[WL-C5 memory hierarchy]
     B1 --> C6[WL-C6 interconnect]
@@ -672,7 +785,7 @@ flowchart LR
     C5 & B4 --> E3[WL-E3 eigencomputation]
 ```
 
-Parallel-safe now: WL-A1 → WL-A3/A4 (same week), WL-A2 + WL-A5 interleaved, WL-B5 anytime, WL-B6/B7/B8 after validation closeout. WL-B9 and WL-C5/C6/C7 after Phase B. E3 runnable at bench (no MEMS needed).
+Parallel-safe now: WL-A1 → WL-A3/A4 (same week), WL-A2 + WL-A5 interleaved, WL-B5 anytime, WL-B6/B7/B8 after validation closeout. WL-B9 and WL-C5/C6/C7 after Phase B. WL-B10 (array design) runnable now — needs only per-plate censuses + the optimizer; informs every kernel demo (Pong/DOOM). E3 runnable at bench (no MEMS needed).
 
 ---
 

@@ -1,0 +1,20 @@
+{
+  "timestamp": "20260621_161617",
+  "dest": 91000,
+  "origins": [
+    56000,
+    86000,
+    232000
+  ],
+  "tx": "F1",
+  "repeats": 8,
+  "navg": 4,
+  "dwell_origin": 0.06,
+  "switch_gap": 0.0,
+  "acc_static": 25.0,
+  "acc_motion": 33.33333333333333,
+  "chance": 33.333333333333336,
+  "tail_frac_static": 0.037616544415406405,
+  "tail_frac_motion": 0.04129962406047547,
+  "note": "ringdown-as-motion-blur; classical; tests whether one capture encodes trajectory history"
+}

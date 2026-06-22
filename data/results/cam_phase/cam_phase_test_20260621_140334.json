@@ -1,0 +1,38 @@
+{
+  "timestamp": "20260621_140334",
+  "n_states": 16,
+  "levels": 4,
+  "repeats": 6,
+  "driven": [
+    [
+      "x",
+      "F4",
+      48000
+    ],
+    [
+      "y",
+      "F5",
+      89000
+    ],
+    [
+      "p",
+      "F1",
+      57000
+    ],
+    [
+      "q",
+      "F2",
+      82000
+    ]
+  ],
+  "n_monitors": 24,
+  "acc_magnitude": 37.5,
+  "acc_phase": 8.333333333333332,
+  "acc_both": 36.45833333333333,
+  "delta_phase": -1.0416666666666714,
+  "chance": 6.25,
+  "chB_peak_median": 0.32102420117801445,
+  "chB_clip": 0,
+  "census": "data/results/direct_wire_census/direct_wire_census_20260621_011805.json",
+  "note": "classical acoustic phase via Za/Zb; not quantum"
+}

@@ -2,9 +2,11 @@
 
 **Version:** 1.0 — June 2026
 **Status:** Design document. Every claim labeled MEASURED / DERIVED / PROJECTED.
-**Companion documents:** [ROADMAP_FULL_POTENTIAL.md](ROADMAP_FULL_POTENTIAL.md), [FULL_POTENTIAL_WORKLIST.md](FULL_POTENTIAL_WORKLIST.md)
+**Companion documents:** [ROADMAP_FULL_POTENTIAL.md](ROADMAP_FULL_POTENTIAL.md), [FULL_POTENTIAL_WORKLIST.md](FULL_POTENTIAL_WORKLIST.md), [FRONTIER_CEILING.md](FRONTIER_CEILING.md)
 
 **Governing rule (inherited from roadmap):** Every claim bounded by (a) the wave equation and Rayleigh perturbation theory, (b) measured Q-factors and energy budgets, (c) at least one peer-reviewed precedent. Every tier of the architecture stack carries the same kill discipline as the experiment worklist.
+
+**⚠️ Wave-Native Design Principle.** The glass is a smooth, low-dimensional analog **kernel + content-addressable memory**, not a von Neumann machine. The first (silicon) algorithm you reach for usually fails on it; design for the wave-native form. Proven dualities (MEASURED 2026-06): track/integrate not predict/branch (smooth, not discontinuous); nearest-**centroid** not ridge **regression** (T3.4: 4096 states 100% vs ridge 0.55%); encode by **amplitude of a fixed mode** not **frequency position** (8 levels/mode @ 100σ vs ~2 levels/axis); **factor** the state and resolve axes independently; keep collision modes and select by repeatability×separability; build the **Gram matrix** and select modes that make it diagonal-dominant. Full table + diagnostics in [FULL_POTENTIAL_WORKLIST.md](FULL_POTENTIAL_WORKLIST.md).
 
 ---
 
@@ -492,9 +494,337 @@ General purpose requires all five previous stages, plus:
 - Error correction or output restoration between stages
 - A compiler from a higher-level language to the CWM instruction set
 
-This is a multi-year research program. The honest current claim is:
+This is a multi-year research program for the all-acoustic path. The honest current claim is:
 
-> **CWM is today a phononic functional-unit architecture (Stages 1–2 partially). It can reach general-purpose phononic logic (Stage 6) if nonlinear acoustic switching and parametric latching are demonstrated at MEMS scale.**
+> **CWM is today a phononic functional-unit architecture (Stages 1–2 partially). The Von Neumann path can reach general-purpose phononic logic (Stage 6) if nonlinear acoustic switching and parametric latching are demonstrated at MEMS scale. However, an alternative associative/HD path (§7A) reaches general compute at desk scale without any of these gates — using the existing crossbar array as a physical codebook and the PFU instruction set for interference + threshold + routing.**
+
+---
+
+## 7A. Associative / Hyperdimensional Path to General Compute
+
+§7 describes the Von Neumann path: build gates, latch them, cascade, compose. That path requires high Q (nonlinear threshold, parametric bistability, signal restoration) and is therefore MEMS-gated for stages 3–6.
+
+This section describes an **alternative computational model** that reaches general compute without gates, latches, or cascading — and is **desk-achievable now** with the existing crossbar array, Red Pitaya, and PFU instruction set. It is not a weaker form of §7; it is a different (and arguably more valuable) computational architecture, aligned with hyperdimensional computing (HD/VSA) and content-addressable memory.
+
+### 7A.1 Core Insight: the Array IS the Program
+
+In the Von Neumann model, memory is blank and computation writes state into it. In the associative model:
+
+- **Every plate's eigenmode spectrum is permanent, unique, and unmodifiable** — it was "written" at manufacture (geometry, mass distribution, boundary conditions).
+- **The array is a pre-existing library of spectral identities** — a physical codebook.
+- **Computation = selection:** the result of an operation determines which plate(s) to address next. State lives in the address register (a few electronic bits), not in the medium.
+- **No plate is ever physically modified to store a result.** The glass IS the data.
+
+This eliminates every barrier that makes Von Neumann logic MEMS-gated:
+
+| Von Neumann barrier   | Why it's hard                                    | Associative model                                                                                                                         |
+| --------------------- | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| Nonlinear threshold   | Glass is linear; needs Duffing at high Q         | **Irrelevant.** Resonance IS binary: matched → amplified, mismatched → suppressed. No nonlinearity needed.                                |
+| Latch (persistence)   | Needs self-sustaining parametric oscillation     | **Irrelevant.** State = "which plate is addressed" — a few bits in an FPGA register. The plate's spectrum persists forever without power. |
+| Gain / restoration    | Each gate must amplify; passive resonator decays | **Irrelevant.** Each drive is fresh at full power from the DAC. No signal chains through the medium.                                      |
+| Fan-out / composition | One output must physically drive N inputs        | **Irrelevant.** The MATCH result is an address — copy it to N registers for free.                                                         |
+
+These barriers don't get overcome. They become **structurally irrelevant** — they are barriers to a model this architecture doesn't use.
+
+### 7A.2 Computational Model
+
+The associative path maps precisely onto **Hyperdimensional Computing / Vector Symbolic Architecture (HD/VSA)**:
+
+- Each plate = a high-dimensional vector (its mode spectrum with $M$ dimensions)
+- Mode interference (PROJECT) = vector addition / bundling
+- MATCH = nearest-neighbor search in the codebook (argmax overlap)
+- Selection (crossbar routing) = pointer to the matched entry
+
+This is a known-complete computational framework. HD computing performs classification, analogy, sequence prediction, and Boolean logic — all with **read-only memory + vector operations + similarity search.**
+
+### 7A.3 The Logic Cycle
+
+```
+┌─── DRIVE (vector operation) ───┐      ┌─── MATCH (lookup) ───────────┐
+│                                 │      │                               │
+addr ─▶ Excite plates at address A │      │ Compare response against     │
+│ → mode interference =          │      │ ALL plates' known spectra     │
+│   physical linear combination  ├─────▶│ → best match = the answer    ├──▶ new addr
+│ (the computation — one shot,   │      │ (argmax normalized overlap)  │
+│  massively parallel)           │      │                               │
+└─────────────────────────────────┘      └───────────────────────────────┘
+       ▲                                          │
+       │◀──────── new addr selects next plates ───┘
+```
+
+Every step is at full SNR. Q does not limit cascading depth — it only limits clock speed (how fast a mode rings up for measurement). You can chain 1000 operations at Q = 100 just as well as at Q = 100,000; it's just slower.
+
+**Cycle time:** $t_{\text{cycle}} = t_{\text{ring-up}} + t_{\text{measure}} + t_{\text{route}}$. At bench Q ≈ 500, f ≈ 50 kHz: ring-up ≈ 3 ms, measure ≈ 1 ms (FPGA lock-in), route ≈ µs. **Total ≈ 4 ms (250 Hz clock).** Slow — but working and demonstrable at any cascade depth.
+
+### 7A.4 Three-Tier Memory Hierarchy (Associative Model)
+
+| Tier                  | Mechanism                    | Where state lives          | Persistence              | Refresh?                 |
+| --------------------- | ---------------------------- | -------------------------- | ------------------------ | ------------------------ |
+| Register              | Mode amplitude (ringdown)    | In the vibration           | ~τ = Q/(πf) ≈ 50 ms      | Automatic decay          |
+| Working memory        | Crossbar address             | FPGA register (a few bits) | Indefinite while powered | No                       |
+| **Permanent storage** | **Plate eigenmode spectrum** | **In the glass geometry**  | **Forever**              | **No — it IS the plate** |
+
+The permanent tier needs no power, no refresh, and no write operation. It exists because the plate exists. You "read" it by exciting and measuring. You "address" it by routing the crossbar. The glass array is a **physical ROM whose entries were written by manufacturing.**
+
+### 7A.5 Boolean Logic via Spectral Interference + Threshold
+
+Even within the associative model, conventional Boolean operations are available:
+
+**AND gate:** Drive mode $f_1$ (input A) and mode $f_2$ (input B) on the same plate. A readout cell at an antinode intersection of both mode shapes responds strongly **only when both are driven** — constructive interference of shapes at that cell. FPGA threshold → 1 iff both present.
+
+**OR gate:** Same cell, lower threshold — either mode alone exceeds it.
+
+**NOT gate:** Invert the threshold comparator.
+
+**Cascading:** The FPGA takes the thresholded result and selects the next plate/mode to drive at full power. No signal ever "passes through" a gate — it's regenerated fresh. The glass does the interference (the expensive parallel part); the electronics does the 1-bit decision (the trivial part).
+
+This is architecturally identical to how every photonic neural-network chip works (Lightmatter, Akhetonics): the medium does massively parallel linear operations; electronics does activation/thresholding between layers.
+
+### 7A.6 State-Space Size and Scaling
+
+With N plates and a crossbar that can select arbitrary subsets:
+
+$$\text{Addressable configurations} = 2^N$$
+
+| Array size | State space               | Comparison             |
+| ---------- | ------------------------- | ---------------------- |
+| 8 plates   | 256                       | —                      |
+| 16 plates  | 65,536                    | 16-bit address space   |
+| 32 plates  | $4.3 \times 10^9$         | exceeds 32-bit integer |
+| 64 plates  | $\sim 1.8 \times 10^{19}$ | exceeds 64-bit integer |
+
+Each "state" is a unique combination of spectral identities that interfere differently. MATCH jumps directly to the best-matching state — **exponential state space, constant-time access.**
+
+### 7A.7 Comparison: Von Neumann vs. Associative Path
+
+| Dimension          | Von Neumann (§7)                        | Associative (§7A)                                         |
+| ------------------ | --------------------------------------- | --------------------------------------------------------- |
+| Basic operation    | Gate (transform a signal)               | Selection (choose the right plate)                        |
+| Memory model       | Write a state that persists             | The plate EXISTS — always did                             |
+| Logic mechanism    | Nonlinear threshold creates 0/1         | Resonant response IS the binary distinction               |
+| Cascading          | Output must physically drive next input | Output = an address; next drive is fresh                  |
+| Scaling bottleneck | Higher Q at each stage                  | More plates (trivial to add)                              |
+| Failure mode       | Signal decay kills the cascade chain    | Nothing decays — nothing chains acoustically              |
+| Parallelism        | 1 gate per cycle                        | N comparisons per cycle (all plates respond)              |
+| Q requirement      | ≥ 10⁴ (MEMS-gated)                      | Any Q (bench-achievable)                                  |
+| Desk-achievable?   | Stages 1–2 only                         | **All stages**                                            |
+| Commercial analog  | Acoustic Von Neumann CPU (slow, niche)  | Physical search engine / inference accelerator (valuable) |
+
+### 7A.8 Revised Stage Table (Dual-Path)
+
+| Stage               | Von Neumann path (§7, MEMS-gated)               | Associative path (§7A, desk-achievable)                                 |
+| ------------------- | ----------------------------------------------- | ----------------------------------------------------------------------- |
+| 1 — Instruction set | ✓ defined (§3)                                  | ✓ same instruction set                                                  |
+| 2 — Switch          | WL-B9 (linear, bench) / WL-D4 (nonlinear, MEMS) | ✓ crossbar routing IS the switch                                        |
+| 3 — Latch           | WL-D3.3 parametric 0/π (MEMS)                   | ✓ address register (FPGA) + acoustic register (ringdown τ)              |
+| 4 — Universal gate  | WL-D4 Duffing IM (MEMS)                         | ✓ interference + electronic threshold (§7A.5)                           |
+| 5 — Composition     | WL-C7 FSM (partial bench) / WL-E2 (MEMS)        | ✓ FPGA routes thresholded result → next drive (unlimited cascade depth) |
+| 6 — General logic   | All above must PASS (MEMS)                      | ✓ **LUT cascade / HD compute via spectral codebook — desk-achievable**  |
+
+### 7A.9 What This Path IS and What It ISN'T
+
+**It IS:**
+
+- A massively parallel associative processor (N comparisons per cycle)
+- A physical content-addressable memory with permanent, zero-power storage
+- A hyperdimensional computer where each plate is a basis vector
+- Desk-achievable general compute (slow clock, unlimited depth)
+- The stronger commercial framing: physical search / inference / pattern-matching accelerator
+
+**It ISN'T:**
+
+- Fast (clock ≈ 250 Hz at bench Q — useful for proof, not competition)
+- A replacement for the Von Neumann path (that path gives all-acoustic autonomy at MEMS scale)
+- New physics (it's interference + threshold + routing — the insight is architectural, not physical)
+
+**The honest claim:**
+
+> CWM reaches general compute at desk scale via the associative/HD path. The Von Neumann path (all-acoustic, autonomous, gate-based) remains the MEMS frontier and the long-term scientific goal. Both paths share the same PFU instruction set and crossbar hardware; they differ only in how computation is organized above it.
+
+---
+
+## 7B. Gradient / Kernel Computing Path (Level 3)
+
+§7A uses the array response as a discrete lookup (argmax → one winner). This section formalizes what happens when you **keep the full response gradient** — the continuous similarity vector across all plates — and compute over it directly. This is strictly more powerful than §7A, runs on the same hardware, and positions CWM as a **physical kernel machine / neural inference accelerator.**
+
+### 7B.1 The Physical Gradient
+
+When a query $\mathbf{q}$ is broadcast to an N-plate array, every plate responds with an amplitude proportional to its spectral overlap with the query:
+
+$$y_i = K(\mathbf{q}, \mathbf{s}_i) = \frac{\langle \mathbf{q}, \mathbf{s}_i \rangle}{\|\mathbf{q}\| \cdot \|\mathbf{s}_i\|} \quad \text{for } i = 1 \ldots N$$
+
+where $\mathbf{s}_i$ is plate $i$'s eigenmode spectrum (the fixed kernel basis function) and $K$ is the physical kernel — implemented by wave interference, evaluated in one acoustic cycle, for all N plates simultaneously.
+
+The response vector $\mathbf{y} = [y_1, y_2, \ldots, y_N]$ is not binary. It is a **continuous, N-dimensional similarity landscape** — a kernel evaluation over the entire codebook, computed physically in parallel. §7A discards this information (argmax keeps 1 value out of N). Level 3 uses all of it.
+
+### 7B.2 Three Computation Levels on One Hardware
+
+```
+┌─────────────────────────────────────────────────────────────────────────┐
+│  Level 3: GRADIENT / KERNEL (this section)                              │
+│  Keep the full N-dim response vector; compute over the gradient         │
+│  → kernel regression, attention, Hopfield, interpolation, dynamics      │
+│  Power: analog, continuous, generalizes beyond stored codebook entries  │
+│  Hardware: same crossbar + broadcast — read all N responses, no argmax  │
+├─────────────────────────────────────────────────────────────────────────┤
+│  Level 2: ARGMAX / HD LOOKUP (§7A)                                      │
+│  Threshold the response → take the winner → route to next plate         │
+│  → LUT cascade, Boolean logic, state machine, discrete general compute  │
+│  Power: discrete, provably correct, unlimited cascade depth             │
+│  Hardware: same + FPGA threshold + address routing                      │
+├─────────────────────────────────────────────────────────────────────────┤
+│  Level 1: BINARY / SINGLE-PLATE (§3 instruction set)                    │
+│  Single threshold on one mode of one plate                              │
+│  → match/no-match, PUF bit, single decision, interference gate         │
+│  Power: unit-cell operations                                            │
+│  Hardware: current bench (no array needed)                              │
+└─────────────────────────────────────────────────────────────────────────┘
+```
+
+Each level is strictly more powerful than the one below. All three run on identical hardware — the difference is purely **how much of the response you keep.**
+
+### 7B.3 Computational Primitives at Level 3
+
+| Primitive                 | Definition                                                                             | Physical mechanism                                    | Application                                                          |
+| ------------------------- | -------------------------------------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------- |
+| **Kernel evaluation**     | $\mathbf{y} = K(\mathbf{q}, \mathbf{S})$ — similarity of query against all N templates | Broadcast + FDM capture → N amplitudes in one cycle   | The expensive step in all kernel methods (SVM, GP, RBF nets)         |
+| **Soft attention**        | $\text{out} = \sum_i \text{softmax}(y_i) \cdot v_i$ — weighted retrieval               | Physical kernel + electronic weight-multiply          | Transformer-style attention without digital matrix ops               |
+| **Hopfield retrieval**    | $\mathbf{q}_{t+1} = f(K \cdot \mathbf{q}_t)$ — iterate until fixed point               | Feed gradient back as next drive → acoustic iteration | Associative memory with error correction; content-addressable recall |
+| **Kernel regression**     | $\hat{f}(\mathbf{q}) = \mathbf{w}^T \mathbf{y}$ — learned readout from gradient        | Physical kernel + one FPGA dot product                | Regression / interpolation / function approximation                  |
+| **Classification (SVM)**  | $\text{class} = \text{sign}(\mathbf{w}^T \mathbf{y} + b)$                              | Physical kernel + FPGA threshold on weighted sum      | Multi-class classification in kernel space                           |
+| **Probabilistic routing** | $p_i = y_i / \sum_j y_j$ — drive next cycle at proportional amplitudes                 | Normalize gradient → use as drive vector for cycle 2  | Soft decision trees; mixture-of-experts routing                      |
+| **Interpolation**         | $\hat{a} = \sum_i y_i \cdot a_i / \sum_j y_j$ — weighted average of "answers"          | Gradient weights + electronic value table             | Generalization beyond codebook entries                               |
+
+### 7B.4 The Array as a Physical Neural Network
+
+Framing the three levels in neural-network terms:
+
+```
+Input (query)                               Output
+    │                                           ▲
+    ▼                                           │
+┌─────────┐     ┌───────────────────┐     ┌──────────┐
+│ A-DAC   │ ──▶ │ HIDDEN LAYER      │ ──▶ │ READOUT  │
+│ (encode │     │ = the plate array │     │ LAYER    │
+│  query  │     │                   │     │ = FPGA   │
+│  as     │     │ N nodes (plates)  │     │ w·y + b  │
+│  drive) │     │ Fixed weights     │     │ (learned)│
+│         │     │ (spectra = mfg)   │     │          │
+└─────────┘     └───────────────────┘     └──────────┘
+                        │
+              activation = y_i = K(q, s_i)
+              (physical kernel evaluation)
+```
+
+- **Hidden-layer weights** are the plates' eigenmode spectra — fixed at manufacture, unique per device, never updated, physically permanent. This is a **reservoir** in the RC (reservoir computing) sense: a fixed nonlinear expansion that projects inputs into a high-dimensional feature space.
+- **Readout weights** $\mathbf{w}$ are learned electronically (least-squares on training examples). Training is trivial: collect $\{(\mathbf{q}_k, \text{label}_k)\}$ → solve $\mathbf{w} = (\mathbf{Y}^T\mathbf{Y})^{-1}\mathbf{Y}^T\mathbf{t}$ once. The FPGA stores and applies $\mathbf{w}$.
+- **Depth:** feed the output (or gradient) back as the next query → iterate → multiple "layers" of physical feature extraction. One acoustic cycle ≈ 4 ms = one layer.
+
+This is exactly the architecture of **echo-state networks / reservoir computers / extreme learning machines** — with the crucial difference that the "reservoir" is **passive, zero-power, physically permanent glass** instead of a simulated random matrix.
+
+### 7B.5 Iterative Dynamics (Deep Physical Inference)
+
+When the gradient is fed back as the next drive:
+
+$$\mathbf{q}_{t+1} = K \cdot \mathbf{q}_t$$
+
+or with a nonlinear activation (e.g., FPGA applies ReLU or softmax to $\mathbf{y}$ before re-driving):
+
+$$\mathbf{q}_{t+1} = \sigma(K \cdot \mathbf{q}_t)$$
+
+This creates **autonomous dynamics** in the array. The system evolves until convergence — and the fixed point IS the computation result.
+
+| Dynamics type            | Activation                       | Converges to                       | Application                             |
+| ------------------------ | -------------------------------- | ---------------------------------- | --------------------------------------- |
+| Linear (power iteration) | None (raw gradient → re-drive)   | Dominant eigenvector of K          | Principal component extraction          |
+| Hopfield                 | Threshold                        | Nearest stored pattern             | Error-correcting associative memory     |
+| Softmax iteration        | Softmax normalize                | Winner-take-all (sharpened argmax) | Clean classification from noisy queries |
+| Boltzmann-like           | Stochastic threshold (add noise) | Sampling from energy landscape     | Generative model / annealing            |
+
+**Convergence speed:** K is a Gram matrix (positive semi-definite if spectra are linearly independent). Power iteration converges in ~5–20 cycles for well-separated eigenvalues. At 4 ms/cycle → fixed point in 20–80 ms. Fast enough for batch inference; not for real-time streaming.
+
+### 7B.6 Training the Readout (How You Program It)
+
+The "program" for a Level 3 computation is a **readout weight vector** $\mathbf{w} \in \mathbb{R}^N$. Different $\mathbf{w}$ = different tasks on the same physical kernel.
+
+**Training protocol (one-time, offline):**
+
+1. Collect M training examples: $\{(\mathbf{q}_k, t_k)\}_{k=1}^M$ where $t_k$ is the target label/value.
+2. For each $\mathbf{q}_k$: broadcast to array → capture gradient $\mathbf{y}_k$.
+3. Assemble $\mathbf{Y} \in \mathbb{R}^{M \times N}$ (kernel matrix on training set).
+4. Solve $\mathbf{w} = (\mathbf{Y}^T\mathbf{Y} + \lambda I)^{-1}\mathbf{Y}^T\mathbf{t}$ (ridge regression, closed-form).
+5. Store $\mathbf{w}$ in FPGA memory.
+
+**Inference (real-time):**
+
+1. Broadcast query → capture $\mathbf{y}$ (one acoustic cycle, ~4 ms).
+2. Compute $\hat{t} = \mathbf{w}^T \mathbf{y}$ (one dot product in FPGA, ~µs).
+3. Output $\hat{t}$.
+
+**Multi-task:** store M different weight vectors $\{\mathbf{w}_1, \ldots, \mathbf{w}_M\}$. Same physical kernel, M different outputs. Switching tasks = loading a different $\mathbf{w}$ — one clock cycle.
+
+### 7B.7 Scaling and Capacity
+
+The kernel dimension is NOT simply "number of plates." It is **number of spectrally resolvable features per capture** — which depends on the readout strategy:
+
+- **Single-tone, 1 plate per channel (serial relay scan):** kernel_dim = N_ports (one amplitude per relay switch)
+- **Multi-tone, stacked (many plates per port, FFT readout):** kernel_dim = usable_modes_per_port × N_ports
+
+With Q ≈ 200, each mode occupies ~500 Hz. In a 120 kHz bandwidth, ~240 non-overlapping spectral slots exist per port. With n plates per port (5 modes each), usable modes ≈ 5n − n²/(2 × 48) (birthday-collision model). At 8 plates/port: ~37 usable modes at 92% efficiency.
+
+| Parameter                               | Expression              | 8-plate desk (serial) | 8-plate desk (multi-tone, 1 port) | 64-plate desk | MEMS (10⁴ cells) |
+| --------------------------------------- | ----------------------- | --------------------- | --------------------------------- | ------------- | ---------------- |
+| Kernel dimension                        | modes × ports           | 24 (24×1)             | 37 (37×1)                         | 64            | 10,000           |
+| Feature space                           | same                    | 24                    | 37                                | 64            | 10,000           |
+| Max separable classes (Cover's theorem) | ~2N                     | ~48                   | ~74                               | ~128          | ~20,000          |
+| Kernel evaluation time                  | P × (switch + capture)  | 360 ms (24 switches)  | 15 ms (0 switches)                | ~4 ms (FDM)   | ~0.3 ms (MEMS)   |
+| Kernel evaluations / second             | 1/eval_time             | ~3                    | ~66                               | ~250          | ~3,000           |
+| Digital equivalent cost                 | N² MACs per kernel eval | 576 MACs              | 1,369 MACs                        | 4,096 MACs    | 10⁸ MACs         |
+
+**Key insight:** On relay-scanned hardware, stacking plates per port and using multi-tone + FFT readout eliminates relay switching as the bottleneck. A single port with 8 plates provides a 37-dimensional kernel at 66 evaluations/second — from hardware that previously gave 24 dimensions at 3 evaluations/second. The improvement is >20× throughput at higher dimensionality, with zero new parts.
+
+At MEMS scale with 10⁴ cells, one kernel evaluation replaces **100 million multiply-accumulate operations** — in one acoustic cycle, at µW power. That is the commercial proposition.
+
+### 7B.8 Comparison with Competing Physical Kernel / Inference Hardware
+
+| Platform                                       | Kernel type                      | Reconfigurable?                      | Non-volatile?               | Energy/inference              | Speed                          | Status               |
+| ---------------------------------------------- | -------------------------------- | ------------------------------------ | --------------------------- | ----------------------------- | ------------------------------ | -------------------- |
+| **CWM array (Level 3)**                        | Spectral overlap (plate spectra) | Fixed hidden layer + learned readout | Yes (spectra are permanent) | ~µJ (desk) / ~nJ (MEMS)       | ~250 Hz (desk) / ~3 kHz (MEMS) | ARCHITECTURAL        |
+| Photonic reservoir (e.g., PhoxTronik)          | Optical scattering / MZI mesh    | Tunable MZI phases                   | No (volatile)               | ~nJ per inference             | ~GHz                           | Research             |
+| Memristor crossbar (e.g., Mythic, Ceremorphic) | Conductance-weighted MAC         | Yes (write weights to cells)         | Yes (NVM)                   | ~pJ per MAC                   | ~MHz clock                     | Commercial (limited) |
+| Analog CMOS (e.g., Aspinity)                   | Analog MAC in current domain     | Yes (DAC weights)                    | No (volatile)               | ~µW always-on                 | MHz                            | Commercial (edge)    |
+| Digital ASIC (e.g., GPU, TPU)                  | Exact digital matmul             | Fully programmable                   | No (SRAM)                   | ~pJ per MAC, millions of MACs | GHz                            | Dominant             |
+| Spintronic reservoir (e.g., Toshiba)           | Magnetic dynamics                | Fixed topology                       | Yes                         | ~µJ                           | kHz–MHz                        | Research             |
+
+**CWM's unique differentiators at Level 3:**
+
+1. **Non-volatile kernel** — the hidden layer (plate spectra) persists without power, indefinitely. Every other analog platform needs power to hold state (except memristors, which degrade).
+2. **Physically unclonable** — every device has a unique kernel (PUF + compute in one object). No two CWM arrays compute identically → hardware-rooted inference security.
+3. **Zero-write kernel** — the kernel is set at manufacture (geometry determines spectrum). No programming step, no write endurance limit, no drift. The "weights" are the laws of physics applied to a specific geometry.
+4. **Multi-task via electronic readout** — switch between tasks by changing $\mathbf{w}$ in one clock cycle. No physical reconfiguration.
+5. **Combined memory + compute + identity** — same device is simultaneously a PUF, a CAM, and a kernel machine. No other platform fuses all three.
+
+### 7B.9 What Level 3 IS and ISN'T
+
+**It IS:**
+
+- A physical kernel machine that evaluates N-dimensional spectral similarity in one acoustic cycle
+- A reservoir computer with a permanent, zero-power, unclonable hidden layer
+- A neural inference accelerator (one hidden layer per cycle, learned readout, arbitrary depth via iteration)
+- A soft-attention engine (weighted retrieval over the full codebook)
+- An interpolator (generalizes beyond stored codebook entries via gradient weighting)
+- Desk-achievable now (same hardware as §7A — just keep the gradient)
+
+**It ISN'T:**
+
+- A replacement for digital training (training the readout weights $\mathbf{w}$ is still electronic/digital)
+- Fast at desk scale (250 inferences/sec — useful for proof, not production)
+- A general-purpose programmable processor in the Von Neumann sense (the kernel is fixed; you program only the readout)
+- Better than digital at all tasks (only wins on kernel evaluation where N is large and the kernel is expensive to simulate)
+
+**The honest claim:**
+
+> At Level 3, the CWM array is a physical kernel machine: it evaluates N-dimensional spectral similarity in one acoustic cycle, enabling classification, regression, attention, and iterative dynamics without digital matrix multiplication. The kernel is permanent (set by plate geometry), unclonable (unique per device), and zero-power (no refresh). The desk rig proves the architecture; MEMS scaling delivers the energy and throughput advantages that make it commercially competitive with digital inference.
 
 ---
 
@@ -557,16 +887,19 @@ CMOS flip-chip drive/readout circuit
 | Phononic FSM (3-state)                                | PENDING — WL-C7 (after WL-B8)                                |
 | Nonlinear acoustic AND gate                           | PENDING — WL-D4 (MEMS) / WL-B2 (bench if F10 genuine)        |
 | Parametric bistable latch                             | PENDING — WL-D3.3 (MEMS)                                     |
-| Composable phononic logic                             | NOT DEMONSTRATED                                             |
-| General-purpose phononic CPU                          | NOT DEMONSTRATED — requires Stages 2–6                       |
+| Composable phononic logic (Von Neumann, all-acoustic) | NOT DEMONSTRATED                                             |
+| General-purpose phononic CPU (Von Neumann)            | NOT DEMONSTRATED — requires Stages 2–6                       |
+| General compute via associative/HD path (§7A)         | ARCHITECTURAL — desk-achievable; demonstration pending       |
+| Physical kernel machine / neural inference (§7B)      | ARCHITECTURAL — desk-achievable; demonstration pending       |
 | Quantum speedup                                       | NOT CLAIMED — all effects are classical DOF non-separability |
 
-The architecture is honest. The plate does not compute autonomously. The decoder and control core do. The plate provides a physical operator — the H matrix projection, the fingerprint, the Rayleigh encoder — that is physically analog, thermally stable, manufacturing-unique, low-energy, and writable. That is a real and valuable thing, even before Stage 2.
+The architecture is honest. The plate does not compute autonomously in the Von Neumann sense — the control core sequences decisions. But in the associative model (§7A), the plate array IS the computer: interference computes, spectra store, the crossbar routes — and the electronic layer does only threshold decisions and address selection. That is general compute with glass doing the heavy lifting.
 
 ---
 
 ## 10. Document History
 
-| Date       | Change                                                                                                                                                                                                                         |
-| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| 2026-06-17 | v1.0 created. Structure: data representation, memory hierarchy, instruction set (L0–L3), six PFUs, control stack, cross-domain composition, path to general-purpose logic (Stages 1–6), fabrication path, honest claims table. |
+| Date       | Change                                                                                                                                                                                                                                                                                  |
+| ---------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2026-06-17 | v1.0 created. Structure: data representation, memory hierarchy, instruction set (L0–L3), six PFUs, control stack, cross-domain composition, path to general-purpose logic (Stages 1–6), fabrication path, honest claims table.                                                          |
+| 2026-06-20 | v1.1 — added §7A (Associative / Hyperdimensional Path to General Compute) and §7B (Gradient / Kernel Computing Path — Level 3). Dual-path framing: Von Neumann (MEMS-gated) + Associative (desk-achievable) + Kernel (desk-achievable, analog). Updated §7 summary and §9 claims table. |

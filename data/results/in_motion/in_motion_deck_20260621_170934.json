@@ -1,0 +1,46 @@
+{
+  "timestamp": "20260621_170934",
+  "levels": 6,
+  "cards": 12,
+  "repeats": 6,
+  "pos": [
+    "F4",
+    48000
+  ],
+  "dirA": [
+    "F1",
+    57000
+  ],
+  "dirB": [
+    "F2",
+    82000
+  ],
+  "n_monitors": 20,
+  "inmotion_acc": 76.38888888888889,
+  "positiononly_acc": 44.44444444444444,
+  "most_common_baseline": 25.0,
+  "noise": [
+    {
+      "sigma": 0.0,
+      "glass": 76.38888888888889,
+      "wire": 48.61111111111111
+    },
+    {
+      "sigma": 0.5,
+      "glass": 44.44444444444444,
+      "wire": 36.11111111111111
+    },
+    {
+      "sigma": 1.0,
+      "glass": 33.33333333333333,
+      "wire": 30.555555555555557
+    },
+    {
+      "sigma": 1.5,
+      "glass": 33.33333333333333,
+      "wire": 27.77777777777778
+    }
+  ],
+  "census": "data/results/direct_wire_census/direct_wire_census_20260621_011805.json",
+  "note": "in-motion deck: direction encoded as tag tone; future single-valued; classical"
+}

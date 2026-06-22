@@ -8,6 +8,8 @@
 
 **Governing rule (anti-sci-fi clause):** Every forward claim must be bounded by (a) the wave equation and Rayleigh perturbation theory, (b) measured Q-factors and energy budgets, and (c) at least one peer-reviewed precedent for the underlying physical mechanism. Every phase carries kill criteria. We do not back down from the frontier; we also do not cross it without data.
 
+**⚠️ Wave-Native Design Principle.** The glass is a smooth, low-dimensional analog **kernel + content-addressable memory**, not a von Neumann machine — design for the wave-native form, not the first silicon algorithm. Proven dualities (MEASURED 2026-06): track/integrate not predict/branch; nearest-**centroid** not ridge **regression** (T3.4 4096 states 100% vs ridge 0.55%); encode by **amplitude of a fixed mode** not **frequency position** (8 levels/mode @ 100σ vs ~2 levels/axis); **factor** the state; keep collision modes; make the **Gram matrix** diagonal-dominant. Full table + diagnostics in [FULL_POTENTIAL_WORKLIST.md](FULL_POTENTIAL_WORKLIST.md).
+
 ---
 
 ## 1. What Is Actually Proven (the foundation)

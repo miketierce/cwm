@@ -1,0 +1,55 @@
+{
+  "timestamp": "20260621_121437",
+  "npz": "data/results/pong/pong_predict_data_20260621_115514.npz",
+  "n_states": 256,
+  "repeats": 3,
+  "edge_walk_consistency_pct": 100.0,
+  "clean": {
+    "(baseline) one-shot lookup  (glass, k=1)": 78.38541666666666,
+    "greedy edge-walk            (glass)": 78.38541666666666,
+    "PATH-INTEGRAL sum-over-paths (glass)": 82.55208333333334,
+    "PATH-INTEGRAL sum-over-paths (WIRE)": 92.83854166666666
+  },
+  "stationary": 42.1875,
+  "random": 36.201171875,
+  "noise_table": [
+    {
+      "sigma": 0.0,
+      "greedy": 78.38541666666666,
+      "pathint": 82.55208333333334,
+      "oneshot": 78.38541666666666,
+      "wire_pathint": 92.83854166666666
+    },
+    {
+      "sigma": 0.5,
+      "greedy": 76.953125,
+      "pathint": 81.25,
+      "oneshot": 76.953125,
+      "wire_pathint": 73.56770833333334
+    },
+    {
+      "sigma": 1.0,
+      "greedy": 68.88020833333334,
+      "pathint": 74.08854166666666,
+      "oneshot": 68.88020833333334,
+      "wire_pathint": 52.734375
+    },
+    {
+      "sigma": 1.5,
+      "greedy": 63.932291666666664,
+      "pathint": 69.27083333333334,
+      "oneshot": 63.932291666666664,
+      "wire_pathint": 45.3125
+    },
+    {
+      "sigma": 2.0,
+      "greedy": 58.723958333333336,
+      "pathint": 63.932291666666664,
+      "oneshot": 58.723958333333336,
+      "wire_pathint": 42.70833333333333
+    }
+  ],
+  "beta": 4.0,
+  "ksteps": 40,
+  "note": "classical real-amplitude sum; phase channel (E9) would enable cancellation"
+}

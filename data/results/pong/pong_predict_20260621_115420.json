@@ -1,0 +1,11 @@
+{
+  "timestamp": "20260621_115420",
+  "census": "data/results/direct_wire_census/direct_wire_census_20260621_011805.json",
+  "n_states": 256,
+  "repeats": 3,
+  "regression": 44.53125,
+  "recall": 51.692708333333336,
+  "wire": 77.60416666666666,
+  "stationary": 56.25,
+  "random": 40.419921875
+}

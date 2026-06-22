@@ -1,0 +1,41 @@
+{
+  "timestamp": "20260621_011045",
+  "census_file": "data/results/direct_wire_census/direct_wire_census_20260621_003918.json",
+  "n_states": 256,
+  "navg": 16,
+  "baselines": {
+    "random_pct": 36.220703125,
+    "stationary_pct": 50.0
+  },
+  "feature_sets": {
+    "(a) drive-window [winner]": {
+      "dim": 21,
+      "alpha": 5.0,
+      "intercept": 91.40625
+    },
+    "(b) 40 non-collision modes": {
+      "dim": 40,
+      "alpha": 20.0,
+      "intercept": 84.375
+    },
+    "(c) 160 all modes": {
+      "dim": 160,
+      "alpha": 20.0,
+      "intercept": 16.796875
+    },
+    "(d) collision modes only": {
+      "dim": 120,
+      "alpha": 20.0,
+      "intercept": 28.515625
+    },
+    "(e) drive-window + all modes": {
+      "dim": 181,
+      "alpha": 20.0,
+      "intercept": 15.234375
+    }
+  },
+  "mode_corr": {
+    "noncollision_mean": 0.17165014987825933,
+    "collision_mean": 0.3072084578988484
+  }
+}

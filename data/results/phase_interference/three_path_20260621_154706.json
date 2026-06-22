@@ -1,0 +1,27 @@
+{
+  "timestamp": "20260621_154706",
+  "freq": 91000,
+  "grid_step": 30,
+  "navg": 8,
+  "single_amp": {
+    "F1_NW": 275.7601754568069,
+    "F2_SW": 367.9460369952608,
+    "F3_NE": 242.8023004703691
+  },
+  "duty": {
+    "1": 440,
+    "2": 329,
+    "3": 500
+  },
+  "fit_R2": 0.8742397536756334,
+  "I12": 67846.80500107488,
+  "I13": 32288.263523230642,
+  "I23_crossterm": 51113.30264032662,
+  "theta2_deg": 335.03370119372755,
+  "theta3_deg": 43.984705438078414,
+  "E_max": 300424.5591841709,
+  "E_null": 5480.586258841603,
+  "energy_cancel_3path": 0.9817571963033761,
+  "verdict_three_path": false,
+  "note": "classical acoustic 3-phasor interference; 2<->3 cross-term = N>2 signature; not quantum"
+}

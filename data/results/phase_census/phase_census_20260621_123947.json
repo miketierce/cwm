@@ -1,0 +1,86 @@
+{
+  "timestamp": "20260621_123947",
+  "trigger": "chA",
+  "fs": 781250.0,
+  "timebase": 7,
+  "n_samples": 8064,
+  "nfft": 32256,
+  "bin_hz": 24.220300099206348,
+  "rng_mv": 1000.0,
+  "clock_hz": 126000000,
+  "nyquist": 390625.0,
+  "start": 30000,
+  "stop": 350000,
+  "step": 20000,
+  "navg": 8,
+  "settle": 0.04,
+  "guard": 2000,
+  "win_bins": 64,
+  "chan_gpio": {
+    "F1": "GP2/pin4",
+    "F2": "GP3/pin5",
+    "F3": "GP4/pin6",
+    "F4": "GP5/pin7",
+    "F5": "GP6/pin9"
+  },
+  "passes": [
+    {
+      "ref1": [
+        "F2",
+        85000
+      ],
+      "ref2": [
+        "F1",
+        57000
+      ],
+      "sweep": [
+        "F3",
+        "F4",
+        "F5"
+      ]
+    },
+    {
+      "ref1": [
+        "F4",
+        48000
+      ],
+      "ref2": [
+        "F5",
+        89000
+      ],
+      "sweep": [
+        "F1",
+        "F2"
+      ]
+    }
+  ],
+  "monitor_freqs": [
+    82500.0,
+    89000.0,
+    48000.0,
+    84000.0,
+    64000.0,
+    320500.0,
+    96000.0,
+    72000.0,
+    55000.0,
+    69500.0,
+    57000.0,
+    216500.0,
+    97000.0,
+    41500.0,
+    63500.0,
+    176500.0
+  ],
+  "monitor_src": "data/results/direct_wire_census/direct_wire_census_20260621_011805.json",
+  "n_points": 81,
+  "phase_model_note": "CLASSICAL acoustic phase (wave interference). Right structure for a complex path-integral-style sum, NOT quantum amplitude. Per-sub-capture complex values stored so raw/single-ref/dual-ref-vernier/triggered corrections can all be evaluated offline without re-running hardware.",
+  "arrays_in_npz": "driven_c,ref1_c,ref2_c (P,navg) complex; mon_c (P,n_mon,navg); mon_couple (P,n_mon) de-rotated complex coupling; win_mag (P,2W+1) lineshape; noise_floor; per-point summary.",
+  "summary": {
+    "strong_modes": 81,
+    "phase_raw_circstd_median_strong": 0.2854897998247901,
+    "phase_ref1_relstd_median_strong": 0.03083749206281837,
+    "ref1_coherence_median_strong": 0.99952463756118,
+    "phase_usable_modes": 63
+  }
+}

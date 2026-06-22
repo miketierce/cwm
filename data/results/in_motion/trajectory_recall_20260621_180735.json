@@ -1,0 +1,44 @@
+{
+  "timestamp": "20260621_180735",
+  "L": 5,
+  "K": 4,
+  "court_cols": 8,
+  "n_states": 20,
+  "repeats": 4,
+  "observe_steps": 4000,
+  "learned_frac": 1.0,
+  "clean": {
+    "greedy": 40.0,
+    "pathint": 40.0,
+    "wire": 20.0,
+    "chance": 20.0
+  },
+  "noise": [
+    {
+      "sigma": 0.0,
+      "glass_greedy": 40.0,
+      "glass_pathint": 40.0,
+      "wire": 20.0
+    },
+    {
+      "sigma": 0.5,
+      "glass_greedy": 40.0,
+      "glass_pathint": 40.0,
+      "wire": 20.0
+    },
+    {
+      "sigma": 1.0,
+      "glass_greedy": 40.0,
+      "glass_pathint": 40.0,
+      "wire": 20.0
+    },
+    {
+      "sigma": 1.5,
+      "glass_greedy": 40.0,
+      "glass_pathint": 40.0,
+      "wire": 18.333333333333332
+    }
+  ],
+  "hardware": true,
+  "note": "transitions LEARNED from observation (no geometry formula); glass=recall; landing recalled not computed; classical"
+}
