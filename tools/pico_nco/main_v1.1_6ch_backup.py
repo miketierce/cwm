@@ -1,45 +1,46 @@
 """
-Pico PIO+PWM NCO — 15-tone phase-coherent signal generator
+Pico PIO NCO — Multi-channel phase-locked signal generator
 ==========================================================
 Firmware for Raspberry Pi Pico H (RP2040).
 Replaces two dead AD9833 DDS modules for CWM experiments.
 
-Architecture (v2.0, 2026-06-22 — maxed for WL-B10 multipoint arrays):
-  - System clock: 126 MHz (all four glass eigenmodes within resonance bandwidth)
-  - 15 independent tones in THREE phase-coherent blocks:
-      Block A = PIO0 SM0-3 → CH1-4 → GP2,3,4,5 (pins 4,5,6,7).
-                4 tones phase-locked (PH1-4): interference / multi-TX plate 1.
-      Block B = PIO1 SM0-3 → CH5-8 → GP6,7,8,9 (pins 9,10,11,12).
-                4 tones phase-locked (PH5-8): interference / multi-TX plate 2.
-                → either PIO block holds 3 (or 4) TX in phase for a large plate.
-      Block C = PWM slices 0,1,2,3,5,6,7 → CH9-15 → GP16,18,20,22,10,12,14.
-                7 independent tones, sync-started phase-aligned at 0°.
-  - Phase is coherent WITHIN a block, not across blocks.
-  - Why 15 not 16: PWM slice 4 routes only to GP8/GP9 (used by Block B) or
-    GP24/GP25 (not on the header), so 7 PWM tones is the clean header maximum.
-  - 3.3 V square wave → 220 Ω → PZT (fundamental ≈ 2.1 Vpp). PWM also square.
+Architecture:
+  - System clock: 126 MHz (optimal for all four glass plate eigenmodes)
+  - Four PIO state machines share the same clock → guaranteed phase lock
+  - GP2 = Channel 1 (100mm SW PZT), GP3 = Channel 2 (100mm NE PZT)
+  - GP4 = Channel 3 (100mm SW PZT, 3-mode), GP5 = Channel 4 (25mm SW PZT)
+  - GP6 = Channel 5 (5th plate SW PZT, on PIO1) — added 2026-06-20
+  - 3.3 V square wave output → 220 Ω → PZT (fundamental ≈ 2.1 Vpp)
+
+Frequency accuracy (all within resonance bandwidth at Q≈3500):
+  35840 Hz → 35836.2 Hz (err -3.8, BW 10.2)
+  54920 Hz → 54925.9 Hz (err +5.9, BW 15.7)
+  57037 Hz → 57040.7 Hz (err +3.7, BW 16.3)
+  97011 Hz → 97005.4 Hz (err -5.6, BW 27.7)
 
 Serial protocol (USB CDC, appears as /dev/cu.usbmodem*):
-  F1:<hz>..F8:<hz>   Set PIO channel frequency (0 = off). CH1-4 Block A, CH5-8 Block B.
-  F9:<hz>..F15:<hz>  Set PWM channel frequency (0 = off). Block C.
-  F<hz>              Set CH1 frequency (legacy single-channel mode)
-  A<ch>:<permille>   Channel DUTY = amplitude (10..500 = 1%..50%, any ch 1-15).
-                     Fundamental amplitude ∝ sin(π·duty); 500 = max. ('amplitude of
-                     a fixed mode' encoding, T3.4.)
-  Foff               Stop all outputs (pins LOW)
-  PHASE:<deg>        Set CH2 phase offset relative to CH1 (alias of PH2)
-  PH1:<deg>..PH4:<deg>  Per-channel absolute phase for Block A (CH1-4, PIO0).
-  PH5:<deg>..PH8:<deg>  Per-channel absolute phase for Block B (CH5-8, PIO1).
-                     Drive N channels at the SAME freq on one plate, each at its
-                     own phase → N-path interference sum |Σ aₖ e^{iφₖ}| ². Up to
-                     4 phase-locked TX per PIO block.
-  STATUS             Report full state (CH1-8, PWM, DUTY, PHA, PHB)
-  FREQ?              Show eigenmode frequency errors
-  SWEEP:<s>:<e>:<step>  CH2 phase sweep, reports "SWEEP_PT:<deg>" at each step
-  TEMP / TIME        RP2040 die temperature / uptime
+  F1:<freq>       Set CH1 frequency (Hz), 0 = off
+  F2:<freq>       Set CH2 frequency (Hz), 0 = off
+  F3:<freq>       Set CH3 frequency (Hz), 0 = off
+  F4:<freq>       Set CH4 frequency (Hz), 0 = off (25mm plate)
+  F5:<freq>       Set CH5 frequency (Hz), 0 = off (5th plate, GP6/PIO1)
+  F<freq>         Set CH1 frequency (legacy single-channel mode)
+  A1:<permille>..A5:<permille>  Set channel DUTY = amplitude (10..500 = 1%..50%).
+                  Fundamental amplitude at the mode ∝ sin(π·duty); 500 = max.
+                  Amplitude knob for 'amplitude of a fixed mode' encoding (T3.4).
+  Foff            Stop all outputs (pins LOW)
+  PHASE:<deg>     Set CH2 phase offset relative to CH1 (degrees)
+  PH1:<deg>..PH4:<deg>  Per-channel absolute phase for CH1-4 (PIO0, phase-locked).
+                  Drive several channels at the SAME freq on one plate, each at its
+                  own phase → N-path interference sum |Σ aₖ e^{iφₖ}|². PH2 == PHASE.
+  P1:<reg>        Set CH1 phase (legacy AD9833 12-bit register format)
+  P2:<reg>        Set CH2 phase (legacy AD9833 12-bit register format)
+  STATUS          Report current state
+  FREQ?           Show all eigenmode frequency errors
+  SWEEP:<s>:<e>:<step>  Phase sweep, reports "SWEEP_PT:<deg>" at each step
+  D?              Query current frequency (legacy)
 
 Install: Copy this file to Pico as main.py (via Thonny or mpremote).
-Backup of the previous 6-channel firmware: tools/pico_nco/main_v1.1_6ch_backup.py
 """
 
 import machine
@@ -62,28 +63,12 @@ machine.freq(126_000_000)
 SYS_CLK = machine.freq()
 
 # ─── Pin Assignments ─────────────────────────────────────────────
-# Block A = PIO0 SM0-3 (one phase-locked quad) — interference / multi-TX plate 1
-PIN_CH1 = 2    # GP2  pin4  — Block A TX1
-PIN_CH2 = 3    # GP3  pin5  — Block A TX2
-PIN_CH3 = 4    # GP4  pin6  — Block A TX3
-PIN_CH4 = 5    # GP5  pin7  — Block A TX4
-# Block B = PIO1 SM0-3 (one phase-locked quad) — interference / multi-TX plate 2
-PIN_CH5 = 6    # GP6  pin9  — Block B TX1
-PIN_CH6 = 7    # GP7  pin10 — Block B TX2
-PIN_CH7 = 8    # GP8  pin11 — Block B TX3 (added 2026-06-22, PIO1 SM2)
-PIN_CH8 = 9    # GP9  pin12 — Block B TX4 (added 2026-06-22, PIO1 SM3)
-# Block C = PWM slices (sync-started, phase-aligned at 0°) — independent tones.
-# CH9-15 → PWM slices 0,1,2,3,5,6,7. (Slice 4 only routes to GP8/GP9 — taken by
-# Block B — or GP24/GP25 which are not on the Pico header, so it is unavailable.
-# 7 PWM tones is the clean header maximum → 8 PIO + 7 PWM = 15 independent tones.)
-PWM_PINS = {9: 16, 10: 18, 11: 20, 12: 22, 13: 10, 14: 12, 15: 14}
-#  CH  GP  pin  slice          CH  GP  pin  slice
-#   9  16  21   s0             12  22  29   s3
-#  10  18  24   s1             13  10  14   s5
-#  11  20  26   s2             14  12  16   s6
-#                              15  14  19   s7
-PWM_BASE = 0x40050000          # RP2040 PWM peripheral base
-PWM_EN = PWM_BASE + 0xa0       # one bit per slice → single write starts all in phase
+PIN_CH1 = 2    # GP2 — TX1 (100mm plate SW PZT)
+PIN_CH2 = 3    # GP3 — TX2 (100mm plate NE PZT)
+PIN_CH3 = 4    # GP4 — TX3 (100mm plate SW PZT, 3-mode experiments)
+PIN_CH4 = 5    # GP5 — TX4 (25mm plate SW PZT)
+PIN_CH5 = 6    # GP6 — TX5 (5th plate SW PZT, added 2026-06-20)
+PIN_CH6 = 7    # GP7 — TX6 (PIO1 SM1, added 2026-06-21 — 2nd TX for a 3rd slide)
 LED_PIN = 25   # Onboard LED — blinks on command receipt
 
 led = machine.Pin(LED_PIN, machine.Pin.OUT)
@@ -168,11 +153,6 @@ def counts_to_period(high, low):
     return high + low + OVERHEAD
 
 
-def pwm_slice(gp):
-    """RP2040 PWM slice (0-7) that owns a GPIO."""
-    return (gp >> 1) & 0x7
-
-
 def apply_duty(high, low, duty_permille):
     """Re-split a (high, low) pair to a target duty cycle WITHOUT changing the
     total period (so the frequency is unchanged). duty_permille is the HIGH
@@ -202,29 +182,22 @@ sm2 = None
 sm3 = None
 sm4 = None
 sm5 = None
-sm6 = None
-sm7 = None
 current_freq1 = 0
 current_freq2 = 0
 current_freq3 = 0
 current_freq4 = 0
 current_freq5 = 0
 current_freq6 = 0
-current_freq7 = 0
-current_freq8 = 0
 current_phase = 0.0    # degrees, CH2 relative to CH1 (alias: PH2 / PHASE)
-# Per-channel phase (deg). Block A (PIO0, CH1-4) phase-locks via PH1-4; Block B
-# (PIO1, CH5-8) phase-locks via PH5-8. Phase is coherent WITHIN a PIO block
-# (shared simultaneous start), NOT across blocks. Two PIO blocks = two
-# independent interference-capable plates, each holding up to 4 TX in phase.
-# All phases 0 = bit-for-bit the legacy behavior.
+# Per-channel phase (deg). PIO0 group (CH1-4) phase-locks via PH1-4; PIO1 group
+# (CH5-6) phase-locks via PH5-6. Phase is coherent WITHIN a PIO block (shared
+# simultaneous start), NOT across blocks. Two groups = two independent
+# interference-capable plates. All phases 0 = bit-for-bit the legacy behavior.
 current_phase1 = 0.0
 current_phase3 = 0.0
 current_phase4 = 0.0
 current_phase5 = 0.0
 current_phase6 = 0.0
-current_phase7 = 0.0
-current_phase8 = 0.0
 # Per-channel duty cycle (permille of period high). 500 = 50% = MAX amplitude.
 # Lower duty = lower fundamental amplitude (amp ∝ sin(π·duty)). Amplitude knob.
 duty1 = 500
@@ -233,12 +206,6 @@ duty3 = 500
 duty4 = 500
 duty5 = 500
 duty6 = 500
-duty7 = 500
-duty8 = 500
-# Block C — PWM tone state (CH9-15). Independent tones; phase-aligned at start.
-pwm_freq = {ch: 0 for ch in PWM_PINS}
-pwm_duty = {ch: 500 for ch in PWM_PINS}
-pwm_obj = {ch: None for ch in PWM_PINS}
 running = False
 
 # PIO0 control register for simultaneous SM start
@@ -253,14 +220,12 @@ PIO1_CTRL = PIO1_BASE + 0x000
 # ─── Oscillator Control ──────────────────────────────────────────
 def start_oscillators():
     """Start all active channels with current freq/phase settings."""
-    global sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7, running
+    global sm0, sm1, sm2, sm3, sm4, sm5, running
 
     stop_oscillators()
 
-    any_pwm = any(pwm_freq[ch] > 0 for ch in PWM_PINS)
     if (current_freq1 <= 0 and current_freq2 <= 0 and current_freq3 <= 0
-            and current_freq4 <= 0 and current_freq5 <= 0 and current_freq6 <= 0
-            and current_freq7 <= 0 and current_freq8 <= 0 and not any_pwm):
+            and current_freq4 <= 0 and current_freq5 <= 0 and current_freq6 <= 0):
         return
 
     h1, l1 = freq_to_counts(current_freq1) if current_freq1 > 0 else (1, 1)
@@ -269,8 +234,6 @@ def start_oscillators():
     h4, l4 = freq_to_counts(current_freq4) if current_freq4 > 0 else (1, 1)
     h5, l5 = freq_to_counts(current_freq5) if current_freq5 > 0 else (1, 1)
     h6, l6 = freq_to_counts(current_freq6) if current_freq6 > 0 else (1, 1)
-    h7, l7 = freq_to_counts(current_freq7) if current_freq7 > 0 else (1, 1)
-    h8, l8 = freq_to_counts(current_freq8) if current_freq8 > 0 else (1, 1)
 
     # Apply per-channel duty (amplitude) — preserves period, so freq unchanged.
     if current_freq1 > 0:
@@ -285,10 +248,6 @@ def start_oscillators():
         h5, l5 = apply_duty(h5, l5, duty5)
     if current_freq6 > 0:
         h6, l6 = apply_duty(h6, l6, duty6)
-    if current_freq7 > 0:
-        h7, l7 = apply_duty(h7, l7, duty7)
-    if current_freq8 > 0:
-        h8, l8 = apply_duty(h8, l8, duty8)
 
     # Per-channel phase delays (clock ticks) for CH1-4 on PIO0. Each channel's
     # first HIGH is extended by its delay, shifting all of its cycles by that phase.
@@ -306,10 +265,8 @@ def start_oscillators():
     delay_ticks = _phase_delay(current_freq2, current_phase, h2, l2)  # CH2 (backward compat)
     delay3 = _phase_delay(current_freq3, current_phase3, h3, l3)
     delay4 = _phase_delay(current_freq4, current_phase4, h4, l4)
-    delay5 = _phase_delay(current_freq5, current_phase5, h5, l5)   # PIO1 group (Block B)
+    delay5 = _phase_delay(current_freq5, current_phase5, h5, l5)   # PIO1 group
     delay6 = _phase_delay(current_freq6, current_phase6, h6, l6)
-    delay7 = _phase_delay(current_freq7, current_phase7, h7, l7)
-    delay8 = _phase_delay(current_freq8, current_phase8, h8, l8)
 
     # Create state machines in PIO 0 (shared clock, simultaneous start)
     if current_freq1 > 0:
@@ -350,7 +307,7 @@ def start_oscillators():
         sm4.put(l5)              # low_count
         sm4.put(h5)              # normal_high
 
-    # CH6 on PIO1 (SM index 5) — 2nd channel of the Block B phase-locked quad.
+    # CH6 on PIO1 (SM index 5) — 2nd channel of the PIO1 phase-locked pair.
     if current_freq6 > 0:
         sm5 = StateMachine(5, nco_prog, freq=SYS_CLK,
                            set_base=machine.Pin(PIN_CH6))
@@ -358,24 +315,7 @@ def start_oscillators():
         sm5.put(l6)              # low_count
         sm5.put(h6)              # normal_high
 
-    # CH7/CH8 on PIO1 (SM index 6/7) — 3rd/4th channels of the Block B quad. All
-    # four PIO1 SMs share PIO1's simultaneous start → up to 4 phase-locked TX on
-    # ONE plate (PH5-8). This is the block that keeps 3 (or 4) TX in phase.
-    if current_freq7 > 0:
-        sm6 = StateMachine(6, nco_prog, freq=SYS_CLK,
-                           set_base=machine.Pin(PIN_CH7))
-        sm6.put(h7 + delay7)     # first_high extended by CH7 phase delay
-        sm6.put(l7)              # low_count
-        sm6.put(h7)              # normal_high
-
-    if current_freq8 > 0:
-        sm7 = StateMachine(7, nco_prog, freq=SYS_CLK,
-                           set_base=machine.Pin(PIN_CH8))
-        sm7.put(h8 + delay8)     # first_high extended by CH8 phase delay
-        sm7.put(l8)              # low_count
-        sm7.put(h8)              # normal_high
-
-    # Start Block A (PIO0 SM0-3) simultaneously via direct register write
+    # Start all simultaneously via direct register write
     enable_mask = 0
     if sm0:
         enable_mask |= 0x01   # SM0 enable
@@ -388,58 +328,29 @@ def start_oscillators():
 
     machine.mem32[PIO_CTRL] = enable_mask
 
-    # Start Block B (PIO1 SM0-3) — set all four enable bits together so they
-    # launch on the same clock edge (PIO1 SM0=bit0 .. SM3=bit3) → phase-locked.
+    # Start CH5/CH6 on PIO1 (SM0/SM1) — set both enable bits together so they
+    # launch on the same clock edge (PIO1 SM0 = bit0, SM1 = bit1).
     pio1_mask = 0
     if sm4:
         pio1_mask |= 0x01
     if sm5:
         pio1_mask |= 0x02
-    if sm6:
-        pio1_mask |= 0x04
-    if sm7:
-        pio1_mask |= 0x08
     if pio1_mask:
         machine.mem32[PIO1_CTRL] = pio1_mask
-
-    # ── Block C: PWM tones (CH9-15) ─────────────────────────────────────
-    # Independent tones for simple / single-TX plates. machine.PWM sets each
-    # slice's GPIO function, period and duty; then a single write to PWM_EN
-    # (after zeroing counters) launches the whole block phase-aligned at 0°.
-    active_slices = 0
-    for ch, gp in PWM_PINS.items():
-        if pwm_freq[ch] > 0:
-            if pwm_obj[ch] is None:
-                pwm_obj[ch] = machine.PWM(machine.Pin(gp))
-            pwm_obj[ch].freq(pwm_freq[ch])
-            pwm_obj[ch].duty_u16((65535 * pwm_duty[ch]) // 1000)
-            active_slices |= (1 << pwm_slice(gp))
-        elif pwm_obj[ch] is not None:
-            try:
-                pwm_obj[ch].deinit()
-            except Exception:
-                pass
-            pwm_obj[ch] = None
-            machine.Pin(gp, machine.Pin.OUT).value(0)
-    if active_slices:
-        machine.mem32[PWM_EN] = 0                       # freeze all slices
-        for ch, gp in PWM_PINS.items():
-            if pwm_freq[ch] > 0:
-                machine.mem32[PWM_BASE + 0x08 + pwm_slice(gp) * 0x14] = 0   # zero counter
-        machine.mem32[PWM_EN] = active_slices           # launch together (phase-aligned)
 
     running = True
 
 def stop_oscillators():
     """Stop all channels, force outputs LOW."""
-    global sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7, running
+    global sm0, sm1, sm2, sm3, sm4, sm5, running
 
-    # Disable all state machines in PIO 0 and PIO 1 (Blocks A and B)
+    # Disable all state machines in PIO 0
     machine.mem32[PIO_CTRL] = 0x00
+    # Disable CH5 state machine in PIO 1
     machine.mem32[PIO1_CTRL] = 0x00
 
     # Force outputs LOW via exec (works even when SM disabled)
-    for sm in (sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7):
+    for sm in (sm0, sm1, sm2, sm3, sm4, sm5):
         if sm:
             try:
                 sm.exec(0xE000)    # set(pins, 0)
@@ -451,26 +362,13 @@ def stop_oscillators():
     sm3 = None
     sm4 = None
     sm5 = None
-    sm6 = None
-    sm7 = None
 
-    # Disable Block C (PWM) slices and release their pins LOW
-    try:
-        machine.mem32[PWM_EN] = 0
-    except Exception:
-        pass
-    for ch, gp in PWM_PINS.items():
-        if pwm_obj[ch] is not None:
-            try:
-                pwm_obj[ch].deinit()
-            except Exception:
-                pass
-            pwm_obj[ch] = None
-        machine.Pin(gp, machine.Pin.OUT).value(0)
-
-    # Belt-and-suspenders: set PIO pins LOW from CPU
-    for p in (PIN_CH1, PIN_CH2, PIN_CH3, PIN_CH4, PIN_CH5, PIN_CH6, PIN_CH7, PIN_CH8):
-        machine.Pin(p, machine.Pin.OUT).value(0)
+    # Belt-and-suspenders: set pins LOW from CPU
+    machine.Pin(PIN_CH1, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH2, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH3, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH4, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH5, machine.Pin.OUT).value(0)
 
     running = False
 
@@ -479,9 +377,8 @@ def stop_oscillators():
 def handle_command(cmd):
     """Parse and execute a serial command. Returns response string."""
     global current_freq1, current_freq2, current_freq3, current_freq4, current_freq5, current_freq6, current_phase
-    global current_freq7, current_freq8
-    global current_phase1, current_phase3, current_phase4, current_phase5, current_phase6, current_phase7, current_phase8
-    global duty1, duty2, duty3, duty4, duty5, duty6, duty7, duty8
+    global current_phase1, current_phase3, current_phase4, current_phase5, current_phase6
+    global duty1, duty2, duty3, duty4, duty5, duty6
 
     cmd = cmd.strip()
     if not cmd:
@@ -584,43 +481,18 @@ def handle_command(cmd):
         except ValueError:
             return "ERR:bad_freq"
 
-    # ── F7:<freq> — Block B TX3 (GP8/pin11, PIO1 SM2) ──
-    elif cmd.startswith("F7:"):
-        try:
-            current_freq7 = int(cmd[3:])
-            start_oscillators()
-            return f"DDS7:{current_freq7}"
-        except ValueError:
-            return "ERR:bad_freq"
-
-    # ── F8:<freq> — Block B TX4 (GP9/pin12, PIO1 SM3) ──
-    elif cmd.startswith("F8:"):
-        try:
-            current_freq8 = int(cmd[3:])
-            start_oscillators()
-            return f"DDS8:{current_freq8}"
-        except ValueError:
-            return "ERR:bad_freq"
-
-    # ── F9:..F15: — Block C PWM tones (independent plates) ──
-    elif cmd[:1] == "F" and ":" in cmd and cmd[1:cmd.index(":")].isdigit() \
-            and 9 <= int(cmd[1:cmd.index(":")]) <= 15:
-        try:
-            ch = int(cmd[1:cmd.index(":")])
-            pwm_freq[ch] = int(cmd[cmd.index(":") + 1:])
-            start_oscillators()
-            return f"DDS{ch}:{pwm_freq[ch]}"
-        except (ValueError, KeyError):
-            return "ERR:bad_freq"
-
     # ── A<ch>:<permille> — Set channel DUTY = amplitude (10..500 = 1%..50%) ──
     # Fundamental amplitude at the mode ∝ sin(π·duty); 500 = max, lower = quieter.
     # This is the amplitude knob for the proven 'amplitude of a fixed mode' encoding.
-    elif cmd[:1] == "A" and ":" in cmd and cmd[1:cmd.index(":")].isdigit():
+    elif cmd.startswith("A1:") or cmd.startswith("A2:") or cmd.startswith("A3:") \
+            or cmd.startswith("A4:") or cmd.startswith("A5:") or cmd.startswith("A6:"):
         try:
-            ch = int(cmd[1:cmd.index(":")])
-            d = int(cmd[cmd.index(":") + 1:])
-            d = 10 if d < 10 else (500 if d > 500 else d)
+            ch = int(cmd[1])
+            d = int(cmd[3:])
+            if d < 10:
+                d = 10
+            if d > 500:
+                d = 500
             if ch == 1:
                 duty1 = d
             elif ch == 2:
@@ -633,14 +505,6 @@ def handle_command(cmd):
                 duty5 = d
             elif ch == 6:
                 duty6 = d
-            elif ch == 7:
-                duty7 = d
-            elif ch == 8:
-                duty8 = d
-            elif ch in PWM_PINS:
-                pwm_duty[ch] = d
-            else:
-                return "ERR:bad_ch"
             start_oscillators()
             return f"AMP{ch}:{d}"
         except (ValueError, IndexError):
@@ -655,10 +519,6 @@ def handle_command(cmd):
         current_freq4 = 0
         current_freq5 = 0
         current_freq6 = 0
-        current_freq7 = 0
-        current_freq8 = 0
-        for ch in PWM_PINS:
-            pwm_freq[ch] = 0
         return "DDS:0"
 
     # ── PHASE:<degrees> — Set CH2 phase offset ──
@@ -723,22 +583,6 @@ def handle_command(cmd):
             return f"PH6:{current_phase6:.2f}"
         except ValueError:
             return "ERR:bad_phase"
-    elif cmd.startswith("PH7:"):
-        try:
-            current_phase7 = float(cmd[4:]) % 360.0
-            if running:
-                start_oscillators()
-            return f"PH7:{current_phase7:.2f}"
-        except ValueError:
-            return "ERR:bad_phase"
-    elif cmd.startswith("PH8:"):
-        try:
-            current_phase8 = float(cmd[4:]) % 360.0
-            if running:
-                start_oscillators()
-            return f"PH8:{current_phase8:.2f}"
-        except ValueError:
-            return "ERR:bad_phase"
 
     # ── P1:<reg> — Legacy AD9833 phase register for CH1 (ignored, phase is relative) ──
     elif cmd.startswith("P1:"):
@@ -767,25 +611,32 @@ def handle_command(cmd):
 
     # ── STATUS — Full state report ──
     elif cmd == "STATUS":
-        def _af(f):
-            return counts_to_freq(*freq_to_counts(f)) if f > 0 else 0.0
-        pwm_report = ",".join(
-            f"{ch}:{(pwm_obj[ch].freq() if pwm_obj[ch] else 0)}" for ch in sorted(PWM_PINS))
+        h1, l1 = freq_to_counts(current_freq1) if current_freq1 > 0 else (0, 0)
+        h2, l2 = freq_to_counts(current_freq2) if current_freq2 > 0 else (0, 0)
+        h3, l3 = freq_to_counts(current_freq3) if current_freq3 > 0 else (0, 0)
+        h4, l4 = freq_to_counts(current_freq4) if current_freq4 > 0 else (0, 0)
+        h5, l5 = freq_to_counts(current_freq5) if current_freq5 > 0 else (0, 0)
+        h6, l6 = freq_to_counts(current_freq6) if current_freq6 > 0 else (0, 0)
+        actual1 = counts_to_freq(h1, l1) if current_freq1 > 0 else 0.0
+        actual2 = counts_to_freq(h2, l2) if current_freq2 > 0 else 0.0
+        actual3 = counts_to_freq(h3, l3) if current_freq3 > 0 else 0.0
+        actual4 = counts_to_freq(h4, l4) if current_freq4 > 0 else 0.0
+        actual5 = counts_to_freq(h5, l5) if current_freq5 > 0 else 0.0
+        actual6 = counts_to_freq(h6, l6) if current_freq6 > 0 else 0.0
+        period2 = counts_to_period(h2, l2) if current_freq2 > 0 else 0
+        phase_ticks = round(current_phase / 360.0 * period2) if period2 > 0 else 0
         return (
             f"CLK:{SYS_CLK} "
-            f"CH1:{current_freq1}({_af(current_freq1):.1f}Hz) "
-            f"CH2:{current_freq2}({_af(current_freq2):.1f}Hz) "
-            f"CH3:{current_freq3}({_af(current_freq3):.1f}Hz) "
-            f"CH4:{current_freq4}({_af(current_freq4):.1f}Hz) "
-            f"CH5:{current_freq5}({_af(current_freq5):.1f}Hz) "
-            f"CH6:{current_freq6}({_af(current_freq6):.1f}Hz) "
-            f"CH7:{current_freq7}({_af(current_freq7):.1f}Hz) "
-            f"CH8:{current_freq8}({_af(current_freq8):.1f}Hz) "
-            f"PWM[{pwm_report}] "
-            f"DUTY:{duty1},{duty2},{duty3},{duty4},{duty5},{duty6},{duty7},{duty8} "
-            f"PH:{current_phase:.2f}deg "
+            f"CH1:{current_freq1}({actual1:.1f}Hz) "
+            f"CH2:{current_freq2}({actual2:.1f}Hz) "
+            f"CH3:{current_freq3}({actual3:.1f}Hz) "
+            f"CH4:{current_freq4}({actual4:.1f}Hz) "
+            f"CH5:{current_freq5}({actual5:.1f}Hz) "
+            f"CH6:{current_freq6}({actual6:.1f}Hz) "
+            f"DUTY:{duty1},{duty2},{duty3},{duty4},{duty5},{duty6} "
+            f"PH:{current_phase:.2f}deg({phase_ticks}ticks) "
             f"PHA:{current_phase1:.0f},{current_phase:.0f},{current_phase3:.0f},{current_phase4:.0f} "
-            f"PHB:{current_phase5:.0f},{current_phase6:.0f},{current_phase7:.0f},{current_phase8:.0f} "
+            f"PHB:{current_phase5:.0f},{current_phase6:.0f} "
             f"RUN:{'Y' if running else 'N'}"
         )
 
@@ -847,15 +698,15 @@ def handle_command(cmd):
 def main():
     # Startup banner
     print("")
-    print("CWM Pico NCO v2.0 — 15 tones (8 PIO + 7 PWM), 3 phase-coherent blocks")
-    print(f"CLK:{SYS_CLK/1e6:.0f}MHz  BlockA GP2-5  BlockB GP6-9  BlockC PWMx7")
+    print("CWM Pico NCO v1.1")
+    print(f"CLK:{SYS_CLK/1e6:.0f}MHz GP{PIN_CH1}+GP{PIN_CH2}+GP{PIN_CH3}+GP{PIN_CH4}")
     print("OK")
 
-    # Ensure all outputs start LOW (PIO Blocks A+B and PWM Block C)
-    for p in (PIN_CH1, PIN_CH2, PIN_CH3, PIN_CH4, PIN_CH5, PIN_CH6, PIN_CH7, PIN_CH8):
-        machine.Pin(p, machine.Pin.OUT).value(0)
-    for gp in PWM_PINS.values():
-        machine.Pin(gp, machine.Pin.OUT).value(0)
+    # Ensure outputs start LOW
+    machine.Pin(PIN_CH1, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH2, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH3, machine.Pin.OUT).value(0)
+    machine.Pin(PIN_CH4, machine.Pin.OUT).value(0)
 
     # Non-blocking serial read via poll
     poll = select.poll()

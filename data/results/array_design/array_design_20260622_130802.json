@@ -1,0 +1,161 @@
+{
+  "timestamp": "20260622_130802",
+  "collision_bw": 500.0,
+  "tone_budget": 8,
+  "max_tx": 4,
+  "seed_plates": {
+    "plate_100mm": {
+      "size": "100x100x1 fused-silica",
+      "band": [
+        40000,
+        100000
+      ],
+      "n_modes": 14,
+      "cand": 35,
+      "multipoint_gain": 4,
+      "Q_typ": 500,
+      "note": "LOW band, dense comb (MEASURED Q 410-743; keep-coll F1=35,F2=29,F5=52)"
+    },
+    "plate_25mm": {
+      "size": "25x25x1 fused-silica",
+      "band": [
+        230000,
+        330000
+      ],
+      "n_modes": 4,
+      "cand": 48,
+      "multipoint_gain": 2,
+      "Q_typ": 520,
+      "note": "HIGH band, sparse CLEAN but keep-coll F4=48 (low 56-91k + main). (low 56-91k cluster COLLIDES with 100mm \u2014 a FEATURE in kernel regime)"
+    },
+    "slide_A": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        100000,
+        175000
+      ],
+      "n_modes": 10,
+      "cand": 24,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID-LOW band (EST f\u221dh/L\u00b2; heaviest mass \u2192 lowest; cand EST ~2.4\u00d7 clean)"
+    },
+    "slide_B": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        140000,
+        215000
+      ],
+      "n_modes": 10,
+      "cand": 24,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID band (EST; medium mass)"
+    },
+    "slide_C": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        180000,
+        255000
+      ],
+      "n_modes": 10,
+      "cand": 24,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID-HIGH band (EST; lightest mass \u2192 highest)"
+    }
+  },
+  "split_no_relay": {
+    "plates": 11,
+    "candidate_pool": 471,
+    "independent_dim": 43
+  },
+  "relay_fanout": {
+    "plates": 16,
+    "tx_pzts": 36,
+    "candidate_pool": 857,
+    "independent_dim": 48,
+    "lead_factor_20cm_twisted": 0.958,
+    "cand_untwisted": 373
+  },
+  "winners": {
+    "tracking": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 3,
+        "slide_C": 3
+      },
+      "n_tones": 8,
+      "n_usable": 54.0,
+      "total_raw": 54.0,
+      "total_cand": 138.9,
+      "collisions": 0.0,
+      "n_clean": 7
+    },
+    "classification": {
+      "plates": [
+        "plate_100mm",
+        "plate_25mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "plate_25mm": 2,
+        "slide_A": 2,
+        "slide_C": 2
+      },
+      "n_tones": 8,
+      "n_usable": 92.2,
+      "total_raw": 54.0,
+      "total_cand": 196.5,
+      "collisions": 6.5,
+      "n_clean": 7
+    },
+    "balanced": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 3,
+        "slide_C": 3
+      },
+      "n_tones": 8,
+      "n_usable": 54.0,
+      "total_raw": 54.0,
+      "total_cand": 138.9,
+      "collisions": 0.0,
+      "n_clean": 7
+    },
+    "kernel": {
+      "plates": [
+        "plate_100mm",
+        "plate_25mm",
+        "slide_A",
+        "slide_B",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "plate_25mm": 3,
+        "slide_A": 1,
+        "slide_B": 1,
+        "slide_C": 1
+      },
+      "n_tones": 8,
+      "n_usable": 210.9,
+      "total_raw": 55.2,
+      "total_cand": 210.9,
+      "collisions": 23.8,
+      "n_clean": 5
+    }
+  }
+}

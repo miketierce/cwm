@@ -121,7 +121,7 @@ def simulate_timemux(u, H, freqs, Q, f_step, mask, n_slices=10,
 
     # Simulate
     state = np.zeros(n_modes)
-    
+
     if feature_mode == 'linear':
         # Baseline: just one readout per step (same as D3)
         features = np.zeros((n_steps, n_rx))
@@ -178,7 +178,7 @@ def simulate_timemux(u, H, freqs, Q, f_step, mask, n_slices=10,
         # Strategy: compute all linear features, then take selected quadratics
         state = np.zeros(n_modes)
         linear_feats = np.zeros((n_steps, n_linear))
-        
+
         for t in range(n_steps):
             state = state * decay_full + mask * u[t]
             for k in range(n_slices):
@@ -203,7 +203,7 @@ def simulate_timemux(u, H, freqs, Q, f_step, mask, n_slices=10,
         # This captures "how beat patterns evolve" without explosion
         state = np.zeros(n_modes)
         linear_feats = np.zeros((n_steps, n_slices * n_rx))
-        
+
         for t in range(n_steps):
             state = state * decay_full + mask * u[t]
             for k in range(n_slices):
@@ -211,7 +211,7 @@ def simulate_timemux(u, H, freqs, Q, f_step, mask, n_slices=10,
                 linear_feats[t, k*n_rx:(k+1)*n_rx] = state_k @ H
 
         quad_list = [linear_feats]
-        
+
         # Cross-time products (same receiver, different slices)
         for r in range(n_rx):
             for k1 in range(n_slices):
@@ -311,7 +311,7 @@ results_phase2 = []
 
 for n_slices in [5, 8, 10]:
     print(f"  K={n_slices} slices, f_step={f_best} Hz:")
-    
+
     # Selective quadratic (manageable size)
     states_sq = simulate_timemux(u_narma, H_orig, freqs, Q_LOADED, f_best,
                                  mask, n_slices, 'timemux_selective_quad')
@@ -359,7 +359,7 @@ print()
 def simulate_timemux_cascade(u, H_cascade, freqs, Q, f_step, mask, n_slices=10):
     """
     Time-multiplexed reservoir using cascade H matrix.
-    
+
     Columns 0,1 (PI_NW, PI_NE): single-plate decay at rate π*f/Q
     Columns 2,3 (PH_NW, PH_NE): cascade decay (convolution of two exponentials)
       - Modeled as: response ~ t * exp(-π*f*t/Q) (critically damped 2nd order)
@@ -373,7 +373,7 @@ def simulate_timemux_cascade(u, H_cascade, freqs, Q, f_step, mask, n_slices=10):
     # Decay matrices for direct channels (0,1) and cascade channels (2,3)
     # Direct: exp(-π*f*t/Q)
     decay_direct = np.exp(-np.pi * freqs[np.newaxis, :] * t_slices[:, np.newaxis] / Q)
-    
+
     # Cascade: t*exp(-π*f*t/Q) normalized to peak at t_peak = Q/(π*f)
     # This models the convolution of two identical exponential decays
     rate = np.pi * freqs[np.newaxis, :] / Q  # (1, n_modes)
@@ -409,7 +409,7 @@ def simulate_timemux_cascade(u, H_cascade, freqs, Q, f_step, mask, n_slices=10):
 
     # Selective quadratic: cross-time and cross-receiver products
     quad_list = [linear_feats]
-    
+
     # Cross-time products (same receiver, different slices)
     for r in range(n_rx):
         for k1 in range(n_slices):

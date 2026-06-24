@@ -66,7 +66,7 @@ def generate_narma10(n_steps, seed=42):
 def simulate_reservoir(u, H, freqs, Q, f_step, mask, feature_mode='quadratic'):
     """
     Simulate plate mode dynamics + feature extraction.
-    
+
     Args:
         u: input sequence (n_steps,)
         H: transfer matrix (n_modes, n_rx)
@@ -75,69 +75,69 @@ def simulate_reservoir(u, H, freqs, Q, f_step, mask, feature_mode='quadratic'):
         f_step: input presentation rate (Hz)
         mask: spreading code (n_modes,) — weights per mode
         feature_mode: 'linear', 'quadratic', or 'both'
-    
+
     Returns:
         states: (n_steps, n_features) feature matrix
     """
     n_steps = len(u)
     n_modes, n_rx = H.shape
-    
+
     # Mode-specific decay rates (KEY: different modes decay at different rates!)
     # decay_i = exp(-π * f_i / (Q * f_step))
     # Higher frequency modes decay faster per step
     decay = np.exp(-np.pi * freqs / (Q * f_step))
-    
+
     print(f"  Decay rates: min={decay.min():.4f} (f={freqs[np.argmin(decay)]/1e3:.0f}kHz), "
           f"max={decay.max():.4f} (f={freqs[np.argmax(decay)]/1e3:.0f}kHz)")
     print(f"  Memory depth (steps to 1/e): min={-1/np.log(decay.min()):.1f}, max={-1/np.log(decay.max()):.1f}")
-    
+
     # Simulate mode amplitudes
     a = np.zeros((n_steps, n_modes))
     state = np.zeros(n_modes)
-    
+
     for t in range(n_steps):
         state = state * decay + mask * u[t]
         a[t] = state
-    
+
     # Feature extraction
     if feature_mode == 'linear':
         # Standard: project through H → 4 features (rank 4, same as D2)
         return a @ H  # (n_steps, n_rx)
-    
+
     elif feature_mode == 'quadratic':
         # Beat-pattern: products a_i * a_j projected through H[i,r]*H[j,r]
         # For efficiency, compute selected quadratic features
-        
+
         # Strategy: Use ALL mode pairs but project through receiver weights
         # Feature at receiver r for pair (i,j): a_i * a_j * H[i,r] * H[j,r]
-        # This is equivalent to: for each receiver r, compute (H[:,r] ⊙ a)² 
+        # This is equivalent to: for each receiver r, compute (H[:,r] ⊙ a)²
         # decomposed into self-terms and cross-terms
-        
+
         # Efficient computation: for each receiver, compute element-wise
         # weighted_a_r = a * H[:,r]  → then outer product
         # But we want the unique upper-triangle of the outer product
-        
+
         features = []
         for r in range(n_rx):
             w = H[:, r]  # (n_modes,) spatial weight for this receiver
             wa = a * w[np.newaxis, :]  # (n_steps, n_modes) weighted amplitudes
-            
+
             # Self-terms (diagonal): (a_i * H[i,r])² → 27 features per rx
             self_terms = wa ** 2  # (n_steps, n_modes)
             features.append(self_terms)
-            
+
             # Cross-terms: a_i*a_j * H[i,r]*H[j,r] for i<j → 351 features per rx
             # Efficient: wa_i * wa_j for all pairs
             for i in range(n_modes):
                 for j in range(i+1, n_modes):
                     features.append((wa[:, i] * wa[:, j])[:, np.newaxis])
-        
+
         return np.hstack(features)
-    
+
     elif feature_mode == 'both':
         # Linear + quadratic
         linear = a @ H  # (n_steps, n_rx)
-        
+
         features = [linear]
         for r in range(n_rx):
             w = H[:, r]
@@ -147,9 +147,9 @@ def simulate_reservoir(u, H, freqs, Q, f_step, mask, feature_mode='quadratic'):
             for i in range(n_modes):
                 for j in range(i+1, n_modes):
                     features.append((wa[:, i] * wa[:, j])[:, np.newaxis])
-        
+
         return np.hstack(features)
-    
+
     elif feature_mode == 'quadratic_compact':
         # More efficient: just compute a_i * a_j for all pairs, then project
         # through Khatri-Rao product of H. This avoids per-receiver loop.
@@ -171,16 +171,16 @@ def train_readout(states, target, n_train, ridge_alpha=1e-4):
     y_train = target[washout:n_train]
     X_test = states[n_train:]
     y_test = target[n_train:]
-    
+
     # Ridge regression
     XtX = X_train.T @ X_train + ridge_alpha * np.eye(X_train.shape[1])
     W_out = np.linalg.solve(XtX, X_train.T @ y_train)
-    
+
     y_pred = X_test @ W_out
     mse = np.mean((y_test - y_pred)**2)
     var = np.var(y_test)
     nrmse = np.sqrt(mse / var) if var > 1e-10 else np.inf
-    
+
     return nrmse, W_out
 
 
@@ -188,17 +188,17 @@ def memory_capacity(states, n_train, max_delay=50, ridge_alpha=1e-4, seed=42):
     """Compute memory capacity from state matrix."""
     rng = np.random.default_rng(seed)
     n_total = states.shape[0]
-    
+
     # Generate fresh random input for MC test
     u_mc = rng.uniform(-1, 1, n_total)
-    
+
     # Resimulate with this input... actually we need to pass in the states
     # that were driven by u_mc. For now, we'll compute MC on whatever states we have.
     # This is a simplification — proper MC needs states driven by white noise.
     washout = 200
     X_train = states[washout:n_train]
     X_test = states[n_train:]
-    
+
     mc = 0.0
     for delay in range(1, max_delay + 1):
         # Create delayed target from a reference signal
@@ -248,17 +248,17 @@ results_table = []
 
 for f_step in [500, 1000, 2000, 5000]:
     print(f"\n  f_step = {f_step} Hz:")
-    
+
     # Quadratic compact (all mode pairs, no receiver projection)
     states_q = simulate_reservoir(u_narma, H, freqs, Q_LOADED, f_step, mask_base, 'quadratic_compact')
     nrmse_q, _ = train_readout(states_q, y_narma, N_TRAIN)
     print(f"    Quadratic compact ({states_q.shape[1]} features): NRMSE = {nrmse_q:.4f}")
-    
+
     # Full quadratic through receivers (beat-pattern features)
     states_full = simulate_reservoir(u_narma, H, freqs, Q_LOADED, f_step, mask_base, 'both')
     nrmse_full, _ = train_readout(states_full, y_narma, N_TRAIN)
     print(f"    Full linear+quadratic ({states_full.shape[1]} features): NRMSE = {nrmse_full:.4f}")
-    
+
     results_table.append({
         'f_step': f_step,
         'nrmse_quad_compact': float(nrmse_q),
@@ -266,7 +266,7 @@ for f_step in [500, 1000, 2000, 5000]:
         'n_features_compact': states_q.shape[1],
         'n_features_full': states_full.shape[1],
     })
-    
+
     if nrmse_full < best_nrmse:
         best_nrmse = nrmse_full
         best_config = f_step

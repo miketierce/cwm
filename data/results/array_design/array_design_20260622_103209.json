@@ -1,0 +1,135 @@
+{
+  "timestamp": "20260622_103209",
+  "collision_bw": 500.0,
+  "tone_budget": 8,
+  "max_tx": 4,
+  "seed_plates": {
+    "plate_100mm": {
+      "size": "100x100x1 fused-silica",
+      "band": [
+        40000,
+        100000
+      ],
+      "n_modes": 14,
+      "multipoint_gain": 4,
+      "Q_typ": 500,
+      "note": "LOW band, dense comb (MEASURED Q 410-743)"
+    },
+    "plate_25mm": {
+      "size": "25x25x1 fused-silica",
+      "band": [
+        230000,
+        330000
+      ],
+      "n_modes": 4,
+      "multipoint_gain": 2,
+      "Q_typ": 520,
+      "note": "HIGH band, sparse + ISOLATED (MEASURED Q 512-535 @321k). (also has a low 56-91k cluster that COLLIDES with 100mm \u2014 avoid)"
+    },
+    "slide_A": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        100000,
+        175000
+      ],
+      "n_modes": 10,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID-LOW band (EST f\u221dh/L\u00b2; heaviest mass \u2192 lowest)"
+    },
+    "slide_B": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        140000,
+        215000
+      ],
+      "n_modes": 10,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID band (EST; medium mass)"
+    },
+    "slide_C": {
+      "size": "75x25x1 soda-lime",
+      "band": [
+        180000,
+        255000
+      ],
+      "n_modes": 10,
+      "multipoint_gain": 5,
+      "Q_typ": 300,
+      "note": "MID-HIGH band (EST; lightest mass \u2192 highest)"
+    }
+  },
+  "winners": {
+    "tracking": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 3,
+        "slide_C": 3
+      },
+      "n_tones": 8,
+      "n_usable": 54.0,
+      "total_raw": 54.0,
+      "collisions": 0.0,
+      "n_clean": 7
+    },
+    "classification": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 3,
+        "slide_C": 3
+      },
+      "n_tones": 8,
+      "n_usable": 54.0,
+      "total_raw": 54.0,
+      "collisions": 0.0,
+      "n_clean": 7
+    },
+    "balanced": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 3,
+        "slide_C": 3
+      },
+      "n_tones": 8,
+      "n_usable": 54.0,
+      "total_raw": 54.0,
+      "collisions": 0.0,
+      "n_clean": 7
+    },
+    "kernel": {
+      "plates": [
+        "plate_100mm",
+        "slide_A",
+        "slide_B",
+        "slide_C"
+      ],
+      "tx": {
+        "plate_100mm": 2,
+        "slide_A": 2,
+        "slide_B": 2,
+        "slide_C": 2
+      },
+      "n_tones": 8,
+      "n_usable": 63.0,
+      "total_raw": 63.0,
+      "collisions": 28.0,
+      "n_clean": 5
+    }
+  }
+}
