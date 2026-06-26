@@ -50,10 +50,17 @@ ap.add_argument('--size', type=float, default=100.0, help='plate edge (mm, squar
 ap.add_argument('--pzt-dia', type=float, default=10.0, help='PZT disc diameter (mm)')
 ap.add_argument('--edge-margin', type=float, default=1.0, help='min gap disc edge to plate edge (mm)')
 ap.add_argument('--min-gap', type=float, default=4.0, help='min gap between disc EDGES (mm)')
-ap.add_argument('--add', type=int, default=3, help='how many new PZTs to recommend')
+ap.add_argument('--add', type=int, default=None, help='how many new PZTs (default 3 for tx, 4 for rx)')
 ap.add_argument('--corner-inset', type=float, default=8.0, help='existing corner PZT center inset from each edge (mm)')
-ap.add_argument('--out', type=str, default='companion/pzt_placement_100mm', help='output path stem (.svg/.html)')
+ap.add_argument('--role', choices=['tx', 'rx', 'both'], default='tx',
+                help='tx = multipoint DRIVE discs; rx = CASCADE SENSOR discs; both = COMPLETE template (4 corner TX + 4 interior RX)')
+ap.add_argument('--out', type=str, default=None, help='output path stem (.svg/.html)')
 args = ap.parse_args()
+if args.add is None:
+    args.add = 4 if args.role in ('rx', 'both') else 3
+if args.out is None:
+    args.out = {'rx': 'companion/pzt_rx_placement_100mm',
+                'both': 'companion/pzt_template_100mm'}.get(args.role, 'companion/pzt_placement_100mm')
 
 L = args.size
 R = args.pzt_dia / 2.0
@@ -64,12 +71,24 @@ HI = L - LO                                     # max center coord
 # Existing corner PZTs (per relay map: SW=TX, NW=RX, NE=RX occupied; SE empty).
 # Layout is C4v-symmetric, so which corner is empty does not change the answer.
 ins = args.corner_inset
-EXISTING = {
-    'SW (TX→NCO)': (ins, ins),
-    'NW (RX)':     (ins, L - ins),
-    'NE (RX)':     (L - ins, L - ins),
-}
-EMPTY_CORNER = ('SE (empty)', (L - ins, ins))
+if args.role in ('rx', 'both'):
+    # CASCADE SOURCE plate: all 4 corners are the phase-locked TX (NCO Block A);
+    # place the 4 RX SENSORS at interior antinodes that read independent
+    # projections of the plate's field (-> cascade board -> plate B's 4 TX).
+    EXISTING = {
+        'SW (TX1)': (ins, ins),
+        'NW (TX2)': (ins, L - ins),
+        'NE (TX3)': (L - ins, L - ins),
+        'SE (TX4)': (L - ins, ins),
+    }
+    EMPTY_CORNER = None
+else:
+    EXISTING = {
+        'SW (TX→NCO)': (ins, ins),
+        'NW (RX)':     (ins, L - ins),
+        'NE (RX)':     (L - ins, L - ins),
+    }
+    EMPTY_CORNER = ('SE (empty)', (L - ins, ins))
 
 # ── Free-free beam mode shapes (Euler-Bernoulli) ────────────────────────────
 # idx 0 = rigid translation (const), 1 = rigid rotation (linear),
@@ -228,13 +247,16 @@ def region(p):
 
 # ── Report ───────────────────────────────────────────────────────────────
 print("=" * 74)
-print(f"  PZT PLACEMENT — {L:.0f} mm plate, add {args.add} multipoint-TX discs")
+_role_word = {'rx': 'RX cascade-sensor', 'both': 'interior-RX (+ 4 corner TX)'}.get(args.role, 'multipoint-TX')
+print(f"  PZT PLACEMENT — {L:.0f} mm plate, add {args.add} {_role_word} discs")
 print(f"  disc Ø{args.pzt_dia:.0f} mm | min center spacing {SPACING:.0f} mm | band: lowest {M} modes")
 print("=" * 74)
 print(f"  EXISTING (keep-out): " + ", ".join(f"{k} {v}" for k, v in EXISTING.items()))
-print(f"  4th corner {EMPTY_CORNER[0]} {EMPTY_CORNER[1]} is a WEAK + redundant spot — intentionally NOT chosen.\n")
+if EMPTY_CORNER is not None:
+    print(f"  4th corner {EMPTY_CORNER[0]} {EMPTY_CORNER[1]} is a WEAK + redundant spot — intentionally NOT chosen.")
+print()
 rank0 = addressable_rank(existing_vecs)
-print(f"  Addressable modes with the 3 corners alone : {rank0} / {M}")
+print(f"  Addressable modes with the {len(EXISTING)} corners alone : {rank0} / {M}")
 running = list(existing_vecs)
 for n, p in enumerate(chosen, 1):
     running.append(coupling_vector(*p))
@@ -276,8 +298,10 @@ svg = []
 svg.append(f'<svg xmlns="http://www.w3.org/2000/svg" width="{Wsvg:.1f}mm" height="{Hsvg:.1f}mm" '
            f'viewBox="0 0 {Wsvg:.1f} {Hsvg:.1f}">')
 svg.append(f'<rect x="0" y="0" width="{Wsvg:.1f}" height="{Hsvg:.1f}" fill="white"/>')
+_kind = {'rx': f'add {args.add} RX cascade sensors',
+         'both': 'COMPLETE TEMPLATE · 4 corner TX + 4 interior RX'}.get(args.role, f'add {args.add} TX PZTs')
 svg.append(f'<text x="{Wsvg/2:.1f}" y="6.5" font-size="3.5" font-weight="bold" text-anchor="middle" '
-           f'font-family="sans-serif">{L:.0f}\u00d7{L:.0f} mm plate \u00b7 add {args.add} TX PZTs \u00b7 PRINT AT 100% (ACTUAL SIZE)</text>')
+           f'font-family="sans-serif">{L:.0f}\u00d7{L:.0f} mm plate \u00b7 {_kind} \u00b7 PRINT AT 100% (ACTUAL SIZE)</text>')
 
 # 10 mm grid
 for k in range(0, int(L) + 1, 10):
@@ -299,16 +323,25 @@ for cx, cy in [(0, 0), (L, 0), (0, L), (L, L)]:
 svg.append(f'<text x="{sx(ins):.2f}" y="{sy(ins)-R-2:.2f}" font-size="2.3" fill="#888" text-anchor="middle" font-family="sans-serif">SW · TX to NCO</text>')
 
 # existing (keep-out) + empty corner
-for name, (x, y) in EXISTING.items():
-    svg.append(disc(x, y, '#888', name.split(' ')[0], 'existing', dash=True))
-ex_name, (exx, exy) = EMPTY_CORNER
-svg.append(f'<circle cx="{sx(exx):.2f}" cy="{sy(exy):.2f}" r="{R:.2f}" fill="none" stroke="#ccc" stroke-width="0.4" stroke-dasharray="1,1.5"/>')
-svg.append(f'<text x="{sx(exx):.2f}" y="{sy(exy)+1:.2f}" font-size="2.0" fill="#bbb" text-anchor="middle">skip</text>')
+if args.role == 'both':
+    # complete template: corners are first-class TX discs (NCO Block A CH1-4)
+    TXC = '#e8820e'
+    for n, (name, (x, y)) in enumerate(EXISTING.items(), 1):
+        svg.append(disc(x, y, TXC, name.split(' ')[0], f'TX{n} · CH{n}', dash=False))
+else:
+    for name, (x, y) in EXISTING.items():
+        svg.append(disc(x, y, '#888', name.split(' ')[0], 'existing', dash=True))
+if EMPTY_CORNER is not None:
+    ex_name, (exx, exy) = EMPTY_CORNER
+    svg.append(f'<circle cx="{sx(exx):.2f}" cy="{sy(exy):.2f}" r="{R:.2f}" fill="none" stroke="#ccc" stroke-width="0.4" stroke-dasharray="1,1.5"/>')
+    svg.append(f'<text x="{sx(exx):.2f}" y="{sy(exy)+1:.2f}" font-size="2.0" fill="#bbb" text-anchor="middle">skip</text>')
 
 # new targets
 PALETTE = ['#c81e3a', '#1769aa', '#1b8a3a', '#9b51e0', '#d98300']
+_chan = ['U1A → B-TX1', 'U1B → B-TX2', 'U2A → B-TX3', 'U2B → B-TX4']
 for n, p in enumerate(chosen, 1):
-    svg.append(disc(p[0], p[1], PALETTE[(n - 1) % len(PALETTE)], f'({p[0]:.0f},{p[1]:.0f})', f'new TX #{n}', num=n))
+    _sub = (f'RX#{n} · {_chan[(n-1) % len(_chan)]}') if args.role in ('rx', 'both') else f'new TX #{n}'
+    svg.append(disc(p[0], p[1], PALETTE[(n - 1) % len(PALETTE)], f'({p[0]:.0f},{p[1]:.0f})', _sub, num=n))
 
 # verification ruler (50 mm) bottom-left
 ry = Hsvg - 16
@@ -320,8 +353,15 @@ svg.append(f'<text x="{ox+50+2:.2f}" y="{ry+1:.2f}" font-size="2.6" font-family=
 
 # legend / notes
 ly = Hsvg - 8
-notes = ('Grey dashed = existing corner PZTs (keep-out). Numbered = drill/bond here, disc CENTER on the crosshair. '
-         'Corners are weak strain-couplers (~10%); interior antinodes couple richly. TX leads short + twisted with ground.')
+if args.role == 'both':
+    notes = ('Amber = 4 corner TX → NCO Block A (CH1-4, phase-locked, the 99.5% null). Numbered = 4 interior RX sensors '
+             '→ cascade board → plate B. 8 discs total; same pattern on BOTH plates (mass-match). Leads short + twisted.')
+elif args.role == 'rx':
+    notes = ('Grey dashed = the 4 CORNER TX (NCO Block A, keep-out). Numbered = bond an RX SENSOR here, disc CENTER on the '
+             'crosshair. Each RX → its own cascade-board channel → one of plate B’s TX. RX leads short + twisted with ground.')
+else:
+    notes = ('Grey dashed = existing corner PZTs (keep-out). Numbered = drill/bond here, disc CENTER on the crosshair. '
+             'Corners are weak strain-couplers (~10%); interior antinodes couple richly. TX leads short + twisted with ground.')
 svg.append(f'<text x="{ox:.2f}" y="{ly:.2f}" font-size="2.2" fill="#444" font-family="sans-serif">{notes}</text>')
 svg.append('</svg>')
 svg_text = "\n".join(svg)
@@ -336,6 +376,23 @@ rows = "".join(
     f"<tr><td style='color:{PALETTE[(n-1)%len(PALETTE)]};font-weight:700'>#{n}</td>"
     f"<td>({p[0]:.0f}, {p[1]:.0f}) mm</td><td>{region(p)}</td></tr>"
     for n, p in enumerate(chosen, 1))
+if args.role == 'both':
+    footer_note = ('Origin = bottom-left. AMBER = the 4 corner TX (NCO Block A, CH1-4, phase-locked — the E9 99.5% null). '
+                   'NUMBERED = the 4 interior RX sensors → OPA2134 cascade board → plate B’s 4 TX (see '
+                   'companion/cascade_board_wiring). 8 discs total. Bond the SAME pattern on BOTH plates for matched mass '
+                   '→ shared band; on plate B use 1 interior disc as the final RX (→ Ch A) and the other 3 as matching mass. '
+                   'A PZT can’t TX and RX at once. Verify with direct_wire_census.py after bonding.')
+elif args.role == 'rx':
+    footer_note = ('Origin = bottom-left. The 4 grey corners are plate A’s phase-locked TX (NCO Block A); the numbered '
+                   'discs are the cascade RX SENSORS — each → its own OPA2134 channel → one of plate B’s TX '
+                   '(see companion/cascade_board_wiring). Give plate B the SAME 4 corner TX + IDENTICAL mass pattern so '
+                   'A and B share a band. A PZT can’t TX and RX at once — these are separate discs from the corners. '
+                   'Verify with direct_wire_census.py after bonding.')
+else:
+    footer_note = ('Origin = bottom-left; SW corner is the TX-to-NCO disc. Layout is symmetric — if your empty corner is '
+                   'not SE, mirror the sheet. Model = free-free plate strain coupling (lowest %d modes); the deciding test '
+                   'is a direct_wire_census.py after install. Add discs one at a time and re-census; the modal payoff '
+                   'saturates by ~4–6 TX/plate.' % M)
 html = f"""<!doctype html><html><head><meta charset="utf-8"><title>PZT placement {L:.0f}mm</title>
 <style>
   @page {{ size: A4 portrait; margin: 8mm; }}
@@ -347,18 +404,35 @@ html = f"""<!doctype html><html><head><meta charset="utf-8"><title>PZT placement
   td,th {{ border:1px solid #ddd; padding:3px 8px; text-align:left; }}
   svg {{ display:block; }}
   @media print {{ .noprint {{ display:none; }} body {{ padding:0; }} }}
+<style>
+  @page {{ size: A4 portrait; margin: 0; }}
+  * {{ box-sizing: border-box; }}
+  html, body {{ margin: 0; padding: 0; font-family: -apple-system, system-ui, sans-serif; color:#222; }}
+  .wrap {{ padding: 8mm; }}
+  .bar {{ background:#fff3cd; border:1px solid #ffe69c; padding:8px 12px; border-radius:6px; margin-bottom:8px; font-size:13px; line-height:1.5; }}
+  button {{ font-size:14px; padding:6px 14px; border-radius:6px; border:1px solid #888; background:#f5f5f5; cursor:pointer; }}
+  table {{ border-collapse:collapse; font-size:12px; margin-top:6px; }}
+  td,th {{ border:1px solid #ddd; padding:3px 8px; text-align:left; }}
+  svg {{ display:block; width:{Wsvg:.1f}mm; height:{Hsvg:.1f}mm; }}
+  @media print {{
+    .noprint {{ display:none !important; }}
+    .wrap {{ padding: 0; }}
+    svg {{ width:{Wsvg:.1f}mm !important; height:{Hsvg:.1f}mm !important; }}
+  }}
 </style></head><body>
+<div class="wrap">
 <div class="bar noprint">
-  <b>Print at 100% / "Actual size" — NOT "Fit to page".</b> After printing, check the 50&nbsp;mm ruler with calipers.
+  <b>Print at 100% / "Actual size" — turn OFF "Fit to page" / "Shrink to fit".</b><br>
+  <b>CALIBRATE (the file can’t force your printer):</b> after printing, measure the printed <b>plate square</b> — it must be
+  exactly <b>100.0&nbsp;mm</b> (and the ruler 50.0&nbsp;mm). If it measures <b>M</b>&nbsp;mm, reprint with printer
+  <b>Scale = (100 / M) × your current %</b>, then re-measure. Two passes nails it.
   &nbsp; <button onclick="window.print()">Print</button>
 </div>
 {svg_text}
 <table class="noprint"><tr><th>#</th><th>center (x,y)</th><th>why</th></tr>{rows}</table>
 <p class="noprint" style="font-size:12px;color:#555;max-width:170mm">
-  Origin = bottom-left; SW corner is the TX-to-NCO disc. Layout is symmetric — if your empty corner
-  is not SE, mirror the sheet. Model = free-free plate strain coupling (lowest {M} modes); the deciding
-  test is a <code>direct_wire_census.py</code> after install. Add discs one at a time and re-census; the
-  modal payoff saturates by ~4–6 TX/plate.</p>
+  {footer_note}</p>
+</div>
 </body></html>"""
 html_path = outstem.with_suffix('.html')
 html_path.write_text(html)

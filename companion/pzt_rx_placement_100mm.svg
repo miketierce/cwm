@@ -1,41 +1,6 @@
-<!doctype html><html><head><meta charset="utf-8"><title>PZT placement 100mm</title>
-<style>
-  @page { size: A4 portrait; margin: 8mm; }
-  * { box-sizing: border-box; }
-  body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 8mm; color:#222; }
-  .bar { background:#fff3cd; border:1px solid #ffe69c; padding:8px 12px; border-radius:6px; margin-bottom:8px; font-size:13px; }
-  button { font-size:14px; padding:6px 14px; border-radius:6px; border:1px solid #888; background:#f5f5f5; cursor:pointer; }
-  table { border-collapse:collapse; font-size:12px; margin-top:6px; }
-  td,th { border:1px solid #ddd; padding:3px 8px; text-align:left; }
-  svg { display:block; }
-  @media print { .noprint { display:none; } body { padding:0; } }
-<style>
-  @page { size: A4 portrait; margin: 0; }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; font-family: -apple-system, system-ui, sans-serif; color:#222; }
-  .wrap { padding: 8mm; }
-  .bar { background:#fff3cd; border:1px solid #ffe69c; padding:8px 12px; border-radius:6px; margin-bottom:8px; font-size:13px; line-height:1.5; }
-  button { font-size:14px; padding:6px 14px; border-radius:6px; border:1px solid #888; background:#f5f5f5; cursor:pointer; }
-  table { border-collapse:collapse; font-size:12px; margin-top:6px; }
-  td,th { border:1px solid #ddd; padding:3px 8px; text-align:left; }
-  svg { display:block; width:152.0mm; height:186.0mm; }
-  @media print {
-    .noprint { display:none !important; }
-    .wrap { padding: 0; }
-    svg { width:152.0mm !important; height:186.0mm !important; }
-  }
-</style></head><body>
-<div class="wrap">
-<div class="bar noprint">
-  <b>Print at 100% / "Actual size" — turn OFF "Fit to page" / "Shrink to fit".</b><br>
-  <b>CALIBRATE (the file can’t force your printer):</b> after printing, measure the printed <b>plate square</b> — it must be
-  exactly <b>100.0&nbsp;mm</b> (and the ruler 50.0&nbsp;mm). If it measures <b>M</b>&nbsp;mm, reprint with printer
-  <b>Scale = (100 / M) × your current %</b>, then re-measure. Two passes nails it.
-  &nbsp; <button onclick="window.print()">Print</button>
-</div>
 <svg xmlns="http://www.w3.org/2000/svg" width="152.0mm" height="186.0mm" viewBox="0 0 152.0 186.0">
 <rect x="0" y="0" width="152.0" height="186.0" fill="white"/>
-<text x="76.0" y="6.5" font-size="3.5" font-weight="bold" text-anchor="middle" font-family="sans-serif">100×100 mm plate · add 3 TX PZTs · PRINT AT 100% (ACTUAL SIZE)</text>
+<text x="76.0" y="6.5" font-size="3.5" font-weight="bold" text-anchor="middle" font-family="sans-serif">100×100 mm plate · add 4 RX cascade sensors · PRINT AT 100% (ACTUAL SIZE)</text>
 <line x1="26.00" y1="132.00" x2="26.00" y2="32.00" stroke="#bbb" stroke-width="0.5"/>
 <line x1="26.00" y1="132.00" x2="126.00" y2="132.00" stroke="#bbb" stroke-width="0.5"/>
 <text x="26.00" y="136.50" font-size="2.4" fill="#888" text-anchor="middle" font-family="sans-serif">0</text>
@@ -83,11 +48,11 @@
 <circle cx="34.00" cy="124.00" r="5.00" fill="#888" fill-opacity="0.1" stroke="#888" stroke-width="0.5" stroke-dasharray="1.5,1.2"/><line x1="31.80" y1="124.00" x2="36.20" y2="124.00" stroke="#888" stroke-width="0.4"/><line x1="34.00" y1="121.80" x2="34.00" y2="126.20" stroke="#888" stroke-width="0.4"/><text x="34.00" y="132.40" font-size="2.5" fill="#888" text-anchor="middle">SW</text><text x="34.00" y="135.20" font-size="2.1" fill="#555" text-anchor="middle">existing</text>
 <circle cx="34.00" cy="40.00" r="5.00" fill="#888" fill-opacity="0.1" stroke="#888" stroke-width="0.5" stroke-dasharray="1.5,1.2"/><line x1="31.80" y1="40.00" x2="36.20" y2="40.00" stroke="#888" stroke-width="0.4"/><line x1="34.00" y1="37.80" x2="34.00" y2="42.20" stroke="#888" stroke-width="0.4"/><text x="34.00" y="48.40" font-size="2.5" fill="#888" text-anchor="middle">NW</text><text x="34.00" y="51.20" font-size="2.1" fill="#555" text-anchor="middle">existing</text>
 <circle cx="118.00" cy="40.00" r="5.00" fill="#888" fill-opacity="0.1" stroke="#888" stroke-width="0.5" stroke-dasharray="1.5,1.2"/><line x1="115.80" y1="40.00" x2="120.20" y2="40.00" stroke="#888" stroke-width="0.4"/><line x1="118.00" y1="37.80" x2="118.00" y2="42.20" stroke="#888" stroke-width="0.4"/><text x="118.00" y="48.40" font-size="2.5" fill="#888" text-anchor="middle">NE</text><text x="118.00" y="51.20" font-size="2.1" fill="#555" text-anchor="middle">existing</text>
-<circle cx="118.00" cy="124.00" r="5.00" fill="none" stroke="#ccc" stroke-width="0.4" stroke-dasharray="1,1.5"/>
-<text x="118.00" y="125.00" font-size="2.0" fill="#bbb" text-anchor="middle">skip</text>
-<circle cx="76.00" cy="104.00" r="5.00" fill="#c81e3a" fill-opacity="0.18" stroke="#c81e3a" stroke-width="0.5" /><line x1="73.80" y1="104.00" x2="78.20" y2="104.00" stroke="#c81e3a" stroke-width="0.4"/><line x1="76.00" y1="101.80" x2="76.00" y2="106.20" stroke="#c81e3a" stroke-width="0.4"/><text x="76.00" y="97.80" font-size="5" font-weight="bold" fill="#c81e3a" text-anchor="middle">1</text><text x="76.00" y="112.40" font-size="2.5" fill="#c81e3a" text-anchor="middle">(50,28)</text><text x="76.00" y="115.20" font-size="2.1" fill="#555" text-anchor="middle">new TX #1</text>
-<circle cx="76.00" cy="60.00" r="5.00" fill="#1769aa" fill-opacity="0.18" stroke="#1769aa" stroke-width="0.5" /><line x1="73.80" y1="60.00" x2="78.20" y2="60.00" stroke="#1769aa" stroke-width="0.4"/><line x1="76.00" y1="57.80" x2="76.00" y2="62.20" stroke="#1769aa" stroke-width="0.4"/><text x="76.00" y="53.80" font-size="5" font-weight="bold" fill="#1769aa" text-anchor="middle">2</text><text x="76.00" y="68.40" font-size="2.5" fill="#1769aa" text-anchor="middle">(50,72)</text><text x="76.00" y="71.20" font-size="2.1" fill="#555" text-anchor="middle">new TX #2</text>
-<circle cx="98.00" cy="82.00" r="5.00" fill="#1b8a3a" fill-opacity="0.18" stroke="#1b8a3a" stroke-width="0.5" /><line x1="95.80" y1="82.00" x2="100.20" y2="82.00" stroke="#1b8a3a" stroke-width="0.4"/><line x1="98.00" y1="79.80" x2="98.00" y2="84.20" stroke="#1b8a3a" stroke-width="0.4"/><text x="98.00" y="75.80" font-size="5" font-weight="bold" fill="#1b8a3a" text-anchor="middle">3</text><text x="98.00" y="90.40" font-size="2.5" fill="#1b8a3a" text-anchor="middle">(72,50)</text><text x="98.00" y="93.20" font-size="2.1" fill="#555" text-anchor="middle">new TX #3</text>
+<circle cx="118.00" cy="124.00" r="5.00" fill="#888" fill-opacity="0.1" stroke="#888" stroke-width="0.5" stroke-dasharray="1.5,1.2"/><line x1="115.80" y1="124.00" x2="120.20" y2="124.00" stroke="#888" stroke-width="0.4"/><line x1="118.00" y1="121.80" x2="118.00" y2="126.20" stroke="#888" stroke-width="0.4"/><text x="118.00" y="132.40" font-size="2.5" fill="#888" text-anchor="middle">SE</text><text x="118.00" y="135.20" font-size="2.1" fill="#555" text-anchor="middle">existing</text>
+<circle cx="76.00" cy="104.00" r="5.00" fill="#c81e3a" fill-opacity="0.18" stroke="#c81e3a" stroke-width="0.5" /><line x1="73.80" y1="104.00" x2="78.20" y2="104.00" stroke="#c81e3a" stroke-width="0.4"/><line x1="76.00" y1="101.80" x2="76.00" y2="106.20" stroke="#c81e3a" stroke-width="0.4"/><text x="76.00" y="97.80" font-size="5" font-weight="bold" fill="#c81e3a" text-anchor="middle">1</text><text x="76.00" y="112.40" font-size="2.5" fill="#c81e3a" text-anchor="middle">(50,28)</text><text x="76.00" y="115.20" font-size="2.1" fill="#555" text-anchor="middle">RX#1 · U1A → B-TX1</text>
+<circle cx="76.00" cy="60.00" r="5.00" fill="#1769aa" fill-opacity="0.18" stroke="#1769aa" stroke-width="0.5" /><line x1="73.80" y1="60.00" x2="78.20" y2="60.00" stroke="#1769aa" stroke-width="0.4"/><line x1="76.00" y1="57.80" x2="76.00" y2="62.20" stroke="#1769aa" stroke-width="0.4"/><text x="76.00" y="53.80" font-size="5" font-weight="bold" fill="#1769aa" text-anchor="middle">2</text><text x="76.00" y="68.40" font-size="2.5" fill="#1769aa" text-anchor="middle">(50,72)</text><text x="76.00" y="71.20" font-size="2.1" fill="#555" text-anchor="middle">RX#2 · U1B → B-TX2</text>
+<circle cx="54.00" cy="82.00" r="5.00" fill="#1b8a3a" fill-opacity="0.18" stroke="#1b8a3a" stroke-width="0.5" /><line x1="51.80" y1="82.00" x2="56.20" y2="82.00" stroke="#1b8a3a" stroke-width="0.4"/><line x1="54.00" y1="79.80" x2="54.00" y2="84.20" stroke="#1b8a3a" stroke-width="0.4"/><text x="54.00" y="75.80" font-size="5" font-weight="bold" fill="#1b8a3a" text-anchor="middle">3</text><text x="54.00" y="90.40" font-size="2.5" fill="#1b8a3a" text-anchor="middle">(28,50)</text><text x="54.00" y="93.20" font-size="2.1" fill="#555" text-anchor="middle">RX#3 · U2A → B-TX3</text>
+<circle cx="98.00" cy="82.00" r="5.00" fill="#9b51e0" fill-opacity="0.18" stroke="#9b51e0" stroke-width="0.5" /><line x1="95.80" y1="82.00" x2="100.20" y2="82.00" stroke="#9b51e0" stroke-width="0.4"/><line x1="98.00" y1="79.80" x2="98.00" y2="84.20" stroke="#9b51e0" stroke-width="0.4"/><text x="98.00" y="75.80" font-size="5" font-weight="bold" fill="#9b51e0" text-anchor="middle">4</text><text x="98.00" y="90.40" font-size="2.5" fill="#9b51e0" text-anchor="middle">(72,50)</text><text x="98.00" y="93.20" font-size="2.1" fill="#555" text-anchor="middle">RX#4 · U2B → B-TX4</text>
 <line x1="26.00" y1="170.00" x2="76.00" y2="170.00" stroke="#111" stroke-width="0.6"/>
 <line x1="26.00" y1="168.40" x2="26.00" y2="171.60" stroke="#111" stroke-width="0.5"/>
 <line x1="36.00" y1="168.40" x2="36.00" y2="171.60" stroke="#111" stroke-width="0.5"/>
@@ -97,10 +62,5 @@
 <line x1="76.00" y1="168.40" x2="76.00" y2="171.60" stroke="#111" stroke-width="0.5"/>
 <text x="26.00" y="167.50" font-size="2.6" font-weight="bold" font-family="sans-serif">VERIFY SCALE → this bar must measure exactly 50.0 mm</text>
 <text x="78.00" y="171.00" font-size="2.6" font-family="sans-serif">50 mm</text>
-<text x="26.00" y="178.00" font-size="2.2" fill="#444" font-family="sans-serif">Grey dashed = existing corner PZTs (keep-out). Numbered = drill/bond here, disc CENTER on the crosshair. Corners are weak strain-couplers (~10%); interior antinodes couple richly. TX leads short + twisted with ground.</text>
+<text x="26.00" y="178.00" font-size="2.2" fill="#444" font-family="sans-serif">Grey dashed = the 4 CORNER TX (NCO Block A, keep-out). Numbered = bond an RX SENSOR here, disc CENTER on the crosshair. Each RX → its own cascade-board channel → one of plate B’s TX. RX leads short + twisted with ground.</text>
 </svg>
-<table class="noprint"><tr><th>#</th><th>center (x,y)</th><th>why</th></tr><tr><td style='color:#c81e3a;font-weight:700'>#1</td><td>(50, 28) mm</td><td>interior antinode</td></tr><tr><td style='color:#1769aa;font-weight:700'>#2</td><td>(50, 72) mm</td><td>interior antinode</td></tr><tr><td style='color:#1b8a3a;font-weight:700'>#3</td><td>(72, 50) mm</td><td>interior antinode</td></tr></table>
-<p class="noprint" style="font-size:12px;color:#555;max-width:170mm">
-  Origin = bottom-left; SW corner is the TX-to-NCO disc. Layout is symmetric — if your empty corner is not SE, mirror the sheet. Model = free-free plate strain coupling (lowest 15 modes); the deciding test is a direct_wire_census.py after install. Add discs one at a time and re-census; the modal payoff saturates by ~4–6 TX/plate.</p>
-</div>
-</body></html>
