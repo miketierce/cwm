@@ -1,0 +1,107 @@
+{
+  "F1": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.2,
+    "f_at": 59000,
+    "drive": 1181.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F2": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.1,
+    "f_at": 44000,
+    "drive": 1147.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F3": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.2,
+    "f_at": 43000,
+    "drive": 1136.7,
+    "verdict": "wired, plate quiet"
+  },
+  "F4": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.0,
+    "f_at": 81000,
+    "drive": 1143.8,
+    "verdict": "wired, plate quiet"
+  },
+  "F5": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.4,
+    "f_at": 66000,
+    "drive": 1074.7,
+    "verdict": "wired, plate quiet"
+  },
+  "F6": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.4,
+    "f_at": 48000,
+    "drive": 1143.1,
+    "verdict": "wired, plate quiet"
+  },
+  "F7": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.3,
+    "f_at": 46000,
+    "drive": 1145.8,
+    "verdict": "wired, plate quiet"
+  },
+  "F8": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.1,
+    "f_at": 73000,
+    "drive": 1144.3,
+    "verdict": "wired, plate quiet"
+  },
+  "F9": {
+    "band": "Plate D 25x25",
+    "rx_snr": 3.5,
+    "f_at": 302000,
+    "drive": 634.4,
+    "verdict": "OK"
+  },
+  "F10": {
+    "band": "Plate D 25x25",
+    "rx_snr": 3.9,
+    "f_at": 300000,
+    "drive": 647.0,
+    "verdict": "OK"
+  },
+  "F11": {
+    "band": "Plate E 25x76",
+    "rx_snr": 3.5,
+    "f_at": 241000,
+    "drive": 1026.4,
+    "verdict": "OK"
+  },
+  "F12": {
+    "band": "Plate E 25x76",
+    "rx_snr": 3.6,
+    "f_at": 233000,
+    "drive": 1036.7,
+    "verdict": "OK"
+  },
+  "F13": {
+    "band": "Plate F + B-4th",
+    "rx_snr": 3.7,
+    "f_at": 236000,
+    "drive": 1164.6,
+    "verdict": "OK"
+  },
+  "F14": {
+    "band": "Plate F 25x76",
+    "rx_snr": 3.8,
+    "f_at": 243000,
+    "drive": 1036.7,
+    "verdict": "OK"
+  },
+  "F15": {
+    "band": "Plate G 25x76",
+    "rx_snr": 3.5,
+    "f_at": 247000,
+    "drive": 1050.3,
+    "verdict": "OK"
+  }
+}
