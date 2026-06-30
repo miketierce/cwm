@@ -1,0 +1,107 @@
+{
+  "F1": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.6,
+    "f_at": 83000,
+    "drive": 1.5,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F2": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.9,
+    "f_at": 50000,
+    "drive": 1.3,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F3": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 3.5,
+    "f_at": 50000,
+    "drive": 1.3,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F4": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 3.0,
+    "f_at": 50000,
+    "drive": 1.4,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F5": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 3.4,
+    "f_at": 50000,
+    "drive": 1.2,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F6": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 3.0,
+    "f_at": 50000,
+    "drive": 1.4,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F7": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.9,
+    "f_at": 50000,
+    "drive": 1.3,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F8": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 3.3,
+    "f_at": 83000,
+    "drive": 1.3,
+    "verdict": "NO DRIVE (NCO/pin)"
+  },
+  "F9": {
+    "band": "Plate D 25x25",
+    "rx_snr": 13.3,
+    "f_at": 250000,
+    "drive": 5.3,
+    "verdict": "OK"
+  },
+  "F10": {
+    "band": "Plate D 25x25",
+    "rx_snr": 14.1,
+    "f_at": 250000,
+    "drive": 4.7,
+    "verdict": "OK"
+  },
+  "F11": {
+    "band": "Plate E 25x76",
+    "rx_snr": 13.9,
+    "f_at": 250000,
+    "drive": 4.3,
+    "verdict": "OK"
+  },
+  "F12": {
+    "band": "Plate E 25x76",
+    "rx_snr": 13.1,
+    "f_at": 250000,
+    "drive": 4.2,
+    "verdict": "OK"
+  },
+  "F13": {
+    "band": "Plate F + B-4th",
+    "rx_snr": 12.7,
+    "f_at": 250000,
+    "drive": 4.4,
+    "verdict": "OK"
+  },
+  "F14": {
+    "band": "Plate F 25x76",
+    "rx_snr": 11.6,
+    "f_at": 250000,
+    "drive": 4.1,
+    "verdict": "OK"
+  },
+  "F15": {
+    "band": "Plate G 25x76",
+    "rx_snr": 12.8,
+    "f_at": 250000,
+    "drive": 3.9,
+    "verdict": "OK"
+  }
+}

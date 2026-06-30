@@ -1,0 +1,107 @@
+{
+  "F1": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.3,
+    "f_at": 45000,
+    "drive": 1204.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F2": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 1.9,
+    "f_at": 65000,
+    "drive": 1150.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F3": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.1,
+    "f_at": 75000,
+    "drive": 1131.5,
+    "verdict": "wired, plate quiet"
+  },
+  "F4": {
+    "band": "Plate A (via cascade -> B)",
+    "rx_snr": 2.0,
+    "f_at": 82000,
+    "drive": 1147.2,
+    "verdict": "wired, plate quiet"
+  },
+  "F5": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.0,
+    "f_at": 55000,
+    "drive": 1071.9,
+    "verdict": "wired, plate quiet"
+  },
+  "F6": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 1.8,
+    "f_at": 56000,
+    "drive": 1141.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F7": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 2.0,
+    "f_at": 40000,
+    "drive": 1149.2,
+    "verdict": "wired, plate quiet"
+  },
+  "F8": {
+    "band": "Plate C 4-TX",
+    "rx_snr": 1.9,
+    "f_at": 74000,
+    "drive": 1149.4,
+    "verdict": "wired, plate quiet"
+  },
+  "F9": {
+    "band": "Plate D 25x25",
+    "rx_snr": 3.2,
+    "f_at": 317000,
+    "drive": 716.8,
+    "verdict": "OK"
+  },
+  "F10": {
+    "band": "Plate D 25x25",
+    "rx_snr": 3.2,
+    "f_at": 238000,
+    "drive": 713.1,
+    "verdict": "OK"
+  },
+  "F11": {
+    "band": "Plate E 25x76",
+    "rx_snr": 3.0,
+    "f_at": 238000,
+    "drive": 1051.9,
+    "verdict": "OK"
+  },
+  "F12": {
+    "band": "Plate E 25x76",
+    "rx_snr": 3.3,
+    "f_at": 238000,
+    "drive": 1060.9,
+    "verdict": "OK"
+  },
+  "F13": {
+    "band": "Plate F + B-4th",
+    "rx_snr": 3.1,
+    "f_at": 238000,
+    "drive": 1170.6,
+    "verdict": "OK"
+  },
+  "F14": {
+    "band": "Plate F 25x76",
+    "rx_snr": 2.5,
+    "f_at": 238000,
+    "drive": 1044.5,
+    "verdict": "wired, plate quiet"
+  },
+  "F15": {
+    "band": "Plate G 25x76",
+    "rx_snr": 2.4,
+    "f_at": 219000,
+    "drive": 1081.8,
+    "verdict": "wired, plate quiet"
+  }
+}
