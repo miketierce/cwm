@@ -1,0 +1,5690 @@
+{
+  "source": "data/results/pong/recall_enroll_20260629_120542.npz",
+  "protocol": {
+    "decoder": "nearest training-state centroid; ordinal median vote",
+    "validation": "leave-one-repeat-out",
+    "features": "modes only; directly driven axis windows excluded",
+    "dropout": "global random missing-mode mask; omitted from distance",
+    "n_modes": 212,
+    "n_states": 256,
+    "repeats": 5,
+    "voters": 11,
+    "trials": 5,
+    "seed": 20260711,
+    "tolerance": 1
+  },
+  "constant_baseline": {
+    "exact": 14.453125,
+    "tolerant": 42.578125
+  },
+  "bank_sizes": {
+    "32": {
+      "0.0": {
+        "n_available": {
+          "mean": 212.0,
+          "std": 0.0,
+          "min": 212.0,
+          "max": 212.0
+        },
+        "full": {
+          "exact": {
+            "mean": 65.390625,
+            "std": 0.0,
+            "min": 65.390625,
+            "max": 65.390625
+          },
+          "tolerant": {
+            "mean": 94.0625,
+            "std": 0.0,
+            "min": 94.0625,
+            "max": 94.0625
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 44.078125,
+            "std": 2.963976425344844,
+            "min": 40.3125,
+            "max": 49.375
+          },
+          "tolerant": {
+            "mean": 82.140625,
+            "std": 2.1800094968256447,
+            "min": 79.140625,
+            "max": 85.15625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 178.0,
+            "std": 4.33589667773576,
+            "min": 173.0,
+            "max": 186.0
+          },
+          "single_bank_tolerant": {
+            "mean": 65.13352272727272,
+            "std": 1.7817868373286634,
+            "min": 62.16619318181818,
+            "max": 66.89630681818181
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 38.28125,
+            "std": 0.0,
+            "min": 38.28125,
+            "max": 38.28125
+          },
+          "tolerant": {
+            "mean": 76.171875,
+            "std": 0.0,
+            "min": 76.171875,
+            "max": 76.171875
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          },
+          "single_bank_tolerant": {
+            "mean": 60.99431818181817,
+            "std": 7.105427357601002e-15,
+            "min": 60.99431818181818,
+            "max": 60.99431818181818
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 38.296875,
+            "std": 2.8715162316709963,
+            "min": 34.375,
+            "max": 41.640625
+          },
+          "tolerant": {
+            "mean": 77.65625,
+            "std": 2.695935163584243,
+            "min": 74.140625,
+            "max": 80.46875
+          },
+          "n_banks": {
+            "mean": 7.0,
+            "std": 0.0,
+            "min": 7.0,
+            "max": 7.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          },
+          "single_bank_tolerant": {
+            "mean": 62.502232142857146,
+            "std": 1.785761718120046,
+            "min": 59.955357142857146,
+            "max": 64.39732142857143
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 17.00710227272728,
+        "trials": [
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 176,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 40.3125,
+                "tolerant": 79.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.40909090909091,
+                  "std": 5.156171737447631,
+                  "min": 23.046875,
+                  "max": 38.359375
+                },
+                "tolerant": {
+                  "mean": 62.16619318181818,
+                  "std": 5.434459347419975,
+                  "min": 55.3125,
+                  "max": 73.28125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 38.28125,
+                "tolerant": 76.171875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.938920454545453,
+                  "std": 3.4933508685140002,
+                  "min": 23.046875,
+                  "max": 34.140625
+                },
+                "tolerant": {
+                  "mean": 60.99431818181818,
+                  "std": 5.057496443277082,
+                  "min": 52.96875,
+                  "max": 73.4375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 30,
+                "median": 30.0,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 39.765625,
+                "tolerant": 80.46875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.995535714285715,
+                  "std": 3.6141763663053585,
+                  "min": 22.1875,
+                  "max": 35.390625
+                },
+                "tolerant": {
+                  "mean": 64.39732142857143,
+                  "std": 4.315344697298826,
+                  "min": 55.078125,
+                  "max": 68.515625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 177,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 43.4375,
+                "tolerant": 83.4375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.411931818181817,
+                  "std": 4.7231235034534045,
+                  "min": 23.984375,
+                  "max": 42.265625
+                },
+                "tolerant": {
+                  "mean": 65.73863636363636,
+                  "std": 6.089684289485745,
+                  "min": 55.3125,
+                  "max": 74.765625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 38.28125,
+                "tolerant": 76.171875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.938920454545453,
+                  "std": 3.4933508685140002,
+                  "min": 23.046875,
+                  "max": 34.140625
+                },
+                "tolerant": {
+                  "mean": 60.99431818181818,
+                  "std": 5.057496443277082,
+                  "min": 52.96875,
+                  "max": 73.4375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 30,
+                "median": 30.0,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 35.390625,
+                "tolerant": 74.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.875,
+                  "std": 5.199527526183097,
+                  "min": 21.71875,
+                  "max": 38.75
+                },
+                "tolerant": {
+                  "mean": 59.955357142857146,
+                  "std": 5.729415482383034,
+                  "min": 53.90625,
+                  "max": 72.65625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 173,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 44.296875,
+                "tolerant": 82.734375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.838068181818183,
+                  "std": 5.07195767418857,
+                  "min": 23.28125,
+                  "max": 41.875
+                },
+                "tolerant": {
+                  "mean": 66.74005681818181,
+                  "std": 6.172377614485829,
+                  "min": 57.421875,
+                  "max": 77.03125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 38.28125,
+                "tolerant": 76.171875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.938920454545453,
+                  "std": 3.4933508685140002,
+                  "min": 23.046875,
+                  "max": 34.140625
+                },
+                "tolerant": {
+                  "mean": 60.99431818181818,
+                  "std": 5.057496443277082,
+                  "min": 52.96875,
+                  "max": 73.4375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 30,
+                "median": 30.0,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 40.3125,
+                "tolerant": 80.0
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.638392857142858,
+                  "std": 2.5452301953750625,
+                  "min": 24.140625,
+                  "max": 32.5
+                },
+                "tolerant": {
+                  "mean": 63.582589285714285,
+                  "std": 3.8936019724867945,
+                  "min": 59.140625,
+                  "max": 71.40625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 178,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 49.375,
+                "tolerant": 85.15625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 32.95454545454545,
+                  "std": 7.048024354923369,
+                  "min": 24.375,
+                  "max": 45.703125
+                },
+                "tolerant": {
+                  "mean": 66.89630681818181,
+                  "std": 8.533433143305238,
+                  "min": 53.82812500000001,
+                  "max": 79.0625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 38.28125,
+                "tolerant": 76.171875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.938920454545453,
+                  "std": 3.4933508685140002,
+                  "min": 23.046875,
+                  "max": 34.140625
+                },
+                "tolerant": {
+                  "mean": 60.99431818181818,
+                  "std": 5.057496443277082,
+                  "min": 52.96875,
+                  "max": 73.4375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 30,
+                "median": 30.0,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 34.375,
+                "tolerant": 74.6875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 27.176339285714285,
+                  "std": 4.026806748836414,
+                  "min": 23.125,
+                  "max": 34.375
+                },
+                "tolerant": {
+                  "mean": 60.770089285714285,
+                  "std": 5.0566042215293825,
+                  "min": 54.6875,
+                  "max": 67.8125
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 186,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 42.96875,
+                "tolerant": 80.234375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.49715909090909,
+                  "std": 7.848940067427988,
+                  "min": 23.90625,
+                  "max": 51.48437500000001
+                },
+                "tolerant": {
+                  "mean": 64.12642045454545,
+                  "std": 7.014169451107022,
+                  "min": 56.796875,
+                  "max": 81.640625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 32,
+                "median": 32.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 38.28125,
+                "tolerant": 76.171875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.938920454545453,
+                  "std": 3.4933508685140002,
+                  "min": 23.046875,
+                  "max": 34.140625
+                },
+                "tolerant": {
+                  "mean": 60.99431818181818,
+                  "std": 5.057496443277082,
+                  "min": 52.96875,
+                  "max": 73.4375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 30,
+                "median": 30.0,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 41.640625,
+                "tolerant": 78.984375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.100446428571427,
+                  "std": 6.738410070677818,
+                  "min": 24.21875,
+                  "max": 45.546875
+                },
+                "tolerant": {
+                  "mean": 63.80580357142857,
+                  "std": 4.988602083686596,
+                  "min": 57.89062499999999,
+                  "max": 71.875
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.5": {
+        "n_available": {
+          "mean": 106.0,
+          "std": 0.0,
+          "min": 106.0,
+          "max": 106.0
+        },
+        "full": {
+          "exact": {
+            "mean": 43.859375,
+            "std": 3.0628985710026377,
+            "min": 38.59375,
+            "max": 47.265625
+          },
+          "tolerant": {
+            "mean": 79.34375,
+            "std": 3.713559928660099,
+            "min": 73.828125,
+            "max": 84.53125
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 28.921875,
+            "std": 0.9129600723744714,
+            "min": 27.65625,
+            "max": 30.078125
+          },
+          "tolerant": {
+            "mean": 67.875,
+            "std": 1.2297182731219374,
+            "min": 66.09375,
+            "max": 69.453125
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 89.0,
+            "std": 3.4641016151377544,
+            "min": 84.0,
+            "max": 93.0
+          },
+          "single_bank_tolerant": {
+            "mean": 53.97443181818183,
+            "std": 0.9029511239152156,
+            "min": 52.76988636363637,
+            "max": 55.546875
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 28.75,
+            "std": 0.5435164728414411,
+            "min": 27.8125,
+            "max": 29.453125000000004
+          },
+          "tolerant": {
+            "mean": 66.484375,
+            "std": 0.9097454142506023,
+            "min": 64.921875,
+            "max": 67.5
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          },
+          "single_bank_tolerant": {
+            "mean": 53.01420454545455,
+            "std": 0.38631663317031706,
+            "min": 52.62784090909091,
+            "max": 53.73579545454545
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 27.953125,
+            "std": 2.2822129816802814,
+            "min": 25.390625,
+            "max": 32.109375
+          },
+          "tolerant": {
+            "mean": 65.875,
+            "std": 1.6882232246506954,
+            "min": 63.20312500000001,
+            "max": 67.5
+          },
+          "n_banks": {
+            "mean": 7.0,
+            "std": 0.0,
+            "min": 7.0,
+            "max": 7.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          },
+          "single_bank_tolerant": {
+            "mean": 53.14732142857142,
+            "std": 0.6617089520664635,
+            "min": 52.176339285714285,
+            "max": 54.185267857142854
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 13.900568181818173,
+        "trials": [
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 45.703125,
+                "tolerant": 81.640625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 45.703125,
+                  "std": 0.0,
+                  "min": 45.703125,
+                  "max": 45.703125
+                },
+                "tolerant": {
+                  "mean": 81.640625,
+                  "std": 0.0,
+                  "min": 81.640625,
+                  "max": 81.640625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 86,
+              "features_per_bank": {
+                "min": 13,
+                "median": 16.0,
+                "max": 19
+              },
+              "ensemble": {
+                "exact": 27.65625,
+                "tolerant": 66.09375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.71875,
+                  "std": 2.649138206782795,
+                  "min": 16.953125,
+                  "max": 26.484375
+                },
+                "tolerant": {
+                  "mean": 54.09801136363637,
+                  "std": 5.087716426727352,
+                  "min": 47.5,
+                  "max": 63.046875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 12,
+                "median": 14.0,
+                "max": 23
+              },
+              "ensemble": {
+                "exact": 28.984375,
+                "tolerant": 67.5
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.541193181818183,
+                  "std": 2.8317857768009485,
+                  "min": 18.828125,
+                  "max": 28.59375
+                },
+                "tolerant": {
+                  "mean": 53.73579545454545,
+                  "std": 4.425291577538066,
+                  "min": 47.8125,
+                  "max": 65.234375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 8,
+                "median": 16.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 32.109375,
+                "tolerant": 67.5
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.879464285714285,
+                  "std": 5.285915061642881,
+                  "min": 17.03125,
+                  "max": 32.03125
+                },
+                "tolerant": {
+                  "mean": 54.185267857142854,
+                  "std": 6.40990438328109,
+                  "min": 47.5,
+                  "max": 67.34375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 42.421875,
+                "tolerant": 76.875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 42.421875,
+                  "std": 0.0,
+                  "min": 42.421875,
+                  "max": 42.421875
+                },
+                "tolerant": {
+                  "mean": 76.875,
+                  "std": 0.0,
+                  "min": 76.875,
+                  "max": 76.875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 92,
+              "features_per_bank": {
+                "min": 13,
+                "median": 17.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 28.203125,
+                "tolerant": 67.421875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.058238636363637,
+                  "std": 1.5364893393472294,
+                  "min": 19.0625,
+                  "max": 24.0625
+                },
+                "tolerant": {
+                  "mean": 52.76988636363637,
+                  "std": 2.5177732120494984,
+                  "min": 49.453125,
+                  "max": 59.375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 14,
+                "median": 16.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 27.8125,
+                "tolerant": 64.921875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.775568181818183,
+                  "std": 2.8276680062033073,
+                  "min": 18.828125,
+                  "max": 29.765625
+                },
+                "tolerant": {
+                  "mean": 52.75568181818182,
+                  "std": 2.3918109499605604,
+                  "min": 49.921875,
+                  "max": 58.828125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 12,
+                "median": 15.0,
+                "max": 19
+              },
+              "ensemble": {
+                "exact": 28.281250000000004,
+                "tolerant": 66.71875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.729910714285715,
+                  "std": 3.1038426002484947,
+                  "min": 18.671875,
+                  "max": 26.796874999999996
+                },
+                "tolerant": {
+                  "mean": 53.448660714285715,
+                  "std": 4.588886169378164,
+                  "min": 48.046875,
+                  "max": 61.328125
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 45.3125,
+                "tolerant": 79.84375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 45.3125,
+                  "std": 0.0,
+                  "min": 45.3125,
+                  "max": 45.3125
+                },
+                "tolerant": {
+                  "mean": 79.84375,
+                  "std": 0.0,
+                  "min": 79.84375,
+                  "max": 79.84375
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 84,
+              "features_per_bank": {
+                "min": 10,
+                "median": 15.0,
+                "max": 18
+              },
+              "ensemble": {
+                "exact": 28.90625,
+                "tolerant": 69.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.45596590909091,
+                  "std": 2.878848231898257,
+                  "min": 18.515625,
+                  "max": 26.718750000000004
+                },
+                "tolerant": {
+                  "mean": 53.82102272727273,
+                  "std": 4.50169812713964,
+                  "min": 47.578125,
+                  "max": 61.953125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 12,
+                "median": 17.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 29.453125000000004,
+                "tolerant": 66.25
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.5625,
+                  "std": 2.812302707726599,
+                  "min": 18.359375,
+                  "max": 28.125
+                },
+                "tolerant": {
+                  "mean": 53.03267045454545,
+                  "std": 3.86839874021213,
+                  "min": 48.984375,
+                  "max": 61.71875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 12,
+                "median": 14.0,
+                "max": 19
+              },
+              "ensemble": {
+                "exact": 26.640625,
+                "tolerant": 64.609375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.09375,
+                  "std": 2.7763047929885922,
+                  "min": 17.8125,
+                  "max": 26.953125
+                },
+                "tolerant": {
+                  "mean": 52.890625,
+                  "std": 5.854387758492404,
+                  "min": 47.96875,
+                  "max": 66.5625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 38.59375,
+                "tolerant": 73.828125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 38.59375,
+                  "std": 0.0,
+                  "min": 38.59375,
+                  "max": 38.59375
+                },
+                "tolerant": {
+                  "mean": 73.828125,
+                  "std": 0.0,
+                  "min": 73.828125,
+                  "max": 73.828125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 93,
+              "features_per_bank": {
+                "min": 14,
+                "median": 17.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 29.765625,
+                "tolerant": 67.34375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.180397727272727,
+                  "std": 2.6887332301673585,
+                  "min": 18.75,
+                  "max": 28.90625
+                },
+                "tolerant": {
+                  "mean": 53.63636363636363,
+                  "std": 3.8214319441230464,
+                  "min": 48.828125,
+                  "max": 59.84374999999999
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 10,
+                "median": 16.0,
+                "max": 23
+              },
+              "ensemble": {
+                "exact": 28.59375,
+                "tolerant": 67.265625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.036931818181817,
+                  "std": 2.4935754873795846,
+                  "min": 18.046875,
+                  "max": 25.156250000000004
+                },
+                "tolerant": {
+                  "mean": 52.62784090909091,
+                  "std": 4.117076682471336,
+                  "min": 48.90625,
+                  "max": 61.25000000000001
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 13,
+                "median": 15.0,
+                "max": 17
+              },
+              "ensemble": {
+                "exact": 25.390625,
+                "tolerant": 63.20312500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.104910714285715,
+                  "std": 1.4749043336323027,
+                  "min": 17.890625,
+                  "max": 22.96875
+                },
+                "tolerant": {
+                  "mean": 52.176339285714285,
+                  "std": 2.450126327568829,
+                  "min": 48.984375,
+                  "max": 56.875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 47.265625,
+                "tolerant": 84.53125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 47.265625,
+                  "std": 0.0,
+                  "min": 47.265625,
+                  "max": 47.265625
+                },
+                "tolerant": {
+                  "mean": 84.53125,
+                  "std": 0.0,
+                  "min": 84.53125,
+                  "max": 84.53125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 90,
+              "features_per_bank": {
+                "min": 15,
+                "median": 17.0,
+                "max": 19
+              },
+              "ensemble": {
+                "exact": 30.078125,
+                "tolerant": 69.453125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.848011363636363,
+                  "std": 3.0274848549160187,
+                  "min": 18.90625,
+                  "max": 29.6875
+                },
+                "tolerant": {
+                  "mean": 55.546875,
+                  "std": 5.1602300410645014,
+                  "min": 50.625,
+                  "max": 68.203125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 13,
+                "median": 15.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 28.90625,
+                "tolerant": 66.484375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.71875,
+                  "std": 2.8557672533162846,
+                  "min": 17.8125,
+                  "max": 28.828125
+                },
+                "tolerant": {
+                  "mean": 52.91903409090909,
+                  "std": 4.452473627509472,
+                  "min": 47.03125,
+                  "max": 65.0
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 12,
+                "median": 16.0,
+                "max": 18
+              },
+              "ensemble": {
+                "exact": 27.34375,
+                "tolerant": 67.34375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.049107142857142,
+                  "std": 2.385731578075696,
+                  "min": 16.5625,
+                  "max": 23.59375
+                },
+                "tolerant": {
+                  "mean": 53.035714285714285,
+                  "std": 3.904559583218451,
+                  "min": 46.796875,
+                  "max": 58.046875
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.75": {
+        "n_available": {
+          "mean": 53.0,
+          "std": 0.0,
+          "min": 53.0,
+          "max": 53.0
+        },
+        "full": {
+          "exact": {
+            "mean": 40.9375,
+            "std": 7.563048792071222,
+            "min": 34.53125,
+            "max": 50.46874999999999
+          },
+          "tolerant": {
+            "mean": 75.6875,
+            "std": 6.4342755881101334,
+            "min": 69.296875,
+            "max": 86.09375
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 24.75,
+            "std": 1.8217704729877484,
+            "min": 21.40625,
+            "max": 26.718750000000004
+          },
+          "tolerant": {
+            "mean": 60.65625,
+            "std": 2.4072643965713447,
+            "min": 58.046875,
+            "max": 64.140625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 44.6,
+            "std": 4.454211490264017,
+            "min": 38.0,
+            "max": 50.0
+          },
+          "single_bank_tolerant": {
+            "mean": 49.07954545454545,
+            "std": 1.3670175883202313,
+            "min": 47.54261363636363,
+            "max": 50.84517045454545
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 25.5625,
+            "std": 1.7254132204344548,
+            "min": 23.59375,
+            "max": 27.968749999999996
+          },
+          "tolerant": {
+            "mean": 61.921875,
+            "std": 1.7156221539138514,
+            "min": 59.375,
+            "max": 63.90625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          },
+          "single_bank_tolerant": {
+            "mean": 49.678977272727266,
+            "std": 0.6486113384673686,
+            "min": 49.03409090909091,
+            "max": 50.66051136363637
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 24.59375,
+            "std": 1.6427813210375886,
+            "min": 22.734375,
+            "max": 27.500000000000004
+          },
+          "tolerant": {
+            "mean": 60.578125,
+            "std": 2.015927787335151,
+            "min": 59.140625,
+            "max": 64.375
+          },
+          "n_banks": {
+            "mean": 7.0,
+            "std": 0.0,
+            "min": 7.0,
+            "max": 7.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          },
+          "single_bank_tolerant": {
+            "mean": 49.55133928571429,
+            "std": 1.200789128552554,
+            "min": 48.18080357142857,
+            "max": 51.50669642857143
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 11.576704545454547,
+        "trials": [
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 34.6875,
+                "tolerant": 69.84375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 34.6875,
+                  "std": 0.0,
+                  "min": 34.6875,
+                  "max": 34.6875
+                },
+                "tolerant": {
+                  "mean": 69.84375,
+                  "std": 0.0,
+                  "min": 69.84375,
+                  "max": 69.84375
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 38,
+              "features_per_bank": {
+                "min": 5,
+                "median": 7.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 21.40625,
+                "tolerant": 58.046875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.316761363636363,
+                  "std": 2.2035137361455757,
+                  "min": 15.546874999999998,
+                  "max": 23.203125
+                },
+                "tolerant": {
+                  "mean": 47.54261363636363,
+                  "std": 2.93555069290406,
+                  "min": 43.59375,
+                  "max": 53.04687500000001
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 4,
+                "median": 8.0,
+                "max": 12
+              },
+              "ensemble": {
+                "exact": 24.609375,
+                "tolerant": 60.62499999999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.211647727272727,
+                  "std": 1.8845797373460453,
+                  "min": 16.484375,
+                  "max": 22.96875
+                },
+                "tolerant": {
+                  "mean": 49.05539772727273,
+                  "std": 3.3963273140136696,
+                  "min": 43.59375,
+                  "max": 55.78125000000001
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 6,
+                "median": 7.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 22.734375,
+                "tolerant": 59.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.957589285714285,
+                  "std": 2.3709098104064674,
+                  "min": 15.703125000000002,
+                  "max": 22.734375
+                },
+                "tolerant": {
+                  "mean": 48.18080357142857,
+                  "std": 3.0371910798651185,
+                  "min": 45.546875,
+                  "max": 54.84375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 50.46874999999999,
+                "tolerant": 86.09375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 50.46874999999999,
+                  "std": 0.0,
+                  "min": 50.46874999999999,
+                  "max": 50.46874999999999
+                },
+                "tolerant": {
+                  "mean": 86.09375,
+                  "std": 0.0,
+                  "min": 86.09375,
+                  "max": 86.09375
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 46,
+              "features_per_bank": {
+                "min": 5,
+                "median": 8.0,
+                "max": 12
+              },
+              "ensemble": {
+                "exact": 26.718750000000004,
+                "tolerant": 62.81250000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.916193181818183,
+                  "std": 4.954302326056099,
+                  "min": 16.71875,
+                  "max": 35.625
+                },
+                "tolerant": {
+                  "mean": 50.84517045454545,
+                  "std": 5.702474879451446,
+                  "min": 44.21875,
+                  "max": 66.875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 3,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 27.265625,
+                "tolerant": 63.90625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.504261363636363,
+                  "std": 4.964066952763489,
+                  "min": 14.6875,
+                  "max": 32.65625
+                },
+                "tolerant": {
+                  "mean": 50.66051136363637,
+                  "std": 5.151229007274112,
+                  "min": 43.28125,
+                  "max": 61.875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 4,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 27.500000000000004,
+                "tolerant": 64.375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.200892857142858,
+                  "std": 1.7438593749985714,
+                  "min": 17.65625,
+                  "max": 22.34375
+                },
+                "tolerant": {
+                  "mean": 51.50669642857143,
+                  "std": 3.3615063540193186,
+                  "min": 47.8125,
+                  "max": 58.51562500000001
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 49.921875,
+                "tolerant": 79.921875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 49.921875,
+                  "std": 0.0,
+                  "min": 49.921875,
+                  "max": 49.921875
+                },
+                "tolerant": {
+                  "mean": 79.921875,
+                  "std": 0.0,
+                  "min": 79.921875,
+                  "max": 79.921875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 50,
+              "features_per_bank": {
+                "min": 6,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 25.937500000000004,
+                "tolerant": 64.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.630681818181817,
+                  "std": 3.2419677343869076,
+                  "min": 16.328125,
+                  "max": 29.140624999999996
+                },
+                "tolerant": {
+                  "mean": 50.546875,
+                  "std": 3.021914807719377,
+                  "min": 45.9375,
+                  "max": 57.65625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 5,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 27.968749999999996,
+                "tolerant": 63.515625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.561079545454547,
+                  "std": 4.099186701233581,
+                  "min": 16.5625,
+                  "max": 32.65625
+                },
+                "tolerant": {
+                  "mean": 50.20596590909091,
+                  "std": 2.816102634087191,
+                  "min": 46.015625,
+                  "max": 55.39062500000001
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 5,
+                "median": 8.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 24.53125,
+                "tolerant": 59.29687500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.944196428571427,
+                  "std": 3.8838002852376747,
+                  "min": 15.625,
+                  "max": 28.828125
+                },
+                "tolerant": {
+                  "mean": 48.984375,
+                  "std": 4.4387102222943104,
+                  "min": 41.71875,
+                  "max": 57.265625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 34.53125,
+                "tolerant": 73.28125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 34.53125,
+                  "std": 0.0,
+                  "min": 34.53125,
+                  "max": 34.53125
+                },
+                "tolerant": {
+                  "mean": 73.28125,
+                  "std": 0.0,
+                  "min": 73.28125,
+                  "max": 73.28125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 41,
+              "features_per_bank": {
+                "min": 4,
+                "median": 8.0,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 24.609375,
+                "tolerant": 58.51562500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.451704545454547,
+                  "std": 2.373349592391861,
+                  "min": 15.546874999999998,
+                  "max": 24.21875
+                },
+                "tolerant": {
+                  "mean": 47.86221590909091,
+                  "std": 3.714210238567681,
+                  "min": 44.296875,
+                  "max": 57.96875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 5,
+                "median": 7.0,
+                "max": 12
+              },
+              "ensemble": {
+                "exact": 24.375,
+                "tolerant": 62.18749999999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.176136363636363,
+                  "std": 2.635565275130392,
+                  "min": 16.5625,
+                  "max": 26.171875
+                },
+                "tolerant": {
+                  "mean": 49.43892045454545,
+                  "std": 5.154077773095367,
+                  "min": 45.625,
+                  "max": 64.765625
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 5,
+                "median": 8.0,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 24.84375,
+                "tolerant": 60.9375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.089285714285715,
+                  "std": 2.6792688824118054,
+                  "min": 16.796875,
+                  "max": 26.09375
+                },
+                "tolerant": {
+                  "mean": 50.3125,
+                  "std": 4.002824058889997,
+                  "min": 45.703125,
+                  "max": 59.29687500000001
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 35.078125,
+                "tolerant": 69.296875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 35.078125,
+                  "std": 0.0,
+                  "min": 35.078125,
+                  "max": 35.078125
+                },
+                "tolerant": {
+                  "mean": 69.296875,
+                  "std": 0.0,
+                  "min": 69.296875,
+                  "max": 69.296875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 48,
+              "features_per_bank": {
+                "min": 8,
+                "median": 9.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 25.078125,
+                "tolerant": 59.765625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.77840909090909,
+                  "std": 2.7740171703906054,
+                  "min": 15.46875,
+                  "max": 26.640625
+                },
+                "tolerant": {
+                  "mean": 48.60085227272727,
+                  "std": 2.825580092702901,
+                  "min": 45.234375,
+                  "max": 55.78125000000001
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 4,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 23.59375,
+                "tolerant": 59.375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.551136363636363,
+                  "std": 1.5907822595547292,
+                  "min": 16.640625,
+                  "max": 21.796875
+                },
+                "tolerant": {
+                  "mean": 49.03409090909091,
+                  "std": 2.8682280219769347,
+                  "min": 45.625,
+                  "max": 54.140625
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 6,
+                "median": 7.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 23.359375,
+                "tolerant": 59.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.683035714285715,
+                  "std": 1.1575979801061846,
+                  "min": 17.421875,
+                  "max": 20.9375
+                },
+                "tolerant": {
+                  "mean": 48.77232142857143,
+                  "std": 2.255292899350825,
+                  "min": 45.9375,
+                  "max": 52.34375
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.9": {
+        "n_available": {
+          "mean": 21.0,
+          "std": 0.0,
+          "min": 21.0,
+          "max": 21.0
+        },
+        "full": {
+          "exact": {
+            "mean": 25.859375,
+            "std": 4.381969894493799,
+            "min": 21.09375,
+            "max": 31.5625
+          },
+          "tolerant": {
+            "mean": 59.328125,
+            "std": 6.063144295660462,
+            "min": 53.125,
+            "max": 70.15625
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 21.0,
+            "std": 0.0,
+            "min": 21.0,
+            "max": 21.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 19.375,
+            "std": 0.9164298936634487,
+            "min": 18.59375,
+            "max": 21.171875
+          },
+          "tolerant": {
+            "mean": 54.265625,
+            "std": 0.6547602137424048,
+            "min": 53.125,
+            "max": 55.078125
+          },
+          "n_banks": {
+            "mean": 6.2,
+            "std": 1.16619037896906,
+            "min": 5.0,
+            "max": 8.0
+          },
+          "coverage": {
+            "mean": 15.6,
+            "std": 1.7435595774162693,
+            "min": 13.0,
+            "max": 18.0
+          },
+          "single_bank_tolerant": {
+            "mean": 46.139211309523816,
+            "std": 0.6619885121465501,
+            "min": 45.3125,
+            "max": 46.888020833333336
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 21.796875,
+            "std": 2.3143995576606895,
+            "min": 19.53125,
+            "max": 25.234374999999996
+          },
+          "tolerant": {
+            "mean": 55.4375,
+            "std": 1.7063472957607457,
+            "min": 52.96875,
+            "max": 57.34375000000001
+          },
+          "n_banks": {
+            "mean": 7.0,
+            "std": 0.6324555320336759,
+            "min": 6.0,
+            "max": 8.0
+          },
+          "coverage": {
+            "mean": 18.8,
+            "std": 1.9390719429665315,
+            "min": 15.0,
+            "max": 20.0
+          },
+          "single_bank_tolerant": {
+            "mean": 46.77036830357143,
+            "std": 1.2701332952377073,
+            "min": 45.341796875,
+            "max": 48.292410714285715
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 20.1875,
+            "std": 1.6510827413397549,
+            "min": 18.75,
+            "max": 23.203125
+          },
+          "tolerant": {
+            "mean": 53.71875,
+            "std": 0.9024705673871055,
+            "min": 52.42187499999999,
+            "max": 55.078125
+          },
+          "n_banks": {
+            "mean": 4.2,
+            "std": 0.7483314773547882,
+            "min": 3.0,
+            "max": 5.0
+          },
+          "coverage": {
+            "mean": 16.6,
+            "std": 2.0591260281974,
+            "min": 13.0,
+            "max": 19.0
+          },
+          "single_bank_tolerant": {
+            "mean": 46.35859375,
+            "std": 1.21418516111372,
+            "min": 44.90625,
+            "max": 48.28125
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 8.126413690476184,
+        "trials": [
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 23.515625,
+                "tolerant": 56.40625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 23.515625,
+                  "std": 0.0,
+                  "min": 23.515625,
+                  "max": 23.515625
+                },
+                "tolerant": {
+                  "mean": 56.40625,
+                  "std": 0.0,
+                  "min": 56.40625,
+                  "max": 56.40625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 5,
+              "available_coverage": 15,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 18.984375,
+                "tolerant": 54.6875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.25,
+                  "std": 0.9142961773954871,
+                  "min": 15.78125,
+                  "max": 18.59375
+                },
+                "tolerant": {
+                  "mean": 46.625,
+                  "std": 1.6375715633217378,
+                  "min": 45.15625,
+                  "max": 49.765625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 8,
+              "available_coverage": 20,
+              "features_per_bank": {
+                "min": 3,
+                "median": 3.5,
+                "max": 4
+              },
+              "ensemble": {
+                "exact": 20.15625,
+                "tolerant": 55.859375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.328125,
+                  "std": 1.0393855230976619,
+                  "min": 14.21875,
+                  "max": 18.046875
+                },
+                "tolerant": {
+                  "mean": 45.341796875,
+                  "std": 1.054642287804073,
+                  "min": 43.75,
+                  "max": 47.03125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 17,
+              "features_per_bank": {
+                "min": 4,
+                "median": 4.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 18.75,
+                "tolerant": 53.125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.71484375,
+                  "std": 0.5338144675279862,
+                  "min": 16.875,
+                  "max": 18.28125
+                },
+                "tolerant": {
+                  "mean": 45.83984375,
+                  "std": 1.380377225319111,
+                  "min": 44.296875,
+                  "max": 48.046875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 31.5625,
+                "tolerant": 61.484375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 31.5625,
+                  "std": 0.0,
+                  "min": 31.5625,
+                  "max": 31.5625
+                },
+                "tolerant": {
+                  "mean": 61.484375,
+                  "std": 0.0,
+                  "min": 61.484375,
+                  "max": 61.484375
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 6,
+              "available_coverage": 15,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 21.171875,
+                "tolerant": 54.21875000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.395833333333332,
+                  "std": 1.7490619385632273,
+                  "min": 16.171875,
+                  "max": 21.25
+                },
+                "tolerant": {
+                  "mean": 46.888020833333336,
+                  "std": 1.788599982668979,
+                  "min": 43.59375,
+                  "max": 49.140625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 19,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 25.234374999999996,
+                "tolerant": 57.34375000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.609375,
+                  "std": 4.543164754017057,
+                  "min": 14.765624999999998,
+                  "max": 30.078125
+                },
+                "tolerant": {
+                  "mean": 48.292410714285715,
+                  "std": 3.4563274408233915,
+                  "min": 43.828125,
+                  "max": 55.3125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 3,
+              "available_coverage": 13,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 20.703125,
+                "tolerant": 55.078125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.619791666666668,
+                  "std": 1.371582716902468,
+                  "min": 16.953125,
+                  "max": 20.3125
+                },
+                "tolerant": {
+                  "mean": 48.28125,
+                  "std": 1.7780947932407878,
+                  "min": 45.78125,
+                  "max": 49.765625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 30.703124999999996,
+                "tolerant": 70.15625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.703124999999996,
+                  "std": 0.0,
+                  "min": 30.703124999999996,
+                  "max": 30.703124999999996
+                },
+                "tolerant": {
+                  "mean": 70.15625,
+                  "std": 0.0,
+                  "min": 70.15625,
+                  "max": 70.15625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 17,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 18.984375,
+                "tolerant": 55.078125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.421875,
+                  "std": 1.8135388032990718,
+                  "min": 15.78125,
+                  "max": 21.40625
+                },
+                "tolerant": {
+                  "mean": 46.495535714285715,
+                  "std": 3.5049263230451064,
+                  "min": 43.359375,
+                  "max": 54.453125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 20,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 23.90625,
+                "tolerant": 57.03125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.549107142857142,
+                  "std": 2.8740952158808133,
+                  "min": 15.390625,
+                  "max": 24.609375
+                },
+                "tolerant": {
+                  "mean": 48.247767857142854,
+                  "std": 6.177997237976798,
+                  "min": 41.015625,
+                  "max": 62.18749999999999
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 16,
+              "features_per_bank": {
+                "min": 3,
+                "median": 3.5,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 23.203125,
+                "tolerant": 54.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.9296875,
+                  "std": 1.9108710638492201,
+                  "min": 14.84375,
+                  "max": 19.921875
+                },
+                "tolerant": {
+                  "mean": 47.1875,
+                  "std": 4.009571068861359,
+                  "min": 41.5625,
+                  "max": 52.65625000000001
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 21.09375,
+                "tolerant": 53.125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.09375,
+                  "std": 0.0,
+                  "min": 21.09375,
+                  "max": 21.09375
+                },
+                "tolerant": {
+                  "mean": 53.125,
+                  "std": 0.0,
+                  "min": 53.125,
+                  "max": 53.125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 5,
+              "available_coverage": 13,
+              "features_per_bank": {
+                "min": 3,
+                "median": 3.0,
+                "max": 4
+              },
+              "ensemble": {
+                "exact": 19.140625,
+                "tolerant": 53.125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.46875,
+                  "std": 1.2237477655750797,
+                  "min": 14.84375,
+                  "max": 17.890625
+                },
+                "tolerant": {
+                  "mean": 45.375,
+                  "std": 1.7701132114218006,
+                  "min": 42.734375,
+                  "max": 47.34375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 6,
+              "available_coverage": 15,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 7
+              },
+              "ensemble": {
+                "exact": 19.53125,
+                "tolerant": 53.98437499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.1875,
+                  "std": 1.2270019780614319,
+                  "min": 15.0,
+                  "max": 18.59375
+                },
+                "tolerant": {
+                  "mean": 46.3671875,
+                  "std": 1.8590631303579366,
+                  "min": 44.53125,
+                  "max": 49.921875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 5,
+              "available_coverage": 19,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 4
+              },
+              "ensemble": {
+                "exact": 19.21875,
+                "tolerant": 53.82812500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.90625,
+                  "std": 0.7338761603635866,
+                  "min": 15.937499999999998,
+                  "max": 18.046875
+                },
+                "tolerant": {
+                  "mean": 45.578125,
+                  "std": 1.5900692791510689,
+                  "min": 42.65625,
+                  "max": 46.875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 22.421875,
+                "tolerant": 55.46875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.421875,
+                  "std": 0.0,
+                  "min": 22.421875,
+                  "max": 22.421875
+                },
+                "tolerant": {
+                  "mean": 55.46875,
+                  "std": 0.0,
+                  "min": 55.46875,
+                  "max": 55.46875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 8,
+              "available_coverage": 18,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 18.59375,
+                "tolerant": 54.21875000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.26953125,
+                  "std": 1.9502909125447636,
+                  "min": 13.671875,
+                  "max": 19.140625
+                },
+                "tolerant": {
+                  "mean": 45.3125,
+                  "std": 2.2052156525425692,
+                  "min": 42.578125,
+                  "max": 49.21875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 7,
+              "available_coverage": 20,
+              "features_per_bank": {
+                "min": 3,
+                "median": 3.0,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 20.15625,
+                "tolerant": 52.96875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.662946428571427,
+                  "std": 0.9773115749548943,
+                  "min": 15.078125,
+                  "max": 18.125
+                },
+                "tolerant": {
+                  "mean": 45.60267857142857,
+                  "std": 1.0927245557410101,
+                  "min": 44.0625,
+                  "max": 47.1875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 5,
+              "available_coverage": 18,
+              "features_per_bank": {
+                "min": 3,
+                "median": 3.0,
+                "max": 5
+              },
+              "ensemble": {
+                "exact": 19.0625,
+                "tolerant": 52.42187499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.15625,
+                  "std": 2.2827477959687097,
+                  "min": 13.984374999999998,
+                  "max": 20.390625
+                },
+                "tolerant": {
+                  "mean": 44.90625,
+                  "std": 2.7873878901222224,
+                  "min": 42.421875,
+                  "max": 50.31250000000001
+                }
+              }
+            }
+          }
+        ]
+      }
+    },
+    "64": {
+      "0.0": {
+        "n_available": {
+          "mean": 212.0,
+          "std": 0.0,
+          "min": 212.0,
+          "max": 212.0
+        },
+        "full": {
+          "exact": {
+            "mean": 65.390625,
+            "std": 0.0,
+            "min": 65.390625,
+            "max": 65.390625
+          },
+          "tolerant": {
+            "mean": 94.0625,
+            "std": 0.0,
+            "min": 94.0625,
+            "max": 94.0625
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 55.796875,
+            "std": 1.3651994474251754,
+            "min": 53.515625,
+            "max": 57.34375000000001
+          },
+          "tolerant": {
+            "mean": 90.484375,
+            "std": 0.9022000020782531,
+            "min": 89.0625,
+            "max": 91.484375
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 207.8,
+            "std": 1.9390719429665317,
+            "min": 205.0,
+            "max": 210.0
+          },
+          "single_bank_tolerant": {
+            "mean": 75.7528409090909,
+            "std": 1.2526041442944829,
+            "min": 73.71448863636364,
+            "max": 77.44318181818181
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 48.4375,
+            "std": 0.0,
+            "min": 48.4375,
+            "max": 48.4375
+          },
+          "tolerant": {
+            "mean": 84.0625,
+            "std": 0.0,
+            "min": 84.0625,
+            "max": 84.0625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          },
+          "single_bank_tolerant": {
+            "mean": 70.37642045454545,
+            "std": 0.0,
+            "min": 70.37642045454545,
+            "max": 70.37642045454545
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 45.171875,
+            "std": 1.1454308005069533,
+            "min": 43.125,
+            "max": 46.328125
+          },
+          "tolerant": {
+            "mean": 84.796875,
+            "std": 0.49804304532841337,
+            "min": 84.296875,
+            "max": 85.546875
+          },
+          "n_banks": {
+            "mean": 4.0,
+            "std": 0.0,
+            "min": 4.0,
+            "max": 4.0
+          },
+          "coverage": {
+            "mean": 212.0,
+            "std": 0.0,
+            "min": 212.0,
+            "max": 212.0
+          },
+          "single_bank_tolerant": {
+            "mean": 73.8515625,
+            "std": 0.6497069651966184,
+            "min": 73.18359375,
+            "max": 74.90234375
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 14.731534090909093,
+        "trials": [
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 205,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 53.515625,
+                "tolerant": 89.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 38.79971590909091,
+                  "std": 6.4991422694763825,
+                  "min": 27.65625,
+                  "max": 49.296875
+                },
+                "tolerant": {
+                  "mean": 73.71448863636364,
+                  "std": 5.578779846449845,
+                  "min": 60.9375,
+                  "max": 82.265625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 48.4375,
+                "tolerant": 84.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.796875,
+                  "std": 3.649973974455783,
+                  "min": 30.46875,
+                  "max": 43.125
+                },
+                "tolerant": {
+                  "mean": 70.37642045454545,
+                  "std": 5.066673953358202,
+                  "min": 63.515625,
+                  "max": 81.484375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 45.9375,
+                "tolerant": 84.453125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 38.49609375,
+                  "std": 9.901765885505837,
+                  "min": 29.375,
+                  "max": 54.921875
+                },
+                "tolerant": {
+                  "mean": 73.18359375,
+                  "std": 8.92531112000401,
+                  "min": 63.74999999999999,
+                  "max": 87.1875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 210,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 55.078125,
+                "tolerant": 89.921875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 39.6875,
+                  "std": 6.718584828836555,
+                  "min": 30.234375000000004,
+                  "max": 49.296875
+                },
+                "tolerant": {
+                  "mean": 75.71022727272727,
+                  "std": 6.625480269216634,
+                  "min": 65.46875,
+                  "max": 85.625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 48.4375,
+                "tolerant": 84.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.796875,
+                  "std": 3.649973974455783,
+                  "min": 30.46875,
+                  "max": 43.125
+                },
+                "tolerant": {
+                  "mean": 70.37642045454545,
+                  "std": 5.066673953358202,
+                  "min": 63.515625,
+                  "max": 81.484375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 45.703125,
+                "tolerant": 84.296875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 39.21875,
+                  "std": 8.23820623632278,
+                  "min": 33.515625,
+                  "max": 53.43750000000001
+                },
+                "tolerant": {
+                  "mean": 74.296875,
+                  "std": 5.067597260259293,
+                  "min": 68.90625,
+                  "max": 82.34375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 209,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 56.796875,
+                "tolerant": 90.625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 42.02414772727273,
+                  "std": 5.173594981593977,
+                  "min": 32.96875,
+                  "max": 49.21875
+                },
+                "tolerant": {
+                  "mean": 77.44318181818181,
+                  "std": 3.9228469725890704,
+                  "min": 69.609375,
+                  "max": 83.59375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 48.4375,
+                "tolerant": 84.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.796875,
+                  "std": 3.649973974455783,
+                  "min": 30.46875,
+                  "max": 43.125
+                },
+                "tolerant": {
+                  "mean": 70.37642045454545,
+                  "std": 5.066673953358202,
+                  "min": 63.515625,
+                  "max": 81.484375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 46.328125,
+                "tolerant": 85.546875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 37.5,
+                  "std": 6.405058959403692,
+                  "min": 28.90625,
+                  "max": 46.953125
+                },
+                "tolerant": {
+                  "mean": 74.90234375,
+                  "std": 4.731684660000039,
+                  "min": 68.28125,
+                  "max": 81.484375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 206,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 56.25,
+                "tolerant": 91.328125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 40.80965909090909,
+                  "std": 6.471335870742828,
+                  "min": 29.765625,
+                  "max": 56.56250000000001
+                },
+                "tolerant": {
+                  "mean": 76.5625,
+                  "std": 5.775680671220414,
+                  "min": 66.796875,
+                  "max": 88.28125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 48.4375,
+                "tolerant": 84.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.796875,
+                  "std": 3.649973974455783,
+                  "min": 30.46875,
+                  "max": 43.125
+                },
+                "tolerant": {
+                  "mean": 70.37642045454545,
+                  "std": 5.066673953358202,
+                  "min": 63.515625,
+                  "max": 81.484375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 43.125,
+                "tolerant": 85.234375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.23046875,
+                  "std": 3.867138178347095,
+                  "min": 30.9375,
+                  "max": 41.796875
+                },
+                "tolerant": {
+                  "mean": 73.53515625,
+                  "std": 6.019270151702753,
+                  "min": 64.296875,
+                  "max": 80.546875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 212,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 212,
+                "median": 212.0,
+                "max": 212
+              },
+              "ensemble": {
+                "exact": 65.390625,
+                "tolerant": 94.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                },
+                "tolerant": {
+                  "mean": 94.0625,
+                  "std": 0.0,
+                  "min": 94.0625,
+                  "max": 94.0625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 209,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 57.34375000000001,
+                "tolerant": 91.484375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 41.44886363636363,
+                  "std": 6.36788362727334,
+                  "min": 30.078125,
+                  "max": 51.015625
+                },
+                "tolerant": {
+                  "mean": 75.33380681818181,
+                  "std": 6.414826827616299,
+                  "min": 64.296875,
+                  "max": 82.5
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 64,
+                "median": 64.0,
+                "max": 64
+              },
+              "ensemble": {
+                "exact": 48.4375,
+                "tolerant": 84.0625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 36.796875,
+                  "std": 3.649973974455783,
+                  "min": 30.46875,
+                  "max": 43.125
+                },
+                "tolerant": {
+                  "mean": 70.37642045454545,
+                  "std": 5.066673953358202,
+                  "min": 63.515625,
+                  "max": 81.484375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 212,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 44.765625,
+                "tolerant": 84.453125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 37.12890625,
+                  "std": 3.0660330186871256,
+                  "min": 35.0,
+                  "max": 42.421875
+                },
+                "tolerant": {
+                  "mean": 73.33984375,
+                  "std": 2.2933214166612554,
+                  "min": 70.703125,
+                  "max": 76.5625
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.5": {
+        "n_available": {
+          "mean": 106.0,
+          "std": 0.0,
+          "min": 106.0,
+          "max": 106.0
+        },
+        "full": {
+          "exact": {
+            "mean": 50.125,
+            "std": 7.226558277025795,
+            "min": 37.65625,
+            "max": 58.12500000000001
+          },
+          "tolerant": {
+            "mean": 84.53125,
+            "std": 5.045447747103323,
+            "min": 75.46875,
+            "max": 90.15625
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 42.5625,
+            "std": 5.421086938405434,
+            "min": 33.359375,
+            "max": 49.375
+          },
+          "tolerant": {
+            "mean": 81.0625,
+            "std": 4.019483797703382,
+            "min": 73.828125,
+            "max": 85.15625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 104.0,
+            "std": 1.6733200530681511,
+            "min": 101.0,
+            "max": 106.0
+          },
+          "single_bank_tolerant": {
+            "mean": 65.94744318181817,
+            "std": 3.0771930748302196,
+            "min": 61.22869318181818,
+            "max": 70.35511363636364
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 37.296875,
+            "std": 2.67621175825083,
+            "min": 33.046875,
+            "max": 41.328125
+          },
+          "tolerant": {
+            "mean": 73.84375,
+            "std": 1.8304605807009338,
+            "min": 70.546875,
+            "max": 76.015625
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          },
+          "single_bank_tolerant": {
+            "mean": 61.590909090909086,
+            "std": 1.1142286661197027,
+            "min": 59.765625,
+            "max": 63.11079545454545
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 30.5,
+            "std": 1.9749406636656188,
+            "min": 27.109375000000004,
+            "max": 32.890625
+          },
+          "tolerant": {
+            "mean": 69.984375,
+            "std": 2.5133432975321934,
+            "min": 65.078125,
+            "max": 72.03125
+          },
+          "n_banks": {
+            "mean": 4.0,
+            "std": 0.0,
+            "min": 4.0,
+            "max": 4.0
+          },
+          "coverage": {
+            "mean": 106.0,
+            "std": 0.0,
+            "min": 106.0,
+            "max": 106.0
+          },
+          "single_bank_tolerant": {
+            "mean": 60.80078125,
+            "std": 2.443639603484677,
+            "min": 56.34765625,
+            "max": 63.515625
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 15.115056818181827,
+        "trials": [
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 47.34375,
+                "tolerant": 83.515625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 47.34375,
+                  "std": 0.0,
+                  "min": 47.34375,
+                  "max": 47.34375
+                },
+                "tolerant": {
+                  "mean": 83.515625,
+                  "std": 0.0,
+                  "min": 83.515625,
+                  "max": 83.515625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 30,
+                "median": 34.0,
+                "max": 39
+              },
+              "ensemble": {
+                "exact": 41.796875,
+                "tolerant": 83.984375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.0,
+                  "std": 5.017281923285482,
+                  "min": 21.953125,
+                  "max": 35.859375
+                },
+                "tolerant": {
+                  "mean": 67.2372159090909,
+                  "std": 7.494469487238215,
+                  "min": 54.84375,
+                  "max": 77.890625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 28,
+                "median": 31.0,
+                "max": 37
+              },
+              "ensemble": {
+                "exact": 36.484375,
+                "tolerant": 73.90625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.967329545454547,
+                  "std": 2.1831374370287846,
+                  "min": 23.984375,
+                  "max": 32.03125
+                },
+                "tolerant": {
+                  "mean": 62.18039772727273,
+                  "std": 3.7444405027267753,
+                  "min": 56.95312500000001,
+                  "max": 70.390625
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 22,
+                "median": 24.0,
+                "max": 36
+              },
+              "ensemble": {
+                "exact": 31.953125,
+                "tolerant": 70.9375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 26.89453125,
+                  "std": 4.151803527887572,
+                  "min": 21.953125,
+                  "max": 33.125
+                },
+                "tolerant": {
+                  "mean": 62.0703125,
+                  "std": 6.392539635253054,
+                  "min": 55.54687499999999,
+                  "max": 71.5625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 51.796875,
+                "tolerant": 85.625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 51.796875,
+                  "std": 0.0,
+                  "min": 51.796875,
+                  "max": 51.796875
+                },
+                "tolerant": {
+                  "mean": 85.625,
+                  "std": 0.0,
+                  "min": 85.625,
+                  "max": 85.625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 104,
+              "features_per_bank": {
+                "min": 24,
+                "median": 31.0,
+                "max": 37
+              },
+              "ensemble": {
+                "exact": 41.875,
+                "tolerant": 79.921875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 30.51846590909091,
+                  "std": 7.431943882294621,
+                  "min": 22.03125,
+                  "max": 44.84375
+                },
+                "tolerant": {
+                  "mean": 64.13352272727273,
+                  "std": 8.997948895350934,
+                  "min": 54.84375,
+                  "max": 79.765625
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 27,
+                "median": 33.0,
+                "max": 36
+              },
+              "ensemble": {
+                "exact": 37.421875,
+                "tolerant": 73.828125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.210227272727273,
+                  "std": 3.884235486896397,
+                  "min": 22.890625,
+                  "max": 37.34375
+                },
+                "tolerant": {
+                  "mean": 61.15056818181818,
+                  "std": 5.397783343010214,
+                  "min": 56.56250000000001,
+                  "max": 75.546875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 24,
+                "median": 25.5,
+                "max": 31
+              },
+              "ensemble": {
+                "exact": 30.078125,
+                "tolerant": 71.484375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 25.76171875,
+                  "std": 2.1333811913526337,
+                  "min": 22.5,
+                  "max": 28.359374999999996
+                },
+                "tolerant": {
+                  "mean": 60.3515625,
+                  "std": 4.132694350863157,
+                  "min": 56.796875,
+                  "max": 67.03125
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 55.703125,
+                "tolerant": 87.890625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 55.703125,
+                  "std": 0.0,
+                  "min": 55.703125,
+                  "max": 55.703125
+                },
+                "tolerant": {
+                  "mean": 87.890625,
+                  "std": 0.0,
+                  "min": 87.890625,
+                  "max": 87.890625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 101,
+              "features_per_bank": {
+                "min": 28,
+                "median": 34.0,
+                "max": 38
+              },
+              "ensemble": {
+                "exact": 49.375,
+                "tolerant": 82.421875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 34.53125,
+                  "std": 8.238526155218983,
+                  "min": 23.671875,
+                  "max": 51.015625
+                },
+                "tolerant": {
+                  "mean": 66.78267045454545,
+                  "std": 6.829233171936941,
+                  "min": 54.453125,
+                  "max": 77.1875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 25,
+                "median": 30.0,
+                "max": 38
+              },
+              "ensemble": {
+                "exact": 38.203125,
+                "tolerant": 74.921875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.4375,
+                  "std": 2.9886815963998394,
+                  "min": 23.59375,
+                  "max": 33.828125
+                },
+                "tolerant": {
+                  "mean": 61.74715909090909,
+                  "std": 6.346928846195408,
+                  "min": 54.84375,
+                  "max": 75.46875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 22,
+                "median": 26.0,
+                "max": 32
+              },
+              "ensemble": {
+                "exact": 30.46875,
+                "tolerant": 70.390625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 28.30078125,
+                  "std": 5.497240241116873,
+                  "min": 18.90625,
+                  "max": 32.890625
+                },
+                "tolerant": {
+                  "mean": 61.71875,
+                  "std": 5.8923551007057045,
+                  "min": 51.64062499999999,
+                  "max": 66.5625
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 37.65625,
+                "tolerant": 75.46875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 37.65625,
+                  "std": 0.0,
+                  "min": 37.65625,
+                  "max": 37.65625
+                },
+                "tolerant": {
+                  "mean": 75.46875,
+                  "std": 0.0,
+                  "min": 75.46875,
+                  "max": 75.46875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 104,
+              "features_per_bank": {
+                "min": 27,
+                "median": 29.0,
+                "max": 37
+              },
+              "ensemble": {
+                "exact": 33.359375,
+                "tolerant": 73.828125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 25.333806818181817,
+                  "std": 2.6001109085630385,
+                  "min": 19.84375,
+                  "max": 29.531249999999996
+                },
+                "tolerant": {
+                  "mean": 61.22869318181818,
+                  "std": 5.177844213559992,
+                  "min": 48.90625,
+                  "max": 68.671875
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 26,
+                "median": 30.0,
+                "max": 35
+              },
+              "ensemble": {
+                "exact": 33.046875,
+                "tolerant": 70.546875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 25.36221590909091,
+                  "std": 3.2112170386905405,
+                  "min": 21.328125,
+                  "max": 31.640625
+                },
+                "tolerant": {
+                  "mean": 59.765625,
+                  "std": 6.69484051786591,
+                  "min": 52.34375,
+                  "max": 71.875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 25,
+                "median": 26.5,
+                "max": 28
+              },
+              "ensemble": {
+                "exact": 27.109375000000004,
+                "tolerant": 65.078125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 23.49609375,
+                  "std": 1.9361567609389718,
+                  "min": 21.484375,
+                  "max": 25.546875000000004
+                },
+                "tolerant": {
+                  "mean": 56.34765625,
+                  "std": 3.392539332140038,
+                  "min": 51.5625,
+                  "max": 60.23437499999999
+                }
+              }
+            }
+          },
+          {
+            "n_available": 106,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 106,
+                "median": 106.0,
+                "max": 106
+              },
+              "ensemble": {
+                "exact": 58.12500000000001,
+                "tolerant": 90.15625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 58.12500000000001,
+                  "std": 0.0,
+                  "min": 58.12500000000001,
+                  "max": 58.12500000000001
+                },
+                "tolerant": {
+                  "mean": 90.15625,
+                  "std": 0.0,
+                  "min": 90.15625,
+                  "max": 90.15625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 105,
+              "features_per_bank": {
+                "min": 30,
+                "median": 34.0,
+                "max": 38
+              },
+              "ensemble": {
+                "exact": 46.40625,
+                "tolerant": 85.15625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 34.01988636363637,
+                  "std": 5.768986882129104,
+                  "min": 23.75,
+                  "max": 45.0
+                },
+                "tolerant": {
+                  "mean": 70.35511363636364,
+                  "std": 7.402551372295442,
+                  "min": 55.703125,
+                  "max": 81.953125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 29,
+                "median": 32.0,
+                "max": 37
+              },
+              "ensemble": {
+                "exact": 41.328125,
+                "tolerant": 76.015625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 31.470170454545453,
+                  "std": 4.427422608940912,
+                  "min": 23.359375,
+                  "max": 40.3125
+                },
+                "tolerant": {
+                  "mean": 63.11079545454545,
+                  "std": 5.54480577019465,
+                  "min": 54.60937500000001,
+                  "max": 77.578125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 106,
+              "features_per_bank": {
+                "min": 24,
+                "median": 27.0,
+                "max": 28
+              },
+              "ensemble": {
+                "exact": 32.890625,
+                "tolerant": 72.03125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 29.23828125,
+                  "std": 4.635905836490283,
+                  "min": 23.4375,
+                  "max": 35.3125
+                },
+                "tolerant": {
+                  "mean": 63.515625,
+                  "std": 8.605638084182806,
+                  "min": 55.46875,
+                  "max": 76.171875
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.75": {
+        "n_available": {
+          "mean": 53.0,
+          "std": 0.0,
+          "min": 53.0,
+          "max": 53.0
+        },
+        "full": {
+          "exact": {
+            "mean": 35.046875,
+            "std": 4.08365884119254,
+            "min": 29.375,
+            "max": 40.234375
+          },
+          "tolerant": {
+            "mean": 71.453125,
+            "std": 4.405474222487291,
+            "min": 65.390625,
+            "max": 75.390625
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 29.484375,
+            "std": 1.6272520452437604,
+            "min": 26.5625,
+            "max": 31.328125
+          },
+          "tolerant": {
+            "mean": 68.15625,
+            "std": 1.7867240448653507,
+            "min": 65.546875,
+            "max": 70.78125
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 51.6,
+            "std": 0.7999999999999999,
+            "min": 51.0,
+            "max": 53.0
+          },
+          "single_bank_tolerant": {
+            "mean": 55.03125,
+            "std": 1.083589911870462,
+            "min": 54.01988636363637,
+            "max": 57.07386363636363
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 27.015625,
+            "std": 1.6911130302998665,
+            "min": 24.765625,
+            "max": 29.140624999999996
+          },
+          "tolerant": {
+            "mean": 65.359375,
+            "std": 1.6159604342309855,
+            "min": 63.59375000000001,
+            "max": 68.125
+          },
+          "n_banks": {
+            "mean": 11.0,
+            "std": 0.0,
+            "min": 11.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          },
+          "single_bank_tolerant": {
+            "mean": 53.73863636363636,
+            "std": 1.1666818472915341,
+            "min": 52.42897727272727,
+            "max": 55.86647727272727
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 24.078125,
+            "std": 1.5168326374389502,
+            "min": 21.171875,
+            "max": 25.546875000000004
+          },
+          "tolerant": {
+            "mean": 62.34375,
+            "std": 2.635488717723909,
+            "min": 58.28124999999999,
+            "max": 65.78125
+          },
+          "n_banks": {
+            "mean": 4.0,
+            "std": 0.0,
+            "min": 4.0,
+            "max": 4.0
+          },
+          "coverage": {
+            "mean": 53.0,
+            "std": 0.0,
+            "min": 53.0,
+            "max": 53.0
+          },
+          "single_bank_tolerant": {
+            "mean": 53.37109375,
+            "std": 1.7088939708231243,
+            "min": 51.23046875,
+            "max": 55.17578125
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 13.125,
+        "trials": [
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 31.640625,
+                "tolerant": 65.390625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 31.640625,
+                  "std": 0.0,
+                  "min": 31.640625,
+                  "max": 31.640625
+                },
+                "tolerant": {
+                  "mean": 65.390625,
+                  "std": 0.0,
+                  "min": 65.390625,
+                  "max": 65.390625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 10,
+                "median": 18.0,
+                "max": 22
+              },
+              "ensemble": {
+                "exact": 30.234375000000004,
+                "tolerant": 65.546875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.521306818181817,
+                  "std": 2.7741808201023903,
+                  "min": 19.53125,
+                  "max": 29.062500000000004
+                },
+                "tolerant": {
+                  "mean": 54.26136363636363,
+                  "std": 4.207471724319775,
+                  "min": 49.921875,
+                  "max": 65.234375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 10,
+                "median": 18.0,
+                "max": 22
+              },
+              "ensemble": {
+                "exact": 24.765625,
+                "tolerant": 63.59375000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.228693181818183,
+                  "std": 1.9555640762058122,
+                  "min": 18.203125,
+                  "max": 25.624999999999996
+                },
+                "tolerant": {
+                  "mean": 52.42897727272727,
+                  "std": 4.605877253580653,
+                  "min": 48.125,
+                  "max": 64.453125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 9,
+                "median": 14.0,
+                "max": 16
+              },
+              "ensemble": {
+                "exact": 24.296875,
+                "tolerant": 58.28124999999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.37109375,
+                  "std": 1.6877305615062457,
+                  "min": 17.890625,
+                  "max": 22.65625
+                },
+                "tolerant": {
+                  "mean": 51.23046875,
+                  "std": 1.4271183798540301,
+                  "min": 49.21875,
+                  "max": 53.04687500000001
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 35.390625,
+                "tolerant": 74.609375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 35.390625,
+                  "std": 0.0,
+                  "min": 35.390625,
+                  "max": 35.390625
+                },
+                "tolerant": {
+                  "mean": 74.609375,
+                  "std": 0.0,
+                  "min": 74.609375,
+                  "max": 74.609375
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 51,
+              "features_per_bank": {
+                "min": 14,
+                "median": 17.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 31.328125,
+                "tolerant": 70.78125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 23.899147727272727,
+                  "std": 3.5026519708684916,
+                  "min": 18.90625,
+                  "max": 31.328125
+                },
+                "tolerant": {
+                  "mean": 57.07386363636363,
+                  "std": 6.239103039239364,
+                  "min": 50.15625,
+                  "max": 68.59375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 12,
+                "median": 15.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 29.140624999999996,
+                "tolerant": 66.09375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.677556818181817,
+                  "std": 3.709549068774625,
+                  "min": 19.140625,
+                  "max": 30.312499999999996
+                },
+                "tolerant": {
+                  "mean": 53.88494318181818,
+                  "std": 6.504332556589867,
+                  "min": 47.578125,
+                  "max": 67.578125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 11,
+                "median": 13.0,
+                "max": 16
+              },
+              "ensemble": {
+                "exact": 24.921875,
+                "tolerant": 65.78125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.93359375,
+                  "std": 2.3065901838790497,
+                  "min": 18.59375,
+                  "max": 24.609375
+                },
+                "tolerant": {
+                  "mean": 55.17578125,
+                  "std": 3.598152449494697,
+                  "min": 49.453125,
+                  "max": 58.75
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 29.375,
+                "tolerant": 66.796875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 29.375,
+                  "std": 0.0,
+                  "min": 29.375,
+                  "max": 29.375
+                },
+                "tolerant": {
+                  "mean": 66.796875,
+                  "std": 0.0,
+                  "min": 66.796875,
+                  "max": 66.796875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 51,
+              "features_per_bank": {
+                "min": 13,
+                "median": 15.0,
+                "max": 20
+              },
+              "ensemble": {
+                "exact": 26.5625,
+                "tolerant": 66.953125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.605113636363637,
+                  "std": 1.6674164065650283,
+                  "min": 18.515625,
+                  "max": 23.90625
+                },
+                "tolerant": {
+                  "mean": 54.01988636363637,
+                  "std": 2.2195710199619563,
+                  "min": 50.15625,
+                  "max": 57.73437500000001
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 10,
+                "median": 14.0,
+                "max": 23
+              },
+              "ensemble": {
+                "exact": 25.3125,
+                "tolerant": 64.140625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.703125,
+                  "std": 1.9407277000346592,
+                  "min": 16.5625,
+                  "max": 23.75
+                },
+                "tolerant": {
+                  "mean": 53.06107954545455,
+                  "std": 3.0403700560095213,
+                  "min": 47.8125,
+                  "max": 56.875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 10,
+                "median": 14.0,
+                "max": 15
+              },
+              "ensemble": {
+                "exact": 21.171875,
+                "tolerant": 60.546875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.8046875,
+                  "std": 1.6429485035010227,
+                  "min": 17.03125,
+                  "max": 21.171875
+                },
+                "tolerant": {
+                  "mean": 51.4453125,
+                  "std": 2.4120896064473327,
+                  "min": 48.125,
+                  "max": 54.921875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 38.59375,
+                "tolerant": 75.078125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 38.59375,
+                  "std": 0.0,
+                  "min": 38.59375,
+                  "max": 38.59375
+                },
+                "tolerant": {
+                  "mean": 75.078125,
+                  "std": 0.0,
+                  "min": 75.078125,
+                  "max": 75.078125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 51,
+              "features_per_bank": {
+                "min": 13,
+                "median": 16.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 30.234375000000004,
+                "tolerant": 68.515625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.5,
+                  "std": 3.230979910023781,
+                  "min": 19.453125,
+                  "max": 30.234375000000004
+                },
+                "tolerant": {
+                  "mean": 54.74431818181818,
+                  "std": 4.82217644696792,
+                  "min": 49.296875,
+                  "max": 67.109375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 11,
+                "median": 15.0,
+                "max": 19
+              },
+              "ensemble": {
+                "exact": 28.203125,
+                "tolerant": 68.125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.748579545454547,
+                  "std": 2.1086694374010686,
+                  "min": 19.140625,
+                  "max": 26.875
+                },
+                "tolerant": {
+                  "mean": 55.86647727272727,
+                  "std": 2.6159320143040308,
+                  "min": 50.625,
+                  "max": 59.921875
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 9,
+                "median": 14.0,
+                "max": 16
+              },
+              "ensemble": {
+                "exact": 24.453125,
+                "tolerant": 63.20312500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.6640625,
+                  "std": 2.743010916259494,
+                  "min": 17.265625,
+                  "max": 24.140625
+                },
+                "tolerant": {
+                  "mean": 54.00390625,
+                  "std": 5.349815807558674,
+                  "min": 47.890625,
+                  "max": 61.01562499999999
+                }
+              }
+            }
+          },
+          {
+            "n_available": 53,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 53,
+                "median": 53.0,
+                "max": 53
+              },
+              "ensemble": {
+                "exact": 40.234375,
+                "tolerant": 75.390625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 40.234375,
+                  "std": 0.0,
+                  "min": 40.234375,
+                  "max": 40.234375
+                },
+                "tolerant": {
+                  "mean": 75.390625,
+                  "std": 0.0,
+                  "min": 75.390625,
+                  "max": 75.390625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 52,
+              "features_per_bank": {
+                "min": 9,
+                "median": 18.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 29.062500000000004,
+                "tolerant": 68.984375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.663352272727273,
+                  "std": 3.281834117626885,
+                  "min": 16.71875,
+                  "max": 30.15625
+                },
+                "tolerant": {
+                  "mean": 55.05681818181818,
+                  "std": 4.6728097115616505,
+                  "min": 50.31250000000001,
+                  "max": 67.8125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 13,
+                "median": 16.0,
+                "max": 18
+              },
+              "ensemble": {
+                "exact": 27.65625,
+                "tolerant": 64.84375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 21.938920454545453,
+                  "std": 2.3382554395905495,
+                  "min": 19.0625,
+                  "max": 27.265625
+                },
+                "tolerant": {
+                  "mean": 53.45170454545455,
+                  "std": 4.579704944493227,
+                  "min": 47.734375,
+                  "max": 64.375
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 53,
+              "features_per_bank": {
+                "min": 11,
+                "median": 13.0,
+                "max": 16
+              },
+              "ensemble": {
+                "exact": 25.546875000000004,
+                "tolerant": 63.90625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 22.36328125,
+                  "std": 1.4765159962915022,
+                  "min": 19.84375,
+                  "max": 23.59375
+                },
+                "tolerant": {
+                  "mean": 55.0,
+                  "std": 2.6893616371966402,
+                  "min": 52.109375,
+                  "max": 58.203125
+                }
+              }
+            }
+          }
+        ]
+      },
+      "0.9": {
+        "n_available": {
+          "mean": 21.0,
+          "std": 0.0,
+          "min": 21.0,
+          "max": 21.0
+        },
+        "full": {
+          "exact": {
+            "mean": 24.9375,
+            "std": 1.2610836733738158,
+            "min": 23.359375,
+            "max": 27.187499999999996
+          },
+          "tolerant": {
+            "mean": 59.828125,
+            "std": 4.876001499692141,
+            "min": 56.40625,
+            "max": 69.296875
+          },
+          "n_banks": {
+            "mean": 1.0,
+            "std": 0.0,
+            "min": 1.0,
+            "max": 1.0
+          },
+          "coverage": {
+            "mean": 21.0,
+            "std": 0.0,
+            "min": 21.0,
+            "max": 21.0
+          }
+        },
+        "overlapping_random": {
+          "exact": {
+            "mean": 24.15625,
+            "std": 1.7026232058943624,
+            "min": 21.328125,
+            "max": 26.406249999999996
+          },
+          "tolerant": {
+            "mean": 60.0,
+            "std": 2.257798983523555,
+            "min": 57.03125,
+            "max": 63.515625
+          },
+          "n_banks": {
+            "mean": 10.6,
+            "std": 0.48989794855663565,
+            "min": 10.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 20.8,
+            "std": 0.39999999999999997,
+            "min": 20.0,
+            "max": 21.0
+          },
+          "single_bank_tolerant": {
+            "mean": 48.71960227272727,
+            "std": 1.762780966135242,
+            "min": 46.7734375,
+            "max": 51.29261363636363
+          }
+        },
+        "contiguous": {
+          "exact": {
+            "mean": 21.171875,
+            "std": 1.7237144213152016,
+            "min": 18.515625,
+            "max": 23.90625
+          },
+          "tolerant": {
+            "mean": 56.390625,
+            "std": 1.7225809578217257,
+            "min": 53.20312499999999,
+            "max": 58.12500000000001
+          },
+          "n_banks": {
+            "mean": 10.8,
+            "std": 0.4,
+            "min": 10.0,
+            "max": 11.0
+          },
+          "coverage": {
+            "mean": 21.0,
+            "std": 0.0,
+            "min": 21.0,
+            "max": 21.0
+          },
+          "single_bank_tolerant": {
+            "mean": 47.36605113636364,
+            "std": 1.0058312356902028,
+            "min": 45.49005681818182,
+            "max": 48.26704545454545
+          }
+        },
+        "disjoint_random": {
+          "exact": {
+            "mean": 20.140625,
+            "std": 0.8926785535678563,
+            "min": 18.90625,
+            "max": 21.40625
+          },
+          "tolerant": {
+            "mean": 54.0625,
+            "std": 1.1234798757654727,
+            "min": 52.5,
+            "max": 55.625
+          },
+          "n_banks": {
+            "mean": 3.8,
+            "std": 0.39999999999999997,
+            "min": 3.0,
+            "max": 4.0
+          },
+          "coverage": {
+            "mean": 20.8,
+            "std": 0.39999999999999997,
+            "min": 20.0,
+            "max": 21.0
+          },
+          "single_bank_tolerant": {
+            "mean": 46.82552083333333,
+            "std": 1.0721816227088825,
+            "min": 45.234375,
+            "max": 48.06640625
+          }
+        },
+        "overlap_vote_gain_vs_single_bank": 11.280397727272728,
+        "trials": [
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 24.6875,
+                "tolerant": 57.03125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 24.6875,
+                  "std": 0.0,
+                  "min": 24.6875,
+                  "max": 24.6875
+                },
+                "tolerant": {
+                  "mean": 57.03125,
+                  "std": 0.0,
+                  "min": 57.03125,
+                  "max": 57.03125
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 10,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 3,
+                "median": 6.5,
+                "max": 8
+              },
+              "ensemble": {
+                "exact": 21.328125,
+                "tolerant": 57.03125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.0859375,
+                  "std": 1.351472179062984,
+                  "min": 16.171875,
+                  "max": 20.0
+                },
+                "tolerant": {
+                  "mean": 46.9453125,
+                  "std": 2.246266977015699,
+                  "min": 42.1875,
+                  "max": 50.07812499999999
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 7.0,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 23.90625,
+                "tolerant": 57.65625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.488636363636363,
+                  "std": 1.920137228357166,
+                  "min": 16.71875,
+                  "max": 24.453125
+                },
+                "tolerant": {
+                  "mean": 48.19602272727273,
+                  "std": 2.3972248436865526,
+                  "min": 45.390625,
+                  "max": 53.90625
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 5.0,
+                "max": 7
+              },
+              "ensemble": {
+                "exact": 19.375,
+                "tolerant": 53.359375
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.32421875,
+                  "std": 0.9669448276942627,
+                  "min": 16.40625,
+                  "max": 18.671875
+                },
+                "tolerant": {
+                  "mean": 45.95703125,
+                  "std": 1.8630601283888257,
+                  "min": 43.671875,
+                  "max": 48.125
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 25.078125,
+                "tolerant": 56.40625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 25.078125,
+                  "std": 0.0,
+                  "min": 25.078125,
+                  "max": 25.078125
+                },
+                "tolerant": {
+                  "mean": 56.40625,
+                  "std": 0.0,
+                  "min": 56.40625,
+                  "max": 56.40625
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 6,
+                "median": 7.0,
+                "max": 8
+              },
+              "ensemble": {
+                "exact": 26.406249999999996,
+                "tolerant": 61.01562499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 20.085227272727273,
+                  "std": 2.172343634409792,
+                  "min": 16.25,
+                  "max": 23.671875
+                },
+                "tolerant": {
+                  "mean": 50.10653409090909,
+                  "std": 2.260665792850154,
+                  "min": 44.6875,
+                  "max": 53.04687500000001
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 7.0,
+                "max": 8
+              },
+              "ensemble": {
+                "exact": 21.25,
+                "tolerant": 56.640625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.764204545454547,
+                  "std": 2.071770815132283,
+                  "min": 14.921875000000002,
+                  "max": 21.640625
+                },
+                "tolerant": {
+                  "mean": 48.26704545454545,
+                  "std": 1.8514196044957378,
+                  "min": 43.984375,
+                  "max": 50.07812499999999
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 5.5,
+                "max": 6
+              },
+              "ensemble": {
+                "exact": 21.40625,
+                "tolerant": 55.00000000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.65625,
+                  "std": 1.1731763607563443,
+                  "min": 16.484375,
+                  "max": 19.21875
+                },
+                "tolerant": {
+                  "mean": 48.06640625,
+                  "std": 1.59953663792196,
+                  "min": 45.390625,
+                  "max": 49.296875
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 27.187499999999996,
+                "tolerant": 69.296875
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 27.187499999999996,
+                  "std": 0.0,
+                  "min": 27.187499999999996,
+                  "max": 27.187499999999996
+                },
+                "tolerant": {
+                  "mean": 69.296875,
+                  "std": 0.0,
+                  "min": 69.296875,
+                  "max": 69.296875
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 5,
+                "median": 7.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 25.0,
+                "tolerant": 63.515625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.913352272727273,
+                  "std": 1.7307992371975067,
+                  "min": 16.171875,
+                  "max": 21.796875
+                },
+                "tolerant": {
+                  "mean": 51.29261363636363,
+                  "std": 5.106331588158288,
+                  "min": 45.0,
+                  "max": 60.78125
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 18.515625,
+                "tolerant": 53.20312499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.194602272727273,
+                  "std": 1.1637762505805358,
+                  "min": 15.937499999999998,
+                  "max": 19.375
+                },
+                "tolerant": {
+                  "mean": 45.49005681818182,
+                  "std": 2.3957514546135745,
+                  "min": 41.640625,
+                  "max": 50.78125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 3,
+                "median": 4.5,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 18.90625,
+                "tolerant": 52.5
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 16.9140625,
+                  "std": 0.5017668976041066,
+                  "min": 16.171875,
+                  "max": 17.578125
+                },
+                "tolerant": {
+                  "mean": 45.234375,
+                  "std": 1.9350728244532556,
+                  "min": 43.4375,
+                  "max": 48.359375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 23.359375,
+                "tolerant": 56.71874999999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 23.359375,
+                  "std": 0.0,
+                  "min": 23.359375,
+                  "max": 23.359375
+                },
+                "tolerant": {
+                  "mean": 56.71874999999999,
+                  "std": 0.0,
+                  "min": 56.71874999999999,
+                  "max": 56.71874999999999
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 10,
+              "available_coverage": 20,
+              "features_per_bank": {
+                "min": 3,
+                "median": 6.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 23.4375,
+                "tolerant": 58.203125
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.234375,
+                  "std": 1.1148631852720765,
+                  "min": 15.234375,
+                  "max": 18.59375
+                },
+                "tolerant": {
+                  "mean": 46.7734375,
+                  "std": 1.7989288533822703,
+                  "min": 43.59375,
+                  "max": 50.0
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 7.0,
+                "max": 10
+              },
+              "ensemble": {
+                "exact": 20.703125,
+                "tolerant": 58.12500000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 17.542613636363637,
+                  "std": 1.1684911544362964,
+                  "min": 15.859375,
+                  "max": 19.765625
+                },
+                "tolerant": {
+                  "mean": 47.55681818181818,
+                  "std": 1.9387513454391587,
+                  "min": 43.75,
+                  "max": 50.625
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 3,
+              "available_coverage": 20,
+              "features_per_bank": {
+                "min": 4,
+                "median": 7.0,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 20.546875,
+                "tolerant": 53.82812500000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.177083333333332,
+                  "std": 0.9888977888566419,
+                  "min": 16.953125,
+                  "max": 19.375
+                },
+                "tolerant": {
+                  "mean": 47.135416666666664,
+                  "std": 1.0331684596290298,
+                  "min": 46.328125,
+                  "max": 48.59375
+                }
+              }
+            }
+          },
+          {
+            "n_available": 21,
+            "full": {
+              "valid": true,
+              "n_banks": 1,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 21,
+                "median": 21.0,
+                "max": 21
+              },
+              "ensemble": {
+                "exact": 24.375,
+                "tolerant": 59.68750000000001
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 24.375,
+                  "std": 0.0,
+                  "min": 24.375,
+                  "max": 24.375
+                },
+                "tolerant": {
+                  "mean": 59.68750000000001,
+                  "std": 0.0,
+                  "min": 59.68750000000001,
+                  "max": 59.68750000000001
+                }
+              }
+            },
+            "overlapping_random": {
+              "valid": true,
+              "n_banks": 11,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 7.0,
+                "max": 9
+              },
+              "ensemble": {
+                "exact": 24.609375,
+                "tolerant": 60.23437499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 19.09090909090909,
+                  "std": 1.1468796093428666,
+                  "min": 17.5,
+                  "max": 21.25
+                },
+                "tolerant": {
+                  "mean": 48.48011363636363,
+                  "std": 2.3205202109843337,
+                  "min": 44.375,
+                  "max": 53.359375
+                }
+              }
+            },
+            "contiguous": {
+              "valid": true,
+              "n_banks": 10,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 4,
+                "median": 8.0,
+                "max": 11
+              },
+              "ensemble": {
+                "exact": 21.484375,
+                "tolerant": 56.32812499999999
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.609375,
+                  "std": 1.262051281644292,
+                  "min": 16.640625,
+                  "max": 20.625
+                },
+                "tolerant": {
+                  "mean": 47.3203125,
+                  "std": 2.6412836641548454,
+                  "min": 43.359375,
+                  "max": 51.953125
+                }
+              }
+            },
+            "disjoint_random": {
+              "valid": true,
+              "n_banks": 4,
+              "available_coverage": 21,
+              "features_per_bank": {
+                "min": 3,
+                "median": 5.5,
+                "max": 7
+              },
+              "ensemble": {
+                "exact": 20.46875,
+                "tolerant": 55.625
+              },
+              "single_bank": {
+                "exact": {
+                  "mean": 18.96484375,
+                  "std": 1.502129632427637,
+                  "min": 17.578125,
+                  "max": 21.25
+                },
+                "tolerant": {
+                  "mean": 47.734375,
+                  "std": 3.300261146153819,
+                  "min": 45.46875,
+                  "max": 53.43750000000001
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

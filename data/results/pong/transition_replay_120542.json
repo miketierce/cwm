@@ -1,0 +1,43 @@
+{
+ "source": "data/results/pong/recall_enroll_20260629_120542.npz",
+ "trajectory_glass_full": [
+  96.02,
+  47.66,
+  41.33,
+  39.92,
+  37.58,
+  35.47
+ ],
+ "trajectory_wire_only": [
+  100.0,
+  97.03,
+  85.23,
+  67.89,
+  56.95,
+  46.09
+ ],
+ "trajectory_wire_rp240": [
+  100.0,
+  100.0,
+  100.0,
+  99.53,
+  98.59,
+  95.78
+ ],
+ "trajectory_glass_partial": [
+  96.02,
+  45.23,
+  41.56,
+  39.84,
+  37.73,
+  35.39
+ ],
+ "multi_step_horizon": {
+  "1_step": 2.34,
+  "2_step": 2.89,
+  "3_step": 3.59,
+  "5_step": 4.84,
+  "8_step": 6.95,
+  "12_step": 12.89
+ }
+}

@@ -1,0 +1,294 @@
+{
+ "source": "data/results/pong/recall_enroll_20260629_120542.npz",
+ "Fd": 240,
+ "n_modes": 212,
+ "partial_query_grid": {
+  "hide_none": {
+   "hidden": [
+    "none"
+   ],
+   "visible": [
+    "x",
+    "y",
+    "vx",
+    "vy"
+   ],
+   "glass": 87.97,
+   "wire": 51.41,
+   "advantage": 36.56
+  },
+  "hide_x": {
+   "hidden": [
+    "x"
+   ],
+   "visible": [
+    "y",
+    "vx",
+    "vy"
+   ],
+   "glass": 83.44,
+   "wire": 42.19,
+   "advantage": 41.25
+  },
+  "hide_y": {
+   "hidden": [
+    "y"
+   ],
+   "visible": [
+    "x",
+    "vx",
+    "vy"
+   ],
+   "glass": 80.94,
+   "wire": 42.34,
+   "advantage": 38.59
+  },
+  "hide_vx": {
+   "hidden": [
+    "vx"
+   ],
+   "visible": [
+    "x",
+    "y",
+    "vy"
+   ],
+   "glass": 86.8,
+   "wire": 46.09,
+   "advantage": 40.7
+  },
+  "hide_vy": {
+   "hidden": [
+    "vy"
+   ],
+   "visible": [
+    "x",
+    "y",
+    "vx"
+   ],
+   "glass": 84.77,
+   "wire": 47.89,
+   "advantage": 36.88
+  },
+  "hide_x_y": {
+   "hidden": [
+    "x",
+    "y"
+   ],
+   "visible": [
+    "vx",
+    "vy"
+   ],
+   "glass": 77.58,
+   "wire": 42.03,
+   "advantage": 35.55
+  },
+  "hide_x_vx": {
+   "hidden": [
+    "x",
+    "vx"
+   ],
+   "visible": [
+    "y",
+    "vy"
+   ],
+   "glass": 79.61,
+   "wire": 37.34,
+   "advantage": 42.27
+  },
+  "hide_x_vy": {
+   "hidden": [
+    "x",
+    "vy"
+   ],
+   "visible": [
+    "y",
+    "vx"
+   ],
+   "glass": 77.19,
+   "wire": 38.2,
+   "advantage": 38.98
+  },
+  "hide_y_vx": {
+   "hidden": [
+    "y",
+    "vx"
+   ],
+   "visible": [
+    "x",
+    "vy"
+   ],
+   "glass": 77.11,
+   "wire": 38.91,
+   "advantage": 38.2
+  },
+  "hide_y_vy": {
+   "hidden": [
+    "y",
+    "vy"
+   ],
+   "visible": [
+    "x",
+    "vx"
+   ],
+   "glass": 75.0,
+   "wire": 39.22,
+   "advantage": 35.78
+  },
+  "hide_vx_vy": {
+   "hidden": [
+    "vx",
+    "vy"
+   ],
+   "visible": [
+    "x",
+    "y"
+   ],
+   "glass": 83.98,
+   "wire": 46.8,
+   "advantage": 37.19
+  },
+  "hide_x_y_vx": {
+   "hidden": [
+    "x",
+    "y",
+    "vx"
+   ],
+   "visible": [
+    "vy"
+   ],
+   "glass": 72.19,
+   "wire": 38.05,
+   "advantage": 34.14
+  },
+  "hide_x_y_vy": {
+   "hidden": [
+    "x",
+    "y",
+    "vy"
+   ],
+   "visible": [
+    "vx"
+   ],
+   "glass": 69.53,
+   "wire": 37.58,
+   "advantage": 31.95
+  },
+  "hide_x_vx_vy": {
+   "hidden": [
+    "x",
+    "vx",
+    "vy"
+   ],
+   "visible": [
+    "y"
+   ],
+   "glass": 73.67,
+   "wire": 38.05,
+   "advantage": 35.62
+  },
+  "hide_y_vx_vy": {
+   "hidden": [
+    "y",
+    "vx",
+    "vy"
+   ],
+   "visible": [
+    "x"
+   ],
+   "glass": 71.95,
+   "wire": 38.36,
+   "advantage": 33.59
+  },
+  "hide_x_y_vx_vy": {
+   "hidden": [
+    "x",
+    "y",
+    "vx",
+    "vy"
+   ],
+   "visible": [
+    "none"
+   ],
+   "glass": 65.94,
+   "wire": 36.41,
+   "advantage": 29.53
+  }
+ },
+ "mode_dropout": {
+  "random": {
+   "0pct": 87.97,
+   "5pct": 88.67,
+   "10pct": 88.83,
+   "20pct": 87.66,
+   "30pct": 87.42,
+   "40pct": 86.88,
+   "50pct": 85.08,
+   "60pct": 87.5,
+   "70pct": 85.31,
+   "80pct": 84.69,
+   "90pct": 82.5,
+   "95pct": 82.11
+  },
+  "band_ablation": {
+   "band_0_(0:53)": 86.95,
+   "band_1_(53:106)": 86.17,
+   "band_2_(106:159)": 88.2,
+   "band_3_(159:212)": 89.3
+  },
+  "axis_only": 82.73
+ },
+ "small_readout": {
+  "top4": 44.06,
+  "top8": 47.81,
+  "top16": 48.52,
+  "top32": 54.61,
+  "top64": 59.14,
+  "top128": 58.91,
+  "top240": 90.0,
+  "rand8": 51.64,
+  "rand16": 59.3,
+  "rand32": 65.55,
+  "rand64": 73.83
+ },
+ "software_baselines": {
+  "wire_rp32": 87.66,
+  "wire_rp64": 95.39,
+  "wire_rp128": 98.52,
+  "wire_rp240": 99.45,
+  "pure_rand32": 41.09,
+  "pure_rand64": 42.19,
+  "pure_rand128": 38.12,
+  "pure_rand240": 40.0,
+  "glass_permuted": 39.45,
+  "glass_null_labels": 39.61
+ },
+ "cv_abuse_check": {
+  "real_acc": 87.97,
+  "perm_accs": [
+   40.16,
+   38.36,
+   40.31,
+   40.7,
+   39.38,
+   42.19,
+   39.14,
+   38.52,
+   40.55,
+   39.69,
+   40.08,
+   41.64,
+   40.23,
+   42.27,
+   41.95,
+   41.72,
+   39.61,
+   39.69,
+   40.08,
+   40.94
+  ],
+  "perm_mean": 40.36,
+  "perm_std": 1.12,
+  "p_value": 0.0,
+  "n_perms": 20
+ }
+}

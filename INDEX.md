@@ -19,6 +19,7 @@ The shortest honest summary is this: the current bench proves a strong acoustic 
 | DOOM demo (first-person maze on glass) | [docs/DESK_DEMONSTRATOR_DOOM.md](docs/DESK_DEMONSTRATOR_DOOM.md)                 | 32-plate kernel-rendered maze — Level 3 showcase, ~$68 beyond Phase 4A       |
 | Full-potential experiment plan         | [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md)                 | Phased roadmap with bottlenecks, use cases, and kill criteria                |
 | Bench execution details                | [docs/FULL_POTENTIAL_WORKLIST.md](docs/FULL_POTENTIAL_WORKLIST.md)               | Copy-paste lab prompts, procedures, success criteria, BOM                    |
+| Next distributed-mode hardware session | [docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md](docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md) | Preregistered cross-session, physical RX-dropout, attenuation, and query-omission tests |
 | Academic paper plan                    | [paper/BUILD_AND_EXPERIMENT_PLAN.md](paper/BUILD_AND_EXPERIMENT_PLAN.md)         | E1-E8 validation experiments for the paper path                              |
 | Lab history                            | [docs/LAB_DIARY.md](docs/LAB_DIARY.md) and [docs/](docs/)                        | Chronological bench record and daily diaries                                 |
 | Hardware state                         | [HARDWARE.md](HARDWARE.md)                                                       | Bench wiring, equipment, and troubleshooting notes                           |
