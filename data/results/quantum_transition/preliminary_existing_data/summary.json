@@ -1,0 +1,1374 @@
+{
+  "status": "PRELIMINARY_CLASSICAL_BOUNDS",
+  "phase_interference": {
+    "roadmap_gate": "QT-0B precursor",
+    "source_file_count": 6,
+    "sweep_count": 18,
+    "first_harmonic_r2": {
+      "count": 18,
+      "min": 0.09504667544914946,
+      "median": 0.8390175221182801,
+      "mean": 0.7530815036695365,
+      "max": 0.9996143637480096
+    },
+    "first_harmonic_leave_one_out_r2": {
+      "count": 18,
+      "min": -0.07696924574646613,
+      "median": 0.7909801140301429,
+      "mean": 0.6863009080215516,
+      "max": 0.9995410609893668
+    },
+    "fraction_sweeps_cv_r2_ge_0_8": 0.5,
+    "second_harmonic_delta_r2": {
+      "count": 18,
+      "min": 7.286689345994102e-05,
+      "median": 0.051610635204960335,
+      "mean": 0.07871159710761971,
+      "max": 0.3004268190036121
+    },
+    "second_to_first_harmonic_amplitude": {
+      "count": 18,
+      "min": 0.00853785713257319,
+      "median": 0.24874075552853764,
+      "mean": 0.375722733759394,
+      "max": 1.68989001540077
+    },
+    "worst_first_harmonic_sweep": {
+      "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+      "scan_index": 2,
+      "frequency_hz": 70000.0,
+      "n_phase_points": 36,
+      "stored_cos_fit_r": 0.2788850122237421,
+      "r2_first_harmonic": 0.09504667544914946,
+      "r2_first_harmonic_loo": -0.07696924574646613,
+      "r2_second_harmonic": 0.3664741529428941,
+      "delta_r2_second_harmonic": 0.2714274774937446,
+      "first_harmonic_modulation_fraction": 0.06212489097812091,
+      "second_to_first_harmonic_amplitude": 1.68989001540077,
+      "normalized_rmse": 0.22682512037547456
+    },
+    "interpretation": "A first-harmonic phase model is the classical two-path interference null. Fit quality constrains that null but does not close it uniformly and cannot establish a quantum witness.",
+    "limitation": "Saved files contain phase-energy grids and spectra, not raw phase-referenced time-domain voltage for a complete QT-0B stochastic model.",
+    "sweeps": [
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141638.json",
+        "scan_index": 0,
+        "frequency_hz": 54920.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.9998056690664885,
+        "r2_first_harmonic": 0.9996143637480096,
+        "r2_first_harmonic_loo": 0.9995410609893668,
+        "r2_second_harmonic": 0.9996872306414696,
+        "delta_r2_second_harmonic": 7.286689345994102e-05,
+        "first_harmonic_modulation_fraction": 0.9992178170953359,
+        "second_to_first_harmonic_amplitude": 0.00853785713257319,
+        "normalized_rmse": 0.006956280067730565
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141650.json",
+        "scan_index": 0,
+        "frequency_hz": 35840.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8584374747806565,
+        "r2_first_harmonic": 0.826169810244781,
+        "r2_first_harmonic_loo": 0.7729564868503263,
+        "r2_second_harmonic": 0.8408164870328977,
+        "delta_r2_second_harmonic": 0.014646676788116675,
+        "first_harmonic_modulation_fraction": 0.46482381122129157,
+        "second_to_first_harmonic_amplitude": 0.133148073930711,
+        "normalized_rmse": 0.11452990336135815
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141650.json",
+        "scan_index": 1,
+        "frequency_hz": 54920.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8992807483408827,
+        "r2_first_harmonic": 0.8162764485274974,
+        "r2_first_harmonic_loo": 0.7600345450155066,
+        "r2_second_harmonic": 0.8667988450422494,
+        "delta_r2_second_harmonic": 0.05052239651475194,
+        "first_harmonic_modulation_fraction": 0.6176749519901756,
+        "second_to_first_harmonic_amplitude": 0.24878451106402347,
+        "normalized_rmse": 0.12694075997121854
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141650.json",
+        "scan_index": 2,
+        "frequency_hz": 70000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.4088211797087991,
+        "r2_first_harmonic": 0.2941178493824409,
+        "r2_first_harmonic_loo": 0.07803147674441258,
+        "r2_second_harmonic": 0.5945446683860531,
+        "delta_r2_second_harmonic": 0.3004268190036121,
+        "first_harmonic_modulation_fraction": 0.11948715229232718,
+        "second_to_first_harmonic_amplitude": 1.0106683342997285,
+        "normalized_rmse": 0.22434625915810474
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141650.json",
+        "scan_index": 3,
+        "frequency_hz": 85000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8775038681511859,
+        "r2_first_harmonic": 0.7877935936807565,
+        "r2_first_harmonic_loo": 0.7228324488891515,
+        "r2_second_harmonic": 0.8786371300332054,
+        "delta_r2_second_harmonic": 0.09084353635244892,
+        "first_harmonic_modulation_fraction": 0.2804848880191203,
+        "second_to_first_harmonic_amplitude": 0.33957897541031923,
+        "normalized_rmse": 0.14009993901757642
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141650.json",
+        "scan_index": 4,
+        "frequency_hz": 97011.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8719229816958058,
+        "r2_first_harmonic": 0.7613362015887567,
+        "r2_first_harmonic_loo": 0.6882758551363353,
+        "r2_second_harmonic": 0.8019817672699313,
+        "delta_r2_second_harmonic": 0.04064556568117456,
+        "first_harmonic_modulation_fraction": 0.5425999846910113,
+        "second_to_first_harmonic_amplitude": 0.23105658253842642,
+        "normalized_rmse": 0.14122213350825816
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_141855.json",
+        "scan_index": 0,
+        "frequency_hz": 54920.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.957603508103605,
+        "r2_first_harmonic": 0.9277002009506135,
+        "r2_first_harmonic_loo": 0.9055676094048828,
+        "r2_second_harmonic": 0.9605564314243841,
+        "delta_r2_second_harmonic": 0.03285623047377059,
+        "first_harmonic_modulation_fraction": 0.644495193852809,
+        "second_to_first_harmonic_amplitude": 0.18819368351963012,
+        "normalized_rmse": 0.07569769633611878
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+        "scan_index": 0,
+        "frequency_hz": 35840.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.9188667599399251,
+        "r2_first_harmonic": 0.8520405069819375,
+        "r2_first_harmonic_loo": 0.8239159752512315,
+        "r2_second_harmonic": 0.9047393808771061,
+        "delta_r2_second_harmonic": 0.05269887389516873,
+        "first_harmonic_modulation_fraction": 0.41658649176133977,
+        "second_to_first_harmonic_amplitude": 0.24869699999305184,
+        "normalized_rmse": 0.11347541985883908
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+        "scan_index": 1,
+        "frequency_hz": 54920.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.9705496582046192,
+        "r2_first_harmonic": 0.9420581374407824,
+        "r2_first_harmonic_loo": 0.9310443949708485,
+        "r2_second_harmonic": 0.9696634160281653,
+        "delta_r2_second_harmonic": 0.027605278587382903,
+        "first_harmonic_modulation_fraction": 0.6682398311304328,
+        "second_to_first_harmonic_amplitude": 0.17118165249064524,
+        "normalized_rmse": 0.07070350112094947
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+        "scan_index": 2,
+        "frequency_hz": 70000.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.2788850122237421,
+        "r2_first_harmonic": 0.09504667544914946,
+        "r2_first_harmonic_loo": -0.07696924574646613,
+        "r2_second_harmonic": 0.3664741529428941,
+        "delta_r2_second_harmonic": 0.2714274774937446,
+        "first_harmonic_modulation_fraction": 0.06212489097812091,
+        "second_to_first_harmonic_amplitude": 1.68989001540077,
+        "normalized_rmse": 0.22682512037547456
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+        "scan_index": 3,
+        "frequency_hz": 85000.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.7014179373843962,
+        "r2_first_harmonic": 0.8113092148720377,
+        "r2_first_harmonic_loo": 0.7754423714179622,
+        "r2_second_harmonic": 0.8648247802928177,
+        "delta_r2_second_harmonic": 0.05351556542078012,
+        "first_harmonic_modulation_fraction": 0.35821740688766324,
+        "second_to_first_harmonic_amplitude": 0.25683065230505403,
+        "normalized_rmse": 0.13778250968033803
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_143430.json",
+        "scan_index": 4,
+        "frequency_hz": 97011.0,
+        "n_phase_points": 36,
+        "stored_cos_fit_r": 0.9654393793547891,
+        "r2_first_harmonic": 0.933843098060404,
+        "r2_first_harmonic_loo": 0.9212678191793238,
+        "r2_second_harmonic": 0.9625813697993144,
+        "delta_r2_second_harmonic": 0.02873827173891045,
+        "first_harmonic_modulation_fraction": 0.6272416325787938,
+        "second_to_first_harmonic_amplitude": 0.17542576005645968,
+        "normalized_rmse": 0.06983975965031683
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_150404.json",
+        "scan_index": 0,
+        "frequency_hz": 54920.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.9316635653102977,
+        "r2_first_harmonic": 0.872227654341378,
+        "r2_first_harmonic_loo": 0.8331136709764937,
+        "r2_second_harmonic": 0.890724971930231,
+        "delta_r2_second_harmonic": 0.01849731758885304,
+        "first_harmonic_modulation_fraction": 0.7399076862011753,
+        "second_to_first_harmonic_amplitude": 0.14562617770111533,
+        "normalized_rmse": 0.11576352256843463
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_153439.json",
+        "scan_index": 0,
+        "frequency_hz": 56000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8536690053703463,
+        "r2_first_harmonic": 0.851865233991779,
+        "r2_first_harmonic_loo": 0.8065178566423236,
+        "r2_second_harmonic": 0.9053585866579192,
+        "delta_r2_second_harmonic": 0.05349335266614023,
+        "first_harmonic_modulation_fraction": 0.33884843505328727,
+        "second_to_first_harmonic_amplitude": 0.25059041871012966,
+        "normalized_rmse": 0.11505811930163076
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_153439.json",
+        "scan_index": 1,
+        "frequency_hz": 86000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.7412947050525936,
+        "r2_first_harmonic": 0.8628092120733072,
+        "r2_first_harmonic_loo": 0.8208120320957482,
+        "r2_second_harmonic": 0.9325421621845327,
+        "delta_r2_second_harmonic": 0.0697329501112255,
+        "first_harmonic_modulation_fraction": 0.533340395309644,
+        "second_to_first_harmonic_amplitude": 0.2842900322204319,
+        "normalized_rmse": 0.10221817261059145
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_153439.json",
+        "scan_index": 2,
+        "frequency_hz": 91000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.971668929556356,
+        "r2_first_harmonic": 0.9645556989436863,
+        "r2_first_harmonic_loo": 0.9537054027019578,
+        "r2_second_harmonic": 0.9648177007998806,
+        "delta_r2_second_harmonic": 0.00026200185619420417,
+        "first_harmonic_modulation_fraction": 0.41565224445606314,
+        "second_to_first_harmonic_amplitude": 0.01648118857018814,
+        "normalized_rmse": 0.05759777495851125
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_153439.json",
+        "scan_index": 3,
+        "frequency_hz": 232000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.8525608731276991,
+        "r2_first_harmonic": 0.7450857888970593,
+        "r2_first_harmonic_loo": 0.6670508263145265,
+        "r2_second_harmonic": 0.84590743900685,
+        "delta_r2_second_harmonic": 0.10082165010979058,
+        "first_harmonic_modulation_fraction": 0.41575996914521507,
+        "second_to_first_harmonic_amplitude": 0.3678525411139569,
+        "normalized_rmse": 0.14510304671809923
+      },
+      {
+        "source": "data/results/phase_interference/phase_interference_20260621_153439.json",
+        "scan_index": 4,
+        "frequency_hz": 321000.0,
+        "n_phase_points": 24,
+        "stored_cos_fit_r": 0.3014989491272274,
+        "r2_first_harmonic": 0.21161737687728022,
+        "r2_first_harmonic_loo": -0.02972424244600136,
+        "r2_second_harmonic": 0.4216192936389104,
+        "delta_r2_second_harmonic": 0.21000191676163008,
+        "first_harmonic_modulation_fraction": 0.08011629839429403,
+        "second_to_first_harmonic_amplitude": 0.9961757512118771,
+        "normalized_rmse": 0.21193984123310602
+      }
+    ]
+  },
+  "intermodulation": {
+    "roadmap_gates": [
+      "QT-0B precursor",
+      "QT-1C precursor"
+    ],
+    "source_file_count": 3,
+    "noise_ratio_record_count": 18,
+    "noise_ratio_max": 1.3713712178111626,
+    "standardized_record_count": 46,
+    "max_positive_sigma": 1.4641602196394798,
+    "max_absolute_sigma": 1.8701876004580502,
+    "positive_products_ge_3_sigma": 0,
+    "absolute_products_ge_3_sigma": 0,
+    "sigma_reference_counts": {
+      "sigma_vs_awg": 23,
+      "sigma_vs_f1only": 23
+    },
+    "interpretation": "No >=3 sigma intermodulation product supports the linear-substrate null at the tested drive settings.",
+    "limitation": "The captures do not provide a calibrated displacement sweep, so they cannot identify a Duffing coefficient or single-quantum Kerr rate K.",
+    "experiment_decisions": [
+      {
+        "source": "data/results/intermodulation/t2_2_intermod_20260526_190759.json",
+        "experiment": "T2.2_intermodulation_products",
+        "gate_decision": "FAIL"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "experiment": "T2.2b_intermod_dualtone",
+        "gate_decision": "FAIL"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "experiment": "T2.2c_intermod_arb_dualtone",
+        "gate_decision": "FAIL"
+      }
+    ],
+    "standardized_records": [
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "f1+f2",
+        "sigma": 0.22365233106120413,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "|f1-f2|",
+        "sigma": -0.17094194780824212,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "2f1-f2",
+        "sigma": -0.09618512246301646,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "2f2-f1",
+        "sigma": 0.10882350489863461,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "f1+2f2",
+        "sigma": -0.1597872754071023,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 0,
+        "product": "2f1+f2",
+        "sigma": 0.04853324191927956,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 1,
+        "product": "f1+f2",
+        "sigma": -0.11110705156645519,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 1,
+        "product": "|f1-f2|",
+        "sigma": 0.15434503604432756,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 1,
+        "product": "2f2-f1",
+        "sigma": 0.03737831995644902,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 1,
+        "product": "f1+2f2",
+        "sigma": 0.08363039681669422,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 1,
+        "product": "2f1+f2",
+        "sigma": 0.06656692915066353,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "f1+f2",
+        "sigma": -0.046511180356759114,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "|f1-f2|",
+        "sigma": 0.015310948584007724,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "2f1-f2",
+        "sigma": 0.13030409798317805,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "2f2-f1",
+        "sigma": -0.11377324815230387,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "f1+2f2",
+        "sigma": -0.045744476979960355,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 2,
+        "product": "2f1+f2",
+        "sigma": -0.27731880070902876,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "f1+f2",
+        "sigma": -0.07471817393894463,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "|f1-f2|",
+        "sigma": -0.15114443486214751,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "2f1-f2",
+        "sigma": 0.1068493645796677,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "2f2-f1",
+        "sigma": 0.25963491064202593,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "f1+2f2",
+        "sigma": -0.1645073914830066,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2b_dualtone_20260526_195618.json",
+        "pair_index": 3,
+        "product": "2f1+f2",
+        "sigma": -0.039418648818681186,
+        "sigma_reference": "sigma_vs_awg"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "f1+f2",
+        "sigma": 0.3247984452602465,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "|f1-f2|",
+        "sigma": 0.018779219730340597,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "2f1-f2",
+        "sigma": 0.009351729025255412,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "2f2-f1",
+        "sigma": -0.2640927754934086,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "f1+2f2",
+        "sigma": 0.023847646213192485,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 0,
+        "product": "2f1+f2",
+        "sigma": -0.1754671731843107,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 1,
+        "product": "f1+f2",
+        "sigma": 0.1817562865802433,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 1,
+        "product": "|f1-f2|",
+        "sigma": 0.3202384077737952,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 1,
+        "product": "2f2-f1",
+        "sigma": 0.9833656478383024,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 1,
+        "product": "f1+2f2",
+        "sigma": -0.12972983516987815,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 1,
+        "product": "2f1+f2",
+        "sigma": 0.12524137398663351,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "f1+f2",
+        "sigma": -1.4572588433933589,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "|f1-f2|",
+        "sigma": -1.8701876004580502,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "2f1-f2",
+        "sigma": -1.136331341983581,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "2f2-f1",
+        "sigma": -1.2034662102565903,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "f1+2f2",
+        "sigma": -0.9589877332211957,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 2,
+        "product": "2f1+f2",
+        "sigma": -1.252392178899333,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "f1+f2",
+        "sigma": 0.529428491386127,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "|f1-f2|",
+        "sigma": -0.25784815652302484,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "2f1-f2",
+        "sigma": -1.5625225116534671,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "2f2-f1",
+        "sigma": 1.4641602196394798,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "f1+2f2",
+        "sigma": -0.4823587838907131,
+        "sigma_reference": "sigma_vs_f1only"
+      },
+      {
+        "source": "data/results/intermodulation/t2_2c_arb_dualtone_20260526_200627.json",
+        "pair_index": 3,
+        "product": "2f1+f2",
+        "sigma": -0.0003845133300418878,
+        "sigma_reference": "sigma_vs_f1only"
+      }
+    ]
+  },
+  "h_matrix": {
+    "roadmap_gate": "QT-1B precursor",
+    "source": "data/results/h_matrix/l1_h_matrix_20260602_220004.npz",
+    "acquisition_channel_ceiling": 2,
+    "raw": {
+      "shape": [
+        26,
+        2
+      ],
+      "singular_values": [
+        1206287.418027211,
+        110096.59527315522
+      ],
+      "algebraic_rank": 2,
+      "stable_rank": 1.0083300226310474,
+      "entropy_effective_rank": 1.0490125158025794,
+      "condition_number": 10.95662781427846
+    },
+    "stored_normalized": {
+      "shape": [
+        26,
+        2
+      ],
+      "singular_values": [
+        5.049566817539755,
+        0.7084313341470923
+      ],
+      "algebraic_rank": 2,
+      "stable_rank": 1.0196828180236652,
+      "entropy_effective_rank": 1.1000036719183421,
+      "condition_number": 7.127814050770527
+    },
+    "column_gain_normalized": {
+      "shape": [
+        26,
+        2
+      ],
+      "singular_values": [
+        1.3901385490532276,
+        0.2598361299669227
+      ],
+      "algebraic_rank": 2,
+      "stable_rank": 1.034936782408756,
+      "entropy_effective_rank": 1.159014353873575,
+      "condition_number": 5.350058705193128
+    },
+    "receiver_amplitude_correlation": 0.7806892630274533,
+    "interpretation": "The matrix is algebraically rank 2 but has only two simultaneous receiver channels; existing data cannot test the roadmap's rank-8 gate."
+  },
+  "measured_q": {
+    "roadmap_gate": "QT-0C measured macro anchor",
+    "source": "data/results/temporal/e10_qfactor_memory_20260603_200902.json",
+    "loaded_q": {
+      "count": 10,
+      "min": 62.04564273130737,
+      "median": 213.44045975760798,
+      "mean": 240.8162160855048,
+      "max": 511.0347652208757
+    },
+    "qf_screen_ratio": {
+      "count": 10,
+      "min": 3.304277970592645e-07,
+      "median": 2.3114097351428634e-06,
+      "mean": 3.2345788337100526e-06,
+      "max": 9.62474167127832e-06
+    },
+    "gamma_up_over_2pi_hz": {
+      "count": 10,
+      "min": 12232016495.847435,
+      "median": 29401040599.499397,
+      "mean": 34945728983.113846,
+      "max": 100748182228.09886
+    },
+    "best_measured_mode": {
+      "source_frequency_hz": 119000.0,
+      "frequency_hz": 117730.0,
+      "q": 511.0347652208757,
+      "temperature_k": 300.0,
+      "n_th": 53095945.62246898,
+      "gamma_m_over_2pi_hz": 230.3757161200483,
+      "gamma_up_over_2pi_hz": 12232016495.847435,
+      "gamma_sigma_over_2pi_hz": 24464033222.070587,
+      "qf_screen_ratio": 9.62474167127832e-06
+    },
+    "interpretation": "Loaded macro modes are useful classical controls but remain many orders of magnitude below the bare room-temperature Qf screen.",
+    "modes": [
+      {
+        "source_frequency_hz": 33000.0,
+        "frequency_hz": 33290.0,
+        "q": 62.04564273130737,
+        "temperature_k": 300.0,
+        "n_th": 187773677.39120674,
+        "gamma_m_over_2pi_hz": 536.540497197595,
+        "gamma_up_over_2pi_hz": 100748182228.09886,
+        "gamma_sigma_over_2pi_hz": 201496364992.73822,
+        "qf_screen_ratio": 3.304277970592645e-07
+      },
+      {
+        "source_frequency_hz": 39000.0,
+        "frequency_hz": 38910.0,
+        "q": 226.7458176539907,
+        "temperature_k": 300.0,
+        "n_th": 160652421.42234057,
+        "gamma_m_over_2pi_hz": 171.60184210928128,
+        "gamma_up_over_2pi_hz": 27568251455.390205,
+        "gamma_sigma_over_2pi_hz": 55136503082.38225,
+        "qf_screen_ratio": 1.4114061583435058e-06
+      },
+      {
+        "source_frequency_hz": 48000.0,
+        "frequency_hz": 48700.0,
+        "q": 258.5724125757251,
+        "temperature_k": 300.0,
+        "n_th": 128356996.15294193,
+        "gamma_m_over_2pi_hz": 188.34182469383813,
+        "gamma_up_over_2pi_hz": 24174990867.665043,
+        "gamma_sigma_over_2pi_hz": 48349981923.67191,
+        "qf_screen_ratio": 2.0144785194286377e-06
+      },
+      {
+        "source_frequency_hz": 57000.0,
+        "frequency_hz": 56990.0,
+        "q": 136.66047881864907,
+        "temperature_k": 300.0,
+        "n_th": 109685659.03673051,
+        "gamma_m_over_2pi_hz": 417.0188813374989,
+        "gamma_up_over_2pi_hz": 45740990830.26369,
+        "gamma_sigma_over_2pi_hz": 91481982077.54625,
+        "qf_screen_ratio": 1.2459284048238364e-06
+      },
+      {
+        "source_frequency_hz": 66000.0,
+        "frequency_hz": 66200.0,
+        "q": 198.70103651299775,
+        "temperature_k": 300.0,
+        "n_th": 94425765.91991349,
+        "gamma_m_over_2pi_hz": 333.1638383057434,
+        "gamma_up_over_2pi_hz": 31459250608.83803,
+        "gamma_sigma_over_2pi_hz": 62918501550.839905,
+        "qf_screen_ratio": 2.104309491430229e-06
+      },
+      {
+        "source_frequency_hz": 79000.0,
+        "frequency_hz": 79490.0,
+        "q": 200.13510186122528,
+        "temperature_k": 300.0,
+        "n_th": 78638642.56199865,
+        "gamma_m_over_2pi_hz": 397.18170006538276,
+        "gamma_up_over_2pi_hz": 31233829743.60859,
+        "gamma_sigma_over_2pi_hz": 62467659884.39888,
+        "qf_screen_ratio": 2.5449968878969452e-06
+      },
+      {
+        "source_frequency_hz": 89000.0,
+        "frequency_hz": 89190.0,
+        "q": 176.51272515207464,
+        "temperature_k": 300.0,
+        "n_th": 70086172.13144156,
+        "gamma_m_over_2pi_hz": 505.2893491002323,
+        "gamma_up_over_2pi_hz": 35413796297.222946,
+        "gamma_sigma_over_2pi_hz": 70827593099.73524,
+        "qf_screen_ratio": 2.518509978855498e-06
+      },
+      {
+        "source_frequency_hz": 97000.0,
+        "frequency_hz": 97090.0,
+        "q": 254.2436235331267,
+        "temperature_k": 300.0,
+        "n_th": 64383414.238884255,
+        "gamma_m_over_2pi_hz": 381.8778172320599,
+        "gamma_up_over_2pi_hz": 24586597695.492645,
+        "gamma_sigma_over_2pi_hz": 49173195772.863106,
+        "qf_screen_ratio": 3.94889933322497e-06
+      },
+      {
+        "source_frequency_hz": 109000.0,
+        "frequency_hz": 107610.0,
+        "q": 383.5105567950755,
+        "temperature_k": 300.0,
+        "n_th": 58089263.85273926,
+        "gamma_m_over_2pi_hz": 280.59201524796663,
+        "gamma_up_over_2pi_hz": 16299383608.710972,
+        "gamma_sigma_over_2pi_hz": 32598767498.013958,
+        "qf_screen_ratio": 6.602090094759319e-06
+      },
+      {
+        "source_frequency_hz": 119000.0,
+        "frequency_hz": 117730.0,
+        "q": 511.0347652208757,
+        "temperature_k": 300.0,
+        "n_th": 53095945.62246898,
+        "gamma_m_over_2pi_hz": 230.3757161200483,
+        "gamma_up_over_2pi_hz": 12232016495.847435,
+        "gamma_sigma_over_2pi_hz": 24464033222.070587,
+        "qf_screen_ratio": 9.62474167127832e-06
+      }
+    ]
+  },
+  "rate_envelope": {
+    "roadmap_gate": "QT-0C simulation",
+    "model": "Bose-Einstein occupation plus frozen roadmap Cq convention",
+    "assumptions": {
+      "frequencies_hz": [
+        3500000.0,
+        10000000.0,
+        35000000.0
+      ],
+      "q_values": [
+        10000.0,
+        100000.0,
+        1000000.0
+      ],
+      "temperatures_k": [
+        280.0,
+        300.0,
+        320.0
+      ],
+      "gamma_q_over_2pi_hz": [
+        1000.0,
+        10000.0,
+        100000.0
+      ]
+    },
+    "rows": [
+      {
+        "frequency_hz": 3500000.0,
+        "q": 10000.0,
+        "temperature_k": 280.0,
+        "n_th": 1666929.029866256,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 583425160.4531896,
+        "gamma_sigma_over_2pi_hz": 1166850670.9063792,
+        "qf_screen_ratio": 0.005999053841707775,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 540104.3118940959,
+          "10000": 1707959.7996633141,
+          "100000": 5401043.118940959
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 100000.0,
+        "temperature_k": 280.0,
+        "n_th": 1666929.029866256,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 58342516.04531896,
+        "gamma_sigma_over_2pi_hz": 116685067.09063792,
+        "qf_screen_ratio": 0.05999053841707775,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 170795.97996633142,
+          "10000": 540104.3118940959,
+          "100000": 1707959.7996633141
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 1000000.0,
+        "temperature_k": 280.0,
+        "n_th": 1666929.029866256,
+        "gamma_m_over_2pi_hz": 3.5,
+        "gamma_up_over_2pi_hz": 5834251.604531896,
+        "gamma_sigma_over_2pi_hz": 11668506.709063793,
+        "qf_screen_ratio": 0.5999053841707775,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 54010.43118940959,
+          "10000": 170795.97996633142,
+          "100000": 540104.3118940959
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 10000.0,
+        "temperature_k": 280.0,
+        "n_th": 583424.8354533149,
+        "gamma_m_over_2pi_hz": 1000.0,
+        "gamma_up_over_2pi_hz": 583424835.4533149,
+        "gamma_sigma_over_2pi_hz": 1166850670.9066298,
+        "qf_screen_ratio": 0.017140153833450786,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 540104.311894154,
+          "10000": 1707959.7996634976,
+          "100000": 5401043.118941539
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 100000.0,
+        "temperature_k": 280.0,
+        "n_th": 583424.8354533149,
+        "gamma_m_over_2pi_hz": 100.0,
+        "gamma_up_over_2pi_hz": 58342483.54533149,
+        "gamma_sigma_over_2pi_hz": 116685067.09066299,
+        "qf_screen_ratio": 0.17140153833450786,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 170795.97996634975,
+          "10000": 540104.311894154,
+          "100000": 1707959.7996634976
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 1000000.0,
+        "temperature_k": 280.0,
+        "n_th": 583424.8354533149,
+        "gamma_m_over_2pi_hz": 10.0,
+        "gamma_up_over_2pi_hz": 5834248.354533149,
+        "gamma_sigma_over_2pi_hz": 11668506.709066298,
+        "qf_screen_ratio": 1.7140153833450786,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 54010.43118941539,
+          "10000": 170795.97996634975,
+          "100000": 540104.311894154
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 10000.0,
+        "temperature_k": 280.0,
+        "n_th": 166692.45298712055,
+        "gamma_m_over_2pi_hz": 3500.0,
+        "gamma_up_over_2pi_hz": 583423585.454922,
+        "gamma_sigma_over_2pi_hz": 1166850670.909844,
+        "qf_screen_ratio": 0.05999053841707775,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 540104.3118948977,
+          "10000": 1707959.79966585,
+          "100000": 5401043.118948977
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 100000.0,
+        "temperature_k": 280.0,
+        "n_th": 166692.45298712055,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 58342358.54549219,
+        "gamma_sigma_over_2pi_hz": 116685067.09098437,
+        "qf_screen_ratio": 0.5999053841707775,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 170795.97996658497,
+          "10000": 540104.3118948977,
+          "100000": 1707959.7996658497
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 1000000.0,
+        "temperature_k": 280.0,
+        "n_th": 166692.45298712055,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 5834235.854549219,
+        "gamma_sigma_over_2pi_hz": 11668506.709098438,
+        "qf_screen_ratio": 5.9990538417077754,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 54010.43118948977,
+          "10000": 170795.97996658497,
+          "100000": 540104.3118948977
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 10000.0,
+        "temperature_k": 300.0,
+        "n_th": 1785995.4248566958,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 625098398.6998435,
+        "gamma_sigma_over_2pi_hz": 1250197147.399687,
+        "qf_screen_ratio": 0.0055991169189272575,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 559061.0761356239,
+          "10000": 1767906.3517333767,
+          "100000": 5590610.761356238
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 100000.0,
+        "temperature_k": 300.0,
+        "n_th": 1785995.4248566958,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 62509839.86998435,
+        "gamma_sigma_over_2pi_hz": 125019714.7399687,
+        "qf_screen_ratio": 0.05599116918927258,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 176790.63517333765,
+          "10000": 559061.0761356239,
+          "100000": 1767906.3517333767
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 1000000.0,
+        "temperature_k": 300.0,
+        "n_th": 1785995.4248566958,
+        "gamma_m_over_2pi_hz": 3.5,
+        "gamma_up_over_2pi_hz": 6250983.986998435,
+        "gamma_sigma_over_2pi_hz": 12501971.47399687,
+        "qf_screen_ratio": 0.5599116918927257,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 55906.10761356238,
+          "10000": 176790.63517333765,
+          "100000": 559061.0761356239
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 10000.0,
+        "temperature_k": 300.0,
+        "n_th": 625098.0736999605,
+        "gamma_m_over_2pi_hz": 1000.0,
+        "gamma_up_over_2pi_hz": 625098073.6999605,
+        "gamma_sigma_over_2pi_hz": 1250197147.399921,
+        "qf_screen_ratio": 0.015997476911220734,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 559061.0761356761,
+          "10000": 1767906.351733542,
+          "100000": 5590610.761356761
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 100000.0,
+        "temperature_k": 300.0,
+        "n_th": 625098.0736999605,
+        "gamma_m_over_2pi_hz": 100.0,
+        "gamma_up_over_2pi_hz": 62509807.36999605,
+        "gamma_sigma_over_2pi_hz": 125019714.7399921,
+        "qf_screen_ratio": 0.15997476911220737,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 176790.6351733542,
+          "10000": 559061.0761356761,
+          "100000": 1767906.351733542
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 1000000.0,
+        "temperature_k": 300.0,
+        "n_th": 625098.0736999605,
+        "gamma_m_over_2pi_hz": 10.0,
+        "gamma_up_over_2pi_hz": 6250980.736999605,
+        "gamma_sigma_over_2pi_hz": 12501971.47399921,
+        "qf_screen_ratio": 1.5997476911220736,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 55906.10761356761,
+          "10000": 176790.6351733542,
+          "100000": 559061.0761356761
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 10000.0,
+        "temperature_k": 300.0,
+        "n_th": 178599.0924861315,
+        "gamma_m_over_2pi_hz": 3500.0,
+        "gamma_up_over_2pi_hz": 625096823.7014602,
+        "gamma_sigma_over_2pi_hz": 1250197147.4029205,
+        "qf_screen_ratio": 0.05599116918927258,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 559061.0761363468,
+          "10000": 1767906.351735663,
+          "100000": 5590610.761363468
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 100000.0,
+        "temperature_k": 300.0,
+        "n_th": 178599.0924861315,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 62509682.37014602,
+        "gamma_sigma_over_2pi_hz": 125019714.74029204,
+        "qf_screen_ratio": 0.5599116918927257,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 176790.6351735663,
+          "10000": 559061.0761363468,
+          "100000": 1767906.351735663
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 1000000.0,
+        "temperature_k": 300.0,
+        "n_th": 178599.0924861315,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 6250968.237014603,
+        "gamma_sigma_over_2pi_hz": 12501971.474029206,
+        "qf_screen_ratio": 5.599116918927257,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 55906.107613634675,
+          "10000": 176790.6351735663,
+          "100000": 559061.0761363468
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 10000.0,
+        "temperature_k": 320.0,
+        "n_th": 1905061.8198471363,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 666771636.9464977,
+        "gamma_sigma_over_2pi_hz": 1333543623.8929954,
+        "qf_screen_ratio": 0.005249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 577395.7966362839,
+          "10000": 1825885.828778045,
+          "100000": 5773957.966362839
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 100000.0,
+        "temperature_k": 320.0,
+        "n_th": 1905061.8198471363,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 66677163.69464977,
+        "gamma_sigma_over_2pi_hz": 133354362.38929954,
+        "qf_screen_ratio": 0.05249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 182588.5828778045,
+          "10000": 577395.7966362839,
+          "100000": 1825885.8287780453
+        }
+      },
+      {
+        "frequency_hz": 3500000.0,
+        "q": 1000000.0,
+        "temperature_k": 320.0,
+        "n_th": 1905061.8198471363,
+        "gamma_m_over_2pi_hz": 3.5,
+        "gamma_up_over_2pi_hz": 6667716.369464977,
+        "gamma_sigma_over_2pi_hz": 13335436.238929953,
+        "qf_screen_ratio": 0.5249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 57739.579663628385,
+          "10000": 182588.5828778045,
+          "100000": 577395.7966362839
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 10000.0,
+        "temperature_k": 320.0,
+        "n_th": 666771.3119466073,
+        "gamma_m_over_2pi_hz": 1000.0,
+        "gamma_up_over_2pi_hz": 666771311.9466074,
+        "gamma_sigma_over_2pi_hz": 1333543623.8932147,
+        "qf_screen_ratio": 0.01499763460426944,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 577395.7966363312,
+          "10000": 1825885.8287781952,
+          "100000": 5773957.966363314
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 100000.0,
+        "temperature_k": 320.0,
+        "n_th": 666771.3119466073,
+        "gamma_m_over_2pi_hz": 100.0,
+        "gamma_up_over_2pi_hz": 66677131.19466073,
+        "gamma_sigma_over_2pi_hz": 133354362.38932146,
+        "qf_screen_ratio": 0.1499763460426944,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 182588.5828778195,
+          "10000": 577395.7966363312,
+          "100000": 1825885.8287781952
+        }
+      },
+      {
+        "frequency_hz": 10000000.0,
+        "q": 1000000.0,
+        "temperature_k": 320.0,
+        "n_th": 666771.3119466073,
+        "gamma_m_over_2pi_hz": 10.0,
+        "gamma_up_over_2pi_hz": 6667713.119466073,
+        "gamma_sigma_over_2pi_hz": 13335436.238932146,
+        "qf_screen_ratio": 1.4997634604269439,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 57739.57966363313,
+          "10000": 182588.5828778195,
+          "100000": 577395.7966363312
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 10000.0,
+        "temperature_k": 320.0,
+        "n_th": 190505.7319851467,
+        "gamma_m_over_2pi_hz": 3500.0,
+        "gamma_up_over_2pi_hz": 666770061.9480134,
+        "gamma_sigma_over_2pi_hz": 1333543623.8960268,
+        "qf_screen_ratio": 0.05249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 577395.7966369401,
+          "10000": 1825885.8287801202,
+          "100000": 5773957.966369402
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 100000.0,
+        "temperature_k": 320.0,
+        "n_th": 190505.7319851467,
+        "gamma_m_over_2pi_hz": 350.0,
+        "gamma_up_over_2pi_hz": 66677006.194801345,
+        "gamma_sigma_over_2pi_hz": 133354362.38960269,
+        "qf_screen_ratio": 0.5249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 182588.58287801204,
+          "10000": 577395.7966369401,
+          "100000": 1825885.8287801205
+        }
+      },
+      {
+        "frequency_hz": 35000000.0,
+        "q": 1000000.0,
+        "temperature_k": 320.0,
+        "n_th": 190505.7319851467,
+        "gamma_m_over_2pi_hz": 35.0,
+        "gamma_up_over_2pi_hz": 6667700.619480135,
+        "gamma_sigma_over_2pi_hz": 13335436.23896027,
+        "qf_screen_ratio": 5.249172111494304,
+        "required_g_over_2pi_hz_for_cq_1": {
+          "1000": 57739.579663694014,
+          "10000": 182588.58287801204,
+          "100000": 577395.7966369402
+        }
+      }
+    ]
+  },
+  "mems_rod_proxy": {
+    "roadmap_gate": "QT-0C geometry proxy only",
+    "model": "simulations.mems_q_model 1 mm x 40 um fused-silica rod",
+    "warning": "The roadmap target is a 1 mm x 1 mm x 50 um plate. This rod model is a sensitivity proxy, not a prediction for the proposed die.",
+    "scenarios": {
+      "end_anchor": {
+        "frequency_hz": 2880183.0749892523,
+        "q_total": 51038.12033976921,
+        "qf_screen_ratio": 0.023516151942534598,
+        "qf_screen_gap": 42.52396405856097,
+        "dominant_loss": "Material (intrinsic)",
+        "loss_budget": {
+          "Material (intrinsic)": 0.5103812033976921,
+          "Anchor loss": 0.22899044685956693,
+          "Thermoelastic (TED)": 6.000869948962831e-05,
+          "Surface loss": 0.26029441373282297,
+          "Gas damping": 0.0002739273100401344,
+          "Rayleigh scattering": 3.881549070057622e-13
+        }
+      },
+      "nodal_isolated_anchor": {
+        "frequency_hz": 2880183.0749892523,
+        "q_total": 66179.52485736669,
+        "qf_screen_ratio": 0.03049265434679246,
+        "qf_screen_gap": 32.79478357728443,
+        "dominant_loss": "Material (intrinsic)",
+        "loss_budget": {
+          "Material (intrinsic)": 0.6617952485736669,
+          "Anchor loss": 0.0002561703361664479,
+          "Thermoelastic (TED)": 7.781139260408081e-05,
+          "Surface loss": 0.3375155767725701,
+          "Gas damping": 0.0003551929244891671,
+          "Rayleigh scattering": 5.033082555879419e-13
+        }
+      }
+    }
+  },
+  "parametric_thresholds": {
+    "roadmap_gate": "QT-1C classical precursor simulation",
+    "model": "simulations.mathieu_parametric._epsilon_threshold: epsilon_min = 2/Q",
+    "rows": [
+      {
+        "scenario": "measured_loaded_q_median",
+        "q": 213.44045975760798,
+        "epsilon_threshold_fraction": 0.00937029465861948,
+        "epsilon_threshold_percent": 0.937029465861948
+      },
+      {
+        "scenario": "measured_loaded_q_max",
+        "q": 511.0347652208757,
+        "epsilon_threshold_fraction": 0.003913628066254112,
+        "epsilon_threshold_percent": 0.39136280662541123
+      },
+      {
+        "scenario": "roadmap_classical_mems_target",
+        "q": 10000.0,
+        "epsilon_threshold_fraction": 0.0002,
+        "epsilon_threshold_percent": 0.02
+      },
+      {
+        "scenario": "rod_proxy_end_anchor",
+        "q": 51038.12033976921,
+        "epsilon_threshold_fraction": 3.918639610325908e-05,
+        "epsilon_threshold_percent": 0.003918639610325908
+      },
+      {
+        "scenario": "rod_proxy_nodal_isolated",
+        "q": 66179.52485736669,
+        "epsilon_threshold_fraction": 3.0220827428279314e-05,
+        "epsilon_threshold_percent": 0.0030220827428279313
+      }
+    ],
+    "interpretation": "Higher Q sharply lowers the classical parametric threshold, but crossing it does not cool the mode or produce a nonclassical state.",
+    "limitation": "Existing captures do not calibrate fractional stiffness modulation versus drive, so these thresholds cannot yet be converted into a required voltage or pump power."
+  }
+}

@@ -55,5 +55,5 @@ This table is the current public claim ledger for the measurement paper and forw
 | Bench temporal reservoir computing                   | KILLED            | Current bench is spatial/spectral; temporal memory is MEMS-gated                        |
 | Phase channel as robust bench data encoding          | KILLED at bench   | Phase is useful for classical non-separability and future controlled interference tests |
 | Macro plate is a standalone computer                 | KILLED / reframed | Plate is a physical feature-extraction front-end                                        |
-| Room-temperature quantum hardware                    | KILLED as framing | Classical wave analogs only                                                             |
+| Room-temperature quantum hardware                    | KILLED as current framing | Current hardware is classical; any future quantum claim is separately gated by [the quantum transition roadmap](../docs/QUANTUM_TRANSITION_ROADMAP.md) |
 | MEMS density, speed, and endurance as measured facts | PROJECTED         | Scaling-law projections pending fabricated device                                       |

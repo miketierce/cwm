@@ -18,6 +18,7 @@ The shortest honest summary is this: the current bench proves a strong acoustic 
 | Desk demonstrator scrappy path         | [docs/DESK_DEMONSTRATOR_SCRAPPY.md](docs/DESK_DEMONSTRATOR_SCRAPPY.md)           | Reuse-first / buy-nothing path to prove and iterate on owned + salvaged gear |
 | DOOM demo (first-person maze on glass) | [docs/DESK_DEMONSTRATOR_DOOM.md](docs/DESK_DEMONSTRATOR_DOOM.md)                 | 32-plate kernel-rendered maze — Level 3 showcase, ~$68 beyond Phase 4A       |
 | Full-potential experiment plan         | [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md)                 | Phased roadmap with bottlenecks, use cases, and kill criteria                |
+| Outcome-first quantum transition       | [docs/QUANTUM_TRANSITION_ROADMAP.md](docs/QUANTUM_TRANSITION_ROADMAP.md)         | Conditional room-temperature paths with experiments, data, and kill gates   |
 | Bench execution details                | [docs/FULL_POTENTIAL_WORKLIST.md](docs/FULL_POTENTIAL_WORKLIST.md)               | Copy-paste lab prompts, procedures, success criteria, BOM                    |
 | Next distributed-mode hardware session | [docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md](docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md) | Preregistered cross-session, physical RX-dropout, attenuation, and query-omission tests |
 | Academic paper plan                    | [paper/BUILD_AND_EXPERIMENT_PLAN.md](paper/BUILD_AND_EXPERIMENT_PLAN.md)         | E1-E8 validation experiments for the paper path                              |
