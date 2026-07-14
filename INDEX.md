@@ -6,25 +6,28 @@ The shortest honest summary is this: the current bench proves a strong acoustic 
 
 ## Start Here
 
-| Reader goal                            | First file                                                                       | Why                                                                          |
-| -------------------------------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
-| Current measured science               | [paper/v19r.md](paper/v19r.md)                                                   | Current measurement-scoped paper, post peer-review downscope                 |
-| Claim-by-claim status                  | [paper/CLAIMS_STATUS.md](paper/CLAIMS_STATUS.md)                                 | Maps claims to evidence, gaps, risks, and reframes                           |
-| Full public roadmap                    | [docs/PUBLIC_ARCHITECTURE_PACKAGE.md](docs/PUBLIC_ARCHITECTURE_PACKAGE.md)       | Public-facing synthesis across papers, diaries, data, site, and book         |
-| Frontier ceiling + ladder              | [docs/FRONTIER_CEILING.md](docs/FRONTIER_CEILING.md)                             | Maximum defensible capability ceiling and the experiments that unlock it     |
-| Desk demonstrator presentation         | [docs/DESK_DEMONSTRATOR_PRESENTATION.md](docs/DESK_DEMONSTRATOR_PRESENTATION.md) | Slide deck: projected desk capabilities mapped to PFUs and frontier rungs    |
-| Desk / briefcase demonstrator          | [docs/DESK_DEMONSTRATOR.md](docs/DESK_DEMONSTRATOR.md)                           | No-fab phononic plate-array build that demonstrates the MEMS principles      |
-| Desk demonstrator bench protocol       | [docs/DESK_DEMONSTRATOR_PROTOCOL.md](docs/DESK_DEMONSTRATOR_PROTOCOL.md)         | Step-by-step repeatable procedures for every build phase (DD-P0–DD-P10)      |
-| Desk demonstrator scrappy path         | [docs/DESK_DEMONSTRATOR_SCRAPPY.md](docs/DESK_DEMONSTRATOR_SCRAPPY.md)           | Reuse-first / buy-nothing path to prove and iterate on owned + salvaged gear |
-| DOOM demo (first-person maze on glass) | [docs/DESK_DEMONSTRATOR_DOOM.md](docs/DESK_DEMONSTRATOR_DOOM.md)                 | 32-plate kernel-rendered maze — Level 3 showcase, ~$68 beyond Phase 4A       |
-| Full-potential experiment plan         | [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md)                 | Phased roadmap with bottlenecks, use cases, and kill criteria                |
-| Outcome-first quantum transition       | [docs/QUANTUM_TRANSITION_ROADMAP.md](docs/QUANTUM_TRANSITION_ROADMAP.md)         | Conditional room-temperature paths with experiments, data, and kill gates   |
-| Bench execution details                | [docs/FULL_POTENTIAL_WORKLIST.md](docs/FULL_POTENTIAL_WORKLIST.md)               | Copy-paste lab prompts, procedures, success criteria, BOM                    |
+| Reader goal                            | First file                                                                                                     | Why                                                                                     |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------- |
+| Current measured science               | [paper/v19r.md](paper/v19r.md)                                                                                 | Current measurement-scoped paper, post peer-review downscope                            |
+| Claim-by-claim status                  | [paper/CLAIMS_STATUS.md](paper/CLAIMS_STATUS.md)                                                               | Maps claims to evidence, gaps, risks, and reframes                                      |
+| Full public roadmap                    | [docs/PUBLIC_ARCHITECTURE_PACKAGE.md](docs/PUBLIC_ARCHITECTURE_PACKAGE.md)                                     | Public-facing synthesis across papers, diaries, data, site, and book                    |
+| Frontier ceiling + ladder              | [docs/FRONTIER_CEILING.md](docs/FRONTIER_CEILING.md)                                                           | Maximum defensible capability ceiling and the experiments that unlock it                |
+| Desk demonstrator presentation         | [docs/DESK_DEMONSTRATOR_PRESENTATION.md](docs/DESK_DEMONSTRATOR_PRESENTATION.md)                               | Slide deck: projected desk capabilities mapped to PFUs and frontier rungs               |
+| Desk / briefcase demonstrator          | [docs/DESK_DEMONSTRATOR.md](docs/DESK_DEMONSTRATOR.md)                                                         | No-fab phononic plate-array build that demonstrates the MEMS principles                 |
+| Desk demonstrator bench protocol       | [docs/DESK_DEMONSTRATOR_PROTOCOL.md](docs/DESK_DEMONSTRATOR_PROTOCOL.md)                                       | Step-by-step repeatable procedures for every build phase (DD-P0–DD-P10)                 |
+| Desk demonstrator scrappy path         | [docs/DESK_DEMONSTRATOR_SCRAPPY.md](docs/DESK_DEMONSTRATOR_SCRAPPY.md)                                         | Reuse-first / buy-nothing path to prove and iterate on owned + salvaged gear            |
+| DOOM demo (first-person maze on glass) | [docs/DESK_DEMONSTRATOR_DOOM.md](docs/DESK_DEMONSTRATOR_DOOM.md)                                               | 32-plate kernel-rendered maze — Level 3 showcase, ~$68 beyond Phase 4A                  |
+| Full-potential experiment plan         | [docs/ROADMAP_FULL_POTENTIAL.md](docs/ROADMAP_FULL_POTENTIAL.md)                                               | Phased roadmap with bottlenecks, use cases, and kill criteria                           |
+| Outcome-first quantum transition       | [docs/QUANTUM_TRANSITION_ROADMAP.md](docs/QUANTUM_TRANSITION_ROADMAP.md)                                       | Conditional room-temperature paths with experiments, data, and kill gates               |
+| Wheel-of-Fortune exploration           | [docs/WHEEL_OF_FORTUNE_EXPLORATION.md](docs/WHEEL_OF_FORTUNE_EXPLORATION.md)                                   | PR synthesis, offline surrogate results, and physical completion experiment             |
+| Physically written template bank       | [docs/PHYSICALLY_WRITTEN_TEMPLATE_BANK_WORKLIST.md](docs/PHYSICALLY_WRITTEN_TEMPLATE_BANK_WORKLIST.md)         | Mass-site write, match, pattern-swap, Wheel, endurance, and MEMS execution gates        |
+| Template-bank simulation results       | [data/results/template_bank_simulation/report.md](data/results/template_bank_simulation/report.md)             | E3-calibrated match robustness, rewrite envelope, site priors, and sample sizing        |
+| Bench execution details                | [docs/FULL_POTENTIAL_WORKLIST.md](docs/FULL_POTENTIAL_WORKLIST.md)                                             | Copy-paste lab prompts, procedures, success criteria, BOM                               |
 | Next distributed-mode hardware session | [docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md](docs/DISTRIBUTED_MODE_HARDWARE_VALIDATION_WORKLIST.md) | Preregistered cross-session, physical RX-dropout, attenuation, and query-omission tests |
-| Academic paper plan                    | [paper/BUILD_AND_EXPERIMENT_PLAN.md](paper/BUILD_AND_EXPERIMENT_PLAN.md)         | E1-E8 validation experiments for the paper path                              |
-| Lab history                            | [docs/LAB_DIARY.md](docs/LAB_DIARY.md) and [docs/](docs/)                        | Chronological bench record and daily diaries                                 |
-| Hardware state                         | [HARDWARE.md](HARDWARE.md)                                                       | Bench wiring, equipment, and troubleshooting notes                           |
-| Replication/public guide               | [companion/experiment_guide.md](companion/experiment_guide.md)                   | Companion build and experiment material                                      |
+| Academic paper plan                    | [paper/BUILD_AND_EXPERIMENT_PLAN.md](paper/BUILD_AND_EXPERIMENT_PLAN.md)                                       | E1-E8 validation experiments for the paper path                                         |
+| Lab history                            | [docs/LAB_DIARY.md](docs/LAB_DIARY.md) and [docs/](docs/)                                                      | Chronological bench record and daily diaries                                            |
+| Hardware state                         | [HARDWARE.md](HARDWARE.md)                                                                                     | Bench wiring, equipment, and troubleshooting notes                                      |
+| Replication/public guide               | [companion/experiment_guide.md](companion/experiment_guide.md)                                                 | Companion build and experiment material                                                 |
 
 ## Claim Maturity Legend
 

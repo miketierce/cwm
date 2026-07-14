@@ -1,0 +1,3915 @@
+{
+  "experiment": "wheel_of_fortune_structural_surrogate",
+  "status": "PRELIMINARY_OFFLINE_STRUCTURAL_SURROGATE",
+  "source": "data/results/pong/recall_enroll_20260629_120542.npz",
+  "dataset": {
+    "samples": 1280,
+    "features": 240,
+    "modes": 212,
+    "states": 256,
+    "repeats": 5,
+    "attribute_names": [
+      "x",
+      "y",
+      "vx",
+      "vy"
+    ],
+    "attribute_level_counts": [
+      8,
+      8,
+      2,
+      2
+    ],
+    "complete_cartesian_grid": true
+  },
+  "scope": {
+    "supports": [
+      "latent physical-state reconstruction from saved modal features",
+      "readout-masking sensitivity",
+      "geometric known-versus-held-out-state abstention"
+    ],
+    "does_not_support": [
+      "physical missing-symbol queries",
+      "word semantics or language modeling",
+      "valid unseen-word composition",
+      "generation of novel physical states"
+    ],
+    "critical_caveat": "All four state variables were present during every saved physical capture. Offline masking removes decoder features, not the corresponding physical drive."
+  },
+  "completion": [
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6609375,
+        "top3_state_accuracy": 0.9328125,
+        "hidden_tuple_accuracy": 0.81015625,
+        "hidden_symbol_accuracy": 0.81015625,
+        "visible_tuple_consistency": 0.796875,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.81015625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7589932564194747,
+        "mean_margin_correct": 0.0811605302956534,
+        "mean_margin_incorrect": 0.03754696184055547
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.78671875,
+        "hidden_symbol_accuracy": 0.78671875,
+        "visible_tuple_consistency": 0.72109375,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.584375,
+        "top3_state_accuracy": 0.915625,
+        "hidden_tuple_accuracy": 0.59296875,
+        "hidden_symbol_accuracy": 0.59296875,
+        "visible_tuple_consistency": 0.98828125,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.59296875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7085511237988018,
+        "mean_margin_correct": 0.5064232109398407,
+        "mean_margin_incorrect": 0.321873683345664
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.8796875,
+        "top3_state_accuracy": 0.99609375,
+        "hidden_tuple_accuracy": 0.8796875,
+        "hidden_symbol_accuracy": 0.8796875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.8796875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7767986897649419,
+        "mean_margin_correct": 0.7634483894709122,
+        "mean_margin_incorrect": 0.49948122652607807
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.64921875,
+        "top3_state_accuracy": 0.91875,
+        "hidden_tuple_accuracy": 0.7484375,
+        "hidden_symbol_accuracy": 0.7484375,
+        "visible_tuple_consistency": 0.84140625,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.7484375
+        },
+        "confidence_margin_auc_for_exact_state": 0.7485761915099473,
+        "mean_margin_correct": 0.0795330808699336,
+        "mean_margin_incorrect": 0.03802775224777769
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.721875,
+        "hidden_symbol_accuracy": 0.721875,
+        "visible_tuple_consistency": 0.784375,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.721875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.58671875,
+        "top3_state_accuracy": 0.91015625,
+        "hidden_tuple_accuracy": 0.590625,
+        "hidden_symbol_accuracy": 0.590625,
+        "visible_tuple_consistency": 0.99296875,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.590625
+        },
+        "confidence_margin_auc_for_exact_state": 0.661396650716499,
+        "mean_margin_correct": 0.4729526964849475,
+        "mean_margin_incorrect": 0.32987486019863027
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.87109375,
+        "top3_state_accuracy": 0.99296875,
+        "hidden_tuple_accuracy": 0.87109375,
+        "hidden_symbol_accuracy": 0.87109375,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.87109375
+        },
+        "confidence_margin_auc_for_exact_state": 0.7833183856502243,
+        "mean_margin_correct": 0.7559901541585905,
+        "mean_margin_incorrect": 0.47787172106970915
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.68515625,
+        "top3_state_accuracy": 0.946875,
+        "hidden_tuple_accuracy": 0.99921875,
+        "hidden_symbol_accuracy": 0.99921875,
+        "visible_tuple_consistency": 0.68515625,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7702408673828838,
+        "mean_margin_correct": 0.0849322261633853,
+        "mean_margin_incorrect": 0.03818157915884437
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.99921875,
+        "hidden_symbol_accuracy": 0.99921875,
+        "visible_tuple_consistency": 0.6046875,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.94921875,
+        "top3_state_accuracy": 0.98515625,
+        "hidden_tuple_accuracy": 0.99765625,
+        "hidden_symbol_accuracy": 0.99765625,
+        "visible_tuple_consistency": 0.95,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.9623298512187402,
+        "mean_margin_correct": 0.73789304809287,
+        "mean_margin_incorrect": 0.17204744894172666
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 1.0,
+        "top3_state_accuracy": 1.0,
+        "hidden_tuple_accuracy": 1.0,
+        "hidden_symbol_accuracy": 1.0,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 1.0
+        },
+        "confidence_margin_auc_for_exact_state": NaN,
+        "mean_margin_correct": 0.972549541965288,
+        "mean_margin_incorrect": null
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6921875,
+        "top3_state_accuracy": 0.9484375,
+        "hidden_tuple_accuracy": 1.0,
+        "hidden_symbol_accuracy": 1.0,
+        "visible_tuple_consistency": 0.6921875,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 1.0
+        },
+        "confidence_margin_auc_for_exact_state": 0.7615530932383037,
+        "mean_margin_correct": 0.08426703011239679,
+        "mean_margin_incorrect": 0.038760498420464425
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.99765625,
+        "hidden_symbol_accuracy": 0.99765625,
+        "visible_tuple_consistency": 0.6046875,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.97265625,
+        "top3_state_accuracy": 0.99453125,
+        "hidden_tuple_accuracy": 0.9953125,
+        "hidden_symbol_accuracy": 0.9953125,
+        "visible_tuple_consistency": 0.9734375,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.9953125
+        },
+        "confidence_margin_auc_for_exact_state": 0.9750086058519793,
+        "mean_margin_correct": 0.7602525270640302,
+        "mean_margin_incorrect": 0.1510198443283788
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 1.0,
+        "top3_state_accuracy": 1.0,
+        "hidden_tuple_accuracy": 1.0,
+        "hidden_symbol_accuracy": 1.0,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 1.0
+        },
+        "confidence_margin_auc_for_exact_state": NaN,
+        "mean_margin_correct": 0.9660388779471258,
+        "mean_margin_incorrect": null
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6109375,
+        "top3_state_accuracy": 0.88125,
+        "hidden_tuple_accuracy": 0.6109375,
+        "hidden_symbol_accuracy": 0.756640625,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.7875,
+          "y": 0.72578125
+        },
+        "confidence_margin_auc_for_exact_state": 0.7375075750572623,
+        "mean_margin_correct": 0.07403002191279388,
+        "mean_margin_incorrect": 0.03576613825280891
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.6046875,
+        "hidden_symbol_accuracy": 0.754296875,
+        "visible_tuple_consistency": 0.996875,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.721875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.18125,
+        "top3_state_accuracy": 0.415625,
+        "hidden_tuple_accuracy": 0.18125,
+        "hidden_symbol_accuracy": 0.248046875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.26328125,
+          "y": 0.2328125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5857750394840747,
+        "mean_margin_correct": 0.3551066907910273,
+        "mean_margin_incorrect": 0.28176886139100293
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.23046875,
+        "top3_state_accuracy": 0.57734375,
+        "hidden_tuple_accuracy": 0.23046875,
+        "hidden_symbol_accuracy": 0.256640625,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.25390625,
+          "y": 0.259375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5794132323840661,
+        "mean_margin_correct": 0.5528607233226673,
+        "mean_margin_incorrect": 0.4734465688869704
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.65546875,
+        "top3_state_accuracy": 0.93203125,
+        "hidden_tuple_accuracy": 0.8078125,
+        "hidden_symbol_accuracy": 0.903515625,
+        "visible_tuple_consistency": 0.79609375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.8078125,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7593507009478404,
+        "mean_margin_correct": 0.08102661416337377,
+        "mean_margin_incorrect": 0.03756695871019684
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.78671875,
+        "hidden_symbol_accuracy": 0.89296875,
+        "visible_tuple_consistency": 0.721875,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.43515625,
+        "top3_state_accuracy": 0.77734375,
+        "hidden_tuple_accuracy": 0.4390625,
+        "hidden_symbol_accuracy": 0.609375,
+        "visible_tuple_consistency": 0.98984375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.4390625,
+          "vx": 0.7796875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6363521234830933,
+        "mean_margin_correct": 0.45555908812576046,
+        "mean_margin_incorrect": 0.3330945585792647
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.659375,
+        "top3_state_accuracy": 0.9796875,
+        "hidden_tuple_accuracy": 0.659375,
+        "hidden_symbol_accuracy": 0.73515625,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.659375,
+          "vx": 0.8109375
+        },
+        "confidence_margin_auc_for_exact_state": 0.6586835297186834,
+        "mean_margin_correct": 0.7069775938077365,
+        "mean_margin_incorrect": 0.555737155234092
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.659375,
+        "top3_state_accuracy": 0.9296875,
+        "hidden_tuple_accuracy": 0.81171875,
+        "hidden_symbol_accuracy": 0.905078125,
+        "visible_tuple_consistency": 0.7953125,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.81171875,
+          "vy": 0.9984375
+        },
+        "confidence_margin_auc_for_exact_state": 0.755187725553285,
+        "mean_margin_correct": 0.08024551331036413,
+        "mean_margin_incorrect": 0.037535328500727126
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.784375,
+        "hidden_symbol_accuracy": 0.8921875,
+        "visible_tuple_consistency": 0.72109375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.44765625,
+        "top3_state_accuracy": 0.81328125,
+        "hidden_tuple_accuracy": 0.45,
+        "hidden_symbol_accuracy": 0.592578125,
+        "visible_tuple_consistency": 0.99140625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.45,
+          "vy": 0.73515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6447788383924405,
+        "mean_margin_correct": 0.45249309746567973,
+        "mean_margin_incorrect": 0.32377605922662467
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.653125,
+        "top3_state_accuracy": 0.96875,
+        "hidden_tuple_accuracy": 0.653125,
+        "hidden_symbol_accuracy": 0.71484375,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.653125,
+          "vy": 0.7765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.674175072201388,
+        "mean_margin_correct": 0.6847668333974004,
+        "mean_margin_incorrect": 0.5094090451618266
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.64609375,
+        "top3_state_accuracy": 0.91484375,
+        "hidden_tuple_accuracy": 0.74453125,
+        "hidden_symbol_accuracy": 0.872265625,
+        "visible_tuple_consistency": 0.84140625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.7453125,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7447755257840382,
+        "mean_margin_correct": 0.07902495296841482,
+        "mean_margin_incorrect": 0.03816317976263266
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.72109375,
+        "hidden_symbol_accuracy": 0.860546875,
+        "visible_tuple_consistency": 0.784375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.721875,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.4375,
+        "top3_state_accuracy": 0.79921875,
+        "hidden_tuple_accuracy": 0.4375,
+        "hidden_symbol_accuracy": 0.6234375,
+        "visible_tuple_consistency": 0.99609375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.4375,
+          "vx": 0.809375
+        },
+        "confidence_margin_auc_for_exact_state": 0.6193229166666666,
+        "mean_margin_correct": 0.44417487929535987,
+        "mean_margin_incorrect": 0.33772362993636695
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.675,
+        "top3_state_accuracy": 0.97734375,
+        "hidden_tuple_accuracy": 0.675,
+        "hidden_symbol_accuracy": 0.75546875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.675,
+          "vx": 0.8359375
+        },
+        "confidence_margin_auc_for_exact_state": 0.685989249465812,
+        "mean_margin_correct": 0.6910125967630294,
+        "mean_margin_incorrect": 0.51148604030045
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.64921875,
+        "top3_state_accuracy": 0.91640625,
+        "hidden_tuple_accuracy": 0.74453125,
+        "hidden_symbol_accuracy": 0.87109375,
+        "visible_tuple_consistency": 0.84453125,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.74453125,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.738959956475012,
+        "mean_margin_correct": 0.07797114819771625,
+        "mean_margin_incorrect": 0.03829090511371519
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.721875,
+        "hidden_symbol_accuracy": 0.859765625,
+        "visible_tuple_consistency": 0.78671875,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.721875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.4390625,
+        "top3_state_accuracy": 0.83125,
+        "hidden_tuple_accuracy": 0.4390625,
+        "hidden_symbol_accuracy": 0.59296875,
+        "visible_tuple_consistency": 0.9984375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.4390625,
+          "vy": 0.746875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6396673242201053,
+        "mean_margin_correct": 0.432985358503664,
+        "mean_margin_incorrect": 0.3110040957418358
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.65625,
+        "top3_state_accuracy": 0.9625,
+        "hidden_tuple_accuracy": 0.65625,
+        "hidden_symbol_accuracy": 0.726171875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.65625,
+          "vy": 0.79609375
+        },
+        "confidence_margin_auc_for_exact_state": 0.6415746753246753,
+        "mean_margin_correct": 0.6745690583730202,
+        "mean_margin_incorrect": 0.5331376916587753
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.68515625,
+        "top3_state_accuracy": 0.9484375,
+        "hidden_tuple_accuracy": 0.99921875,
+        "hidden_symbol_accuracy": 0.999609375,
+        "visible_tuple_consistency": 0.68515625,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.99921875,
+          "vy": 1.0
+        },
+        "confidence_margin_auc_for_exact_state": 0.7665201977189324,
+        "mean_margin_correct": 0.08438879231430813,
+        "mean_margin_incorrect": 0.03836822508006684
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.996875,
+        "hidden_symbol_accuracy": 0.9984375,
+        "visible_tuple_consistency": 0.6046875,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.99921875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6703125,
+        "top3_state_accuracy": 0.946875,
+        "hidden_tuple_accuracy": 0.67265625,
+        "hidden_symbol_accuracy": 0.741796875,
+        "visible_tuple_consistency": 0.82734375,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.734375,
+          "vy": 0.74921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7311006529016008,
+        "mean_margin_correct": 0.5491490496066063,
+        "mean_margin_incorrect": 0.3327297794240539
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.859375,
+        "top3_state_accuracy": 0.996875,
+        "hidden_tuple_accuracy": 0.859375,
+        "hidden_symbol_accuracy": 0.883203125,
+        "visible_tuple_consistency": 0.94296875,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.87578125,
+          "vy": 0.890625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7337676767676767,
+        "mean_margin_correct": 0.7793861259597733,
+        "mean_margin_incorrect": 0.5509415200439256
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.60546875,
+        "top3_state_accuracy": 0.87890625,
+        "hidden_tuple_accuracy": 0.60546875,
+        "hidden_symbol_accuracy": 0.8361979166666667,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.72265625,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.737313318428617,
+        "mean_margin_correct": 0.07388202919824316,
+        "mean_margin_incorrect": 0.03577031116621136
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.6046875,
+        "hidden_symbol_accuracy": 0.8359375,
+        "visible_tuple_consistency": 0.99765625,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.721875,
+          "vx": 0.99921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.1046875,
+        "top3_state_accuracy": 0.2625,
+        "hidden_tuple_accuracy": 0.1046875,
+        "hidden_symbol_accuracy": 0.3625,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.1984375,
+          "y": 0.190625,
+          "vx": 0.6984375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5543486754708135,
+        "mean_margin_correct": 0.3777155983353462,
+        "mean_margin_incorrect": 0.32987959923437243
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.13671875,
+        "top3_state_accuracy": 0.340625,
+        "hidden_tuple_accuracy": 0.13671875,
+        "hidden_symbol_accuracy": 0.36666666666666664,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.19375,
+          "y": 0.2046875,
+          "vx": 0.7015625
+        },
+        "confidence_margin_auc_for_exact_state": 0.4932695539754363,
+        "mean_margin_correct": 0.6539307659377245,
+        "mean_margin_incorrect": 0.6709891119410888
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.609375,
+        "top3_state_accuracy": 0.87578125,
+        "hidden_tuple_accuracy": 0.609375,
+        "hidden_symbol_accuracy": 0.8361979166666667,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.7890625,
+          "y": 0.72265625,
+          "vy": 0.996875
+        },
+        "confidence_margin_auc_for_exact_state": 0.7278871794871795,
+        "mean_margin_correct": 0.07260352584007303,
+        "mean_margin_incorrect": 0.03581754931874328
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.6046875,
+        "hidden_symbol_accuracy": 0.8354166666666667,
+        "visible_tuple_consistency": 0.99921875,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.721875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0953125,
+        "top3_state_accuracy": 0.25625,
+        "hidden_tuple_accuracy": 0.0953125,
+        "hidden_symbol_accuracy": 0.3463541666666667,
+        "visible_tuple_consistency": 0.99921875,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.2109375,
+          "y": 0.18515625,
+          "vy": 0.64296875
+        },
+        "confidence_margin_auc_for_exact_state": 0.573600611568844,
+        "mean_margin_correct": 0.38632035281589333,
+        "mean_margin_incorrect": 0.3225802405029221
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.11015625,
+        "top3_state_accuracy": 0.3140625,
+        "hidden_tuple_accuracy": 0.11015625,
+        "hidden_symbol_accuracy": 0.3421875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.19453125,
+          "y": 0.1953125,
+          "vy": 0.63671875
+        },
+        "confidence_margin_auc_for_exact_state": 0.48872035317779067,
+        "mean_margin_correct": 0.6825399027386004,
+        "mean_margin_incorrect": 0.6860237778679856
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.65,
+        "top3_state_accuracy": 0.92578125,
+        "hidden_tuple_accuracy": 0.80546875,
+        "hidden_symbol_accuracy": 0.934375,
+        "visible_tuple_consistency": 0.79296875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.80546875,
+          "vx": 0.99921875,
+          "vy": 0.9984375
+        },
+        "confidence_margin_auc_for_exact_state": 0.7629233559409341,
+        "mean_margin_correct": 0.08064430142796979,
+        "mean_margin_incorrect": 0.03708606019379183
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.784375,
+        "hidden_symbol_accuracy": 0.9278645833333333,
+        "visible_tuple_consistency": 0.721875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "vx": 0.99921875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.14375,
+        "top3_state_accuracy": 0.34375,
+        "hidden_tuple_accuracy": 0.14375,
+        "hidden_symbol_accuracy": 0.45390625,
+        "visible_tuple_consistency": 0.640625,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.22890625,
+          "vx": 0.5890625,
+          "vy": 0.54375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5572139796889877,
+        "mean_margin_correct": 0.37831683516991,
+        "mean_margin_incorrect": 0.33283214252079407
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.16328125,
+        "top3_state_accuracy": 0.46953125,
+        "hidden_tuple_accuracy": 0.16328125,
+        "hidden_symbol_accuracy": 0.45364583333333336,
+        "visible_tuple_consistency": 0.63984375,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.24921875,
+          "vx": 0.5734375,
+          "vy": 0.53828125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5172289011298299,
+        "mean_margin_correct": 0.707609009429536,
+        "mean_margin_incorrect": 0.6779842413532987
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.646875,
+        "top3_state_accuracy": 0.91328125,
+        "hidden_tuple_accuracy": 0.74453125,
+        "hidden_symbol_accuracy": 0.9143229166666667,
+        "visible_tuple_consistency": 0.8421875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.7453125,
+          "vx": 0.99921875,
+          "vy": 0.9984375
+        },
+        "confidence_margin_auc_for_exact_state": 0.7347724552178189,
+        "mean_margin_correct": 0.07749159154330285,
+        "mean_margin_incorrect": 0.038428532154895834
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.72109375,
+        "hidden_symbol_accuracy": 0.90625,
+        "visible_tuple_consistency": 0.78671875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.721875,
+          "vx": 0.99921875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.15,
+        "top3_state_accuracy": 0.33515625,
+        "hidden_tuple_accuracy": 0.15,
+        "hidden_symbol_accuracy": 0.4596354166666667,
+        "visible_tuple_consistency": 0.6671875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.2296875,
+          "vx": 0.57890625,
+          "vy": 0.5703125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5606474034926471,
+        "mean_margin_correct": 0.36985054365405484,
+        "mean_margin_incorrect": 0.31362677246254256
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.1453125,
+        "top3_state_accuracy": 0.421875,
+        "hidden_tuple_accuracy": 0.1453125,
+        "hidden_symbol_accuracy": 0.44114583333333335,
+        "visible_tuple_consistency": 0.646875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.2234375,
+          "vx": 0.5671875,
+          "vy": 0.5328125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5355752786459869,
+        "mean_margin_correct": 0.7153372800817785,
+        "mean_margin_incorrect": 0.6781360107739252
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.6046875,
+        "hidden_symbol_accuracy": 0.8763671875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.00390625,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.721875,
+          "vx": 0.99921875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.6046875,
+        "top3_state_accuracy": 0.87109375,
+        "hidden_tuple_accuracy": 0.6046875,
+        "hidden_symbol_accuracy": 0.8763671875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.00390625,
+        "hidden_axis_accuracy": {
+          "x": 0.78671875,
+          "y": 0.721875,
+          "vx": 0.99921875,
+          "vy": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.7272497472194136,
+        "mean_margin_correct": 0.07244022817443511,
+        "mean_margin_incorrect": 0.035891096567637296
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "NO_VISIBLE_FEATURES",
+        "feature_count": 0,
+        "hidden_tuple_chance": 0.00390625
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "NO_VISIBLE_FEATURES",
+        "feature_count": 0,
+        "hidden_tuple_chance": 0.00390625
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.39296875,
+        "top3_state_accuracy": 0.71953125,
+        "hidden_tuple_accuracy": 0.59296875,
+        "hidden_symbol_accuracy": 0.59296875,
+        "visible_tuple_consistency": 0.5765625,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.59296875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6497463097860712,
+        "mean_margin_correct": 0.031207047209199524,
+        "mean_margin_incorrect": 0.018759711497519174
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.33359375,
+        "top3_state_accuracy": 0.59765625,
+        "hidden_tuple_accuracy": 0.5390625,
+        "hidden_symbol_accuracy": 0.5390625,
+        "visible_tuple_consistency": 0.49140625,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.5390625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6109145020605056,
+        "mean_margin_correct": 0.02806335335487198,
+        "mean_margin_incorrect": 0.018957364034120173
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.11328125,
+        "top3_state_accuracy": 0.3125,
+        "hidden_tuple_accuracy": 0.24609375,
+        "hidden_symbol_accuracy": 0.24609375,
+        "visible_tuple_consistency": 0.47109375,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.24609375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5844508582713048,
+        "mean_margin_correct": 0.032303115159139494,
+        "mean_margin_incorrect": 0.024916909472524108
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.02734375,
+        "top3_state_accuracy": 0.0828125,
+        "hidden_tuple_accuracy": 0.15,
+        "hidden_symbol_accuracy": 0.15,
+        "visible_tuple_consistency": 0.1734375,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "x": 0.15
+        },
+        "confidence_margin_auc_for_exact_state": 0.5267240390131956,
+        "mean_margin_correct": 0.11967089424030376,
+        "mean_margin_incorrect": 0.1272321283040509
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.384375,
+        "top3_state_accuracy": 0.69375,
+        "hidden_tuple_accuracy": 0.53515625,
+        "hidden_symbol_accuracy": 0.53515625,
+        "visible_tuple_consistency": 0.6296875,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.53515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6668859106103752,
+        "mean_margin_correct": 0.03152128211382954,
+        "mean_margin_incorrect": 0.01872270991510453
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.33359375,
+        "top3_state_accuracy": 0.59765625,
+        "hidden_tuple_accuracy": 0.5078125,
+        "hidden_symbol_accuracy": 0.5078125,
+        "visible_tuple_consistency": 0.50703125,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.5078125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6109145020605056,
+        "mean_margin_correct": 0.02806335335487198,
+        "mean_margin_incorrect": 0.018957364034120173
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.11484375,
+        "top3_state_accuracy": 0.30078125,
+        "hidden_tuple_accuracy": 0.23515625,
+        "hidden_symbol_accuracy": 0.23515625,
+        "visible_tuple_consistency": 0.478125,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.23515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.5513806581767747,
+        "mean_margin_correct": 0.02653357558249544,
+        "mean_margin_incorrect": 0.023070833698062634
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.02734375,
+        "top3_state_accuracy": 0.08125,
+        "hidden_tuple_accuracy": 0.1359375,
+        "hidden_symbol_accuracy": 0.1359375,
+        "visible_tuple_consistency": 0.17421875,
+        "hidden_tuple_chance": 0.125,
+        "hidden_axis_accuracy": {
+          "y": 0.1359375
+        },
+        "confidence_margin_auc_for_exact_state": 0.4344234079173838,
+        "mean_margin_correct": 0.09852376689230664,
+        "mean_margin_incorrect": 0.1389837872874383
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.41328125,
+        "top3_state_accuracy": 0.74921875,
+        "hidden_tuple_accuracy": 0.99765625,
+        "hidden_symbol_accuracy": 0.99765625,
+        "visible_tuple_consistency": 0.41328125,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.99765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6782613729897629,
+        "mean_margin_correct": 0.033414099528212955,
+        "mean_margin_incorrect": 0.0190880404823336
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.33359375,
+        "top3_state_accuracy": 0.59765625,
+        "hidden_tuple_accuracy": 0.98046875,
+        "hidden_symbol_accuracy": 0.98046875,
+        "visible_tuple_consistency": 0.33359375,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.98046875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6109145020605056,
+        "mean_margin_correct": 0.02806335335487198,
+        "mean_margin_incorrect": 0.018957364034120173
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.1765625,
+        "top3_state_accuracy": 0.40078125,
+        "hidden_tuple_accuracy": 0.7234375,
+        "hidden_symbol_accuracy": 0.7234375,
+        "visible_tuple_consistency": 0.23046875,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.7234375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5574717469060133,
+        "mean_margin_correct": 0.03974093296353315,
+        "mean_margin_incorrect": 0.03271809706823213
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vx"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0328125,
+        "top3_state_accuracy": 0.0921875,
+        "hidden_tuple_accuracy": 0.56015625,
+        "hidden_symbol_accuracy": 0.56015625,
+        "visible_tuple_consistency": 0.0609375,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vx": 0.56015625
+        },
+        "confidence_margin_auc_for_exact_state": 0.39956919763058696,
+        "mean_margin_correct": 0.186815960374017,
+        "mean_margin_incorrect": 0.2678755611982367
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 233,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.4140625,
+        "top3_state_accuracy": 0.73828125,
+        "hidden_tuple_accuracy": 0.97578125,
+        "hidden_symbol_accuracy": 0.97578125,
+        "visible_tuple_consistency": 0.4140625,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.97578125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6821106918238994,
+        "mean_margin_correct": 0.033367121802799715,
+        "mean_margin_incorrect": 0.018890910063300365
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.33359375,
+        "top3_state_accuracy": 0.59765625,
+        "hidden_tuple_accuracy": 0.93828125,
+        "hidden_symbol_accuracy": 0.93828125,
+        "visible_tuple_consistency": 0.334375,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.93828125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6109145020605056,
+        "mean_margin_correct": 0.02806335335487198,
+        "mean_margin_incorrect": 0.018957364034120173
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 21,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.17578125,
+        "top3_state_accuracy": 0.4015625,
+        "hidden_tuple_accuracy": 0.70625,
+        "hidden_symbol_accuracy": 0.70625,
+        "visible_tuple_consistency": 0.23203125,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.70625
+        },
+        "confidence_margin_auc_for_exact_state": 0.5687540810953133,
+        "mean_margin_correct": 0.041536395182257914,
+        "mean_margin_incorrect": 0.032809067950553106
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vy"
+      ],
+      "hidden_count": 1,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 3,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.03984375,
+        "top3_state_accuracy": 0.1,
+        "hidden_tuple_accuracy": 0.57734375,
+        "hidden_symbol_accuracy": 0.57734375,
+        "visible_tuple_consistency": 0.06640625,
+        "hidden_tuple_chance": 0.5,
+        "hidden_axis_accuracy": {
+          "vy": 0.57734375
+        },
+        "confidence_margin_auc_for_exact_state": 0.4048564910097481,
+        "mean_margin_correct": 0.17741135440511063,
+        "mean_margin_incorrect": 0.25083350126109555
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.29921875,
+        "top3_state_accuracy": 0.609375,
+        "hidden_tuple_accuracy": 0.29921875,
+        "hidden_symbol_accuracy": 0.4921875,
+        "visible_tuple_consistency": 0.99765625,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.52265625,
+          "y": 0.46171875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6440528480487613,
+        "mean_margin_correct": 0.02988299117788361,
+        "mean_margin_incorrect": 0.018404873173927527
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.30546875,
+        "hidden_symbol_accuracy": 0.510546875,
+        "visible_tuple_consistency": 0.92578125,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.5359375,
+          "y": 0.48515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.04296875,
+        "top3_state_accuracy": 0.11328125,
+        "hidden_tuple_accuracy": 0.04375,
+        "hidden_symbol_accuracy": 0.191015625,
+        "visible_tuple_consistency": 0.95,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.20625,
+          "y": 0.17578125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6418107606679035,
+        "mean_margin_correct": 0.03554788606003122,
+        "mean_margin_incorrect": 0.019905386529057094
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0140625,
+        "top3_state_accuracy": 0.0484375,
+        "hidden_tuple_accuracy": 0.0171875,
+        "hidden_symbol_accuracy": 0.14375,
+        "visible_tuple_consistency": 0.671875,
+        "hidden_tuple_chance": 0.015625,
+        "hidden_axis_accuracy": {
+          "x": 0.1390625,
+          "y": 0.1484375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5652843810530023,
+        "mean_margin_correct": 0.16550694249410206,
+        "mean_margin_incorrect": 0.13067765815454122
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.3578125,
+        "top3_state_accuracy": 0.68359375,
+        "hidden_tuple_accuracy": 0.57265625,
+        "hidden_symbol_accuracy": 0.78203125,
+        "visible_tuple_consistency": 0.5625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.5734375,
+          "vx": 0.990625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6391722181493641,
+        "mean_margin_correct": 0.030386524373003987,
+        "mean_margin_incorrect": 0.019468549842047073
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.528125,
+        "hidden_symbol_accuracy": 0.758203125,
+        "visible_tuple_consistency": 0.47109375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.5359375,
+          "vx": 0.98046875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.06328125,
+        "top3_state_accuracy": 0.1609375,
+        "hidden_tuple_accuracy": 0.1328125,
+        "hidden_symbol_accuracy": 0.409765625,
+        "visible_tuple_consistency": 0.4296875,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.17890625,
+          "vx": 0.640625
+        },
+        "confidence_margin_auc_for_exact_state": 0.5456398850894264,
+        "mean_margin_correct": 0.03328316054169054,
+        "mean_margin_incorrect": 0.027437753476796167
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0203125,
+        "top3_state_accuracy": 0.0609375,
+        "hidden_tuple_accuracy": 0.08125,
+        "hidden_symbol_accuracy": 0.3484375,
+        "visible_tuple_consistency": 0.234375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.13515625,
+          "vx": 0.56171875
+        },
+        "confidence_margin_auc_for_exact_state": 0.46843945528156056,
+        "mean_margin_correct": 0.23891347568623245,
+        "mean_margin_incorrect": 0.2588881661616282
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.34609375,
+        "top3_state_accuracy": 0.6765625,
+        "hidden_tuple_accuracy": 0.55625,
+        "hidden_symbol_accuracy": 0.7609375,
+        "visible_tuple_consistency": 0.5640625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.56015625,
+          "vy": 0.96171875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6434379475229981,
+        "mean_margin_correct": 0.030299141280611234,
+        "mean_margin_incorrect": 0.01885561032665526
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.5125,
+        "hidden_symbol_accuracy": 0.738671875,
+        "visible_tuple_consistency": 0.47734375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.5359375,
+          "vy": 0.94140625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.05859375,
+        "top3_state_accuracy": 0.16640625,
+        "hidden_tuple_accuracy": 0.1296875,
+        "hidden_symbol_accuracy": 0.399609375,
+        "visible_tuple_consistency": 0.44140625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.1859375,
+          "vy": 0.61328125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5630650069156293,
+        "mean_margin_correct": 0.037679835159973814,
+        "mean_margin_incorrect": 0.025802618791043258
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.01640625,
+        "top3_state_accuracy": 0.0578125,
+        "hidden_tuple_accuracy": 0.08515625,
+        "hidden_symbol_accuracy": 0.363671875,
+        "visible_tuple_consistency": 0.2296875,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "x": 0.14375,
+          "vy": 0.58359375
+        },
+        "confidence_margin_auc_for_exact_state": 0.4449109270396006,
+        "mean_margin_correct": 0.24028589205519377,
+        "mean_margin_incorrect": 0.28232851162669714
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.353125,
+        "top3_state_accuracy": 0.678125,
+        "hidden_tuple_accuracy": 0.5109375,
+        "hidden_symbol_accuracy": 0.751171875,
+        "visible_tuple_consistency": 0.6078125,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.5125,
+          "vx": 0.98984375
+        },
+        "confidence_margin_auc_for_exact_state": 0.6414379462186311,
+        "mean_margin_correct": 0.030383649088023885,
+        "mean_margin_incorrect": 0.018904388152298342
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.47734375,
+        "hidden_symbol_accuracy": 0.7328125,
+        "visible_tuple_consistency": 0.5125,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.48515625,
+          "vx": 0.98046875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.06015625,
+        "top3_state_accuracy": 0.1703125,
+        "hidden_tuple_accuracy": 0.1125,
+        "hidden_symbol_accuracy": 0.406640625,
+        "visible_tuple_consistency": 0.4484375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.15859375,
+          "vx": 0.6546875
+        },
+        "confidence_margin_auc_for_exact_state": 0.556120521207803,
+        "mean_margin_correct": 0.030972436052495868,
+        "mean_margin_incorrect": 0.02543097994325751
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vx"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0234375,
+        "top3_state_accuracy": 0.06640625,
+        "hidden_tuple_accuracy": 0.08359375,
+        "hidden_symbol_accuracy": 0.35234375,
+        "visible_tuple_consistency": 0.2390625,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.1484375,
+          "vx": 0.55625
+        },
+        "confidence_margin_auc_for_exact_state": 0.42573333333333335,
+        "mean_margin_correct": 0.22290617318415223,
+        "mean_margin_incorrect": 0.27958995281332694
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.3453125,
+        "top3_state_accuracy": 0.6609375,
+        "hidden_tuple_accuracy": 0.50078125,
+        "hidden_symbol_accuracy": 0.730078125,
+        "visible_tuple_consistency": 0.60859375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.503125,
+          "vy": 0.95703125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6322449486495535,
+        "mean_margin_correct": 0.029945180961623085,
+        "mean_margin_incorrect": 0.018755455198506202
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.47109375,
+        "hidden_symbol_accuracy": 0.71328125,
+        "visible_tuple_consistency": 0.528125,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.48515625,
+          "vy": 0.94140625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.05859375,
+        "top3_state_accuracy": 0.1484375,
+        "hidden_tuple_accuracy": 0.1125,
+        "hidden_symbol_accuracy": 0.38984375,
+        "visible_tuple_consistency": 0.45859375,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.16640625,
+          "vy": 0.61328125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5756791147994468,
+        "mean_margin_correct": 0.030618081162331993,
+        "mean_margin_incorrect": 0.021613582475149565
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0171875,
+        "top3_state_accuracy": 0.053125,
+        "hidden_tuple_accuracy": 0.07578125,
+        "hidden_symbol_accuracy": 0.345703125,
+        "visible_tuple_consistency": 0.221875,
+        "hidden_tuple_chance": 0.0625,
+        "hidden_axis_accuracy": {
+          "y": 0.14375,
+          "vy": 0.54765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.442694030929325,
+        "mean_margin_correct": 0.21801919376644496,
+        "mean_margin_incorrect": 0.28454553649289843
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 226,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.38515625,
+        "top3_state_accuracy": 0.7203125,
+        "hidden_tuple_accuracy": 0.9734375,
+        "hidden_symbol_accuracy": 0.984375,
+        "visible_tuple_consistency": 0.38984375,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.9921875,
+          "vy": 0.9765625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6441979324262677,
+        "mean_margin_correct": 0.032062474298596565,
+        "mean_margin_incorrect": 0.019996302374039293
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.30390625,
+        "top3_state_accuracy": 0.56015625,
+        "hidden_tuple_accuracy": 0.92578125,
+        "hidden_symbol_accuracy": 0.9609375,
+        "visible_tuple_consistency": 0.30546875,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.98046875,
+          "vy": 0.94140625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6458414478980031,
+        "mean_margin_correct": 0.030149501246256056,
+        "mean_margin_incorrect": 0.018020832093550536
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 14,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.07734375,
+        "top3_state_accuracy": 0.20390625,
+        "hidden_tuple_accuracy": 0.29453125,
+        "hidden_symbol_accuracy": 0.539453125,
+        "visible_tuple_consistency": 0.2078125,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.54765625,
+          "vy": 0.53125
+        },
+        "confidence_margin_auc_for_exact_state": 0.6183169544727546,
+        "mean_margin_correct": 0.03718197341269966,
+        "mean_margin_incorrect": 0.025981285491127364
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 2,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 2,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0265625,
+        "top3_state_accuracy": 0.075,
+        "hidden_tuple_accuracy": 0.27734375,
+        "hidden_symbol_accuracy": 0.527734375,
+        "visible_tuple_consistency": 0.07265625,
+        "hidden_tuple_chance": 0.25,
+        "hidden_axis_accuracy": {
+          "vx": 0.52890625,
+          "vy": 0.5265625
+        },
+        "confidence_margin_auc_for_exact_state": 0.4442215088282504,
+        "mean_margin_correct": 0.3228624304932278,
+        "mean_margin_incorrect": 0.3907872947679111
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.32421875,
+        "top3_state_accuracy": 0.603125,
+        "hidden_tuple_accuracy": 0.32421875,
+        "hidden_symbol_accuracy": 0.6723958333333333,
+        "visible_tuple_consistency": 0.99765625,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.53984375,
+          "y": 0.490625,
+          "vx": 0.98671875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6685005919632286,
+        "mean_margin_correct": 0.031954036769530174,
+        "mean_margin_incorrect": 0.018375015946720988
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.32265625,
+        "top3_state_accuracy": 0.6171875,
+        "hidden_tuple_accuracy": 0.32421875,
+        "hidden_symbol_accuracy": 0.6674479166666667,
+        "visible_tuple_consistency": 0.93515625,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.54140625,
+          "y": 0.47578125,
+          "vx": 0.98515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6312491098134169,
+        "mean_margin_correct": 0.0297254137769782,
+        "mean_margin_incorrect": 0.01912061838707114
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.01640625,
+        "top3_state_accuracy": 0.0453125,
+        "hidden_tuple_accuracy": 0.01640625,
+        "hidden_symbol_accuracy": 0.30390625,
+        "visible_tuple_consistency": 0.94921875,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.1703125,
+          "y": 0.15234375,
+          "vx": 0.5890625
+        },
+        "confidence_margin_auc_for_exact_state": 0.5917016528613034,
+        "mean_margin_correct": 0.04999453222297096,
+        "mean_margin_incorrect": 0.029674476402900773
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.00625,
+        "top3_state_accuracy": 0.02265625,
+        "hidden_tuple_accuracy": 0.0078125,
+        "hidden_symbol_accuracy": 0.27395833333333336,
+        "visible_tuple_consistency": 0.8109375,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.15390625,
+          "y": 0.13671875,
+          "vx": 0.53125
+        },
+        "confidence_margin_auc_for_exact_state": 0.35740959119496857,
+        "mean_margin_correct": 0.4325498575451323,
+        "mean_margin_incorrect": 0.587350675901356
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.31796875,
+        "top3_state_accuracy": 0.58359375,
+        "hidden_tuple_accuracy": 0.31796875,
+        "hidden_symbol_accuracy": 0.6515625,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.53359375,
+          "y": 0.4859375,
+          "vy": 0.93515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6714174343040322,
+        "mean_margin_correct": 0.031470563568744614,
+        "mean_margin_incorrect": 0.017851054242959623
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.32265625,
+        "top3_state_accuracy": 0.6171875,
+        "hidden_tuple_accuracy": 0.32265625,
+        "hidden_symbol_accuracy": 0.65078125,
+        "visible_tuple_consistency": 0.98515625,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.54140625,
+          "y": 0.47578125,
+          "vy": 0.93515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6312491098134169,
+        "mean_margin_correct": 0.0297254137769782,
+        "mean_margin_incorrect": 0.01912061838707114
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0171875,
+        "top3_state_accuracy": 0.05234375,
+        "hidden_tuple_accuracy": 0.0171875,
+        "hidden_symbol_accuracy": 0.30104166666666665,
+        "visible_tuple_consistency": 0.95078125,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.15859375,
+          "y": 0.16953125,
+          "vy": 0.575
+        },
+        "confidence_margin_auc_for_exact_state": 0.5191862985980633,
+        "mean_margin_correct": 0.03461610616648054,
+        "mean_margin_incorrect": 0.026608130728309188
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0109375,
+        "top3_state_accuracy": 0.028125,
+        "hidden_tuple_accuracy": 0.01171875,
+        "hidden_symbol_accuracy": 0.27239583333333334,
+        "visible_tuple_consistency": 0.809375,
+        "hidden_tuple_chance": 0.0078125,
+        "hidden_axis_accuracy": {
+          "x": 0.14140625,
+          "y": 0.14765625,
+          "vy": 0.528125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5409614082599865,
+        "mean_margin_correct": 0.6262066961332204,
+        "mean_margin_incorrect": 0.577382735153301
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.3578125,
+        "top3_state_accuracy": 0.67265625,
+        "hidden_tuple_accuracy": 0.565625,
+        "hidden_symbol_accuracy": 0.8403645833333333,
+        "visible_tuple_consistency": 0.56796875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.5734375,
+          "vx": 0.99140625,
+          "vy": 0.95625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6800460055886697,
+        "mean_margin_correct": 0.03292763692031689,
+        "mean_margin_incorrect": 0.018620520876125098
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.32265625,
+        "top3_state_accuracy": 0.6171875,
+        "hidden_tuple_accuracy": 0.50859375,
+        "hidden_symbol_accuracy": 0.8205729166666667,
+        "visible_tuple_consistency": 0.47578125,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.54140625,
+          "vx": 0.98515625,
+          "vy": 0.93515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6312491098134169,
+        "mean_margin_correct": 0.0297254137769782,
+        "mean_margin_incorrect": 0.01912061838707114
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0203125,
+        "top3_state_accuracy": 0.0640625,
+        "hidden_tuple_accuracy": 0.04453125,
+        "hidden_symbol_accuracy": 0.396875,
+        "visible_tuple_consistency": 0.3875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.134375,
+          "vx": 0.54296875,
+          "vy": 0.51328125
+        },
+        "confidence_margin_auc_for_exact_state": 0.5225432462274567,
+        "mean_margin_correct": 0.02539342625685327,
+        "mean_margin_incorrect": 0.02294752800733522
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.00859375,
+        "top3_state_accuracy": 0.01953125,
+        "hidden_tuple_accuracy": 0.03515625,
+        "hidden_symbol_accuracy": 0.39166666666666666,
+        "visible_tuple_consistency": 0.26015625,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "x": 0.13828125,
+          "vx": 0.51328125,
+          "vy": 0.5234375
+        },
+        "confidence_margin_auc_for_exact_state": 0.36585715309119565,
+        "mean_margin_correct": 0.4333500688209936,
+        "mean_margin_incorrect": 0.5915379466989202
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 219,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.3609375,
+        "top3_state_accuracy": 0.64375,
+        "hidden_tuple_accuracy": 0.5046875,
+        "hidden_symbol_accuracy": 0.8153645833333333,
+        "visible_tuple_consistency": 0.61171875,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.51015625,
+          "vx": 0.98671875,
+          "vy": 0.94921875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6457916574053494,
+        "mean_margin_correct": 0.03151619910278742,
+        "mean_margin_incorrect": 0.018919053657095238
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.32265625,
+        "top3_state_accuracy": 0.6171875,
+        "hidden_tuple_accuracy": 0.4609375,
+        "hidden_symbol_accuracy": 0.7986979166666667,
+        "visible_tuple_consistency": 0.54140625,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.47578125,
+          "vx": 0.98515625,
+          "vy": 0.93515625
+        },
+        "confidence_margin_auc_for_exact_state": 0.6312491098134169,
+        "mean_margin_correct": 0.0297254137769782,
+        "mean_margin_incorrect": 0.01912061838707114
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 7,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.0265625,
+        "top3_state_accuracy": 0.0625,
+        "hidden_tuple_accuracy": 0.0421875,
+        "hidden_symbol_accuracy": 0.39036458333333335,
+        "visible_tuple_consistency": 0.42265625,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.1453125,
+          "vx": 0.50234375,
+          "vy": 0.5234375
+        },
+        "confidence_margin_auc_for_exact_state": 0.5088754602964781,
+        "mean_margin_correct": 0.02079678125915398,
+        "mean_margin_incorrect": 0.017590812353986927
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 3,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 1,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.01015625,
+        "top3_state_accuracy": 0.02578125,
+        "hidden_tuple_accuracy": 0.03125,
+        "hidden_symbol_accuracy": 0.3966145833333333,
+        "visible_tuple_consistency": 0.25390625,
+        "hidden_tuple_chance": 0.03125,
+        "hidden_axis_accuracy": {
+          "y": 0.1421875,
+          "vx": 0.51875,
+          "vy": 0.52890625
+        },
+        "confidence_margin_auc_for_exact_state": 0.421285896424018,
+        "mean_margin_correct": 0.46949395145760264,
+        "mean_margin_incorrect": 0.5856639892051194
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.31015625,
+        "top3_state_accuracy": 0.59609375,
+        "hidden_tuple_accuracy": 0.31015625,
+        "hidden_symbol_accuracy": 0.729296875,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.00390625,
+        "hidden_axis_accuracy": {
+          "x": 0.5484375,
+          "y": 0.4484375,
+          "vx": 0.9828125,
+          "vy": 0.9375
+        },
+        "confidence_margin_auc_for_exact_state": 0.6470727511831375,
+        "mean_margin_correct": 0.030224885085725822,
+        "mean_margin_incorrect": 0.018462843548428174
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "sample_count": 1280,
+        "exact_state_accuracy": 0.31953125,
+        "top3_state_accuracy": 0.58359375,
+        "hidden_tuple_accuracy": 0.31953125,
+        "hidden_symbol_accuracy": 0.7380859375,
+        "visible_tuple_consistency": 1.0,
+        "hidden_tuple_chance": 0.00390625,
+        "hidden_axis_accuracy": {
+          "x": 0.55,
+          "y": 0.478125,
+          "vx": 0.98125,
+          "vy": 0.94296875
+        },
+        "confidence_margin_auc_for_exact_state": 0.6524973402687522,
+        "mean_margin_correct": 0.030283051037268378,
+        "mean_margin_incorrect": 0.01873073315300112
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "NO_VISIBLE_FEATURES",
+        "feature_count": 0,
+        "hidden_tuple_chance": 0.00390625
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_attributes": [
+        "x",
+        "y",
+        "vx",
+        "vy"
+      ],
+      "hidden_count": 4,
+      "metrics": {
+        "status": "NO_VISIBLE_FEATURES",
+        "feature_count": 0,
+        "hidden_tuple_chance": 0.00390625
+      }
+    }
+  ],
+  "completion_aggregate": [
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.889453125,
+      "mean_hidden_symbol_accuracy": 0.889453125,
+      "mean_exact_state_accuracy": 0.671875,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.7864583333333334,
+      "mean_hidden_symbol_accuracy": 0.8847005208333334,
+      "mean_exact_state_accuracy": 0.6510416666666667,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.6912109375000001,
+      "mean_hidden_symbol_accuracy": 0.8802734374999999,
+      "mean_exact_state_accuracy": 0.6279296875,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 4,
+      "combination_count": 1,
+      "mean_hidden_tuple_accuracy": 0.6046875,
+      "mean_hidden_symbol_accuracy": 0.8763671875,
+      "mean_exact_state_accuracy": 0.6046875,
+      "mean_chance": 0.00390625
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.8763671875,
+      "mean_hidden_symbol_accuracy": 0.8763671875,
+      "mean_exact_state_accuracy": 0.6046875,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.7692708333333335,
+      "mean_hidden_symbol_accuracy": 0.8763671875,
+      "mean_exact_state_accuracy": 0.6046874999999999,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.6787109375,
+      "mean_hidden_symbol_accuracy": 0.8763671875,
+      "mean_exact_state_accuracy": 0.6046875,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "hidden_count": 4,
+      "combination_count": 1,
+      "mean_hidden_tuple_accuracy": 0.6046875,
+      "mean_hidden_symbol_accuracy": 0.8763671875,
+      "mean_exact_state_accuracy": 0.6046875,
+      "mean_chance": 0.00390625
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.794140625,
+      "mean_hidden_symbol_accuracy": 0.794140625,
+      "mean_exact_state_accuracy": 0.7732421875,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.4365885416666666,
+      "mean_hidden_symbol_accuracy": 0.5680338541666666,
+      "mean_exact_state_accuracy": 0.43515624999999997,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.1234375,
+      "mean_hidden_symbol_accuracy": 0.40559895833333337,
+      "mean_exact_state_accuracy": 0.1234375,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.9376953125,
+      "mean_hidden_symbol_accuracy": 0.9376953125,
+      "mean_exact_state_accuracy": 0.9376953125,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.6222656249999999,
+      "mean_hidden_symbol_accuracy": 0.6785807291666667,
+      "mean_exact_state_accuracy": 0.6222656249999999,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.1388671875,
+      "mean_hidden_symbol_accuracy": 0.4009114583333333,
+      "mean_exact_state_accuracy": 0.1388671875,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.775390625,
+      "mean_hidden_symbol_accuracy": 0.775390625,
+      "mean_exact_state_accuracy": 0.401171875,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.5688802083333333,
+      "mean_hidden_symbol_accuracy": 0.7501302083333332,
+      "mean_exact_state_accuracy": 0.34778645833333327,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.42812500000000003,
+      "mean_hidden_symbol_accuracy": 0.744921875,
+      "mean_exact_state_accuracy": 0.340234375,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "hidden_count": 4,
+      "combination_count": 1,
+      "mean_hidden_tuple_accuracy": 0.31015625,
+      "mean_hidden_symbol_accuracy": 0.729296875,
+      "mean_exact_state_accuracy": 0.31015625,
+      "mean_chance": 0.00390625
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.74140625,
+      "mean_hidden_symbol_accuracy": 0.74140625,
+      "mean_exact_state_accuracy": 0.33359375,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.53671875,
+      "mean_hidden_symbol_accuracy": 0.7357421875,
+      "mean_exact_state_accuracy": 0.30390625,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.40410156249999996,
+      "mean_hidden_symbol_accuracy": 0.734375,
+      "mean_exact_state_accuracy": 0.32265625,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "hidden_count": 4,
+      "combination_count": 1,
+      "mean_hidden_tuple_accuracy": 0.31953125,
+      "mean_hidden_symbol_accuracy": 0.7380859375,
+      "mean_exact_state_accuracy": 0.31953125,
+      "mean_chance": 0.00390625
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.477734375,
+      "mean_hidden_symbol_accuracy": 0.477734375,
+      "mean_exact_state_accuracy": 0.1451171875,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.13763020833333334,
+      "mean_hidden_symbol_accuracy": 0.38938802083333335,
+      "mean_exact_state_accuracy": 0.060156249999999994,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "visible_axis_windows_only",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.030078125,
+      "mean_hidden_symbol_accuracy": 0.34804687500000003,
+      "mean_exact_state_accuracy": 0.0201171875,
+      "mean_chance": 0.01953125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_count": 1,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.355859375,
+      "mean_hidden_symbol_accuracy": 0.355859375,
+      "mean_exact_state_accuracy": 0.031835937499999994,
+      "mean_chance": 0.3125
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_count": 2,
+      "combination_count": 6,
+      "mean_hidden_tuple_accuracy": 0.10338541666666667,
+      "mean_hidden_symbol_accuracy": 0.34694010416666665,
+      "mean_exact_state_accuracy": 0.019661458333333333,
+      "mean_chance": 0.0859375
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "hidden_count": 3,
+      "combination_count": 4,
+      "mean_hidden_tuple_accuracy": 0.021484375,
+      "mean_hidden_symbol_accuracy": 0.33365885416666663,
+      "mean_exact_state_accuracy": 0.008984375000000001,
+      "mean_chance": 0.01953125
+    }
+  ],
+  "sparse_vocabulary_abstention": [
+    {
+      "noise_sigma": 0.0,
+      "method": "glass_readout_masked",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 240,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 0.8578125,
+        "known_acceptance_at_calibrated_95pct": 0.940625,
+        "unknown_rejection_at_calibrated_95pct": 0.0765625,
+        "known_vs_unknown_auc": 0.548828125,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 0.5974928398268354,
+            "known_exact_retrieval": 0.921875,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.09375,
+            "known_vs_unknown_auc": 0.5625
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 0.6377657719258155,
+            "known_exact_retrieval": 0.8984375,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 0.0625,
+            "known_vs_unknown_auc": 0.55596923828125
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 0.6169312427703779,
+            "known_exact_retrieval": 0.8046875,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.0703125,
+            "known_vs_unknown_auc": 0.5367431640625
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 0.6660687738897972,
+            "known_exact_retrieval": 0.8515625,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 0.0625,
+            "known_vs_unknown_auc": 0.54034423828125
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 0.6229668409679795,
+            "known_exact_retrieval": 0.8125,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.09375,
+            "known_vs_unknown_auc": 0.5474853515625
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "modes_only",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 0.75,
+        "known_acceptance_at_calibrated_95pct": 0.94375,
+        "unknown_rejection_at_calibrated_95pct": 0.06875,
+        "known_vs_unknown_auc": 0.53270263671875,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 0.6699964338927623,
+            "known_exact_retrieval": 0.765625,
+            "known_acceptance": 0.9375,
+            "unknown_rejection": 0.078125,
+            "known_vs_unknown_auc": 0.542236328125
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 0.69225667681453,
+            "known_exact_retrieval": 0.8046875,
+            "known_acceptance": 0.9609375,
+            "unknown_rejection": 0.0625,
+            "known_vs_unknown_auc": 0.5400390625
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 0.680959503699664,
+            "known_exact_retrieval": 0.6953125,
+            "known_acceptance": 0.9296875,
+            "unknown_rejection": 0.0703125,
+            "known_vs_unknown_auc": 0.52447509765625
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 0.7328172081856582,
+            "known_exact_retrieval": 0.75,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 0.0546875,
+            "known_vs_unknown_auc": 0.52685546875
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 0.703207155825026,
+            "known_exact_retrieval": 0.734375,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.078125,
+            "known_vs_unknown_auc": 0.53021240234375
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    },
+    {
+      "noise_sigma": 0.0,
+      "method": "wire_visible",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 4,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 1.0,
+        "known_acceptance_at_calibrated_95pct": 0.9390625,
+        "unknown_rejection_at_calibrated_95pct": 1.0,
+        "known_vs_unknown_auc": 0.99996337890625,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 0.00423688593770004,
+            "known_exact_retrieval": 1.0,
+            "known_acceptance": 0.90625,
+            "unknown_rejection": 1.0,
+            "known_vs_unknown_auc": 1.0
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 0.003793143785617324,
+            "known_exact_retrieval": 1.0,
+            "known_acceptance": 0.9296875,
+            "unknown_rejection": 1.0,
+            "known_vs_unknown_auc": 1.0
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 0.004732203816202918,
+            "known_exact_retrieval": 1.0,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 1.0,
+            "known_vs_unknown_auc": 1.0
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 0.004585697306406718,
+            "known_exact_retrieval": 1.0,
+            "known_acceptance": 0.9375,
+            "unknown_rejection": 1.0,
+            "known_vs_unknown_auc": 0.9998779296875
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 0.004532370148369291,
+            "known_exact_retrieval": 1.0,
+            "known_acceptance": 0.953125,
+            "unknown_rejection": 1.0,
+            "known_vs_unknown_auc": 1.0
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "glass_readout_masked",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 240,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 0.5890625,
+        "known_acceptance_at_calibrated_95pct": 0.934375,
+        "unknown_rejection_at_calibrated_95pct": 0.06875,
+        "known_vs_unknown_auc": 0.5170068359375,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 1.663923406797444,
+            "known_exact_retrieval": 0.65625,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.0703125,
+            "known_vs_unknown_auc": 0.51556396484375
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 1.6701763926278077,
+            "known_exact_retrieval": 0.609375,
+            "known_acceptance": 0.9140625,
+            "unknown_rejection": 0.0625,
+            "known_vs_unknown_auc": 0.5465087890625
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 1.6975391472437718,
+            "known_exact_retrieval": 0.5390625,
+            "known_acceptance": 0.9375,
+            "unknown_rejection": 0.0390625,
+            "known_vs_unknown_auc": 0.4969482421875
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 1.6886024375324287,
+            "known_exact_retrieval": 0.5390625,
+            "known_acceptance": 0.953125,
+            "unknown_rejection": 0.0859375,
+            "known_vs_unknown_auc": 0.52325439453125
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 1.6619804237838356,
+            "known_exact_retrieval": 0.6015625,
+            "known_acceptance": 0.9453125,
+            "unknown_rejection": 0.0859375,
+            "known_vs_unknown_auc": 0.49822998046875
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "modes_only",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 212,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 0.4453125,
+        "known_acceptance_at_calibrated_95pct": 0.9421875,
+        "unknown_rejection_at_calibrated_95pct": 0.0703125,
+        "known_vs_unknown_auc": 0.509189453125,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 1.6944139227911688,
+            "known_exact_retrieval": 0.40625,
+            "known_acceptance": 0.921875,
+            "unknown_rejection": 0.125,
+            "known_vs_unknown_auc": 0.49713134765625
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 1.8189647357792602,
+            "known_exact_retrieval": 0.5,
+            "known_acceptance": 0.984375,
+            "unknown_rejection": 0.03125,
+            "known_vs_unknown_auc": 0.5079345703125
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 1.7510921994136488,
+            "known_exact_retrieval": 0.4375,
+            "known_acceptance": 0.9609375,
+            "unknown_rejection": 0.0546875,
+            "known_vs_unknown_auc": 0.5225830078125
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 1.7188587556020218,
+            "known_exact_retrieval": 0.421875,
+            "known_acceptance": 0.9296875,
+            "unknown_rejection": 0.09375,
+            "known_vs_unknown_auc": 0.5401611328125
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 1.7608353856821402,
+            "known_exact_retrieval": 0.4609375,
+            "known_acceptance": 0.9140625,
+            "unknown_rejection": 0.046875,
+            "known_vs_unknown_auc": 0.48126220703125
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    },
+    {
+      "noise_sigma": 1.0,
+      "method": "wire_visible",
+      "metrics": {
+        "status": "OK",
+        "feature_count": 4,
+        "known_state_count": 128,
+        "unknown_state_count": 128,
+        "split_rule": "(x + y + I[vx>0] + I[vy>0]) mod 2 == 0 is enrolled",
+        "known_exact_retrieval": 0.1109375,
+        "known_acceptance_at_calibrated_95pct": 0.946875,
+        "unknown_rejection_at_calibrated_95pct": 0.071875,
+        "known_vs_unknown_auc": 0.52379150390625,
+        "folds": [
+          {
+            "fold": 0,
+            "calibration_repeat": 1,
+            "threshold": 1.2884955743665303,
+            "known_exact_retrieval": 0.1015625,
+            "known_acceptance": 0.9609375,
+            "unknown_rejection": 0.078125,
+            "known_vs_unknown_auc": 0.5277099609375
+          },
+          {
+            "fold": 1,
+            "calibration_repeat": 2,
+            "threshold": 1.5072380983992058,
+            "known_exact_retrieval": 0.09375,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 0.0625,
+            "known_vs_unknown_auc": 0.57391357421875
+          },
+          {
+            "fold": 2,
+            "calibration_repeat": 3,
+            "threshold": 1.410302228761511,
+            "known_exact_retrieval": 0.1171875,
+            "known_acceptance": 0.9765625,
+            "unknown_rejection": 0.0546875,
+            "known_vs_unknown_auc": 0.52655029296875
+          },
+          {
+            "fold": 3,
+            "calibration_repeat": 4,
+            "threshold": 1.5904566349360365,
+            "known_exact_retrieval": 0.0859375,
+            "known_acceptance": 0.96875,
+            "unknown_rejection": 0.03125,
+            "known_vs_unknown_auc": 0.5103759765625
+          },
+          {
+            "fold": 4,
+            "calibration_repeat": 0,
+            "threshold": 1.014006746581399,
+            "known_exact_retrieval": 0.15625,
+            "known_acceptance": 0.859375,
+            "unknown_rejection": 0.1328125,
+            "known_vs_unknown_auc": 0.4798583984375
+          }
+        ],
+        "interpretation": "This tests geometric known-state versus held-out-state rejection. The parity split is not a semantic vocabulary and cannot establish word validity."
+      }
+    }
+  ]
+}
