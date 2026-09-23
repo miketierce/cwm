@@ -327,6 +327,16 @@ Purpose:
 
 **Do not claim scaling from FT-0 alone** if session pairing/raw controls are incomplete.
 
+Retrospective findings and the current stronger hypothesis are documented in `docs/K_EFF_FT0_EXISTING_DATA_NOTE.md`. In particular, the April L=2 dataset shows that eight simultaneous binary tone components can be distinguished from one fixed Ch-A acquisition with near-perfect same-session held-token accuracy. Because those input identities are also present in the source spectrum and historical Ch B was disabled, treat this as evidence of **multiplexing feasibility**, not evidence that the glass adds useful computation.
+
+Therefore fresh FT-1/FT-3 scoring must separate:
+
+1. information already readable directly from X / Ch B;
+2. information present only or more cheaply in the transformed glass response Y;
+3. the readout burden required to obtain each.
+
+The fast-track scaling claim advances only on item 2.
+
 ---
 
 ### FT-1 — fresh full-map multi-session capture
