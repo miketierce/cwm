@@ -34,7 +34,30 @@ A retrospective standardized covariance analysis of the saved feature matrix giv
 
 These are not held-session `K_eff` values. They show only that the measured response occupies more than one covariance dimension in this session.
 
-### C. Task-useful dimension is much smaller than covariance rank
+### C. Eight simultaneous binary components were highly distinguishable in the April calibration
+
+`data/results/lab/plate_exps/esn_v4_L2_20260413_221433.json` is especially relevant to the fixed-budget question.
+
+The acquisition drove eight modal frequencies simultaneously with binary ON/OFF amplitudes, measured one Ch-A receive path, extracted the same eight readout frequencies from one capture, and saved all 256 possible 8-bit patterns with six physical repetitions per pattern. Each repetition used the same capture length and receiver hardware regardless of how many bits were ON.
+
+A retrospective four-fold **held-token-combination** test was performed. Thresholds for each bit were fit from training token combinations only, using that bit's corresponding measured output-frequency amplitude, then scored on physical repetitions of unseen token combinations.
+
+| plate | mean bit accuracy | exact 8-bit token accuracy | held physical rep predictions |
+|---|---:|---:|---:|
+| D | 100.000% | 100.000% | 1,536 |
+| E | 99.951% | 99.674% | 1,536 |
+
+This is our strongest existing evidence that the bench can preserve **at least eight simultaneously multiplexed binary distinctions in one fixed receiver acquisition** within a session.
+
+However, it is **not yet evidence that the glass contributes eight useful computational dimensions**. Ch B was disabled in this historical experiment, and the presence/absence of each input tone is itself an easy-to-read property of the source spectrum. An electrical-only frequency analyzer could plausibly solve the same identity task.
+
+So the result strengthens the instrumentation hypothesis while sharpening the control requirement:
+
+> **The bench can already carry an 8-way binary multiplexed alphabet at fixed acquisition cost; FT-1/FT-3 must determine how many useful output distinctions are added by H beyond what the input/electrical reference already contains.**
+
+The original acquisition used `N_SAMPLES=8064`, `SAMPLE_RATE=781250 Hz`, and four averaged FFT captures per saved repetition. Those acquisition settings were fixed across the 256 binary patterns.
+
+### D. Task-useful dimension is much smaller than covariance rank
 
 A retrospective four-fold linear-ridge decode was run against the same saved NPZ, using the **30 mode amplitudes only** to recover the three simultaneously encoded drive-frequency variables.
 
@@ -53,7 +76,7 @@ This is the most important FT-0 observation:
 
 That is why PR #16 must track both `K_eff,rank` and `K_eff,task`.
 
-### D. The physical three-tone task showed only a modest same-session gain
+### E. The physical three-tone task showed only a modest same-session gain
 
 The paired real-hardware model `pong_model_multitone_20260620_225626.json` reports:
 
@@ -64,19 +87,19 @@ The paired real-hardware model `pong_model_multitone_20260620_225626.json` repor
 
 This is not a strong compute result. It is consistent with the decode above: the three-tone response contains structure, but the chosen task/encoding did not turn most of that structure into useful independent information.
 
-### E. Dense simultaneous excitation is already physically feasible
+### F. Dense simultaneous excitation is already physically feasible
 
 The lab record includes a broadband experiment driving **3,793 tones simultaneously** over 200-95,000 Hz in one acquisition strategy. That demonstrates that highly multiplexed excitation/capture is physically feasible on the bench. It does **not** establish thousands of useful dimensions.
 
 For the fast track, this means FT-3 is an instrumentation-feasible question rather than a speculative future setup.
 
-### F. Existing multi-tone interaction warns against assuming independence
+### G. Existing multi-tone interaction warns against assuming independence
 
 The lab record also reports a strong multi-tone interaction: a mode response recorded around 4.6M when driven alone fell to about 0.766M with seven other tones active.
 
 Regardless of mechanism, that observation says the useful scaling hypothesis should not assume `K_eff = number of driven tones`. Dense tone count may eventually reduce separability.
 
-### G. Existing recall data suggest redundancy, but are not clean K_eff evidence
+### H. Existing recall data suggest redundancy, but are not clean K_eff evidence
 
 `data/results/pong/recall_enroll_20260629_120542.npz` and the saved offline reanalysis use a 240-feature representation with 212 modal features.
 
