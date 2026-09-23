@@ -123,7 +123,176 @@ A negative result is:
 
 ---
 
-## 4. Experimental sequence
+## 4. Physical bench setup
+
+The fast track should begin with the existing validated CWM bench, not new hardware.
+
+### 4.1 Signal path
+
+```
+                         QUERY / X
+                            |
+                   PicoScope AWG / DDS
+                multitone N = 1,2,4,8...
+                            |
+                            +----------------------------+
+                            |                            |
+                       Board D                       Scope Ch B
+                     drive buffer                  electrical tap
+                            |                       reference X
+                            v
+                         TX PZT
+                            |
+                            v
+                 +---------------------+
+                 |                     |
+                 |     GLASS PLATE     |
+                 |         H           |
+                 |                     |
+                 +---------------------+
+                            |
+                            v
+                         RX PZT
+                            |
+                         Board A
+                          preamp
+                            |
+                            v
+                       Scope Ch A
+                   physical response Y
+```
+
+The critical scaling constraint is that the **receiver hardware remains fixed while simultaneous input dimensionality increases**.
+
+For FT-3:
+
+```
+N=1 tone  -> same TX -> same glass -> same RX -> same Ch A/Ch B capture
+N=2 tones -> same TX -> same glass -> same RX -> same Ch A/Ch B capture
+N=4 tones -> same TX -> same glass -> same RX -> same Ch A/Ch B capture
+N=8 tones -> same TX -> same glass -> same RX -> same Ch A/Ch B capture
+```
+
+Do not add RX transducers as N increases for the primary fast-track experiment. Additional receivers can be studied later as a separate cost axis.
+
+### 4.2 Mechanical fixture
+
+Use one repeatable fixture that records and constrains:
+
+- plate identity and orientation;
+- support points;
+- TX PZT position and orientation;
+- RX PZT position and orientation;
+- coupling/pressure method;
+- cable routing;
+- fixture ID.
+
+Mark the plate and fixture so the assembly can be restored after a power-down/remount. A later-session failure should not be ambiguous between physical transfer drift and a 2-3 mm placement change.
+
+### 4.3 Environment
+
+Record at minimum:
+
+- temperature near the resonator;
+- session timestamp;
+- power-cycle status;
+- remount/reconnect status.
+
+Temperature compensation is not required initially. The purpose is to discover whether temperature is part of the operating envelope of H.
+
+### 4.4 Ch B electrical reference
+
+Ch B remains part of the measurement instrumentation:
+
+```
+Z_B = simultaneously measured injected electrical drive
+Z_A = simultaneously measured received plate response
+H(f) = Z_A(f) / Z_B(f)
+```
+
+For driven frequencies, the simultaneous ratio helps remove common drive phase/capture timing variation.
+
+Ch B must also be analyzed as a competing predictor. A useful GLASS result requires information beyond what Ch B alone provides.
+
+### 4.5 Required path states
+
+Each fresh session should include reproducible versions of:
+
+```
+GLASS
+  TX -> physical resonator -> RX
+
+LOOPBACK
+  drive presented to both measurement channels
+  establishes instrumentation/reference floor
+
+ELECTRICAL_ONLY
+  drive/electronics active while the meaningful acoustic path is interrupted
+  as cleanly as practical
+
+QUIET
+  drive off
+```
+
+Document exactly how ELECTRICAL_ONLY is implemented. Do not change several unrelated parts of the signal chain at once.
+
+### 4.6 What simultaneous inputs mean
+
+For N=4, for example, one TX emits a composite waveform:
+
+```
+X(t) =
+  A1 sin(2 pi f1 t + phi1)
++ A2 sin(2 pi f2 t + phi2)
++ A3 sin(2 pi f3 t + phi3)
++ A4 sin(2 pi f4 t + phi4)
+```
+
+All components enter H at the same time and the same RX records the resulting waveform in one acquisition window.
+
+The primary parallelism test is **not** four sequential measurements of f1...f4.
+
+### 4.7 Fixed-budget rule for FT-3
+
+As N increases, hold fixed whenever physically possible:
+
+- one TX PZT;
+- one RX PZT;
+- two scope channels (A response, B reference);
+- sample rate;
+- samples/channel;
+- acquisition window;
+- scope ranges;
+- preprocessing path.
+
+Record any quantity that cannot remain fixed.
+
+A result resembling:
+
+| simultaneous inputs | RX PZTs | ADC samples | acquisition window | held-out K_eff |
+|---:|---:|---:|---:|---:|
+| 1 | 1 | 3072 | fixed | 1 |
+| 2 | 1 | 3072 | fixed | ~2 |
+| 4 | 1 | 3072 | fixed | >2 |
+| 8 | 1 | 3072 | fixed | still increasing |
+
+would be qualitatively different from a result where ADC samples, time, or receivers rise proportionally with K_eff.
+
+The values above illustrate the desired measurement structure only; they are not predicted results.
+
+### 4.8 Near-term hardware additions
+
+Useful but non-blocking:
+
+1. rigid/repeatable plate fixture;
+2. temperature sensor near the plate;
+3. repeatable loopback/control routing.
+
+Do not delay FT-0 for any of these, and do not delay FT-1 if the existing fixture can be documented reproducibly.
+
+---
+
+## 5. Experimental sequence
 
 ### FT-0 — retrospective ceiling from existing committed data
 
@@ -360,7 +529,7 @@ This separates:
 
 ---
 
-## 5. Quantifying "grows faster"
+## 6. Quantifying "grows faster"
 
 There is no single honest scalar definition of readout complexity, so report the frontier against each primary cost axis.
 
@@ -396,7 +565,7 @@ The strongest practical result may instead be a **fixed-cost multiplexing regime
 
 ---
 
-## 6. Primary readout-cost axes
+## 7. Primary readout-cost axes
 
 At minimum produce separate plots for:
 
@@ -443,7 +612,7 @@ Do not substitute drive-only energy for end-to-end system energy.
 
 ---
 
-## 7. Required controls
+## 8. Required controls
 
 Every frontier point must identify whether the same result exists in:
 
@@ -458,7 +627,7 @@ The physical system is interesting only if its transform contributes useful stru
 
 ---
 
-## 8. Fast-track decision gates
+## 9. Fast-track decision gates
 
 ### GREEN — accelerate wave-gate work
 
@@ -491,7 +660,7 @@ A RED result does not invalidate the physical-symbol-gate or sensing directions.
 
 ---
 
-## 9. Minimal machine-readable result
+## 10. Minimal machine-readable result
 
 Each evaluated operating point should emit one row containing at least:
 
@@ -522,7 +691,7 @@ The result schema is defined in `schemas/k_eff_frontier.schema.json`.
 
 ---
 
-## 10. Tooling
+## 11. Tooling
 
 `tools/k_eff_frontier.py` consumes the machine-readable frontier CSV and reports:
 
@@ -536,7 +705,7 @@ It does not infer K_eff from raw signals. K_eff must come from the controlled an
 
 ---
 
-## 11. Execution order
+## 12. Execution order
 
 The shortest path is:
 
