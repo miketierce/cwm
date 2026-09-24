@@ -3,7 +3,7 @@
 **Status:** OPEN / execution protocol  
 **Goal:** answer one question as quickly and defensibly as possible:
 
-> **As the physical transform H is asked to carry more useful information, does effective useful dimension K_eff increase faster than the receiver/readout burden required to recover it?**
+> **As the physical transform H is asked to carry more useful information or perform richer relational work, does useful physical output or computation increase faster than the receiver/readout burden required to recover the answer?**
 
 This is a focused execution path downstream of the physical-symbol-gate idea (PR #14) and the broader wave-gate scaling roadmap (PR #15).
 
@@ -43,7 +43,13 @@ Do not compress readout burden into a single number too early. Record separately
 - acquisition window;
 - joules/query when measurable.
 
-The core test is whether K_eff keeps increasing while one or more of these costs stay flat or increase more slowly.
+The primary dimensional test is whether K_eff keeps increasing while one or more of these costs stay flat or increase more slowly.
+
+A second, distinct test now exists for coherent path-sum experiments:
+
+> Can the physical medium evaluate increasingly rich **relationships among inputs before readout**, while the receiver remains approximately fixed?
+
+Do not merge these into one quantity. A one-scalar output may still have K_eff near 1 while embodying a useful many-path relational computation.
 
 ---
 
@@ -465,21 +471,57 @@ If N rises while acquisition/readout stays nearly fixed and K_eff rises, this is
 
 ---
 
-### FT-3P — coherent path-sum interference
+### FT-3P — frozen path-sum / relational-compute branch
 
-Companion protocol: `docs/PATH_SUM_INTERFERENCE_FAST_TRACK.md`.
+Companion protocol: `docs/PATH_SUM_INTERFERENCE_FAST_TRACK.md`.  
+Historical evidence: `docs/PATH_SUM_FT0_EXISTING_DATA_NOTE.md`.
 
-FT-3 varies simultaneous **spectral** inputs at fixed receiver cost. FT-3P tests a second source of physical parallelism: **spatial/path interference**.
+Historical bench data already show strong two-path interference and a measured three-path phase surface with all three pairwise interaction terms present. Therefore FT-3P is **not** primarily tasked with rediscovering coherent multipath interference.
 
-The smallest setup uses two independently phase-controlled TX PZTs on the same plate and one fixed RX. It asks:
+The unresolved sequence is now:
 
-1. whether the simultaneous complex RX response is predicted by the coherent sum of individually characterized TX-to-RX paths;
-2. whether constructive/destructive interference can produce a relational output (e.g. same-phase vs opposite-phase) that is not available from either individual path magnitude alone;
-3. whether useful held-session dimensionality increases as controlled path count grows while RX hardware/acquisition remain fixed.
+1. freeze a two-path complex model in session A and predict session B without retuning;
+2. run GLASS, source-reference, ELECTRICAL_ONLY, and LOOPBACK controls;
+3. demonstrate a frozen relational decision such as same-phase vs opposite-phase with a minimal RX readout;
+4. freeze the known three-path model across sessions;
+5. extend to four paths only after the three-path freeze survives;
+6. build two separate scaling frontiers:
+   - `K_eff vs readout burden`;
+   - `useful relational computation vs readout burden`.
 
-This is explicitly a **classical elastic-wave** experiment. It must not be described as a quantum Feynman path integral or single-phonon computation.
+This distinction is essential.
 
-Advance only if the coherent model predicts later-session combined responses, electrical-only controls do not explain the effect, and the resulting relational readout contributes useful K_eff at fixed or sublinear readout burden.
+For P coherent paths, the measured scalar can contain up to:
+
+```
+P(P-1)/2
+```
+
+pairwise interference terms, but those internal terms do **not** automatically count as independent K_eff dimensions.
+
+FT-3P therefore tracks separately:
+
+```
+K_eff,rank
+K_eff,task
+supported_interaction_terms
+relational_tasks_passed
+receive_channels
+adc_conversions
+acquisition_window
+digital_ops_after_capture
+calibration_burden
+```
+
+A strong path-sum result can occur in either of two ways:
+
+- **dimensional scaling:** held-session K_eff rises at sublinear/fixed readout cost;
+- **computation compression:** K_eff remains small, but increasingly rich and reproducible relational functions are physically formed before a nearly fixed-cost readout.
+
+This remains explicitly a **classical elastic-wave** program. It must not be described as a quantum Feynman path integral or single-phonon computation.
+
+Advance only when later-session behavior survives matched electrical controls.
+
 
 ---
 
@@ -741,14 +783,17 @@ The shortest path is:
 FT-0 existing data
   -> FT-1 fresh full-map capture
   -> FT-2 readout-ablation frontier
-  -> FT-3 simultaneous multiplexing at fixed acquisition
+  -> FT-3 simultaneous spectral multiplexing
+  -> FT-3P frozen path-sum / relational-compute branch
   -> FT-4 minimal receiver
   -> FT-5 later-day freeze
   -> FT-6 second device
 ```
 
+For FT-3P specifically, do not waste a full run merely reproducing a same-session two-path cosine. Use it only as a hardware sanity check before the frozen later-session/control experiments.
+
 Do not detour into MEMS fabrication before FT-5.
 
 The result we want to know first is simple:
 
-> **Does the physics give us more independently useful transformation than we have to pay to read back out?**
+> **Does the physics give us either more independently useful output, or more useful relational computation before readout, than we have to pay to recover the answer?**
