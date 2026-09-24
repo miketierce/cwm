@@ -465,6 +465,24 @@ If N rises while acquisition/readout stays nearly fixed and K_eff rises, this is
 
 ---
 
+### FT-3P — coherent path-sum interference
+
+Companion protocol: `docs/PATH_SUM_INTERFERENCE_FAST_TRACK.md`.
+
+FT-3 varies simultaneous **spectral** inputs at fixed receiver cost. FT-3P tests a second source of physical parallelism: **spatial/path interference**.
+
+The smallest setup uses two independently phase-controlled TX PZTs on the same plate and one fixed RX. It asks:
+
+1. whether the simultaneous complex RX response is predicted by the coherent sum of individually characterized TX-to-RX paths;
+2. whether constructive/destructive interference can produce a relational output (e.g. same-phase vs opposite-phase) that is not available from either individual path magnitude alone;
+3. whether useful held-session dimensionality increases as controlled path count grows while RX hardware/acquisition remain fixed.
+
+This is explicitly a **classical elastic-wave** experiment. It must not be described as a quantum Feynman path integral or single-phonon computation.
+
+Advance only if the coherent model predicts later-session combined responses, electrical-only controls do not explain the effect, and the resulting relational readout contributes useful K_eff at fixed or sublinear readout burden.
+
+---
+
 ### FT-4 — minimal-readout decision ladder
 
 Take the best FT-3 condition and deliberately simplify the receiver.
