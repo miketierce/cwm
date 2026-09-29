@@ -109,6 +109,27 @@ Report both. Do not force them to agree.
 
 ---
 
+## 2.3 Literature / claim map
+
+External work that changes the fast-track hypothesis or claim boundary is tracked in:
+
+`docs/PHYSICAL_COMPUTING_LITERATURE_MAP.md`
+
+Use that file as the citation source-of-truth for:
+
+- phononic single-device parallelism;
+- acoustic analog-computing prior art;
+- passive acoustic logic prior art;
+- classical/quantum path-sum claim boundaries;
+- persistent-state materials;
+- physical relational comparators;
+- hardware-constrained software co-design;
+- future tunable/stateful media.
+
+The literature map is intentionally tied to experiments rather than being a bibliography-only file.
+
+---
+
 ## 3. Primary scaling claim under test
 
 The strongest fast-track result would be:
@@ -522,6 +543,47 @@ This remains explicitly a **classical elastic-wave** program. It must not be des
 
 Advance only when later-session behavior survives matched electrical controls.
 
+
+---
+
+### FT-3R — physical relation operator backlog
+
+This is a **future operator-library track**, not a reason to interrupt FT-3/FT-3P controls.
+
+The Advanced Materials 2026 triboelectric/ion-gel work (DOI 10.1002/adma.202520540) demonstrates a useful design pattern: a physical device can act as an analog comparator of relationships between input streams even when the useful output is low-dimensional.
+
+After FT-3P establishes a stable controlled primitive, candidate CWM relation operators include:
+
+```
+phase relation       phi1 - phi2
+frequency relation   f1 - f2 / ordering / proximity
+amplitude relation   A1 / A2
+spatial relation     port i vs port j
+temporal relation    t1 - t2 / window membership
+multi-path relation  weighted coherent score
+```
+
+For each operator, compare:
+
+```
+useful relational work
+----------------------
+readout + digital ops + calibration + energy
+```
+
+Do not count a relational operator as additional K_eff unless it yields an independently recoverable output dimension.
+
+A second development pattern from the cited work should also be adopted:
+
+```
+measure physical H / kernel
+  -> fit hardware-constrained model
+  -> run software workload with measured noise/drift
+  -> compare to conventional baseline
+  -> fabricate/scale only if justified
+```
+
+Any system-level software result must be reported as **hardware-constrained modeling**, not as a task physically executed by the plate.
 
 ---
 
