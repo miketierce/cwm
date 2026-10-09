@@ -1,454 +1,174 @@
 # FT-3P: Path-Sum Validation and Relational-Compute Fast Track
 
-**Status:** OPEN / revised execution protocol  
-**Parent:** PR #16 — K_eff versus readout complexity  
-**Evidence note:** `docs/PATH_SUM_FT0_EXISTING_DATA_NOTE.md`  
-**Reference:** Wen et al., *Direct experimental test of Feynman's path integral postulates with single photons*, Science Advances 12, eaeh1011 (2026), DOI: 10.1126/sciadv.aeh1011.
+**Status:** OPEN / revised execution protocol; no new measurements.  
+**Parent:** PR #16.  
+**Required prerequisite:** [FT-M: Measurement and Claim Gate](MEASUREMENT_AND_CLAIM_GATE.md).  
+**Historical evidence:** [Path-sum FT-0 note](PATH_SUM_FT0_EXISTING_DATA_NOTE.md).  
+**Literature:** [Physical-computing map](PHYSICAL_COMPUTING_LITERATURE_MAP.md) and FT-M's Deplano et al. entry, DOI `10.1126/science.aeh1375`.
 
-## 1. What changed
+## 1. Objective and claim boundary
 
-Historical CWM data already provide substantial evidence that:
+Test whether a controlled classical elastic path sum can predict later-session measurements and implement a useful relational task before a compact receiver.
 
-- two coherent TX paths on one plate interfere strongly;
-- selected phase sweeps follow a simple first-harmonic interference law;
-- three independently controlled TX paths mutually interfere in one RX response;
-- a 3-path trigonometric model fits the measured phase surface well enough to make "does multipath interference exist?" the wrong next question.
+Earlier phase sweeps and the June 21 three-source data provide hypothesis-forming evidence. They do not remove the need for properly defined observables, source references, electrical attribution and held-session validation. A same-session cosine is a sanity check rather than the main research objective.
 
-Therefore FT-3P is no longer primarily a discovery experiment.
+The Science Advances reference, DOI `10.1126/sciadv.aeh1011`, motivates a structural analogy: many coherent contributions combine into an observable. It does not turn this bench into a quantum path-integral experiment. Similarly, the levitated-oscillator work concerns a quantum mechanical-optical joint state, not proof that CWM's frequency-space matrix is quantum entangled.
 
-The new question is:
+Allowed claim after appropriate controls: a classical elastic network combines controlled contributions before detection and supports the declared relational operation. Do not claim single-phonon operation, quantum entanglement, a Bell-test violation or quantum computational advantage from this protocol.
 
-> **Can the already-demonstrated coherent elastic path sum be frozen across sessions, survive matched electrical controls, and be engineered into increasingly useful relational computation while receiver/readout cost stays approximately fixed?**
+## 2. Keep three outcomes separate
 
-This is a stricter and more commercially relevant target.
+1. **Physical attribution:** is the measured effect dependent on the acoustic path rather than explained by the source/wiring/readout alone?
+2. **Dimensional result:** how many independently useful outputs survive the declared receiver budget and later-session tests?
+3. **Task advantage:** does the complete implementation outperform the simplest fair alternative at the required accuracy?
 
-## 2. Claim boundary
+P coherent contributions can generate P(P-1)/2 pairwise terms in a squared-magnitude expansion. These are not independent measured outputs, independently programmable weights or a digital-complexity lower bound. An electronic baseline can sum P complex numbers and take one magnitude square in O(P) work. Benchmark that implementation, not a deliberately expanded O(P^2) calculation.
 
-CWM may test a classical-wave **sum-over-paths computation pattern**.
+A successful single-score predicate may have one output dimension. Supported interference terms characterize the mechanism; they do not by themselves establish useful computation or K_eff scaling.
 
-Do not claim:
+## 3. Hardware and reference configuration
 
-- quantum superposition;
-- a Feynman path integral;
-- single-phonon computation;
-- equal-amplitude quantum histories;
-- phase equal to classical action divided by hbar.
-
-Allowed description if fresh controls succeed:
-
-> A classical elastic network coherently sums multiple controlled propagation contributions before readout, and the resulting interference can implement stable relational functions.
-
-## 3. Existing prior
-
-The detailed retrospective evidence is in `docs/PATH_SUM_FT0_EXISTING_DATA_NOTE.md`.
-
-The most relevant priors are:
-
-1. June 3 E9: ~98.9% mean destructive suppression across five modes with 180-degree optimum.
-2. June 21 selected 2-path sweeps: strong cosine-law behavior at qualified frequencies.
-3. June 21 3-path run: three mutually interfering TX paths on one plate, one RX, full 2-D phase grid, R^2=0.922, with the 2<->3 cross-term ~83% of the strongest pairwise term.
-4. Ch-B same-frequency referencing later reduced phase scatter substantially at qualified frequencies.
-
-These are **priors**, not substitutes for fresh later-session/electrical controls.
-
-## 4. Two different scaling questions
-
-FT-3P must not equate internal path count with K_eff.
-
-### 4.1 Dimensional scaling
-
-The original PR #16 target remains:
+Use one fixed plate, one RX and initially two phase-controlled TX PZTs. Extend to three/four only after qualification.
 
 ```
-K_eff = independently useful, reproducible held-out output dimension
+phase-coherent sources -> separately driven TX1, TX2[, TX3, TX4]
+                                      |
+                                 fixed plate H
+                                      |
+                                  one RX -> Ch A
+
+qualified electrical/phase reference -> Ch B or additional documented channel
 ```
 
-A one-scalar detector can still have K_eff near 1 even if many internal paths contributed.
+Fix RX, fixture, scope range, physical sampling rate, samples/capture and acquisition window for the main comparison. Record source and reference overhead as the number of TX channels increases.
 
-### 4.2 Relational-computation compression
+**Ch B is a role assignment, not a guarantee.** Historical E1/E2 used it as a second acoustic receiver. It cannot simultaneously perform that role and provide an independent electrical reference. Document the choice, extra hardware or coherent sequential procedure and its cost.
 
-For P coherent paths:
+At a common carrier, a summed electrical reference may destructively interfere. Do not divide RX by that sum near a null. Use a stable reference and independently qualified source phasors, or record individual sources with suitable instrumentation. Recheck reference stability before/after runs and quantify unobserved within-run uncertainty. Never short source outputs together to create a tap.
 
-```
-Y = |sum_j a_j|^2
-```
+Keep inactive transducer termination/loading unchanged when characterizing individual paths. Disabling a drive can otherwise change H itself. Record buffer/tap positions, load impedances, gain/phase calibration, source amplitudes, phase commands and measured phase verification.
 
-contains self-terms plus pairwise cross-terms.
+## 4. Measurement definitions
 
-The maximum number of pairwise terms is:
+Retain raw per-acquisition voltage samples and complex demodulated coefficients before magnitude conversion, averaging or normalization. Declare whether phasor amplitudes are RMS or peak.
 
-```
-P(P-1)/2
-```
+Use:
 
-This is **not** automatically useful computation and **not** automatically independent information.
+- `z`: complex demodulated receiver voltage;
+- `abs(z)`: voltage magnitude;
+- `abs(z)^2`: squared-voltage statistic under the stated convention;
+- physical power/energy only with the required impedance/transduction calibration.
 
-It is a physical interaction budget.
+Historical sums of FFT magnitudes must not be interpreted directly as energy. Reproduce those statistics for historical comparison, but keep them separate from fresh calibrated observables. Fit/model comparisons must use the same observable on both sides.
 
-FT-3P will therefore also track:
+Complex phase is unreliable near zero amplitude. Predefine the reference/SNR mask for phase-error summaries, retain all valid complex/magnitude data, and report excluded counts. A cancellation null is not a requirement for a stable phase angle at zero.
 
-```
-supported_interaction_terms
-relational_tasks_passed
-readout_features
-receive_channels
-adc_conversions
-acquisition_window
-digital_ops_after_capture
-calibration_trials
-calibration_bytes
-```
+## 5. FT-3P-1: frozen prediction from individual paths
 
-The second scaling thesis is:
+### Training/qualification
 
-> **Useful relational work performed before readout grows faster than the receiver/readout burden.**
-
-This can be interesting even if K_eff itself grows slowly.
-
-## 5. Hardware
-
-Use one plate, one RX, and 2-4 independently phase-controlled TX PZTs.
-
-Primary architecture:
+Define a common phase frame. At the chosen carrier, estimate end-to-end complex coefficients h_j using the measured source phasors x_j, with receiver and source-reference calibration recorded:
 
 ```
-TX1 --\
-TX2 ---\
-TX3 ----> fixed plate H ----> one RX ----> Ch A
-TX4 ---/
-        \
-         source references / loopback as available
+z_pred = sum_j h_j * x_j
 ```
 
-Hold fixed as P increases whenever possible:
+For unit fixed-amplitude sources, two paths reduce to `z_pred(phi) = h_A + exp(i*phi)*h_B`. Do not apply this reduced formula if source amplitudes or phase origins vary without accounting for them.
 
-- one RX PZT;
-- one Ch-A acquisition;
-- same sample rate;
-- same samples/query;
-- same acquisition window;
-- same scope range;
-- same preprocessing;
-- same decision complexity for the primary comparison.
+Measure individual paths and matched controls. Freeze carrier, gains, phase offsets, preprocessing, thresholds, uncertainty model and allowed operational reference procedure before the evaluation session.
 
-Record commanded phase and amplitude for every TX.
+### Held-session evaluation
 
-Use Ch B / reference routing to characterize source phase and reject common instrumentation jitter. If all simultaneous electrical references cannot be recorded in one shot, preregister the loopback/reference procedure used to qualify them.
+Power down and restart on a later day. Initially use 16 relative-phase points over a full cycle and at least 20 independent acquisitions/point, with randomized order. Use measured source references only under the frozen policy; no fitting of new h_j from test RX data.
 
-## 6. Measurement correction
+Primary outputs:
 
-Some historical tools used a summed FFT-magnitude statistic and called it "energy."
+- complex normalized error and its block/session uncertainty;
+- magnitude and squared-magnitude error;
+- phase error on the preregistered valid subset;
+- null-location drift, contrast and reference validity;
+- performance before any optional recalibration.
 
-Fresh FT-3P work should instead save raw waveforms and explicitly distinguish:
+Compare coherent `abs(sum h_j*x_j)^2` with incoherent `sum abs(h_j*x_j)^2` using the same squared-magnitude loss. Alternatively compare their square roots against measured magnitude. Report complex error separately, because the incoherent model has no corresponding phase prediction.
 
-- complex demodulated RX voltage/amplitude;
-- magnitude;
-- squared magnitude / power-like statistic when defined;
-- true energy only if the integration/calibration justifies the term.
+**Advance:** frozen prediction is within preregistered tolerances and outperforms the applicable baseline on the same observable. A fresh fit to the evaluation sweep is descriptive, not a pass.
 
-Do not reuse historical "energy cancellation" wording without defining the quantity.
+## 6. FT-3P-2: attribution and equivalent-computation controls
 
-## 7. FT-3P-1 — frozen two-path prediction
+Run GLASS, source-reference measurements, ELECTRICAL_ONLY/background, LOOPBACK and QUIET. Change or interrupt mechanical coupling with electronics/loading preserved as closely as possible and document unavoidable changes.
 
-This replaces "prove that two paths interfere."
+Evaluate both the fixed glass decoder on controls AND control-specific decoders trained only on control training data. A threshold mismatch is not proof of an acoustic contribution.
 
-### Training session A
+Separately evaluate a conventional summing/filtering or digital implementation of the declared function. Full source phases already encode the input bits; source-only decoding is allowed to succeed. The objective is not information creation, but a useful acoustic transformation with a measured implementation benefit.
 
-At a qualified carrier frequency:
+An equivalent electrical circuit working does not establish that the GLASS measurement was feedthrough. An acoustic control passing does not establish that the glass is the cheaper implementation. Report those decisions independently.
 
-1. measure TX-A alone;
-2. measure TX-B alone;
-3. estimate complex path responses:
-   ```
-   Y_A = H_A X_A
-   Y_B = H_B X_B
-   ```
-4. freeze all calibration and model parameters.
+## 7. FT-3P-3: frozen phase-equality gate
 
-For simultaneous drive:
+Start with a two-bit qualification task, not a novelty claim. Encode each bit as phase 0 or pi relative to a fixed, pre-calibrated path offset.
+
+If `h_A` and `h_B` differ in phase or gain, select safe source amplitudes/offsets on training data so the effective contributions are comparable. Their required compensation is part of calibration, not a free property of the glass.
 
 ```
-Y_pred(phi) = Y_A + exp(i phi) Y_B
+00 -> same relative phase
+11 -> same relative phase
+01 -> opposite relative phase
+10 -> opposite relative phase
 ```
 
-### Held session B
+For matched effective contributions, a magnitude or squared-magnitude statistic can distinguish equality from inequality with one frozen threshold. Test all four input states with balanced randomized trials; do not select only favorable combinations.
 
-After power-down and preferably later-day restart:
+Engineering target: at least 95% balanced accuracy on the held session, with per-class counts, uncertainty, abstention and calibration cost reported. Include individual-TX magnitude controls, reference-only processing and the attribution/computational baselines above. Set adequate trial counts and statistical acceptance rules before acquisition; a nominal percentage without its uncertainty is insufficient.
 
-- do not retune phase offsets or thresholds;
-- repeat the same phase sweep;
-- compare measured complex response with the frozen prediction.
+Success qualifies a relational primitive. It does not show that electronics cannot compute equality, or that acoustic XNOR is new.
 
-Primary metrics:
+## 8. FT-3P-4: three-path validation
 
-- complex normalized RMSE;
-- phase error;
-- magnitude error;
-- destructive-null location shift;
-- constructive/destructive contrast;
-- coherent-model advantage over incoherent magnitude/power addition.
+Use the historical 91 kHz / three-TX configuration only after current fixture/source qualification; the old frequency is a candidate, not a universal standard.
 
-Advance if the frozen coherent model remains materially predictive and beats the incoherent baseline.
-
-## 8. FT-3P-2 — matched controls
-
-Run the same phase program through:
-
-1. GLASS;
-2. source-reference only;
-3. ELECTRICAL_ONLY;
-4. LOOPBACK;
-5. QUIET where relevant.
-
-The goal is not to prove that source phase contains no information—it obviously does.
-
-The goal is to establish whether the **mapping from source relationships to the chosen RX decision variable** depends on the physical H in the claimed way.
-
-Required analysis:
-
-- GLASS transfer response;
-- Ch-B/reference response;
-- control-path response;
-- whether the same threshold/function is reproduced without the plate.
-
-A path-sum compute claim advances only if the GLASS behavior is not explained by the electrical control path.
-
-## 9. FT-3P-3 — frozen relational gate
-
-Use two bits encoded only in relative phase:
+Training model:
 
 ```
-bit 0 -> phase 0
-bit 1 -> phase pi
+z = h1*x1 + h2*x2 + h3*x3
 ```
 
-States:
+Its squared magnitude produces self-terms and pairwise phase-difference terms. A free seven-term trigonometric fit to a grid is a useful diagnostic, but does not automatically satisfy the consistency constraints of one coherent phasor sum. Preserve the physical coefficient constraints and compare with independently characterized paths where possible.
 
-```
-00 : (+,+)
-01 : (+,-)
-10 : (-,+)
-11 : (-,-)
-```
+Freeze the model and predict the entire later-session phase grid without coefficient/phase retuning. Report held-session error, residuals and interaction stability with uncertainty. For a purported 2<->3 term, compare with a model omitting that interaction and appropriate source/control measurements; fitted coefficient size alone neither localizes the interaction nor establishes its significance.
 
-Target relation:
+**Advance:** the physical model predicts qualified later measurements within the declared operating envelope. No fixed-phase slice of a three-source grid may be labeled a true two-source control unless the third source was disabled with matched termination.
 
-```
-same phase     -> class 1
-opposite phase -> class 0
-```
+## 9. FT-3P-5: four-path extension
 
-Each individual TX maintains constant amplitude.
+Only after three-path qualification. Four sources create up to six pairwise terms, but share the constraints of four complex path coefficients. Use training-only path characterization and held-session prediction rather than granting every cross-term an arbitrary independent weight.
 
-Therefore the primary scalar RX decision should depend on the **relationship between the two contributions**, not on single-path magnitude.
+Account for the added drive ports, source power, synchronization and calibration even when the RX capture remains unchanged. Stop at the largest controlled system the existing coherent-source hardware can actually support; do not infer coherence across unqualified source blocks.
 
-### Required tests
+## 10. FT-3P-6: scaling and workload decision
 
-Score the frozen rule on:
+For P=1,2,3,4, retain one RX and a fixed primary capture budget where possible. At each P record:
 
-- TX-A alone;
-- TX-B alone;
-- source references only;
-- ELECTRICAL_ONLY;
-- GLASS combined response.
+| Category | Record |
+| --- | --- |
+| Physical model | Path count, actual source phasors, supported interactions, held-model error, noise/drift and controls |
+| Useful task | Frozen target function, all tested input classes, accuracy, abstention and confidence intervals |
+| Output dimensions | K_eff estimates under the declared receiver, or explicitly unmeasured |
+| Receiver | Signal/reference channels, samples/capture, all repetitions, acquisition/settle/reconfiguration time |
+| Whole system | Source, transducer, detector, conversion, digital processing and amortized calibration costs |
+| Baselines | Equivalent O(P) complex-sum implementation and relevant analog/filtering alternative |
 
-Initial engineering target:
+Produce separate dimensional and task/cost frontiers. A growing number of supported pairwise terms is a mechanism diagnostic, not the vertical axis of a claimed computational speedup. Comparing more tasks is meaningful only when their difficulty, resources and evaluation are defined consistently.
 
-```
-GLASS held-session balanced accuracy >= 95%
-```
+**GREEN-A:** independent useful output increases with sublinear/fixed readout cost under qualified testing; comparative workload advantage remains a separate claim.  
+**GREEN-B:** a frozen relational task has the preregistered comparative accuracy/cost benefit, even with a scalar output.  
+**YELLOW:** useful acoustic behavior but no demonstrated comparative advantage.  
+**INCONCLUSIVE:** missing references, provenance, calibrated observables or held-session controls.  
+**RED:** a qualified test rejects the stated operation/scaling hypothesis.  
+**Quantum:** not tested here.
 
-while individual-path magnitude and matched electrical-only controls fail the same criterion.
+## 11. Data and analysis readiness
 
-This does **not** claim electronics cannot compute XNOR/parity.
-
-It asks whether H performs the relational physical sum before the receiver.
-
-## 10. FT-3P-4 — freeze the known three-path structure
-
-The historical three-path data already suggest:
-
-```
-Y(phi2,phi3)
-  ~ b0
-  + pair(1,2)
-  + pair(1,3)
-  + pair(2,3)
-```
-
-Fresh test:
-
-### Session A
-
-Fit the 7-term phase-surface model.
-
-Freeze:
-
-- carrier;
-- TX amplitudes;
-- path gains;
-- phase offsets;
-- coefficients;
-- preprocessing.
-
-### Session B
-
-Measure a new 2-D phase grid without retraining.
-
-Report:
-
-- held-session R^2;
-- normalized RMSE;
-- persistence of each pairwise term;
-- especially the 2<->3 term;
-- null-location shift;
-- controls.
-
-Advance if the three mutual interactions remain predictive on the later session.
-
-## 11. FT-3P-5 — four-path extension
-
-Only after the three-path frozen test passes.
-
-Use four coherent TX contributions into the same plate.
-
-The ideal linear-interference model contains:
-
-```
-C(4,2) = 6
-```
-
-pairwise cross-terms.
-
-Do not merely fit a large model and declare success.
-
-Require:
-
-1. training-only coefficient estimation;
-2. held-session prediction;
-3. support for the expected pairwise phase-difference terms;
-4. fixed RX/acquisition budget;
-5. matched controls.
-
-Track how many of the six expected interactions are reproducibly supported.
-
-## 12. FT-3P-6 — relational-compute scaling frontier
-
-For:
-
-```
-P = 1, 2, 3, 4
-```
-
-hold the primary RX budget fixed.
-
-At each P report:
-
-### Physical structure
-
-```
-possible_pairwise_terms = P(P-1)/2
-supported_interaction_terms
-held_model_error
-```
-
-### Useful task result
-
-```
-relational_tasks_attempted
-relational_tasks_passed
-best held-session balanced accuracy
-abstention/error
-```
-
-### Dimensional result
-
-```
-K_eff,rank
-K_eff,task
-```
-
-### Receiver cost
-
-```
-receive_channels
-adc_conversions
-samples/query
-acquisition_window
-digital_ops_after_capture
-calibration_trials
-calibration_bytes
-system_energy_j when measured
-```
-
-The key plots are now two separate frontiers:
-
-```
-K_eff vs readout burden
-```
-
-and
-
-```
-useful relational task/interaction complexity vs readout burden
-```
-
-Do not combine them into one metric unless a later preregistered definition is justified.
-
-## 13. What counts as a strong result
-
-### GREEN-A — dimensional scaling
-
-Held-session K_eff rises while a major readout-cost axis stays fixed or grows materially slower.
-
-### GREEN-B — computation compression
-
-K_eff may remain small, but increasing P produces more reproducible relational structure or more useful relational tasks while:
-
-- RX count remains fixed;
-- acquisition remains fixed;
-- post-capture digital decision complexity remains small;
-- calibration burden does not grow proportionally.
-
-GREEN-B is a distinct success mode, not a consolation prize.
-
-### YELLOW
-
-Coherent multipath interference is stable, but useful relational complexity does not increase or requires proportional calibration/readout growth.
-
-### RED
-
-Any of:
-
-- later-session phase surface cannot be predicted without retuning;
-- electrical-only controls reproduce the claimed result;
-- path coefficients drift enough to require full re-enrollment;
-- adding paths produces no additional useful relational structure;
-- calibration/readout cost grows as fast as or faster than useful task complexity.
-
-## 14. Why this matters for H design
-
-If GREEN-B survives, future H should be engineered as a **propagation graph**, not just a high-mode-count resonator.
-
-Candidate structures include:
-
-- branches;
-- reflectors;
-- phase delays;
-- coupled resonators;
-- scattering junctions;
-- phononic boundaries;
-- path-length asymmetries.
-
-The design objective becomes:
-
-> Arrange path amplitudes and phases so useful relations constructively interfere and unwanted relations cancel before readout.
-
-That is more specific than "maximize resonance count."
-
-## 15. Data format
-
-Create:
+Use the existing layout:
 
 ```
 data/results/path_sum/<session_id>/
@@ -463,54 +183,21 @@ data/results/path_sum/<session_id>/
         scaling_frontier.csv
 ```
 
-Minimum trial fields:
+Keep trial_id, session_id, path_state, device_id, carrier, enabled TX set, commanded amplitudes/phases, available measured source phasors, RX real/imaginary voltage, target relation, split, validity and exclusion reason. FT-M adds calibration IDs, phase-reference method, physical/synthetic provenance, file hashes, averaging, channel roles and exact sampling settings.
+
+The existing `path_sum_interference_analyze.py` does not yet enforce this protocol. Its pooled calibration and cross-observable `coherent_model_better` comparison are not acceptance criteria. Before using it for certification, implement/test disjoint sessions, grouping, validity/reference checks and like-for-like errors, or use a separately audited compliant analysis. This PR's measurement revision is documentation, not a claim that those code changes or new bench runs are complete.
+
+## 12. Execution order and longer-term relevance
 
 ```
-trial_id
-session_id
-path_state
-device_id
-frequency_hz
-active_tx_count
-tx1_phase_rad
-tx2_phase_rad
-tx3_phase_rad
-tx4_phase_rad
-tx1_command_amp
-tx2_command_amp
-tx3_command_amp
-tx4_command_amp
-rx_complex_real
-rx_complex_imag
-rx_magnitude
-target_relation
-split
-valid
-invalid_reason
+historical triage -> FT-M qualification
+ -> frozen two-path prediction + matched controls
+ -> frozen equality gate
+ -> frozen physically constrained three-path model
+ -> four-path extension
+ -> dimensional and comparative task/cost frontiers
 ```
 
-Save raw Ch-A time series and all available electrical reference channels.
+Interleave controls from the first fresh capture. Calibrate once on training sessions, then score later data before any recalibration. Reduce the receiver only after the richer measurement establishes what it can safely discard.
 
-## 16. Execution order
-
-Shortest useful path:
-
-```
-historical evidence already in repo
-    -> frozen later-session 2-path prediction
-    -> matched electrical controls
-    -> frozen relational gate
-    -> frozen 3-path model
-    -> 4-path extension
-    -> dimensional + relational scaling frontiers
-```
-
-Do not spend time re-proving a same-session two-path cosine unless needed as a hardware sanity check.
-
-## 17. Bottom line
-
-The path-sum branch is now testing:
-
-> **Can a stable physical H turn growing internal coherent interaction structure into useful relational computation before a nearly fixed-cost receiver?**
-
-That is the open question the existing lab data actually supports.
+A later engineered propagation graph may use branches, delays, reflectors or coupled resonators to create useful transformations. That remains a design hypothesis. This protocol first asks whether the present classical H earns a useful implementation role without claiming quantum behavior or requiring a measured decay time.
