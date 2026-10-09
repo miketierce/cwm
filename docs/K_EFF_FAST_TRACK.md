@@ -7,6 +7,8 @@
 
 This is a focused execution path downstream of the physical-symbol-gate idea (PR #14) and the broader wave-gate scaling roadmap (PR #15).
 
+**Required before fresh acceptance testing:** [FT-M: Measurement and Claim Gate](MEASUREMENT_AND_CLAIM_GATE.md). This adds explicit channel roles, phase-reference qualification, raw-data provenance, transfer-plus-noise modeling and like-for-like controls. It distinguishes our classical nonseparability results from quantum entanglement and takes precedence over conflicting shorthand in earlier evidence notes. It is a measurement prerequisite, not a quantum-hardware detour.
+
 ---
 
 ## 1. Why this is the fast-track question
@@ -49,7 +51,7 @@ A second, distinct test now exists for coherent path-sum experiments:
 
 > Can the physical medium evaluate increasingly rich **relationships among inputs before readout**, while the receiver remains approximately fixed?
 
-Do not merge these into one quantity. A one-scalar output may still have K_eff near 1 while embodying a useful many-path relational computation.
+Do not merge these into one quantity. A one-scalar output may still have K_eff near 1 while embodying a useful many-path relational computation. Count source, reference, transduction and calibration costs separately; a fixed receiver does not imply a fixed whole-system budget.
 
 ---
 
@@ -62,14 +64,15 @@ K_eff is **not**:
 - PCA component count from one session;
 - classifier feature count;
 - number of labels;
-- number of frequencies scanned.
+- number of frequencies scanned;
+- concurrence, an optimized CHSH-like score, or a count of pairwise interference terms.
 
 For this program, a dimension only counts toward K_eff if it survives all of the following:
 
 1. discovered/fit on training sessions only;
 2. distinguishable above measured noise;
 3. reproducible on a held-out session;
-4. not explained by Ch B/electrical-only controls;
+4. acoustic contribution qualified by matched controls, separately from source-only task decoding;
 5. available under the stated readout budget;
 6. not created by normalization leakage.
 
@@ -105,34 +108,35 @@ Call the largest N satisfying the target:
 K_eff,task
 ```
 
-Report both. Do not force them to agree.
+Report both. Do not force them to agree. A deterministic H need not create information missing from X; the possible advantage is making the required answer available at lower measured cost.
 
 ---
 
-## 2.3 Literature / claim map
+### 2.3 Literature / claim map
 
 External work that changes the fast-track hypothesis or claim boundary is tracked in:
 
-`docs/PHYSICAL_COMPUTING_LITERATURE_MAP.md`
+- [Physical-computing literature map](PHYSICAL_COMPUTING_LITERATURE_MAP.md).
+- [FT-M literature and measurement update](MEASUREMENT_AND_CLAIM_GATE.md), including Deplano et al., Science (2026), DOI `10.1126/science.aeh1375`, and the distinction between classical spatial-spectral nonseparability and quantum mechanical-optical entanglement.
 
-Use that file as the citation source-of-truth for:
+Use these files for:
 
 - phononic single-device parallelism;
 - acoustic analog-computing prior art;
 - passive acoustic logic prior art;
-- classical/quantum path-sum claim boundaries;
+- classical/quantum path-sum and entanglement claim boundaries;
 - persistent-state materials;
 - physical relational comparators;
 - hardware-constrained software co-design;
 - future tunable/stateful media.
 
-The literature map is intentionally tied to experiments rather than being a bibliography-only file.
+The literature map is intentionally tied to experiments rather than being a bibliography-only file. The separate [quantum-transition roadmap](QUANTUM_TRANSITION_ROADMAP.md) is not a dependency of this classical fast track.
 
 ---
 
 ## 3. Primary scaling claim under test
 
-The strongest fast-track result would be:
+The strongest fast-track dimensional result would be:
 
 > Increasing simultaneous physical query dimensionality produces increasing held-out K_eff while ADC conversions/query, acquisition window, receiver count, or digital decision complexity remain approximately fixed.
 
@@ -148,11 +152,13 @@ A negative result is:
 
 > K_eff saturates or collapses before readout burden becomes advantageous.
 
+A separate relational-task result can be useful with one scalar output. It must be compared with the simplest equivalent implementation at matched accuracy, not credited with computational complexity from an expanded mathematical expression alone.
+
 ---
 
 ## 4. Physical bench setup
 
-The fast track should begin with the existing validated CWM bench, not new hardware.
+The fast track should begin with the existing bench, requalified under FT-M, not new quantum hardware.
 
 ### 4.1 Signal path
 
@@ -189,7 +195,7 @@ The fast track should begin with the existing validated CWM bench, not new hardw
                    physical response Y
 ```
 
-The critical scaling constraint is that the **receiver hardware remains fixed while simultaneous input dimensionality increases**.
+The critical scaling constraint is that the **receiver hardware remains fixed while simultaneous input dimensionality increases**. The diagram is a proposed configuration, not a declaration that historical data used this wiring. Record any tap or buffer change.
 
 For FT-3:
 
@@ -227,19 +233,21 @@ Record at minimum:
 
 Temperature compensation is not required initially. The purpose is to discover whether temperature is part of the operating envelope of H.
 
-### 4.4 Ch B electrical reference
+### 4.4 Ch B role and electrical reference
 
-Ch B remains part of the measurement instrumentation:
+In the proposed single-RX transfer configuration:
 
 ```
-Z_B = simultaneously measured injected electrical drive
-Z_A = simultaneously measured received plate response
-H(f) = Z_A(f) / Z_B(f)
+Z_B = simultaneously measured electrical drive at the declared tap
+Z_A = simultaneously measured received response through the declared receive chain
+H_end_to_end(f) = Z_A(f) / Z_B(f)
 ```
 
-For driven frequencies, the simultaneous ratio helps remove common drive phase/capture timing variation.
+For driven frequencies with adequate reference SNR, the simultaneous ratio helps remove common drive phase/capture timing variation. De-embed gain, phase delay and reference attenuation before calling it a substrate-only transfer function.
 
-Ch B must also be analyzed as a competing predictor. A useful GLASS result requires information beyond what Ch B alone provides.
+**Historical E1/E2 used Ch B as the second acoustic receiver, not as an electrical reference.** Do not combine these configurations or retroactively credit E1/E2 with an electrical control. Two RX channels plus a reference need additional instrumentation or a qualified sequential protocol, with its extra cost recorded.
+
+For coherent same-frequency multi-TX tests, a summed reference can itself cancel; it is not a safe denominator near a null. Follow FT-M0. Source-only decoding is a fair task baseline, not a requirement that X contain no information about the answer.
 
 ### 4.5 Required path states
 
@@ -261,7 +269,7 @@ QUIET
   drive off
 ```
 
-Document exactly how ELECTRICAL_ONLY is implemented. Do not change several unrelated parts of the signal chain at once.
+Document exactly how ELECTRICAL_ONLY is implemented. Do not change several unrelated parts of the signal chain at once. Separate attribution controls from a conventional circuit intentionally implementing the same function.
 
 ### 4.6 What simultaneous inputs mean
 
@@ -294,28 +302,26 @@ As N increases, hold fixed whenever physically possible:
 
 Record any quantity that cannot remain fixed.
 
-A result resembling:
+Illustrative measurement structure only, not predicted results:
 
-| simultaneous inputs | RX PZTs | ADC samples | acquisition window | held-out K_eff |
+| simultaneous inputs | RX PZTs | samples/channel/capture | acquisition window | held-out K_eff |
 |---:|---:|---:|---:|---:|
 | 1 | 1 | 3072 | fixed | 1 |
 | 2 | 1 | 3072 | fixed | ~2 |
 | 4 | 1 | 3072 | fixed | >2 |
 | 8 | 1 | 3072 | fixed | still increasing |
 
-would be qualitatively different from a result where ADC samples, time, or receivers rise proportionally with K_eff.
-
-The values above illustrate the desired measurement structure only; they are not predicted results.
+Two enabled channels at 3072 samples each require 6144 ADC conversions per capture, before any repetition/averaging. Count reference channels, all captures and any sequential interrogation in the total cost. Zero-padding adds no physical samples.
 
 ### 4.8 Near-term hardware additions
 
-Useful but non-blocking:
+Useful but non-blocking for retrospective work:
 
 1. rigid/repeatable plate fixture;
 2. temperature sensor near the plate;
 3. repeatable loopback/control routing.
 
-Do not delay FT-0 for any of these, and do not delay FT-1 if the existing fixture can be documented reproducibly.
+Do not delay FT-0 for these. Fresh acceptance testing does require a documented, qualified fixture/reference configuration under FT-M.
 
 ---
 
@@ -329,20 +335,13 @@ Use the best committed raw/vector datasets that preserve individual trials.
 
 For each eligible dataset:
 
-1. identify physically measured features only;
-2. separate Ch A / Ch B / derived H features;
+1. identify physically measured features and exclude synthetic/dry-run records;
+2. identify actual channel roles before separating acoustic, reference and derived H features;
 3. split by session/time when possible;
 4. compute singular spectrum on training data;
 5. estimate held-out stable rank;
-6. run feature/readout ablations:
-   - 1
-   - 2
-   - 4
-   - 8
-   - 16
-   - 32
-   - all available
-7. record task performance and K_eff at each budget.
+6. run feature/readout ablations at 1, 2, 4, 8, 16, 32 and all available features;
+7. record task performance and K_eff at each budget, or label the result exploratory where the data cannot establish K_eff.
 
 Purpose:
 
@@ -350,34 +349,31 @@ Purpose:
 - identify promising frequency/channel subsets;
 - define the smallest fresh experiment worth running.
 
-**Advance if:** at least one dataset suggests K_eff > 1 after held-out/noise controls.
+**Advance if:** at least one dataset suggests K_eff > 1 after held-out/noise controls, or supports a bounded relational-task hypothesis worth fresh qualification.
 
 **Do not claim scaling from FT-0 alone** if session pairing/raw controls are incomplete.
 
-Retrospective findings and the current stronger hypothesis are documented in `docs/K_EFF_FT0_EXISTING_DATA_NOTE.md`. In particular, the April L=2 dataset shows that eight simultaneous binary tone components can be distinguished from one fixed Ch-A acquisition with near-perfect same-session held-token accuracy. Because those input identities are also present in the source spectrum and historical Ch B was disabled, treat this as evidence of **multiplexing feasibility**, not evidence that the glass adds useful computation.
+Retrospective findings are documented in `docs/K_EFF_FT0_EXISTING_DATA_NOTE.md`. The April L=2 dataset suggests that eight simultaneous binary tone components can be distinguished from one fixed Ch-A acquisition with near-perfect same-session held-token accuracy. Because those input identities are also present in the source spectrum and historical Ch B was disabled, treat this as **multiplexing feasibility**, not proof that glass adds useful computation.
 
-Therefore fresh FT-1/FT-3 scoring must separate:
+Fresh FT-1/FT-3 scoring must separate information already readable from X, what the physical H does to it, and the cost of recovering the required answer in each implementation.
 
-1. information already readable directly from X / Ch B;
-2. information present only or more cheaply in the transformed glass response Y;
-3. the readout burden required to obtain each.
+### FT-M — qualify the measurement before accepting a new result
 
-The fast-track scaling claim advances only on item 2.
+Run [the measurement and claim gate](MEASUREMENT_AND_CLAIM_GATE.md): channel-role/synchronization qualification, retained raw captures, frozen transfer-plus-uncertainty model, matched causal/task controls, and only then readout reduction.
+
+This gate does not require quantum noise calibration or a measured decay constant for the current classical task. It requires the measurements necessary to substantiate the actual claim.
 
 ---
 
 ### FT-1 — fresh full-map multi-session capture
 
-Use the PR #14 dual-channel hardware discipline.
+Use the PR #14 hardware discipline with the FT-M clarifications.
 
 Minimum:
 
-- GLASS;
-- ELECTRICAL_ONLY;
-- LOOPBACK;
-- QUIET;
-- simultaneous Ch A and Ch B;
-- raw time-domain data;
+- GLASS, ELECTRICAL_ONLY, LOOPBACK and QUIET;
+- simultaneous response and qualified reference for the primary transfer measurement;
+- raw per-acquisition time-domain data before averaging;
 - >= 3 independent sessions;
 - >= 1 full power cycle;
 - same frozen candidate frequency grid;
@@ -393,20 +389,9 @@ data/results/k_eff/<session_id>/
     derived/
 ```
 
-For every trial record:
+For every trial record query definition, active tones, relative phases, drive level, raw recorded channels, clipping, reference validity, temperature if available, acquisition duration and sample count. FT-M defines required provenance, calibration and exclusion metadata.
 
-- query definition;
-- active tones;
-- relative phases;
-- drive level;
-- Ch A raw samples;
-- Ch B raw samples;
-- clipping;
-- temperature if available;
-- acquisition duration;
-- sample count.
-
-FT-1 creates the reference full-information dataset.
+FT-1 creates the reference full-information dataset. Save complex coefficients before magnitude conversion or normalization.
 
 ---
 
@@ -426,31 +411,19 @@ where R is separately instantiated as:
 - number of scalar readout statistics;
 - number of ADC samples where feasible.
 
-For each R report:
+For each R report K_eff,rank, K_eff,task, balanced accuracy/reconstruction error, source-only and electrical-control results, acquisition window, total ADC conversions, digital operations and calibration bytes.
 
-- K_eff,rank;
-- K_eff,task;
-- balanced accuracy / reconstruction error;
-- Ch B-only result;
-- ELECTRICAL_ONLY result;
-- acquisition window;
-- ADC conversions;
-- digital operations;
-- calibration bytes.
-
-This produces the first empirical frontier:
+This produces the empirical frontier:
 
 ```
 K_eff(R)
 ```
 
-Important: feature selection and normalization must be frozen from training sessions.
+Feature selection and normalization must be frozen from training sessions. Preserve raw and normalized analyses side by side so normalization cannot hide physical drift or an operationally unavailable reference.
 
 ---
 
 ### FT-3 — simultaneous multiplexing at fixed acquisition budget
-
-This is the decisive physical-parallelism experiment.
 
 Build query sets containing:
 
@@ -461,24 +434,24 @@ N = 1, 2, 4, 8, ... simultaneous tones/components
 while holding as much of the receiver budget fixed as physically possible:
 
 - same receive transducer count;
-- same Ch A/Ch B capture;
+- same response/reference capture;
 - same acquisition duration;
 - same sample rate;
 - same number of ADC samples;
 - same or bounded digital decision path.
 
-Equalize total programmed input energy or explicitly record how it changes.
+Equalize total programmed input energy or explicitly record how it changes. Track per-tone signal-to-noise ratio and clipping as well as total drive level.
 
 For each N:
 
 1. measure single-component responses;
 2. measure simultaneous response;
-3. compare to linear-superposition prediction;
+3. compare to a frozen linear-superposition prediction;
 4. calculate held-session K_eff;
 5. calculate output error/crosstalk;
-6. calculate readout burden.
+6. calculate readout and whole-system burden.
 
-A linear result is valid. The question is parallel useful dimensionality, not mandatory nonlinearity.
+A linear result is valid. The question is useful parallel dimensionality, not mandatory nonlinearity.
 
 **Key plot:**
 
@@ -488,61 +461,43 @@ y-axis: held-out K_eff
 series: N simultaneous physical inputs
 ```
 
-If N rises while acquisition/readout stays nearly fixed and K_eff rises, this is the first strong evidence for useful physical parallelism.
+If N rises at nearly fixed acquisition cost and K_eff rises, that supports parallel acquisition within the measured range. Computational advantage additionally needs the task/cost comparison; ordinary multiplexing alone does not establish it.
 
 ---
 
 ### FT-3P — frozen path-sum / relational-compute branch
 
 Companion protocol: `docs/PATH_SUM_INTERFERENCE_FAST_TRACK.md`.  
-Historical evidence: `docs/PATH_SUM_FT0_EXISTING_DATA_NOTE.md`.
+Historical evidence: `docs/PATH_SUM_FT0_EXISTING_DATA_NOTE.md`.  
+Required qualification: [FT-M](MEASUREMENT_AND_CLAIM_GATE.md).
 
-Historical bench data already show strong two-path interference and a measured three-path phase surface with all three pairwise interaction terms present. Therefore FT-3P is **not** primarily tasked with rediscovering coherent multipath interference.
+Historical bench data support a coherent-interference hypothesis, including a three-path phase surface fitted with pairwise terms. They do not close source-reference, observable-definition or matched-control gaps. Use a short same-session sweep as a sanity check, not as the main new claim.
 
-The unresolved sequence is now:
+The unresolved sequence is:
 
 1. freeze a two-path complex model in session A and predict session B without retuning;
-2. run GLASS, source-reference, ELECTRICAL_ONLY, and LOOPBACK controls;
-3. demonstrate a frozen relational decision such as same-phase vs opposite-phase with a minimal RX readout;
-4. freeze the known three-path model across sessions;
-5. extend to four paths only after the three-path freeze survives;
-6. build two separate scaling frontiers:
-   - `K_eff vs readout burden`;
-   - `useful relational computation vs readout burden`.
+2. run GLASS, source-reference, ELECTRICAL_ONLY and LOOPBACK controls;
+3. demonstrate a frozen relational decision such as phase equality with a minimal RX readout;
+4. freeze and physically validate the three-path model across sessions;
+5. extend to four paths only after three-path qualification;
+6. build separate `K_eff vs readout burden` and `useful relational task vs readout burden` frontiers.
 
-This distinction is essential.
-
-For P coherent paths, the measured scalar can contain up to:
+For P coherent paths, a squared-magnitude expansion contains up to:
 
 ```
 P(P-1)/2
 ```
 
-pairwise interference terms, but those internal terms do **not** automatically count as independent K_eff dimensions.
+pairwise terms, but these are neither independent output dimensions nor an electronic operation-count lower bound. The equivalent digital computation can form the P-term complex sum directly and square its magnitude. Use that efficient O(P) baseline, not a deliberately expanded O(P^2) calculation.
 
-FT-3P therefore tracks separately:
+Track K_eff, supported interaction terms, relational tasks passed, RX/reference channels, ADC conversions, acquisition window, post-capture digital operations and calibration burden separately.
 
-```
-K_eff,rank
-K_eff,task
-supported_interaction_terms
-relational_tasks_passed
-receive_channels
-adc_conversions
-acquisition_window
-digital_ops_after_capture
-calibration_burden
-```
+Potential results:
 
-A strong path-sum result can occur in either of two ways:
+- **dimensional scaling:** held-session independently recoverable output grows at sublinear/fixed readout cost;
+- **relational-task advantage:** a small output gives a useful decision with a measured advantage against equivalent implementations.
 
-- **dimensional scaling:** held-session K_eff rises at sublinear/fixed readout cost;
-- **computation compression:** K_eff remains small, but increasingly rich and reproducible relational functions are physically formed before a nearly fixed-cost readout.
-
-This remains explicitly a **classical elastic-wave** program. It must not be described as a quantum Feynman path integral or single-phonon computation.
-
-Advance only when later-session behavior survives matched electrical controls.
-
+This remains a **classical elastic-wave** program. It does not test a quantum Feynman path integral or certify quantum entanglement.
 
 ---
 
@@ -550,30 +505,13 @@ Advance only when later-session behavior survives matched electrical controls.
 
 This is a **future operator-library track**, not a reason to interrupt FT-3/FT-3P controls.
 
-The Advanced Materials 2026 triboelectric/ion-gel work (DOI 10.1002/adma.202520540) demonstrates a useful design pattern: a physical device can act as an analog comparator of relationships between input streams even when the useful output is low-dimensional.
+The Advanced Materials 2026 triboelectric/ion-gel work (DOI `10.1002/adma.202520540`) motivates low-dimensional physical relationship operators; see the literature map for its mechanism and experimental/modeling boundary.
 
-After FT-3P establishes a stable controlled primitive, candidate CWM relation operators include:
+After FT-3P establishes a stable controlled primitive, candidate CWM relations include phase difference, frequency proximity/order, amplitude ratio, spatial compatibility, temporal window membership and a weighted coherent score. These are hypotheses, not established CWM capabilities. For example, a beat-envelope magnitude by itself loses the sign of a frequency difference.
 
-```
-phase relation       phi1 - phi2
-frequency relation   f1 - f2 / ordering / proximity
-amplitude relation   A1 / A2
-spatial relation     port i vs port j
-temporal relation    t1 - t2 / window membership
-multi-path relation  weighted coherent score
-```
+For each operator, compare useful task performance against readout, digital operations, calibration and energy. Do not count an operator as additional K_eff unless it yields an independently recoverable output dimension.
 
-For each operator, compare:
-
-```
-useful relational work
-----------------------
-readout + digital ops + calibration + energy
-```
-
-Do not count a relational operator as additional K_eff unless it yields an independently recoverable output dimension.
-
-A second development pattern from the cited work should also be adopted:
+Development pattern:
 
 ```
 measure physical H / kernel
@@ -589,9 +527,7 @@ Any system-level software result must be reported as **hardware-constrained mode
 
 ### FT-4 — minimal-readout decision ladder
 
-Take the best FT-3 condition and deliberately simplify the receiver.
-
-Test:
+After FT-M qualification, take the best FT-3/FT-3P condition and simplify the receiver:
 
 1. full complex transfer vector;
 2. selected magnitudes/phases;
@@ -599,45 +535,19 @@ Test:
 4. RMS/envelope;
 5. comparator / threshold only.
 
-At each stage measure:
+At each stage measure K_eff,task, error, abstention, readout conversions, digital operations and latency. Count the envelope detector/comparator as part of the implementation.
 
-- K_eff,task;
-- error rate;
-- abstention rate;
-- readout conversions;
-- digital operations;
-- latency.
-
-The desirable direction is:
-
-```
-receiver complexity decreases
-while
-K_eff remains useful
-```
-
-This is more commercially meaningful than maximizing raw spectral dimensionality.
+The desirable direction is lower receiver complexity while the required task performance survives. Freeze each candidate readout before scoring its held session.
 
 ---
 
 ### FT-5 — later-session freeze
 
-Freeze:
+Freeze query set, waveform parameters, reference/calibration policy, feature selection, normalization, model, decoder and thresholds.
 
-- query set;
-- waveform parameters;
-- feature selection;
-- normalization;
-- decoder;
-- thresholds.
+Power down and repeat the best FT-3/FT-3P/FT-4 experiment on a later day. No parameter tuning before primary scoring. Report a remount separately from a power cycle.
 
-Power down.
-
-Repeat the best FT-3/FT-4 experiment on a later day.
-
-No parameter tuning before scoring.
-
-This determines whether the frontier is a property of H rather than a same-session calibration artifact.
+Any allowed recalibration is a separately labeled secondary result with samples, time and storage counted. This determines whether the measured frontier survives beyond the session used to construct it.
 
 ---
 
@@ -651,150 +561,89 @@ Repeat the best condition on Device B under:
 2. small bounded calibration;
 3. full retraining.
 
-Record exactly how much calibration is needed to recover the frontier.
-
-This separates:
-
-- one-off laboratory H;
-- calibrated hardware primitive;
-- standardized hardware primitive.
+Record exactly how much calibration is needed to recover the frontier. Distinguish a one-off laboratory H, a calibrated primitive and a standardized primitive.
 
 ---
 
 ## 6. Quantifying "grows faster"
 
-There is no single honest scalar definition of readout complexity, so report the frontier against each primary cost axis.
-
-For a cost C:
+There is no single honest scalar definition of readout complexity. Report the frontier separately for each primary cost C:
 
 ```
 efficiency(C) = K_eff / C
+marginal efficiency = Delta K_eff / Delta C
 ```
 
-and marginal efficiency:
-
-```
-Delta K_eff / Delta C
-```
-
-For positive values across multiple operating points, optionally fit:
+For enough positive, comparable operating points, optionally fit:
 
 ```
 K_eff = a * C^alpha
 ```
 
-on a log-log plot.
+Interpret alpha below, near or above 1 as sublinear, approximately proportional or superlinear growth only over the measured range. Do not infer a universal scaling law from a small range or pool unlike devices, tasks, sessions or calibration policies into one slope.
 
-Interpretation:
-
-- `alpha < 1`: useful dimension grows sublinearly with that readout cost;
-- `alpha ~= 1`: approximately proportional;
-- `alpha > 1`: superlinear over the measured range.
-
-Do **not** call `alpha > 1` a universal scaling law from a small range.
-
-The strongest practical result may instead be a **fixed-cost multiplexing regime** where C is approximately constant while K_eff increases.
+A fixed-cost regime should be reported directly, not forced into a log-log exponent. Include other costs that increase while the chosen axis stays fixed.
 
 ---
 
 ## 7. Primary readout-cost axes
 
-At minimum produce separate plots for:
+Produce separate K_eff frontiers against:
 
-### A. ADC burden
+- ADC conversions/query across every enabled signal/reference channel and repetition;
+- acquisition window and total query latency, including settle/reconfiguration time;
+- physical receive channels;
+- digital decision operations/query;
+- calibration bytes and trials;
+- joules/query, when measured.
 
-```
-K_eff vs ADC conversions/query
-```
-
-### B. acquisition time
-
-```
-K_eff vs acquisition_window_s
-```
-
-### C. receiver hardware
-
-```
-K_eff vs physical_receive_channels
-```
-
-### D. digital decision burden
-
-```
-K_eff vs digital_ops/query
-```
-
-### E. calibration burden
-
-```
-K_eff vs calibration_bytes
-K_eff vs calibration_trials
-```
-
-### F. energy
-
-When instrumentation permits:
-
-```
-K_eff vs joules/query
-```
-
-Do not substitute drive-only energy for end-to-end system energy.
+Do not substitute drive-only energy for whole-system energy. Report relational task accuracy/cost separately from dimensional K_eff.
 
 ---
 
 ## 8. Required controls
 
-Every frontier point must identify whether the same result exists in:
+Every frontier point must identify GLASS, source-only, ELECTRICAL_ONLY, LOOPBACK where applicable, a software linear-transform baseline and a conventional filter-bank/summing implementation where applicable.
 
-- GLASS;
-- Ch B only;
-- ELECTRICAL_ONLY;
-- LOOPBACK where applicable;
-- a software linear-transform baseline;
-- a conventional filter-bank / selected-bin baseline where applicable.
+**Attribution:** does the claimed response depend on the acoustic path after controlling electronics and source behavior?
 
-The physical system is interesting only if its transform contributes useful structure beyond the electrical reference.
+**Utility:** is the same required answer obtained with lower measured cost or another declared benefit than fair alternatives?
+
+These are different questions. Train a control-specific baseline on its own training data in addition to applying the glass decoder. Failure of a glass-trained threshold on a control path is not enough to establish attribution, and success of a well-designed electronic comparator is not proof of electrical feedthrough in the glass measurement. See FT-M3.
 
 ---
 
 ## 9. Fast-track decision gates
 
-### GREEN — accelerate wave-gate work
+All acceptance decisions first require FT-M measurement qualification.
 
-All of the following:
+### GREEN-A — dimensional result
 
-- K_eff > 1 on held-out later-session data;
-- K_eff increases with simultaneous physical query dimension;
-- at least one major readout-cost axis grows materially slower than K_eff, or remains approximately fixed;
-- electrical-only/Ch B controls do not explain the gain;
-- minimal readout retains a meaningful fraction of the gain.
+Held-session K_eff exceeds 1 and increases with simultaneous input dimension while at least one readout-cost axis grows materially slower or remains fixed. Acoustic attribution is supported; all other changing costs and comparative task performance are disclosed. This is not automatically a workload-level advantage.
 
-### YELLOW — useful physical transform, weak scaling advantage
+### GREEN-B — relational-task result
 
-- stable K_eff > 1;
-- but readout burden grows approximately proportionally.
+A frozen low-dimensional decision survives later sessions and causal controls, and demonstrates the preregistered accuracy/cost benefit against the simplest equivalent implementations. Extra fitted cross-terms alone do not pass this gate.
 
-Interpret as a sensing/filtering/analog-transform result unless another workload advantage emerges.
+### YELLOW — qualified physical operation, no demonstrated advantage
 
-### RED — stop scaling claims
+The transform or relational task is stable, but costs grow proportionally or the comparative benefit is absent/unmeasured. Continue only for a specified sensing, filtering or other bounded application.
 
-Any of:
+### INCONCLUSIVE — measurement prerequisites missing
 
-- held-out K_eff collapses to ~1;
-- apparent rank is dominated by electrical-only structure;
-- useful dimension disappears after leakage-safe normalization;
-- simultaneous queries require proportional or worse acquisition/readout growth with no compensating workload advantage;
-- later-session freeze fails without full re-enrollment.
+Missing phase reference, raw captures, topology provenance, valid controls or held-session scoring prevents acceptance. Do not silently convert missing evidence into a physical failure or success.
 
-A RED result does not invalidate the physical-symbol-gate or sensing directions.
+### RED — current scaling hypothesis fails under qualified testing
+
+Examples include held-session useful dimensions collapsing, the proposed operation disappearing with leakage-safe processing, no advantage after full resource accounting, or a frozen mapping requiring full re-enrollment each session. This narrows the tested architecture, not all acoustic computing.
+
+No fast-track result is a quantum-entanglement result.
 
 ---
 
 ## 10. Minimal machine-readable result
 
-Each evaluated operating point should emit one row containing at least:
+Each evaluated operating point should emit at least:
 
 ```
 experiment_id
@@ -819,30 +668,27 @@ valid
 notes
 ```
 
-The result schema is defined in `schemas/k_eff_frontier.schema.json`.
+The frontier schema is `schemas/k_eff_frontier.schema.json`; it also includes optional path/relational metrics. FT-M defines the accompanying raw-data, channel-role, calibration, provenance and uncertainty manifest. Schema validity alone is not experimental acceptance. Mark unmeasured metrics explicitly rather than entering zero.
 
 ---
 
 ## 11. Tooling
 
-`tools/k_eff_frontier.py` consumes the machine-readable frontier CSV and reports:
+`tools/k_eff_frontier.py` summarizes supplied frontier values: efficiency, marginal efficiency and optional log-log slopes. It does not infer or validate K_eff from raw signals. Compare like-for-like groups, not every CSV row indiscriminately.
 
-- K_eff/readout efficiency by cost axis;
-- marginal K_eff per marginal cost;
-- optional log-log exponent alpha when enough positive points exist;
-- the best measured operating point for each axis;
-- explicit warnings where a cost is constant or data are insufficient.
+`tools/k_eff_ft0_existing.py` and `tools/k_eff_ft0_binary.py` remain exploratory historical diagnostics.
 
-It does not infer K_eff from raw signals. K_eff must come from the controlled analysis described above.
+`tools/path_sum_interference_analyze.py` is not yet a held-session acceptance tool. In its current form it does not enforce the required splits and compares different error observables. FT-M Section 9 records the required fixes/tests. Do not use its `coherent_model_better` flag to pass this protocol.
+
+This documentation revision does not claim those analyzer changes are implemented or that new bench tests were run.
 
 ---
 
 ## 12. Execution order
 
-The shortest path is:
-
 ```
-FT-0 existing data
+FT-0 existing-data triage
+  -> FT-M measurement qualification
   -> FT-1 fresh full-map capture
   -> FT-2 readout-ablation frontier
   -> FT-3 simultaneous spectral multiplexing
@@ -852,10 +698,8 @@ FT-0 existing data
   -> FT-6 second device
 ```
 
-For FT-3P specifically, do not waste a full run merely reproducing a same-session two-path cosine. Use it only as a hardware sanity check before the frozen later-session/control experiments.
+Held-session checks are required within each claimed result, not postponed until every exploratory experiment is complete. For FT-3P, use a same-session cosine only as a sanity check before frozen predictions and controls.
 
-Do not detour into MEMS fabrication before FT-5.
+Do not detour into MEMS fabrication or levitated quantum hardware before the classical task is qualified.
 
-The result we want to know first is simple:
-
-> **Does the physics give us either more independently useful output, or more useful relational computation before readout, than we have to pay to recover the answer?**
+> **Does the physics give us either more independently useful output, or a useful relational answer at lower total cost, than the simplest fair alternatives?**
