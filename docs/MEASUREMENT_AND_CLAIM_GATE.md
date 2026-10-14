@@ -5,6 +5,8 @@
 **Parent:** PR #16, classical K_eff and relational-compute fast track.  
 **Applies to:** FT-1 through FT-6 and FT-3P. These requirements take precedence over conflicting shorthand in earlier fast-track notes. Historical data and original analysis outputs remain unchanged.
 
+**Receiver-reduction addendum (2026-10-13):** [Task-evidence retention](TASK_EVIDENCE_READOUT_RETENTION.md) specifies the FT-2/FT-4/FT-5 comparison of full observations, offline statistics and actual reduced receivers. It includes the relative-entropy literature entry, analytical examples and reusable citation records without adding a gravity or quantum-hardware dependency.
+
 ## 1. Decision
 
 Keep the immediate objective classical: determine whether a repeatable physical transfer function performs a useful task with a favorable readout and whole-system cost.
@@ -111,6 +113,10 @@ Document input encoder, source, transducer, reference, settle time, averaging, a
 Proceed through the existing ladder: full complex response, selected observables, envelope/scalar statistic, low-bit decision. Freeze each candidate receiver on training data and test it later. Record what information is intentionally discarded and the corresponding change in accuracy, abstention, latency and total cost.
 
 A candidate scalar predicate can pass even if output dimension remains one. A dimensional-scaling claim requires independently recoverable output dimensions under the stated receiver budget. Neither path count nor the number of fitted functions is a substitute.
+
+**Task-evidence retention:** follow [the FT-2/FT-4 addendum](TASK_EVIDENCE_READOUT_RETENTION.md). Declare a task, full-observation baseline, noninferiority margin, absolute error target, confidence/sample plan and cost criterion before testing. Learn candidate statistics only on training data and score complete later sessions. A scalar linear score can be sufficient under the stated equal-covariance Gaussian model; a phase-equality task may instead need a magnitude-based statistic. Neither analytical example establishes a physical CWM implementation.
+
+Distinguish offline compression of full captures from an actual reduced receiver. Only the latter can demonstrate acquisition savings, after accounting for its source/reference/detector/ADC/calibration chain. Optional KL or likelihood diagnostics supplement task errors and uncertainty; they do not certify capacity, prove exact sufficiency from finite data, or replace the measured cost comparison. The gravity paper is recorded as conceptual motivation only; classical information theory supplies the applicable analysis.
 
 ## 9. Tooling and outcome status
 
