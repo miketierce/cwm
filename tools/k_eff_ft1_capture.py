@@ -36,9 +36,12 @@ SYS_CLK = 126_000_000
 PIO_OVERHEAD = 6
 N = 3072
 TIMEBASE = 7
-RANGE_CODE = 8
-RANGE_MV = 5000.0
+RANGES_MV = {500: 5, 1000: 6, 2000: 7, 5000: 8, 10000: 9}
 REF_SNR_MIN = 20.0
+ALIAS_MAX_HARMONIC = 40
+ALIAS_WIDTH_BINS = 3
+TAP_CHECK_HZ = 60_000
+TAP_MIN_MV = 100.0
 CLIP_FRACTION = 0.98
 STATES = ('QUIET', 'LOOPBACK', 'GLASS', 'ELECTRICAL_ONLY')
 LIB = '/Applications/PicoScope 7 T&M Early Access.app/Contents/Resources/libps2000.dylib'
@@ -47,7 +50,11 @@ GRID_FILE = REPO / 'data/results/k_eff/ft1_frozen_grid.json'
 TRIAL_FIELDS = ['session_id', 'block_id', 'state', 'trial_idx', 'order_idx', 'rep', 'channel',
                 'freq_cmd_hz', 'freq_actual_hz', 'duty_permille', 't_unix', 'raw_row',
                 'ovf_A', 'ovf_B', 'clip_A', 'clip_B', 'dc_A_mV', 'dc_B_mV',
-                'zA_re_mV', 'zA_im_mV', 'zB_re_mV', 'zB_im_mV']
+                'zA_re_mV', 'zA_im_mV', 'zB_re_mV', 'zB_im_mV',
+                'zA2_re_mV', 'zA2_im_mV', 'zB2_re_mV', 'zB2_im_mV',
+                'zA3_re_mV', 'zA3_im_mV', 'zB3_re_mV', 'zB3_im_mV']
+DEFAULT_RX = {'GLASS': 'live RX PZT, top centre', 'ELECTRICAL_ONLY': 'detached dummy PZT in place of the live RX',
+              'LOOPBACK': 'live RX PZT, top centre (not read: Ch A moved)', 'QUIET': 'live RX PZT, top centre'}
 
 
 def pio_actual_freq(freq_hz: float) -> float:
@@ -63,6 +70,30 @@ def demod(x_mv: np.ndarray, freq_hz: float, fs: float) -> complex:
     w = np.hanning(len(x))
     n = np.arange(len(x))
     return complex(np.sum(x * w * np.exp(-2j * np.pi * freq_hz * n / fs)) * 2.0 / w.sum())
+
+
+def alias_flags(grid: list[int], fs: float, orders=(1, 2, 3), max_harmonic: int = ALIAS_MAX_HARMONIC,
+                width_hz: float | None = None) -> dict[int, list[int]]:
+    """Grid points whose demod frequency n*f has a folded drive harmonic m*f (m != n) within width_hz.
+
+    Depends only on the grid and sample rate, so the exclusion list is fixed before any data exist.
+    """
+    width_hz = ALIAS_WIDTH_BINS * fs / N if width_hz is None else width_hz
+    nyq = fs / 2
+    out = {n: [] for n in orders}
+    for g in grid:
+        fa = pio_actual_freq(g)
+        for n in orders:
+            if n * fa >= nyq:
+                continue
+            for m in range(1, max_harmonic + 1):
+                if m == n:
+                    continue
+                r = (m * fa) % fs
+                if abs((fs - r if r > nyq else r) - n * fa) < width_hz:
+                    out[n].append(g)
+                    break
+    return out
 
 
 def trial_order(grid: list[int], repeats: int, seed: int) -> list[tuple[int, int]]:
@@ -111,11 +142,13 @@ def load_or_freeze_grid(spec: str | None, grid_file: Path) -> dict:
 def git_state() -> dict:
     def run(*a):
         return subprocess.run(['git', *a], cwd=REPO, capture_output=True, text=True).stdout.strip()
-    return {'commit': run('rev-parse', 'HEAD'), 'dirty': bool(run('status', '--porcelain'))}
+    return {'commit': run('rev-parse', 'HEAD'),
+            'code_dirty': bool(run('status', '--porcelain', '--untracked-files=no', '--', 'tools', 'tests')),
+            'worktree_dirty': bool(run('status', '--porcelain'))}
 
 
 class Bench:
-    def __init__(self, port: str):
+    def __init__(self, port: str, range_a_mv: int, range_b_mv: int):
         import ctypes as ct
         import serial
         self.ct = ct
@@ -127,8 +160,8 @@ class Bench:
         self.nco = serial.Serial(port, 115200, timeout=1.0)
         time.sleep(0.5)
         self.nco.reset_input_buffer()
-        for ch in (0, 1):
-            self.ps.ps2000_set_channel(self.h, ch, 1, 1, RANGE_CODE)
+        self.ps.ps2000_set_channel(self.h, 0, 1, 1, RANGES_MV[range_a_mv])
+        self.ps.ps2000_set_channel(self.h, 1, 1, 1, RANGES_MV[range_b_mv])
         self.ps.ps2000_set_trigger(self.h, 5, 0, 0, 0, 0)
         ti, tu, ms = ct.c_int32(), ct.c_int16(), ct.c_int32()
         if not self.ps.ps2000_get_timebase(self.h, TIMEBASE, N, ct.byref(ti), ct.byref(tu), 0, ct.byref(ms)):
@@ -192,7 +225,11 @@ def run_block(a) -> None:
     else:
         plan = trial_order(grid['freqs_hz'], a.repeats, seed)
 
-    bench = Bench(a.nco_port)
+    ranges = {'A': a.range_a_mv, 'B': a.range_b_mv}
+    if manifest and manifest['acquisition']['range_mV'] != ranges:
+        raise SystemExit(f'Session uses scope ranges {manifest["acquisition"]["range_mV"]} mV; refusing {ranges}')
+    ka, kb = a.range_a_mv / 32767, a.range_b_mv / 32767
+    bench = Bench(a.nco_port, a.range_a_mv, a.range_b_mv)
     rows, raw_a, raw_b, temps = [], [], [], []
     started = datetime.now(timezone.utc).isoformat()
     try:
@@ -201,6 +238,23 @@ def run_block(a) -> None:
         bench.query('Foff')
         duty_reply = bench.query(f'A{a.channel[1:]}:{a.duty}')
         time.sleep(0.2)
+        tap_check = None
+        if a.state != 'QUIET':
+            bench.query(f'{a.channel}:{TAP_CHECK_HZ}')
+            time.sleep(0.1)
+            ca, cb, _ = bench.capture()
+            fa = pio_actual_freq(TAP_CHECK_HZ)
+            za = abs(demod(ca * ka, fa, bench.fs))
+            zb = abs(demod(cb * kb, fa, bench.fs))
+            bench.query('Foff')
+            tap_check = {'freq_hz': TAP_CHECK_HZ, 'chA_mV': round(za, 2), 'chB_mV': round(zb, 2)}
+            if zb < TAP_MIN_MV:
+                raise SystemExit(f'Tap check failed: Ch B sees {zb:.1f} mV of {a.channel}; '
+                                 f'is Ch B on the {a.channel} TX junction?')
+            if a.state == 'LOOPBACK' and not 0.8 < za / zb < 1.25:
+                raise SystemExit(f'Tap check failed: LOOPBACK Ch A/Ch B = {za / zb:.2f}; '
+                                 f'is Ch A on the {a.channel} TX junction?')
+            time.sleep(0.2)
         clip_level = CLIP_FRACTION * 32512
         for k, (f, rep) in enumerate(plan):
             if f:
@@ -210,12 +264,19 @@ def run_block(a) -> None:
             time.sleep(a.settle)
             ca, cb, ov = bench.capture()
             fa = pio_actual_freq(f) if f else 0.0
-            xa, xb = ca * RANGE_MV / 32767, cb * RANGE_MV / 32767
-            za = demod(xa, fa, bench.fs) if f else 0j
-            zb = demod(xb, fa, bench.fs) if f else 0j
+            xa, xb = ca * ka, cb * kb
+            z = {}
+            for m in (1, 2, 3):
+                ok = f and m * fa < bench.fs / 2
+                z[m] = (demod(xa, m * fa, bench.fs) if ok else 0j, demod(xb, m * fa, bench.fs) if ok else 0j)
+            za, zb = z[1]
             raw_a.append(ca)
             raw_b.append(cb)
-            rows.append({'session_id': a.session, 'block_id': block_id, 'state': a.state,
+            harm = {}
+            for m in (2, 3):
+                harm.update({f'zA{m}_re_mV': round(z[m][0].real, 5), f'zA{m}_im_mV': round(z[m][0].imag, 5),
+                             f'zB{m}_re_mV': round(z[m][1].real, 5), f'zB{m}_im_mV': round(z[m][1].imag, 5)})
+            rows.append({**harm, 'session_id': a.session, 'block_id': block_id, 'state': a.state,
                          'trial_idx': len(rows), 'order_idx': k, 'rep': rep, 'channel': a.channel,
                          'freq_cmd_hz': f, 'freq_actual_hz': round(fa, 4), 'duty_permille': a.duty,
                          't_unix': round(time.time(), 4), 'raw_row': k,
@@ -236,7 +297,7 @@ def run_block(a) -> None:
 
     raw_file = rdir / f'{block_id}.npz'
     np.savez_compressed(raw_file, A=pack_raw(np.array(raw_a)), B=pack_raw(np.array(raw_b)),
-                        mv_per_count=RANGE_MV / 32767, packed_scale=256)
+                        mv_per_count_A=ka, mv_per_count_B=kb, packed_scale=256)
     tpath = sdir / 'trials.csv'
     new = not tpath.exists()
     with tpath.open('a', newline='') as fh:
@@ -252,29 +313,38 @@ def run_block(a) -> None:
             'created_utc': started, 'device_id': a.device, 'fixture_id': a.fixture,
             'split_role': a.split_role,
             'channel_roles': {
-                'A': 'acoustic RX PZT -> OPA2134 preamp (x48 AC, x1 DC) -> Ch A; LOOPBACK: Ch A moved to TX junction',
-                'B': f'electrical tap: {a.channel} drive at the TX PZT terminal, after its 220 ohm series resistor'},
+                'A': 'acoustic RX PZT -> OPA2134 preamp -> Ch A (per-block cha_tap, rx_element, gain_config)',
+                'B': 'electrical tap of the driven TX at its PZT terminal, after its 220 ohm resistor (per-block chb_tap)'},
             'reference_mode': 'simultaneous_electrical',
-            'tx': {'channel': a.channel, 'waveform': '3.3 V CMOS square via 220 ohm, duty set by A<ch> command',
-                   'other_tx_on_device': 'second TX PZT on NCO CH1, held low (pins LOW), loading unchanged'},
+            'tx': {'waveform': '3.3 V CMOS square via 220 ohm per TX; duty set by A<ch>, so harmonics 2f, 3f, ... '
+                               'also drive the plate (first three recorded per trial, all in raw)',
+                   'inactive_tx': 'undriven NCO pins held LOW; unused corner PZTs left unconnected'},
             'grid': {k: grid[k] for k in ('spec', 'n', 'sha256')},
             'acquisition': {'scope': scope_info, 'sample_interval_ns': dt_ns, 'sample_rate_hz': fs,
                             'samples_per_channel': N, 'window_s': N / fs, 'enabled_channels': 2,
-                            'adc_bits': 8, 'range_mV': RANGE_MV, 'coupling': 'DC', 'timebase': TIMEBASE,
+                            'adc_bits': 8, 'range_mV': ranges, 'coupling': 'DC', 'timebase': TIMEBASE,
                             'averaging_policy': 'none: one acquisition per trial, raw retained',
                             'demod': 'Hann-weighted single-frequency DFT at freq_actual_hz, peak amplitude, phase at sample 0',
                             'voltage_convention': 'peak', 'freq_actual_model': 'SYS_CLK / round(SYS_CLK / f)'},
             'thresholds_frozen': {'ref_snr_min': REF_SNR_MIN, 'clip_fraction_of_full_scale': CLIP_FRACTION,
                                   'exclusion_policy': 'exclude trials with scope overflow or clip on either channel'},
-            'environment': {'resonator_temp_c': a.resonator_temp,
-                            'power_cycled_since_previous_session': a.power_cycled,
-                            'remounted_since_previous_session': a.remounted},
-            'unavailable': {'resonator_temp_c': 'no sensor at the plate' if a.resonator_temp is None else None,
+            'environment': {'power_cycled_since_previous_session': a.power_cycled,
+                            'remounted_since_previous_session': a.remounted,
+                            'temperature_policy': 'manual air temperature next to the plate per block; '
+                                                  'RP2040 die temperature logged as a proxy'},
+            'unavailable': {'plate_surface_temp': 'not measured; air temperature next to the plate recorded instead',
                             'wiring_photo_sha256': 'no photo of the current topology recorded',
-                            'channel_gain_delay_calibration': 'derive from this session LOOPBACK block'},
+                            'channel_gain_delay_calibration': 'derive from this session LOOPBACK blocks',
+                            'preamp_transfer_deembedding': 'not measured; Ch A/Ch B ratio is an end-to-end transfer'},
             'exclusions': [], 'blocks': [], 'notes': a.notes}
     manifest['blocks'].append({
-        'block_id': block_id, 'state': a.state, 'started_utc': started,
+        'block_id': block_id, 'state': a.state, 'channel': a.channel, 'started_utc': started,
+        'cha_tap': a.cha_tap or (f'{a.channel} TX junction (Ch A moved; preamp bypassed)' if a.state == 'LOOPBACK'
+                                 else 'preamp output, pin 1 via 47 ohm'),
+        'chb_tap': a.chb_tap or f'{a.channel} TX junction (PZT terminal, after 220 ohm)',
+        'rx_element': a.rx_element or DEFAULT_RX[a.state],
+        'gain_config': a.gain_config, 'rails_v': a.rails, 'ambient_temp_c': a.ambient_temp_c,
+        'tap_check': tap_check,
         'ended_utc': datetime.now(timezone.utc).isoformat(), 'n_trials': len(rows),
         'repeats': a.repeats, 'seed': seed, 'settle_s': a.settle, 'duty_permille': a.duty,
         'duty_reply': duty_reply, 'nco_status_start': status,
@@ -306,22 +376,26 @@ def summarize(a) -> None:
     qa, qb = [], []
     for b in quiet:
         raw = np.load(REPO / b['raw_file'])
-        scale = float(raw['mv_per_count']) * (256 if raw['A'].dtype == np.int8 else 1)
-        for xa, xb in zip(raw['A'].astype(float) * scale, raw['B'].astype(float) * scale):
+        sa = float(raw['mv_per_count_A']) * (256 if raw['A'].dtype == np.int8 else 1)
+        sb = float(raw['mv_per_count_B']) * (256 if raw['B'].dtype == np.int8 else 1)
+        for xa, xb in zip(raw['A'].astype(float) * sa, raw['B'].astype(float) * sb):
             qa.append([abs(demod(xa, pio_actual_freq(f), fs)) for f in grid])
             qb.append([abs(demod(xb, pio_actual_freq(f), fs)) for f in grid])
     noise_a = dict(zip(grid, np.median(qa, 0)))
     noise_b = dict(zip(grid, np.median(qb, 0)))
 
+    flags = alias_flags(grid, fs)
     out = {'session_id': a.session, 'status': 'qualification diagnostics, not an acceptance decision',
+           'alias_flagged_grid_hz': {f'{n}f': v for n, v in flags.items()},
+           'alias_rule': f'folded drive harmonics m<={ALIAS_MAX_HARMONIC} within {ALIAS_WIDTH_BINS} bins of n*f',
            'noise_floor_mV_median': {'A': float(np.median(list(noise_a.values()))),
                                      'B': float(np.median(list(noise_b.values())))},
            'states': {}}
     per_state = {}
-    for state in ('LOOPBACK', 'GLASS', 'ELECTRICAL_ONLY'):
-        srows = [r for r in rows if r['state'] == state]
-        if not srows:
-            continue
+    groups = sorted({(r['state'], r['channel']) for r in rows if r['state'] != 'QUIET'})
+    for st, ch in groups:
+        state = f'{st}:{ch}'
+        srows = [r for r in rows if r['state'] == st and r['channel'] == ch]
         freqs = {}
         n_bad = 0
         for r in srows:
@@ -358,25 +432,24 @@ def summarize(a) -> None:
             'H_phase_std_deg_median': float(np.median([e['H_phase_circ_std_deg'] for e in valid])) if valid else None,
             'per_freq': table}
 
-    if 'LOOPBACK' in per_state:
-        lb = [(f, complex(e['H_mean_re'], e['H_mean_im'])) for f, e in per_state['LOOPBACK'].items() if 'H_mean_re' in e]
+    out['loopback'], out['glass_vs_electrical_only'] = {}, {}
+    for ch in sorted({c for _, c in groups}):
+        lbt = per_state.get(f'LOOPBACK:{ch}', {})
+        lb = [(f, complex(e['H_mean_re'], e['H_mean_im'])) for f, e in lbt.items() if 'H_mean_re' in e]
         if len(lb) >= 2:
             f = np.array([p[0] for p in lb], float); g = np.array([p[1] for p in lb])
             slope = np.polyfit(f, np.unwrap(np.angle(g)), 1)[0]
-            out['loopback'] = {'gain_ratio_median': float(np.median(np.abs(g))),
-                               'gain_ratio_range': [float(np.abs(g).min()), float(np.abs(g).max())],
-                               'phase_deg_median': float(np.degrees(np.median(np.angle(g)))),
-                               'implied_delay_ns': float(-slope / (2 * np.pi) * 1e9)}
-    if 'GLASS' in per_state and 'ELECTRICAL_ONLY' in per_state:
-        ratios = [per_state['GLASS'][f]['H_abs_median'] / per_state['ELECTRICAL_ONLY'][f]['H_abs_median']
-                  for f in per_state['GLASS']
-                  if 'H_abs_median' in per_state['GLASS'][f]
-                  and 'H_abs_median' in per_state['ELECTRICAL_ONLY'].get(f, {})
-                  and per_state['ELECTRICAL_ONLY'][f]['H_abs_median'] > 0]
+            out['loopback'][ch] = {'gain_ratio_median': float(np.median(np.abs(g))),
+                                   'gain_ratio_range': [float(np.abs(g).min()), float(np.abs(g).max())],
+                                   'phase_deg_median': float(np.degrees(np.median(np.angle(g)))),
+                                   'implied_delay_ns': float(-slope / (2 * np.pi) * 1e9)}
+        gl, eo = per_state.get(f'GLASS:{ch}', {}), per_state.get(f'ELECTRICAL_ONLY:{ch}', {})
+        ratios = [gl[f]['H_abs_median'] / eo[f]['H_abs_median'] for f in gl
+                  if 'H_abs_median' in gl[f] and eo.get(f, {}).get('H_abs_median', 0) > 0]
         if ratios:
-            out['glass_vs_electrical_only'] = {'median_ratio': float(np.median(ratios)),
-                                               'min_ratio': float(np.min(ratios)),
-                                               'median_db': float(20 * np.log10(np.median(ratios)))}
+            out['glass_vs_electrical_only'][ch] = {'median_ratio': float(np.median(ratios)),
+                                                   'min_ratio': float(np.min(ratios)),
+                                                   'median_db': float(20 * np.log10(np.median(ratios)))}
     ddir = sdir / 'derived'
     ddir.mkdir(exist_ok=True)
     (ddir / 'summary.json').write_text(json.dumps(out, indent=1, default=str) + '\n')
@@ -400,10 +473,17 @@ def main():
     ap.add_argument('--seed', type=int)
     ap.add_argument('--grid', help='lo:hi:step Hz; only used to create the frozen grid')
     ap.add_argument('--grid-file', default=str(GRID_FILE))
-    ap.add_argument('--resonator-temp', type=float)
+    ap.add_argument('--ambient-temp-c', type=float, help='manual air temperature next to the plate')
+    ap.add_argument('--gain-config', help='e.g. "x48: Rf 47k, Rg 1k + 10uF"')
+    ap.add_argument('--rails', help='measured rails, e.g. "+9.4/-9.4"')
+    ap.add_argument('--cha-tap')
+    ap.add_argument('--chb-tap')
+    ap.add_argument('--rx-element')
     ap.add_argument('--power-cycled', action='store_true')
     ap.add_argument('--remounted', action='store_true')
     ap.add_argument('--notes', default='')
+    ap.add_argument('--range-a-mv', type=int, default=5000, choices=sorted(RANGES_MV))
+    ap.add_argument('--range-b-mv', type=int, default=5000, choices=sorted(RANGES_MV))
     ap.add_argument('--nco-port', default='/dev/cu.usbmodem113401')
     ap.add_argument('--out-root', default='data/results/k_eff')
     ap.add_argument('--raw-root', default='data/raw/k_eff')

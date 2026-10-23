@@ -3,7 +3,7 @@
 import numpy as np
 import pytest
 
-from tools.k_eff_ft1_capture import SYS_CLK, demod, pack_raw, pio_actual_freq, trial_order
+from tools.k_eff_ft1_capture import SYS_CLK, alias_flags, demod, pack_raw, pio_actual_freq, trial_order
 
 FS = 781_250.0
 N = 3072
@@ -49,6 +49,18 @@ def test_trial_order_covers_every_point_once_and_is_seeded():
     assert sorted(plan) == sorted((f, r) for f in grid for r in range(4))
     assert plan == trial_order(grid, 4, seed=7)
     assert plan != trial_order(grid, 4, seed=8)
+
+
+def test_alias_flags_catch_a_folded_harmonic_landing_on_the_fundamental():
+    f = 126_000  # 5f = 630 kHz folds to 781.25 - 630 = 151.25 kHz; 6f = 756 kHz folds to 25.25 kHz
+    f_fold = 130_200  # 5f = 651 kHz folds to ~130.25 kHz, on top of f itself
+    flags = alias_flags([f, f_fold], FS, orders=(1,), max_harmonic=6)
+    assert flags[1] == [f_fold]
+
+
+def test_alias_flags_ignore_harmonics_below_nyquist():
+    flags = alias_flags([40_000], FS, max_harmonic=5)
+    assert flags == {1: [], 2: [], 3: []}
 
 
 def test_pack_raw_is_lossless():
