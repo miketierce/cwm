@@ -1,0 +1,769 @@
+{
+ "schema": "cwm-ft1-manifest-v1",
+ "session_id": "FT1-S2",
+ "provenance": "physical",
+ "created_utc": "2026-10-26T18:45:25.043592+00:00",
+ "device_id": "plateD",
+ "fixture_id": "foam-vertical",
+ "split_role": "train",
+ "channel_roles": {
+  "A": "acoustic RX PZT -> OPA2134 preamp -> Ch A (per-block cha_tap, rx_element, gain_config)",
+  "B": "electrical tap of the driven TX at its PZT terminal, after its 220 ohm resistor (per-block chb_tap)"
+ },
+ "reference_mode": "simultaneous_electrical",
+ "tx": {
+  "waveform": "3.3 V CMOS square via 220 ohm per TX; duty set by A<ch>, so harmonics 2f, 3f, ... also drive the plate (first three recorded per trial, all in raw)",
+  "inactive_tx": "undriven NCO pins held LOW; unused corner PZTs left unconnected"
+ },
+ "grid": {
+  "spec": "30000:120000:500",
+  "n": 181,
+  "sha256": "da7029ea6e802a0d71f08bc0bf0fa5889f1e7a61a9eb254dce1bcaad61676aa2"
+ },
+ "acquisition": {
+  "scope": {
+   "variant": "2204A",
+   "batch_serial": "12789/1174",
+   "cal_date": "11Dec25"
+  },
+  "sample_interval_ns": 1280,
+  "sample_rate_hz": 781250.0,
+  "samples_per_channel": 3072,
+  "window_s": 0.00393216,
+  "enabled_channels": 2,
+  "adc_bits": 8,
+  "range_mV": {
+   "A": 5000,
+   "B": 5000
+  },
+  "coupling": "DC",
+  "timebase": 7,
+  "averaging_policy": "none: one acquisition per trial, raw retained",
+  "demod": "Hann-weighted single-frequency DFT at freq_actual_hz, peak amplitude, phase at sample 0",
+  "voltage_convention": "peak",
+  "freq_actual_model": "SYS_CLK / round(SYS_CLK / f)"
+ },
+ "thresholds_frozen": {
+  "ref_snr_min": 20.0,
+  "clip_fraction_of_full_scale": 0.98,
+  "exclusion_policy": "exclude trials with scope overflow or clip on either channel"
+ },
+ "environment": {
+  "power_cycled_since_previous_session": true,
+  "remounted_since_previous_session": false,
+  "temperature_policy": "manual air temperature next to the plate per block; RP2040 die temperature logged as a proxy"
+ },
+ "unavailable": {
+  "plate_surface_temp": "not measured; air temperature next to the plate recorded instead",
+  "wiring_photo_sha256": "no photo of the current topology recorded",
+  "channel_gain_delay_calibration": "derive from this session LOOPBACK blocks",
+  "preamp_transfer_deembedding": "not measured; Ch A/Ch B ratio is an end-to-end transfer"
+ },
+ "exclusions": [],
+ "blocks": [
+  {
+   "block_id": "QUIET_20261026_134523",
+   "state": "QUIET",
+   "channel": "F2",
+   "started_utc": "2026-10-26T18:45:25.043592+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": null,
+   "ended_utc": "2026-10-26T18:45:27.394893+00:00",
+   "n_trials": 20,
+   "repeats": 20,
+   "seed": 2704066012,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_end": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_every_200": [],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/QUIET_20261026_134523.npz",
+   "raw_sha256": "923833cc2894859db1d76b486f8754cc4299dc1309783a008dd19cb554bde625",
+   "trials_sha256_after_block": "ebeb79208f10e016d137867436ebd7a1c455d0591af9779f95f21dca04a25ff9",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 1/7: QUIET, power-cycled since S1 (Oct 23)"
+  },
+  {
+   "block_id": "LOOPBACK_20261026_134759",
+   "state": "LOOPBACK",
+   "channel": "F2",
+   "started_utc": "2026-10-26T18:48:01.069489+00:00",
+   "cha_tap": "F2 TX junction (Ch A moved; preamp bypassed)",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre (not read: Ch A moved)",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 585.24,
+    "chB_mV": 578.17
+   },
+   "ended_utc": "2026-10-26T18:49:01.345970+00:00",
+   "n_trials": 905,
+   "repeats": 5,
+   "seed": 2757452769,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_end": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793040494.45,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793040507.37,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793040520.25,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793040533.19,
+     "reply": "TEMP:20.96C ADC:14227"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/LOOPBACK_20261026_134759.npz",
+   "raw_sha256": "508bd42bb0dce2307a840999a41d6516bc98f21b80e2f25b143ac442581e5174",
+   "trials_sha256_after_block": "5afd8dd5a874e2e235268d06c7e548dcf8efdab1a0ed88c7c6990fdc95da5710",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 2/7: LOOPBACK CH2 (Ch A red on TX2 junction)"
+  },
+  {
+   "block_id": "GLASS_20261026_135332",
+   "state": "GLASS",
+   "channel": "F2",
+   "started_utc": "2026-10-26T18:53:34.181031+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 47.24,
+    "chB_mV": 581.0
+   },
+   "ended_utc": "2026-10-26T18:57:34.598973+00:00",
+   "n_trials": 3620,
+   "repeats": 20,
+   "seed": 1780076535,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_end": "TEMP:22.36C ADC:14179",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793040827.71,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793040840.73,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793040853.69,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793040866.65,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793040879.63,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793040892.61,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793040905.58,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793040918.53,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793040931.55,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793040944.52,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793040957.43,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793040970.43,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793040983.45,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793040996.44,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793041009.73,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793041023.54,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793041037.19,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793041050.94,
+     "reply": "TEMP:22.36C ADC:14179"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/GLASS_20261026_135332.npz",
+   "raw_sha256": "2212219caf348f423ad76de94ffc8d336bdfb1b81f1c5b71d05d2ebc23e4455a",
+   "trials_sha256_after_block": "d2c426a981ec0ddbeaaec00dcd67f4a6893040176d1a18dca5272a346dd774a3",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 3/7: GLASS CH2 (live RX, Ch A on preamp, Ch B on TX2 junction)"
+  },
+  {
+   "block_id": "ELECTRICAL_ONLY_20261026_140110",
+   "state": "ELECTRICAL_ONLY",
+   "channel": "F2",
+   "started_utc": "2026-10-26T19:01:11.723983+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "detached dummy PZT in place of the live RX",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 2.82,
+    "chB_mV": 581.88
+   },
+   "ended_utc": "2026-10-26T19:05:09.018362+00:00",
+   "n_trials": 3620,
+   "repeats": 20,
+   "seed": 1527012043,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:22.36C ADC:14179",
+   "nco_die_temp_end": "TEMP:22.36C ADC:14179",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793041285.25,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793041298.23,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793041311.19,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793041324.11,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793041337.07,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793041350.01,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793041362.96,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793041375.86,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793041388.8,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793041401.68,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793041414.63,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793041427.55,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793041440.5,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793041453.45,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793041466.4,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793041479.36,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793041492.27,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793041505.18,
+     "reply": "TEMP:22.36C ADC:14179"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/ELECTRICAL_ONLY_20261026_140110.npz",
+   "raw_sha256": "c47a8d40e79b4e7630a9e6e78bae6a4f554b9d08492acf63c55f557cf069077a",
+   "trials_sha256_after_block": "c8ec9b35e32c60442d37ebb7758e400c1a1741b8ec82e3e08004b85269f1b878",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 4/7: ELECTRICAL_ONLY CH2 (dummy PZT in place of live RX; Ch A on preamp, Ch B on TX2 junction)"
+  },
+  {
+   "block_id": "ELECTRICAL_ONLY_20261026_140806",
+   "state": "ELECTRICAL_ONLY",
+   "channel": "F1",
+   "started_utc": "2026-10-26T19:08:07.973095+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F1 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "detached dummy PZT in place of the live RX",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 3.25,
+    "chB_mV": 582.78
+   },
+   "ended_utc": "2026-10-26T19:12:05.189461+00:00",
+   "n_trials": 3620,
+   "repeats": 20,
+   "seed": 2374328595,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP1:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_end": "TEMP:21.89C ADC:14195",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793041701.54,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793041714.47,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793041727.37,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793041740.36,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793041753.26,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793041766.1,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793041779.0,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793041792.01,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793041804.89,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793041817.81,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793041830.79,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793041843.69,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793041856.63,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793041869.61,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793041882.57,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793041895.54,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793041908.5,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793041921.4,
+     "reply": "TEMP:21.89C ADC:14195"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/ELECTRICAL_ONLY_20261026_140806.npz",
+   "raw_sha256": "796fb1eee7a7244513cd948d0eab72f89df2362205392fcf6d76d086e19ecd61",
+   "trials_sha256_after_block": "17611e3ce78669c152987d0d599109468c81f7a961b7965b6a7bb3e68131135a",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 5/7: ELECTRICAL_ONLY CH1 (dummy PZT; Ch A on preamp; Ch B moved to TX1 junction)"
+  },
+  {
+   "block_id": "GLASS_20261026_141329",
+   "state": "GLASS",
+   "channel": "F1",
+   "started_utc": "2026-10-26T19:13:31.373214+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F1 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 120.1,
+    "chB_mV": 580.79
+   },
+   "ended_utc": "2026-10-26T19:17:28.966614+00:00",
+   "n_trials": 3620,
+   "repeats": 20,
+   "seed": 248892454,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP1:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:22.36C ADC:14179",
+   "nco_die_temp_end": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793042024.85,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793042037.8,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793042050.81,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793042063.83,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793042076.79,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793042089.74,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793042102.71,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793042115.7,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793042128.56,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793042141.58,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793042154.5,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793042167.43,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793042180.42,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793042193.41,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793042206.42,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793042219.43,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793042232.43,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793042245.39,
+     "reply": "TEMP:21.89C ADC:14195"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/GLASS_20261026_141329.npz",
+   "raw_sha256": "fc5f5696a1450480956d13e34df057780fb23f67eb16753078d2342bc949fc4c",
+   "trials_sha256_after_block": "c332f214e2ba2e86a4ed0775fe63c3d356e71603c7bd426bd670302eb653269a",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 6/7: GLASS CH1 (live RX back; Ch A on preamp; Ch B on TX1 junction)"
+  },
+  {
+   "block_id": "LOOPBACK_20261026_141951",
+   "state": "LOOPBACK",
+   "channel": "F1",
+   "started_utc": "2026-10-26T19:19:52.921598+00:00",
+   "cha_tap": "F1 TX junction (Ch A moved; preamp bypassed)",
+   "chb_tap": "F1 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre (not read: Ch A moved)",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+9.60/-9.61",
+   "ambient_temp_c": 22.9,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 586.13,
+    "chB_mV": 579.26
+   },
+   "ended_utc": "2026-10-26T19:20:53.457217+00:00",
+   "n_trials": 905,
+   "repeats": 5,
+   "seed": 3810114112,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP1:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:22.36C ADC:14179",
+   "nco_die_temp_end": "TEMP:21.89C ADC:14195",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793042406.44,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793042419.34,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793042432.29,
+     "reply": "TEMP:22.36C ADC:14179"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793042445.27,
+     "reply": "TEMP:22.36C ADC:14179"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/FT1-S2/LOOPBACK_20261026_141951.npz",
+   "raw_sha256": "3e5e550db04290b69ef6a72eaef383813531623f21e759e6921b3be7d318d90f",
+   "trials_sha256_after_block": "b98132edadf310d4339a5d9e288edc2954cba2c0129cb5c8b032dbd528264974",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "676b55573e3435c5fb25424f424bfcc266788772",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "S2 block 7/7: LOOPBACK CH1 (Ch A red on TX1 junction beside Ch B)"
+  }
+ ],
+ "notes": "S2 block 1/7: QUIET, power-cycled since S1 (Oct 23)"
+}

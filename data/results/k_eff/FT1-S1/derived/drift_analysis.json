@@ -1,0 +1,53 @@
+{
+ "session": "FT1-S1",
+ "status": "exploratory, not preregistered",
+ "selection": {
+  "min_rx_snr": 30.0,
+  "max_neighbor_phase_step_rad": 2.0,
+  "excluded": "alias-flagged (order 1) and grid edges"
+ },
+ "channels": {
+  "F1": {
+   "n_points": 115,
+   "gain_only": {
+    "g_mag_pct_per_min": -0.11311459280950603,
+    "g_phase_deg_per_min": 0.044880523650986555,
+    "chi2": 1254.9235453273345
+   },
+   "gain_plus_shift": {
+    "g_mag_pct_per_min": -0.11649713406202156,
+    "g_mag_se": 0.0165756101558691,
+    "g_phase_deg_per_min": 0.04988569232510687,
+    "g_phase_se": 0.009887702339711719,
+    "freq_drift_ppm_per_min": -1.9142928974056521,
+    "freq_drift_se": 1.2891599649676673,
+    "chi2": 1242.8510682692809
+   },
+   "chi2_reduction_by_shift_term": 0.009620089688336053,
+   "weighted_variance_explained_gain_only": 0.23085481284961107,
+   "weighted_variance_explained_gain_plus_shift": 0.2382540585333498,
+   "corr_mag_drift_vs_log_slope": -0.02260914992288668
+  },
+  "F2": {
+   "n_points": 111,
+   "gain_only": {
+    "g_mag_pct_per_min": -0.07290683641155915,
+    "g_phase_deg_per_min": 0.023469107668704532,
+    "chi2": 1510.2102381327004
+   },
+   "gain_plus_shift": {
+    "g_mag_pct_per_min": -0.07288188336197185,
+    "g_mag_se": 0.01724848106049958,
+    "g_phase_deg_per_min": 0.02357509404559717,
+    "g_phase_se": 0.010631494265374486,
+    "freq_drift_ppm_per_min": -0.056820758290664596,
+    "freq_drift_se": 1.411286702767407,
+    "chi2": 1510.1990598874963
+   },
+   "chi2_reduction_by_shift_term": 7.4017808393556095e-06,
+   "weighted_variance_explained_gain_only": 0.08712659533247802,
+   "weighted_variance_explained_gain_plus_shift": 0.08713335222135343,
+   "corr_mag_drift_vs_log_slope": -0.010735888736057853
+  }
+ }
+}

@@ -780,3 +780,107 @@ These are not failures of our hardware — they're mathematical constraints on t
 1. **P8** — Rewritability (putty on/off + re-enrollment)
 2. **P4** — Spatial multiplexing (needs L2 amplitude control)
 3. **D1** — H matrix library (multiple putty configs)
+
+---
+
+## Tier 11 — October 2026 Review: Missed Angles and New Data (2026-10-23)
+
+> Context: FT-1 is in progress on plate D (`docs/lab_diary_20261023.md`). S1 is done; S2 and S3 are pending.
+>
+> Sources reviewed: lab diaries, `SIDEBARS.md`, the unmerged idea branches, `ROADMAP_FULL_POTENTIAL.md`, and this worklist.
+>
+> Everything here is exploratory unless preregistered before data.
+
+| ID  | Experiment                                               | Status                         | Depends On                          | Kill / Success Criterion                                                     |
+| --- | -------------------------------------------------------- | ------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------- |
+| O1  | Within-block drift decomposition (S1, S2)                | DONE — gain drift, both sessions | FT1-S1, FT1-S2                    | Separate uniform gain drift from mode-frequency drift                        |
+| O2  | Cross-session drift + first TCF estimate                 | S1 → S2 DONE; S3 pending       | FT1-S2/S3, air temperature log      | Inter-session mode-frequency shift vs temperature, separated from gain       |
+| O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | OPEN — allowed between sessions | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
+| O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | OPEN — allowed between sessions | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
+| O5  | TX termination as a Q knob (shorted vs open)             | OPEN — after FT-1 S3           | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
+| O6  | Bench temporal regime: on-Pico sequencer + linear MC     | OPEN — after S3; preregister    | NCO sequencer, continuous capture   | **Kill: linear MC < 3 at ≥ 2 kHz symbol rate** (bench analog of roadmap G6)  |
+| O7  | Sidebar bench checks (S9 Zeeman doublets, S19 chiral)    | OPEN — after FT-1              | O4; putty only after FT-1           | Simulation predictions confirmed or killed on real doublets                  |
+| O8  | FT-3 tone plan and TX summing network                    | OPEN — planning                | FT-1 complete                       | No harmonic or intermod product within ±3 bins of any tone                   |
+| O9  | NSF Phase I (Nov 4 deadline)                             | CHECK STATUS                   | pitch invitation                    | Decide whether FT-1 data feeds an application                                |
+| O10 | Measurement-chain decisions                              | OPEN — after FT-2              | FT-2 results                        | Digitizer resolution, preamp de-embedding, drive-power (energy) axis        |
+
+### Holds while FT-1 is running
+
+- **Do not wire the spare NE/NW PZTs** until S3 is done. Connecting them changes their electrical termination, which shifts H (see `PATH_SUM_INTERFERENCE_FAST_TRACK.md` §3) and breaks comparability with S1. After S3, wiring them to CH3/CH4 (Block A, phase-locked) gives a four-path FT-3P with no new hardware.
+- **Keep the NCO firmware frozen until S3.** O5 and O6 need firmware changes; they come after.
+- **O3 and O4 are allowed between sessions:** same wiring, same firmware, and the session start state restored before the next session. No putty or other physical changes until FT-1 is complete.
+
+### O1: Within-block drift decomposition (S1, S2)
+
+- **Method:** `tools/k_eff_ft1_drift.py`.
+- **Result:** the S1 drift is a **uniform gain drift**, CH1 −0.117%/min (±0.017) and CH2 −0.073%/min (±0.017), with a common phase drift of +0.02 to +0.05°/min. (The Oct 23 diary's −0.113 for CH1 is the gain-only fit.)
+- **S2 (Oct 26):** the same pattern at half the rate or less: CH1 −0.050 ± 0.011, CH2 −0.046 ± 0.010%/min, no mode shift (+0.4 ± 0.9, +0.7 ± 0.8 ppm/min).
+- **Ch A vs Ch B:** in both sessions most of the decline is in |zA| (−0.03 to −0.06%/min), with the drive at the TX terminal rising slightly (+0.01 to +0.02%/min). The level does not build up from block to block or across the power-down.
+- **No mode-frequency shift:** −1.9 ± 1.3 and −0.06 ± 1.4 ppm/min. A shift term reduces χ² by ≤ 1%, and magnitude drift does not correlate with the local log-slope (−0.02, −0.01).
+- **Not the scope:** LOOPBACK moved about 10× less over 27 minutes.
+- **Remaining candidates:** the transducers and their bonds, or the preamp. The two TX rates differ, but those blocks were 18 minutes apart, so this is not settled.
+
+### O2: Cross-session drift + first TCF estimate
+
+Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f), and likewise S3. The shift coefficient gives the common fractional mode-frequency shift between sessions; together with the air-temperature log that is a first temperature-coefficient estimate. This is the between-session part of the FT-M2 noise and drift model, at no extra bench cost.
+
+- **Method:** `tools/k_eff_ft1_drift.py --session FT1-S2 --compare FT1-S1`.
+- **S1 → S2 (Oct 26):** H moved about 3% (median complex change; p90 about 10%), against 0.5% within-session scatter.
+  - Not a uniform gain change (−0.35 ± 0.27% CH1, −0.41 ± 0.35% CH2) and not a common mode shift (−2 ± 21, −41 ± 27 ppm). Together they explain 5–12% of the variance.
+  - Proportional to H and not the feedthrough: individual modes changed by different amounts.
+- **TCF:** not estimable yet. The air temperature moved only 0.2°C between S1 and S2. A useful estimate needs sessions a few °C apart.
+
+### O3: Drive-stop-aligned direct ringdown (T4.2 retry)
+
+- **Why T4.2 failed (May 28):** feedthrough, the TX PZT damping the plate on stop in a shared-PZT topology, and capture blocks starting 6–48 ms after the stop, against τ of 1–4 ms.
+- **What is different now:**
+  - separate TX and RX PZTs;
+  - feedthrough measured at a median 37 dB below the acoustic signal;
+  - `Foff` silences the NCO cleanly (the old AWG could not be silenced);
+  - capture aligned to the physical drive stop seen on Ch B, so host timing jitter is irrelevant. Use the scope's dropout trigger if the ps2000 SDK exposes it (to verify); otherwise stream continuously and locate the stop edge in software.
+- **Record:** the off-state termination (pins LOW: TX shorted through 220 Ω). This is the existing behavior and must be kept identical in O5's comparison.
+
+### O4: Zoom sweeps
+
+- **Method:** fine steps (10–25 Hz) across ±1.5 kHz around the ~10 strongest modes per TX path. Exploratory; it does not touch the frozen FT-1 grid.
+- **Gives:**
+  - f₀ and Q per mode, cross-checked against O3;
+  - resolved mode doublets on the square plate (also O7);
+  - per-session frequency stability.
+- **Needs:** a plate thermometer (DS18B20) to turn frequency stability into a TCF (O2).
+
+### O5: TX termination as a Q knob
+
+Ringdown with TX pins held LOW (shorted through 220 Ω) versus tri-stated (open). The difference measures electrical damping by the transducers, the hidden-Q question F7 ("intrinsic Q masked by PZT loading"). Also noted, but not measured, in `LAB_DIARY.md` ("PZT in open-circuit has slightly less damping than shorted"). This is the input the MEMS τ projections depend on most.
+
+### O6: Bench temporal regime
+
+- **The reassessment:** roadmap bottleneck B2 deferred temporal computing to MEMS because "the AWG-buffer + capture loop runs at ~8 Hz". The three NARMA-10 failures (T2.3, T4.3) ran at ≥ 100 ms steps, long after the 1–4 ms memory had decayed, so they tested the control loop rather than the plate.
+- **The fix:** the Pico NCO's PIO can step a preloaded symbol sequence at kHz rates with no USB in the loop. Capture can be continuous (scope streaming, or the RP2040's own ADC synchronized to the drive).
+- **Same regime as the MEMS target:** at 2–3 kHz, bench τ gives about 3–4 symbols of memory, and more for the slow low-frequency modes (Q 743 at 30 kHz → τ ≈ 8 ms). That matches the MEMS target (τ 100–320 µs at 3–10 kHz).
+- **The test:** linear memory capacity, preregistered.
+- **Caveats:**
+  - The plate is linear down to −40 dBc (Oct 23), so test linear fading memory, not NARMA-style nonlinear computation. Software nonlinearity would make it a hybrid result.
+  - A bench symbol spans about 40 cycles of a mode, versus about 1,000 at MEMS, so modes blur together more on the bench. A bench pass is strong support for the MEMS premise; a bench fail is not automatically a MEMS fail.
+
+### O7: Sidebar bench checks
+
+The sidebars hold 64 simulation-confirmed hypotheses, none bench-tested. Cheap first checks with O4 data:
+- **S9 (Zeeman):** perturbation-induced splitting of degenerate doublets on this square plate. Putty perturbations only after FT-1.
+- **S19 (chiral phonons):** splitting of cross-family pairs.
+
+### O8: FT-3 tone plan and TX summing network
+
+- **Harmonic collisions:** 10%-duty tones put strong harmonics everywhere in the band, so on a uniform grid they will collide with other tones. Extend `alias_flags()` to tone sets. Use the golden-ratio (irrational) spacing that S13/S17 found about 20× better than equal spacing, and consider 50% duty for multitone runs, which removes even harmonics.
+- **Hardware:** a resistor summing network of several NCO channels into one TX for N simultaneous independent tones.
+- **Reference:** Ch B on the summed terminal still separates the tones by frequency. FT-M0's caution applies to same-frequency sources only.
+
+### O9: NSF Phase I
+
+The `docs/nsf-november-2026-application` branch targets **November 4, 2026** and required a pitch invitation first. If that track is live, FT-1's preregistered, controlled, cross-session data is directly usable preliminary evidence; schedule S2/S3 accordingly.
+
+### O10: Measurement-chain decisions (after FT-2)
+
+- **Digitizer:** the 8-bit scope sets the −40 dBc floor and dominates the harmonic residuals (Oct 23). If FT-2's K_eff turns out quantization-limited, a higher-resolution digitizer is the upgrade.
+- **Preamp de-embedding:** inject a known divided drive into the preamp input to separate plate H from the electronics.
+- **Energy axis:** measure drive power (Ch A across the 220 Ω) for FT's joules-per-query cost axis.
