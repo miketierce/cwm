@@ -785,7 +785,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 
 ## Tier 11 — October 2026 Review: Missed Angles and New Data (2026-10-23)
 
-> Context: FT-1 is in progress on plate D (`docs/lab_diary_20261023.md`, `docs/lab_diary_20261026.md`). S1 and S2 are done; S3 is pending.
+> Context: FT-1 ran on plate D (`docs/lab_diary_20261023.md`, `docs/lab_diary_20261026.md`, `docs/lab_diary_20261027.md`). S1–S3 are complete; the preregistered outcome is **INCONCLUSIVE** on both paths (Oct 27 diary §5).
 >
 > Sources reviewed: lab diaries, `SIDEBARS.md`, the unmerged idea branches, `ROADMAP_FULL_POTENTIAL.md`, and this worklist.
 >
@@ -793,19 +793,19 @@ These are not failures of our hardware — they're mathematical constraints on t
 
 | ID  | Experiment                                               | Status                         | Depends On                          | Kill / Success Criterion                                                     |
 | --- | -------------------------------------------------------- | ------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------- |
-| O1  | Within-block drift decomposition (S1, S2)                | DONE — gain drift, both sessions | FT1-S1, FT1-S2                    | Separate uniform gain drift from mode-frequency drift                        |
-| O2  | Cross-session drift + first TCF estimate                 | S1 → S2 DONE; S3 pending       | FT1-S2/S3, air temperature log      | Inter-session mode-frequency shift vs temperature, separated from gain       |
+| O1  | Within-block drift decomposition (S1–S3)                 | DONE — gain drift, all three sessions | FT1-S1, FT1-S2, FT1-S3        | Separate uniform gain drift from mode-frequency drift                        |
+| O2  | Cross-session drift + first TCF estimate                 | S1–S3 DONE (grid method); TCF provisional | FT1-S2/S3, air temperature log | Inter-session mode-frequency shift vs temperature, separated from gain       |
 | O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | OPEN — allowed between sessions | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
-| O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | OPEN — allowed between sessions | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
+| O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | PARTIAL — overnight ±400 Hz fits (Oct 27); doublets open | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
 | O5  | TX termination as a Q knob (shorted vs open)             | OPEN — after FT-1 S3           | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
 | O6  | Bench temporal regime: on-Pico sequencer + linear MC     | OPEN — after S3; preregister    | NCO sequencer, continuous capture   | **Kill: linear MC < 3 at ≥ 2 kHz symbol rate** (bench analog of roadmap G6)  |
 | O7  | Sidebar bench checks (S9 Zeeman doublets, S19 chiral)    | OPEN — after FT-1              | O4; putty only after FT-1           | Simulation predictions confirmed or killed on real doublets                  |
 | O8  | FT-3 tone plan and TX summing network                    | OPEN — planning                | FT-1 complete                       | No harmonic or intermod product within ±3 bins of any tone                   |
 | O9  | NSF Phase I (Nov 4 deadline)                             | CHECK STATUS                   | pitch invitation                    | Decide whether FT-1 data feeds an application                                |
 | O10 | Measurement-chain decisions                              | OPEN — after FT-2              | FT-2 results                        | Digitizer resolution, preamp de-embedding, drive-power (energy) axis        |
-| O11 | Fixture rework and FT-1 repeat series                    | OPEN — after S3; preregister    | FT-1 S3 outcome                     | A full set of session pin moves leaves H unchanged within run-to-run repeatability |
+| O11 | Fixture rework and FT-1 repeat series                    | NEXT — S3 done; preregister     | FT-1 S3 outcome                     | A full set of session pin moves leaves H unchanged within run-to-run repeatability |
 
-### Holds while FT-1 is running
+### Holds while FT-1 was running (met Oct 27: S3 complete)
 
 - **Do not wire the spare NE/NW PZTs** until S3 is done. Connecting them changes their electrical termination, which shifts H (see `PATH_SUM_INTERFERENCE_FAST_TRACK.md` §3) and breaks comparability with S1. After S3, wiring them to CH3/CH4 (Block A, phase-locked) gives a four-path FT-3P with no new hardware.
 - **Keep the NCO firmware frozen until S3.** O5 and O6 need firmware changes; they come after.
@@ -816,6 +816,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 - **Method:** `tools/k_eff_ft1_drift.py`.
 - **Result:** the S1 drift is a **uniform gain drift**, CH1 −0.117%/min (±0.017) and CH2 −0.073%/min (±0.017), with a common phase drift of +0.02 to +0.05°/min. (The Oct 23 diary's −0.113 for CH1 is the gain-only fit.)
 - **S2 (Oct 26):** the same pattern at half the rate or less: CH1 −0.050 ± 0.011, CH2 −0.046 ± 0.010%/min, no mode shift (+0.4 ± 0.9, +0.7 ± 0.8 ppm/min).
+- **S3 (Oct 27):** again at about S2's rate: CH1 −0.060 ± 0.011, CH2 −0.053 ± 0.013%/min, no mode shift (−0.2 ± 1.0, +0.4 ± 0.9 ppm/min).
 - **Ch A vs Ch B:** in both sessions most of the decline is in |zA| (−0.03 to −0.06%/min), with the drive at the TX terminal rising slightly (+0.01 to +0.02%/min). The level does not build up from block to block or across the power-down.
 - **No mode-frequency shift:** −1.9 ± 1.3 and −0.06 ± 1.4 ppm/min. A shift term reduces χ² by ≤ 1%, and magnitude drift does not correlate with the local log-slope (−0.02, −0.01).
 - **Not the scope:** LOOPBACK moved about 10× less over 27 minutes.
@@ -829,7 +830,14 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
 - **S1 → S2 (Oct 26):** H moved about 3% (median complex change; p90 about 10%), against 0.5% within-session scatter.
   - Not a uniform gain change (−0.35 ± 0.27% CH1, −0.41 ± 0.35% CH2) and not a common mode shift (−2 ± 21, −41 ± 27 ppm). Together they explain 5–12% of the variance.
   - Proportional to H and not the feedthrough: individual modes changed by different amounts.
-- **TCF:** not estimable yet. The air temperature moved only 0.2°C between S1 and S2. A useful estimate needs sessions a few °C apart.
+- **S2 → S3 (Oct 27 diary §6):** H moved about 10% (median complex change; p90 about 28%), three times S1 → S2, across the post-S2 lead move and the evening steps.
+  - Again mode by mode: gain plus common shift explain 8–13% of the variance; no common shift resolved (+31 ± 73, +43 ± 83 ppm).
+  - Proportional to H and not the feedthrough, as for S1 → S2.
+  - New: a common phase change of about −3.4° on both paths, flat across frequency. Not the scope (LOOPBACK) and not a preamp bandwidth loss (that would grow with frequency). Source open.
+  - This change is what pushed the held-out superposition tier over 0.10 (Oct 27 diary §5).
+- **TCF:** not estimable from the sessions. The air temperature spanned only 22.2–22.9°C across S1–S3. A useful estimate needs sessions a few °C apart.
+- **Limit (Oct 27):** the grid method takes the slope of H from points ±500 Hz apart, wider than the 120–310 Hz linewidths, so it cannot follow a single mode. Overnight it found no common shift while zoom fits showed CH2 modes moving by up to 141 ppm. The shift numbers above understate mode shifts.
+- **Provisional TCF (overnight zoom fits, Oct 27 diary §2):** 8 of 10 modes +43 to +89 ppm per °C of Pico die temperature; one mode about 0, one −131. A plate thermometer is still needed.
 
 ### O3: Drive-stop-aligned direct ringdown (T4.2 retry)
 
@@ -849,6 +857,10 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
   - resolved mode doublets on the square plate (also O7);
   - per-session frequency stability.
 - **Needs:** a plate thermometer (DS18B20) to turn frequency stability into a TCF (O2).
+- **Overnight result (Oct 27 diary §2):** ±400 Hz sweeps of 6 modes per path, fitted every 20 minutes (`overnight_20261026/fit_zoom.py`).
+  - 10 of 12 windows give f₀ (Q 146–732, linewidths 124–308 Hz), repeatable to 5–13 ppm between undisturbed cycles.
+  - The evening steps moved modes by a median 82 and 41 ppm (up to 957 ppm), in both directions. Temperature moved most modes together, +43 to +89 ppm per °C (die proxy).
+  - Two windows hold more than one mode, and the two paths peak 52 Hz apart near 90.5 kHz. Doublets need the planned ±1.5 kHz sweeps.
 
 ### O5: TX termination as a Q knob
 
@@ -900,3 +912,4 @@ After S2, the red TX2 lead was moved to another hole in the same breadboard row,
 - **Relay qualification:** measure feedthrough with the relay in both positions, since its contacts sit on the RX path.
 - **Handling test:** after the rework, make a full set of session pin moves. H should stay within the cycle-to-cycle repeatability of the Oct 26 overnight run (cycle 2 against cycle 1: 0.8% median complex change).
 - **Repeat series:** if FT-1 is repeated on the modified fixture, preregister it as a new series before any data. It does not replace S1–S3.
+- **Why it matters (S3, Oct 27):** the post-S2 change persisted through the cold start (S2 → S3: 10% median complex change), and that change is what pushed the held-out tier over 0.10, while within-session superposition held at the S1–S2 level. A repeat series tests linearity only if the fixture holds still between sessions.

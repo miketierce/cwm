@@ -800,7 +800,7 @@ At MEMS scale with 10⁴ cells, one kernel evaluation replaces **100 million mul
 
 1. **Non-volatile kernel** — the hidden layer (plate spectra) persists without power, indefinitely. Every other analog platform needs power to hold state (except memristors, which degrade).
 2. **Physically unclonable** — every device has a unique kernel (PUF + compute in one object). No two CWM arrays compute identically → hardware-rooted inference security.
-3. **Zero-write kernel** — the kernel is set at manufacture (geometry determines spectrum). No programming step, no write endurance limit, no drift. The "weights" are the laws of physics applied to a specific geometry.
+3. **Zero-write kernel** — the kernel is set at manufacture (geometry determines spectrum). No programming step and no write endurance limit. The "weights" are the laws of physics applied to a specific geometry. **It is not drift-free:** temperature and mounting stress move the mode frequencies, and the response at a fixed drive frequency moves by up to ~2Q times the fractional shift (bench, Oct 26–27: 3–15% after handling, ~5% over a ~1°C room change). Cross-session use needs temperature compensation (§1.1) and a reference mode or closed-loop mode tracking, with drift budgeted in linewidths (f/Q).
 4. **Multi-task via electronic readout** — switch between tasks by changing $\mathbf{w}$ in one clock cycle. No physical reconfiguration.
 5. **Combined memory + compute + identity** — same device is simultaneously a PUF, a CAM, and a kernel machine. No other platform fuses all three.
 

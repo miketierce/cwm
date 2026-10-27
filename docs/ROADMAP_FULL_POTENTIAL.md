@@ -125,7 +125,9 @@ C4 is the honest answer to "how far can this go": the _identical_ architecture �
 
 ## 7. Phase D — MEMS Realization (+4 → +18 months)
 
-Everything that failed at macro is predicted to work at micro because both bottlenecks (§2) scale favorably: f ∝ 1/L (more modes per Hz of drift), Q rises 10–100× in vacuum-packaged fused silica, and per-die transducer arrays give rank-N readout natively.
+Everything that failed at macro is predicted to work at micro because both bottlenecks (§2) scale favorably: f ∝ 1/L, Q rises 10–100× in vacuum-packaged fused silica, and per-die transducer arrays give rank-N readout natively.
+
+**One requirement scales against us: frequency stability.** Thermal and stress drift is fractional, so it is budgeted in linewidths (f/Q), not Hz. The response at a fixed drive frequency moves by up to ~2Q times the fractional mode shift, so a 10% response budget holds each mode to ~5% of its linewidth: ~5 ppm at Q = 10⁴ and ~0.5 ppm at 10⁵. The bench plate's fused-silica modes moved by about +40 to +90 ppm/°C (provisional, Oct 27 diary), so an uncompensated die would need ~0.1°C stability at Q = 10⁴ and ~0.01°C at 10⁵. The design needs stress-isolated anchors and a reference mode, temperature compensation or closed-loop mode tracking. Bench evidence: handling and room temperature moved H by 3–15% at Q ≈ 150–750 (Oct 26–27 diaries).
 
 ### D1. Paper design first (no fab dependency)
 

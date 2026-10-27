@@ -1,0 +1,67 @@
+{
+ "reference": "FT1-S1",
+ "session": "FT1-S3",
+ "status": "exploratory, not preregistered",
+ "model": "ln(H_other / H_ref) = g + c * P(f); freq_drift_ppm = -1e6 * c",
+ "selection": {
+  "min_rx_snr_both_sessions": 30.0,
+  "max_neighbor_phase_step_rad": 2.0,
+  "excluded": "alias-flagged (order 1) and grid edges"
+ },
+ "glass_air_temp_c": {
+  "FT1-S1": [
+   22.7,
+   22.7
+  ],
+  "FT1-S3": [
+   22.2,
+   22.2
+  ]
+ },
+ "channels": {
+  "F1": {
+   "n_points": 112,
+   "gain_only": {
+    "g_mag_pct": -0.2172569183792477,
+    "g_phase_deg": -1.9860633802157373,
+    "chi2": 855902.1170530329
+   },
+   "gain_plus_shift": {
+    "g_mag_pct": -0.24585108671946543,
+    "g_mag_se": 0.8298939490108832,
+    "g_phase_deg": -1.9216075032633329,
+    "g_phase_se": 0.4861524129036377,
+    "freq_drift_ppm": -20.86230255782572,
+    "freq_drift_se": 64.48895715571585,
+    "chi2": 855497.0005003612
+   },
+   "chi2_reduction_by_shift_term": 0.0004733211246941149,
+   "weighted_variance_explained_gain_only": 0.03596093957770441,
+   "weighted_variance_explained_gain_plus_shift": 0.03641723963003263,
+   "median_abs_change_pct": 8.212855475055667,
+   "median_abs_residual_pct": 8.7906601242101
+  },
+  "F2": {
+   "n_points": 109,
+   "gain_only": {
+    "g_mag_pct": 2.1099579369139727,
+    "g_phase_deg": -2.473886874692177,
+    "chi2": 979972.6730357519
+   },
+   "gain_plus_shift": {
+    "g_mag_pct": 2.104410962722033,
+    "g_mag_se": 0.9183176083856129,
+    "g_phase_deg": -2.409400377639787,
+    "g_phase_se": 0.49699041232881874,
+    "freq_drift_ppm": -31.07063174680874,
+    "freq_drift_se": 68.80911702004322,
+    "chi2": 979044.1941457393
+   },
+   "chi2_reduction_by_shift_term": 0.0009474538582145975,
+   "weighted_variance_explained_gain_only": 0.11126747842699991,
+   "weighted_variance_explained_gain_plus_shift": 0.11210951148348502,
+   "median_abs_change_pct": 10.112033346668607,
+   "median_abs_residual_pct": 9.898076225962022
+  }
+ }
+}
