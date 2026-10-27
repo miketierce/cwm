@@ -785,7 +785,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 
 ## Tier 11 — October 2026 Review: Missed Angles and New Data (2026-10-23)
 
-> Context: FT-1 is in progress on plate D (`docs/lab_diary_20261023.md`). S1 is done; S2 and S3 are pending.
+> Context: FT-1 is in progress on plate D (`docs/lab_diary_20261023.md`, `docs/lab_diary_20261026.md`). S1 and S2 are done; S3 is pending.
 >
 > Sources reviewed: lab diaries, `SIDEBARS.md`, the unmerged idea branches, `ROADMAP_FULL_POTENTIAL.md`, and this worklist.
 >
@@ -803,6 +803,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 | O8  | FT-3 tone plan and TX summing network                    | OPEN — planning                | FT-1 complete                       | No harmonic or intermod product within ±3 bins of any tone                   |
 | O9  | NSF Phase I (Nov 4 deadline)                             | CHECK STATUS                   | pitch invitation                    | Decide whether FT-1 data feeds an application                                |
 | O10 | Measurement-chain decisions                              | OPEN — after FT-2              | FT-2 results                        | Digitizer resolution, preamp de-embedding, drive-power (energy) axis        |
+| O11 | Fixture rework and FT-1 repeat series                    | OPEN — after S3; preregister    | FT-1 S3 outcome                     | A full set of session pin moves leaves H unchanged within run-to-run repeatability |
 
 ### Holds while FT-1 is running
 
@@ -884,3 +885,18 @@ The `docs/nsf-november-2026-application` branch targets **November 4, 2026** and
 - **Digitizer:** the 8-bit scope sets the −40 dBc floor and dominates the harmonic residuals (Oct 23). If FT-2's K_eff turns out quantization-limited, a higher-resolution digitizer is the upgrade.
 - **Preamp de-embedding:** inject a known divided drive into the preamp input to separate plate H from the electronics.
 - **Energy axis:** measure drive power (Ch A across the 220 Ω) for FT's joules-per-query cost axis.
+
+### O11: Fixture rework and FT-1 repeat series (after S3)
+
+After S2, the red TX2 lead was moved to another hole in the same breadboard row, which may have pulled on the TX2 PZT. A lasting change followed: about ±7% per mode on both paths (`docs/lab_diary_20261026.md` §5–6). The PZTs are glued with cyanoacrylate and the plate stands in foam. Both paths changed, so the most plausible cause is a shift in the plate's seating rather than the TX2 bond alone. Two more steps that evening (8.5% and 3.4% on CH2) happened while the plate was idle, in the gaps that contained bench visits (§7).
+
+- **Rework (operator plan):** a single plate in an isolated chamber, with a relay switching the RX between the live and dummy PZT, so only the scope-channel leads move by hand.
+  - Set the plate's position with fixed supports or stops, not friction.
+  - Anchor each PZT's leads to the chamber with a slack loop to the PZT, so pin changes don't reach the plate.
+- **Hands-off extras (suggested):**
+  - a temperature sensor inside the chamber, read by software, which fills the plate-temperature gap and removes bench visits for readings;
+  - a second relay on the scope-channel taps, which would make a whole session hands-off.
+  - Driving relays from the Pico needs a firmware change, which is allowed after S3.
+- **Relay qualification:** measure feedthrough with the relay in both positions, since its contacts sit on the RX path.
+- **Handling test:** after the rework, make a full set of session pin moves. H should stay within the cycle-to-cycle repeatability of the Oct 26 overnight run (cycle 2 against cycle 1: 0.8% median complex change).
+- **Repeat series:** if FT-1 is repeated on the modified fixture, preregister it as a new series before any data. It does not replace S1–S3.
