@@ -1,0 +1,239 @@
+{
+ "schema": "cwm-ft1-manifest-v1",
+ "session_id": "XG-F2-A5",
+ "provenance": "physical",
+ "created_utc": "2026-10-28T17:31:45.379854+00:00",
+ "device_id": "plateD",
+ "fixture_id": "foam-vertical",
+ "split_role": "unassigned",
+ "channel_roles": {
+  "A": "acoustic RX PZT -> OPA2134 preamp -> Ch A (per-block cha_tap, rx_element, gain_config)",
+  "B": "electrical tap of the driven TX at its PZT terminal, after its 220 ohm resistor (per-block chb_tap)"
+ },
+ "reference_mode": "simultaneous_electrical",
+ "tx": {
+  "waveform": "3.3 V CMOS square via 220 ohm per TX; duty set by A<ch>, so harmonics 2f, 3f, ... also drive the plate (first three recorded per trial, all in raw)",
+  "inactive_tx": "undriven NCO pins held LOW; unused corner PZTs left unconnected"
+ },
+ "grid": {
+  "spec": "exact-harmonic pilot: FT-1 30-60 kHz drives moved to periods divisible by 6 (<=40 kHz) or 2; targets 2d, 3d replace FT-1 points within 250 Hz",
+  "n": 188,
+  "sha256": "68fe0e9af9bbc16330d424c72118b6611ec49b1390e87b8bfc1ca92584405d0f"
+ },
+ "acquisition": {
+  "scope": {
+   "variant": "2204A",
+   "batch_serial": "12789/1174",
+   "cal_date": "11Dec25"
+  },
+  "sample_interval_ns": 1280,
+  "sample_rate_hz": 781250.0,
+  "samples_per_channel": 3072,
+  "window_s": 0.00393216,
+  "enabled_channels": 2,
+  "adc_bits": 8,
+  "range_mV": {
+   "A": 5000,
+   "B": 5000
+  },
+  "coupling": "DC",
+  "timebase": 7,
+  "averaging_policy": "none: one acquisition per trial, raw retained",
+  "demod": "Hann-weighted single-frequency DFT at freq_actual_hz, peak amplitude, phase at sample 0",
+  "voltage_convention": "peak",
+  "freq_actual_model": "SYS_CLK / round(SYS_CLK / f)"
+ },
+ "thresholds_frozen": {
+  "ref_snr_min": 20.0,
+  "clip_fraction_of_full_scale": 0.98,
+  "exclusion_policy": "exclude trials with scope overflow or clip on either channel"
+ },
+ "environment": {
+  "power_cycled_since_previous_session": false,
+  "remounted_since_previous_session": false,
+  "temperature_policy": "manual air temperature next to the plate per block; RP2040 die temperature logged as a proxy"
+ },
+ "unavailable": {
+  "plate_surface_temp": "not measured; air temperature next to the plate recorded instead",
+  "wiring_photo_sha256": "no photo of the current topology recorded",
+  "channel_gain_delay_calibration": "derive from this session LOOPBACK blocks",
+  "preamp_transfer_deembedding": "not measured; Ch A/Ch B ratio is an end-to-end transfer"
+ },
+ "exclusions": [],
+ "blocks": [
+  {
+   "block_id": "QUIET_20261028_123143",
+   "state": "QUIET",
+   "channel": "F2",
+   "started_utc": "2026-10-28T17:31:45.379854+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+8.33/-8.33 (measured Oct 28 11:20)",
+   "ambient_temp_c": null,
+   "tap_check": null,
+   "ended_utc": "2026-10-28T17:31:49.302758+00:00",
+   "n_trials": 50,
+   "repeats": 50,
+   "seed": 2305800288,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_end": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_every_200": [],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/XG-F2-A5/QUIET_20261028_123143.npz",
+   "raw_sha256": "4d0ce49e883377a920a64d560b4dbb1c15d9f368a679e98582d776ac60addd94",
+   "trials_sha256_after_block": "5e0449754102f4fc3dad116192bbea732ec3e5be82edb00bf894eb7f51cfad00",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/xgrid_20261028/xgrid_pilot.json",
+   "git": {
+    "commit": "367f36a6508e69e91edfe7f16732a4fe958884d6",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "exact-harmonic grid pilot (Oct 28 section 5): QUIET, Ch A range 5000 mV; prereg sha256 a9f9721e32485226"
+  },
+  {
+   "block_id": "GLASS_20261028_123149",
+   "state": "GLASS",
+   "channel": "F2",
+   "started_utc": "2026-10-28T17:31:51.078247+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+8.33/-8.33 (measured Oct 28 11:20)",
+   "ambient_temp_c": null,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 50.94,
+    "chB_mV": 583.36
+   },
+   "ended_utc": "2026-10-28T17:36:02.260901+00:00",
+   "n_trials": 3760,
+   "repeats": 20,
+   "seed": 2842212785,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_end": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793208724.25,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793208736.96,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793208750.14,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793208763.37,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793208776.67,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793208789.96,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793208803.26,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793208816.46,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793208829.77,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793208843.03,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793208856.29,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793208869.55,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793208882.89,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793208896.21,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793208909.51,
+     "reply": "TEMP:21.89C ADC:14195"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793208922.83,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793208936.13,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793208949.37,
+     "reply": "TEMP:21.43C ADC:14211"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/XG-F2-A5/GLASS_20261028_123149.npz",
+   "raw_sha256": "a341acc6cbd26654ccca9809832a0d35eb97ebc13cdb9bfb0f13e73b93c2b8ca",
+   "trials_sha256_after_block": "227a8c7792c4c8ce71d7839b2cd71fc76e7ddf3a3ababdd6ab8925cf1f2ffb12",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/xgrid_20261028/xgrid_pilot.json",
+   "git": {
+    "commit": "367f36a6508e69e91edfe7f16732a4fe958884d6",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "exact-harmonic grid pilot (Oct 28 section 5): GLASS CH2, Ch A range 5000 mV, start wiring; prereg sha256 a9f9721e32485226"
+  }
+ ],
+ "notes": "exact-harmonic grid pilot (Oct 28 section 5): QUIET, Ch A range 5000 mV; prereg sha256 a9f9721e32485226"
+}

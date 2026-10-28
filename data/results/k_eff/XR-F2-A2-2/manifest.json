@@ -1,0 +1,239 @@
+{
+ "schema": "cwm-ft1-manifest-v1",
+ "session_id": "XR-F2-A2-2",
+ "provenance": "physical",
+ "created_utc": "2026-10-27T19:11:04.065278+00:00",
+ "device_id": "plateD",
+ "fixture_id": "foam-vertical",
+ "split_role": "unassigned",
+ "channel_roles": {
+  "A": "acoustic RX PZT -> OPA2134 preamp -> Ch A (per-block cha_tap, rx_element, gain_config)",
+  "B": "electrical tap of the driven TX at its PZT terminal, after its 220 ohm resistor (per-block chb_tap)"
+ },
+ "reference_mode": "simultaneous_electrical",
+ "tx": {
+  "waveform": "3.3 V CMOS square via 220 ohm per TX; duty set by A<ch>, so harmonics 2f, 3f, ... also drive the plate (first three recorded per trial, all in raw)",
+  "inactive_tx": "undriven NCO pins held LOW; unused corner PZTs left unconnected"
+ },
+ "grid": {
+  "spec": "30000:120000:500",
+  "n": 181,
+  "sha256": "da7029ea6e802a0d71f08bc0bf0fa5889f1e7a61a9eb254dce1bcaad61676aa2"
+ },
+ "acquisition": {
+  "scope": {
+   "variant": "2204A",
+   "batch_serial": "12789/1174",
+   "cal_date": "11Dec25"
+  },
+  "sample_interval_ns": 1280,
+  "sample_rate_hz": 781250.0,
+  "samples_per_channel": 3072,
+  "window_s": 0.00393216,
+  "enabled_channels": 2,
+  "adc_bits": 8,
+  "range_mV": {
+   "A": 2000,
+   "B": 5000
+  },
+  "coupling": "DC",
+  "timebase": 7,
+  "averaging_policy": "none: one acquisition per trial, raw retained",
+  "demod": "Hann-weighted single-frequency DFT at freq_actual_hz, peak amplitude, phase at sample 0",
+  "voltage_convention": "peak",
+  "freq_actual_model": "SYS_CLK / round(SYS_CLK / f)"
+ },
+ "thresholds_frozen": {
+  "ref_snr_min": 20.0,
+  "clip_fraction_of_full_scale": 0.98,
+  "exclusion_policy": "exclude trials with scope overflow or clip on either channel"
+ },
+ "environment": {
+  "power_cycled_since_previous_session": false,
+  "remounted_since_previous_session": false,
+  "temperature_policy": "manual air temperature next to the plate per block; RP2040 die temperature logged as a proxy"
+ },
+ "unavailable": {
+  "plate_surface_temp": "not measured; air temperature next to the plate recorded instead",
+  "wiring_photo_sha256": "no photo of the current topology recorded",
+  "channel_gain_delay_calibration": "derive from this session LOOPBACK blocks",
+  "preamp_transfer_deembedding": "not measured; Ch A/Ch B ratio is an end-to-end transfer"
+ },
+ "exclusions": [],
+ "blocks": [
+  {
+   "block_id": "QUIET_20261027_141102",
+   "state": "QUIET",
+   "channel": "F2",
+   "started_utc": "2026-10-27T19:11:04.065278+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+8.76/-8.76 (measured 12:13)",
+   "ambient_temp_c": null,
+   "tap_check": null,
+   "ended_utc": "2026-10-27T19:11:08.279761+00:00",
+   "n_trials": 50,
+   "repeats": 50,
+   "seed": 2297994397,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_end": "TEMP:20.96C ADC:14227",
+   "nco_die_temp_every_200": [],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/XR-F2-A2-2/QUIET_20261027_141102.npz",
+   "raw_sha256": "dac306250b25fc7828071c3e579815b09dc03ac7b901e6bfd182d28006363424",
+   "trials_sha256_after_block": "f4acf69b889dbf5cddb37f3ea41fe9e27d5b1760900aa93829489c3552c93c01",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "367f36a6508e69e91edfe7f16732a4fe958884d6",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "range test (section 8): QUIET, Ch A range 2000 mV; prereg sha256 f7545135b2f094ca"
+  },
+  {
+   "block_id": "GLASS_20261027_141108",
+   "state": "GLASS",
+   "channel": "F2",
+   "started_utc": "2026-10-27T19:11:10.072856+00:00",
+   "cha_tap": "preamp output, pin 1 via 47 ohm",
+   "chb_tap": "F2 TX junction (PZT terminal, after 220 ohm)",
+   "rx_element": "live RX PZT, top centre",
+   "gain_config": "x11: Rf 47k, Rg 4.7k + 10uF series (x1 at DC)",
+   "rails_v": "+8.76/-8.76 (measured 12:13)",
+   "ambient_temp_c": null,
+   "tap_check": {
+    "freq_hz": 60000,
+    "chA_mV": 51.31,
+    "chB_mV": 581.12
+   },
+   "ended_utc": "2026-10-27T19:15:27.411534+00:00",
+   "n_trials": 3620,
+   "repeats": 20,
+   "seed": 669318287,
+   "settle_s": 0.04,
+   "duty_permille": 100,
+   "duty_reply": "AMP2:100",
+   "nco_status_start": "CLK:126000000 CH1:0(0.0Hz) CH2:0(0.0Hz) CH3:0(0.0Hz) CH4:0(0.0Hz) CH5:0(0.0Hz) CH6:0(0.0Hz) CH7:0(0.0Hz) CH8:0(0.0Hz) PWM[9:0,10:0,11:0,12:0,13:0,14:0,15:0] DUTY:500,500,500,500,500,500,500,500 PH:0.00deg PHA:0,0,0,0 PHB:0,0,0,0 RUN:N",
+   "nco_die_temp_start": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_end": "TEMP:21.43C ADC:14211",
+   "nco_die_temp_every_200": [
+    {
+     "after_trial": 200,
+     "t_unix": 1793128284.77,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 400,
+     "t_unix": 1793128298.8,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 600,
+     "t_unix": 1793128312.81,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 800,
+     "t_unix": 1793128326.83,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 1000,
+     "t_unix": 1793128340.75,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1200,
+     "t_unix": 1793128354.84,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 1400,
+     "t_unix": 1793128368.89,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 1600,
+     "t_unix": 1793128383.01,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 1800,
+     "t_unix": 1793128397.08,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2000,
+     "t_unix": 1793128411.15,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 2200,
+     "t_unix": 1793128425.22,
+     "reply": "TEMP:20.96C ADC:14227"
+    },
+    {
+     "after_trial": 2400,
+     "t_unix": 1793128439.45,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2600,
+     "t_unix": 1793128453.51,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 2800,
+     "t_unix": 1793128467.61,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3000,
+     "t_unix": 1793128481.7,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3200,
+     "t_unix": 1793128495.66,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3400,
+     "t_unix": 1793128509.66,
+     "reply": "TEMP:21.43C ADC:14211"
+    },
+    {
+     "after_trial": 3600,
+     "t_unix": 1793128523.76,
+     "reply": "TEMP:20.96C ADC:14227"
+    }
+   ],
+   "nco_die_temp_note": "RP2040 die temperature, not resonator temperature",
+   "raw_file": "data/raw/k_eff/XR-F2-A2-2/GLASS_20261027_141108.npz",
+   "raw_sha256": "3ac952a72facbc1af13e26c82fea3a401eb2b0655a838ae50680561495fa4af2",
+   "trials_sha256_after_block": "0d3093d627d070f471a9916faaf67a1aeff21ec69e49e278c528fcefcbecddc2",
+   "n_overflow": 0,
+   "n_clip": 0,
+   "grid_file": "data/results/k_eff/ft1_frozen_grid.json",
+   "git": {
+    "commit": "367f36a6508e69e91edfe7f16732a4fe958884d6",
+    "code_dirty": false,
+    "worktree_dirty": true
+   },
+   "script": "tools/k_eff_ft1_capture.py",
+   "script_sha256": "05f3c36cf0c09b9294bd8463a14fb66b550958d3216e41eeb701ca6c9557862e",
+   "operator_notes": "range test (section 8): GLASS CH2, Ch A range 2000 mV, start wiring; prereg sha256 f7545135b2f094ca"
+  }
+ ],
+ "notes": "range test (section 8): QUIET, Ch A range 2000 mV; prereg sha256 f7545135b2f094ca"
+}

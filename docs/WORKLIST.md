@@ -787,6 +787,8 @@ These are not failures of our hardware — they're mathematical constraints on t
 
 > Context: FT-1 ran on plate D (`docs/lab_diary_20261023.md`, `docs/lab_diary_20261026.md`, `docs/lab_diary_20261027.md`). S1–S3 are complete; the preregistered outcome is **INCONCLUSIVE** on both paths (Oct 27 diary §5).
 >
+> Post hoc (Oct 27 diary §9): the FT-1 analysis compared about half the harmonics with grid points 15–52 Hz away, an NCO rounding effect its preregistration ruled out by mistake. At matched frequencies superposition holds to a median 1.2–2.0% within a session and 7–8% held out. The outcome stands; the rerun must fix the grid.
+>
 > Sources reviewed: lab diaries, `SIDEBARS.md`, the unmerged idea branches, `ROADMAP_FULL_POTENTIAL.md`, and this worklist.
 >
 > Everything here is exploratory unless preregistered before data.
@@ -796,7 +798,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 | O1  | Within-block drift decomposition (S1–S3)                 | DONE — gain drift, all three sessions | FT1-S1, FT1-S2, FT1-S3        | Separate uniform gain drift from mode-frequency drift                        |
 | O2  | Cross-session drift + first TCF estimate                 | S1–S3 DONE (grid method); TCF provisional | FT1-S2/S3, air temperature log | Inter-session mode-frequency shift vs temperature, separated from gain       |
 | O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | OPEN — allowed between sessions | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
-| O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | PARTIAL — overnight ±400 Hz fits (Oct 27); doublets open | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
+| O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | PARTIAL — overnight ±400 Hz fits (Oct 27); ±1.5 kHz doublet sweeps recorded, not analyzed | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
 | O5  | TX termination as a Q knob (shorted vs open)             | OPEN — after FT-1 S3           | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
 | O6  | Bench temporal regime: on-Pico sequencer + linear MC     | OPEN — after S3; preregister    | NCO sequencer, continuous capture   | **Kill: linear MC < 3 at ≥ 2 kHz symbol rate** (bench analog of roadmap G6)  |
 | O7  | Sidebar bench checks (S9 Zeeman doublets, S19 chiral)    | OPEN — after FT-1              | O4; putty only after FT-1           | Simulation predictions confirmed or killed on real doublets                  |
@@ -838,6 +840,7 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
 - **TCF:** not estimable from the sessions. The air temperature spanned only 22.2–22.9°C across S1–S3. A useful estimate needs sessions a few °C apart.
 - **Limit (Oct 27):** the grid method takes the slope of H from points ±500 Hz apart, wider than the 120–310 Hz linewidths, so it cannot follow a single mode. Overnight it found no common shift while zoom fits showed CH2 modes moving by up to 141 ppm. The shift numbers above understate mode shifts.
 - **Provisional TCF (overnight zoom fits, Oct 27 diary §2):** 8 of 10 modes +43 to +89 ppm per °C of Pico die temperature; one mode about 0, one −131. A plate thermometer is still needed.
+- **Second night (Oct 27–28, Oct 27 diary §10):** the die cooled 3.3°C with nobody at the bench. Eight of ten windows gave +24 to +90 ppm per °C (R² 0.83–0.94); F1:45000 and F2:73500 wandered by up to 141 ppm without following temperature. H changed about 2% per °C on CH2 and 1.2% on CH1.
 
 ### O3: Drive-stop-aligned direct ringdown (T4.2 retry)
 
@@ -861,6 +864,7 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
   - 10 of 12 windows give f₀ (Q 146–732, linewidths 124–308 Hz), repeatable to 5–13 ppm between undisturbed cycles.
   - The evening steps moved modes by a median 82 and 41 ppm (up to 957 ppm), in both directions. Temperature moved most modes together, +43 to +89 ppm per °C (die proxy).
   - Two windows hold more than one mode, and the two paths peak 52 Hz apart near 90.5 kHz. Doublets need the planned ±1.5 kHz sweeps.
+- **±1.5 kHz sweeps (Oct 27 diary §10):** around the 10 strongest S3 peaks per path, every 30 minutes of the undisturbed baseline, with raw captures. Not yet analyzed.
 
 ### O5: TX termination as a Q knob
 
@@ -894,7 +898,7 @@ The `docs/nsf-november-2026-application` branch targets **November 4, 2026** and
 
 ### O10: Measurement-chain decisions (after FT-2)
 
-- **Digitizer:** the 8-bit scope sets the −40 dBc floor and dominates the harmonic residuals (Oct 23). If FT-2's K_eff turns out quantization-limited, a higher-resolution digitizer is the upgrade.
+- **Digitizer:** the 8-bit scope sets the −40 dBc floor (Oct 23). It does not dominate the FT-1 harmonic residuals, as Oct 23 and Oct 26 concluded: the preregistered range test (Oct 27 diary §8–9) was not confirmed, and the main term was the NCO frequency offset. At matched frequencies, Ch A on ±2 V lowers the 2f error by a quarter to a third (CH2 1.2% → 0.8%, CH1 1.6% → 1.2%; Oct 28 diary §3) and leaves 3f at 1.2–1.5%. If FT-2's K_eff turns out quantization-limited, a higher-resolution digitizer is the upgrade.
 - **Preamp de-embedding:** inject a known divided drive into the preamp input to separate plate H from the electronics.
 - **Energy axis:** measure drive power (Ch A across the 220 Ω) for FT's joules-per-query cost axis.
 
@@ -908,8 +912,12 @@ After S2, the red TX2 lead was moved to another hole in the same breadboard row,
 - **Hands-off extras (suggested):**
   - a temperature sensor inside the chamber, read by software, which fills the plate-temperature gap and removes bench visits for readings;
   - a second relay on the scope-channel taps, which would make a whole session hands-off.
-  - Driving relays from the Pico needs a firmware change, which is allowed after S3.
+  - Driving relays from the Pico needs a firmware change, which is allowed after S3. The Nano and 16-channel board need none: relay 8 switches on its own (`T1`/`T0`, `tools/relay_mux.py` `tx_on`/`tx_off`) while one of the others is selected, which covers Ch B (TX1/TX2), Ch A (preamp/loopback) and the RX (live/dummy).
 - **Relay qualification:** measure feedthrough with the relay in both positions, since its contacts sit on the RX path.
 - **Handling test:** after the rework, make a full set of session pin moves. H should stay within the cycle-to-cycle repeatability of the Oct 26 overnight run (cycle 2 against cycle 1: 0.8% median complex change).
 - **Repeat series:** if FT-1 is repeated on the modified fixture, preregister it as a new series before any data. It does not replace S1–S3.
 - **Why it matters (S3, Oct 27):** the post-S2 change persisted through the cold start (S2 → S3: 10% median complex change), and that change is what pushed the held-out tier over 0.10, while within-session superposition held at the S1–S2 level. A repeat series tests linearity only if the fixture holds still between sessions.
+- **Undisturbed baseline (Oct 27 diary §10):** with nobody at the bench, H moved about 1.5% in 4.5 hours on CH2 at steady temperature (sweep-to-sweep floor 0.8%). Overnight the die cooled 3.3°C and H moved up to 7.7%, tracking temperature at about 2% per °C. Sessions for a held-out tier must stay within a fraction of a degree of each other, or the plate temperature must be logged. The handling map (part 2) follows.
+- **Rerun grid (Oct 27 diary §9; piloted Oct 28 §5–6):** move each 30–60 kHz drive to a command whose NCO period divides by 6 (≤ 40 kHz) or 2, at most 36 Hz, and put its harmonics 2d and 3d on the grid (`xgrid_20261028/make_grid.py`). Every harmonic then lands on its target's own frequency.
+  - **Pilot (CH2, preregistered, outcome partial):** with Ch A on ±2 V, within-session medians of 1.0% at 2f and 1.4% at 3f, with 90% of points under 2%. On ±5 V, 3f missed the bounds narrowly (median 0.028, against 0.025), from Ch A quantization.
+  - **For the rerun:** this grid with Ch A on ±2 V, and the within-session threshold set from these floors with a margin.
