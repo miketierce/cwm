@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/miketierce/cwm/schemas/wave_gate_candidate.schema.json",
+  "title": "CWM Wave-Gate Scaling Candidate",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "medium",
+    "wave_type",
+    "provenance",
+    "physics",
+    "integration",
+    "unknowns"
+  ],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "candidate_id": {"type": "string", "minLength": 1},
+    "medium": {"type": "string", "minLength": 1},
+    "wave_type": {"type": "string", "minLength": 1},
+    "provenance": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["measured_cwm", "literature", "foundry", "modeled", "hypothesis"]},
+        "source": {"type": ["string", "null"]},
+        "source_date": {"type": ["string", "null"], "format": "date"},
+        "notes": {"type": "string"}
+      }
+    },
+    "physics": {
+      "type": "object",
+      "required": ["wave_velocity_m_s", "operating_frequency_hz", "pitch_lambda_multiple"],
+      "properties": {
+        "wave_velocity_m_s": {"type": "number", "exclusiveMinimum": 0},
+        "operating_frequency_hz": {"type": "number", "exclusiveMinimum": 0},
+        "pitch_lambda_multiple": {"type": "number", "exclusiveMinimum": 0},
+        "q_factor": {"type": ["number", "null"], "exclusiveMinimum": 0},
+        "nonlinearity": {"type": "string"},
+        "tunability": {"type": "string"},
+        "confinement": {"type": "string"},
+        "transduction": {"type": "string"}
+      }
+    },
+    "integration": {
+      "type": "object",
+      "properties": {
+        "effective_dimensions": {"type": ["number", "null"], "minimum": 0},
+        "query_rate_hz": {"type": ["number", "null"], "minimum": 0},
+        "isolation_db": {"type": ["number", "null"]},
+        "drive_energy_j": {"type": ["number", "null"], "minimum": 0},
+        "sense_energy_j": {"type": ["number", "null"], "minimum": 0},
+        "conversion_energy_j": {"type": ["number", "null"], "minimum": 0},
+        "regeneration_energy_j": {"type": ["number", "null"], "minimum": 0},
+        "calibration_samples": {"type": ["integer", "null"], "minimum": 0},
+        "fabrication_notes": {"type": "string"}
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    }
+  },
+  "additionalProperties": true
+}
