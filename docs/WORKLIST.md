@@ -797,7 +797,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 | --- | -------------------------------------------------------- | ------------------------------ | ----------------------------------- | ---------------------------------------------------------------------------- |
 | O1  | Within-block drift decomposition (S1–S3)                 | DONE — gain drift, all three sessions | FT1-S1, FT1-S2, FT1-S3        | Separate uniform gain drift from mode-frequency drift                        |
 | O2  | Cross-session drift + first TCF estimate                 | S1–S3 DONE (grid method); TCF provisional | FT1-S2/S3, air temperature log | Inter-session mode-frequency shift vs temperature, separated from gain       |
-| O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | OPEN — allowed between sessions | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
+| O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | DONE (Oct 29) — passed: ringdown 9/10 modes, ring-up 8/10 | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
 | O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | PARTIAL — overnight ±400 Hz fits (Oct 27); ±1.5 kHz doublet sweeps recorded, not analyzed | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
 | O5  | TX termination as a Q knob (shorted vs open)             | OPEN — after FT-1 S3           | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
 | O6  | Bench temporal regime: on-Pico sequencer + linear MC     | OPEN — after S3; preregister    | NCO sequencer, continuous capture   | **Kill: linear MC < 3 at ≥ 2 kHz symbol rate** (bench analog of roadmap G6)  |
@@ -851,6 +851,11 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
   - `Foff` silences the NCO cleanly (the old AWG could not be silenced);
   - capture aligned to the physical drive stop seen on Ch B, so host timing jitter is irrelevant. Use the scope's dropout trigger if the ps2000 SDK exposes it (to verify); otherwise stream continuously and locate the stop edge in software.
 - **Record:** the off-state termination (pins LOW: TX shorted through 220 Ω). This is the existing behavior and must be kept identical in O5's comparison.
+- **Result (Oct 29 diary §1–3; preregistered):**
+  - **Method:** `ringdown_20261029/ring_capture.py`, free-running blocks with the stop located on Ch B. The scope starts 7.80 ± 0.05 ms after the NCO acts, so every stop was caught. Ring-ups were triggered on the first drive pulse.
+  - **Ringdown:** 9 of 10 usable modes within 20% of Q/πf₀, with R² ≥ 0.9.
+  - **Ring-up:** 8 of 10.
+  - Ringdowns run a median 9% shorter than the linewidth predicts. Ring-up and ringdown disagree near 90.5 and 97 kHz, the suspected doublets.
 
 ### O4: Zoom sweeps
 
