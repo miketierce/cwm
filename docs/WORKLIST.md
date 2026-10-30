@@ -799,7 +799,7 @@ These are not failures of our hardware — they're mathematical constraints on t
 | O2  | Cross-session drift + first TCF estimate                 | S1–S3 DONE (grid method); TCF provisional | FT1-S2/S3, air temperature log | Inter-session mode-frequency shift vs temperature, separated from gain       |
 | O3  | Drive-stop-aligned direct ringdown (T4.2 retry)          | DONE (Oct 29) — passed: ringdown 9/10 modes, ring-up 8/10 | none (same wiring and firmware)     | Exponential decay R² ≥ 0.9 on ≥ 5 modes; τ within 20% of O4 bandwidth Q      |
 | O4  | Zoom sweeps: f₀, Q, doublets for the top modes per path  | PARTIAL — overnight ±400 Hz fits (Oct 27); ±1.5 kHz doublet sweeps recorded, not analyzed | none                                | Resolved f₀ and Q per mode; doublets identified or bounded                   |
-| O5  | TX termination as a Q knob (shorted vs open)             | OPEN — after FT-1 S3           | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
+| O5  | TX termination as a Q knob (shorted vs open)             | DONE (Oct 29) — small: τ ×1.065, f +21–40 Hz | NCO firmware tri-state option, O3   | τ_open / τ_shorted per mode; how much Q the transducers hide (F7)            |
 | O6  | Bench temporal regime: on-Pico sequencer + linear MC     | OPEN — after S3; preregister    | NCO sequencer, continuous capture   | **Kill: linear MC < 3 at ≥ 2 kHz symbol rate** (bench analog of roadmap G6)  |
 | O7  | Sidebar bench checks (S9 Zeeman doublets, S19 chiral)    | OPEN — after FT-1              | O4; putty only after FT-1           | Simulation predictions confirmed or killed on real doublets                  |
 | O8  | FT-3 tone plan and TX summing network                    | OPEN — planning                | FT-1 complete                       | No harmonic or intermod product within ±3 bins of any tone                   |
@@ -874,6 +874,14 @@ Apply the same decomposition across sessions: ln H_S2 − ln H_S1 = g + c·P(f),
 ### O5: TX termination as a Q knob
 
 Ringdown with TX pins held LOW (shorted through 220 Ω) versus tri-stated (open). The difference measures electrical damping by the transducers, the hidden-Q question F7 ("intrinsic Q masked by PZT loading"). Also noted, but not measured, in `LAB_DIARY.md` ("PZT in open-circuit has slightly less damping than shorted"). This is the input the MEMS τ projections depend on most.
+- **Result (Oct 29 diary §9–14; preregistered, confirmed on a rerun):**
+  - **Method:** `termination_20261029/`, using the new NCO firmware v2.1 `Fz` stop (pins high-impedance). Each cycle ends with `Foff` or `Fz` in random order, on the TX2 path.
+  - **Loss:** τ_open/τ_grounded median 1.065 (−1% to +15% across four modes), reproduced to within 0.01. The ring-up control is 1.00.
+  - **F7 answered:** the TX terminations hide little Q. The May "intrinsic Q ≈ 2,000–2,760" is ruled out for them, and the loss is mechanical.
+  - **Frequency:** opening the TXs raises the free-decay frequencies by 21–40 Hz (218–439 ppm), a reversible electrical frequency control.
+  - **Correction:** the TX PZT terminal measures ≥ 4.1 nF (about 650 Ω at 60 kHz), not 1.2 nF.
+  - **Part A's first check failed:** its threshold assumed 1.2 nF (§11). The rerun's rescaled check passed.
+  - **Still open:** support loss, Part C (out of the foam, after the teardown).
 
 ### O6: Bench temporal regime
 
