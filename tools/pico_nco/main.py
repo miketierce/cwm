@@ -19,6 +19,10 @@ Architecture (v2.0, 2026-06-22 — maxed for WL-B10 multipoint arrays):
     GP24/GP25 (not on the header), so 7 PWM tones is the clean header maximum.
   - 3.3 V square wave → 220 Ω → PZT (fundamental ≈ 2.1 Vpp). PWM also square.
 
+v2.1 (2026-10-29): adds Fz, a stop that leaves the drive pins high-impedance, so a
+ringdown can be compared with the TX PZTs open-circuit instead of grounded through
+220 Ω (worklist O5). Every other command is unchanged.
+
 Serial protocol (USB CDC, appears as /dev/cu.usbmodem*):
   F1:<hz>..F8:<hz>   Set PIO channel frequency (0 = off). CH1-4 Block A, CH5-8 Block B.
   F9:<hz>..F15:<hz>  Set PWM channel frequency (0 = off). Block C.
@@ -27,6 +31,7 @@ Serial protocol (USB CDC, appears as /dev/cu.usbmodem*):
                      Fundamental amplitude ∝ sin(π·duty); 500 = max. ('amplitude of
                      a fixed mode' encoding, T3.4.)
   Foff               Stop all outputs (pins LOW)
+  Fz                 Stop all outputs, pins high-impedance (TX PZTs open-circuit)
   PHASE:<deg>        Set CH2 phase offset relative to CH1 (alias of PH2)
   PH1:<deg>..PH4:<deg>  Per-channel absolute phase for Block A (CH1-4, PIO0).
   PH5:<deg>..PH8:<deg>  Per-channel absolute phase for Block B (CH5-8, PIO1).
@@ -240,6 +245,7 @@ pwm_freq = {ch: 0 for ch in PWM_PINS}
 pwm_duty = {ch: 500 for ch in PWM_PINS}
 pwm_obj = {ch: None for ch in PWM_PINS}
 running = False
+pins_floating = False  # True after Fz: idle drive pins are inputs, not driven LOW
 
 # PIO0 control register for simultaneous SM start
 PIO0_BASE = 0x50200000
@@ -432,7 +438,7 @@ def start_oscillators():
 
 def stop_oscillators():
     """Stop all channels, force outputs LOW."""
-    global sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7, running
+    global sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7, running, pins_floating
 
     # Disable all state machines in PIO 0 and PIO 1 (Blocks A and B)
     machine.mem32[PIO_CTRL] = 0x00
@@ -473,6 +479,46 @@ def stop_oscillators():
         machine.Pin(p, machine.Pin.OUT).value(0)
 
     running = False
+    pins_floating = False
+
+
+def float_outputs():
+    """Stop all channels and leave every drive pin high-impedance (TX PZTs open-circuit).
+
+    The state machines stop with the same single register write as stop_oscillators(),
+    then the pins are released as inputs with no pull instead of being driven LOW.
+    The next F command (via start_oscillators -> stop_oscillators) drives them again.
+    """
+    global sm0, sm1, sm2, sm3, sm4, sm5, sm6, sm7, running, pins_floating
+
+    machine.mem32[PIO_CTRL] = 0x00
+    machine.mem32[PIO1_CTRL] = 0x00
+    for p in (PIN_CH1, PIN_CH2, PIN_CH3, PIN_CH4, PIN_CH5, PIN_CH6, PIN_CH7, PIN_CH8):
+        machine.Pin(p, machine.Pin.IN, None)
+    sm0 = None
+    sm1 = None
+    sm2 = None
+    sm3 = None
+    sm4 = None
+    sm5 = None
+    sm6 = None
+    sm7 = None
+
+    try:
+        machine.mem32[PWM_EN] = 0
+    except Exception:
+        pass
+    for ch, gp in PWM_PINS.items():
+        if pwm_obj[ch] is not None:
+            try:
+                pwm_obj[ch].deinit()
+            except Exception:
+                pass
+            pwm_obj[ch] = None
+        machine.Pin(gp, machine.Pin.IN, None)
+
+    running = False
+    pins_floating = True
 
 
 # ─── Command Handler ─────────────────────────────────────────────
@@ -661,6 +707,21 @@ def handle_command(cmd):
             pwm_freq[ch] = 0
         return "DDS:0"
 
+    # ── Fz / FZ — Stop all, drive pins high-impedance (TX PZTs open-circuit) ──
+    elif cmd in ("Fz", "FZ", "fz"):
+        float_outputs()
+        current_freq1 = 0
+        current_freq2 = 0
+        current_freq3 = 0
+        current_freq4 = 0
+        current_freq5 = 0
+        current_freq6 = 0
+        current_freq7 = 0
+        current_freq8 = 0
+        for ch in PWM_PINS:
+            pwm_freq[ch] = 0
+        return "DDS:Z"
+
     # ── PHASE:<degrees> — Set CH2 phase offset ──
     elif cmd.startswith("PHASE:"):
         try:
@@ -786,7 +847,8 @@ def handle_command(cmd):
             f"PH:{current_phase:.2f}deg "
             f"PHA:{current_phase1:.0f},{current_phase:.0f},{current_phase3:.0f},{current_phase4:.0f} "
             f"PHB:{current_phase5:.0f},{current_phase6:.0f},{current_phase7:.0f},{current_phase8:.0f} "
-            f"RUN:{'Y' if running else 'N'}"
+            f"RUN:{'Y' if running else 'N'} "
+            f"IDLE:{'Z' if pins_floating else 'LOW'}"
         )
 
     # ── FREQ? — Show eigenmode accuracy ──
@@ -847,7 +909,7 @@ def handle_command(cmd):
 def main():
     # Startup banner
     print("")
-    print("CWM Pico NCO v2.0 — 15 tones (8 PIO + 7 PWM), 3 phase-coherent blocks")
+    print("CWM Pico NCO v2.1 — 15 tones (8 PIO + 7 PWM), 3 phase-coherent blocks")
     print(f"CLK:{SYS_CLK/1e6:.0f}MHz  BlockA GP2-5  BlockB GP6-9  BlockC PWMx7")
     print("OK")
 
