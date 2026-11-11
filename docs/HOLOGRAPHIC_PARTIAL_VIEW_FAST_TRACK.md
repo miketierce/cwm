@@ -295,7 +295,7 @@ Therefore test reconstruction separately.
 
 ### Spectral version
 
-Train a mapping from subset (Y_S) to omitted features (Y_{ar S}) using training sessions only.
+Train a mapping from subset `Y_S` to omitted features `Y_notS` using training sessions only.
 
 Evaluate complete held sessions.
 
