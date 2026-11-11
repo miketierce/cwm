@@ -410,6 +410,80 @@ This is where a genuine CWM-specific "holographic readout" architecture might em
 
 ---
 
+## 9.1 HP-5R — resonance recognition bridge
+
+The partial-view result may be more useful as a **physical recognition architecture** than as a memory-bit architecture.
+
+See:
+
+`docs/RESONANCE_RECOGNITION_ARCHITECTURE.md`
+
+The working abstraction is:
+
+```
+structured query x
+  -> configured physical operator H_theta
+  -> compact compatibility score s
+```
+
+For multiple responders:
+
+```
+winner = argmax_k s_k
+```
+
+This creates a direct bridge between HP-1 distributed partial-view identity and a useful physical-computing task:
+
+> Can incomplete but related queries make the correct configured resonant responder win on a later session without retuning?
+
+### HP-5R / RR-1 first experiment
+
+Use two physically distinct frozen responder configurations, at least two query classes, and multiple nonidentical exemplars per class.
+
+Freeze on training sessions:
+
+- responder configuration;
+- query family;
+- score observable;
+- normalization;
+- decision rule.
+
+Primary later-session endpoint:
+
+```
+argmax(s_A, s_B) = declared class
+```
+
+Report the responder margin and full-H drift together.
+
+Required controls include:
+
+- source-only classification;
+- direct digital matched-filter/correlation baseline;
+- ELECTRICAL_ONLY / LOOPBACK;
+- randomized responder labels;
+- randomized query labels.
+
+Then repeat with predeclared partial queries to connect the experiment to HP-1.
+
+### Claim boundary
+
+Success would support:
+
+> physical compatibility / resonance recognition with distributed partial-query tolerance.
+
+It would **not** by itself show:
+
+- reconstruction of omitted modes;
+- associative completion in the medium;
+- a hologram;
+- learned weights inside the glass;
+- mutually coupled dynamical computation.
+
+Those remain separate levels.
+
+---
+
 ## 10. FT-1 lessons that are mandatory here
 
 The October 2026 FT-1 campaign established that cross-session transfer variation can dominate prediction.
