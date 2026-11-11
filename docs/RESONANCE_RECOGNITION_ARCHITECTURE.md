@@ -476,3 +476,108 @@ For E4, the advantage must additionally survive a space-relevant system model an
 These are escalation thresholds, not claims about current CWM performance.
 
 Current status at creation: **E0 / exploratory**.
+
+
+---
+
+## 14. Intuition bridge — "finding the words for the vibe"
+
+A useful human analogy for the partial-query hypothesis is an experience that is difficult to describe directly.
+
+A person may have a dream, event, memory, or emotional experience that feels rich and specific, but when they try to explain it they cannot transmit the complete internal state. They can only offer fragments:
+
+- an image;
+- a phrase;
+- a tone;
+- a feeling;
+- one especially salient detail.
+
+Another person may still recognize what is being pointed at from those fragments.
+
+The analogy is:
+
+> **the partial description does not contain the whole experience; it contains enough relational structure to home in on a compatible representation.**
+
+For CWM, the technical version is:
+
+```
+rich state X
+   -> incomplete query q = P(X)
+   -> physical compatibility with H_k
+   -> compact score s_k
+   -> selected / expressible representation
+```
+
+or, for multiple responders:
+
+```
+q
+ -> H_A -> s_A
+ -> H_B -> s_B
+ -> H_C -> s_C
+
+selected representation = argmax_k s_k
+```
+
+The informal word **"vibe"** refers only to the surviving relational structure in the partial query.
+
+It does **not** imply a new physical quantity, consciousness, semantic understanding, or any nonstandard information channel.
+
+### Three increasingly strong claims
+
+#### V1 — recognition from a partial query
+
+A partial query is sufficient to identify the correct class or responder.
+
+This is the level most closely motivated by the existing retrospective CWM evidence.
+
+#### V2 — invariant representation from different partial views
+
+Different incomplete views of the same underlying state independently select the same representation.
+
+This is stronger than ordinary top-feature recognition and connects directly to the distributed partial-view / holographic-like hypothesis.
+
+#### V3 — physical completion / attractor recovery
+
+The partial query does more than identify a label: the physical system evolves toward or reconstructs a fuller associated state.
+
+This would be genuine associative completion / attractor behavior.
+
+**V3 has not been demonstrated.**
+
+### Scientific translation
+
+The public/intuitive phrase:
+
+> "You cannot put the whole experience into words, but you can communicate enough of the vibe for someone to recognize what you mean."
+
+maps to the testable statement:
+
+> **A partial query need not explicitly encode the full target state if it preserves enough relational structure to reliably select the corresponding physical representation.**
+
+This suggests a useful architectural principle:
+
+> **recognition before reconstruction**
+
+and a possible information-processing principle:
+
+> **meaning by relational fit rather than meaning by explicit symbol assignment.**
+
+These are working abstractions, not claims that the current hardware has semantic understanding.
+
+### Experiment implication
+
+Future RR / HP experiments should test whether this analogy has substance by asking:
+
+1. Do multiple different partial queries derived from the same full state select the same frozen responder?
+2. Does that remain true for later sessions without retuning?
+3. Does performance degrade gracefully as more of the query is removed?
+4. Does one privileged feature explain the result, or is identity genuinely distributed?
+5. Can a selected responder produce a richer recoverable state than was explicitly present in the query?
+6. Does a coupled RR-5 system physically converge toward the same attractor from multiple incomplete starting conditions?
+
+The first four establish distributed recognition.
+
+Question 5 separates **recognition** from **reconstruction**.
+
+Question 6 would be the strongest physical realization of the "vibe -> expressible representation" analogy.
