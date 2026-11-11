@@ -444,3 +444,35 @@ HP-1 partial-view held-session test
 The immediate experiment is intentionally modest:
 
 > **Can the same frozen family of incomplete queries make the correct one of two physical responders win on a later session, without retuning?**
+
+
+---
+
+## 13. External strategic escalation gate
+
+A successful RR experiment does not automatically justify a transformative-compute or orbital-compute claim.
+
+Use:
+
+[EXTERNAL_STRATEGIC_ESCALATION_GATE.md](EXTERNAL_STRATEGIC_ESCALATION_GATE.md)
+
+The maturity ladder is:
+
+- **E0** — internal / exploratory;
+- **E1** — publishable physical result;
+- **E2** — qualified compute primitive;
+- **E3** — strategic hardware result with a measured whole-system advantage;
+- **E4** — orbital / high-impact escalation after scaling, orbital-overhead and replication gates pass.
+
+For E3, the preregistered strategic threshold requires either:
+
+- at least **10x measured improvement on one mission-relevant whole-system metric**, or
+- at least **3x measured improvement on two independent primary metrics**,
+
+at matched task quality with complete system costs counted.
+
+For E4, the advantage must additionally survive a space-relevant system model and retain at least a **2x net mission-critical advantage** (or a quantified enabling property), plus second-device/fresh-analysis replication and adversarial baseline review.
+
+These are escalation thresholds, not claims about current CWM performance.
+
+Current status at creation: **E0 / exploratory**.
