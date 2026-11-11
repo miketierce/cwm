@@ -66,17 +66,17 @@ Do not skip levels in claims.
 
 ### H-PV — distributed partial-view identity
 
-For task (T), full response (Y), and partial observation (Y_S) over subset (S):
+For task `T`, full response `Y`, and partial observation `Y_S` over subset `S`:
 
-> There exists a nontrivial range of spectral or spatial aperture fractions (|S|/|Y| < 1) for which a decoder frozen on training sessions preserves the required held-session task performance across many independently selected subsets.
+> There exists a nontrivial range of spectral or spatial aperture fractions `|S| / |Y| < 1` for which a decoder frozen on training sessions preserves the required held-session task performance across many independently selected subsets.
 
 The important quantity is not one lucky subset.
 
 Measure the distribution:
 
-[
-P(	ext{task passes}mid 	ext{aperture fraction}).
-]
+```
+P(task passes | aperture fraction)
+```
 
 A useful distributed representation should degrade gracefully as aperture shrinks rather than collapse whenever one privileged feature disappears.
 
@@ -84,33 +84,30 @@ A useful distributed representation should degrade gracefully as aperture shrink
 
 Let the unknown complex response be:
 
-[
-U = A e^{i	heta}
-]
+```
+U = A * exp(i * theta)
+```
 
 and a known coherent reference be:
 
-[
-R e^{iphi}.
-]
+```
+R * exp(i * phi)
+```
 
 For a square-law observable:
 
-[
-I(phi)=|U+R e^{iphi}|^2.
-]
+```
+I(phi) = |U + R * exp(i * phi)|^2
+```
 
 Four phase settings can isolate the two quadratures:
 
-[
-I(0)-I(pi) = 4operatorname{Re}(UR^*)
-]
+```
+I(0) - I(pi) = 4 * Re(U * R*)
+I(pi/2) - I(3pi/2) = 4 * Im(U * R*)
+```
 
-[
-I(pi/2)-I(3pi/2) = 4operatorname{Im}(UR^*).
-]
-
-After reference calibration, these are sufficient to reconstruct (U) up to the declared calibration convention.
+where `R*` denotes the complex conjugate of the reference. After reference calibration, these are sufficient to reconstruct `U` up to the declared calibration convention.
 
 This is ordinary coherent interferometry / phase-shifting holographic logic. It is not quantum.
 
@@ -244,11 +241,7 @@ If only two simultaneous scope channels are available:
 
 Do not call sequential measurements simultaneous.
 
-For each receiver (r_j), measure:
-
-[
-Y_j(f).
-]
+For each receiver `r_j`, measure `Y_j(f)`.
 
 ### Tests
 
