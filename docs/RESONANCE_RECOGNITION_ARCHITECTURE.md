@@ -581,3 +581,37 @@ The first four establish distributed recognition.
 Question 5 separates **recognition** from **reconstruction**.
 
 Question 6 would be the strongest physical realization of the "vibe -> expressible representation" analogy.
+
+
+---
+
+## 15. Doppler-inspired harmonic frequency-warp FT-0 (2026-11-14)
+
+The existing FT-1 S1-S3 complex transfer summaries have now been replayed under idealized **common harmonic frequency shifts**, using a digital search on three measured complex H values per query.
+
+Detailed result, exact script and serialized data:
+
+- [Doppler FT-0 evidence note](DOPPLER_FT0_RETROSPECTIVE_NOTE.md)
+- [Replay script](../tools/doppler_ft0_existing.mjs)
+- [Stored model outputs](../data/results/doppler/doppler_ft0_20261114.json)
+
+The exploratory held-S3 result for 80 modeled path/fundamental/shift scenarios:
+
+| Condition | Shift identified with path known | Path identified without compensating shift | Joint path + shift, digital search |
+| --- | ---: | ---: | ---: |
+| GLASS | 80/80 | 46/80 | 78/80 |
+| LOOPBACK | 78/80 | 44/80 | 78/80 |
+| ELECTRICAL_ONLY | 51/80 | 47/80 | 41/80 |
+
+Interpretation:
+
+- The **glass is very frequency-sensitive**; a +500 Hz fundamental warp changes the normalized three-harmonic response shape much more than observed S1-to-S3 shape drift in this restricted replay.
+- **No unassisted shift invariance is shown**; fixed-path identity classification weakens without explicit offset compensation.
+- The **digital** shift-aware template search works for glass, but also nearly perfectly for LOOPBACK. Do not promote the high accuracy into a unique physical compute primitive.
+- Noise-stress modeling finds a larger useful spectral-shape contrast for glass at matched simulated noise, but no matched **measured** systems advantage.
+
+This is neither a real moving-source Doppler experiment nor fresh simultaneous multitone data. The 500 Hz command grid and up-to-52 Hz NCO mismatch limit precision. FT-1's original preregistered verdict remains **INCONCLUSIVE**.
+
+**Next:** RR-DOP-1 bench validation with unknown shifts, clock-qualified exact harmonic tones, glass/electrical/loopback/source controls, later-session zero-retuning, a physical compact-score readout and matched conventional analog/digital cost baselines.
+
+**Strategic escalation:** still E0 / exploratory under the [external strategic escalation gate](EXTERNAL_STRATEGIC_ESCALATION_GATE.md).
