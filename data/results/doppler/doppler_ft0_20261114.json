@@ -1,0 +1,693 @@
+{
+  "model_id": "CWM-DOP-FT0-RETROSPECTIVE-20261114",
+  "maturity": "EXPLORATORY MODEL / NOT HARDWARE DOPPLER / NOT PREREGISTERED",
+  "input": "3 historical 181-point (500Hz step) FT1 transfer summaries for GLASS, ELECTRICAL_ONLY, LOOPBACK and two TX paths",
+  "split": {
+    "train": [
+      "FT1-S1",
+      "FT1-S2"
+    ],
+    "test": "FT1-S3"
+  },
+  "synthetic_query": {
+    "fundamentals_hz": [
+      31000,
+      32000,
+      33000,
+      34000,
+      35000,
+      36000,
+      37000,
+      38000
+    ],
+    "shift_of_fundamental_hz": [
+      -1000,
+      -500,
+      0,
+      500,
+      1000
+    ],
+    "harmonics": [
+      1,
+      2,
+      3
+    ],
+    "response": "H(f)*unit-amplitude line at each of the three frequencies, summed only conceptually; no fresh simultaneous-tritone capture",
+    "n_scenarios_per_condition": 80,
+    "frequency_warp": "f0 + delta, 2*(f0 + delta), 3*(f0 + delta)",
+    "nco_caveat": "Recorded FT1 NCO actual harmonic frequencies may differ from commanded grid by 15-52Hz; model does not correct this"
+  },
+  "estimator": "least-squares complex scalar fit per candidate (absorbs common gain and phase), normalized L2 residual across harmonics; templates are arithmetic means of S1/S2 H; optional magnitude-only comparator",
+  "model_accuracy": [
+    {
+      "condition": "GLASS",
+      "harmonics": 2,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 75,
+      "blind_path_hit": 45,
+      "joint_path_hit": 73,
+      "joint_shift_hit": 70,
+      "joint_both_hit": 70,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 16
+        },
+        "500": {
+          "total": 16,
+          "hits": 9
+        },
+        "1000": {
+          "total": 16,
+          "hits": 5
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 7
+        },
+        "-500": {
+          "total": 16,
+          "hits": 8
+        }
+      }
+    },
+    {
+      "condition": "GLASS",
+      "harmonics": 2,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 56,
+      "blind_path_hit": 53,
+      "joint_path_hit": 59,
+      "joint_shift_hit": 43,
+      "joint_both_hit": 41,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 15
+        },
+        "500": {
+          "total": 16,
+          "hits": 10
+        },
+        "1000": {
+          "total": 16,
+          "hits": 10
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 10
+        },
+        "-500": {
+          "total": 16,
+          "hits": 8
+        }
+      }
+    },
+    {
+      "condition": "GLASS",
+      "harmonics": 3,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 80,
+      "blind_path_hit": 46,
+      "joint_path_hit": 78,
+      "joint_shift_hit": 78,
+      "joint_both_hit": 78,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 16
+        },
+        "500": {
+          "total": 16,
+          "hits": 5
+        },
+        "1000": {
+          "total": 16,
+          "hits": 6
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-500": {
+          "total": 16,
+          "hits": 10
+        }
+      }
+    },
+    {
+      "condition": "GLASS",
+      "harmonics": 3,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 76,
+      "blind_path_hit": 48,
+      "joint_path_hit": 75,
+      "joint_shift_hit": 72,
+      "joint_both_hit": 72,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 16
+        },
+        "500": {
+          "total": 16,
+          "hits": 8
+        },
+        "1000": {
+          "total": 16,
+          "hits": 7
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 7
+        },
+        "-500": {
+          "total": 16,
+          "hits": 10
+        }
+      }
+    },
+    {
+      "condition": "LOOPBACK",
+      "harmonics": 2,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 67,
+      "blind_path_hit": 48,
+      "joint_path_hit": 75,
+      "joint_shift_hit": 65,
+      "joint_both_hit": 62,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 15
+        },
+        "500": {
+          "total": 16,
+          "hits": 7
+        },
+        "1000": {
+          "total": 16,
+          "hits": 10
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 8
+        },
+        "-500": {
+          "total": 16,
+          "hits": 8
+        }
+      }
+    },
+    {
+      "condition": "LOOPBACK",
+      "harmonics": 2,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 42,
+      "blind_path_hit": 48,
+      "joint_path_hit": 64,
+      "joint_shift_hit": 33,
+      "joint_both_hit": 32,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 13
+        },
+        "500": {
+          "total": 16,
+          "hits": 8
+        },
+        "1000": {
+          "total": 16,
+          "hits": 10
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-500": {
+          "total": 16,
+          "hits": 8
+        }
+      }
+    },
+    {
+      "condition": "LOOPBACK",
+      "harmonics": 3,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 78,
+      "blind_path_hit": 44,
+      "joint_path_hit": 80,
+      "joint_shift_hit": 78,
+      "joint_both_hit": 78,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 16
+        },
+        "500": {
+          "total": 16,
+          "hits": 8
+        },
+        "1000": {
+          "total": 16,
+          "hits": 6
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-500": {
+          "total": 16,
+          "hits": 5
+        }
+      }
+    },
+    {
+      "condition": "LOOPBACK",
+      "harmonics": 3,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 60,
+      "blind_path_hit": 40,
+      "joint_path_hit": 74,
+      "joint_shift_hit": 57,
+      "joint_both_hit": 55,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 15
+        },
+        "500": {
+          "total": 16,
+          "hits": 6
+        },
+        "1000": {
+          "total": 16,
+          "hits": 7
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 7
+        },
+        "-500": {
+          "total": 16,
+          "hits": 5
+        }
+      }
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "harmonics": 2,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 37,
+      "blind_path_hit": 40,
+      "joint_path_hit": 44,
+      "joint_shift_hit": 28,
+      "joint_both_hit": 25,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 14
+        },
+        "500": {
+          "total": 16,
+          "hits": 4
+        },
+        "1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 8
+        },
+        "-500": {
+          "total": 16,
+          "hits": 5
+        }
+      }
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "harmonics": 2,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 31,
+      "blind_path_hit": 43,
+      "joint_path_hit": 46,
+      "joint_shift_hit": 31,
+      "joint_both_hit": 22,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 12
+        },
+        "500": {
+          "total": 16,
+          "hits": 7
+        },
+        "1000": {
+          "total": 16,
+          "hits": 13
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 4
+        },
+        "-500": {
+          "total": 16,
+          "hits": 7
+        }
+      }
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "harmonics": 3,
+      "method": "complex",
+      "n_cases": 80,
+      "known_path_shift_hit": 51,
+      "blind_path_hit": 47,
+      "joint_path_hit": 61,
+      "joint_shift_hit": 42,
+      "joint_both_hit": 41,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 15
+        },
+        "500": {
+          "total": 16,
+          "hits": 9
+        },
+        "1000": {
+          "total": 16,
+          "hits": 8
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-500": {
+          "total": 16,
+          "hits": 6
+        }
+      }
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "harmonics": 3,
+      "method": "magnitude",
+      "n_cases": 80,
+      "known_path_shift_hit": 34,
+      "blind_path_hit": 46,
+      "joint_path_hit": 53,
+      "joint_shift_hit": 26,
+      "joint_both_hit": 20,
+      "blind_path_by_shift": {
+        "0": {
+          "total": 16,
+          "hits": 11
+        },
+        "500": {
+          "total": 16,
+          "hits": 9
+        },
+        "1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-1000": {
+          "total": 16,
+          "hits": 9
+        },
+        "-500": {
+          "total": 16,
+          "hits": 8
+        }
+      }
+    }
+  ],
+  "relative_shape_sensitivity": [
+    {
+      "condition": "GLASS",
+      "independent_base_path_pairs": 16,
+      "median_session_S1_to_S3_shape_delta": 0.08775703281649834,
+      "median_plus500Hz_shape_delta": 0.8289176229511671,
+      "median_plus1000Hz_shape_delta": 0.8582616880429358,
+      "ratio_plus500_to_crosssession": 9.44559765009888
+    },
+    {
+      "condition": "LOOPBACK",
+      "independent_base_path_pairs": 16,
+      "median_session_S1_to_S3_shape_delta": 0.001419116463633133,
+      "median_plus500Hz_shape_delta": 0.006680892475057494,
+      "median_plus1000Hz_shape_delta": 0.007674143795549503,
+      "ratio_plus500_to_crosssession": 4.7077830793066076
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "independent_base_path_pairs": 16,
+      "median_session_S1_to_S3_shape_delta": 0.13819311479284724,
+      "median_plus500Hz_shape_delta": 0.10189277407860978,
+      "median_plus1000Hz_shape_delta": 0.1109039495945722,
+      "ratio_plus500_to_crosssession": 0.7373216403099966
+    }
+  ],
+  "measurement_variability": [
+    {
+      "condition": "GLASS",
+      "path": "F1",
+      "median_H_magnitude_CV": 0.004505905387779965,
+      "median_H_phase_std_deg": 0.2513285789530353,
+      "median_RX_SNR_ratio": 373.3707955505698
+    },
+    {
+      "condition": "GLASS",
+      "path": "F2",
+      "median_H_magnitude_CV": 0.0055314711368682655,
+      "median_H_phase_std_deg": 0.2837521850480176,
+      "median_RX_SNR_ratio": 361.32416083038527
+    },
+    {
+      "condition": "LOOPBACK",
+      "path": "F1",
+      "median_H_magnitude_CV": 0.001159772873047874,
+      "median_H_phase_std_deg": 0.06385603271480766,
+      "median_RX_SNR_ratio": 1204.5830838035904
+    },
+    {
+      "condition": "LOOPBACK",
+      "path": "F2",
+      "median_H_magnitude_CV": 0.001094141256752409,
+      "median_H_phase_std_deg": 0.06881113525997415,
+      "median_RX_SNR_ratio": 1201.5797317588233
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "path": "F1",
+      "median_H_magnitude_CV": 0.12079329406453508,
+      "median_H_phase_std_deg": 11.769843181169238,
+      "median_RX_SNR_ratio": 10.949245015761548
+    },
+    {
+      "condition": "ELECTRICAL_ONLY",
+      "path": "F2",
+      "median_H_magnitude_CV": 0.12411343659929945,
+      "median_H_phase_std_deg": 11.700944519999688,
+      "median_RX_SNR_ratio": 12.637987648593342
+    }
+  ],
+  "monte_carlo": {
+    "seed": 3429671,
+    "jitters_per_synthetic_case": 50,
+    "noise_assumption": "independent multiplicative Gaussian amplitude noise and Gaussian phase jitter per harmonic, with either measured S3 per-frequency CV/phase_std or common stress level; not observed hardware data",
+    "results": [
+      {
+        "condition": "GLASS",
+        "noise": "model_from_recorded_CV_and_phase_std",
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.975,
+        "shift_accuracy": 0.975,
+        "joint_accuracy": 0.975
+      },
+      {
+        "condition": "GLASS",
+        "noise": 0.0025,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.975,
+        "shift_accuracy": 0.975,
+        "joint_accuracy": 0.975
+      },
+      {
+        "condition": "GLASS",
+        "noise": 0.005,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.975,
+        "shift_accuracy": 0.975,
+        "joint_accuracy": 0.975
+      },
+      {
+        "condition": "GLASS",
+        "noise": 0.01,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.975,
+        "shift_accuracy": 0.975,
+        "joint_accuracy": 0.975
+      },
+      {
+        "condition": "GLASS",
+        "noise": 0.02,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.975,
+        "shift_accuracy": 0.975,
+        "joint_accuracy": 0.975
+      },
+      {
+        "condition": "GLASS",
+        "noise": 0.05,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.97525,
+        "shift_accuracy": 0.97525,
+        "joint_accuracy": 0.97525
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": "model_from_recorded_CV_and_phase_std",
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.95925,
+        "shift_accuracy": 0.93625,
+        "joint_accuracy": 0.9235
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": 0.0025,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.86325,
+        "shift_accuracy": 0.8075,
+        "joint_accuracy": 0.7695
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": 0.005,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.71175,
+        "shift_accuracy": 0.565,
+        "joint_accuracy": 0.494
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": 0.01,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.57825,
+        "shift_accuracy": 0.378,
+        "joint_accuracy": 0.28825
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": 0.02,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.527,
+        "shift_accuracy": 0.27125,
+        "joint_accuracy": 0.178
+      },
+      {
+        "condition": "LOOPBACK",
+        "noise": 0.05,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.503,
+        "shift_accuracy": 0.23975,
+        "joint_accuracy": 0.13375
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": "model_from_recorded_CV_and_phase_std",
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.57675,
+        "shift_accuracy": 0.3345,
+        "joint_accuracy": 0.252
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": 0.0025,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.76175,
+        "shift_accuracy": 0.53175,
+        "joint_accuracy": 0.5175
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": 0.005,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.76425,
+        "shift_accuracy": 0.53225,
+        "joint_accuracy": 0.5165
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": 0.01,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.75575,
+        "shift_accuracy": 0.52575,
+        "joint_accuracy": 0.50475
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": 0.02,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.765,
+        "shift_accuracy": 0.5365,
+        "joint_accuracy": 0.51025
+      },
+      {
+        "condition": "ELECTRICAL_ONLY",
+        "noise": 0.05,
+        "total_synthetic_jitters": 4000,
+        "path_accuracy": 0.71925,
+        "shift_accuracy": 0.488,
+        "joint_accuracy": 0.44375
+      }
+    ]
+  },
+  "caveats": [
+    "Classification targets an idealized known family of shifted harmonic input frequencies. This is not actual Doppler from a moving source.",
+    "80 scenarios reuse the same measured transfer-map points; they are not 80 independent physical captures and no binomial CI is valid.",
+    "Model generated using single-frequency grid measurements; simultaneous multitone behavior and continuous acceleration have not been captured.",
+    "Source frequency/shift is commanded in this replay. This is an observability check, not evidence of source-blind Doppler sensing or compute advantage.",
+    "NCO frequency mismatches and 500Hz grid limit precision, especially for shifts much smaller than 500Hz.",
+    "F1 and F2 are distinct drive paths on a shared physical plate, not task-trained competing resonator devices.",
+    "Loopback shares high deterministic shift accuracy, so high accuracy alone is not a glass-specific computation result.",
+    "The model uses a digital template search and ADC-derived H, not a physical low-output compatibility score.",
+    "Per-trial raw waveform validation and measured whole-system power/latency/ADC/resource cost are not part of this retrospective model.",
+    "E24's 4/4 frequency-offset run is not a valid Doppler robustness check because its scorer applies enrollment peak labels to the unshifted frequencies; this model does not reuse its claimed accuracy.",
+    "FT1 originally ended INCONCLUSIVE under preregistered rules, not reversed by this post hoc model."
+  ],
+  "decision": {
+    "physics_replay": "PROMISING: physical response shape is much more shift-sensitive than the glass cross-session shape drift at the tested 500-1000Hz offsets",
+    "invariant_recognition": "NOT SHOWN: blind path identity drops on shifted queries; shift-aware digital template search restores it",
+    "glass_specific_compute": "NOT SHOWN: loopback also predicts shift/path accurately and no analog score cost advantage was measured",
+    "next_step": "Fresh shifted physical multitone queries, unknown shift to the scorer, electrical/loopback/source-only controls, and independent later sessions; target <500Hz shifts using finer capture grid"
+  },
+  "sources": [
+    {
+      "path": "data/results/k_eff/FT1-S1/derived/summary.json",
+      "git_blob_sha": "c106e8083a5bab06e2f27ed81eaae2d8f8d2d58f"
+    },
+    {
+      "path": "data/results/k_eff/FT1-S2/derived/summary.json",
+      "git_blob_sha": "92b68d61f006aec19ae593cd45225c3189759a79"
+    },
+    {
+      "path": "data/results/k_eff/FT1-S3/derived/summary.json",
+      "git_blob_sha": "365ca01e40a09fad8deb30246d2884d0a17cc357"
+    }
+  ]
+}
