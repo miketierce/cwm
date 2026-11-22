@@ -1,3 +1,5 @@
+> **Archived, November 2026.** The project concluded that the glass plate is a stable, linear acoustic filter that does not store information or compute. Headline figures below (80/80 classification, 4,096 states, CHSH S = 2.73 to 2.83, 16.5M cycles at 0.22%, zero feedthrough, 767 modes, the rod prototype's 98.5 dB and Q = 10,000) do not mean what they say; see [docs/CLOSEOUT_202611.md](docs/CLOSEOUT_202611.md) for what the data show. Earlier text is kept unchanged as a record.
+
 # CWM — Coherent Wave Memory
 
 **Physics validation of wave-interference information processing in glass acoustic resonators.**

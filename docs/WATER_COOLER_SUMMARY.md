@@ -1,3 +1,5 @@
+> **Archived, November 2026.** The project concluded that the glass plate is a stable, linear acoustic filter that does not store information or compute. Headline figures below (80/80 classification, 4,096 states, CHSH S = 2.73 to 2.83, 16.5M cycles at 0.22%, zero feedthrough, 767 modes, the rod prototype's 98.5 dB and Q = 10,000) do not mean what they say; see [../docs/CLOSEOUT_202611.md](../docs/CLOSEOUT_202611.md) for what the data show. Earlier text is kept unchanged as a record.
+
 # CWM — The Water Cooler Summary
 
 *Updated: 21 October 2026. Evidence base: lab diaries through 30 June 2026 and repo state at 13 July 2026. Supersedes the 24 April version (pre-preamp), archived at `archive/tmp/WATER_COOLER_SUMMARY_pre_preamp_20260424.md`. Claim-by-claim status lives in [paper/CLAIMS_STATUS.md](../paper/CLAIMS_STATUS.md).*

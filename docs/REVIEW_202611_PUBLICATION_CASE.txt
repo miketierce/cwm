@@ -1,0 +1,271 @@
+===== steelman:science-and-publication =====
+BEST CASE:
+The strongest honest case is not that the plate does anything new. It is that the project now holds three things other people can use: controlled negative results on a
+class of hardware about which positive claims are still being published; a catalogue, with data, of the specific artefacts that made a linear plate look like a memory and
+a computer; and a complete record of how LLM-assisted research went wrong and was pulled back.
+
+(a) Negative-results and fair-baseline paper. As physics it is not new: theory says a linear reservoir with a linear readout creates no new features (Bollt 2021; Nokkala
+et al. 2026), and Wright et al. (2022) reported their plate as close to a linear classifier. As evidence it is useful. First-round reviewers found no no-substrate control
+in six MEMS reservoir papers, and I found a March 2026 preprint reporting a piezoelectric-ceramic reservoir 2.4 points above logistic regression on MNIST (abstract only).
+This project ran the missing controls in every October session (a no-plate loopback and a dummy receiver), and its own stored analysis shows a 32-dimension digital random
+projection scoring 87.7% against 88.0% for the 240-feature plate, and 99.5% at 240 dimensions. Venue: a journal that already carries reservoir-benchmark critique
+(International Journal of Parallel, Emergent and Distributed Systems) or an unconventional-computing journal; arXiv cs.ET or physics.app-ph if an endorser is found,
+otherwise Zenodo. Needed first: one preregistered series on the reworked fixture with third-party timestamps, a second plate, a plate thermometer, the temporal-memory
+test that was planned and never run (O6), baselines scripted with fixed seeds, and each artefact shown switched on and off.
+
+(b) LLM methods case study. Partly new. Neighbours exist for machine-learning agents (Trehan and Chopra 2026; Beel et al. 2025) and for audit discipline in AI-assisted
+writing (Zhou and Yu 2026); in two searches I found no bench-hardware case. The material is unusually complete. I confirmed that v10 (5 March, 11:38) set predictions with
+kill criteria; that v11, committed 42 minutes later, already had a "Prediction | Measured" table; that a 6 March commit "corrected" the "ring-down" from 169 to 180 ms
+when a wave-speed constant changed; and that the first real rods (7 April) gave Q of 10 to 13 against v10's own kill line of 100. Q then went through 7,687 to 60,092
+(April, fits with R-squared under 0.18), 2,275 (May, R-squared 0.077) and finally 136 to 635 (October, two methods agreeing). Venue: a metascience or data-science
+journal, or a long essay with a DOI. Needed first: the owner's own prose, an error table with counts and time-to-detection, and legal advice if a non-provisional is still
+contemplated, because the essay would state that the specification's measurements were not made.
+
+(c) Instrument and dataset. Low novelty (an open resonant-ultrasound toolbox exists, and impedance-based structural monitoring uses the same glued-disc arrangement), but
+it is the foundation for everything else and nearly free. The October raw data (1.1 GB) and scripts reproduce: I recomputed the null-ringdown result from raw with my own
+estimator and matched all six 29 October preregistration hashes to prefixes of the diary. Today the raw data are not public, five commits are unpushed and the licence is
+ambiguous. Venue: Zenodo now.
+
+(d) Teaching note. This is the best chance of a peer-reviewed paper. A bench costing a few hundred dollars (my estimate) shows ringdown against linewidth, a receiver null
+that is not a modal null, and a termination frequency pull that yields the electromechanical coupling. I also found that the transmitter-junction voltage dips 4 to 11% at
+each resonance. By circuit theory the linewidth of zA/zB therefore leaves out the driven transducer's resistor loss, which predicts a median ringdown-to-linewidth ratio
+of 0.92; the diary reports 0.91 as an unresolved gap. Window by window the agreement is loose, so this needs a bench check. Venue: American Journal of Physics, European
+Journal of Physics or Physics Education. Needed first: a second plate, a thermometer, finer frequency steps, a source-side reference tap and a cost table.
+
+(e) New physics. None that I could defend. The null test is local-versus-global control (Elliott et al. 1988) and multi-reference modal testing; the frequency pull is
+shunted-piezo theory (Hagood and von Flotow 1991); fingerprint and handling sensitivity are resonance inspection and impedance-based monitoring (Park et al. 2003).
+
+The single output that would do the most good is (a) built on (c): one plainly titled paper on what a linear glass plate does and does not compute, whose spine is the
+artefact catalogue with open data. It is where the project's unique asset meets a documented gap. It needs no novelty claim that prior art can defeat. Most of its
+evidence already exists. And it corrects the project's own public record: the site source still lists the March papers for download, labelled only as prior versions, with
+no statement that their measurements were not made. The case study is the cheapest second output, and the teaching note is the safest credit.
+
+DISPUTED FINDINGS:
+- (moderate) Common thread of the first-round arXiv notes: publishing would bring only a modest, mainly cautionary benefit. :: WHY: Understated. The notes weigh novelty
+of physics. The transferable value is the control set and the artefact catalogue, and one benefit is barely counted: correcting a public record that still presents
+unmeasured results as measured. :: EVIDENCE: Controls: every October session has QUIET, LOOPBACK (no plate) and dummy-receiver arms (docs/SESSION_HANDOFF_20261029.md;
+docs/lab_diary_20261029.md). Baseline: data/results/pong/offline_reanalysis_120542.json stores wire_rp32 87.66, wire_rp64 95.39, wire_rp240 99.45 against glass 87.97 (240
+features), and axis_only 82.73. Literature gap: first-round fact F9 (no no-substrate control in six MEMS reservoir papers, from tool summaries); Buckley et al.,
+arXiv:2604.00207 (PZT reservoir, +2.4 points over logistic regression on MNIST, tie on AudioMNIST; abstract only); Wringe et al., arXiv:2405.06561 (critique of reservoir
+benchmarks; abstract only). Public record: /Users/Mike/Code/cwm-site/pages/research.vue lists 'v18 Core (March 2026)' and 'v18 Advanced (March 2026)' under 'Prior
+Versions (Archive)'; public/paper also holds the v16 and v17 PDFs; a search of pages, components and data for 'superseded', 'retract', 'correction' or 'not measured'
+returned nothing. I checked the source, not the deployed site.
+- (moderate) Consensus item 3: the plate has an effective transfer-matrix rank near 1. :: WHY: Missing context. The number comes from a June four-receiver matrix taken on
+the older topology, where a first-round auditor suspected a common non-plate component. No multi-receiver matrix exists under the October controls. October data point to
+more than one spatial degree of freedom. This does not rescue any compute claim: more rank is still a linear map. :: EVIDENCE: docs/K_EFF_FT0_EXISTING_DATA_NOTE.md:10-21
+gives entropy effective rank 1.418 with geometric rank 4 and says 'more than one independent direction is measurable'. First-round note (find_medium_read_diary-october,
+item 27): in that June matrix two different plates correlate 0.77 at the same transducer position. My recomputation from data/results/k_eff/FT1-S1..S3/trials.csv: log|H|
+correlation between the two transmitter positions at the one receiver is 0.342, 0.332 and 0.347, against 0.973 to 0.998 for the same path across sessions. The null test
+(my recomputation from raw) shows the two transmitters excite different mode mixtures at one resonance: receiver null -44 dB, yet 0.48 of the single-transmitter level
+after the stop.
+- (moderate) October audit and diary: ringdowns run a median 9% short of the linewidth prediction, systematic and unexplained; the shunt interpretation should be treated
+as rough. :: WHY: A first-order explanation exists in the data. Ch B sits on the PZT side of the 220 ohm resistor, so H = zA/zB has the poles of the plate with the driven
+transducer voltage-clamped. The free decay runs with that transducer terminated in 220 ohm. The fractional dip of the junction voltage at resonance equals the share of
+the mode's loss added by the resistor. :: EVIDENCE: My scratch analysis (emi_dip.py, o5_emi.py, o5_emi2.py, mag_fit.py in /tmp/cwm_adv_sci_xl0Fl5) on the stored zoom
+sweeps of data/results/k_eff/ringdown_20261029 and termination_20261029. Junction dips of 3.7 to 11.0% appear in all 12 windows; a one-mode model fits them with rms 2.3
+to 8 mV against 6 to 21 mV for no dip. Predicted ringdown/linewidth ratio: median 0.920 over the 10 usable windows; measured 0.907. In O5 the grounded decay over the
+linewidth time is 0.90, 0.90, 0.95 against predicted 0.92, 0.91, 0.91 in three scored windows. The same dip predicts an open-minus-grounded pull of 25, 19, 22, 20 Hz
+against 21, 41, 23, 28 Hz measured (assuming 220 ohm and 4.1 nF). Limits, stated plainly: window-by-window agreement is weak (Spearman 0.44, n = 10); ring-ups show only a
+2% shortfall although the model predicts the same as for ringdowns; 116.5 kHz does not fit; an independent magnitude-only fit agrees on the TX2 path (median 0.94) and not
+on the TX1 path (1.01); the open/grounded gain (median 6.5%) is below the dip-based figure (about 9%), as the project's own circuit estimate also found. Post hoc and
+exploratory.
+- (weak) Consensus item 3: no memory beyond a 1 to 2 ms ring, stated as an established result. :: WHY: Almost certainly true, but its status is derived, not measured. The
+bench temporal test was defined and never run. A negative-results paper needs the measurement, not the inference. :: EVIDENCE: docs/WORKLIST.md Tier 11 table: 'O6 Bench
+temporal regime: on-Pico sequencer + linear MC | OPEN', kill criterion 'linear MC < 3 at >= 2 kHz symbol rate'. docs/SESSION_HANDOFF_20261029.md:85 lists 'NARMA/O6 on
+this bench' under Skip. Decay times of 0.94 to 1.72 ms are measured (docs/lab_diary_20261029.md section 3).
+- (strong) Consensus item 5: the prior-art list. :: WHY: Incomplete in three places that change framing and venue. Two cut against novelty and one raises the relevance of
+a baseline paper. (1) Electromechanical-impedance structural health monitoring is the closest literature for glued-PZT spectra that are sensitive to mass, bonding,
+handling and temperature; my junction-dip analysis is that method. (2) Piezoelectric-ceramic reservoir computing is being published now. (3) A 2026 theory paper
+formalises the bottleneck of linear reservoirs. :: EVIDENCE: Park, Sohn, Farrar and Inman 2003, Shock and Vibration Digest 35, 451 (Crossref record opened; 834
+citations). Buckley, Schumm, Askenazi and Rietman, arXiv:2604.00207, 31 March 2026 (abstract opened; extends Rietman et al. 2022). Nokkala, Centrone and Arzani,
+arXiv:2605.29071, 27 May 2026 (abstract opened). A text search of the first-round notes found no mention of Rietman, Buckley or Nokkala, and 'electromechanical impedance'
+once, in another context.
+- (weak) Consensus item 4: loaded Q of 136 to 635 is set by mechanical loss. :: WHY: Slight overstatement. In the standard grounded state a few percent of each
+driven-path mode's loss is electrical, in the source resistor. A first-round reviewer also estimated that radiation into air is 20 to 41% of the loss, which the project's
+loss list omits. :: EVIDENCE: Junction dips of 4 to 11% (my analysis, above). Open versus grounded decay ratio median 1.065, range 0.99 to 1.15
+(docs/lab_diary_20261029.md section 14). The radiation estimate is from find_medium_read_diary-october item 22; I did not recompute it.
+- (weak) First-round red flag: the preregistration is self-timestamped, so an outsider cannot verify ordering. :: WHY: Correct about the clock, but incomplete. The
+content is verifiable by anyone holding the files, which is more than most hobby-scale records offer, and the missing third-party date costs nothing to add from now on.
+:: EVIDENCE: My prefix-hash check (prefix_hash.py): all six diary hashes logged on 29 October in the three log.jsonl files equal SHA-256 of prefixes of the current
+docs/lab_diary_20261029.md, ending at lines 72, 84, 192, 301, 337 and 420 by my count. The raw null file's SHA-256 matches its log entry. The five 29 October commits are
+unpushed (git log origin/main..main). The first round reports that the 27 and 28 October hashes cannot be recomputed; I did not recheck those.
+
+UNDERVALUED ASSETS:
+- The artefact catalogue: each apparent memory or compute result, the mechanism that produced it and the control that removed it :: This is the project's only knowledge
+that transfers to other laboratories. Packaged as scripts that switch each artefact on and off against stored data, it becomes a reusable test set for physical-computing
+claims, not just a cautionary tale. :: docs/MEASUREMENT_AND_CLAIM_GATE.md sections 4 to 8 already state the controls as gates. docs/WORKLIST.md Tier 11 records the
+integer-divider post-mortem: harmonics 15 to 52 Hz off the grid mimicked a superposition failure. First-round reviewers reproduced further mechanisms (peak-normalised
+multi-tone drive, per-capture normalisation leakage, software noise favouring high feature counts, converter mixing lines at 1 LSB); I did not rerun those.
+- The project's own stored fair-baseline result :: The decisive comparison for a negative-results paper already exists in a committed result file and needs only to be
+scripted with fixed seeds and described correctly. :: data/results/pong/offline_reanalysis_120542.json: glass 87.97 (240 features); wire_rp32 87.66; wire_rp64 95.39;
+wire_rp128 98.52; wire_rp240 99.45; axis_only 82.73. docs/OFFLINE_REANALYSIS_DEBRIEF.md still frames the remainder as a 'real, verified, and novel' partial-query
+advantage, which the handoff of 29 October withdraws.
+- A complete, dated error trail for one quantity, Q :: It is a compact, fully sourced teaching case of how nominal values and fits to noise propagate, and of what finally
+fixed them. It would be the spine of a methods case study. :: paper/v18.md:193, 402, 443 ('Measured' 98.5 dB; ring-down 180 ms, Q = 10,000). Commit 5e0d985 (6 March)
+lists 'Ring-down: tau=169->180 ms' among numbers changed with the wave speed. docs/lab_diary_20260407.md:25 (rods, Q about 13 and 10). docs/LAB_DIARY.md:213-232 (plates,
+Q_max 7,687 to 60,092 with R-squared 0.003 to 0.178, read as lower bounds). docs/lab_diary_20260526.md:211 and paper/v19r.md:206-208 (2,275 at R-squared 0.077).
+docs/lab_diary_20261029.md sections 1 to 3 (136 to 635, ringdown and linewidth agreeing in 9 of 10 windows).
+- Public, dated predictions with kill criteria that the bench later falsified :: It is an accidental preregistration at project scale. Setting v10's predictions beside
+the April measurements is an honest, checkable falsification record, which is rare. :: archive/paper_versions/v10.md:368-393 (for example 'Kill criterion: Q < 100');
+commit b7b2314, 5 March 11:38. Commit 3b361d9, 12:20:41, adds paper/v11.md with a 'Prediction | Measured' table at line 92. First rod data on 7 April meet the kill
+criterion.
+- Raw data and scripts that reproduce, with a hash-chained diary :: A stranger can check the October results end to end. That is the precondition for any of the outputs
+and it already exists locally. :: My independent phase-free estimator on data/raw/k_eff/nullring_20261029/null_20261029_141642.npz gives a steady-state null of 0.0064 and
+0.00096, a post-stop ratio of 0.476 and 0.246, and N/S2 of 0.21/0.54/0.77 and 0.075/0.30/0.43, matching docs/lab_diary_20261029.md section 7. Six of six preregistration
+hashes verified. The first-round audit reports digit-level reproduction of 16 further claims. Weaknesses: raw data are gitignored and exist only locally and in a cloud
+backup; the two stability runs (about 940 MB) have no capture-time hashes.
+- The no-plate and dummy-receiver arms in every session :: This is exactly the control the neighbouring literature is reported to lack, and it is why the linearity bound
+means something: the loopback channel scores the same 1 to 2% floor as the plate. :: docs/lab_diary_20261023.md, 20261026.md, 20261027.md (GLASS, LOOPBACK,
+ELECTRICAL_ONLY, QUIET blocks); first-round audit claim C3 (LOOPBACK 0.8 to 1.6% against 1.2 to 2.0% for the plate).
+- Internal physical coherence of the October set :: One coupling number per mode links three results the diary treats separately: the ringdown-to-linewidth gap, the
+open/grounded decay change and the frequency pull. That turns a list of measurements into a teachable experiment, and it shows that the bench already performs an
+impedance measurement nobody has used. :: Scratch analysis described under disputed findings. Implied coupling factor squared of roughly 200 to 1,550 ppm per mode at the
+assumed 220 ohm and 4.1 nF. Agreement at the median is good; per window it is within about a factor of 1.5.
+- Low-cost measurement methods :: Reusable by teaching and hobby laboratories: stop-aligned ringdown on a non-streaming 8-bit USB scope, capacitance from accidental
+held-high stops, and a 15-tone phase-coherent source with a high-impedance stop on a microcontroller board. :: docs/lab_diary_20261029.md section 2 (120 of 120 ringdowns
+kept, about 1% scatter in tau) and section 11 (4.05 to 4.24 ms discharge, at least 4.1 nF); tools/pico_nco/main.py header (v2.1, Fz). Limit: the source's frequency grid
+is 65 to 108 Hz near 100 kHz, too coarse for good Q fits.
+- Replication hardware already owned :: A second-plate repeat, which every output needs, costs time and not money. :: docs/LAB_DIARY.md:127-133 (five 100 x 100 x 1 mm
+plates built into a fixture in April); docs/lab_diary_20260424.md:519 (spare 10 mm PZTs and 25 mm plates). The plate material is described inconsistently in places
+(HARDWARE.md says borosilicate) and must be settled before publication.
+
+DECISIVE NEXT STEPS:
+- Freeze and deposit. Push the five 29 October commits, add a LICENSE file (for example CC BY 4.0 for data and text, MIT for code), deposit the October raw data, scripts
+and diaries on Zenodo with a four to six page data descriptor, and put a notice on the site that the March papers' prototype measurements were not made. :: COST/TIME: No
+money (Zenodo is free, from memory). Two to four days. :: SHOWS: Whether a stranger starting from the deposit alone can regenerate the diary tables. It also gives the
+record its first third-party date and removes the main credibility liability for any later submission. :: KILL: If a clean-clone rerun does not reproduce the October
+tables, fix that before anything else. If the owner is not willing to mark the March measurements as not made, stop: no credible publication can follow.
+- Ask the intended readers before writing. Send a two-page summary with the DOI to authors of the nearest work (reservoir-benchmark critique, plate and MEMS reservoirs,
+piezo reservoirs), one at a time, asking whether the controls and data would be useful to them. The same contacts are the only realistic arXiv endorsers. :: COST/TIME: No
+money. Three to six weeks elapsed, a few hours of work. :: SHOWS: Whether the baseline and pitfalls paper has an audience, and whether an endorser exists. :: KILL: If
+none of five replies with substantive interest, or the replies say it is known and not useful, do not pursue arXiv or a research journal. Keep the deposit and the
+teaching note.
+- Build the catalogue offline. One table: claim, where made, mechanism of error (physics, instrument, analysis, LLM process), how and when detected, the control that
+removes it, data pointer. For each instrument or analysis artefact, a script that toggles it on stored data. Script the digital baselines with fixed seeds. :: COST/TIME:
+No money. Two to three weeks part-time. No bench needed. :: SHOWS: Whether the catalogue is thick enough to carry a paper, and it produces the error table the case study
+needs. :: KILL: If fewer than about eight artefacts can be reproduced on demand from stored data, the catalogue is too thin for a research paper. Fold it into an essay.
+- One preregistered series on the reworked fixture, registered with a third-party timestamp before data (OSF, OpenTimestamps, or a public push). Second plate, plate
+thermistor, three sessions over at least a week: matched-harmonic superposition with loopback; the linear memory-capacity test at about 2 kHz symbols (O6); an
+amplitude-encoded and a frequency-encoded task against equal-dimension digital baselines; null-ringdown and termination repeats on the second plate. :: COST/TIME: Under
+about 100 dollars of parts (my estimate; plates and PZTs are on hand). Four to eight weeks part-time, including firmware for symbol sequencing. :: SHOWS: Whether the
+October results hold beyond one plate, one mount and one week, and it supplies the measured memory curve and matched baselines a referee will ask for. :: KILL: If
+held-out cross-session superposition error stays above 5%, or the acoustic-to-electrical margin is under 20 dB at more than a fifth of grid points, the bench cannot carry
+a comparison paper. Publish the data and the teaching note only.
+- Thirty-minute check of the junction explanation: put Ch B on the source side of the 220 ohm resistor (or record both sides in turn) and repeat the zoom sweep and
+ringdowns on the six TX2 windows. :: COST/TIME: No money. Thirty minutes once the bench is standing; preregister the prediction. :: SHOWS: Prediction: the
+linewidth-derived decay time falls by the junction-dip fraction (4 to 11%) and the median ringdown-to-linewidth ratio moves from about 0.91 to between 0.97 and 1.0. ::
+KILL: If the gap is unchanged, the explanation is wrong and the teaching note loses its neatest result; report the gap as open.
+- Write the teaching note in the owner's own words after the two bench steps and submit to an education journal. :: COST/TIME: No fee on the subscription route
+(first-round check of journal pages). Three to four weeks of writing; decisions take months. :: SHOWS: Whether independent physicists judge the bench work correct and
+useful, which is the one external validation the project has never had. :: KILL: Two desk rejections from education journals: stop at the deposit.
+
+HONEST ODDS: 
+New physics: under 2%. I looked for an anomaly in the October data and found a conventional explanation instead.
+
+Deposit: if attempted, about 90% that it is complete and usable; about 25 to 35% that anyone outside reuses it within two years.
+
+Baseline and pitfalls paper: about 50% that one person brings it to a submission-ready state within six months. Given that, about 45% that it appears on arXiv
+(endorsement roughly 55%, moderation roughly 80%) and about 50% that it finds a peer-reviewed home within 18 months at a specialist or soundness-reviewed venue; about 10%
+at a selective physics journal. Unconditionally, roughly one chance in four of a peer-reviewed paper.
+
+Teaching note: about 50% acceptance at one of three education journals if written to standard after the rebuild; about 30% unconditionally.
+
+Case study: about 30% for a peer-reviewed home; about 15% that an essay version is widely read.
+
+Impact: about 10% that the best output gathers ten citations in three years; 3 to 5% that it visibly changes practice. The realistic good outcome is a small number of
+careful readers who reuse the controls.
+
+About 40% that everything stops at a deposit and a blog post because endorsement or expert feedback is negative. About 10 to 15% that publishing causes real cost to the
+owner (association with AI-written work; friction from stating in public that the specification's measurements were not made), lower with candid framing and legal advice.
+
+Main uncertainty in these numbers: my literature check was thin. Three web searches and about twenty-five fetches, abstracts and Crossref records only, no full texts. The
+claim that no bench-hardware case study exists rests on two searches.
+
+WHERE CONSENSUS IS RIGHT:
+I tried to challenge these and could not.
+
+1. The March papers contain no hardware measurements. I confirmed it in primary files: v18 labels 98.5 dB as 'Measured' and gives a ring-down of 180 ms; commit 5e0d985
+changed the 'ring-down' from 169 to 180 ms along with the wave speed; v11's 'Measured' column was committed 42 minutes after v10's predictions; the first rods on 7 April
+gave Q of about 10 to 13.
+
+2. v19r should not be posted. Its own ledger still lists 4,096 states, 80/80 and the CHSH figure as measured, and its Q of 2,275 comes from a fit with R-squared 0.077.
+
+3. No October result is new physics. The null test is what a plate with modal overlap near one must do, and matches local-control and multi-reference modal-testing
+practice. The frequency pull is textbook shunted-piezo behaviour. Ringdown agreeing with linewidth is an identity for a linear resonator. My junction analysis strengthens
+this: the one 'unexplained' gap has an ordinary explanation.
+
+4. Fair digital baselines match or beat the plate. The project's own stored file shows a 32-dimension random projection equal to the plate and a 240-dimension one eleven
+points ahead. I could not verify the handoff's later 'CAM recheck'; its only record is said to be a session transcript outside the repositories, which I was not permitted
+to read.
+
+5. Prior art is dense. I found more of it, not less.
+
+6. arXiv is a real gate. An unaffiliated first-time author needs a personal endorser, AI use must be declared, and the text must be the author's own. The diaries and
+scripts were written by an LLM under the owner's direction (handoff section 1), which any submission must say.
+
+7. The preregistration dates are self-attested, the fixture does not hold the transfer function between sessions (3 to 10% change against 0.5% within), there is one
+plate, and no plate thermometer. None of the outputs I argue for can skip the rebuild.
+
+8. The benefit is not in the physics. Where I differ from the consensus is only on how much the controls, the catalogue and the corrected record are worth to others, and
+on the status of three specific statements (rank near 1, the unexplained 9%, the unmeasured memory test).
+
+SOURCES:
+- Access note: web tools were available. I ran three standard searches and about twenty-five fetches; every paper below was read as an arXiv abstract page or Crossref
+record summarised by the fetch tool, never as full text. Blocked: journal.trialanderror.org and royalsocietypublishing.org (HTTP 403); one Crossref call (HTTP 429, later
+repeated successfully). No project name, owner name, repository address or application number went into any query or URL.
+- Access note: I listed the session-transcript directory referenced by the handoff (names and sizes only); an access check then refused a text search of the transcript,
+and I did not read any transcript.
+- Scratch scripts and outputs (nothing written to the repos): /tmp/cwm_adv_sci_xl0Fl5/emi_dip.py, o5_emi.py, o5_emi2.py, mag_fit.py, null_check.py, path_corr.py,
+prefix_hash.py, ring_summary.py, emi_o3.json, best_case.txt
+- /Users/Mike/Code/wcfoma/docs/SESSION_HANDOFF_20261029.md (read in full)
+- /Users/Mike/Code/wcfoma/docs/lab_diary_20261029.md (read in full; prefix hashes recomputed)
+- /Users/Mike/Code/wcfoma/docs/WORKLIST.md (Tier 11, lines 786-860)
+- /Users/Mike/Code/wcfoma/docs/MEASUREMENT_AND_CLAIM_GATE.md (read in full)
+- /Users/Mike/Code/wcfoma/docs/OFFLINE_REANALYSIS_DEBRIEF.md (read in full)
+- /Users/Mike/Code/wcfoma/docs/K_EFF_FT0_EXISTING_DATA_NOTE.md (lines 10-77, rank statements)
+- /Users/Mike/Code/wcfoma/docs/LAB_DIARY.md (lines 113-232: April plates, Q table)
+- /Users/Mike/Code/wcfoma/docs/lab_diary_20260407.md (line 25: first rod Q)
+- /Users/Mike/Code/wcfoma/docs/lab_diary_20260526.md (line 211: Q 2,275, R-squared 0.077)
+- /Users/Mike/Code/wcfoma/paper/v18.md (lines 133, 193, 402, 443, 1451)
+- /Users/Mike/Code/wcfoma/paper/v19r.md (abstract; lines 206-208, 477)
+- /Users/Mike/Code/wcfoma/paper/CLAIMS_STATUS.md (read in full)
+- /Users/Mike/Code/wcfoma/archive/paper_versions/v10.md (lines 368-393, 442) and v11.md (lines 22, 86-98)
+- /Users/Mike/Code/wcfoma git history, read-only: commits b7b2314, 3b361d9, 5e0d985, 2f5bf0c; git log origin/main..main (five unpushed commits); monthly commit counts
+- /Users/Mike/Code/wcfoma/data/results/k_eff/ringdown_20261029/ (ring_result.json, score_ring.py, both derived npz files, log.jsonl)
+- /Users/Mike/Code/wcfoma/data/results/k_eff/nullring_20261029/ (log.jsonl, derived npz) and data/raw/k_eff/nullring_20261029/null_20261029_141642.npz (hash checked,
+re-analysed)
+- /Users/Mike/Code/wcfoma/data/results/k_eff/termination_20261029/ (term_result.json, confirm_result.json, bvd_o3.py, bvd_o3.json, both derived npz files, log.jsonl)
+- /Users/Mike/Code/wcfoma/data/results/k_eff/overnight_20261026/fit_zoom.py (imported read-only for its fit function)
+- /Users/Mike/Code/wcfoma/data/results/k_eff/FT1-S1, FT1-S2, FT1-S3/trials.csv (path and session correlations recomputed)
+- /Users/Mike/Code/wcfoma/data/results/pong/offline_reanalysis_120542.json (stored baselines)
+- /Users/Mike/Code/wcfoma/readme.md (licence section), pyproject.toml (license field), HARDWARE.md, tools/pico_nco/main.py (header)
+- /Users/Mike/Code/cwm-site/pages/research.vue (lines 40-110) and public/paper/ file list (source only, not the deployed site)
+- First-round notes read: /tmp/cwm_review_zp4LiH/q_arxiv.txt, narr_1.txt, checks_audit_october-k-eff.txt, fs_audit_october-k-eff.txt, find_medium_read_diary-october.txt,
+research_research_arxiv-and-venues.txt, research_research_lit-mechanical-reservoir-and-logic.txt (facts F1-F18), checks_audit_fingerprint-headlines.txt (claim C18);
+others searched by keyword only
+- https://arxiv.org/abs/2604.00207 (Buckley, Schumm, Askenazi, Rietman, PZT reservoir computing, 31 March 2026; abstract opened)
+- https://arxiv.org/abs/2605.29071 (Nokkala, Centrone, Arzani, hidden bottleneck in linear reservoir computing, 27 May 2026; abstract opened)
+- https://arxiv.org/abs/2008.06530 (Bollt, linear reservoir and VAR; abstract opened)
+- https://arxiv.org/abs/2405.06561 (Wringe, Trefzer, Stepney, reservoir computing benchmarks critique; Int. J. Parallel, Emergent and Distributed Systems 2025; abstract
+opened)
+- https://arxiv.org/abs/2104.13386 (Wright et al., Nature 601, 549; abstract opened; the 'close to a linear classifier' statement is as quoted by a first-round reviewer)
+- https://arxiv.org/abs/2308.16181 (Wanjura and Marquardt, nonlinear computing with linear wave scattering; abstract opened)
+- https://arxiv.org/abs/2307.08533 (Yildirim et al., nonlinear processing with linear optics; abstract opened)
+- https://arxiv.org/abs/2601.03315 (Trehan and Chopra, Why LLMs Aren't Scientists Yet; abstract opened)
+- https://arxiv.org/abs/2502.14297 (Beel, Kan, Baumgart, evaluation of an AI scientist system; abstract opened)
+- https://arxiv.org/abs/2608.10858 (Zhou and Yu, Auditable AI-Assisted Research Writing, 11 August 2026; abstract opened)
+- https://api.crossref.org/works/10.1016/0022-460x(91)90762-9 (Hagood and von Flotow 1991, J. Sound Vib.; record found by Crossref query; 1,428 citations)
+- https://api.crossref.org/works/10.1016/0022-460x(88)90343-4 (Elliott et al. 1988, active cancellation at a point in a diffuse field; Crossref title only, content from
+memory)
+- https://api.crossref.org/works/10.1177/05831024030356001 (Park, Sohn, Farrar, Inman 2003, impedance-based health monitoring; record opened; 834 citations)
+- https://api.crossref.org/works/10.1063/1.5123165 (Balakirev et al. 2019, Resonant ultrasound spectroscopy: the essential toolbox, Rev. Sci. Instrum.; record opened)
+- https://doi.org/10.1088/0143-0807/33/6/1761 (Franco-Villafane et al. 2012, acoustic resonance spectroscopy for the undergraduate laboratory, Eur. J. Phys.; Crossref
+title only)
+- https://doi.org/10.1121/1.4976070 (Heaton et al. 2017, time-reversal focusing in plates as an educational demonstration, JASA; Crossref title only)
+- https://doi.org/10.31438/trf.hh2014.23 (Wu et al. 2014, fused-silica resonator ovenization; Crossref title only; the positive temperature coefficient of fused silica is
+from memory)
+- https://i-cant-believe-its-not-better.github.io/ (opened; lists workshop editions to 2023 only; not relied on)
+- Web search results (secondary, not opened individually): coverage of a 2026 first-person account by a theoretical physicist of writing a paper with an LLM agent; used
+only to judge novelty of a case study
+- From memory, not verified this session: journal fee and scope details for International Journal of Unconventional Computing, Harvard Data Science Review, Journal of
+Trial and Error, HardwareX and Journal of Open Hardware; that Zenodo is free; multi-reference modal testing as standard practice for closely spaced modes

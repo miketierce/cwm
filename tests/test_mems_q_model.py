@@ -365,8 +365,11 @@ class TestQBudget:
         assert result.Q_total > 0
         assert result.Q_total < result.Q_material
         assert result.dominant_loss != ""
-        assert len(result.components) == 5
-        assert len(result.loss_budget) == 5
+        # Six loss terms: material, anchor, TED, surface, gas and Rayleigh
+        # scattering. The sixth was added to the model on 2026-05-11; this
+        # count was corrected from 5 in November 2026 (model unchanged).
+        assert len(result.components) == 6
+        assert len(result.loss_budget) == 6
 
     def test_total_Q_less_than_any_component(self):
         """Total Q must be less than or equal to the smallest component Q."""
