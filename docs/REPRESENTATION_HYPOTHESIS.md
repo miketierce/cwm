@@ -4,6 +4,8 @@
 **Status:** HYPOTHESIS — awaiting experimental discrimination
 **Prerequisite data:** Rod campaigns (38 experiments), Plate campaigns (Exps 1–7), Kronos census
 
+**2026-11 downstream test:** [Distributed Partial-View Representation and Reference-Assisted Reconstruction](HOLOGRAPHIC_PARTIAL_VIEW_FAST_TRACK.md) operationalizes the earlier "holographic-like redundancy" idea. Its [FT-0 evidence note](HOLOGRAPHIC_FT0_EXISTING_DATA_NOTE.md) adds an exhaustive retrospective E36 subset analysis and reinterprets E8 conservatively as redundant spatial access to the same task state, not independent extra bits. This does not upgrade the Representation Hypothesis to a measured holographic-field claim.
+
 ---
 
 ## 1. Hypothesis Statement

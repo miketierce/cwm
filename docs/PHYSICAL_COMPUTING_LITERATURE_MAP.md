@@ -679,3 +679,116 @@ Before using a paper in a patent, grant, or manuscript:
 The purpose of this file is not to prove CWM novelty.
 
 It is to ensure that CWM's eventual claims are **narrower, better sourced, and harder to fool ourselves about**.
+
+
+---
+
+# 11. Holographic measurement and distributed-view precedent
+
+## Zia et al. — biphoton digital holography
+
+**Citation**
+
+Danilo Zia, Nazanin Dehghan, Alessio D'Errico, Fabio Sciarrino, et al.,  
+"Interferometric imaging of amplitude and phase of spatial biphoton states,"  
+*Nature Photonics* 17, 1009-1016 (2023).  
+Published 14 August 2023.  
+DOI: https://doi.org/10.1038/s41566-023-01272-3
+
+### Demonstrated mechanism
+
+The experiment superposes an unknown spatial biphoton state with a known reference state and uses coincidence imaging to reconstruct the unknown state's spatial amplitude and phase.
+
+The authors call the approach **biphoton digital holography** and report:
+
+- parallel image-based characterization rather than point-by-point projective tomography;
+- roughly three orders of magnitude faster characterization in the demonstrated setting;
+- average reconstruction fidelity of 87%;
+- reconstruction of arbitrary spatial-mode structures, including the widely circulated yin-yang demonstration.
+
+The yin-yang pattern is an input/test image, not a spontaneous shape assumed by entangled photons.
+
+### What it teaches CWM
+
+The transferable measurement pattern is:
+
+```
+unknown wave response
++
+known coherent reference
+->
+interference observable
+->
+complex response reconstruction
+```
+
+This motivates the **reference-assisted reconstruction** branch of:
+
+`docs/HOLOGRAPHIC_PARTIAL_VIEW_FAST_TRACK.md`
+
+The useful CWM question is whether controlled reference interference can recover a task-relevant complex response using a simpler receiver than direct full complex acquisition.
+
+### What it does NOT establish
+
+It does not show:
+
+- quantum holography in CWM;
+- that CWM glass stores a literal hologram;
+- that every fragment of a CWM resonator contains the whole state;
+- an acoustic receiver advantage;
+- a CWM reconstruction result.
+
+The CWM four-phase reference equations are ordinary coherent interferometry applied as an engineering hypothesis.
+
+---
+
+## Melde et al. — acoustic holograms
+
+**Citation**
+
+Kai Melde, Andrew G. Mark, Tian Qiu, et al.,  
+"Holograms for acoustics,"  
+*Nature* 537, 518-522 (2016).  
+Published 21 September 2016.  
+DOI: https://doi.org/10.1038/nature19755
+
+### Demonstrated mechanism
+
+A patterned polymer plate stores a spatial phase/amplitude profile that reconstructs complex three-dimensional acoustic pressure fields when illuminated by a coherent source.
+
+### What it teaches CWM
+
+Acoustic holography and wavefront reconstruction are established prior art.
+
+Therefore CWM novelty cannot be based broadly on:
+
+- using sound as a holographic carrier;
+- reconstructing an acoustic field;
+- storing a wavefront in a passive structure;
+- using interference with a coherent source.
+
+### CWM consequence
+
+Use **distributed partial-view representation** as the operational term for the current hypothesis.
+
+Reserve "holographic-like" for a measured analogy such as:
+
+```
+multiple incomplete views
+->
+same task identity
+```
+
+and distinguish that from the stronger claim:
+
+```
+partial view
+->
+reconstruction of omitted/full field
+```
+
+The existing E26/E36/E8 archive supplies a prior for the first idea, not proof of the second. See:
+
+- `docs/HOLOGRAPHIC_FT0_EXISTING_DATA_NOTE.md`
+- `tools/holographic_ft0_existing.py`
+
